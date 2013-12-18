@@ -22,16 +22,30 @@
 </head>
 <body>
 	<div id="page-container">
-		@if (Session::get('message'))
-			<div class="cms-message">
-				{{ Session::get('message') }}
-			</div>
-		@endif
+		<header id="header">
 
-		<div id="page">
-			@if (isset($page))
-				{{ $page }}
-			@endif
+		</header>
+
+		<div id="mid-container">
+			<section id="content">
+				@if (Session::get('message'))
+					<div class="cms-message">
+						{{ Session::get('message') }}
+					</div>
+				@endif
+
+				<div id="page">
+					@if (isset($page))
+						{{ $page }}
+					@endif
+				</div>
+			</section>
+
+			<aside id="sidebar">
+
+			</aside>
+
+			<div class="clear"></div>
 		</div>
 	</div>
 </body>

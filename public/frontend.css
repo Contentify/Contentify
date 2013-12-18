@@ -2,15 +2,19 @@
 * Elements
 */
 
-body { margin: 0px; padding: 0px; font-family: Verdana; font-size: 13px; color: #333 }
+body { margin: 0px; padding: 0px; font-family: Verdana; font-size: 14px; color: #555 }
 
-h1 { }
+form { width: 100% }
+
+input { font-family: Verdana; font-size: 14px }
+
+h1 { color: #ff6100; }
 h2 { }
 h3 { }
 h4 { }
 h5 { }
 
-table { width: 100% }
+table { width: 100%; border-collapse:collapse }
 tr { }
 th { }
 tr { }
@@ -19,22 +23,41 @@ tr { }
 * Classes
 */
 
+.clear { clear: both }
+.hidden { display: none }
+
 h1.page-title { }
+
+ul.layout-h { list-style: none; margin: 0px; padding: 0px }
+ul.layout-h li { display: list-item; float: left; margin: 0px; }
+
+ul.layout-v { list-style: none; margin: 0px; padding: 0px }
+ul.layout-v li { margin: 0px; float: none }
 
 .cms-message { border: 2px solid silver; }
 .cms-message h2 { }
 .cms-message .text { }
 
 .form-errors { }
-.form-group { margin-bottom: 10px }
-.form-group label { display: inline-block; width: 100px }
-.form-group input { width: 200px }
+.form-group { margin-bottom: 20px }
+.form-group.space-top {  }
+.form-group label { display: inline-block; min-width: 33%; padding-right: 20px; text-align: right; cursor: pointer; }
+.form-group label:after { /* content: ':'; */ }
+.form-group input { width: 40%; padding: 5px 10px; border: 2px solid silver; color: #4082E3 }
+.form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; }
 .form-actions { }
-.form-actions input { border: 2px solid silver }
+.form-actions input[type=submit] { padding: 10px 20px; border: 2px solid silver; color: #666; }
+.form-actions input[type=submit]:focus { border-color: #ff6100; }
 
 /*
 * Front-Page
 */
 
-#page-container { width: 1200px; margin-left: auto; margin-right: auto; }
+#page-container { width: 880px; min-height: 1080px; margin-left: auto; margin-right: auto; padding: 0px 40px; box-shadow: 0px 0px 5px 2px #EEE }
 #page { }
+
+#header { height: 100px }
+
+#content { width: 66%; float: left }
+
+#sidebar { width: 33%; margin-left: 66%; }
