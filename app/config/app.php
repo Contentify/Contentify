@@ -107,6 +107,10 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
+		// Custom services:
+		'Way\Generators\GeneratorsServiceProvider',
+		'Creolab\LaravelModules\ServiceProvider',
+		'Cartalyst\Sentry\SentryServiceProvider'
 	),
 
 	/*
