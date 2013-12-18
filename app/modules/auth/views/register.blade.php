@@ -17,12 +17,12 @@
 
     <div class="form-group">
     	{{ Form::label('password', 'Password') }}
-    	{{ Form::text('password') }}
+    	{{ Form::password('password') }}
     </div>
 
     <div class="form-group">
     	{{ Form::label('password2', 'Password') }}
-    	{{ Form::text('password2') }}
+    	{{ Form::password('password2') }}
     </div>
 
     <div class="form-actions">

@@ -7,6 +7,6 @@ class LogoutController extends \FrontController {
 	{
 		Sentry::logout();
 
-		Session::flash('message', 'Logged out!');
+		$this->message(t('Logged out!'));
 	}
 }

@@ -29,10 +29,25 @@ class BaseController extends Controller {
 	 * @param string $route
 	 * @param array|stdClass data
 	 */
-	final protected function pageView($template = '', $data = array())
+	protected function pageView($template = '', $data = array())
 	{
 		if ($this->layout != NULL) {
 			$this->layout->page = View::make($template, $data);
+		} else {
+			throw new Exception('Error: $this->layout is NULL!');
+		}
+	}
+
+	/**
+	 * Helper. Shortcut for $this->layout->nest(): Adds a view to the main layout.
+	 *
+	 * @param string $route
+	 * @param array|stdClass data
+	 */
+	protected function message($title, $text = '')
+	{
+		if ($this->layout != NULL) {
+			$this->layout->page = View::make('message', array('title' => $title, 'text' => $text));
 		} else {
 			throw new Exception('Error: $this->layout is NULL!');
 		}

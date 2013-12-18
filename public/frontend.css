@@ -1,0 +1,40 @@
+/*
+* Elements
+*/
+
+body { margin: 0px; padding: 0px; font-family: Verdana; font-size: 13px; color: #333 }
+
+h1 { }
+h2 { }
+h3 { }
+h4 { }
+h5 { }
+
+table { width: 100% }
+tr { }
+th { }
+tr { }
+
+/*
+* Classes
+*/
+
+h1.page-title { }
+
+.cms-message { border: 2px solid silver; }
+.cms-message h2 { }
+.cms-message .text { }
+
+.form-errors { }
+.form-group { margin-bottom: 10px }
+.form-group label { display: inline-block; width: 100px }
+.form-group input { width: 200px }
+.form-actions { }
+.form-actions input { border: 2px solid silver }
+
+/*
+* Front-Page
+*/
+
+#page-container { width: 1200px; margin-left: auto; margin-right: auto; }
+#page { }
