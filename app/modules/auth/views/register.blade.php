@@ -1,6 +1,10 @@
-<h1>Register</h1>
+<h1 class="page-title">Register</h1>
 
-{{ Form::open(array('url' => 'admin/auth/registration/register')) }}
+<div class="form-errors">
+    {{ Session::get('errors') }}
+</div>
+
+{{ Form::open(array('url' => 'auth/registration/register')) }}
     <div class="form-group">
     	{{ Form::label('name', 'Name') }}
     	{{ Form::text('name') }}

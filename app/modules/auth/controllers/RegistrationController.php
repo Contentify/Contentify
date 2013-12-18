@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Auth\Controllers;
 
-use View, Sentry, Input;
+use View, Sentry, Input, Redirect, Session;
 
 class RegistrationController extends \FrontController {
 	public function index()
@@ -12,13 +12,13 @@ class RegistrationController extends \FrontController {
 	{
 		try {
 			$user = Sentry::register(array(
-				'email'    => Input::get('email'),
-				'password' => Input::get('password')
+				'email'		=> Input::get('email'),
+				'password'	=> Input::get('password')
 			), true);
 
 			return View::make('auth::register_success');
 		} catch(\Exception $e) {
-			var_dump($e->getMessage());
+			return Redirect::to('auth/registration')->withInput()->with('errors', $e->getMessage());
 		}
 	}
 }

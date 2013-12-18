@@ -2,9 +2,11 @@
 
 $modulePath = 'App\Modules\Auth\Controllers\\';
 
-Route::get('admin/auth/registration', $modulePath.'RegistrationController@index');
-Route::post('admin/auth/registration/register', $modulePath.'RegistrationController@register');
+Route::get('auth/registration', $modulePath.'RegistrationController@index');
+Route::post('auth/registration/register', $modulePath.'RegistrationController@register');
 
+Route::get('auth', $modulePath.'LoginController@index');
+Route::post('auth/login', $modulePath.'LoginController@login');
 
 /*
 // Bind model to route
