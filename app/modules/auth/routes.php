@@ -5,7 +5,7 @@ $modulePath = 'App\Modules\Auth\Controllers\\';
 Route::get('auth/registration', $modulePath.'RegistrationController@index');
 Route::post('auth/registration/register', $modulePath.'RegistrationController@register');
 
-Route::get('auth', $modulePath.'LoginController@index');
+Route::get('auth', ['as' => 'login', 'uses' => $modulePath.'LoginController@index']);
 Route::post('auth/login', $modulePath.'LoginController@login');
 
 /*

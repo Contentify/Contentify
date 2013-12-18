@@ -2,7 +2,7 @@
 
 use App, Config, View;
 
-class DiagController extends \BaseController {
+class DiagController extends \BackController {
 	public function index()
 	{
 		$settings = array(

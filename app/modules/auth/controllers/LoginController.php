@@ -3,6 +3,7 @@
 use View, Sentry, Input, Session, Redirect;
 
 class LoginController extends \FrontController {
+	
 	public function index()
 	{
 		return View::make('auth::login');
