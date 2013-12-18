@@ -6,9 +6,10 @@ class DiagController extends \BaseController {
 	public function index()
 	{
 		$settings = array(
-			'App.environmnet'	=> App::environment(),
+			'App.environment'	=> App::environment(),
 			'App.url'			=> Config::get('app.url'),
 			'App.debug' 		=> Config::get('app.debug'),
+			'App.key'			=> (Config::get('app.key') == '01234567890123456789012345678912' ? 'Dummy' : 'Updated'),
 			'Modules.mode' 		=> Config::get('modules::mode')
 		);
 	

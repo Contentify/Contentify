@@ -1,3 +1,5 @@
 <?php
 
-Route::get('admin/diag', 'App\Modules\Diag\Controllers\DiagController@index');
+$modulePath = 'App\Modules\Diag\Controllers\\';
+
+Route::get('admin/diag', $modulePath.'DiagController@index');
