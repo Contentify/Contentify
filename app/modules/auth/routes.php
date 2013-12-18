@@ -8,6 +8,8 @@ Route::post('auth/registration/register', $modulePath.'RegistrationController@re
 Route::get('auth', ['as' => 'login', 'uses' => $modulePath.'LoginController@index']);
 Route::post('auth/login', $modulePath.'LoginController@login');
 
+Route::get('auth/logout', ['as' => 'logout', 'uses' => $modulePath.'LogoutController@index']);
+
 /*
 // Bind model to route
 Route::model('user', 'App\Modules\Users\Models\User');

@@ -5,7 +5,7 @@ use View, Sentry, Input, Redirect, Session;
 class RegistrationController extends \FrontController {
 	public function index()
 	{
-		return View::make('auth::register');
+		$this->pageView('auth::register');
 	}
 
 	public function register()
@@ -16,7 +16,7 @@ class RegistrationController extends \FrontController {
 				'password'	=> Input::get('password')
 			), true);
 
-			return View::make('auth::register_success');
+			$this->pageView('auth::register_success');
 		} catch(\Exception $e) {
 			return Redirect::to('auth/registration')->withInput()->with('errors', $e->getMessage());
 		}

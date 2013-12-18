@@ -6,7 +6,7 @@ class LoginController extends \FrontController {
 	
 	public function index()
 	{
-		return View::make('auth::login');
+		$this->pageView('auth::login');
 	}
 
 	public function login()
