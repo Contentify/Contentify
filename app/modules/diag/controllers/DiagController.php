@@ -4,7 +4,7 @@ use App, Config, View;
 
 class DiagController extends \BackController {
 	
-	public function index()
+	public function getIndex()
 	{
 		$settings = array(
 			'App.environment'	=> App::environment(),

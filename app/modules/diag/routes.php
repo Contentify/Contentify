@@ -2,4 +2,4 @@
 
 ModuleRoute::context('Diag');
 
-ModuleRoute::get('admin/diag', 'DiagController@index');
+ModuleRoute::controller('admin/diag', 'DiagController');

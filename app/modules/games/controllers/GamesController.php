@@ -7,4 +7,15 @@ class GamesController extends \BackController {
 	{
 		$this->message('Index called!');
 	}
+
+	public function getCreate()
+	{
+
+	}
+
+	public function postCreate()
+	{
+		
+	}
+
 }

@@ -4,12 +4,12 @@ use View, Sentry, Input, Session, Redirect;
 
 class LoginController extends \FrontController {
 	
-	public function index()
+	public function getIndex()
 	{
 		$this->pageView('auth::login');
 	}
 
-	public function login()
+	public function postIndex()
 	{
 		$credentials = array(
 			'email'		=> Input::get('email'),

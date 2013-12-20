@@ -4,8 +4,7 @@ ModuleRoute::context('Auth');
 
 ModuleRoute::controller('auth/registration', 'RegistrationController');
 
-ModuleRoute::get('auth', ['as' => 'login', 'uses' => 'LoginController@index']);
-ModuleRoute::post('auth/login', 'LoginController@login');
+ModuleRoute::controller('auth/login', 'LoginController', ['getIndex' => 'login']);
 
 ModuleRoute::controller('auth/logout', 'LogoutController', ['getIndex' => 'logout']);
 
