@@ -35,7 +35,10 @@ App::after(function($request, $response)
 
 Route::filter('admin', function()
 {
-    if (! Sentry::check()) return Redirect::route('login');
+    if (! Sentry::check()) {
+    	Session::set('redirect', Request::path());
+    	return Redirect::route('login');
+    }
 });
 
 Route::filter('auth', function()

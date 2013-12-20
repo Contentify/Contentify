@@ -19,7 +19,13 @@ class LoginController extends \FrontController {
 		try {
 			$user = Sentry::authenticate($credentials, false); // login the user (if possible)
 
-			return Redirect::to('/');
+			if (Session::get('redirect')) {
+				$redirect = Redirect::to(Session::get('redirect'));
+				Session::forget('redirect');
+				return $redirect;
+			} else {
+				return Redirect::to('/');	
+			}
 		} catch(\Exception $e) {
 			return Redirect::to('auth')->withErrors(['message' => $e->getMessage()]);
 		}
