@@ -3,12 +3,12 @@
 use View, Sentry, Input, Redirect, Session;
 
 class RegistrationController extends \FrontController {
-	public function index()
+	public function getCreate()
 	{
 		$this->pageView('auth::register');
 	}
 
-	public function register()
+	public function postCreate()
 	{
 		try {
 			if (Input::get('password') != Input::get('password2')) {

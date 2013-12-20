@@ -60,6 +60,15 @@ class ModuleRoute {
 	}
 
 	/**
+	* Controller routing (for RESTful controllers).
+	*/
+	public static function controller($route, $target, $parameters = NULL)
+	{
+		// Route::controller() only a controller name (string) as target.
+		Route::controller($route, self::$controllerPath.$target, $parameters);
+	}
+
+	/**
 	* Create the route. Add paths.
 	*/
 	private static function createRoute($method, $route, $target)
@@ -81,4 +90,5 @@ class ModuleRoute {
 
 		return Route::$method($route, $target);
 	}
+
 }

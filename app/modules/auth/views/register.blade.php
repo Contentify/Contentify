@@ -4,7 +4,7 @@
     {{ Session::get('errors') }}
 </div>
 
-{{ Form::open(array('url' => 'auth/registration/register')) }}
+{{ Form::open(array('url' => 'auth/registration/create')) }}
     <div class="form-group">
     	{{ Form::label('name', 'Name') }}
     	{{ Form::text('name') }}

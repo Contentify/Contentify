@@ -2,8 +2,7 @@
 
 ModuleRoute::context('Auth');
 
-ModuleRoute::get('auth/registration', 'RegistrationController@index');
-ModuleRoute::post('auth/registration/register', 'RegistrationController@register');
+ModuleRoute::controller('auth/registration', 'RegistrationController');
 
 ModuleRoute::get('auth', ['as' => 'login', 'uses' => 'LoginController@index']);
 ModuleRoute::post('auth/login', 'LoginController@login');
