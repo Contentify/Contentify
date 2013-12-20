@@ -72,6 +72,17 @@ class ModuleRoute {
 	}
 
 	/**
+	* Controller routing (for resource controllers).
+	*/
+	public static function resource($route, $target)
+	{
+		// Debugging
+		if (Config::get('app.debug')) $_SESSION['ModuleRoute.resource'] = $target;
+
+		Route::resource($route, self::$controllerPath.$target);
+	}
+
+	/**
 	* Create the route. Add paths.
 	*/
 	private static function createRoute($method, $route, $target)
