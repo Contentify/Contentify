@@ -32,17 +32,22 @@ class ModuleRoute {
 	*/
 	public static function model($modelName)
 	{
-		Route::model(self::$moduleName, self::$modelPath.$modelName);
+		return Route::model(self::$moduleName, self::$modelPath.$modelName);
 	}
 
 	public static function get($route, $target)
 	{
-		self::createRoute('get', $route, $target);
+		return self::createRoute('get', $route, $target);
 	}
 
 	public static function post($route, $target)
 	{
-		self::createRoute('post', $route, $target);
+		return self::createRoute('post', $route, $target);
+	}
+
+	public static function any($route, $target)
+	{
+		return self::createRoute('any', $route, $target);
 	}
 
 	/**
@@ -50,16 +55,20 @@ class ModuleRoute {
 	*/
 	private static function createRoute($method, $route, $target)
 	{
-		if (! is_array($target)) {
-			$target = ['uses' => $target];
+		// Ignore closures:
+		if (is_string($target) or is_array($target)) {
+			// Alway create an array:
+			if (! is_array($target)) {
+				$target = ['uses' => $target];
+			}
+
+			// Determine if the target is a controller method.
+			// If so, add the controller path.
+			if (str_contains($target['uses'], '@')) {
+				$target['uses'] = self::$controllerPath.$target['uses'];
+			}
 		}
 
-		// Determine if the target is a controller method.
-		// If so, add the controller path.
-		if (str_contains($target['uses'], '@')) {
-			$target['uses'] = self::$controllerPath.$target['uses'];
-		}
-
-		Route::$method($route, $target);
+		return Route::$method($route, $target);
 	}
 }
