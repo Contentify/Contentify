@@ -7,7 +7,7 @@ ModuleRoute::controller('auth/registration', 'RegistrationController');
 ModuleRoute::get('auth', ['as' => 'login', 'uses' => 'LoginController@index']);
 ModuleRoute::post('auth/login', 'LoginController@login');
 
-ModuleRoute::get('auth/logout', ['as' => 'logout', 'uses' => 'LogoutController@index']);
+ModuleRoute::controller('auth/logout', 'LogoutController', ['getIndex' => 'logout']);
 
 /*
 // Bind model to route

@@ -36,7 +36,7 @@ class ModuleRoute {
 	}
 
 	/**
-	* Method get.
+	* Create route for method get.
 	*/
 	public static function get($route, $target)
 	{
@@ -44,7 +44,7 @@ class ModuleRoute {
 	}
 
 	/**
-	* Method post.
+	* Create route for method post.
 	*/
 	public static function post($route, $target)
 	{
@@ -52,7 +52,7 @@ class ModuleRoute {
 	}
 
 	/**
-	* Method any.
+	* Create route for method any.
 	*/
 	public static function any($route, $target)
 	{
@@ -64,6 +64,9 @@ class ModuleRoute {
 	*/
 	public static function controller($route, $target, $parameters = NULL)
 	{
+		// Debugging
+		if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target;
+
 		// Route::controller() only a controller name (string) as target.
 		Route::controller($route, self::$controllerPath.$target, $parameters);
 	}
@@ -73,6 +76,9 @@ class ModuleRoute {
 	*/
 	private static function createRoute($method, $route, $target)
 	{
+		// Debugging
+		if (Config::get('app.debug')) $_SESSION['ModuleRoute.route'] = $target;
+
 		// Ignore closures:
 		if (is_string($target) or is_array($target)) {
 			

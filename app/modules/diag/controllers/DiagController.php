@@ -3,6 +3,7 @@
 use App, Config, View;
 
 class DiagController extends \BackController {
+	
 	public function index()
 	{
 		$settings = array(

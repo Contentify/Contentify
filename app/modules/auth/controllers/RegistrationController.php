@@ -3,6 +3,7 @@
 use View, Sentry, Input, Redirect, Session;
 
 class RegistrationController extends \FrontController {
+
 	public function getCreate()
 	{
 		$this->pageView('auth::register');

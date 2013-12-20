@@ -3,7 +3,8 @@
 use View, Sentry, Input, Session, Redirect;
 
 class LogoutController extends \FrontController {
-	public function index()
+
+	public function getIndex()
 	{
 		Sentry::logout();
 
