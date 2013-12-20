@@ -1,8 +1,6 @@
 <h1 class="page-title">Register</h1>
 
-<div class="form-errors">
-    {{ Session::get('errors') }}
-</div>
+{{ HTML::ul($errors->all()) }}
 
 {{ Form::open(array('url' => 'auth/registration/create')) }}
     <div class="form-group">

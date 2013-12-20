@@ -2,6 +2,7 @@
 
 ModuleRoute::context('Games');
 
-//ModuleRoute::model('Game');
+ModuleRoute::model('Game');
 
-ModuleRoute::controller('admin/games', 'GamesController');
+ModuleRoute::resource('admin/games', 'GamesController');
+//ModuleRoute::controller('admin/games', 'GamesController');

@@ -13,7 +13,7 @@ class RegistrationController extends \FrontController {
 	{
 		try {
 			if (Input::get('password') != Input::get('password2')) {
-				return Redirect::to('auth/registration')->withInput()->with('errors', t('The passwords have to match!'));
+				return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => t('The passwords have to match!')]);
 			}
 
 			$user = Sentry::register(array(
@@ -23,7 +23,7 @@ class RegistrationController extends \FrontController {
 
 			$this->message(t('Registration successful!'));
 		} catch(\Exception $e) {
-			return Redirect::to('auth/registration')->withInput()->with('errors', $e->getMessage());
+			return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => $e->getMessage()]);
 		}
 	}
 }

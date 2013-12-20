@@ -62,7 +62,7 @@ class ModuleRoute {
 	/**
 	* Controller routing (for RESTful controllers).
 	*/
-	public static function controller($route, $target, $parameters = NULL)
+	public static function controller($route, $target, $parameters = array())
 	{
 		// Debugging
 		if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target;
@@ -74,12 +74,12 @@ class ModuleRoute {
 	/**
 	* Controller routing (for resource controllers).
 	*/
-	public static function resource($route, $target)
+	public static function resource($route, $target, $parameters = array())
 	{
 		// Debugging
 		if (Config::get('app.debug')) $_SESSION['ModuleRoute.resource'] = $target;
 
-		Route::resource($route, self::$controllerPath.$target);
+		Route::resource($route, self::$controllerPath.$target, $parameters);
 	}
 
 	/**

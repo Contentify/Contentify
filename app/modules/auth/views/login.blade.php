@@ -1,8 +1,6 @@
 <h1 class="page-title">Login</h1>
 
-<div class="form-errors">
-    {{ Session::get('errors') }}
-</div>
+{{ HTML::ul($errors->all()) }}
 
 {{ Form::open(array('url' => 'auth/login')) }}
     <div class="form-group">

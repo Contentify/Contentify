@@ -11,14 +11,19 @@
 |
 */
 
+// Admin filter:
+Route::when('admin/*', 'admin');
+
 // Homepage:
 Route::get('/', function()
 {
 	return View::make('hello');
 });
 
-// Admin filter:
-Route::when('admin/*', 'admin');
-
 // Installation:
 Route::get('/install', 'InstallController@index');
+
+Route::get('/test', function()
+{
+
+});
