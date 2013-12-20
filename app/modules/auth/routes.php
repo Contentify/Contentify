@@ -1,14 +1,14 @@
 <?php
 
-$modulePath = 'App\Modules\Auth\Controllers\\';
+ModuleRoute::context('Auth');
 
-Route::get('auth/registration', $modulePath.'RegistrationController@index');
-Route::post('auth/registration/register', $modulePath.'RegistrationController@register');
+ModuleRoute::get('auth/registration', 'RegistrationController@index');
+ModuleRoute::post('auth/registration/register', 'RegistrationController@register');
 
-Route::get('auth', ['as' => 'login', 'uses' => $modulePath.'LoginController@index']);
-Route::post('auth/login', $modulePath.'LoginController@login');
+ModuleRoute::get('auth', ['as' => 'login', 'uses' => 'LoginController@index']);
+ModuleRoute::post('auth/login', 'LoginController@login');
 
-Route::get('auth/logout', ['as' => 'logout', 'uses' => $modulePath.'LogoutController@index']);
+ModuleRoute::get('auth/logout', ['as' => 'logout', 'uses' => 'LogoutController@index']);
 
 /*
 // Bind model to route

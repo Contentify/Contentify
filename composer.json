@@ -18,7 +18,8 @@
 			"app/database/migrations",
 			"app/database/seeds",
 			"app/tests/TestCase.php",
-			"app/modules"
+			"app/modules",
+			"app/classes"
 		]
 	},
 	"scripts": {
