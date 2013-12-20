@@ -12,6 +12,23 @@ function t($text)
 
 /*
 |--------------------------------------------------------------------------
+| Pretend DELETE request method
+|--------------------------------------------------------------------------
+|
+| Since Laravel can't create URLs with request methods,
+| it needs a little help. We use the GET-parameter 'method' to 
+| pretend a DELETE request method.
+| This has to be done before the App starts.
+| (Ofcourse, with JavaScript an AJAX call sending DELETE is possible.)
+| 
+*/
+
+if (isset($_GET['method']) and strtolower($_GET['method']) == 'delete') {
+	$_SERVER['REQUEST_METHOD'] = 'DELETE';
+}
+
+/*
+|--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
 |
