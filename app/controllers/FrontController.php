@@ -12,5 +12,8 @@ class FrontController extends BaseController {
 	public function __construct()
 	{
 		parent::__construct();
+
+		// Enable auto CSRF protection
+		$this->beforeFilter('csrf', array('on' => 'post'));
 	}
 }

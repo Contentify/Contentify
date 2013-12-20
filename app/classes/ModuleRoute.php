@@ -35,16 +35,25 @@ class ModuleRoute {
 		return Route::model(self::$moduleName, self::$modelPath.$modelName);
 	}
 
+	/**
+	* Method get.
+	*/
 	public static function get($route, $target)
 	{
 		return self::createRoute('get', $route, $target);
 	}
 
+	/**
+	* Method post.
+	*/
 	public static function post($route, $target)
 	{
 		return self::createRoute('post', $route, $target);
 	}
 
+	/**
+	* Method any.
+	*/
 	public static function any($route, $target)
 	{
 		return self::createRoute('any', $route, $target);
@@ -57,6 +66,7 @@ class ModuleRoute {
 	{
 		// Ignore closures:
 		if (is_string($target) or is_array($target)) {
+			
 			// Alway create an array:
 			if (! is_array($target)) {
 				$target = ['uses' => $target];
