@@ -7,7 +7,8 @@
 		"laravel/framework": "4.1.*",
 		"way/generators": "dev-master",
 		"creolab/laravel-modules": "dev-master",
-		"cartalyst/sentry": "2.0.*"
+		"cartalyst/sentry": "2.0.*",
+        "laravelbook/ardent": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
