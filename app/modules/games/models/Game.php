@@ -4,4 +4,6 @@ use Ardent;
 
 class Game extends Ardent {
 
+	protected $fillable = array('title', 'tag', 'image');
+
 }

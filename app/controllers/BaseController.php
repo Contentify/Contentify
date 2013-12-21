@@ -24,10 +24,10 @@ class BaseController extends Controller {
 	}
 
 	/**
-	 * Helper. Shortcut for $this->layout->nest(): Adds a view to the main layout.
+	 * Shortcut for $this->layout->nest(): Adds a view to the main layout.
 	 *
-	 * @param string $route
-	 * @param array|stdClass data
+	 * @param string $template
+	 * @param array $data
 	 */
 	protected function pageView($template = '', $data = array())
 	{
@@ -39,10 +39,10 @@ class BaseController extends Controller {
 	}
 
 	/**
-	 * Helper. Shortcut for $this->layout->nest(): Adds a view to the main layout.
+	 * Adds a message view to the main layout.
 	 *
-	 * @param string $route
-	 * @param array|stdClass data
+	 * @param string $title
+	 * @param string $text
 	 */
 	protected function message($title, $text = '')
 	{
@@ -53,4 +53,13 @@ class BaseController extends Controller {
 		}
 	}
 
+	/**
+	 * Inserts a flash message to the main layout.
+	 *
+	 * @param string $title
+	 */
+	protected function messageFlash($title)
+	{
+		Session::flash('_message', $title);
+	}
 }

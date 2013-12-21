@@ -1,9 +1,9 @@
 {{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
 
-@if (isset($game))
-    {{ Form::model($game, array('route' => array('admin.games.update', $game->id), 'method' => 'put')) }}
+@if (isset($entity))
+    {{ Form::model($entity, array('route' => array('admin.games.update', $entity->id), 'method' => 'put')) }}
 @else
-    {{ Form::open(array('url' => 'admin/games/create')) }}
+    {{ Form::open(array('url' => 'admin/games')) }}
 @endif
     <div class="form-group">
     	{{ Form::label('title', 'Title') }}
