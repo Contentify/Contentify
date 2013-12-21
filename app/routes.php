@@ -17,7 +17,7 @@ Route::when('admin/*', 'admin');
 // Homepage:
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('frontend');
 });
 
 // Installation:
@@ -25,5 +25,5 @@ Route::get('/install', 'InstallController@index');
 
 Route::get('/test', function()
 {
-
+	echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
 });

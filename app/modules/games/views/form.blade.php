@@ -1,6 +1,4 @@
-<div class="form-errors">
-    {{ Session::get('errors') }}
-</div>
+{{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
 
 @if (isset($game))
     {{ Form::model($game, array('route' => array('admin.games.update', $game->id), 'method' => 'put')) }}

@@ -1,6 +1,6 @@
 <h1 class="page-title">Register</h1>
 
-{{ HTML::ul($errors->all()) }}
+{{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
 
 {{ Form::open(array('url' => 'auth/registration/create')) }}
     <div class="form-group">

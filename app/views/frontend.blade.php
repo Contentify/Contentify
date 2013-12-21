@@ -23,7 +23,7 @@
 <body>
 	<div id="page-container">
 		<header id="header">
-
+			<h2>Contentify Testpage</h2>
 		</header>
 
 		<div id="mid-container">
@@ -42,7 +42,14 @@
 			</section>
 
 			<aside id="sidebar">
-
+				<ul class="layout-v">
+					<li>{{ link_to('auth/login', 'Login') }}</li>
+					<li>{{ link_to('auth/logout', 'Logout') }}</li>
+					<li>{{ link_to('auth/registration/create', 'Registration') }}</li>
+					<li>{{ link_to('admin/diag', 'Admin Diag') }}</li>
+					<li>{{ link_to('admin/games', 'Admin Games') }}</li>
+					<li>{{ link_to('admin/games/create', 'Admin Games Create') }}</li>
+				</ul>
 			</aside>
 
 			<div class="clear"></div>

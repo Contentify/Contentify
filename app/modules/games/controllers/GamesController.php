@@ -30,14 +30,14 @@ class GamesController extends \BackController {
 
 	public function edit($id)
 	{
-		$game = Game::find($id);
+		$game = Game::findOrFail($id);
 
 		$this->pageView('games::form', array('game' => $game));
 	}
 
 	public function update($id)
 	{
-		$game = Game::find($id);
+		$game = Game::findOrFail($id);
 
 		$game->title = Input::get('title');
 		$game->tag = Input::get('tag');

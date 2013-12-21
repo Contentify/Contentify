@@ -4,9 +4,11 @@
 
 body { margin: 0px; padding: 0px; font-family: Verdana; font-size: 14px; color: #555 }
 
-form { width: 100% }
+img { border: 0px; }
 
-input { font-family: Verdana; font-size: 14px }
+a, a:visited { color: #ff6100; text-decoration: none; font-weight: normal; }
+a:active { color: #ff6100; text-decoration: none; font-weight: normal; }
+a:hover { color: #ff6100; text-decoration: none; font-weight: normal; }
 
 h1 { color: #ff6100; }
 h2 { }
@@ -14,10 +16,17 @@ h3 { }
 h4 { }
 h5 { }
 
+p { }
+
 table { width: 100%; border-collapse:collapse }
 tr { }
 th { }
 tr { }
+
+form { width: 100%; margin: 0px; padding: 0px }
+input { font-family: Verdana; font-size: 14px }
+
+blockquote { background: #F4F4F4; border: 1px dotted gray; padding: 5px; margin: 5px; }
 
 /*
 * Classes
@@ -25,6 +34,7 @@ tr { }
 
 .clear { clear: both }
 .hidden { display: none }
+.center-h { text-align: center; }
 
 h1.page-title { }
 
@@ -50,14 +60,16 @@ ul.layout-v li { margin: 0px; float: none }
 .form-actions input[type=submit]:focus { border-color: #ff6100; }
 
 /*
-* Front-Page
+* Mainlayout
 */
 
-#page-container { width: 880px; min-height: 1080px; margin-left: auto; margin-right: auto; padding: 0px 40px; box-shadow: 0px 0px 5px 2px #EEE }
+#page-container { width: 960px; min-height: 1080px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 2px #EEE }
 #page { }
 
-#header { height: 100px }
+#header { height: 100px; line-height: 100px; padding-left: 40px; background-color: #EEE }
 
+#mid-container { padding: 20px 40px 0px 40px; }
 #content { width: 66%; float: left }
+#sidebar { width: 33%; margin-left: 66% }
 
-#sidebar { width: 33%; margin-left: 66%; }
+#sidebar ul { margin-left: 40px }
