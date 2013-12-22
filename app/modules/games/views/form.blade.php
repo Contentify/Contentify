@@ -1,7 +1,7 @@
 {{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
 
 @if (isset($entity))
-    {{ Form::model($entity, array('route' => array('admin.games.update', $entity->id), 'method' => 'put')) }}
+    {{ Form::model($entity, array('route' => array('admin.games.update', $entity->id), 'method' => 'PUT')) }}
 @else
     {{ Form::open(array('url' => 'admin/games')) }}
 @endif

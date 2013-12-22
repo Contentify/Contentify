@@ -12,8 +12,11 @@ class InstallController extends BaseController {
 	}
 
 	/**
-	* Helper functions. Creates a database table.
-	*/
+	 * Helper functions. Creates a database table.
+	 * @param  string  $tableName
+	 * @param  Closure $tableRows
+	 * @param  boolean $isContentObject
+	 */
 	private function create($tableName, Closure $tableRows, $isContentObject = true)
 	{
 		// Delete existing table:
