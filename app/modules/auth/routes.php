@@ -1,6 +1,6 @@
 <?php
 
-ModuleRoute::context('Auth');
+ModuleRoute::context(__DIR__);
 
 ModuleRoute::controller('auth/registration', 'RegistrationController');
 

@@ -1,6 +1,6 @@
 <?php
 
-ModuleRoute::context('Games');
+ModuleRoute::context(__DIR__);
 
 ModuleRoute::model('Game');
 

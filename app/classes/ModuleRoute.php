@@ -2,25 +2,32 @@
 
 class ModuleRoute {
 	/**
-	* The name of the module
-	*/
+	 * The name of the module
+	 * @var string
+	 */
 	private static $moduleName;
 
 	/**
-	* The path to the models of the module
-	*/
+	 * The path to the models of the module
+	 * @var string
+	 */
 	private static $modelPath;
 
 	/**
-	* The path to the controllers of the module
-	*/
+	 * The path to the controllers of the module
+	 * @var string
+	 */
 	private static $controllerPath;
 
 	/**
-	* Set the context (name) of the module.
-	*/
+	 * Set the context (name) of the module.
+	 * @param string $moduleName Name or path of the module.
+	 */
 	public static function context($moduleName)
 	{
+		$moduleName = class_basename($moduleName);
+		$moduleName = ucfirst(strtolower($moduleName));
+
 		self::$moduleName 		= $moduleName;
 
 		self::$modelPath 		= 'App\Modules\\'.$moduleName.'\Models\\';
@@ -28,52 +35,65 @@ class ModuleRoute {
 	}
 
 	/**
-	* Bind a model to a route
-	*/
+	 * Bind a model to a route
+	 * @param string $modelName The name of the model (without namespace)
+	 */
 	public static function model($modelName)
 	{
 		return Route::model(self::$moduleName, self::$modelPath.$modelName);
 	}
 
 	/**
-	* Create route for method get.
-	*/
+	 * Create route for method get.
+	 * @param  string $route
+	 * @param  mixed  $target
+	 */
 	public static function get($route, $target)
 	{
 		return self::createRoute('get', $route, $target);
 	}
 
 	/**
-	* Create route for method post.
-	*/
+	 * Create route for method post.
+	 * @param  string $route
+	 * @param  mixed  $target
+	 */
 	public static function post($route, $target)
 	{
 		return self::createRoute('post', $route, $target);
 	}
 
 	/**
-	* Create route for method any.
-	*/
+	 * Create route for method any.
+	 * @param  string $route
+	 * @param  mixed  $target
+	 */
 	public static function any($route, $target)
 	{
 		return self::createRoute('any', $route, $target);
 	}
 
 	/**
-	* Controller routing (for RESTful controllers).
-	*/
+	 * Controller routing (for RESTful controllers).
+	 * @param  string $route
+	 * @param  string $target
+	 * @param  array  $parameters
+	 */
 	public static function controller($route, $target, $parameters = array())
 	{
 		// Debugging
 		if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target;
 
-		// Route::controller() only a controller name (string) as target.
+		// Route::controller() only accepts a controller name (string) as target.
 		Route::controller($route, self::$controllerPath.$target, $parameters);
 	}
 
 	/**
-	* Controller routing (for resource controllers).
-	*/
+	 * Controller routing (for resource controllers).
+	 * @param  string $route
+	 * @param  string $target
+	 * @param  array  $parameters
+	 */
 	public static function resource($route, $target, $parameters = array())
 	{
 		// Debugging
@@ -83,8 +103,11 @@ class ModuleRoute {
 	}
 
 	/**
-	* Create the route. Add paths.
-	*/
+	 * Create the route. Add paths.
+	 * @param  string $method
+	 * @param  string $route
+	 * @param  mixed  $target
+	 */
 	private static function createRoute($method, $route, $target)
 	{
 		// Debugging

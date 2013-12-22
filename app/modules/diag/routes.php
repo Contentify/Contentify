@@ -1,5 +1,5 @@
 <?php
 
-ModuleRoute::context('Diag');
+ModuleRoute::context(__DIR__);
 
 ModuleRoute::controller('admin/diag', 'DiagController');

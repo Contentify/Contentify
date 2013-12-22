@@ -74,7 +74,9 @@ class AutoFormBuilder {
                     $html = Form::label($name, $title)."\n".Form::text($name, NULL, $attributes)."\n";
                     break;
                 case 'password':
-                    $html = Form::label($name, $title)."\n".Form::password($name)."\n";
+                    $attributes = [];
+                    if ($size > 0) $attributes['maxlength'] = $size;
+                    $html = Form::label($name, $title)."\n".Form::password($name, $attributes)."\n";
                     break;
                 case 'text':
                     $html = Form::label($name, $title)."\n".Form::textarea($name)."\n";
