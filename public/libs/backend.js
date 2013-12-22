@@ -20,42 +20,31 @@ ddaccordion.init({
     }
 })
 
-$(document).ready(function()
-{
-    var timeouttime = 1000; // ms
+var timeoutTime = 1000; // ms
+
+function updateDatetime() {
+    var now = new Date();
     
-    function updatedatetime() {
-        var now = new Date();
-        
-        var days= now.getDate();
-        if (days <10) { days="0"+days; }
-        var months= now.getMonth() + 1;
-        if (months <10) { months="0"+months; }
-        var years= now.getFullYear();
-        
-        var hours= now.getHours();
-        if (hours <10) { hours="0"+hours; }
-        var minutes= now.getMinutes();
-        if (minutes <10) { minutes="0"+minutes; }
-        //var seconds= now.getSeconds();
-        //if (seconds <10) { seconds="0"+seconds; }
-        
-        var mydate = days + "." + months + "." + years;
-        var mytime = hours + ":" + minutes; // + ":" + seconds;
-        
-        document.getElementById("datetime").innerHTML = mydate + " – " + mytime;
-        
-        var t=setTimeout("updatedatetime();",timeouttime);
-    }
+    var days = now.getDate();
+    if (days < 10) { days = "0" + days; }
+    var months = now.getMonth() + 1;
+    if (months < 10) { months = "0" + months; }
+    var years = now.getFullYear();
+    
+    var hours = now.getHours();
+    if (hours < 10) { hours = "0" + hours; }
+    var minutes = now.getMinutes();
+    if (minutes < 10) { minutes = "0" + minutes; }
+    
+    var mydate = days + "/" + months + "/" + years;
+    var mytime = hours + ":" + minutes;
+    
+    document.getElementById("datetime").innerHTML = mydate + " – " + mytime;
+    
+    var t = setTimeout("updateDatetime();", timeoutTime);
+}
 
-    $(function() {
-        updatedatetime();
-    });
-
-    $(window).scroll(function () {
-        el = $("#pagecontainer");
-        if (el.scrollTop()>219) { // 219 = px height of header
-            $("#sidebar").css("padding-top", 300);
-        }
-    });
+$(document).ready(function()
+{  
+    updateDatetime();
 });

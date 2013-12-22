@@ -15,10 +15,10 @@
 Route::when('admin/*', 'admin');
 
 // Homepages:
-Route::get('/', function()
+Route::get('/', ['as' => 'home', 'uses' => function()
 {
 	return View::make('frontend');
-});
+}]);
 
 // We prefer to use a route here than inside the modules own routing file.
 // So there can't exist multiple modules that try to declare themselves as dashboard.
