@@ -8,7 +8,7 @@
 		"way/generators": "dev-master",
 		"creolab/laravel-modules": "dev-master",
 		"cartalyst/sentry": "2.0.*",
-        "laravelbook/ardent": "dev-master",
+        "laravelbook/ardent": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -19,6 +19,7 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
 			"app/modules",
+			"app/classes"
 		]
 	},
 	"scripts": {
