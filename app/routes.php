@@ -14,16 +14,22 @@
 // Admin filter:
 Route::when('admin/*', 'admin');
 
-// Homepage:
+// Homepages:
 Route::get('/', function()
 {
 	return View::make('frontend');
 });
+
+Route::get('admin/', 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex');
 
 // Installation:
 Route::get('/install', 'InstallController@index');
 
 Route::get('/test', function()
 {
-	echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
+    //$game = App\Modules\Games\Models\Game::find(19);
+
+    //echo(AutoFormBuilder::generate($game));
+
+	//echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
 });
