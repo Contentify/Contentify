@@ -4,8 +4,8 @@
 
 {{ Form::open(array('url' => 'auth/registration/create')) }}
     <div class="form-group">
-    	{{ Form::label('name', 'Name') }}
-    	{{ Form::text('name') }}
+    	{{ Form::label('username', 'Username') }}
+    	{{ Form::text('username') }}
     </div>
 
     <div class="form-group">

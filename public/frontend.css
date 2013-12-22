@@ -46,7 +46,7 @@ h1.page-title { }
 .form-errors { }
 .form-group { margin-bottom: 20px }
 .form-group.space-top {  }
-.form-group label { display: inline-block; min-width: 33%; padding-right: 20px; text-align: right; cursor: pointer; }
+.form-group label { display: inline-block; min-width: 25%; padding-right: 20px; text-align: right; cursor: pointer; }
 .form-group label:after { /* content: ':'; */ }
 .form-group input { width: 40%; padding: 5px 10px; border: 2px solid silver; color: #4082E3 }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; }

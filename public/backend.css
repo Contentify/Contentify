@@ -52,12 +52,12 @@ h1.page-title { }
 .form-errors { }
 .form-group { margin-bottom: 20px }
 .form-group.space-top {  }
-.form-group label { display: inline-block; min-width: 33%; padding-right: 20px; text-align: right; cursor: pointer; }
+.form-group label { display: inline-block; min-width: 15%; padding-right: 20px; cursor: pointer; }
 .form-group label:after { /* content: ':'; */ }
-.form-group input { width: 40%; padding: 5px 10px; border: 2px solid silver; color: #4082E3 }
+.form-group input { width: 40%; padding: 5px 10px; color: #4082E3 }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; }
 .form-actions { }
-.form-actions input[type=submit] { padding: 10px 20px; border: 2px solid silver; color: #666; }
+.form-actions input[type=submit] { padding: 10px 20px; border: 1px solid silver; color: #666; }
 .form-actions input[type=submit]:focus { border-color: #ff6100; }
 
 /*

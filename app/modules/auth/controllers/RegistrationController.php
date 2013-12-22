@@ -17,8 +17,9 @@ class RegistrationController extends \FrontController {
 			}
 
 			$user = Sentry::register(array(
+				'username'	=> Input::get('username'),
 				'email'		=> Input::get('email'),
-				'password'	=> Input::get('password')
+				'password'	=> Input::get('password'),
 			), true);
 
 			$this->message(t('Registration successful!'));
