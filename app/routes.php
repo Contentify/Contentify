@@ -20,7 +20,9 @@ Route::get('/', function()
 	return View::make('frontend');
 });
 
-Route::get('admin/', 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex');
+// We prefer to use a route here than inside the modules own routing file.
+// So there can't exist multiple modules that try to declare themselves as dashboard.
+Route::get('admin/', ['as' => 'admin.dashboard', 'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex']);
 
 // Installation:
 Route::get('/install', 'InstallController@index');
