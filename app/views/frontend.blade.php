@@ -14,7 +14,7 @@
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script type="text/javascript" src="{{ asset('libs/base.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('libs/frontend.js') }}"></script>
 
 	<style type="text/css">
 
@@ -34,11 +34,11 @@
 					</div>
 				@endif
 
-				<div id="page">
+				<section id="page">
 					@if (isset($page))
 						{{ $page }}
 					@endif
-				</div>
+				</section>
 			</section>
 
 			<aside id="sidebar">

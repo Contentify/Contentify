@@ -1,0 +1,25 @@
+/*
+ * Elements
+ */
+
+body { margin: 0px; padding: 0px; }
+
+img { border: 0px; }
+
+table { width: 100%; border-collapse: collapse }
+
+form { width: 100%; margin: 0px; padding: 0px }
+
+/*
+ * Classes
+ */
+
+.clear { clear: both }
+.hidden { display: none }
+.center-h { text-align: center; }
+
+ul.layout-h { list-style: none; margin: 0px; padding: 0px }
+ul.layout-h li { display: list-item; float: left; margin: 0px; }
+
+ul.layout-v { list-style: none; margin: 0px; padding: 0px }
+ul.layout-v li { margin: 0px; float: none }

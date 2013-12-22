@@ -1,11 +1,12 @@
+@import "base.css";
+
 /*
-* Elements
-*/
+ * Elements
+ */
 
-body { margin: 0px; padding: 0px; font-family: Verdana; font-size: 14px; color: #555 }
+body { font-family: Verdana; font-size: 14px; color: #555 }
 
-img { border: 0px; }
-
+/* URLs */
 a, a:visited { color: #ff6100; text-decoration: none; font-weight: normal; }
 a:active { color: #ff6100; text-decoration: none; font-weight: normal; }
 a:hover { color: #ff6100; text-decoration: none; font-weight: normal; }
@@ -18,36 +19,30 @@ h5 { }
 
 p { }
 
-table { width: 100%; border-collapse:collapse }
+/* Table Elements */
+table { font-family: Verdana }
 tr { }
 th { }
 tr { }
 
-form { width: 100%; margin: 0px; padding: 0px }
+/* Form Elements */
+form {  }
+fieldset { border: none; }
 input { font-family: Verdana; font-size: 14px }
 
 blockquote { background: #F4F4F4; border: 1px dotted gray; padding: 5px; margin: 5px; }
 
 /*
-* Classes
-*/
-
-.clear { clear: both }
-.hidden { display: none }
-.center-h { text-align: center; }
+ * Classes
+ */
 
 h1.page-title { }
-
-ul.layout-h { list-style: none; margin: 0px; padding: 0px }
-ul.layout-h li { display: list-item; float: left; margin: 0px; }
-
-ul.layout-v { list-style: none; margin: 0px; padding: 0px }
-ul.layout-v li { margin: 0px; float: none }
 
 .cms-message { border: 2px solid silver; }
 .cms-message h2 { font-size: 14px }
 .cms-message .text { }
 
+/* Form */
 .form-errors { }
 .form-group { margin-bottom: 20px }
 .form-group.space-top {  }
@@ -60,8 +55,8 @@ ul.layout-v li { margin: 0px; float: none }
 .form-actions input[type=submit]:focus { border-color: #ff6100; }
 
 /*
-* Mainlayout
-*/
+ * Mainlayout
+ */
 
 #page-container { width: 960px; min-height: 1080px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 2px #EEE }
 #page { }
