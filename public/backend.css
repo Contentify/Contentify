@@ -64,21 +64,11 @@ h1.page-title { }
  * Mainlayout
  */
 
-/* Sidebar Nav */
-.menuhead { cursor:pointer; color: #FFFFFF; display: block; height:51px; }      
-.selected {  }
-.submenu a, .submenu a:visited { position: absolute; left: 0px; top: 0px; width: 233px; height: 100%; color: #CCCCCC; z-index: 2 }
-.submenu a:hover, submenu a:active { color: #ff6100 }
-.submenu img { position: absolute; left: 28px; }
-.menu1 { position: relative; background-image:url(pics/backend/nav_item_top.png); text-indent: 60px; height: 46px; line-height: 54px; }
-.menu1 img { top: 20px }
-.menu2 { position: relative; background-image:url(pics/backend/nav_item_mid.png); text-indent: 60px; height: 38px; line-height: 38px; }   
-.menu2 img { top: 13px }
-.menu3 { position: relative; background-image:url(pics/backend/nav_item_bot.png); text-indent: 60px; height: 49px; line-height: 42px;  }  
-.menu3 img { top: 13px }
-.menubottom { background-image:url(pics/backend/menu_bottom.png); height: 17px }
-.applemenu { /*dont remove this class*/ }
-.applemenu div.submenu { /*DIV that contains each sub menu*/ /*dont remove this class*/ }
+body { background-image: url(theme/backend/background.png); background-color: white }
+
+#page-container { width: 986px; margin-left: auto; margin-right: auto }
+#header { position: relative; width: 100%; height: 219px; background-image:url(theme/backend/header.png) }
+#header-logo { position: absolute; background-image:url(theme/empty.png); width: 270px; height: 92px }
 
 /* Header Nav */
 .hnav { position: absolute; background-image:url(theme/backend/headernav.png); top: 0px; height: 63px }
@@ -94,5 +84,40 @@ h1.page-title { }
 #hnav5:hover { background-position: -265px -63px }
 .quicklink { position: absolute; background-image:url(theme/empty.png); top: 160px; width: 13px; height: 19px }
 
-#infobox a, #infobox a:visited { color: inherit; text-decoration: none; font-weight: normal; }
-#infobox a:hover, #infobox a:active { color: inherit; text-decoration: none; font-weight: normal; }
+#user-img { position: absolute; display: block; left: 6px; top: 112px; width: 45px; height: 60px }
+#user-img-overlay { position: absolute; display: block; left: 6px; top: 112px; z-index: 2 }
+#profile-link { position: absolute; display: block; background-image: url(theme/empty.png); left: 6px; top: 112px; width: 45px; height: 60px; z-index: 3 }
+#info-box { position: absolute; display: block; left: 72px; top: 120px; width: 180px; height: 50px; overflow: hidden; color: white; text-shadow: #404040 0px 1px 1px }
+#info-box span { display: block; margin-bottom: 10px }
+#info-bar { position: absolute; display: block; left: 670px; top: 95px; width: 230px; color: white; font-size: 11px; text-align: center }
+#tecslink { position: absolute; background-image:url(theme/empty.png); left: 931px; top: 92px; width: 15px; height: 20px }
+
+#content-wrapper { width: 100%; min-height: 785px; padding-bottom: 100px; background-image:url(theme/backend/contentbg.png); }
+#sidebar { float: left; width: 237px; padding: 0px 15px 0px 20px }
+
+/* Sidebar Nav */
+.menuhead { display: block; height: 51px; color: #FFFFFF; cursor: pointer; }
+.menuhead.daily { background-image: url(theme/backend/nav_header_daily.png) }
+.menuhead.perma { background-image: url(theme/backend/nav_header_perma.png) }
+.menuhead.esports { background-image: url(theme/backend/nav_header_esport.png) }
+.menuhead.website { background-image: url(theme/backend/nav_header_website.png) }
+.selected {  }
+.submenu a, .submenu a:visited { position: absolute; left: 0px; top: 0px; width: 233px; height: 100%; color: #CCCCCC; z-index: 2 }
+.submenu a:hover, submenu a:active { color: #ff6100 }
+.submenu img { position: absolute; left: 28px; }
+.menu1 { position: relative; background-image: url(theme/backend/nav_item_top.png); text-indent: 60px; height: 46px; line-height: 54px; }
+.menu1 img { top: 20px }
+.menu2 { position: relative; background-image: url(theme/backend/nav_item_mid.png); text-indent: 60px; height: 38px; line-height: 38px; }   
+.menu2 img { top: 13px }
+.menu3 { position: relative; background-image: url(theme/backend/nav_item_bot.png); text-indent: 60px; height: 49px; line-height: 42px;  }  
+.menu3 img { top: 13px }
+.menubottom { background-image: url(theme/backend/menu_bottom.png); height: 17px }
+.applemenu { /*dont remove this class*/ }
+.applemenu div.submenu { /*DIV that contains each sub menu*/ /*dont remove this class*/ }
+
+#page { width: 686px; margin-left: 275px; }
+
+#footer { position: relative; width: 982px; height: 76px; margin-left: 2px; background-image: url(theme/backend/footer.png); }
+#footer a { display: block; position: absolute; background-image: url(theme/empty.png); left: 114px; top: 30px; width: 45px; height: 35px }
+
+
