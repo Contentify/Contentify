@@ -11,7 +11,7 @@
 */
 
 /**
- * Returns HTML code of a "image button" - a link with and image (and maybe a text).
+ * Returns HTML code of a "image link" - a link with and image (and maybe a text).
  * If $image has no extension, the extension will be ".png".
  * If $image does not contain a path, the path "icons" will be used.
  * If $image has does not start with "http://" an asset link will be created.
@@ -21,7 +21,7 @@
  * @param  boolean $showTitle Show the title text?
  * @return string
  */
-function image_button($image, $title, $url, $showTitle = false)
+function image_link($image, $title, $url, $showTitle = false)
 {
     $imageUrl = $image;
 
@@ -47,9 +47,17 @@ function image_button($image, $title, $url, $showTitle = false)
 
     // We have to create our Link without HTML::link(), because
     // that method will not allow to use HTML code.
-    $link = '<a class="image-button" href="'.$url.'" title="'.$title.'">'.$image.$titleText.'</a>';
+    $link = '<a class="image-link" href="'.$url.'" title="'.$title.'">'.$image.$titleText.'</a>';
 
     return $link;
+}
+
+// TODO: image, description
+function button($title, $url, $image = '')
+{
+    $button = '<button type="button" onclick="document.location.href=\''.$url.'\'">'.$title.'</button>';
+
+    return $button;
 }
 
 /**

@@ -34,7 +34,7 @@ class BackController extends BaseController {
 
 	/**
 	 * Buils an index form (page) from a model and $data
-	 * @param  array $data Array with information how to build the form
+	 * @param  array $data Array with information how to build the form. See $defaults for details.
 	 */
 	protected function buildIndexForm($data)
 	{
@@ -42,15 +42,33 @@ class BackController extends BaseController {
 		 * Default values
 		 */
 		$defaults = array(
-			'tableHead'	=> array(),
-			'tableRow'	=> array(),
-			'actions'	=> ['edit', 'delete'],
-			'order'		=> 'id',
-			'orderType' => 'desc',
-			'search'	=> ''
+			'buttons'		=> ['new'],
+			'search'		=> '',
+			'searchFor'		=> 'title',
+			'tableHead'		=> array(),
+			'tableRow'		=> array(),
+			'actions'		=> ['edit', 'delete'],
+			'brightenFirst' => true,
+			'order'			=> 'id',
+			'orderType' 	=> 'desc',
 			);
 
 		$data = array_merge($defaults, $data);
+
+		/*
+		 * Generate Buttons
+		 */
+		$buttons = '';
+		if (is_array($data['buttons'])) {
+			foreach ($data['buttons'] as $type) {
+				$type = strtolower($type);
+				switch ($type) {
+					case 'new':
+						$buttons .= button(t('Create new'), route('admin.'.strtolower($this->form['module']).'.create'));
+						break;
+				}
+			}
+		}
 
 		/*
 		 * Get search string.
@@ -81,7 +99,14 @@ class BackController extends BaseController {
 		 */
 		$model = $this->form['modelName'];
 		$perPage = Config::get('app.backendItemsPerPage');
-		$entities = $model::orderBy($data['order'], $data['orderType'])->where('title', 'LIKE', '%'.$data['search'].'%')->paginate($perPage);
+		if ($data['search'] and $data['searchFor']) {
+			$entities = $model::orderBy($data['order'], $data['orderType'])
+			->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%')
+			->paginate($perPage);
+		} else {
+			$entities = $model::orderBy($data['order'], $data['orderType'])
+			->paginate($perPage);	
+		}
 
 		$paginator = $entities->appends(['order' => $data['order'], 'orderType' => $data['orderType'], 'search' => $data['search']])->links();
 
@@ -111,12 +136,12 @@ class BackController extends BaseController {
 						$action = strtolower($action);
 						switch ($action) {
 							case 'edit':
-								$actionsCode .= image_button('page_edit', 
+								$actionsCode .= image_link('page_edit', 
 									t('Edit'), 
 									route('admin.'.strtolower($this->form['module']).'.edit', [$entity->id]));
 								break;
 							case 'delete':
-								$actionsCode .= image_button('bin', 
+								$actionsCode .= image_link('bin', 
 									t('Delete'), 
 									route('admin.'.strtolower($this->form['module']).'.destroy', [$entity->id]).'?method=DELETE');
 								break;
@@ -136,12 +161,13 @@ class BackController extends BaseController {
 		/*
 		 * Generate the table
 		 */
-		$contentTable = $this->contentTable($tableHead, $tableRows, true);
+		$contentTable = $this->contentTable($tableHead, $tableRows, $data['brightenFirst']);
 
 		/*
 		 * Generate the view
 		 */
 		$this->pageView('index_form', array(
+			'buttons'		=> $buttons,
 			'contentTable' 	=> $contentTable,
 			'orderSwitcher' => $orderSwitcher,
 			'paginator' 	=> $paginator,
@@ -159,6 +185,13 @@ class BackController extends BaseController {
 		$entity = new $this->form['modelName'](Input::all());
 
 		$entity->save();
+
+		if (Input::hasFile('image')) {
+        	$file = Input::file('image');
+    		$extension = $file->getClientOriginalExtension();
+	        $fileName = $entity->id.'.'.$extension;
+        	$uploaded = $file->move(public_path().'/uploads/'.$this->form['module'], $fileName);
+        }
 
 		$this->messageFlash($this->form['model'].t(' created.'));
 		return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
@@ -183,6 +216,13 @@ class BackController extends BaseController {
 		$entity->fill(Input::all());
 		$entity->save();
 
+		if (Input::hasFile('image')) {
+        	$file = Input::file('image');
+    		$extension = $file->getClientOriginalExtension();
+	        $fileName = $entity->id.'.'.$extension;
+        	$uploaded = $file->move(public_path().'/uploads/'.$this->form['module'], $fileName);
+        }		
+
 		return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
 	}
 
@@ -201,15 +241,13 @@ class BackController extends BaseController {
 
 	/**
 	 * Returns HTML code for a table.
-	 * $header = Array with the table header items (String-Array)
-	 * $rows = Array with all the table rows items (Array containing String-Arrays)
-	 * $highlightfirst = Enable special look for the items in the first column? (true/false)
-	 * @param array     $header
-	 * @param array 	$rows
-	 * @param bool 		$highlightFirst
+	 * 
+	 * @param array     $header 		 Array with the table header items (String-Array)
+	 * @param array 	$rows 			 Array with all the table rows items (Array containing String-Arrays)
+	 * @param bool 		$highlightFirst	 Enable special look for the items in the first column? (true/false)
 	 * @return string
 	 */
-	protected function contentTable($header, $rows, $highlightFirst = true)
+	protected function contentTable($header, $rows, $brightenFirst = true)
 	{
 		$code = '<table class="content-table">';
 
@@ -231,8 +269,8 @@ class BackController extends BaseController {
 			$code 	.= '<tr>';
 			$isFirst = true;
 			foreach ($row as $value) {
-				if ($isFirst == true and $highlightFirst == true) {
-					$code .= '<td style="color: silver">';
+				if ($isFirst and $brightenFirst) {
+					$code 	.= '<td style="color: silver">';
 					$isFirst = false;
 				} else {
 					$code .= '<td>';

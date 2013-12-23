@@ -1,4 +1,6 @@
 <div class="form-helpers top">
+    {{ $buttons }}
+
     <div class="search-box">
         {{ Form::open(['url' => URL::current().'/search']) }}
             {{ Form::text('search', $searchString, ['class' => 'search-string']) }}
