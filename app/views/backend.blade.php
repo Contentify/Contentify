@@ -46,7 +46,7 @@
             <img id="user-img-overlay" src="{{ asset('theme/backend/photo.png') }}" width="45" height="60" alt="Overlay" />
 			<a id="profile-link" href="{{ url('user/profile') }}" title="Show your profile"><!-- empty--></a>
             
-            <div id="info-box"><span>Welcome, {{ Sentry::getUser()->username }}!</span>{{ $contactMessages }}</div>
+            <div id="info-box"><span>Welcome, {{ Sentry::getUser()->username }}!</span> {{ HTML::image(asset('icons/email.png'), 'Message') }} {{ $contactMessages }}</div>
             
 			<div id="info-bar"><span id="datetime">{{ date('d/m/Y') }} – {{ date('H:i') }}</span> now. Version {{ Config::get('app.version') }}</div>
             

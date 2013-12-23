@@ -59,6 +59,7 @@ class AutoFormBuilder {
         $html = NULL;
         if (! in_array($column->Field, $ignoredFields)) {
             if ($name == 'image') $type = 'image';
+            if ($name == 'email') $type = 'email';
             if ($name == 'password') $type = 'password';
 
             switch ($type) {
@@ -72,6 +73,11 @@ class AutoFormBuilder {
                     $attributes = [];
                     if ($size > 0) $attributes['maxlength'] = $size;
                     $html = Form::label($name, $title)."\n".Form::text($name, NULL, $attributes)."\n";
+                    break;
+                case 'email':
+                    $attributes = [];
+                    if ($size > 0) $attributes['maxlength'] = $size;
+                    $html = Form::label($name, $title)."\n".Form::email($name, NULL, $attributes)."\n";
                     break;
                 case 'password':
                     $attributes = [];

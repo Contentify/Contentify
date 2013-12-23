@@ -4,10 +4,27 @@ class InstallController extends BaseController {
 
 	public function index() 
 	{
+		$this->createDatabase();
+	}
+
+	public function createDatabase()
+	{
+		// The default length of strings is 255 chars.
+		//
+		
 		$this->create('games', function($table)
 		{
 			$table->string('tag', 5)->nullable();
-			$table->string('image', 255)->nullable();
+			$table->string('image')->nullable();
+		});
+
+		$this->create('contact_messages', function($table)
+		{
+			$table->string('username', 30);
+			$table->string('email');
+			$table->text('text');
+			$table->string('ip');
+			$table->boolean('new')->default(true);
 		});
 	}
 
@@ -35,7 +52,7 @@ class InstallController extends BaseController {
 		if ($isContentObject) {
 			Schema::table($tableName, function($table)
 			{
-				$table->string('title', 50);
+				$table->string('title', 70);
 				$table->integer('creator_id')->default(0);
 				$table->timestamps();
 			});

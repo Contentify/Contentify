@@ -85,4 +85,11 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+
+    // Spam protection: Forms that have set a value fpr _createdat
+    // are protected against mass submitting.
+    if (Input::get('_createdat') and (int) Input::get('_createdat') > time() - 3)
+    {
+        throw new Exception(t('For spam protection, you have to wait a few seconds until you can submit this form.'));
+    }
 });

@@ -50,6 +50,7 @@ h1.page-title { }
 .form-group label:after { /* content: ':'; */ }
 .form-group input { width: 40%; padding: 5px 10px; border: 2px solid silver; color: #4082E3 }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; }
+.form-group textarea { vertical-align: bottom; }
 .form-actions { }
 .form-actions input[type=submit] { padding: 10px 20px; border: 2px solid silver; color: #666; }
 .form-actions input[type=submit]:focus { border-color: #ff6100; }

@@ -11,12 +11,10 @@ class AddUsername extends Migration {
 	 */
 	public function up()
 	{
-		if (! Schema::hasColumn('users', 'username')) {
-			Schema::table('users', function($table)
-			{
-				$table->string('username', 20)->unique();
-			});
-		}
+		Schema::table('users', function($table)
+		{
+			$table->string('username', 20)->unique();
+		});
 	}
 
 	/**

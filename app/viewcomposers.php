@@ -21,5 +21,11 @@ View::composer('backend', function($view)
     $view->with('userImage', $userImage);
 
     // Contact messages
-    $view->with('contactMessages', '[contactMessages]');
+    $count = DB::table('contact_messages')->where('new', true)->count();
+    if ($count > 0) {
+        $contactMessages = link_to('admin/contact', $count.t(' new messages'));
+    } else {
+        $contactMessages = 'No new messages.';
+    }
+    $view->with('contactMessages', $contactMessages);   
 });

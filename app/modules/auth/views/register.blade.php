@@ -10,7 +10,7 @@
 
     <div class="form-group">
     	{{ Form::label('email', 'Email') }}
-    	{{ Form::text('email') }}
+    	{{ Form::email('email') }}
     </div>
 
     <div class="form-group">
