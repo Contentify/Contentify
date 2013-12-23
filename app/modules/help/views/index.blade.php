@@ -2,7 +2,7 @@
 
 <p>Welcome to the open beta of Contentify! Since this is a very early version of Contentify, a lot of content is still missing. Sorry, the docs are still on our to do list.</p>
 
-<p>But that does not mean your lost. If you have any question, find any bugs or just want to get in touch: Simply send a mail to <a href="mailto:chriskonnertz@gmail.com">chriskonnertz@gmail.com</a></p>
+<p>But that does not mean your lost. If you have any question, find any bugs or just want to get in touch: Simply send a mail to {{ HTML::mailto('chriskonnertz@gmail.com') }}</p>
 
 <h2>I found a Bug!</h2>
 

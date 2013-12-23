@@ -32,30 +32,103 @@ class BackController extends BaseController {
 
 	}
 
+	/**
+	 * Buils an index form (page) from a model and $data
+	 * @param  array $data Array with information how to build the form
+	 */
 	protected function buildIndexForm($data)
 	{
+		/*
+		 * Default values
+		 */
 		$defaults = array(
-			'tableHead'	=> null,
-			'tableRow'	=> null
+			'tableHead'	=> array(),
+			'tableRow'	=> array(),
+			'actions'	=> ['edit', 'delete'],
+			'order'		=> 'id',
+			'ordertype' => 'desc',
 			);
 
 		$data = array_merge($defaults, $data);
 
-		$model = $this->form['modelName'];
-		$entities = $model::all();
+		/*
+		 * Get order attributes.
+		 */
+		if (Input::get('order') !== null) {
+			$order = strtolower(Input::get('order'));
+			if (in_array($order, $data['tableHead'])) $data['order'] = $order;
 
+			$ordertype = strtolower(Input::get('ordertype'));
+			if ($ordertype === 'desc' or $ordertype === 'asc') {
+				$data['ordertype'] = $ordertype;
+			}
+		}
+		$orderSwitcher = orderSwitcher($data['order'], $data['ordertype']);
+
+		/*
+		 * Retrieve model and entity from DB
+		 */
+		$model = $this->form['modelName'];
+		$entities = $model::orderBy($data['order'], $data['ordertype'])->paginate(3);
+
+		/*
+		 * Prepare the table (head and rows)
+		 */
 		$tableHead = array();
 		foreach ($data['tableHead'] as $title => $order) {
-			$tableHead[] = $title;
+			if ($order != NULL) {
+				$tableHead[] = HTML::link(URL::current().'?order='.$order, $title);
+			} else {
+				$tableHead[] = $title;
+			}
+		}
+		if (sizeof($data['actions']) > 0) {
+			$tableHead[] = t('Actions');
 		}
 
 		$tableRows = array();
 		foreach ($entities as $entity) {
-			$tableRows[] = $data['tableRow']($entity);
+			$row = $data['tableRow']($entity);
+
+			if (is_array($data['actions']) and sizeof($data['actions']) > 0) {
+				$actionsCode = '';
+				foreach ($data['actions'] as $action) {
+					if (is_string($action)) {
+						$action = strtolower($action);
+						switch ($action) {
+							case 'edit':
+								$actionsCode .= image_button('page_edit', 
+									t('Edit'), 
+									route('admin.'.strtolower($this->form['module']).'.edit', [$entity->id]));
+								break;
+							case 'delete':
+								$actionsCode .= image_button('bin', 
+									t('Delete'), 
+									route('admin.'.strtolower($this->form['module']).'.destroy', [$entity->id]).'?method=DELETE');
+								break;
+						}
+						$actionsCode .= ' ';
+					}
+				}
+				$row[] = $actionsCode;
+			}
+			if (is_callable($data['actions'])) {
+				$row[] = $data['actions']($entity);
+			}
+
+			$tableRows[] = $row;
 		}
 
-		$table = $this->contentTable($tableHead, $tableRows, true);
-		$this->pageOutput($table);
+		/*
+		 * Generate the table
+		 */
+		$contentTable = $this->contentTable($tableHead, $tableRows, true);
+		//$this->pageOutput($contentTable.$orderSwitcher.$entities->links());
+		$this->pageView('index_form', array(
+			'contentTable' 	=> $contentTable,
+			'orderSwitcher' => $orderSwitcher,
+			'paginator' 	=> $entities->links(),
+			));
 	}
 
 	public function create()

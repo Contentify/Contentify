@@ -83,13 +83,25 @@ require app_path().'/filters.php';
 
 /*
 |--------------------------------------------------------------------------
-| Require The Filters File
+| Require The Viewcomposers File
 |--------------------------------------------------------------------------
 |
-| Next we will load the filters file for the application. This gives us
-| a nice separate location to store our route and application filter
-| definitions instead of putting them all in the main routes file.
+| This will load the viewcomposers file for the apllication. This is the
+| right place for view composer declarations that are not related to a
+| single composer.
 |
 */
 
 require app_path().'/viewcomposers.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require The Helpers File
+|--------------------------------------------------------------------------
+|
+| Beside Laravels very own helpers we may want to create or own.
+| This file is the location to store these helper functions.
+|
+*/
+
+require app_path().'/helpers.php';

@@ -61,6 +61,26 @@ h1.page-title { }
 .form-actions input[type=submit] { padding: 10px 20px; border: 1px solid silver; color: #666; }
 .form-actions input[type=submit]:focus { border-color: #ff6100; }
 
+/* Content Table */
+.content-table { width: 100%; border: 1px solid #EFEFEF; border-collapse: collapse; }
+.content-table th { height: 30px; padding-left: 5px; line-height:30px; background-image: url(theme/backend/bg_tablehead.png); background-repeat: repeat-x; font-weight:bold; text-align: left }
+.content-table th a, .content-table th a:visited { color: gray; font-weight: bold } 
+.content-table td { padding: 5px; border: 1px solid #EFEFEF; background-image: url(theme/backend/bg_tablecell.png); background-repeat: repeat-x; background-position: left bottom; }
+.content-table tr:hover { color:#333333 }
+
+.form-helpers { margin: 10px 0px }
+
+.order-switcher { display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px; background-color: #333; color: white !important }
+.order-switcher img { vertical-align: middle; }
+.form-helpers .order-switcher { margin: 0px }
+
+ul.pagination li { position: relative; width: 8px; height: 16px; margin: 0px 2px; padding: 2px 6px; border: 1px solid #C6C6C6; border-radius: 5px; background-color: #EFEFEF; font-weight: bold }
+ul.pagination li a { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; line-height: 20px; text-align: center; font-weight: bold }
+ul.pagination li a:hover { background-color: #C6C6C6; color: #FF6100 }
+ul.pagination li.active { border: 1px solid #936E41; background-color: #FF6100; color: white }
+ul.pagination li.disabled { display: none }
+.form-helpers ul.pagination { float: right; }
+
 /*
  * Mainlayout
  */
