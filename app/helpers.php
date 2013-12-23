@@ -56,19 +56,19 @@ function image_button($image, $title, $url, $showTitle = false)
  * Returns HTML code of an order switcher (asc / desc).
  *
  * @param string $order     Attribute of the entity, e.g. "id"
- * @param string $ordertype Current sorting, "asc" or "desc"
+ * @param string $orderType Current sorting, "asc" or "desc"
  * @return string
  */
-function orderSwitcher($order, $ordertype)
+function orderSwitcher($order, $orderType)
 {
-    if ($ordertype == 'asc') {
-        $ordertype  = 'desc';
+    if ($orderType == 'asc') {
+        $orderType  = 'desc';
         $image      = 'theme/bullet_arrow_down.png';
     } else {
-        $ordertype  = 'asc';
+        $orderType  = 'asc';
         $image      = 'theme/bullet_arrow_up.png';
     }
 
-    $url = URL::current().'?order='.$order.'&ordertype='.$ordertype;
+    $url = URL::current().'?order='.$order.'&ordertype='.$orderType;
     return('<a class="order-switcher" href="'.$url.'">'.t('Sorting').': <img src="'.asset($image).'" alt="Icon" width="16" height="16" /></a>');
 }

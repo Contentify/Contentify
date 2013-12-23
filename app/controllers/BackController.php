@@ -46,7 +46,8 @@ class BackController extends BaseController {
 			'tableRow'	=> array(),
 			'actions'	=> ['edit', 'delete'],
 			'order'		=> 'id',
-			'ordertype' => 'desc',
+			'orderType' => 'desc',
+			'search'	=> ''
 			);
 
 		$data = array_merge($defaults, $data);
@@ -54,22 +55,32 @@ class BackController extends BaseController {
 		/*
 		 * Get order attributes.
 		 */
-		if (Input::get('order') !== null) {
+		if (Input::get('order')) {
 			$order = strtolower(Input::get('order'));
 			if (in_array($order, $data['tableHead'])) $data['order'] = $order;
 
-			$ordertype = strtolower(Input::get('ordertype'));
-			if ($ordertype === 'desc' or $ordertype === 'asc') {
-				$data['ordertype'] = $ordertype;
+			$orderType = strtolower(Input::get('ordertype'));
+			if ($orderType === 'desc' or $orderType === 'asc') {
+				$data['orderType'] = $orderType;
 			}
 		}
-		$orderSwitcher = orderSwitcher($data['order'], $data['ordertype']);
+		$orderSwitcher = orderSwitcher($data['order'], $data['orderType']);
+
+		/*
+		 * Get search string.
+		 */
+		if (Input::old('search')) {
+			$data['search'] = Input::old('search');
+		}
 
 		/*
 		 * Retrieve model and entity from DB
 		 */
 		$model = $this->form['modelName'];
-		$entities = $model::orderBy($data['order'], $data['ordertype'])->paginate(3);
+		$perPage = Config::get('app.backendItemsPerPage');
+		$entities = $model::orderBy($data['order'], $data['orderType'])->where('title', 'LIKE', '%'.$data['search'].'%')->paginate($perPage);
+
+		$paginator = $entities->appends(['order' => $data['order'], 'orderType' => $data['orderType']])->links();
 
 		/*
 		 * Prepare the table (head and rows)
@@ -123,11 +134,15 @@ class BackController extends BaseController {
 		 * Generate the table
 		 */
 		$contentTable = $this->contentTable($tableHead, $tableRows, true);
-		//$this->pageOutput($contentTable.$orderSwitcher.$entities->links());
+
+		/*
+		 * Generate the view
+		 */
 		$this->pageView('index_form', array(
 			'contentTable' 	=> $contentTable,
 			'orderSwitcher' => $orderSwitcher,
-			'paginator' 	=> $entities->links(),
+			'paginator' 	=> $paginator,
+			'searchString'	=> ''
 			));
 	}
 
@@ -174,6 +189,11 @@ class BackController extends BaseController {
 		$model::destroy($id);
 
 		return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
+	}
+
+	public function search()
+	{
+		return Redirect::route('admin.'.strtolower($this->form['module']).'.index')->withInput();
 	}
 
 	/**
