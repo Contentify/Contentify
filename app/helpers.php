@@ -59,7 +59,7 @@ function image_button($image, $title, $url, $showTitle = false)
  * @param string $orderType Current sorting, "asc" or "desc"
  * @return string
  */
-function orderSwitcher($order, $orderType)
+function order_switcher($order, $orderType = NULL, $search = NULL)
 {
     if ($orderType == 'asc') {
         $orderType  = 'desc';
@@ -70,5 +70,6 @@ function orderSwitcher($order, $orderType)
     }
 
     $url = URL::current().'?order='.$order.'&ordertype='.$orderType;
+    if ($search) $url .= '&search='.$search;
     return('<a class="order-switcher" href="'.$url.'">'.t('Sorting').': <img src="'.asset($image).'" alt="Icon" width="16" height="16" /></a>');
 }

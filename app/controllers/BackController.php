@@ -53,6 +53,16 @@ class BackController extends BaseController {
 		$data = array_merge($defaults, $data);
 
 		/*
+		 * Get search string.
+		 */
+		if (Input::old('search')) {
+			$data['search'] = Input::old('search');
+		}
+		if (Input::get('search')) {
+			$data['search'] = Input::get('search');
+		}
+
+		/*
 		 * Get order attributes.
 		 */
 		if (Input::get('order')) {
@@ -64,14 +74,7 @@ class BackController extends BaseController {
 				$data['orderType'] = $orderType;
 			}
 		}
-		$orderSwitcher = orderSwitcher($data['order'], $data['orderType']);
-
-		/*
-		 * Get search string.
-		 */
-		if (Input::old('search')) {
-			$data['search'] = Input::old('search');
-		}
+		$orderSwitcher = order_switcher($data['order'], $data['orderType'], $data['search']);
 
 		/*
 		 * Retrieve model and entity from DB
@@ -80,7 +83,7 @@ class BackController extends BaseController {
 		$perPage = Config::get('app.backendItemsPerPage');
 		$entities = $model::orderBy($data['order'], $data['orderType'])->where('title', 'LIKE', '%'.$data['search'].'%')->paginate($perPage);
 
-		$paginator = $entities->appends(['order' => $data['order'], 'orderType' => $data['orderType']])->links();
+		$paginator = $entities->appends(['order' => $data['order'], 'orderType' => $data['orderType'], 'search' => $data['search']])->links();
 
 		/*
 		 * Prepare the table (head and rows)
@@ -142,7 +145,7 @@ class BackController extends BaseController {
 			'contentTable' 	=> $contentTable,
 			'orderSwitcher' => $orderSwitcher,
 			'paginator' 	=> $paginator,
-			'searchString'	=> ''
+			'searchString'	=> $data['search']
 			));
 	}
 
@@ -193,7 +196,7 @@ class BackController extends BaseController {
 
 	public function search()
 	{
-		return Redirect::route('admin.'.strtolower($this->form['module']).'.index')->withInput();
+		return Redirect::route('admin.'.strtolower($this->form['module']).'.index')->withInput(Input::only('search'));
 	}
 
 	/**
