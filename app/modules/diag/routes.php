@@ -2,4 +2,4 @@
 
 ModuleRoute::context(__DIR__);
 
-ModuleRoute::controller('admin/diag', 'DiagController');
+ModuleRoute::controller('admin/diag', 'AdminDiagController');

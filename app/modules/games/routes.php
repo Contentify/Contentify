@@ -4,5 +4,4 @@ ModuleRoute::context(__DIR__);
 
 ModuleRoute::model('Game');
 
-ModuleRoute::resource('admin/games', 'GamesController');
-//ModuleRoute::controller('admin/games', 'GamesController');
+ModuleRoute::resource('admin/games', 'AdminGamesController');

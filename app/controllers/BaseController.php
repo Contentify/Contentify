@@ -39,6 +39,20 @@ class BaseController extends Controller {
 	}
 
 	/**
+	 * Shortcut for $this->layout->nest(): Adds a string to the main layout.
+	 *
+	 * @param string $output HTML or text to output on the template.
+	 */
+	protected function pageOutput($output)
+	{
+		if ($this->layout != NULL) {
+			$this->layout->page = $output;
+		} else {
+			throw new Exception('Error: $this->layout is NULL!');
+		}
+	}
+
+	/**
 	 * Adds a message view to the main layout.
 	 *
 	 * @param string $title

@@ -14,7 +14,7 @@ class InstallController extends BaseController {
 		
 		$this->create('games', function($table)
 		{
-			$table->string('tag', 5)->nullable();
+			$table->string('tag', 6)->nullable();
 			$table->string('image')->nullable();
 		});
 

@@ -32,11 +32,30 @@ class BackController extends BaseController {
 
 	}
 
-	public function index()
+	protected function buildIndexForm($data)
 	{
-		//die('<a href="'.route('admin.games.destroy', 17).'?method=delete">Click me!</a>');
+		$defaults = array(
+			'tableHead'	=> null,
+			'tableRow'	=> null
+			);
 
-		$this->message('Index of '.$this->form['module'].' called!');
+		$data = array_merge($defaults, $data);
+
+		$model = $this->form['modelName'];
+		$entities = $model::all();
+
+		$tableHead = array();
+		foreach ($data['tableHead'] as $title => $order) {
+			$tableHead[] = $title;
+		}
+
+		$tableRows = array();
+		foreach ($entities as $entity) {
+			$tableRows[] = $data['tableRow']($entity);
+		}
+
+		$table = $this->contentTable($tableHead, $tableRows, true);
+		$this->pageOutput($table);
 	}
 
 	public function create()
@@ -82,5 +101,54 @@ class BackController extends BaseController {
 		$model::destroy($id);
 
 		return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
+	}
+
+	/**
+	 * Returns HTML code for a table.
+	 * $header = Array with the table header items (String-Array)
+	 * $rows = Array with all the table rows items (Array containing String-Arrays)
+	 * $highlightfirst = Enable special look for the items in the first column? (true/false)
+	 * @param array     $header
+	 * @param array 	$rows
+	 * @param bool 		$highlightFirst
+	 * @return string
+	 */
+	protected function contentTable($header, $rows, $highlightFirst = true)
+	{
+		$code = '<table class="content-table">';
+
+		/*
+		 * Table head
+		 */
+		$code .= '<tr>';
+		foreach ($header as $value) {
+			$code .= '<th>';
+			$code .= $value;
+			$code .= '</th>';
+		}
+		$code .= '</tr>';
+
+		/*
+		 * Table body
+		 */
+		foreach ($rows as $row) {
+			$code 	.= '<tr>';
+			$isFirst = true;
+			foreach ($row as $value) {
+				if ($isFirst == true and $highlightFirst == true) {
+					$code .= '<td style="color: silver">';
+					$isFirst = false;
+				} else {
+					$code .= '<td>';
+				}
+				$code .= $value;
+				$code .= '</td>';
+			}
+			$code .= '</tr>';
+		}
+
+		$code .= '</table>';
+
+		return $code;
 	}
 }

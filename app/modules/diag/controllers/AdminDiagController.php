@@ -2,7 +2,7 @@
 
 use App, Config, View;
 
-class DiagController extends \BackController {
+class AdminDiagController extends \BackController {
 	
 	public function getIndex()
 	{

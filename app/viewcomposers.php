@@ -14,9 +14,9 @@ View::composer('backend', function($view)
 { 
     // User profile picture
     if (Sentry::getUser()->image) {
-        $userImage = 'uploads/users/thumbnails/'.Sentry::getUser()->image;
+        $userImage = asset('uploads/users/thumbnails/'.Sentry::getUser()->image);
     } else {
-        $userImage = 'theme/user.png';
+        $userImage = asset('theme/user.png');
     }
     $view->with('userImage', $userImage);
 
