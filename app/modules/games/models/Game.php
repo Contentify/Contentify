@@ -2,6 +2,11 @@
 
 class Game extends \Ardent {
 
-	protected $fillable = array('title', 'tag', 'image');
+    protected $fillable = array('title', 'tag', 'image');
+
+    public static $rules = array(
+        'title'   => 'required',
+        'tag'     => 'required',
+    );
 
 }

@@ -5,7 +5,7 @@
 | Helper Functions
 |--------------------------------------------------------------------------
 |
-| Beside Laravels very own helpers we may want to create or own.
+| Beside Laravels very own helpers we may want to create our own.
 | This file is the location to store these helper functions.
 |
 */
@@ -23,20 +23,7 @@
  */
 function image_link($image, $title, $url, $showTitle = false)
 {
-    $imageUrl = $image;
-
-    if (! str_contains($imageUrl, '/')) {
-        $imageUrl = 'icons/'.$imageUrl;
-    }
-
-    if (! str_contains($imageUrl, '.')) {
-        $imageUrl .= '.png';
-    }
-
-    if (! starts_with($imageUrl, 'http://')) {
-        $imageUrl = asset($imageUrl);
-    }
-
+    $imageUrl = get_image_url($image);
     $image = HTML::image($imageUrl, $title);
 
     if ($showTitle) {
@@ -55,9 +42,40 @@ function image_link($image, $title, $url, $showTitle = false)
 // TODO: image, description
 function button($title, $url, $image = '')
 {
-    $button = '<button type="button" onclick="document.location.href=\''.$url.'\'">'.$title.'</button>';
+    $imageUrl = get_image_url($image);
+    if ($image) {
+        $image = HTML::image($imageUrl, $title);    
+    }
+    
+    $button = '<button type="button" onclick="document.location.href=\''.$url.'\'">'.$image.' '.$title.'</button>';
 
     return $button;
+}
+
+/**
+ * Pass in an image name, with or without extension, with or without path. Returns the URL.
+ * @param  string $image The image
+ * @return string        The URL
+ */
+function get_image_url($image)
+{
+    if (! $image) return '';
+
+    $imageUrl = $image;
+
+    if (! str_contains($imageUrl, '/')) {
+        $imageUrl = 'icons/'.$imageUrl;
+    }
+
+    if (! str_contains($imageUrl, '.')) {
+        $imageUrl .= '.png';
+    }
+
+    if (! starts_with($imageUrl, 'http://')) {
+        $imageUrl = asset($imageUrl);
+    }
+
+    return $imageUrl;
 }
 
 /**
@@ -78,6 +96,6 @@ function order_switcher($order, $orderType = NULL, $search = NULL)
     }
 
     $url = URL::current().'?order='.$order.'&ordertype='.$orderType;
-    if ($search) $url .= '&search='.$search;
+    if ($search) $url .= '&search='.urlencode($search);
     return('<a class="order-switcher" href="'.$url.'">'.t('Sorting').': <img src="'.asset($image).'" alt="Icon" width="16" height="16" /></a>');
 }

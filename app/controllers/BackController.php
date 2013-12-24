@@ -64,7 +64,7 @@ class BackController extends BaseController {
 				$type = strtolower($type);
 				switch ($type) {
 					case 'new':
-						$buttons .= button(t('Create new'), route('admin.'.strtolower($this->form['module']).'.create'));
+						$buttons .= button(t('Create new'), route('admin.'.strtolower($this->form['module']).'.create'), 'add');
 						break;
 				}
 			}
@@ -184,7 +184,11 @@ class BackController extends BaseController {
 	{
 		$entity = new $this->form['modelName'](Input::all());
 
-		$entity->save();
+		$okay = $entity->save();
+
+		if (! $okay) {
+			return Redirect::route('admin.'.strtolower($this->form['module']).'.create')->withInput()->withErrors($entity->validationErrors);
+		}
 
 		if (Input::hasFile('image')) {
         	$file = Input::file('image');
@@ -214,7 +218,11 @@ class BackController extends BaseController {
 		$entity = $model::findOrFail($id);
 
 		$entity->fill(Input::all());
-		$entity->save();
+		$okay = $entity->save();
+
+		if (! $okay) {
+			return Redirect::route('admin.'.strtolower($this->form['module']).'.create')->withInput()->withErrors($entity->validationErrors);
+		}
 
 		if (Input::hasFile('image')) {
         	$file = Input::file('image');

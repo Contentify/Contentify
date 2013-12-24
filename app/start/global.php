@@ -86,7 +86,7 @@ require app_path().'/filters.php';
 | Require The Viewcomposers File
 |--------------------------------------------------------------------------
 |
-| This will load the viewcomposers file for the apllication. This is the
+| This will load the viewcomposers file for the application. This is the
 | right place for view composer declarations that are not related to a
 | single composer.
 |
@@ -99,7 +99,7 @@ require app_path().'/viewcomposers.php';
 | Require The Helpers File
 |--------------------------------------------------------------------------
 |
-| Beside Laravels very own helpers we may want to create or own.
+| Beside Laravels very own helpers we may want to create our own.
 | This file is the location to store these helper functions.
 |
 */

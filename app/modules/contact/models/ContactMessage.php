@@ -1,8 +1,6 @@
 <?php namespace App\Modules\Contact\Models;
 
-use Ardent;
-
-class ContactMessage extends Ardent {
+class ContactMessage extends \Ardent {
 
     protected $fillable = array('username', 'email', 'title', 'text');
 
