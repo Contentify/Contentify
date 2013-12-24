@@ -266,6 +266,7 @@ class BackController extends BaseController {
             $entity->forceSave();
         }    
 
+        $this->messageFlash($this->form['model'].t(' updated.'));
         return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
     }
 
@@ -278,6 +279,7 @@ class BackController extends BaseController {
         $model = $this->form['modelName'];
         $model::destroy($id);
 
+        $this->messageFlash($this->form['model'].t(' deleted.'));
         return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
     }
 

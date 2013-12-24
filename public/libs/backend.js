@@ -47,4 +47,8 @@ function updateDatetime() {
 $(document).ready(function()
 {  
     updateDatetime();
+
+    $('*[title]').quicktip({
+        speed: 400
+    });
 });

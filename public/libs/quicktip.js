@@ -2,7 +2,7 @@
 //Author: Owain Lewis
 //Author URL: www.Owainlewis.com
 
-jQuery.fn.quicktip = function(options){
+jQuery.fn.quicktip = function(options) {
 
 	var defaults = {
 		speed: 500,

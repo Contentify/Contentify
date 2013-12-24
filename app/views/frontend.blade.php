@@ -28,9 +28,9 @@
 
 		<div id="mid-container">
 			<section id="content">
-				@if (Session::get('message'))
+				@if (Session::get('_message'))
 					<div class="cms-message">
-						{{ Session::get('message') }}
+						{{ Session::get('_message') }}
 					</div>
 				@endif
 

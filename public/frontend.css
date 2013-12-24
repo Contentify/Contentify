@@ -11,6 +11,7 @@ a, a:visited { color: #ff6100; text-decoration: none; font-weight: normal; }
 a:active { color: #ff6100; text-decoration: none; font-weight: normal; }
 a:hover { color: #ff6100; text-decoration: none; font-weight: normal; }
 
+/* Headings */
 h1 { color: #ff6100; }
 h2 { }
 h3 { }
@@ -38,6 +39,7 @@ blockquote { background: #F4F4F4; border: 1px dotted gray; padding: 5px; margin:
 
 h1.page-title { }
 
+/* Messages */
 .cms-message { border: 2px solid silver; }
 .cms-message h2 { font-size: 14px }
 .cms-message .text { }

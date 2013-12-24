@@ -131,6 +131,12 @@
             </aside>
 
             <section id="page">
+                    @if (Session::get('_message'))
+                        <div class="cms-message">
+                            {{ Session::get('_message') }}
+                        </div>
+                    @endif
+                
 					@if (isset($page))
 						{{ $page }}
 					@endif
