@@ -1,26 +1,15 @@
-{{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
+{{ Form::errors($errors) }}
 
 @if (isset($entity))
     {{ Form::model($entity, ['route' => ['admin.games.update', $entity->id], 'files' => true, 'method' => 'PUT']) }}
 @else
     {{ Form::open(['url' => 'admin/games', 'files' => true]) }}
 @endif
-    <div class="form-group">
-    	{{ Form::label('title', 'Title') }}
-    	{{ Form::text('title') }}
-    </div>
+    {{ Form::smartText('title', 'Title') }}
 
-    <div class="form-group">
-    	{{ Form::label('tag', 'Tag') }}
-    	{{ Form::text('tag') }}
-    </div>
+    {{ Form::smartText('tag', 'Tag') }}
 
-    <div class="form-group">
-        {{ Form::label('image', 'Image') }}
-        {{ Form::file('image') }}
-    </div>
+    {{ Form::smartImageFile() }}
 
-    <div class="form-actions">
-    	{{ Form::submit('Save') }}
-    </div>
+    {{ Form::actions() }}
 {{ Form::close() }}

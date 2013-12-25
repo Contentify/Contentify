@@ -29,9 +29,11 @@ Route::get('/install', 'InstallController@index');
 
 Route::get('/test', function()
 {
-    //$game = App\Modules\Games\Models\Game::find(19);
+    //$game = App\Modules\Games\Models\Game::find(1);
 
-    //echo(AutoFormBuilder::generate($game));
+    // echo(SmartFormBuilder::generate($game));
+
+    //echo SmartFormBuilder::compile('test');
 
 	//echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
 });

@@ -1,6 +1,14 @@
 <?php
 
-class AutoFormBuilder {
+class SmartFormGenerator {
+
+    protected static $formPath = 'forms';
+
+    protected static $formExtension = '.form';
+
+    protected static $keywordDelimiter = '@';
+
+    protected static $valueDelimiter = '=';
 
     /**
      * Generates a simple but cms compliant form template (Blad syntax).
@@ -34,7 +42,7 @@ class AutoFormBuilder {
      * @param  stdClass $column The Column object
      * @return $string
      */
-    private static function buildField($column)
+    protected static function buildField($column)
     {
         $ignoredFields = ['id', 'creator_id', 'created_at', 'updated_at', 'deleted_at'];
 
@@ -101,5 +109,57 @@ class AutoFormBuilder {
         }
 
         return $html;
+    }
+
+    public static function compile($formName)
+    {
+        $formOutput = '';
+        $fileName   = NULL;
+
+        if (str_contains($formName, '::')) {
+            $parts = explode('::', $formName);
+            $fileName = 'modules/'.$parts[0].'/'.self::$formPath.'/'.$parts[1].self::$formExtension;
+        } else {
+            if (! str_contains($formName, '/')) {
+                $fileName = self::$formPath.'/'.str_replace('.', '/', $formName).self::$formExtension;
+            }
+        }
+
+        $fileName = app_path().'/'.$fileName;
+        if (File::isFile($fileName)) {
+            $lines = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+            foreach ($lines as $lineNumber => $line) {
+                $parts = explode(self::$keywordDelimiter, $line);
+                unset($parts[0]);
+                $parts = array_values($parts);
+
+                $method = 'partial'.$parts[0];
+                unset($parts[0]);
+                $partial = self::$method(array_values($parts));
+
+                $formOutput .= $partial."\n";
+            }
+
+            $formOutput = View::make('sfb.header')->render()."\n".$formOutput;
+
+            return $formOutput;
+        } else {
+            throw new Exception('The given form does not exist.');
+        }
+    }
+
+    protected static function partialErrors($params)
+    {
+        $partial = View::make('sfb.errors');
+        return $partial->render();
+    }
+
+    public static function __callStatic($method, $args)
+    {
+        if (starts_with($method, 'partial')) {
+            $method = substr($method, strlen('partial'));
+            throw new Exception('Error in form: Unkown keyword '.$method);
+        }
     }
 }

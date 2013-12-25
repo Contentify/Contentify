@@ -1,19 +1,11 @@
 <h1 class="page-title">Login</h1>
 
-{{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
+{{ Form::errors($errors) }}
 
 {{ Form::open(array('url' => 'auth/login')) }}
-    <div class="form-group">
-        {{ Form::label('email', 'Email') }}
-        {{ Form::text('email') }}
-    </div>
+    {{ Form::smartEmail() }}
 
-    <div class="form-group">
-        {{ Form::label('password', 'Password') }}
-        {{ Form::text('password') }}
-    </div>
+    {{ Form::smartPassword() }}
 
-    <div class="form-actions">
-        {{ Form::submit('Login') }}
-    </div>
+    {{ Form::actions(['submit' => 'Login']) }}
 {{ Form::close() }}

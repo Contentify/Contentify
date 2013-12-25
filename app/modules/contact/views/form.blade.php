@@ -1,31 +1,17 @@
 <h1 class="page-title">Contact</h1>
 
-{{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
+{{ Form::errors($errors) }}
 
 {{ Form::open(array('url' => 'contact/create')) }}
     <input name="_createdat" type="hidden" value="{{ time() }}">
 
-    <div class="form-group">
-    	{{ Form::label('username', 'Name') }}
-    	{{ Form::text('username') }}
-    </div>
+    {{ Form::smartText('username', 'Name') }}
 
-    <div class="form-group">
-    	{{ Form::label('email', 'Email') }}
-    	{{ Form::email('email') }}
-    </div>
+    {{ Form::smartEmail() }}
 
-    <div class="form-group">
-        {{ Form::label('title', 'Subject') }}
-        {{ Form::text('title') }}
-    </div>
+    {{ Form::smartText('title', 'Subject') }}
 
-    <div class="form-group">
-    	{{ Form::label('text', 'Message') }}
-    	{{ Form::textarea('text') }}
-    </div>
+    {{ Form::smartTextarea('text', 'Message') }}
 
-    <div class="form-actions">
-    	{{ Form::submit('Send') }}
-    </div>
+    {{ Form::actions(['submit' => 'Send']) }}
 {{ Form::close() }}

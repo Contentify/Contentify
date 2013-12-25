@@ -1,29 +1,15 @@
 <h1 class="page-title">Register</h1>
 
-{{ HTML::ul($errors->all(), ['class' => 'form-errors' ]) }}
+{{ Form::errors($errors) }}
 
 {{ Form::open(array('url' => 'auth/registration/create')) }}
-    <div class="form-group">
-    	{{ Form::label('username', 'Username') }}
-    	{{ Form::text('username') }}
-    </div>
+    {{ Form::smartText('username', 'Username') }}
 
-    <div class="form-group">
-    	{{ Form::label('email', 'Email') }}
-    	{{ Form::email('email') }}
-    </div>
+    {{ Form::smartEmail() }}
 
-    <div class="form-group">
-    	{{ Form::label('password', 'Password') }}
-    	{{ Form::password('password') }}
-    </div>
+    {{ Form::smartPassword() }}
 
-    <div class="form-group">
-    	{{ Form::label('password2', 'Password') }}
-    	{{ Form::password('password2') }}
-    </div>
+    {{ Form::smartPassword('password2', 'Password') }}
 
-    <div class="form-actions">
-    	{{ Form::submit('Save') }}
-    </div>
+    {{ Form::actions(['submit']) }}
 {{ Form::close() }}

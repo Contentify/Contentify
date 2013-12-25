@@ -33,7 +33,7 @@ class BackController extends BaseController {
     }
 
     /**
-     * Buils an index form (page) from a model and $data
+     * Builds an index form (page) from a model and $data
      * @param  array $data Array with information how to build the form. See $defaults for details.
      */
     protected function buildIndexForm($data)
@@ -45,8 +45,8 @@ class BackController extends BaseController {
             'buttons'       => ['new'],
             'search'        => '',
             'searchFor'     => 'title',
-            'tableHead'     => array(),
-            'tableRow'      => array(),
+            'tableHead'     => [],
+            'tableRow'      => [],
             'actions'       => ['edit', 'delete'],
             'brightenFirst' => true,
             'order'         => 'id',
