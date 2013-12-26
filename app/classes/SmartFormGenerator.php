@@ -13,14 +13,13 @@ class SmartFormGenerator {
     /**
      * Generates a simple but cms compliant form template (Blad syntax).
      * Do not blindly trust the result - most like rework is necessary.
-     * @param  Eloquent $model      The model to generate a form for
-     * @param  string   $moduleName The module name - leave it empty if its the pluralized model name
+     * @param  string $tableName  The table (representing a model) to generate a form for
+     * @param  string $moduleName The module name - leave it empty if its the pluralized model name
      * @return string
      */
-    public static function generate($model, $moduleName = NULL)
+    public static function generate($tableName, $moduleName = NULL)
     {
 
-        $tableName = $model->getTable();
         if ($moduleName == NULL) $moduleName = $tableName;
 
         $columns = DB::select('SHOW COLUMNS FROM '.$tableName);
@@ -31,7 +30,7 @@ class SmartFormGenerator {
             if ($field) $fields[] = $field;
         }
 
-        $formView = View::make('form_template', ['fields' => $fields, 'modulename' => $moduleName]);
+        $formView = View::make('smartform.template', ['fields' => $fields, 'modulename' => $moduleName]);
 
         return $formView->render();
     }
@@ -46,11 +45,13 @@ class SmartFormGenerator {
     {
         $ignoredFields = ['id', 'creator_id', 'created_at', 'updated_at', 'deleted_at'];
 
-        $name   = strtolower($column->Field);
-        $title  = ucfirst($name);
-        $type   = strtolower($column->Type);
-        $meta   = '';
-        $size   = 0;
+        $name       = strtolower($column->Field);
+        $title      = ucfirst($name);
+        $type       = strtolower($column->Type);
+        $meta       = '';
+        $size       = 0;
+        $required   = (strtolower($column->Null) == 'no');
+        $default    = $column->Default;
 
         if (str_contains($type, '(')) {
             $pos    = strpos($type, '(');
@@ -69,38 +70,43 @@ class SmartFormGenerator {
             if ($name == 'image') $type = 'image';
             if ($name == 'email') $type = 'email';
             if ($name == 'password') $type = 'password';
+            if (ends_with($name, '_id')) $type = 'foreign';
+
+            $attributes = [];
+            if ($size > 0) $attributes['maxlength'] = $size;
+            if ($required) $attributes['required'] = 'required';
 
             switch ($type) {
-                case 'boolean':
-                    $html = Form::label($name, $title)."\n".Form::checkbox($name)."\n";
+                case 'tinyint':
+                    $html = Form::label($name, $title)."\n".Form::checkbox($name, 1, $default)."\n";
                     break;
                 case 'int':
-                    $html = Form::label($name, $title)."\n".Form::text($name, NULL, ['class' => 'number'])."\n";
+                    unset($attributes['maxlength']);
+                    $attributes['class'] = 'numeric';
+                    $html = Form::label($name, $title)."\n".Form::text($name, $default, $attributes)."\n";
                     break;
                 case 'varchar':
-                    $attributes = [];
-                    if ($size > 0) $attributes['maxlength'] = $size;
-                    $html = Form::label($name, $title)."\n".Form::text($name, NULL, $attributes)."\n";
+                    $html = Form::label($name, $title)."\n".Form::text($name, $default, $attributes)."\n";
                     break;
                 case 'email':
-                    $attributes = [];
-                    if ($size > 0) $attributes['maxlength'] = $size;
-                    $html = Form::label($name, $title)."\n".Form::email($name, NULL, $attributes)."\n";
+                    $html = Form::label($name, $title)."\n".Form::email($name, $default, $attributes)."\n";
                     break;
                 case 'password':
-                    $attributes = [];
-                    if ($size > 0) $attributes['maxlength'] = $size;
                     $html = Form::label($name, $title)."\n".Form::password($name, $attributes)."\n";
                     break;
                 case 'text':
-                    $html = Form::label($name, $title)."\n".Form::textarea($name)."\n";
+                    $html = Form::label($name, $title)."\n".Form::textarea($name, NULL, $attributes)."\n";
                     break;
                 case 'timestamp':
                     if ($size > 0)
-                    $html = Form::label($name, $title)."\n".Form::text($name, NULL, ['class' => 'timestamp'])."\n";
+                    $html = Form::label($name, $title)."\n".Form::text($name, $default, ['class' => 'timestamp'])."\n";
                     break;
                 case 'image':
-                    $html = Form::label($name, $title)."\n".Form::file($name)."\n";
+                    unset($attributes['maxlength']);
+                    $html = Form::label($name, $title)."\n".Form::file($name, $attributes)."\n";
+                    break;
+                case 'foreign':
+                    $html = Form::label($name, $title)."\n".Form::select($name, array(), NULL, $attributes)."\n";
                     break;
                 default:
                     $html = '<!-- Unknown type: '.$type.' -->';
@@ -111,6 +117,7 @@ class SmartFormGenerator {
         return $html;
     }
 
+    /*
     public static function compile($formName)
     {
         $formOutput = '';
@@ -162,4 +169,5 @@ class SmartFormGenerator {
             throw new Exception('Error in form: Unkown keyword '.$method);
         }
     }
+    */
 }

@@ -12,7 +12,7 @@ class BackController extends BaseController {
     protected $form = array(
         'model'         => '',
         'module'        => '',
-        'form'          => '',
+        'template'      => '',
         'modelName'     => ''
     );
 
@@ -27,9 +27,8 @@ class BackController extends BaseController {
         $this->beforeFilter('csrf', array('on' => 'post'));
 
         if ($this->form['module'] == '') $this->form['module'] = str_plural($this->form['model']); 
-        if ($this->form['form'] == '') $this->form['form'] = 'form';
+        if ($this->form['template'] == '') $this->form['template'] = 'form';
         if ($this->form['modelName'] == '') $this->form['modelName'] = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
-
     }
 
     /**
@@ -180,7 +179,7 @@ class BackController extends BaseController {
      */
     public function create()
     {
-        $this->pageView(strtolower($this->form['module']).'::'.$this->form['form']);
+        $this->pageView(strtolower($this->form['module']).'::'.$this->form['template']);
     }
 
     /**
@@ -225,7 +224,7 @@ class BackController extends BaseController {
         $entity = $model::findOrFail($id);
 
         $this->pageView(
-            strtolower($this->form['module']).'::'.$this->form['form'], 
+            strtolower($this->form['module']).'::'.$this->form['template'], 
             array('entity' => $entity)
         );
     }

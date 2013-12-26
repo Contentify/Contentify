@@ -29,9 +29,7 @@ Route::get('/install', 'InstallController@index');
 
 Route::get('/test', function()
 {
-    //$game = App\Modules\Games\Models\Game::find(1);
-
-    // echo(SmartFormBuilder::generate($game));
+    echo(SmartFormGenerator::generate('news'));
 
     //echo SmartFormBuilder::compile('test');
 

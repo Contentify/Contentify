@@ -72,7 +72,7 @@
 					<div class="applemenu">
 						<div class="silverheader"><div class="menuhead daily"><span class="hidden">Daily Content</span></div></div>
 							<div class="submenu">
-								<div class="menu1"><img src="{{ asset('icons/house.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=dashboard">Startseite</a></div>
+								<div class="menu1"><img src="{{ asset('icons/house.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=dashboard">Dashboard</a></div>
                                 
 								<div class="menu2"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=news">News</a></div>
 								<div class="menu2"><img src="{{ asset('icons/doc_offlice.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=pages">Pages</a></div>
@@ -87,7 +87,7 @@
 							<div class="menubottom"><!-- empty --></div>
 						<div class="silverheader"><div class="menuhead perma"><span class="hidden">Permanent Content</span></div></div>
 							<div class="submenu">
-								<div class="menu1"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=newscats">News-Categories</a></div>
+								<div class="menu1"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon" />{{ HTML::link('admin/newscats', 'News-Categories') }}</div>
 								<div class="menu2"><img src="{{ asset('icons/color_swatch.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=coverages">Coverages</a></div>	
 								<div class="menu2"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=headlinecats">Headline-Categories</a></div>
 								<div class="menu2"><img src="{{ asset('icons/film.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=videos">Videos</a></div>

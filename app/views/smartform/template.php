@@ -13,7 +13,5 @@
     </div>
     <?php } ?>
     
-    <div class="form-actions">
-        {{ Form::submit('Save') }}
-    </div>
+    {{ Form::actions() }}
 {{ Form::close() }}
