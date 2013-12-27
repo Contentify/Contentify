@@ -48,12 +48,24 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
     }
 
     /**
+     * Create HTML code for a checkbox element.
+     * @param  string $name  The name of the checkbox element
+     * @param  string $title The title of the checkbox element
+     * @return string
+     */
+    public static function smartCheckbox($name = 'image', $title = 'Image')
+    {
+        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::checkbox($name).'</div>';
+        return $partial;
+    }
+
+    /**
      * Create HTML code for a text input element.
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartText($name = 'email', $title = 'Email')
+    public static function smartText($name, $title)
     {
         $partial = '<div class="form-group">'.self::label($name, $title).' '.self::text($name).'</div>';
         return $partial;
@@ -89,9 +101,21 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartTextarea($name = 'email', $title = 'Email')
+    public static function smartTextarea($name = 'text', $title = 'Text')
     {
         $partial = '<div class="form-group">'.self::label($name, $title).' '.self::textarea($name).'</div>';
+        return $partial;
+    }
+
+    /**
+     * Create HTML code for a select element.
+     * @param  string $name  The name of the select element
+     * @param  string $title The title of the select element
+     * @return string
+     */
+    public static function smartSelect($name = 'image', $title = 'Image')
+    {
+        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::select($name).'</div>';
         return $partial;
     }
 

@@ -66,7 +66,7 @@ class InstallController extends BaseController {
 		// Add the table rows:
 		Schema::table($tableName, $tableRows);
 
-		// Add the timestamps:
+		// Add the content object attributes:
 		if ($isContentObject) {
 			Schema::table($tableName, function($table)
 			{
@@ -77,6 +77,8 @@ class InstallController extends BaseController {
 					$table->string('title', 70);
 				}
 				$table->integer('creator_id')->default(0);
+				$table->integer('updater_id')->default(0);
+				$table->integer('access_counter')->default(0);
 				$table->timestamps();
 			});
 

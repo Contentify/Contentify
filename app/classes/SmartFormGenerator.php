@@ -1,15 +1,6 @@
 <?php
 
 class SmartFormGenerator {
-
-    protected static $formPath = 'forms';
-
-    protected static $formExtension = '.form';
-
-    protected static $keywordDelimiter = '@';
-
-    protected static $valueDelimiter = '=';
-
     /**
      * Generates a simple but cms compliant form template (Blad syntax).
      * Do not blindly trust the result - most like rework is necessary.
@@ -43,7 +34,7 @@ class SmartFormGenerator {
      */
     protected static function buildField($column)
     {
-        $ignoredFields = ['id', 'creator_id', 'created_at', 'updated_at', 'deleted_at'];
+        $ignoredFields = ['id', 'access_counter', 'creator_id', 'updater_id',  'created_at', 'updated_at', 'deleted_at'];
 
         $name       = strtolower($column->Field);
         $title      = ucfirst($name);
@@ -76,6 +67,45 @@ class SmartFormGenerator {
             if ($size > 0) $attributes['maxlength'] = $size;
             if ($required) $attributes['required'] = 'required';
 
+            switch ($type) {
+                case 'tinyint':
+                    $html = "{{ Form::smartCheckbox('{$name}', '{$title}') }}";
+                    break;
+                case 'int':
+                    unset($attributes['maxlength']);
+                    $attributes['class'] = 'numeric';
+                    $html = "{{ Form::smartText('{$name}', '{$title}') }}";
+                    break;
+                case 'varchar':
+                    $html = "{{ Form::smartText('{$name}', '{$title}') }}";
+                    break;
+                case 'email':
+                    $html = "{{ Form::smartEmail('{$name}', '{$title}') }}";
+                    break;
+                case 'password':
+                    $html = "{{ Form::smartPassword('{$name}', '{$title}') }}";
+                    break;
+                case 'text':
+                    $html = "{{ Form::smartTextarea('{$name}', '{$title}') }}";
+                    break;
+                case 'timestamp':
+                    if ($size > 0)
+                    $html = "{{ Form::smartText('{$name}', '{$title}') }}";
+                    break;
+                case 'image':
+                    unset($attributes['maxlength']);
+                    $html = "{{ Form::smartImageFile('{$name}', '{$title}') }}";
+                    break;
+                case 'foreign':
+                    $html = "{{ Form::smartSelect('{$name}', '{$title}') }}";
+                    break;
+                default:
+                    $html = '<!-- Unknown type: '.$type.' -->';
+                    break;
+            }
+            $html .= "\n";
+
+            /*
             switch ($type) {
                 case 'tinyint':
                     $html = Form::label($name, $title)."\n".Form::checkbox($name, 1, $default)."\n";
@@ -112,62 +142,9 @@ class SmartFormGenerator {
                     $html = '<!-- Unknown type: '.$type.' -->';
                     break;
             }
+             */
         }
 
         return $html;
     }
-
-    /*
-    public static function compile($formName)
-    {
-        $formOutput = '';
-        $fileName   = NULL;
-
-        if (str_contains($formName, '::')) {
-            $parts = explode('::', $formName);
-            $fileName = 'modules/'.$parts[0].'/'.self::$formPath.'/'.$parts[1].self::$formExtension;
-        } else {
-            if (! str_contains($formName, '/')) {
-                $fileName = self::$formPath.'/'.str_replace('.', '/', $formName).self::$formExtension;
-            }
-        }
-
-        $fileName = app_path().'/'.$fileName;
-        if (File::isFile($fileName)) {
-            $lines = file($fileName, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-            foreach ($lines as $lineNumber => $line) {
-                $parts = explode(self::$keywordDelimiter, $line);
-                unset($parts[0]);
-                $parts = array_values($parts);
-
-                $method = 'partial'.$parts[0];
-                unset($parts[0]);
-                $partial = self::$method(array_values($parts));
-
-                $formOutput .= $partial."\n";
-            }
-
-            $formOutput = View::make('sfb.header')->render()."\n".$formOutput;
-
-            return $formOutput;
-        } else {
-            throw new Exception('The given form does not exist.');
-        }
-    }
-
-    protected static function partialErrors($params)
-    {
-        $partial = View::make('sfb.errors');
-        return $partial->render();
-    }
-
-    public static function __callStatic($method, $args)
-    {
-        if (starts_with($method, 'partial')) {
-            $method = substr($method, strlen('partial'));
-            throw new Exception('Error in form: Unkown keyword '.$method);
-        }
-    }
-    */
 }

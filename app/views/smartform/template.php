@@ -3,14 +3,12 @@
 {{ Form::errors($errors) }}
 
 @if (isset($entity))
-    {{ Form::model($entity, ['route' => ['admin.<?php echo($modulename) ?>.update', $entity->id], 'method' => 'PUT']) }}
+{{ Form::model($entity, ['route' => ['admin.<?php echo($modulename) ?>.update', $entity->id], 'method' => 'PUT']) }}
 @else
-    {{ Form::open(['url' => 'admin/<?php echo($modulename) ?>']) }}
+{{ Form::open(['url' => 'admin/<?php echo($modulename) ?>']) }}
 @endif
     <?php foreach ($fields as $field) { ?>
-    <div class="form-group">
-        <?php echo($field) ?>
-    </div>
+    <?php echo($field) ?>
     <?php } ?>
     
     {{ Form::actions() }}

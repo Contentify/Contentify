@@ -11,6 +11,7 @@ class BackController extends BaseController {
     */
     protected $form = array(
         'model'         => '',
+        'controller'    => '',
         'module'        => '',
         'template'      => '',
         'modelName'     => ''
@@ -26,9 +27,16 @@ class BackController extends BaseController {
         // Enable auto CSRF protection
         $this->beforeFilter('csrf', array('on' => 'post'));
 
-        if ($this->form['module'] == '') $this->form['module'] = str_plural($this->form['model']); 
-        if ($this->form['template'] == '') $this->form['template'] = 'form';
-        if ($this->form['modelName'] == '') $this->form['modelName'] = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
+        if (! $this->form['module']) $this->form['module'] = str_plural($this->form['model']); 
+        if (! $this->form['controller']) $this->form['controller'] = str_plural($this->form['model']); 
+        if (! $this->form['modelName']) $this->form['modelName'] = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
+        if (! $this->form['template']) {
+            if ($this->form['module'] === str_plural($this->form['model'])) {
+                $this->form['template'] = 'form';
+            } else {
+                $this->form['template'] = strtolower($this->form['controller']).'_form'; // If modelname and modulename differ, the form name should be e. g. "users_form"
+            }
+        }
     }
 
     /**
@@ -63,7 +71,7 @@ class BackController extends BaseController {
                 $type = strtolower($type);
                 switch ($type) {
                     case 'new':
-                        $buttons .= button(t('Create new'), route('admin.'.strtolower($this->form['module']).'.create'), 'add');
+                        $buttons .= button(t('Create new'), route('admin.'.strtolower($this->form['controller']).'.create'), 'add');
                         break;
                 }
             }
@@ -137,12 +145,12 @@ class BackController extends BaseController {
                             case 'edit':
                                 $actionsCode .= image_link('page_edit', 
                                     t('Edit'), 
-                                    route('admin.'.strtolower($this->form['module']).'.edit', [$entity->id]));
+                                    route('admin.'.strtolower($this->form['controller']).'.edit', [$entity->id]));
                                 break;
                             case 'delete':
                                 $actionsCode .= image_link('bin', 
                                     t('Delete'), 
-                                    route('admin.'.strtolower($this->form['module']).'.destroy', [$entity->id]).'?method=DELETE');
+                                    route('admin.'.strtolower($this->form['controller']).'.destroy', [$entity->id]).'?method=DELETE');
                                 break;
                         }
                         $actionsCode .= ' ';
@@ -192,7 +200,7 @@ class BackController extends BaseController {
         $okay = $entity->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($this->form['module']).'.create')->withInput()->withErrors($entity->validationErrors);
+            return Redirect::route('admin.'.strtolower($this->form['controller']).'.create')->withInput()->withErrors($entity->validationErrors);
         }
 
         if (Input::hasFile('image') and array_key_exists('image', $entity->getAttributes())) {
@@ -200,18 +208,18 @@ class BackController extends BaseController {
 
             $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
             if (! $imgsize[2]) {
-                return Redirect::route('admin.'.strtolower($this->form['module']).'.create')->withInput()->withErrors(['x' => 'Invalid image']);
+                return Redirect::route('admin.'.strtolower($this->form['controller']).'.create')->withInput()->withErrors(['x' => 'Invalid image']);
             }
 
             $extension      = $file->getClientOriginalExtension();
             $fileName       = $entity->id.'.'.$extension;
-            $uploadedFile   = $file->move(public_path().'/uploads/'.$this->form['module'], $fileName);
+            $uploadedFile   = $file->move(public_path().'/uploads/'.$this->form['controller'], $fileName);
             $entity->image  = $fileName;
             $entity->forceSave();
         }
 
         $this->messageFlash($this->form['model'].t(' created.'));
-        return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
+        return Redirect::route('admin.'.strtolower($this->form['controller']).'.index');
     }
 
     /**
@@ -242,7 +250,7 @@ class BackController extends BaseController {
         $okay = $entity->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($this->form['module']).'.create')->withInput()->withErrors($entity->validationErrors);
+            return Redirect::route('admin.'.strtolower($this->form['controller']).'.create')->withInput()->withErrors($entity->validationErrors);
         }
 
         if (Input::hasFile('image') and array_key_exists('image', $entity->getAttributes())) {
@@ -250,23 +258,23 @@ class BackController extends BaseController {
 
             $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
             if (! $imgsize[2]) {
-                return Redirect::route('admin.'.strtolower($this->form['module']).'.create')->withInput()->withErrors(['x' => 'Invalid image']);
+                return Redirect::route('admin.'.strtolower($this->form['controller']).'.create')->withInput()->withErrors(['x' => 'Invalid image']);
             }
 
-            $oldImage = public_path().'/uploads/'.$this->form['module'].'/'.$entity->image;
+            $oldImage = public_path().'/uploads/'.$this->form['controller'].'/'.$entity->image;
             if (File::isFile($oldImage)) {
                 File::delete($oldImage); // We need to delete the old file to ensure we never have something like "123.jpg" and "123.png"
             }
 
             $extension      = $file->getClientOriginalExtension();
             $fileName       = $entity->id.'.'.$extension;
-            $uploadedFile   = $file->move(public_path().'/uploads/'.$this->form['module'], $fileName);
+            $uploadedFile   = $file->move(public_path().'/uploads/'.$this->form['controller'], $fileName);
             $entity->image  = $fileName;
             $entity->forceSave();
         }    
 
         $this->messageFlash($this->form['model'].t(' updated.'));
-        return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
+        return Redirect::route('admin.'.strtolower($this->form['controller']).'.index');
     }
 
     /**
@@ -279,7 +287,7 @@ class BackController extends BaseController {
         $model::destroy($id);
 
         $this->messageFlash($this->form['model'].t(' deleted.'));
-        return Redirect::route('admin.'.strtolower($this->form['module']).'.index');
+        return Redirect::route('admin.'.strtolower($this->form['controller']).'.index');
     }
 
     /**
@@ -287,7 +295,7 @@ class BackController extends BaseController {
      */
     public function search()
     {
-        return Redirect::route('admin.'.strtolower($this->form['module']).'.index')->withInput(Input::only('search'));
+        return Redirect::route('admin.'.strtolower($this->form['controller']).'.index')->withInput(Input::only('search'));
     }
 
     /**

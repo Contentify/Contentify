@@ -29,7 +29,7 @@ Route::get('/install', 'InstallController@index');
 
 Route::get('/test', function()
 {
-    echo(SmartFormGenerator::generate('news'));
+    echo(SmartFormGenerator::generate('newscats'));
 
     //echo SmartFormBuilder::compile('test');
 
