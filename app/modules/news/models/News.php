@@ -8,8 +8,7 @@ class News extends \Ardent {
         'title'   => 'required',
     );
 
-    public function newscats()
-    {
-        return $this->hasOne('Newscats');
-    }
+    public static $relationsData = array(
+        'newscat' => array(self::BELONGS_TO, 'App\Modules\News\Models\Newscat'),
+    );
 }

@@ -7,5 +7,4 @@ class Newscat extends \Ardent {
     public static $rules = array(
         'title'   => 'required',
     );
-
 }

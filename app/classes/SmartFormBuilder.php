@@ -19,7 +19,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      * @param  array  $buttons Array of Buttons
      * @return string
      */
-    public static function actions($buttons = array('submit'))
+    public static function actions($buttons = array('submit', 'reset'))
     {
         $partial = '<div class="form-actions">';
         foreach ($buttons as $type => $options) {
@@ -33,13 +33,18 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
                 }
             } else {
                 $type = $options;
-                $title = 'Save';
+                $title = ucfirst($type);
                 $options = array();
             }
 
             switch (strtolower($type)) {
                 case 'submit':
-                    $partial .= Form::submit($title, $options).' ';
+                    $value = HTML::image(asset('icons/disk.png'), 'Save', ['width' => 16, 'height' => 16]).' '.$title;
+                    $partial .= Form::button($value, $options);
+                    break; 
+                case 'reset':
+                    $value = HTML::image(asset('icons/disk2.png'), 'Reset', ['width' => 16, 'height' => 16]).' '.$title;
+                    $partial .= Form::button($value, $options);
                     break; 
             }
             
@@ -113,9 +118,23 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      * @param  string $title The title of the select element
      * @return string
      */
-    public static function smartSelect($name = 'image', $title = 'Image')
+    public static function smartSelectForeign($name, $title, $entity)
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::select($name).'</div>';
+        $model = str_replace('_id', '', $name);
+        $entities = DB::table(str_plural($model))->get();
+
+        $options = array();
+        foreach ($entities as $entity) {
+            if (isset($entity->title)) {
+                $title = 'title';
+            } else {
+                $title = 'id';
+            }
+
+            $options[$entity->id] = $entity->$title;
+        }
+        
+        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::select($name, $options).'</div>';
         return $partial;
     }
 

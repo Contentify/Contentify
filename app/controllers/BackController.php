@@ -282,6 +282,8 @@ class BackController extends BaseController {
         $model = $this->form['modelName'];
         $entity = $model::findOrFail($id);
 
+        //dd($entity->newscat->title);
+
         $this->pageView(
             strtolower($this->form['module']).'::'.$this->form['template'], 
             array('entity' => $entity)

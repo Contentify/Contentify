@@ -92,7 +92,7 @@ require app_path().'/filters.php';
 |
 */
 
-require app_path().'/viewcomposers.php';
+require app_path().'/composers.php';
 
 /*
 |--------------------------------------------------------------------------
