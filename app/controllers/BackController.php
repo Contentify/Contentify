@@ -7,6 +7,16 @@ class BackController extends BaseController {
     protected $layout = 'backend';
 
     /**
+     * The name of the module
+     */
+    protected $module = '';
+
+    /**
+     * The name of the controller (without class path)
+     */
+    protected $controller = '';
+
+    /**
     * 
     */
     protected $form = array(
@@ -24,11 +34,24 @@ class BackController extends BaseController {
     {
         parent::__construct();
 
-        // Enable auto CSRF protection
+        /*
+         * Save module and controller name
+         */
+        $className          = get_class($this);
+        $this->module       = explode('\\', $className)[2];
+        $className          = class_basename($className);
+        $this->controller   = str_replace(['Admin', 'Controller'], '', $className);
+
+        /*
+         * Enable auto CSRF protection
+         */ 
         $this->beforeFilter('csrf', array('on' => 'post'));
 
-        if (! $this->form['module']) $this->form['module'] = str_plural($this->form['model']); 
-        if (! $this->form['controller']) $this->form['controller'] = str_plural($this->form['model']); 
+        /*
+         * Set CRUD form default values
+         */
+        if (! $this->form['module']) $this->form['module'] = $this->module;
+        if (! $this->form['controller']) $this->form['controller'] = $this->controller; 
         if (! $this->form['modelName']) $this->form['modelName'] = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
         if (! $this->form['template']) {
             if ($this->form['module'] === str_plural($this->form['model'])) {
@@ -37,6 +60,34 @@ class BackController extends BaseController {
                 $this->form['template'] = strtolower($this->form['controller']).'_form'; // If modelname and modulename differ, the form name should be e. g. "users_form"
             }
         }
+
+        $self = $this;
+        View::composer('backend', function($view) use ($self)
+        { 
+            /*
+             * User profile picture
+             */ 
+            if (Sentry::getUser()->image) {
+                $userImage = asset('uploads/users/thumbnails/'.Sentry::getUser()->image);
+            } else {
+                $userImage = asset('theme/user.png');
+            }
+            $view->with('userImage', $userImage);
+
+            /*
+             * Contact messages
+             */
+            $count = DB::table('contact_messages')->where('new', true)->count();
+            if ($count > 0) {
+                $contactMessages = link_to('admin/contact', $count.t(' new messages'));
+            } else {
+                $contactMessages = 'No new messages.';
+            }
+            $view->with('contactMessages', $contactMessages);   
+
+            $view->with('module', $this->module);
+            $view->with('controller', $this->controller);
+        });
     }
 
     /**
@@ -46,7 +97,7 @@ class BackController extends BaseController {
     protected function buildIndexForm($data)
     {
         /*
-         * Default values
+         * Set default values
          */
         $defaults = array(
             'buttons'       => ['new'],

@@ -43,6 +43,10 @@ select { margin: 0px; padding: 0px 10px; border: 1px solid silver; border-radius
  * Classes
  */
 
+.page { }
+.form-head { display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; background-image: url(theme/backend/form_head.png); font-size: 14px; font-weight: bold !important; color: #666666 !important; }
+.form-head img { margin-right: 10px; vertical-align: text-top; }
+
 h1.page-title { }
 
 /* Messages */
@@ -151,7 +155,7 @@ body { background-image: url(theme/backend/background.png); background-color: wh
 .applemenu { /*dont remove this class*/ }
 .applemenu div.submenu { /*DIV that contains each sub menu*/ /*dont remove this class*/ }
 
-#page { width: 686px; margin-left: 275px; }
+#main-content { width: 686px; margin-left: 275px; }
 
 #footer { position: relative; width: 982px; height: 76px; margin-left: 2px; background-image: url(theme/backend/footer.png); }
 #footer a { display: block; position: absolute; background-image: url(theme/empty.png); left: 114px; top: 30px; width: 45px; height: 35px }
