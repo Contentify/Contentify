@@ -30,8 +30,5 @@ Route::get('/install', 'InstallController@index');
 Route::get('/test', function()
 {
     echo(SmartFormGenerator::generate('news'));
-
-    //echo SmartFormBuilder::compile('test');
-
 	//echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
 });

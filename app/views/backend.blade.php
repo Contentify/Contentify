@@ -70,7 +70,7 @@
             <aside id="sidebar">
                 <nav>
                     <div class="applemenu">
-                        <div class="silverheader"><div class="menuhead daily"><span class="hidden">Daily Content</span></div></div>
+                        <div class="silverheader"><div class="menu-head daily"><span class="hidden">Daily Content</span></div></div>
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/house.png') }}" width="16" height="16" alt="icon" />{{ HTML::link('admin/dashboard', 'Dashboard') }}</div>
                                 
@@ -84,8 +84,8 @@
                                 <div class="menu2"><img src="{{ asset('icons/picture.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=pictures">Pictures</a></div>
                                 <div class="menu3"><img src="{{ asset('icons/photo.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=galleries">Galleries</a></div>
                             </div>
-                            <div class="menubottom"><!-- empty --></div>
-                        <div class="silverheader"><div class="menuhead perma"><span class="hidden">Permanent Content</span></div></div>
+                            <div class="menu-bottom"></div>
+                        <div class="silverheader"><div class="menu-head perma"><span class="hidden">Permanent Content</span></div></div>
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon" />{{ HTML::link('admin/newscats', 'News-Categories') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/color_swatch.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=coverages">Coverages</a></div>  
@@ -99,8 +99,8 @@
                                 <div class="menu2"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=forumcats">Forum-Categories</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=forumboards">Forum-Boards</a></div>
                             </div>
-                            <div class="menubottom"><!-- empty --></div>
-                        <div class="silverheader"><div class="menuhead esports"><span class="hidden">eSports Content</span></div></div>
+                            <div class="menu-bottom"></div>
+                        <div class="silverheader"><div class="menu-head esports"><span class="hidden">eSports Content</span></div></div>
                             <div class="submenu">               
                                 <div class="menu1"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=matches">Matches</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=awards">Awards</a></div>               
@@ -111,9 +111,9 @@
                                 <div class="menu2"><img src="{{ asset('icons/world.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=maps">Maps</a></div>
                                 <div class="menu3"><img src="{{ asset('icons/controller.png') }}" width="16" height="16" alt="icon" />{{ HTML::link('admin/games', 'Games') }}</div>                
                             </div>
-                            <div class="menubottom"><!-- empty --></div>
+                            <div class="menu-bottom"></div>
                             
-                        <div class="silverheader"><div class="menuhead website"><span class="hidden">Website</span></div></div>
+                        <div class="silverheader"><div class="menu-head website"><span class="hidden">Website</span></div></div>
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=users">Users</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=members">Members</a></div>
@@ -125,7 +125,7 @@
 
                                 <div class="menu3"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=roles">Roles</a></div>
                             </div>
-                            <div class="menubottom"><!-- empty --></div>
+                            <div class="menu-bottom"></div>
                     </div>
                 </nav>
             </aside>

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Controllers;
 
-use App\Modules\News\Models\Game as Game;
+use App\Modules\News\Models\News as News;
 
 class AdminNewsController extends \BackController {
 

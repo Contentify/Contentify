@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Contact\Controllers;
 
 use App\Modules\Contact\Models\ContactMessage;
-use View, Input, Redirect;
+use Input, Redirect;
 
 class ContactController extends \FrontController {
 
