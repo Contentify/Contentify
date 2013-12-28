@@ -35,8 +35,8 @@ class SearchController extends \FrontController {
 		        }
 		    }
 
-		    Input::flash(); // We keep the subject and display in the form
-		    $this->pageView('search::form', ['resultBags' => $resultBags]);
+		    Input::flash(); // We keep the subject and display it in the form
+		    $this->pageView('search::form', compact('resultBags'));
 		} else {
 			return Redirect::to('search')->withInput()->withErrors($validator->messages());
 		}

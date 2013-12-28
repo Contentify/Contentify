@@ -9,7 +9,9 @@ class InstallController extends BaseController {
 
 	public function createDatabase()
 	{
-		// The default length of strings is 255 chars.
+		/*
+		 * Notice: The default length of strings is 255 chars.
+		 */
 
 		$this->create('newscats', function($table)
 		{

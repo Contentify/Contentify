@@ -11,24 +11,35 @@
 |
 */
 
-// Admin filter:
+/* 
+ * Admin filter:
+ */ 
 Route::when('admin/*', 'admin');
 
-// Homepages:
+/*
+ * Homepages:
+ */ 
 Route::get('/', ['as' => 'home', 'uses' => function()
 {
 	return View::make('frontend');
 }]);
 
-// We prefer to use a route here than inside the modules own routing file.
-// So there can't exist multiple modules that try to declare themselves as dashboard.
+/*
+ * We prefer to use a route here than inside the modules own routing file.
+ * So there can't exist multiple modules that try to declare themselves as dashboard.
+ */ 
 Route::get('admin/', ['as' => 'admin.dashboard', 'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex']);
 
-// Installation:
+/*
+ * Installation
+ */
 Route::get('/install', 'InstallController@index');
 
+/*
+ * Testing
+ */
 Route::get('/test', function()
 {
-    echo(SmartFormGenerator::generate('news'));
+    //echo(SmartFormGenerator::generate('news'));
 	//echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
 });

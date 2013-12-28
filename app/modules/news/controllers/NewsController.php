@@ -1,6 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News as News;
+use URL;
 
 class NewsController extends \FrontController {
 
@@ -18,9 +19,14 @@ class NewsController extends \FrontController {
 
     public function search($subject)
     {
-        $news = News::where('title', 'LIKE', '%'.$subject.'%')->get();
+        $allNews = News::where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        return $news;
+        $results = array();
+        foreach ($allNews as $news) {
+            $results[$news->title] = URL::to('news/'.$news->id.'/show');
+        }
+
+        return $results;
     }
 
 }

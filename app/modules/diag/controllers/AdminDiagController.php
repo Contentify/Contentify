@@ -15,6 +15,6 @@ class AdminDiagController extends \BackController {
 			'Modules.debug' 	=> (int) Config::get('modules::debug')
 		);
 	
-		$this->pageView('diag::index', array('settings' => $settings));
+		$this->pageView('diag::index', compact('settings'));
 	}
 }

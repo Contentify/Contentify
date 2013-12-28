@@ -47,9 +47,8 @@
 					<li>{{ link_to('auth/logout', 'Logout') }}</li>
 					<li>{{ link_to('auth/registration/create', 'Registration') }}</li>
 					<li>{{ link_to('contact', 'Contact') }}</li>
-					<li>{{ link_to('admin/diag', 'Admin Diag') }}</li>
-					<li>{{ link_to('admin/games', 'Admin Games') }}</li>
-					<li>{{ link_to('admin/games/create', 'Admin Games Create') }}</li>
+					<li>{{ link_to('search', 'Search') }}</li>
+					<li>{{ link_to('admin', 'Admin-Backend') }}</li>
 				</ul>
 			</aside>
 

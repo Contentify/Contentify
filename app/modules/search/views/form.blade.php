@@ -14,8 +14,8 @@
 @foreach ($resultBags as $resultBag)
 <h2>Results of type {{ $resultBag['title'] }}:</h2>
 <ul>
-    @foreach ($resultBag['results'] as $result)
-    <li>{{ $result->title }}</li>
+    @foreach ($resultBag['results'] as $title => $url)
+    <li>{{ HTML::link($url, $title) }}</li>
     @endforeach
 </ul>
 @endforeach
