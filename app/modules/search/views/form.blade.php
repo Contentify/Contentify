@@ -10,11 +10,13 @@
     {{ Form::actions(['submit' => 'Search']) }}
 {{ Form::close() }}
 
+@if (isset($resultBags))
 @foreach ($resultBags as $resultBag)
 <h2>Results of type {{ $resultBag['title'] }}:</h2>
 <ul>
-@foreach ($resultBag['results'] as $result)
+    @foreach ($resultBag['results'] as $result)
     <li>{{ $result->title }}</li>
-@endforeach
+    @endforeach
 </ul>
 @endforeach
+@endif

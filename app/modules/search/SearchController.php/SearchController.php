@@ -17,25 +17,25 @@ class SearchController extends \FrontController {
 		
 		if ($validator->passes()) {
 			$finder = app()['modules'];
-		    $modules = $finder->modules();
+		    $modules = $finder->modules(); // Retrieve all module info objects
 
 		    $resultBags = array();
 		    foreach ($modules as $module) {
 		    	$controllers = $module->def('search'); // def() will return null if "search" is not defined
 		        if ($controllers) { 
-		        	if (! is_array($controllers)) dd($module);
-		        	foreach ($controllers as $controller) {
+		        	foreach ($controllers as $controller) { // A module might have more than one controller that supports the search
 		        		$classPath = 'App\Modules\\'.ucfirst($module->name()).'\Controllers\\'.ucfirst($controller).'Controller';
-		        		$instance = new $classPath;
-		        		$results = $instance->search($subject);
+		        		$instance = new $classPath; // Create isntance of the controller...
+		        		$results = $instance->search($subject); // ...and call the search method.
 		        	}
 
-		        	if ($results) {
-		        		$resultBags[] = ['title' => $controller, 'results' => $results];
+		        	if (sizeof($results) > 0) {
+		        		$resultBags[] = ['title' => $controller, 'results' => $results]; // Wrap the results in a result bag
 		        	}
 		        }
 		    }
 
+		    Input::flash(); // We keep the subject and display in the form
 		    $this->pageView('search::form', ['resultBags' => $resultBags]);
 		} else {
 			return Redirect::to('search')->withInput()->withErrors($validator->messages());
