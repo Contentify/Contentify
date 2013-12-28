@@ -270,7 +270,11 @@ class BackController extends BaseController {
         }
 
         $this->messageFlash($this->form['model'].t(' created.'));
-        return Redirect::route('admin.'.strtolower($this->form['controller']).'.index');
+        if (Input::get('_form_apply')) {
+            return Redirect::route('admin.'.strtolower($this->form['controller']).'.edit', array($entity->id));
+        } else {
+            return Redirect::route('admin.'.strtolower($this->form['controller']).'.index');
+        }
     }
 
     /**
@@ -327,7 +331,11 @@ class BackController extends BaseController {
         }    
 
         $this->messageFlash($this->form['model'].t(' updated.'));
-        return Redirect::route('admin.'.strtolower($this->form['controller']).'.index');
+        if (Input::get('_form_apply')) {
+            return Redirect::route('admin.'.strtolower($this->form['controller']).'.edit', array($id));
+        } else {
+            return Redirect::route('admin.'.strtolower($this->form['controller']).'.index');
+        }
     }
 
     /**

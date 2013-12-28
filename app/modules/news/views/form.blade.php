@@ -12,8 +12,8 @@
         {{ Form::smartTextarea('text', 'Text') }}
         {{ Form::smartCheckbox('published', 'Published') }}
         {{ Form::smartCheckbox('internal', 'Internal') }}
-        {{ Form::smartCheckbox('allow_comments', 'Allow_comments') }}
-        {{ Form::smartSelectForeign('newscat_id', 'Newscat_id', $entity) }}
+        {{ Form::smartCheckbox('allow_comments', 'Allow Comments') }}
+        {{ Form::smartSelectForeign('newscat_id', 'Newscat') }}
         
     {{ Form::actions() }}
 {{ Form::close() }}

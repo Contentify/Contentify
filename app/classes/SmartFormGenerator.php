@@ -37,7 +37,7 @@ class SmartFormGenerator {
         $ignoredFields = ['id', 'access_counter', 'creator_id', 'updater_id',  'created_at', 'updated_at', 'deleted_at'];
 
         $name       = strtolower($column->Field);
-        $title      = ucfirst($name);
+        $title      = self::makeTitle($name);
         $type       = strtolower($column->Type);
         $meta       = '';
         $size       = 0;
@@ -97,7 +97,8 @@ class SmartFormGenerator {
                     $html = "{{ Form::smartImageFile('{$name}', '{$title}') }}";
                     break;
                 case 'foreign':
-                    $html = "{{ Form::smartSelect('{$name}', '{$title}') }}";
+                    $title = ucfirst(substr($name, 0, -3));
+                    $html = "{{ Form::smartSelectForeign('{$name}', '{$title}') }}";
                     break;
                 default:
                     $html = '<!-- Unknown type: '.$type.' -->';
@@ -146,5 +147,19 @@ class SmartFormGenerator {
         }
 
         return $html;
+    }
+
+    /**
+     * Convert a snake_case sring to a title (single words, ucfirst)
+     * @param  string $snakeCase The snake cased string
+     * @return string
+     */
+    protected static function makeTitle($snakeCase)
+    {
+        $words = explode('_', $snakeCase);
+
+        for ($i = 0; $i < sizeof($words); $i++) $words[$i] = ucfirst($words[$i]);
+
+        return implode(' ', $words);
     }
 }

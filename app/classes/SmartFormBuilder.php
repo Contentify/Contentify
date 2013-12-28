@@ -9,7 +9,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      */
     public static function errors($errors)
     {
-        if (is_subclass_of($errors, 'Illuminate\Support\MessageBag')) {
+        if (is_a($errors, 'Illuminate\Support\MessageBag')) {
             return HTML::ul($errors->all(), ['class' => 'form-errors' ]);
         }
     }
@@ -19,7 +19,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      * @param  array  $buttons Array of Buttons
      * @return string
      */
-    public static function actions($buttons = array('submit', 'reset'))
+    public static function actions($buttons = array('submit', 'apply', 'reset'))
     {
         $partial = '<div class="form-actions">';
         foreach ($buttons as $type => $options) {
@@ -39,10 +39,19 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
             switch (strtolower($type)) {
                 case 'submit':
-                    $value = HTML::image(asset('icons/disk.png'), 'Save', ['width' => 16, 'height' => 16]).' '.$title;
+                    $options['type'] = $type;
+                    $options['name'] = '_form_submit';
+                    $value = HTML::image(asset('icons/disk.png'), 'Save', ['width' => 16, 'height' => 16]).' Save';
+                    $partial .= Form::button($value, $options);
+                    break; 
+                case 'apply':
+                    $options['type'] = $type;
+                    $options['name'] = '_form_apply';
+                    $value = HTML::image(asset('icons/disk.png'), 'Save &amp; Continue', ['width' => 16, 'height' => 16]).' '.$title;
                     $partial .= Form::button($value, $options);
                     break; 
                 case 'reset':
+                    $options['type'] = $type;
                     $value = HTML::image(asset('icons/disk2.png'), 'Reset', ['width' => 16, 'height' => 16]).' '.$title;
                     $partial .= Form::button($value, $options);
                     break; 
@@ -118,20 +127,20 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      * @param  string $title The title of the select element
      * @return string
      */
-    public static function smartSelectForeign($name, $title, $entity)
+    public static function smartSelectForeign($name, $title)
     {
-        $model = str_replace('_id', '', $name);
+        $model = str_replace(strtolower('_id'), '', $name);
         $entities = DB::table(str_plural($model))->get();
 
         $options = array();
         foreach ($entities as $entity) {
             if (isset($entity->title)) {
-                $title = 'title';
+                $entityTitle = 'title';
             } else {
-                $title = 'id';
+                $entityTitle = 'id';
             }
 
-            $options[$entity->id] = $entity->$title;
+            $options[$entity->id] = $entity->$entityTitle;
         }
         
         $partial = '<div class="form-group">'.self::label($name, $title).' '.self::select($name, $options).'</div>';
