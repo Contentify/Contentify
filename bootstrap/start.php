@@ -19,7 +19,7 @@ function t($text)
 | it needs a little help. We use the GET-parameter 'method' to 
 | pretend a DELETE request method.
 | This has to be done before the App starts.
-| (Ofcourse, with JavaScript an AJAX call sending DELETE is possible.)
+| (Ofcourse, with JS and AJAX / hidden form sending DELETE is possible.)
 | 
 */
 

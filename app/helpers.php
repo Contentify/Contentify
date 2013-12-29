@@ -15,10 +15,11 @@
  * If $image has no extension, the extension will be ".png".
  * If $image does not contain a path, the path "icons" will be used.
  * If $image has does not start with "http://" an asset link will be created.
- * @param  string  $image     The link image
- * @param  string  $title     The link title
- * @param  string  $url       The link URL
- * @param  boolean $showTitle Show the title text?
+ * @param  string  $image       The link image
+ * @param  string  $title       The link title
+ * @param  string  $url         The link URL
+ * @param  boolean $showTitle   Show the title text?
+ * @param  array   $attributes  Apply these HTML attributes to the link element
  * @return string
  */
 function image_link($image, $title, $url, $showTitle = false, $attributes = array())
@@ -36,13 +37,19 @@ function image_link($image, $title, $url, $showTitle = false, $attributes = arra
      * We have to create our Link without HTML::link(), because
      * that method will not allow to use HTML code.
      */ 
-    $a = HTML::attributes($attributes);
-    $link = '<a class="image-link" href="'.$url.'" title="'.$title.'" '.$a.'>'.$image.$titleText.'</a>';
+    $attrs = HTML::attributes($attributes);
+    $link = '<a class="image-link" href="'.$url.'" title="'.$title.'" '.$attrs.'>'.$image.$titleText.'</a>';
 
     return $link;
 }
 
-// TODO: image, description
+/**
+ * Returns HTML code for a button element. It may include an image element and a title text.
+ * @param  string $title The button title text
+ * @param  string $url   The URL the button is targeting at
+ * @param  string $image The Image (see get_image_url())
+ * @return string
+ */
 function button($title, $url, $image = '')
 {
     $imageUrl = get_image_url($image);

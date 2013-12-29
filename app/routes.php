@@ -25,8 +25,9 @@ Route::get('/', ['as' => 'home', 'uses' => function()
 }]);
 
 /*
- * We prefer to use a route here than inside the modules own routing file.
+ * We prefer to use a route here than inside the modules' own routing file.
  * So there can't exist multiple modules that try to declare themselves as dashboard.
+ * (Well, ofcourse they may try to... since routing is global. But they should not.)
  */ 
 Route::get('/admin', ['as' => 'admin.dashboard', 'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex']);
 

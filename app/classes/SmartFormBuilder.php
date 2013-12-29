@@ -127,10 +127,14 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      * @param  string $title The title of the select element
      * @return string
      */
-    public static function smartSelectForeign($name, $title)
+    public static function smartSelectForeign($name, $title, $notEmpty = true)
     {
         $model = str_replace(strtolower('_id'), '', $name);
         $entities = DB::table(str_plural($model))->get();
+
+        if ($notEmpty and sizeof($entities) == 0) {
+            throw new Exception('Missing entities for foreign relationship.');
+        }
 
         $options = array();
         foreach ($entities as $entity) {

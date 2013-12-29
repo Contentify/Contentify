@@ -54,10 +54,14 @@ class InstallController extends BaseController {
 	 */
 	private function create($tableName, Closure $tableRows, $foreignKeys = array(), $isContentObject = true)
 	{
-		// Delete existing table:
+		/*
+		 * Delete existing table:
+		 */
 		Schema::dropIfExists($tableName);
 
-		// Add ID:
+		/*
+		 * Add ID:
+		 */
 		Schema::create($tableName, function($table)
 		{
 			$table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is used as storage engine
@@ -65,14 +69,21 @@ class InstallController extends BaseController {
 			$table->increments('id'); // Primary key (unique, auto-increment)
 		});
 
-		// Add the table rows:
+		/*
+		 * Add the table rows:
+		 */
 		Schema::table($tableName, $tableRows);
 
-		// Add the content object attributes:
+		/*
+		 * Add the content object attributes:
+		 */
 		if ($isContentObject) {
 			Schema::table($tableName, function($table)
 			{
-				// after() only workws with MySQL databases so we have to check that:
+				/*
+				 * We can use after() to insert he title attribute right after id.
+				 * But after() only workws with MySQL databases so we have to check that:
+				 */
 				if (strtolower(DB::connection()->getDriverName()) == 'mysql') {
 					$table->string('title', 70)->after('id');
 				} else {
@@ -85,15 +96,17 @@ class InstallController extends BaseController {
 			});
 
 			/*
-			// Add soft deletes:
+		 	 * Add soft deletes:
+		 	 */ 
 			Schema::table($tableName, function($table)
 			{
 				$table->softDeletes();
 			});
-			*/
 		}
 
-		// Add the foreign keys:
+		/*
+		 * Add the foreign keys:
+		 */
 		foreach ($foreignKeys as $foreignKey) {
 			Schema::table($tableName, function($table) use ($foreignKey)
 			{
