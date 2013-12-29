@@ -20,35 +20,38 @@ ddaccordion.init({
     }
 })
 
-var timeoutTime = 1000; // ms
-
-function updateDatetime() {
-    var now = new Date();
-    
-    var days = now.getDate();
-    if (days < 10) { days = "0" + days; }
-    var months = now.getMonth() + 1;
-    if (months < 10) { months = "0" + months; }
-    var years = now.getFullYear();
-    
-    var hours = now.getHours();
-    if (hours < 10) { hours = "0" + hours; }
-    var minutes = now.getMinutes();
-    if (minutes < 10) { minutes = "0" + minutes; }
-    
-    var mydate = days + "/" + months + "/" + years;
-    var mytime = hours + ":" + minutes;
-    
-    document.getElementById("datetime").innerHTML = mydate + " – " + mytime;
-    
-    var t = setTimeout("updateDatetime();", timeoutTime);
-}
-
 $(document).ready(function()
 {  
-    updateDatetime();
+    var timeoutTime = 1000; // ms
+
+    var updateDatetime = function () {
+        var now = new Date();
+        
+        var days = now.getDate();
+        if (days < 10) { days = "0" + days; }
+        var months = now.getMonth() + 1;
+        if (months < 10) { months = "0" + months; }
+        var years = now.getFullYear();
+        
+        var hours = now.getHours();
+        if (hours < 10) { hours = "0" + hours; }
+        var minutes = now.getMinutes();
+        if (minutes < 10) { minutes = "0" + minutes; }
+        
+        var mydate = days + "/" + months + "/" + years;
+        var mytime = hours + ":" + minutes;
+        
+        document.getElementById("datetime").innerHTML = mydate + " – " + mytime;
+    }
+
+    var t = setInterval(updateDatetime, timeoutTime);
 
     $('*[title]').quicktip({
         speed: 400
+    });
+
+    $('*[data-confirm-delete]').click(function()
+    {
+        if (! confirm('Delete this item?')) return false;
     });
 });

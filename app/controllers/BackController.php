@@ -201,7 +201,9 @@ class BackController extends BaseController {
                             case 'delete':
                                 $actionsCode .= image_link('bin', 
                                     t('Delete'), 
-                                    route('admin.'.strtolower($this->form['controller']).'.destroy', [$entity->id]).'?method=DELETE');
+                                    route('admin.'.strtolower($this->form['controller']).'.destroy', [$entity->id]).'?method=DELETE',
+                                    false,
+                                    ['data-confirm-delete' => true]);
                                 break;
                         }
                         $actionsCode .= ' ';

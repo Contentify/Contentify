@@ -115,9 +115,9 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartTextarea($name = 'text', $title = 'Text')
+    public static function smartTextarea($name = 'text', $title = 'Text', $editor = true)
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::textarea($name).'</div>';
+        $partial = '<div class="form-group">'.self::label($name, $title, ['class' => 'full-line']).' '.self::textarea($name, NULL, ['class' => 'ckeditor']).'</div>';
         return $partial;
     }
 

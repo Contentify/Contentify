@@ -27,7 +27,7 @@ class LoginController extends \FrontController {
 				return Redirect::to('/');	
 			}
 		} catch(\Exception $e) {
-			return Redirect::to('auth')->withErrors(['message' => $e->getMessage()]);
+			return Redirect::to('auth/login')->withErrors(['message' => $e->getMessage()]);
 		}
 	}
 }

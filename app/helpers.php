@@ -21,7 +21,7 @@
  * @param  boolean $showTitle Show the title text?
  * @return string
  */
-function image_link($image, $title, $url, $showTitle = false)
+function image_link($image, $title, $url, $showTitle = false, $attributes = array())
 {
     $imageUrl = get_image_url($image);
     $image = HTML::image($imageUrl, $title);
@@ -32,9 +32,12 @@ function image_link($image, $title, $url, $showTitle = false)
         $titleText = '';
     }
 
-    // We have to create our Link without HTML::link(), because
-    // that method will not allow to use HTML code.
-    $link = '<a class="image-link" href="'.$url.'" title="'.$title.'">'.$image.$titleText.'</a>';
+    /* 
+     * We have to create our Link without HTML::link(), because
+     * that method will not allow to use HTML code.
+     */ 
+    $a = HTML::attributes($attributes);
+    $link = '<a class="image-link" href="'.$url.'" title="'.$title.'" '.$a.'>'.$image.$titleText.'</a>';
 
     return $link;
 }

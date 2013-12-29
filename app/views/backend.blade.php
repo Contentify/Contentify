@@ -28,6 +28,7 @@
     // This notice must stay intact for legal use
     //
     </script>
+    <script src="{{ asset('libs/ckeditor/ckeditor.js') }}"></script>
     <script type="text/javascript" src="{{ asset('libs/backend.js') }}"></script>
 </head>
 <body>

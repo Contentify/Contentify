@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import "base.css";
 
 ::selection { background: #ff6100; color: white; }
@@ -6,7 +7,7 @@
  * Elements
  */
 
-body { font-family: Tahoma, Arial; font-size: 13px; color: #666; background-color: #E4E4E4; background-image:url(theme/backend/headerbg_h.png); background-repeat:repeat-x; }
+body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background-color: #E4E4E4; background-image:url(theme/backend/headerbg_h.png); background-repeat:repeat-x; }
 
 /* URLs */
 a, a:visited { color: #666666; text-decoration: none; font-weight: normal; }
@@ -61,6 +62,7 @@ h1.page-title { }
 .form-group.space-top {  }
 .form-group label { display: inline-block; min-width: 15%; padding-right: 20px; cursor: pointer; }
 .form-group label:after { /* content: ':'; */ }
+.form-group label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x }
 .form-group input { width: 40%; padding: 5px 10px; }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; color: #4082E3 }
 .form-group textarea { vertical-align: bottom; }
