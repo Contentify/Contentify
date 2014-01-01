@@ -2,6 +2,8 @@
 
 class ContactMessage extends \Ardent {
 
+    protected $softDelete = true;
+
     protected $fillable = array('username', 'email', 'title', 'text');
 
     public static $rules = array(

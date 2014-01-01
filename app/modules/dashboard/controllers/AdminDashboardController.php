@@ -2,6 +2,8 @@
 
 class AdminDashboardController extends \BackController {
 
+    protected $icon = 'house.png';
+
     public function getIndex()
     {
         $this->pageView('dashboard::index');

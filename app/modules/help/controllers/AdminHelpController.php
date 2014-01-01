@@ -2,6 +2,8 @@
 
 class AdminHelpController extends \BackController {
 
+    protected $icon = 'help.png';
+
     public function getIndex()
     {
         $this->pageView('help::index');

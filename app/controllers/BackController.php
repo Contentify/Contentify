@@ -17,6 +17,11 @@ class BackController extends BaseController {
     protected $controller = '';
 
     /**
+     * The file identifier of the controller icon
+     */
+    protected $icon = 'page_white_text.png';
+
+    /**
     * 
     */
     protected $form = array(
@@ -50,9 +55,9 @@ class BackController extends BaseController {
         /*
          * Set CRUD form default values
          */
-        if (! $this->form['module']) $this->form['module'] = $this->module;
-        if (! $this->form['controller']) $this->form['controller'] = $this->controller; 
-        if (! $this->form['modelName']) $this->form['modelName'] = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
+        if (! $this->form['module'])        $this->form['module']       = $this->module;
+        if (! $this->form['controller'])    $this->form['controller']   = $this->controller; 
+        if (! $this->form['modelName'])     $this->form['modelName']    = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
         if (! $this->form['template']) {
             if ($this->form['module'] === str_plural($this->form['model'])) {
                 $this->form['template'] = 'form';
@@ -87,6 +92,7 @@ class BackController extends BaseController {
 
             $view->with('module', $this->module);
             $view->with('controller', $this->controller);
+            $view->with('controllerIcon', $this->icon);
         });
     }
 
@@ -123,6 +129,9 @@ class BackController extends BaseController {
                 switch ($type) {
                     case 'new':
                         $buttons .= button(t('Create new'), route('admin.'.strtolower($this->form['controller']).'.create'), 'add');
+                        break;
+                    case 'category':
+                        $buttons .= button(t('Categories'), route('admin.'.strtolower($this->form['module']).'cats.index'), 'folder');
                         break;
                 }
             }

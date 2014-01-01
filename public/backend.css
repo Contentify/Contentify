@@ -7,7 +7,7 @@
  * Elements
  */
 
-body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background-color: #E4E4E4; background-image:url(theme/backend/headerbg_h.png); background-repeat:repeat-x; }
+body { }
 
 /* URLs */
 a, a:visited { color: #666666; text-decoration: none; font-weight: normal; }
@@ -35,7 +35,7 @@ textarea { padding: 5px 10px; border: 1px solid silver; border-radius: 5px; back
 input { border: 1px solid silver; border-radius: 5px; background-image:url(theme/bg_textbox.png); font-family: Tahoma, Arial; font-size: 13px; color: #666666; }
 input[type=checkbox] { width: auto !important; padding: 0px !important; cursor: pointer }
 input[type=text] { width: 300px; height: 22px !important; padding: 0px 10px }
-input[type=submit],input[type=reset] { height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
+input[type=submit], input[type=reset] { height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
 input[type=file] { height: 26px; } /* height = input["text"].height + 4px */
 button, input[type=button] { border: 1px solid silver; border-radius: 5px; height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
 button img { vertical-align: bottom; }
@@ -80,6 +80,7 @@ h1.page-title { }
 .content-table tr:hover { color:#333333 }
 
 .form-helpers.top { min-height: 26px; margin-bottom: 20px; }
+.form-helpers.top button { margin-right: 10px }
 .form-helpers.bottom { margin: 10px 0px; padding: 5px 0px; border-top: 1px dotted #CCC; border-bottom: 1px dotted #CCC; }
 
 /* Search-Box */
@@ -107,7 +108,7 @@ ul.pagination li.disabled { display: none }
  * Mainlayout
  */
 
-body { background-image: url(theme/backend/background.png); background-color: white }
+body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background-color: white; background-image: url(theme/backend/background.png); background-repeat: repeat-x; }
 
 #page-container { width: 986px; margin-left: auto; margin-right: auto }
 #header { position: relative; width: 100%; height: 219px; background-image: url(theme/backend/header.png) }

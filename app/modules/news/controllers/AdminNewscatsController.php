@@ -4,6 +4,8 @@ use App\Modules\News\Models\Newscat as Newscat;
 
 class AdminNewscatsController extends \BackController {
 
+    protected $icon = 'newspaper.png';
+
 	public function __construct()
 	{
 		$this->form['model'] = 'Newscat';

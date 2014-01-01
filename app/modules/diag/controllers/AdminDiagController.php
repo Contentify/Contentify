@@ -3,6 +3,8 @@
 use App, Config, View;
 
 class AdminDiagController extends \BackController {
+
+	protected $icon = 'information.png';
 	
 	public function getIndex()
 	{

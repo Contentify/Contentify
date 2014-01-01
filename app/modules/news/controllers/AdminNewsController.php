@@ -4,6 +4,8 @@ use App\Modules\News\Models\News as News;
 
 class AdminNewsController extends \BackController {
 
+    protected $icon = 'newspaper.png';
+
 	public function __construct()
 	{
 		$this->form['model'] = 'News';
@@ -14,8 +16,9 @@ class AdminNewsController extends \BackController {
     public function index()
     {
         $this->buildIndexForm(array(
+            'buttons'   => ['new', 'category'],
             'tableHead' => [t('ID') => 'id', t('Title') => 'title'],
-            'tableRow' => function($news)
+            'tableRow'  => function($news)
             {
                 return array(
                     $news->id,

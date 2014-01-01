@@ -52,7 +52,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
                     break; 
                 case 'reset':
                     $options['type'] = $type;
-                    $value = HTML::image(asset('icons/disk2.png'), 'Reset', ['width' => 16, 'height' => 16]).' '.$title;
+                    $value = HTML::image(asset('icons/undo.png'), 'Reset', ['width' => 16, 'height' => 16]).' '.$title;
                     $partial .= Form::button($value, $options);
                     break; 
             }

@@ -141,7 +141,7 @@
                     @if (isset($page))
                     <div class="page page-{{ strtolower($controller) }}">
                         <a class="form-head" href="{{ url('admin/'.strtolower($controller)) }}">
-                            <img src="{{ asset('icons/page_white_text.png') }}" width="16" height="16" alt="Icon" />{{ $controller }}
+                            <img src="{{ asset('icons/'.$controllerIcon) }}" width="16" height="16" alt="Icon" />{{ $controller }}
                         </a>
 
                         {{ $page }}

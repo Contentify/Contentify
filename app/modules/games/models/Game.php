@@ -2,6 +2,8 @@
 
 class Game extends \Ardent {
 
+    protected $softDelete = true;
+
     protected $fillable = array('title', 'tag');
 
     public static $rules = array(

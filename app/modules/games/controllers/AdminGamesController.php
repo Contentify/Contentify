@@ -4,6 +4,8 @@ use App\Modules\Games\Models\Game as Game;
 
 class AdminGamesController extends \BackController {
 
+    protected $icon = 'joystick.png';
+
 	public function __construct()
 	{
 		$this->form['model'] = 'Game';
