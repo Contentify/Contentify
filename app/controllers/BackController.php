@@ -57,7 +57,13 @@ class BackController extends BaseController {
          */
         if (! $this->form['module'])        $this->form['module']       = $this->module;
         if (! $this->form['controller'])    $this->form['controller']   = $this->controller; 
-        if (! $this->form['modelName'])     $this->form['modelName']    = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
+        if (! $this->form['modelName']) {
+            if (str_contains($this->form['model'], '\\')) {
+                $this->form['modelName'] = $this->form['model'];
+            } else {
+                $this->form['modelName'] = 'App\Modules\\'.$this->form['module'].'\Models\\'.$this->form['model'];
+            }
+        }
         if (! $this->form['template']) {
             if ($this->form['module'] === str_plural($this->form['model'])) {
                 $this->form['template'] = 'form';

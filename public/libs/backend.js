@@ -26,11 +26,12 @@ ddaccordion.init({
 
 $(document).ready(function()
 {  
-    var timeoutTime = 1000; // ms
-
     /**
      * Update date and time
      */
+    
+    var timeoutTime = 1000; // ms
+
     var updateDatetime = function () 
     {
         var now = new Date();
@@ -67,5 +68,23 @@ $(document).ready(function()
     $('*[data-confirm-delete]').click(function()
     {
         if (! confirm('Delete this item?')) return false;
+    });
+
+    /**
+     * Make sidebar responsive to scrolling
+     */
+    $(window).scroll(function () {
+        var $header     = $('#header');
+        var $sidebar    = $('#sidebar');
+        var $footer     = $('#footer');
+        if ($(window).scrollTop() > $header.height() - 22 && $(window).height() > $sidebar.height()) { // 22px = Sidebar offset
+            if ($(window).scrollTop() + $sidebar.height() + 22 < $footer.get(0).offsetTop) {
+                $sidebar.css({ 'position': 'fixed', top: '22px'});
+            } else {
+                $sidebar.css({ 'position': 'relative', top: $footer.get(0).offsetTop - $sidebar.height() - $header.height()});
+            }
+        } else {
+            $sidebar.css({ 'position': 'relative', top: 'auto'});
+        }
     });
 });

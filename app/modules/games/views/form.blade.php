@@ -7,7 +7,7 @@
 @endif
     {{ Form::smartText('title', 'Title') }}
 
-    {{ Form::smartText('tag', 'Tag') }}
+    {{ Form::smartText('short', 'Short Title') }}
 
     {{ Form::smartImageFile() }}
 

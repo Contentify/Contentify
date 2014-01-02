@@ -5,6 +5,7 @@ class InstallController extends BaseController {
 	public function index() 
 	{
 		$this->createDatabase();
+		$this->createUseGroups();
 	}
 
 	public function createDatabase()
@@ -31,7 +32,7 @@ class InstallController extends BaseController {
 
 		$this->create('games', function($table)
 		{
-			$table->string('tag', 6)->nullable();
+			$table->string('short', 6)->nullable();
 			$table->string('image')->nullable();
 		});
 
@@ -43,6 +44,29 @@ class InstallController extends BaseController {
 			$table->string('ip');
 			$table->boolean('new')->default(true);
 		});
+	}
+
+	public function createUseGroups()
+	{
+		Sentry::createGroup(array(
+        	'name'        => 'Visitors'
+        ));
+
+	    Sentry::createGroup(array(
+	        'name'        => 'Users'
+	        ));
+
+	    Sentry::createGroup(array(
+	        'name'        => 'Members'
+	        ));
+
+	    Sentry::createGroup(array(
+	        'name'        => 'Admins'
+	        ));
+
+	    Sentry::createGroup(array(
+	        'name'        => 'Super-Admins'
+	        ));
 	}
 
 	/**

@@ -32,7 +32,7 @@
     <script type="text/javascript" src="{{ asset('libs/backend.js') }}"></script>
 </head>
 <body>
-    <section id="page-container">
+    <div id="page-container">
         <noscript><div id="nojavascript"><img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon" /> JavaScript not enabled. Please enable JavaScript!</div></noscript>
         <header id="header">
             <a id="header-logo" href="{{ route('admin.dashboard') }}" title="Admin-Dashboard"><!-- empty --></a>
@@ -121,7 +121,7 @@
                                 <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=teams">Teams &amp; Groups</a></div>
 
                                 <div class="menu2"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=settings">Settings</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=contact">Contact</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon" />{{ HTML::link('admin/contact', 'Contact') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=statistics">Statistics</a></div>
 
                                 <div class="menu3"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon" /><a href="admin.php?site=roles">Roles</a></div>
