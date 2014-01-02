@@ -11,10 +11,21 @@
 */
 
 /**
+ * Shortcut. Returns the current user entity or null.
+ * 
+ * @return Cartalyst\Sentry\Users\Eloquent\User The User entitiy
+ */
+function user()
+{
+    return Sentry::getUser();
+}
+
+/**
  * Returns HTML code of a "image link" - a link with and image (and maybe a text).
  * If $image has no extension, the extension will be ".png".
  * If $image does not contain a path, the path "icons" will be used.
  * If $image has does not start with "http://" an asset link will be created.
+ * 
  * @param  string  $image       The link image
  * @param  string  $title       The link title
  * @param  string  $url         The link URL
@@ -45,6 +56,7 @@ function image_link($image, $title, $url, $showTitle = false, $attributes = arra
 
 /**
  * Returns HTML code for a button element. It may include an image element and a title text.
+ * 
  * @param  string $title The button title text
  * @param  string $url   The URL the button is targeting at
  * @param  string $image The Image (see get_image_url())
@@ -64,6 +76,7 @@ function button($title, $url, $image = '')
 
 /**
  * Pass in an image name, with or without extension, with or without path. Returns the URL.
+ * 
  * @param  string $image The image
  * @return string        The URL
  */

@@ -4,8 +4,8 @@ class InstallController extends BaseController {
 
 	public function index() 
 	{
-		$this->createDatabase();
-		$this->createUseGroups();
+		//$this->createDatabase();
+		$this->createUserGroups();
 	}
 
 	public function createDatabase()
@@ -46,31 +46,53 @@ class InstallController extends BaseController {
 		});
 	}
 
-	public function createUseGroups()
+	/**
+	 * Create user permision groups
+	 */
+	public function createUserGroups()
 	{
 		Sentry::createGroup(array(
-        	'name'        => 'Visitors'
+        	'name'        => 'Visitors',
+        	'permissions' => array()
         ));
 
 	    Sentry::createGroup(array(
-	        'name'        => 'Users'
-	        ));
+	        'name'        => 'Users',
+        	'permissions' => array(
+        		'frontend'	=> true
+        	)
+	    ));
 
 	    Sentry::createGroup(array(
-	        'name'        => 'Members'
-	        ));
+	        'name'        => 'Members',
+        	'permissions' => array(
+        		'frontend'	=> true,
+        		'internal'	=> true,
+        	)
+	    ));
 
 	    Sentry::createGroup(array(
-	        'name'        => 'Admins'
-	        ));
+	        'name'        => 'Admins',
+        	'permissions' => array(
+        		'frontend'	=> true,
+        		'internal'	=> true,
+        		'backend'	=> true
+        	)
+		));
 
 	    Sentry::createGroup(array(
-	        'name'        => 'Super-Admins'
-	        ));
+	        'name'        => 'Super-Admins',
+        	'permissions' => array(
+        		'frontend'	=> true,
+        		'internal'	=> true,
+        		'backend'	=> true
+        	)
+	    ));
 	}
 
 	/**
 	 * Helper functions. Creates a database table.
+	 * 
 	 * @param  string  	$tableName
 	 * @param  Closure 	$tableRows
 	 * @param  array 	$foreignKeys

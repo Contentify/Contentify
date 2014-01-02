@@ -28,8 +28,4 @@
         {{ Form::label('Message') }}
         {{ $msg->text }}
     </div>
-
-    <div class="form-group">
-        
-    </div>
 </form>

@@ -78,7 +78,7 @@ class BackController extends BaseController {
             /*
              * User profile picture
              */ 
-            if (Sentry::getUser()->image) {
+            if (user()->image) {
                 $userImage = asset('uploads/users/thumbnails/'.Sentry::getUser()->image);
             } else {
                 $userImage = asset('theme/user.png');
@@ -104,6 +104,7 @@ class BackController extends BaseController {
 
     /**
      * Builds an index form (page) from a model and $data
+     * 
      * @param  array $data Array with information how to build the form. See $defaults for details.
      */
     protected function buildIndexForm($data)
@@ -296,6 +297,7 @@ class BackController extends BaseController {
 
     /**
      * CRUD: edit entity
+     * 
      * @param  int $id
      */
     public function edit($id)
@@ -311,6 +313,7 @@ class BackController extends BaseController {
 
     /**
      * CRUD: update entity
+     * 
      * @param  int $id
      */
     public function update($id)
@@ -355,6 +358,7 @@ class BackController extends BaseController {
 
     /**
      * CRUD: delete entity
+     * 
      * @param  int $id
      */
     public function destroy($id)

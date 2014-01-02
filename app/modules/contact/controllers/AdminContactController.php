@@ -37,6 +37,9 @@ class AdminContactController extends \BackController {
     {
         $msg = ContactMessage::findOrFail($id);
 
+        $msg->new = false;
+        $msg->save();
+
         return $this->pageView('contact::admin_show', compact('msg'));
     }
 

@@ -106,3 +106,17 @@ require app_path().'/composers.php';
 */
 
 require app_path().'/helpers.php';
+
+/*
+|--------------------------------------------------------------------------
+| Permission Levels
+|--------------------------------------------------------------------------
+|
+| Permisson levels
+|
+*/
+
+define('READ',      1);
+define('CREATE',    2);
+define('EDIT',      3);
+define('DELETE',    4);

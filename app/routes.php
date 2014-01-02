@@ -29,18 +29,19 @@ Route::get('/', ['as' => 'home', 'uses' => function()
  * So there can't exist multiple modules that try to declare themselves as dashboard.
  * (Well, ofcourse they may try to... since routing is global. But they should not.)
  */ 
-Route::get('/admin', ['as' => 'admin.dashboard', 'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex']);
+Route::get('admin', ['as' => 'admin.dashboard', 'before' => 'admin', 'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex']);
 
 /*
  * Installation
  */
-Route::get('/install', 'InstallController@index');
+Route::get('install', 'InstallController@index');
 
 /*
  * Testing
  */
-Route::get('/test', function()
+Route::get('test', function()
 {
+    dd(user()->hasAccess('backend'));
     //echo(SmartFormGenerator::generate('news'));
 	//echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
 });
