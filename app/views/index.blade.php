@@ -3,13 +3,13 @@
 <head>
 	<!-- Running with Contentify CMS -->
 
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 
 	<title>Contentify</title>
 
-	<meta name="generator" content="Contentify" />
+	<meta name="generator" content="Contentify">
 
-	<link rel="stylesheet" href="{{ asset('frontend.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('frontend.css') }}" type="text/css">
 
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>

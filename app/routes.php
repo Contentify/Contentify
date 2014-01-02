@@ -21,11 +21,11 @@ Route::when('admin/*', 'admin');
  */ 
 Route::get('/', ['as' => 'home', 'uses' => function()
 {
-	return View::make('frontend');
+	return View::make('index');
 }]);
 
 /*
- * We prefer to use a route here than inside the modules' own routing file.
+ * We prefer to use a route here instead of inside the modules' own routing file.
  * So there can't exist multiple modules that try to declare themselves as dashboard.
  * (Well, ofcourse they may try to... since routing is global. But they should not.)
  */ 
@@ -41,7 +41,12 @@ Route::get('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
+    /*
+        Sentry::createGroup(array(
+            'name'        => 'Testers',
+            'permissions' => array('permission' => 1)
+        ));
+        */
     dd(user()->hasAccess('backend'));
     //echo(SmartFormGenerator::generate('news'));
-	//echo link_to_action('admin.games.destroy', 'Link', ['games' => 17, 'method' => 'delete']);
 });

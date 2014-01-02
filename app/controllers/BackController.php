@@ -4,7 +4,7 @@ class BackController extends BaseController {
     /**
      * The layout that should be used for responses.
      */
-    protected $layout = 'backend';
+    protected $layout = 'backend.index';
 
     /**
      * The name of the module
@@ -73,7 +73,7 @@ class BackController extends BaseController {
         }
 
         $self = $this;
-        View::composer('backend', function($view) use ($self)
+        View::composer('backend.index', function($view) use ($self)
         { 
             /*
              * User profile picture

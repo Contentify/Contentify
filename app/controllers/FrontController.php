@@ -4,7 +4,7 @@ class FrontController extends BaseController {
 	/**
      * The layout that should be used for responses.
      */
-    protected $layout = 'frontend';
+    protected $layout = 'index';
 
 	/**
 	 * Constructor call
