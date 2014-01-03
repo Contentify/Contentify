@@ -8,7 +8,7 @@ class AdminGamesController extends \BackController {
 
 	public function __construct()
 	{
-		$this->form['model'] = 'Game';
+		$this->model = 'Game';
 
 		parent::__construct();
 	}

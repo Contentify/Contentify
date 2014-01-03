@@ -7,19 +7,28 @@ class NewsController extends \FrontController {
 
 	public function __construct()
 	{
-		//$this->form['model'] = 'News';
+		$this->form['model'] = 'News';
 
-		//parent::__construct();
+		parent::__construct();
 	}
 
     public function index()
     {
-        return 'News.index called';
+        $this->buildIndexForm(array(
+            'tableHead' => [t('ID') => 'id', t('Title') => 'title'],
+            'tableRow'  => function($news)
+            {
+                return array(
+                    $news->id,
+                    $news->title
+                    );
+            }
+            ), 'front');
     }
 
     public function showOverview()
     {
-        $hasAccess = (user() and user()->hasAccess('internal'));
+        $hasAccess = (user() and user()->hasAccess('internal')); // Internal news are protected and require the "internal" permission
         $allNews = News::wherePublished(true)->where('internal', '<=', $hasAccess)->orderBy('created_at', 'DESC')->take(5)->get();
 
         $this->pageView('news::show_overview', compact('allNews'));
@@ -31,7 +40,7 @@ class NewsController extends \FrontController {
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($news->internal and ! $hasAccess) {
-            throw new \Exception('Access denied.');
+            return $this->message(trans('app.access_denied'));
         }
 
         $news->access_counter++;

@@ -9,7 +9,7 @@ class AdminContactController extends \BackController {
 
 	public function __construct()
 	{
-		$this->form['model'] = 'ContactMessage';
+		$this->model = 'ContactMessage';
 
 		parent::__construct();
 	}

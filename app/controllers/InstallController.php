@@ -48,6 +48,7 @@ class InstallController extends BaseController {
 
 	/**
 	 * Create user permision groups
+	 * @return void
 	 */
 	public function createUserGroups()
 	{
@@ -97,6 +98,7 @@ class InstallController extends BaseController {
 	 * @param  Closure 	$tableRows
 	 * @param  array 	$foreignKeys
 	 * @param  boolean 	$isContentObject
+	 * @return void
 	 */
 	private function create($tableName, Closure $tableRows, $foreignKeys = array(), $isContentObject = true)
 	{

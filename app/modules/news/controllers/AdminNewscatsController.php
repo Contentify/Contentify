@@ -8,8 +8,7 @@ class AdminNewscatsController extends \BackController {
 
 	public function __construct()
 	{
-		$this->form['model'] = 'Newscat';
-        $this->form['module'] = 'News';
+		$this->model = 'Newscat';
 
 		parent::__construct();
 	}
