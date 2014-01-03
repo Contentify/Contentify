@@ -46,6 +46,28 @@ class BaseController extends Controller {
         $this->controller   = str_replace(['Admin', 'Controller'], '', $className);
 
         /*
+         * Set model full name
+         */
+        if (! $this->modelFullName) {
+            if (str_contains($this->model, '\\')) {
+                $this->modelFullName = $this->model;
+            } else {
+                $this->modelFullName = 'App\Modules\\'.$this->module.'\Models\\'.$this->model;
+            }
+        }
+
+        /*
+         * Set CRUD form template name
+         */
+        if (! $this->formTemplate) {
+            if ($this->module === str_plural($this->model)) {
+                $this->formTemplate = 'form';
+            } else {
+                $this->formTemplate = strtolower($this->controller).'_form'; // If modelname and modulename differ, the form name should be e. g. "users_form"
+            }
+        }
+
+        /*
          * Enable auto CSRF protection
          */ 
         $this->beforeFilter('csrf', array('on' => 'post'));

@@ -18,24 +18,6 @@ class BackController extends BaseController {
     {
         parent::__construct();
 
-        /*
-         * Set CRUD form default values
-         */
-        if (! $this->modelFullName) {
-            if (str_contains($this->model, '\\')) {
-                $this->modelFullName = $this->model;
-            } else {
-                $this->modelFullName = 'App\Modules\\'.$this->module.'\Models\\'.$this->model;
-            }
-        }
-        if (! $this->formTemplate) {
-            if ($this->module === str_plural($this->model)) {
-                $this->formTemplate = 'form';
-            } else {
-                $this->formTemplate = strtolower($this->controller).'_form'; // If modelname and modulename differ, the form name should be e. g. "users_form"
-            }
-        }
-
         $self = $this;
         View::composer('backend.index', function($view) use ($self)
         { 
@@ -104,7 +86,7 @@ class BackController extends BaseController {
             $entity->forceSave();
         }
 
-        $this->messageFlash($this->form['model'].t(' created.'));
+        $this->messageFlash($this->model.t(' created.'));
         if (Input::get('_form_apply')) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($entity->id));
         } else {
@@ -166,7 +148,7 @@ class BackController extends BaseController {
             $entity->forceSave();
         }    
 
-        $this->messageFlash($this->form['model'].t(' updated.'));
+        $this->messageFlash($this->model.t(' updated.'));
         if (Input::get('_form_apply')) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($id));
         } else {
@@ -189,7 +171,7 @@ class BackController extends BaseController {
     }
 
     /**
-     * Helper method for searching
+     * Helper action method for searching. All we do here is to redirect with the input.
      *
      * @return \Illuminate\Http\RedirectResponse
      */

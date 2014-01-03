@@ -7,7 +7,7 @@ class NewsController extends \FrontController {
 
 	public function __construct()
 	{
-		$this->form['model'] = 'News';
+		$this->model = 'News';
 
 		parent::__construct();
 	}
@@ -15,6 +15,7 @@ class NewsController extends \FrontController {
     public function index()
     {
         $this->buildIndexForm(array(
+            'buttons'   => NULL,
             'tableHead' => [t('ID') => 'id', t('Title') => 'title'],
             'tableRow'  => function($news)
             {
@@ -22,7 +23,8 @@ class NewsController extends \FrontController {
                     $news->id,
                     $news->title
                     );
-            }
+            },
+            'actions'   => []
             ), 'front');
     }
 
@@ -49,7 +51,7 @@ class NewsController extends \FrontController {
         $this->pageView('news::show', compact('news'));
     }
 
-    public function search($subject)
+    public function globalSearch($subject)
     {
         $allNews = News::where('title', 'LIKE', '%'.$subject.'%')->get();
 
