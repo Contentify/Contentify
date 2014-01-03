@@ -17,6 +17,13 @@ class NewsController extends \FrontController {
         return 'News.index called';
     }
 
+    public function show($id)
+    {
+        $news = News::findOrFail($id);
+
+        $this->pageView('news::show', compact('news'));
+    }
+
     public function search($subject)
     {
         $allNews = News::where('title', 'LIKE', '%'.$subject.'%')->get();

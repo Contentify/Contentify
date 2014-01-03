@@ -12,5 +12,6 @@ class News extends \Ardent {
 
     public static $relationsData = array(
         'newscat' => array(self::BELONGS_TO, 'App\Modules\News\Models\Newscat'),
+        'creator' => array(self::BELONGS_TO, 'User'),
     );
 }

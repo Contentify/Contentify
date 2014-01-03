@@ -7,6 +7,6 @@
 	<p>Warning: Access denied.</p>
 	<p>You are not allowed to access the backend!</p>
 	<hr>
-	<button onclick="javascript:window.location='{{ route('home') }}'">Back</button>
+	<button onclick="javascript:window.location='{{ route('home') }}'">Cancel</button>
 </div>
 @stop

@@ -21,7 +21,7 @@ Route::when('admin/*', 'admin');
  */ 
 Route::get('/', ['as' => 'home', 'uses' => function()
 {
-	return View::make('index');
+	return View::make('frontend.index');
 }]);
 
 /*

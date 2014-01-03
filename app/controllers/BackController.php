@@ -242,7 +242,7 @@ class BackController extends BaseController {
         /*
          * Generate the view
          */
-        $this->pageView('index_form', array(
+        $this->pageView('backend.index_form', array(
             'buttons'       => $buttons,
             'contentTable'  => $contentTable,
             'orderSwitcher' => $orderSwitcher,
@@ -265,6 +265,8 @@ class BackController extends BaseController {
     public function store()
     {
         $entity = new $this->form['modelName'](Input::all());
+        $entity->creator_id = user()->id;
+        $entity->updater_id = user()->id;
 
         $okay = $entity->save();
 
@@ -282,7 +284,7 @@ class BackController extends BaseController {
 
             $extension      = $file->getClientOriginalExtension();
             $fileName       = $entity->id.'.'.$extension;
-            $uploadedFile   = $file->move(public_path().'/uploads/'.$this->form['controller'], $fileName);
+            $uploadedFile   = $file->move(public_path().'/uploads/'.strtolower($this->form['controller']), $fileName);
             $entity->image  = $fileName;
             $entity->forceSave();
         }
@@ -322,6 +324,7 @@ class BackController extends BaseController {
         $entity = $model::findOrFail($id);
 
         $entity->fill(Input::all());
+        $entity->updater_id = user()->id;
         $okay = $entity->save();
 
         if (! $okay) {
@@ -336,14 +339,14 @@ class BackController extends BaseController {
                 return Redirect::route('admin.'.strtolower($this->form['controller']).'.create')->withInput()->withErrors(['x' => 'Invalid image']);
             }
 
-            $oldImage = public_path().'/uploads/'.$this->form['controller'].'/'.$entity->image;
+            $oldImage = public_path().'/uploads/'.strtolower($this->form['controller']).'/'.$entity->image;
             if (File::isFile($oldImage)) {
                 File::delete($oldImage); // We need to delete the old file to ensure we never have something like "123.jpg" and "123.png"
             }
 
             $extension      = $file->getClientOriginalExtension();
             $fileName       = $entity->id.'.'.$extension;
-            $uploadedFile   = $file->move(public_path().'/uploads/'.$this->form['controller'], $fileName);
+            $uploadedFile   = $file->move(public_path().'/uploads/'.strtolower($this->form['controller']), $fileName);
             $entity->image  = $fileName;
             $entity->forceSave();
         }    

@@ -4,8 +4,8 @@ class InstallController extends BaseController {
 
 	public function index() 
 	{
-		//$this->createDatabase();
-		$this->createUserGroups();
+		$this->createDatabase();
+		//$this->createUserGroups();
 	}
 
 	public function createDatabase()
@@ -14,10 +14,10 @@ class InstallController extends BaseController {
 		 * Notice: The default length of strings is 255 chars.
 		 */
 
-		$this->create('newscats', function($table)
-		{
-			$table->string('image')->nullable();
-		});
+		//$this->create('newscats', function($table)
+		//{
+		//	$table->string('image')->nullable();
+		//});
 
 		$this->create('news', function($table)
 		{
@@ -135,8 +135,10 @@ class InstallController extends BaseController {
 				} else {
 					$table->string('title', 70);
 				}
-				$table->integer('creator_id')->default(0);
-				$table->integer('updater_id')->default(0);
+				$table->integer('creator_id')->unsigned()->default(0);
+				$table->foreign('creator_id')->references('id')->on('users');
+				$table->integer('updater_id')->unsigned()->default(0);
+				$table->foreign('updater_id')->references('id')->on('users');
 				$table->integer('access_counter')->default(0);
 				$table->timestamps();
 			});
