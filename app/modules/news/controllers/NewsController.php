@@ -17,9 +17,25 @@ class NewsController extends \FrontController {
         return 'News.index called';
     }
 
+    public function showOverview()
+    {
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        $allNews = News::wherePublished(true)->where('internal', '<=', $hasAccess)->orderBy('created_at', 'DESC')->take(5)->get();
+
+        $this->pageView('news::show_overview', compact('allNews'));
+    }
+
     public function show($id)
     {
-        $news = News::findOrFail($id);
+        $news = News::findOrFail($id)->wherePublished(true)->first();
+
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        if ($news->internal and ! $hasAccess) {
+            throw new \Exception('Access denied.');
+        }
+
+        $news->access_counter++;
+        $news->save();
 
         $this->pageView('news::show', compact('news'));
     }

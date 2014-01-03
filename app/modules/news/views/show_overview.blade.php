@@ -1,3 +1,4 @@
+@foreach ($allNews as $news)
 <article class="news">
     <header>
         <h2>{{ $news->title }}</h2>
@@ -12,8 +13,6 @@
         <div class="intro">
             {{ $news->intro }}
         </div>
-        <div class="text">
-            {{ $news->text }}
-        </div>
     </div>
 </article>
+@endforeach

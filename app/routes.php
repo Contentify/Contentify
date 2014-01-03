@@ -17,14 +17,12 @@
 Route::when('admin/*', 'admin');
 
 /*
- * Homepages:
+ * Frontend dashboard.
  */ 
-Route::get('/', ['as' => 'home', 'uses' => function()
-{
-	return View::make('frontend.index');
-}]);
+Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Controllers\NewsController@showOverview']);
 
 /*
+ * Backend dashboard.
  * We prefer to use a route here instead of inside the modules' own routing file.
  * So there can't exist multiple modules that try to declare themselves as dashboard.
  * (Well, ofcourse they may try to... since routing is global. But they should not.)
