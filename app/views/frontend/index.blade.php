@@ -22,7 +22,7 @@
 </head>
 <body>
 	<div id="page-container">
-		<header id="header">
+		<header id="header" onclick="window.location='{{ route('home') }}'">
 			<h2>Contentify Testpage</h2>
 		</header>
 

@@ -30,6 +30,29 @@ Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Controllers\NewsCon
 Route::get('admin', ['as' => 'admin.dashboard', 'before' => 'admin', 'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex']);
 
 /*
+ * Comment component
+ */
+Route::post('comments/create/{foreigntype}/{foreignid}', ['as' => 'comments.store', 'uses' => function($foreignType, $foreignId)
+{
+    return Comments::store($foreignType, $foreignId);
+}]);
+
+Route::get('comments/{id}/edit', ['as' => 'comments.edit', 'uses' => function($id)
+{
+    return Comments::edit($id);
+}]);
+
+Route::put('comments/{id}/update', ['as' => 'comments.update', 'uses' => function($id)
+{
+    return Comments::update($id);
+}]);
+
+Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'uses' => function($id)
+{
+    return Comments::delete($id);
+}]);
+
+/*
  * Installation
  */
 Route::get('install', 'InstallController@index');
@@ -39,12 +62,8 @@ Route::get('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    /*
-        Sentry::createGroup(array(
-            'name'        => 'Testers',
-            'permissions' => array('permission' => 1)
-        ));
-        */
-    dd(user()->hasAccess('backend'));
+    Comments::show(123);
+    echo('123');
+    //dd(user()->hasAccess('backend'));
     //echo(SmartFormGenerator::generate('news'));
 });

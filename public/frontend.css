@@ -30,6 +30,7 @@ tr { }
 form {  }
 fieldset { border: none; }
 input { font-family: Verdana; font-size: 14px }
+textarea { font-family: Verdana; font-size: 14px }
 
 blockquote { background: #F4F4F4; border: 1px dotted gray; padding: 5px; margin: 5px; }
 
@@ -54,8 +55,18 @@ h1.page-title { }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; }
 .form-group textarea { vertical-align: bottom; }
 .form-actions { }
-.form-actions input[type=submit] { padding: 10px 20px; border: 2px solid silver; color: #666; }
-.form-actions input[type=submit]:focus { border-color: #ff6100; }
+.form-actions input[type=submit], .form-actions button{ padding: 10px 20px; border: 2px solid silver; color: #666; }
+.form-actions input[type=submit]:focus, .form-actions button:focus { border-color: #ff6100; }
+
+/*
+ * Modules
+ */
+
+.create-comment { margin-top: 20px }
+.create-comment .textarea-wrapper { margin: 20px 0px; padding: 0px 20px }
+.create-comment p { margin: 0px }
+.create-comment textarea { width: 100%; height: 70px; margin-left: -20px; padding: 10px 20px; border: 2px solid silver; color: #666; }
+.create-comment textarea:focus { border-color: #ff6100; }
 
 /*
  * Mainlayout

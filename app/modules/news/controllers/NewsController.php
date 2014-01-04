@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News as News;
-use URL;
+use URL, HTML;
 
 class NewsController extends \FrontController {
 
@@ -16,12 +16,14 @@ class NewsController extends \FrontController {
     {
         $this->buildIndexForm(array(
             'buttons'   => NULL,
-            'tableHead' => [t('ID') => 'id', t('Title') => 'title'],
+            'tableHead' => [t('ID') => 'id', t('Title') => 'title', t('Category') => NULL, t('Date') => 'created_at'],
             'tableRow'  => function($news)
             {
                 return array(
                     $news->id,
-                    $news->title
+                    HTML::link(URL::route('news.show', [$news->id]), $news->title),
+                    $news->newscat->title,
+                    $news->created_at->toDateString()
                     );
             },
             'actions'   => []
@@ -38,7 +40,7 @@ class NewsController extends \FrontController {
 
     public function show($id)
     {
-        $news = News::findOrFail($id)->wherePublished(true)->first();
+        $news = News::whereId($id)->wherePublished(true)->first();
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($news->internal and ! $hasAccess) {

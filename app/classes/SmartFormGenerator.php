@@ -89,7 +89,6 @@ class SmartFormGenerator {
                     $html = "{{ Form::smartTextarea('{$name}', '{$title}') }}";
                     break;
                 case 'timestamp':
-                    if ($size > 0)
                     $html = "{{ Form::smartText('{$name}', '{$title}') }}";
                     break;
                 case 'image':

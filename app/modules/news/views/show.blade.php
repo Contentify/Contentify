@@ -17,3 +17,5 @@
         </div>
     </div>
 </article>
+
+{{ Comments::show('news', $news->id) }}

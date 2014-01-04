@@ -7,7 +7,7 @@ class Game extends \Ardent {
     protected $fillable = array('title', 'short');
 
     public static $rules = array(
-        'title'   => 'required',
+        'title'     => 'required',
         'short'     => 'required',
     );
 

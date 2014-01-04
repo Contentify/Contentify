@@ -14,5 +14,6 @@
             {{ $news->intro }}
         </div>
     </div>
+    {{ HTML::link(URL::route('news.show', [$news->id]), 'Read more...') }}
 </article>
 @endforeach
