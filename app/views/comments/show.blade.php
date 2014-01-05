@@ -7,8 +7,15 @@
         {{ $comment->text }}
     </div>
     @if (user())
-    {{ HTML::link(URL::route('comments.edit', [$comment->id]), 'Edit') }}
-    {{ HTML::link(URL::route('comments.delete', [$comment->id]).'?method=DELETE', 'Delete') }}
+    {{ HTML::link(URL::route('comments.edit', [$comment->id]), 'Edit', ['class' => 'edit', 'data-id' => $comment->id]) }}
+    {{ HTML::link(URL::route('comments.delete', [$comment->id]).'?method=DELETE', 'Delete', ['class' => 'delete', 'data-id' => $comment->id]) }}
     @endif
 </article>
 @endforeach
+
+{{ HTML::script('libs/comments.js') }}
+<script>
+var baseUrl     = '{{ Config::get('app.url') }}' + '/public/';
+var foreignType = '{{ $foreignType }}';
+var foreignId   = '{{ $foreignId }}';
+</script>

@@ -6,7 +6,7 @@ class Comments {
     {
         $comments = Comment::where('foreign_type', '=', $foreignType)->where('foreign_id', '=', $foreignId)->get();
 
-        echo(View::make('comments.show', compact('comments'))->render());
+        echo(View::make('comments.show', compact('comments', 'foreignType', 'foreignId'))->render());
 
         if (user()) {
             echo(View::make('comments.form', compact('foreignType', 'foreignId'))->render());
@@ -35,6 +35,18 @@ class Comments {
         }
 
         return Redirect::to(Input::get('_url'));
+    }
+
+    /**
+     * 
+     * @param  int $id The ID of the comment
+     * @return mixed
+     */
+    public static function get($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        return Response::json($comment);
     }
 
     /**
@@ -81,6 +93,6 @@ class Comments {
 
         $comment->delete();
 
-        return Redirect::to(URL::previous());
+        return Response::make('', 200);
     }
 }

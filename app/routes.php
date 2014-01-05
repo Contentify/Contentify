@@ -32,10 +32,18 @@ Route::get('admin', ['as' => 'admin.dashboard', 'before' => 'admin', 'uses' => '
 /*
  * Comment component
  */
-Route::post('comments/create/{foreigntype}/{foreignid}', ['as' => 'comments.store', 'uses' => function($foreignType, $foreignId)
+Route::post('comments/create', ['as' => 'comments.store', 'uses' => function()
 {
+    $foreignType = Input::get('foreigntype');
+    $foreignId = Input::get('foreignid');
+    Log::info("foreignType: {$foreignType}");
     return Comments::store($foreignType, $foreignId);
 }]);
+
+Route::get('comments/{id}', function($id)
+{
+    return Comments::get($id);
+});
 
 Route::get('comments/{id}/edit', ['as' => 'comments.edit', 'uses' => function($id)
 {

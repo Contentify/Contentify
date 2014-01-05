@@ -11,6 +11,6 @@
             {{ Form::textarea('text') }}
         </div>
 
-        {{ Form::actions(['Submit']) }}
+        {{ Form::button('Save', ['class' => 'save']) }}
     {{ Form::close() }}
 </div>
