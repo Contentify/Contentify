@@ -152,7 +152,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
     }
 
     /**
-     * Create HTML code for a image upload input element.
+     * Create HTML code for an image upload input element.
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string

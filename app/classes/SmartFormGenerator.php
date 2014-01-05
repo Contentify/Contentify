@@ -104,45 +104,6 @@ class SmartFormGenerator {
                     break;
             }
             $html .= "\n";
-
-            /*
-            switch ($type) {
-                case 'tinyint':
-                    $html = Form::label($name, $title)."\n".Form::checkbox($name, 1, $default)."\n";
-                    break;
-                case 'int':
-                    unset($attributes['maxlength']);
-                    $attributes['class'] = 'numeric';
-                    $html = Form::label($name, $title)."\n".Form::text($name, $default, $attributes)."\n";
-                    break;
-                case 'varchar':
-                    $html = Form::label($name, $title)."\n".Form::text($name, $default, $attributes)."\n";
-                    break;
-                case 'email':
-                    $html = Form::label($name, $title)."\n".Form::email($name, $default, $attributes)."\n";
-                    break;
-                case 'password':
-                    $html = Form::label($name, $title)."\n".Form::password($name, $attributes)."\n";
-                    break;
-                case 'text':
-                    $html = Form::label($name, $title)."\n".Form::textarea($name, NULL, $attributes)."\n";
-                    break;
-                case 'timestamp':
-                    if ($size > 0)
-                    $html = Form::label($name, $title)."\n".Form::text($name, $default, ['class' => 'timestamp'])."\n";
-                    break;
-                case 'image':
-                    unset($attributes['maxlength']);
-                    $html = Form::label($name, $title)."\n".Form::file($name, $attributes)."\n";
-                    break;
-                case 'foreign':
-                    $html = Form::label($name, $title)."\n".Form::select($name, array(), NULL, $attributes)."\n";
-                    break;
-                default:
-                    $html = '<!-- Unknown type: '.$type.' -->';
-                    break;
-            }
-             */
         }
 
         return $html;

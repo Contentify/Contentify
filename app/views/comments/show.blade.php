@@ -15,7 +15,6 @@
 
 {{ HTML::script('libs/comments.js') }}
 <script>
-var baseUrl     = '{{ Config::get('app.url') }}' + '/public/';
 var foreignType = '{{ $foreignType }}';
 var foreignId   = '{{ $foreignId }}';
 </script>

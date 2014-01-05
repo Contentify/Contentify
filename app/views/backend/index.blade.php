@@ -31,7 +31,7 @@
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
-<body>
+<body data-base-url="{{ Config::get('app.url') }}/public/">
     <div id="page-container">
         <noscript><div id="nojavascript"><img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon"> JavaScript not enabled. Please enable JavaScript!</div></noscript>
         <header id="header">

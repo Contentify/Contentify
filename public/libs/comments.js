@@ -1,7 +1,5 @@
 $(document).ready(function()
 {
-    var commentEditMode = 0; // Default: Create
-
     $('.create-comment .save').click(function()
     {
         $.ajax({

@@ -17,7 +17,7 @@
     {{ HTML::script('libs/jquery-1.10.2.min.js') }}
     {{ HTML::script('libs/frontend.js') }}
 </head>
-<body>
+<body data-base-url="{{ Config::get('app.url') }}/public/">
     <div id="page-container">
         <header id="header" onclick="window.location='{{ route('home') }}'">
             <h2>Contentify Testpage</h2>

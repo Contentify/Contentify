@@ -24,8 +24,12 @@ ddaccordion.init({
     }
 });
 
+var baseUrl;
+
 $(document).ready(function()
 {  
+    baseUrl = $('body').attr('data-base-url');
+    
     /**
      * Update date and time
      */
