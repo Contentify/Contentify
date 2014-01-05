@@ -11,25 +11,25 @@
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('backend.css') }}">
-    <link rel="Stylesheet" type="text/css" href="{{ asset('libs/jqueryui/jquery-ui-1.8.11.custom.css') }}">
-    <link rel="Stylesheet" type="text/css" href="{{ asset('libs/jquery.ui.timepicker.css') }}">
+    {{ HTML::style('backend.css') }}
+    {{ HTML::style('libs/jqueryui/jquery-ui-1.8.11.custom.css') }}
+    {{ HTML::style('libs/jquery.ui.timepicker.css') }}
     
     <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    {{ HTML::script('http://html5shiv.googlecode.com/svn/trunk/html5.js') }}
     <![endif]-->
-    <script type="text/javascript" src="{{ asset('libs/jquery-1.10.2.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('libs/jquery-ui-1.8.11.custom.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('libs/quicktip.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('libs/ddaccordion.js') }}">
+    {{ HTML::script('libs/jquery-1.10.2.min.js') }}
+    {{ HTML::script('libs/jquery-ui-1.8.11.custom.min.j') }}
+    {{ HTML::script('libs/quicktip.js') }}
+    <script src="{{ asset('libs/ddaccordion.js') }}">
     //
     // Accordion Content script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
     // Visit http://www.dynamicDrive.com for hundreds of DHTML scripts
     // This notice must stay intact for legal use
     //
     </script>
-    <script src="{{ asset('libs/ckeditor/ckeditor.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('libs/backend.js') }}"></script>
+    {{ HTML::script('libs/ckeditor/ckeditor.js') }}
+    {{ HTML::script('libs/backend.js') }}
 </head>
 <body>
     <div id="page-container">
