@@ -36,9 +36,9 @@ class BackController extends BaseController {
              */
             $count = DB::table('contact_messages')->where('new', true)->count();
             if ($count > 0) {
-                $contactMessages = link_to('admin/contact', $count.t(' new messages'));
+                $contactMessages = link_to('admin/contact', Lang::choice('app.new_messages', $count));
             } else {
-                $contactMessages = 'No new messages.';
+                $contactMessages = trans('app.no_messages');
             }
             $view->with('contactMessages', $contactMessages);   
 
@@ -86,7 +86,7 @@ class BackController extends BaseController {
             $entity->forceSave();
         }
 
-        $this->messageFlash($this->model.t(' created.'));
+        $this->messageFlash(trans('app.created', [$this->model]));
         if (Input::get('_form_apply')) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($entity->id));
         } else {
@@ -148,7 +148,7 @@ class BackController extends BaseController {
             $entity->forceSave();
         }    
 
-        $this->messageFlash($this->model.t(' updated.'));
+        $this->messageFlash(trans('app.updated', [$this->model]));
         if (Input::get('_form_apply')) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($id));
         } else {
@@ -166,7 +166,7 @@ class BackController extends BaseController {
         $model = $this->modelFullName;
         $model::destroy($id);
 
-        $this->messageFlash($this->form['model'].t(' deleted.'));
+        $this->messageFlash(trans('app.deleted', [$this->model]));
         return Redirect::route('admin.'.strtolower($this->controller).'.index');
     }
 

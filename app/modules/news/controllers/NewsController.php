@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News as News;
-use URL, HTML, BackController;
+use URL, HTML, FrontController;
 
 class NewsController extends FrontController {
 

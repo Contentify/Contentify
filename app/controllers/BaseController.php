@@ -178,10 +178,10 @@ class BaseController extends Controller {
                 $type = strtolower($type);
                 switch ($type) {
                     case 'new':
-                        $buttons .= button(t('Create new'), route($face.'.'.strtolower($this->controller).'.create'), 'add');
+                        $buttons .= button(trans('app.create'), route($face.'.'.strtolower($this->controller).'.create'), 'add');
                         break;
                     case 'category':
-                        $buttons .= button(t('Categories'), route($face.'.'.strtolower($this->module).'cats.index'), 'folder');
+                        $buttons .= button(trans('app.categories'), route($face.'.'.strtolower($this->module).'cats.index'), 'folder');
                         break;
                 }
             }
@@ -239,7 +239,7 @@ class BaseController extends Controller {
             }
         }
         if (sizeof($data['actions']) > 0) {
-            $tableHead[] = t('Actions');
+            $tableHead[] = trans('app.actions');
         }
 
         $tableRows = array();
@@ -254,12 +254,12 @@ class BaseController extends Controller {
                         switch ($action) {
                             case 'edit':
                                 $actionsCode .= image_link('page_edit', 
-                                    t('Edit'), 
+                                    trans('app.edit'), 
                                     route($face.'.'.strtolower($this->controller).'.edit', [$entity->id]));
                                 break;
                             case 'delete':
                                 $actionsCode .= image_link('bin', 
-                                    t('Delete'), 
+                                    trans('app.delete'), 
                                     route($face.'.'.strtolower($this->controller).'.destroy', [$entity->id]).'?method=DELETE',
                                     false,
                                     ['data-confirm-delete' => true]);
