@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Auth\Controllers;
 
-use View, Sentry, Input, Redirect, Session, Captcha;
+use View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception;
 
-class RegistrationController extends \FrontController {
+class RegistrationController extends FrontController {
 
 	public function getCreate()
 	{
@@ -38,7 +38,7 @@ class RegistrationController extends \FrontController {
 			$user->addGroup($userGroup);
 
 			$this->message(t('Registration successful!'));
-		} catch(\Exception $e) {
+		} catch(Exception $e) {
 			return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => $e->getMessage()]);
 		}
 	}

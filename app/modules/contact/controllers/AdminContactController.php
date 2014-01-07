@@ -1,9 +1,9 @@
 <?php namespace App\Modules\Contact\Controllers;
 
 use App\Modules\Contact\Models\ContactMessage as ContactMessage;
-use HTML, View;
+use HTML, View, BackController;
 
-class AdminContactController extends \BackController {
+class AdminContactController extends BackController {
 
     protected $icon = 'email_open.png';
 

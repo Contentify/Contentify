@@ -1,8 +1,9 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News as News;
+use BackController;
 
-class AdminNewsController extends \BackController {
+class AdminNewsController extends BackController {
 
     protected $icon = 'newspaper.png';
 

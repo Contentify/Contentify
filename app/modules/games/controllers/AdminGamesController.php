@@ -1,8 +1,9 @@
 <?php namespace App\Modules\Games\Controllers;
 
 use App\Modules\Games\Models\Game as Game;
+use BackController;
 
-class AdminGamesController extends \BackController {
+class AdminGamesController extends BackController {
 
     protected $icon = 'joystick.png';
 

@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Auth\Controllers;
 
-use View, Sentry, Input, Session, Redirect;
+use View, Sentry, Input, Session, Redirect, Exception, FrontController;
 
-class LoginController extends \FrontController {
+class LoginController extends FrontController {
 	
 	public function getIndex()
 	{
@@ -26,7 +26,7 @@ class LoginController extends \FrontController {
 			} else {
 				return Redirect::to('/');	
 			}
-		} catch(\Exception $e) {
+		} catch(Exception $e) {
 			return Redirect::to('auth/login')->withErrors(['message' => $e->getMessage()]);
 		}
 	}

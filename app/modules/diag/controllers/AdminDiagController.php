@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Diag\Controllers;
 
-use App, Config, View;
+use App, Config, View, BackController;
 
-class AdminDiagController extends \BackController {
+class AdminDiagController extends BackController {
 
 	protected $icon = 'information.png';
 	

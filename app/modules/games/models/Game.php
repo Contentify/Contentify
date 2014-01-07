@@ -1,6 +1,8 @@
 <?php namespace App\Modules\Games\Models;
 
-class Game extends \Ardent {
+use Ardent;
+
+class Game extends Ardent {
 
     protected $softDelete = true;
 

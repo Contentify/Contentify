@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Auth\Controllers;
 
-use View, Sentry, Input, Session, Redirect;
+use View, Sentry, Input, Session, Redirect, FrontController;
 
-class LogoutController extends \FrontController {
+class LogoutController extends FrontController {
 
 	public function getIndex()
 	{

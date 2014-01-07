@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Search\Controllers;
 
-use Input, Redirect, Validator;
+use Input, Redirect, Validator, FrontController;
 
-class SearchController extends \FrontController {
+class SearchController extends FrontController {
 
 	public function getIndex()
 	{
