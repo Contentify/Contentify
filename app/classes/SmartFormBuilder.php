@@ -162,4 +162,14 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
         $partial = '<div class="form-group">'.self::label($name, $title).' '.self::file($name).'</div>';
         return $partial;
     }
+
+    /**
+     * Create HTML code for a email input element.
+     * @return string
+     */
+    public static function smartCaptcha($name = 'captcha', $title = 'Captcha')
+    {
+        $partial = '<div class="form-group">'.self::label($name, $title).' '.HTML::image(URL::route('captcha'), 'Captcha').' '.self::text($name).'</div>';
+        return $partial;
+    }
 }

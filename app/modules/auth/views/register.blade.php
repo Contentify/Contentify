@@ -11,5 +11,7 @@
 
     {{ Form::smartPassword('password2', 'Password') }}
 
+    {{ Form::smartCaptcha() }}
+
     {{ Form::actions(['submit']) }}
 {{ Form::close() }}

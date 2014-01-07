@@ -36,7 +36,6 @@ Route::post('comments/create', ['as' => 'comments.store', 'uses' => function()
 {
     $foreignType = Input::get('foreigntype');
     $foreignId = Input::get('foreignid');
-    Log::info("foreignType: {$foreignType}");
     return Comments::store($foreignType, $foreignId);
 }]);
 
@@ -59,6 +58,20 @@ Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'uses' => func
 {
     return Comments::delete($id);
 }]);
+
+/*
+ * Captcha
+ */
+Route::get('captcha', ['as' => 'captcha', 'uses' => function()
+{
+    Captcha::make();
+    $response = Response::make('', 200);
+
+    $response->header('Content-Type', 'image/jpg');
+
+    return $response;
+}]);
+
 
 /*
  * Installation
