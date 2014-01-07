@@ -18,7 +18,7 @@ class Captcha {
 		$fheight 	= 12; // Font height
 		$angle 		= rand(-3, 3);
 		$x 			= rand(3, 17);
-		$y 			= 16; // y = 0 is located at the BOTTOm of the picture!
+		$y 			= 16; // y = 0 is located at the BOTTOM of the picture!
 		
 		imagettftext($img, $fheight, $angle, $x, $y, $color, $font, $captchacode); // Add text to image
 		
@@ -28,7 +28,7 @@ class Captcha {
 	}
 	
 	/**
-	 * Check if the captcha code is valid
+	 * Checks if the captcha code is valid
 	 * @return  bool
  	 */
 	public static function check($value) 
