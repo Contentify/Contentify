@@ -33,9 +33,9 @@
 </head>
 <body data-base-url="{{ Config::get('app.url') }}/public/">
     <div id="page-container">
-        <noscript><div id="nojavascript"><img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon"> JavaScript not enabled. Please enable JavaScript!</div></noscript>
+        <noscript><div id="nojavascript"><img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon"> {{ trans('app.no_js') }}</div></noscript>
         <header id="header">
-            <a id="header-logo" href="{{ route('admin.dashboard') }}" title="Admin-Dashboard"><!-- empty --></a>
+            <a id="header-logo" href="{{ route('admin.dashboard') }}" title="{{ trans('app.admin_dashboard') }}"><!-- empty --></a>
             
             <a id="hnav1" class="hnav" href="{{ route('admin.dashboard') }}"><!-- empty --></a>
             <a id="hnav2" class="hnav" href="{{ route('home') }}"><!-- empty --></a>
@@ -45,13 +45,13 @@
         
             <img id="user-img" src="{{ $userImage }}" alt="User">
             <img id="user-img-overlay" src="{{ asset('theme/backend/photo.png') }}" width="45" height="60" alt="Overlay">
-            <a id="profile-link" href="{{ url('user/profile') }}" title="Show your profile"><!-- empty--></a>
+            <a id="profile-link" href="{{ url('user/profile') }}" title=""><!-- empty--></a>
             
             <div id="info-box"><span>Welcome, {{ Sentry::getUser()->username }}!</span> {{ HTML::image(asset('icons/email.png'), 'Message') }} {{ $contactMessages }}</div>
             
             <div id="info-bar"><span id="datetime">{{ date('d/m/Y') }} – {{ date('H:i') }}</span> now. Version {{ Config::get('app.version') }}</div>
             
-            <a id="tecslink" href="{{ url('admin/help/technologies') }}" title="Show infos about the technologies used"><!-- empty --></a>
+            <a id="tecslink" href="{{ url('admin/help/technologies') }}" title="{{ trans('app.tec_infos') }}"><!-- empty --></a>
             
             <a id="quicklink1" class="quicklink" href="editprofile/{..$userid..}/" title="Edit your Profile" style="left: 669px"><!-- empty --></a>
             <a id="quicklink2" class="quicklink" href="admin.php?site=help" title="Help" style="left: 689px"><!-- empty --></a>
@@ -150,7 +150,7 @@
             </section>
         </section>
         <footer id="footer">
-            <a href="#" title="Top"><!-- empty --></a>
+            <a href="#" title="{{ trans('app.top') }}"><!-- empty --></a>
         </footer>
     </section>
 </body>

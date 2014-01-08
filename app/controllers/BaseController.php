@@ -89,14 +89,19 @@ class BaseController extends Controller {
 	/**
 	 * Shortcut for $this->layout->nest(): Adds a view to the main layout.
 	 *
-	 * @param string $template
-	 * @param array $data
+	 * @param string $template Name of the template
+	 * @param array  $data     Array with data passed to the compile engine
+     * @param bool   $replace  Replace the output already  * 
 	 * @return void
 	 */
-	protected function pageView($template = '', $data = array())
+	protected function pageView($template = '', $data = array(), $replace = false)
 	{
 		if ($this->layout != NULL) {
-			$this->layout->page = View::make($template, $data);
+            if ($replace or $this->layout->page == NULL) {
+                $this->layout->page = View::make($template, $data);
+            } else {
+                $this->layout->page .= View::make($template, $data)->render();
+            }
 		} else {
 			throw new Exception('Error: $this->layout is NULL!');
 		}
@@ -105,13 +110,18 @@ class BaseController extends Controller {
 	/**
 	 * Shortcut for $this->layout->nest(): Adds a string to the main layout.
 	 *
-	 * @param string $output HTML or text to output on the template.
+	 * @param string $output  HTML or text to output on the template.
+     * @param bool   $replace Replace the output already 
 	 * @return void
 	 */
-	protected function pageOutput($output)
+	protected function pageOutput($output, $replace = false)
 	{
 		if ($this->layout != NULL) {
-			$this->layout->page = $output;
+			if ($replace) {
+                $this->layout->page = $output;
+            } else {
+                $this->layout->page .= $output;
+            }
 		} else {
 			throw new Exception('Error: $this->layout is NULL!');
 		}
@@ -215,7 +225,7 @@ class BaseController extends Controller {
          * Retrieve model and entity from DB
          */
         $model = $this->modelFullName;
-        $perPage = Config::get('app.backendItemsPerPage');
+        $perPage = Config::get('app.'.$face.'ItemsPerPage');
         if ($data['search'] and $data['searchFor']) {
             $entities = $model::orderBy($data['order'], $data['orderType'])
             ->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%')

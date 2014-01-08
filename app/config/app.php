@@ -99,8 +99,8 @@ return array(
 	|
 	*/
 
-	'frontendItemsPerPage' => 3,
-	'backendItemsPerPage' => 3,
+	'frontItemsPerPage' => 3,
+	'adminItemsPerPage' => 3,
 
 	/*
 	|--------------------------------------------------------------------------

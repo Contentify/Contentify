@@ -4,7 +4,7 @@
     <div class="search-box">
         {{ Form::open(['url' => URL::current().'/search']) }}
             {{ Form::text('search', $searchString, ['class' => 'search-string']) }}
-            {{ Form::submit('Search') }}
+            {{ Form::submit(trans('app.search')) }}
         {{ Form::close() }}
     </div>
 </div>

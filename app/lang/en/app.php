@@ -40,9 +40,20 @@ return array(
     'delete'        => 'Delete',
 
     /*
+     * Misc
+     */
+    'sorting' => 'Sorting',
+    'search'  => 'Search',
+
+    /*
      * Backend template
      */
-    'new_messages'  => 'One new message|:count new messages',
-    'no_messages'   => 'No new messages.'
+    'no_js'             => 'JavaScript not enabled. Please enable JavaScript!',
+    'admin_dashboard'   => 'Admin-Dashboard',
+    'tec_infos'         => 'Show infos about the technologies used',
+    'view_profile'      => 'View your profile',
+    'new_messages'      => 'One new message|:count new messages',
+    'no_messages'       => 'No new messages.',
+    'top'               => 'Go to top',
 
 );

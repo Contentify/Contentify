@@ -120,5 +120,5 @@ function order_switcher($order, $orderType = NULL, $search = NULL)
 
     $url = URL::current().'?order='.$order.'&ordertype='.$orderType;
     if ($search) $url .= '&search='.urlencode($search);
-    return('<a class="order-switcher" href="'.$url.'">'.t('Sorting').': <img src="'.asset($image).'" alt="Icon" width="16" height="16" /></a>');
+    return('<a class="order-switcher" href="'.$url.'">'.trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" /></a>');
 }

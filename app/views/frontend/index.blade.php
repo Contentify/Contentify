@@ -43,6 +43,7 @@
                     <li>{{ link_to('auth/login', 'Login') }}</li>
                     <li>{{ link_to('auth/logout', 'Logout') }}</li>
                     <li>{{ link_to('auth/registration/create', 'Registration') }}</li>
+                    <li>{{ link_to('news', 'Newsarchive') }}</li>
                     <li>{{ link_to('contact', 'Contact') }}</li>
                     <li>{{ link_to('search', 'Search') }}</li>
                     <li>{{ link_to('admin', 'Admin-Backend') }}</li>
