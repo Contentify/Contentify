@@ -7,7 +7,7 @@
 
     {{ Form::smartText('subject', 'Subject') }}
 
-    {{ Form::actions(['submit' => 'Search']) }}
+    {{ Form::actions(['submit' => 'Search'], false) }}
 {{ Form::close() }}
 
 @if (isset($resultBags))

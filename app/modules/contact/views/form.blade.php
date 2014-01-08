@@ -13,5 +13,5 @@
 
     {{ Form::smartTextarea('text', 'Message') }}
 
-    {{ Form::actions(['submit' => 'Send']) }}
+    {{ Form::actions(['submit' => 'Send'], false) }}
 {{ Form::close() }}

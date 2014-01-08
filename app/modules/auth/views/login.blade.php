@@ -7,5 +7,5 @@
 
     {{ Form::smartPassword() }}
 
-    {{ Form::actions(['submit' => 'Login']) }}
+    {{ Form::actions(['submit' => 'Login'], false) }}
 {{ Form::close() }}

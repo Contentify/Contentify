@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Auth\Controllers;
 
-use View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception;
+use View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {
 
@@ -12,8 +12,14 @@ class RegistrationController extends FrontController {
 	public function postCreate()
 	{
 		try {
-			if (Input::get('password') != Input::get('password2')) {
-				return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => t('The passwords have to match!')]);
+			/*
+			 * Validation
+			 */
+			$rules = array('password' => 'confirmed');
+
+			$validator = Validator::make(Input::all(), $rules);
+			if ($validator->fails()) {
+				return Redirect::to('auth/registration/create')->withInput()->withErrors($validator);
 			}
 
 			if (! Captcha::check(Input::get('captcha'))) {

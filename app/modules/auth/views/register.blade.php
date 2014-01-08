@@ -9,9 +9,9 @@
 
     {{ Form::smartPassword() }}
 
-    {{ Form::smartPassword('password2', 'Password') }}
+    {{ Form::smartPassword('password_confirmation', 'Password') }}
 
     {{ Form::smartCaptcha() }}
 
-    {{ Form::actions(['submit']) }}
+    {{ Form::actions(['submit'], false) }}
 {{ Form::close() }}

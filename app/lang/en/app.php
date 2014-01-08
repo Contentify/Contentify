@@ -12,9 +12,16 @@ return array(
     */
 
     /*
-     * User permisssion
+     * User permisssions
      */ 
     'access_denied' => 'Access denied.',
+
+    /*
+     * Forms
+     */
+    'save'      => 'Save',
+    'apply'     => 'Apply',
+    'reset'     => 'Reset',
 
     /*
      * Auto CRUD handling
@@ -26,16 +33,16 @@ return array(
     /*
      * Model index building
      */
-    'create' => 'Create new',
-    'categories' => 'Categories',
-    'actions' => 'Actions',
-    'edit' => 'Edit',
-    'delete' => 'Delete',
+    'create'        => 'Create new',
+    'categories'    => 'Categories',
+    'actions'       => 'Actions',
+    'edit'          => 'Edit',
+    'delete'        => 'Delete',
 
     /*
      * Backend template
      */
-    'new_messages' => 'One new message|:count new messages',
-    'no_messages' => 'No new messages.'
+    'new_messages'  => 'One new message|:count new messages',
+    'no_messages'   => 'No new messages.'
 
 );

@@ -17,9 +17,10 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
     /**
      * Create HTML code for form action buttons (e. g. submit)
      * @param  array  $buttons Array of Buttons
+     * @param  bool   $showImages Show icons on the buttons?
      * @return string
      */
-    public static function actions($buttons = array('submit', 'apply', 'reset'))
+    public static function actions($buttons = array('submit', 'apply', 'reset'), $showImages = true)
     {
         $partial = '<div class="form-actions">';
         foreach ($buttons as $type => $options) {
@@ -41,18 +42,24 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
                 case 'submit':
                     $options['type'] = $type;
                     $options['name'] = '_form_submit';
-                    $value = HTML::image(asset('icons/disk.png'), 'Save', ['width' => 16, 'height' => 16]).' Save';
+                    if ($title == 'Submit') $title = trans('app.save');
+                    $value = $title;
+                    if ($showImages) $value = HTML::image(asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]).' '.$value;
                     $partial .= Form::button($value, $options);
                     break; 
                 case 'apply':
                     $options['type'] = $type;
                     $options['name'] = '_form_apply';
-                    $value = HTML::image(asset('icons/disk.png'), 'Save &amp; Continue', ['width' => 16, 'height' => 16]).' '.$title;
+                    if ($title == 'Submit') $title = trans('app.apply');
+                    $value = $title;
+                    if ($showImages) $value = HTML::image(asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]).' '.$value;
                     $partial .= Form::button($value, $options);
                     break; 
                 case 'reset':
                     $options['type'] = $type;
-                    $value = HTML::image(asset('icons/undo.png'), 'Reset', ['width' => 16, 'height' => 16]).' '.$title;
+                    if ($title == 'Submit') $title = trans('app.reset');
+                    $value = $title;
+                    if ($showImages) $value = HTML::image(asset('icons/undo.png'), $value, ['width' => 16, 'height' => 16]).' '.$value;
                     $partial .= Form::button($value, $options);
                     break; 
             }
