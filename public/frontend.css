@@ -31,6 +31,8 @@ form {  }
 fieldset { border: none; }
 input { font-family: Verdana; font-size: 14px }
 textarea { font-family: Verdana; font-size: 14px }
+input[type=submit], button{ padding: 10px 20px; border: 2px solid silver; color: #666; }
+input[type=submit]:focus, button:focus { border-color: #ff6100; }
 
 blockquote { background: #F4F4F4; border: 1px dotted gray; padding: 5px; margin: 5px; }
 
@@ -55,8 +57,7 @@ h1.page-title { }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; }
 .form-group textarea { vertical-align: bottom; }
 .form-actions { }
-.form-actions input[type=submit], .form-actions button{ padding: 10px 20px; border: 2px solid silver; color: #666; }
-.form-actions input[type=submit]:focus, .form-actions button:focus { border-color: #ff6100; }
+.form-actions input[type=submit], .form-actions button { margin-right: 10px; }
 
 /*
  * Modules

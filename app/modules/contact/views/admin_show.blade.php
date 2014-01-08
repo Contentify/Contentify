@@ -28,4 +28,6 @@
         {{ Form::label('Message') }}
         {{ $msg->text }}
     </div>
+
+    {{ Form::button('Reply', ['onclick' => "location.href='mailto:siconize@gmail.com'"]) }}
 </form>

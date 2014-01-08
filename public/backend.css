@@ -37,7 +37,8 @@ input[type=checkbox] { width: auto !important; padding: 0px !important; cursor: 
 input[type=text] { width: 300px; height: 22px !important; padding: 0px 10px }
 input[type=submit], input[type=reset] { height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
 input[type=file] { height: 26px; } /* height = input["text"].height + 4px */
-button, input[type=button] { border: 1px solid silver; border-radius: 5px; height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
+input[type=button], button { padding: 0px 10px; border: 1px solid silver; border-radius: 5px; height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
+input[type=submit]:focus, button:focus { border-color: #ff6100; }
 button img { vertical-align: bottom; }
 select { margin: 0px; padding: 0px 10px; border: 1px solid silver; border-radius: 5px; background-image: url(theme/bg_textbox.png); height: 26px; }
 
@@ -68,9 +69,7 @@ h1.page-title { }
 .form-group textarea { vertical-align: bottom; }
 .form-group textarea:focus { border-color: #ff6100; color: #4082E3 }
 .form-actions { padding-top: 20px }
-.form-actions input[type=submit], .form-actions button { margin-right: 10px; padding: 0px 10px; border: 1px solid silver; color: #666; }
-.form-actions input[type=submit]:focus, .form-actions button:focus { border-color: #ff6100; }
-.form-actions button img { vertical-align: bottom; }
+.form-actions input[type=submit], .form-actions button { margin-right: 10px; }
 
 /* Content Table */
 .content-table { width: 100%; border: 1px solid #EFEFEF; border-collapse: collapse; }
