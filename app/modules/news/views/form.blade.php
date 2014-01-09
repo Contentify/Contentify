@@ -7,13 +7,15 @@
 @else
 {{ Form::open(['url' => 'admin/news']) }}
 @endif
-        {{ Form::smartText('title', 'Title') }}
-        {{ Form::smartTextarea('intro', 'Intro') }}
-        {{ Form::smartTextarea('text', 'Text') }}
-        {{ Form::smartCheckbox('published', 'Published') }}
-        {{ Form::smartCheckbox('internal', 'Internal') }}
-        {{ Form::smartCheckbox('allow_comments', 'Allow Comments') }}
-        {{ Form::smartSelectForeign('newscat_id', 'Newscat') }}
-        
+    {{ Form::smartText('title', 'Title') }}
+    {{ Form::smartSelectForeign('newscat_id', 'Newscat') }}
+    
+    {{ Form::smartTextarea('intro', 'Intro') }}
+    {{ Form::smartTextarea('text', 'Text') }}
+
+    {{ Form::smartCheckbox('published', 'Published') }}
+    {{ Form::smartCheckbox('internal', 'Internal') }}
+    {{ Form::smartCheckbox('allow_comments', 'Allow Comments') }}
+
     {{ Form::actions() }}
 {{ Form::close() }}

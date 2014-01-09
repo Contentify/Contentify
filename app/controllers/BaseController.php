@@ -158,9 +158,10 @@ class BaseController extends Controller {
      * Builds an index form (page) from a model and $data
      * 
      * @param  array $data Array with information how to build the form. See $defaults for details.
+     * @param  string $surface Frontend ("front") or backend ("admin")?
      * @return void
      */
-    protected function buildIndexForm($data, $face = 'admin')
+    protected function buildIndexForm($data, $surface = 'admin')
     {
         /*
          * Set default values
@@ -188,10 +189,10 @@ class BaseController extends Controller {
                 $type = strtolower($type);
                 switch ($type) {
                     case 'new':
-                        $buttons .= button(trans('app.create'), route($face.'.'.strtolower($this->controller).'.create'), 'add');
+                        $buttons .= button(trans('app.create'), route($surface.'.'.strtolower($this->controller).'.create'), 'add');
                         break;
                     case 'category':
-                        $buttons .= button(trans('app.categories'), route($face.'.'.strtolower($this->module).'cats.index'), 'folder');
+                        $buttons .= button(trans('app.categories'), route($surface.'.'.strtolower($this->module).'cats.index'), 'folder');
                         break;
                 }
             }
@@ -225,7 +226,7 @@ class BaseController extends Controller {
          * Retrieve model and entity from DB
          */
         $model = $this->modelFullName;
-        $perPage = Config::get('app.'.$face.'ItemsPerPage');
+        $perPage = Config::get('app.'.$surface.'ItemsPerPage');
         if ($data['search'] and $data['searchFor']) {
             $entities = $model::orderBy($data['order'], $data['orderType'])
             ->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%')
@@ -265,12 +266,12 @@ class BaseController extends Controller {
                             case 'edit':
                                 $actionsCode .= image_link('page_edit', 
                                     trans('app.edit'), 
-                                    route($face.'.'.strtolower($this->controller).'.edit', [$entity->id]));
+                                    route($surface.'.'.strtolower($this->controller).'.edit', [$entity->id]));
                                 break;
                             case 'delete':
                                 $actionsCode .= image_link('bin', 
                                     trans('app.delete'), 
-                                    route($face.'.'.strtolower($this->controller).'.destroy', [$entity->id]).'?method=DELETE',
+                                    route($surface.'.'.strtolower($this->controller).'.destroy', [$entity->id]).'?method=DELETE',
                                     false,
                                     ['data-confirm-delete' => true]);
                                 break;
