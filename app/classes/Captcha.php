@@ -4,6 +4,7 @@ class Captcha {
 
 	/**
 	 * Creates a new captcha image and displays it
+	 * 
 	 * @return void
 	 */
 	public static function make() 
@@ -29,11 +30,13 @@ class Captcha {
 	
 	/**
 	 * Checks if the captcha code is valid
+	 * 
+	 * @param   string  $value The potential captcha code
 	 * @return  bool
  	 */
-	public static function check($value) 
+	public static function check($code) 
 	{
-		if ($value == Session::get('captchacode')) {
+		if ($code == Session::get('captchacode')) {
 			return true;
 		} else {
 			return false;

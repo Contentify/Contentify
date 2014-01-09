@@ -4,6 +4,7 @@ class SmartFormGenerator {
     /**
      * Generates a simple but cms compliant form template (Blad syntax).
      * Do not blindly trust the result - most like rework is necessary.
+     * 
      * @param  string $tableName  The table (representing a model) to generate a form for
      * @param  string $moduleName The module name - leave it empty if its the pluralized model name
      * @return string
@@ -29,6 +30,7 @@ class SmartFormGenerator {
     /**
      * Creates a single form field.
      * Returns NULL if the field is ignored.
+     * 
      * @param  stdClass $column The Column object
      * @return $string
      */
@@ -111,6 +113,7 @@ class SmartFormGenerator {
 
     /**
      * Convert a snake_case sring to a title (single words, ucfirst)
+     * 
      * @param  string $snakeCase The snake cased string
      * @return string
      */

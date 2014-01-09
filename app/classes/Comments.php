@@ -2,6 +2,12 @@
 
 class Comments {
 
+    /**
+     * Directly outputs comments and the comment form.
+     * @param  string $foreignType Identifier for the content the comments are related to (usually a model)
+     * @param  int    $foreignId   ID, if the comments are related to a certain entity
+     * @return string
+     */
     public static function show($foreignType, $foreignId)
     {
         $comments = Comment::where('foreign_type', '=', $foreignType)->where('foreign_id', '=', $foreignId)->get();
@@ -31,13 +37,14 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-
+            // TODO
         }
 
         return Redirect::to(Input::get('_url'));
     }
 
     /**
+     * Returns a comment as JSON (as response to an AJAX call)
      * 
      * @param  int $id The ID of the comment
      * @return mixed
@@ -51,6 +58,7 @@ class Comments {
 
     /**
      * Edits a comment
+     * 
      * @param  int $id The ID of the comment
      * @return void
      */
@@ -63,6 +71,7 @@ class Comments {
 
     /**
      * Updates a comment
+     * 
      * @param  int $id The ID of the comment
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -76,7 +85,7 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-
+            // TODO
         }
 
         return Redirect::to(URL::previous());
@@ -84,6 +93,7 @@ class Comments {
 
     /**
      * Deletes a comment
+     * 
      * @param  int $id The ID of the comment
      * @return \Illuminate\Http\RedirectResponse
      */

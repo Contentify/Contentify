@@ -4,6 +4,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for error displayment
+     * 
      * @param  MessageBag $errors The errors to display
      * @return string
      */
@@ -16,6 +17,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for form action buttons (e. g. submit)
+     * 
      * @param  array  $buttons Array of Buttons
      * @param  bool   $showImages Show icons on the buttons?
      * @return string
@@ -70,6 +72,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for a checkbox element.
+     * 
      * @param  string $name  The name of the checkbox element
      * @param  string $title The title of the checkbox element
      * @return string
@@ -82,6 +85,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for a text input element.
+     * 
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
@@ -94,6 +98,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for a email input element.
+     * 
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
@@ -118,6 +123,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for a textarea input element.
+     * 
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
@@ -130,6 +136,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for a select element.
+     * 
      * @param  string $name  The name of the select element
      * @param  string $title The title of the select element
      * @return string
@@ -160,6 +167,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for an image upload input element.
+     * 
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
@@ -172,6 +180,7 @@ class SmartFormBuilder extends Illuminate\Support\Facades\Form {
 
     /**
      * Create HTML code for a email input element.
+     * 
      * @return string
      */
     public static function smartCaptcha($name = 'captcha', $title = 'Captcha')

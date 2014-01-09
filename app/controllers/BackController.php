@@ -3,11 +3,13 @@
 class BackController extends BaseController {
     /**
      * The layout that should be used for responses.
+     * @var string
      */
     protected $layout = 'backend.index';
 
     /**
      * The file identifier of the controller icon
+     * @var string
      */
     protected $icon = 'page_white_text.png';
 

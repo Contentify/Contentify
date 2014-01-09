@@ -21,7 +21,9 @@ class ModuleRoute {
 
 	/**
 	 * Set the context (name) of the module.
+	 * 
 	 * @param string $moduleName Name or path of the module.
+	 * @return void
 	 */
 	public static function context($moduleName)
 	{
@@ -36,7 +38,9 @@ class ModuleRoute {
 
 	/**
 	 * Bind a model to a route
+	 * 
 	 * @param string $modelName The name of the model (without namespace)
+	 * @return Illuminate\Routing\Route
 	 */
 	public static function model($modelName)
 	{
@@ -45,8 +49,10 @@ class ModuleRoute {
 
 	/**
 	 * Create route for method get.
+	 * 
 	 * @param  string $route
 	 * @param  mixed  $target
+	 * @return Illuminate\Routing\Route
 	 */
 	public static function get($route, $target)
 	{
@@ -55,8 +61,10 @@ class ModuleRoute {
 
 	/**
 	 * Create route for method post.
+	 * 
 	 * @param  string $route
 	 * @param  mixed  $target
+	 * @return Illuminate\Routing\Route
 	 */
 	public static function post($route, $target)
 	{
@@ -65,8 +73,10 @@ class ModuleRoute {
 
 	/**
 	 * Create route for method any.
+	 * 
 	 * @param  string $route
 	 * @param  mixed  $target
+	 * @return Illuminate\Routing\Route
 	 */
 	public static function any($route, $target)
 	{
@@ -75,23 +85,26 @@ class ModuleRoute {
 
 	/**
 	 * Controller routing (for RESTful controllers).
+	 * 
 	 * @param  string $route
 	 * @param  string $target
 	 * @param  array  $parameters
+	 * @return void
 	 */
 	public static function controller($route, $target, $parameters = array())
 	{
 		if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target; // Debugging
 
-		// Route::controller() only accepts a controller name (string) as target.
 		Route::controller($route, self::$controllerPath.$target, $parameters);
 	}
 
 	/**
 	 * Controller routing (for resource controllers).
+	 * 
 	 * @param  string $route
 	 * @param  string $target
 	 * @param  array  $parameters
+	 * @return void
 	 */
 	public static function resource($route, $target, $parameters = array())
 	{
@@ -102,24 +115,32 @@ class ModuleRoute {
 
 	/**
 	 * Create the route. Add paths.
+	 * 
 	 * @param  string $method
 	 * @param  string $route
 	 * @param  mixed  $target
+	 * @return Illuminate\Routing\Route
 	 */
 	private static function createRoute($method, $route, $target)
 	{
 		if (Config::get('app.debug')) $_SESSION['ModuleRoute.route'] = $target; // Debugging
 
-		// Ignore closures:
+		/* 
+		 * Ignore closures:
+		 */
 		if (is_string($target) or is_array($target)) {
 			
-			// Alway create an array:
+			/* 
+			 * Alway create an array:
+			 */
 			if (! is_array($target)) {
 				$target = ['uses' => $target];
 			}
 
-			// Determine if the target is a controller method.
-			// If so, add the controller path.
+			/* 
+			 * Determine if the target is a controller method.
+			 * If so, add the controller path.
+			 */
 			if (str_contains($target['uses'], '@')) {
 				$target['uses'] = self::$controllerPath.$target['uses'];
 			}
