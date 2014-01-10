@@ -1,7 +1,7 @@
 <form>
     <div class="form-group">
         {{ Form::label('Creator') }}
-        {{ $msg->username }}
+        {{{ $msg->username }}}
     </div>
     <div class="form-group">
         {{ Form::label('Created At') }}
@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('Email') }}
-        {{ $msg->email }}
+        {{{ $msg->email }}}
     </div>
     <div class="form-group">
         {{ Form::label('IP') }}
@@ -22,7 +22,7 @@
 
     <div class="form-group">
         {{ Form::label('Subject') }}
-        {{ $msg->title }}
+        {{{ $msg->title }}}
     </div>
     <div class="form-group">
         {{ Form::label('Message') }}
