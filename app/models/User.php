@@ -1,52 +1,51 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
+use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends SentryUser {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+    /**
+     * See if a user has access to the passed permission(s).
+     * This overwrites Sentry's lowlevel permission system
+     * and adds the level attribute.
+     *
+     * @param  string|array  $permissions   String of a single permission or array of multiple permissions
+     * @param  bool          $level         Desired level
+     * @param  bool          $all           Do all permission need to hit the level?
+     * @return bool
+     */
+    public function hasPermission($permissions, $level = 1, $all = true)
+    {
+        $mergedPermissions = $this->getMergedPermissions(); // Permission the user has
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password');
+        if ( ! is_array($permissions)) {
+            $permissions = (array) $permissions; // Ensure $permissions is an array
+        }
 
-	/**
-	 * Get the unique identifier for the user.
-	 *
-	 * @return mixed
-	 */
-	public function getAuthIdentifier()
-	{
-		return $this->getKey();
-	}
+        foreach ($permissions as $permission) {
+            $matched = false;
 
-	/**
-	 * Get the password for the user.
-	 *
-	 * @return string
-	 */
-	public function getAuthPassword()
-	{
-		return $this->password;
-	}
+            foreach ($mergedPermissions as $mergedPermission => $value) {
+                if ($permission == $mergedPermission) {
+                    if ($mergedPermissions[$permission] >= $level) { // Compare with desired level
+                        if (! $all) {
+                            return true;
+                        } else {
+                            $matched = true;
+                        }
+                    }
+                    break;
+                }
+            }
 
-	/**
-	 * Get the e-mail address where password reminders are sent.
-	 *
-	 * @return string
-	 */
-	public function getReminderEmail()
-	{
-		return $this->email;
-	}
+            if ($all and ! $matched) return false; // Return false if $all = true and a permission is not given
+        }
+
+        if ($all) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
