@@ -1,4 +1,6 @@
-<?php
+<?php namespace Contentify;
+
+use View, Redirect, Comment;
 
 class Comments {
 

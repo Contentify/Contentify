@@ -1,4 +1,6 @@
-<?php
+<?php namespace Contentify;
+
+use Config, Route;
 
 class ModuleRoute {
 	/**

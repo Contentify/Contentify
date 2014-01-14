@@ -1,4 +1,6 @@
-<?php
+<?php namespace Contentify;
+
+use Session, Str;
 
 class Captcha {
 
@@ -36,10 +38,6 @@ class Captcha {
  	 */
 	public static function check($code) 
 	{
-		if ($code == Session::get('captchacode')) {
-			return true;
-		} else {
-			return false;
-		}
+		return ($code == Session::get('captchacode'));
 	}
 }	

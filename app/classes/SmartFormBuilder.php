@@ -1,6 +1,8 @@
-<?php
+<?php namespace Contentify;
 
-class SmartFormBuilder extends Illuminate\Support\Facades\Form {
+use HTML, Illuminate\Support\Facades\Form, URL, DB;
+
+class SmartFormBuilder extends Form {
 
     /**
      * Create HTML code for error displayment
