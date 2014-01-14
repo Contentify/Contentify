@@ -180,7 +180,7 @@ return array(
         'Blade'                 => 'Illuminate\Support\Facades\Blade',
         'Cache'                 => 'Illuminate\Support\Facades\Cache',
         'ClassLoader'           => 'Illuminate\Support\ClassLoader',
-        'Config'                => 'Illuminate\Support\Facades\Config',
+        'Config'                => 'Contentify\Config', // Original: Illuminate\Support\Facades\Config
         'Controller'            => 'Illuminate\Routing\Controller',
         'Cookie'                => 'Illuminate\Support\Facades\Cookie',
         'Crypt'                 => 'Illuminate\Support\Facades\Crypt',
@@ -188,7 +188,7 @@ return array(
         'Eloquent'              => 'Illuminate\Database\Eloquent\Model',
         'Event'                 => 'Illuminate\Support\Facades\Event',
         'File'                  => 'Illuminate\Support\Facades\File',
-        'Form'                  => 'SmartFormBuilder', // Original: Illuminate\Support\Facades\Form
+        'Form'                  => 'Contentify\FormBuilder', // Original: Illuminate\Support\Facades\Form
         'Hash'                  => 'Illuminate\Support\Facades\Hash',
         'HTML'                  => 'Illuminate\Support\Facades\HTML',
         'Input'                 => 'Illuminate\Support\Facades\Input',
@@ -214,8 +214,7 @@ return array(
 
         'ModuleRoute'           => 'Contentify\ModuleRoute',
         'Captcha'               => 'Contentify\Captcha',
-        'SmartFormBuilder'      => 'Contentify\SmartFormBuilder',
-        'SmartFormGenerator'    => 'Contentify\SmartFormGenerator',
+        'FormGenerator'         => 'Contentify\FormGenerator',
         'Comments'              => 'Contentify\Comments',
 
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',

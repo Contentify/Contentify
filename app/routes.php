@@ -83,8 +83,9 @@ Route::get('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    Comments::show(123);
-    echo('123');
+    //dd(Config::has("unicorns"));
+    Config::store("tralalal", "are epics");
+        dd(Config::get("tralalal"));
     //dd(user()->hasAccess('backend'));
-    //echo(SmartFormGenerator::generate('news'));
+    //echo(FormGenerator::generate('news'));
 });

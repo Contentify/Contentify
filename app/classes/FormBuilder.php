@@ -2,7 +2,7 @@
 
 use HTML, Illuminate\Support\Facades\Form, URL, DB;
 
-class SmartFormBuilder extends Form {
+class FormBuilder extends Form {
 
     /**
      * Create HTML code for error displayment

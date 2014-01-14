@@ -2,7 +2,7 @@
 
 use DB, View;
 
-class SmartFormGenerator {
+class FormGenerator {
     /**
      * Generates a simple but cms compliant form template (Blad syntax).
      * Do not blindly trust the result - most like rework is necessary.

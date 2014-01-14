@@ -19,14 +19,22 @@ class InstallController extends Controller {
          * Notice: The default length of strings is 255 chars.
          */
         
+        Schema::create('config', function($table)
+        {
+            $table->string('name', 255); // We cannot name it "key". "key" is a keyword in SQL.
+            $table->primary('name');
+            $table->text('value')->nullable();
+            $table->dateTime('updated_at');
+        });
+        
+        return; // DEBUG
+        
         $this->create('comments', function($table)
         {
             $table->text('text')->nullable();
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true);
-        }, array(), ['title', 'access_counter']);
-
-        return; // DEBUG
+        }, array(), ['title', 'access_counter']);      
 
         $this->create('newscats', function($table)
         {
