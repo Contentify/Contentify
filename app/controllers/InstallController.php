@@ -5,7 +5,7 @@ class InstallController extends Controller {
     public function index() 
     {
         $this->createDatabase();
-        //$this->createUserGroups();
+        $this->createSeed();
     }
 
     /**
@@ -19,12 +19,13 @@ class InstallController extends Controller {
          * Notice: The default length of strings is 255 chars.
          */
         
+        Schema::dropIfExists('config');
         Schema::create('config', function($table)
         {
             $table->string('name', 255); // We cannot name it "key". "key" is a keyword in SQL.
             $table->primary('name');
             $table->text('value')->nullable();
-            $table->dateTime('updated_at');
+            $table->dateTime('updated_at')->default(DB::RAW('"0000-00-00 00:00:00"'));
         });
         
         return; // DEBUG
@@ -66,12 +67,17 @@ class InstallController extends Controller {
         });
     }
 
+    protected function createSeed() {
+        DB::table('config')->insert(array('name' => 'app.analytics'));
+        //$this->createUserGroups();
+    }
+
     /**
      * Create user permision groups
      * 
      * @return void
      */
-    public function createUserGroups()
+    protected function createUserGroups()
     {
         Sentry::createGroup(array(
             'name'        => 'Visitors',

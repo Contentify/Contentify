@@ -1,7 +1,7 @@
 <?php namespace Contentify;
 
 use Illuminate\Support\Facades\Config as LaravelConfig;
-use DB;
+use DB, DateTime;
 
 class Config extends LaravelConfig {
 
@@ -42,7 +42,7 @@ class Config extends LaravelConfig {
     }
 
     /**
-     * Save a given configuration value to DB.
+     * Store a given configuration value into DB.
      *
      * @param  string  $key
      * @param  mixed   $value
@@ -50,13 +50,27 @@ class Config extends LaravelConfig {
      */
     public static function store($key, $value)
     {
-        $result = DB::table('config')->whereName($key)->update(array('value' => $value, 'updated_at' => new \DateTime()));
+        $result = DB::table('config')->whereName($key)->update(array('value' => $value, 'updated_at' => new DateTime()));
 
         /*
          * If the key does not exist we need to create it
+         * $result contians the number of affected rows.
+         * With using a timestamp we ensure that when updating a value
+         * the row is always affacted, eventhough if the value does not change.
          */
         if ($result == 0) {
-            DB::table('config')->insert(array('name' => $key, 'value' => $value, 'updated_at' => new \DateTime()));
+            DB::table('config')->insert(array('name' => $key, 'value' => $value, 'updated_at' => new DateTime()));
         }
+    }
+
+    /**
+     * Delete a given configuration value from DB.
+     *
+     * @param  string  $key
+     * @return void
+     */
+    public static function delete($key)
+    {
+        $result = DB::table('config')->whereName($key)->delete();
     }
 }

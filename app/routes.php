@@ -83,9 +83,7 @@ Route::get('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    //dd(Config::has("unicorns"));
-    Config::store("tralalal", "are epics");
-        dd(Config::get("tralalal"));
+    Config::store("unicorns", "are epic");
     //dd(user()->hasAccess('backend'));
     //echo(FormGenerator::generate('news'));
 });
