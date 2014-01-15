@@ -3,7 +3,7 @@ $(document).ready(function()
     $('.create-comment .save').click(function()
     {
         $.ajax({
-            url: baseUrl + 'comments/create',
+            url: baseUrl + 'comments/store',
             type: 'POST',
             data: { text: $('.create-comment textarea').val(), foreigntype: foreignType, foreignid: foreignId }
         }).success(function()

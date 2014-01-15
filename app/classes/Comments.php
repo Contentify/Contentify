@@ -1,11 +1,12 @@
 <?php namespace Contentify;
 
-use View, Redirect, Comment;
+use View, Response, Comment, Input;
 
 class Comments {
 
     /**
      * Directly outputs comments and the comment form.
+     * 
      * @param  string $foreignType Identifier for the content the comments are related to (usually a model)
      * @param  int    $foreignId   ID, if the comments are related to a certain entity
      * @return string
@@ -22,11 +23,11 @@ class Comments {
     }
 
     /**
-     * Creates (stores) a comment
+     * Stores a comment
      * 
      * @param  string   $foreignType The foreign type identifier
      * @param  int      $foreignId   The foreign id (can be 0)
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public static function store($foreignType, $foreignId)
     {
@@ -39,10 +40,10 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            // TODO
+            return Response::make('0', 500);
+        } else {
+            return Response::make('1', 200);
         }
-
-        return Redirect::to(Input::get('_url'));
     }
 
     /**
@@ -75,7 +76,7 @@ class Comments {
      * Updates a comment
      * 
      * @param  int $id The ID of the comment
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public static function update($id)
     {
@@ -87,17 +88,17 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            // TODO
+            return Response::make('0', 500);
+        } else {
+            return Response::make('1', 200);
         }
-
-        return Redirect::to(URL::previous());
     }
 
     /**
      * Deletes a comment
      * 
      * @param  int $id The ID of the comment
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public static function delete($id)
     {
@@ -105,6 +106,6 @@ class Comments {
 
         $comment->delete();
 
-        return Response::make('', 200);
+        return Response::make('1', 200);
     }
 }

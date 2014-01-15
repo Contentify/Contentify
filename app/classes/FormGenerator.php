@@ -4,7 +4,7 @@ use DB, View;
 
 class FormGenerator {
     /**
-     * Generates a simple but cms compliant form template (Blad syntax).
+     * Generates a simple but CMS compliant form template (Blad syntax).
      * Do not blindly trust the result - most like rework is necessary.
      * 
      * @param  string $tableName  The table (representing a model) to generate a form for
