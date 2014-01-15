@@ -40,7 +40,7 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make('0', 500);
+            return Response::make(t('Cannot create the comment.'), 500);
         } else {
             return Response::make('1', 200);
         }
@@ -88,7 +88,7 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make('0', 500);
+            return Response::make(t('Cannot update the comment.'), 500);
         } else {
             return Response::make('1', 200);
         }

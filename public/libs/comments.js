@@ -2,6 +2,8 @@ $(document).ready(function()
 {
     $('.create-comment .save').click(function()
     {
+        var $self = $(this);
+
         $.ajax({
             url: baseUrl + 'comments/store',
             type: 'POST',
@@ -12,7 +14,7 @@ $(document).ready(function()
             location.reload(); // TODO
         }).error(function(response)
         {
-            alert('Error:' + response.responseText); // TODO
+            $self.parent().html(response.responseText);
         });
     });
 
@@ -44,12 +46,12 @@ $(document).ready(function()
                     location.reload(); // TODO
                 }).error(function(response)
                 {
-                    alert('Error:' + response.responseText); // TODO
+                     $self.parent().html(response.responseText);
                 });
             });
         }).error(function(response)
         {
-            alert('Error:' + response.responseText); // TODO
+            $self.parent().html(response.responseText);
         });
     });
 
@@ -68,7 +70,7 @@ $(document).ready(function()
             $self.parent().remove();
         }).error(function(response)
         {
-            alert('Error:' + response.responseText); // TODO
+             $self.parent().html(response.responseText);
         });
     });
 });
