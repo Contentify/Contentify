@@ -7,7 +7,7 @@ class Comment extends Ardent {
     protected $fillable = array('text');
 
     public static $rules = array(
-        'text'  => 'required',
+        'text'  => 'required|min:3',
     );
 
     public static $relationsData = array(

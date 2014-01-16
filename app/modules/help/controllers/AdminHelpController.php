@@ -6,17 +6,17 @@ class AdminHelpController extends \BackController {
 
     public function getIndex()
     {
-        $this->pageView('help::index');
+        $this->pageView('help::admin_index');
     }
 
     public function getTechnologies()
     {
-        $this->pageView('help::technologies');
+        $this->pageView('help::admin_technologies');
     }
 
     public function getInfo()
     {
-        $this->pageView('help::info');
+        $this->pageView('help::admin_info');
     }
 
 }

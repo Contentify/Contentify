@@ -32,7 +32,7 @@ Route::get('admin', ['as' => 'admin.dashboard', 'before' => 'admin', 'uses' => '
 /*
  * Comment component
  */
-Route::post('comments/create', ['as' => 'comments.store', 'uses' => function()
+Route::post('comments/store', ['as' => 'comments.store', 'uses' => function()
 {
     $foreignType = Input::get('foreigntype');
     $foreignId = Input::get('foreignid');
@@ -83,7 +83,8 @@ Route::get('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    Config::store("unicorns", "are epic");
+    if (user()) dd(user()->hasAccess('test', 0));
+    //Config::store("unicorns", "are epic");
     //dd(user()->hasAccess('backend'));
     //echo(FormGenerator::generate('news'));
 });

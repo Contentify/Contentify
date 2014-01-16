@@ -65,6 +65,7 @@ class BaseController extends Controller {
             } else {
                 $this->formTemplate = strtolower($this->controller).'_form'; // If modelname and modulename differ, the form name should be e. g. "users_form"
             }
+            if (starts_with(strtolower($className), 'admin')) $this->formTemplate = 'admin_'.$this->formTemplate;
         }
 
         /*

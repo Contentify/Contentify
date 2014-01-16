@@ -8,7 +8,7 @@ class AdminDashboardController extends BackController {
 
     public function getIndex()
     {
-        $this->pageView('dashboard::index');
+        $this->pageView('dashboard::admin_index');
     }
 
 }
