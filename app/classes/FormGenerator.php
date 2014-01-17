@@ -62,7 +62,7 @@ class FormGenerator {
 
         $html = NULL;
         if (! in_array($column->Field, $ignoredFields)) {
-            if ($name == 'image') $type = 'image';
+            if ($name == 'image' || $name = 'icon') $type = 'image';
             if ($name == 'email') $type = 'email';
             if ($name == 'password') $type = 'password';
             if (ends_with($name, '_id')) $type = 'foreign';

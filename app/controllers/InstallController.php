@@ -54,7 +54,7 @@ class InstallController extends Controller {
         $this->create('games', function($table)
         {
             $table->string('short', 6)->nullable();
-            $table->string('image')->nullable();
+            $table->string('icon')->nullable();
         });
 
         $this->create('contact_messages', function($table)

@@ -181,6 +181,18 @@ class FormBuilder extends Form {
     }
 
     /**
+     * Create HTML code for an icon upload input element.
+     * 
+     * @param  string $name  The name of the input element
+     * @param  string $title The title of the input element
+     * @return string
+     */
+    public static function smartIconFile($name = 'icon', $title = 'Icon')
+    {
+        return self::smartImageFile($name, $title);
+    }
+
+    /**
      * Create HTML code for a email input element.
      * 
      * @return string

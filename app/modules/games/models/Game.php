@@ -8,6 +8,8 @@ class Game extends Ardent {
 
     protected $fillable = array('title', 'short');
 
+    public static $fileHandling = array('icon' => ['type' => 'image']);
+
     public static $rules = array(
         'title'     => 'required',
         'short'     => 'required',

@@ -9,7 +9,7 @@
 
     {{ Form::smartText('short', 'Short Title') }}
 
-    {{ Form::smartImageFile() }}
+    {{ Form::smartIconFile() }}
 
     {{ Form::actions() }}
 {{ Form::close() }}

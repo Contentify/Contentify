@@ -67,7 +67,8 @@ class BackController extends BaseController {
     {
         if (! $this->checkAccessCreate()) return;
 
-        $entity = new $this->modelFullName(Input::all());
+        $model = $this->modelFullName;
+        $entity = new $model(Input::all());
         $entity->creator_id = user()->id;
         $entity->updater_id = user()->id;
 
@@ -77,19 +78,30 @@ class BackController extends BaseController {
             return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors($entity->validationErrors);
         }
 
-        if (Input::hasFile('image') and array_key_exists('image', $entity->getAttributes())) {
-            $file = Input::file('image');
+        /*
+         * File (and image) handling
+         */
+        if (isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
+            foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
+                if (Input::hasFile($fieldName)) {
+                    $file = Input::file($fieldName);
 
-            $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
-            if (! $imgsize[2]) {
-                return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors(['x' => 'Invalid image']);
+                    if (strtolower($fieldInfo['type']) == 'image') {
+                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
+                        if (! $imgsize[2]) {
+                            return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors(['Invalid image']);
+                        }
+                    }
+
+                    $extension          = $file->getClientOriginalExtension();
+                    $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
+                    $uploadedFile       = $file->move(public_path().'/uploads/'.strtolower($this->controller), $fileName);
+                    $entity->$fieldName = $fileName;
+                    $entity->forceSave(); // Save entity again, without validation
+                } else {
+                    // TODO Ignore missing files for now
+                }
             }
-
-            $extension      = $file->getClientOriginalExtension();
-            $fileName       = $entity->id.'.'.$extension;
-            $uploadedFile   = $file->move(public_path().'/uploads/'.strtolower($this->controller), $fileName);
-            $entity->image  = $fileName;
-            $entity->forceSave();
         }
 
         $this->messageFlash(trans('app.created', [$this->model]));
@@ -138,25 +150,36 @@ class BackController extends BaseController {
             return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors($entity->validationErrors);
         }
 
-        if (Input::hasFile('image') and array_key_exists('image', $entity->getAttributes())) {
-            $file = Input::file('image');
+        /*
+         * File (and image) handling
+         */
+        if (isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
+            foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
+                if (Input::hasFile($fieldName)) {
+                    $file = Input::file($fieldName);
 
-            $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
-            if (! $imgsize[2]) {
-                return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors(['x' => 'Invalid image']);
+                    if (strtolower($fieldInfo['type']) == 'image') {
+                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
+                        if (! $imgsize[2]) {
+                            return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors(['Invalid image']);
+                        }
+                    }
+
+                    $oldImage = public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->image;
+                    if (File::isFile($oldImage)) {
+                        File::delete($oldImage); // We need to delete the old file to ensure we never have something like "123.jpg" and "123.png"
+                    }
+
+                    $extension          = $file->getClientOriginalExtension();
+                    $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
+                    $uploadedFile       = $file->move(public_path().'/uploads/'.strtolower($this->controller), $fileName);
+                    $entity->$fieldName = $fileName;
+                    $entity->forceSave(); // Save entity again, without validation
+                } else {
+                    // TODO Ignore missing files for now
+                }
             }
-
-            $oldImage = public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->image;
-            if (File::isFile($oldImage)) {
-                File::delete($oldImage); // We need to delete the old file to ensure we never have something like "123.jpg" and "123.png"
-            }
-
-            $extension      = $file->getClientOriginalExtension();
-            $fileName       = $entity->id.'.'.$extension;
-            $uploadedFile   = $file->move(public_path().'/uploads/'.strtolower($this->controller), $fileName);
-            $entity->image  = $fileName;
-            $entity->forceSave();
-        }    
+        }
 
         $this->messageFlash(trans('app.updated', [$this->model]));
         if (Input::get('_form_apply')) {
@@ -176,6 +199,15 @@ class BackController extends BaseController {
         if (! $this->checkAccessDelete()) return;
 
         $model = $this->modelFullName;
+
+        if (isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
+            $entity = $model::find($id);
+
+            foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
+                File::delete(public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->$fieldName);
+            }
+        }
+
         $model::destroy($id);
 
         $this->messageFlash(trans('app.deleted', [$this->model]));
