@@ -8,6 +8,8 @@ class AdminDiagController extends BackController {
 	
 	public function getIndex()
 	{
+		if (! $this->checkAccessRead()) return;
+
 		$settings = array(
 			'App.environment'	=> App::environment(),
 			'App.url'			=> Config::get('app.url'),

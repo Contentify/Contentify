@@ -16,6 +16,8 @@ class AdminContactController extends BackController {
 
     public function index()
     {
+        if (! $this->checkAccessRead()) return;
+
         $this->buildIndexForm(array(
             'buttons' => NULL,
             'tableHead' => [t('ID') => 'id', t('New') => 'new', t('Title') => 'title', t('Creator') => 'username', t('Created at') => 'created_at'],
@@ -35,6 +37,8 @@ class AdminContactController extends BackController {
 
     public function show($id)
     {
+        if (! $this->checkAccessRead()) return;
+        
         $msg = ContactMessage::findOrFail($id);
 
         $msg->new = false;

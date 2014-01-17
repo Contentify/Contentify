@@ -164,6 +164,8 @@ class BaseController extends Controller {
      */
     protected function buildIndexForm($data, $surface = 'admin')
     {
+        if (! $this->checkAccessRead()) return;
+        
         /*
          * Set default values
          */
@@ -351,5 +353,109 @@ class BaseController extends Controller {
         $code .= '</table>';
 
         return $code;
+    }
+
+    /**
+     * Returns true if the current user has read access to the module.
+     * 
+     * @return boolean
+     */
+    public function hasAccessRead() 
+    {
+        return (user() and user()->hasAccess(strtolower($this->module), 1));
+    }
+
+    /**
+     * Returns true if the current user has create access to the module.
+     * 
+     * @return boolean
+     */
+    public function hasAccessCreate() 
+    {
+        return (user() and user()->hasAccess(strtolower($this->module), 2));
+    }
+
+    /**
+     * Returns true if the current user has update access to the module.
+     * 
+     * @return boolean
+     */
+    public function hasAccessUpdate() 
+    {
+        return (user() and user()->hasAccess(strtolower($this->module), 3));
+    }
+
+    /**
+     * Returns true if the current user has delete access to the module.
+     * 
+     * @return boolean
+     */
+    public function hasAccessDelete() 
+    {
+        return (user() and user()->hasAccess(strtolower($this->module), 4));
+    }
+
+    /**
+     * Returns true if the current user has read access to the module.
+     * If not a message will be set.
+     * 
+     * @return bool
+     */
+    public function checkAccessRead()
+    {
+        if ($this->hasAccessRead()) {
+            return true;
+        } else {
+            $this->message('Access denied.');
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if the current user has create access to the module.
+     * If not a message will be set.
+     * 
+     * @return bool
+     */
+    public function checkAccessCreate()
+    {
+        if ($this->hasAccessCreate()) {
+            return true;
+        } else {
+            $this->message('Access denied.');
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if the current user has update access to the module.
+     * If not a message will be set.
+     * 
+     * @return bool
+     */
+    public function checkAccessUpdate()
+    {
+        if ($this->hasAccessUpdate()) {
+            return true;
+        } else {
+            $this->message('Access denied.');
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if the current user has delete access to the module.
+     * If not a message will be set.
+     * 
+     * @return bool
+     */
+    public function checkAccessDelete()
+    {
+        if ($this->hasAccessDelete()) {
+            return true;
+        } else {
+            $this->message('Access denied.');
+            return false;
+        }
     }
 }

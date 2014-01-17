@@ -4,7 +4,7 @@ class InstallController extends Controller {
 
     public function index() 
     {
-        $this->createDatabase();
+        //$this->createDatabase();
         $this->createSeed();
     }
 
@@ -68,8 +68,10 @@ class InstallController extends Controller {
     }
 
     protected function createSeed() {
-        DB::table('config')->insert(array('name' => 'app.analytics'));
-        //$this->createUserGroups();
+        //DB::table('config')->insert(array('name' => 'app.analytics'));
+        // DEBUG
+        
+        $this->createUserGroups();
     }
 
     /**
@@ -87,7 +89,7 @@ class InstallController extends Controller {
         Sentry::createGroup(array(
             'name'        => 'Users',
             'permissions' => array(
-                'frontend'  => true
+                'frontend'  => true,
             )
         ));
 
@@ -104,7 +106,13 @@ class InstallController extends Controller {
             'permissions' => array(
                 'frontend'  => true,
                 'internal'  => true,
-                'backend'   => true
+                'backend'   => true,
+                'auth'      => 4,
+                'contact'   => 4,
+                'diag'      => 4,
+                'games'     => 4,
+                'help'      => 4,
+                'news'      => 4,
             )
         ));
 
@@ -113,7 +121,13 @@ class InstallController extends Controller {
             'permissions' => array(
                 'frontend'  => true,
                 'internal'  => true,
-                'backend'   => true
+                'backend'   => true,
+                'auth'      => 4,
+                'contact'   => 4,
+                'diag'      => 4,
+                'games'     => 4,
+                'help'      => 4,
+                'news'      => 4,
             )
         ));
     }

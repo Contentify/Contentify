@@ -55,6 +55,8 @@ class BackController extends BaseController {
      */
     public function create()
     {
+        if (! $this->checkAccessCreate()) return;
+
         $this->pageView(strtolower($this->module).'::'.$this->formTemplate);
     }
 
@@ -63,6 +65,8 @@ class BackController extends BaseController {
      */
     public function store()
     {
+        if (! $this->checkAccessCreate()) return;
+
         $entity = new $this->modelFullName(Input::all());
         $entity->creator_id = user()->id;
         $entity->updater_id = user()->id;
@@ -103,6 +107,8 @@ class BackController extends BaseController {
      */
     public function edit($id)
     {
+        if (! $this->checkAccessUpdate()) return;
+
         $model = $this->modelFullName;
         $entity = $model::findOrFail($id);
 
@@ -119,6 +125,8 @@ class BackController extends BaseController {
      */
     public function update($id)
     {
+        if (! $this->checkAccessUpdate()) return;
+
         $model = $this->modelFullName;
         $entity = $model::findOrFail($id);
 
@@ -165,6 +173,8 @@ class BackController extends BaseController {
      */
     public function destroy($id)
     {
+        if (! $this->checkAccessDelete()) return;
+
         $model = $this->modelFullName;
         $model::destroy($id);
 
