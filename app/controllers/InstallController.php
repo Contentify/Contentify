@@ -90,6 +90,7 @@ class InstallController extends Controller {
             'name'        => 'Users',
             'permissions' => array(
                 'frontend'  => true,
+                'comments'  => 2, // Users can also update and delete their own comments
             )
         ));
 
@@ -98,6 +99,7 @@ class InstallController extends Controller {
             'permissions' => array(
                 'frontend'  => true,
                 'internal'  => true,
+                'comments'  => 2,
             )
         ));
 
@@ -108,6 +110,7 @@ class InstallController extends Controller {
                 'internal'  => true,
                 'backend'   => true,
                 'auth'      => 4,
+                'comments'  => 4,
                 'contact'   => 4,
                 'diag'      => 4,
                 'games'     => 4,
@@ -123,6 +126,7 @@ class InstallController extends Controller {
                 'internal'  => true,
                 'backend'   => true,
                 'auth'      => 4,
+                'comments'  => 4,
                 'contact'   => 4,
                 'diag'      => 4,
                 'games'     => 4,
