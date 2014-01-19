@@ -71,7 +71,7 @@ class BaseController extends Controller {
         /*
          * Enable auto CSRF protection
          */ 
-        $this->beforeFilter('csrf', array('on' => 'post'));
+        $this->beforeFilter('csrf', array('on' => ['post', 'put', 'delete']));
 	}
 
 	/**
@@ -274,7 +274,7 @@ class BaseController extends Controller {
                             case 'delete':
                                 $actionsCode .= image_link('bin', 
                                     trans('app.delete'), 
-                                    route($surface.'.'.strtolower($this->controller).'.destroy', [$entity->id]).'?method=DELETE',
+                                    route($surface.'.'.strtolower($this->controller).'.destroy', [$entity->id]).'?method=DELETE&_token='.csrf_token(),
                                     false,
                                     ['data-confirm-delete' => true]);
                                 break;
