@@ -102,23 +102,23 @@ function get_image_url($image)
 }
 
 /**
- * Returns HTML code of an order switcher (asc / desc).
+ * Returns HTML code of an sort switcher (asc / desc).
  *
- * @param string $order     Attribute of the entity, e.g. "id"
- * @param string $orderType Current sorting, "asc" or "desc"
+ * @param string $sortby    Attribute of the entity, e.g. "id"
+ * @param string $order     Current sorting order, "asc" or "desc"
  * @return string
  */
-function order_switcher($order, $orderType = NULL, $search = NULL)
+function sort_switcher($sortby, $order = NULL, $search = NULL)
 {
-    if ($orderType == 'asc') {
-        $orderType  = 'desc';
+    if ($order == 'asc') {
+        $order  = 'desc';
         $image      = 'theme/bullet_arrow_down.png';
     } else {
-        $orderType  = 'asc';
+        $order  = 'asc';
         $image      = 'theme/bullet_arrow_up.png';
     }
 
-    $url = URL::current().'?order='.$order.'&ordertype='.$orderType;
+    $url = URL::current().'?sortby='.$sortby.'&order='.$order;
     if ($search) $url .= '&search='.urlencode($search);
-    return('<a class="order-switcher" href="'.$url.'">'.trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" /></a>');
+    return('<a class="sort-switcher" href="'.$url.'">'.trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" /></a>');
 }

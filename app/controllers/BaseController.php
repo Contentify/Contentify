@@ -177,8 +177,8 @@ class BaseController extends Controller {
             'tableRow'      => [],
             'actions'       => ['edit', 'delete'],
             'brightenFirst' => true,
-            'order'         => 'id',
-            'orderType'     => 'desc',
+            'sortby'        => 'id',
+            'order'         => 'desc',
             );
 
         $data = array_merge($defaults, $data);
@@ -212,18 +212,18 @@ class BaseController extends Controller {
         }
 
         /*
-         * Get order attributes.
+         * Get sort attributes.
          */
-        if (Input::get('order')) {
-            $order = strtolower(Input::get('order'));
-            if (in_array($order, $data['tableHead'])) $data['order'] = $order;
+        if (Input::get('sortby')) {
+            $sortby = strtolower(Input::get('sortby'));
+            if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby;
 
-            $orderType = strtolower(Input::get('ordertype'));
-            if ($orderType === 'desc' or $orderType === 'asc') {
-                $data['orderType'] = $orderType;
+            $order = strtolower(Input::get('order'));
+            if ($order === 'desc' or $order === 'asc') {
+                $data['order'] = $order;
             }
         }
-        $orderSwitcher = order_switcher($data['order'], $data['orderType'], $data['search']);
+        $sortSwitcher = sort_switcher($data['sortby'], $data['order'], $data['search']);
 
         /*
          * Retrieve model and entity from DB
@@ -231,23 +231,23 @@ class BaseController extends Controller {
         $model = $this->modelFullName;
         $perPage = Config::get('app.'.$surface.'ItemsPerPage');
         if ($data['search'] and $data['searchFor']) {
-            $entities = $model::orderBy($data['order'], $data['orderType'])
+            $entities = $model::orderBy($data['sortby'], $data['order'])
             ->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%')
             ->paginate($perPage);
         } else {
-            $entities = $model::orderBy($data['order'], $data['orderType'])
+            $entities = $model::orderBy($data['sortby'], $data['order'])
             ->paginate($perPage);   
         }
 
-        $paginator = $entities->appends(['order' => $data['order'], 'orderType' => $data['orderType'], 'search' => $data['search']])->links();
+        $paginator = $entities->appends(['sortby' => $data['sortby'], 'order' => $data['order'], 'search' => $data['search']])->links();
 
         /*
          * Prepare the table (head and rows)
          */
         $tableHead = array();
-        foreach ($data['tableHead'] as $title => $order) {
-            if ($order != NULL) {
-                $tableHead[] = HTML::link(URL::current().'?order='.$order, $title);
+        foreach ($data['tableHead'] as $title => $sortby) {
+            if ($sortby != NULL) {
+                $tableHead[] = HTML::link(URL::current().'?sortby='.$sortby, $title);
             } else {
                 $tableHead[] = $title;
             }
@@ -302,7 +302,7 @@ class BaseController extends Controller {
         $this->pageView('backend.index_form', array(
             'buttons'       => $buttons,
             'contentTable'  => $contentTable,
-            'orderSwitcher' => $orderSwitcher,
+            'sortSwitcher'  => $sortSwitcher,
             'paginator'     => $paginator,
             'searchString'  => $data['search']
             ));

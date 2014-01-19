@@ -12,6 +12,6 @@
 {{ $contentTable }}
 
 <div class="form-helpers bottom">
-    {{ $orderSwitcher }}
+    {{ $sortSwitcher }}
     {{ $paginator }}
 </div>
