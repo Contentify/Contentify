@@ -35,7 +35,7 @@ return array(
     |
     */
 
-    'version' => '5.0.0.a',
+    'version' => '0.1.0',
 
     /*
     |--------------------------------------------------------------------------
@@ -146,6 +146,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Creolab\LaravelModules\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
+        'Thujohn\Rss\RssServiceProvider',
     ),
 
     /*
@@ -219,6 +220,7 @@ return array(
 
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Ardent'                => 'LaravelBook\Ardent\Ardent',
+        'Rss'                   => 'Thujohn\Rss\RssFacade',
     ),
 
 );
