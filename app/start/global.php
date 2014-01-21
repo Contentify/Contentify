@@ -87,8 +87,8 @@ require app_path().'/filters.php';
 | Require The Viewcomposers File
 |--------------------------------------------------------------------------
 |
-| This will load the viewcomposers file for the application. This is the
-| right place for view composer declarations that are not related to a
+| This will load the viewcomposers file for the application. It's the
+| right place for view composer declarations that are not related to only a
 | single composer.
 |
 */
@@ -100,23 +100,36 @@ require app_path().'/composers.php';
 | Require The Helpers File
 |--------------------------------------------------------------------------
 |
-| Beside Laravels very own helpers we may want to create our own.
+| Beside Laravel's very own helpers we may want to create our own.
 | This file is the location to store these helper functions.
 |
 */
 
 require app_path().'/helpers.php';
 
+
+/*
+|--------------------------------------------------------------------------
+| Require The Visitor File
+|--------------------------------------------------------------------------
+|
+| Updates the global visitor statistics.
+|
+*/
+
+require app_path().'/visitors.php';
+
 /*
 |--------------------------------------------------------------------------
 | Permission Levels
 |--------------------------------------------------------------------------
 |
-| Permisson levels
+| Define constants for permisson levels 
+| (part of Sentry's user permission system).
 |
 */
 
 define('READ',      1);
 define('CREATE',    2);
-define('EDIT',      3);
+define('UPDATE',    3);
 define('DELETE',    4);

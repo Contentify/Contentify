@@ -4,8 +4,8 @@ class InstallController extends Controller {
 
     public function index() 
     {
-        //$this->createDatabase();
-        $this->createSeed();
+        $this->createDatabase();
+        //$this->createSeed();
     }
 
     /**
@@ -16,8 +16,19 @@ class InstallController extends Controller {
     public function createDatabase()
     {
         /*
-         * Notice: The default length of strings is 255 chars.
+         * Notice: 
+         * - The default length of strings is 255 chars.
+         * - We recommend to use timestamp() to create a datetime attribute.
          */
+        
+        $this->create('visits', function($table)
+        {
+            $table->string('ip');
+            $table->integer('user_agents');
+            $table->date('visited_at');
+        }, array(), false);
+
+        return; // DEBUG
         
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
@@ -25,10 +36,8 @@ class InstallController extends Controller {
             $table->string('name', 255); // We cannot name it "key". "key" is a keyword in SQL.
             $table->primary('name');
             $table->text('value')->nullable();
-            $table->dateTime('updated_at')->default(DB::RAW('"0000-00-00 00:00:00"'));
+            $table->timestamp('updated_at');
         });
-        
-        return; // DEBUG
         
         $this->create('comments', function($table)
         {

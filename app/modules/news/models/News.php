@@ -27,8 +27,8 @@ class News extends Ardent {
         $feed = Rss::feed('2.0', 'UTF-8');
 
         $feed->channel(array(
-            'title'         => Config::get('app.title').' News', 
-            'description'   => 'Last 20 News', 
+            'title'         => Config::get('app.title').' '.t('News'), 
+            'description'   => t('Last 20 News'), 
             'language'      => Lang::getLocale(),
             'link'          => Config::get('app.url'),
             'lastBuildDate' => date('D, j M Y H:i:s ').'GMT'
