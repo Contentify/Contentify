@@ -19,8 +19,14 @@ class AdminContactController extends BackController {
         if (! $this->checkAccessRead()) return;
 
         $this->buildIndexForm(array(
-            'buttons' => NULL,
-            'tableHead' => [t('ID') => 'id', t('New') => 'new', t('Title') => 'title', t('Creator') => 'username', t('Created at') => 'created_at'],
+            'buttons' => null,
+            'tableHead' => [
+                t('ID') => 'id', 
+                t('New') => 'new', 
+                t('Title') => 'title', 
+                t('Creator') => 'username', 
+                t('Created at') => 'created_at'
+            ],
             'tableRow' => function($msg)
             {
                 return array(

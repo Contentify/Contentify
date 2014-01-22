@@ -11,10 +11,10 @@ class FormGenerator {
      * @param  string $moduleName The module name - leave it empty if its the pluralized model name
      * @return string
      */
-    public static function generate($tableName, $moduleName = NULL)
+    public static function generate($tableName, $moduleName = null)
     {
 
-        if ($moduleName == NULL) $moduleName = $tableName;
+        if ($moduleName == null) $moduleName = $tableName;
 
         $columns = DB::select('SHOW COLUMNS FROM '.$tableName);
 
@@ -31,7 +31,7 @@ class FormGenerator {
 
     /**
      * Creates a single form field.
-     * Returns NULL if the field is ignored.
+     * Returns null if the field is ignored.
      * 
      * @param  stdClass $column The Column object
      * @return $string
@@ -60,7 +60,7 @@ class FormGenerator {
             $meta   = trim(substr($meta, $pos + 1));
         }
 
-        $html = NULL;
+        $html = null;
         if (! in_array($column->Field, $ignoredFields)) {
             if ($name == 'image' || $name = 'icon') $type = 'image';
             if ($name == 'email') $type = 'email';

@@ -10,7 +10,7 @@ class Config extends LaravelConfig {
      * 
      * @var stdClass
      */
-    private static $lastResult = NULL;
+    private static $lastResult = null;
 
     /**
      * Determine if the given configuration value exists.
@@ -22,7 +22,7 @@ class Config extends LaravelConfig {
     {
         self::$lastResult = DB::table('config')->whereName($key)->first(); // Temporarily save the result
         
-        return (self::$lastResult != NULL);
+        return (self::$lastResult != null);
     }
 
     /**

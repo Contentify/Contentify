@@ -15,7 +15,7 @@ class NewsController extends FrontController {
     public function index()
     {
         $this->buildIndexForm(array(
-            'buttons'   => NULL,
+            'buttons'   => null,
             'tableHead' => [t('ID') => 'id', t('Title') => 'title', t('Category') => NULL, t('Date') => 'created_at'],
             'tableRow'  => function($news)
             {

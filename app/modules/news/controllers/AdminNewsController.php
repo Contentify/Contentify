@@ -18,7 +18,13 @@ class AdminNewsController extends BackController {
     {
         $this->buildIndexForm(array(
             'buttons'   => ['new', 'category'],
-            'tableHead' => [t('ID') => 'id', t('Published') => 'published', t('Title') => 'title', t('Author') => 'creator_id', t('Created at') => 'created_at'],
+            'tableHead' => [
+                t('ID') => 'id', 
+                t('Published') => 'published', 
+                t('Title') => 'title', 
+                t('Author') => 'creator_id', 
+                t('Created at') => 'created_at'
+            ],
             'tableRow'  => function($news)
             {
                 return array(

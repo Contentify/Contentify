@@ -27,7 +27,11 @@ Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Controllers\NewsCon
  * So there can't exist multiple modules that try to declare themselves as dashboard.
  * (Well, ofcourse they may try to... since routing is global. But they should not.)
  */ 
-Route::get('admin', ['as' => 'admin.dashboard', 'before' => 'admin', 'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex']);
+Route::get('admin', [
+    'as' => 'admin.dashboard', 
+    'before' => 'admin', 
+    'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex'
+]);
 
 /*
  * Comment component

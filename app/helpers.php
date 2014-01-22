@@ -108,7 +108,7 @@ function get_image_url($image)
  * @param string $order     Current sorting order, "asc" or "desc"
  * @return string
  */
-function sort_switcher($sortby, $order = NULL, $search = NULL)
+function sort_switcher($sortby, $order = null, $search = null)
 {
     if ($order == 'asc') {
         $order  = 'desc';
@@ -120,5 +120,7 @@ function sort_switcher($sortby, $order = NULL, $search = NULL)
 
     $url = URL::current().'?sortby='.$sortby.'&order='.$order;
     if ($search) $url .= '&search='.urlencode($search);
-    return('<a class="sort-switcher" href="'.$url.'">'.trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" /></a>');
+
+    $caption = trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" />';
+    return('<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>');
 }

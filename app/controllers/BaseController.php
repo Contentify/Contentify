@@ -63,7 +63,8 @@ class BaseController extends Controller {
             if ($this->module === str_plural($this->model)) {
                 $this->formTemplate = 'form';
             } else {
-                $this->formTemplate = strtolower($this->controller).'_form'; // If modelname and modulename differ, the form name should be e. g. "users_form"
+                // If modelname & modulename differ, the form name should be e. g. "users_form":
+                $this->formTemplate = strtolower($this->controller).'_form'; 
             }
             if (starts_with(strtolower($className), 'admin')) $this->formTemplate = 'admin_'.$this->formTemplate;
         }
@@ -97,14 +98,14 @@ class BaseController extends Controller {
 	 */
 	protected function pageView($template = '', $data = array(), $replace = false)
 	{
-		if ($this->layout != NULL) {
-            if ($replace or $this->layout->page == NULL) {
+		if ($this->layout != null) {
+            if ($replace or $this->layout->page == null) {
                 $this->layout->page = View::make($template, $data);
             } else {
                 $this->layout->page .= View::make($template, $data)->render();
             }
 		} else {
-			throw new Exception('Error: $this->layout is NULL!');
+			throw new Exception('Error: $this->layout is null!');
 		}
 	}
 
@@ -117,14 +118,14 @@ class BaseController extends Controller {
 	 */
 	protected function pageOutput($output, $replace = false)
 	{
-		if ($this->layout != NULL) {
+		if ($this->layout != null) {
 			if ($replace) {
                 $this->layout->page = $output;
             } else {
                 $this->layout->page .= $output;
             }
 		} else {
-			throw new Exception('Error: $this->layout is NULL!');
+			throw new Exception('Error: $this->layout is null!');
 		}
 	}
 
@@ -137,10 +138,10 @@ class BaseController extends Controller {
 	 */
 	protected function message($title, $text = '')
 	{
-		if ($this->layout != NULL) {
+		if ($this->layout != null) {
 			$this->layout->page = View::make('message', array('title' => $title, 'text' => $text));
 		} else {
-			throw new Exception('Error: $this->layout is NULL!');
+			throw new Exception('Error: $this->layout is null!');
 		}
 	}
 
@@ -192,10 +193,12 @@ class BaseController extends Controller {
                 $type = strtolower($type);
                 switch ($type) {
                     case 'new':
-                        $buttons .= button(trans('app.create'), route($surface.'.'.strtolower($this->controller).'.create'), 'add');
+                        $url = route($surface.'.'.strtolower($this->controller).'.create');
+                        $buttons .= button(trans('app.create'), $url, 'add');
                         break;
                     case 'category':
-                        $buttons .= button(trans('app.categories'), route($surface.'.'.strtolower($this->module).'cats.index'), 'folder');
+                        $url = route($surface.'.'.strtolower($this->module).'cats.index');
+                        $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
                 }
             }
@@ -239,14 +242,18 @@ class BaseController extends Controller {
             ->paginate($perPage);   
         }
 
-        $paginator = $entities->appends(['sortby' => $data['sortby'], 'order' => $data['order'], 'search' => $data['search']])->links();
+        $paginator = $entities->appends(
+            ['sortby' => $data['sortby'], 
+            'order' => $data['order'], 
+            'search' => $data['search']]
+        )->links();
 
         /*
          * Prepare the table (head and rows)
          */
         $tableHead = array();
         foreach ($data['tableHead'] as $title => $sortby) {
-            if ($sortby != NULL) {
+            if ($sortby != null) {
                 $tableHead[] = HTML::link(URL::current().'?sortby='.$sortby, $title);
             } else {
                 $tableHead[] = $title;
@@ -272,9 +279,10 @@ class BaseController extends Controller {
                                     route($surface.'.'.strtolower($this->controller).'.edit', [$entity->id]));
                                 break;
                             case 'delete':
+                                $urlParams = '?method=DELETE&_token='.csrf_token();
                                 $actionsCode .= image_link('bin', 
                                     trans('app.delete'), 
-                                    route($surface.'.'.strtolower($this->controller).'.destroy', [$entity->id]).'?method=DELETE&_token='.csrf_token(),
+                                    route($surface.'.'.strtolower($this->controller).'.destroy', [$entity->id]).$urlParams,
                                     false,
                                     ['data-confirm-delete' => true]);
                                 break;

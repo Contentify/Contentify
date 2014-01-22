@@ -132,7 +132,9 @@ class FormBuilder extends Form {
      */
     public static function smartTextarea($name = 'text', $title = 'Text', $editor = true)
     {
-        $partial = '<div class="form-group">'.self::label($name, $title, ['class' => 'full-line']).' '.self::textarea($name, NULL, ['class' => 'ckeditor']).'</div>';
+        $label      = self::label($name, $title, ['class' => 'full-line']);
+        $textarea   = self::textarea($name, null, ['class' => 'ckeditor']);
+        $partial    = '<div class="form-group">'.$label.' '.$textarea.'</div>';
         return $partial;
     }
 
@@ -199,7 +201,9 @@ class FormBuilder extends Form {
      */
     public static function smartCaptcha($name = 'captcha', $title = 'Captcha')
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.HTML::image(URL::route('captcha'), 'Captcha').' '.self::text($name).'</div>';
+        $label      = self::label($name, $title);
+        $image      = HTML::image(URL::route('captcha'), 'Captcha');
+        $partial    = '<div class="form-group">'.$label.' '.$image.' '.self::text($name).'</div>';
         return $partial;
     }
 }

@@ -129,7 +129,7 @@ require app_path().'/visitors.php';
 |
 */
 
-define('READ',      1);
-define('CREATE',    2);
-define('UPDATE',    3);
-define('DELETE',    4);
+const READ      = 1;
+const CREATE    = 2;
+const UPDATE    = 3;
+const DELETE    = 4;
