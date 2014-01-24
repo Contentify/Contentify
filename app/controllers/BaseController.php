@@ -229,7 +229,7 @@ class BaseController extends Controller {
         $sortSwitcher = sort_switcher($data['sortby'], $data['order'], $data['search']);
 
         /*
-         * Retrieve model and entity from DB
+         * Retrieve entity from DB and create paginator
          */
         $model = $this->modelFullName;
         $perPage = Config::get('app.'.$surface.'ItemsPerPage');

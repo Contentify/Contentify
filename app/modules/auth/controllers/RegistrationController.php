@@ -15,7 +15,7 @@ class RegistrationController extends FrontController {
 			/*
 			 * Validation
 			 */
-			$rules = array('username' => 'alpha_dash|required|min:3', 'password' => 'confirmed');
+			$rules = array('username' => 'alpha_spaces|required|min:3', 'password' => 'confirmed');
 
 			$validator = Validator::make(Input::all(), $rules);
 			if ($validator->fails()) {
