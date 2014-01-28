@@ -370,7 +370,7 @@ class BaseController extends Controller {
      */
     public function hasAccessRead() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), 1));
+        return (user() and user()->hasAccess(strtolower($this->module), READ));
     }
 
     /**
@@ -380,7 +380,7 @@ class BaseController extends Controller {
      */
     public function hasAccessCreate() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), 2));
+        return (user() and user()->hasAccess(strtolower($this->module), CREATE));
     }
 
     /**
@@ -390,7 +390,7 @@ class BaseController extends Controller {
      */
     public function hasAccessUpdate() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), 3));
+        return (user() and user()->hasAccess(strtolower($this->module), UPDATE));
     }
 
     /**
@@ -400,7 +400,7 @@ class BaseController extends Controller {
      */
     public function hasAccessDelete() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), 4));
+        return (user() and user()->hasAccess(strtolower($this->module), DELETE));
     }
 
     /**

@@ -36,13 +36,16 @@ class BackController extends BaseController {
             /*
              * Contact messages
              */
-            $count = DB::table('contact_messages')->where('new', true)->count();
-            if ($count > 0) {
-                $contactMessages = link_to('admin/contact', Lang::choice('app.new_messages', $count));
-            } else {
-                $contactMessages = trans('app.no_messages');
+            $contactMessages = null;
+            if (user()->hasAccess('contact', READ)) {
+                $count = DB::table('contact_messages')->where('new', true)->count();
+                if ($count > 0) {
+                    $contactMessages = link_to('admin/contact', Lang::choice('app.new_messages', $count));
+                } else {
+                    $contactMessages = trans('app.no_messages');
+                }
             }
-            $view->with('contactMessages', $contactMessages);   
+            $view->with('contactMessages', $contactMessages);
 
             $view->with('module', $this->module);
             $view->with('controller', $this->controller);

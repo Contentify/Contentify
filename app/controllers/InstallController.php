@@ -6,6 +6,8 @@ class InstallController extends Controller {
     {
         $this->createDatabase();
         //$this->createSeed();
+        
+        return "Great success!";
     }
 
     /**
