@@ -75,7 +75,8 @@ class BackController extends BaseController {
         $okay = $entity->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors($entity->validationErrors);
+            return Redirect::route('admin.'.strtolower($this->controller).'.create')
+                ->withInput()->withErrors($entity->validationErrors);
         }
 
         /*
@@ -89,15 +90,30 @@ class BackController extends BaseController {
                     if (strtolower($fieldInfo['type']) == 'image') {
                         $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
                         if (! $imgsize[2]) {
-                            return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors(['Invalid image']);
+                            return Redirect::route('admin.'.strtolower($this->controller).'.create')
+                                ->withInput()->withErrors(['Invalid image']);
                         }
                     }
 
                     $extension          = $file->getClientOriginalExtension();
+                    $filePath           = public_path().'/uploads/'.strtolower($this->controller);
                     $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
-                    $uploadedFile       = $file->move(public_path().'/uploads/'.strtolower($this->controller), $fileName);
+                    $uploadedFile       = $file->move($filePath, $fileName);
                     $entity->$fieldName = $fileName;
                     $entity->forceSave(); // Save entity again, without validation
+
+                    /*
+                     * Create thumbnails
+                     */
+                    if (isset($fieldInfo['thumbnails'])) {
+                        $thumbnails = $fieldInfo['thumbnails'];
+                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+
+                        foreach ($thumbnails as $thumbnail) {
+                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, 100, true, false)
+                                ->save($filePath.'/100/'.$fileName); 
+                        }
+                    }
                 } else {
                     // TODO Ignore missing files for now
                 }
@@ -147,7 +163,8 @@ class BackController extends BaseController {
         $okay = $entity->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors($entity->validationErrors);
+            return Redirect::route('admin.'.strtolower($this->controller).'.create')
+                ->withInput()->withErrors($entity->validationErrors);
         }
 
         /*
@@ -161,20 +178,35 @@ class BackController extends BaseController {
                     if (strtolower($fieldInfo['type']) == 'image') {
                         $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
                         if (! $imgsize[2]) {
-                            return Redirect::route('admin.'.strtolower($this->controller).'.create')->withInput()->withErrors(['Invalid image']);
+                            return Redirect::route('admin.'.strtolower($this->controller).'.create')
+                                ->withInput()->withErrors(['Invalid image']);
                         }
                     }
 
                     $oldImage = public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->image;
                     if (File::isFile($oldImage)) {
-                        File::delete($oldImage); // We need to delete the old file to ensure we never have something like "123.jpg" and "123.png"
+                        File::delete($oldImage); // We need to delete the old file or we can have "123.jpg" and "123.png"
                     }
 
                     $extension          = $file->getClientOriginalExtension();
+                    $filePath           = public_path().'/uploads/'.strtolower($this->controller);
                     $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
-                    $uploadedFile       = $file->move(public_path().'/uploads/'.strtolower($this->controller), $fileName);
+                    $uploadedFile       = $file->move($filePath, $fileName);
                     $entity->$fieldName = $fileName;
                     $entity->forceSave(); // Save entity again, without validation
+
+                    /*
+                     * Create thumbnails
+                     */
+                    if (isset($fieldInfo['thumbnails'])) {
+                        $thumbnails = $fieldInfo['thumbnails'];
+                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+
+                        foreach ($thumbnails as $thumbnail) {
+                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, 100, true, false)
+                                ->save($filePath.'/100/'.$fileName); 
+                        }
+                    }
                 } else {
                     // TODO Ignore missing files for now
                 }

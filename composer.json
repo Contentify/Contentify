@@ -9,7 +9,8 @@
 		"creolab/laravel-modules": "dev-master",
 		"cartalyst/sentry": "2.0.*",
         "laravelbook/ardent": "dev-master",
-        "thujohn/rss": "dev-master"
+        "thujohn/rss": "dev-master",
+        "intervention/image": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

@@ -22,7 +22,7 @@ class AdminImagesController extends BackController {
             {
                 return array(
                     $image->id,
-                    HTML::image(asset('uploads/images/'.$image->image), 'Image-Preview', ['class' => 'image']).'<br>'.$image->tags
+                    HTML::image(asset('uploads/images/100/'.$image->image), 'Image-Preview', ['class' => 'image']).'<br>'.$image->tags
                     );
             }
             ));

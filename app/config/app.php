@@ -147,6 +147,7 @@ return array(
         'Creolab\LaravelModules\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
         'Thujohn\Rss\RssServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
     ),
 
     /*
@@ -221,6 +222,7 @@ return array(
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Ardent'                => 'LaravelBook\Ardent\Ardent',
         'Rss'                   => 'Thujohn\Rss\RssFacade',
+        'InterImage'            => 'Intervention\Image\Facades\Image'
     ),
 
 );
