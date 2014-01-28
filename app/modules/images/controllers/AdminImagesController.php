@@ -24,7 +24,8 @@ class AdminImagesController extends BackController {
                     $image->id,
                     HTML::image(asset('uploads/images/100/'.$image->image), 'Image-Preview', ['class' => 'image']).'<br>'.$image->tags
                     );
-            }
+            },
+            'searchFor' => 'tags'
             ));
     }
 

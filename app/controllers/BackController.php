@@ -110,7 +110,7 @@ class BackController extends BaseController {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, 100, true, false)
+                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, true, false)
                                 ->save($filePath.'/100/'.$fileName); 
                         }
                     }
@@ -203,7 +203,7 @@ class BackController extends BaseController {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, 100, true, false)
+                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, true, false)
                                 ->save($filePath.'/100/'.$fileName); 
                         }
                     }
