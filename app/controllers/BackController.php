@@ -103,7 +103,7 @@ class BackController extends BaseController {
                     $entity->forceSave(); // Save entity again, without validation
 
                     /*
-                     * Create thumbnails
+                     * Create thumbnails for images
                      */
                     if (isset($fieldInfo['thumbnails'])) {
                         $thumbnails = $fieldInfo['thumbnails'];
@@ -183,9 +183,9 @@ class BackController extends BaseController {
                         }
                     }
 
-                    $oldImage = public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->image;
-                    if (File::isFile($oldImage)) {
-                        File::delete($oldImage); // We need to delete the old file or we can have "123.jpg" and "123.png"
+                    $oldFile = public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->$fieldName;
+                    if (File::isFile($oldFile)) {
+                        File::delete($oldFile); // We need to delete the old file or we can have "123.jpg" and "123.png"
                     }
 
                     $extension          = $file->getClientOriginalExtension();
@@ -196,7 +196,7 @@ class BackController extends BaseController {
                     $entity->forceSave(); // Save entity again, without validation
 
                     /*
-                     * Create thumbnails
+                     * Create thumbnails for images
                      */
                     if (isset($fieldInfo['thumbnails'])) {
                         $thumbnails = $fieldInfo['thumbnails'];
@@ -233,10 +233,26 @@ class BackController extends BaseController {
         $model = $this->modelFullName;
 
         if (isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
-            $entity = $model::find($id);
+            $entity     = $model::find($id);
+            $filePath   = public_path().'/uploads/'.strtolower($this->controller);
 
             foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
-                File::delete(public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->$fieldName);
+                File::delete($filePath.'/'.$entity->$fieldName);
+
+                /*
+                 * Delete image thumbnails
+                 */
+                if (strtolower($fieldInfo['type']) == 'image' and isset($fieldInfo['thumbnails'])) {
+                    $thumbnails = $fieldInfo['thumbnails'];
+                    if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+
+                    foreach ($thumbnails as $thumbnail) {
+                        $fileName = $filePath.'/'.$thumbnail.'/'.$entity->$fieldName;
+                        if (File::isFile($fileName)) {
+                            File::delete($fileName);
+                        }
+                    }
+                }
             }
         }
 
