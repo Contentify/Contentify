@@ -21,14 +21,20 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
+        $this->create('images', function($table)
+        {
+            $table->string('tags')->nullable();
+            $table->string('image')->nullable();
+        });
+
+        return; // DEBUG
+        
         $this->create('visits', function($table)
         {
             $table->string('ip');
             $table->integer('user_agents');
             $table->date('visited_at');
-        }, array(), false);
-
-        return; // DEBUG
+        }, array(), false);      
         
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
@@ -124,6 +130,7 @@ class InstallController extends Controller {
                 'diag'      => 4,
                 'games'     => 4,
                 'help'      => 4,
+                'images'    => 4,
                 'news'      => 4,
             )
         ));
@@ -140,6 +147,7 @@ class InstallController extends Controller {
                 'diag'      => 4,
                 'games'     => 4,
                 'help'      => 4,
+                'images'    => 4,
                 'news'      => 4,
             )
         ));

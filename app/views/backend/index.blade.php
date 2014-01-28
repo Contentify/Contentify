@@ -82,7 +82,7 @@
                                 <div class="menu2"><img src="{{ asset('icons/date.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=events">Events</a></div>            
                                 <div class="menu2"><img src="{{ asset('icons/chart_pie.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=polls">Polls</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloads">Downloads</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/picture.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=pictures">Pictures</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/picture.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/images', 'Images') }}</div>
                                 <div class="menu3"><img src="{{ asset('icons/photo.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=galleries">Galleries</a></div>
                             </div>
                             <div class="menu-bottom"></div>

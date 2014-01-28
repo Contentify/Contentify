@@ -21,10 +21,10 @@ h5 { }
 p { }
 
 /* Table Elements */
-table { font-family: Verdana }
+table { font-family: Verdana; border-collapse: collapse; }
 tr { }
 th { }
-tr { }
+td { vertical-align: top }
 
 /* Form Elements */
 form {  }
