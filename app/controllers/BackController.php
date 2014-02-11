@@ -5,7 +5,7 @@ class BackController extends BaseController {
      * The layout that should be used for responses.
      * @var string
      */
-    protected $layout = 'backend.index';
+    protected $layout = 'backend.layout_main';
 
     /**
      * The file identifier of the controller icon
@@ -21,7 +21,7 @@ class BackController extends BaseController {
         parent::__construct();
 
         $self = $this;
-        View::composer('backend.index', function($view) use ($self)
+        View::composer('backend.layout_main', function($view) use ($self)
         { 
             /*
              * User profile picture

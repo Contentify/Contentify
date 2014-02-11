@@ -4,7 +4,7 @@ class FrontController extends BaseController {
 	/**
      * The layout that should be used for responses.
      */
-    protected $layout = 'frontend.index';
+    protected $layout = 'frontend.layout_main';
 
 	/**
 	 * Constructor call
@@ -14,7 +14,7 @@ class FrontController extends BaseController {
 		parent::__construct();
 
         $self = $this;
-        View::composer('frontend.index', function($view) use ($self)
+        View::composer('frontend.layout_main', function($view) use ($self)
         { 
             $view->with('module', $this->module);
             $view->with('controller', $this->controller);
