@@ -74,7 +74,7 @@ h1.page-title { }
  */
 
 #page-container { width: 960px; min-height: 1080px; margin-left: auto; margin-right: auto; box-shadow: 0px 0px 5px 2px #EEE }
-#page { }
+.page { }
 
 #header { height: 100px; padding-left: 40px; background-color: #EEE }
 #header h2 { margin: 0px; line-height: 100px; }

@@ -33,7 +33,7 @@
                     </div>
                 @endif
 
-                <section id="page">
+                <section class="page page-{{ strtolower($controller) }}">
                     @if (isset($page))
                         {{ $page }}
                     @endif

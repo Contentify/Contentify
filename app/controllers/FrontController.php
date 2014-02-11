@@ -12,6 +12,13 @@ class FrontController extends BaseController {
 	public function __construct()
 	{
 		parent::__construct();
+
+        $self = $this;
+        View::composer('frontend.index', function($view) use ($self)
+        { 
+            $view->with('module', $this->module);
+            $view->with('controller', $this->controller);
+        });
 	}
 
     /**
