@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News as News;
-use HTML, BackController;
+use HTML, URL, BackController;
 
 class AdminNewsController extends BackController {
 
@@ -30,7 +30,7 @@ class AdminNewsController extends BackController {
                 return array(
                     $news->id,
                     $news->published ? HTML::image(asset('icons/accept.png'), 'True') : '',
-                    $news->title,
+                    HTML::link(URL::route('news.show', [$news->id]), $news->title),
                     $news->creator->username,
                     $news->created_at->toDateString()
                     );

@@ -17,7 +17,7 @@ class Comments {
 
         echo(View::make('comments.show', compact('comments', 'foreignType', 'foreignId'))->render());
 
-        if (user() and user()->hasAccess('comments', CREATE)) {
+        if (user() and user()->hasAccess('comments', PERM_CREATE)) {
             echo(View::make('comments.form', compact('foreignType', 'foreignId'))->render());
         }
     }
@@ -31,7 +31,7 @@ class Comments {
      */
     public static function store($foreignType, $foreignId)
     {
-        if (! user()->hasAccess('comments', CREATE)) {
+        if (! user()->hasAccess('comments', PERM_CREATE)) {
             return;
         }
 
@@ -73,7 +73,7 @@ class Comments {
     {
         $comment = Comment::findOrFail($id);
 
-        if (! user() or (! user()->hasAccess('comments', UPDATE) and $comment->creator->id != user()->id)) {
+        if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
             return Response::make(t('Access denied.'), 500);
         }
 
@@ -90,7 +90,7 @@ class Comments {
     {
         $comment = Comment::findOrFail($id);
 
-        if (! user() or (! user()->hasAccess('comments', UPDATE) and $comment->creator->id != user()->id)) {
+        if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
             return Response::make(t('Access denied.'), 500);
         }
 
@@ -116,7 +116,7 @@ class Comments {
     {
         $comment = Comment::findOrFail($id);
 
-        if (! user() or (! user()->hasAccess('comments', DELETE) and $comment->creator->id != user()->id)) {
+        if (! user() or (! user()->hasAccess('comments', PERM_DELETE) and $comment->creator->id != user()->id)) {
             return Response::make(t('Access denied.'), 500);
         }
 
