@@ -161,7 +161,7 @@ class InstallController extends Controller {
      * @param  string           $tableName      The name of the tbale
      * @param  Closure          $tableRows      A closure defining the table rows
      * @param  array            $foreignKeys    An array with names of foreign keys
-     * @param  boolean|array    $contentObject  False or true or an array of attributes that won't be added (the array indicates true)
+     * @param  boolean|array    $contentObject  Bool/array of attributes that won't be added (the array indicates true)
      * @return void
      */
     private function create($tableName, Closure $tableRows, $foreignKeys = array(), $contentObject = true)

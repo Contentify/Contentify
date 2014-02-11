@@ -282,7 +282,10 @@ class BaseController extends Controller {
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
                                 $actionsCode .= image_link('bin', 
                                     trans('app.delete'), 
-                                    route($surface.'.'.strtolower($this->controller).'.destroy', [$entity->id]).$urlParams,
+                                    route(
+                                        $surface.'.'.strtolower($this->controller).'.destroy', 
+                                        [$entity->id]
+                                    ).$urlParams,
                                     false,
                                     ['data-confirm-delete' => true]);
                                 break;

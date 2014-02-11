@@ -48,7 +48,9 @@ class FormBuilder extends Form {
                     $options['name'] = '_form_submit';
                     if ($title == 'Submit') $title = trans('app.save');
                     $value = $title;
-                    if ($showImages) $value = HTML::image(asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]).' '.$value;
+                    if ($showImages) $value = HTML::image(
+                        asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]
+                    ).' '.$value;
                     $partial .= Form::button($value, $options);
                     break; 
                 case 'apply':
@@ -56,14 +58,18 @@ class FormBuilder extends Form {
                     $options['name'] = '_form_apply';
                     if ($title == 'Submit') $title = trans('app.apply');
                     $value = $title;
-                    if ($showImages) $value = HTML::image(asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]).' '.$value;
+                    if ($showImages) $value = HTML::image(
+                        asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]
+                    ).' '.$value;
                     $partial .= Form::button($value, $options);
                     break; 
                 case 'reset':
                     $options['type'] = $type;
                     if ($title == 'Submit') $title = trans('app.reset');
                     $value = $title;
-                    if ($showImages) $value = HTML::image(asset('icons/undo.png'), $value, ['width' => 16, 'height' => 16]).' '.$value;
+                    if ($showImages) $value = HTML::image(
+                        asset('icons/undo.png'), $value, ['width' => 16, 'height' => 16]
+                    ).' '.$value;
                     $partial .= Form::button($value, $options);
                     break; 
             }

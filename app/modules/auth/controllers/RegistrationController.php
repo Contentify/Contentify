@@ -23,7 +23,8 @@ class RegistrationController extends FrontController {
 			}
 
 			if (! Captcha::check(Input::get('captcha'))) {
-				return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => t('The captcha code is wrong!')]);
+				return Redirect::to('auth/registration/create')
+					->withInput()->withErrors(['message' => t('The captcha code is wrong!')]);
 			}
 
 			/*

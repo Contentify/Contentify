@@ -1,4 +1,4 @@
-@foreach ($allNews as $news)
+@foreach ($newsCollection as $news)
 <article class="news">
     <header>
         <h2>{{{ $news->title }}}</h2>

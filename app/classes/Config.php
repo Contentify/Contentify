@@ -50,7 +50,8 @@ class Config extends LaravelConfig {
      */
     public static function store($key, $value)
     {
-        $result = DB::table('config')->whereName($key)->update(array('value' => $value, 'updated_at' => new DateTime()));
+        $result = DB::table('config')->whereName($key)
+            ->update(array('value' => $value, 'updated_at' => new DateTime()));
 
         /*
          * If the key does not exist we need to create it

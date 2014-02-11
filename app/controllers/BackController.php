@@ -110,7 +110,9 @@ class BackController extends BaseController {
                      */
                     if (isset($fieldInfo['thumbnails'])) {
                         $thumbnails = $fieldInfo['thumbnails'];
-                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+                        
+                        // Ensure $thumbnails is an array:
+                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); 
 
                         foreach ($thumbnails as $thumbnail) {
                             InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, true, false)

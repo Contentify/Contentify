@@ -23,14 +23,17 @@ class SearchController extends FrontController {
 		    foreach ($modules as $module) {
 		    	$controllers = $module->def('search'); // def() will return null if "search" is not defined
 		        if ($controllers) { 
-		        	foreach ($controllers as $controller) { // A module might have more than one controller that supports the search
-		        		$classPath = 'App\Modules\\'.ucfirst($module->name()).'\Controllers\\'.ucfirst($controller).'Controller';
+		        	// A module might have more than one controller that supports the search:
+		        	foreach ($controllers as $controller) { 
+		        		$classPath = 'App\Modules\\'.ucfirst($module->name())
+		        			.'\Controllers\\'.ucfirst($controller).'Controller';
 		        		$instance = new $classPath; // Create isntance of the controller...
 		        		$results = $instance->globalSearch($subject); // ...and call the search method.
 		        	}
 
 		        	if (sizeof($results) > 0) {
-		        		$resultBags[] = ['title' => $controller, 'results' => $results]; // Wrap the results in a result bag
+		        		// Wrap the results in a result bag:
+		        		$resultBags[] = ['title' => $controller, 'results' => $results]; 
 		        	}
 		        }
 		    }

@@ -32,10 +32,12 @@ class NewsController extends FrontController {
 
     public function showOverview()
     {
-        $hasAccess = (user() and user()->hasAccess('internal')); // Internal news are protected and require the "internal" permission
-        $allNews = News::wherePublished(true)->where('internal', '<=', $hasAccess)->orderBy('created_at', 'DESC')->take(5)->get();
+        // Internal news are protected and require the "internal" permission:
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        $newsCollection = News::wherePublished(true)->where('internal', '<=', $hasAccess)
+            ->orderBy('created_at', 'DESC')->take(5)->get();
 
-        $this->pageView('news::show_overview', compact('allNews'));
+        $this->pageView('news::show_overview', compact('newsCollection'));
     }
 
     public function show($id)
@@ -55,10 +57,10 @@ class NewsController extends FrontController {
 
     public function globalSearch($subject)
     {
-        $allNews = News::where('title', 'LIKE', '%'.$subject.'%')->get();
+        $newsCollection = News::where('title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = array();
-        foreach ($allNews as $news) {
+        foreach ($newsCollection as $news) {
             $results[$news->title] = URL::to('news/'.$news->id.'/show');
         }
 

@@ -38,7 +38,15 @@ class FormGenerator {
      */
     protected static function buildField($column)
     {
-        $ignoredFields = ['id', 'access_counter', 'creator_id', 'updater_id',  'created_at', 'updated_at', 'deleted_at'];
+        $ignoredFields = [
+            'id', 
+            'access_counter', 
+            'creator_id', 
+            'updater_id',  
+            'created_at', 
+            'updated_at', 
+            'deleted_at'
+        ];
 
         $name       = strtolower($column->Field);
         $title      = self::makeTitle($name);

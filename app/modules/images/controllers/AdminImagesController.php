@@ -20,7 +20,10 @@ class AdminImagesController extends BackController {
             'tableHead' => [t('ID') => 'id', t('Tags') => 'tags', t('Created at') => 'created_at'],
             'tableRow' => function($image)
             {
-                $imgCode = HTML::image(asset('uploads/images/100/'.$image->image), 'Image-Preview', ['class' => 'image']);
+                $imgCode = HTML::image(
+                    asset('uploads/images/100/'.$image->image), 
+                    'Image-Preview', ['class' => 'image']
+                );
                 $preview = '<a href="'.asset('uploads/images/'.$image->image).'">'.$imgCode.'</a><br>'.$image->tags;
 
                 return array(
