@@ -151,7 +151,7 @@ require app_path().'/visitors.php';
 |
 */
 
-const READ      = 1;
-const CREATE    = 2;
-const UPDATE    = 3;
-const DELETE    = 4;
+const PERM_READ      = 1;
+const PERM_CREATE    = 2;
+const PERM_UPDATE    = 3;
+const PERM_DELETE    = 4;

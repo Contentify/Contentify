@@ -37,7 +37,7 @@ class BackController extends BaseController {
              * Contact messages
              */
             $contactMessages = null;
-            if (user()->hasAccess('contact', READ)) {
+            if (user()->hasAccess('contact', PERM_READ)) {
                 $count = DB::table('contact_messages')->where('new', true)->count();
                 if ($count > 0) {
                     $contactMessages = link_to('admin/contact', Lang::choice('app.new_messages', $count));

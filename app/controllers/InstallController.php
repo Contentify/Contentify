@@ -107,7 +107,7 @@ class InstallController extends Controller {
             'name'        => 'Users',
             'permissions' => array(
                 'frontend'  => true,
-                'comments'  => 2, // Users can also update and delete their own comments
+                'comments'  => PERM_CREATE, // Users can also update and delete their own comments
             )
         ));
 
@@ -116,7 +116,7 @@ class InstallController extends Controller {
             'permissions' => array(
                 'frontend'  => true,
                 'internal'  => true,
-                'comments'  => 2,
+                'comments'  => PERM_CREATE,
             )
         ));
 
@@ -126,14 +126,14 @@ class InstallController extends Controller {
                 'frontend'  => true,
                 'internal'  => true,
                 'backend'   => true,
-                'auth'      => 4,
-                'comments'  => 4,
-                'contact'   => 4,
-                'diag'      => 4,
-                'games'     => 4,
-                'help'      => 4,
-                'images'    => 4,
-                'news'      => 4,
+                'auth'      => PERM_DELETE,
+                'comments'  => PERM_DELETE,
+                'contact'   => PERM_DELETE,
+                'diag'      => PERM_DELETE,
+                'games'     => PERM_DELETE,
+                'help'      => PERM_DELETE,
+                'images'    => PERM_DELETE,
+                'news'      => PERM_DELETE,
             )
         ));
 
@@ -143,14 +143,14 @@ class InstallController extends Controller {
                 'frontend'  => true,
                 'internal'  => true,
                 'backend'   => true,
-                'auth'      => 4,
-                'comments'  => 4,
-                'contact'   => 4,
-                'diag'      => 4,
-                'games'     => 4,
-                'help'      => 4,
-                'images'    => 4,
-                'news'      => 4,
+                'auth'      => PERM_DELETE,
+                'comments'  => PERM_DELETE,
+                'contact'   => PERM_DELETE,
+                'diag'      => PERM_DELETE,
+                'games'     => PERM_DELETE,
+                'help'      => PERM_DELETE,
+                'images'    => PERM_DELETE,
+                'news'      => PERM_DELETE,
             )
         ));
     }
