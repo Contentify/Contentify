@@ -87,8 +87,6 @@ Route::get('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    //if (user()) dd(user()->hasAccess('test', 0));
-    //Config::store("unicorns", "are epic");
-    //dd(user()->hasAccess('backend'));
+    $x = new App\Modules\News\Controllers\NewsWidget();
     //echo(FormGenerator::generate('news'));
 });

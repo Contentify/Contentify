@@ -95,16 +95,27 @@ require app_path().'/filters.php';
 
 /*
 |--------------------------------------------------------------------------
-| Require The Viewcomposers File
+| Require Blade Extensions
 |--------------------------------------------------------------------------
 |
-| This will load the viewcomposers file for the application. It's the
-| right place for view composer declarations that are not related to only a
-| single composer.
+| This will load the blade_extensions file for the application. It's the
+| right place for blade extensions.
 |
 */
 
-require app_path().'/composers.php';
+require app_path().'/blade_extensions.php';
+
+/*
+|--------------------------------------------------------------------------
+| Require HTML Extensions
+|--------------------------------------------------------------------------
+|
+| This will load the html_extensions file for the application. It's the
+| right place for HTML extensions.
+|
+*/
+
+require app_path().'/html_extensions.php';
 
 /*
 |--------------------------------------------------------------------------

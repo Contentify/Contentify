@@ -83,4 +83,4 @@ h1.page-title { }
 #content { width: 66%; float: left }
 #sidebar { width: 33%; margin-left: 66% }
 
-#sidebar ul { margin-left: 40px }
+#sidebar { padding-left: 40px }

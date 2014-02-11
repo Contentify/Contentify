@@ -41,6 +41,7 @@
             </section>
 
             <aside id="sidebar">
+                <h3>Navigation:</h3>
                 <ul class="layout-v">
                     <li>{{ link_to('auth/login', 'Login') }}</li>
                     <li>{{ link_to('auth/logout', 'Logout') }}</li>
@@ -50,6 +51,10 @@
                     <li>{{ link_to('search', 'Search') }}</li>
                     <li>{{ link_to('admin', 'Admin-Backend') }}</li>
                 </ul>
+
+                <br />
+                <h3>Latest News:</h3>
+                @widget('News::News')
             </aside>
 
             <div class="clear"></div>
