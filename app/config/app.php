@@ -142,7 +142,9 @@ return array(
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
-        // Custom service prodivers:
+        // CMS service prodivers:
+
+        // Vendor service prodivers:
         'Way\Generators\GeneratorsServiceProvider',
         'Creolab\LaravelModules\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
@@ -214,12 +216,14 @@ return array(
         'Validator'             => 'Illuminate\Support\Facades\Validator',
         'View'                  => 'Illuminate\Support\Facades\View',
 
+        // CMS classes:
         'ModuleRoute'           => 'Contentify\ModuleRoute',
         'Captcha'               => 'Contentify\Captcha',
         'FormGenerator'         => 'Contentify\FormGenerator',
         'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
 
+        // Vendor classes:
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Ardent'                => 'LaravelBook\Ardent\Ardent',
         'Rss'                   => 'Thujohn\Rss\RssFacade',

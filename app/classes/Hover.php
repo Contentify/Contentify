@@ -23,7 +23,7 @@ class Hover {
      */
     public function __construct($text = '')
     {
-        if ($text != '') {
+        if ($text) {
             $this->text($text);
         }
     }
@@ -43,7 +43,9 @@ class Hover {
      */
     public function image($url, $alt = null, $attributes = array())
     {
-        $this->content .= HTML::image($url, $alt = null, $attributes = array());
+        if ($url) {
+            $this->content .= HTML::image($url, $alt = null, $attributes = array());
+        }
         return $this;
     }
 
@@ -55,7 +57,7 @@ class Hover {
      */
     public function text($text)
     {
-        if ($text != '') {
+        if ($text) {
             $this->content .= '<p>'.$text.'</p>';
         }
         return $this;
@@ -68,7 +70,7 @@ class Hover {
      */
     public function render()
     {
-        if ($this->content != '') {
+        if ($this->content) {
             return str_replace('%%', $this->content, $this->wrapperTag);
         } else {
             return '';

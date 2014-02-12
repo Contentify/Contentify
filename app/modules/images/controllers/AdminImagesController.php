@@ -19,7 +19,7 @@ class AdminImagesController extends BackController {
         $this->buildIndexForm([
             'tableHead' => [
                 t('ID')         => 'id', 
-                t('Image')      => 'tags', 
+                t('Image')      => null, 
                 t('Created at') => 'created_at'
             ],
             'tableRow' => function($image)

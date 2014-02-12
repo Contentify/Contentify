@@ -66,8 +66,7 @@ $(document).ready(function()
         speed: 400
     });
     $('.hover-ui').parent().quicktip({
-        speed: 400,
-        content: $(this).find('.hover-ui').html()
+        speed: 400
     });
 
     /**

@@ -21,7 +21,8 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
 			"app/modules",
-			"app/classes"
+			"app/classes",
+			"app/classes/facades"
 		]
 	},
 	"scripts": {

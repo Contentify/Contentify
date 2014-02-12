@@ -29,7 +29,7 @@ class AdminGamesController extends BackController {
                 return [
                     $game->id,
                     $hover.$game->title,
-                ];
+                ];            
             }
         ]);
     }

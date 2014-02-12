@@ -21,7 +21,7 @@ jQuery.fn.quicktip = function(options) {
 		if (typeof($this.attr('title')) != 'undefined') {
 			var tipTitle = $this.attr('title');
 		} else {
-			var tipTitle = options.content;
+			var tipTitle = $this.find('.hover-ui').html();
 		}
 
 		$this.removeAttr('title'); // Remove title attribute
