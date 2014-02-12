@@ -102,6 +102,7 @@ ul.pagination li.disabled { display: none }
 /* Tooltip */
 #tooltip { display: none; position: absolute; background: #232323; padding: 5px; opacity: 1.0; border-radius: 3px; font-size: 13px; color: white }
 #tooltip img { max-width: 600px; max-height: 450px }
+.hover-ui { display: none; }
 
 /*
  * Subpages

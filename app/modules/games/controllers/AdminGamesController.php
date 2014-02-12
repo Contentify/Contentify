@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Games\Controllers;
 
 use App\Modules\Games\Models\Game as Game;
-use BackController;
+use Hover, BackController;
 
 class AdminGamesController extends BackController {
 
@@ -23,9 +23,12 @@ class AdminGamesController extends BackController {
             ],
             'tableRow' => function($game)
             {
+                $hover = new Hover();
+                if ($game->icon) $hover->image(asset('uploads/games/'.$game->icon));
+
                 return [
                     $game->id,
-                    $game->title
+                    $hover.$game->title,
                 ];
             }
         ]);

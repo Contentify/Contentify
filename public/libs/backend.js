@@ -65,6 +65,10 @@ $(document).ready(function()
     $('*[title]').quicktip({
         speed: 400
     });
+    $('.hover-ui').parent().quicktip({
+        speed: 400,
+        content: $(this).find('.hover-ui').html()
+    });
 
     /**
      * Add delete confirm dialogue

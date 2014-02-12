@@ -217,6 +217,7 @@ return array(
         'ModuleRoute'           => 'Contentify\ModuleRoute',
         'Captcha'               => 'Contentify\Captcha',
         'FormGenerator'         => 'Contentify\FormGenerator',
+        'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
 
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
