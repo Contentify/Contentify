@@ -18,27 +18,27 @@ class AdminContactController extends BackController {
     {
         if (! $this->checkAccessRead()) return;
 
-        $this->buildIndexForm(array(
+        $this->buildIndexForm([
             'buttons' => null,
             'tableHead' => [
-                t('ID') => 'id', 
-                t('New') => 'new', 
-                t('Title') => 'title', 
-                t('Creator') => 'username', 
+                t('ID')         => 'id', 
+                t('New')        => 'new', 
+                t('Title')      => 'title', 
+                t('Creator')    => 'username', 
                 t('Created at') => 'created_at'
             ],
             'tableRow' => function($msg)
             {
-                return array(
+                return [
                     $msg->id,
                     $msg->new ? HTML::image(asset('icons/email_go.png')) : HTML::image(asset('icons/email_open.png')),
                     link_to_route('admin.contact.show', $msg->title, [$msg->id]),
                     $msg->username,
                     $msg->created_at,
-                    );
+                ];
             },
             'actions' => ['delete']
-            ));
+        ]);
     }
 
     public function show($id)

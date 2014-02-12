@@ -147,7 +147,7 @@ class BackController extends BaseController {
 
         $this->pageView(
             strtolower($this->module).'::'.$this->formTemplate, 
-            array('entity' => $entity)
+            ['entity' => $entity]
         );
     }
 
@@ -190,7 +190,7 @@ class BackController extends BaseController {
 
                     $oldFile = public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->$fieldName;
                     if (File::isFile($oldFile)) {
-                        File::delete($oldFile); // We need to delete the old file or we can have "123.jpg" and "123.png"
+                        File::delete($oldFile); // We need to delete the old file or we can have "123.jpg" & "123.png"
                     }
 
                     $extension          = $file->getClientOriginalExtension();
@@ -205,7 +205,9 @@ class BackController extends BaseController {
                      */
                     if (isset($fieldInfo['thumbnails'])) {
                         $thumbnails = $fieldInfo['thumbnails'];
-                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+
+                        // Ensure $thumbnails is an array:
+                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails');
 
                         foreach ($thumbnails as $thumbnail) {
                             InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, true, false)
@@ -220,7 +222,7 @@ class BackController extends BaseController {
 
         $this->messageFlash(trans('app.updated', [$this->model]));
         if (Input::get('_form_apply')) {
-            return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($id));
+            return Redirect::route('admin.'.strtolower($this->controller).'.edit', [$id]);
         } else {
             return Redirect::route('admin.'.strtolower($this->controller).'.index');
         }

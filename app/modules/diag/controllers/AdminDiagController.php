@@ -24,7 +24,7 @@ class AdminDiagController extends BackController {
         /*
          * Create array with names and values
          */
-        $settings = array(
+        $settings = [
             'Artisan optimized' => $optimized,
             'App.environment'   => App::environment(),
             'App.url'           => Config::get('app.url'),
@@ -32,7 +32,7 @@ class AdminDiagController extends BackController {
             'App.key'           => (Config::get('app.key') == '01234567890123456789012345678912' ? 'Dummy' : 'Valid'),
             'Modules.mode'      => Config::get('modules::mode'),
             'Modules.debug'     => (int) Config::get('modules::debug'),
-        );
+        ];
 
         /*
          * If we use MySQL as database, add values of some MySQL variables.

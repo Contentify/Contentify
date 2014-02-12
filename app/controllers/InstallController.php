@@ -98,31 +98,31 @@ class InstallController extends Controller {
      */
     protected function createUserGroups()
     {
-        Sentry::createGroup(array(
+        Sentry::createGroup([
             'name'        => 'Visitors',
             'permissions' => array()
-        ));
+        ]);
 
-        Sentry::createGroup(array(
+        Sentry::createGroup([
             'name'        => 'Users',
-            'permissions' => array(
+            'permissions' => [
                 'frontend'  => true,
                 'comments'  => PERM_CREATE, // Users can also update and delete their own comments
-            )
-        ));
+            ]
+        ]);
 
-        Sentry::createGroup(array(
+        Sentry::createGroup([
             'name'        => 'Members',
-            'permissions' => array(
+            'permissions' => [
                 'frontend'  => true,
                 'internal'  => true,
                 'comments'  => PERM_CREATE,
-            )
-        ));
+            ]
+        ]);
 
-        Sentry::createGroup(array(
+        Sentry::createGroup([
             'name'        => 'Admins',
-            'permissions' => array(
+            'permissions' => [
                 'frontend'  => true,
                 'internal'  => true,
                 'backend'   => true,
@@ -134,12 +134,12 @@ class InstallController extends Controller {
                 'help'      => PERM_DELETE,
                 'images'    => PERM_DELETE,
                 'news'      => PERM_DELETE,
-            )
-        ));
+            ]
+        ]);
 
-        Sentry::createGroup(array(
+        Sentry::createGroup([
             'name'        => 'Super-Admins',
-            'permissions' => array(
+            'permissions' => [
                 'frontend'  => true,
                 'internal'  => true,
                 'backend'   => true,
@@ -151,8 +151,8 @@ class InstallController extends Controller {
                 'help'      => PERM_DELETE,
                 'images'    => PERM_DELETE,
                 'news'      => PERM_DELETE,
-            )
-        ));
+            ]
+        ]);
     }
 
     /**

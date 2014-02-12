@@ -16,8 +16,12 @@ class AdminImagesController extends BackController {
 
     public function index()
     {
-        $this->buildIndexForm(array(
-            'tableHead' => [t('ID') => 'id', t('Tags') => 'tags', t('Created at') => 'created_at'],
+        $this->buildIndexForm([
+            'tableHead' => [
+                t('ID')         => 'id', 
+                t('Image')      => 'tags', 
+                t('Created at') => 'created_at'
+            ],
             'tableRow' => function($image)
             {
                 $imgCode = HTML::image(
@@ -26,14 +30,14 @@ class AdminImagesController extends BackController {
                 );
                 $preview = '<a href="'.asset('uploads/images/'.$image->image).'">'.$imgCode.'</a><br>'.$image->tags;
 
-                return array(
+                return [
                     $image->id,
                     $preview,
                     $image->created_at->toDateString()
-                    );
+                ];
             },
             'searchFor' => 'tags'
-            ));
+        ]);
     }
 
 }

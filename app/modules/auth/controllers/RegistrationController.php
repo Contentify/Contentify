@@ -30,11 +30,11 @@ class RegistrationController extends FrontController {
 			/*
 			 * Register user
 			 */
-			$user = Sentry::register(array(
+			$user = Sentry::register([
 				'username'	=> Input::get('username'),
 				'email'		=> Input::get('email'),
 				'password'	=> Input::get('password'),
-			), true);
+			], true);
 
 			/*
 			 * Add user to group "Users"

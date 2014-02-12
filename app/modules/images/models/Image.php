@@ -6,12 +6,12 @@ class Image extends Ardent {
 
     protected $softDelete = true;
 
-    protected $fillable = array('tags');
+    protected $fillable = ['tags'];
 
-    public static $fileHandling = array('image' => ['type' => 'image', 'thumbnails' => '100']);
+    public static $fileHandling = ['image' => ['type' => 'image', 'thumbnails' => '100']];
 
-    public static $rules = array(
+    public static $rules = [
         'tags'     => 'required',
-    );
+    ];
 
 }

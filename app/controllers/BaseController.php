@@ -72,7 +72,7 @@ class BaseController extends Controller {
         /*
          * Enable auto CSRF protection
          */ 
-        $this->beforeFilter('csrf', array('on' => ['post', 'put', 'delete']));
+        $this->beforeFilter('csrf', ['on' => ['post', 'put', 'delete']]);
 	}
 
 	/**
@@ -139,7 +139,7 @@ class BaseController extends Controller {
 	protected function message($title, $text = '')
 	{
 		if ($this->layout != null) {
-			$this->layout->page = View::make('message', array('title' => $title, 'text' => $text));
+			$this->layout->page = View::make('message', ['title' => $title, 'text' => $text]);
 		} else {
 			throw new Exception('Error: $this->layout is null!');
 		}
@@ -170,7 +170,7 @@ class BaseController extends Controller {
         /*
          * Set default values
          */
-        $defaults = array(
+        $defaults = [
             'buttons'       => ['new'],
             'search'        => '',
             'searchFor'     => 'title',
@@ -180,7 +180,7 @@ class BaseController extends Controller {
             'brightenFirst' => true,
             'sortby'        => 'id',
             'order'         => 'desc',
-            );
+        ];
 
         $data = array_merge($defaults, $data);
 
@@ -310,13 +310,13 @@ class BaseController extends Controller {
         /*
          * Generate the view
          */
-        $this->pageView('backend.index_form', array(
+        $this->pageView('backend.index_form', [
             'buttons'       => $buttons,
             'contentTable'  => $contentTable,
             'sortSwitcher'  => $sortSwitcher,
             'paginator'     => $paginator,
             'searchString'  => $data['search']
-            ));
+        ]);
     }
 
     /**

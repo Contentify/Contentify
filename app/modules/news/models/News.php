@@ -6,16 +6,16 @@ class News extends Ardent {
 
     protected $softDelete = true;
 
-    protected $fillable = array('title', 'intro', 'text', 'published', 'internal', 'allow_comments', 'newscat_id');
+    protected $fillable = ['title', 'intro', 'text', 'published', 'internal', 'allow_comments', 'newscat_id'];
 
-    public static $rules = array(
+    public static $rules = [
         'title'   => 'required',
-    );
+    ];
 
-    public static $relationsData = array(
-        'newscat' => array(self::BELONGS_TO, 'App\Modules\News\Models\Newscat'),
-        'creator' => array(self::BELONGS_TO, 'User'),
-    );
+    public static $relationsData = [
+        'newscat' => [self::BELONGS_TO, 'App\Modules\News\Models\Newscat'],
+        'creator' => [self::BELONGS_TO, 'User'],
+    ];
 
     /**
      * Create/update RSS file
@@ -26,25 +26,25 @@ class News extends Ardent {
     {
         $feed = Rss::feed('2.0', 'UTF-8');
 
-        $feed->channel(array(
+        $feed->channel([
             'title'         => Config::get('app.title').' '.t('News'), 
             'description'   => t('Last 20 News'), 
             'language'      => Lang::getLocale(),
             'link'          => Config::get('app.url'),
             'lastBuildDate' => date('D, j M Y H:i:s ').'GMT'
-        ));
+        ]);
 
         $newsCollection = News::orderBy('created_at', 'DESC')->take(20)->get();
         foreach ($newsCollection as $news) {
             $url = URL::route('news.show', $news->id);
 
-            $feed->item(array(
+            $feed->item([
                 'title'             => $news->title, 
                 'description|cdata' => $news->intro, 
                 'link'              => $url,
                 'guid'              => $url,
                 'pubDate'           => date('D, j M Y H:i:s ', $news->created_at->timestamp).'GMT'
-            ));
+            ]);
         }
 
         $feed->save(public_path().'/rss/news.xml');

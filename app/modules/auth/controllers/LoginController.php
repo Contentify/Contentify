@@ -11,10 +11,10 @@ class LoginController extends FrontController {
 
 	public function postIndex()
 	{
-		$credentials = array(
+		$credentials = [
 			'email'		=> Input::get('email'),
 			'password'	=> Input::get('password')
-		);
+		];
 
 		try {
 			$user = Sentry::authenticate($credentials, false); // login the user (if possible)

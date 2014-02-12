@@ -112,7 +112,7 @@ class FormGenerator {
                     $html = "{{ Form::smartSelectForeign('{$name}', '{$title}') }}";
                     break;
                 default:
-                    $html = '<!-- Unknown type: '.$type.' -->';
+                    $html = "<!-- Unknown type: {$type} -->";
                     break;
             }
             $html .= "\n";

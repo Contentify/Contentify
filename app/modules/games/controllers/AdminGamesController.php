@@ -16,16 +16,19 @@ class AdminGamesController extends BackController {
 
     public function index()
     {
-        $this->buildIndexForm(array(
-            'tableHead' => [t('ID') => 'id', t('Title') => 'title'],
+        $this->buildIndexForm([
+            'tableHead' => [
+                t('ID')     => 'id', 
+                t('Title')  => 'title'
+            ],
             'tableRow' => function($game)
             {
-                return array(
+                return [
                     $game->id,
                     $game->title
-                    );
+                ];
             }
-            ));
+        ]);
     }
 
 }

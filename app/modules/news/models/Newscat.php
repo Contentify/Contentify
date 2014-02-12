@@ -6,11 +6,11 @@ class Newscat extends Ardent {
 
     protected $softDelete = true;
 
-    protected $fillable = array('title');
+    protected $fillable = ['title'];
 
-    public static $fileHandling = array('image' => ['type' => 'image']);
+    public static $fileHandling = ['image' => ['type' => 'image']];
     
-    public static $rules = array(
+    public static $rules = [
         'title'   => 'required',
-    );
+    ];
 }

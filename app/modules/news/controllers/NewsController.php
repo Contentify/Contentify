@@ -14,20 +14,25 @@ class NewsController extends FrontController {
 
     public function index()
     {
-        $this->buildIndexForm(array(
+        $this->buildIndexForm([
             'buttons'   => null,
-            'tableHead' => [t('ID') => 'id', t('Title') => 'title', t('Category') => NULL, t('Date') => 'created_at'],
+            'tableHead' => [
+                t('ID')         => 'id', 
+                t('Title')      => 'title', 
+                t('Category')   => NULL, 
+                t('Date')       => 'created_at'
+            ],
             'tableRow'  => function($news)
             {
-                return array(
+                return [
                     $news->id,
                     HTML::link(URL::route('news.show', [$news->id]), $news->title),
                     $news->newscat->title,
                     $news->created_at->toDateString()
-                    );
+                ];
             },
             'actions'   => []
-            ), 'front');
+        ], 'front');
     }
 
     public function showOverview()

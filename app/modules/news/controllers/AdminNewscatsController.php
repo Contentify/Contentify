@@ -16,16 +16,16 @@ class AdminNewscatsController extends BackController {
 
     public function index()
     {
-        $this->buildIndexForm(array(
+        $this->buildIndexForm([
             'tableHead' => [t('ID') => 'id', t('Title') => 'title'],
             'tableRow' => function($newscat)
             {
-                return array(
+                return [
                     $newscat->id,
                     $newscat->title
-                    );
+                ];
             }
-            ));
+        ]);
     }
 
 }

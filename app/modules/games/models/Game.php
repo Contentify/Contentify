@@ -6,13 +6,13 @@ class Game extends Ardent {
 
     protected $softDelete = true;
 
-    protected $fillable = array('title', 'short');
+    protected $fillable = ['title', 'short'];
 
-    public static $fileHandling = array('icon' => ['type' => 'image']);
+    public static $fileHandling = ['icon' => ['type' => 'image']];
 
-    public static $rules = array(
+    public static $rules = [
         'title'     => 'required',
         'short'     => 'required',
-    );
+    ];
 
 }
