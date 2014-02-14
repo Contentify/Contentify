@@ -46,7 +46,8 @@ class Comments {
         if (! $okay) {
             return Response::make(t('Cannot create the comment.'), 500);
         } else {
-            return Response::make('1', 200);
+            //return Response::make('1', 200);
+            return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
         }
     }
 
@@ -102,7 +103,8 @@ class Comments {
         if (! $okay) {
             return Response::make(t('Cannot update the comment.'), 500);
         } else {
-            return Response::make('1', 200);
+            //return Response::make('1', 200);
+            return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
         }
     }
 

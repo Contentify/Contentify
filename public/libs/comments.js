@@ -1,24 +1,28 @@
 $(document).ready(function()
 {
+    var foreignType = $('#comments').attr('data-foreign-type');
+    var foreignId   = $('#comments').attr('data-foreign-id');
+
     $('.create-comment .save').click(function()
     {
         var $self = $(this);
+        var text = $('.create-comment textarea').val();
+        $('.create-comment').remove();
 
         $.ajax({
             url: baseUrl + 'comments/store',
             type: 'POST',
-            data: { text: $('.create-comment textarea').val(), foreigntype: foreignType, foreignid: foreignId }
-        }).success(function()
+            data: { text: text, foreigntype: foreignType, foreignid: foreignId }
+        }).success(function(data)
         {
-            $('.create-comment').remove();
-            location.reload(); // TODO
+            $('#comments').append(data);
         }).error(function(response)
         {
             $self.parent().html(response.responseText);
         });
     });
 
-    $('.comment .edit').click(function()
+    var editClickHandler = function()
     {
         event.preventDefault();
 
@@ -40,10 +44,12 @@ $(document).ready(function()
                     url: baseUrl + 'comments/' + comment.id + '/update',
                     type: 'PUT',
                     data: { text: $('.create-comment textarea').val(), foreigntype: foreignType, foreignid: foreignId }
-                }).success(function()
+                }).success(function(data)
                 {
-                    $('.create-comment').remove();
-                    location.reload(); // TODO
+                    $('.create-comment textarea').val('');
+                    var $el = $self.parent().html(data);
+                    $el.find('.edit').click(editClickHandler);
+                    $el.find('.delete').click(editClickHandler);
                 }).error(function(response)
                 {
                      $self.parent().html(response.responseText);
@@ -53,9 +59,11 @@ $(document).ready(function()
         {
             $self.parent().html(response.responseText);
         });
-    });
+    };
 
-    $('.comment .delete').click(function(event)
+    $('.comment .edit').click(editClickHandler);
+
+    var deleteClickHandler = function(event)
     {
         event.preventDefault();
 
@@ -72,5 +80,7 @@ $(document).ready(function()
         {
              $self.parent().html(response.responseText);
         });
-    });
+    };
+
+    $('.comment .delete').click(deleteClickHandler);
 });
