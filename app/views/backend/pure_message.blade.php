@@ -5,13 +5,13 @@
 
 	<meta charset="utf-8">
 
-	<base href="{{ Config::get('application.baseurl') }}" />
+	<base href="{{ Config::get('application.baseurl') }}">
 
-	<title>Contentify.it</title>
+	<title>{{ Config::get('app.title') }}</title>
 
-	<link rel="shortcut icon" href="favicon.png" type="picture/x-icon" />
+	<link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	{{ HTML::script('libs/jquery-1.10.2.min.js') }}
 
 	<style>
 		@font-face {
@@ -28,8 +28,9 @@
 		}
 
 		body { margin: 0px; padding: 200px 0px 0px 0px; font-family: Verdana; font-size: 12px; color: silver; background-color: #111111 }
-		/* body { background-image: url(https://a2.sndcdn.com/assets/images/home/carousel/Martin-265c8d09.jpg); background-repeat: no-repeat; background-size: cover; } */
-		div#container { width: 400px; margin-left: auto; margin-right: auto; }
+
+		#container { width: 400px; margin-left: auto; margin-right: auto; }
+		
 		.message-box { display: none; background-color: #070707; padding: 20px; border-radius: 10px; box-shadow: 0px 5px 5px 0px black }
 		.message-box h1 { margin: 0px; font-family: 'Lato'; font-size: 20px; font-weight: normal; color: #ff6100; text-shadow: 0px 0px 1px #ff6100; text-transform: uppercase }
 		.message-box p { margin: 20px 0px 0px 0px; font-family: 'Droid Sans'; font-size: 14px; color: #666; }
@@ -38,14 +39,14 @@
 	</style>
 </head>
 <body>
-<div id="container">
-	@yield('content')
-	<script>
-		$(document).ready(function() {
-			$('.message-box').css({'display': 'block', opacity: 0});
-			$('.message-box').delay(200).animate({ marginTop: '-=10', opacity: 1 }, 400);
-		});
-	</script>
-</div>
+	<div id="container">
+		@yield('content')
+		<script>
+			$(document).ready(function() {
+				$('.message-box').css({'display': 'block', opacity: 0});
+				$('.message-box').delay(200).animate({ marginTop: '-=10', opacity: 1 }, 400);
+			});
+		</script>
+	</div>
 </body>
 </html>

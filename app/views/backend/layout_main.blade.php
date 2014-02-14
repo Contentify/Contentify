@@ -29,6 +29,7 @@
     //
     </script>
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
+    {{ HTML::script('libs/angular.min.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
 <body data-base-url="{{ Config::get('app.url') }}/public/">
@@ -125,7 +126,7 @@
                                 <div class="menu2"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=members">Members</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=teams">Teams &amp; Groups</a></div>
 
-                                <div class="menu2"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=settings">Settings</a></div>
+                                <div class="menu3"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
                                 <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=statistics">Statistics</a></div>
 
@@ -144,7 +145,7 @@
                     @endif
                 
                     @if (isset($page))
-                    <div class="page page-{{ strtolower($controller) }}">
+                    <div class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
                         <a class="form-head" href="{{ url('admin/'.strtolower($controller)) }}">
                             <img src="{{ asset('icons/'.$controllerIcon) }}" width="16" height="16" alt="Icon">{{ $controller }}
                         </a>

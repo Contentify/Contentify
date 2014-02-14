@@ -124,3 +124,16 @@ function sort_switcher($sortby, $order = null, $search = null)
     $caption = trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" />';
     return('<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>');
 }
+
+/**
+ * Helper that returns the name of a class representing the current page.
+ * See for more: http://laravelsnippets.com/snippets/add-unique-body-id-helper
+ * 
+ * @return string
+ */
+function pageClass()
+{ 
+    $pageClass = preg_replace('/\d-/', '', implode( '-', Request::segments() ) ); 
+    $pageClass = str_replace('admin-', '', $pageClass);
+    return ! empty( $pageClass ) && $pageClass != '-' ? $pageClass : 'homepage'; 
+}

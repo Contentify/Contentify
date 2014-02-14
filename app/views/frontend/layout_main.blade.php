@@ -26,19 +26,19 @@
         </header>
 
         <div id="mid-container">
-            <section id="content">
+            <div id="content">
                 @if (Session::get('_message'))
                     <div class="cms-message">
                         {{ Session::get('_message') }}
                     </div>
                 @endif
 
-                <section class="page page-{{ strtolower($controller) }}">
+                <section class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
                     @if (isset($page))
                         {{ $page }}
                     @endif
                 </section>
-            </section>
+            </div>
 
             <aside id="sidebar">
                 <h3>Navigation:</h3>

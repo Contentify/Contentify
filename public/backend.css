@@ -54,7 +54,7 @@ h1.page-title { }
 
 /* Messages */
 .cms-message { margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x; }
-.cms-message h2 { font-size: 14px }
+.cms-message h2 { margin: 0px; font-size: 12px; }
 .cms-message .text { }
 
 /* Form */
