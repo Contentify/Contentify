@@ -33,7 +33,6 @@ $(document).ready(function()
     /**
      * Update date and time
      */
-    
     var timeoutTime = 1000; // ms
 
     var updateDatetime = function () 
@@ -75,12 +74,14 @@ $(document).ready(function()
     $('*[data-confirm-delete]').click(function()
     {
         if (! confirm('Delete this item?')) return false;
+        
     });
 
     /**
      * Make sidebar responsive to scrolling
      */
-    $(window).scroll(function () {
+    $(window).scroll(function () 
+    {
         var $header     = $('#header');
         var $sidebar    = $('#sidebar');
         var $footer     = $('#footer');
