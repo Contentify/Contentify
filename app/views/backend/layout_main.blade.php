@@ -124,13 +124,13 @@
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=users">Users</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=members">Members</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=teams">Teams &amp; Groups</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=teams">Teams</a></div>
 
                                 <div class="menu3"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
                                 <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=statistics">Statistics</a></div>
 
-                                <div class="menu3"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=roles">Roles</a></div>
+                                <div class="menu3"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/groups', 'Groups & Permissions') }}</div>
                             </div>
                             <div class="menu-bottom"></div>
                     </div>
