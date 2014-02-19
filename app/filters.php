@@ -36,9 +36,8 @@ App::after(function($request, $response)
 Route::filter('admin', function()
 {
     if (! Sentry::check()) {
+        Session::set('redirect', Request::path());
         return View::make('backend.auth');
-    	//Session::set('redirect', Request::path());
-    	//return Redirect::route('login');
     }
 
     if (! user()->hasAccess('backend')) {
