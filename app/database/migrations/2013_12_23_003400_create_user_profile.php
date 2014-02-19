@@ -13,7 +13,7 @@ class CreateUserProfile extends Migration {
 	{
 		Schema::table('users', function($table)
 		{
-			$table->boolean('female')->nullable();
+			$table->integer('gender')->nullable()->default(0);
 			$table->string('birthdate', 20)->nullable();
 			$table->text('about')->nullable();
 

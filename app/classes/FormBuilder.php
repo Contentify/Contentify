@@ -138,9 +138,13 @@ class FormBuilder extends Form {
      */
     public static function smartTextarea($name = 'text', $title = 'Text', $editor = true)
     {
-        $label      = self::label($name, $title, ['class' => 'full-line']);
-        if ($editor) $class = ['class' => 'ckeditor']; else $class = '';
-        $textarea   = self::textarea($name, null, $class);
+        if ($editor) {
+            $label      = self::label($name, $title, ['class' => 'full-line']);
+            $textarea   = self::textarea($name, null, ['class' => 'ckeditor']);
+        } else {
+            $label      = self::label($name, $title);
+            $textarea   = self::textarea($name, null);
+        }
         $partial    = '<div class="form-group">'.$label.' '.$textarea.'</div>';
         return $partial;
     }
