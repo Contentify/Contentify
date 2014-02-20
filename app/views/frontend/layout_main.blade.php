@@ -41,10 +41,12 @@
             </div>
 
             <aside id="sidebar">
+                <h3>User Area:</h3>
+                @widget('Auth::Login')
+
+                <br>
                 <h3>Navigation:</h3>
                 <ul class="layout-v">
-                    <li>{{ link_to('auth/login', 'Login') }}</li>
-                    <li>{{ link_to('auth/logout', 'Logout') }}</li>
                     <li>{{ link_to('auth/registration/create', 'Registration') }}</li>
                     <li>{{ link_to('news', 'Newsarchive') }}</li>
                     <li>{{ link_to('contact', 'Contact') }}</li>
@@ -53,7 +55,7 @@
                     <li>{{ link_to('admin', 'Admin-Backend') }}</li>
                 </ul>
 
-                <br />
+                <br>
                 <h3>Latest News:</h3>
                 @widget('News::News')
             </aside>

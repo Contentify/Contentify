@@ -6,10 +6,10 @@
         {{ $comment->text }}
     </div>
     @if (user())
-    @if (user()->hasAccess('comments', 3) or $comment->creator->id == user()->id)
+    @if (user()->hasAccess('comments', PERM_UPDATE) or $comment->creator->id == user()->id)
     {{ HTML::link(URL::route('comments.edit', [$comment->id]), 'Edit', ['class' => 'edit', 'data-id' => $comment->id]) }}
     @endif
-    @if (user()->hasAccess('comments', 4) or $comment->creator->id == user()->id)
+    @if (user()->hasAccess('comments', PERM_DELETE) or $comment->creator->id == user()->id)
     {{ HTML::link(URL::route('comments.delete', [$comment->id]).'?method=DELETE', 'Delete', ['class' => 'delete', 'data-id' => $comment->id]) }}
     @endif
     @endif

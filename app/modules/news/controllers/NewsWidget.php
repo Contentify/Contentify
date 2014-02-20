@@ -12,7 +12,7 @@ class NewsWidget extends Widget {
         $newsCollection = News::wherePublished(true)->where('internal', '<=', $hasAccess)
             ->orderBy('created_at', 'DESC')->take(5)->get();
 
-        return View::make('news::widget', compact('newsCollection'));
+        return View::make('news::widget', compact('newsCollection'))->render();
     }
 
 }
