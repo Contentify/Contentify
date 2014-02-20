@@ -46,7 +46,7 @@
         
             <img id="user-img" src="{{ $userImage }}" alt="User">
             <img id="user-img-overlay" src="{{ asset('theme/backend/photo.png') }}" width="45" height="60" alt="Overlay">
-            <a id="profile-link" href="{{ url('user/profile') }}" title=""><!-- empty--></a>
+            <a id="profile-link" href="{{ url('users/'.Sentry::getUser()->id) }}" title="Show your profile"><!-- empty--></a>
             
             <div id="info-box">
                 <span>Welcome, {{ Sentry::getUser()->username }}!</span> 
@@ -59,19 +59,19 @@
             
             <a id="tecslink" href="{{ url('admin/help/technologies') }}" title="{{ trans('app.tec_infos') }}"><!-- empty --></a>
             
-            <a id="quicklink1" class="quicklink" href="editprofile/{..$userid..}/" title="Edit your Profile" style="left: 669px"><!-- empty --></a>
-            <a id="quicklink2" class="quicklink" href="admin.php?site=help" title="Help" style="left: 689px"><!-- empty --></a>
-            <a id="quicklink3" class="quicklink" href="logout/" title="Log out" style="left: 709px"><!-- empty --></a>
+            <a id="quicklink1" class="quicklink" href="{{ url('users/'.Sentry::getUser()->id.'/edit') }}" title="Edit your Profile" style="left: 669px"><!-- empty --></a>
+            <a id="quicklink2" class="quicklink" href="{{ url('admin/help') }}" title="Help" style="left: 689px"><!-- empty --></a>
+            <a id="quicklink3" class="quicklink" href="{{ url('auth/logout') }}" title="Log out" style="left: 709px"><!-- empty --></a>
             
-            <a id="quicklink4" class="quicklink" href="admin.php?site=news" title="News" style="left: 740px"><!-- empty --></a>
+            <a id="quicklink4" class="quicklink" href="{{ url('admin/news') }}" title="News" style="left: 740px"><!-- empty --></a>
             <a id="quicklink5" class="quicklink" href="admin.php?site=pages" title="Pages" style="left: 760px"><!-- empty --></a>
-            <a id="quicklink6" class="quicklink" href="admin.php?site=pictures" title="Pictures" style="left: 780px"><!-- empty --></a>
+            <a id="quicklink6" class="quicklink" href="{{ url('admin/images') }}" title="Images" style="left: 780px"><!-- empty --></a>
             <a id="quicklink7" class="quicklink" href="admin.php?site=downloads" title="Downloads" style="left: 800px"><!-- empty --></a>
             <a id="quicklink8" class="quicklink" href="admin.php?site=matches" title="Matches" style="left: 820px"><!-- empty --></a>
             
-            <a id="quicklink9" class="quicklink" href="admin.php?site=users" title="Users" style="left: 851px"><!-- empty --></a>
+            <a id="quicklink9" class="quicklink" href="{{ url('admin/users') }}" title="Users" style="left: 851px"><!-- empty --></a>
             <a id="quicklink10" class="quicklink" href="admin.php?site=members" title="Members" style="left: 871px"><!-- empty --></a>
-            <a id="quicklink11" class="quicklink" href="admin.php?site=settings" title="Settings" style="left: 891px"><!-- empty --></a>
+            <a id="quicklink11" class="quicklink" href="{{ url('admin/config') }}" title="Settings" style="left: 891px"><!-- empty --></a>
         </header>
         <section id="content-wrapper">
             <aside id="sidebar">

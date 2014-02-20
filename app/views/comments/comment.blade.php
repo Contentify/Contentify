@@ -1,6 +1,6 @@
 <article id="comment{{ $comment->id }}" class="comment">
     <header>
-        <h2>Comment written by {{ $comment->creator->username }} at {{ $comment->created_at }}</h2>
+        <h2>Comment written by {{ link_to('users/'.$comment->creator->id, $comment->creator->username) }} at {{ $comment->created_at }}</h2>
     </header>
     <div class="text">
         {{ $comment->text }}

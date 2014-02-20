@@ -9,5 +9,6 @@ ModuleRoute::resource('admin/news', 'AdminNewsController');
 ModuleRoute::post('admin/news/search', 'AdminNewsController@search');
 
 ModuleRoute::resource('news', 'NewsController', ['only' => ['index', 'show']]);
+ModuleRoute::get('news/{id}/{slug}', 'NewsController@show');
 ModuleRoute::post('news/search', 'NewsController@search');
 

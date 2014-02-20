@@ -2,7 +2,7 @@
 <article class="news">
     <header>
         <h2>{{{ $news->title }}}</h2>
-        <span><time>{{ $news->created_at }}</time> written by {{ $news->creator->username }} in {{{ $news->newscat->title }}}</span>
+        <span><time>{{ $news->created_at }}</time> written by {{ link_to('users/'.$news->creator->id, $news->creator->username) }} in {{{ $news->newscat->title }}}</span>
     </header>
     <div class="content">
         @if ($news->newscat->image)
@@ -14,6 +14,6 @@
             {{ $news->intro }}
         </div>
     </div>
-    {{ HTML::link(URL::route('news.show', [$news->id]), 'Read more...') }}
+    {{ link_to('news/'.$news->id.'/'.slug($news->title), 'Read more...') }}
 </article>
 @endforeach

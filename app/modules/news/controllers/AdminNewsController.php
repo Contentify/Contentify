@@ -31,7 +31,7 @@ class AdminNewsController extends BackController {
                     $news->id,
                     $news->published ? HTML::image(asset('icons/accept.png'), 'True') : '',
                     HTML::link(URL::route('news.show', [$news->id]), $news->title),
-                    $news->creator->username,
+                    HTML::link(URL::route('users.show', [$news->creator->id]), $news->creator->username),
                     $news->created_at->toDateString()
                 ];
             }
