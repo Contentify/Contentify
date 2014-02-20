@@ -66,7 +66,7 @@ h1.page-title { }
 .form-group label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x }
 .form-group input { width: 40%; padding: 5px 10px; }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus { border-color: #ff6100; color: #4082E3 }
-.form-group textarea { vertical-align: bottom; }
+.form-group textarea { width: 40%; height: 100px; vertical-align: bottom; }
 .form-group textarea:focus { border-color: #ff6100; color: #4082E3 }
 .form-actions { padding-top: 20px }
 .form-actions input[type=submit], .form-actions button { margin-right: 10px; }

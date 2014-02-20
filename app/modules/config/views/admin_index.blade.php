@@ -6,7 +6,7 @@
 {{ Form::errors($errors) }}
 
 {{ Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) }}
-    {{ Form::smartText('app_analytics', 'Analytics Code') }}    
+    {{ Form::smartTextarea('app_analytics', 'Analytics Code', false) }}    
 
     {{ Form::actions(['submit' => 'Update'], false) }}
 {{ Form::close() }}

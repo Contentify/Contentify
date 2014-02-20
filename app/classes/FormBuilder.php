@@ -87,7 +87,9 @@ class FormBuilder extends Form {
      */
     public static function smartCheckbox($name = 'image', $title = 'Image')
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::checkbox($name).'</div>';
+        // Bugfix for Laravel checkobx bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
+        $checkbox = self::hidden($name, false).self::checkbox($name, true);
+        $partial = '<div class="form-group">'.self::label($name, $title).' '.$checkbox.'</div>';
         return $partial;
     }
 
