@@ -157,13 +157,13 @@ class BaseController extends Controller {
 	}
 
     /**
-     * Builds an index form (page) from a model and $data
+     * Builds an index page from a model and $data
      * 
-     * @param  array $data Array with information how to build the form. See $defaults for details.
+     * @param  array  $data    Array with information how to build the form. See $defaults for details.
      * @param  string $surface Frontend ("front") or backend ("admin")?
      * @return void
      */
-    protected function buildIndexForm($data, $surface = 'admin')
+    protected function buildIndexPage($data, $surface = 'admin')
     {
         if (! $this->checkAccessRead()) return;
         
@@ -178,7 +178,7 @@ class BaseController extends Controller {
             'tableRow'      => [],
             'actions'       => ['edit', 'delete'],
             'brightenFirst' => true,
-            'sortby'        => 'id',
+            'sortby'        => 'id', // You can not use MySQL functions
             'order'         => 'desc',
         ];
 
@@ -219,7 +219,7 @@ class BaseController extends Controller {
          */
         if (Input::get('sortby')) {
             $sortby = strtolower(Input::get('sortby'));
-            if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby;
+            if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby; else dd($sortby);
 
             $order = strtolower(Input::get('order'));
             if ($order === 'desc' or $order === 'asc') {
@@ -254,7 +254,7 @@ class BaseController extends Controller {
         $tableHead = array();
         foreach ($data['tableHead'] as $title => $sortby) {
             if ($sortby != null) {
-                $tableHead[] = HTML::link(URL::current().'?sortby='.$sortby, $title);
+                $tableHead[] = HTML::link(URL::current().'?sortby='.urlencode($sortby), $title);
             } else {
                 $tableHead[] = $title;
             }

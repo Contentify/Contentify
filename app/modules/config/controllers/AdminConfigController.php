@@ -47,11 +47,13 @@ class AdminConfigController extends BackController {
                 ->withInput()->withErrors($settingsBag->validationErrors);
         }
 
+        // Save the settings one by one:
         foreach ($settingsBag->getFillable() as $settingName) {
             $settingRealName = str_replace('_', '.', $settingName);
             DB::table('config')->whereName($settingRealName)->update(['value' => $settingsBag->$settingName]);
         }
 
+        $this->messageFlash(trans('app.updated', [$this->controller]));
         return Redirect::to('admin/config');
     }
 

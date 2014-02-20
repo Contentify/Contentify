@@ -136,6 +136,7 @@ class InstallController extends Controller {
                 'help'      => PERM_DELETE,
                 'images'    => PERM_DELETE,
                 'news'      => PERM_DELETE,
+                'users'     => PERM_DELETE,
             ]
         ]);
 
@@ -155,6 +156,7 @@ class InstallController extends Controller {
                 'help'      => PERM_DELETE,
                 'images'    => PERM_DELETE,
                 'news'      => PERM_DELETE,
+                'users'     => PERM_DELETE,
             ]
         ]);
     }

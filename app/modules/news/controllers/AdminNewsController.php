@@ -16,7 +16,7 @@ class AdminNewsController extends BackController {
 
     public function index()
     {
-        $this->buildIndexForm([
+        $this->buildIndexPage([
             'buttons'   => ['new', 'category'],
             'tableHead' => [
                 t('ID')         => 'id', 

@@ -14,11 +14,14 @@ class CreateUserProfile extends Migration {
 		Schema::table('users', function($table)
 		{
 			$table->integer('gender')->nullable()->default(0);
+			$table->string('country', 3)->default('eu');;
 			$table->string('birthdate', 20)->nullable();
+			$table->text('occupation')->nullable();
+			$table->text('website')->nullable();
 			$table->text('about')->nullable();
 
 			$table->string('skype')->nullable();
-			$table->string('steamid')->nullable();
+			$table->string('steam_id')->nullable();
 
 			$table->string('cpu')->nullable();
 			$table->string('graphics')->nullable();
@@ -39,7 +42,7 @@ class CreateUserProfile extends Migration {
 
 			$table->string('image', 255)->nullable();
 			$table->string('avatar', 255)->nullable();
-			$table->string('view_counter', 255)->default(0);
+			$table->string('access_counter', 255)->default(0);
 		});
 	}
 

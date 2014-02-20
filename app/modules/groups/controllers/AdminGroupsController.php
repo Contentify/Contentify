@@ -16,7 +16,7 @@ class AdminGroupsController extends BackController {
 
     public function index()
     {
-        $this->buildIndexForm([
+        $this->buildIndexPage([
             'tableHead' => [
                 t('ID')     => 'id', 
                 t('Title')  => 'name'

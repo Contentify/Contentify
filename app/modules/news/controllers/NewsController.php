@@ -14,7 +14,7 @@ class NewsController extends FrontController {
 
     public function index()
     {
-        $this->buildIndexForm([
+        $this->buildIndexPage([
             'buttons'   => null,
             'tableHead' => [
                 t('ID')         => 'id', 
@@ -31,7 +31,7 @@ class NewsController extends FrontController {
                     $news->created_at->toDateString()
                 ];
             },
-            'actions'   => []
+            'actions'   => null
         ], 'front');
     }
 
