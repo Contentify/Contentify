@@ -110,6 +110,8 @@ ul.pagination li.disabled { display: none }
 
 .page-images .content-table .image { max-width: 500px; max-height: 100px }
 
+.page-config form { margin-top: 40px }
+
 /*
  * Mainlayout
  */

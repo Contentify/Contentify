@@ -74,6 +74,18 @@ class ModuleRoute {
 	}
 
 	/**
+	 * Create route for method put.
+	 * 
+	 * @param  string $route
+	 * @param  mixed  $target
+	 * @return Illuminate\Routing\Route
+	 */
+	public static function put($route, $target)
+	{
+		return self::createRoute('put', $route, $target);
+	}
+
+	/**
 	 * Create route for method any.
 	 * 
 	 * @param  string $route

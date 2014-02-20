@@ -1,7 +1,8 @@
 <?php namespace App\Modules\Config\Controllers;
 
+use App\Modules\Config\Models\SettingsBag as SettingsBag;
 use Contentify\Vendor\MySqlDump as MySqlDump;
-use File, DB, Config, View, BackController;
+use Redirect, Input, File, DB, Config, View, BackController;
 
 class AdminConfigController extends BackController {
 
@@ -11,7 +12,47 @@ class AdminConfigController extends BackController {
     {
         if (! $this->checkAccessRead()) return;
 
-        $this->pageView('config::admin_index');
+        $settings = DB::table('config')->get();
+
+        $settingsBag = new SettingsBag; // This is some kind of a helper model to store settings
+
+        // We have to loop over all settings and check if they are listed as fillable:
+        foreach ($settings as $setting) {
+            $settingName = str_replace('.', '_', $setting->name);
+            if (in_array($settingName, $settingsBag->getFillable())) {
+                $settingsBag->$settingName = $setting->value;
+            }
+        }
+
+        $this->pageView('config::admin_index', compact('settingsBag'));
+    }
+
+    /**
+     * Updates the settings.
+     * Note that we have to create the parameter $id eventhough we won't use it:
+     * The update method inherits from BackController->update($id).
+     * We allow $id to be null so we do not have to pass an argument.
+     * 
+     * @param mixed $id Unused parameter
+     */
+    public function update($id = null)
+    {
+        if (! $this->checkAccessUpdate()) return;
+
+        $settingsBag = new SettingsBag;
+        $settingsBag->fill(Input::all());
+
+        if (! $settingsBag->validate()) {
+            return Redirect::to('admin/config')
+                ->withInput()->withErrors($settingsBag->validationErrors);
+        }
+
+        foreach ($settingsBag->getFillable() as $settingName) {
+            $settingRealName = str_replace('_', '.', $settingName);
+            DB::table('config')->whereName($settingRealName)->update(['value' => $settingsBag->$settingName]);
+        }
+
+        return Redirect::to('admin/config');
     }
 
     /**
