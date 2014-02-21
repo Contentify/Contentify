@@ -1,5 +1,3 @@
-# Conventions
-
 Contentify uses several conventions you should be aware of.
 
 ## Module Names
@@ -34,3 +32,7 @@ SQL does not offer an explicit way to give attributes a semantic meaning. Larave
 * **creator_id**: User-ID of the entity creator (*integer*)
 * **updater_id**: User-ID of the user doing the latest update (*integer*)
 * **access_counter**: Counts accesses (*integer*)
+
+## Code Style
+
+Contentify tries to stay close to Laravel's code style. This is very much equivalent to [PSR coding standards](https://github.com/php-fig/fig-standards/tree/master/accepted). We encourage you to stick to these standards to ensure good code quality.

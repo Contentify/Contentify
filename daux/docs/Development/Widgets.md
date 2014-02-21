@@ -1,5 +1,3 @@
-# Widgets
-
 Widgets are little helpers that make it a piece of cake to display certain content on a page. You can add widgets to templates with a clean and pretty syntax:
 
     <!-- Blade syntax style: -->
@@ -10,7 +8,7 @@ This will render a template including a login form. "Auth" is the name of the mo
     @widget('Cookies::Recipes', 3)
     @widget('Cookies::Recipes', ['limit' => 3])
 
-Both widget instances will do the same: They load up to three cookie recipes. You have to use an array as arguemtn to pass more than one value, but if you want to pass only a single argument you do not have to use an array.
+Both widget instances will do the same: They load up to three cookie recipes. You have to use an array as argument to pass more than one value, but if you want to pass only a single argument you do not have to wrap it.
 
 As the CMS uses Laravel you should know that widgets are implemented as classes inheriting from the Widget base class. Widget classes live inside the controllers directory. Using widgets is an alternative way to what vanilla Laravel offers: View composers. Unlike view composers we can directly pass arguments to a widget with a clean syntax. A view composer is tied to a single view, but a widget can use as many views as needed.
 

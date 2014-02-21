@@ -1,5 +1,3 @@
-# Blade
-
 Blade is Laravels template compiler ([Blade docs](http://laravel.com/docs/templates)). When working with templates in Contentify you can choose between PHP templates (\*.php) and Blade templates (\*.blade.php). Or juse a mix: Blade extends PHP templates, so you can use PHP inside Blade templates. Furthermore Blade compiles its template as PHP templates.
 
 The official documentation covers Blade so here are only a few important control structures listed.
@@ -51,7 +49,7 @@ Compiled:
 
 ## Layouts
 
-Templates may contain HTML code or HTML code snippets. Layouts are special templates: They contain complete HTML pages, including tags like <head> and <body>.
+Templates may contain HTML code or HTML code snippets. Layouts are special templates: They contain complete HTML pages, including tags like &lt;head> and &lt;body>.
 
 ## Templates Versus Controllers
 
