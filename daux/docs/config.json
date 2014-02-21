@@ -1,0 +1,21 @@
+{
+	"title": "Contentify Docs",
+	"tagline": "Contentify eSports CMS",
+	"docs_path": "docs",
+	"image": "img/app.png",
+	"theme": "navy",
+	"template":"default",
+	"timezone": "Europe/Berlin",
+	"float": false,
+	"toggle_code": true,
+	"date_modified": true,
+	"repo": "",
+	"twitter": ["contentifycms"],
+	"google_analytics": "",
+	"links": {
+		"Website": "http://contentify.it",
+		"Download": "http://contentify.it/download",
+		"GitHub Repo": "https://github.com/#",
+		"Help/Support/Bugs": "http://contentify.it/support"
+	}
+}

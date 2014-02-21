@@ -2,7 +2,7 @@
 <article class="news">
     <header>
         <h2>{{{ $news->title }}}</h2>
-        <span><time>{{ $news->created_at }}</time> written by {{ link_to('users/'.$news->creator->id, $news->creator->username) }} in {{{ $news->newscat->title }}}</span>
+        <span><time>{{ $news->created_at }}</time> written by {{ link_to('users/'.$news->creator->id.'/'.slug($news->creator->username), $news->creator->username) }} in {{{ $news->newscat->title }}}</span>
     </header>
     <div class="content">
         @if ($news->newscat->image)
