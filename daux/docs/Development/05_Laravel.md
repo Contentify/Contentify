@@ -22,7 +22,7 @@ Contentify enhances Laravel. Understanding Laravel is a key requirement to under
 
 # Laravel In 10 Minutes
 
-Learning Laravel within only 10 minutes is impossible - sorry. This is a super-condensed guide to explain some of the basics without digging into details. Use the resources mentioned above to learn more. The official docs are probably your best friend in doing so.
+Learning Laravel within only 10 minutes is impossible - sorry. This is a super-condensed guide to explain some of the basics without digging into details. Use the resources mentioned above to learn more. The official docs are probably your best friend when doing so.
 
 ## What Is A Framework?
 
@@ -30,11 +30,11 @@ Learning Laravel within only 10 minutes is impossible - sorry. This is a super-c
 
 ## Model-View-Controller
 
-Model-View-Controller is a popular software design pattern. Laravel implements MVC. The idea is seperation of concerns: For example the view-part (HTML templates) is responsible for generating an output representation. Dividing the application into different kinds of components has important advantages. Think about a front-end developer: He or she does not have to deal with PHP code. According to MVC it's possible to avoid writing any PHP code when working with the front-end part, because this only concerns the view. Laravel offers Blade templating to avoid PHP code.
+Model-View-Controller is a popular software design pattern. Laravel implements MVC. The idea is seperation of concerns: For example the view-part (HTML templates) is responsible for generating an output representation. Dividing the application into different kinds of components has important advantages. Think about a front-end developer: He or she does not have to deal with PHP code. According to MVC it's possible to avoid writing any PHP code when working with the front-end part, because this only concerns the view. Laravel offers Blade templating with a PHP-less syntax.
 
 * Models: Entities. In PHP code: Classes and objects. Models are stored in a database.
-* Views: Handling the output representation, usually of models.
-* Controllers: Processing user request ("load this page") to a response.
+* Views: Handle the output representation, usually of models.
+* Controllers: Process user request ("load this page") to a response (the page).
 
 ## Composer And Packagist
 
@@ -42,7 +42,7 @@ Model-View-Controller is a popular software design pattern. Laravel implements M
 
 > Whenever a new class is added to the application the autoloading classmap needs an update. This command will start the update: `php composer.phar dumpautoload`
 
-Composer calls these libariers "packages". [Packagist](https://packagist.org/) is the main Composer repository. "It lets you find packages and lets Composer know where to get the code from".
+Composer calls these libraries "packages". [Packagist](https://packagist.org/) is the main Composer repository. "It lets you find packages and lets Composer know where to get the code from".
 
 ## Requests And Routing
 
@@ -50,7 +50,7 @@ A request arrives to your webserver. How can PHP know what to do with this reque
 
 ## Responses
 
-Who will process a request? A controller. Controllers handle requests and return responses. For example a user agents requests the URL "/cookies/123". A controller named CookieController handles this particular request. The controller retrieves the cookie with the ID 123 from the database as an object (model). It passes the object to a view and returns this view as a response. Now the user can enjoy a delicous cookie recipe. Responses have a header and a content. The header contains a status code such as the infamouse 404 ("Not Found").
+Who will process a request? A controller. Controllers handle requests and return responses. For example a user agents requests the URL "/cookies/123". A controller named CookieController handles this particular request. The controller retrieves the cookie with the ID 123 from the database as an object (model). It passes the object to a view and returns this view as a response. Now the user can enjoy a delicous cookie recipe. Responses have a header and a content part. The header contains a status code such as the infamous 404 ("Not Found").
 
 ## Database
 
