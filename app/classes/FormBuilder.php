@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use HTML, Illuminate\Support\Facades\Form, URL, DB;
+use Exception, HTML, Illuminate\Support\Facades\Form, URL, DB;
 
 class FormBuilder extends Form {
 
@@ -154,13 +154,20 @@ class FormBuilder extends Form {
     /**
      * Create HTML code for a select element.
      * 
-     * @param  string $name  The name of the select element
-     * @param  string $title The title of the select element
+     * @param  string $name     The name of the select element
+     * @param  string $title    The title of the select element
+     * @param  string $notEmpty If true the result cannot be empty (if it's empty throw an error)
      * @return string
      */
     public static function smartSelectForeign($name, $title, $notEmpty = true)
     {
-        $model = str_replace(strtolower('_id'), '', $name);
+        $pos = strrpos($name, '_');
+        if ($pos === false) {
+            throw new Exception("Invalid foreign key: {$name}", 1);
+        }
+        $model = str_plural(substr($name, 0, $pos));
+        $attribute = substr($name, $pos + 1);
+
         $entities = DB::table(str_plural($model))->get();
 
         if ($notEmpty and sizeof($entities) == 0) {
@@ -175,7 +182,7 @@ class FormBuilder extends Form {
                 $entityTitle = 'id';
             }
 
-            $options[$entity->id] = $entity->$entityTitle;
+            $options[$entity->$attribute] = $entity->$entityTitle;
         }
         
         $partial = '<div class="form-group">'.self::label($name, $title).' '.self::select($name, $options).'</div>';
