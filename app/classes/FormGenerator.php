@@ -24,7 +24,7 @@ class FormGenerator {
             if ($field) $fields[] = $field;
         }
 
-        $formView = View::make('smartform.template', ['fields' => $fields, 'modulename' => $moduleName]);
+        $formView = View::make('formgenerator.template', ['fields' => $fields, 'modulename' => $moduleName]);
 
         return $formView->render();
     }
@@ -70,14 +70,14 @@ class FormGenerator {
 
         $html = null;
         if (! in_array($column->Field, $ignoredFields)) {
-            if ($name == 'image' || $name = 'icon') $type = 'image';
-            if ($name == 'email') $type = 'email';
-            if ($name == 'password') $type = 'password';
-            if (ends_with($name, '_id')) $type = 'foreign';
+            if ($name == 'image' || $name == 'icon')    $type = 'image';
+            if ($name == 'email')                       $type = 'email';
+            if ($name == 'password')                    $type = 'password';
+            if (ends_with($name, '_id'))                $type = 'foreign';
 
             $attributes = [];
-            if ($size > 0) $attributes['maxlength'] = $size;
-            if ($required) $attributes['required'] = 'required';
+            if ($size > 0) $attributes['maxlength']     = $size;
+            if ($required) $attributes['required']      = 'required';
 
             switch ($type) {
                 case 'tinyint':
