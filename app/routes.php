@@ -87,6 +87,6 @@ Route::get('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    $x = new App\Modules\News\Controllers\NewsWidget();
-    //echo(FormGenerator::generate('news'));
+    //$x = new App\Modules\News\Controllers\NewsWidget();
+    //echo(FormGenerator::generate('users'));
 });

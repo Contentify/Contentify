@@ -5,7 +5,7 @@ class InstallController extends Controller {
     public function index() 
     {
         $this->createDatabase();
-        //$this->createSeed();
+        $this->createSeed();
         
         return "Great success!";
     }
@@ -23,14 +23,19 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
+        $this->create('countries', function($table) 
+        { 
+            $table->string('code', 3);
+        });
+        
+        return; // DEBUG
+        
         $this->create('images', function($table)
         {
             $table->string('tags')->nullable();
             $table->string('image')->nullable();
         });
-
-        return; // DEBUG
-        
+       
         $this->create('visits', function($table)
         {
             $table->string('ip');
@@ -84,11 +89,77 @@ class InstallController extends Controller {
         });
     }
 
+    /**
+     * Creates the initial database seed
+     * 
+     * @return void
+     */
     protected function createSeed() {
         //DB::table('config')->insert(array('name' => 'app.analytics'));
         // DEBUG
         
-        $this->createUserGroups();
+        //$this->createUserGroups();
+
+        DB::insert('INSERT INTO countries(title,code) VALUES
+        ("European Union", "eu"),
+        ("Argentina", "ar"),
+        ("Australia", "au"),
+        ("Austria", "at"),
+        ("Belgium", "be"),
+        ("Bosnia Herzegowina", "ba"),
+        ("Brazil", "br"),
+        ("Bulgaria", "bg"),
+        ("Canada", "ca"),
+        ("Chile", "cl"),
+        ("China", "cn"),
+        ("Colombia", "co"),
+        ("Czech Republic", "cz"),
+        ("Croatia", "hr"),
+        ("Cyprus", "cy"),
+        ("Denmark", "dk"),
+        ("Estonia", "ee"),
+        ("Finland", "fi"),
+        ("Faroe Islands", "fo"),
+        ("France", "fr"),
+        ("Germany", "de"),
+        ("Greece", "gr"),
+        ("Hungary", "hu"),
+        ("Iceland", "is"),
+        ("Ireland", "ie"),
+        ("Israel", "il"),
+        ("Italy", "it"),
+        ("Japan", "jp"),
+        ("Korea", "kr"),
+        ("Latvia", "lv"),
+        ("Lithuania", "lt"),
+        ("Luxemburg", "lu"),
+        ("Malaysia", "my"),
+        ("Malta", "mt"),
+        ("Netherlands", "nl"),
+        ("Mexico", "mx"),
+        ("Mongolia", "mn"),
+        ("New Zealand", "nz"),
+        ("Norway", "no"),
+        ("Poland", "pl"),
+        ("Portugal", "pt"),
+        ("Romania", "ro"),
+        ("Russian Federation", "ru"),
+        ("Singapore", "sg"),
+        ("Slovak Republic", "sk"),
+        ("Slovenia", "si"),
+        ("Taiwan", "tw"),
+        ("South Africa", "za"),
+        ("Spain", "es"),
+        ("Sweden", "se"),
+        ("Syria", "sy"),
+        ("Switzerland", "ch"),
+        ("Tibet", "ti"),
+        ("Tunisia", "tn"),
+        ("Turkey", "tr"),
+        ("Ukraine", "ua"),
+        ("United Kingdom", "uk"),
+        ("USA", "us"),
+        ("Venezuela", "ve")');
     }
 
     /**
@@ -190,7 +261,7 @@ class InstallController extends Controller {
         /*
          * Add the table rows:
          */
-        Schema::table($tableName, $tableRows);
+        if ($tableRows) Schema::table($tableName, $tableRows);
 
         /*
          * Add the content object attributes:
@@ -211,11 +282,11 @@ class InstallController extends Controller {
                 }
                 if ($contentObject === true or ! in_array('creator_id', $contentObject)) {
                     $table->integer('creator_id')->unsigned()->default(0);
-                    $table->foreign('creator_id')->references('id')->on('users');
+                    //$table->foreign('creator_id')->references('id')->on('users');
                 }
                 if ($contentObject === true or ! in_array('updater_id', $contentObject)) {
                     $table->integer('updater_id')->unsigned()->default(0);
-                    $table->foreign('updater_id')->references('id')->on('users');
+                    //$table->foreign('updater_id')->references('id')->on('users');
                 }
                 if ($contentObject === true or ! in_array('access_counter', $contentObject)) {
                     $table->integer('access_counter')->default(0);
@@ -236,11 +307,13 @@ class InstallController extends Controller {
          * Add the foreign keys:
          */
         foreach ($foreignKeys as $foreignKey) {
+            /*
             Schema::table($tableName, function($table) use ($foreignKey)
             {
                 $table->integer($foreignKey.'_id')->unsigned();
                 $table->foreign($foreignKey.'_id')->references('id')->on(str_plural($foreignKey));
             });
+            */
         }
     }
 }

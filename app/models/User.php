@@ -4,6 +4,86 @@ use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 
 class User extends SentryUser {
 
+    protected $fillable = [
+        'username', 
+        'email', 
+
+        'first_name', 
+        'last_name',
+        'gender',
+        'country_code',
+        'birthdate',
+        'occupation',
+        'website',
+
+        'about',
+
+        'skype',
+        'steam_id',
+
+        'cpu',
+        'graphics',
+        'ram',
+        'motherboard',
+        'drives',
+        'display',
+        'mouse',
+        'keyboard',
+        'headset',
+        'mousepad',
+
+        'game',
+        'food',
+        'drink',
+        'music',
+        'film',
+    ];
+
+    /**
+     * Array containing validator messages after validate method was called.
+     * @var Illuminate\Support\MessageBag
+     */
+    private $validatorMessages = null;
+
+    /**
+     * Validate the user wiht Laravel validator class. Return true if valid.
+     * 
+     * @param  boolean $all Validate all fields
+     * @return boolean
+     */
+    public function validate($all = true)
+    {
+
+        /*
+         * Welcome to the dark side of Laravel.
+         * We cannot let the User class inherit from Ardent so we have to use 
+         * the Laravel validator class here. Ewwww.
+         */
+        $validator = Validator::make(
+            [
+                'username'      => $this->username,
+                'email'         => $this->email,
+                'gender'        => $this->gender,
+                'country_code'  => $this->country_code,
+            ],
+            [
+                'username'      => "alpha_spaces|required|min:3|unique:users,username,{$this->id},id",
+                'email'         => "email|required|unique:users,email,{$this->id},id",
+                'gender'        => 'between:0,4',
+                'country_code'  => 'exists:countries,code'
+            ]
+        );
+
+        $this->validatorMessages = $validator->messages();
+
+        return $validator->passes();
+    }
+
+    public function validatorMessages()
+    {
+        return $this->validatorMessages;
+    }
+
     /**
      * See if a user has access to the passed permission(s).
      * Permissions are merged from all groups the user belongs to

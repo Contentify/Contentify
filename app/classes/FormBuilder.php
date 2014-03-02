@@ -152,9 +152,9 @@ class FormBuilder extends Form {
     }
 
     /**
-     * Create HTML code for a select element.
+     * Create HTML code for a select element. It will take its values from a database table.
      * 
-     * @param  string $name     The name of the select element
+     * @param  string $name     The name of the value, e. g. "user_id"
      * @param  string $title    The title of the select element
      * @param  string $notEmpty If true the result cannot be empty (if it's empty throw an error)
      * @return string

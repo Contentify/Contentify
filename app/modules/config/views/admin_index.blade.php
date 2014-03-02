@@ -8,5 +8,5 @@
 {{ Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) }}
     {{ Form::smartTextarea('app_analytics', 'Analytics Code', false) }}    
 
-    {{ Form::actions(['submit' => 'Update'], false) }}
+    {{ Form::actions(['submit' => trans('app.update')], false) }}
 {{ Form::close() }}

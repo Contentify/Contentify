@@ -22,6 +22,7 @@ return array(
     'save'      => 'Save',
     'apply'     => 'Apply',
     'reset'     => 'Reset',
+    'update'    => 'Update',
 
     /*
      * Auto CRUD handling
