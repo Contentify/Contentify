@@ -56,7 +56,7 @@ App::error(function(Exception $exception, $code)
             return Response::make(View::make('error_not_found'), 404);
         }
 
-        return Response::make(View::make('error'), 404);
+        return Response::make(View::make('error'), 500);
     }
 });
 
@@ -74,7 +74,7 @@ App::error(function(Exception $exception, $code)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+    return Response::make(View::make('maintenance'), 503);
 });
 
 /*
