@@ -14,8 +14,9 @@ return array(
     /*
      * User permisssions
      */ 
-    'access_denied' => 'Access denied.',
-
+    'no_auth'       => 'Access denied. Please log in.',
+    'access_denied' => 'Access denied. You need permissions.',
+    
     /*
      * Forms
      */

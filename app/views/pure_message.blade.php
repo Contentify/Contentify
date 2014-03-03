@@ -34,6 +34,7 @@
 		.message-box { display: none; background-color: #070707; padding: 20px; border-radius: 10px; box-shadow: 0px 5px 5px 0px black }
 		.message-box h1 { margin: 0px; font-family: 'Lato'; font-size: 20px; font-weight: normal; color: #ff6100; text-shadow: 0px 0px 1px #ff6100; text-transform: uppercase }
 		.message-box p { margin: 20px 0px 0px 0px; font-family: 'Droid Sans'; font-size: 14px; color: #666; }
+		.message-box p a { color: #999; text-decoration: none }
 		.message-box hr { margin: 15px 0px; border: none; border-bottom: 1px dotted #333 }
 		.message-box button { padding: 8px 16px; border: none; background-color: #3399ff; border-radius: 5px; font-family: 'Droid Sans'; font-size: 14px; color: white; text-transform: uppercase; cursor: pointer; }
 	</style>

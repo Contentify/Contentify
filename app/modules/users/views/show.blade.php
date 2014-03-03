@@ -4,7 +4,7 @@
     <ul class="layout-v">
         <li>
             <span class="title">Name:</span>
-            {{ HTML::image(asset('icons/flags/'.$user->country.'.png', $user->country)) }} {{{ $user->first_name }}} {{{ $user->last_name }}}
+            {{ HTML::image(asset('icons/flags/'.$user->country_code.'.png', $user->country_code)) }} {{{ $user->first_name }}} {{{ $user->last_name }}}
         </li>
         <li>
             <span class="title">Gender:</span>

@@ -469,4 +469,20 @@ class BaseController extends Controller {
             return false;
         }
     }
+
+    /**
+     * Returns true if the current user is authenticated.
+     * If not a message will be set.
+     * 
+     * @return bool
+     */
+    public function checkAuth()
+    {
+        if (Sentry::check()) {
+            return true;
+        } else {
+            $this->message(trans('app.no_auth'));
+            return false;
+        }
+    }
 }

@@ -49,7 +49,15 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+    Log::error($exception);
+
+    if (! Config::Get('app.debug')) { // If we are in debug mode we do not want to override Laravel's error output
+        if (is_a($exception, 'Illuminate\Database\Eloquent\ModelNotFoundException')) {
+            return Response::make(View::make('error_not_found'), 404);
+        }
+
+        return Response::make(View::make('error'), 404);
+    }
 });
 
 

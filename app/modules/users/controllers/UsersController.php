@@ -30,7 +30,7 @@ class UsersController extends FrontController {
                     link_to('users/'.$user->id.'/'.slug($user->username), $user->username),
                     $user->first_name.' '.$user->last_name,
                     $user->created_at->toDateString(),
-                    $user->last_login->toDateString()
+                    $user->last_login ? $user->last_login->toDateString() : null
                 ];            
             },
             'actions'   => null,
@@ -132,10 +132,7 @@ class UsersController extends FrontController {
 
     public function editPassword($id)
     {
-        if (! user()) {
-            $this->message(trans('app.access_denied'));
-            return;
-        }
+        if (! $this->checkAuth()) return;
 
         $user = User::findOrFail($id);
 
@@ -152,24 +149,26 @@ class UsersController extends FrontController {
         /*
          * Validation
          */
-        $rules = array('password'  => 'min:6|confirmed');
+        $rules = array('password'  => 'required|min:6|confirmed');
 
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
             return Redirect::to("users/{$id}/password")->withErrors($validator);
         }
 
-        $user = Sentry::getUserProvider()->findById($id);
+        $user = User::findOrFail($id);
 
         try
         {
-            // Set login credentials
             $credentials = array(
                 'email'    => $user->email,
                 'password' => Input::get('password_current'),
             );
 
-            // Try to authenticate the user
+            /*
+             * Try to authenticate the user. If it succeeds the
+             * "old password" is valid.
+             */
             Sentry::authenticate($credentials, false);
         }
         catch (WrongPasswordException $e)
@@ -177,6 +176,11 @@ class UsersController extends FrontController {
             return Redirect::to("users/{$id}/password")->withErrors(['message' => $e->getMessage()]);
         }
 
+        /*
+         * Save the new password. Please note that we do not need to
+         * crypt the password. The user model inherits from SentryUser and
+         * will do the work.
+         */
         $user->password = Input::get('password'); 
         $user->save();
 

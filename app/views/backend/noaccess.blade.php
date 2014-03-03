@@ -1,8 +1,8 @@
-@extends('backend.pure_message')
+@extends('pure_message')
 
 @section('content')
 <div class="message-box">
-	<h1>Access denied</h1>
+	<h1>Access Denied</h1>
 	<hr>
 	<p>Warning: Access denied.</p>
 	<p>You are not allowed to access the backend!</p>

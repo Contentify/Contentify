@@ -27,7 +27,7 @@ class BackController extends BaseController {
              * User profile picture
              */ 
             if (user()->image) {
-                $userImage = asset('uploads/users/thumbnails/'.Sentry::getUser()->image);
+                $userImage = asset('uploads/users/thumbnails/'.user()->image);
             } else {
                 $userImage = asset('theme/user.png');
             }
