@@ -1,6 +1,7 @@
 <?php namespace App\Modules\Users\Controllers;
 
-use Redirect, Input, User, FrontController;
+use Cartalyst\Sentry\Users\WrongPasswordException as WrongPasswordException;
+use Validator, Sentry, Redirect, Input, User, FrontController;
 
 class UsersController extends FrontController {
 
@@ -49,7 +50,10 @@ class UsersController extends FrontController {
 
     public function edit($id)
     {
-        if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) return;
+        if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) {
+            $this->message(trans('app.access_denied'));
+            return;
+        }
 
         $user = User::findOrFail($id);
 
@@ -58,7 +62,10 @@ class UsersController extends FrontController {
 
     public function update($id)
     {
-        if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) return;
+        if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) {
+            $this->message(trans('app.access_denied'));
+            return;
+        }
 
         $user = User::findOrFail($id);
 
@@ -121,6 +128,61 @@ class UsersController extends FrontController {
 
         $this->messageFlash(trans('app.updated', ['Profile']));
         return Redirect::route('users.edit', [$id]);
+    }
+
+    public function editPassword($id)
+    {
+        if (! user()) {
+            $this->message(trans('app.access_denied'));
+            return;
+        }
+
+        $user = User::findOrFail($id);
+
+        $this->pageView('users::password', compact('user'));
+    }
+
+    public function updatePassword($id)
+    {
+        if ((! user()) or (user()->id != $id)) {
+            $this->message(trans('app.access_denied'));
+            return;
+        }
+
+        /*
+         * Validation
+         */
+        $rules = array('password'  => 'min:6|confirmed');
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::to("users/{$id}/password")->withErrors($validator);
+        }
+
+        $user = Sentry::getUserProvider()->findById($id);
+
+        try
+        {
+            // Set login credentials
+            $credentials = array(
+                'email'    => $user->email,
+                'password' => Input::get('password_current'),
+            );
+
+            // Try to authenticate the user
+            Sentry::authenticate($credentials, false);
+        }
+        catch (WrongPasswordException $e)
+        {
+            return Redirect::to("users/{$id}/password")->withErrors(['message' => $e->getMessage()]);
+        }
+
+        $user->password = Input::get('password'); 
+        $user->save();
+
+        $this->messageFlash(trans('app.updated', ['Password']));
+        return Redirect::to("users/{$id}/edit");
+
     }
 
     public function globalSearch($subject)

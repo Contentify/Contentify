@@ -417,7 +417,7 @@ class BaseController extends Controller {
         if ($this->hasAccessRead()) {
             return true;
         } else {
-            $this->message('Access denied.');
+            $this->message(trans('app.access_denied'));
             return false;
         }
     }
@@ -433,7 +433,7 @@ class BaseController extends Controller {
         if ($this->hasAccessCreate()) {
             return true;
         } else {
-            $this->message('Access denied.');
+            $this->message(trans('app.access_denied'));
             return false;
         }
     }
@@ -449,7 +449,7 @@ class BaseController extends Controller {
         if ($this->hasAccessUpdate()) {
             return true;
         } else {
-            $this->message('Access denied.');
+            $this->message(trans('app.access_denied'));
             return false;
         }
     }
@@ -465,7 +465,7 @@ class BaseController extends Controller {
         if ($this->hasAccessDelete()) {
             return true;
         } else {
-            $this->message('Access denied.');
+            $this->message(trans('app.access_denied'));
             return false;
         }
     }

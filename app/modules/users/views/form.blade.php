@@ -11,10 +11,15 @@
 
     {{ Form::smartEmail('email', t('Email')) }}
 
+    <div class="form-group">
+        <label>Password</label>
+        {{ button('Change...', url('users/'.$user->id.'/password')) }}
+    </div>
+
     {{ Form::smartText('first_name', t('First Name')) }}
     {{ Form::smartText('last_name', t('Last Name')) }}
     <div class="form-group">
-        <label for="country">Gender</label>
+        <label for="gender">Gender</label>
         {{ Form::select('gender', array('0' => 'Unkown', '1' => 'Female', '2' => 'Male', '3' => 'Other')); }}
     </div>
     {{ Form::smartText('country_code', t('Country')) }}

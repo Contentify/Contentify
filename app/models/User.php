@@ -66,7 +66,7 @@ class User extends SentryUser {
                 'country_code'  => $this->country_code,
             ],
             [
-                'username'      => "alpha_spaces|required|min:3|not_in:edit|unique:users,username,{$this->id},id",
+                'username'      => "alpha_spaces|required|min:3|not_in:edit,password|unique:users,username,{$this->id},id",
                 'email'         => "email|required|unique:users,email,{$this->id},id",
                 'gender'        => 'between:0,4',
                 'country_code'  => 'exists:countries,code'
