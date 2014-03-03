@@ -1,5 +1,6 @@
 <ul class="layout-v">
     <li>{{ link_to('users/'.user()->id.'/'.slug(user()->username), 'Profile') }}</li>
+    <li>{{ link_to('users/'.user()->id.'/edit', 'Edit Profile') }}</li>
     @if (user()->hasAccess('backend', PERM_READ))
     <li>{{ link_to('admin', 'Admin-Backend') }}</li>
     @endif

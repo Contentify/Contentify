@@ -15,7 +15,11 @@ class RegistrationController extends FrontController {
 			/*
 			 * Validation
 			 */
-			$rules = array('username' => 'alpha_spaces|required|min:3', 'password' => 'confirmed');
+			$rules = array(
+				'username' 	=> 'alpha_spaces|required|min:3|not_in:edit|unique:users,username', 
+				'email' 	=> 'email|unique:users,email', 
+				'password' 	=> 'min:6|confirmed'
+			);
 
 			$validator = Validator::make(Input::all(), $rules);
 			if ($validator->fails()) {
@@ -24,7 +28,7 @@ class RegistrationController extends FrontController {
 
 			if (! Captcha::check(Input::get('captcha'))) {
 				return Redirect::to('auth/registration/create')
-					->withInput()->withErrors(['message' => t('The captcha code is wrong!')]);
+					->withInput()->withErrors(['message' => t('The captcha code is invalid!')]);
 			}
 
 			/*
