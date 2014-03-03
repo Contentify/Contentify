@@ -13,13 +13,12 @@
 
     {{ HTML::style('backend.css') }}
     {{ HTML::style('libs/jqueryui/jquery-ui-1.8.11.custom.css') }}
-    {{ HTML::style('libs/jquery.ui.timepicker.css') }}
+    {{ HTML::style('libs/formstone/selecter.css') }}
     
     <!--[if lt IE 9]>
     {{ HTML::script('http://html5shiv.googlecode.com/svn/trunk/html5.js') }}
     <![endif]-->
     {{ HTML::script('libs/jquery-1.10.2.min.js') }}
-    {{ HTML::script('libs/jquery-ui-1.8.11.custom.min.j') }}
     {{ HTML::script('libs/quicktip.js') }}
     <script src="{{ asset('libs/ddaccordion.js') }}">
     //
@@ -28,6 +27,7 @@
     // This notice must stay intact for legal use
     //
     </script>
+    {{ HTML::script('libs/formstone/selecter.js') }}
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
     {{ HTML::script('libs/angular.min.js') }}
     {{ HTML::script('libs/backend.js') }}

@@ -10,6 +10,11 @@ return array(
     | CMS global language lines
     |
     */
+   
+    /*
+     * Security
+     */
+    'spam_protection' => 'For spam protection, you have to wait a few seconds until you can submit this form.',
 
     /*
      * User permisssions
@@ -57,5 +62,11 @@ return array(
     'new_messages'      => 'One new message|:count new messages',
     'no_messages'       => 'No new messages.',
     'top'               => 'Go to top',
+
+    /*
+     * Comments
+     */
+    'comment_create_fail'   => 'Cannot create comment.',
+    'comment_update_fail'   => 'Cannot update comment.',
 
 );

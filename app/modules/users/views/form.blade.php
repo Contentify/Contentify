@@ -22,8 +22,7 @@
         <label for="gender">Gender</label>
         {{ Form::select('gender', array('0' => 'Unkown', '1' => 'Female', '2' => 'Male', '3' => 'Other')); }}
     </div>
-    {{ Form::smartText('country_code', t('Country')) }}
-    {{ Form::smartSelectForeign('country_code', 'Country') }}
+    {{ Form::smartSelectForeign('country_code', t('Country')) }}
     {{ Form::smartText('birthdate', t('Birthdate')) }}
     {{ Form::smartText('occupation', t('Occupation')) }}
     {{ Form::smartText('website', t('Website')) }}

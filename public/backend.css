@@ -31,16 +31,16 @@ td { vertical-align: top }
 /* Form Elements */
 form {  }
 fieldset { border: none; }
-textarea { padding: 5px 10px; border: 1px solid silver; border-radius: 5px; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-family: Tahoma, Arial; color: #666666 }
-input { border: 1px solid silver; border-radius: 5px; background-image:url(theme/bg_textbox.png); font-family: Tahoma, Arial; font-size: 13px; color: #666666; }
+textarea { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-family: Tahoma, Arial; color: #666666 }
+input { border: 1px solid #CCC; border-radius: 3px; background-image:url(theme/bg_textbox.png); font-family: Tahoma, Arial; font-size: 13px; color: #666666; }
 input[type=checkbox] { width: auto !important; padding: 0px !important; cursor: pointer }
 input[type=text] { width: 300px; height: 22px !important; padding: 0px 10px }
 input[type=submit], input[type=reset] { height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
 input[type=file] { height: 26px; } /* height = input["text"].height + 4px */
-input[type=button], button { padding: 0px 10px; border: 1px solid silver; border-radius: 5px; height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
+input[type=button], button { padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
 input[type=submit]:focus, button:focus { border-color: #ff6100; }
 button img { vertical-align: bottom; }
-select { margin: 0px; padding: 0px 10px; border: 1px solid silver; border-radius: 5px; background-image: url(theme/bg_textbox.png); height: 26px; }
+select { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); height: 26px; }
 
 /*
  * Classes
@@ -92,7 +92,7 @@ h1.page-title { }
 .form-helpers .sort-switcher { margin: 0px }
 
 /* Pagination */
-ul.pagination li { position: relative; width: 8px; height: 16px; margin: 0px 2px; padding: 2px 6px; border: 1px solid #C6C6C6; border-radius: 5px; background-color: #EFEFEF; font-weight: bold }
+ul.pagination li { position: relative; width: 8px; height: 16px; margin: 0px 2px; padding: 2px 6px; border: 1px solid #C6C6C6; border-radius: 3px; background-color: #EFEFEF; font-weight: bold }
 ul.pagination li a { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; line-height: 20px; text-align: center; font-weight: bold }
 ul.pagination li a:hover { background-color: #C6C6C6; color: #FF6100 }
 ul.pagination li.active { border: 1px solid #936E41; background-color: #FF6100; color: white }

@@ -44,7 +44,7 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make(t('Cannot create the comment.'), 500);
+            return Response::make(trans('app.comment_create_fail'), 500);
         } else {
             //return Response::make('1', 200);
             return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
@@ -75,7 +75,7 @@ class Comments {
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
-            return Response::make(t('Access denied.'), 500);
+            return Response::make(trans('app.access_denied'), 500);
         }
 
         echo(View::make('comments.form', compact('comment'))->render());
@@ -92,7 +92,7 @@ class Comments {
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
-            return Response::make(t('Access denied.'), 500);
+            return Response::make(trans('app.access_denied'), 500);
         }
 
         $comment->fill(Input::all());
@@ -101,7 +101,7 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make(t('Cannot update the comment.'), 500);
+            return Response::make(trans('app.comment_create_fail'), 500);
         } else {
             //return Response::make('1', 200);
             return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
@@ -119,7 +119,7 @@ class Comments {
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_DELETE) and $comment->creator->id != user()->id)) {
-            return Response::make(t('Access denied.'), 500);
+            return Response::make(trans('app.access_denied'), 500);
         }
 
         $comment->delete();

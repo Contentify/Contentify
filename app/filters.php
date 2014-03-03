@@ -93,6 +93,6 @@ Route::filter('csrf', function()
     // are protected against mass submitting.
     if (Input::get('_createdat') and (int) Input::get('_createdat') > time() - 3)
     {
-        throw new Exception(t('For spam protection, you have to wait a few seconds until you can submit this form.'));
+        throw new Exception(trans('app.spam_protection'));
     }
 });

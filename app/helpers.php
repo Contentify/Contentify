@@ -139,15 +139,12 @@ function pageClass()
 }
 
 /**
- * Creates a slug (not unique!) from a string.
+ * Shortcut for Str::slug().
  * 
  * @param  string $title
  * @return string
  */
 function slug($title)
 {
-    $title = strtolower($title);
-    $title = str_replace(array(' ', '&quot;', '&szlig;', '&auml;', 'Ã¯Â¿Â½', '&ouml;', 'Ã¯Â¿Â½', '&uuml;', 'Ã¯Â¿Â½'), array('-', '', 'ss', 'ae', 'ae', 'oe', 'oe', 'ue', 'ue'), strtolower($title));
-    $title = preg_replace("/[^a-z0-9-]/", "", $title);
-    return trim($title, '-');
+    return Str::slug($title);
 }

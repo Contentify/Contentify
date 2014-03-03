@@ -30,7 +30,7 @@ $(document).ready(function()
 {  
     baseUrl = $('body').attr('data-base-url');
     
-    /**
+    /*
      * Update date and time
      */
     var timeoutTime = 1000; // ms
@@ -58,7 +58,12 @@ $(document).ready(function()
 
     var t = setInterval(updateDatetime, timeoutTime);
 
-    /**
+    /*
+     * Activate Selecter Plugin
+     */
+    $("select").selecter();
+
+    /*
      * Add quicktip
      */
     $('*[title]').quicktip({
@@ -68,7 +73,7 @@ $(document).ready(function()
         speed: 400
     });
 
-    /**
+    /*
      * Add delete confirm dialogue
      */
     $('*[data-confirm-delete]').click(function()
@@ -77,7 +82,7 @@ $(document).ready(function()
         
     });
 
-    /**
+    /*
      * Make sidebar responsive to scrolling
      */
     $(window).scroll(function () 
