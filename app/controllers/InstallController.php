@@ -2,6 +2,13 @@
 
 class InstallController extends Controller {
 
+    /**
+     * Index action method
+     * 
+     * @param  integer                              $step   Step number
+     * @param  null|Illuminate\Support\MessageBag   $errors Validation errors
+     * @return View
+     */
     public function index($step = -1, $errors = null) 
     {
         if ($step < 0) {
@@ -17,12 +24,15 @@ class InstallController extends Controller {
                 $password               = Input::get('password');
                 $password_confirmation  = Input::get('password_confirmation');
 
+                /*
+                 * Validation
+                 */
                 $validator = Validator::make(
                     [
                         'username'              => $username,
                         'email'                 => $email,
                         'password'              => $password,
-                        'password_confirmation' => $password,
+                        'password_confirmation' => $password_confirmation,
                     ],
                     [
                         'username'  => "alpha_spaces|required|min:3|not_in:edit,password,daemon",
@@ -98,21 +108,21 @@ class InstallController extends Controller {
                 $dbName     = Config::get("database.connections.{$dbCon}.database");
                 $title      = 'Database Setup';
                 $content    = '<p>Contentify will now setup the database.</p>
-                                <p>Before you proceed make sure you have updated the database connection settings.</p>
-                                <p>The current database name is: <br><code>'.$dbName.'</code></p>';
+                              <p>Before you proceed make sure you have updated the database connection settings.</p>
+                              <p>The current database name is: <br><code>'.$dbName.'</code></p>';
                 break;
             case 1:
                 $title      = 'Server Requirements';
-                $content    = '<ul><li>PHP >= 5.3.7</li><li>MCrypt PHP Extension</li></ul>
-                                <p class="warning">Please don\'t continue 
-                                if your server does not meet these requirements!</p>';
+                $content    = '<ul><li>PHP >= 5.4.0</li><li>MCrypt PHP Extension</li></ul>
+                              <p class="warning">Please don\'t continue 
+                              if your server does not meet these requirements!</p>';
                 break;
             default:
                 $step       = 0; // Better save than sorry! (E.g. if step was -1)
                 $title      = 'Welcome To Contentify';
                 $content    = '<p>Please click on the "Next" button to start the installation.</p>
-                                <p><a href="http://contentify.it/docs">Take a look at our documentation 
-                                (chapter "Installation") if you need help.</a></p>';
+                              <p><a href="http://contentify.it/docs" target="_blank">Take a look at our documentation 
+                              (chapter "Installation") if you need help.</a></p>';
         }
         
         return View::make('installer', compact('title', 'content', 'step'));

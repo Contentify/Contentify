@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Contentify</title>
+    <title>Contentify - Step {{ $step + 1 }}</title>
 
     <meta name="generator" content="Contentify">
 
@@ -35,6 +35,8 @@
         .buttons { position: relative; margin-top: 100px }
         .navbut { position: absolute; top: 150%; font-family: 'Open Sans'; width: 100px; height: 24px; padding: 5px 20px; border: 2px solid #FF6100; border-radius: 5px; background-color: #FF6100; color: white; box-sizing: content-box; -moz-box-sizing: content-box; font-family: 'Open Sans'; font-size: 18px; box-shadow: 0px 4px 0px #d45100; vertical-align: top; text-align: center; }
         .navbut:hover { opacity: 0.9; filter: alpha(opacity = 0.9); }
+        .navbut.left:hover { content: '<' }
+        .navbut.right:hover { content: '>' }
         .navbut:active { margin-top: 4px; box-shadow: none; transition: all 0.08s linear; }
         .navbut.left { right: 154px; }
         .navbut.right { right: 0px; }
@@ -79,6 +81,22 @@
                     $('form').get(0).submit();
                 });
             }
+
+            $('.navbut.left').mousedown(function()
+            {
+                $fullWidth = $('html').width();
+                $('body').animate({width: $fullWidth - 10}, {duration: 200, queue: true});
+            });
+            $('.navbut.right').mousedown(function()
+            {
+                $fullWidth = $('html').width();
+                $('body').animate({width: $fullWidth + 10}, {duration: 200, queue: true});
+            });
+            $('.navbut.left, .navbut.right').mouseup(function()
+            {
+                $fullWidth = $('html').width();
+                $('body').animate({width: $fullWidth}, {duration: 200, queue: true});
+            });
         });
     </script>
 </body>

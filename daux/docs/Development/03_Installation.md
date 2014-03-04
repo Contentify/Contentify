@@ -1,6 +1,6 @@
 # Server Requirements
 
-* PHP 5.4
+* PHP 5.4.0
 * MCrypt PHP Extension
 
 We strongly recommend to use Webspace that you can configure. You should be able to create vhosts at least. And there is a command-line interface called [Artisan](http://laravel.com/docs/artisan). You should ensure you can run it. With Artisan you may [enable maintenance mode](http://laravel.com/docs/configuration#maintenance-mode).
