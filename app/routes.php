@@ -81,6 +81,7 @@ Route::get('captcha', ['as' => 'captcha', 'uses' => function()
  * Installation
  */
 Route::get('install', 'InstallController@index');
+Route::post('install', 'InstallController@index');
 
 /*
  * Testing

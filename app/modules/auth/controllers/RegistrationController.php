@@ -42,8 +42,8 @@ class RegistrationController extends FrontController {
 
 			/*
 			 * Add user to group "Users"
-			 * This group is a basic group so we do know it exists.
-			 * (If it does not exist, we have a serious problem.)
+			 * This group is a basic group that isn't deletable so we do know it exists.
+			 * (If it does'nt exist, we have a serious problem.)
 			 */
 			$userGroup = Sentry::findGroupById(2);
 			$user->addGroup($userGroup);

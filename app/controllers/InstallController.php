@@ -2,12 +2,120 @@
 
 class InstallController extends Controller {
 
-    public function index() 
+    public function index($step = -1, $errors = null) 
     {
-        $this->createDatabase();
-        $this->createSeed();
+        if ($step < 0) {
+            $step   = (int) Input::get('step', 0);
+        }
+        $title      = '';
+        $content    = '';
+
+        switch ($step) {
+            case 5:
+                $username               = Input::get('username');
+                $email                  = Input::get('email');
+                $password               = Input::get('password');
+                $password_confirmation  = Input::get('password_confirmation');
+
+                $validator = Validator::make(
+                    [
+                        'username'              => $username,
+                        'email'                 => $email,
+                        'password'              => $password,
+                        'password_confirmation' => $password,
+                    ],
+                    [
+                        'username'  => "alpha_spaces|required|min:3|not_in:edit,password,daemon",
+                        'email'     => 'email|required|unique:users,email',
+                        'password'  => 'required|min:6|confirmed',
+                    ]
+                );
+
+                if ($validator->fails()) {
+                    return $this->index(4, $validator->messages());
+                }
+
+                /*
+                 * Create the admin user (with ID = 2)
+                 */
+                $user = Sentry::register(array(
+                    'email'     => $email,
+                    'password'  => $password,
+                    'username'  => $username,
+                ), true);
+
+                /*
+                 * Add user to group "Admins"
+                 */
+                $adminGroup = Sentry::findGroupById(5); 
+                $user->addGroup($adminGroup);
+
+                $title      = 'Installation Complete';
+                $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
+
+                break;
+            case 4:
+                $title      = 'Create Super-Admin User';
+                $content    = '<p>Fill in the details of your user account.</p>'.
+                              '<div class="warning">'.Form::errors($errors).'</div>'.
+                              Form::open(['url' => 'install?step='.($step + 1)]).
+                              Form::smartText('username', 'Username').
+                              Form::smartEmail().
+                              Form::smartPassword().
+                              Form::smartPassword('password_confirmation', 'Password').
+                              Form::close();
+
+                break;
+            case 3:
+                //$this->createDatabase();
+                //$this->createSeed();
+
+                /*
+                 * Create the deamon user (with ID = 1)
+                 */
+                /*
+                $user = Sentry::createUser(array(
+                    'email'     => 'daemon@contentify.it',
+                    'username'  => 'Daemon',
+                    //'password'  => Str::random(),
+                    'activated' => false,
+                ));
+                */
+
+                /*
+                 * Add user to group "Users"
+                 */
+                /*
+                $adminGroup = Sentry::findGroupById(2); 
+                $user->addGroup($adminGroup);
+                */
+
+                $title      = 'Database Setup Complete';
+                $content    = '<p>Database filled with initial seed.</p>';
+                break;
+            case 2:
+                $dbCon      = Config::get('database.default');
+                $dbName     = Config::get("database.connections.{$dbCon}.database");
+                $title      = 'Database Setup';
+                $content    = '<p>Contentify will now setup the database.</p>
+                                <p>Before you proceed make sure you have updated the database connection settings.</p>
+                                <p>The current database name is: <br><code>'.$dbName.'</code></p>';
+                break;
+            case 1:
+                $title      = 'Server Requirements';
+                $content    = '<ul><li>PHP >= 5.3.7</li><li>MCrypt PHP Extension</li></ul>
+                                <p class="warning">Please don\'t continue 
+                                if your server does not meet these requirements!</p>';
+                break;
+            default:
+                $step       = 0; // Better save than sorry! (E.g. if step was -1)
+                $title      = 'Welcome To Contentify';
+                $content    = '<p>Please click on the "Next" button to start the installation.</p>
+                                <p><a href="http://contentify.it/docs">Take a look at our documentation 
+                                (chapter "Installation") if you need help.</a></p>';
+        }
         
-        return 'Installation completed.';
+        return View::make('installer', compact('title', 'content', 'step'));
     }
 
     /**
