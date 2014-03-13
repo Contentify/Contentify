@@ -9,6 +9,7 @@ class Country extends Ardent {
     protected $fillable = ['title', 'code'];
   
     public static $rules = [
-        'title'   => 'required',
+        'title' => 'required',
+        'code'  => 'required',
     ];
 }

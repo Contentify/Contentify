@@ -1,4 +1,4 @@
-When working with Contentify there are some differences - most of them being enhancments - to vanilla Laravel.
+When working with Contentify there are some differences - most of them being enhancements - to vanilla Laravel.
 
 ## Ardent
 
