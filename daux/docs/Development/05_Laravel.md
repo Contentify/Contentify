@@ -46,16 +46,61 @@ Composer calls these libraries "packages". [Packagist](https://packagist.org/) i
 
 ## Requests And Routing
 
-A request arrives to your webserver. How can PHP know what to do with this request? Well, Laravel's routing can handle requests. Routes are stored in a file called "routes.php". They can handle requests of different types, e. g. GET and POST and they decide which part of the application will process the request.
+A request arrives to your webserver. How can PHP know what to do with this request? Well, Laravel's routing can handle requests. Routes are stored in a file called `routes.php`. They can handle requests of different types, e. g. GET and POST and they decide which part of the application will process the request.
 
-## Responses
+This example will create a route for `/cookie` (e. g. `http://localhost/contentify/cookie`) and output 'Hello World!' if this route is hit:
 
-Who will process a request? A controller. Controllers handle requests and return responses. For example a user agents requests the URL `/cookies/123`. A controller named CookieController handles this particular request. The controller retrieves the cookie with the ID 123 from the database as an object (model). It passes the object to a view and returns this view as a response. Now the user can enjoy a delicous cookie recipe. Responses have a header and a content part. The header contains a status code such as the infamous 404 ("Not Found").
+    Route::get('cookie', function()
+    {
+        return 'Cookies are delicious!';
+    });
+
+Not that the Closure returns a string. This is a very simple response. Laravel has a Response class providing more methods for building HTTP responses.
+
+## Responses And Controllers
+
+Who will process a request? A simple Closure as seen before or a controller if you want better organization. Controllers handle requests and return responses. For example a user agents requests the URL `/cookies/123`. A controller named CookieController handles this particular request. The controller retrieves the cookie with the ID 123 from the database as an object (model). It passes the object to a view and returns this view as a response. Now the user can enjoy a delicous cookie recipe. Responses have a header and a content part. The header contains a status code such as the infamous 404 ("Not Found").
+
+How can we create a route that a controller can handle? Simple:
+
+    Route::get('cookies/{id}', 'CookieController@getShow');
+
+This will call the method getIndex of the controller CookieController if `/cookies/123` is hit.
+
+Controller example:
+
+    class CookieController {
+        public function getShow($id)
+        {
+            $cookie = getCookie($id); // getCookie is a dummy function to get a cookie from the database
+            return View::make('cookie_recipe', array($cookie));
+        }
+    }
+
+There was some talking about a response. If a controller returns a string or a view Laravel will create a proper response from it. But ofcourse you can create a response by your own:
+
+    public function getShow($id)
+    {
+        $statusCode = 200; // "Ok"
+        return Response::make("Cookie {$id} at your service!", $statusCode);
+    }
 
 ## Database
 
 Laravel has a class named DB to access the database. It can handle raw SQL queries or use the database query builder to create and run database queries. But Laravel has more to offer: Eloquent is the object-relational mapper of Laravel. Eloquent is great when working with models.
 
+Do you remember the magical getCookie($id) method from the cookie example? Sad news: there is no getCookie method. Good news: It's a piece of cake (or cookie?) to replace it. Here is a working implementation:
+
+    $cookie = Cookie::find($id);
+
+It's that simple! Here is the Cookie class:
+
+    class Cookie extends Eloquent {
+
+    }
+
+In fact this is all we need if the database table's name is "cookies". Laravel will pluralize the model's name and receive all attributes from the database table. Later on models will most likely have some code but that's it for now.
+
 ## Official Quickstart Guide
 
-There is an [official quickstart guide](http://laravel.com/docs/quick).
+There is an [official quickstart guide](http://laravel.com/docs/quick). It's a good idea to read it as the next step to a basic understanding of Laravel.
