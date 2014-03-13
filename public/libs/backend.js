@@ -76,10 +76,29 @@ $(document).ready(function()
     /*
      * Add delete confirm dialogue
      */
-    $('*[data-confirm-delete]').click(function()
+    $('body').append($('<div />').boxer({})); // Bugfix
+    $('*[data-confirm-delete]').click(function(event)
     {
-        if (! confirm('Delete this item?')) return false;
+        //if (! confirm('Delete this item?')) return false;
         
+        event.preventDefault();
+        event.stopPropagation();
+
+        $self = $(this);
+
+        $ui = $('<div class="boxer-delete"><h2>Delete this item?</h2></div>')
+            .append(
+                $('<button>').text('Yes').click(function()
+                {
+                    window.location = $self.attr('href');
+                })
+            ).append(
+                $('<button>').text('No').click(function()
+                {
+                    $.boxer('close');
+                })
+            );
+        $.boxer($ui);
     });
 
     /*

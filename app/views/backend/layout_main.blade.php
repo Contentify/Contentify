@@ -12,8 +12,8 @@
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 
     {{ HTML::style('backend.css') }}
-    {{ HTML::style('libs/jqueryui/jquery-ui-1.8.11.custom.css') }}
     {{ HTML::style('libs/formstone/selecter.css') }}
+    {{ HTML::style('libs/formstone/boxer.css') }}
     
     <!--[if lt IE 9]>
     {{ HTML::script('http://html5shiv.googlecode.com/svn/trunk/html5.js') }}
@@ -28,6 +28,7 @@
     //
     </script>
     {{ HTML::script('libs/formstone/selecter.js') }}
+    {{ HTML::script('libs/formstone/boxer.js') }}
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
     {{ HTML::script('libs/angular.min.js') }}
     {{ HTML::script('libs/backend.js') }}

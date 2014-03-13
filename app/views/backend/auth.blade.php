@@ -1,4 +1,4 @@
-@extends('backend.pure_message')
+@extends('pure_message')
 
 @section('content')
 <div class="message-box">

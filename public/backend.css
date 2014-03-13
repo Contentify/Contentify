@@ -104,6 +104,11 @@ ul.pagination li.disabled { display: none }
 #tooltip img { max-width: 600px; max-height: 450px }
 .hover-ui { display: none; }
 
+/* Delete Question */
+.boxer-delete { width: 300px }
+.boxer-delete h2 { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: normal; }
+.boxer-delete button { margin-right: 5px }
+
 /*
  * Subpages
  */
