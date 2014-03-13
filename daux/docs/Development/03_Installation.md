@@ -7,12 +7,12 @@ We strongly recommend to use Webspace that you can configure. You should be able
 
 # Get Contentify
 
-Download Contentify from one of the official resource. Visit our website [Contentify.it](http://contentify.it/) to download the CMS. Store it inside a folder so that only the subfolder "public" is accessible from the web. If only the "public" is accessible from outside all other folders are protected from direct access. When on Apache you may want to [create a
-Virtual Host](http://laravel-recipes.com/recipes/25) for your project to achieve this. The aim is to have a URL like `http://localhost/contentify/` instead of `http://localhost/contentify/public/`.
+Download the Contentify core files from one of the official sources. Visit our website [Contentify.it](http://contentify.it/) to get the files. Store them inside a folder so that only the subfolder "public" is accessible from the web. If only the "public" is accessible from outside all other folders are protected from direct access. When on Apache you may want to [create a
+Virtual Host](http://laravel-recipes.com/recipes/25) for your project to achieve this. The aim is to have a URL like `http://localhost/contentify/` instead of `http://localhost/contentify/public/`. For testing or developing purposes it's okay to put the whole CMS folder inside the public web folder. But remember, this is not meant for production stage.
 
 # Configuration
 
-Config files live in app/config. Important config files are:
+Config files live in `app/config`. Important config files are:
 
 * *app.php*: Application settings such as title and encryption key
 * *database.php*: Database settings such as connection setup
@@ -27,4 +27,4 @@ The official Laravel docs have a [chapter covering the installation](http://lara
 
 # Something Is Going Wrong?
 
-Installing Laravel may be a little tricky. If you experience any problems don't hesistate to contact our [support team](http://contentify.it/support).
+Installing Laravel can be a little tricky. If you experience problems don't hesistate to contact our [support team](http://contentify.it/support).

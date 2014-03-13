@@ -50,7 +50,7 @@ A request arrives to your webserver. How can PHP know what to do with this reque
 
 ## Responses
 
-Who will process a request? A controller. Controllers handle requests and return responses. For example a user agents requests the URL "/cookies/123". A controller named CookieController handles this particular request. The controller retrieves the cookie with the ID 123 from the database as an object (model). It passes the object to a view and returns this view as a response. Now the user can enjoy a delicous cookie recipe. Responses have a header and a content part. The header contains a status code such as the infamous 404 ("Not Found").
+Who will process a request? A controller. Controllers handle requests and return responses. For example a user agents requests the URL `/cookies/123`. A controller named CookieController handles this particular request. The controller retrieves the cookie with the ID 123 from the database as an object (model). It passes the object to a view and returns this view as a response. Now the user can enjoy a delicous cookie recipe. Responses have a header and a content part. The header contains a status code such as the infamous 404 ("Not Found").
 
 ## Database
 

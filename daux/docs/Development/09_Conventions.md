@@ -10,7 +10,7 @@ If module names refer to entities, e. g. "Game", prefer to pluralize them: "game
 
 ## Config
 
-Contentify extends Laravel's config class. Config values may be stored in config files in app/config (or app/config/packages) or inside the database. To avoid collisions, please use a namespace prefix. Example config key name:
+Contentify extends Laravel's config class. Config values may be stored in config files in `app/config` (or `app/config/packages`) or inside the database. To avoid collisions, please use a namespace prefix. Example config key name:
 
     Config::store('cookies.minutesToBake', 5);
 

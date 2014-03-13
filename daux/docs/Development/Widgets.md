@@ -21,9 +21,9 @@ Creating widgets is simple. Here is an example:
         }
     }
 
-> Don't forget to use "dump-autoload" to update the autoloader!
+> Don't forget to use `dump-autoload` to update the autoloader!
 
-Widgets implement the render method. They always return a string. Controllers return a response, but widgets do not. It's recommended to never return a view. Instead call the render method:
+Widgets implement the render method. They always return a string. Controllers return a response, but widgets don't. It's recommended to never return a view. Instead call the render method:
 
     return View::make('example')->render();
 
