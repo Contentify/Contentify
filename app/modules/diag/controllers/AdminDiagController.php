@@ -32,6 +32,7 @@ class AdminDiagController extends BackController {
             'App.key'           => (Config::get('app.key') == '01234567890123456789012345678912' ? 'Dummy' : 'Valid'),
             'Modules.mode'      => Config::get('modules::mode'),
             'Modules.debug'     => (int) Config::get('modules::debug'),
+            'Mail.pretend'      => (int) Config::get('mail.pretend'),
         ];
 
         /*

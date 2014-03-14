@@ -76,7 +76,7 @@ $(document).ready(function()
     /*
      * Add delete confirm dialogue
      */
-    $('body').append($('<div />').boxer({})); // Bugfix
+    $('body').append($('<div />').boxer({})); // Bugfix or Boxer won't open due to a JS error
     $('*[data-confirm-delete]').click(function(event)
     {
         //if (! confirm('Delete this item?')) return false;

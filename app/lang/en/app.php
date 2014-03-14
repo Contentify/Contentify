@@ -69,4 +69,9 @@ return array(
     'comment_create_fail'   => 'Cannot create comment.',
     'comment_update_fail'   => 'Cannot update comment.',
 
+    /*
+     * Captcha
+     */
+    'captcha_invalid'   => 'The captcha code is invalid!',
+
 );
