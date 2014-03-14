@@ -31,7 +31,7 @@ class RestorePasswordController extends FrontController {
 
             $this->message(t('An email was sent to the given email address. Follow the instruction to generate a new password.'));
 
-            $this->pageView('auth::emails.restore_password', compact('user')); // DEBUG
+            //$this->pageView('auth::emails.restore_password', compact('user')); // DEBUG
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
             $this->message(t('No user found with the given email address.'));
             return;

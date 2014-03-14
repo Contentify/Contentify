@@ -292,9 +292,13 @@ class BaseController extends Controller {
                         }
                         $actionsCode .= ' ';
                     }
+                    if (is_callable($action)) {
+                        $actionsCode .= $action($entity);
+                    }
                 }
                 $row[] = $actionsCode;
             }
+
             if (is_callable($data['actions'])) {
                 $row[] = $data['actions']($entity);
             }
