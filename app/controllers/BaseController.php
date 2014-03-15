@@ -176,7 +176,7 @@ class BaseController extends Controller {
             'searchFor'     => 'title',
             'tableHead'     => [],
             'tableRow'      => [],
-            'actions'       => ['edit', 'delete'],
+            'actions'       => ['edit', 'delete', 'restore'],
             'brightenFirst' => true,
             'sortby'        => 'id', // You can not use MySQL functions
             'order'         => 'desc',
@@ -229,18 +229,28 @@ class BaseController extends Controller {
         $sortSwitcher = sort_switcher($data['sortby'], $data['order'], $data['search']);
 
         /*
-         * Retrieve entity from DB and create paginator
+         * Switch recycle bin mode: Show soft deleted entities if recycle bin mode is enabled.
+         */
+        $recycleBinMode = Input::get('binmode');
+        if ($recycleBinMode !== null) {
+            Session::put('recycleBinMode', (bool) $recycleBinMode);
+        }
+        $recycleBin = recycle_bin_button();
+
+        /*
+         * Retrieve entities from DB and create paginator
          */
         $model = $this->modelFullName;
         $perPage = Config::get('app.'.$surface.'ItemsPerPage');
-        if ($data['search'] and $data['searchFor']) {
-            $entities = $model::orderBy($data['sortby'], $data['order'])
-            ->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%')
-            ->paginate($perPage);
-        } else {
-            $entities = $model::orderBy($data['sortby'], $data['order'])
-            ->paginate($perPage);   
+
+        $entities = $model::orderBy($data['sortby'], $data['order']);
+        if (Session::get('recycleBinMode')) {
+            $entities = $entities->withTrashed(); // Show trashed
         }
+        if ($data['search'] and $data['searchFor']) {
+            $entities = $entities->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string
+        }
+        $entities = $entities->paginate($perPage);
 
         $paginator = $entities->appends(
             ['sortby' => $data['sortby'], 
@@ -249,7 +259,7 @@ class BaseController extends Controller {
         )->links();
 
         /*
-         * Prepare the table (head and rows)
+         * Prepare the table head
          */
         $tableHead = array();
         foreach ($data['tableHead'] as $title => $sortby) {
@@ -263,6 +273,9 @@ class BaseController extends Controller {
             $tableHead[] = trans('app.actions');
         }
 
+        /*
+         * Prepare the rows
+         */
         $tableRows = array();
         foreach ($entities as $entity) {
             $row = $data['tableRow']($entity);
@@ -289,6 +302,13 @@ class BaseController extends Controller {
                                     false,
                                     ['data-confirm-delete' => true]);
                                 break;
+                            case 'restore':
+                                if ($entity->trashed()) {
+                                    $actionsCode .= image_link('undo', 
+                                    trans('app.restore'), 
+                                    route($surface.'.'.strtolower($this->controller).'.restore', [$entity->id]));
+                                }
+                                break;
                         }
                         $actionsCode .= ' ';
                     }
@@ -310,7 +330,7 @@ class BaseController extends Controller {
          * Generate the table
          */
         $contentTable = $this->contentTable($tableHead, $tableRows, $data['brightenFirst']);
-
+        
         /*
          * Generate the view
          */
@@ -318,6 +338,7 @@ class BaseController extends Controller {
             'buttons'       => $buttons,
             'contentTable'  => $contentTable,
             'sortSwitcher'  => $sortSwitcher,
+            'recycleBin'    => $recycleBin,
             'paginator'     => $paginator,
             'searchString'  => $data['search']
         ]);

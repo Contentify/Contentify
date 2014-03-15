@@ -31,11 +31,12 @@ return array(
     'update'    => 'Update',
 
     /*
-     * Auto CRUD handling
+     * Auto CRUD handling (and related stuff)
      */
-    'created' => ':0 created.',
-    'updated' => ':0 updated.',
-    'deleted' => ':0 deleted.',
+    'created'   => ':0 created.',
+    'updated'   => ':0 updated.',
+    'deleted'   => ':0 deleted.',
+    'restored'  => ':0 restored.',
 
     /*
      * Model index building
@@ -45,12 +46,14 @@ return array(
     'actions'       => 'Actions',
     'edit'          => 'Edit',
     'delete'        => 'Delete',
+    'restore'       => 'Restore',
 
     /*
      * Misc
      */
-    'sorting' => 'Sorting',
-    'search'  => 'Search',
+    'sorting'       => 'Sorting',
+    'search'        => 'Search',
+    'recycle_bin'   => 'Recycle Bin',
 
     /*
      * Backend template

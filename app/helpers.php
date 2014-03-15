@@ -102,7 +102,7 @@ function get_image_url($image)
 }
 
 /**
- * Returns HTML code of an sort switcher (asc / desc).
+ * Returns HTML code for a sort switcher (asc / desc).
  *
  * @param string $sortby    Attribute of the entity, e.g. "id"
  * @param string $order     Current sorting order, "asc" or "desc"
@@ -112,17 +112,37 @@ function sort_switcher($sortby, $order = null, $search = null)
 {
     if ($order == 'asc') {
         $order  = 'desc';
-        $image      = 'theme/bullet_arrow_down.png';
+        $image  = 'theme/bullet_arrow_down.png';
     } else {
         $order  = 'asc';
-        $image      = 'theme/bullet_arrow_up.png';
+        $image  = 'theme/bullet_arrow_up.png';
     }
 
     $url = URL::current().'?sortby='.$sortby.'&order='.$order;
     if ($search) $url .= '&search='.urlencode($search);
 
     $caption = trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" />';
-    return('<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>');
+    return '<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>';
+}
+
+/**
+ * Returns HTML code for a button enabling/disabling recycle bin mode
+ * (to restore soft deleted entities).
+ * 
+ * @return string
+ */
+function recycle_bin_button()
+{
+    $enabled    = (bool) Session::get('recycleBinMode');
+    $url        = URL::current().'?binmode='.(1 - $enabled);
+
+    if ($enabled) {
+        $class = 'enabled';
+    } else {
+        $class = 'disabled';
+    }
+
+    return '<a class="recycle-bin-button '.$class.'" href="'.$url.'">'.trans('app.recycle_bin').'</a>';
 }
 
 /**

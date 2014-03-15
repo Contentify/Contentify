@@ -86,7 +86,7 @@
                                 <div class="menu2"><img src="{{ asset('icons/doc_offlice.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=pages">Pages</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=headlines">Headlines</a></div>
                                 
-                                <div class="menu2"><img src="{{ asset('icons/date.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=events">Events</a></div>            
+                                <div class="menu2"><img src="{{ asset('icons/date.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=events">Events</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/chart_pie.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=polls">Polls</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloads">Downloads</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/picture.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/images', 'Images') }}</div>
@@ -96,12 +96,12 @@
                         <div class="silverheader"><div class="menu-head perma"><span class="hidden">Permanent Content</span></div></div>
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/newscats', 'News-Categories') }}</div>
-                                <div class="menu2"><img src="{{ asset('icons/color_swatch.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=slider">Slider</a></div>  
+                                <div class="menu2"><img src="{{ asset('icons/color_swatch.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=slider">Slider</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=headlinecats">Headline-Categories</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/film.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=videos">Videos</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/film_link.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=streams">Livestreams</a></div> 
 
-                                <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloadcats">Download-Categories</a></div>               
+                                <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloadcats">Download-Categories</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/coins.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=sponsors">Sponsors &amp; Partners</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=adverts">Advertisement</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=forumcats">Forum-Categories</a></div>
@@ -111,19 +111,19 @@
                         <div class="silverheader"><div class="menu-head esports"><span class="hidden">eSports Content</span></div></div>
                             <div class="submenu">               
                                 <div class="menu1"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=matches">Matches</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=awards">Awards</a></div>               
+                                <div class="menu2"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=awards">Awards</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/server.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=gameservers">Gameservers</a></div>                                
                             
                                 <div class="menu2"><img src="{{ asset('icons/clan.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=clans">Clans</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/joystick.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=leagues">Leagues</a></div>                      
+                                <div class="menu2"><img src="{{ asset('icons/joystick.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=leagues">Leagues</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/world.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=maps">Maps</a></div>
-                                <div class="menu3"><img src="{{ asset('icons/controller.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/games', 'Games') }}</div>                
+                                <div class="menu3"><img src="{{ asset('icons/controller.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/games', 'Games') }}</div>
                             </div>
                             <div class="menu-bottom"></div>
                             
                         <div class="silverheader"><div class="menu-head website"><span class="hidden">Website</span></div></div>
                             <div class="submenu">
-                                <div class="menu1"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=users">Users</a></div>
+                                <div class="menu1"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.users.index') }}">Users</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=members">Members</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=teams">Teams</a></div>
 

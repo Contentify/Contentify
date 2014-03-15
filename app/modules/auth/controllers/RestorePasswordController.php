@@ -10,6 +10,10 @@ class RestorePasswordController extends FrontController {
         $this->pageView('auth::restore_password');
     }
 
+    /**
+     * This method will generate a reset password code, save it with the user entity
+     * and send it to the user's email address.
+     */
     public function postIndex()
     {
         if (! Captcha::check(Input::get('captcha'))) {
@@ -29,7 +33,9 @@ class RestorePasswordController extends FrontController {
                 $message->to($email, $user->username)->subject('Password Reset');
             });
 
-            $this->message(t('An email was sent to the given email address. Follow the instruction to generate a new password.'));
+            $this->message(
+                t('An email was sent to the given email address. Follow the instruction to generate a new password.')
+            );
 
             //$this->pageView('auth::emails.restore_password', compact('user')); // DEBUG
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
@@ -38,6 +44,13 @@ class RestorePasswordController extends FrontController {
         }
     }
 
+    /**
+     * This method will check email and the submitted code (it is included into t he URL)
+     * and if they pass generate a new password and send it to the user.
+     * 
+     * @param  string $email The user's email adress
+     * @param  string $code  Reset password code
+     */
     public function getNew($email, $code)
     {
         try {

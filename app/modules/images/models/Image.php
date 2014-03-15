@@ -4,7 +4,7 @@ use Ardent;
 
 class Image extends Ardent {
 
-    protected $softDelete = true;
+    protected $softDelete = false;
 
     protected $fillable = ['tags'];
 

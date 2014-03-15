@@ -13,5 +13,6 @@
 
 <div class="form-helpers bottom">
     {{ $sortSwitcher }}
+    {{ $recycleBin }}
     {{ $paginator }}
 </div>

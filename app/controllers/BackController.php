@@ -237,10 +237,13 @@ class BackController extends BaseController {
     {
         if (! $this->checkAccessDelete()) return;
 
-        $model = $this->modelFullName;
+        $model  = $this->modelFullName;
+        $entity = $model::withTrashed()->find($id);
 
-        if (isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
-            $entity     = $model::find($id);
+        /*
+         * Delete related files even if it's only a soft deletion.
+         */
+        if (! $entity->trashed() and isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
             $filePath   = public_path().'/uploads/'.strtolower($this->controller);
 
             foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
@@ -263,9 +266,30 @@ class BackController extends BaseController {
             }
         }
 
-        $model::destroy($id);
+        if (! $entity->trashed()) {
+            $model::destroy($id); // Delete entity. If soft deletion is enable for this entity it's only a soft deletion
+        } else {
+            $entity->forceDelete(); // Finally delete this entity
+        }
 
         $this->messageFlash(trans('app.deleted', [$this->model]));
+        return Redirect::route('admin.'.strtolower($this->controller).'.index');
+    }
+
+    /**
+     * CRUD-related: restore entity after soft deletion
+     * 
+     * @param  int The id of the entitity
+     */
+    public function restore($id)
+    {
+        if (! $this->checkAccessDelete()) return;
+
+        $model  = $this->modelFullName;
+        $entity = $model::withTrashed()->find($id);
+        $entity->restore();
+
+        $this->messageFlash(trans('app.restored', [$this->model]));
         return Redirect::route('admin.'.strtolower($this->controller).'.index');
     }
 

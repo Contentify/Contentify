@@ -18,7 +18,7 @@ class AdminContactController extends BackController {
     {
         if (! $this->checkAccessRead()) return;
 
-        $this->buildIndexForm([
+        $this->buildIndexPage([
             'buttons' => null,
             'tableHead' => [
                 t('ID')         => 'id', 
@@ -37,7 +37,7 @@ class AdminContactController extends BackController {
                     $msg->created_at,
                 ];
             },
-            'actions' => ['delete']
+            'actions' => ['delete', 'restore']
         ]);
     }
 

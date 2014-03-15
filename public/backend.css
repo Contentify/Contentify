@@ -88,8 +88,14 @@ h1.page-title { }
 
 /* Sort-Switcher */
 .sort-switcher { display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px; background-color: #333; color: white !important }
-.sort-switcher img { vertical-align: middle; }
+.sort-switcher img { vertical-align: bottom; }
 .form-helpers .sort-switcher { margin: 0px }
+
+/* Recyclbe Bin Button */
+.recycle-bin-button {  display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px; }
+.recycle-bin-button.enabled { background-color: #333; color: white !important }
+.recycle-bin-button.disabled { background-color: #CCC; color: #999 !important }
+.form-helpers .recycle-bin-button { margin: 0px }
 
 /* Pagination */
 ul.pagination li { position: relative; width: 8px; height: 16px; margin: 0px 2px; padding: 2px 6px; border: 1px solid #C6C6C6; border-radius: 3px; background-color: #EFEFEF; font-weight: bold }

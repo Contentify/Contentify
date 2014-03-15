@@ -16,6 +16,7 @@
             <td>{{ link_to('auth/restore/new/'.$user->email.'/'.$user->reset_password_code) }}</td>
         </tr>
     </table>
+    
     <p>If you don't want to generate a new password ignore this mail.</p>
 </body>
 </html>
