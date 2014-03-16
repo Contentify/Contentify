@@ -1,6 +1,6 @@
 <?php
 
-class FrontController extends BaseController {
+abstract class FrontController extends BaseController {
 	/**
      * The layout that should be used for responses.
      */

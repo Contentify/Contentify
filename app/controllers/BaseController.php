@@ -1,6 +1,6 @@
 <?php
 
-class BaseController extends Controller {
+abstract class BaseController extends Controller {
 
     /**
      * The name of the module
@@ -184,6 +184,8 @@ class BaseController extends Controller {
 
         $data = array_merge($defaults, $data);
 
+        $model = $this->modelFullName;
+
         /*
          * Generate Buttons
          */
@@ -231,16 +233,19 @@ class BaseController extends Controller {
         /*
          * Switch recycle bin mode: Show soft deleted entities if recycle bin mode is enabled.
          */
-        $recycleBinMode = Input::get('binmode');
-        if ($recycleBinMode !== null) {
-            Session::put('recycleBinMode', (bool) $recycleBinMode);
+        if ((new $model)->isSoftDeleting()) { // Create an entity because isSoftDeleting() is tied to an instance
+            $recycleBinMode = Input::get('binmode');
+            if ($recycleBinMode !== null) {
+                Session::put('recycleBinMode', (bool) $recycleBinMode);
+            }
+            $recycleBin = recycle_bin_button();
+        } else {
+            $recycleBin = '';
         }
-        $recycleBin = recycle_bin_button();
 
         /*
          * Retrieve entities from DB and create paginator
          */
-        $model = $this->modelFullName;
         $perPage = Config::get('app.'.$surface.'ItemsPerPage');
 
         $entities = $model::orderBy($data['sortby'], $data['order']);

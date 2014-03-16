@@ -6,7 +6,7 @@ class News extends Ardent {
 
     protected $softDelete = true;
 
-    protected $fillable = ['title', 'intro', 'text', 'published', 'internal', 'allow_comments', 'newscat_id'];
+    protected $fillable = ['title', 'intro', 'text', 'published', 'internal', 'allow_comments', 'newscat_id', 'creator_id'];
 
     public static $rules = [
         'title'   => 'required',
@@ -14,7 +14,7 @@ class News extends Ardent {
 
     public static $relationsData = [
         'newscat' => [self::BELONGS_TO, 'App\Modules\News\Models\Newscat'],
-        'creator' => [self::BELONGS_TO, 'User'],
+        'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
     /**

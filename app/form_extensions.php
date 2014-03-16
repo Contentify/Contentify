@@ -1,22 +1,30 @@
-<?php namespace Contentify;
+<?php
 
-use Exception, HTML, Illuminate\Support\Facades\Form, URL, DB;
+/*
+|--------------------------------------------------------------------------
+| Form Extensions
+|--------------------------------------------------------------------------
+|
+| This is the right place to setup global form extensions.
+|
+*/
 
-class FormBuilder extends Form {
-
+Form::macro('errors', 
     /**
      * Create HTML code for error displayment
      * 
      * @param  MessageBag $errors The errors to display
      * @return string
      */
-    public static function errors($errors)
+    function ($errors)
     {
         if (is_a($errors, 'Illuminate\Support\MessageBag')) {
             return HTML::ul($errors->all(), ['class' => 'form-errors' ]);
         }
     }
+);
 
+Form::macro('actions', 
     /**
      * Create HTML code for form action buttons (e. g. submit)
      * 
@@ -24,7 +32,7 @@ class FormBuilder extends Form {
      * @param  bool   $showImages Show icons on the buttons?
      * @return string
      */
-    public static function actions($buttons = array('submit', 'apply', 'reset'), $showImages = true)
+    function ($buttons = array('submit', 'apply', 'reset'), $showImages = true)
     {
         $partial = '<div class="form-actions">';
         foreach ($buttons as $type => $options) {
@@ -77,7 +85,9 @@ class FormBuilder extends Form {
         }
         return $partial.'</div>';
     }
+);
 
+Form::macro('smartCheckbox', 
     /**
      * Create HTML code for a checkbox element.
      * 
@@ -85,14 +95,16 @@ class FormBuilder extends Form {
      * @param  string $title The title of the checkbox element
      * @return string
      */
-    public static function smartCheckbox($name = 'image', $title = 'Image')
+    function ($name = 'image', $title = 'Image')
     {
         // Bugfix for Laravel checkobx bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
-        $checkbox = self::hidden($name, false).self::checkbox($name, true);
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.$checkbox.'</div>';
+        $checkbox = Form::hidden($name, false).Form::checkbox($name, true);
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.$checkbox.'</div>';
         return $partial;
     }
+);
 
+Form::macro('smartText', 
     /**
      * Create HTML code for a text input element.
      * 
@@ -100,12 +112,14 @@ class FormBuilder extends Form {
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartText($name, $title)
+    function ($name, $title)
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::text($name).'</div>';
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::text($name).'</div>';
         return $partial;
     }
+);
 
+Form::macro('smartEmail', 
     /**
      * Create HTML code for a email input element.
      * 
@@ -113,24 +127,28 @@ class FormBuilder extends Form {
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartEmail($name = 'email', $title = 'Email')
+    function ($name = 'email', $title = 'Email')
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::email($name).'</div>';
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::email($name).'</div>';
         return $partial;
     }
+);
 
+Form::macro('smartPassword', 
     /**
      * Create HTML code for a password input element.
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartPassword($name = 'password', $title = 'Password')
+    function ($name = 'password', $title = 'Password')
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::password($name).'</div>';
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::password($name).'</div>';
         return $partial;
     }
+);
 
+Form::macro('smartTextarea', 
     /**
      * Create HTML code for a textarea input element.
      * 
@@ -138,19 +156,21 @@ class FormBuilder extends Form {
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartTextarea($name = 'text', $title = 'Text', $editor = true)
+    function ($name = 'text', $title = 'Text', $editor = true)
     {
         if ($editor) {
-            $label      = self::label($name, $title, ['class' => 'full-line']);
-            $textarea   = self::textarea($name, null, ['class' => 'ckeditor']);
+            $label      = Form::label($name, $title, ['class' => 'full-line']);
+            $textarea   = Form::textarea($name, null, ['class' => 'ckeditor']);
         } else {
-            $label      = self::label($name, $title);
-            $textarea   = self::textarea($name, null);
+            $label      = Form::label($name, $title);
+            $textarea   = Form::textarea($name, null);
         }
         $partial    = '<div class="form-group">'.$label.' '.$textarea.'</div>';
         return $partial;
     }
+);
 
+Form::macro('smartSelectForeign',
     /**
      * Create HTML code for a select element. It will take its values from a database table.
      * 
@@ -159,7 +179,7 @@ class FormBuilder extends Form {
      * @param  string $notEmpty If true the result cannot be empty (if it's empty throw an error)
      * @return string
      */
-    public static function smartSelectForeign($name, $title, $notEmpty = true)
+    function ($name, $title, $notEmpty = true)
     {
         $pos = strrpos($name, '_');
         if ($pos === false) {
@@ -178,30 +198,115 @@ class FormBuilder extends Form {
         foreach ($entities as $entity) {
             if (isset($entity->title)) {
                 $entityTitle = 'title';
+            } elseif (isset($entity->name)) {
+                $entityTitle = 'name';
             } else {
                 $entityTitle = 'id';
             }
 
             $options[$entity->$attribute] = $entity->$entityTitle;
         }
+
+        if ($pivot) {
+            $elementAttributes = ['multiple' => 'multiple'];
+        } else {
+            $elementAttributes = [];
+        }
         
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::select($name, $options).'</div>';
+        $partial = '<div class="form-group">'.
+            Form::label($name, $title).' '.
+            Form::select($name, $options, null, $elementAttributes).
+            '</div>';
         return $partial;
     }
+);
 
+Form::macro('smartSelectRelation',
     /**
+     * Create HTML code for a select element. It will take its values from a database table.
+     * 
+     * @param  string $name     The name of the value, e. g. "user_id"
+     * @param  string $title    The title of the select element
+     * @param  string $notEmpty If true the result cannot be empty (if it's empty throw an error)
+     * @return string
+     */
+    function ($relationName, $title, Ardent $sourceEntity, $notEmpty = true)
+    {
+        $model = get_class($sourceEntity);
+
+        $relations = $model::relations();
+        
+        if (isset($relations[$relationName])) {
+            $relation = $relations[$relationName];
+        } else {
+            throw new Exception("Error: Relation '{$relationName}' does not exist for entity of type '{$model}'.");
+        }
+
+        switch ($relation[0]) {
+            case 'belongsTo':
+                $modelFull  = $relation[1];
+                $model      = class_basename($modelFull);
+                $key        = (new $modelFull)->getKeyName();
+                if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
+                
+                $entities = $modelFull::all();
+
+                if ($notEmpty and sizeof($entities) == 0) {
+                    throw new Exception("Missing entities for relation '{$relationName}'.");
+                }
+
+                $options = array();
+                foreach ($entities as $entity) {
+                    if (isset($relation['title'])) {
+                        $entityTitle = $relation['title'];
+                    } else {
+                        if (isset($entity->title)) {
+                            $entityTitle = 'title';
+                        } elseif (isset($entity->name)) {
+                            $entityTitle = 'name';
+                        } else {
+                            $entityTitle = 'id';
+                        }
+                    }                    
+
+                    $options[$entity->$key] = $entity->$entityTitle;
+                }
+
+                $default = Form::getValueAttribute($relationName.'_'.$key);
+
+                break;           
+            default:
+                throw new Exception("Error: Unkown relation type '{$relation[0]}' for entity of type '{$model}'.");
+        }
+
+        $elementAttributes = []; // TODO pivot tables 
+        //$elementAttributes = ['multiple' => 'multiple'];
+        
+        $name       = '_pivot_'.$relationName;
+        $partial    = '<div class="form-group">'.
+            Form::label($name, $title).' '.
+            Form::select($name, $options, $default, $elementAttributes).
+            '</div>';
+        return $partial;
+    }
+);
+
+Form::macro('smartImageFile',
+   /**
      * Create HTML code for an image upload input element.
      * 
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartImageFile($name = 'image', $title = 'Image')
+    function ($name = 'image', $title = 'Image')
     {
-        $partial = '<div class="form-group">'.self::label($name, $title).' '.self::file($name).'</div>';
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::file($name).'</div>';
         return $partial;
     }
+);
 
+Form::macro('smartIconFile',
     /**
      * Create HTML code for an icon upload input element.
      * 
@@ -209,21 +314,23 @@ class FormBuilder extends Form {
      * @param  string $title The title of the input element
      * @return string
      */
-    public static function smartIconFile($name = 'icon', $title = 'Icon')
+    function ($name = 'icon', $title = 'Icon')
     {
-        return self::smartImageFile($name, $title);
+        return Form::smartImageFile($name, $title);
     }
+);
 
+Form::macro('smartCaptcha',
     /**
      * Create HTML code for a email input element.
      * 
      * @return string
      */
-    public static function smartCaptcha($name = 'captcha', $title = 'Captcha')
+    function ($name = 'captcha', $title = 'Captcha')
     {
         $label      = self::label($name, $title);
         $image      = HTML::image(URL::route('captcha'), 'Captcha');
         $partial    = '<div class="form-group">'.$label.' '.$image.' '.self::text($name).'</div>';
         return $partial;
     }
-}
+);

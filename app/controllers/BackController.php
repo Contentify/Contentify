@@ -1,6 +1,6 @@
 <?php
 
-class BackController extends BaseController {
+abstract class BackController extends BaseController {
     /**
      * The layout that should be used for responses.
      * @var string
@@ -71,6 +71,7 @@ class BackController extends BaseController {
         if (! $this->checkAccessCreate()) return;
 
         $model = $this->modelFullName;
+
         $entity = new $model(Input::all());
         $entity->creator_id = user()->id;
         $entity->updater_id = user()->id;
@@ -164,6 +165,40 @@ class BackController extends BaseController {
         $entity = $model::findOrFail($id);
 
         $entity->fill(Input::all());
+
+        $relations = $model::relations();
+        foreach (Input::all() as $name => $value) {
+            if (starts_with($name, '_pivot_')) {
+                $name = substr($name, 7);
+                
+                if (isset($relations[$name])) {
+                    $relation = $relations[$name];
+
+                    switch ($relation[0]) {
+                        case 'belongsTo':
+                            $foreignModelFull   = $relation[1];
+                            $foreignModel       = class_basename($foreignModelFull);
+                            $key                = (new $foreignModelFull)->getKeyName();
+                            if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
+
+                            $attribute = $name.'_'.$key;
+
+                            if ($entity->isFillable($attribute)) {
+                                $entity->$attribute = $value;
+                            }
+
+                            break;
+                        default:
+                            throw new Exception(
+                                "Error: Unkown relation type '{$relation[0]}' for entity of type '{$model}'."
+                            );
+                    }
+                } else {
+                    Log::warn("Unknown relation '{$name}'."); // Just log it, don't throw an exception.
+                }
+            }
+        }
+
         $entity->updater_id = user()->id;
         $okay = $entity->save();
 

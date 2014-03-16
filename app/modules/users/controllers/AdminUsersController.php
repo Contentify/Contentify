@@ -8,7 +8,7 @@ class AdminUsersController extends BackController {
 
     public function __construct()
     {
-        $this->model = '\User';
+        $this->model = 'User';
 
         parent::__construct();
     }
@@ -51,5 +51,4 @@ class AdminUsersController extends BackController {
             ]
         ]);
     }
-
 }

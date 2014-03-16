@@ -34,7 +34,7 @@ class RestorePasswordController extends FrontController {
             });
 
             $this->message(
-                t('An email was sent to the given email address. Follow the instruction to generate a new password.')
+                t('An email has been to the given email address. Follow the instruction to generate a new password.')
             );
 
             //$this->pageView('auth::emails.restore_password', compact('user')); // DEBUG
@@ -63,7 +63,14 @@ class RestorePasswordController extends FrontController {
 
             $password = strtolower(Str::random(9)); // Generate a new password
 
-            $this->message(t('Your new password is: '.$password));
+            Mail::send('auth::emails.send_password', compact('user'), function($message) use ($email, $user, $password)
+            {
+                $message->to($email, $user->username)->subject('New Password');
+            });
+
+            $this->message(
+                t('An email with your new password has been sent to your email address.')
+            );
 
             /*
              * Save the new password. Please note that we do not need to

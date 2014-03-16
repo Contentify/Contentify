@@ -192,7 +192,7 @@ return array(
         'Eloquent'              => 'Illuminate\Database\Eloquent\Model',
         'Event'                 => 'Illuminate\Support\Facades\Event',
         'File'                  => 'Illuminate\Support\Facades\File',
-        'Form'                  => 'Contentify\FormBuilder', // Original: Illuminate\Support\Facades\Form
+        'Form'                  => 'Illuminate\Support\Facades\Form',
         'Hash'                  => 'Illuminate\Support\Facades\Hash',
         'HTML'                  => 'Illuminate\Support\Facades\HTML',
         'Input'                 => 'Illuminate\Support\Facades\Input',
@@ -225,7 +225,7 @@ return array(
 
         // Vendor classes:
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-        'Ardent'                => 'LaravelBook\Ardent\Ardent',
+       // 'Ardent'                => 'LaravelBook\Ardent\Ardent'
         'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image'
     ),
