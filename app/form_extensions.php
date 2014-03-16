@@ -282,7 +282,7 @@ Form::macro('smartSelectRelation',
         $elementAttributes = []; // TODO pivot tables 
         //$elementAttributes = ['multiple' => 'multiple'];
         
-        $name       = '_pivot_'.$relationName;
+        $name       = '_relation_'.$relationName;
         $partial    = '<div class="form-group">'.
             Form::label($name, $title).' '.
             Form::select($name, $options, $default, $elementAttributes).

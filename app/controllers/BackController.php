@@ -168,8 +168,8 @@ abstract class BackController extends BaseController {
 
         $relations = $model::relations();
         foreach (Input::all() as $name => $value) {
-            if (starts_with($name, '_pivot_')) {
-                $name = substr($name, 7);
+            if (starts_with($name, '_relation_')) {
+                $name = substr($name, 10);
                 
                 if (isset($relations[$name])) {
                     $relation = $relations[$name];
