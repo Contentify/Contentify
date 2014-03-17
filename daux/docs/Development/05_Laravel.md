@@ -1,6 +1,6 @@
 Contentify is a CMS based on the popular Laravel 4 framework. Laravel is developed and maintained by Taylor Otwell and a small [team of developers](http://laravel.com/docs/introduction#development-team). It's one of the most advanced PHP frameworks ever made. Many believe it's the upcoming star of PHP frameworks.
 
-Contentify enhances Laravel. Understanding Laravel is a key requirement to understand Contentify. We believe that it's quite simple to learn the basics of Laravel so this should not be show stopper. We recommend ["Code Bright" by Dayle Rees](http://daylerees.com/codebright/codebright) as a beginner guide. If you run into troubles with Laravel feel free to contact our [support team](http://contentify.it/support) or ask the Laravel community for help. These guys are great and will do their best to help you.
+Contentify enhances Laravel. Understanding Laravel is a key requirement to understand Contentify. We believe that it's quite simple to learn the basics of Laravel so this should not be a show stopper. We recommend ["Code Bright" by Dayle Rees](http://daylerees.com/codebright/codebright) as a beginner guide. If you run into troubles with Laravel feel free to contact our [support team](http://contentify.it/support) or ask the Laravel community for help. These guys are great and will do their best to help you.
 
 # Why We Choose Laravel
 
@@ -30,11 +30,11 @@ Learning Laravel within only 10 minutes is impossible - sorry. This is a super-c
 
 ## Model-View-Controller
 
-Model-View-Controller is a popular software design pattern. Laravel implements MVC. The idea is seperation of concerns: For example the view-part (HTML templates) is responsible for generating an output representation. Dividing the application into different kinds of components has important advantages. Think about a front-end developer: He or she does not have to deal with PHP code. According to MVC it's possible to avoid writing any PHP code when working with the front-end part, because this only concerns the view. Laravel offers Blade templating with a PHP-less syntax.
+Model-View-Controller is a popular software design pattern. Laravel implements MVC. The idea is seperation of concerns: For example the view-part (e. g. HTML templates) is responsible for generating an output representation. Dividing the application into different kinds of components has important advantages. Think about a front-end developer: He or she does not have to deal with PHP code. According to MVC it's possible to avoid writing any PHP code when working with the front-end part, because this only concerns the view. Laravel offers Blade templating with a PHP-less syntax.
 
 * Models: Entities. In PHP code: Classes and objects. Models are stored in a database.
 * Views: Handle the output representation, usually of models.
-* Controllers: Process user request ("load this page") to a response (the page).
+* Controllers: Process a user request ("load this page") to a response (the HTML page).
 
 ## Composer And Packagist
 

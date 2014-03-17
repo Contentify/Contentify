@@ -60,7 +60,10 @@ abstract class BackController extends BaseController {
     {
         if (! $this->checkAccessCreate()) return;
 
-        $this->pageView(strtolower($this->module).'::'.$this->formTemplate);
+        $this->pageView(
+            strtolower($this->module).'::'.$this->formTemplate,
+            ['modelName' => $this->modelFullName]
+        );
     }
 
     /**
@@ -72,9 +75,11 @@ abstract class BackController extends BaseController {
 
         $model = $this->modelFullName;
 
-        $entity = new $model(Input::all());
+        $entity = new $model();
         $entity->creator_id = user()->id;
         $entity->updater_id = user()->id;
+        $entity->fill(Input::all());
+        $this->fillRelations($model, $entity);
 
         $okay = $entity->save();
 
@@ -135,6 +140,71 @@ abstract class BackController extends BaseController {
     }
 
     /**
+     * Retrieve values from inputs (usually select elements) that deal with foreign entities
+     * 
+     * @param  string   $model  Name of the model
+     * @param  Model    $entity Object with this model type (by reference)
+     * @return void
+     */
+    protected function fillRelations($model, &$entity)
+    {
+        $relations = $model::relations();
+
+        foreach (Input::all() as $name => $value) {
+            if (starts_with($name, '_relation_')) {
+                $name = substr($name, 10); // Remove the prefix to get the name of the relation
+                
+                if (isset($relations[$name])) {
+                    $relation = $relations[$name];
+
+                    $foreignModelFull   = $relation[1]; // Fully classified foreign model name
+                    $foreignModel       = class_basename($foreignModelFull);
+                    $key                = (new $foreignModelFull)->getKeyName(); // Primary key of the model
+                    if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
+
+                    /*
+                     * Handle the different types of relations
+                     */
+                    switch ($relation[0]) {
+                        case 'belongsTo':
+                            $attribute = $name.'_'.$key;
+
+                            if ($entity->isFillable($attribute)) {
+                                $entity->$attribute = $value;
+                            }
+
+                            break;
+                        case 'belongsToMany':
+                            $sourceKey = class_basename(strtolower($model)).'_'.$entity->getKeyName();
+                            DB::table($relation['table'])->where($sourceKey, '=', $entity->id)->delete();
+
+                            $insertion = [];
+                            foreach ($value as $id) {
+                                $insertion[] = [
+                                    $sourceKey => $entity->id,
+                                    strtolower($foreignModel).'_'.$key => $id
+                                ];
+                            }
+
+                            if (sizeof($insertion) > 0) {
+                                DB::table($relation['table'])->insert($insertion);
+                            }
+
+                            break;
+                        default:
+                            throw new Exception(
+                                "Error: Unkown relation type '{$relation[0]}' for entity of type '{$model}'."
+                            );
+                    }
+                } else {
+                    Log::warn("Unknown relation '{$name}'."); // Just log it, don't throw an exception.
+                }
+            }
+        }
+
+    }
+
+    /**
      * CRUD: edit entity
      * 
      * @param  int The id of the entitity
@@ -148,7 +218,7 @@ abstract class BackController extends BaseController {
 
         $this->pageView(
             strtolower($this->module).'::'.$this->formTemplate, 
-            ['entity' => $entity]
+            ['entity' => $entity, 'modelName' => $model]
         );
     }
 
@@ -164,42 +234,10 @@ abstract class BackController extends BaseController {
         $model = $this->modelFullName;
         $entity = $model::findOrFail($id);
 
-        $entity->fill(Input::all());
-
-        $relations = $model::relations();
-        foreach (Input::all() as $name => $value) {
-            if (starts_with($name, '_relation_')) {
-                $name = substr($name, 10);
-                
-                if (isset($relations[$name])) {
-                    $relation = $relations[$name];
-
-                    switch ($relation[0]) {
-                        case 'belongsTo':
-                            $foreignModelFull   = $relation[1];
-                            $foreignModel       = class_basename($foreignModelFull);
-                            $key                = (new $foreignModelFull)->getKeyName();
-                            if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
-
-                            $attribute = $name.'_'.$key;
-
-                            if ($entity->isFillable($attribute)) {
-                                $entity->$attribute = $value;
-                            }
-
-                            break;
-                        default:
-                            throw new Exception(
-                                "Error: Unkown relation type '{$relation[0]}' for entity of type '{$model}'."
-                            );
-                    }
-                } else {
-                    Log::warn("Unknown relation '{$name}'."); // Just log it, don't throw an exception.
-                }
-            }
-        }
-
         $entity->updater_id = user()->id;
+        $entity->fill(Input::all());
+        $this->fillRelations($model, $entity);
+        
         $okay = $entity->save();
 
         if (! $okay) {

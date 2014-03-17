@@ -7,7 +7,7 @@
 @endif
     {{ Form::smartCheckbox('activated', 'Activated') }}
 
-    {{ Form::smartSelectPivot('group_id', 'Permission Groups') }}
+    {{ Form::smartSelectRelation('groups', 'Permission Groups', $modelName) }}
 
     {{ Form::actions() }}
 {{ Form::close() }}

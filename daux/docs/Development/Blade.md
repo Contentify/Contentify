@@ -57,6 +57,8 @@ Generate a URL for an asset:
     <img src="{{ asset('img/example.png') }}" />
     <!-- <img src="http://localhost/contentify/img/example.png" /> -->
 
+Why is the asset function helpful? Imagine you want to change the storage place of asset files. Maybe their new home is on the server of a Content Deliver Network (CDN). After moving them to their new destination all hard-coded URLs have to be changed by hand. Except those that use the asset function: change the path to the asset root folder and you are done.
+
 ## Template Compiling
 
 Blade is a template compiler, meaning it converts Blade templates to PHP templates. Blade will store compiled templates in `app/storage/views` as files without extensions. These files are PHP files. Compiling Blade templates and caching them makes Blade templates as fast as pure PHP templates. We recommend using Blade.

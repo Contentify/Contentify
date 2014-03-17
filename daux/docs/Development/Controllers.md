@@ -51,7 +51,7 @@ Extends the BaseController class. Controllers tied to the frontend should inheri
 
 Extends the BaseController class. Controllers tied to the backend should inherit from the BackController class. While the frontend controller class is lightweight, the backend controller comes with a lot of features. It sets the backend layout as template and passes several variables to it (module and controller name, controller icon, user picture, message notifier).
 
-The most outstanding feature is its ability to handle resource actions. It implements methods that create (and store), edit (and update) and delete (and restore) an entity. Controllers that inherit from the backend controller class always inherit those methods. Keep this in mind when creating routes for a resouce controller: Perhaps you have to close routes manually that you do not want to use. For example maybe your controller must not be able to delete the entities it handles. In this case you have to close the "delete" route manually.
+The most outstanding feature is its ability to handle resource actions. It implements methods that create (and store), edit (and update) and delete (and restore) an entity. Controllers that inherit from the backend controller class always inherit those methods. Keep this in mind when creating routes for a resouce controller. Perhaps you have to close routes manually that you do not want to use. For example maybe your controller must not be able to delete the entities it handles. In this case you have to close the "delete" route manually.
 
 > Use the `php artisan routes` command to list all available routes.
 

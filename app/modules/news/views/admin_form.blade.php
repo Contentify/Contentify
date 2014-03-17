@@ -8,8 +8,8 @@
 {{ Form::open(['url' => 'admin/news']) }}
 @endif
     {{ Form::smartText('title', 'Title') }}
-    {{ Form::smartSelectRelation('newscat', 'Newscat', $entity) }}
-    {{ Form::smartSelectRelation('creator', 'Creator', $entity) }}
+    {{ Form::smartSelectRelation('newscat', 'Newscat', $modelName) }}
+    {{ Form::smartSelectRelation('creator', 'Creator', $modelName) }}
     
     {{ Form::smartTextarea('intro', 'Intro') }}
     {{ Form::smartTextarea('text', 'Text') }}

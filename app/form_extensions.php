@@ -174,9 +174,9 @@ Form::macro('smartSelectForeign',
     /**
      * Create HTML code for a select element. It will take its values from a database table.
      * 
-     * @param  string $name     The name of the value, e. g. "user_id"
-     * @param  string $title    The title of the select element
-     * @param  string $notEmpty If true the result cannot be empty (if it's empty throw an error)
+     * @param  string   $name     The name of the value, e. g. "user_id"
+     * @param  string   $title    The title of the select element
+     * @param  bool     $notEmpty If true the result cannot be empty (if it's empty throw an error)
      * @return string
      */
     function ($name, $title, $notEmpty = true)
@@ -225,62 +225,83 @@ Form::macro('smartSelectRelation',
     /**
      * Create HTML code for a select element. It will take its values from a database table.
      * 
-     * @param  string $name     The name of the value, e. g. "user_id"
-     * @param  string $title    The title of the select element
-     * @param  string $notEmpty If true the result cannot be empty (if it's empty throw an error)
+     * @param  string   $name           The name of the relation as defined in $model::relations
+     * @param  string   $title          The caption of the select element
+     * @param  string   $sourceModel    Name of the source model
+     * @param  bool     $notEmpty       If true the result cannot be empty (if it's empty throw an error)
      * @return string
      */
-    function ($relationName, $title, Ardent $sourceEntity, $notEmpty = true)
+    function ($relationName, $title, $sourceModel, $notEmpty = true)
     {
-        $model = get_class($sourceEntity);
-
-        $relations = $model::relations();
+        $relations = $sourceModel::relations();
         
         if (isset($relations[$relationName])) {
             $relation = $relations[$relationName];
         } else {
-            throw new Exception("Error: Relation '{$relationName}' does not exist for entity of type '{$model}'.");
+            throw new Exception("Error: Relation '{$relationName}' does not exist for entity of type '{$sourceModel}'.");
         }
 
+        $modelFull  = $relation[1]; // Fully classified name of the model
+        $model      = class_basename($modelFull);
+        $key        = (new $modelFull)->getKeyName(); // Primnary key of the model
+        if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
+
+        $entities = $modelFull::all();
+
+        if ($notEmpty and sizeof($entities) == 0) {
+            throw new Exception("Missing entities for relation '{$relationName}'.");
+        }
+
+        /*
+         * Find an attribute that will be displayed as title
+         */
+        $options = array();
+        foreach ($entities as $entity) {
+            if (isset($relation['title'])) {
+                $entityTitle = $relation['title'];
+            } else {
+                if (isset($entity->title)) {
+                    $entityTitle = 'title';
+                } elseif (isset($entity->name)) {
+                    $entityTitle = 'name';
+                } else {
+                    $entityTitle = 'id';
+                }
+            }                    
+
+            $options[$entity->$key] = $entity->$entityTitle;
+        }
+
+        $elementAttributes  = [];
+        $default            = [];
+
+        /*
+         * Handle the different types of relations
+         */
         switch ($relation[0]) {
-            case 'belongsTo':
-                $modelFull  = $relation[1];
-                $model      = class_basename($modelFull);
-                $key        = (new $modelFull)->getKeyName();
-                if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
-                
-                $entities = $modelFull::all();
-
-                if ($notEmpty and sizeof($entities) == 0) {
-                    throw new Exception("Missing entities for relation '{$relationName}'.");
-                }
-
-                $options = array();
-                foreach ($entities as $entity) {
-                    if (isset($relation['title'])) {
-                        $entityTitle = $relation['title'];
-                    } else {
-                        if (isset($entity->title)) {
-                            $entityTitle = 'title';
-                        } elseif (isset($entity->name)) {
-                            $entityTitle = 'name';
-                        } else {
-                            $entityTitle = 'id';
-                        }
-                    }                    
-
-                    $options[$entity->$key] = $entity->$entityTitle;
-                }
-
+            case 'belongsTo':           
                 $default = Form::getValueAttribute($relationName.'_'.$key);
 
-                break;           
+                break;
+            case 'belongsToMany':
+                $sourceEntity   = new $sourceModel;
+                $sourceKey      = class_basename(strtolower($sourceModel)).'_'.$sourceEntity->getKeyName();
+                $sourceKeyValue = Form::getValueAttribute($sourceEntity->getKeyName());
+
+                // We assume that soft deletion is not available to relations
+                $entities = DB::table($relation['table'])->where($sourceKey, '=', $sourceKeyValue)->get();
+
+                foreach ($entities as $entity) {
+                    $default[] = $entity->{strtolower($model).'_'.$key};
+                }
+
+                $elementAttributes  = ['multiple' => 'multiple'];
+                $relationName       .= '[]';
+
+                break;
             default:
                 throw new Exception("Error: Unkown relation type '{$relation[0]}' for entity of type '{$model}'.");
         }
-
-        $elementAttributes = []; // TODO pivot tables 
-        //$elementAttributes = ['multiple' => 'multiple'];
         
         $name       = '_relation_'.$relationName;
         $partial    = '<div class="form-group">'.

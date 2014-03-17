@@ -16,13 +16,14 @@ class AdminUsersController extends BackController {
     public function index()
     {
         $this->buildIndexPage([
+            'buttons'   => null,
             'tableHead' => [
                 t('ID')         => 'id', 
                 t('Username')   => 'username',
                 t('Email')      => 'email',
                 t('Membership') => null,
             ],
-            'tableRow' => function($user)
+            'tableRow'  => function($user)
             {
                 $hover = new Hover();
                 if ($user->image) $hover->image(asset('uploads/users/'.$user->image));
