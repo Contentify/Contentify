@@ -10,3 +10,4 @@ ModuleRoute::post('users/search', 'UsersController@search');
 
 ModuleRoute::resource('admin/users', 'AdminUsersController');
 ModuleRoute::post('admin/users/search', 'AdminUsersController@search');
+ModuleRoute::post('admin/users/{id}/{ban}', 'AdminUsersController@ban');

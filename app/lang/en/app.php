@@ -17,6 +17,11 @@ return array(
     'spam_protection' => 'For spam protection, you have to wait a few seconds until you can submit this form.',
 
     /*
+     * Errors
+     */
+    'not_found' => 'Resource not found.',
+
+    /*
      * User permisssions
      */ 
     'no_auth'       => 'Access denied. Please log in.',

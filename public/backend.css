@@ -61,7 +61,7 @@ h1.page-title { }
 .form-errors { }
 .form-group { margin-bottom: 20px }
 .form-group.space-top {  }
-.form-group label { display: inline-block; min-width: 15%; padding-right: 20px; cursor: pointer; }
+.form-group label { display: inline-block; width: 15%; padding-right: 20px; cursor: pointer; word-wrap: break-word; }
 .form-group label:after { /* content: ':'; */ }
 .form-group label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x }
 .form-group input { width: 40%; padding: 5px 10px; }

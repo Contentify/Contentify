@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Users\Models;
 
-use Ardent;
 use User as BaseUser;
+use Sentry, Ardent;
 
 class User extends BaseUser {
 
@@ -21,6 +21,21 @@ class User extends BaseUser {
     public static function relations()
     {
         return static::$relationsData;
+    }
+
+    /**
+     * The throttle system is not part of the Sentry core module.
+     * This helper method accesses the banned attribute.
+     *
+     * @return boolean [description]
+     */
+    public function isBanned()
+    {
+        // This is what Sentry gives us to get the banned attribute... Not cool.
+        // If there is a better way change the code.
+        $throttle = Sentry::findThrottlerByUserId($this->id);
+
+        return $throttle->isBanned();
     }
 
 }

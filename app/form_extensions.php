@@ -87,6 +87,33 @@ Form::macro('actions',
     }
 );
 
+Form::macro('smartFieldOpen', 
+    /**
+     * Create HTML code for the opening part of a custom form field.
+     * 
+     * @param  string $title The title of the field
+     * @return string
+     */
+    function ($title = 'Image')
+    {
+        $partial = '<div class="form-group">'.Form::label('', $title).' ';
+        return $partial;
+    }
+);
+
+Form::macro('smartFieldClose', 
+    /**
+     * Create HTML code for the closing part of a custom form field.
+     * 
+     * @param  string $title The title of the field
+     * @return string
+     */
+    function ()
+    {
+        return '</div>';
+    }
+);
+
 Form::macro('smartCheckbox', 
     /**
      * Create HTML code for a checkbox element.

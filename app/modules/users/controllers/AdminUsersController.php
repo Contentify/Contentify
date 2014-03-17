@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Users\Controllers;
 
-use HTML, User, Hover, BackController;
+use Exception, Response, Sentry, HTML, User, Hover, BackController;
 
 class AdminUsersController extends BackController {
 
@@ -22,6 +22,7 @@ class AdminUsersController extends BackController {
                 t('Username')   => 'username',
                 t('Email')      => 'email',
                 t('Membership') => null,
+                t('Banned')     => null,
             ],
             'tableRow'  => function($user)
             {
@@ -34,11 +35,18 @@ class AdminUsersController extends BackController {
                     $membership = HTML::image('icons/cross.png');
                 }
 
+                if ($user->isBanned()) {
+                    $banned = HTML::image('icons/lock_delete.png');
+                } else {
+                    $banned = HTML::image('icons/lock_open.png');
+                }
+
                 return [
                     $user->id,
                     $hover.$user->username,
                     $user->email,
-                    $membership
+                    $membership,
+                    $banned
                 ];            
             },
             'searchFor' => 'username',
@@ -51,5 +59,31 @@ class AdminUsersController extends BackController {
                 }
             ]
         ]);
+    }
+
+    /**
+     * Bans or unbans a user.
+     * 
+     * @param  int  $id     The ID of the user
+     * @param  bool $ban    Ban (true) or unban (false)?
+     * @return Response
+     */
+    public function ban($id, $ban = true)
+    {
+        if (! $this->checkAccessUpdate()) return Response::make(trans('app.access_denied'), 500);
+
+        try {
+            $throttle = Sentry::findThrottlerByUserId($id);
+
+            if ($ban) {
+                $throttle->ban();
+                return Response::make('1', 200);
+            } else {
+                $throttle->unBan();
+                return Response::make('0', 200);
+            }          
+        } catch (Exception $e) {
+            return Response::make(trans('app.not_found'), 500);
+        }
     }
 }
