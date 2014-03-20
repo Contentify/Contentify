@@ -5,7 +5,7 @@
 | Form Extensions
 |--------------------------------------------------------------------------
 |
-| This is the right place to setup global form extensions.
+| This is the right place to setup global form extensions (macros).
 |
 */
 
@@ -333,6 +333,7 @@ Form::macro('smartSelectRelation',
         $name       = '_relation_'.$relationName;
         $partial    = '<div class="form-group">'.
             Form::label($name, $title).' '.
+            Form::hidden($name, false). // Dummy so even if no option is selected some data is sent
             Form::select($name, $options, $default, $elementAttributes).
             '</div>';
         return $partial;

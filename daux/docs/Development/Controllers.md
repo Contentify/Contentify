@@ -33,14 +33,14 @@ The main part of the every index page is a table showing entities. In the exampl
 
 List of arguments the data array may use:
 
-* *buttons*: Array of buttons (e. g. "new", "category")
-* *search*: Does the index page support a search form?
-* *searchFor*: The attribute to search (e. g. "title")
-* *tableHead*: Array of table head columns
-* *tableRow*: Closure returning an array of values for all columns of a single row
-* *action*: Array of action buttons for the "Action" column (e. g. "edit", "delete")
-* *brightenFirst*: Display the first colum values in a birhgt color? (meant for IDs)
-* *sortby*: Attribute for default sorting (e. g. "id")
+* *buttons*: Array of names of default buttons ("new" and "category") or custom HTML code
+* *searchFor*: The attribute to search (e. g. "title"). Null will disable the search feature.
+* *dataSource*: Null or Array of entities. If null it will take the entities from the database. If an array is passed sorting, searching and pagination are not available.
+* *tableHead*: Array of items for the table head columns
+* *tableRow*: Closure returning an array of items for all columns of a single row
+* *action*: Array of named action buttons for the "Action" column ("edit", "delete" or "restore") or Closures
+* *brightenFirst*: Display the first colum values in a bright color? (useful to display IDs in a different style)
+* *sortby*: Name of the model attribute used for default sorting (e. g. "id")
 * *order*: Default order ("asc" or "desc")
 
 ## Frontend Controller

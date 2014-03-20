@@ -180,10 +180,12 @@ abstract class BackController extends BaseController {
 
                             $insertion = [];
                             foreach ($value as $id) {
-                                $insertion[] = [
-                                    $sourceKey => $entity->id,
-                                    strtolower($foreignModel).'_'.$key => $id
-                                ];
+                                if ($id) {
+                                    $insertion[] = [
+                                        $sourceKey => $entity->id,
+                                        strtolower($foreignModel).'_'.$key => $id
+                                    ];
+                                }
                             }
 
                             if (sizeof($insertion) > 0) {

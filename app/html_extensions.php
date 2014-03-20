@@ -5,7 +5,7 @@
 | HTML Extensions
 |--------------------------------------------------------------------------
 |
-| This is the right place to setup global HTML extensions.
+| This is the right place to setup global HTML extensions (macros).
 |
 */
 

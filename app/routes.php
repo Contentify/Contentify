@@ -36,7 +36,7 @@ Route::get('admin', [
 /*
  * Comment component
  */
-Route::post('comments/store', ['as' => 'comments.store', 'uses' => function()
+Route::post('comments/store', ['as' => 'comments.store', 'before' => 'csrf', 'uses' => function()
 {
     $foreignType = Input::get('foreigntype');
     $foreignId = Input::get('foreignid');
@@ -53,12 +53,12 @@ Route::get('comments/{id}/edit', ['as' => 'comments.edit', 'uses' => function($i
     return Comments::edit($id);
 }]);
 
-Route::put('comments/{id}/update', ['as' => 'comments.update', 'uses' => function($id)
+Route::put('comments/{id}/update', ['as' => 'comments.update', 'before' => 'csrf', 'uses' => function($id)
 {
     return Comments::update($id);
 }]);
 
-Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'uses' => function($id)
+Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'before' => 'csrf', 'uses' => function($id)
 {
     return Comments::delete($id);
 }]);
