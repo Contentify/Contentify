@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Models;
 
-use Ardent, Rss, Config, Lang, URL;
+use Comment, Ardent, Rss, Config, Lang, URL;
 
 class News extends Ardent {
 
@@ -16,6 +16,17 @@ class News extends Ardent {
         'newscat' => [self::BELONGS_TO, 'App\Modules\News\Models\Newscat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    /**
+     * Count the comments that are related to this news.
+     * 
+     * @return int
+     */
+    public function countComments()
+    {
+        // NOTE: The result of this query is cached!
+        return Comment::remember(5)->whereForeignType('news')->whereForeignId($this->id)->count();
+    }
 
     /**
      * Create/update RSS file

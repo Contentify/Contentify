@@ -14,6 +14,6 @@
             {{ $news->intro }}
         </div>
     </div>
-    {{ link_to('news/'.$news->id.'/'.slug($news->title), 'Read more...') }}
+    {{ $news->countComments() }} comments - {{ link_to('news/'.$news->id.'/'.slug($news->title), 'Read more...') }}
 </article>
 @endforeach

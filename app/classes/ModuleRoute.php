@@ -107,7 +107,7 @@ class ModuleRoute {
 	 */
 	public static function controller($route, $target, $parameters = array())
 	{
-		if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target; // Debugging
+		//if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target; // Debugging
 
 		Route::controller($route, self::$controllerPath.$target, $parameters);
 	}
@@ -122,7 +122,7 @@ class ModuleRoute {
 	 */
 	public static function resource($route, $target, $parameters = array())
 	{
-		if (Config::get('app.debug')) $_SESSION['ModuleRoute.resource'] = $target; // Debugging
+		//if (Config::get('app.debug')) $_SESSION['ModuleRoute.resource'] = $target; // Debugging
 
 		Route::resource($route, self::$controllerPath.$target, $parameters);
 	}
@@ -137,7 +137,7 @@ class ModuleRoute {
 	 */
 	private static function createRoute($method, $route, $target)
 	{
-		if (Config::get('app.debug')) $_SESSION['ModuleRoute.route'] = $target; // Debugging
+		//if (Config::get('app.debug')) $_SESSION['ModuleRoute.route'] = $target; // Debugging
 
 		/* 
 		 * Ignore closures:

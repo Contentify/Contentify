@@ -225,7 +225,7 @@ abstract class BaseController extends Controller {
         if (! $data['dataSource']) {
             if (Input::get('sortby')) {
                 $sortby = strtolower(Input::get('sortby'));
-                if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby; else dd($sortby);
+                if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby; 
 
                 $order = strtolower(Input::get('order'));
                 if ($order === 'desc' or $order === 'asc') {
