@@ -180,6 +180,7 @@ abstract class BaseController extends Controller {
             'brightenFirst' => true,
             'sortby'        => 'id', // You can not use MySQL functions
             'order'         => 'desc',
+            'dataSource'    => null // null (database) or Closure
         ];
 
         $data = array_merge($defaults, $data);
@@ -219,16 +220,20 @@ abstract class BaseController extends Controller {
         /*
          * Get sort attributes.
          */
-        if (Input::get('sortby')) {
-            $sortby = strtolower(Input::get('sortby'));
-            if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby; else dd($sortby);
+        if (! $data['dataSource']) {
+            if (Input::get('sortby')) {
+                $sortby = strtolower(Input::get('sortby'));
+                if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby; else dd($sortby);
 
-            $order = strtolower(Input::get('order'));
-            if ($order === 'desc' or $order === 'asc') {
-                $data['order'] = $order;
+                $order = strtolower(Input::get('order'));
+                if ($order === 'desc' or $order === 'asc') {
+                    $data['order'] = $order;
+                }
             }
+            $sortSwitcher = sort_switcher($data['sortby'], $data['order'], $data['search']);
+        } else {
+            $sortSwitcher = null;
         }
-        $sortSwitcher = sort_switcher($data['sortby'], $data['order'], $data['search']);
 
         /*
          * Switch recycle bin mode: Show soft deleted entities if recycle bin mode is enabled.
@@ -244,24 +249,31 @@ abstract class BaseController extends Controller {
         }
 
         /*
-         * Retrieve entities from DB and create paginator
+         * Retrieve entities from DB (or array) and create paginator
          */
         $perPage = Config::get('app.'.$surface.'ItemsPerPage');
 
-        $entities = $model::orderBy($data['sortby'], $data['order']);
-        if (Session::get('recycleBinMode')) {
-            $entities = $entities->withTrashed(); // Show trashed
-        }
-        if ($data['search'] and $data['searchFor']) {
-            $entities = $entities->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string
-        }
-        $entities = $entities->paginate($perPage);
+        if ($data['dataSource']) {
+            $entities   = $data['dataSource'];
+            $paginator  = null;
+        } else {
+            $entities = $model::orderBy($data['sortby'], $data['order']);
+            if (Session::get('recycleBinMode')) {
+                $entities = $entities->withTrashed(); // Show trashed
+            }
+            if ($data['search'] and $data['searchFor']) {
+                $entities = $entities->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string
+            }
+            dd($entities);
 
-        $paginator = $entities->appends(
-            ['sortby' => $data['sortby'], 
-            'order' => $data['order'], 
-            'search' => $data['search']]
-        )->links();
+            $entities = $entities->paginate($perPage);
+
+            $paginator = $entities->appends(
+                ['sortby' => $data['sortby'], 
+                'order' => $data['order'], 
+                'search' => $data['search']]
+            )->links();
+        }
 
         /*
          * Prepare the table head

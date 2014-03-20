@@ -344,6 +344,7 @@ class InstallController extends Controller {
                 'groups'    => PERM_DELETE,
                 'help'      => PERM_DELETE,
                 'images'    => PERM_DELETE,
+                'modules'   => PERM_DELETE,
                 'news'      => PERM_DELETE,
                 'users'     => PERM_DELETE,
             ]
