@@ -55,7 +55,7 @@ The most outstanding feature is its ability to handle resource actions. It imple
 
 > Use the `php artisan routes` command to list all available routes.
 
-If a method does not work in the way it's intended or the task to perform is too complex you are free to override it. But if it isn't necessary to override them it's recommended to stick to the existing implementation.
+If a method does not work in the way it's intended or the task to perform is too complex you are free to override it. But if it isn't necessary to override it's recommended to stick to the existing implementation.
 
 
 

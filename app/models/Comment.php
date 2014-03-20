@@ -13,4 +13,19 @@ class Comment extends Ardent {
     public static $relationsData = array(
         'creator' => array(self::BELONGS_TO, 'User'),
     );
+
+    /**
+     * Count the comments that are related to a certain foreign type (and entity).
+     * NOTE: The result of the SQL query is cached!
+     * 
+     * @param  string   $foreignType Name of the foreign type
+     * @param  int      $foreignId   ID of the foreign type or null
+     * @return int
+     */
+    public static function count($foreignType, $foreignId = null)
+    {
+        $query = self::remember(5)->whereForeignType($foreignType);
+        if ($foreignId) $query->whereForeignId($foreignId);
+        return $query->count();
+    }
 }

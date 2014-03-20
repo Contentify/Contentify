@@ -174,7 +174,7 @@ class InstallController extends Controller {
         {
             $table->text('text')->nullable();
             $table->string('foreign_type', 30);
-            $table->integer('foreign_id', false, true);
+            $table->integer('foreign_id', false, true)->nullable();
         }, array(), ['title', 'access_counter']);      
 
         $this->create('newscats', function($table)

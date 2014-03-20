@@ -35,7 +35,7 @@ Blade transforms Blade syntax into PHP Syntax. So you can use PHP inside Blade e
 
 > Contentify extends Blade and adds more awesomeness, for example widgets. You can write you own extensions, if you need even more features. Take a look into `app/blade_extensions.php` for examples.
 
-## Important Helpers
+## Convenient Helpers
 
 Including a stylesheet:
 

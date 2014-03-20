@@ -24,8 +24,7 @@ class News extends Ardent {
      */
     public function countComments()
     {
-        // NOTE: The result of this query is cached!
-        return Comment::remember(5)->whereForeignType('news')->whereForeignId($this->id)->count();
+        return Comment::count('news', $this->id);
     }
 
     /**
