@@ -171,16 +171,16 @@ abstract class BaseController extends Controller {
          * Set default values
          */
         $defaults = [
-            'buttons'       => ['new'],
-            'search'        => '',
-            'searchFor'     => 'title',
-            'tableHead'     => [],
-            'tableRow'      => [],
-            'actions'       => ['edit', 'delete', 'restore'],
-            'brightenFirst' => true,
-            'sortby'        => 'id', // You can not use MySQL functions
-            'order'         => 'desc',
-            'dataSource'    => null // null (database) or Closure
+            'buttons'       => ['new'],                         // Array of names of buttons or custom HTML codes
+            'search'        => '',                              // String: search term
+            'searchFor'     => 'title',                         // Name of model attribute
+            'tableHead'     => [],                              // Array of items for the table head part
+            'tableRow'      => [],                              // Array of items for the table body part
+            'actions'       => ['edit', 'delete', 'restore'],   // Array of named actions or Closures
+            'brightenFirst' => true,                            // True / false
+            'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
+            'order'         => 'desc',                          // Asc / desc
+            'dataSource'    => null                             // Null (means: take from database) or Closure
         ];
 
         $data = array_merge($defaults, $data);
@@ -192,8 +192,8 @@ abstract class BaseController extends Controller {
          */
         $buttons = '';
         if (is_array($data['buttons'])) {
-            foreach ($data['buttons'] as $type) {
-                $type = strtolower($type);
+            foreach ($data['buttons'] as $button) {
+                $type = strtolower($button);
                 switch ($type) {
                     case 'new':
                         $url = route($surface.'.'.strtolower($this->controller).'.create');
@@ -203,6 +203,8 @@ abstract class BaseController extends Controller {
                         $url = route($surface.'.'.strtolower($this->module).'cats.index');
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
+                    default:
+                        $buttons = $button;
                 }
             }
         }
@@ -264,15 +266,14 @@ abstract class BaseController extends Controller {
             if ($data['search'] and $data['searchFor']) {
                 $entities = $entities->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string
             }
-            dd($entities);
 
             $entities = $entities->paginate($perPage);
 
-            $paginator = $entities->appends(
-                ['sortby' => $data['sortby'], 
-                'order' => $data['order'], 
-                'search' => $data['search']]
-            )->links();
+            $paginator = $entities->appends([
+                'sortby'    => $data['sortby'], 
+                'order'     => $data['order'], 
+                'search'    => $data['search']
+            ])->links();
         }
 
         /*
@@ -357,7 +358,8 @@ abstract class BaseController extends Controller {
             'sortSwitcher'  => $sortSwitcher,
             'recycleBin'    => $recycleBin,
             'paginator'     => $paginator,
-            'searchString'  => $data['search']
+            'searchString'  => $data['search'],
+            'showSearchBox' => $data['searchFor'] and (! $data['dataSource']) ? true : false
         ]);
     }
 
