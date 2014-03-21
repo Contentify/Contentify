@@ -7,19 +7,19 @@ class ModuleRoute {
 	 * The name of the module
 	 * @var string
 	 */
-	private static $moduleName;
+	protected static $moduleName;
 
 	/**
 	 * The path to the models of the module
 	 * @var string
 	 */
-	private static $modelPath;
+	protected static $modelPath;
 
 	/**
 	 * The path to the controllers of the module
 	 * @var string
 	 */
-	private static $controllerPath;
+	protected static $controllerPath;
 
 	/**
 	 * Set the context (name) of the module.
@@ -98,6 +98,19 @@ class ModuleRoute {
 	}
 
 	/**
+	 * Create route for several methods.
+	 *
+	 * @param  array  $methods
+	 * @param  string $route
+	 * @param  mixed  $target
+	 * @return Illuminate\Routing\Route
+	 */
+	public static function match($methods, $route, $target)
+	{
+		return self::createRoute($methods, $route, $target);
+	}
+
+	/**
 	 * Controller routing (for RESTful controllers).
 	 * 
 	 * @param  string $route
@@ -130,16 +143,16 @@ class ModuleRoute {
 	/**
 	 * Create the route. Add paths.
 	 * 
-	 * @param  string $method
-	 * @param  string $route
-	 * @param  mixed  $target
+	 * @param  string|array 			$methods
+	 * @param  string 					$route
+	 * @param  mixed  					$target
 	 * @return Illuminate\Routing\Route
 	 */
-	private static function createRoute($method, $route, $target)
+	protected static function createRoute($methods, $route, $target)
 	{
 		//if (Config::get('app.debug')) $_SESSION['ModuleRoute.route'] = $target; // Debugging
 
-		/* 
+		/*
 		 * Ignore closures:
 		 */
 		if (is_string($target) or is_array($target)) {
@@ -160,7 +173,14 @@ class ModuleRoute {
 			}
 		}
 
-		return Route::$method($route, $target);
+		/*
+		 * $methods can be an array of method verbs or a string with a single method verb.
+		 */
+		if (is_array($methods)) {
+			return Route::match($methods, $route, $target);
+		} else {
+			return Route::$methods($route, $target);
+		}
 	}
 
 }
