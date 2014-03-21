@@ -5,12 +5,12 @@ use URL, HTML, FrontController;
 
 class NewsController extends FrontController {
 
-	public function __construct()
-	{
-		$this->model = 'News';
+    public function __construct()
+    {
+        $this->model = 'News';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

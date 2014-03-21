@@ -4,9 +4,9 @@ use ModuleInstaller;
 
 class Installer extends ModuleInstaller {
 
-	public function execute()
-	{
+    public function execute()
+    {
         return true;
-	}
+    }
 
 }

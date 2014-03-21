@@ -4,10 +4,10 @@ use View, Sentry, Input, Session, Redirect, FrontController;
 
 class LogoutController extends FrontController {
 
-	public function getIndex()
-	{
-		Sentry::logout();
+    public function getIndex()
+    {
+        Sentry::logout();
 
-		$this->message(t('Logged out!'));
-	}
+        $this->message(t('Logged out!'));
+    }
 }

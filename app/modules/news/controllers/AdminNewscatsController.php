@@ -7,12 +7,12 @@ class AdminNewscatsController extends BackController {
 
     protected $icon = 'newspaper.png';
 
-	public function __construct()
-	{
-		$this->model = 'Newscat';
+    public function __construct()
+    {
+        $this->model = 'Newscat';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

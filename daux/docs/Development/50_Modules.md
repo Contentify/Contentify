@@ -43,21 +43,35 @@ The execute method of the installer may return three kinds of values:
 * *false*: Installation terminated (due to an error)
 * *string* (or View): Visual output 
 
-If the return values is not a boolean it will be added to the page output. You may use this to render forms if the installer needs to request user input.
+If the return values is not a boolean it will be added to the page output. You may use this to render forms if the installer needs to request user input. This fictional example creates a view that renders a form with a single field `tableName` at step 0. The form action is set to the URL of the next step. In step 1 the installer takes the field value and creates a table with the custom name. At the end of step 1 the method returns true to indicate the end of the installation.
 
     namespace App\Modules\Example;
 
-    use ModuleInstaller;
+    use View, ModuleInstaller;
 
     class Installer extends ModuleInstaller {
 
         public function execute($step)
         {
-            // Do some Work - e. g. create an initial database seed
+            if ($step == 0) {
+                $url = $this->nextStep();
 
-            return true;
+                return View::make('cookies::cookie_installer', $url);
+            } else {
+                $tableName = Input::get('tableName', 'cookies');
+
+                Schema::create($tableName, function($table)
+                {
+                    $table->increments('id');
+                    // ...
+                });
+
+                return true;
+            }
         }
 
     }
+
+Did you notice the nextStep method? This is a method provided by the base class. Its a helper and returns the URL of the "next step" of the current installation. If passed to a view its possible to create a link the user has to click to proceed to the next step.
 
 To start the installation open the "modules" module in the backend. It will display an install button near to modules that have an installer. It's not necessary to update the autoloading classmap. The "modules" module has its own loader.

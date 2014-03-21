@@ -7,12 +7,12 @@ class AdminModulesController extends BackController {
 
     protected $icon = 'package.png';
 
-	public function __construct()
-	{
-		$this->model = 'Module';
+    public function __construct()
+    {
+        $this->model = 'Module';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

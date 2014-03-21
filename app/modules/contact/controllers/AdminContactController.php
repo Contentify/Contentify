@@ -7,12 +7,12 @@ class AdminContactController extends BackController {
 
     protected $icon = 'email_open.png';
 
-	public function __construct()
-	{
-		$this->model = 'ContactMessage';
+    public function __construct()
+    {
+        $this->model = 'ContactMessage';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

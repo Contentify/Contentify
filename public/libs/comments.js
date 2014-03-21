@@ -2,7 +2,6 @@ $(document).ready(function()
 {
     var foreignType = $('#comments').attr('data-foreign-type');
     var foreignId   = $('#comments').attr('data-foreign-id');
-    var token       = $('body').attr('data-token'); // CSRF token
 
     $('.create-comment .save').click(function()
     {
@@ -13,7 +12,12 @@ $(document).ready(function()
         $.ajax({
             url: baseUrl + 'comments/store',
             type: 'POST',
-            data: { text: text, foreigntype: foreignType, foreignid: foreignId, _token: token }
+            data: { 
+                text: text, 
+                foreigntype: foreignType, 
+                foreignid: foreignId, 
+                _token: csrfToken 
+            }
         }).success(function(data)
         {
             $('#comments').append(data);
@@ -44,7 +48,12 @@ $(document).ready(function()
                 $.ajax({
                     url: baseUrl + 'comments/' + comment.id + '/update',
                     type: 'PUT',
-                    data: { text: $('.create-comment textarea').val(), foreigntype: foreignType, foreignid: foreignId, _token: token }
+                    data: { 
+                        text: $('.create-comment textarea').val(), 
+                        foreigntype: foreignType, 
+                        foreignid: foreignId, 
+                        _token: csrfToken
+                    }
                 }).success(function(data)
                 {
                     $('.create-comment textarea').val('');
@@ -74,7 +83,7 @@ $(document).ready(function()
         $.ajax({
             url: baseUrl + 'comments/' + id + '/delete',
             type: 'DELETE',
-            data: { _token: token }
+            data: { _token: csrfToken }
         }).success(function()
         {
             $self.parent().remove();

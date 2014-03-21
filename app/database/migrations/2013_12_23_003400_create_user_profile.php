@@ -4,56 +4,56 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateUserProfile extends Migration {
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::table('users', function($table)
-		{
-			$table->integer('gender')->nullable()->default(0);
-			$table->string('country_code', 3)->default('eu');;
-			$table->string('birthdate', 20)->nullable();
-			$table->text('occupation')->nullable();
-			$table->text('website')->nullable();
-			$table->text('about')->nullable();
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('users', function($table)
+        {
+            $table->integer('gender')->nullable()->default(0);
+            $table->string('country_code', 3)->default('eu');;
+            $table->string('birthdate', 20)->nullable();
+            $table->text('occupation')->nullable();
+            $table->text('website')->nullable();
+            $table->text('about')->nullable();
 
-			$table->string('skype')->nullable();
-			$table->string('steam_id')->nullable();
+            $table->string('skype')->nullable();
+            $table->string('steam_id')->nullable();
 
-			$table->string('cpu')->nullable();
-			$table->string('graphics')->nullable();
-			$table->string('ram')->nullable();
-			$table->string('motherboard')->nullable();
-			$table->string('drives')->nullable();
-			$table->string('display')->nullable();
-			$table->string('mouse')->nullable();
-			$table->string('keyboard')->nullable();
-			$table->string('headset')->nullable();
-			$table->string('mousepad')->nullable();
+            $table->string('cpu')->nullable();
+            $table->string('graphics')->nullable();
+            $table->string('ram')->nullable();
+            $table->string('motherboard')->nullable();
+            $table->string('drives')->nullable();
+            $table->string('display')->nullable();
+            $table->string('mouse')->nullable();
+            $table->string('keyboard')->nullable();
+            $table->string('headset')->nullable();
+            $table->string('mousepad')->nullable();
 
-			$table->string('game')->nullable();
-			$table->string('food')->nullable();
-			$table->string('drink')->nullable();
-			$table->string('music')->nullable();
-			$table->string('film')->nullable();
+            $table->string('game')->nullable();
+            $table->string('food')->nullable();
+            $table->string('drink')->nullable();
+            $table->string('music')->nullable();
+            $table->string('film')->nullable();
 
-			$table->string('image', 255)->nullable();
-			$table->string('avatar', 255)->nullable();
-			$table->string('access_counter', 255)->default(0);
-		});
-	}
+            $table->string('image', 255)->nullable();
+            $table->string('avatar', 255)->nullable();
+            $table->string('access_counter', 255)->default(0);
+        });
+    }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		//
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
 
 }

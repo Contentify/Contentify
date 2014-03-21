@@ -33,7 +33,7 @@
     {{ HTML::script('libs/angular.min.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
-<body data-base-url="{{ Config::get('app.url') }}/public/" data-token="{{ Session::get('_token') }}">
+<body data-base-url="{{ Config::get('app.url') }}/public/" data-csrf-token="{{ Session::get('_token') }}">
     <div id="page-container">
         <noscript><div id="nojavascript"><img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon"> {{ trans('app.no_js') }}</div></noscript>
         <header id="header">

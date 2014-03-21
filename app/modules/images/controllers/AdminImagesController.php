@@ -7,12 +7,12 @@ class AdminImagesController extends BackController {
 
     protected $icon = 'picture.png';
 
-	public function __construct()
-	{
-		$this->model = 'Image';
+    public function __construct()
+    {
+        $this->model = 'Image';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

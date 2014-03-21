@@ -1,6 +1,7 @@
 <?php
 
 abstract class BackController extends BaseController {
+
     /**
      * The layout that should be used for responses.
      * @var string
@@ -374,4 +375,5 @@ abstract class BackController extends BaseController {
     {
         return Redirect::route('admin.'.strtolower($this->controller).'.index')->withInput(Input::only('search'));
     }
+    
 }

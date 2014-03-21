@@ -32,8 +32,8 @@ abstract class BaseController extends Controller {
      */
     protected $formTemplate = '';
 
-	public function __construct()
-	{
+    public function __construct()
+    {
         /*
          * Save module and controller name
          */
@@ -70,88 +70,88 @@ abstract class BaseController extends Controller {
          * Enable auto CSRF protection
          */ 
         $this->beforeFilter('csrf', ['on' => ['post', 'put', 'delete']]);
-	}
+    }
 
-	/**
-	 * Setup the layout used by the controller.
-	 *
-	 * @return void
-	 */
-	protected function setupLayout()
-	{
-		if ( ! is_null($this->layout))
-		{
-			$this->layout = View::make($this->layout);
-		}
-	}
+    /**
+     * Setup the layout used by the controller.
+     *
+     * @return void
+     */
+    protected function setupLayout()
+    {
+        if ( ! is_null($this->layout))
+        {
+            $this->layout = View::make($this->layout);
+        }
+    }
 
-	/**
-	 * Shortcut for $this->layout->nest(): Adds a view to the main layout.
-	 *
-	 * @param string $template Name of the template
-	 * @param array  $data     Array with data passed to the compile engine
+    /**
+     * Shortcut for $this->layout->nest(): Adds a view to the main layout.
+     *
+     * @param string $template Name of the template
+     * @param array  $data     Array with data passed to the compile engine
      * @param bool   $replace  Replace the output already  * 
-	 * @return void
-	 */
-	protected function pageView($template = '', $data = array(), $replace = false)
-	{
-		if ($this->layout != null) {
+     * @return void
+     */
+    protected function pageView($template = '', $data = array(), $replace = false)
+    {
+        if ($this->layout != null) {
             if ($replace or $this->layout->page == null) {
                 $this->layout->page = View::make($template, $data);
             } else {
                 $this->layout->page .= View::make($template, $data)->render();
             }
-		} else {
-			throw new Exception('Error: $this->layout is null!');
-		}
-	}
+        } else {
+            throw new Exception('Error: $this->layout is null!');
+        }
+    }
 
-	/**
-	 * Shortcut for $this->layout->nest(): Adds a string to the main layout.
-	 *
-	 * @param string $output  HTML or text to output on the template.
+    /**
+     * Shortcut for $this->layout->nest(): Adds a string to the main layout.
+     *
+     * @param string $output  HTML or text to output on the template.
      * @param bool   $replace Replace the output already 
-	 * @return void
-	 */
-	protected function pageOutput($output, $replace = false)
-	{
-		if ($this->layout != null) {
-			if ($replace) {
+     * @return void
+     */
+    protected function pageOutput($output, $replace = false)
+    {
+        if ($this->layout != null) {
+            if ($replace) {
                 $this->layout->page = $output;
             } else {
                 $this->layout->page .= $output;
             }
-		} else {
-			throw new Exception('Error: $this->layout is null!');
-		}
-	}
+        } else {
+            throw new Exception('Error: $this->layout is null!');
+        }
+    }
 
-	/**
-	 * Adds a message view to the main layout.
-	 *
-	 * @param string $title
-	 * @param string $text
-	 * @return void
-	 */
-	protected function message($title, $text = '')
-	{
-		if ($this->layout != null) {
-			$this->layout->page = View::make('message', ['title' => $title, 'text' => $text]);
-		} else {
-			throw new Exception('Error: $this->layout is null!');
-		}
-	}
+    /**
+     * Adds a message view to the main layout.
+     *
+     * @param string $title
+     * @param string $text
+     * @return void
+     */
+    protected function message($title, $text = '')
+    {
+        if ($this->layout != null) {
+            $this->layout->page = View::make('message', ['title' => $title, 'text' => $text]);
+        } else {
+            throw new Exception('Error: $this->layout is null!');
+        }
+    }
 
-	/**
-	 * Inserts a flash message to the main layout.
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	protected function messageFlash($title)
-	{
-		Session::flash('_message', $title);
-	}
+    /**
+     * Inserts a flash message to the main layout.
+     *
+     * @param string $title
+     * @return void
+     */
+    protected function messageFlash($title)
+    {
+        Session::flash('_message', $title);
+    }
 
     /**
      * Builds an index page from a model and $data

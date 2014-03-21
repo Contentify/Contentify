@@ -7,12 +7,12 @@ class AdminCountriesController extends BackController {
 
     protected $icon = 'joystick.png';
 
-	public function __construct()
-	{
-		$this->model = 'Country';
+    public function __construct()
+    {
+        $this->model = 'Country';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

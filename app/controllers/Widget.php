@@ -8,4 +8,5 @@ abstract class Widget {
      * @return void
      */
     abstract public function render($parameters = array());
+    
 }

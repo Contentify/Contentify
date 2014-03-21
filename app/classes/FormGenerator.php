@@ -3,6 +3,7 @@
 use DB, View;
 
 class FormGenerator {
+
     /**
      * Generates a simple but CMS compliant form template (Blad syntax).
      * Do not blindly trust the result - most like rework is necessary.
@@ -135,4 +136,5 @@ class FormGenerator {
 
         return implode(' ', $words);
     }
+    
 }

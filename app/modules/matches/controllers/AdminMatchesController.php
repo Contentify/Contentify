@@ -7,12 +7,12 @@ class AdminMatchesController extends BackController {
 
     protected $icon = 'joystick.png';
 
-	public function __construct()
-	{
-		$this->model = 'Match';
+    public function __construct()
+    {
+        $this->model = 'Match';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

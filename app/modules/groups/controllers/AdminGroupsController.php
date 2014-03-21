@@ -7,12 +7,12 @@ class AdminGroupsController extends BackController {
 
     protected $icon = 'lock.png';
 
-	public function __construct()
-	{
-		$this->model = 'Group';
+    public function __construct()
+    {
+        $this->model = 'Group';
 
-		parent::__construct();
-	}
+        parent::__construct();
+    }
 
     public function index()
     {

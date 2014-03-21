@@ -8,6 +8,8 @@
     <title>Contentify</title>
 
     <meta name="generator" content="Contentify">
+    <meta name="base-url" content="{{ Config::get('app.url') }}/public/">
+    <meta name="csrf-token" content="{{ Session::get('_token') }}">
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
 
@@ -21,7 +23,7 @@
     {{ HTML::script('libs/jquery-1.10.2.min.js') }}
     {{ HTML::script('libs/frontend.js') }}
 </head>
-<body data-base-url="{{ Config::get('app.url') }}/public/" data-token="{{ Session::get('_token') }}">
+<body>
     <div id="page-container">
         <header id="header" onclick="window.location='{{ route('home') }}'">
             <h2>Contentify Testpage</h2>
