@@ -32,9 +32,6 @@ abstract class BaseController extends Controller {
      */
     protected $formTemplate = '';
 
-	/**
-	 * Constructor call
-	 */
 	public function __construct()
 	{
         /*

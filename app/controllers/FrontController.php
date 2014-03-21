@@ -6,9 +6,6 @@ abstract class FrontController extends BaseController {
      */
     protected $layout = 'frontend.layout_main';
 
-	/**
-	 * Constructor call
-	 */
 	public function __construct()
 	{
 		parent::__construct();

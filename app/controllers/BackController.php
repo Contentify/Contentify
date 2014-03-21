@@ -13,9 +13,6 @@ abstract class BackController extends BaseController {
      */
     protected $icon = 'page_white_text.png';
 
-    /**
-     * Constructor call
-     */
     public function __construct()
     {
         parent::__construct();

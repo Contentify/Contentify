@@ -1,4 +1,4 @@
-Modules are Laravel packages with some sugar. If you prefer packages there is no reason why you shouldn't use them over modules. But modules have advantages too. They are easier to create.
+Modules are Laravel packages with some sugar. If you prefer pure packages there is no reason why you shouldn't use them over modules. But modules have advantages too. They are easier to create and they may have an installer.
 
 ## Module Files
 
@@ -32,3 +32,32 @@ The `routes.php` file is a some kind of a clone of `app/routes.php`. But since t
     ModuleRoute::post('admin/games/search', 'AdminGamesController@search');
 
 The context method sets the module context to the current module. This is essential to notify the helper about the module it' i's working with. When calling methods such as resource the helper will know to which module they belong. Read more in [the module routing chapter](Module_Routing).
+
+## Module Installer
+
+Modules may have their own installer if they need to run a setup process. The installer is a class extending the ModuleInstaller class. It lives in the root of its module folder in the `Installer.php` file.
+
+The execute method of the installer may return three kinds of values:
+
+* *true*: Installation completed
+* *false*: Installation terminated (due to an error)
+* *string* (or View): Visual output 
+
+If the return values is not a boolean it will be added to the page output. You may use this to render forms if the installer needs to request user input.
+
+    namespace App\Modules\Example;
+
+    use ModuleInstaller;
+
+    class Installer extends ModuleInstaller {
+
+        public function execute($step)
+        {
+            // Do some Work - e. g. create an initial database seed
+
+            return true;
+        }
+
+    }
+
+To start the installation open the "modules" module in the backend. It will display an install button near to modules that have an installer. It's not necessary to update the autoloading classmap. The "modules" module has its own loader.
