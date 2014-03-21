@@ -43,11 +43,39 @@ class AdminModulesController extends BackController {
                     if ($module->installer() !== false) {
                         return image_link('add',
                             t('Install'), 
-                            url('#'));
+                            url('admin/modules/'.$module->title.'/install/0'));
                     }
                 }
             ]
         ]);
+    }
+
+    /**
+     * Module install method
+     * 
+     * @param  string  $name Name of the module
+     * @param  integer $step Current step, starting at 0
+     * @return void
+     */
+    public function install($name, $step = 0)
+    {
+        $module = new Module(['title' => $name]);
+
+        $installerFile = $module->installer();
+
+        require_once $installerFile;
+
+        $class      = 'App\modules\\'.$name.'\Installer';
+        $installer  = new $class();
+        $result     = $installer->execute($step);
+
+        if ($result === false or $result === null) {
+            $this->message('Error: Module installation failed.');            
+        } elseif ($result === true) {
+            $this->message('Module installation completed.');
+        } else {
+            $this->pageOutput($result);
+        }
     }
 
 }

@@ -38,7 +38,7 @@ class Module extends Ardent {
      */
     public function installer()
     {
-        $fileName = app_path().'/modules/'.$this->title.'/installer.php';
+        $fileName = app_path().'/modules/'.$this->title.'/Installer.php';
         
         if (File::exists($fileName)) {
             return $fileName;

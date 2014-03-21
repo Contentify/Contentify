@@ -222,6 +222,7 @@ return array(
         'FormGenerator'         => 'Contentify\FormGenerator',
         'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
+        'ModuleInstaller'       => 'Contentify\ModuleInstaller',
 
         // Vendor classes:
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
