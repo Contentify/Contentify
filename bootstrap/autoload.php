@@ -2,6 +2,29 @@
 
 define('LARAVEL_START', microtime(true));
 
+/**
+ * Translate the given message.
+ * 
+ * NOTE: This function cannot live inside the custom helpers file,
+ * because it has to be loaded before the Laravel helper file.
+ *
+ * @param  string  $id
+ * @param  array   $parameters
+ * @param  string  $domain
+ * @param  string  $locale
+ * @return string
+ */
+function trans($id, $parameters = array(), $domain = 'messages', $locale = null)
+{
+    if (strpos($id, '.') === false and ($pos = strpos($id, '::')) !== false) {
+        $package    = substr($id, 0, $pos);
+        $id         = $package.'::main.'.substr($id, $pos + 2);
+    }
+
+    return app('translator')->trans($id, $parameters, $domain, $locale);
+}
+
+
 /*
 |--------------------------------------------------------------------------
 | Register The Composer Auto Loader
