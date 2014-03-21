@@ -4,7 +4,7 @@ use ModuleInstaller;
 
 class Installer extends ModuleInstaller {
 
-	public function execute($step)
+	public function execute()
 	{
         return true;
 	}

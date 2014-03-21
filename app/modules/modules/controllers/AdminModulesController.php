@@ -66,8 +66,8 @@ class AdminModulesController extends BackController {
         require_once $installerFile;
 
         $class      = 'App\modules\\'.$name.'\Installer';
-        $installer  = new $class();
-        $result     = $installer->execute($step);
+        $installer  = new $class($name, $step);
+        $result     = $installer->execute();
 
         if ($result === false or $result === null) {
             $this->message('Error: Module installation failed.');            
