@@ -45,7 +45,7 @@ class RestorePasswordController extends FrontController {
     }
 
     /**
-     * This method will check email and the submitted code (it is included into t he URL)
+     * This method will check the email and the submitted code (it is included into the URL)
      * and if they pass generate a new password and send it to the user.
      * 
      * @param  string $email The user's email adress

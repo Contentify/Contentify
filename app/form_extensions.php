@@ -377,9 +377,9 @@ Form::macro('smartCaptcha',
      */
     function ($name = 'captcha', $title = 'Captcha')
     {
-        $label      = self::label($name, $title);
+        $label      = Form::label($name, $title);
         $image      = HTML::image(URL::route('captcha'), 'Captcha');
-        $partial    = '<div class="form-group">'.$label.' '.$image.' '.self::text($name).'</div>';
+        $partial    = '<div class="form-group">'.$label.' '.$image.' '.Form::text($name).'</div>';
         return $partial;
     }
 );

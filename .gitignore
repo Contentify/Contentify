@@ -7,3 +7,4 @@ composer.lock
 .idea/
 Thumbs.db
 console.lnk
+/app/config/mail.php

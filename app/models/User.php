@@ -7,6 +7,7 @@ class User extends SentryUser {
     protected $fillable = [
         'username', 
         'email', 
+        'password',
 
         'first_name', 
         'last_name',
