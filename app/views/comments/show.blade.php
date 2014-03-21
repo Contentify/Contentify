@@ -1,4 +1,4 @@
-<div id="comments" data-foreign-type="{{ $foreignType }}" data-foreign-id="{{ $foreignId }}" data-token="{{ Session::get('_token') }}">
+<div id="comments" data-foreign-type="{{ $foreignType }}" data-foreign-id="{{ $foreignId }}">
     @foreach ($comments as $comment)
     @include('comments.comment')
     @endforeach   

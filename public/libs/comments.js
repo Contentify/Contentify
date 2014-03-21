@@ -2,7 +2,7 @@ $(document).ready(function()
 {
     var foreignType = $('#comments').attr('data-foreign-type');
     var foreignId   = $('#comments').attr('data-foreign-id');
-    var token       = $('#comments').attr('data-token'); // CSRF token
+    var token       = $('body').attr('data-token'); // CSRF token
 
     $('.create-comment .save').click(function()
     {
