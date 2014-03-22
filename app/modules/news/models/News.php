@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Models;
 
-use Comment, Ardent, Rss, Config, Lang, URL;
+use OpenGraph, Comment, Ardent, Rss, Config, Lang, URL;
 
 class News extends Ardent {
 
@@ -25,6 +25,24 @@ class News extends Ardent {
     public function countComments()
     {
         return Comment::count('news', $this->id);
+    }
+
+    /**
+     * Create an instance of OpenGraph that represents Open Graph tags.
+     * 
+     * @return array
+     */
+    public function openGraph()
+    {    
+        $og = new OpenGraph();
+
+        $og->title($this->title)
+            ->type('article')
+            ->image('uploads/newscats/'.$this->newscat->image)
+            ->description($this->intro)
+            ->url();
+
+        return $og;
     }
 
     /**

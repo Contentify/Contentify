@@ -70,6 +70,7 @@ class NewsController extends FrontController {
         $news->save();
 
         $this->title($news->title);
+        $this->openGraph($news->openGraph());
 
         $this->pageView('news::show', compact('news'));
     }

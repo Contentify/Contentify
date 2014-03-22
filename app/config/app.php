@@ -223,6 +223,7 @@ return array(
         'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
+        'OpenGraph'             => 'Contentify\OpenGraph',
 
         // Vendor classes:
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',

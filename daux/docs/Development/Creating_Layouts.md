@@ -18,6 +18,18 @@ The variable `breadcrumb` is filled by the constrcutor of the base controller. I
 
 The rendered links are wrapped into a `<div>` element with the class `breadcrumb-navi`. You are free to change the style of this class.
 
+## Title Tag
+
+The base controller offers a method set the title for the related template:
+
+    $this->title('Great cookie recipe');
+
+The title is stored in the `title`variable. There's a macro available to render the title:
+
+    {{ HTML::title($title) }}
+
+Controllers may use the title method to assign a custom title to the web page.
+
 ## Meta Tags
 
 The base controller offers a method to add meta tags to the related template:
@@ -30,14 +42,26 @@ The tags are store in the `metaTags` variable. It's easy to render these tags in
 
 > The metaTag method is not aware of tags that are already defined in the template's HTML code. Take care of this behaviour.
 
-## Title Tag
+## Open Graph Tags
 
-The base controller offers a method set the title for the related template:
+The Open Graph protocol is supported by Facebook and Google. It aims to make wep pages objects in a social graph. Clients are able to get additional information about the content of a web page. This is not completly new since properties such as the title are already existing (title meta tag). But the Open Graph protocol provides more details.
 
-    $this->title('Great cookie recipe');
+Contentify brings in the OpenGraph class. It's a helper to create these tags. The example shows a method of a controller.
 
-The title is stored in the `title`variable. There's a macro available to render the title:
+    $og = new OpenGraph();
 
-    {{ HTML::title($title) }}
+    $og->title($this->title)
+        ->type('article')
+        ->image('uploads/newscats/'.$this->newscat->image)
+        ->description($this->intro)
+        ->url();
 
-Controllers may use the title method to assign a custom title to the webpage.
+    $this->openGraphTags($og->tags());
+
+Render these tags in a template as follows:
+
+    {{ HTML::openGraphTags($openGraphTags) }}
+
+Providing Open Graph tags enriches web pages. The downside is some extra time to spend, because every model has its own way to generate these tags. It's also important to follow the [official protocol](http://ogp.me/). Read the dcoumentation to learn more about the tags that are available and the values they support.
+
+> A property can have multiple values. Add the property several times to achieve this effect.

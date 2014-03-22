@@ -81,10 +81,11 @@ abstract class BaseController extends Controller {
     {
         if ( ! is_null($this->layout))
         {
-            $this->layout               = View::make($this->layout);
-            $this->layout->metaTags     = [];
-            $this->layout->title        = null;
-            $this->layout->breadcrumb   = [];
+            $this->layout                   = View::make($this->layout);
+            $this->layout->metaTags         = [];
+            $this->layout->openGraph        = null;
+            $this->layout->title            = null;
+            $this->layout->breadcrumb       = [];
         }
     }
 
@@ -189,6 +190,21 @@ abstract class BaseController extends Controller {
         }
     }
 
+    /**
+     * Binds an OpenGraph instance to this layout. The instance is passed as a variable to the template.
+     * Use HTML::openGraphTags() to render the tags.
+     *
+     * @param OpenGraph $openGraph OpenGraph instance
+     * @return void
+     */
+    protected function openGraph(OpenGraph $openGraph)
+    {
+        if ($this->layout != null) {
+            $this->layout->openGraph = $openGraph;
+        } else {
+            throw new Exception('Error: Controller layout is null!');
+        }
+    }
 
     /**
      * Sets the links for the breadcrumb navigation.

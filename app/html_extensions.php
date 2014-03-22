@@ -62,3 +62,13 @@ HTML::macro('title', function($title = null)
 
     return '<title>'.$title.'</title>';
 });
+
+/*
+ * Renders Open Graph tags
+ */
+HTML::macro('openGraphTags', function(OpenGraph $og)
+{ 
+    $output = $og->renderTags();
+
+    return $output;
+});

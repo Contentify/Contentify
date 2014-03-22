@@ -5,8 +5,7 @@ Contentify uses several conventions you should be aware of.
 If module names refer to entities, e. g. "Game", prefer to pluralize them: "games". Some names are reserved. Please do not use them for custom modules:
 
 * comments
-* core
-* modules
+* contentify
 
 ## Config
 
@@ -18,7 +17,9 @@ Application keys use the namespace "app".
 
 ## Database: Table And Attribute Names
 
-If table names refer to entities, e. g. "Game", prefer to pluralize them: "games". Use underscores to seperate words: "delicious_cookies" Also use underscores to seperate words in attribute names.
+If table names refer to models, e. g. "Game", prefer to pluralize and lowercase them: "games". Use underscores to seperate words: "delicious_cookies" Also use underscores to seperate words in attribute names.
+
+> If a model belongs to a certain category (a news port belongs to a news category) the models / tables that are part of the default modules are named `<model>cats` (so the table for the news categories is named newscats).
 
 ## Database: Semantic Attribute Names
 
