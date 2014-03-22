@@ -74,8 +74,8 @@ return array(
     /*
      * Comments
      */
-    'comment_create_fail'   => 'Cannot create comment.',
-    'comment_update_fail'   => 'Cannot update comment.',
+    'comment_create_fail'   => 'Cannot create comment. :0',
+    'comment_update_fail'   => 'Cannot update comment. :0',
 
     /*
      * Captcha

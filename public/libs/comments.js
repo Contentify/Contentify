@@ -7,7 +7,7 @@ $(document).ready(function()
     {
         var $self = $(this);
         var text = $('.create-comment textarea').val();
-        $('.create-comment').remove();
+        $('.create-comment form').remove();
 
         $.ajax({
             url: baseUrl + 'comments/store',
@@ -15,15 +15,14 @@ $(document).ready(function()
             data: { 
                 text: text, 
                 foreigntype: foreignType, 
-                foreignid: foreignId, 
-                _token: csrfToken 
+                foreignid: foreignId
             }
         }).success(function(data)
         {
             $('#comments').append(data);
         }).error(function(response)
         {
-            $self.parent().html(response.responseText);
+            $('.create-comment').html(response.responseText);
         });
     });
 
@@ -51,8 +50,7 @@ $(document).ready(function()
                     data: { 
                         text: $('.create-comment textarea').val(), 
                         foreigntype: foreignType, 
-                        foreignid: foreignId, 
-                        _token: csrfToken
+                        foreignid: foreignId
                     }
                 }).success(function(data)
                 {
@@ -82,8 +80,7 @@ $(document).ready(function()
 
         $.ajax({
             url: baseUrl + 'comments/' + id + '/delete',
-            type: 'DELETE',
-            data: { _token: csrfToken }
+            type: 'DELETE'
         }).success(function()
         {
             $self.parent().remove();

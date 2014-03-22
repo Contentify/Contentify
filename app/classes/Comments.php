@@ -44,9 +44,8 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make(trans('app.comment_create_fail'), 500);
+            return Response::make(trans('app.comment_create_fail', $comment->validationErrors->all()), 500);
         } else {
-            //return Response::make('1', 200);
             return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
         }
     }
@@ -101,9 +100,8 @@ class Comments {
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make(trans('app.comment_create_fail'), 500);
+            return Response::make(trans('app.comment_create_fail', $comment->validationErrors->all()), 500);
         } else {
-            //return Response::make('1', 200);
             return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
         }
     }
