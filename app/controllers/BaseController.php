@@ -81,7 +81,10 @@ abstract class BaseController extends Controller {
     {
         if ( ! is_null($this->layout))
         {
-            $this->layout = View::make($this->layout);
+            $this->layout               = View::make($this->layout);
+            $this->layout->metaTags     = [];
+            $this->layout->title        = null;
+            $this->layout->breadcrumb   = [];
         }
     }
 
@@ -102,7 +105,7 @@ abstract class BaseController extends Controller {
                 $this->layout->page .= View::make($template, $data)->render();
             }
         } else {
-            throw new Exception('Error: $this->layout is null!');
+            throw new Exception('Error: Controller layout is null!');
         }
     }
 
@@ -151,6 +154,56 @@ abstract class BaseController extends Controller {
     protected function messageFlash($title)
     {
         Session::flash('_message', $title);
+    }
+
+    /**
+     * Adds a meta tag to the variables of the main layout.
+     * Use HTML::metaTags() to render them.
+     *
+     * @param string $template Name of the meta tag
+     * @param string $content  Content of the meta tag
+     * @return void
+     */
+    protected function metaTag($name, $content)
+    {
+        if ($this->layout != null) {
+            $this->layout->metaTags[$name] = $content;
+        } else {
+            throw new Exception('Error: Controller layout is null!');
+        }
+    }
+
+    /**
+     * Sets the title tag for this layout. It's passed as a variable to the template.
+     * Use HTML::title() to render it.
+     *
+     * @param string $title The title
+     * @return void
+     */
+    protected function title($title)
+    {
+        if ($this->layout != null) {
+            $this->layout->title = $title;
+        } else {
+            throw new Exception('Error: Controller layout is null!');
+        }
+    }
+
+
+    /**
+     * Sets the links for the breadcrumb navigation.
+     * Use the Navi::Breadcrump widget to render the breadcrum navi.
+     *
+     * @param array $links Array with items of title (key) and URLs (link)
+     * @return void
+     */
+    protected function breadcrumb($links = array())
+    {
+        if ($this->layout != null) {
+            $this->layout->breadcrumb = $links;
+        } else {
+            throw new Exception('Error: Controller layout is null!');
+        }
     }
 
     /**

@@ -35,6 +35,11 @@ class NewsController extends FrontController {
         ], 'front');
     }
 
+    /**
+     * Show the preview of several news
+     * 
+     * @return void
+     */
     public function showOverview()
     {
         // Internal news are protected and require the "internal" permission:
@@ -43,11 +48,18 @@ class NewsController extends FrontController {
             ->orderBy('created_at', 'DESC')->take(5)->get();
 
         $this->pageView('news::show_overview', compact('newsCollection'));
+        $this->metaTag('gen', 'Cal');
     }
 
+    /**
+     * Show a news
+     * 
+     * @param  int $id The id of the news
+     * @return void
+     */
     public function show($id)
     {
-        $news = News::whereId($id)->wherePublished(true)->first();
+        $news = News::whereId($id)->wherePublished(true)->firstOrFail();
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($news->internal and ! $hasAccess) {
@@ -56,6 +68,8 @@ class NewsController extends FrontController {
 
         $news->access_counter++;
         $news->save();
+
+        $this->title($news->title);
 
         $this->pageView('news::show', compact('news'));
     }

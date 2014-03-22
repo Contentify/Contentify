@@ -40,7 +40,7 @@ class UsersController extends FrontController {
 
     public function show($id)
     {
-        $user = User::whereId($id)->whereActivated(true)->first();
+        $user = User::whereId($id)->whereActivated(true)->firstOrFail();
 
         $user->access_counter++;
         $user->save();

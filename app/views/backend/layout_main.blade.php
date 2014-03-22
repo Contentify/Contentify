@@ -3,11 +3,11 @@
 <head>
     <!-- Running with Contentify CMS -->
 
-    <meta charset="utf-8">
-
     <title>{{ Config::get('app.title') }}</title>
 
+    <meta charset="utf-8">
     <meta name="generator" content="Contentify">
+    {{ HTML::metaTags($metaTags) }}
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 

@@ -35,3 +35,30 @@ HTML::macro('gravatar', function($email, $size = 32, $default = 'mm')
     return '<img src="http://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).
         '?s='.$size.'&d='.$default.'" alt="Avatar">';
 });
+
+/*
+ * Renders meta tags.
+ */
+HTML::macro('metaTags', function($metaTags = array())
+{ 
+    $output = '';
+    foreach ($metaTags as $name => $content) {
+        $output .= '<meta name="'.$name.'" content="'.$content.'">';
+    }
+
+    return $output;
+});
+
+/*
+ * Renders the title tag.
+ */
+HTML::macro('title', function($title = null)
+{ 
+    if ($title) {
+        $title .= ' - '.Config::get('app.title');
+    } else {
+        $title = Config::get('app.title');
+    }
+
+    return '<title>'.$title.'</title>';
+});

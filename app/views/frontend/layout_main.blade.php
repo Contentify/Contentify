@@ -4,15 +4,14 @@
     <!-- Running with Contentify CMS -->
 
     <meta charset="utf-8">
-
-    <title>Contentify</title>
-
     <meta name="generator" content="Contentify">
     <meta name="base-url" content="{{ Config::get('app.url') }}/public/">
     <meta name="csrf-token" content="{{ Session::get('_token') }}">
+    {{ HTML::metaTags($metaTags) }}
+
+    {{ HTML::title($title) }}
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
-
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{{ asset('rss/news.xml') }}">
 
     {{ HTML::style('frontend.css') }}
