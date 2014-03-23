@@ -48,7 +48,6 @@ class NewsController extends FrontController {
             ->orderBy('created_at', 'DESC')->take(5)->get();
 
         $this->pageView('news::show_overview', compact('newsCollection'));
-        $this->metaTag('gen', 'Cal');
     }
 
     /**

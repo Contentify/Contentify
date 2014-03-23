@@ -34,13 +34,17 @@ class News extends Ardent {
      */
     public function openGraph()
     {    
-        $og = new OpenGraph();
+        $og = new OpenGraph(true);
 
-        $og->title($this->title)
+        $og->title($this->title) // $this->title
             ->type('article')
             ->image('uploads/newscats/'.$this->newscat->image)
             ->description($this->intro)
             ->url();
+
+            //$og->validate()->video('http://www.google.de/', ['width' => 300, 'video:series' => 'Jane Doe']);
+            //dd($og->tags());
+
 
         return $og;
     }

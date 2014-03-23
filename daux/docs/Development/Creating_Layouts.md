@@ -20,7 +20,7 @@ The rendered links are wrapped into a `<div>` element with the class `breadcrumb
 
 ## Title Tag
 
-The base controller offers a method set the title for the related template:
+The base controller offers a method to set the title for the related template:
 
     $this->title('Great cookie recipe');
 
@@ -40,7 +40,7 @@ The tags are store in the `metaTags` variable. It's easy to render these tags in
 
     {{ HTML::metaTags($metaTags) }}
 
-> The metaTag method is not aware of tags that are already defined in the template's HTML code. Take care of this behaviour.
+> The metaTag method is not aware of tags that are already hard-coded in the template's HTML code. Take care of this behaviour.
 
 ## Open Graph Tags
 
@@ -56,12 +56,12 @@ Contentify brings in the OpenGraph class. It's a helper to create these tags. Th
         ->description($this->intro)
         ->url();
 
-    $this->openGraphTags($og->tags());
+    $this->openGraph($og);
 
 Render these tags in a template as follows:
 
-    {{ HTML::openGraphTags($openGraphTags) }}
+    {{ HTML::openGraphTags($openGraph) }}
 
-Providing Open Graph tags enriches web pages. The downside is some extra time to spend, because every model has its own way to generate these tags. It's also important to follow the [official protocol](http://ogp.me/). Read the dcoumentation to learn more about the tags that are available and the values they support.
+Providing Open Graph tags enriches web pages. The downside is some extra time to spend, because every model has its own way to generate these tags. It's also important to follow the [official protocol](http://ogp.me/). Read the documentation to learn more about the tags that are available and the values they support.
 
 > A property can have multiple values. Add the property several times to achieve this effect.

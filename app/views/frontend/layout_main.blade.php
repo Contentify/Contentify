@@ -8,7 +8,9 @@
     <meta name="base-url" content="{{ Config::get('app.url') }}/public/">
     <meta name="csrf-token" content="{{ Session::get('_token') }}">
     {{ HTML::metaTags($metaTags) }}
-    {{ HTML::openGraphTags($openGraph) }}
+    @if ($openGraph)
+        {{ HTML::openGraphTags($openGraph) }}
+    @endif
 
     {{ HTML::title($title) }}
 
