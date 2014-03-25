@@ -5,9 +5,9 @@
 @else
     {{ Form::open(['url' => 'admin/groups']) }}
 @endif
-    {{ Form::smartText('name', 'Title') }}
+    {{ Form::smartText('name', trans('app.title')) }}
 
-    {{ Form::smartTextarea('permissions', 'Permissions', false) }}
+    {{ Form::smartTextarea('permissions', trans('groups::permissions'), false) }}
 
     {{ Form::actions() }}
 {{ Form::close() }}

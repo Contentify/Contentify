@@ -52,6 +52,18 @@ return array(
     'edit'          => 'Edit',
     'delete'        => 'Delete',
     'restore'       => 'Restore',
+    
+    'id'            => 'ID',
+    'title'         => 'Title',
+    'short_title'   => 'Short Title',
+    'author'        => 'Author',
+    'category'      => 'Category',
+    'text'          => 'Text',
+    'image'         => 'Image',
+    'date'          => 'Date',
+    'published'     => 'Published',
+    'created_at'    => 'Created At',
+    'internal'      => 'Internal',
 
     /*
      * Misc
@@ -74,12 +86,21 @@ return array(
     /*
      * Comments
      */
+    'comments'              => 'Comments',
     'comment_create_fail'   => 'Cannot create comment. :0',
     'comment_update_fail'   => 'Cannot update comment. :0',
+    'enable_comments'       => 'Enable comments',
 
     /*
      * Captcha
      */
     'captcha_invalid'   => 'The captcha code is invalid!',
+
+    /*
+     * General terms
+     */
+    'valid'         => 'valid',
+    'invalid'       => 'invalid',
+    'read_more'     => 'Read more...',
 
 );

@@ -17,10 +17,10 @@ class NewsController extends FrontController {
         $this->buildIndexPage([
             'buttons'   => null,
             'tableHead' => [
-                t('ID')         => 'id', 
-                t('Title')      => 'title', 
-                t('Category')   => NULL, 
-                t('Date')       => 'created_at'
+                t('app.id')         => 'id', 
+                t('app.title')      => 'title', 
+                t('app.category')   => NULL, 
+                t('app.date')       => 'created_at'
             ],
             'tableRow'  => function($news)
             {

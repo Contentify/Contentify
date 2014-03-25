@@ -7,8 +7,8 @@
 @else
 {{ Form::open(['url' => 'admin/newscats']) }}
 @endif
-        {{ Form::smartText('title', 'Title') }}
-        {{ Form::smartImageFile('image', 'Image') }}
+        {{ Form::smartText('title', trans('app.title')) }}
+        {{ Form::smartImageFile('image', trans('app.image')) }}
         
     {{ Form::actions() }}
 {{ Form::close() }}

@@ -21,8 +21,8 @@ class AdminModulesController extends BackController {
             'dataSource'    => Module::findAll(),
             'brightenFirst' => false,
             'tableHead'     => [
-                t('Title')      => null,
-                t('Enabled')    => null,
+                trans('app.title')          => null,
+                trans('modules::enabled')   => null,
             ],
             'tableRow'      => function($module)
             {
@@ -42,7 +42,7 @@ class AdminModulesController extends BackController {
                 function($module) {
                     if ($module->installer() !== false) {
                         return image_link('add',
-                            t('Install'), 
+                            trans('modules::install'), 
                             url('admin/modules/'.$module->title.'/install/0'));
                     }
                 }
@@ -70,9 +70,9 @@ class AdminModulesController extends BackController {
         $result     = $installer->execute();
 
         if ($result === false or $result === null) {
-            $this->message('Error: Module installation failed.');            
+            $this->message(trans('modules::fail'));            
         } elseif ($result === true) {
-            $this->message('Module installation completed.');
+            $this->message(trans('modules::success'));
         } else {
             $this->pageOutput($result);
         }

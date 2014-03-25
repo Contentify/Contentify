@@ -17,7 +17,10 @@ class AdminNewscatsController extends BackController {
     public function index()
     {
         $this->buildIndexPage([
-            'tableHead' => [t('ID') => 'id', t('Title') => 'title'],
+            'tableHead' => [
+                trans('app.id') => 'id', 
+                trans('app.title') => 'title'
+            ],
             'tableRow' => function($newscat)
             {
                 return [

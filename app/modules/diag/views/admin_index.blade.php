@@ -1,7 +1,7 @@
 <table class="content-table">
     <tr>
-        <th>Setting</th>
-        <th>Value</th>
+        <th>{{ trans('diag::setting') }}</th>
+        <th>{{ trans('diag::value') }}</th>
     </tr>
     @foreach ($settings as $key => $value)
     <tr>

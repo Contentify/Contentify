@@ -11,6 +11,9 @@ return array(
     |
     */
    
-    'test'   => 'HOORAY! The test was passed!!',
+    'enabled'   => 'Enabled',
+    'install'   => 'Install',
+    'fail'      => 'Error: Module installation failed.',
+    'success'   => 'Module installation complete.'
 
 );

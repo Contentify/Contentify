@@ -18,8 +18,8 @@ class AdminGroupsController extends BackController {
     {
         $this->buildIndexPage([
             'tableHead' => [
-                t('ID')     => 'id', 
-                t('Title')  => 'name'
+                trans('app.id')     => 'id', 
+                trans('app.title')  => 'name'
             ],
             'tableRow' => function($group)
             {

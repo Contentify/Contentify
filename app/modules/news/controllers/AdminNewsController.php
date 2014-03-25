@@ -19,11 +19,11 @@ class AdminNewsController extends BackController {
         $this->buildIndexPage([
             'buttons'   => ['new', 'category'],
             'tableHead' => [
-                t('ID')         => 'id', 
-                t('Published')  => 'published', 
-                t('Title')      => 'title', 
-                t('Author')     => 'creator_id', 
-                t('Created at') => 'created_at'
+                trans('app.id')         => 'id', 
+                trans('app.published')  => 'published', 
+                trans('app.title')      => 'title', 
+                trans('app.author')     => 'creator_id', 
+                trans('app.created_at') => 'created_at'
             ],
             'tableRow'  => function($news)
             {

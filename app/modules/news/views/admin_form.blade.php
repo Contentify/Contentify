@@ -7,16 +7,16 @@
 @else
 {{ Form::open(['url' => 'admin/news']) }}
 @endif
-    {{ Form::smartText('title', 'Title') }}
-    {{ Form::smartSelectRelation('newscat', 'Newscat', $modelName) }}
-    {{ Form::smartSelectRelation('creator', 'Creator', $modelName) }}
+    {{ Form::smartText('title', trans('app.title')) }}
+    {{ Form::smartSelectRelation('newscat', 'News '.trans('app.category'), $modelName) }}
+    {{ Form::smartSelectRelation('creator', trans('app.author'), $modelName) }}
     
-    {{ Form::smartTextarea('intro', 'Intro') }}
-    {{ Form::smartTextarea('text', 'Text') }}
+    {{ Form::smartTextarea('intro', trans('news.intro')) }}
+    {{ Form::smartTextarea('text', trans('app.text')) }}
 
-    {{ Form::smartCheckbox('published', 'Published') }}
-    {{ Form::smartCheckbox('internal', 'Internal') }}
-    {{ Form::smartCheckbox('allow_comments', 'Allow Comments') }}
+    {{ Form::smartCheckbox('published', trans('app.published')) }}
+    {{ Form::smartCheckbox('internal', trans('app.internal')) }}
+    {{ Form::smartCheckbox('allow_comments', trans('app.enable_comments')) }}
 
     {{ Form::actions() }}
 {{ Form::close() }}

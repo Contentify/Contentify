@@ -16,7 +16,7 @@ class AdminDiagController extends BackController {
          */
         $filename = app('path.base').'/bootstrap/compiled.php';
         if (File::exists($filename)) {
-            $optimized = '1 - compiled: '.Carbon::createFromTimeStamp(filemtime($filename));
+            $optimized = '1 - '.trans('diag::compiled').': '.Carbon::createFromTimeStamp(filemtime($filename));
         } else {
             $optimized = 0;
         }      
@@ -24,12 +24,13 @@ class AdminDiagController extends BackController {
         /*
          * Create array with names and values
          */
+        $isPlacehoder = (Config::get('app.key') == '01234567890123456789012345678912');
         $settings = [
             'Artisan optimized' => $optimized,
             'App.environment'   => App::environment(),
             'App.url'           => Config::get('app.url'),
             'App.debug'         => (int) Config::get('app.debug'),
-            'App.key'           => (Config::get('app.key') == '01234567890123456789012345678912' ? 'Dummy' : 'Valid'),
+            'App.key'           => $isPlacehoder ? trans('diag::placeholder') : trans('app.valid'),
             'Modules.mode'      => Config::get('modules::mode'),
             'Modules.debug'     => (int) Config::get('modules::debug'),
             'Mail.pretend'      => (int) Config::get('mail.pretend'),

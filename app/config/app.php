@@ -223,11 +223,10 @@ return array(
         'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
-        'OpenGraph'             => 'Contentify\OpenGraph',
+        'OpenGraph'             => 'Contentify\OpenGraphBuilder',
 
         // Vendor classes:
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-       // 'Ardent'                => 'LaravelBook\Ardent\Ardent'
         'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image'
     ),
