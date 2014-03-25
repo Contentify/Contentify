@@ -64,6 +64,7 @@ return array(
     'author'        => 'Author',
     'category'      => 'Category',
     'text'          => 'Text',
+    'code'          => 'Code',
     'image'         => 'Image',
     'date'          => 'Date',
     'published'     => 'Published',

@@ -1,18 +1,18 @@
-<h1 class="page-title">Search</h1>
+<h1 class="page-title">{{ trans('search::search') }}</h1>
 
 {{ Form::errors($errors) }}
 
 {{ Form::open(array('url' => 'search/create')) }}
     <input name="_createdat" type="hidden" value="{{ time() }}">
 
-    {{ Form::smartText('subject', 'Subject') }}
+    {{ Form::smartText('subject', trans('search::subject')) }}
 
-    {{ Form::actions(['submit' => 'Search'], false) }}
+    {{ Form::actions(['submit' => trans('search::search')], false) }}
 {{ Form::close() }}
 
 @if (isset($resultBags))
 @foreach ($resultBags as $resultBag)
-<h2>Results of type {{ $resultBag['title'] }}:</h2>
+<h2>{{ trans('search::results_type') }} {{ $resultBag['title'] }}:</h2>
 <ul>
     @foreach ($resultBag['results'] as $title => $url)
     <li>{{ HTML::link($url, $title) }}</li>

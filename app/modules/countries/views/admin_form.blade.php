@@ -5,9 +5,9 @@
 @else
     {{ Form::open(['url' => 'admin/countries', 'files' => true]) }}
 @endif
-    {{ Form::smartText('title', 'Title') }}
+    {{ Form::smartText('title', trans('app.title')) }}
 
-    {{ Form::smartText('code', 'Code') }}
+    {{ Form::smartText('code', trans('app.code')) }}
 
     {{ Form::actions() }}
 {{ Form::close() }}
