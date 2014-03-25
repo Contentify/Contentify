@@ -5,7 +5,7 @@ use Exception, URL;
 /**
  * Open Graph protocol officials docs: http://ogp.me/
  */
-class OpenGraph {
+class OpenGraphBuilder {
 
     /**
      * Array containing the tags

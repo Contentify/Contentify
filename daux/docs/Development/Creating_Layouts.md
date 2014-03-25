@@ -44,24 +44,4 @@ The tags are store in the `metaTags` variable. It's easy to render these tags in
 
 ## Open Graph Tags
 
-The Open Graph protocol is supported by Facebook and Google. It aims to make wep pages objects in a social graph. Clients are able to get additional information about the content of a web page. This is not completly new since properties such as the title are already existing (title meta tag). But the Open Graph protocol provides more details.
-
-Contentify brings in the OpenGraph class. It's a helper to create these tags. The example shows a method of a controller.
-
-    $og = new OpenGraph();
-
-    $og->title($this->title)
-        ->type('article')
-        ->image('uploads/newscats/'.$this->newscat->image)
-        ->description($this->intro)
-        ->url();
-
-    $this->openGraph($og);
-
-Render these tags in a template as follows:
-
-    {{ HTML::openGraphTags($openGraph) }}
-
-Providing Open Graph tags enriches web pages. The downside is some extra time to spend, because every model has its own way to generate these tags. It's also important to follow the [official protocol](http://ogp.me/). Read the documentation to learn more about the tags that are available and the values they support.
-
-> A property can have multiple values. Add the property several times to achieve this effect.
+Take a look at [the chapter about Open Graph tags](Open_Graph_Builder).
