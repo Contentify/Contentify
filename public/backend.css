@@ -32,7 +32,7 @@ td { vertical-align: top }
 form {  }
 fieldset { border: none; }
 textarea { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-family: Tahoma, Arial; color: #666666 }
-input { border: 1px solid #CCC; border-radius: 3px; background-image:url(theme/bg_textbox.png); font-family: Tahoma, Arial; font-size: 13px; color: #666666; }
+input { border: 1px solid #CCC; border-radius: 3px; background-image:url(theme/bg_textbox.png); font-family: 'Open Sans', Arial; font-size: 13px; color: #666666; }
 input[type=checkbox] { width: auto !important; padding: 0px !important; cursor: pointer }
 input[type=text] { width: 300px; height: 22px !important; padding: 0px 10px }
 input[type=submit], input[type=reset] { height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
@@ -114,6 +114,23 @@ ul.pagination li.disabled { display: none }
 .boxer-delete { width: 300px }
 .boxer-delete h2 { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: normal; }
 .boxer-delete button { margin-right: 5px }
+
+/* DAtetime Picker */
+.date-time-picker input { width: 128px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; }
+.date-time-picker .add-on { display: inline-block; height: 22px; margin-left: 1px; padding: 5px 10px; border: 1px solid #CCCCCC; border-top-right-radius: 3px; border-bottom-right-radius: 3px; background-color: #F9F9F9; cursor: pointer }
+.bootstrap-datetimepicker-widget { }
+.bootstrap-datetimepicker-widget ul { padding-left: 0px }
+.bootstrap-datetimepicker-widget li { line-height: 20px }
+.bootstrap-datetimepicker-widget.dropdown-menu { display: none; position: absolute; border: 1px solid rgba(0, 0, 0, 0.196); border-radius: 3px; box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.196) }
+.bootstrap-datetimepicker-widget .collapse { height: 0px; overflow-y: hidden; }
+.bootstrap-datetimepicker-widget .collapse.in { height: auto }
+.bootstrap-datetimepicker-widget .picker-switch i { display: block; width: 100%; height: 26px; background-position: center; background-repeat: no-repeat; cursor: pointer }
+.bootstrap-datetimepicker-widget .icon-time { background-image: url(icons/clock_red.png) }
+.bootstrap-datetimepicker-widget .icon-date { background-image: url(icons/date.png) }
+.bootstrap-datetimepicker-widget .table-condensed th, .bootstrap-datetimepicker-widget .table-condensed td { padding: 4px 5px; text-align: center; vertical-align: middle; }
+.bootstrap-datetimepicker-widget a.btn { display: inline-block; width: 14px; height: 26px; line-height: 26px; padding: 0px 12px; border: 1px solid #CCCCCC; border-radius: 3px; background-image: url(theme/bg_button.png) }
+.bootstrap-datetimepicker-widget .icon-chevron-up::after { content: '+'; font-size: 21px; font-style: normal; font-weight: bold; }
+.bootstrap-datetimepicker-widget .icon-chevron-down::after { content: '-'; font-size: 21px; font-style: normal; font-weight: bold; }
 
 /*
  * Subpages

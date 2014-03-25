@@ -11,6 +11,11 @@ return array(
     |
     */
    
+   /*
+    * Date format pattern
+    */
+   'date_format' => 'yyyy-MM-dd',
+   
     /*
      * Security
      */

@@ -5,6 +5,9 @@
 
     <meta charset="utf-8">
     <meta name="generator" content="Contentify">
+    <meta name="base-url" content="{{ Config::get('app.url') }}/public/">
+    <meta name="csrf-token" content="{{ Session::get('_token') }}">
+    <meta name="locale" content="{{ Config::get('app.locale') }}">
     {{ HTML::metaTags($metaTags) }}
 
     {{ HTML::title($title) }}
@@ -14,6 +17,7 @@
     {{ HTML::style('backend.css') }}
     {{ HTML::style('libs/formstone/selecter.css') }}
     {{ HTML::style('libs/formstone/boxer.css') }}
+    {{ HTML::style('libs/datetime/picker.min.css') }}
     
     <!--[if lt IE 9]>
     {{ HTML::script('http://html5shiv.googlecode.com/svn/trunk/html5.js') }}
@@ -29,11 +33,12 @@
     </script>
     {{ HTML::script('libs/formstone/selecter.js') }}
     {{ HTML::script('libs/formstone/boxer.js') }}
+    {{ HTML::script('libs/datetime/picker.min.js') }}
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
     {{ HTML::script('libs/angular.min.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
-<body data-base-url="{{ Config::get('app.url') }}/public/" data-csrf-token="{{ Session::get('_token') }}">
+<body>
     <div id="page-container">
         <noscript><div id="nojavascript"><img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon"> {{ trans('app.no_js') }}</div></noscript>
         <header id="header">

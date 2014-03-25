@@ -240,10 +240,10 @@ Form::macro('smartSelectForeign',
             $elementAttributes = [];
         }
         
-        $partial = '<div class="form-group">'.
-            Form::label($name, $title).' '.
-            Form::select($name, $options, null, $elementAttributes).
-            '</div>';
+        $partial = '<div class="form-group">'
+            .Form::label($name, $title).' '
+            .Form::select($name, $options, null, $elementAttributes)
+            .'</div>';
         return $partial;
     }
 );
@@ -331,11 +331,11 @@ Form::macro('smartSelectRelation',
         }
         
         $name       = '_relation_'.$relationName;
-        $partial    = '<div class="form-group">'.
-            Form::label($name, $title).' '.
-            Form::hidden($name, false). // Dummy so even if no option is selected some data is sent
-            Form::select($name, $options, $default, $elementAttributes).
-            '</div>';
+        $partial    = '<div class="form-group">'
+            .Form::label($name, $title).' '
+            .Form::hidden($name, false) // Dummy so even if no option is selected some data is sent
+            .Form::select($name, $options, $default, $elementAttributes)
+            .'</div>';
         return $partial;
     }
 );
@@ -380,6 +380,24 @@ Form::macro('smartCaptcha',
         $label      = Form::label($name, $title);
         $image      = HTML::image(URL::route('captcha'), 'Captcha');
         $partial    = '<div class="form-group">'.$label.' '.$image.' '.Form::text($name).'</div>';
+        return $partial;
+    }
+);
+
+
+Form::macro('smartDateTime',
+    /**
+     * Create HTML code for a datetime input element.
+     * 
+     * @return string
+     */
+    function ($name = 'datetime', $title = 'Date & Time')
+    {
+        $partial = '<div class="form-group date-time-picker input-append date">'
+            .Form::label($name, $title).' '
+            .Form::text($name, null, ['data-format' => trans('app.date_format').' hh:mm:ss'])
+            .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
+            .'</div>';
         return $partial;
     }
 );

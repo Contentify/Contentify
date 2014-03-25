@@ -14,6 +14,7 @@
     {{ Form::smartTextarea('intro', trans('news.intro')) }}
     {{ Form::smartTextarea('text', trans('app.text')) }}
 
+    {{ Form::smartDateTime('published_at', trans('news::publish_at')) }}
     {{ Form::smartCheckbox('published', trans('app.published')) }}
     {{ Form::smartCheckbox('internal', trans('app.internal')) }}
     {{ Form::smartCheckbox('allow_comments', trans('app.enable_comments')) }}

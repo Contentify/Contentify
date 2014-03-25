@@ -44,37 +44,47 @@ $(document).ready(function()
             options.data += '&_token=' + csrfToken;
         }
     });
-    
+
     /*
-     * Update date and time
+     * Add datetime picker
      */
-    var timeoutTime = 1000; // ms
-
-    var updateDatetime = function () 
+    $('.date-time-picker').datetimepicker();
+    $('.date-time-picker .add-on').click(function(event)
     {
-        var now = new Date();
-        
-        var days = now.getDate();
-        if (days < 10) days = '0' + days;
-        var months = now.getMonth() + 1;
-        if (months < 10) months = '0' + months;
-        var years = now.getFullYear();
-        
-        var hours = now.getHours();
-        if (hours < 10) hours = '0' + hours;
-        var minutes = now.getMinutes();
-        if (minutes < 10) minutes = '0' + minutes;
-        
-        var mydate = days + '/' + months + '/' + years;
-        var mytime = hours + ':' + minutes;
-        
-        $('#datetime').text(mydate + ' – ' + mytime);
-    }
+        event.preventDefault();
 
-    var t = setInterval(updateDatetime, timeoutTime);
+        $('.bootstrap-datetimepicker-widget').css({
+            position: 'absolute',
+            display: 'block',
+
+        });
+    });
+    $('.bootstrap-datetimepicker-widget .picker-switch a').click(function(event)
+    {
+        event.preventDefault();
+
+        $('.bootstrap-datetimepicker-widget .collapse').each(function()
+        {
+            if ($(this).hasClass('in')) {
+                $(this).removeClass('in')
+            } else {
+                $(this).addClass('in')
+            }
+        });
+
+        var $icon = $(this).find('i');
+
+        if ($icon.hasClass('icon-time')) {
+            $icon.removeClass('icon-time');
+            $icon.addClass('icon-date');
+        } else {
+            $icon.addClass('icon-time');
+            $icon.removeClass('icon-date');
+        }
+    });
 
     /*
-     * Activate Selecter Plugin
+     * Activate selecter plugin
      */
     $("select").selecter();
 
@@ -115,6 +125,34 @@ $(document).ready(function()
             );
         $.boxer($ui);
     });
+    
+    /*
+     * Update date and time
+     */
+    var timeoutTime = 1000; // ms
+
+    var updateDatetime = function () 
+    {
+        var now = new Date();
+        
+        var days = now.getDate();
+        if (days < 10) days = '0' + days;
+        var months = now.getMonth() + 1;
+        if (months < 10) months = '0' + months;
+        var years = now.getFullYear();
+        
+        var hours = now.getHours();
+        if (hours < 10) hours = '0' + hours;
+        var minutes = now.getMinutes();
+        if (minutes < 10) minutes = '0' + minutes;
+        
+        var mydate = days + '/' + months + '/' + years;
+        var mytime = hours + ':' + minutes;
+        
+        $('#datetime').text(mydate + ' – ' + mytime);
+    }
+
+    var t = setInterval(updateDatetime, timeoutTime);
 
     /*
      * Make sidebar responsive to scrolling

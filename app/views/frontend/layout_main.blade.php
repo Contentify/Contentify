@@ -7,6 +7,7 @@
     <meta name="generator" content="Contentify">
     <meta name="base-url" content="{{ Config::get('app.url') }}/public/">
     <meta name="csrf-token" content="{{ Session::get('_token') }}">
+    <meta name="locale" content="{{ Config::get('app.locale') }}">
     {{ HTML::metaTags($metaTags) }}
     @if ($openGraph)
         {{ HTML::openGraphTags($openGraph) }}

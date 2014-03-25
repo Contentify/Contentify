@@ -6,7 +6,17 @@ class News extends Ardent {
 
     protected $softDelete = true;
 
-    protected $fillable = ['title', 'intro', 'text', 'published', 'internal', 'allow_comments', 'newscat_id', 'creator_id'];
+    protected $fillable = [
+        'title', 
+        'intro', 
+        'text', 
+        'published', 
+        'published_at',
+        'internal', 
+        'allow_comments', 
+        'newscat_id', 
+        'creator_id'
+    ];
 
     public static $rules = [
         'title'   => 'required',
@@ -36,15 +46,11 @@ class News extends Ardent {
     {    
         $og = new OpenGraph(true);
 
-        $og->title($this->title) // $this->title
+        $og->title($this->title)
             ->type('article')
             ->image('uploads/newscats/'.$this->newscat->image)
             ->description($this->intro)
             ->url();
-
-            //$og->validate()->video('http://www.google.de/', ['width' => 300, 'video:series' => 'Jane Doe']);
-            //dd($og->tags());
-
 
         return $og;
     }

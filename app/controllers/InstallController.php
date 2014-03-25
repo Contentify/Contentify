@@ -187,6 +187,7 @@ class InstallController extends Controller {
             $table->text('intro')->nullable();
             $table->text('text')->nullable();
             $table->boolean('published')->default(false);
+            $table->timestamp('published_at');
             $table->boolean('internal')->default(false);
             $table->boolean('allow_comments')->default(false);
         }, ['newscat']);    
