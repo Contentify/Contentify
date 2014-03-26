@@ -35,7 +35,6 @@
     {{ HTML::script('libs/formstone/boxer.js') }}
     {{ HTML::script('libs/datetime/picker.min.js') }}
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
-    {{ HTML::script('libs/angular.min.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
 <body>
