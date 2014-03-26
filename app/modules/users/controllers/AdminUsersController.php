@@ -18,11 +18,11 @@ class AdminUsersController extends BackController {
         $this->buildIndexPage([
             'buttons'   => null,
             'tableHead' => [
-                t('ID')         => 'id', 
-                t('Username')   => 'username',
-                t('Email')      => 'email',
-                t('Membership') => null,
-                t('Banned')     => null,
+                trans('app.id')             => 'id', 
+                trans('app.username')       => 'username',
+                trans('app.email')          => 'email',
+                trans('users::membership')  => null,
+                trans('users::banned')      => null,
             ],
             'tableRow'  => function($user)
             {
@@ -54,7 +54,7 @@ class AdminUsersController extends BackController {
                 'edit',
                 function($user) {
                     return image_link('user_edit', 
-                        t('Edit profile'), 
+                        trans('users::edit_profile'), 
                         url('users/'.$user->id.'/edit'));
                 }
             ]

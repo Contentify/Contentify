@@ -3,29 +3,33 @@
 <div class="profile-basics">
     <ul class="layout-v">
         <li>
-            <span class="title">Name:</span>
-            {{ HTML::image(asset('icons/flags/'.$user->country_code.'.png', $user->country_code)) }} {{{ $user->first_name }}} {{{ $user->last_name }}}
+            <span class="title">{{ trans('app.name') }}:</span>
+            {{ HTML::image(asset('icons/flags/'.$user->country->code.'.png'), $user->country->title) }} {{{ $user->first_name }}} {{{ $user->last_name }}}
         </li>
         <li>
-            <span class="title">Gender:</span>
+            <span class="title">{{ trans('users::gender') }}:</span>
             {{{ $user->gender }}}
         </li>
         <li>
-            <span class="title">Birthday:</span>
+            <span class="title">{{ trans('users::language') }}:</span>
+            {{{ $user->language->title }}}
+        </li>
+        <li>
+            <span class="title">{{ trans('users::birthdate') }}:</span>
             {{{ $user->birthdate }}}
         </li>
         <li>
-            <span class="title">Occupation:</span>
+            <span class="title">{{ trans('users::occupation') }}:</span>
             {{{ $user->occupation }}}
         </li>
         <li>
-            <span class="title">Website:</span>
+            <span class="title">{{ trans('users::website') }}:</span>
             @if(e($user->website))
             {{ HTML::link(e($user->website)) }}
             @endif
         </li>
         <li>
-            <span class="title">About:</span>
+            <span class="title">{{ trans('users::about') }}:</span>
             {{{ $user->about }}}
         </li>
     </ul>
@@ -34,11 +38,11 @@
 <div class="profile-socials">
     <ul class="layout-v">
         <li>
-            <span class="title">Skype:</span>
+            <span class="title">{{ trans('users::skype') }}:</span>
             {{{ $user->skype }}}
         </li>
         <li>
-            <span class="title">Steam:</span>
+            <span class="title">{{ trans('users::steam_id') }}:</span>
             <a href="http://steamcommunity.com/id/{{{ $user->steam_id }}}">{{{ $user->steam_id }}}</a>
         </li>
     </ul>
@@ -47,43 +51,43 @@
 <div class="profile-pc">
     <ul class="layout-v">
         <li>
-            <span class="title">CPU:</span>
+            <span class="title">{{ trans('users::cpu') }}:</span>
             {{{ $user->cpu }}}
         </li>
         <li>
-            <span class="title">Graphics:</span>
+            <span class="title">{{ trans('users::graphics') }}:</span>
             {{{ $user->graphics }}}
         </li>
         <li>
-            <span class="title">RAM:</span>
+            <span class="title">{{ trans('users::ram') }}:</span>
             {{{ $user->ram }}}
         </li>
         <li>
-            <span class="title">Motherboard:</span>
+            <span class="title">{{ trans('users::motherboard') }}:</span>
             {{{ $user->motherboard }}}
         </li>
         <li>
-            <span class="title">Drives:</span>
+            <span class="title">{{ trans('users::drives') }}:</span>
             {{{ $user->drives }}}
         </li>
         <li>
-            <span class="title">Display:</span>
+            <span class="title">{{ trans('users::display') }}:</span>
             {{{ $user->display }}}
         </li>
         <li>
-            <span class="title">Mouse:</span>
+            <span class="title">{{ trans('users::mouse') }}:</span>
             {{{ $user->mouse }}}
         </li>
         <li>
-            <span class="title">Keyboard:</span>
+            <span class="title">{{ trans('users::keyboard') }}:</span>
             {{{ $user->keyboard }}}
         </li>
         <li>
-            <span class="title">Headset:</span>
+            <span class="title">{{ trans('users::headset') }}:</span>
             {{{ $user->headset }}}
         </li>
         <li>
-            <span class="title">Mousepad:</span>
+            <span class="title">{{ trans('users::mousepad') }}:</span>
             {{{ $user->mousepad }}}
         </li>
     </ul>
@@ -92,23 +96,23 @@
 <div class="profile-favs">
     <ul class="layout-v">
         <li>
-            <span class="title">Game:</span>
+            <span class="title">{{ trans('users::game') }}:</span>
             {{{ $user->game }}}
         </li>
         <li>
-            <span class="title">Food:</span>
+            <span class="title">{{ trans('users::food') }}:</span>
             {{{ $user->food }}}
         </li>
         <li>
-            <span class="title">Drink:</span>
+            <span class="title">{{ trans('users::drink') }}:</span>
             {{{ $user->drink }}}
         </li>
         <li>
-            <span class="title">Music:</span>
+            <span class="title">{{ trans('users::music') }}:</span>
             {{{ $user->music }}}
         </li>
         <li>
-            <span class="title">Film:</span>
+            <span class="title">{{ trans('users::film') }}:</span>
             {{{ $user->film }}}
         </li>
     </ul>

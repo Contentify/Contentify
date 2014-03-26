@@ -200,6 +200,7 @@ Form::macro('smartTextarea',
 Form::macro('smartSelectForeign',
     /**
      * Create HTML code for a select element. It will take its values from a database table.
+     * This is meant for models that do not support Ardent relationships.
      * 
      * @param  string   $name     The name of the value, e. g. "user_id"
      * @param  string   $title    The title of the select element
@@ -233,16 +234,10 @@ Form::macro('smartSelectForeign',
 
             $options[$entity->$attribute] = $entity->$entityTitle;
         }
-
-        if ($pivot) {
-            $elementAttributes = ['multiple' => 'multiple'];
-        } else {
-            $elementAttributes = [];
-        }
         
         $partial = '<div class="form-group">'
             .Form::label($name, $title).' '
-            .Form::select($name, $options, null, $elementAttributes)
+            .Form::select($name, $options)
             .'</div>';
         return $partial;
     }
@@ -251,6 +246,7 @@ Form::macro('smartSelectForeign',
 Form::macro('smartSelectRelation',
     /**
      * Create HTML code for a select element. It will take its values from a database table.
+     * It's smart and able to understand Ardent relationships of a model.
      * 
      * @param  string   $name           The name of the relation as defined in $model::relations
      * @param  string   $title          The caption of the select element

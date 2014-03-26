@@ -102,7 +102,7 @@ class FormGenerator {
                     $html = "{{ Form::smartTextarea('{$name}', '{$title}') }}";
                     break;
                 case 'timestamp':
-                    $html = "{{ Form::smartText('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartDateTime('{$name}', '{$title}') }}";
                     break;
                 case 'image':
                     unset($attributes['maxlength']);

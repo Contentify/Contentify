@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News as News;
-use DB, URL, HTML, FrontController;
+use URL, HTML, FrontController;
 
 class NewsController extends FrontController {
 
@@ -44,8 +44,8 @@ class NewsController extends FrontController {
     {
         // Internal news are protected and require the "internal" permission:
         $hasAccess = (user() and user()->hasAccess('internal'));
-        $newsCollection = News::wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'))
-            ->where('internal', '<=', $hasAccess)->orderBy('created_at', 'DESC')->take(5)->get();
+        $newsCollection = News::published()->where('internal', '<=', $hasAccess)
+            ->orderBy('created_at', 'DESC')->take(5)->get();
 
         $this->pageView('news::show_overview', compact('newsCollection'));
     }
@@ -58,7 +58,7 @@ class NewsController extends FrontController {
      */
     public function show($id)
     {
-        $news = News::whereId($id)->wherePublished(true)->firstOrFail();
+        $news = News::whereId($id)->published()->firstOrFail();
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($news->internal and ! $hasAccess) {

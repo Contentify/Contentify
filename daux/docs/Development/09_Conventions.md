@@ -34,6 +34,14 @@ SQL does not offer an explicit way to give attributes a semantic meaning. Larave
 * **updater_id**: User-ID of the user doing the latest update (*integer*)
 * **access_counter**: Counts accesses (*integer*)
 
+## Session Variables
+
+* **captchaCode**: Captcha code input
+* **_message**: A flash message
+* **redirect**: Redirect to this URL
+* **recycleBinMode**: Display deleted entities?
+* **_token**: CSRF token
+
 ## Code Style
 
 Contentify tries to stay close to Laravel's code style. This is very much equivalent to [PSR coding standards](https://github.com/php-fig/fig-standards/tree/master/accepted). We encourage you to stick to these standards to ensure good code quality.

@@ -9,8 +9,8 @@ class NewsWidget extends Widget {
     {
         // Internal news are protected and require the "internal" permission:
         $hasAccess = (user() and user()->hasAccess('internal')); 
-        $newsCollection = News::wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'))
-            ->where('internal', '<=', $hasAccess)->orderBy('created_at', 'DESC')->take(5)->get();
+        $newsCollection = News::published()->where('internal', '<=', $hasAccess)
+            ->orderBy('created_at', 'DESC')->take(5)->get();
 
         return View::make('news::widget', compact('newsCollection'))->render();
     }

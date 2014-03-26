@@ -141,12 +141,17 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
+        $this->create('languages', function($table) 
+        { 
+            $table->string('code', 2);
+        });     
+
+        return; // DEBUG
+        
         $this->create('countries', function($table) 
         { 
             $table->string('code', 3);
-        });
-        
-        return; // DEBUG
+        });     
         
         $this->create('images', function($table)
         {
@@ -214,10 +219,14 @@ class InstallController extends Controller {
      * @return void
      */
     protected function createSeed() {
-        //DB::table('config')->insert(array('name' => 'app.analytics'));
+        //DB::table('config')->insert(['name' => 'app.analytics']);
         // DEBUG
         
         //$this->createUserGroups();
+
+        DB::table('languages')->insert([
+            ['id' => '1', 'title' => 'English', 'code' => 'en']
+        ]);
 
         DB::insert('INSERT INTO countries(title,code) VALUES
         ("European Union", "eu"),

@@ -12,7 +12,8 @@ class User extends SentryUser {
         'first_name', 
         'last_name',
         'gender',
-        'country_code',
+        'country_id',
+        'language_id',
         'birthdate',
         'occupation',
         'website',
@@ -64,13 +65,15 @@ class User extends SentryUser {
                 'username'      => $this->username,
                 'email'         => $this->email,
                 'gender'        => $this->gender,
-                'country_code'  => $this->country_code,
+                'country_id'    => $this->country_id,
+                'language_id'   => $this->language_id,
             ],
             [
                 'username'      => "alpha_spaces|required|min:3|not_in:edit,password|unique:users,username,{$this->id},id",
                 'email'         => "email|required|unique:users,email,{$this->id},id",
                 'gender'        => 'between:0,4',
-                'country_code'  => 'exists:countries,code'
+                'country_id'    => 'exists:countries,id',
+                'language_id'   => 'exists:languages,id'
             ]
         );
 
@@ -82,6 +85,16 @@ class User extends SentryUser {
     public function validatorMessages()
     {
         return $this->validatorMessages;
+    }
+
+    public function country()
+    {
+        return $this->belongsTo('App\Modules\Countries\Models\Country');
+    }
+
+    public function language()
+    {
+        return $this->belongsTo('App\Modules\Languages\Models\Language');
     }
 
     /**

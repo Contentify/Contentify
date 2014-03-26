@@ -27,12 +27,12 @@ class User extends BaseUser {
      * The throttle system is not part of the Sentry core module.
      * This helper method accesses the banned attribute.
      *
-     * @return boolean [description]
+     * @return boolean
      */
     public function isBanned()
     {
         // This is what Sentry gives us to get the banned attribute... Not cool.
-        // If there is a better way change the code.
+        // If there is a better way let us know.
         $throttle = Sentry::findThrottlerByUserId($this->id);
 
         return $throttle->isBanned();

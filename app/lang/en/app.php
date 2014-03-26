@@ -108,5 +108,8 @@ return array(
     'valid'         => 'valid',
     'invalid'       => 'invalid',
     'read_more'     => 'Read more...',
+    'name'          => 'Name',
+    'username'      => 'Username',
+    'email'         => 'Email',
 
 );

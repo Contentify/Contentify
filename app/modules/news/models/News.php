@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Models;
 
-use OpenGraph, Comment, Ardent, Rss, Config, Lang, URL;
+use DB, OpenGraph, Comment, Ardent, Rss, Config, Lang, URL;
 
 class News extends Ardent {
 
@@ -26,6 +26,14 @@ class News extends Ardent {
         'newscat' => [self::BELONGS_TO, 'App\Modules\News\Models\Newscat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    /**
+     * Select only news that are published
+     */
+    public function scopePublished($query)
+    {
+        return $query->wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'));
+    }
 
     /**
      * Count the comments that are related to this news.

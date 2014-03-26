@@ -5,9 +5,9 @@
 @else
     {{ Form::open(['url' => 'admin/users']) }}
 @endif
-    {{ Form::smartCheckbox('activated', 'Activated') }}
+    {{ Form::smartCheckbox('activated', trans('users::activated')) }}
 
-    {{ Form::smartFieldOpen('Banned') }}
+    {{ Form::smartFieldOpen(trans('users::banned')) }}
     @if ($entity->isBanned())
         {{ Form::checkbox('banned', 'banned', true) }}
     @else 
@@ -16,7 +16,7 @@
     <span class="banned-info"></span>
     {{ Form::smartFieldClose() }}
 
-    {{ Form::smartSelectRelation('groups', 'Permission Groups', $modelName) }}
+    {{ Form::smartSelectRelation('groups', trans('users::groups'), $modelName) }}
 
     {{ Form::actions() }}
 {{ Form::close() }}
@@ -35,9 +35,9 @@
         {
             $self.get(0).checked = !!(+data);
             if (data == 1) {
-                var text = 'User has been banned.';
+                var text = '{{ trans('users::action_banned') }}';
             } else {
-                var text = 'User has been unbanned.';
+                var text = '{{ trans('users::action_unbanned') }}';
             }
             $('.banned-info').text(text);
         }).error(function(response)
