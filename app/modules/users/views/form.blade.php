@@ -11,17 +11,15 @@
 
     {{ Form::smartEmail('email', trans('users::email')) }}
 
-    <div class="form-group">
-        <label>Password</label>
+    {{ Form::smartFieldOpen(trans('users::password')) }}
         {{ button(trans('users::change'), url('users/'.$user->id.'/password')) }}
-    </div>
+    {{ Form::smartFieldClose() }}
 
-    {{ Form::smartText('first_name', trans('users::first_Name')) }}
+    {{ Form::smartText('first_name', trans('users::first_name')) }}
     {{ Form::smartText('last_name', trans('users::last_name')) }}
-    <div class="form-group">
-        <label for="gender">Gender</label>
+    {{ Form::smartFieldOpen(trans('users::gender')) }}
         {{ Form::select('gender', array('0' => trans('users::unknown'), '1' => trans('users::female'), '2' => trans('users::male'), '3' => trans('users::other'))); }}
-    </div>
+    {{ Form::smartFieldClose() }}
     {{ Form::smartSelectForeign('country_id', trans('users::country')) }}
     {{ Form::smartSelectForeign('language_id', trans('users::language')) }}
     {{ Form::smartText('birthdate', trans('users::birthdate')) }}

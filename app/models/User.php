@@ -47,6 +47,21 @@ class User extends SentryUser {
      */
     private $validatorMessages = null;
 
+    public static function boot()
+    {
+        parent::boot();
+        
+        User::updated(function($user)
+        {
+            /*
+             * Update the locale (since its stored in a session variable we need to update it)
+             */
+            if (user() and user()->id == $user->id) {
+                Session::forget('locale');
+            }
+        });
+    }
+
     /**
      * Validate the user wiht Laravel validator class. Return true if valid.
      * 

@@ -94,7 +94,7 @@ Form::macro('smartFieldOpen',
      * @param  string $title The title of the field
      * @return string
      */
-    function ($title = 'Image')
+    function ($title)
     {
         $partial = '<div class="form-group">'.Form::label('', $title).' ';
         return $partial;

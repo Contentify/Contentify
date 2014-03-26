@@ -175,3 +175,23 @@ const PERM_READ      = 1;
 const PERM_CREATE    = 2;
 const PERM_UPDATE    = 3;
 const PERM_DELETE    = 4;
+
+/*
+|--------------------------------------------------------------------------
+| Language Settings
+|--------------------------------------------------------------------------
+|
+| Set the language for the user (also if not logged in)
+|
+*/
+
+if (! Session::has('locale')) {
+    if (user()) {
+        Session::set('locale', user()->language->code);
+        App::setLocale(Session::get('locale'));
+    } else {
+        Session::set('locale', Lang::getLocale());
+    }
+} else {
+    App::setLocale(Session::get('locale'));
+}
