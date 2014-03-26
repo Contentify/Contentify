@@ -11,6 +11,9 @@ return array(
     |
     */
    
+    /*
+     * Profile
+     */
     'username'      => 'Username',
     'email'         => 'Email',
     'password'      => 'Password',
@@ -56,6 +59,16 @@ return array(
 
     'change'        => 'Change...',
 
+    /*
+     * Change password
+     */
+    'change_pw'     => 'Change Password',
+    'current_pw'    => 'Current Password',
+    'new_pw'        => 'New Password',
+
+    /*
+     * Backend
+     */
     'membership'    => 'Membership',
     'banned'        => 'Banned',
     'activated'     => 'Activated',

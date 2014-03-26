@@ -118,14 +118,17 @@ Form::macro('smartCheckbox',
     /**
      * Create HTML code for a checkbox element.
      * 
-     * @param  string $name  The name of the checkbox element
-     * @param  string $title The title of the checkbox element
+     * @param  string       $name       The name of the checkbox element
+     * @param  string       $title      The title of the checkbox element
+     * @param  bool|null    $default    The default value
      * @return string
      */
-    function ($name = 'image', $title = 'Image')
+    function ($name, $title, $default = null)
     {
+        $value = Form::getDefaultValue($name, $default);
+
         // Bugfix for Laravel checkobx bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
-        $checkbox = Form::hidden($name, false).Form::checkbox($name, true);
+        $checkbox = Form::hidden($name, false).Form::checkbox($name, true, $default);
         $partial = '<div class="form-group">'.Form::label($name, $title).' '.$checkbox.'</div>';
         return $partial;
     }
@@ -135,13 +138,15 @@ Form::macro('smartText',
     /**
      * Create HTML code for a text input element.
      * 
-     * @param  string $name  The name of the input element
-     * @param  string $title The title of the input element
+     * @param  string       $name       The name of the input element
+     * @param  string       $title      The title of the input element
+     * @param  string|null  $default    The default value
      * @return string
      */
-    function ($name, $title)
+    function ($name, $title, $default = null)
     {
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::text($name).'</div>';
+        $value = Form::getDefaultValue($name, $default);
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::text($name, $value).'</div>';
         return $partial;
     }
 );
@@ -150,13 +155,15 @@ Form::macro('smartEmail',
     /**
      * Create HTML code for a email input element.
      * 
-     * @param  string $name  The name of the input element
-     * @param  string $title The title of the input element
+     * @param  string       $name       The name of the input element
+     * @param  string       $title      The title of the input element
+     * @param  string|null  $default    The default value
      * @return string
      */
-    function ($name = 'email', $title = 'Email')
+    function ($name = 'email', $title = 'Email', $default = null)
     {
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::email($name).'</div>';
+        $value = Form::getDefaultValue($name, $default);
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::email($name, $value).'</div>';
         return $partial;
     }
 );
@@ -179,19 +186,23 @@ Form::macro('smartTextarea',
     /**
      * Create HTML code for a textarea input element.
      * 
-     * @param  string $name  The name of the input element
-     * @param  string $title The title of the input element
+     * @param  string       $name       The name of the input element
+     * @param  string       $title      The title of the input element
+     * @param  string|null  $default    The default value
      * @return string
      */
-    function ($name = 'text', $title = 'Text', $editor = true)
+    function ($name = 'text', $title = 'Text', $editor = true, $default = null)
     {
+        $value = Form::getDefaultValue($name, $default);
+
         if ($editor) {
             $label      = Form::label($name, $title, ['class' => 'full-line']);
-            $textarea   = Form::textarea($name, null, ['class' => 'ckeditor']);
+            $textarea   = Form::textarea($name, $value, ['class' => 'ckeditor']);
         } else {
             $label      = Form::label($name, $title);
-            $textarea   = Form::textarea($name, null);
+            $textarea   = Form::textarea($name, $value);
         }
+
         $partial    = '<div class="form-group">'.$label.' '.$textarea.'</div>';
         return $partial;
     }
@@ -368,7 +379,9 @@ Form::macro('smartIconFile',
 Form::macro('smartCaptcha',
     /**
      * Create HTML code for a email input element.
-     * 
+     *
+     * @param  string $name  The name of the input element
+     * @param  string $title The title of the input element
      * @return string
      */
     function ($name = 'captcha', $title = 'Captcha')
@@ -380,20 +393,43 @@ Form::macro('smartCaptcha',
     }
 );
 
-
 Form::macro('smartDateTime',
     /**
      * Create HTML code for a datetime input element.
      * 
+     * @param  string       $name       The name of the input element
+     * @param  string       $title      The title of the input element
+     * @param  string|null  $default    The default value
      * @return string
      */
-    function ($name = 'datetime', $title = 'Date & Time')
+    function ($name = 'datetime', $title = 'Date & Time', $default = null)
     {
+        $value = Form::getDefaultValue($name, $default);
+
         $partial = '<div class="form-group date-time-picker input-append date">'
             .Form::label($name, $title).' '
-            .Form::text($name, null, ['data-format' => trans('app.date_format').' hh:mm:ss'])
+            .Form::text($name, $value, ['data-format' => trans('app.date_format').' hh:mm:ss'])
             .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
             .'</div>';
         return $partial;
+    }
+);
+
+Form::macro('getDefaultValue',
+    /**
+     * Laravel prioritises model values lower than higher the value passed to form elements.
+     * This macro is an alternative to getValueAttribute that prioritises model values higher.
+     * 
+     * @param string $name
+     * @param mixed  $default
+     * @return mixed
+     */
+    function ($name, $default)
+    {
+        $value = Form::getValueAttribute($name);
+
+        $value =  $value ? $value : $default;
+
+        return $value;
     }
 );
