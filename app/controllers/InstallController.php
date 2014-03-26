@@ -195,7 +195,7 @@ class InstallController extends Controller {
             $table->boolean('published')->default(false);
             $table->timestamp('published_at');
             $table->boolean('internal')->default(false);
-            $table->boolean('allow_comments')->default(false);
+            $table->boolean('enable_comments')->default(false);
         }, ['newscat']);    
 
         $this->create('games', function($table)

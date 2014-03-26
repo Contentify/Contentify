@@ -18,4 +18,6 @@
     </div>
 </article>
 
+@if ($news->enable_comments)
 {{ Comments::show('news', $news->id) }}
+@endif

@@ -13,7 +13,7 @@ class News extends Ardent {
         'published', 
         'published_at',
         'internal', 
-        'allow_comments', 
+        'enable_comments', 
         'newscat_id', 
         'creator_id'
     ];

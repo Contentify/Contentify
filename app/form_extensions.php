@@ -215,10 +215,11 @@ Form::macro('smartSelectForeign',
      * 
      * @param  string   $name     The name of the value, e. g. "user_id"
      * @param  string   $title    The title of the select element
+     * @param  mixed    $default  Null or an ID
      * @param  bool     $notEmpty If true the result cannot be empty (if it's empty throw an error)
      * @return string
      */
-    function ($name, $title, $notEmpty = true)
+    function ($name, $title, $default = null, $notEmpty = true)
     {
         $pos = strrpos($name, '_');
         if ($pos === false) {
@@ -245,10 +246,12 @@ Form::macro('smartSelectForeign',
 
             $options[$entity->$attribute] = $entity->$entityTitle;
         }
+
+        $value = Form::getDefaultValue($name, $default);
         
         $partial = '<div class="form-group">'
             .Form::label($name, $title).' '
-            .Form::select($name, $options)
+            .Form::select($name, $options, $value)
             .'</div>';
         return $partial;
     }
@@ -262,10 +265,11 @@ Form::macro('smartSelectRelation',
      * @param  string   $name           The name of the relation as defined in $model::relations
      * @param  string   $title          The caption of the select element
      * @param  string   $sourceModel    Name of the source model
-     * @param  bool     $notEmpty       If true the result cannot be empty (if it's empty throw an error)
+     * @param  mixed    $default        Null, an ID or an an array of IDs (if multiple selected items are possible)
+     * @param  bool     $notEmpty       If true the select element cannot be empty (if it's empty throw an error)
      * @return string
      */
-    function ($relationName, $title, $sourceModel, $notEmpty = true)
+    function ($relationName, $title, $sourceModel, $default = null, $notEmpty = true)
     {
         $relations = $sourceModel::relations();
         
@@ -275,9 +279,9 @@ Form::macro('smartSelectRelation',
             throw new Exception("Error: Relation '{$relationName}' does not exist for entity of type '{$sourceModel}'.");
         }
 
-        $modelFull  = $relation[1]; // Fully classified name of the model
+        $modelFull  = $relation[1]; // Fully classified name of the foreign model
         $model      = class_basename($modelFull);
-        $key        = (new $modelFull)->getKeyName(); // Primnary key of the model
+        $key        = (new $modelFull)->getKeyName(); // Primary key of the model
         if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
 
         $entities = $modelFull::all();
@@ -306,15 +310,14 @@ Form::macro('smartSelectRelation',
             $options[$entity->$key] = $entity->$entityTitle;
         }
 
-        $elementAttributes  = [];
-        $default            = [];
+        $elementAttributes = [];
 
         /*
          * Handle the different types of relations
          */
         switch ($relation[0]) {
             case 'belongsTo':           
-                $default = Form::getValueAttribute($relationName.'_'.$key);
+                $default = Form::getDefaultValue($relationName.'_'.$key, $default);
 
                 break;
             case 'belongsToMany':
@@ -322,11 +325,18 @@ Form::macro('smartSelectRelation',
                 $sourceKey      = class_basename(strtolower($sourceModel)).'_'.$sourceEntity->getKeyName();
                 $sourceKeyValue = Form::getValueAttribute($sourceEntity->getKeyName());
 
-                // We assume that soft deletion is not available to relations
-                $entities = DB::table($relation['table'])->where($sourceKey, '=', $sourceKeyValue)->get();
+                /*
+                 * If a model is bound to the form $sourceKeyValue is not null and
+                 * we can look up in the pivot table for related entities.
+                 * If not, the default value(s) will be passed to the select element.
+                 */
+                if ($sourceKeyValue) {
+                    // We assume that soft deletion is not available to relations (= entries of pivot tables)
+                    $entities = DB::table($relation['table'])->where($sourceKey, '=', $sourceKeyValue)->get();
 
-                foreach ($entities as $entity) {
-                    $default[] = $entity->{strtolower($model).'_'.$key};
+                    foreach ($entities as $entity) {
+                        $default[] = $entity->{strtolower($model).'_'.$key};
+                    }
                 }
 
                 $elementAttributes  = ['multiple' => 'multiple'];
