@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Countries\Controllers;
 
 use App\Modules\Countries\Models\Country as Country;
-use File, Hover, BackController;
+use HTML, File, BackController;
 
 class AdminCountriesController extends BackController {
 
@@ -18,18 +18,23 @@ class AdminCountriesController extends BackController {
     {
         $this->buildIndexPage([
             'tableHead' => [
-                trans('app.id')     => 'id', 
-                trans('app.title')  => 'title'
+                trans('app.id')     => 'id',
+                trans('app.icon')   => null,
+                trans('app.title')  => 'title',
             ],
             'tableRow' => function($country)
             {
-                $hover = new Hover();
-                $fileName = 'icons/flags/'.$country->code.'.png';
-                if (File::exists($fileName)) $hover->image(asset($fileName));
+                $fileName = 'uploads/countries/'.$country->icon;
+                if (File::exists($fileName)) {
+                    $icon = HTML::image(asset($fileName), $country->title);
+                } else{
+                    $icon = null;
+                }
 
                 return [
                     $country->id,
-                    $hover.$country->title,
+                    $icon,
+                    $country->title,
                 ];            
             }
         ]);

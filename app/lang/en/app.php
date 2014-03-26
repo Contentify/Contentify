@@ -66,6 +66,7 @@ return array(
     'text'          => 'Text',
     'code'          => 'Code',
     'image'         => 'Image',
+    'icon'          => 'Icon',
     'date'          => 'Date',
     'published'     => 'Published',
     'created_at'    => 'Created At',

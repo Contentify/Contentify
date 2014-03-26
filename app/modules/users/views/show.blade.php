@@ -4,7 +4,10 @@
     <ul class="layout-v">
         <li>
             <span class="title">{{ trans('app.name') }}:</span>
-            {{ HTML::image(asset('icons/flags/'.$user->country->code.'.png'), $user->country->title) }} {{{ $user->first_name }}} {{{ $user->last_name }}}
+            @if ($user->country->icon)
+            {{ HTML::image(asset('uploads/countries/'.$user->country->icon), $user->country->title) }}
+            @endif
+             {{{ $user->first_name }}} {{{ $user->last_name }}}
         </li>
         <li>
             <span class="title">{{ trans('users::gender') }}:</span>

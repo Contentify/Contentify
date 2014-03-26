@@ -35,6 +35,8 @@ Providing Open Graph tags enriches web pages. The downside is some extra time to
 
 ### Add Tags With Attributes
 
+You may add `image`, `audio` or `video` tags and pass the basic value (the URL to the object) and an array of additional attributes.
+
     $og->image($imageUrl, [
             'width'     => 300,
             'height'    => 200
@@ -52,7 +54,7 @@ Providing Open Graph tags enriches web pages. The downside is some extra time to
 
 ### Add Type Attributes
 
-Some object types (determined by the `type` tag) have their own attributes.
+Some object types (determined by the `type` tag) have their own tags with attributes but not a basic tag. These are `article`, `book` and `profile`.
 
     $og->article([
         'author'        => 'Jane Doe'
@@ -69,7 +71,7 @@ Some object types (determined by the `type` tag) have their own attributes.
 
 ### Add Attributes
 
-Facebook supports more than just the basic object types. To add attributes for off-the-record object types you may use the `attributes`method.
+Facebook supports more than just the basic object types. To add attributes for off-the-record object types you may use the `attributes` method.
 
 Without custom validation rule:
 
