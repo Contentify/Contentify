@@ -1,18 +1,18 @@
 <form>
     <div class="form-group">
-        {{ Form::label('Creator') }}
+        {{ Form::label(trans('app.creator')) }}
         {{{ $msg->username }}}
     </div>
     <div class="form-group">
-        {{ Form::label('Created At') }}
+        {{ Form::label(trans('app.created_at')) }}
         {{ $msg->created_at }}
     </div>
     <div class="form-group">
-        {{ Form::label('Email') }}
+        {{ Form::label(trans('app.email')) }}
         {{{ $msg->email }}}
     </div>
     <div class="form-group">
-        {{ Form::label('IP') }}
+        {{ Form::label(trans('contact::ip')) }}
         {{ $msg->ip }}
     </div>
 
@@ -21,13 +21,13 @@
     </div>
 
     <div class="form-group">
-        {{ Form::label('Subject') }}
+        {{ Form::label(trans('contact::subject')) }}
         {{{ $msg->title }}}
     </div>
     <div class="form-group">
-        {{ Form::label('Message') }}
+        {{ Form::label(trans('contact::message')) }}
         {{ $msg->text }}
     </div>
 
-    {{ Form::button('Reply', ['onclick' => "location.href='mailto:siconize@gmail.com'"]) }}
+    {{ Form::button(trans('contact::reply'), ['onclick' => "location.href='mailto:{$msg->email}'"]) }}
 </form>

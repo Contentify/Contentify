@@ -110,10 +110,10 @@ ul.pagination li.disabled { display: none }
 #tooltip img { max-width: 600px; max-height: 450px }
 .hover-ui { display: none; }
 
-/* Delete Question */
-.boxer-delete { width: 300px }
-.boxer-delete h2 { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: normal; }
-.boxer-delete button { margin-right: 5px }
+/* Confirm Question */
+.boxer-confirm { width: 300px }
+.boxer-confirm h2 { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: normal; }
+.boxer-confirm button { margin-right: 5px }
 
 /* DAtetime Picker */
 .date-time-picker input { width: 128px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; }

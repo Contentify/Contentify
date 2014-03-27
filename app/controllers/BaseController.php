@@ -225,11 +225,11 @@ abstract class BaseController extends Controller {
     /**
      * Builds an index page from a model and $data
      * 
-     * @param  array  $data    Array with information how to build the form. See $defaults for details.
-     * @param  string $surface Frontend ("front") or backend ("admin")?
+     * @param  array  $data             Array with information how to build the form. See $defaults for details.
+     * @param  string $userInterfcae    Frontend ("front") or backend ("admin")?
      * @return void
      */
-    protected function buildIndexPage($data, $surface = 'admin')
+    protected function buildIndexPage($data, $userInterfcae = 'admin')
     {
         if (! $this->checkAccessRead()) return;
         
@@ -262,11 +262,11 @@ abstract class BaseController extends Controller {
                 $type = strtolower($button);
                 switch ($type) {
                     case 'new':
-                        $url = route($surface.'.'.strtolower($this->controller).'.create');
+                        $url = route($userInterfcae.'.'.strtolower($this->controller).'.create');
                         $buttons .= button(trans('app.create'), $url, 'add');
                         break;
                     case 'category':
-                        $url = route($surface.'.'.strtolower($this->module).'cats.index');
+                        $url = route($userInterfcae.'.'.strtolower($this->module).'cats.index');
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
                     default:
@@ -319,7 +319,7 @@ abstract class BaseController extends Controller {
         /*
          * Retrieve entities from DB (or array) and create paginator
          */
-        $perPage = Config::get('app.'.$surface.'ItemsPerPage');
+        $perPage = Config::get('app.'.$userInterfcae.'ItemsPerPage');
 
         if ($data['dataSource']) {
             $entities   = $data['dataSource'];
@@ -373,14 +373,14 @@ abstract class BaseController extends Controller {
                             case 'edit':
                                 $actionsCode .= image_link('page_edit', 
                                     trans('app.edit'), 
-                                    route($surface.'.'.strtolower($this->controller).'.edit', [$entity->id]));
+                                    route($userInterfcae.'.'.strtolower($this->controller).'.edit', [$entity->id]));
                                 break;
                             case 'delete':
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
                                 $actionsCode .= image_link('bin', 
                                     trans('app.delete'), 
                                     route(
-                                        $surface.'.'.strtolower($this->controller).'.destroy', 
+                                        $userInterfcae.'.'.strtolower($this->controller).'.destroy', 
                                         [$entity->id]
                                     ).$urlParams,
                                     false,
@@ -390,7 +390,7 @@ abstract class BaseController extends Controller {
                                 if ($entity->trashed()) {
                                     $actionsCode .= image_link('undo', 
                                     trans('app.restore'), 
-                                    route($surface.'.'.strtolower($this->controller).'.restore', [$entity->id]));
+                                    route($userInterfcae.'.'.strtolower($this->controller).'.restore', [$entity->id]));
                                 }
                                 break;
                         }

@@ -42,6 +42,11 @@ SQL does not offer an explicit way to give attributes a semantic meaning. Larave
 * **recycleBinMode**: Display deleted entities?
 * **_token**: CSRF token
 
+## Form Input Names
+
+* **_createdat**: Time of form creation (spam protection)
+* **_token**: CSRF token
+
 ## Code Style
 
 Contentify tries to stay close to Laravel's code style. This is very much equivalent to [PSR coding standards](https://github.com/php-fig/fig-standards/tree/master/accepted). We encourage you to stick to these standards to ensure good code quality.

@@ -62,6 +62,7 @@ return array(
     'title'         => 'Title',
     'short_title'   => 'Short Title',
     'author'        => 'Author',
+    'creator'       => 'Creator',
     'category'      => 'Category',
     'text'          => 'Text',
     'code'          => 'Code',

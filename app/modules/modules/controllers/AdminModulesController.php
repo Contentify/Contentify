@@ -43,7 +43,9 @@ class AdminModulesController extends BackController {
                     if ($module->installer() !== false) {
                         return image_link('add',
                             trans('modules::install'), 
-                            url('admin/modules/'.$module->title.'/install/0'));
+                            url('admin/modules/'.$module->title.'/install/0'),
+                            false,
+                            ['data-confirm' => trans('modules::installation')]);
                     }
                 }
             ]

@@ -11,10 +11,13 @@ return array(
     |
     */
    
-    'enabled'       => 'Enabled',
-    'install'       => 'Install',
-    'installation'  => 'Module Installation',
-    'fail'          => 'Error: Module installation failed.',
-    'success'       => 'Module installation complete.'
+    'contact'       => 'Contact',
+    'message_sent'  => 'Thank you! Your message was sent.',
+    'ip'            => 'IP',
+    'subject'       => 'Subject',
+    'messge'        => 'Message',
+    'reply'         => 'Reply',
+    'send'          => 'Send',
+    'new'           => 'New', // is new?
 
 );

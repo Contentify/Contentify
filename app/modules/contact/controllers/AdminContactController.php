@@ -21,11 +21,11 @@ class AdminContactController extends BackController {
         $this->buildIndexPage([
             'buttons' => null,
             'tableHead' => [
-                t('ID')         => 'id', 
-                t('New')        => 'new', 
-                t('Title')      => 'title', 
-                t('Creator')    => 'username', 
-                t('Created at') => 'created_at'
+                trans('app.ID')         => 'id', 
+                trans('contact::new')   => 'new', 
+                trans('app.title')      => 'title', 
+                trans('app.creator')    => 'username', 
+                trans('app.created_at') => 'created_at'
             ],
             'tableRow' => function($msg)
             {

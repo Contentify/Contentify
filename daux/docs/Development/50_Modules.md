@@ -33,6 +33,16 @@ The `routes.php` file is a some kind of a clone of `app/routes.php`. But since t
 
 The context method sets the module context to the current module. This is essential to notify the helper about the module it' i's working with. When calling methods such as resource the helper will know to which module they belong. Read more in [the module routing chapter](Module_Routing).
 
+## Module Specifics
+
+Whenever a Laravel method is called that accesses data that is tied to a module `::` is the seperator.
+
+    // Recieve line "name" from app/modules/cookies/lang/../cake.php:
+    $name = trans('cookies::cake.name'); 
+
+    // Make view from app/modules/cookies/view/cookie.php:
+    $view = View::make('cookies::cookie');
+
 ## Module Installer
 
 Modules may have their own installer if they need to run a setup process. The installer is a class extending the ModuleInstaller class. It lives in the root of its module folder in the `Installer.php` file.

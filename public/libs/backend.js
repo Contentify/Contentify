@@ -104,14 +104,12 @@ $(document).ready(function()
     $('body').append($('<div />').boxer({})); // Bugfix or Boxer won't open due to a JS error
     $('*[data-confirm-delete]').click(function(event)
     {
-        //if (! confirm('Delete this item?')) return false;
-        
         event.preventDefault();
         event.stopPropagation();
 
-        $self = $(this);
+        var $self = $(this);
 
-        $ui = $('<div class="boxer-delete"><h2>Delete this item?</h2></div>')
+        var $ui = $('<div class="boxer-confirm"><h2>Delete this item?</h2></div>')
             .append(
                 $('<button>').text('Yes').click(function()
                 {
@@ -125,7 +123,33 @@ $(document).ready(function()
             );
         $.boxer($ui);
     });
-    
+
+    /*
+     * Add confirm dialogue
+     */
+    $('*[data-confirm]').click(function(event)
+    {       
+        event.preventDefault();
+        event.stopPropagation();
+
+        var $self = $(this);
+        var message = $self.attr('data-confirm');
+
+        var $ui = $('<div class="boxer-confirm"><h2>Execute this action?</h2><p>' + message + '</p></div>')
+            .append(
+                $('<button>').text('Yes').click(function()
+                {
+                    window.location = $self.attr('href');
+                })
+            ).append(
+                $('<button>').text('No').click(function()
+                {
+                    $.boxer('close');
+                })
+            );
+        $.boxer($ui);
+    });    
+
     /*
      * Update date and time
      */

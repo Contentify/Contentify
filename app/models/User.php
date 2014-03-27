@@ -55,6 +55,7 @@ class User extends SentryUser {
         {
             /*
              * Update the locale (since its stored in a session variable we need to update it)
+             * when changed in profile or use just logged in.
              */
             if (user() and user()->id == $user->id) {
                 Session::forget('locale');
