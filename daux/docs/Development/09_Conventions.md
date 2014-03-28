@@ -10,16 +10,18 @@ If module names refer to entities, e. g. "Game", prefer to pluralize them: "game
 ## Config
 
 Contentify extends Laravel's config class. Config values may be stored in config files in `app/config` (or `app/config/packages`) or inside the database. To avoid collisions, please use a namespace prefix. Example config key name:
-
-    Config::store('cookies.minutesToBake', 5);
-
-Application keys use the namespace "app".
-
+```php
+$title = Config::get('app.title');
+```
+Application keys use the namespace `app`. Module keys should use `::` as namespace seperator:
+```php
+Config::store('cookies::minutesToBake', 5);
+```
 ## Database: Table And Attribute Names
 
 If table names refer to models, e. g. "Game", prefer to pluralize and lowercase them: "games". Use underscores to seperate words: "delicious_cookies" Also use underscores to seperate words in attribute names.
 
-> If a model belongs to a certain category (a news port belongs to a news category) the models / tables that are part of the default modules are named `<model>cats` (so the table for the news categories is named newscats).
+> If a model belongs to a certain category (a news post belongs to a news category) the models / tables that are part of the default modules are named `<model>cats` (so the table for the news categories is named newscats).
 
 ## Database: Semantic Attribute Names
 

@@ -226,6 +226,7 @@ return array(
         'OpenGraph'             => 'Contentify\OpenGraphBuilder',
 
         // Vendor classes:
+        'Carbon'                => 'Carbon\Carbon',
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image'

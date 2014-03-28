@@ -12,9 +12,10 @@ return array(
     */
    
    /*
-    * Date format pattern
+    * Date format patterns
     */
-   'date_format' => 'yyyy-MM-dd',
+   'date_format'        => 'yyyy-MM-dd',    // for the date time picker UI widget
+   'carbon_date_format' => 'Y-m-d',         // for Carbon ( http://www.php.net/manual/en/function.date.php )
    
     /*
      * Security

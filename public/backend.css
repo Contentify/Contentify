@@ -115,7 +115,7 @@ ul.pagination li.disabled { display: none }
 .boxer-confirm h2 { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: normal; }
 .boxer-confirm button { margin-right: 5px }
 
-/* DAtetime Picker */
+/* Datetime Picker */
 .date-time-picker input { width: 128px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; }
 .date-time-picker .add-on { display: inline-block; height: 22px; margin-left: 1px; padding: 5px 10px; border: 1px solid #CCCCCC; border-top-right-radius: 3px; border-bottom-right-radius: 3px; background-color: #F9F9F9; cursor: pointer }
 .bootstrap-datetimepicker-widget { }
@@ -139,6 +139,9 @@ ul.pagination li.disabled { display: none }
 .page-images .content-table .image { max-width: 500px; max-height: 100px }
 
 .page-config form { margin-top: 40px }
+
+.page-visitors #chart { margin: 0px 0px 20px 5%; width: 90%; height: 200px }
+.page-visitors table th { width: 50% }
 
 /*
  * Mainlayout

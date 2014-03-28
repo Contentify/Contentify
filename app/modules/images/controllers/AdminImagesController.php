@@ -33,7 +33,7 @@ class AdminImagesController extends BackController {
                 return [
                     $image->id,
                     $preview,
-                    $image->created_at->toDateString()
+                    $image->created_at
                 ];
             },
             'searchFor' => 'tags'

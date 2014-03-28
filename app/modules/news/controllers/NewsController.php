@@ -28,7 +28,7 @@ class NewsController extends FrontController {
                     $news->id,
                     HTML::link(URL::route('news.show', [$news->id]), $news->title),
                     $news->newscat->title,
-                    $news->created_at->toDateString()
+                    $news->created_at
                 ];
             },
             'actions'   => null

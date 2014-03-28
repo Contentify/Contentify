@@ -195,3 +195,5 @@ if (! Session::has('locale')) {
 } else {
     App::setLocale(Session::get('locale'));
 }
+
+Carbon::setToStringFormat(trans('app.carbon_date_format'));

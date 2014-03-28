@@ -29,7 +29,7 @@ class UsersController extends FrontController {
                     $user->id,
                     link_to('users/'.$user->id.'/'.slug($user->username), $user->username),
                     $user->first_name.' '.$user->last_name,
-                    $user->created_at->toDateString(),
+                    $user->created_at,
                     $user->last_login ? $user->last_login->toDateString() : null
                 ];            
             },
