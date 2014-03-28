@@ -425,6 +425,23 @@ Form::macro('smartDateTime',
     }
 );
 
+Form::macro('smartTagify', 
+    /**
+     * Create HTML code for a text input element.
+     * 
+     * @param  string       $name       The name of the input element
+     * @param  string       $title      The title of the input element
+     * @param  string|null  $default    The default value
+     * @return string
+     */
+    function ($name, $title, $default = null)
+    {
+        $value = Form::getDefaultValue($name, $default);
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::text($name, $value, ['data-role' => 'tagsinput', 'placeholder' => 'Add tags']).'</div>';
+        return $partial;
+    }
+);
+
 Form::macro('getDefaultValue',
     /**
      * Laravel prioritises model values lower than higher the value passed to form elements.

@@ -18,6 +18,7 @@
     {{ HTML::style('libs/formstone/selecter.css') }}
     {{ HTML::style('libs/formstone/boxer.css') }}
     {{ HTML::style('libs/datetime/picker.min.css') }}
+    {{ HTML::style('libs/tags/bootstrap-tagsinput.css') }}
     
     <!--[if lt IE 9]>
     {{ HTML::script('http://html5shiv.googlecode.com/svn/trunk/html5.js') }}
@@ -34,6 +35,7 @@
     {{ HTML::script('libs/formstone/selecter.js') }}
     {{ HTML::script('libs/formstone/boxer.js') }}
     {{ HTML::script('libs/datetime/picker.min.js') }}
+    {{ HTML::script('libs/tags/bootstrap-tagsinput.js') }}
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
@@ -133,7 +135,7 @@
 
                                 <div class="menu3"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
                                 <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>
-                                <div class="menu2"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=statistics">Statistics</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/visitors', 'Visitors') }}</div>
 
                                 <div class="menu3"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/groups', 'Groups & Permissions') }}</div>
                             </div>

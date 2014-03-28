@@ -132,6 +132,9 @@ ul.pagination li.disabled { display: none }
 .bootstrap-datetimepicker-widget .icon-chevron-up::after { content: '+'; font-size: 21px; font-style: normal; font-weight: bold; }
 .bootstrap-datetimepicker-widget .icon-chevron-down::after { content: '-'; font-size: 21px; font-style: normal; font-weight: bold; }
 
+/* Tags */
+.form-group .bootstrap-tagsinput { max-width: 40% }
+
 /*
  * Subpages
  */
@@ -141,7 +144,8 @@ ul.pagination li.disabled { display: none }
 .page-config form { margin-top: 40px }
 
 .page-visitors #chart { margin: 0px 0px 20px 5%; width: 90%; height: 200px }
-.page-visitors table th { width: 50% }
+.page-visitors table.days th { width: 50% }
+.page-visitors table.days tr.hover td { background-color: #DDD; background-image: none }
 
 /*
  * Mainlayout

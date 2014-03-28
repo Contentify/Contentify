@@ -94,6 +94,16 @@ class OpenGraphBuilder {
     }
 
     /**
+     * Remove all tags
+     */
+    public function clear()
+    {
+        $this->tags = array();
+
+        return $this;
+    }
+
+    /**
      * Adds a custom tag to the list of tags
      * 
      * @param string $name

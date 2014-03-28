@@ -120,6 +120,10 @@ Disable validation:
 
     $og->forget('title');
 
+### Remove All Tags From The List
+
+    $og->clear();
+
 ### Add A Custom Tag
 
     $og->tag('apples', 7);
