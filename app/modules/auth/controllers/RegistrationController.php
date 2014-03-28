@@ -48,7 +48,7 @@ class RegistrationController extends FrontController {
             $userGroup = Sentry::findGroupById(2);
             $user->addGroup($userGroup);
 
-            $this->message(t('Registration successful!'));
+            $this->message(trans('auth::registered'));
         } catch(Exception $e) {
             return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => $e->getMessage()]);
         }

@@ -30,16 +30,16 @@ class RestorePasswordController extends FrontController {
 
             Mail::send('auth::emails.restore_password', compact('user'), function($message) use ($email, $user)
             {
-                $message->to($email, $user->username)->subject('Password Reset');
+                $message->to($email, $user->username)->subject(trans('auth::password_reset'));
             });
 
             $this->message(
-                t('An email has been to the given email address. Follow the instruction to generate a new password.')
+                tans('auth::email_gen_pw')
             );
 
             //$this->pageView('auth::emails.restore_password', compact('user')); // DEBUG
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-            $this->message(t('No user found with the given email address.'));
+            $this->message(trans('auth::email_invalid'));
             return;
         }
     }
@@ -57,7 +57,7 @@ class RestorePasswordController extends FrontController {
             $user = Sentry::findUserByLogin($email);
 
             if ($user->reset_password_code != $code) {
-                $this->message(t('Code does not match.'));
+                $this->message(trans('auth::code_invalid'));
                 return;
             }
 
@@ -65,11 +65,11 @@ class RestorePasswordController extends FrontController {
 
             Mail::send('auth::emails.send_password', compact('user'), function($message) use ($email, $user, $password)
             {
-                $message->to($email, $user->username)->subject('New Password');
+                $message->to($email, $user->username)->subject(trans('auth::new_pw'));
             });
 
             $this->message(
-                t('An email with your new password has been sent to your email address.')
+                trans('auth::email_new_pw')
             );
 
             /*
@@ -80,7 +80,7 @@ class RestorePasswordController extends FrontController {
             $user->password = $password; 
             $user->save();
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-            $this->message(t('No user found with the given email address.'));
+            $this->message(trans('auth::email_invalid'));
             return;
         }
     }

@@ -3,7 +3,7 @@
 
     {{ Form::smartPassword() }}
 
-    {{ Form::actions(['submit' => 'Login'], false) }}
+    {{ Form::actions(['submit' => trans('auth::login')], false) }}
 {{ Form::close() }}
 
-{{ link_to('auth/restore', 'Restore Password') }}
+{{ link_to('auth/restore', trans('auth::restore_pw')) }}

@@ -114,5 +114,7 @@ return array(
     'name'          => 'Name',
     'username'      => 'Username',
     'email'         => 'Email',
+    'link'          => 'Link',
+    'send'          => 'Send',
 
 );

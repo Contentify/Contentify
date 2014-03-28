@@ -17,7 +17,6 @@ return array(
     'subject'       => 'Subject',
     'messge'        => 'Message',
     'reply'         => 'Reply',
-    'send'          => 'Send',
     'new'           => 'New', // is new?
 
 );

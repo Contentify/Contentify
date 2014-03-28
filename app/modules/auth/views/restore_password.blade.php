@@ -1,4 +1,4 @@
-<h1 class="page-title">Restore Password</h1>
+<h1 class="page-title">{{ trans('auth::restore_pw') }}</h1>
 
 {{ Form::errors($errors) }}
 
@@ -7,5 +7,5 @@
 
     {{ Form::smartCaptcha() }}
 
-    {{ Form::actions(['submit' => 'Send'], false) }}
+    {{ Form::actions(['submit' => trans('app.send')], false) }}
 {{ Form::close() }}

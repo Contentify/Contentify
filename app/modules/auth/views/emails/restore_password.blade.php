@@ -1,22 +1,22 @@
 <html lang="en">
 <head>
-    <title>Password Reset</title>
+    <title>{{ trans('auth::password_reset') }}</title>
     <meta charset="utf-8">
 </head>
 <body>
-    <p>Please open the following link to generate a new password for {{ Config::get('app.title') }}.</p>
+    <p>{{ trans('pw_link', [Config::get('app.title')] }}</p>
 
     <table>
         <tr>
-            <td><strong>Email:</strong></td>
+            <td><strong>{{ trans('app.email') }}:</strong></td>
             <td>{{ $user->email }}</td>
         </tr>
         <tr>
-            <td><strong>Link:</strong></td>
+            <td><strong>{{ trans('app.link') }}:</strong></td>
             <td>{{ link_to('auth/restore/new/'.$user->email.'/'.$user->reset_password_code) }}</td>
         </tr>
     </table>
     
-    <p>If you don't want to generate a new password ignore this mail.</p>
+    <p>{{ trans('auth::email_ignore') }}</p>
 </body>
 </html>

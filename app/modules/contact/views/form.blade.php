@@ -13,5 +13,5 @@
 
     {{ Form::smartTextarea('text', trans('contact::message')) }}
 
-    {{ Form::actions(['submit' => trans('contact::send')], false) }}
+    {{ Form::actions(['submit' => trans('app.send')], false) }}
 {{ Form::close() }}

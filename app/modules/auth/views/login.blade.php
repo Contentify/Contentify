@@ -1,4 +1,4 @@
-<h1 class="page-title">Login</h1>
+<h1 class="page-title">{{ trans('auth::login') }}</h1>
 
 {{ Form::errors($errors) }}
 
@@ -7,7 +7,7 @@
 
     {{ Form::smartPassword() }}
 
-    {{ Form::actions(['submit' => 'Login'], false) }}
+    {{ Form::actions(['submit' => trans('auth::login')], false) }}
 {{ Form::close() }}
 
-{{ link_to('auth/restore', 'Restore Password') }}
+{{ link_to('auth/restore', trans('auth::restore_pw')) }}

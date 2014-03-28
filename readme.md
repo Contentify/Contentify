@@ -2,8 +2,8 @@
 
 Contentify is a CMS based on the popular Laravel 4 framework.
 
-Website: http://contentify.it/
+Website: [contentify.it/](http://contentify.it/)
 
-Documentation: http://contentify.it/docs
+Documentation: [contentify.it/docs](http://contentify.it/docs)
 
-Support: Website: http://contentify.it/support
+Support: [contentify.it/support](http://contentify.it/support)

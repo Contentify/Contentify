@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
-    <title>New Password</title>
+    <title>{{ trans('auth::new_pw') }}</title>
     <meta charset="utf-8">
 </head>
 <body>
-    <p>A new password has been generated for {{ Config::get('app.title') }}.</p>
+    <p>{{ trans('pw_generated', [Config::get('app.title')] }}</p>
 
     <table>
         <tr>
-            <td><strong>Email:</strong></td>
+            <td><strong>{{ trans('app.email') }}:</strong></td>
             <td>{{ $user->email }}</td>
         </tr>
         <tr>
-            <td><strong>Password:</strong></td>
+            <td><strong>{{ trans('auth::password') }}:</strong></td>
             <td>{{ $password }}</td>
         </tr>
     </table>
