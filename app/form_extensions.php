@@ -87,6 +87,29 @@ Form::macro('actions',
     }
 );
 
+Form::macro('numeric', 
+    /**
+     * Create HTML code for a number input element.
+     * 
+     * @param  string $name       The name of the input element
+     * @param  string $value      The default value
+     * @param  array  $options    Array with attributes
+     * @return string
+     */
+    function ($name, $value = null, $options = array())
+    {
+        if (isset($options['class'])) {
+            $options['class'] = ' ';
+        } else {
+            $options['class'] = '';  
+        }
+        $options['class'] .= 'numeric-input';
+        
+        $partial = Form::input('text', $name, $value, $options).'</div>';
+        return $partial;
+    }
+);
+
 Form::macro('smartFieldOpen', 
     /**
      * Create HTML code for the opening part of a custom form field.
@@ -204,6 +227,23 @@ Form::macro('smartTextarea',
         }
 
         $partial    = '<div class="form-group">'.$label.' '.$textarea.'</div>';
+        return $partial;
+    }
+);
+
+Form::macro('smartNumeric', 
+    /**
+     * Create HTML code for a numeric input element.
+     * 
+     * @param  string       $name       The name of the input element
+     * @param  string       $title      The title of the input element
+     * @param  string|null  $default    The default value
+     * @return string
+     */
+    function ($name, $title, $default = null)
+    {
+        $value = Form::getDefaultValue($name, $default);
+        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::numeric($name, $value).'</div>';
         return $partial;
     }
 );

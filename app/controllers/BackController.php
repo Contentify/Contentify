@@ -241,7 +241,7 @@ abstract class BackController extends BaseController {
         $okay = $entity->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($this->controller).'.edit')
+            return Redirect::route('admin.'.strtolower($this->controller).'.edit', ['id' => $entity->id])
                 ->withInput()->withErrors($entity->validationErrors);
         }
 

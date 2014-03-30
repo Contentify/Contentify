@@ -26,3 +26,5 @@ ul.layout-v li { margin: 0px; float: none }
 
 ul.pagination { list-style: none; margin: 0px; padding: 0px }
 ul.pagination li { display: list-item; float: left; margin: 0px; padding: 2px 5px }
+
+.numeric-input { text-align: right }

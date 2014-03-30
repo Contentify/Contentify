@@ -86,8 +86,7 @@ class FormGenerator {
                     break;
                 case 'int':
                     unset($attributes['maxlength']);
-                    $attributes['class'] = 'numeric';
-                    $html = "{{ Form::smartText('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartNumeric('{$name}', '{$title}') }}";
                     break;
                 case 'varchar':
                     $html = "{{ Form::smartText('{$name}', '{$title}') }}";
