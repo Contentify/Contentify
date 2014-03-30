@@ -458,7 +458,7 @@ Form::macro('smartDateTime',
 
         $partial = '<div class="form-group date-time-picker input-append date">'
             .Form::label($name, $title).' '
-            .Form::text($name, $value, ['data-format' => trans('app.date_format').' hh:mm:ss'])
+            .Form::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
             .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
             .'</div>';
         return $partial;

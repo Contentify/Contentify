@@ -86,25 +86,11 @@ $(document).ready(function()
 
     var updateDatetime = function () 
     {
-        var now = new Date();
-        
-        var days = now.getDate();
-        if (days < 10) days = '0' + days;
-        var months = now.getMonth() + 1;
-        if (months < 10) months = '0' + months;
-        var years = now.getFullYear();
-        
-        var hours = now.getHours();
-        if (hours < 10) hours = '0' + hours;
-        var minutes = now.getMinutes();
-        if (minutes < 10) minutes = '0' + minutes;
-        
-        var date = days + '/' + months + '/' + years;
-        var time = hours + ':' + minutes;
-        
-        $('#datetime').text(date + ' – ' + time);
+        var now = contentify.formatDate(new Date(), contentify.dateFormat + ' - H:i')
+        $('#datetime').text(now);
     }
 
+    updateDatetime();
     var t = setInterval(updateDatetime, timeoutTime);
 
     /*

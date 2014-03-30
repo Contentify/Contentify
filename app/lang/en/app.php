@@ -14,8 +14,8 @@ return array(
    /*
     * Date format patterns
     */
-   'date_format'        => 'yyyy-MM-dd',    // for the date time picker UI widget
-   'carbon_date_format' => 'Y-m-d',         // for Carbon ( http://www.php.net/manual/en/function.date.php )
+   'date_format'        => 'Y-m-d',         // PHP default, for Carbon ( http://www.php.net/manual/en/function.date.php )
+   'date_format_alt'    => 'yyyy-MM-dd',    // for the date time picker UI widget
    
     /*
      * Security
@@ -116,5 +116,6 @@ return array(
     'email'         => 'Email',
     'link'          => 'Link',
     'send'          => 'Send',
+    'position'      => 'Position',
 
 );

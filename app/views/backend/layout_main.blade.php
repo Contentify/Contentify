@@ -64,7 +64,7 @@
                 @endif
             </div>
             
-            <div id="info-bar"><span id="datetime">{{ Carbon::now() }} – {{ date('H:i') }}</span> now. Version {{ Config::get('app.version') }}</div>
+            <div id="info-bar"><span id="datetime"></span> now. Version {{ Config::get('app.version') }}</div>
             
             <a id="tecslink" href="{{ url('admin/help/technologies') }}" title="{{ trans('app.tec_infos') }}"><!-- empty --></a>
             
