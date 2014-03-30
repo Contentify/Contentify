@@ -10,7 +10,7 @@ $(document).ready(function()
         $('.create-comment form').remove();
 
         $.ajax({
-            url: baseUrl + 'comments/store',
+            url: contentify.baseUrl + 'comments/store',
             type: 'POST',
             data: { 
                 text: text, 
@@ -36,7 +36,7 @@ $(document).ready(function()
         var id = $self.attr('data-id');
 
         $.ajax({
-            url: baseUrl + 'comments/' + id,
+            url: contentify.baseUrl + 'comments/' + id,
             type: 'GET'
         }).success(function(comment)
         {
@@ -45,7 +45,7 @@ $(document).ready(function()
             $('.create-comment .save').click(function()
             {
                 $.ajax({
-                    url: baseUrl + 'comments/' + comment.id + '/update',
+                    url: contentify.baseUrl + 'comments/' + comment.id + '/update',
                     type: 'PUT',
                     data: { 
                         text: $('.create-comment textarea').val(), 
@@ -79,7 +79,7 @@ $(document).ready(function()
         var id = $self.attr('data-id');
 
         $.ajax({
-            url: baseUrl + 'comments/' + id + '/delete',
+            url: contentify.baseUrl + 'comments/' + id + '/delete',
             type: 'DELETE'
         }).success(function()
         {

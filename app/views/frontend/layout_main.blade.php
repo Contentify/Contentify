@@ -24,6 +24,7 @@
     {{ HTML::script('http://html5shiv.googlecode.com/svn/trunk/html5.js') }}
     <![endif]-->
     {{ HTML::script('libs/jquery-1.10.2.min.js') }}
+    {{ HTML::script('libs/framework.js') }}
     {{ HTML::script('libs/frontend.js') }}
 </head>
 <body>

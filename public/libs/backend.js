@@ -24,27 +24,8 @@ ddaccordion.init({
     }
 });
 
-var baseUrl;
-var csrfToken;
-
 $(document).ready(function()
 {  
-    /*
-     * Initizalize meta variables
-     */
-    baseUrl     = $('meta[name="base-url"]').attr('content');
-    csrfToken   = $('meta[name="csrf-token"]').attr('content');
-
-    /*
-     * Add CSRF token
-     */
-    jQuery.ajaxPrefilter(function(options, request, xhr) 
-    {
-        if (! xhr.crossDomain)  {
-            options.data += '&_token=' + csrfToken;
-        }
-    });
-
     /*
      * Add datetime picker
      */
@@ -99,58 +80,6 @@ $(document).ready(function()
     });
 
     /*
-     * Add delete confirm dialogue
-     */
-    $('body').append($('<div />').boxer({})); // Bugfix or Boxer won't open due to a JS error
-    $('*[data-confirm-delete]').click(function(event)
-    {
-        event.preventDefault();
-        event.stopPropagation();
-
-        var $self = $(this);
-
-        var $ui = $('<div class="boxer-confirm"><h2>Delete this item?</h2></div>')
-            .append(
-                $('<button>').text('Yes').click(function()
-                {
-                    window.location = $self.attr('href');
-                })
-            ).append(
-                $('<button>').text('No').click(function()
-                {
-                    $.boxer('close');
-                })
-            );
-        $.boxer($ui);
-    });
-
-    /*
-     * Add confirm dialogue
-     */
-    $('*[data-confirm]').click(function(event)
-    {       
-        event.preventDefault();
-        event.stopPropagation();
-
-        var $self = $(this);
-        var message = $self.attr('data-confirm');
-
-        var $ui = $('<div class="boxer-confirm"><h2>Execute this action?</h2><p>' + message + '</p></div>')
-            .append(
-                $('<button>').text('Yes').click(function()
-                {
-                    window.location = $self.attr('href');
-                })
-            ).append(
-                $('<button>').text('No').click(function()
-                {
-                    $.boxer('close');
-                })
-            );
-        $.boxer($ui);
-    });    
-
-    /*
      * Update date and time
      */
     var timeoutTime = 1000; // ms
@@ -170,10 +99,10 @@ $(document).ready(function()
         var minutes = now.getMinutes();
         if (minutes < 10) minutes = '0' + minutes;
         
-        var mydate = days + '/' + months + '/' + years;
-        var mytime = hours + ':' + minutes;
+        var date = days + '/' + months + '/' + years;
+        var time = hours + ':' + minutes;
         
-        $('#datetime').text(mydate + ' – ' + mytime);
+        $('#datetime').text(date + ' – ' + time);
     }
 
     var t = setInterval(updateDatetime, timeoutTime);

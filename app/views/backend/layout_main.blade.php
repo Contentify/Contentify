@@ -8,6 +8,7 @@
     <meta name="base-url" content="{{ Config::get('app.url') }}/public/">
     <meta name="csrf-token" content="{{ Session::get('_token') }}">
     <meta name="locale" content="{{ Config::get('app.locale') }}">
+    <meta name="date-format" content="{{ trans('app.date_format') }}">
     {{ HTML::metaTags($metaTags) }}
 
     {{ HTML::title($title) }}
@@ -37,6 +38,7 @@
     {{ HTML::script('libs/datetime/picker.min.js') }}
     {{ HTML::script('libs/tags/bootstrap-tagsinput.js') }}
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
+    {{ HTML::script('libs/framework.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
 <body>
@@ -62,7 +64,7 @@
                 @endif
             </div>
             
-            <div id="info-bar"><span id="datetime">{{ date('d/m/Y') }} – {{ date('H:i') }}</span> now. Version {{ Config::get('app.version') }}</div>
+            <div id="info-bar"><span id="datetime">{{ Carbon::now() }} – {{ date('H:i') }}</span> now. Version {{ Config::get('app.version') }}</div>
             
             <a id="tecslink" href="{{ url('admin/help/technologies') }}" title="{{ trans('app.tec_infos') }}"><!-- empty --></a>
             
@@ -131,7 +133,7 @@
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.users.index') }}">Users</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=members">Members</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=teams">Teams</a></div>
+                                <div class="menu3"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/teams', 'Teams') }}</div>
 
                                 <div class="menu3"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
                                 <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>

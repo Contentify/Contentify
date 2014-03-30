@@ -28,9 +28,8 @@
         var $self = $(this);
 
         $.ajax({
-            url: baseUrl + 'admin/users/{{ $entity->id}}/' + ban,
-            type: 'POST',
-            data: { '_token': '{{ Session::token() }}' }
+            url: contentify.baseUrl + 'admin/users/{{ $entity->id}}/' + ban,
+            type: 'POST'
         }).success(function(data)
         {
             $self.get(0).checked = !!(+data);
