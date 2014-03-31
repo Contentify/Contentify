@@ -281,7 +281,7 @@ Form::macro('smartSelectForeign',
             } elseif (isset($entity->name)) {
                 $entityTitle = 'name';
             } else {
-                $entityTitle = 'id';
+                $entityTitle = $entity->getKeyName();
             }
 
             $options[$entity->$attribute] = $entity->$entityTitle;
@@ -343,7 +343,7 @@ Form::macro('smartSelectRelation',
                 } elseif (isset($entity->name)) {
                     $entityTitle = 'name';
                 } else {
-                    $entityTitle = 'id';
+                    $entityTitle = $entity->getKeyName();
                 }
             }                    
 
@@ -366,7 +366,7 @@ Form::macro('smartSelectRelation',
                 $sourceKeyValue = Form::getValueAttribute($sourceEntity->getKeyName());
 
                 /*
-                 * If a model is bound to the form $sourceKeyValue is not null and
+                 * If a model is bound to the form, $sourceKeyValue is not null and
                  * we can look up in the pivot table for related entities.
                  * If not, the default value(s) will be passed to the select element.
                  */

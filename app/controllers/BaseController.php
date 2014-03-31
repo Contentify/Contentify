@@ -413,7 +413,7 @@ abstract class BaseController extends Controller {
         /*
          * Generate the table
          */
-        $contentTable = $this->contentTable($tableHead, $tableRows, $data['brightenFirst']);
+        $contentTable = HTML::table($tableHead, $tableRows, $data['brightenFirst']);
         
         /*
          * Generate the view
@@ -427,53 +427,6 @@ abstract class BaseController extends Controller {
             'searchString'  => $data['search'],
             'showSearchBox' => $data['searchFor'] and (! $data['dataSource']) ? true : false
         ]);
-    }
-
-    /**
-     * Returns HTML code for a table.
-     * 
-     * @param array     $header          Array with the table header items (String-Array)
-     * @param array     $rows            Array with all the table rows items (Array containing String-Arrays)
-     * @param bool      $highlightFirst  Enable special look for the items in the first column? (true/false)
-     * @return string
-     */
-    protected function contentTable($header, $rows, $brightenFirst = true)
-    {
-        $code = '<table class="content-table">';
-
-        /*
-         * Table head
-         */
-        $code .= '<tr>';
-        foreach ($header as $value) {
-            $code .= '<th>';
-            $code .= $value;
-            $code .= '</th>';
-        }
-        $code .= '</tr>';
-
-        /*
-         * Table body
-         */
-        foreach ($rows as $row) {
-            $code   .= '<tr>';
-            $isFirst = true;
-            foreach ($row as $value) {
-                if ($isFirst and $brightenFirst) {
-                    $code   .= '<td style="color: silver">';
-                    $isFirst = false;
-                } else {
-                    $code .= '<td>';
-                }
-                $code .= $value;
-                $code .= '</td>';
-            }
-            $code .= '</tr>';
-        }
-
-        $code .= '</table>';
-
-        return $code;
     }
 
     /**

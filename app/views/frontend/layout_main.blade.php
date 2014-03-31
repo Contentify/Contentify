@@ -5,8 +5,8 @@
 
     <meta charset="utf-8">
     <meta name="generator" content="Contentify">
-    <meta name="base-url" content="{{ Config::get('app.url') }}/public/">
     <meta name="csrf-token" content="{{ Session::get('_token') }}">
+    <meta name="base-url" content="{{ url('/') }}">
     <meta name="locale" content="{{ Config::get('app.locale') }}">
     <meta name="date-format" content="{{ trans('app.date_format') }}">
     {{ HTML::metaTags($metaTags) }}
