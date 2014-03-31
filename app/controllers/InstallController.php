@@ -140,14 +140,30 @@ class InstallController extends Controller {
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp() to create a datetime attribute.
          */
-        
+
+        $this->createPivot('team_user', function($table)
+        {
+            $table->string('task')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('position')->default(0);
+        }, ['user_id', 'team_id']);    
+
+        return; // DEBUG
+
+        $this->create('teamcats', function($table) { });
+
+        $this->create('teams', function($table) 
+        { 
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('position')->default(0);
+        }, ['teamcat']);  
+               
         $this->create('languages', function($table) 
         { 
             $table->string('code', 2);
         });     
 
-        return; // DEBUG
-        
         $this->create('countries', function($table) 
         { 
             $table->string('code', 3);
@@ -224,6 +240,11 @@ class InstallController extends Controller {
         // DEBUG
         
         //$this->createUserGroups();
+
+        DB::table('teamcats')->insert([
+            ['id' => '1', 'title' => 'Staff'],
+            ['id' => '2', 'title' => 'Gaming'],
+        ]);
 
         DB::table('languages')->insert([
             ['id' => '1', 'title' => 'English', 'code' => 'en']
@@ -336,6 +357,7 @@ class InstallController extends Controller {
                 'help'      => PERM_DELETE,
                 'images'    => PERM_DELETE,
                 'news'      => PERM_DELETE,
+                'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
             ]
         ]);
@@ -357,6 +379,7 @@ class InstallController extends Controller {
                 'images'    => PERM_DELETE,
                 'modules'   => PERM_DELETE,
                 'news'      => PERM_DELETE,
+                'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
             ]
         ]);
@@ -437,13 +460,52 @@ class InstallController extends Controller {
          * Add the foreign keys:
          */
         foreach ($foreignKeys as $foreignKey) {
-            /*
             Schema::table($tableName, function($table) use ($foreignKey)
             {
-                $table->integer($foreignKey.'_id')->unsigned();
-                $table->foreign($foreignKey.'_id')->references('id')->on(str_plural($foreignKey));
+                $table->integer($foreignKey)->unsigned();
+                //$table->foreign($foreignKey)->references('id')->on(str_plural($foreignKey));
             });
-            */
         }
     }
+
+
+    /**
+     * Helper functions. Creates a database pivot table.
+     * 
+     * @param  string           $tableName      The name of the tbale
+     * @param  Closure          $tableRows      A closure defining the table rows
+     * @param  array            $primaryKeys    An array with the names of both primary keys
+     * @return void
+     */
+    private function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
+    {
+        /*
+         * Delete existing table:
+         */
+        Schema::dropIfExists($tableName);
+
+        /*
+         * Add primary keys:
+         */
+        Schema::create($tableName, function($table) use ($primaryKeys)
+        {
+            $table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is used as storage engine
+
+            /*
+             * Add the primarey keys:
+             */
+            foreach ($primaryKeys as $primaryKey) {
+                $table->integer($primaryKey)->unsigned();
+            }
+            $table->primary($primaryKeys);
+
+        });
+
+        /*
+         * Add the table rows:
+         */
+        if ($tableRows) Schema::table($tableName, $tableRows);
+    }
+
+       
 }

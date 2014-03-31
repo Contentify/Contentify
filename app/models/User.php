@@ -113,6 +113,11 @@ class User extends SentryUser {
         return $this->belongsTo('App\Modules\Languages\Models\Language');
     }
 
+    public function teams()
+    {
+        return $this->belongsToMany('App\Modules\Teams\Models\Team');
+    }
+
     /**
      * See if a user has access to the passed permission(s).
      * Permissions are merged from all groups the user belongs to
@@ -183,6 +188,21 @@ class User extends SentryUser {
         } else {
             return false;
         }
+    }
+
+    /**
+     * The throttle system is not part of the Sentry core module.
+     * This helper method accesses the banned attribute.
+     *
+     * @return boolean
+     */
+    public function isBanned()
+    {
+        // This is what Sentry gives us to get the banned attribute... Not cool.
+        // If there is a better way let us know.
+        $throttle = Sentry::findThrottlerByUserId($this->id);
+
+        return $throttle->isBanned();
     }
 
 }

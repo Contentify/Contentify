@@ -73,6 +73,7 @@ return array(
     'banned'        => 'Banned',
     'activated'     => 'Activated',
     'groups'        => 'Permission Groups',
+    'teams'         => 'Teams',
     'edit_profile'  => 'Edit Profile',
 
     'action_banned'     => 'User has been banned.',

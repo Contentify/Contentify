@@ -8,7 +8,8 @@ class User extends BaseUser {
     protected $fillable = ['activated'];
 
     public static $relationsData = [
-        'groups' => [Ardent::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
+        'groups'    => [Ardent::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
+        'teams'     => [Ardent::BELONGS_TO_MANY, 'App\Modules\Teams\Models\Team', 'table' => 'team_user'],
     ];
 
     /**
@@ -21,21 +22,6 @@ class User extends BaseUser {
     public static function relations()
     {
         return static::$relationsData;
-    }
-
-    /**
-     * The throttle system is not part of the Sentry core module.
-     * This helper method accesses the banned attribute.
-     *
-     * @return boolean
-     */
-    public function isBanned()
-    {
-        // This is what Sentry gives us to get the banned attribute... Not cool.
-        // If there is a better way let us know.
-        $throttle = Sentry::findThrottlerByUserId($this->id);
-
-        return $throttle->isBanned();
     }
 
 }

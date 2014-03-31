@@ -88,6 +88,5 @@ Route::post('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    //$x = new App\Modules\News\Controllers\NewsWidget();
-    //echo(FormGenerator::generate('users'));
+    dd(user()->teams[0]->title);
 });
