@@ -224,6 +224,7 @@ return array(
         'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
         'OpenGraph'             => 'Contentify\OpenGraphBuilder',
+        'MsgException'          => 'Contentify\MsgException',
 
         // Vendor classes:
         'Carbon'                => 'Carbon\Carbon',

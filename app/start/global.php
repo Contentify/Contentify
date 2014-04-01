@@ -51,6 +51,10 @@ App::error(function(Exception $exception, $code)
 {
     Log::error($exception);
 
+    if (is_a($exception, 'MsgException')) {
+        return Response::make(View::make('error_message', compact('exception')), 404);
+    }
+
     if (! Config::Get('app.debug')) { // If we are in debug mode we do not want to override Laravel's error output
         if (is_a($exception, 'Illuminate\Database\Eloquent\ModelNotFoundException')) {
             return Response::make(View::make('error_not_found'), 404);

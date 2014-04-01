@@ -1,9 +1,10 @@
-<h1 class="page-title">trans('contact::contact')</h1>
+<h1 class="page-title">{{ trans('contact::contact') }}</h1>
 
 {{ Form::errors($errors) }}
 
-{{ Form::open(array('url' => 'contact/create')) }}
-    <input name="_createdat" type="hidden" value="{{ time() }}">
+{{ Form::open(array('url' => 'contact/store')) }}
+    <!-- <input name="_createdat" type="hidden" value="{{ time() }}"> -->
+    {{ Form::timestamp() }}
 
     {{ Form::smartText('username', trans('app.name')) }}
 

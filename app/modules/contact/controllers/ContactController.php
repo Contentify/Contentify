@@ -10,7 +10,7 @@ class ContactController extends FrontController {
         $this->pageView('contact::form');
     }
 
-    public function postCreate()
+    public function postStore()
     {
         $msg = new ContactMessage(Input::all());
         $msg->ip = getenv('REMOTE_ADDR');

@@ -89,10 +89,20 @@ Route::filter('csrf', function()
         throw new Illuminate\Session\TokenMismatchException;
     }
 
-    // Spam protection: Forms that have set a value fpr _createdat
-    // are protected against mass submitting.
-    if (Input::get('_createdat') and (int) Input::get('_createdat') > time() - 3)
+    /* 
+     * Spam protection: Forms that have set a value for _created_at
+     * are protected against mass submitting.
+     */
+    if ($time = Input::get('_created_at'))
     {
-        throw new Exception(trans('app.spam_protection'));
+        $time = Crypt::decrypt($time);
+
+        if (is_numeric($time)) {
+            $time = (int) $time;
+            
+            if ($time <= time() - 3) return;
+        }
+
+        throw new MsgException(trans('app.spam_protection'));
     }
 });

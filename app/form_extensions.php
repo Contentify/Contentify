@@ -482,6 +482,24 @@ Form::macro('smartTagify',
     }
 );
 
+Form::macro('timestamp',
+    /**
+     * Adds a hidden field with a timestamp (of the current time)
+     *
+     * @param string    $name       Name of the field
+     * @param bool      $encrypt    Encrypt the value?
+     * @return string
+     */
+    function ($name = '_created_at', $encrypt = true)
+    {
+        $time = time();
+
+        if ($encrypt) $time = Crypt::encrypt($time);
+
+        return Form::hidden($name, $time);
+    }
+);
+
 Form::macro('getDefaultValue',
     /**
      * Laravel prioritises model values lower than higher the value passed to form elements.

@@ -15,7 +15,7 @@ return array(
     'message_sent'  => 'Thank you! Your message was sent.',
     'ip'            => 'IP',
     'subject'       => 'Subject',
-    'messge'        => 'Message',
+    'message'       => 'Message',
     'reply'         => 'Reply',
     'new'           => 'New', // is new?
 
