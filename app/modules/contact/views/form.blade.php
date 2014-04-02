@@ -3,7 +3,6 @@
 {{ Form::errors($errors) }}
 
 {{ Form::open(array('url' => 'contact/store')) }}
-    <!-- <input name="_createdat" type="hidden" value="{{ time() }}"> -->
     {{ Form::timestamp() }}
 
     {{ Form::smartText('username', trans('app.name')) }}

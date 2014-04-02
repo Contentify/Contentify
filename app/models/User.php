@@ -115,7 +115,7 @@ class User extends SentryUser {
 
     public function teams()
     {
-        return $this->belongsToMany('App\Modules\Teams\Models\Team');
+        return $this->belongsToMany('App\Modules\Teams\Models\Team')->withPivot('task', 'description', 'position');
     }
 
     /**

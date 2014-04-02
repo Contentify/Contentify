@@ -92,6 +92,7 @@ Route::filter('csrf', function()
     /* 
      * Spam protection: Forms that have set a value for _created_at
      * are protected against mass submitting.
+     * WARNING: Not sending the field will not trigger the verification!
      */
     if ($time = Input::get('_created_at'))
     {

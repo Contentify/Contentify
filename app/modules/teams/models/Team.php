@@ -17,7 +17,17 @@ class Team extends Ardent {
 
     public static $relationsData = [
         'teamcat'   => [self::BELONGS_TO, 'App\Modules\Teams\Models\Teamcat'],
-        'users'     => [self::BELONGS_TO_MANY, 'User'],
     ];
+
+    /**
+     * Ardent does not support orderBy for pivot attributes 
+     * so we have to use Eloquent instead.
+     * @link https://github.com/laravelbook/ardent/issues/185
+     */
+    public function users()
+    {
+        return $this->belongsToMany('User')->withPivot('task', 'description', 'position')
+            ->orderBy('pivot_position', 'asc');
+    }
 
 }

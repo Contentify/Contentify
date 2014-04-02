@@ -5,7 +5,7 @@
             <div class="image">
                 <img src="{{ asset('uploads/teams/'.$news->image) }}" alt="{{{ $team->title }}}">
             </div>
-            @endif        
+            @endif
             <h2>{{{ $team->title }}}</h2>
         </a>
     </header>
@@ -14,6 +14,14 @@
         @foreach ($team->users as $user)
             <li>
                 <a href="{{ url('users/'.$user->id.'/'.slug($user->username)) }}">{{ $user->username }}</a>
+                @if ($user->pivot->task)
+                ({{ $user->pivot->task }})
+                @endif
+                @if ($user->pivot->description)
+                <p>
+                    {{ $user->pivot->description }}
+                </p>
+                @endif
             </li>
         @endforeach
         </ul>
