@@ -35,23 +35,7 @@ function user()
  */
 function image_link($image, $title, $url, $showTitle = false, $attributes = array())
 {
-    $imageUrl = get_image_url($image);
-    $image = HTML::image($imageUrl, $title);
-
-    if ($showTitle) {
-        $titleText = ' '.$title;
-    } else {
-        $titleText = '';
-    }
-
-    /* 
-     * We have to create our Link without HTML::link(), because
-     * that method will not allow to use HTML code.
-     */ 
-    $attrs = HTML::attributes($attributes);
-    $link = '<a class="image-link" href="'.$url.'" title="'.$title.'" '.$attrs.'>'.$image.$titleText.'</a>';
-
-    return $link;
+    return HTML::imageLink($image, $title, $url, $showTitle, $attributes);
 }
 
 /**
@@ -64,14 +48,7 @@ function image_link($image, $title, $url, $showTitle = false, $attributes = arra
  */
 function button($title, $url, $image = '')
 {
-    $imageUrl = get_image_url($image);
-    if ($image) {
-        $image = HTML::image($imageUrl, $title);    
-    }
-    
-    $button = '<button type="button" onclick="document.location.href=\''.$url.'\'">'.$image.' '.$title.'</button>';
-
-    return $button;
+    return HTML::button($title, $url, $image);
 }
 
 /**
@@ -110,19 +87,7 @@ function get_image_url($image)
  */
 function sort_switcher($sortby, $order = null, $search = null)
 {
-    if ($order == 'asc') {
-        $order  = 'desc';
-        $image  = 'theme/bullet_arrow_down.png';
-    } else {
-        $order  = 'asc';
-        $image  = 'theme/bullet_arrow_up.png';
-    }
-
-    $url = URL::current().'?sortby='.$sortby.'&order='.$order;
-    if ($search) $url .= '&search='.urlencode($search);
-
-    $caption = trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" />';
-    return '<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>';
+    return HTML::sortSwitcher($sortby, $order, $search);
 }
 
 /**
@@ -133,16 +98,7 @@ function sort_switcher($sortby, $order = null, $search = null)
  */
 function recycle_bin_button()
 {
-    $enabled    = (bool) Session::get('recycleBinMode');
-    $url        = URL::current().'?binmode='.(1 - $enabled);
-
-    if ($enabled) {
-        $class = 'enabled';
-    } else {
-        $class = 'disabled';
-    }
-
-    return '<a class="recycle-bin-button '.$class.'" href="'.$url.'">'.trans('app.recycle_bin').'</a>';
+    return HTML::recycleBinButton();
 }
 
 /**
