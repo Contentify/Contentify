@@ -13,4 +13,10 @@ return array(
    
     'permissions'   => 'Permissions',
 
+    'none'          => 'None',
+    'read'          => 'Read',
+    'create'        => 'Create',
+    'update'        => 'Update',
+    'delete'        => 'Delete',
+
 );

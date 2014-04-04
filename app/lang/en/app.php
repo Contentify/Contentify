@@ -108,6 +108,8 @@ return array(
     /*
      * General terms
      */
+    'yes'           => 'Yes',
+    'no'            => 'No',
     'valid'         => 'valid',
     'invalid'       => 'invalid',
     'read_more'     => 'Read more...',

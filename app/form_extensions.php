@@ -248,6 +248,29 @@ Form::macro('smartNumeric',
     }
 );
 
+Form::macro('smartSelect', 
+    /**
+     * Create HTML code for a select element.
+     * 
+     * @param  string       $name       The name of the select element
+     * @param  string       $title      The title of the select element
+     * @param  array        $options    Array of options (pairs of titles and values)
+     * @param  mixed        $default    Values of preselected options
+     * @param  array        $attributes Additional HTML attributes
+     * @return string
+     */
+    function ($name, $title, $options, $default = null, $attributes = array())
+    {
+        $value = Form::getDefaultValue($name, $default);
+
+        $partial = '<div class="form-group">'
+            .Form::label($name, $title).' '
+            .Form::select($name, $options, $value, $attributes)
+            .'</div>';
+        return $partial;
+    }
+);
+
 Form::macro('smartSelectForeign',
     /**
      * Create HTML code for a select element. It will take its values from a database table.
