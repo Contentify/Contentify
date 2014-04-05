@@ -15,7 +15,7 @@ class AdminUsersController extends BackController {
 
     public function index()
     {
-        $this->buildIndexPage([
+        $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
                 trans('app.id')             => 'id', 

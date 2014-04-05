@@ -13,7 +13,7 @@ class Language extends Ardent {
 
     /**
      * A "language" is not only a row of a table but also consists of language files.
-     * One cannot create (a new) or delete a language trough this model.
+     * Users cannot create (a new) or delete a language trough this model.
      */
     public static function destroy($ids) {
         throw new Exception('Model deletion restricted');

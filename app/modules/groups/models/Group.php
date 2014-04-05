@@ -20,27 +20,45 @@ class Group extends Ardent {
         'name'     => 'required',
     ];
 
+    /**
+     * Creates an array of permissions 
+     * (Permission model with name, possible values and current value)
+     * for the given group (or)
+     * 
+     * @param  int $id ID of a group
+     * @return array
+     */
     static public function permissions($id = null)
     {
-        // Find the super admins group using the group id
+
+        /*
+         * Retrieve permission of the super admins group.
+         * We assume the s. a. group has all available permissions on max level.
+         */
         $group = Sentry::findGroupById(5);
 
         $originalPermissions = $group->getPermissions();
 
+        /*
+         * Retrieve permissions of a certain group
+         */
         if ($id) {
             $group = Sentry::findGroupById($id);
 
             $currentPermissions = $group->getPermissions();
         }
 
+        /*
+         * Create an array with permissions (Permission model instances)
+         */
         $permissions = [];
         foreach ($originalPermissions as $name => $value) {
-            if ($value == 1) {
+            if ($value == 1) { // Boolean
                 $values = [
                     0 => trans('app.no'), 
                     1 => trans('app.yes')
                 ];
-            } else {
+            } else { // Levels
                 $values = [
                     0 => trans('groups::none'), 
                     1 => trans('groups::read'),
@@ -50,6 +68,9 @@ class Group extends Ardent {
                 ];
             }
 
+            /*
+             * Current permission value
+             */
             if ($id and isset($currentPermissions[$name])) {
                 $current = $currentPermissions[$name];
             } else {

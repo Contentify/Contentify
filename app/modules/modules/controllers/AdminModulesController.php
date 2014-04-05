@@ -16,7 +16,7 @@ class AdminModulesController extends BackController {
 
     public function index()
     {
-        $this->buildIndexPage([
+        $this->indexPage([
             'buttons'       => null,
             'dataSource'    => Module::findAll(),
             'brightenFirst' => false,

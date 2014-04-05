@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Models;
 
-use DB, OpenGraph, Comment, Ardent, Rss, Config, Lang, URL;
+use Filter, DB, OpenGraph, Comment, Ardent, Rss, Config, Lang, URL;
 
 class News extends Ardent {
 
@@ -26,6 +26,14 @@ class News extends Ardent {
         'newscat' => [self::BELONGS_TO, 'App\Modules\News\Models\Newscat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    public function scopeFilter($query)
+    {
+        if (Filter::has('category')) {
+            $id = (int) Filter::get('category');
+            return $query->whereNewscatId($id);
+        }
+    }
 
     /**
      * Select only news that are published

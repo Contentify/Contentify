@@ -16,7 +16,7 @@ class AdminImagesController extends BackController {
 
     public function index()
     {
-        $this->buildIndexPage([
+        $this->indexPage([
             'tableHead' => [
                 t('ID')         => 'id', 
                 t('Image')      => null, 

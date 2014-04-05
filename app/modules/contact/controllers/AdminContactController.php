@@ -18,7 +18,7 @@ class AdminContactController extends BackController {
     {
         if (! $this->checkAccessRead()) return;
 
-        $this->buildIndexPage([
+        $this->indexPage([
             'buttons' => null,
             'tableHead' => [
                 trans('app.ID')         => 'id', 

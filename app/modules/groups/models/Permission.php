@@ -1,5 +1,8 @@
 <?php namespace App\Modules\Groups\Models;
 
+/**
+ * Super simple helper class representing group permissions
+ */
 class Permission {
 
     /**

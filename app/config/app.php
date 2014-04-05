@@ -224,6 +224,7 @@ return array(
         'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
         'OpenGraph'             => 'Contentify\OpenGraphBuilder',
+        'Filter'                => 'Contentify\Filter',
         'MsgException'          => 'Contentify\MsgException',
 
         // Vendor classes:

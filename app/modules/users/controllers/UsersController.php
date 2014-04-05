@@ -14,7 +14,7 @@ class UsersController extends FrontController {
 
     public function index()
     {
-        $this->buildIndexPage([
+        $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
                 t('ID')             => 'id', 

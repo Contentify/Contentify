@@ -82,6 +82,7 @@ abstract class BaseController extends Controller {
         if ( ! is_null($this->layout))
         {
             $this->layout                   = View::make($this->layout);
+            $this->layout->page             = null;
             $this->layout->metaTags         = [];
             $this->layout->openGraph        = null;
             $this->layout->title            = null;
@@ -140,7 +141,7 @@ abstract class BaseController extends Controller {
     protected function message($title, $text = '')
     {
         if ($this->layout != null) {
-            $this->layout->page = View::make('message', ['title' => $title, 'text' => $text]);
+            $this->layout->page .= View::make('message', ['title' => $title, 'text' => $text]);
         } else {
             throw new Exception('Error: $this->layout is null!');
         }
@@ -223,13 +224,13 @@ abstract class BaseController extends Controller {
     }
 
     /**
-     * Builds an index page from a model and $data
+     * Generates an index page from a model and $data
      * 
      * @param  array  $data             Array with information how to build the form. See $defaults for details.
      * @param  string $userInterfcae    Frontend ("front") or backend ("admin")?
      * @return void
      */
-    protected function buildIndexPage($data, $userInterfcae = 'admin')
+    protected function indexPage($data, $userInterfcae = 'admin')
     {
         if (! $this->checkAccessRead()) return;
         
@@ -246,6 +247,7 @@ abstract class BaseController extends Controller {
             'brightenFirst' => true,                            // True / false
             'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
             'order'         => 'desc',                          // Asc / desc
+            'filter'        => false,                           // Bool: Apply filters? (Calls the model's scopeFilter method)
             'dataSource'    => null                             // Null (means: take from database) or Closure
         ];
 
@@ -328,6 +330,9 @@ abstract class BaseController extends Controller {
             $entities = $model::orderBy($data['sortby'], $data['order']);
             if (Session::get('recycleBinMode')) {
                 $entities = $entities->withTrashed(); // Show trashed
+            }
+            if ($data['filter']) {
+                $entities = $entities->filter();
             }
             if ($data['search'] and $data['searchFor']) {
                 $entities = $entities->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string

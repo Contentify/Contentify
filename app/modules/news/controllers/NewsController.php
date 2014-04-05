@@ -14,13 +14,13 @@ class NewsController extends FrontController {
 
     public function index()
     {
-        $this->buildIndexPage([
+        $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                t('app.id')         => 'id', 
-                t('app.title')      => 'title', 
-                t('app.category')   => NULL, 
-                t('app.date')       => 'created_at'
+                trans('app.id')         => 'id', 
+                trans('app.title')      => 'title', 
+                trans('app.category')   => NULL, 
+                trans('app.date')       => 'created_at'
             ],
             'tableRow'  => function($news)
             {
@@ -31,7 +31,8 @@ class NewsController extends FrontController {
                     $news->created_at
                 ];
             },
-            'actions'   => null
+            'actions'   => null,
+            'filter'    => true
         ], 'front');
     }
 

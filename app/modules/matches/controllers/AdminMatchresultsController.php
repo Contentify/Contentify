@@ -16,7 +16,7 @@ class AdminMatchresultsController extends BackController {
 
     public function index()
     {
-        $this->buildIndexPage([
+        $this->indexPage([
             'tableHead' => [
                 t('ID')     => 'id', 
                 t('Title')  => 'title'
