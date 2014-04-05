@@ -5,7 +5,7 @@
 @else
     {{ Form::open(['url' => 'admin/images', 'files' => true]) }}
 @endif
-    {{ Form::smartTagify('tags', 'Tags') }}
+    {{ Form::smartTags('tags', 'Tags') }}
 
     {{ Form::smartImageFile() }}
 

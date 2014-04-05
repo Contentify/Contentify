@@ -44,10 +44,11 @@ return array(
     /*
      * Auto CRUD handling (and related stuff)
      */
-    'created'   => ':0 created.',
-    'updated'   => ':0 updated.',
-    'deleted'   => ':0 deleted.',
-    'restored'  => ':0 restored.',
+    'created'       => ':0 created.',
+    'updated'       => ':0 updated.',
+    'deleted'       => ':0 deleted.',
+    'restored'      => ':0 restored.',
+    'list_empty'    => 'Please create at least one ":0" before you continue.',
 
     /*
      * Model index building

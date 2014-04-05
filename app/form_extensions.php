@@ -105,7 +105,7 @@ Form::macro('numeric',
         }
         $options['class'] .= 'numeric-input';
         
-        $partial = Form::input('text', $name, $value, $options).'</div>';
+        $partial = Form::input('text', $name, $value, $options);
         return $partial;
     }
 );
@@ -117,9 +117,10 @@ Form::macro('smartFieldOpen',
      * @param  string $title The title of the field
      * @return string
      */
-    function ($title)
+    function ($title = null)
     {
-        $partial = '<div class="form-group">'.Form::label('', $title).' ';
+        $partial = '<div class="form-group">';
+        if ($title) $partial .= Form::label('', $title);
         return $partial;
     }
 );
@@ -152,7 +153,10 @@ Form::macro('smartCheckbox',
 
         // Bugfix for Laravel checkobx bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
         $checkbox = Form::hidden($name, false).Form::checkbox($name, true, $default);
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.$checkbox.'</div>';
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .$checkbox
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -169,7 +173,10 @@ Form::macro('smartText',
     function ($name, $title, $default = null)
     {
         $value = Form::getDefaultValue($name, $default);
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::text($name, $value).'</div>';
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .Form::text($name, $value)
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -186,7 +193,10 @@ Form::macro('smartEmail',
     function ($name = 'email', $title = 'Email', $default = null)
     {
         $value = Form::getDefaultValue($name, $default);
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::email($name, $value).'</div>';
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .Form::email($name, $value)
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -200,7 +210,10 @@ Form::macro('smartPassword',
      */
     function ($name = 'password', $title = 'Password')
     {
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::password($name).'</div>';
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .Form::password($name)
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -226,7 +239,10 @@ Form::macro('smartTextarea',
             $textarea   = Form::textarea($name, $value);
         }
 
-        $partial    = '<div class="form-group">'.$label.' '.$textarea.'</div>';
+        $partial    = Form::smartFieldOpen()
+            .$label
+            .$textarea
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -243,7 +259,10 @@ Form::macro('smartNumeric',
     function ($name, $title, $default = null)
     {
         $value = Form::getDefaultValue($name, $default);
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::numeric($name, $value).'</div>';
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .Form::numeric($name, $value)
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -263,10 +282,10 @@ Form::macro('smartSelect',
     {
         $value = Form::getDefaultValue($name, $default);
 
-        $partial = '<div class="form-group">'
-            .Form::label($name, $title).' '
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
             .Form::select($name, $options, $value, $attributes)
-            .'</div>';
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -279,10 +298,10 @@ Form::macro('smartSelectForeign',
      * @param  string   $name     The name of the value, e. g. "user_id"
      * @param  string   $title    The title of the select element
      * @param  mixed    $default  Null or an ID
-     * @param  bool     $notEmpty If true the result cannot be empty (if it's empty throw an error)
+     * @param  bool     $nullable If true the result can be empty and a "none selected" option is added
      * @return string
      */
-    function ($name, $title, $default = null, $notEmpty = true)
+    function ($name, $title, $default = null, $nullable = false)
     {
         $pos = strrpos($name, '_');
         if ($pos === false) {
@@ -293,11 +312,12 @@ Form::macro('smartSelectForeign',
 
         $entities = DB::table(str_plural($model))->get();
 
-        if ($notEmpty and sizeof($entities) == 0) {
-            throw new Exception('Missing entities for foreign relationship.');
+        if (! $nullable and sizeof($entities) == 0) {
+            throw new MsgException(trans('app.list_empty', [$model]));
         }
 
-        $options = array();
+        $options = [];
+        if ($nullable) $options[''] = '-';
         foreach ($entities as $entity) {
             if (isset($entity->title)) {
                 $entityTitle = 'title';
@@ -312,10 +332,10 @@ Form::macro('smartSelectForeign',
 
         $value = Form::getDefaultValue($name, $default);
         
-        $partial = '<div class="form-group">'
-            .Form::label($name, $title).' '
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
             .Form::select($name, $options, $value)
-            .'</div>';
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -329,17 +349,19 @@ Form::macro('smartSelectRelation',
      * @param  string   $title          The caption of the select element
      * @param  string   $sourceModel    Name of the source model
      * @param  mixed    $default        Null, an ID or an an array of IDs (if multiple selected items are possible)
-     * @param  bool     $notEmpty       If true the select element cannot be empty (if it's empty throw an error)
+     * @param  bool     $nullable       If true the select element can be empty
      * @return string
      */
-    function ($relationName, $title, $sourceModel, $default = null, $notEmpty = true)
+    function ($relationName, $title, $sourceModel, $default = null, $nullable = false)
     {
         $relations = $sourceModel::relations();
         
         if (isset($relations[$relationName])) {
             $relation = $relations[$relationName];
         } else {
-            throw new Exception("Error: Relation '{$relationName}' does not exist for entity of type '{$sourceModel}'.");
+            throw new Exception(
+                "Error: Relation '{$relationName}' does not exist for entity of type '{$sourceModel}'."
+            );
         }
 
         $modelFull  = $relation[1]; // Fully classified name of the foreign model
@@ -349,14 +371,14 @@ Form::macro('smartSelectRelation',
 
         $entities = $modelFull::all();
 
-        if ($notEmpty and sizeof($entities) == 0) {
-            throw new Exception("Missing entities for relation '{$relationName}'.");
+        if (! $nullable and sizeof($entities) == 0) {
+            throw new MsgException(trans('app.list_empty', [ucfirst($relationName)]));
         }
 
         /*
          * Find an attribute that will be displayed as title
          */
-        $options = array();
+        $options = [];
         foreach ($entities as $entity) {
             if (isset($relation['title'])) {
                 $entityTitle = $relation['title'];
@@ -411,11 +433,11 @@ Form::macro('smartSelectRelation',
         }
         
         $name       = '_relation_'.$relationName;
-        $partial    = '<div class="form-group">'
-            .Form::label($name, $title).' '
+        $partial    = Form::smartFieldOpen()
+            .Form::label($name, $title)
             .Form::hidden($name, false) // Dummy so even if no option is selected some data is sent
             .Form::select($name, $options, $default, $elementAttributes)
-            .'</div>';
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -430,7 +452,10 @@ Form::macro('smartImageFile',
      */
     function ($name = 'image', $title = 'Image')
     {
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::file($name).'</div>';
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .Form::file($name)
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -461,7 +486,11 @@ Form::macro('smartCaptcha',
     {
         $label      = Form::label($name, $title);
         $image      = HTML::image(URL::route('captcha'), 'Captcha');
-        $partial    = '<div class="form-group">'.$label.' '.$image.' '.Form::text($name).'</div>';
+        $partial    = Form::smartFieldOpen()
+            .$label
+            .$image.' '
+            .Form::text($name)
+            .Form::smartFieldClose();
         return $partial;
     }
 );
@@ -480,7 +509,7 @@ Form::macro('smartDateTime',
         $value = Form::getDefaultValue($name, $default);
 
         $partial = '<div class="form-group date-time-picker input-append date">'
-            .Form::label($name, $title).' '
+            .Form::label($name, $title)
             .Form::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
             .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
             .'</div>';
@@ -488,19 +517,23 @@ Form::macro('smartDateTime',
     }
 );
 
-Form::macro('smartTagify', 
+Form::macro('smartTags', 
     /**
-     * Create HTML code for a text input element.
+     * Create HTML code for a tag element.
      * 
-     * @param  string       $name       The name of the input element
-     * @param  string       $title      The title of the input element
+     * @param  string       $name       The name of the tag element
+     * @param  string       $title      The title of the tag element
      * @param  string|null  $default    The default value
      * @return string
      */
     function ($name, $title, $default = null)
     {
         $value = Form::getDefaultValue($name, $default);
-        $partial = '<div class="form-group">'.Form::label($name, $title).' '.Form::text($name, $value, ['data-role' => 'tagsinput', 'placeholder' => 'Add tags']).'</div>';
+
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .Form::text($name, $value, ['data-role' => 'tagsinput', 'placeholder' => 'Add tags'])
+            .Form::smartFieldClose();
         return $partial;
     }
 );
