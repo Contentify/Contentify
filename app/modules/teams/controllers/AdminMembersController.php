@@ -39,9 +39,17 @@ class AdminMembersController extends BackController {
             'searchFor' => 'username',
             'actions'   => null
         ]);
+        
         $this->pageOutput(HTML::script('libs/members.js'));
     }
 
+    /**
+     * Delete a team membership
+     * 
+     * @param  int $userId
+     * @param  int $teamId
+     * @return Response
+     */
     public function deleteDelete($userId, $teamId)
     {
         $user = User::findOrFail($userId);
@@ -56,6 +64,12 @@ class AdminMembersController extends BackController {
         return json_encode($data);
     }
 
+    /**
+     * Return form for joining a team
+     * 
+     * @param  int $userId
+     * @return Response
+     */
     public function getAdd($userId)
     {
         $ids = DB::table('team_user')->whereUserId($userId)->lists('team_id');
@@ -73,6 +87,13 @@ class AdminMembersController extends BackController {
         }       
     }
 
+    /**
+     * Create a team membership
+     * 
+     * @param  int $userId
+     * @param  int $teamId
+     * @return Response
+     */
     public function postAdd($userId, $teamId)
     {
         $user = User::findOrFail($userId);
@@ -90,6 +111,13 @@ class AdminMembersController extends BackController {
         return json_encode($data);
     }
 
+    /**
+     * Return form for team membership details
+     * 
+     * @param  int $userId
+     * @param  int $teamId
+     * @return Response
+     */
     public function getEdit($userId, $teamId)
     {
         $user = User::findOrFail($userId);
@@ -103,6 +131,13 @@ class AdminMembersController extends BackController {
         return Response::make(0);
     }
 
+    /**
+     * Update team membership details
+     * 
+     * @param  int $userId
+     * @param  int $teamId
+     * @return Response
+     */
     public function postUpdate($userId, $teamId)
     {
         $task           = Input::get('task');
