@@ -8,7 +8,7 @@ $(document).ready(function()
         /*
          * Initizalize meta variables
          */
-        this.baseUrl    = $('meta[name="base-url"]').attr('content');
+        this.baseUrl    = $('meta[name="base-url"]').attr('content') + '/';
         this.csrfToken  = $('meta[name="csrf-token"]').attr('content');
         this.locale     = $('meta[name="locale"]').attr('content');
         this.dateFormat = $('meta[name="date-format"]').attr('content');
@@ -18,7 +18,7 @@ $(document).ready(function()
          */
         jQuery.ajaxPrefilter(function(options, request, xhr) 
         {
-            if (! xhr.crossDomain)  {
+            if (! xhr.crossDomain) {
                 options.data += '&_token=' + frameWork.csrfToken;
             }
         });

@@ -331,8 +331,10 @@ abstract class BaseController extends Controller {
             if (Session::get('recycleBinMode')) {
                 $entities = $entities->withTrashed(); // Show trashed
             }
-            if ($data['filter']) {
+            if ($data['filter'] === true) {
                 $entities = $entities->filter();
+            } elseif (is_callable($data['filter'])) {
+                $entities = $data['filter']($entities);
             }
             if ($data['search'] and $data['searchFor']) {
                 $entities = $entities->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string

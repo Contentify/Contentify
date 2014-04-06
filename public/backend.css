@@ -147,6 +147,8 @@ ul.pagination li.disabled { display: none }
 .page-visitors table.days th { width: 50% }
 .page-visitors table.days tr.hover td { background-color: #DDD; background-image: none }
 
+.page-members div.data { display: none }
+
 /*
  * Mainlayout
  */

@@ -132,8 +132,9 @@
                         <div class="silverheader"><div class="menu-head website"><span class="hidden">Website</span></div></div>
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.users.index') }}">Users</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=members">Members</a></div>
-                                <div class="menu3"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/teams', 'Teams') }}</div>
+                                <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/teams', 'Teams') }}</div>
+                                <div class="menu3"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/members', 'Team-Members') }}</div>  
+                                
 
                                 <div class="menu3"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
                                 <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>
