@@ -114,6 +114,7 @@ ul.pagination li.disabled { display: none }
 .boxer-confirm { width: 300px }
 .boxer-confirm h2 { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: normal; }
 .boxer-confirm button { margin-right: 5px }
+.boxer-confirm label { width: 30% !important }
 
 /* Datetime Picker */
 .date-time-picker input { width: 128px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; }
@@ -148,6 +149,7 @@ ul.pagination li.disabled { display: none }
 .page-visitors table.days tr.hover td { background-color: #DDD; background-image: none }
 
 .page-members div.data { display: none }
+.page-members td a { cursor: pointer; }
 
 /*
  * Mainlayout

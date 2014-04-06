@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Teams\Controllers;
 
 use App\Modules\Teams\Models\Team;
-use Response, View, HTML, DB, User, BackController;
+use Input, Response, View, HTML, DB, User, BackController;
 
 class AdminMembersController extends BackController {
 
@@ -67,7 +67,7 @@ class AdminMembersController extends BackController {
         }
             
         if (sizeof($teams) > 0) {
-            return View::make('teams::members_edit', compact('teams', 'user'));
+            return View::make('teams::admin_members_team', compact('teams', 'user'));
         } else {
             return Response::make('');
         }       
@@ -94,24 +94,28 @@ class AdminMembersController extends BackController {
     {
         $user = User::findOrFail($userId);
 
-        foreach ($users->teams as $team) {
+        foreach ($user->teams as $team) {
             if ($team->id == $teamId) {
-                //$team->pivot->task;
+                return View::make('teams::admin_members_edit', compact('team'));
             }
         }
         
+        return Response::make(0);
     }
 
     public function postUpdate($userId, $teamId)
     {
-        $task           = null;
-        $description    = null;
-        $position       = 0;
+        $task           = Input::get('task');
+        $description    = Input::get('description');
+        $position       = (int) Input::get('position');
+
         DB::table('team_user')->whereUserId($userId)->whereTeamId($teamId)->update([
             'task'          => $task,
             'description'   => $description,
             'position'      => $position,
         ]);
+
+        return Response::make(1);
     }
 
 }

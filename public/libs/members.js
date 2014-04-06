@@ -20,10 +20,7 @@ $(document).ready(function()
                                 }).success(function(data)
                                 {
                                     render($td, userId, JSON.parse(data));
-                                }).error(function(response)
-                                {
-                                    var x=1;
-                                });
+                                })
                             })
                     )
                     .append(
@@ -35,11 +32,24 @@ $(document).ready(function()
                                     type: 'GET'
                                 }).success(function(data)
                                 {
-                                    $.boxer($(data));
-                                });
+                                    $.boxer($(data).append($('<button>').text('Save').click(function(event)
+                                    {
+                                        $.boxer('close');
+
+                                        $.ajax({
+                                            url: contentify.baseUrl + 'admin/members/update/' + userId + '/' + id,
+                                            type: 'POST',
+                                            data: {
+                                                task:           $('#task').val(),
+                                                description:    $('#description').val(),
+                                                position:       $('#position').val(),
+                                            }
+                                        });
+                                    })));
+                                })
                             })
                     )
-                    .append(name)
+                    .append(' ' + name)
             );
         });
         $td.append(
@@ -63,10 +73,7 @@ $(document).ready(function()
                                     }).success(function(data)
                                     {
                                         render($td, userId, JSON.parse(data));
-                                    }).error(function(response)
-                                    {
-                                        console.log(response);
-                                    });
+                                    })
                                 })
                             ));
                         }
