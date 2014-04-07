@@ -7,7 +7,7 @@
     <div class="content">
         @if ($news->newscat->image)
         <div class="image">
-            <img src="{{ asset('uploads/newscats/'.$news->newscat->image) }}" alt="{{{ $news->newscat->title }}}">
+            <img src="{{ $news->newscat->uploadPath().$news->newscat->image }}" alt="{{{ $news->newscat->title }}}">
         </div>
         @endif
         <div class="intro">

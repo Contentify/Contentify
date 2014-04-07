@@ -5,7 +5,7 @@
         <li>
             <span class="title">{{ trans('app.name') }}:</span>
             @if ($user->country->icon)
-            {{ HTML::image(asset('uploads/countries/'.$user->country->icon), $user->country->title) }}
+            {{ HTML::image($user->country->uploadPath().$user->country->icon, $user->country->title) }}
             @endif
              {{{ $user->first_name }}} {{{ $user->last_name }}}
         </li>

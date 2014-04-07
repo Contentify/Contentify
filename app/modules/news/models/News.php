@@ -64,7 +64,7 @@ class News extends Ardent {
 
         $og->title($this->title)
             ->type('article')
-            ->image('uploads/newscats/'.$this->newscat->image)
+            ->image($this->newscat->uploadPath().$this->newscat->image)
             ->description($this->intro)
             ->url();
 

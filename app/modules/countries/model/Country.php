@@ -14,4 +14,5 @@ class Country extends Ardent {
         'title' => 'required',
         'code'  => 'required|min:2|max:3',
     ];
+    
 }

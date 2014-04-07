@@ -103,7 +103,7 @@ abstract class BackController extends BaseController {
                     }
 
                     $extension          = $file->getClientOriginalExtension();
-                    $filePath           = public_path().'/uploads/'.strtolower($this->controller);
+                    $filePath           = $entity->uploadPath();
                     $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
                     $entity->$fieldName = $fileName;
@@ -261,13 +261,13 @@ abstract class BackController extends BaseController {
                         }
                     }
 
-                    $oldFile = public_path().'/uploads/'.strtolower($this->controller).'/'.$entity->$fieldName;
+                    $oldFile = $entity->uploadPath().$entity->$fieldName;
                     if (File::isFile($oldFile)) {
                         File::delete($oldFile); // We need to delete the old file or we can have "123.jpg" & "123.png"
                     }
 
                     $extension          = $file->getClientOriginalExtension();
-                    $filePath           = public_path().'/uploads/'.strtolower($this->controller);
+                    $filePath           = $entity->uploadPath();
                     $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
                     $entity->$fieldName = $fileName;
@@ -317,10 +317,10 @@ abstract class BackController extends BaseController {
          * Delete related files even if it's only a soft deletion.
          */
         if (! $entity->trashed() and isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
-            $filePath   = public_path().'/uploads/'.strtolower($this->controller);
+            $filePath = $entity->uploadPath();
 
             foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
-                File::delete($filePath.'/'.$entity->$fieldName);
+                File::delete($filePath.$entity->$fieldName);
 
                 /*
                  * Delete image thumbnails
@@ -330,7 +330,7 @@ abstract class BackController extends BaseController {
                     if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
 
                     foreach ($thumbnails as $thumbnail) {
-                        $fileName = $filePath.'/'.$thumbnail.'/'.$entity->$fieldName;
+                        $fileName = $filePath.$thumbnail.'/'.$entity->$fieldName;
                         if (File::isFile($fileName)) {
                             File::delete($fileName);
                         }

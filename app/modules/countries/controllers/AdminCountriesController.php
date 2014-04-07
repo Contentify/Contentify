@@ -24,7 +24,7 @@ class AdminCountriesController extends BackController {
             ],
             'tableRow' => function($country)
             {
-                $fileName = 'uploads/countries/'.$country->icon;
+                $fileName = $country->uploadPath().$country->icon;
                 if (File::exists($fileName)) {
                     $icon = HTML::image(asset($fileName), $country->title);
                 } else{

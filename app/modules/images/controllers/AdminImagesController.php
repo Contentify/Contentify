@@ -25,10 +25,10 @@ class AdminImagesController extends BackController {
             'tableRow' => function($image)
             {
                 $imgCode = HTML::image(
-                    asset('uploads/images/100/'.$image->image), 
+                    $entity->uploadPath().'100/'.$image->image, 
                     'Image-Preview', ['class' => 'image']
                 );
-                $preview = '<a href="'.asset('uploads/images/'.$image->image).'">'.$imgCode.'</a><br>'.$image->tags;
+                $preview = '<a href="'.$image->uploadPath().$image->image.'">'.$imgCode.'</a><br>'.$image->tags;
 
                 return [
                     $image->id,

@@ -24,7 +24,7 @@ class AdminGamesController extends BackController {
             'tableRow' => function($game)
             {
                 $hover = new Hover();
-                if ($game->icon) $hover->image(asset('uploads/games/'.$game->icon));
+                if ($game->icon) $hover->image($game->uploadPath().$game->icon);
 
                 return [
                     $game->id,

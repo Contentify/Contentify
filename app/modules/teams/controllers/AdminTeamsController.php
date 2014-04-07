@@ -24,7 +24,7 @@ class AdminTeamsController extends BackController {
             'tableRow' => function($team)
             {
                 $hover = new Hover();
-                if ($team->icon) $hover->image(asset('uploads/teams/'.$team->icon));
+                if ($team->icon) $hover->image($team->uploadPath().$team->icon);
 
                 return [
                     $team->id,
