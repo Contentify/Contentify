@@ -169,6 +169,8 @@ abstract class BackController extends BaseController {
 
                             if ($entity->isFillable($attribute)) {
                                 $entity->$attribute = $value;
+                            } else {
+                                Log::warning("Form tries to fill guarded attribute '$attribute'.");
                             }
 
                             break;
@@ -186,8 +188,12 @@ abstract class BackController extends BaseController {
                                 }
                             }
 
-                            if (sizeof($insertion) > 0) {
-                                DB::table($relation['table'])->insert($insertion);
+                            if ($entity->isFillable('relation_'.$name)) {
+                                if (sizeof($insertion) > 0) {
+                                    DB::table($relation['table'])->insert($insertion);
+                                }
+                            } else {
+                                Log::warning("Form tries to fill guarded pivot table '$relation[table]' for relation '$name'.");
                             }
 
                             break;
@@ -197,7 +203,7 @@ abstract class BackController extends BaseController {
                             );
                     }
                 } else {
-                    Log::warn("Unknown relation '{$name}'."); // Just log it, don't throw an exception.
+                    Log::warning("Unknown relation '{$name}'."); // Just log it, don't throw an exception.
                 }
             }
         }

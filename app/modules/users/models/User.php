@@ -5,7 +5,7 @@ use Sentry, Ardent;
 
 class User extends BaseUser {
 
-    protected $fillable = ['activated'];
+    protected $fillable = ['activated', 'relation_groups', 'relation_teams'];
 
     public static $relationsData = [
         'groups'    => [Ardent::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
