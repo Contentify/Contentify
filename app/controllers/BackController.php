@@ -222,6 +222,10 @@ abstract class BackController extends BaseController {
         $model = $this->modelFullName;
         $entity = $model::findOrFail($id);
 
+        if (! $entity->modifiable()) {
+            throw new Exception("Error: Entity $model is not modifiable.");
+        }
+
         $this->pageView(
             strtolower($this->module).'::'.$this->formTemplate, 
             ['entity' => $entity, 'modelName' => $model]
@@ -239,6 +243,10 @@ abstract class BackController extends BaseController {
 
         $model = $this->modelFullName;
         $entity = $model::findOrFail($id);
+
+        if (! $entity->modifiable()) {
+            throw new Exception("Error: Entity $model is not modifiable.");
+        }
 
         $entity->updater_id = user()->id;
         $entity->fill(Input::all());
@@ -318,6 +326,10 @@ abstract class BackController extends BaseController {
 
         $model  = $this->modelFullName;
         $entity = $model::withTrashed()->find($id);
+
+        if (! $entity->modifiable()) {
+            throw new Exception("Error: Entity $model is not modifiable.");
+        }
 
         /*
          * Delete related files even if it's only a soft deletion.

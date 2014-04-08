@@ -23,6 +23,8 @@
         {
             var $element    = $('[name=permissions]');
             var value       = $element.val();
+
+            if (! value) value = '{}'; // parse() cannot parse an empty value
             var permissions = JSON.parse(value);
 
             var name        = $(this).attr('name');

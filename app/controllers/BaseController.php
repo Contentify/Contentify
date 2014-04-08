@@ -227,10 +227,10 @@ abstract class BaseController extends Controller {
      * Generates an index page from a model and $data
      * 
      * @param  array  $data             Array with information how to build the form. See $defaults for details.
-     * @param  string $userInterfcae    Frontend ("front") or backend ("admin")?
+     * @param  string $userInterface    Frontend ("front") or backend ("admin")?
      * @return void
      */
-    protected function indexPage($data, $userInterfcae = 'admin')
+    protected function indexPage($data, $userInterface = 'admin')
     {
         if (! $this->checkAccessRead()) return;
         
@@ -264,11 +264,11 @@ abstract class BaseController extends Controller {
                 $type = strtolower($button);
                 switch ($type) {
                     case 'new':
-                        $url = route($userInterfcae.'.'.strtolower($this->controller).'.create');
+                        $url = route($userInterface.'.'.strtolower($this->controller).'.create');
                         $buttons .= button(trans('app.create'), $url, 'add');
                         break;
                     case 'category':
-                        $url = route($userInterfcae.'.'.strtolower($this->module).'cats.index');
+                        $url = route($userInterface.'.'.strtolower($this->module).'cats.index');
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
                     default:
@@ -321,7 +321,7 @@ abstract class BaseController extends Controller {
         /*
          * Retrieve entities from DB (or array) and create paginator
          */
-        $perPage = Config::get('app.'.$userInterfcae.'ItemsPerPage');
+        $perPage = Config::get('app.'.$userInterface.'ItemsPerPage');
 
         if ($data['dataSource']) {
             $entities   = $data['dataSource'];
@@ -378,26 +378,30 @@ abstract class BaseController extends Controller {
                         $action = strtolower($action);
                         switch ($action) {
                             case 'edit':
-                                $actionsCode .= image_link('page_edit', 
-                                    trans('app.edit'), 
-                                    route($userInterfcae.'.'.strtolower($this->controller).'.edit', [$entity->id]));
+                                if ($entity->modifiable()) {
+                                    $actionsCode .= image_link('page_edit', 
+                                        trans('app.edit'), 
+                                        route($userInterface.'.'.strtolower($this->controller).'.edit', [$entity->id]));
+                                }
                                 break;
                             case 'delete':
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
-                                $actionsCode .= image_link('bin', 
-                                    trans('app.delete'), 
-                                    route(
-                                        $userInterfcae.'.'.strtolower($this->controller).'.destroy', 
-                                        [$entity->id]
-                                    ).$urlParams,
-                                    false,
-                                    ['data-confirm-delete' => true]);
+                                if ($entity->modifiable()) {
+                                    $actionsCode .= image_link('bin', 
+                                        trans('app.delete'), 
+                                        route(
+                                            $userInterface.'.'.strtolower($this->controller).'.destroy', 
+                                            [$entity->id]
+                                        ).$urlParams,
+                                        false,
+                                        ['data-confirm-delete' => true]);
+                                }
                                 break;
                             case 'restore':
                                 if ($entity->trashed()) {
                                     $actionsCode .= image_link('undo', 
                                     trans('app.restore'), 
-                                    route($userInterfcae.'.'.strtolower($this->controller).'.restore', [$entity->id]));
+                                    route($userInterface.'.'.strtolower($this->controller).'.restore', [$entity->id]));
                                 }
                                 break;
                         }

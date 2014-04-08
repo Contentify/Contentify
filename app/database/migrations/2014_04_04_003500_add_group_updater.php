@@ -13,6 +13,7 @@ class AddGroupUpdater extends Migration {
     {
         Schema::table('groups', function($table)
         {
+            $table->integer('creator_id')->unsigned()->default(0);
             $table->integer('updater_id')->unsigned()->default(0);
         });
     }

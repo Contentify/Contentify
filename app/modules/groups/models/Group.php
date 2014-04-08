@@ -20,6 +20,11 @@ class Group extends Ardent {
         'name'     => 'required',
     ];
 
+    public function modifiable()
+    {
+        return ($this->id > 5);
+    }
+
     /**
      * Creates an array of permissions 
      * (Permission model with name, possible values and current value)

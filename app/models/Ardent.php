@@ -41,4 +41,16 @@ class Ardent extends OriginalArdent {
         return url('/').'/uploads/'.$dir.'/';
     }
 
+    /**
+     * Decides if a model is modifiable.
+     * This includes updating and deleting.
+     * Affects only parts of the CMS (not of Laravel).
+     * 
+     * @return bool
+     */
+    public function modifiable()
+    {
+        return true;
+    }
+
 }
