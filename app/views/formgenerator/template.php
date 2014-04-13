@@ -2,8 +2,8 @@
 
 {{ Form::errors($errors) }}
 
-@if (isset($entity))
-{{ Form::model($entity, ['route' => ['admin.<?php echo($modulename) ?>.update', $entity->id], 'method' => 'PUT']) }}
+@if (isset($model))
+{{ Form::model($model, ['route' => ['admin.<?php echo($modulename) ?>.update', $model->id], 'method' => 'PUT']) }}
 @else
 {{ Form::open(['url' => 'admin/<?php echo($modulename) ?>']) }}
 @endif

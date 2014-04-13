@@ -119,9 +119,9 @@ class AdminConfigController extends BackController {
             case 'mysql':
                 $dump = new MySqlDump();
 
-                $con = Config::get('database.connections.mysql');
-                $time = time();
-                $filename = storage_path().'/database/'.$time.'.sql';
+                $con        = Config::get('database.connections.mysql');
+                $time       = time();
+                $filename   = storage_path().'/database/'.$time.'.sql';
 
                 $dump->host     = $con['host'];
                 $dump->user     = $con['username'];

@@ -18,13 +18,13 @@ abstract class BaseController extends Controller {
      * The name of the model (without class path)
      * @var string
      */
-    protected $model = '';
+    protected $modelName = '';
 
     /**
      * The name of the model (with class path)
      * @var string
      */
-    protected $modelFullName = '';
+    protected $modelClass = '';
 
     /**
      * The name of the form template (for CRUD auto handling)
@@ -45,11 +45,11 @@ abstract class BaseController extends Controller {
         /*
          * Set model full name
          */
-        if (! $this->modelFullName) {
-            if (str_contains($this->model, '\\')) {
-                $this->modelFullName = $this->model;
+        if (! $this->modelClass) {
+            if (str_contains($this->modelName, '\\')) {
+                $this->modelClass = $this->modelName;
             } else {
-                $this->modelFullName = 'App\Modules\\'.$this->module.'\Models\\'.$this->model;
+                $this->modelClass = 'App\Modules\\'.$this->module.'\Models\\'.$this->modelName;
             }
         }
 
@@ -57,7 +57,7 @@ abstract class BaseController extends Controller {
          * Set CRUD form template name
          */
         if (! $this->formTemplate) {
-            if ($this->module === str_plural($this->model)) {
+            if ($this->module === str_plural($this->modelName)) {
                 $this->formTemplate = 'form';
             } else {
                 // If modelname & modulename differ, the form name should be e. g. "users_form":
@@ -253,7 +253,7 @@ abstract class BaseController extends Controller {
 
         $data = array_merge($defaults, $data);
 
-        $model = $this->modelFullName;
+        $modelClass = $this->modelClass;
 
         /*
          * Generate Buttons
@@ -306,9 +306,9 @@ abstract class BaseController extends Controller {
         }
 
         /*
-         * Switch recycle bin mode: Show soft deleted entities if recycle bin mode is enabled.
+         * Switch recycle bin mode: Show soft deleted models if recycle bin mode is enabled.
          */
-        if ((new $model)->isSoftDeleting()) { // Create an entity because isSoftDeleting() is tied to an instance
+        if ((new $modelClass)->isSoftDeleting()) { // Create an model because isSoftDeleting() is tied to an instance
             $recycleBinMode = Input::get('binmode');
             if ($recycleBinMode !== null) {
                 Session::put('recycleBinMode', (bool) $recycleBinMode);
@@ -319,30 +319,30 @@ abstract class BaseController extends Controller {
         }
 
         /*
-         * Retrieve entities from DB (or array) and create paginator
+         * Retrieve models from DB (or array) and create paginator
          */
         $perPage = Config::get('app.'.$userInterface.'ItemsPerPage');
 
         if ($data['dataSource']) {
-            $entities   = $data['dataSource'];
+            $models     = $data['dataSource'];
             $paginator  = null;
         } else {
-            $entities = $model::orderBy($data['sortby'], $data['order']);
+            $models = $modelClass::orderBy($data['sortby'], $data['order']);
             if (Session::get('recycleBinMode')) {
-                $entities = $entities->withTrashed(); // Show trashed
+                $models = $models->withTrashed(); // Show trashed
             }
             if ($data['filter'] === true) {
-                $entities = $entities->filter();
+                $models = $models->filter();
             } elseif (is_callable($data['filter'])) {
-                $entities = $data['filter']($entities);
+                $models = $data['filter']($models);
             }
             if ($data['search'] and $data['searchFor']) {
-                $entities = $entities->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string
+                $models = $models->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string
             }
 
-            $entities = $entities->paginate($perPage);
+            $models = $models->paginate($perPage);
 
-            $paginator = $entities->appends([
+            $paginator = $models->appends([
                 'sortby'    => $data['sortby'], 
                 'order'     => $data['order'], 
                 'search'    => $data['search']
@@ -368,8 +368,8 @@ abstract class BaseController extends Controller {
          * Prepare the rows
          */
         $tableRows = array();
-        foreach ($entities as $entity) {
-            $row = $data['tableRow']($entity);
+        foreach ($models as $model) {
+            $row = $data['tableRow']($model);
 
             if (is_array($data['actions']) and sizeof($data['actions']) > 0) {
                 $actionsCode = '';
@@ -378,44 +378,44 @@ abstract class BaseController extends Controller {
                         $action = strtolower($action);
                         switch ($action) {
                             case 'edit':
-                                if ($entity->modifiable()) {
+                                if ($model->modifiable()) {
                                     $actionsCode .= image_link('page_edit', 
                                         trans('app.edit'), 
-                                        route($userInterface.'.'.strtolower($this->controller).'.edit', [$entity->id]));
+                                        route($userInterface.'.'.strtolower($this->controller).'.edit', [$model->id]));
                                 }
                                 break;
                             case 'delete':
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
-                                if ($entity->modifiable()) {
+                                if ($model->modifiable()) {
                                     $actionsCode .= image_link('bin', 
                                         trans('app.delete'), 
                                         route(
                                             $userInterface.'.'.strtolower($this->controller).'.destroy', 
-                                            [$entity->id]
+                                            [$model->id]
                                         ).$urlParams,
                                         false,
                                         ['data-confirm-delete' => true]);
                                 }
                                 break;
                             case 'restore':
-                                if ($entity->trashed()) {
+                                if ($model->trashed()) {
                                     $actionsCode .= image_link('undo', 
                                     trans('app.restore'), 
-                                    route($userInterface.'.'.strtolower($this->controller).'.restore', [$entity->id]));
+                                    route($userInterface.'.'.strtolower($this->controller).'.restore', [$model->id]));
                                 }
                                 break;
                         }
                         $actionsCode .= ' ';
                     }
                     if (is_callable($action)) {
-                        $actionsCode .= $action($entity);
+                        $actionsCode .= $action($model);
                     }
                 }
                 $row[] = $actionsCode;
             }
 
             if (is_callable($data['actions'])) {
-                $row[] = $data['actions']($entity);
+                $row[] = $data['actions']($model);
             }
 
             $tableRows[] = $row;

@@ -1,7 +1,7 @@
 {{ Form::errors($errors) }}
 
-@if (isset($entity))
-    {{ Form::model($entity, ['route' => ['admin.groups.update', $entity->id], 'method' => 'PUT']) }}
+@if (isset($model))
+    {{ Form::model($model, ['route' => ['admin.groups.update', $model->id], 'method' => 'PUT']) }}
 @else
     {{ Form::open(['url' => 'admin/groups']) }}
 @endif
@@ -9,7 +9,7 @@
 
     {{ Form::hidden('permissions') }}
 
-    @foreach ($modelName::permissions((isset($entity)) ? $entity->id : null) as $permission)
+    @foreach ($modelName::permissions((isset($model)) ? $model->id : null) as $permission)
         {{ Form::smartSelect($permission->name, ucfirst($permission->name), $permission->values, $permission->current, ['class' => 'permission']) }}
     @endforeach
 

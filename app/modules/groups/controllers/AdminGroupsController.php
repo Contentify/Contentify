@@ -9,7 +9,7 @@ class AdminGroupsController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'Group';
+        $this->modelName = 'Group';
 
         parent::__construct();
     }

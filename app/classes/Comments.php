@@ -7,8 +7,8 @@ class Comments {
     /**
      * Directly outputs comments and the comment form.
      * 
-     * @param  string $foreignType Identifier for the content the comments are related to (usually a model)
-     * @param  int    $foreignId   ID, if the comments are related to a certain entity
+     * @param  string $foreignType Identifier for the content the comments are related to (usually a model class)
+     * @param  int    $foreignId   ID, if the comments are related to a certain model instance
      * @return string
      */
     public static function show($foreignType, $foreignId)

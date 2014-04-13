@@ -9,7 +9,7 @@ class AdminImagesController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'Image';
+        $this->modelName = 'Image';
 
         parent::__construct();
     }
@@ -25,7 +25,7 @@ class AdminImagesController extends BackController {
             'tableRow' => function($image)
             {
                 $imgCode = HTML::image(
-                    $entity->uploadPath().'100/'.$image->image, 
+                    $image->uploadPath().'100/'.$image->image, 
                     'Image-Preview', ['class' => 'image']
                 );
                 $preview = '<a href="'.$image->uploadPath().$image->image.'">'.$imgCode.'</a><br>'.$image->tags;

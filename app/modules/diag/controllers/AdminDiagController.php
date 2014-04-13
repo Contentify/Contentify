@@ -71,4 +71,5 @@ class AdminDiagController extends BackController {
 
         return null;
     }
+    
 }

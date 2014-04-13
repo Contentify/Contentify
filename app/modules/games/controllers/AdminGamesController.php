@@ -9,7 +9,7 @@ class AdminGamesController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'Game';
+        $this->modelName = 'Game';
 
         parent::__construct();
     }

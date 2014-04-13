@@ -9,7 +9,7 @@ class AdminCountriesController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'Country';
+        $this->modelName = 'Country';
 
         parent::__construct();
     }

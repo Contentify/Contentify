@@ -24,4 +24,14 @@ class User extends BaseUser {
         return static::$relationsData;
     }
 
+    /**
+     * This is a copy of an Ardent method.
+     * 
+     * @return bool
+     */
+    public function modifiable()
+    {
+        return true;
+    }
+
 }

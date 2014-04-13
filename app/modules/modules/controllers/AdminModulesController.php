@@ -9,7 +9,7 @@ class AdminModulesController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'Module';
+        $this->modelName = 'Module';
 
         parent::__construct();
     }

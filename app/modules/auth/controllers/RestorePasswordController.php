@@ -11,7 +11,7 @@ class RestorePasswordController extends FrontController {
     }
 
     /**
-     * This method will generate a reset password code, save it with the user entity
+     * This method will generate a reset password code, save it with the user model
      * and send it to the user's email address.
      */
     public function postIndex()

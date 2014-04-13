@@ -8,7 +8,7 @@ class AdminUsersController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'User';
+        $this->modelName = 'User';
 
         parent::__construct();
     }

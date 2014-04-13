@@ -15,10 +15,10 @@ class Comment extends Ardent {
     );
 
     /**
-     * Count the comments that are related to a certain foreign type (and entity).
+     * Count the comments that are related to a certain foreign type (model).
      * NOTE: The result of the SQL query is cached!
      * 
-     * @param  string   $foreignType Name of the foreign type
+     * @param  string   $foreignType Name of the foreign type (model)
      * @param  int      $foreignId   ID of the foreign type or null
      * @return int
      */

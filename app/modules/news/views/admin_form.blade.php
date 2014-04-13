@@ -2,14 +2,14 @@
 
 {{ Form::errors($errors) }}
 
-@if (isset($entity))
-{{ Form::model($entity, ['route' => ['admin.news.update', $entity->id], 'method' => 'PUT']) }}
+@if (isset($model))
+{{ Form::model($model, ['route' => ['admin.news.update', $model->id], 'method' => 'PUT']) }}
 @else
 {{ Form::open(['url' => 'admin/news']) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
-    {{ Form::smartSelectRelation('newscat', 'News '.trans('app.category'), $modelName, null) }}
-    {{ Form::smartSelectRelation('creator', trans('app.author'), $modelName, user()->id) }}
+    {{ Form::smartSelectRelation('newscat', 'News '.trans('app.category'), $modelClass, null) }}
+    {{ Form::smartSelectRelation('creator', trans('app.author'), $modelClass, user()->id) }}
     
     {{ Form::smartTextarea('intro', trans('news::intro')) }}
     {{ Form::smartTextarea('text', trans('app.text')) }}

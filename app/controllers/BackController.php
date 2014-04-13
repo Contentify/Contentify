@@ -52,7 +52,7 @@ abstract class BackController extends BaseController {
     }
 
     /**
-     * CRUD: create entity
+     * CRUD: create model
      */
     public function create()
     {
@@ -60,37 +60,37 @@ abstract class BackController extends BaseController {
 
         $this->pageView(
             strtolower($this->module).'::'.$this->formTemplate,
-            ['modelName' => $this->modelFullName]
+            ['modelClass' => $this->modelClass]
         );
     }
 
     /**
-     * CRUD: store entity
+     * CRUD: store model
      */
     public function store()
     {
         if (! $this->checkAccessCreate()) return;
 
-        $model = $this->modelFullName;
+        $modelClass = $this->modelClass;
 
-        $entity = new $model();
-        $entity->creator_id = user()->id;
-        $entity->updater_id = user()->id;
-        $entity->fill(Input::all());
-        $this->fillRelations($model, $entity);
+        $model = new $modelClass();
+        $model->creator_id = user()->id;
+        $model->updater_id = user()->id;
+        $model->fill(Input::all());
+        $this->fillRelations($modelClass, $model);
 
-        $okay = $entity->save();
+        $okay = $model->save();
 
         if (! $okay) {
             return Redirect::route('admin.'.strtolower($this->controller).'.create')
-                ->withInput()->withErrors($entity->validationErrors);
+                ->withInput()->withErrors($model->validationErrors);
         }
 
         /*
          * File (and image) handling
          */
-        if (isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
-            foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
+        if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
+            foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
                 if (Input::hasFile($fieldName)) {
                     $file = Input::file($fieldName);
 
@@ -103,11 +103,11 @@ abstract class BackController extends BaseController {
                     }
 
                     $extension          = $file->getClientOriginalExtension();
-                    $filePath           = $entity->uploadPath();
-                    $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
+                    $filePath           = $model->uploadPath();
+                    $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
-                    $entity->$fieldName = $fileName;
-                    $entity->forceSave(); // Save entity again, without validation
+                    $model->$fieldName  = $fileName;
+                    $model->forceSave(); // Save model again, without validation
 
                     /*
                      * Create thumbnails for images
@@ -129,24 +129,24 @@ abstract class BackController extends BaseController {
             }
         }
 
-        $this->messageFlash(trans('app.created', [$this->model]));
+        $this->messageFlash(trans('app.created', [$this->modelName]));
         if (Input::get('_form_apply')) {
-            return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($entity->id));
+            return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($model->id));
         } else {
             return Redirect::route('admin.'.strtolower($this->controller).'.index');
         }
     }
 
     /**
-     * Retrieve values from inputs (usually select elements) that deal with foreign entities
+     * Retrieve values from inputs (usually select elements) that deal with foreign models
      * 
-     * @param  string   $model  Name of the model
-     * @param  Model    $entity Object with this model type (by reference)
+     * @param  string   $modelClass  Full name of the model class
+     * @param  Model    $model       Object with this model type (by reference)
      * @return void
      */
-    protected function fillRelations($model, &$entity)
+    protected function fillRelations($modelClass, &$model)
     {
-        $relations = $model::relations();
+        $relations = $modelClass::relations();
 
         foreach (Input::all() as $name => $value) {
             if (starts_with($name, '_relation_')) {
@@ -167,28 +167,28 @@ abstract class BackController extends BaseController {
                         case 'belongsTo':
                             $attribute = $name.'_'.$key;
 
-                            if ($entity->isFillable($attribute)) {
-                                $entity->$attribute = $value;
+                            if ($model->isFillable($attribute)) {
+                                $model->$attribute = $value;
                             } else {
                                 Log::warning("Form tries to fill guarded attribute '$attribute'.");
                             }
 
                             break;
                         case 'belongsToMany':
-                            $sourceKey = class_basename(strtolower($model)).'_'.$entity->getKeyName();
-                            DB::table($relation['table'])->where($sourceKey, '=', $entity->id)->delete();
+                            $sourceKey = class_basename(strtolower($modelClass)).'_'.$model->getKeyName();
+                            DB::table($relation['table'])->where($sourceKey, '=', $model->id)->delete();
 
                             $insertion = [];
                             foreach ($value as $id) {
                                 if ($id) {
                                     $insertion[] = [
-                                        $sourceKey => $entity->id,
+                                        $sourceKey => $model->id,
                                         strtolower($foreignModel).'_'.$key => $id
                                     ];
                                 }
                             }
 
-                            if ($entity->isFillable('relation_'.$name)) {
+                            if ($model->isFillable('relation_'.$name)) {
                                 if (sizeof($insertion) > 0) {
                                     DB::table($relation['table'])->insert($insertion);
                                 }
@@ -199,7 +199,7 @@ abstract class BackController extends BaseController {
                             break;
                         default:
                             throw new Exception(
-                                "Error: Unkown relation type '{$relation[0]}' for entity of type '{$model}'."
+                                "Error: Unkown relation type '{$relation[0]}' for model of type '{$modelClass}'."
                             );
                     }
                 } else {
@@ -211,59 +211,59 @@ abstract class BackController extends BaseController {
     }
 
     /**
-     * CRUD: edit entity
+     * CRUD: edit model
      * 
-     * @param  int The id of the entitity
+     * @param  int The id of the model
      */
     public function edit($id)
     {
         if (! $this->checkAccessUpdate()) return;
 
-        $model = $this->modelFullName;
-        $entity = $model::findOrFail($id);
+        $modelClass = $this->modelClass;
+        $model      = $modelClass::findOrFail($id);
 
-        if (! $entity->modifiable()) {
-            throw new Exception("Error: Entity $model is not modifiable.");
+        if (! $model->modifiable()) {
+            throw new Exception("Error: Model $modelClass is not modifiable.");
         }
 
         $this->pageView(
             strtolower($this->module).'::'.$this->formTemplate, 
-            ['entity' => $entity, 'modelName' => $model]
+            ['model' => $model, 'modelClass' => $modelClass]
         );
     }
 
     /**
-     * CRUD: update entity
+     * CRUD: update model
      * 
-     * @param  int The id of the entitity
+     * @param  int The id of the model
      */
     public function update($id)
     {
         if (! $this->checkAccessUpdate()) return;
 
-        $model = $this->modelFullName;
-        $entity = $model::findOrFail($id);
+        $modelClass = $this->modelClass;
+        $model      = $modelClass::findOrFail($id);
 
-        if (! $entity->modifiable()) {
-            throw new Exception("Error: Entity $model is not modifiable.");
+        if (! $model->modifiable()) {
+            throw new Exception("Error: Model $modelClass is not modifiable.");
         }
 
-        $entity->updater_id = user()->id;
-        $entity->fill(Input::all());
-        $this->fillRelations($model, $entity);
+        $model->updater_id = user()->id;
+        $model->fill(Input::all());
+        $this->fillRelations($modelClass, $model);
         
-        $okay = $entity->save();
+        $okay = $model->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($this->controller).'.edit', ['id' => $entity->id])
-                ->withInput()->withErrors($entity->validationErrors);
+            return Redirect::route('admin.'.strtolower($this->controller).'.edit', ['id' => $model->id])
+                ->withInput()->withErrors($model->validationErrors);
         }
 
         /*
          * File (and image) handling
          */
-        if (isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
-            foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
+        if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
+            foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
                 if (Input::hasFile($fieldName)) {
                     $file = Input::file($fieldName);
 
@@ -275,17 +275,17 @@ abstract class BackController extends BaseController {
                         }
                     }
 
-                    $oldFile = $entity->uploadPath().$entity->$fieldName;
+                    $oldFile = $model->uploadPath().$model->$fieldName;
                     if (File::isFile($oldFile)) {
                         File::delete($oldFile); // We need to delete the old file or we can have "123.jpg" & "123.png"
                     }
 
                     $extension          = $file->getClientOriginalExtension();
-                    $filePath           = $entity->uploadPath();
-                    $fileName           = $entity->id.'_'.$fieldName.'.'.$extension;
+                    $filePath           = $model->uploadPath();
+                    $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
-                    $entity->$fieldName = $fileName;
-                    $entity->forceSave(); // Save entity again, without validation
+                    $model->$fieldName  = $fileName;
+                    $model->forceSave(); // Save model again, without validation
 
                     /*
                      * Create thumbnails for images
@@ -307,7 +307,7 @@ abstract class BackController extends BaseController {
             }
         }
 
-        $this->messageFlash(trans('app.updated', [$this->model]));
+        $this->messageFlash(trans('app.updated', [$this->modelName]));
         if (Input::get('_form_apply')) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', [$id]);
         } else {
@@ -316,29 +316,29 @@ abstract class BackController extends BaseController {
     }
 
     /**
-     * CRUD: delete entity
+     * CRUD: delete model
      * 
-     * @param  int The id of the entitity
+     * @param  int The id of the model
      */
     public function destroy($id)
     {
         if (! $this->checkAccessDelete()) return;
 
-        $model  = $this->modelFullName;
-        $entity = $model::withTrashed()->find($id);
+        $modelClass = $this->modelClass;
+        $model      = $modelClass::withTrashed()->find($id);
 
-        if (! $entity->modifiable()) {
-            throw new Exception("Error: Entity $model is not modifiable.");
+        if (! $model->modifiable()) {
+            throw new Exception("Error: Model $modelClass is not modifiable.");
         }
 
         /*
          * Delete related files even if it's only a soft deletion.
          */
-        if (! $entity->trashed() and isset($model::$fileHandling) and sizeof($model::$fileHandling) > 0) {
-            $filePath = $entity->uploadPath();
+        if (! $model->trashed() and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
+            $filePath = $model->uploadPath();
 
-            foreach ($model::$fileHandling as $fieldName => $fieldInfo) {
-                File::delete($filePath.$entity->$fieldName);
+            foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
+                File::delete($filePath.$model->$fieldName);
 
                 /*
                  * Delete image thumbnails
@@ -348,7 +348,7 @@ abstract class BackController extends BaseController {
                     if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
 
                     foreach ($thumbnails as $thumbnail) {
-                        $fileName = $filePath.$thumbnail.'/'.$entity->$fieldName;
+                        $fileName = $filePath.$thumbnail.'/'.$model->$fieldName;
                         if (File::isFile($fileName)) {
                             File::delete($fileName);
                         }
@@ -357,30 +357,30 @@ abstract class BackController extends BaseController {
             }
         }
 
-        if (! $entity->trashed()) {
-            $model::destroy($id); // Delete entity. If soft deletion is enable for this entity it's only a soft deletion
+        if (! $model->trashed()) {
+            $modelClass::destroy($id); // Delete model. If soft deletion is enabled for this model it's a soft deletion
         } else {
-            $entity->forceDelete(); // Finally delete this entity
+            $model->forceDelete(); // Finally delete this model
         }
 
-        $this->messageFlash(trans('app.deleted', [$this->model]));
+        $this->messageFlash(trans('app.deleted', [$this->modelName]));
         return Redirect::route('admin.'.strtolower($this->controller).'.index');
     }
 
     /**
-     * CRUD-related: restore entity after soft deletion
+     * CRUD-related: restore model after soft deletion
      * 
-     * @param  int The id of the entitity
+     * @param  int The id of the model
      */
     public function restore($id)
     {
         if (! $this->checkAccessDelete()) return;
 
-        $model  = $this->modelFullName;
-        $entity = $model::withTrashed()->find($id);
-        $entity->restore();
+        $modelClass = $this->modelClass;
+        $model      = $modelClass::withTrashed()->find($id);
+        $model->restore();
 
-        $this->messageFlash(trans('app.restored', [$this->model]));
+        $this->messageFlash(trans('app.restored', [$this->modelName]));
         return Redirect::route('admin.'.strtolower($this->controller).'.index');
     }
 

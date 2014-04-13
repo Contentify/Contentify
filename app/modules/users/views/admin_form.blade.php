@@ -1,14 +1,14 @@
 {{ Form::errors($errors) }}
 
-@if (isset($entity))
-    {{ Form::model($entity, ['route' => ['admin.users.update', $entity->id], 'method' => 'PUT']) }}
+@if (isset($model))
+    {{ Form::model($model, ['route' => ['admin.users.update', $model->id], 'method' => 'PUT']) }}
 @else
     {{ Form::open(['url' => 'admin/users']) }}
 @endif
     {{ Form::smartCheckbox('activated', trans('users::activated')) }}
 
     {{ Form::smartFieldOpen(trans('users::banned')) }}
-    @if ($entity->isBanned())
+    @if ($model->isBanned())
         {{ Form::checkbox('banned', 'banned', true) }}
     @else 
         {{ Form::checkbox('banned', 'banned', false) }}
@@ -16,9 +16,9 @@
     <span class="banned-info"></span>
     {{ Form::smartFieldClose() }}
 
-    {{ Form::smartSelectRelation('groups', trans('users::groups'), $modelName) }}
+    {{ Form::smartSelectRelation('groups', trans('users::groups'), $modelClass) }}
 
-    {{ Form::smartSelectRelation('teams', trans('users::teams'), $modelName) }}
+    {{ Form::smartSelectRelation('teams', trans('users::teams'), $modelClass) }}
 
     {{ Form::actions() }}
 {{ Form::close() }}
@@ -30,7 +30,7 @@
         var $self = $(this);
 
         $.ajax({
-            url: contentify.baseUrl + 'admin/users/{{ $entity->id}}/' + ban,
+            url: contentify.baseUrl + 'admin/users/{{ $model->id}}/' + ban,
             type: 'POST'
         }).success(function(data)
         {

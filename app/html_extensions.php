@@ -212,7 +212,7 @@ HTML::macro('sortSwitcher',
     /**
      * Returns HTML code for a sort switcher (asc / desc).
      *
-     * @param string $sortby    Attribute of the entity, e.g. "id"
+     * @param string $sortby    Attribute of the model, e.g. "id"
      * @param string $order     Current sorting order, "asc" or "desc"
      * @return string
      */

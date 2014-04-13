@@ -11,9 +11,9 @@
 */
 
 /**
- * Shortcut. Returns the current user entity or null.
+ * Shortcut. Returns the current user model or null.
  * 
- * @return Cartalyst\Sentry\Users\Eloquent\User The User entitiy
+ * @return User The User model
  */
 function user()
 {

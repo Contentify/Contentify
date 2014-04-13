@@ -1,7 +1,7 @@
 {{ Form::errors($errors) }}
 
-@if (isset($entity))
-    {{ Form::model($entity, ['route' => ['admin.countries.update', $entity->id], 'files' => true, 'method' => 'PUT']) }}
+@if (isset($model))
+    {{ Form::model($model, ['route' => ['admin.countries.update', $model->id], 'files' => true, 'method' => 'PUT']) }}
 @else
     {{ Form::open(['url' => 'admin/countries', 'files' => true]) }}
 @endif

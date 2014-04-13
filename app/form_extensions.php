@@ -307,27 +307,27 @@ Form::macro('smartSelectForeign',
         if ($pos === false) {
             throw new Exception("Invalid foreign key: {$name}", 1);
         }
-        $model = str_plural(substr($name, 0, $pos));
+        $modelName = str_plural(substr($name, 0, $pos));
         $attribute = substr($name, $pos + 1);
 
-        $entities = DB::table(str_plural($model))->get();
+        $models = DB::table(str_plural($modelName))->get();
 
-        if (! $nullable and sizeof($entities) == 0) {
-            throw new MsgException(trans('app.list_empty', [$model]));
+        if (! $nullable and sizeof($models) == 0) {
+            throw new MsgException(trans('app.list_empty', [$modelName]));
         }
 
         $options = [];
         if ($nullable) $options[''] = '-';
-        foreach ($entities as $entity) {
-            if (isset($entity->title)) {
-                $entityTitle = 'title';
-            } elseif (isset($entity->name)) {
-                $entityTitle = 'name';
+        foreach ($models as $model) {
+            if (isset($model->title)) {
+                $modelTitle = 'title';
+            } elseif (isset($model->name)) {
+                $modelTitle = 'name';
             } else {
-                $entityTitle = $entity->getKeyName();
+                $modelTitle = $model->getKeyName();
             }
 
-            $options[$entity->$attribute] = $entity->$entityTitle;
+            $options[$model->$attribute] = $model->$modelTitle;
         }
 
         $value = Form::getDefaultValue($name, $default);
@@ -345,33 +345,33 @@ Form::macro('smartSelectRelation',
      * Create HTML code for a select element. It will take its values from a database table.
      * It's smart and able to understand Ardent relationships of a model.
      * 
-     * @param  string   $name           The name of the relation as defined in $model::relations
-     * @param  string   $title          The caption of the select element
-     * @param  string   $sourceModel    Name of the source model
-     * @param  mixed    $default        Null, an ID or an an array of IDs (if multiple selected items are possible)
-     * @param  bool     $nullable       If true the select element can be empty
+     * @param  string   $name               The name of the relation as defined in $model::relations
+     * @param  string   $title              The caption of the select element
+     * @param  string   $sourceModelClass   Name of the source model class
+     * @param  mixed    $default            Null, an ID or an an array of IDs (if multiple selected items are possible)
+     * @param  bool     $nullable           If true the select element can be empty
      * @return string
      */
-    function ($relationName, $title, $sourceModel, $default = null, $nullable = false)
+    function ($relationName, $title, $sourceModelClass, $default = null, $nullable = false)
     {
-        $relations = $sourceModel::relations();
+        $relations = $sourceModelClass::relations();
         
         if (isset($relations[$relationName])) {
             $relation = $relations[$relationName];
         } else {
             throw new Exception(
-                "Error: Relation '{$relationName}' does not exist for entity of type '{$sourceModel}'."
+                "Error: Relation '{$relationName}' does not exist for model of type '{$sourceModelClass}'."
             );
         }
 
-        $modelFull  = $relation[1]; // Fully classified name of the foreign model
-        $model      = class_basename($modelFull);
-        $key        = (new $modelFull)->getKeyName(); // Primary key of the model
+        $modelClass = $relation[1]; // Fully classified name of the foreign model
+        $modelName  = class_basename($modelClass);
+        $key        = (new $modelClass)->getKeyName(); // Primary key of the model
         if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
 
-        $entities = $modelFull::all();
+        $models = $modelClass::all();
 
-        if (! $nullable and sizeof($entities) == 0) {
+        if (! $nullable and sizeof($models) == 0) {
             throw new MsgException(trans('app.list_empty', [ucfirst($relationName)]));
         }
 
@@ -379,20 +379,20 @@ Form::macro('smartSelectRelation',
          * Find an attribute that will be displayed as title
          */
         $options = [];
-        foreach ($entities as $entity) {
+        foreach ($models as $model) {
             if (isset($relation['title'])) {
-                $entityTitle = $relation['title'];
+                $modelTitle = $relation['title'];
             } else {
-                if (isset($entity->title)) {
-                    $entityTitle = 'title';
-                } elseif (isset($entity->name)) {
-                    $entityTitle = 'name';
+                if (isset($model->title)) {
+                    $modelTitle = 'title';
+                } elseif (isset($model->name)) {
+                    $modelTitle = 'name';
                 } else {
-                    $entityTitle = $entity->getKeyName();
+                    $modelTitle = $model->getKeyName();
                 }
             }                    
 
-            $options[$entity->$key] = $entity->$entityTitle;
+            $options[$model->$key] = $model->$modelTitle;
         }
 
         $elementAttributes = [];
@@ -406,21 +406,21 @@ Form::macro('smartSelectRelation',
 
                 break;
             case 'belongsToMany':
-                $sourceEntity   = new $sourceModel;
-                $sourceKey      = class_basename(strtolower($sourceModel)).'_'.$sourceEntity->getKeyName();
-                $sourceKeyValue = Form::getValueAttribute($sourceEntity->getKeyName());
+                $sourceModel    = new $sourceModelClass;
+                $sourceKey      = class_basename(strtolower($sourceModelClass)).'_'.$sourceModel->getKeyName();
+                $sourceKeyValue = Form::getValueAttribute($sourceModel->getKeyName());
 
                 /*
                  * If a model is bound to the form, $sourceKeyValue is not null and
-                 * we can look up in the pivot table for related entities.
+                 * we can look up in the pivot table for related models.
                  * If not, the default value(s) will be passed to the select element.
                  */
                 if ($sourceKeyValue) {
                     // We assume that soft deletion is not available to relations (= entries of pivot tables)
-                    $entities = DB::table($relation['table'])->where($sourceKey, '=', $sourceKeyValue)->get();
+                    $models = DB::table($relation['table'])->where($sourceKey, '=', $sourceKeyValue)->get();
 
-                    foreach ($entities as $entity) {
-                        $default[] = $entity->{strtolower($model).'_'.$key};
+                    foreach ($models as $model) {
+                        $default[] = $model->{strtolower($modelName).'_'.$key};
                     }
                 }
 
@@ -429,7 +429,7 @@ Form::macro('smartSelectRelation',
 
                 break;
             default:
-                throw new Exception("Error: Unkown relation type '{$relation[0]}' for entity of type '{$model}'.");
+                throw new Exception("Error: Unkown relation type '{$relation[0]}' for model of type '{$modelName}'.");
         }
         
         $name       = '_relation_'.$relationName;

@@ -9,7 +9,7 @@ class AdminMatchesController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'Match';
+        $this->modelName = 'Match';
 
         parent::__construct();
     }

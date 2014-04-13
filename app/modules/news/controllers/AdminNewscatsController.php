@@ -9,7 +9,7 @@ class AdminNewscatsController extends BackController {
 
     public function __construct()
     {
-        $this->model = 'Newscat';
+        $this->modelName = 'Newscat';
 
         parent::__construct();
     }
