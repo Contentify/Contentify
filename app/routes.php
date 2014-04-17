@@ -88,10 +88,5 @@ Route::post('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    dd(user()->teams[0]->pivot->task);
-
-    $user = user();
-    foreach ($user->teams as $team) {
-        var_dump($team->pivot->task);
-    }
+    return '<pre>'.FormGenerator::generate('news').'</pre>';
 });

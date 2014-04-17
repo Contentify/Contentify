@@ -5,11 +5,11 @@ use DB, View;
 class FormGenerator {
 
     /**
-     * Generates a simple but CMS compliant form template (Blad syntax).
-     * Do not blindly trust the result - most like rework is necessary.
+     * Generates a simple but CMS compliant form template (Blade syntax).
+     * Do not blindly trust the result - most likely refactoring is necessary.
      * 
      * @param  string $tableName  The table (representing a model) to generate a form for
-     * @param  string $moduleName The module name - leave it empty if its the pluralized model name
+     * @param  string $moduleName The module name - leave it empty if it's the table name
      * @return string
      */
     public static function generate($tableName, $moduleName = null)
@@ -57,6 +57,12 @@ class FormGenerator {
         $required   = (strtolower($column->Null) == 'no');
         $default    = $column->Default;
 
+        if ($default !== null) { // We need an exact match here (0 is a legit value!)
+            $defParam = ", '{$default}'";
+        } else {
+            $defParam = '';
+        }
+
         if (str_contains($type, '(')) {
             $pos    = strpos($type, '(');
             $meta   = substr($type, $pos);
@@ -74,6 +80,7 @@ class FormGenerator {
             if ($name == 'image' || $name == 'icon')    $type = 'image';
             if ($name == 'email')                       $type = 'email';
             if ($name == 'password')                    $type = 'password';
+            if ($name == 'url')                         $type = 'url';
             if (ends_with($name, '_id'))                $type = 'foreign';
 
             $attributes = [];
@@ -82,23 +89,27 @@ class FormGenerator {
 
             switch ($type) {
                 case 'tinyint':
-                    $html = "{{ Form::smartCheckbox('{$name}', '{$title}') }}";
+                    if ($default === '0') $defParam = ''; // "Not checked" is the default value of checkboxes
+                    $html = "{{ Form::smartCheckbox('{$name}', '{$title}'{$defParam}) }}";
                     break;
                 case 'int':
                     unset($attributes['maxlength']);
-                    $html = "{{ Form::smartNumeric('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartNumeric('{$name}', '{$title}'{$defParam}) }}";
                     break;
                 case 'varchar':
-                    $html = "{{ Form::smartText('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartText('{$name}', '{$title}'{$defParam}) }}";
+                    break;
+                case 'text':
+                    $html = "{{ Form::smartTextarea('{$name}', '{$title}'{$defParam}) }}";
                     break;
                 case 'email':
-                    $html = "{{ Form::smartEmail('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartEmail('{$name}', '{$title}'{$defParam}) }}";
                     break;
                 case 'password':
                     $html = "{{ Form::smartPassword('{$name}', '{$title}') }}";
                     break;
-                case 'text':
-                    $html = "{{ Form::smartTextarea('{$name}', '{$title}') }}";
+                case 'url':
+                    $html = "{{ Form::smartUrl('{$name}', '{$title}'{$defParam}) }}";
                     break;
                 case 'timestamp':
                     $html = "{{ Form::smartDateTime('{$name}', '{$title}') }}";

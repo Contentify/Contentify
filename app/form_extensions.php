@@ -142,16 +142,16 @@ Form::macro('smartCheckbox',
     /**
      * Create HTML code for a checkbox element.
      * 
-     * @param  string       $name       The name of the checkbox element
-     * @param  string       $title      The title of the checkbox element
-     * @param  bool|null    $default    The default value
+     * @param  string   $name       The name of the checkbox element
+     * @param  string   $title      The title of the checkbox element
+     * @param  bool     $default    The default value
      * @return string
      */
     function ($name, $title, $default = null)
     {
         $value = Form::getDefaultValue($name, $default);
 
-        // Bugfix for Laravel checkobx bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
+        // Bugfix for Laravel checkbox bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
         $checkbox = Form::hidden($name, false).Form::checkbox($name, true, $default);
         $partial = Form::smartFieldOpen()
             .Form::label($name, $title)
@@ -165,9 +165,9 @@ Form::macro('smartText',
     /**
      * Create HTML code for a text input element.
      * 
-     * @param  string       $name       The name of the input element
-     * @param  string       $title      The title of the input element
-     * @param  string|null  $default    The default value
+     * @param  string $name       The name of the input element
+     * @param  string $title      The title of the input element
+     * @param  string $default    The default value
      * @return string
      */
     function ($name, $title, $default = null)
@@ -185,9 +185,9 @@ Form::macro('smartEmail',
     /**
      * Create HTML code for a email input element.
      * 
-     * @param  string       $name       The name of the input element
-     * @param  string       $title      The title of the input element
-     * @param  string|null  $default    The default value
+     * @param  string $name       The name of the input element
+     * @param  string $title      The title of the input element
+     * @param  string $default    The default value
      * @return string
      */
     function ($name = 'email', $title = 'Email', $default = null)
@@ -196,6 +196,25 @@ Form::macro('smartEmail',
         $partial = Form::smartFieldOpen()
             .Form::label($name, $title)
             .Form::email($name, $value)
+            .Form::smartFieldClose();
+        return $partial;
+    }
+);
+
+Form::macro('smartUrl', 
+    /**
+     * Create HTML code for a URL input element.
+     * @param  string $name       The name of the input element
+     * @param  string $title      The title of the input element
+     * @param  string $default    The default value
+     * @return string
+     */
+    function ($name = 'url', $title = 'URL', $default = null)
+    {
+        $value = Form::getDefaultValue($name, $default);
+        $partial = Form::smartFieldOpen()
+            .Form::label($name, $title)
+            .Form::url($name, $value)
             .Form::smartFieldClose();
         return $partial;
     }
@@ -222,9 +241,9 @@ Form::macro('smartTextarea',
     /**
      * Create HTML code for a textarea input element.
      * 
-     * @param  string       $name       The name of the input element
-     * @param  string       $title      The title of the input element
-     * @param  string|null  $default    The default value
+     * @param  string $name       The name of the input element
+     * @param  string $title      The title of the input element
+     * @param  string $default    The default value
      * @return string
      */
     function ($name = 'text', $title = 'Text', $editor = true, $default = null)
@@ -251,9 +270,9 @@ Form::macro('smartNumeric',
     /**
      * Create HTML code for a numeric input element.
      * 
-     * @param  string       $name       The name of the input element
-     * @param  string       $title      The title of the input element
-     * @param  string|null  $default    The default value
+     * @param  string $name       The name of the input element
+     * @param  string $title      The title of the input element
+     * @param  string $default    The default value
      * @return string
      */
     function ($name, $title, $default = null)
@@ -499,9 +518,9 @@ Form::macro('smartDateTime',
     /**
      * Create HTML code for a datetime input element.
      * 
-     * @param  string       $name       The name of the input element
-     * @param  string       $title      The title of the input element
-     * @param  string|null  $default    The default value
+     * @param  string $name       The name of the input element
+     * @param  string $title      The title of the input element
+     * @param  string $default    The default value
      * @return string
      */
     function ($name = 'datetime', $title = 'Date & Time', $default = null)
@@ -521,9 +540,9 @@ Form::macro('smartTags',
     /**
      * Create HTML code for a tag element.
      * 
-     * @param  string       $name       The name of the tag element
-     * @param  string       $title      The title of the tag element
-     * @param  string|null  $default    The default value
+     * @param  string $name       The name of the tag element
+     * @param  string $title      The title of the tag element
+     * @param  string $default    The default value
      * @return string
      */
     function ($name, $title, $default = null)
