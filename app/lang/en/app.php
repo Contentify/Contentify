@@ -66,6 +66,7 @@ return array(
     'author'        => 'Author',
     'creator'       => 'Creator',
     'category'      => 'Category',
+    'type'          => 'Type',
     'text'          => 'Text',
     'code'          => 'Code',
     'image'         => 'Image',

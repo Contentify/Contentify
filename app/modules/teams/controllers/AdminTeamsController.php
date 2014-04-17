@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Teams\Controllers;
 
-use App\Modules\Teams\Models\Team as Team;
+use App\Modules\Teams\Models\Team;
 use Hover, BackController;
 
 class AdminTeamsController extends BackController {

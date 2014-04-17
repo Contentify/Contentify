@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Controllers;
 
-use App\Modules\News\Models\Newscat as Newscat;
+use App\Modules\News\Models\Newscat;
 use BackController;
 
 class AdminNewscatsController extends BackController {

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Controllers;
 
-use App\Modules\News\Models\News as News;
+use App\Modules\News\Models\News;
 use HTML, URL, BackController;
 
 class AdminNewsController extends BackController {

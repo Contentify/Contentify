@@ -4,7 +4,7 @@
         <a href="{{ url('teams/'.$team->id.'/'.slug($team->title)) }}">
             @if ($team->image)
             <div class="image">
-                <img src="{{ $team->uploadPath().$team->image) }}" alt="{{{ $team->title }}}">
+                <img src="{{ $team->uploadPath().$team->image }}" alt="{{{ $team->title }}}">
             </div>
             @endif
             <h2>{{{ $team->title }}}</h2>

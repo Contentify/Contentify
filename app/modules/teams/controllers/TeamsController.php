@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Teams\Controllers;
 
-use App\Modules\Teams\Models\Team as Team;
-use URL, HTML, FrontController;
+use App\Modules\Teams\Models\Team;
+use FrontController;
 
 class TeamsController extends FrontController {
 

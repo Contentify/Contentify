@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Config\Controllers;
 
-use App\Modules\Config\Models\SettingsBag as SettingsBag;
-use Contentify\Vendor\MySqlDump as MySqlDump;
+use App\Modules\Config\Models\SettingsBag;
+use Contentify\Vendor\MySqlDump;
 use Redirect, Input, File, DB, Config, View, BackController;
 
 class AdminConfigController extends BackController {

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Users\Controllers;
 
-use Cartalyst\Sentry\Users\WrongPasswordException as WrongPasswordException;
+use Cartalyst\Sentry\Users\WrongPasswordException;
 use Validator, Sentry, Redirect, Input, User, FrontController;
 
 class UsersController extends FrontController {

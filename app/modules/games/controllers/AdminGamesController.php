@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Games\Controllers;
 
-use App\Modules\Games\Models\Game as Game;
+use App\Modules\Games\Models\Game;
 use Hover, BackController;
 
 class AdminGamesController extends BackController {

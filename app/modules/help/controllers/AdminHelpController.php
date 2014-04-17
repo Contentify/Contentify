@@ -1,6 +1,8 @@
 <?php namespace App\Modules\Help\Controllers;
 
-class AdminHelpController extends \BackController {
+use BackController;
+
+class AdminHelpController extends BackController {
 
     protected $icon = 'help.png';
 

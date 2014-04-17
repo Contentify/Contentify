@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Diag\Controllers;
 
-use \Carbon\Carbon as Carbon;
+use \Carbon\Carbon;
 use App, Config, View, BackController, File, DB, PDO;
 
 class AdminDiagController extends BackController {

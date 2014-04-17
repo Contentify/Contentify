@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Images\Controllers;
 
-use App\Modules\Images\Models\Image as Image;
+use App\Modules\Images\Models\Image;
 use HTML, BackController;
 
 class AdminImagesController extends BackController {

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Modules\Controllers;
 
-use App\Modules\Modules\Models\Module as Module;
+use App\Modules\Modules\Models\Module;
 use HTML, BackController;
 
 class AdminModulesController extends BackController {

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Groups\Controllers;
 
-use App\Modules\Groups\Models\Group as Group;
+use App\Modules\Groups\Models\Group;
 use Hover, BackController;
 
 class AdminGroupsController extends BackController {

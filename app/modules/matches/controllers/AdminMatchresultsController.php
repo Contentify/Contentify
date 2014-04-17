@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Matches\Controllers;
 
-use App\Modules\Matches\Models\Matchresult as Matchresult;
+use App\Modules\Matches\Models\Matchresult;
 use Hover, BackController;
 
 class AdminMatchresultsController extends BackController {

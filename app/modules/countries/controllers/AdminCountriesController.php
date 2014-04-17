@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Countries\Controllers;
 
-use App\Modules\Countries\Models\Country as Country;
+use App\Modules\Countries\Models\Country;
 use HTML, File, BackController;
 
 class AdminCountriesController extends BackController {

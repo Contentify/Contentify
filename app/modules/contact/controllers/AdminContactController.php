@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Contact\Controllers;
 
-use App\Modules\Contact\Models\ContactMessage as ContactMessage;
+use App\Modules\Contact\Models\ContactMessage;
 use HTML, View, BackController;
 
 class AdminContactController extends BackController {
