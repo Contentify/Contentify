@@ -10,7 +10,8 @@
 		"cartalyst/sentry": "2.0.*",
         "laravelbook/ardent": "dev-master",
         "thujohn/rss": "dev-master",
-        "intervention/image": "dev-master"
+        "intervention/image": "dev-master",
+        "chriskonnertz/open-graph": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

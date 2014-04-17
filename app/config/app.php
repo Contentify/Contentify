@@ -223,9 +223,10 @@ return array(
         'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
-        'OpenGraph'             => 'Contentify\OpenGraphBuilder',
         'Filter'                => 'Contentify\Filter',
         'MsgException'          => 'Contentify\MsgException',
+
+        'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
 
         // Vendor classes:
         'Carbon'                => 'Carbon\Carbon',
