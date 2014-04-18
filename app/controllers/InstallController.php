@@ -140,6 +140,17 @@ class InstallController extends Controller {
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp() to create a datetime attribute.
          */
+        
+        $this->create('partners', function($table)
+        {
+            $table->text('text')->nullable();
+            $table->string('url')->nullable();
+            $table->integer('type')->default(0);
+            $table->integer('position')->default(0);
+            $table->string('image')->nullable();
+        });
+
+        return; // DEBUG
 
         $this->createPivot('team_user', function($table)
         {
@@ -147,8 +158,6 @@ class InstallController extends Controller {
             $table->text('description')->nullable();
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);    
-
-        return; // DEBUG
 
         $this->create('teamcats', function($table) { });
 
@@ -357,6 +366,7 @@ class InstallController extends Controller {
                 'help'      => PERM_DELETE,
                 'images'    => PERM_DELETE,
                 'news'      => PERM_DELETE,
+                'partners'  => PERM_DELETE,
                 'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
             ]
@@ -379,6 +389,7 @@ class InstallController extends Controller {
                 'images'    => PERM_DELETE,
                 'modules'   => PERM_DELETE,
                 'news'      => PERM_DELETE,
+                'partners'  => PERM_DELETE,
                 'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
             ]
@@ -506,6 +517,5 @@ class InstallController extends Controller {
          */
         if ($tableRows) Schema::table($tableName, $tableRows);
     }
-
        
 }

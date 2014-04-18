@@ -18,7 +18,7 @@
     {{ Form::smartText('first_name', trans('users::first_name')) }}
     {{ Form::smartText('last_name', trans('users::last_name')) }}
     {{ Form::smartFieldOpen(trans('users::gender')) }}
-        {{ Form::select('gender', array('0' => trans('users::unknown'), '1' => trans('users::female'), '2' => trans('users::male'), '3' => trans('users::other'))); }}
+        {{ Form::select('gender', array('0' => trans('users::unknown'), '1' => trans('users::female'), '2' => trans('users::male'), '3' => trans('users::other'))) }}
     {{ Form::smartFieldClose() }}
     {{ Form::smartSelectForeign('country_id', trans('users::country')) }}
     {{ Form::smartSelectForeign('language_id', trans('users::language')) }}
