@@ -3,7 +3,7 @@
 use App\Modules\Partners\Models\Partner;
 use Redirect, FrontController;
 
-class TeamsController extends FrontController {
+class PartnersController extends FrontController {
 
     public function index()
     {
@@ -18,7 +18,7 @@ class TeamsController extends FrontController {
      * @param  int $id The id of the partner
      * @return Redirect
      */
-    public function website($id)
+    public function show($id)
     {
         $partner = Partner::findOrFail($id);
 
