@@ -5,6 +5,12 @@ use DB, View;
 class FormGenerator {
 
     /**
+     * True if form has to handle file uploads
+     * @var boolean
+     */
+    protected $fileHandling;
+
+    /**
      * Generates a simple but CMS compliant form template (Blade syntax).
      * Do not blindly trust the result - most likely refactoring is necessary.
      * 
@@ -12,20 +18,27 @@ class FormGenerator {
      * @param  string $moduleName The module name - leave it empty if it's the table name
      * @return string
      */
-    public static function generate($tableName, $moduleName = null)
+    public function generate($tableName, $moduleName = null)
     {
-
         if ($moduleName == null) $moduleName = $tableName;
+
+        $this->fileHandling = false;
 
         $columns = DB::select('SHOW COLUMNS FROM '.$tableName);
 
         $fields = array();
         foreach ($columns as $columnIndex => $column) {
-            $field = self::buildField($column);
+            $field = $this->buildField($column);
             if ($field) $fields[] = $field;
         }
 
-        $formView = View::make('formgenerator.template', ['fields' => $fields, 'modulename' => $moduleName]);
+        if ($this->fileHandling) {
+            $fileHandling = ", 'files' => true";
+        } else {
+            $fileHandling = '';
+        }
+        
+        $formView = View::make('formgenerator.template', compact('fields', 'moduleName', 'fileHandling'));
 
         return $formView->render();
     }
@@ -37,7 +50,7 @@ class FormGenerator {
      * @param  stdClass $column The Column object
      * @return $string
      */
-    protected static function buildField($column)
+    protected function buildField($column)
     {
         $ignoredFields = [
             'id', 
@@ -50,7 +63,7 @@ class FormGenerator {
         ];
 
         $name       = strtolower($column->Field);
-        $title      = self::makeTitle($name);
+        $title      = $this->makeTitle($name);
         $type       = strtolower($column->Type);
         $meta       = '';
         $size       = 0;
@@ -116,6 +129,7 @@ class FormGenerator {
                     break;
                 case 'image':
                     unset($attributes['maxlength']);
+                    $this->fileHandling = true;
                     $html = "{{ Form::smartImageFile('{$name}', '{$title}') }}";
                     break;
                 case 'foreign':
@@ -138,7 +152,7 @@ class FormGenerator {
      * @param  string $snakeCase The snake cased string
      * @return string
      */
-    protected static function makeTitle($snakeCase)
+    protected function makeTitle($snakeCase)
     {
         $words = explode('_', $snakeCase);
 

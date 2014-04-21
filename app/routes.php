@@ -88,5 +88,6 @@ Route::post('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    return '<pre>'.FormGenerator::generate('news').'</pre>';
+    $fg = new FormGenerator();
+    return '<pre>'.$fg->generate('news').'</pre>';
 });
