@@ -314,7 +314,7 @@ Form::macro('smartSelectForeign',
      * Create HTML code for a select element. It will take its values from a database table.
      * This is meant for models that do not support Ardent relationships.
      * 
-     * @param  string   $name     The name of the value, e. g. "user_id"
+     * @param  string   $name     The name of the attribute, e. g. "user_id"
      * @param  string   $title    The title of the select element
      * @param  mixed    $default  Null or an ID
      * @param  bool     $nullable If true the result can be empty and a "none selected" option is added

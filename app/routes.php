@@ -76,7 +76,6 @@ Route::get('captcha', ['as' => 'captcha', 'uses' => function()
     return $response;
 }]);
 
-
 /*
  * Installation
  */
@@ -89,5 +88,5 @@ Route::post('install', 'InstallController@index');
 Route::get('test', function()
 {
     $fg = new FormGenerator();
-    return '<pre>'.$fg->generate('news').'</pre>';
+    return '<pre>'.$fg->generate('pages').'</pre>';
 });

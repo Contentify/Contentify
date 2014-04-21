@@ -8,7 +8,7 @@
 {{ Form::open(['url' => 'admin/<?php echo $moduleName ?>'<?php echo $fileHandling ?>]) }}
 @endif
     <?php foreach ($fields as $field) { ?>
-    <?php echo $field ?>
+<?php echo $field ?>
     <?php } ?>
     
     {{ Form::actions() }}

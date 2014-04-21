@@ -73,13 +73,13 @@
             <a id="quicklink3" class="quicklink" href="{{ url('auth/logout') }}" title="Log out" style="left: 709px"><!-- empty --></a>
             
             <a id="quicklink4" class="quicklink" href="{{ url('admin/news') }}" title="News" style="left: 740px"><!-- empty --></a>
-            <a id="quicklink5" class="quicklink" href="admin.php?site=pages" title="Pages" style="left: 760px"><!-- empty --></a>
+            <a id="quicklink5" class="quicklink" href="{{ url('admin/pages') }}" title="Pages" style="left: 760px"><!-- empty --></a>
             <a id="quicklink6" class="quicklink" href="{{ url('admin/images') }}" title="Images" style="left: 780px"><!-- empty --></a>
             <a id="quicklink7" class="quicklink" href="admin.php?site=downloads" title="Downloads" style="left: 800px"><!-- empty --></a>
-            <a id="quicklink8" class="quicklink" href="admin.php?site=matches" title="Matches" style="left: 820px"><!-- empty --></a>
+            <a id="quicklink8" class="quicklink" href="{{ url('admin/matches') }}" title="Matches" style="left: 820px"><!-- empty --></a>
             
             <a id="quicklink9" class="quicklink" href="{{ url('admin/users') }}" title="Users" style="left: 851px"><!-- empty --></a>
-            <a id="quicklink10" class="quicklink" href="admin.php?site=members" title="Members" style="left: 871px"><!-- empty --></a>
+            <a id="quicklink10" class="quicklink" href="{{ url('admin/members') }}" title="Members" style="left: 871px"><!-- empty --></a>
             <a id="quicklink11" class="quicklink" href="{{ url('admin/config') }}" title="Settings" style="left: 891px"><!-- empty --></a>
         </header>
         <section id="content-wrapper">
@@ -91,7 +91,7 @@
                                 <div class="menu1"><img src="{{ asset('icons/house.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/dashboard', 'Dashboard') }}</div>
                                 
                                 <div class="menu2"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.news.index') }}">News</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/doc_offlice.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=pages">Pages</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/doc_offlice.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.pages.index') }}">Pages</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=headlines">Headlines</a></div>
                                 
                                 <div class="menu2"><img src="{{ asset('icons/date.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=events">Events</a></div>

@@ -7,11 +7,11 @@ class PartnersWidget extends Widget {
 
     public function render($parameters = array())
     {
-        $type = 0;
+        $layoutType = 0;
 
-        if (isset($parameters['type'])) $type = $parameters['type'];
+        if (isset($parameters['layoutType'])) $layoutType = $parameters['layoutType'];
 
-        $partners = Partner::whereType($type)->get();
+        $partners = Partner::whereLayoutType($layoutType)->get();
 
         return View::make('partners::widget', compact('partners'))->render();
     }

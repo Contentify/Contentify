@@ -8,7 +8,7 @@
     {{ Form::smartText('title', trans('app.title')) }}
     {{ Form::smartTextarea('text', trans('app.text')) }}
     {{ Form::smartUrl('url', trans('app.url')) }}
-    {{ Form::smartNumeric('type', trans('app.type'), 0) }}
+    {{ Form::smartNumeric('layout_type', trans('app.layout_type'), 0) }}
     {{ Form::smartNumeric('position', trans('app.position'), 0) }}
     {{ Form::smartImageFile('image', trans('app.image')) }}
         
