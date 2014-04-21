@@ -6,19 +6,19 @@ use Redirect, FrontController;
 class AdvertsController extends FrontController {
 
     /**
-     * Show the website of a partner
+     * Show the website of an advert
      * 
-     * @param  int $id The id of the partner
+     * @param  int $id The id of the advert
      * @return Redirect
      */
     public function show($id)
     {
-        $partner = Partner::findOrFail($id);
+        $advert = Advert::findOrFail($id);
 
-        $partner->access_counter++;
-        $partner->save();
+        $advert->access_counter++;
+        $advert->save();
 
-        return Redirect::to($partner->url); // Go to partner website
+        return Redirect::to($advert->url); // Go to advert website
     }
 
 }

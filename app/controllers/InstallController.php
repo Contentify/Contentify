@@ -146,7 +146,6 @@ class InstallController extends Controller {
             $table->text('code')->nullable();
             $table->string('url')->nullable();
             $table->integer('type')->default(0);
-            $table->integer('position')->default(0);
             $table->string('image')->nullable();
         });
 

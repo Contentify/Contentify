@@ -71,6 +71,10 @@
                 <br>
                 <h3>Partners:</h3>
                 @widget('Partners::Partners')
+
+                <br>
+                <h3>Advert:</h3>
+                @widget('Adverts::Advert')
             </aside>
 
             <div class="clear"></div>

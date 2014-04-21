@@ -9,7 +9,6 @@
     {{ Form::smartTextarea('code', trans('app.code')) }}
     {{ Form::smartUrl('url', trans('app.url')) }}
     {{ Form::smartNumeric('type', trans('app.type'), 0) }}
-    {{ Form::smartNumeric('position', trans('app.position'), 0) }}
     {{ Form::smartImageFile('image', trans('app.image')) }}
         
     {{ Form::actions() }}
