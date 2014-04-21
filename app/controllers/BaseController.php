@@ -429,7 +429,7 @@ abstract class BaseController extends Controller {
         /*
          * Generate the view
          */
-        $this->pageView('backend.index_form', [
+        $this->pageView('backend.index_page', [
             'buttons'       => $buttons,
             'contentTable'  => $contentTable,
             'sortSwitcher'  => $sortSwitcher,

@@ -111,7 +111,7 @@
 
                                 <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloadcats">Download-Categories</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/coins.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/partners', 'Sponsors &amp; Partners') }}</div>
-                                <div class="menu2"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=adverts">Advertisement</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/adverts', 'Advertisement') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=forumcats">Forum-Categories</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=forumboards">Forum-Boards</a></div>
                             </div>

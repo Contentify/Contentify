@@ -1,15 +1,15 @@
-<?php namespace App\Modules\Partners\Controllers;
+<?php namespace App\Modules\Adverts\Controllers;
 
-use App\Modules\Partners\Models\Partner;
+use App\Modules\Adverts\Models\Advert;
 use Hover, BackController;
 
-class AdminPartnersController extends BackController {
+class AdminAdvertsController extends BackController {
 
-    protected $icon = 'coins.png';
+    protected $icon = 'money.png';
 
     public function __construct()
     {
-        $this->modelName = 'Partner';
+        $this->modelName = 'Advert';
 
         parent::__construct();
     }
@@ -22,15 +22,15 @@ class AdminPartnersController extends BackController {
                 trans('app.type')   => 'type', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($partner)
+            'tableRow' => function($advert)
             {
                 $hover = new Hover();
-                if ($partner->image) $hover->image($partner->uploadPath().$partner->image);
+                if ($advert->image) $hover->image($advert->uploadPath().$advert->image);
 
                 return [
-                    $partner->id,
-                    $partner->type,
-                    $hover.$partner->title,
+                    $advert->id,
+                    $advert->type,
+                    $hover.$advert->title,
                 ];            
             }
         ]);
