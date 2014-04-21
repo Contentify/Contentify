@@ -25,11 +25,13 @@ class Ardent extends OriginalArdent {
     public function scopeFilter($query) { }
 
     /**
-     * Path to uploaded files
-     * 
+     * Path to uploaded files.
+     * NOTE: When uploading files set $local = true!
+     *
+     * @param  bool $local If true, return a local path (e. g. "C:\Contentify\public/uploads/test")
      * @return string
      */
-    public function uploadPath()
+    public function uploadPath($local = false)
     {
         $class = class_basename(get_class($this));
 
@@ -38,7 +40,13 @@ class Ardent extends OriginalArdent {
             $dir = strtolower(str_plural($class));
         }
 
-        return url('/').'/uploads/'.$dir.'/';
+        if ($local) {
+            $base = public_path();
+        } else {
+            $base = url('/');
+        }
+
+        return $base.'/uploads/'.$dir.'/';
     }
 
     /**

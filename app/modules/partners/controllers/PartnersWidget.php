@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Partners\Controllers;
 
-use App\Modules\Partners\Models\Partners;
+use App\Modules\Partners\Models\Partner;
 use DB, View, Widget;
 
 class PartnersWidget extends Widget {
@@ -11,7 +11,7 @@ class PartnersWidget extends Widget {
 
         if (isset($parameters['type'])) $type = $parameters['type'];
 
-        $partners = Partners::whereType($type)->get();
+        $partners = Partner::whereType($type)->get();
 
         return View::make('partners::widget', compact('partners'))->render();
     }

@@ -67,6 +67,10 @@
                 <br>
                 <h3>Latest News:</h3>
                 @widget('News::News')
+
+                <br>
+                <h3>Partners:</h3>
+                @widget('Partners::Partners')
             </aside>
 
             <div class="clear"></div>

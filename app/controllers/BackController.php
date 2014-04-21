@@ -103,7 +103,7 @@ abstract class BackController extends BaseController {
                     }
 
                     $extension          = $file->getClientOriginalExtension();
-                    $filePath           = $model->uploadPath();
+                    $filePath           = $model->uploadPath(true);
                     $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
                     $model->$fieldName  = $fileName;
@@ -281,7 +281,7 @@ abstract class BackController extends BaseController {
                     }
 
                     $extension          = $file->getClientOriginalExtension();
-                    $filePath           = $model->uploadPath();
+                    $filePath           = $model->uploadPath(true);
                     $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
                     $model->$fieldName  = $fileName;

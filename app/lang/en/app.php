@@ -121,5 +121,6 @@ return array(
     'link'          => 'Link',
     'send'          => 'Send',
     'position'      => 'Position',
+    'url'           => 'URL',
 
 );

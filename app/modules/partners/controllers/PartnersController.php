@@ -22,7 +22,10 @@ class PartnersController extends FrontController {
     {
         $partner = Partner::findOrFail($id);
 
-        return Redirect::to($partner->url);
+        $partner->access_counter++;
+        $partner->save();
+
+        return Redirect::to($partner->url); // Go to partner website
     }
 
 }
