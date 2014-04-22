@@ -28,7 +28,7 @@ class BaseModel extends Ardent {
      * Path to uploaded files.
      * NOTE: When uploading files set $local = true!
      *
-     * @param  bool $local If true, return a local path (e. g. "C:\Contentify\public/uploads/test")
+     * @param  bool $local If true, return a local path (e. g. "C:\Contentify\public/uploads/games/")
      * @return string
      */
     public function uploadPath($local = false)
@@ -64,9 +64,8 @@ class BaseModel extends Ardent {
     /**
      * Creates a simple slug or a unique slug
      * 
-     * @param  string $title    The title
      * @param  bool   $unique   Unique or not?
-     * @return string
+     * @return void
      */
     function createSlug($unique = true)
     {
