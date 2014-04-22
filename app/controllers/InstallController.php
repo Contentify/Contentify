@@ -202,7 +202,7 @@ class InstallController extends Controller {
         {
             $table->string('tags')->nullable();
             $table->string('image')->nullable();
-        });
+        }, array(), ['title', 'slug']);
        
         $this->create('visits', function($table)
         {
@@ -225,7 +225,7 @@ class InstallController extends Controller {
             $table->text('text')->nullable();
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true)->nullable();
-        }, array(), ['title', 'access_counter']);      
+        }, array(), ['title', 'slug', 'access_counter']);      
 
         $this->create('newscats', function($table)
         {
@@ -471,6 +471,13 @@ class InstallController extends Controller {
                         $table->string('title', 70)->after('id');
                     } else {
                         $table->string('title', 70);
+                    }
+                }
+                if ($contentObject === true or ! in_array('slug', $contentObject)) {
+                    if (strtolower(DB::connection()->getDriverName()) == 'mysql') {
+                        $table->string('slug')->after('id');
+                    } else {
+                        $table->string('slug');
                     }
                 }
                 if ($contentObject === true or ! in_array('creator_id', $contentObject)) {

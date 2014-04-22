@@ -1,6 +1,6 @@
 <article class="team">
     <header>
-        <a href="{{ url('teams/'.$team->id.'/'.slug($team->title)) }}">
+        <a href="{{ url('teams/'.$team->id.'/'.$team->slug) }}">
             @if ($team->image)
             <div class="image">
                 <img src="{{ asset('uploads/teams/'.$news->image) }}" alt="{{{ $team->title }}}">

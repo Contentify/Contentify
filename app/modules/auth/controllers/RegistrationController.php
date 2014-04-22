@@ -40,6 +40,9 @@ class RegistrationController extends FrontController {
                 'password'  => Input::get('password'),
             ], true);
 
+            $user->slug = slug($user->username);
+            $user->save();
+
             /*
              * Add user to group "Users"
              * This group is a basic group that isn't deletable so we do know it exists.

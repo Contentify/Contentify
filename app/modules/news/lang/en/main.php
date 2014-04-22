@@ -11,7 +11,7 @@ return array(
     |
     */
    
-    'intro'         => 'Introcduction',
+    'intro'         => 'Introduction',
     'written_by'    => 'written by',
     'in'            => 'in', // in category
     'publish_at'    => 'Publish at', // in category

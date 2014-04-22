@@ -79,6 +79,10 @@ abstract class BackController extends BaseController {
         $model->fill(Input::all());
         $this->fillRelations($modelClass, $model);
 
+        if (isset($model['title']) and isset($model['slug'])) {
+            $model->slug = slug($model->title);
+        }
+
         $okay = $model->save();
 
         if (! $okay) {
@@ -251,7 +255,11 @@ abstract class BackController extends BaseController {
         $model->updater_id = user()->id;
         $model->fill(Input::all());
         $this->fillRelations($modelClass, $model);
-        
+
+        if (isset($model['title']) and isset($model['slug'])) {
+            $model->slug = slug($model->title);
+        }
+
         $okay = $model->save();
 
         if (! $okay) {
