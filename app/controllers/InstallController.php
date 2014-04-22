@@ -475,9 +475,9 @@ class InstallController extends Controller {
                 }
                 if ($contentObject === true or ! in_array('slug', $contentObject)) {
                     if (strtolower(DB::connection()->getDriverName()) == 'mysql') {
-                        $table->string('slug')->after('id');
+                        $table->string('slug')->unique->after('id');
                     } else {
-                        $table->string('slug');
+                        $table->string('slug')->unique;
                     }
                 }
                 if ($contentObject === true or ! in_array('creator_id', $contentObject)) {

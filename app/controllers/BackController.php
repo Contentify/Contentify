@@ -72,7 +72,6 @@ abstract class BackController extends BaseController {
         if (! $this->checkAccessCreate()) return;
 
         $modelClass = $this->modelClass;
-
         $model = new $modelClass();
         $model->creator_id = user()->id;
         $model->updater_id = user()->id;
@@ -80,7 +79,7 @@ abstract class BackController extends BaseController {
         $this->fillRelations($modelClass, $model);
 
         if (isset($model['title']) and isset($model['slug'])) {
-            $model->slug = slug($model->title);
+            $model->createSlug();
         }
 
         $okay = $model->save();
@@ -257,7 +256,7 @@ abstract class BackController extends BaseController {
         $this->fillRelations($modelClass, $model);
 
         if (isset($model['title']) and isset($model['slug'])) {
-            $model->slug = slug($model->title);
+            $model->createSlug();
         }
 
         $okay = $model->save();

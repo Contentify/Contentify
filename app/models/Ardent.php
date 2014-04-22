@@ -61,4 +61,37 @@ class Ardent extends OriginalArdent {
         return true;
     }
 
+    /**
+     * Creates a simple slug or a unique slug
+     * 
+     * @param  string $title    The title
+     * @param  bool   $unique   Unique or not?
+     * @return string
+     */
+    function createSlug($unique = true)
+    {
+        $slug = Str::slug($this->title);
+
+        if ($unique) {
+            /*
+             * Retrieve the model with the highest slug counter.
+             * (orderBy uses "natural sorting")
+             */
+            $model = static::orderBy(DB::Raw('LENGTH(slug) DESC, slug'), 'DESC')
+                ->whereRaw("slug REGEXP '^{$slug}(-[0-9]*)?$'")
+                ->withTrashed()->first();
+
+            /*
+             * If the slug is in use already:
+             * Extract the counter value, increase it and create the new slug.
+             */
+            if ($model) {
+                $max = (int) substr($model->slug, strlen($slug) + 1);
+                $slug .= '-'.($max + 1);
+            }
+        }
+
+        $this->slug = $slug;
+    }
+
 }

@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Users\Controllers;
 
 use Cartalyst\Sentry\Users\WrongPasswordException;
-use Validator, Sentry, Redirect, Input, User, FrontController;
+use Str, Validator, Sentry, Redirect, Input, User, FrontController;
 
 class UsersController extends FrontController {
 
@@ -70,7 +70,7 @@ class UsersController extends FrontController {
         $user = User::findOrFail($id);
 
         $user->fill(Input::all());
-        $user->slug = slug($user->username);
+        $user->slug = Str::slug($user->username);
 
         if (! $user->validate()) {
             return Redirect::route('users.edit', [$id])

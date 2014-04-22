@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Auth\Controllers;
 
-use View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
+use Str, View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {
 
@@ -40,7 +40,7 @@ class RegistrationController extends FrontController {
                 'password'  => Input::get('password'),
             ], true);
 
-            $user->slug = slug($user->username);
+            $user->slug = Str::slug($user->username);
             $user->save();
 
             /*

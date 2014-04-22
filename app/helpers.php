@@ -115,17 +115,6 @@ function pageClass()
 }
 
 /**
- * Shortcut for Str::slug().
- * 
- * @param  string $title
- * @return string
- */
-function slug($title)
-{
-    return Str::slug($title);
-}
-
-/**
  * This is only a dummy function for development purpose.
  * Expressions wrapped with this function have to be replaced with trans() later.
  * t() indicates that the translation is yet missing.
