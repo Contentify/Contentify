@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Images\Models;
 
-use Ardent;
+use BaseModel;
 
-class Image extends Ardent {
+class Image extends BaseModel {
 
     protected $softDelete = false;
 

@@ -1,8 +1,8 @@
 <?php namespace App\Modules\News\Models;
 
-use Ardent;
+use BaseModel;
 
-class Newscat extends Ardent {
+class Newscat extends BaseModel {
 
     protected $softDelete = true;
 

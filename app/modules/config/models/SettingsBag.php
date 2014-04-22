@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Config\Models;
 
-use Ardent;
+use BaseModel;
 
-class SettingsBag extends Ardent {
+class SettingsBag extends BaseModel {
 
     protected $fillable = ['app_analytics'];
 

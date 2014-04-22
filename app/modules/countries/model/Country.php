@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Countries\Models;
 
-use Ardent;
+use BaseModel;
 
-class Country extends Ardent {
+class Country extends BaseModel {
 
     protected $softDelete = true;
 

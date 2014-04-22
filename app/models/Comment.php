@@ -1,6 +1,6 @@
 <?php
 
-class Comment extends Ardent {
+class Comment extends BaseModel {
 
     protected $softDelete = true;
 

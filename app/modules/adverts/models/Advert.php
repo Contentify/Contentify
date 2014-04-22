@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Adverts\Models;
 
-use Ardent;
+use BaseModel;
 
-class Advert extends Ardent {
+class Advert extends BaseModel {
 
     protected $softDelete = true;
 

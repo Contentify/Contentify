@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Teams\Models;
 
-use Ardent;
+use BaseModel;
 
-class Team extends Ardent {
+class Team extends BaseModel {
 
     protected $softDelete = true;
 

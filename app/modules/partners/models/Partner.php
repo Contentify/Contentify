@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Partners\Models;
 
-use Ardent;
+use BaseModel;
 
-class Partner extends Ardent {
+class Partner extends BaseModel {
 
     protected $softDelete = true;
 

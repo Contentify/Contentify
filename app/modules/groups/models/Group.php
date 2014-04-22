@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Groups\Models;
 
 use App\Modules\Groups\Models\Permission;
-use Sentry, Ardent;
+use Sentry, BaseModel;
 
 /*
  * Important note:
@@ -10,7 +10,7 @@ use Sentry, Ardent;
  * (See also: Sentry\Gropus\Eloquent\Group)
  */
 
-class Group extends Ardent {
+class Group extends BaseModel {
 
     //protected $softDelete = true;
 

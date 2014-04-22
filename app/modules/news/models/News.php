@@ -1,8 +1,8 @@
 <?php namespace App\Modules\News\Models;
 
-use Filter, DB, OpenGraph, Comment, Ardent, Rss, Config, Lang, URL;
+use Filter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
-class News extends Ardent {
+class News extends BaseModel {
 
     protected $softDelete = true;
 

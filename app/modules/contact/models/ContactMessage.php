@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Contact\Models;
 
-use Ardent;
+use BaseModel;
 
-class ContactMessage extends Ardent {
+class ContactMessage extends BaseModel {
 
     protected $softDelete = true;
 

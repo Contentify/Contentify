@@ -1,8 +1,8 @@
 <?php
 
-use LaravelBook\Ardent\Ardent as OriginalArdent;
+use LaravelBook\Ardent\Ardent;
 
-class Ardent extends OriginalArdent {
+class BaseModel extends Ardent {
 
     /**
      * Path to uploaded files

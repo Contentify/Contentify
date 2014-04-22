@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Modules\Models;
 
-use Exception, File, Ardent;
+use Exception, File, BaseModel;
 
-class Module extends Ardent {
+class Module extends BaseModel {
 
     protected $fillable = ['title'];
 

@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Teams\Models;
 
-use Ardent;
+use BaseModel;
 
-class Teamcat extends Ardent {
+class Teamcat extends BaseModel {
 
     protected $softDelete = true;
 
@@ -11,5 +11,5 @@ class Teamcat extends Ardent {
     public static $rules = [
         'title'     => 'required'
     ];
-
+    
 }

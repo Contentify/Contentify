@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Languages\Models;
 
-use Exception, Ardent;
+use Exception, BaseModel;
 
-class Language extends Ardent {
+class Language extends BaseModel {
 
     protected $fillable = ['title', 'code'];
 

@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Pages\Models;
 
-use Ardent;
+use BaseModel;
 
-class Page extends Ardent {
+class Page extends BaseModel {
 
     protected $table = 'pages';
 

@@ -113,13 +113,3 @@ function pageClass()
     $pageClass = str_replace('admin-', '', $pageClass);
     return ! empty( $pageClass ) && $pageClass != '-' ? $pageClass : 'homepage'; 
 }
-
-/**
- * This is only a dummy function for development purpose.
- * Expressions wrapped with this function have to be replaced with trans() later.
- * t() indicates that the translation is yet missing.
- */
-function t($text)
-{
-    return $text;
-}

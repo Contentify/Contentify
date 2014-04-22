@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Matches\Models;
 
-use Ardent;
+use BaseModel;
 
-class Match extends Ardent {
+class Match extends BaseModel {
 
     protected $softDelete = true;
 
