@@ -131,11 +131,11 @@ class AdminConfigController extends BackController {
                 $dump->start();
 
                 $this->message(
-                    t('Die Datenbank wurde exportiert.'), 
-                    t('Eine .sql-Datei wurde auf dem Webspace angelegt.'));
+                    trans('config::db_export'), 
+                    trans('config::db_file'));
                 break;
             default:
-                $this->message(t('Sorry, "'.Config::get('database.default').'" does not support this feature.'));
+                $this->message(trans('config::not_supported', [Config::get('database.default')]));
                 return;
         }
     }
@@ -147,10 +147,10 @@ class AdminConfigController extends BackController {
         $fileName = storage_path().'/logs/laravel.log';
         if (File::exists($fileName))
         {
-            $content = File::get($fileName, t('The log is empty.'));
+            $content = File::get($fileName, trans('config::log_empty'));
             $this->pageOutput('<pre style="overflow: scroll">'.$content.'</pre>');
         } else {
-            $this->message(t('The log is empty.'));
+            $this->message(trans('config::log_empty'));
         }
     }
 

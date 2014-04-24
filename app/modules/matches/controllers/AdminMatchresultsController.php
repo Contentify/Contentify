@@ -18,8 +18,8 @@ class AdminMatchresultsController extends BackController {
     {
         $this->indexPage([
             'tableHead' => [
-                t('ID')     => 'id', 
-                t('Title')  => 'title'
+                trans('app.id')     => 'id', 
+                trans('app.title')  => 'title'
             ],
             'tableRow' => function($game)
             {

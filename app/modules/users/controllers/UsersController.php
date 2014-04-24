@@ -17,11 +17,11 @@ class UsersController extends FrontController {
         $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                t('ID')             => 'id', 
-                t('Username')       => 'username',
-                t('Name')           => 'first_name',
-                t('Registration')   => 'created_at',
-                t('Last Login')     => 'last_login',
+                trans('app.id')                 => 'id',  
+                trans('app.username')           => 'username',
+                trans('app.name')               => 'first_name',
+                trans('users::registration')    => 'created_at',
+                trans('users::last_login')      => 'last_login',
             ],
             'tableRow' => function($user)
             {

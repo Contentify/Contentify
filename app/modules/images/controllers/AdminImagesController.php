@@ -18,9 +18,9 @@ class AdminImagesController extends BackController {
     {
         $this->indexPage([
             'tableHead' => [
-                t('ID')         => 'id', 
-                t('Image')      => null, 
-                t('Created at') => 'created_at'
+                trans('app.id')         => 'id', 
+                trans('app.image')      => null,
+                trans('app.created_at') => 'created_at'
             ],
             'tableRow' => function($image)
             {

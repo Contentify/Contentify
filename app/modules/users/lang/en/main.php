@@ -67,6 +67,12 @@ return array(
     'new_pw'        => 'New Password',
 
     /*
+     * User list
+     */
+    'registration'  => 'Registration',
+    'last_login'    => 'Last Login',
+
+    /*
      * Backend
      */
     'membership'    => 'Membership',
