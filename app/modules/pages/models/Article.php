@@ -1,9 +1,9 @@
 <?php namespace App\Modules\Pages\Models;
 
 use App\Modules\Pages\Models\Page;
-use DB;
+use OpenGraph, DB;
 
-class BlogPost extends Page {
+class Article extends Page {
 
     /**
      * Select only pages that are published
@@ -21,6 +21,23 @@ class BlogPost extends Page {
     public function countComments()
     {
         return Comment::count('pages', $this->id);
+    }
+
+    /**
+     * Create an instance of OpenGraph that represents Open Graph tags.
+     * 
+     * @return array
+     */
+    public function openGraph()
+    {    
+        $og = new OpenGraph();
+
+        $og->title($this->title)
+            ->type('article')
+            ->description($this->text)
+            ->url();
+
+        return $og;
     }
 
 }

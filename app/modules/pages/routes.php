@@ -11,3 +11,6 @@ ModuleRoute::post('admin/pages/search', 'AdminPagesController@search');
 
 ModuleRoute::resource('pages', 'CustomPagesController', ['only' => ['show']]);
 ModuleRoute::get('pages/{id}/{slug}', 'CustomPagesController@show');
+
+ModuleRoute::resource('articles', 'ArticlesController', ['only' => ['index', 'show']]);
+ModuleRoute::get('articles/{id}/{slug}', 'ArticlesController@show');

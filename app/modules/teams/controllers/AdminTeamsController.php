@@ -18,8 +18,9 @@ class AdminTeamsController extends BackController {
     {
         $this->indexPage([
             'tableHead' => [
-                trans('app.id')     => 'id', 
-                trans('app.title')  => 'title'
+                trans('app.id')         => 'id', 
+                trans('app.title')      => 'title',
+                trans('app.category')   => 'teamcat_id'
             ],
             'tableRow' => function($team)
             {
@@ -29,6 +30,7 @@ class AdminTeamsController extends BackController {
                 return [
                     $team->id,
                     $hover.$team->title,
+                    $team->teamcat->title,
                 ];            
             }
         ]);

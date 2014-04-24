@@ -22,6 +22,7 @@ class Page extends BaseModel {
     ];
 
     public static $relationsData = [
+        'pagecat' => [self::BELONGS_TO, 'App\Modules\Pages\Models\Pagecat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
