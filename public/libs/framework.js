@@ -13,6 +13,11 @@ $(document).ready(function()
         this.locale     = $('meta[name="locale"]').attr('content');
         this.dateFormat = $('meta[name="date-format"]').attr('content');
 
+        this.urlParam = function(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)')
+                .exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+        }
+
         /*
          * Add CSRF token
          */
@@ -47,53 +52,116 @@ $(document).ready(function()
         /*
          * Add delete confirm dialogue
          */
-        $('body').append($('<div />').boxer({})); // Bugfix or Boxer won't open due to a JS error
-        $('*[data-confirm-delete]').click(function(event)
-        {
-            event.preventDefault();
-            event.stopPropagation();
+        if ($.boxer) {
+            $('body').append($('<div />').boxer({})); // Bugfix or Boxer won't open due to a JS error
+            $('*[data-confirm-delete]').click(function(event)
+            {
+                event.preventDefault();
+                event.stopPropagation();
 
-            var $self = $(this);
+                var $self = $(this);
 
-            var $ui = $('<div class="boxer-confirm"><h2>Delete this item?</h2></div>')
-                .append(
-                    $('<button>').text('Yes').click(function()
-                    {
-                        window.location = $self.attr('href');
-                    })
-                ).append(
-                    $('<button>').text('No').click(function()
-                    {
-                        $.boxer('close');
-                    })
-                );
-            $.boxer($ui);
-        });
+                var $ui = $('<div class="boxer-confirm"><h2>Delete this item?</h2></div>')
+                    .append(
+                        $('<button>').text('Yes').click(function()
+                        {
+                            window.location = $self.attr('href');
+                        })
+                    ).append(
+                        $('<button>').text('No').click(function()
+                        {
+                            $.boxer('close');
+                        })
+                    );
+                $.boxer($ui);
+            });
+        }
 
         /*
          * Add confirm dialogue
          */
-        $('*[data-confirm]').click(function(event)
-        {       
-            event.preventDefault();
-            event.stopPropagation();
+        if ($.boxer) {
+            $('*[data-confirm]').click(function(event)
+            {       
+                event.preventDefault();
+                event.stopPropagation();
 
-            var $self = $(this);
-            var message = $self.attr('data-confirm');
+                var $self = $(this);
+                var message = $self.attr('data-confirm');
 
-            var $ui = $('<div class="boxer-confirm"><h2>Execute this action?</h2><p>' + message + '</p></div>')
-                .append(
-                    $('<button>').text('Yes').click(function()
-                    {
-                        window.location = $self.attr('href');
-                    })
-                ).append(
-                    $('<button>').text('No').click(function()
-                    {
-                        $.boxer('close');
-                    })
-                );
-            $.boxer($ui);
+                var $ui = $('<div class="boxer-confirm"><h2>Execute this action?</h2><p>' + message + '</p></div>')
+                    .append(
+                        $('<button>').text('Yes').click(function()
+                        {
+                            window.location = $self.attr('href');
+                        })
+                    ).append(
+                        $('<button>').text('No').click(function()
+                        {
+                            $.boxer('close');
+                        })
+                    );
+                $.boxer($ui);
+            });
+        }
+
+        /*
+         * Content filter UI: Set values
+         */
+        var filter = this.urlParam('filter');
+        if (filter) {
+            var filters = filter.split(',');
+            var filterNames = [];
+            var filterValues = [];
+            $.each(filters, function(key, value)
+            {
+                var values = value.split('-');
+
+                filterNames.push(values[0]);
+
+                if (values.length == 2) {
+                    filterValues.push(values[1]);
+                } else {
+                    filterValues.push('');
+                }
+            });
+            $('.content-filter-ui *').each(function()
+            {
+                var name = $(this).get(0).name;
+                var key = $.inArray(name, filterNames);
+                if (key > -1) {
+                    $(this).val(filterValues[key]);
+                }
+            })
+        }
+
+        /*
+         * Content filter UI: Event handler
+         */
+        $('.content-filter-ui *').change(function() 
+        {
+            var filterUiUrl = $('.content-filter-ui').attr('data-url');
+            var filter      = '';
+
+            $('.content-filter-ui select').each(function() 
+            {
+                if ($(this).val() != '') {
+                    if (filter != '') filter += ',';
+                    filter += $(this).attr('name') + '-' + $(this).val();
+                }
+            });
+
+            if (filter) {
+                var pos = filterUiUrl.indexOf('?');
+
+                if (pos != -1) {
+                    filterUiUrl += '&filter=' + filter;
+                } else {
+                    filterUiUrl += '?filter=' + filter;
+                }
+            }
+
+            window.location = filterUiUrl;
         });
 
         /**

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Models;
 
-use Filter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
+use ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
 class News extends BaseModel {
 
@@ -29,8 +29,8 @@ class News extends BaseModel {
 
     public function scopeFilter($query)
     {
-        if (Filter::has('category')) {
-            $id = (int) Filter::get('category');
+        if (ContentFilter::has('newscat_id')) {
+            $id = (int) ContentFilter::get('newscat_id');
             return $query->whereNewscatId($id);
         }
     }

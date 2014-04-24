@@ -60,6 +60,7 @@
                     <li>{{ link_to('news', 'Newsarchive') }}</li>
                     <li>{{ link_to('contact', 'Contact') }}</li>
                     <li>{{ link_to('users', 'Users') }}</li>
+                    <li>{{ link_to('partners', 'Partners') }}</li>
                     <li>{{ link_to('search', 'Search') }}</li>
                     <li>{{ link_to('admin', 'Admin-Backend') }}</li>
                 </ul>

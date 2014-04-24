@@ -2,12 +2,12 @@
 
 use Input;
 
-class Filter {
+class ContentFilter {
 
     /**
-     * True if the filter exists
+     * True if the content filter exists
      * 
-     * @param  string  $name The name of the filter
+     * @param  string  $name The name of the content filter
      * @return boolean
      */
     public static function has($name)
@@ -15,7 +15,7 @@ class Filter {
         if (! Input::has('filter')) return null;
 
         $filters = Input::get('filter');
-        $filters = explode('_', $filters);
+        $filters = explode(',', $filters);
 
         foreach ($filters as $filter) {
             if (! $filter) continue;
@@ -31,13 +31,13 @@ class Filter {
     }
 
     /**
-     * Returns the value of a filter. 
+     * Returns the value of a content filter. 
      * Returns null if no value is set.
-     * NOTE: Use has() to check if a filter exists, because
-     * get() might return null even if a filter exists.
+     * NOTE: Use has() to check if a content filter exists, because
+     * get() might return null even if a content filter exists.
      * (Null is a valid value.)
      * 
-     * @param  string       $name The name of the filter
+     * @param  string       $name The name of the content filter
      * @return string|null
      */
     public static function get($name)
@@ -45,7 +45,7 @@ class Filter {
         if (! Input::has('filter')) return null;
 
         $filters = Input::get('filter');
-        $filters = explode('_', $filters);
+        $filters = explode(',', $filters);
 
         foreach ($filters as $filter) {
             if (! $filter) continue;

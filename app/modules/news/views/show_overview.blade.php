@@ -1,3 +1,7 @@
+<div class="content-filter-ui" data-url="{{ URL::current() }}">
+    {{ trans('app.category') }}: {{ Form::selectForeign('newscat_id', null, true) }}
+</div>
+
 @foreach ($newsCollection as $news)
 <article class="news">
     <header>

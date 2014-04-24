@@ -223,7 +223,7 @@ return array(
         'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
-        'Filter'                => 'Contentify\Filter',
+        'ContentFilter'         => 'Contentify\ContentFilter',
         'MsgException'          => 'Contentify\MsgException',
 
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',

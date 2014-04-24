@@ -110,6 +110,52 @@ Form::macro('numeric',
     }
 );
 
+Form::macro('selectForeign',
+    /**
+     * Create HTML code for a select element. It will take its values from a database table.
+     * This is meant for models that do not support Ardent relationships.
+     * 
+     * @param  string   $name     The name of the attribute, e. g. "user_id"
+     * @param  string   $title    The title of the select element
+     * @param  mixed    $default  Null or an ID
+     * @param  bool     $nullable If true the result can be empty and a "none selected" option is added
+     * @return string
+     */
+    function ($name, $default = null, $nullable = false)
+    {
+        $pos = strrpos($name, '_');
+        if ($pos === false) {
+            throw new Exception("Invalid foreign key: {$name}", 1);
+        }
+        $modelName = str_plural(substr($name, 0, $pos));
+        $attribute = substr($name, $pos + 1);
+
+        $models = DB::table(str_plural($modelName))->whereDeletedAt(null)->get();
+
+        if (! $nullable and sizeof($models) == 0) {
+            throw new MsgException(trans('app.list_empty', [$modelName]));
+        }
+
+        $options = [];
+        if ($nullable) $options[''] = '-';
+        foreach ($models as $model) {
+            if (isset($model->title)) {
+                $modelTitle = 'title';
+            } elseif (isset($model->name)) {
+                $modelTitle = 'name';
+            } else {
+                $modelTitle = $model->getKeyName();
+            }
+
+            $options[$model->$attribute] = $model->$modelTitle;
+        }
+
+        $value = Form::getDefaultValue($name, $default);
+
+        return Form::select($name, $options, $value);
+    }
+);
+
 Form::macro('smartFieldOpen', 
     /**
      * Create HTML code for the opening part of a custom form field.
@@ -322,38 +368,9 @@ Form::macro('smartSelectForeign',
      */
     function ($name, $title, $default = null, $nullable = false)
     {
-        $pos = strrpos($name, '_');
-        if ($pos === false) {
-            throw new Exception("Invalid foreign key: {$name}", 1);
-        }
-        $modelName = str_plural(substr($name, 0, $pos));
-        $attribute = substr($name, $pos + 1);
-
-        $models = DB::table(str_plural($modelName))->get();
-
-        if (! $nullable and sizeof($models) == 0) {
-            throw new MsgException(trans('app.list_empty', [$modelName]));
-        }
-
-        $options = [];
-        if ($nullable) $options[''] = '-';
-        foreach ($models as $model) {
-            if (isset($model->title)) {
-                $modelTitle = 'title';
-            } elseif (isset($model->name)) {
-                $modelTitle = 'name';
-            } else {
-                $modelTitle = $model->getKeyName();
-            }
-
-            $options[$model->$attribute] = $model->$modelTitle;
-        }
-
-        $value = Form::getDefaultValue($name, $default);
-        
         $partial = Form::smartFieldOpen()
             .Form::label($name, $title)
-            .Form::select($name, $options, $value)
+            .Form::selectForeign($name, $default, $nullable)
             .Form::smartFieldClose();
         return $partial;
     }
