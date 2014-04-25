@@ -7,6 +7,8 @@ class User extends BaseUser {
 
     protected $fillable = ['activated', 'relation_groups', 'relation_teams'];
 
+    protected $slugable = true;
+
     public static $relationsData = [
         'groups'    => [Ardent::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
         'teams'     => [Ardent::BELONGS_TO_MANY, 'App\Modules\Teams\Models\Team', 'table' => 'team_user'],

@@ -32,8 +32,12 @@ class RegistrationController extends FrontController {
             }
 
             /*
-             * Register user
+             * Register user. There is a bug (or strange feature) that Sentry will
+             * not only create a new user but also Sentry::getUser() will return the new
+             * user. But this user isn't properly logged in. So we keep the old user object
+             * and set it as user again after creating the new user.
              */
+            $currentUser = Sentry::getUser();
             $user = Sentry::register([
                 'username'  => Input::get('username'),
                 'email'     => Input::get('email'),
@@ -50,6 +54,8 @@ class RegistrationController extends FrontController {
              */
             $userGroup = Sentry::findGroupById(2);
             $user->addGroup($userGroup);
+
+            Sentry::setUser($currentUser);
 
             $this->message(trans('auth::registered'));
         } catch(Exception $e) {

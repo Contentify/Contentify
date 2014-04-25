@@ -5,10 +5,16 @@ use LaravelBook\Ardent\Ardent;
 class BaseModel extends Ardent {
 
     /**
-     * Path to uploaded files
+     * True if model is slugable
+     * @var bool
+     */
+    protected $slugable = false;
+
+    /**
+     * Name of the upload directory (null = name of class)
      * @var string
      */
-    protected $uploadPath;
+    protected $uploadDir = null;
 
     public static function relations()
     {
@@ -35,7 +41,7 @@ class BaseModel extends Ardent {
     {
         $class = class_basename(get_class($this));
 
-        $dir = $this->uploadPath;
+        $dir = $this->uploadDir;
         if (! $dir) {
             $dir = strtolower(str_plural($class));
         }
@@ -69,6 +75,8 @@ class BaseModel extends Ardent {
      */
     function createSlug($unique = true)
     {
+        if (! $this->slugable) return; // Do not throw exception here.
+
         $slug = Str::slug($this->title);
 
         if ($unique) {

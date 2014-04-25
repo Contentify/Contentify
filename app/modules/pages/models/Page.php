@@ -8,6 +8,8 @@ class Page extends BaseModel {
 
     protected $softDelete = true;
 
+    protected $slugable = true;
+
     protected $fillable = [
         'title', 
         'text', 

@@ -78,7 +78,7 @@ abstract class BackController extends BaseController {
         $model->fill(Input::all());
         $this->fillRelations($modelClass, $model);
 
-        if (isset($model['title']) and isset($model['slug'])) {
+        if (isset($model['title']) and $model->slugable) {
             $model->createSlug();
         }
 
@@ -255,7 +255,7 @@ abstract class BackController extends BaseController {
         $model->fill(Input::all());
         $this->fillRelations($modelClass, $model);
 
-        if (isset($model['title']) and isset($model['slug'])) {
+        if (isset($model['title']) and $model->slugable) {
             $model->createSlug();
         }
 

@@ -6,6 +6,8 @@ class News extends BaseModel {
 
     protected $softDelete = true;
 
+    protected $slugable = true;
+
     protected $fillable = [
         'title', 
         'intro', 

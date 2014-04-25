@@ -6,6 +6,8 @@ class Team extends BaseModel {
 
     protected $softDelete = true;
 
+    protected $slugable = true;
+
     protected $fillable = ['title', 'description', 'position', 'teamcat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
