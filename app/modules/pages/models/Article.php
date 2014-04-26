@@ -5,6 +5,10 @@ use OpenGraph, DB;
 
 class Article extends Page {
 
+    protected $isSubclass = true;
+
+    protected $subclassId = 1;
+
     /**
      * Select only pages that are published
      */

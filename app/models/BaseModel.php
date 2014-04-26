@@ -75,7 +75,9 @@ class BaseModel extends Ardent {
      */
     function createSlug($unique = true)
     {
-        if (! $this->slugable) return; // Do not throw exception here.
+        if (! $this->slugable) {
+            throw new Exception('This model does not support slugs.');
+        }
 
         $slug = Str::slug($this->title);
 

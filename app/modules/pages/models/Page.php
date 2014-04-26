@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Pages\Models;
 
-use BaseModel;
+use StiModel;
 
-class Page extends BaseModel {
+class Page extends StiModel {
 
     protected $table = 'pages';
+
+    protected $subclassField = 'pagecat_id';
 
     protected $softDelete = true;
 
