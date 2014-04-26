@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News;
-use DB, View, Widget;
+use View, Widget;
 
 class NewsWidget extends Widget {
 

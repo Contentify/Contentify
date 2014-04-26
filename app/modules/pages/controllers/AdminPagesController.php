@@ -30,7 +30,7 @@ class AdminPagesController extends BackController {
                 return [
                     $page->id,
                     $page->published ? HTML::image(asset('icons/accept.png'), 'True') : '',
-                    $page->title, //HTML::link(URL::route('page.show', [$page->id]), $page->title),
+                    $page->title, // HTML::link(URL::route('pages.show', [$page->id]), $page->title)
                     $page->pagecat->title,
                     HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username),
                     $page->created_at

@@ -3,3 +3,7 @@
 <div class="text">
     {{ $article->text }}
 </div>
+
+@if ($article->enable_comments)
+{{ Comments::show('articles', $article->id) }}
+@endif

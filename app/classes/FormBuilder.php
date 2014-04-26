@@ -1,7 +1,7 @@
 <?php namespace Contentify;
  
 use Illuminate\Html\FormBuilder as OriginalFormBuilder;
-use URL, HTML, DB;
+use Crypt, URL, HTML, DB;
 
 class FormBuilder extends OriginalFormBuilder
 {
@@ -349,7 +349,7 @@ class FormBuilder extends OriginalFormBuilder
      * 
      * @param  string   $name               The name of the relation as defined in $model::relations
      * @param  string   $title              The caption of the select element
-     * @param  string   $sourceModelClass   Name of the source model class
+     * @param  string   $sourceModelClass   Full name of the source model class
      * @param  mixed    $default            Null, an ID or an an array of IDs (if multiple selected items are possible)
      * @param  bool     $nullable           If true the select element can be empty
      * @return string
