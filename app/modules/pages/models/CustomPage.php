@@ -5,6 +5,10 @@ use DB;
 
 class CustomPage extends Page {
 
+    protected $isSubclass = true;
+
+    protected $subclassId = 2;
+
     /**
      * Select only pages that are published
      */

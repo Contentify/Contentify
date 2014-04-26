@@ -6,7 +6,6 @@
  * but may use a custom value to link a PHP class to an database record.
  * The subclass models may set their $subclassId value to link themselves to a superclass
  * if they don't want to use their class names.
- * The downside: Setting this value has to be done manually!
  */
 abstract class StiModel extends BaseModel
 {
@@ -37,6 +36,21 @@ abstract class StiModel extends BaseModel
     public function isSubclass()
     {
         return $this->isSubclass;
+    }
+
+    public function __construct($attributes = array())
+    {
+        parent::__construct($attributes);
+
+        if ($this->subclassField and $this->isSubclass()) {
+            if ($this->subclassId) {
+                $value = $this->subclassId;
+            } else {
+                $value = class_basename(get_class($this));
+            }
+
+            $this->setAttribute($this->subclassField, $value);
+        }
     }
 
     /**
@@ -76,6 +90,7 @@ abstract class StiModel extends BaseModel
             } else {
                 $value = class_basename(get_class($this));
             }
+
             $builder->where($this->subclassField, '=', $value);
         }
 
