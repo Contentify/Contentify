@@ -28,4 +28,10 @@ class Comment extends BaseModel {
         if ($foreignId) $query->whereForeignId($foreignId);
         return $query->count();
     }
+
+    public function render()
+    {
+        $bbcode = new ChrisKonnertz\BBCode\BBCode();
+        return $bbcode->render($this->text);
+    }
 }

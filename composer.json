@@ -11,7 +11,8 @@
         "laravelbook/ardent": "dev-master",
         "thujohn/rss": "dev-master",
         "intervention/image": "dev-master",
-        "chriskonnertz/open-graph": "dev-master"
+        "chriskonnertz/open-graph": "dev-master",
+        "chriskonnertz/bbcode": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

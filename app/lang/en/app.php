@@ -123,5 +123,6 @@ return array(
     'send'          => 'Send',
     'position'      => 'Position',
     'url'           => 'URL',
+    'quote'         => 'Quote',
 
 );

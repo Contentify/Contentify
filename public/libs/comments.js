@@ -5,8 +5,8 @@ $(document).ready(function()
 
     $('.create-comment .save').click(function()
     {
-        var $self = $(this);
-        var text = $('.create-comment textarea').val();
+        var $self   = $(this);
+        var text    = $('.create-comment textarea').val();
         $('.create-comment form').remove();
 
         $.ajax({
@@ -32,15 +32,15 @@ $(document).ready(function()
 
         $('.create-comment .save').unbind('click');
 
-        var $self = $(this);
-        var id = $self.attr('data-id');
+        var $self   = $(this);
+        var id      = $self.attr('data-id');
 
         $.ajax({
             url: contentify.baseUrl + 'comments/' + id,
             type: 'GET'
         }).success(function(comment)
         {
-            $('.create-comment textarea').val(comment.text);
+            $('.create-comment textarea').val(comment.text).focus();
 
             $('.create-comment .save').click(function()
             {
@@ -70,6 +70,28 @@ $(document).ready(function()
     };
 
     $('.comment .edit').click(editClickHandler);
+
+    var quoteClickHandler = function(event)
+    {
+        event.preventDefault();
+
+        var $self       = $(this);
+        var id          = $self.attr('data-id');
+
+        $.ajax({
+            url: contentify.baseUrl + 'comments/' + id,
+            type: 'GET'
+        }).success(function(comment)
+        {
+            var $textarea    = $('.create-comment textarea');
+            $textarea.val($textarea.val() + '[quote]' + comment.text + '[/quote]\n').focus();
+        }).error(function(response)
+        {
+            $self.parent().html(response.responseText);
+        });
+    };
+
+    $('.comment .quote').click(quoteClickHandler);
 
     var deleteClickHandler = function(event)
     {

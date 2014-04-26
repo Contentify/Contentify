@@ -3,14 +3,17 @@
         <h2>Comment written by {{ link_to('users/'.$comment->creator->id, $comment->creator->username) }} at {{ $comment->created_at }}</h2>
     </header>
     <div class="text">
-        {{ $comment->text }}
+        {{ $comment->render() }}
     </div>
     @if (user())
     @if (user()->hasAccess('comments', PERM_UPDATE) or $comment->creator->id == user()->id)
-    {{ HTML::link(URL::route('comments.edit', [$comment->id]), 'Edit', ['class' => 'edit', 'data-id' => $comment->id]) }}
+    {{ HTML::link(URL::route('comments.edit', [$comment->id]), trans('app.edit'), ['class' => 'edit', 'data-id' => $comment->id]) }}
+    @endif
+    @if (user())
+    {{ HTML::link(URL::to('#', [$comment->id]), trans('app.quote'), ['class' => 'quote', 'data-id' => $comment->id]) }}
     @endif
     @if (user()->hasAccess('comments', PERM_DELETE) or $comment->creator->id == user()->id)
-    {{ HTML::link(URL::route('comments.delete', [$comment->id]).'?method=DELETE', 'Delete', ['class' => 'delete', 'data-id' => $comment->id]) }}
+    {{ HTML::link(URL::route('comments.delete', [$comment->id]).'?method=DELETE', trans('app.delete'), ['class' => 'delete', 'data-id' => $comment->id]) }}
     @endif
     @endif
 </article>
