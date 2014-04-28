@@ -27,10 +27,21 @@ class AdminPagesController extends BackController {
             ],
             'tableRow'  => function($page)
             {
+                switch ($page->pagecat_id) {
+                    case '1':
+                        $link = HTML::link(URL::route('articles.show', [$page->id]), $page->title);
+                        break;
+                    case '2':
+                        $link = HTML::link(URL::route('pages.showSlug', [$page->slug]), $page->title);
+                        break;
+                    default:
+                        $link = $page->title;
+                }
+
                 return [
                     $page->id,
                     $page->published ? HTML::image(asset('icons/accept.png'), 'True') : '',
-                    $page->title, // HTML::link(URL::route('pages.show', [$page->id]), $page->title)
+                    $link,
                     $page->pagecat->title,
                     HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username),
                     $page->created_at

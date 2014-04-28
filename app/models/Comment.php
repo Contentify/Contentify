@@ -29,9 +29,13 @@ class Comment extends BaseModel {
         return $query->count();
     }
 
+    /**
+     * Render the comment (convert BBCode to HTML code)
+     * @return string
+     */
     public function render()
     {
-        $bbcode = new ChrisKonnertz\BBCode\BBCode();
+        $bbcode = new BBCode();
         return $bbcode->render($this->text);
     }
 }

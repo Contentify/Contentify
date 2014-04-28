@@ -227,6 +227,7 @@ return array(
         'MsgException'          => 'Contentify\MsgException',
 
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
+        'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
 
         // Vendor classes:
         'Carbon'                => 'Carbon\Carbon',

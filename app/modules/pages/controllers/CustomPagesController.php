@@ -18,9 +18,13 @@ class CustomPagesController extends FrontController {
      * @param  int $id The id of the custom page
      * @return void
      */
-    public function show($id)
+    public function show($id, $slug = null)
     {
-        $customPage = CustomPage::whereId($id)->published()->firstOrFail();
+        if ($id) {
+            $customPage = CustomPage::whereId($id)->published()->firstOrFail();    
+        } else {
+            $customPage = CustomPage::whereSlug($slug)->published()->firstOrFail();    
+        }        
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($customPage->internal and ! $hasAccess) {
@@ -32,6 +36,11 @@ class CustomPagesController extends FrontController {
 
         $this->title($customPage->title);
         $this->pageView('pages::show_custom_page', compact('customPage'));
+    }
+
+    public function showBySlug($slug)
+    {
+        $this->show(null, $slug);
     }
 
 }

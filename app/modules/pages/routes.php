@@ -9,8 +9,10 @@ ModuleRoute::get(
 );
 ModuleRoute::post('admin/pages/search', 'AdminPagesController@search');
 
-ModuleRoute::resource('pages', 'CustomPagesController', ['only' => ['show']]);
-ModuleRoute::get('pages/{id}/{slug}', 'CustomPagesController@show');
+ModuleRoute::get('pages/{id}/{slug?}', ['as' => 'pages.show', 'uses' => 'CustomPagesController@show'])
+    ->where('id', '[0-9]+');
+ModuleRoute::get('pages/{slug}', ['as' => 'pages.showSlug', 'uses' => 'CustomPagesController@showBySlug']);
 
-ModuleRoute::resource('articles', 'ArticlesController', ['only' => ['index', 'show']]);
+ModuleRoute::get('articles', 'ArticlesController@index');
+ModuleRoute::get('articles/{id}', ['as' => 'articles.show', 'uses' => 'ArticlesController@show']);
 ModuleRoute::get('articles/{id}/{slug}', 'ArticlesController@show');
