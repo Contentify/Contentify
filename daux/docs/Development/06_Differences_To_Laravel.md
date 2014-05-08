@@ -22,9 +22,9 @@ Read more in the [Ardent docs](https://github.com/laravelbook/ardent).
 
 Due to a Laravel package called "Laravel Modules" Contentify has its own kind of packages: [Modules](Modules).
 
-## Surfaces
+## User Interfaces
 
-Contentify includes two surfaces: Frontend and backend. Controllers that are build for the frontend usually inherit from the FrontController class and backend controller from the BackendController class. Names of class (and files) have a prefix to dinstinguish between different surfaces. If a name does not start with a prefix the frontend is the default.
+Contentify includes two user interfaces: Frontend and backend. Controllers that are build for the frontend usually inherit from the FrontController class and backend controller from the BackendController class. Names of class (and files) have a prefix to dinstinguish between different interfaces. If a name does not start with a prefix the frontend is the default interface.
 
 # Sentry
 

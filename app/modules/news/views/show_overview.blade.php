@@ -11,7 +11,9 @@
     <div class="content">
         @if ($news->newscat->image)
         <div class="image">
-            <img src="{{ $news->newscat->uploadPath().$news->newscat->image }}" alt="{{{ $news->newscat->title }}}">
+            <a href="{{ 'news/'.$news->id.'/'.$news->slug }}">
+                <img src="{{ $news->newscat->uploadPath().$news->newscat->image }}" alt="{{{ $news->newscat->title }}}">
+            </a>
         </div>
         @endif
         <div class="intro">

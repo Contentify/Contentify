@@ -214,7 +214,7 @@ class InstallController extends Controller {
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
         {
-            $table->string('name', 255); // We cannot name it "key". "key" is a keyword in SQL.
+            $table->string('name', 255); // We can't name it "key" - it's a keyword in SQL. Eloquent can't handle it(?)
             $table->primary('name');
             $table->text('value')->nullable();
             $table->timestamp('updated_at');
