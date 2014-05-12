@@ -232,7 +232,13 @@ abstract class BaseController extends Controller {
      */
     protected function indexPage($data, $userInterface = 'admin')
     {
-        if (! $this->checkAccessRead()) return;
+        /*
+         * Access checking is only available for the backend.
+         * Frontend controllers have to perform it on their own.
+         */
+        if ($userInterface == 'admin') {
+            if (! $this->checkAccessRead()) return;
+        }
         
         /*
          * Set default values

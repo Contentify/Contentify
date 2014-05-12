@@ -4,6 +4,8 @@ use LaravelBook\Ardent\Ardent;
 
 class BaseModel extends Ardent {
 
+    use DateAccessorTrait;
+
     /**
      * True if model is slugable
      * @var bool

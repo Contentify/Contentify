@@ -178,6 +178,7 @@ return array(
 
     'aliases' => array(
 
+        // Laravel classes:
         'App'                   => 'Illuminate\Support\Facades\App',
         'Artisan'               => 'Illuminate\Support\Facades\Artisan',
         'Auth'                  => 'Illuminate\Support\Facades\Auth',
@@ -217,7 +218,6 @@ return array(
         'View'                  => 'Illuminate\Support\Facades\View',
 
         // CMS classes:
-        'ModuleRoute'           => 'Contentify\ModuleRoute',
         'Captcha'               => 'Contentify\Captcha',
         'FormGenerator'         => 'Contentify\FormGenerator',
         'Hover'                 => 'Contentify\Hover',
@@ -226,14 +226,19 @@ return array(
         'ContentFilter'         => 'Contentify\ContentFilter',
         'MsgException'          => 'Contentify\MsgException',
 
+        // CMS classes extending vendor classes:
+        'ModuleRoute'           => 'Contentify\ModuleRoute',
+        'Carbon'                => 'Contentify\Carbon',
+
+        // Friendly vendor classes:
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
 
-        // Vendor classes:
-        'Carbon'                => 'Carbon\Carbon',
+        // Vendor classes:       
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image'
+
     ),
 
 );

@@ -24,7 +24,8 @@
 			"app/tests/TestCase.php",
 			"app/modules",
 			"app/classes",
-			"app/classes/facades"
+			"app/classes/facades",
+			"app/traits"
 		]
 	},
 	"scripts": {
