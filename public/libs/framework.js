@@ -106,6 +106,20 @@ $(document).ready(function()
         }
 
         /*
+         * Spoiler
+         */
+        $('.spoiler').wrap('<div class="spoiler-wrapper">');
+        $('.spoiler-wrapper').prepend($('<div class="spoiler-toggle">')
+            .click(function()
+            {
+                var $wrapper = $(this).parent();
+                var $spoiler = $wrapper.find('.spoiler');
+
+                $wrapper.toggleClass('show');
+            })
+        );
+
+        /*
          * Content filter UI: Set values
          */
         var filter = this.urlParam('filter');
