@@ -491,7 +491,7 @@ class FormBuilder extends OriginalFormBuilder
     }
 
     /**
-     * Create HTML code for a datetime input element.
+     * Create HTML code for a date & time input element.
      * 
      * @param  string $name       The name of the input element
      * @param  string $title      The title of the input element
@@ -502,9 +502,17 @@ class FormBuilder extends OriginalFormBuilder
     {
         $value = self::getDefaultValue($name, $default);
 
+        /*
+         * If $value is not null and is an object (Carbon instance),
+         * localize date and time.
+         */
+        if ($value and ! is_string($value)) {
+            $value = $value->dateTime();
+        }
+
         $partial = '<div class="form-group date-time-picker input-append date">'
             .self::label($name, $title)
-            .self::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
+            .self::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm'])
             .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
             .'</div>';
         return $partial;
@@ -546,8 +554,8 @@ class FormBuilder extends OriginalFormBuilder
     }
 
     /**
-     * Laravel prioritises model values lower than higher the value passed to form elements.
-     * This macro is an alternative to getValueAttribute that prioritises model values higher.
+     * Laravel prioritises model values lower than the value passed to form elements.
+     * This method is an alternative to getValueAttribute, that prioritises model values higher.
      * 
      * @param string $name
      * @param mixed  $default

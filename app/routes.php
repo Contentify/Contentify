@@ -87,6 +87,9 @@ Route::post('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
+    $News = 'App\Modules\News\Models\News';
+    $news = $News::find(11);
+    dd($news->published_at);
 
     //$fg = new FormGenerator();
     //return '<pre>'.$fg->generate('pages').'</pre>';

@@ -29,6 +29,13 @@ class News extends BaseModel {
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
+    public function getDates()
+    {
+        $dates = parent::getDates();
+        $dates[] = 'published_at';
+        return $dates;
+    }
+
     public function scopeFilter($query)
     {
         if (ContentFilter::has('newscat_id')) {
