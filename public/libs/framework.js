@@ -265,7 +265,7 @@ $(document).ready(function()
         }
 
         var now = new Date();
-        console.log(this.formatDate(now, 'Y-m-d'));
+        //console.log(this.formatDate(now, 'Y-m-d'));
 
     };
 

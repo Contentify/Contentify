@@ -2,8 +2,15 @@
 
 * PHP 5.4.0
 * MCrypt PHP Extension
+* FileInfo PHP Extension
+
+You will also need a MySQL Database and it's recommended to activate Apache's mod_rewrite module (or Nginx' HttpRewriteModule).
 
 We strongly recommend to use Webspace that you can configure. You should be able to create vhosts at least. And there is a command-line interface called [Artisan](http://laravel.com/docs/artisan). You should ensure you can run it. With Artisan you may [enable maintenance mode](http://laravel.com/docs/configuration#maintenance-mode).
+
+# Install Missing PHP Extensions
+
+The first step on your Windows environment is to open `php/php.ini` and to search for the name of the extension like so: `;extension=php_fileinfo.dll` If you find this line remove the semicolon to activate the extension. If you don't find it, you need to download the extension first and then add it to the `php.ini`. Here is a guide for MCrypt: [Link](http://www.myoddweb.com/2010/11/18/install-mcrypt-for-php-on-windows/)
 
 # Get Contentify
 
