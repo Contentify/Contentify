@@ -51,7 +51,7 @@
             <a id="hnav1" class="hnav" href="{{ route('admin.dashboard') }}"><!-- empty --></a>
             <a id="hnav2" class="hnav" href="{{ route('home') }}"><!-- empty --></a>
             <a id="hnav3" class="hnav" href="{{ url('admin/help') }}"><!-- empty --></a>
-            <a id="hnav4" class="hnav" href="{{ url('admin/help/info') }}"><!-- empty --></a>
+            <a id="hnav4" class="hnav" href="{{ url('admin/diag') }}"><!-- empty --></a>
             <a id="hnav5" class="hnav" href="{{ route('logout') }}"><!-- empty --></a>
         
             <img id="user-img" src="{{ $userImage }}" alt="User">
