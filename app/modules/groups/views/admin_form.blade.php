@@ -9,7 +9,7 @@
 
     {{ Form::hidden('permissions') }}
 
-    @foreach ($modelName::permissions((isset($model)) ? $model->id : null) as $permission)
+    @foreach ($modelClass::permissions((isset($model)) ? $model->id : null) as $permission)
         {{ Form::smartSelect($permission->name, ucfirst($permission->name), $permission->values, $permission->current, ['class' => 'permission']) }}
     @endforeach
 

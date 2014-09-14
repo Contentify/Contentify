@@ -23,12 +23,9 @@ class AdminGroupsController extends BackController {
             ],
             'tableRow' => function($group)
             {
-                $hover = new Hover();
-                $hover->image($group->permissions);
-
                 return [
                     $group->id,
-                    $hover.$group->name,
+                    $group->name,
                 ];            
             },
             'searchFor' => 'name'
