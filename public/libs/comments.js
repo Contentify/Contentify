@@ -77,6 +77,9 @@ $(document).ready(function()
 
         var $self       = $(this);
         var id          = $self.attr('data-id');
+        var creator     = $self.parent().find('.creator-name').text();
+
+        if (creator) creator = '=' + creator;
 
         $.ajax({
             url: contentify.baseUrl + 'comments/' + id,
@@ -84,7 +87,7 @@ $(document).ready(function()
         }).success(function(comment)
         {
             var $textarea    = $('.create-comment textarea');
-            $textarea.val($textarea.val() + '[quote]' + comment.text + '[/quote]\n').focus();
+            $textarea.val($textarea.val() + '[quote' + creator + ']' + comment.text + '[/quote]\n').focus();
         }).error(function(response)
         {
             $self.parent().html(response.responseText);
