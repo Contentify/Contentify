@@ -314,7 +314,7 @@ abstract class BaseController extends Controller {
         /*
          * Switch recycle bin mode: Show soft deleted models if recycle bin mode is enabled.
          */
-        if ((new $modelClass)->isSoftDeleting()) { // Create an model because isSoftDeleting() is tied to an instance
+        if ($userInterface == 'admin' and (new $modelClass)->isSoftDeleting()) { // Create an model because isSoftDeleting() is tied to an instance
             $recycleBinMode = Input::get('binmode');
             if ($recycleBinMode !== null) {
                 Session::put('recycleBinMode', (bool) $recycleBinMode);
@@ -334,7 +334,7 @@ abstract class BaseController extends Controller {
             $paginator  = null;
         } else {
             $models = $modelClass::orderBy($data['sortby'], $data['order']);
-            if (Session::get('recycleBinMode')) {
+            if ($userInterface == 'admin' and Session::get('recycleBinMode')) {
                 $models = $models->withTrashed(); // Show trashed
             }
             if ($data['filter'] === true) {
