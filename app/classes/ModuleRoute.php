@@ -51,7 +51,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create route for method get.
+     * Create a route for method get.
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -63,7 +63,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create route for method post.
+     * Create a route for method post.
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -75,7 +75,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create route for method put.
+     * Create a route for method put.
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -87,7 +87,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create route for method any.
+     * Create a route for method any.
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -99,7 +99,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create route for several methods.
+     * Create a route for several methods.
      *
      * @param  array  $methods
      * @param  string $route
