@@ -1,7 +1,7 @@
 <?php namespace Contentify;
  
 use Illuminate\Html\FormBuilder as OriginalFormBuilder;
-use Crypt, URL, HTML, DB;
+use Crypt, URL, HTML, DB, Exception, MsgException;
 
 class FormBuilder extends OriginalFormBuilder
 {

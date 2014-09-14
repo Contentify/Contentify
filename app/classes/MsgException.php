@@ -1,5 +1,5 @@
 <?php namespace Contentify;
 
-use Exception;
+use RuntimeException;
 
-class MsgException extends Exception {}
+class MsgException extends RuntimeException {}

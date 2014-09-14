@@ -77,7 +77,7 @@ class InstallController extends Controller {
 
                 break;
             case 3:
-                //$this->createDatabase();
+                $this->createDatabase();
                 //$this->createSeed();
 
                 /*
@@ -141,6 +141,8 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
+        return; // DEBUG
+
         $this->create('pagecats', function($table) { });
 
         $this->create('pages', function($table)
@@ -152,8 +154,6 @@ class InstallController extends Controller {
             $table->boolean('enable_comments')->default(false);
         }, ['pagecat_id']);   
 
-        return; // DEBUG
-     
         $this->create('adverts', function($table)
         {
             $table->text('code')->nullable();
@@ -161,6 +161,8 @@ class InstallController extends Controller {
             $table->integer('layout_type')->default(0);
             $table->string('image')->nullable();
         });
+
+        $this->create('partnercats', function($table) { });
 
         $this->create('partners', function($table)
         {
@@ -475,9 +477,9 @@ class InstallController extends Controller {
                 }
                 if ($contentObject === true or ! in_array('slug', $contentObject)) {
                     if (strtolower(DB::connection()->getDriverName()) == 'mysql') {
-                        $table->string('slug')->unique->after('id');
+                        $table->string('slug')->unique()->after('id');
                     } else {
-                        $table->string('slug')->unique;
+                        $table->string('slug')->unique();
                     }
                 }
                 if ($contentObject === true or ! in_array('creator_id', $contentObject)) {

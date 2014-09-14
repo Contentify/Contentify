@@ -17,4 +17,8 @@ class Partner extends BaseModel {
         'position'      => 'integer',
     ];
 
+    public static $relationsData = [
+        'partnercat'   => [self::BELONGS_TO, 'App\Modules\Partners\Models\Partnercat'],
+    ];
+
 }

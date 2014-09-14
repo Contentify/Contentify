@@ -6,6 +6,7 @@
 {{ Form::open(['url' => 'admin/partners', 'files' => true]) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
+    {{ Form::smartSelectRelation('partnercat', 'Partner '.trans('app.category'), $modelClass, null) }}
     {{ Form::smartTextarea('text', trans('app.text')) }}
     {{ Form::smartUrl('url', trans('app.url')) }}
     {{ Form::smartNumeric('layout_type', trans('app.layout_type'), 0) }}

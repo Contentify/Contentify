@@ -64,7 +64,6 @@ App::error(function(Exception $exception, $code)
     }
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

@@ -230,11 +230,9 @@ return array(
         'ModuleRoute'           => 'Contentify\ModuleRoute',
         'Carbon'                => 'Contentify\Carbon',
 
-        // Friendly vendor classes:
+        // Vendor classes:       
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
-
-        // Vendor classes:       
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image'
