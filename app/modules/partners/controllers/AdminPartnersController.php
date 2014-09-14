@@ -17,10 +17,11 @@ class AdminPartnersController extends BackController {
     public function index()
     {
         $this->indexPage([
+            'buttons'   => ['new', 'category'],
             'tableHead' => [
                 trans('app.id')             => 'id', 
-                trans('app.layout_type')    => 'layout_type', 
-                trans('app.title')          => 'title'
+                trans('app.title')          => 'title',
+                trans('app.category')       => 'partnercat_id', 
             ],
             'tableRow' => function($partner)
             {
@@ -29,8 +30,8 @@ class AdminPartnersController extends BackController {
 
                 return [
                     $partner->id,
-                    $partner->layout_type,
                     $hover.$partner->title,
+                    $partner->partnercat->title,
                 ];            
             }
         ]);

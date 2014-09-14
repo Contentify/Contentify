@@ -162,16 +162,15 @@ class InstallController extends Controller {
             $table->string('image')->nullable();
         });
 
-        $this->create('partnercats', function($table) { });
+        $this->create('partnercats', function($table) { },  [], ['slug']);
 
         $this->create('partners', function($table)
         {
             $table->text('text')->nullable();
             $table->string('url')->nullable();
-            $table->integer('layout_type')->default(0);
             $table->integer('position')->default(0);
             $table->string('image')->nullable();
-        });
+        }, ['partnercat_id']);
 
         $this->createPivot('team_user', function($table)
         {
