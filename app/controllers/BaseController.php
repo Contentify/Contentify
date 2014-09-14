@@ -274,7 +274,7 @@ abstract class BaseController extends Controller {
                         $buttons .= button(trans('app.create'), $url, 'add');
                         break;
                     case 'category':
-                        $url = route($userInterface.'.'.strtolower($this->module).'cats.index');
+                        $url = route($userInterface.'.'.str_singular(strtolower($this->module)).'cats.index');
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
                     default:
