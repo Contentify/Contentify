@@ -6,14 +6,17 @@ class Advert extends BaseModel {
 
     protected $softDelete = true;
 
-    protected $fillable = ['title', 'code', 'url', 'layout_type'];
+    protected $fillable = ['title', 'code', 'url'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     public static $rules = [
         'title'         => 'required',
         'url'           => 'url',
-        'layout_type'   => 'integer'
+    ];
+
+    public static $relationsData = [
+        'advertcat'   => [self::BELONGS_TO, 'App\Modules\Adverts\Models\Advertcat'],
     ];
 
 }

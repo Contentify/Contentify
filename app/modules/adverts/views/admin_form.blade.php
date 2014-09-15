@@ -6,9 +6,9 @@
 {{ Form::open(['url' => 'admin/adverts', 'files' => true]) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
+    {{ Form::smartSelectRelation('advertcat', 'Advert '.trans('app.category'), $modelClass, null) }}
     {{ Form::smartTextarea('code', trans('app.code')) }}
     {{ Form::smartUrl('url', trans('app.url')) }}
-    {{ Form::smartNumeric('layout_type', trans('app.layout_type'), 0) }}
     {{ Form::smartImageFile('image', trans('app.image')) }}
         
     {{ Form::actions() }}

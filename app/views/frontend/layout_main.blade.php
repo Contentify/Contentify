@@ -77,7 +77,7 @@
 
                 <br>
                 <h3>Advert:</h3>
-                @widget('Adverts::Advert')
+                @widget('Adverts::Advert', ['categoryId' => 1])
             </aside>
 
             <div class="clear"></div>

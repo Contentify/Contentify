@@ -7,7 +7,7 @@ ModuleRoute::get(
     'admin/partnercats/{id}/restore', 
     ['as' => 'admin.partnercats.restore', 'uses' => 'AdminPartnercatsController@restore']
 );
-ModuleRoute::post('admin/newscats/search', 'AdminNewscatsController@search');
+ModuleRoute::post('admin/partnercats/search', 'AdminPartnercatsController@search');
 
 ModuleRoute::resource('admin/partners', 'AdminPartnersController');
 ModuleRoute::get(

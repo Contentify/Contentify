@@ -152,15 +152,16 @@ class InstallController extends Controller {
             $table->timestamp('published_at');
             $table->boolean('internal')->default(false);
             $table->boolean('enable_comments')->default(false);
-        }, ['pagecat_id']);   
+        }, ['pagecat_id']);
+
+        $this->create('advertcats', function($table) { },  [], ['slug']); 
 
         $this->create('adverts', function($table)
         {
             $table->text('code')->nullable();
             $table->string('url')->nullable();
-            $table->integer('layout_type')->default(0);
             $table->string('image')->nullable();
-        });
+        }, ['advertcat_id']);
 
         $this->create('partnercats', function($table) { },  [], ['slug']);
 
@@ -179,7 +180,7 @@ class InstallController extends Controller {
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);    
 
-        $this->create('teamcats', function($table) { });
+        $this->create('teamcats', function($table) { },  [], ['slug']);
 
         $this->create('teams', function($table) 
         { 
@@ -231,7 +232,7 @@ class InstallController extends Controller {
         $this->create('newscats', function($table)
         {
             $table->string('image')->nullable();
-        });
+        }, [], ['slug']);
 
         $this->create('news', function($table)
         {

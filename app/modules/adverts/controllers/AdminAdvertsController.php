@@ -17,10 +17,11 @@ class AdminAdvertsController extends BackController {
     public function index()
     {
         $this->indexPage([
+            'buttons'   => ['new', 'category'],
             'tableHead' => [
                 trans('app.id')             => 'id', 
-                trans('app.layout_type')    => 'layout_type', 
-                trans('app.title')          => 'title'
+                trans('app.title')          => 'title',
+                trans('app.category')       => 'advertcat_id', 
             ],
             'tableRow' => function($advert)
             {
@@ -29,8 +30,8 @@ class AdminAdvertsController extends BackController {
 
                 return [
                     $advert->id,
-                    $advert->layout_type,
                     $hover.$advert->title,
+                    $advert->advertcat->title,
                 ];            
             }
         ]);

@@ -1,15 +1,23 @@
 <?php namespace App\Modules\Adverts\Controllers;
 
 use App\Modules\Adverts\Models\Advert;
+use App\Modules\Adverts\Models\Advertcat;
 use Config, DB, View, Widget;
 
 class AdvertWidget extends Widget {
 
     public function render($parameters = array())
     {
-        $layoutType = 0;
-
-        if (isset($parameters['layoutType'])) $type = $parameters['layoutType'];
+        if (isset($parameters['categoryId'])) {
+            $categoryId = $parameters['categoryId'];
+        } else {
+            $advertcat = Advertcat::first();
+            if ($advertcat) {
+                $categoryId = $advertcat->id;
+            } else {
+                $categoryId = 0;
+            }
+        }
 
         /*
          * Create the id attribute for the (div) container of the advert.
@@ -19,7 +27,7 @@ class AdvertWidget extends Widget {
          */
         $key            = substr(Config::get('app.key'), 0, 10);
         $salt           = 'f2h8wqhdfn'; // Even more salt - you may change this value!
-        $containerId    = substr(md5($layoutType.$key.$salt), 0, 5);
+        $containerId    = substr(md5($categoryId.$key.$salt), 0, 5);
 
         /*
          * Ensure $containerId starts with an alphabetic character
@@ -28,7 +36,7 @@ class AdvertWidget extends Widget {
             $containerId = (chr(ord(substr($containerId, 0, 1)) % 26 + 97)).$containerId;
         }
 
-        $advert = Advert::orderBy(DB::raw('RAND()'))->whereLayoutType($layoutType)->first();
+        $advert = Advert::orderBy(DB::raw('RAND()'))->whereAdvertcatId($categoryId)->first();
 
         if ($advert) {
             return View::make('adverts::widget', compact('advert', 'containerId'))->render();
