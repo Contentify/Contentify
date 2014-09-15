@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Partners\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class Partnercat extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['title'];
     

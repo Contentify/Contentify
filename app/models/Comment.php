@@ -2,7 +2,7 @@
 
 class Comment extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
 
     protected $fillable = array('text');
 

@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Contact\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class ContactMessage extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['username', 'email', 'title', 'text'];
 

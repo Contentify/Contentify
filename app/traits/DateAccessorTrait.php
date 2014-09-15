@@ -3,7 +3,7 @@
 /*
  * Use this trait to "extend" Eloquent models
  * so they use Contentify\Carbon. Take a look at the
- * Eloquent model class if you are itnersted in
+ * Eloquent model class if you are interested in
  * the original methods.
  */
 trait DateAccessorTrait {
@@ -15,11 +15,11 @@ trait DateAccessorTrait {
 
     public function fromDateTime($value)
     {
-        $format = $this->getDateFormat();
+        $format = $this->getDateFormat(); // This is an Eloquent method
 
         if ($value instanceof DateTime)
         {
-            //
+            // Do nothing
         }
         elseif (is_numeric($value))
         {

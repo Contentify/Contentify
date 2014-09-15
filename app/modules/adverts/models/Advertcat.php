@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Adverts\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class Advertcat extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['title'];
     

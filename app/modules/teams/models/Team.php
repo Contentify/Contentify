@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Teams\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class Team extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $slugable = true;
 

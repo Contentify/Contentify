@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Groups\Models;
 
 use App\Modules\Groups\Models\Permission;
-use Sentry, BaseModel;
+use SoftDeletingTrait, Sentry, BaseModel;
 
 /*
  * Important note:
@@ -12,7 +12,7 @@ use Sentry, BaseModel;
 
 class Group extends BaseModel {
 
-    //protected $softDelete = true;
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['name', 'permissions'];
 

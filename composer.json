@@ -4,15 +4,15 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.1.*",
+		"laravel/framework": "4.2.*",
 		"way/generators": "~2.0",
 		"creolab/laravel-modules": "dev-master",
 		"cartalyst/sentry": "2.0.*",
-        "laravelbook/ardent": "dev-master",
         "thujohn/rss": "dev-master",
         "intervention/image": "dev-master",
         "chriskonnertz/open-graph": "dev-master",
-        "chriskonnertz/bbcode": "dev-master"
+        "chriskonnertz/bbcode": "dev-master",
+        "watson/validating": "0.9.*"
 	},
 	"autoload": {
 		"classmap": [

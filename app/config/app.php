@@ -89,6 +89,7 @@ return array(
 
     'key' => '01234567890123456789012345678912',
 
+    'cipher' => MCRYPT_RIJNDAEL_256,
 
     /*
     |--------------------------------------------------------------------------
@@ -211,6 +212,7 @@ return array(
         'Schema'                => 'Illuminate\Support\Facades\Schema',
         'Seeder'                => 'Illuminate\Database\Seeder',
         'Session'               => 'Illuminate\Support\Facades\Session',
+        'SoftDeletingTrait'     => 'Illuminate\Database\Eloquent\SoftDeletingTrait',
         'SSH'                   => 'Illuminate\Support\Facades\SSH',
         'Str'                   => 'Illuminate\Support\Str',
         'URL'                   => 'Illuminate\Support\Facades\URL',

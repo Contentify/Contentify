@@ -1,14 +1,16 @@
 <?php namespace App\Modules\Pages\Models;
 
-use StiModel;
+use SoftDeletingTrait, StiModel;
 
 class Page extends StiModel {
+
+    use SoftDeletingTrait;
 
     protected $table = 'pages';
 
     protected $subclassField = 'pagecat_id';
 
-    protected $softDelete = true;
+    protected $dates = ['deleted_at, published_at'];
 
     protected $slugable = true;
 
@@ -19,7 +21,8 @@ class Page extends StiModel {
         'published',
         'internal',
         'enable_comments',
-        'pagecat_id'];
+        'pagecat_id'
+    ];
 
     public static $rules = [
         'title'     => 'required',

@@ -31,7 +31,7 @@ SQL does not offer an explicit way to give attributes a semantic meaning. Larave
 * **title**: Entity title (*string*, not null)
 * **created_at**: Time of creation (*timestamp*)
 * **updated_at**: Time of last update (*timestamp*)
-* **deleted_at**: Time of deletion, when "soft delete" is enabled (*timestamp*)
+* **deleted_at**: Time of deletion, if "soft delete" is enabled (*timestamp*)
 * **creator_id**: User-ID of the entity creator (*integer*)
 * **updater_id**: User-ID of the user doing the latest update (*integer*)
 * **access_counter**: Counts accesses (*integer*)

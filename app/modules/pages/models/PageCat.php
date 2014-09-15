@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Pages\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class Pagecat extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['title'];
 

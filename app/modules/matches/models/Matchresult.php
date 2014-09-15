@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Matches\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class Matchresult extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [];
 

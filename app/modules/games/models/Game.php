@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Games\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class Game extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['title', 'short'];
 

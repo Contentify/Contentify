@@ -1,10 +1,12 @@
 <?php namespace App\Modules\Countries\Models;
 
-use BaseModel;
+use SoftDeletingTrait, BaseModel;
 
 class Country extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['title', 'code'];
 

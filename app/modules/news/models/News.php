@@ -1,10 +1,12 @@
 <?php namespace App\Modules\News\Models;
 
-use ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
+use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
 class News extends BaseModel {
 
-    protected $softDelete = true;
+    use SoftDeletingTrait;
+
+    protected $dates = ['deleted_at', 'published_at'];
 
     protected $slugable = true;
 
@@ -28,13 +30,6 @@ class News extends BaseModel {
         'newscat' => [self::BELONGS_TO, 'App\Modules\News\Models\Newscat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
-    public function getDates()
-    {
-        $dates = parent::getDates();
-        $dates[] = 'published_at';
-        return $dates;
-    }
 
     public function scopeFilter($query)
     {
