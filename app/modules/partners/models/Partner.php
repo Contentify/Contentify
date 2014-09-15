@@ -6,7 +6,7 @@ class Partner extends BaseModel {
 
     protected $softDelete = true;
 
-    protected $fillable = ['title', 'text', 'url', 'position'];
+    protected $fillable = ['title', 'text', 'url', 'position', 'partnercat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 

@@ -6,7 +6,7 @@ class Advert extends BaseModel {
 
     protected $softDelete = true;
 
-    protected $fillable = ['title', 'code', 'url'];
+    protected $fillable = ['title', 'code', 'url', 'advertcat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 

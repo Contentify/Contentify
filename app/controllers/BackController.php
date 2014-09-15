@@ -282,7 +282,7 @@ abstract class BackController extends BaseController {
                         }
                     }
 
-                    $oldFile = $model->uploadPath().$model->$fieldName;
+                    $oldFile = $model->uploadPath(true).$model->$fieldName;
                     if (File::isFile($oldFile)) {
                         File::delete($oldFile); // We need to delete the old file or we can have "123.jpg" & "123.png"
                     }
@@ -342,7 +342,7 @@ abstract class BackController extends BaseController {
          * Delete related files even if it's only a soft deletion.
          */
         if (! $model->trashed() and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
-            $filePath = $model->uploadPath();
+            $filePath = $model->uploadPath(true);
 
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
                 File::delete($filePath.$model->$fieldName);
