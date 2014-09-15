@@ -31,6 +31,21 @@ class News extends BaseModel {
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        self::saved(function($news)
+        {
+           self::updateRSS();
+        });
+
+        self::deleted(function($news)
+        {
+           self::updateRSS();
+        });
+    }
+
     public function scopeFilter($query)
     {
         if (ContentFilter::has('newscat_id')) {
@@ -106,15 +121,5 @@ class News extends BaseModel {
         }
 
         $feed->save(public_path().'/rss/news.xml');
-    }
-
-    public function afterSave()
-    {
-        self::updateRSS();
-    }
-
-    public function afterDelete()
-    {
-        self::updateRSS();
     }
 }
