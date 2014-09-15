@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
-		"way/generators": "dev-master",
+		"way/generators": "~2.0",
 		"creolab/laravel-modules": "dev-master",
 		"cartalyst/sentry": "2.0.*",
         "laravelbook/ardent": "dev-master",
