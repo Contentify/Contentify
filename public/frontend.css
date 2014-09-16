@@ -69,6 +69,10 @@ h1.page-title { }
 .create-comment textarea { width: 100%; height: 70px; margin-left: -20px; padding: 10px 20px; border: 2px solid silver; color: #666; }
 .create-comment textarea:focus { border-color: #ff6100; }
 
+.page-videos .video { float: left; width: 33%; text-align: center; }
+.page-videos .video img { width: 90% }
+.page-videos .video-player iframe { width: 100%; border: none }
+
 /*
  * Mainlayout
  */

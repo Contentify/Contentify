@@ -67,7 +67,7 @@ return array(
     'creator'       => 'Creator',
     'category'      => 'Category',
     'type'          => 'Type',
-    'layout_type'   => 'Layout Type',
+    'provider'      => 'Provider',
     'text'          => 'Text',
     'code'          => 'Code',
     'image'         => 'Image',

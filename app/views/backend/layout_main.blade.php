@@ -107,7 +107,7 @@
                                 <div class="menu1"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/newscats', 'News-Categories') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/color_swatch.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=slider">Slider</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=headlinecats">Headline-Categories</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/film.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=videos">Videos</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/film.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/videos', 'Videos') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/film_link.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=streams">Livestreams</a></div> 
 
                                 <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloadcats">Download-Categories</a></div>

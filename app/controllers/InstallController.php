@@ -141,6 +141,13 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
+        $this->create('videos', function($table)
+        {
+            $table->string('url')->nullable();
+            $table->string('permanent_id')->nullable();
+            $table->string('provider');
+        });
+
         return; // DEBUG
 
         $this->create('pagecats', function($table) { });
@@ -398,6 +405,7 @@ class InstallController extends Controller {
                 'partners'  => PERM_DELETE,
                 'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
+                'videos'    => PERM_DELETE,
             ]
         ]);
 
@@ -423,6 +431,7 @@ class InstallController extends Controller {
                 'partners'  => PERM_DELETE,
                 'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
+                'videos'    => PERM_DELETE,
             ]
         ]);
     }

@@ -16,6 +16,7 @@
 	 * @param label [string] <''> "Label displayed before selection"
 	 * @param external [boolean] <false> "Open options as links in new window"
 	 * @param links [boolean] <false> "Open options as links in same window"
+	 * @param mobile [boolean] <false> "Force desktop interaction on mobile"
 	 * @param trim [int] <0> "Trim options to specified length; 0 to disable”
 	 */
 	var options = {
@@ -25,6 +26,7 @@
 		label: "",
 		external: false,
 		links: false,
+		mobile: false,
 		trim: 0
 	};
 
@@ -51,7 +53,7 @@
 		 */
 		disable: function(option) {
 			return $(this).each(function(i, input) {
-				var data = $(input).next(".selecter").data("selecter");
+				var data = $(input).parent(".selecter").data("selecter");
 
 				if (data) {
 					if (typeof option !== "undefined") {
@@ -73,6 +75,42 @@
 
 		/**
 		 * @method
+		 * @name destroy
+		 * @description Removes instance of plugin
+		 * @example $(".target").selecter("destroy");
+		 */
+		destroy: function() {
+			return $(this).each(function(i, input) {
+				var data = $(input).parent(".selecter").data("selecter");
+
+				if (data) {
+					if (data.$selecter.hasClass("open")) {
+						data.$selecter.find(".selecter-selected").trigger("click.selecter");
+					}
+
+					// Scroller support
+					if ($.fn.scroller !== undefined) {
+						data.$selecter.find(".selecter-options").scroller("destroy");
+					}
+
+					data.$select[0].tabIndex = data.tabIndex;
+
+					data.$select.find(".selecter-placeholder").remove();
+					data.$selected.remove();
+					data.$itemsWrapper.remove();
+
+					data.$selecter.off(".selecter");
+
+					data.$select.off(".selecter")
+								.removeClass("selecter-element")
+								.show()
+								.unwrap();
+				}
+			});
+		},
+
+		/**
+		 * @method
 		 * @name enable
 		 * @description Enables target instance or option
 		 * @param option [string] <null> "Target option value"
@@ -80,7 +118,7 @@
 		 */
 		enable: function(option) {
 			return $(this).each(function(i, input) {
-				var data = $(input).next(".selecter").data("selecter");
+				var data = $(input).parent(".selecter").data("selecter");
 
 				if (data) {
 					if (typeof option !== "undefined") {
@@ -95,47 +133,26 @@
 			});
 		},
 
+
 		/**
-		 * @method
-		 * @name destroy
-		 * @description Removes instance of plugin
-		 * @example $(".target").selecter("destroy");
-		 */
-		destroy: function() {
-			return $(this).each(function(i, input) {
-				var data = $(input).next(".selecter").data("selecter");
-
-				if (data) {
-					if (data.$selecter.hasClass("open")) {
-						data.$selecter.find(".selecter-selected").trigger("click.selecter");
-					}
-
-					// Scroller support
-					if ($.fn.scroller !== undefined) {
-						data.$selecter.find(".selecter-options").scroller("destroy");
-					}
-
-					data.$select[0].tabIndex = data.tabIndex;
-
-					data.$select.off(".selecter")
-								.removeClass("selecter-element")
-								.show();
-
-					data.$selecter.off(".selecter")
-								  .remove();
-				}
-			});
+		* @method private
+		* @name refresh
+		* @description DEPRECATED - Updates instance base on target options
+		* @example $(".target").selecter("refresh");
+		*/
+		refresh: function() {
+			return pub.update.apply($(this));
 		},
 
 		/**
 		* @method
-		* @name refresh
+		* @name update
 		* @description Updates instance base on target options
-		* @example $(".target").selecter("refresh");
+		* @example $(".target").selecter("update");
 		*/
-		refresh: function() {
+		update: function() {
 			return $(this).each(function(i, input) {
-				var data = $(input).next(".selecter").data("selecter");
+				var data = $(input).parent(".selecter").data("selecter");
 
 				if (data) {
 					var index = data.index;
@@ -191,60 +208,77 @@
 			// EXTEND OPTIONS
 			opts = $.extend({}, opts, $select.data("selecter-options"));
 
+			opts.multiple = $select.prop("multiple");
+			opts.disabled = $select.is(":disabled");
+
 			if (opts.external) {
 				opts.links = true;
 			}
 
+			// Test for selected option in case we need to override the custom label
+			var $originalOption = $select.find(":selected");
+			if (!opts.multiple && opts.label !== "") {
+				$select.prepend('<option value="" class="selecter-placeholder" selected>' + opts.label + '</option>');
+			} else {
+				opts.label = "";
+			}
+
 			// Build options array
 			var $allOptions = $select.find("option, optgroup"),
-				$options = $allOptions.filter("option"),
-				$originalOption = $options.filter(":selected"),
-				originalIndex = ($originalOption.length > 0) ? $options.index($originalOption) : 1,
-				wrapperTag = (opts.links) ? "nav" : "div";
+				$options = $allOptions.filter("option");
 
-			if (opts.label !== "") {
-				originalIndex = -1;
-			}
+			// update original in case we needed a custom label placeholder
+			$originalOption = $options.filter(":selected");
+
+			var originalIndex = ($originalOption.length > 0) ? $options.index($originalOption) : 0,
+				originalLabel = (opts.label !== "") ? opts.label : $originalOption.text(),
+				wrapperTag = "div";
+				//wrapperTag = (opts.links) ? "nav" : "div"; // nav's usage still up for debate...
 
 			// Swap tab index, no more interacting with the actual select!
 			opts.tabIndex = $select[0].tabIndex;
 			$select[0].tabIndex = -1;
 
-			opts.multiple = $select.prop("multiple");
-			opts.disabled = $select.is(":disabled");
-
 			// Build HTML
-			var html = '<' + wrapperTag + ' class="selecter ' + opts.customClass;
+			var inner = "",
+				wrapper = "";
+
+			// Build wrapper
+			wrapper += '<' + wrapperTag + ' class="selecter ' + opts.customClass;
 			// Special case classes
 			if (isMobile) {
-				html += ' mobile';
+				wrapper += ' mobile';
 			} else if (opts.cover) {
-				html += ' cover';
+				wrapper += ' cover';
 			}
 			if (opts.multiple) {
-				html += ' multiple';
+				wrapper += ' multiple';
 			} else {
-				html += ' closed';
+				wrapper += ' closed';
 			}
 			if (opts.disabled) {
-				html += ' disabled';
+				wrapper += ' disabled';
 			}
-			html += '" tabindex="' + opts.tabIndex + '">';
+			wrapper += '" tabindex="' + opts.tabIndex + '">';
+			wrapper += '</' + wrapperTag + '>';
+
+			// Build inner
 			if (!opts.multiple) {
-				html += '<span class="selecter-selected' + ((opts.label !== "") ? ' placeholder' : '') + '">';
-				html += $('<span></span').text( _trim(((opts.label !== "") ? opts.label : $originalOption.text()), opts.trim) ).html();
-				html += '</span>';
+				inner += '<span class="selecter-selected">';
+				// inner += $('<span></span>').text( _trim((($originalOption.text() !== "") ? $originalOption.text() : opts.label), opts.trim) ).html();
+				inner += $('<span></span>').text( _trim(originalLabel, opts.trim) ).html();
+				inner += '</span>';
 			}
-			html += '<div class="selecter-options">';
-			html += '</div>';
-			html += '</' + wrapperTag + '>';
+			inner += '<div class="selecter-options">';
+			inner += '</div>';
 
 			// Modify DOM
 			$select.addClass("selecter-element")
-				   .after(html);
+				   .wrap(wrapper)
+				   .after(inner);
 
 			// Store plugin data
-			var $selecter = $select.next(".selecter"),
+			var $selecter = $select.parent(".selecter"),
 				data = $.extend({
 					$select: $select,
 					$allOptions: $allOptions,
@@ -268,7 +302,8 @@
 			}
 
 			// Bind click events
-			data.$selecter.on("touchstart.selecter click.selecter", ".selecter-selected", data, _onClick)
+			data.$selecter.on("touchstart.selecter", ".selecter-selected", data, _onTouchStart)
+						  .on("click.selecter", ".selecter-selected", data, _onClick)
 						  .on("click.selecter", ".selecter-item", data, _onSelect)
 						  .on("close.selecter", data, _onClose)
 						  .data("selecter", data);
@@ -324,8 +359,11 @@
 				}
 
 				html += '<' + itemTag + ' class="selecter-item';
+				if ($op.hasClass('selecter-placeholder')) {
+					html += ' placeholder';
+				}
 				// Default selected value - now handles multi's thanks to @kuilkoff
-				if ($op.is(':selected') && data.label === "") {
+				if ($op.is(':selected')) {
 					html += ' selected';
 				}
 				// Disabled options
@@ -349,6 +387,62 @@
 
 	/**
 	 * @method private
+	 * @name _onTouchStart
+	 * @description Handles touchstart to selected item
+	 * @param e [object] "Event data"
+	 */
+	function _onTouchStart(e) {
+		e.stopPropagation();
+
+		var data = e.data,
+			oe = e.originalEvent;
+
+		_clearTimer(data.timer);
+
+		data.touchStartX = oe.touches[0].clientX;
+		data.touchStartY = oe.touches[0].clientY;
+
+		data.$selecter.on("touchmove.selecter", ".selecter-selected", data, _onTouchMove)
+					  .on("touchend.selecter", ".selecter-selected", data, _onTouchEnd);
+	}
+
+	/**
+	 * @method private
+	 * @name _onTouchMove
+	 * @description Handles touchmove to selected item
+	 * @param e [object] "Event data"
+	 */
+	function _onTouchMove(e) {
+		var data = e.data,
+			oe = e.originalEvent;
+
+		if (Math.abs(oe.touches[0].clientX - data.touchStartX) > 10 || Math.abs(oe.touches[0].clientY - data.touchStartY) > 10) {
+			data.$selecter.off("touchmove.selecter touchend.selecter");
+		}
+	}
+
+	/**
+	 * @method private
+	 * @name _onTouchEnd
+	 * @description Handles touchend to selected item
+	 * @param e [object] "Event data"
+	 */
+	function _onTouchEnd(e) {
+		var data = e.data;
+
+		data.$selecter.off("touchmove.selecter touchend.selecter click.selecter");
+
+		// prevent ghosty clicks
+		data.timer = _startTimer(data.timer, 1000, function() {
+			data.$selecter.on("click.selecter", ".selecter-selected", data, _onClick)
+						  .on("click.selecter", ".selecter-item", data, _onSelect);
+		});
+
+		_onClick(e);
+	}
+
+	/**
+	 * @method private
 	 * @name _onClick
 	 * @description Handles click to selected item
 	 * @param e [object] "Event data"
@@ -362,8 +456,8 @@
 		if (!data.$select.is(":disabled")) {
 			$(".selecter").not(data.$selecter).trigger("close.selecter", [data]);
 
-			// Handle mobile, but not Firefox
-			if (isMobile && !isFirefoxMobile) {
+			// Handle mobile, but not Firefox, unless desktop forced
+			if (!data.mobile && isMobile && !isFirefoxMobile) {
 				var el = data.$select[0];
 				if (window.document.createEvent) { // All
 					var evt = window.document.createEvent("MouseEvents");
@@ -498,6 +592,7 @@
 
 		if (!internal && !data.multiple) {
 			var index = data.$options.index(data.$options.filter("[value='" + _escape($target.val()) + "']"));
+
 			_update(index, data);
 			_handleChange(data);
 		}
@@ -517,7 +612,7 @@
 
 		if (!data.$select.is(":disabled") && !data.multiple) {
 			data.$selecter.addClass("focus")
-						  .on("keydown.selecter" + data.guid, data, _onKeypress);
+						  .on("keydown.selecter-" + data.guid, data, _onKeypress);
 
 			$(".selecter").not(data.$selecter)
 						  .trigger("close.selecter", [ data ]);
@@ -537,7 +632,7 @@
 		var data = e.data;
 
 		data.$selecter.removeClass("focus")
-					  .off("keydown.selecter" + data.guid + " keyup.selecter" + data.guid);
+					  .off("keydown.selecter-" + data.guid);
 
 		$(".selecter").not(data.$selecter)
 					  .trigger("close.selecter", [ data ]);
@@ -625,33 +720,30 @@
 
 		// Check for disabled options
 		if (!isDisabled) {
-			if (index === -1 && data.label !== "") {
-				data.$selected.html(data.label);
-			} else if (!isSelected) {
+			if (data.multiple) {
+				if (isSelected) {
+					data.$options.eq(index).prop("selected", null);
+					$item.removeClass("selected");
+				} else {
+					data.$options.eq(index).prop("selected", true);
+					$item.addClass("selected");
+				}
+			} else if (index > -1 && index < data.$items.length) {
 				var newLabel = $item.html(),
 					newValue = $item.data("value");
 
-				// Modify DOM
-				if (data.multiple) {
-					data.$options.eq(index).prop("selected", true);
-				} else {
-					data.$selected.html(newLabel)
-								  .removeClass('placeholder');
-					data.$items.filter(".selected")
-							   .removeClass("selected");
+				data.$selected.html(newLabel)
+							  .removeClass('placeholder');
 
-					data.$select[0].selectedIndex = index;
-				}
+				data.$items.filter(".selected")
+						   .removeClass("selected");
+
+				data.$select[0].selectedIndex = index;
 
 				$item.addClass("selected");
-			} else if (data.multiple) {
-				data.$options.eq(index).prop("selected", null);
-				$item.removeClass("selected");
-			}
-
-			if (!data.multiple) {
-				// Update index
 				data.index = index;
+			} else if (data.label !== "") {
+				data.$selected.html(data.label);
 			}
 		}
 	}
@@ -663,7 +755,8 @@
 	 * @param data [object] "Instance data"
 	 */
 	function _scrollOptions(data) {
-		var selectedOffset = (data.index >= 0) ? data.$items.eq(data.index).position() : { left: 0, top: 0 };
+		var $selected = data.$items.eq(data.index),
+			selectedOffset = (data.index >= 0 && !$selected.hasClass("placeholder")) ? $selected.position() : { left: 0, top: 0 };
 
 		if ($.fn.scroller !== undefined) {
 			data.$itemsWrapper.scroller("scroll", (data.$itemsWrapper.find(".scroller-content").scrollTop() + selectedOffset.top), 0)
@@ -734,7 +827,38 @@
 	 * @param text [string] "Text to escape"
 	 */
 	function _escape(text) {
-		return text.replace(/([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|])/g, '\\$1');
+		return (typeof text === "string") ? text.replace(/([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|])/g, '\\$1') : text;
+	}
+
+	/**
+	 * @method private
+	 * @name _startTimer
+	 * @description Starts an internal timer
+	 * @param timer [int] "Timer ID"
+	 * @param time [int] "Time until execution"
+	 * @param callback [int] "Function to execute"
+	 * @param interval [boolean] "Flag for recurring interval"
+	 */
+	function _startTimer(timer, time, func, interval) {
+		_clearTimer(timer, interval);
+		if (interval === true) {
+			return setInterval(func, time);
+		} else {
+			return setTimeout(func, time);
+		}
+	}
+
+	/**
+	 * @method private
+	 * @name _clearTimer
+	 * @description Clears an internal timer
+	 * @param timer [int] "Timer ID"
+	 */
+	function _clearTimer(timer) {
+		if (timer !== null) {
+			clearInterval(timer);
+			timer = null;
+		}
 	}
 
 	$.fn.selecter = function(method) {
