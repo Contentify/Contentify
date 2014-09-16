@@ -65,6 +65,15 @@ class BaseModel extends Eloquent {
     }
 
     /**
+     * True if model is slugable
+     * @return bool
+     */
+    public function slugable()
+    {
+        return $this->slugable;
+    }
+
+    /**
      * Creates a simple slug or a unique slug
      * 
      * @param  bool   $unique   Unique or not?
@@ -360,6 +369,5 @@ class BaseModel extends Eloquent {
 
         return $attr;
     }
-
 
 }
