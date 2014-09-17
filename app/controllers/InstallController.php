@@ -140,15 +140,22 @@ class InstallController extends Controller {
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp() to create a datetime attribute.
          */
+        
+        $this->create('slidecats', function($table) { },  [], ['slug']); 
+
+        $this->create('slides', function($table)
+        {
+            $table->string('url')->nullable();
+        }, ['slidecat_id']);
+
+        return; // DEBUG
 
         $this->create('videos', function($table)
         {
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
-            $table->string('provider');
+            $table->integer('position')->default(0);
         });
-
-        return; // DEBUG
 
         $this->create('pagecats', function($table) { });
 
@@ -403,6 +410,7 @@ class InstallController extends Controller {
                 'news'      => PERM_DELETE,
                 'pages'     => PERM_DELETE,
                 'partners'  => PERM_DELETE,
+                'slides'    => PERM_DELETE,
                 'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
                 'videos'    => PERM_DELETE,
@@ -429,6 +437,7 @@ class InstallController extends Controller {
                 'news'      => PERM_DELETE,
                 'pages'     => PERM_DELETE,
                 'partners'  => PERM_DELETE,
+                'slides'    => PERM_DELETE,
                 'teams'     => PERM_DELETE,
                 'users'     => PERM_DELETE,
                 'videos'    => PERM_DELETE,

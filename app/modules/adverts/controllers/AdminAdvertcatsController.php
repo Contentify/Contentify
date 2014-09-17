@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Adverts\Controllers;
 
-use App\Modules\Adverts\Models\Advert;
+use App\Modules\Adverts\Models\Advertcat;
 use BackController;
 
 class AdminAdvertcatsController extends BackController {

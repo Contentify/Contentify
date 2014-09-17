@@ -30,7 +30,7 @@
 			function selectProvider(provider)
 			{
 				$("#provider option[value='" + provider + "']").attr('selected', true);
-				$("#provider").selecter("update");
+				$('#provider').selecter('update');
 			}
 
 			/**
@@ -39,7 +39,7 @@
 			 */
 			function getProvider()
 			{
-				return $("#provider").val();
+				return $('#provider').val();
 			}
 
 			/**

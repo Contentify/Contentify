@@ -1,15 +1,15 @@
-<?php namespace App\Modules\Partners\Controllers;
+<?php namespace App\Modules\Slides\Controllers;
 
-use App\Modules\Partners\Models\Partnercat;
+use App\Modules\Slides\Models\Slidecat;
 use BackController;
 
-class AdminPartnercatsController extends BackController {
+class AdminSlidecatsController extends BackController {
 
-    protected $icon = 'coins.png';
+    protected $icon = 'color_swatch.png';
 
     public function __construct()
     {
-        $this->modelName = 'Partnercat';
+        $this->modelName = 'Slidecat';
 
         parent::__construct();
     }
@@ -21,11 +21,11 @@ class AdminPartnercatsController extends BackController {
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($partnercat)
+            'tableRow' => function($slidecat)
             {
                 return [
-                    $partnercat->id,
-                    $partnercat->title
+                    $slidecat->id,
+                    $slidecat->title
                 ];
             }
         ]);
