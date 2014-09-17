@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Users\Models;
 
 use User as BaseUser;
-use Sentry, Ardent;
+use Sentry, BaseModel;
 
 class User extends BaseUser {
 
@@ -10,14 +10,14 @@ class User extends BaseUser {
     protected $slugable = true;
 
     public static $relationsData = [
-        'groups'    => [Ardent::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
-        'teams'     => [Ardent::BELONGS_TO_MANY, 'App\Modules\Teams\Models\Team', 'table' => 'team_user'],
+        'groups'    => [BaseModel::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
+        'teams'     => [BaseModel::BELONGS_TO_MANY, 'App\Modules\Teams\Models\Team', 'table' => 'team_user'],
     ];
 
     /**
      * Getter for $relationsData.
-     * NOTE: This model does not inherit from Ardent.
-     * The relations method is used to copy some of the Ardent behaviour.
+     * NOTE: This model does not inherit from BaseModel.
+     * The relations method is used to copy some of the BaseModel's behaviour.
      * 
      * @return array
      */
@@ -27,13 +27,24 @@ class User extends BaseUser {
     }
 
     /**
-     * This is a copy of an Ardent method.
+     * This is a copy of an BaseModel method (for compatibility).
      * 
      * @return bool
      */
     public function modifiable()
     {
         return true;
+    }
+
+
+    /**
+     * This is a copy of an BaseModel method (for compatibility).
+     * 
+     * @return bool
+     */
+    public function isSoftDeleting()
+    {
+        return property_exists($this, 'forceDeleting');
     }
 
 }
