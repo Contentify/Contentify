@@ -20,7 +20,7 @@ class ContactController extends FrontController {
         if ($okay) {
             $this->message(trans('contact::message_sent'));
         } else {
-            return Redirect::to('contact')->withInput()->withErrors($msg->validationErrors);
+            return Redirect::to('contact')->withInput()->withErrors($msg->getErrors());
         }
     }
 }

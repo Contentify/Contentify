@@ -14,7 +14,7 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function errors($errors)
     {
-        if (is_a($errors, 'Illuminate\Support\MessageBag')) {
+        if (is_a($errors, 'Illuminate\Support\MessageBag') or is_a($errors, 'Illuminate\Support\ViewErrorBag')) {
             return HTML::ul($errors->all(), ['class' => 'form-errors' ]);
         }
     }

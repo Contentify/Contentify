@@ -86,7 +86,7 @@ abstract class BackController extends BaseController {
 
         if (! $okay) {
             return Redirect::route('admin.'.strtolower($this->controller).'.create')
-                ->withInput()->withErrors($model->validationErrors);
+                ->withInput()->withErrors($model->getErrors());
         }
 
         /*
@@ -263,7 +263,7 @@ abstract class BackController extends BaseController {
 
         if (! $okay) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', ['id' => $model->id])
-                ->withInput()->withErrors($model->validationErrors);
+                ->withInput()->withErrors($model->getErrors());
         }
 
         /*

@@ -4,7 +4,7 @@ use SoftDeletingTrait, BaseModel;
 
 class Slide extends BaseModel {
 
-    use SoftDeletingTrait;
+    use SoftDeletingTrait;    
 
     protected $dates = ['deleted_at'];
 
@@ -12,9 +12,9 @@ class Slide extends BaseModel {
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
-    public static $rules = [
+    protected $rules = [
         'title'         => 'required',
-        'url'           => 'url',
+        'url'           => 'required',
     ];
 
     public static $relationsData = [

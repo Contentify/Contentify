@@ -237,7 +237,8 @@ return array(
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Rss'                   => 'Thujohn\Rss\RssFacade',
-        'InterImage'            => 'Intervention\Image\Facades\Image'
+        'InterImage'            => 'Intervention\Image\Facades\Image',
+        'ValidatingTrait'       => 'Watson\Validating\ValidatingTrait',
 
     ),
 

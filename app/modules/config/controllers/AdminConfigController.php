@@ -44,7 +44,7 @@ class AdminConfigController extends BackController {
 
         if (! $settingsBag->validate()) {
             return Redirect::to('admin/config')
-                ->withInput()->withErrors($settingsBag->validationErrors);
+                ->withInput()->withErrors($settingsBag->getErrors());
         }
 
         // Save the settings one by one:

@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class BaseModel extends Eloquent {
 
+    use ValidatingTrait;
+
     use DateAccessorTrait;
 
     /**
