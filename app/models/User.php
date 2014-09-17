@@ -73,7 +73,7 @@ class User extends SentryUser {
 
         /*
          * Welcome to the dark side of Laravel.
-         * We cannot let the User class inherit from Ardent so we have to use 
+         * We cannot let the User class inherit from BaseModel so we have to use 
          * the Laravel validator class here. Ewwww.
          */
         $validator = Validator::make(

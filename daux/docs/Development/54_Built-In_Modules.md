@@ -15,3 +15,7 @@ It's possible to pass options to it - take a look at `libs/slider.js` for a comp
 The slider widget comes with a default CSS styling. Don't hesistate to make any changes you want to adapt the styling to your website. It's located in the `frontend.css` stylesheet at the `.slider` class. You probably want to set the slider's height to an appropriate value.
 
     .slider { position: relative; width: 100%; height: 245px; /* Height of a single slide */ }
+
+## Videos
+
+Every video belongs to a provider. The only default provider is `youtube`. As you may guess, a provider is a platform that hosts videos. The `Modules\Videos\Models\Video` model stores an `$providers` array with available providers. You may add aditional providers to this array. If you do so you have to care for handling videos from these providers by modifying corresponding templates - at least `modules/videos/views/index.blade.php` and `show.blade.php`. You may also take a look at `admin_form.blade.php`.
