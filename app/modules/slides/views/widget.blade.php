@@ -1,4 +1,4 @@
-<div id="slider1" class="slider">
+<div id="slider{{ $categoryId }}" class="slider">
     <div class="slides">
         <ul class="layout-h">
         	@foreach ($slides as $slide)
@@ -25,6 +25,6 @@
 <script>
 	$(document).ready(function()
 	{
-		$('#slider1').contentifySlider();
+		$('#slider{{ $categoryId }}').contentifySlider();
 	});
 </script>

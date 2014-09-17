@@ -68,7 +68,7 @@ h1.page-title { }
 .slider .to-right { position: absolute; right: 0px; top: 40%; width: 35px; height: 35px; line-height: 35px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center }
 .slider .to-left:hover, .slider .to-right:hover { background-color: rgba(0, 0, 0, 1); }
 .slider .buttons { position: absolute; right: 20px; bottom: 20px; }
-.slider .buttons li { width: 30px; height: 30px; line-height: 30px; margin-left: 3px !important; background-color: rgba(0, 0, 0, 0.5); color: white; cursor: pointer; text-align: center; }
+.slider .buttons li { width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: rgba(0, 0, 0, 0.5); color: white; cursor: pointer; text-align: center; }
 .slider .buttons li.active{ background-color: rgba(0, 0, 0, 1); }
 
 /*

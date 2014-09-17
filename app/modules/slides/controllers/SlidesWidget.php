@@ -21,7 +21,7 @@ class SlidesWidget extends Widget {
 
         $slides = Slide::whereSlidecatId($categoryId)->get();
 
-        return View::make('slides::widget', compact('slides'))->render();
+        return View::make('slides::widget', compact('slides', 'categoryId'))->render();
     }
 
 }

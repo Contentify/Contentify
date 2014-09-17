@@ -43,7 +43,7 @@
                     </div>
                 @endif
 
-                @widget('Slides::Slides', 1)
+                @widget('Slides::Slides', ['categoryId' => 1])
 
                 <section class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
                     @if (isset($page))
