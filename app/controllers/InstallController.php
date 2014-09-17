@@ -146,7 +146,8 @@ class InstallController extends Controller {
         $this->create('slides', function($table)
         {
             $table->string('url')->nullable();
-        }, ['slidecat_id']);
+            $table->string('image')->nullable();
+        }, ['slidecat_id'], ['slug']);
 
         return; // DEBUG
 
