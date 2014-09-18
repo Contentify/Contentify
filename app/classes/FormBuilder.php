@@ -2,6 +2,7 @@
  
 use Illuminate\Html\FormBuilder as OriginalFormBuilder;
 use Crypt, URL, HTML, DB, Exception, MsgException;
+use \Carbon as AliasedCarbon; // If we just use Carbon we will use Contentify\Carbon and ignoring the alias!
 
 class FormBuilder extends OriginalFormBuilder
 {
@@ -505,9 +506,12 @@ class FormBuilder extends OriginalFormBuilder
         /*
          * If $value is not null and is an object (Carbon instance),
          * localize date and time.
+         * If $value is null initialize it with the current date & time.
          */
         if ($value and ! is_string($value)) {
             $value = $value->dateTime();
+        } elseif ($value === null) {
+            $value = (new AliasedCarbon())->dateTime();
         }
 
         $partial = '<div class="form-group date-time-picker input-append date">'
