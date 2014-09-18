@@ -4,14 +4,16 @@ use BaseModel;
 
 class Image extends BaseModel {
 
-    protected $softDelete = false;
+    protected $fillable = ['tags', 'gallery_id', 'title'];
 
-    protected $fillable = ['tags'];
-
-    public static $fileHandling = ['image' => ['type' => 'image', 'thumbnails' => '100']];
+    public static $fileHandling = ['image' => ['type' => 'image', 'thumbnails' => [100, 200]]];
 
     public static $rules = [
         'tags'     => 'required',
+    ];
+
+    public static $relationsData = [
+        'gallery' => [self::BELONGS_TO, 'App\Modules\Galleries\Models\Gallery']
     ];
 
 }

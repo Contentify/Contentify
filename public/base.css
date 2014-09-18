@@ -6,11 +6,12 @@ body { margin: 0px; padding: 0px; }
 
 img { border: 0px; }
 
+hr { border: none; border-bottom: 1px solid silver }
+
 table { width: 100%; border-collapse: collapse }
 
 form { width: 100%; margin: 0px; padding: 0px }
-
-hr { border: none; border-bottom: 1px solid silver }
+form hr { margin: 30px 0px }
 
 /*
  * Classes

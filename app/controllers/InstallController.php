@@ -141,15 +141,17 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
+        $this->create('galleries', function($table) { }); 
+
+        return; // DEBUG
+        
         $this->create('slidecats', function($table) { },  [], ['slug']); 
 
         $this->create('slides', function($table)
         {
             $table->string('url')->nullable();
             $table->string('image')->nullable();
-        }, ['slidecat_id'], ['slug']);
-
-        return; // DEBUG
+        }, ['slidecat_id'], ['slug']);        
 
         $this->create('videos', function($table)
         {
@@ -404,6 +406,7 @@ class InstallController extends Controller {
                 'config'    => PERM_DELETE,
                 'contact'   => PERM_DELETE,
                 'diag'      => PERM_DELETE,
+                'galleries' => PERM_DELETE,
                 'games'     => PERM_DELETE,
                 'groups'    => PERM_DELETE,
                 'help'      => PERM_DELETE,
@@ -430,6 +433,7 @@ class InstallController extends Controller {
                 'config'    => PERM_DELETE,
                 'contact'   => PERM_DELETE,
                 'diag'      => PERM_DELETE,
+                'galleries' => PERM_DELETE,
                 'games'     => PERM_DELETE,
                 'groups'    => PERM_DELETE,
                 'help'      => PERM_DELETE,

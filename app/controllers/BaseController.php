@@ -404,7 +404,7 @@ abstract class BaseController extends Controller {
                                 }
                                 break;
                             case 'restore':
-                                if ($model->trashed()) {
+                                if ($model->isSoftDeleting() and $model->trashed()) {
                                     $actionsCode .= image_link('undo', 
                                     trans('app.restore'), 
                                     route($userInterface.'.'.strtolower($this->controller).'.restore', [$model->id]));

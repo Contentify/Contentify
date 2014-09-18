@@ -355,7 +355,8 @@ class FormBuilder extends OriginalFormBuilder
      * @param  bool     $nullable           If true the select element can be empty
      * @return string
      */
-    public function smartSelectRelation($relationName, $title, $sourceModelClass, $default = null, $nullable = false)
+    public function smartSelectRelation($relationName, $title, $sourceModelClass, $default = null, 
+        $nullable = false, $nullOption = false)
     {
         $relations = $sourceModelClass::relations();
         
@@ -382,6 +383,9 @@ class FormBuilder extends OriginalFormBuilder
          * Find an attribute that will be displayed as title
          */
         $options = [];
+        if ($nullOption) {
+            $options[''] = '-';
+        }
         foreach ($models as $model) {
             if (isset($relation['title'])) {
                 $modelTitle = $relation['title'];

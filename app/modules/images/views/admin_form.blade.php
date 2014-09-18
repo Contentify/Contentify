@@ -9,5 +9,11 @@
 
     {{ Form::smartImageFile() }}
 
+    <hr>
+
+    {{ Form::smartSelectRelation('gallery', 'Gallery', $modelClass, null, true, true) }}
+
+    {{ Form::smartText('title', trans('app.title')) }}
+
     {{ Form::actions() }}
 {{ Form::close() }}
