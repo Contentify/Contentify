@@ -13,7 +13,7 @@ class Comments {
      */
     public static function show($foreignType, $foreignId)
     {
-        $perPage = 3; // Config::get('app.frontItemsPerPage');
+        $perPage = Config::get('app.frontItemsPerPage');
 
         $comments = Comment::where('foreign_type', '=', $foreignType)->
             where('foreign_id', '=', $foreignId)->paginate($perPage);
@@ -34,7 +34,7 @@ class Comments {
      */
     public static function paginate($foreignType, $foreignId)
     {
-        $perPage = 3; // Config::get('app.frontItemsPerPage');
+        $perPage = Config::get('app.frontItemsPerPage');
 
         $comments = Comment::where('foreign_type', '=', $foreignType)
             ->where('foreign_id', '=', $foreignId)->paginate($perPage);

@@ -122,8 +122,9 @@ abstract class BackController extends BaseController {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); 
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, true, false)
-                                ->save($filePath.'/100/'.$fileName); 
+                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($filePath.$thumbnail.'/'.$fileName); 
                         }
                     }
                 } else {
@@ -154,6 +155,14 @@ abstract class BackController extends BaseController {
         foreach (Input::all() as $name => $value) {
             if (starts_with($name, '_relation_')) {
                 $name = substr($name, 10); // Remove the prefix to get the name of the relation
+
+                if ($value === '') {
+                    /*
+                     * Set $value to null instead of an empty string. This will prevent Eloquent from
+                     * changing it to (int) 0.
+                     */
+                    $value = null; 
+                }
                 
                 if (isset($relations[$name])) {
                     $relation = $relations[$name];
@@ -304,8 +313,9 @@ abstract class BackController extends BaseController {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails');
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, true, false)
-                                ->save($filePath.'/100/'.$fileName); 
+                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                })->save($filePath.$thumbnail.'/'.$fileName); 
                         }
                     }
                 } else {
