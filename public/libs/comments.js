@@ -116,4 +116,36 @@ $(document).ready(function()
     };
 
     $('.comment .delete').click(deleteClickHandler);
+
+    paginateClickHandler = function(event)
+    {
+        event.preventDefault();
+
+        var url = $(this).attr('href');
+        var pos = url.indexOf('page=');
+        var page = url.substr(pos + 5);
+        page = parseInt(page);
+        
+        $.ajax({
+            url: contentify.baseUrl + 'comments/paginate/' + foreignType + '/' + foreignId,
+            type: 'GET',
+            data: { 
+                page: page
+            }
+        }).success(function(data)
+        {
+            $('#comments').html(data);
+
+
+            $('.comment .edit').click(editClickHandler);
+            $('.comment .quote').click(quoteClickHandler);
+            $('.comment .delete').click(deleteClickHandler);
+            $('#comments .pagination a').click(paginateClickHandler);
+        }).error(function(response)
+        {
+
+        });
+    };
+
+    $('#comments .pagination a').click(paginateClickHandler);
 });

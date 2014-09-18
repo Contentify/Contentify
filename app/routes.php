@@ -36,6 +36,11 @@ Route::get('admin', [
 /*
  * Comment component
  */
+Route::get('comments/paginate/{foreignType}/{foreignId}', function($foreignType, $foreignId)
+{
+    return Comments::paginate($foreignType, $foreignId);
+});
+
 Route::post('comments/store', ['as' => 'comments.store', 'before' => 'csrf', 'uses' => function()
 {
     $foreignType = Input::get('foreigntype');

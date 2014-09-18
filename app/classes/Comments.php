@@ -13,13 +13,33 @@ class Comments {
      */
     public static function show($foreignType, $foreignId)
     {
-        $comments = Comment::where('foreign_type', '=', $foreignType)->where('foreign_id', '=', $foreignId)->get();
+        $perPage = 3; // Config::get('app.frontItemsPerPage');
+
+        $comments = Comment::where('foreign_type', '=', $foreignType)->
+            where('foreign_id', '=', $foreignId)->paginate($perPage);
 
         echo(View::make('comments.show', compact('comments', 'foreignType', 'foreignId'))->render());
 
         if (user() and user()->hasAccess('comments', PERM_CREATE)) {
             echo(View::make('comments.form', compact('foreignType', 'foreignId'))->render());
         }
+    }
+
+    /**
+     * Returns comments and respects pagination
+     * 
+     * @param  string $foreignType Identifier for the content the comments are related to (usually a model class)
+     * @param  int    $foreignId   ID, if the comments are related to a certain model instance
+     * @return string
+     */
+    public static function paginate($foreignType, $foreignId)
+    {
+        $perPage = 3; // Config::get('app.frontItemsPerPage');
+
+        $comments = Comment::where('foreign_type', '=', $foreignType)
+            ->where('foreign_id', '=', $foreignId)->paginate($perPage);
+
+        return View::make('comments.paginate', compact('comments'))->render();
     }
 
     /**
