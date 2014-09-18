@@ -133,7 +133,7 @@ abstract class BackController extends BaseController {
         }
 
         $this->messageFlash(trans('app.created', [$this->modelName]));
-        if (Input::get('_form_apply')) {
+        if (Input::get('_form_apply') !== null) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', array($model->id));
         } else {
             return Redirect::route('admin.'.strtolower($this->controller).'.index');
@@ -315,7 +315,7 @@ abstract class BackController extends BaseController {
         }
 
         $this->messageFlash(trans('app.updated', [$this->modelName]));
-        if (Input::get('_form_apply')) {
+        if (Input::get('_form_apply') !== null) {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', [$id]);
         } else {
             return Redirect::route('admin.'.strtolower($this->controller).'.index');

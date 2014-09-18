@@ -56,7 +56,7 @@ class FormBuilder extends OriginalFormBuilder
                     $partial .= self::button($value, $options);
                     break; 
                 case 'apply':
-                    $options['type'] = $type;
+                    $options['type'] = 'submit';
                     $options['name'] = '_form_apply';
                     if ($title == 'Submit') $title = trans('app.apply');
                     $value = $title;

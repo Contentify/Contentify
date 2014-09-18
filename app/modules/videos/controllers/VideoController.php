@@ -35,7 +35,7 @@ class VideosController extends FrontController {
         $video->save();
 
         $this->title($video->title);
-        $video->openGraph($video->openGraph());
+        $this->openGraph($video->openGraph());
 
         $this->pageView('videos::show', compact('video'));
     }
