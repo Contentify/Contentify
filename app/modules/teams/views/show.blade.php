@@ -3,7 +3,7 @@
         <a href="{{ url('teams/'.$team->id.'/'.$team->slug) }}">
             @if ($team->image)
             <div class="image">
-                <img src="{{ asset('uploads/teams/'.$news->image) }}" alt="{{{ $team->title }}}">
+                <img src="{{ $team->uploadPath().$team->image }}" alt="{{{ $team->title }}}">
             </div>
             @endif
             <h2>{{{ $team->title }}}</h2>
@@ -13,7 +13,7 @@
         <ul class="layout-v">
         @foreach ($team->users as $user)
             <li>
-                <a href="{{ url('users/'.$user->id.'/'.slug($user->username)) }}">{{ $user->username }}</a>
+                <a href="{{ url('users/'.$user->id.'/'.Str::slug($user->username)) }}">{{ $user->username }}</a>
                 @if ($user->pivot->task)
                 ({{ $user->pivot->task }})
                 @endif
