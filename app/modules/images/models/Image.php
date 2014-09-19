@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Images\Models;
 
-use BaseModel;
+use Str, BaseModel;
 
 class Image extends BaseModel {
 
@@ -15,5 +15,16 @@ class Image extends BaseModel {
     public static $relationsData = [
         'gallery' => [self::BELONGS_TO, 'App\Modules\Galleries\Models\Gallery']
     ];
+
+    public function gallerySlug()
+    {
+    	$slug = Str::slug($this->title);
+
+    	if ($slug) {
+    		return '/'.$slug;
+    	} else {
+    		return null;
+    	}
+    }
 
 }

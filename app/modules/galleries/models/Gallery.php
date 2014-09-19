@@ -1,5 +1,6 @@
 <?php namespace App\Modules\Galleries\Models;
 
+//use App\Modules\Images\Models\Image;
 use SoftDeletingTrait, BaseModel;
 
 class Gallery extends BaseModel {
@@ -14,6 +15,10 @@ class Gallery extends BaseModel {
 
     public static $rules = [
         'title'     => 'required',
+    ];
+
+    public static $relationsData = [
+        'images' => [self::HAS_MANY, 'App\Modules\Images\Models\Image']
     ];
 
 }

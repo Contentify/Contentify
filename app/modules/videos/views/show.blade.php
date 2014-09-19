@@ -1,4 +1,4 @@
-<h2>{{{ $video->title }}}</h2>
+<h1 class="page-title">{{{ $video->title }}}</h1>
 
 <div class="video-player">
     @if ($video->provider == 'youtube')

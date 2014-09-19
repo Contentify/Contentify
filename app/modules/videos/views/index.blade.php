@@ -1,7 +1,9 @@
+<h1 class="page-title">Videos</h1>
+
 <div class="videos">
     @foreach ($videos as $video)
     <div class="video">
-        <a href="{{{ 'videos/'.$video->id.'/'.$video->slug }}}">
+        <a href="{{{ url('videos/'.$video->id.'/'.$video->slug) }}}">
         	@if ($video->provider == 'youtube')
 				<img src="http://img.youtube.com/vi/{{{ $video->permanent_id }}}/mqdefault.jpg" alt="{{{ $video->title }}}">
         	@endif

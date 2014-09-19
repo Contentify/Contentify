@@ -270,6 +270,4 @@ $(document).ready(function()
     };
 
     contentify = new Contentify();
-
-    console.log(contentify.baseUrl);
 });
