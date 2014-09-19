@@ -46,7 +46,7 @@ class VideosController extends FrontController {
 
         $results = array();
         foreach ($videos as $video) {
-            $results[$video->title] = URL::to('videos/'.$video->id.'/show');
+            $results[$video->title] = URL::to('videos/'.$video->id.'/'.$video->slug);
         }
 
         return $results;

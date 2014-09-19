@@ -141,7 +141,15 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
-        $this->create('galleries', function($table) { }); 
+        $this->create('downloadcats', function($table) { }); // Supports slugs
+
+        $this->create('downloads', function($table) 
+        { 
+            $table->text('description')->nullable();
+            $table->string('file')->nullable();
+            $table->integer('file_size')->default(0);
+            $table->boolean('is_image')->default(false);
+        }, ['downloadcat_id']);
 
         return; // DEBUG
         
@@ -151,7 +159,7 @@ class InstallController extends Controller {
         {
             $table->string('url')->nullable();
             $table->string('image')->nullable();
-        }, ['slidecat_id'], ['slug']);        
+        }, ['slidecat_id'], ['slug']);
 
         $this->create('videos', function($table)
         {
@@ -195,7 +203,7 @@ class InstallController extends Controller {
             $table->string('task')->nullable();
             $table->text('description')->nullable();
             $table->integer('position')->default(0);
-        }, ['user_id', 'team_id']);    
+        }, ['user_id', 'team_id']);
 
         $this->create('teamcats', function($table) { },  [], ['slug']);
 
@@ -204,18 +212,20 @@ class InstallController extends Controller {
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
-        }, ['teamcat_id']);  
+        }, ['teamcat_id']);
                
         $this->create('languages', function($table) 
         { 
             $table->string('code', 2);
-        });     
+        });
 
         $this->create('countries', function($table) 
         { 
             $table->string('code', 3);
             $table->string('icon')->nullable();
-        });     
+        });
+
+        $this->create('galleries', function($table) { }); 
         
         $this->create('images', function($table)
         {
@@ -228,7 +238,7 @@ class InstallController extends Controller {
             $table->string('ip');
             $table->integer('user_agents');
             $table->date('visited_at');
-        }, array(), false);      
+        }, array(), false);
         
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
@@ -259,7 +269,7 @@ class InstallController extends Controller {
             $table->timestamp('published_at');
             $table->boolean('internal')->default(false);
             $table->boolean('enable_comments')->default(false);
-        }, ['newscat_id']);    
+        }, ['newscat_id']);
 
         $this->create('games', function($table)
         {
@@ -406,6 +416,7 @@ class InstallController extends Controller {
                 'config'    => PERM_DELETE,
                 'contact'   => PERM_DELETE,
                 'diag'      => PERM_DELETE,
+                'downloads' => PERM_DELETE,
                 'galleries' => PERM_DELETE,
                 'games'     => PERM_DELETE,
                 'groups'    => PERM_DELETE,
@@ -433,6 +444,7 @@ class InstallController extends Controller {
                 'config'    => PERM_DELETE,
                 'contact'   => PERM_DELETE,
                 'diag'      => PERM_DELETE,
+                'downloads' => PERM_DELETE,
                 'galleries' => PERM_DELETE,
                 'games'     => PERM_DELETE,
                 'groups'    => PERM_DELETE,

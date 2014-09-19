@@ -70,6 +70,7 @@ return array(
     'provider'      => 'Provider',
     'text'          => 'Text',
     'code'          => 'Code',
+    'description'   => 'Description',
     'image'         => 'Image',
     'icon'          => 'Icon',
     'date'          => 'Date',
@@ -119,10 +120,12 @@ return array(
     'name'          => 'Name',
     'username'      => 'Username',
     'email'         => 'Email',
+    'file'          => 'File',
     'link'          => 'Link',
     'send'          => 'Send',
     'position'      => 'Position',
     'url'           => 'URL',
     'quote'         => 'Quote',
+    'size'          => 'Size',
 
 );

@@ -32,12 +32,16 @@
 		var $curImg 	= $previews.find('.item[data-id={{ $image->id }}]');
 		var index 		= $curImg.index();
 		var itemLength 	= $previews.find('.item').length;
+
 		$curImg.addClass('active');
+
+		// Image previews: Scroll to the current image
 		$previews.css({
 			marginLeft: $container.width() / 2 - index * $curImg.width() - $curImg.width() / 2,
 			width: $curImg.width() * itemLength
 		});
 
+		// Image previews: Scroll to the left
 		$('.page .images .to-left').click(function(event) 
 		{
 			event.preventDefault();
@@ -51,6 +55,7 @@
 				);
 		});
 
+		// Image previews: Scroll to the right
 		$('.page .images .to-right').click(function(event) 
 		{
 			event.preventDefault();

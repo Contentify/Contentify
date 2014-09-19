@@ -94,6 +94,11 @@ abstract class BackController extends BaseController {
          */
         if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
+                if (! is_array($fieldInfo)) {
+                    $fieldName = $fieldInfo;
+                    $fieldInfo = ['type' => 'file'];
+                }
+
                 if (Input::hasFile($fieldName)) {
                     $file = Input::file($fieldName);
 
@@ -280,6 +285,11 @@ abstract class BackController extends BaseController {
          */
         if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
+                if (! is_array($fieldInfo)) {
+                    $fieldName = $fieldInfo;
+                    $fieldInfo = ['type' => 'file'];
+                }
+
                 if (Input::hasFile($fieldName)) {
                     $file = Input::file($fieldName);
 
@@ -355,6 +365,11 @@ abstract class BackController extends BaseController {
             $filePath = $model->uploadPath(true);
 
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
+                if (! is_array($fieldInfo)) {
+                    $fieldName = $fieldInfo;
+                    $fieldInfo = ['type' => 'file'];
+                }
+
                 File::delete($filePath.$model->$fieldName);
 
                 /*

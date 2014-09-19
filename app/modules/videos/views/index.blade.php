@@ -7,7 +7,7 @@
         	@if ($video->provider == 'youtube')
 				<img src="http://img.youtube.com/vi/{{{ $video->permanent_id }}}/mqdefault.jpg" alt="{{{ $video->title }}}">
         	@endif
-            {{ $video->title }}
+            {{{ $video->title }}}
         </a>
     </div>
     @endforeach

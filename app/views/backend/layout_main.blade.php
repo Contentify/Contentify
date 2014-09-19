@@ -90,14 +90,12 @@
                         <div class="silverheader"><div class="menu-head daily"><span class="hidden">Daily Content</span></div></div>
                             <div class="submenu">
                                 <div class="menu1"><img src="{{ asset('icons/house.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/dashboard', 'Dashboard') }}</div>
-                                
                                 <div class="menu2"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.news.index') }}">News</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/doc_offlice.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.pages.index') }}">Pages</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=headlines">Headlines</a></div>
-                                
                                 <div class="menu2"><img src="{{ asset('icons/date.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=events">Events</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/chart_pie.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=polls">Polls</a></div>
-                                <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloads">Downloads</a></div>
+                                <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/downloads', 'Downloads') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/picture.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/images', 'Images') }}</div>
                                 <div class="menu3"><img src="{{ asset('icons/photo.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/galleries', 'Galleries') }}</div>
                             </div>
@@ -109,8 +107,6 @@
                                 <div class="menu2"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=headlinecats">Headline-Categories</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/film.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/videos', 'Videos') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/film_link.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=streams">Livestreams</a></div> 
-
-                                <div class="menu2"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=downloadcats">Download-Categories</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/coins.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/partners', 'Sponsors &amp; Partners') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/adverts', 'Advertisement') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=forumcats">Forum-Categories</a></div>
@@ -122,7 +118,6 @@
                                 <div class="menu1"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=matches">Matches</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=awards">Awards</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/server.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=gameservers">Gameservers</a></div>                                
-                            
                                 <div class="menu2"><img src="{{ asset('icons/clan.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=clans">Clans</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/joystick.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=leagues">Leagues</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/world.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=maps">Maps</a></div>
@@ -135,7 +130,6 @@
                                 <div class="menu1"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.users.index') }}">Users</a></div>
                                 <div class="menu2"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/teams', 'Teams') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/members', 'Team-Members') }}</div>  
-                                
                                 <div class="menu2"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
                                 <div class="menu2"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>
                                 <div class="menu2"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/visitors', 'Visitors') }}</div>

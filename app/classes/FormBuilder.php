@@ -448,7 +448,23 @@ class FormBuilder extends OriginalFormBuilder
         return $partial;
     }
 
-   /**
+    /**
+     * Create HTML code for a file upload input element.
+     * 
+     * @param  string $name  The name of the input element
+     * @param  string $title The title of the input element
+     * @return string
+     */
+    public function smartFile($name = 'file', $title = 'File')
+    {
+        $partial = self::smartFieldOpen()
+            .self::label($name, $title)
+            .self::file($name)
+            .self::smartFieldClose();
+        return $partial;
+    }
+
+    /**
      * Create HTML code for an image upload input element.
      * 
      * @param  string $name  The name of the input element

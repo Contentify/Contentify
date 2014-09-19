@@ -8,9 +8,11 @@ class Group extends SentryModel {
      * Allowed permissions values. 
      * Sentry only supports 0 and 1 per default so we change it.
      *
-     * Possible options:
-     *    0 => Remove.
-     *    1 => Add.
+     * 0 = [none]
+     * 1 = PERM_READ
+     * 2 = PERM_CREATE
+     * 3 = PERM_UPDATE
+     * 4 = PERM_DELETE
      *
      * @var array
      */
