@@ -19,6 +19,8 @@
 	            </a>
 	        @endforeach
 	    </div>
+	    <a class="link to-left" href="#">&lt;</a>
+	    <a class="link to-right" href="#">&gt;</a>
 	</div>
 </div>
 
@@ -29,10 +31,37 @@
 		var $previews 	= $container.find('.previews');
 		var $curImg 	= $previews.find('.item[data-id={{ $image->id }}]');
 		var index 		= $curImg.index();
+		var itemLength 	= $previews.find('.item').length;
 		$curImg.addClass('active');
 		$previews.css({
 			marginLeft: $container.width() / 2 - index * $curImg.width() - $curImg.width() / 2,
-			width: $curImg.width() * $previews.find('.item').length
+			width: $curImg.width() * itemLength
+		});
+
+		$('.page .images .to-left').click(function(event) 
+		{
+			event.preventDefault();
+
+			index--;
+			if (index < 0) index = 0;
+
+			$previews.animate(
+				{marginLeft: $container.width() / 2 - index * $curImg.width() - $curImg.width() / 2}, 
+				{duration: 200, queue: false}
+				);
+		});
+
+		$('.page .images .to-right').click(function(event) 
+		{
+			event.preventDefault();
+
+			index++;
+			if (index >= itemLength) index = itemLength - 1;
+
+			$previews.animate(
+				{marginLeft: $container.width() / 2 - index * $curImg.width() - $curImg.width() / 2}, 
+				{duration: 200, queue: false}
+			);
 		});
 	});
 </script>
