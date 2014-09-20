@@ -49,6 +49,8 @@ return array(
     'deleted'       => ':0 deleted.',
     'restored'      => ':0 restored.',
     'list_empty'    => 'Please create at least one ":0" before you continue.',
+    'invalid_image' => 'Invalid image file',
+    'bad_extension' => "Uploading of files with ':0' extension is restricted.",
 
     /*
      * Model index building
@@ -84,6 +86,7 @@ return array(
     'sorting'       => 'Sorting',
     'search'        => 'Search',
     'recycle_bin'   => 'Recycle Bin',
+    'max_size'      => 'Max. Size: :0Byte',
 
     /*
      * Backend template

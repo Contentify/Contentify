@@ -460,6 +460,7 @@ class FormBuilder extends OriginalFormBuilder
         $partial = self::smartFieldOpen()
             .self::label($name, $title)
             .self::file($name)
+            .' '.trans('app.max_size', [ini_get('upload_max_filesize')])
             .self::smartFieldClose();
         return $partial;
     }
@@ -473,11 +474,7 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartImageFile($name = 'image', $title = 'Image')
     {
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
-            .self::file($name)
-            .self::smartFieldClose();
-        return $partial;
+        return self::smartFile($name, $title);
     }
 
     /**

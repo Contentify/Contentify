@@ -14,6 +14,12 @@ abstract class BackController extends BaseController {
      */
     protected $icon = 'page_white_text.png';
 
+    /**
+     * Array with "evil" file extensions
+     * @var array
+     */
+    protected $evilFileExtensions = ['php'];
+
     public function __construct()
     {
         parent::__construct();
@@ -100,17 +106,27 @@ abstract class BackController extends BaseController {
                 }
 
                 if (Input::hasFile($fieldName)) {
-                    $file = Input::file($fieldName);
+                    $file       = Input::file($fieldName);
+                    $extension  = $file->getClientOriginalExtension();
+                    $error      = false;
 
                     if (strtolower($fieldInfo['type']) == 'image') {
-                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
+                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
                         if (! $imgsize[2]) {
-                            return Redirect::route('admin.'.strtolower($this->controller).'.create')
-                                ->withInput()->withErrors(['Invalid image']);
+                            $error = trans('app.invalid_image');
                         }
                     }
 
-                    $extension          = $file->getClientOriginalExtension();
+                    if (in_array($extension, $this->evilFileExtensions)) {
+                        $error = trans('app.bad_extension', [$extension]);
+                    }
+
+                    if ($error !== false) {
+                        $model->delete(); // Delete the invalid model
+                        return Redirect::route('admin.'.strtolower($this->controller).'.create')
+                                ->withInput()->withErrors([$error]);
+                    }
+                    
                     $filePath           = $model->uploadPath(true);
                     $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
@@ -291,22 +307,31 @@ abstract class BackController extends BaseController {
                 }
 
                 if (Input::hasFile($fieldName)) {
-                    $file = Input::file($fieldName);
+                    $file       = Input::file($fieldName);
+                    $extension  = $file->getClientOriginalExtension();
+                    $error      = false;
 
                     if (strtolower($fieldInfo['type']) == 'image') {
-                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image 
+                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
                         if (! $imgsize[2]) {
-                            return Redirect::route('admin.'.strtolower($this->controller).'.create')
-                                ->withInput()->withErrors(['Invalid image']);
+                            $error = trans('app.invalid_image');
                         }
+                    }
+
+                    if (in_array($extension, $this->evilFileExtensions)) {
+                        $error = trans('app.bad_extension', [$extension]);
+                    }
+
+                    if ($error !== false) {
+                        return Redirect::route('admin.'.strtolower($this->controller).'.edit', ['id' => $model->id])
+                                ->withInput()->withErrors([$error]);
                     }
 
                     $oldFile = $model->uploadPath(true).$model->$fieldName;
                     if (File::isFile($oldFile)) {
-                        File::delete($oldFile); // We need to delete the old file or we can have "123.jpg" & "123.png"
+                        File::delete($oldFile); // Delete the old file so we never have "123.jpg" AND "123.png"
                     }
 
-                    $extension          = $file->getClientOriginalExtension();
                     $filePath           = $model->uploadPath(true);
                     $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $fileName);
