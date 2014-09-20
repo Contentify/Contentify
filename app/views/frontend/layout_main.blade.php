@@ -50,6 +50,8 @@
                         {{ $page }}
                     @endif
                 </section>
+
+                @widget('Galleries::Galleries')
             </div>
 
             <aside id="sidebar">

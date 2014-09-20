@@ -22,6 +22,12 @@
         {{ $download->file_size * $download->access_counter }} Bytes
         {{ Form::smartFieldClose() }}
 
+        @if ($download->description)
+        <p>
+            {{ $download->description }}
+        </p>
+        @endif
+
         {{ Form::actions(['submit' => trans('downloads::perform_download')]) }}
     {{ Form::close() }}
 </div>
