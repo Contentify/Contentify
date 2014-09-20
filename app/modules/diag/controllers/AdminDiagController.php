@@ -19,13 +19,17 @@ class AdminDiagController extends BackController {
             $optimized = '1 - '.trans('diag::compiled').': '.Carbon::createFromTimeStamp(filemtime($filename));
         } else {
             $optimized = 0;
-        }      
+        }  
 
         /*
          * Create array with names and values
          */
         $isPlacehoder = (Config::get('app.key') == '01234567890123456789012345678912');
+        $appClass = get_class(app());
+        $opcacheExists = (int) function_exists('opcache_get_status');
+        $opcacheEnabled = $opcacheExists and opcache_get_status()['opcache_enabled'] ? 1 : 0;
         $settings = [
+            'Laravel.version'   => $appClass::VERSION,
             'Artisan optimized' => $optimized,
             'App.environment'   => App::environment(),
             'App.url'           => Config::get('app.url'),
@@ -34,6 +38,8 @@ class AdminDiagController extends BackController {
             'Modules.mode'      => Config::get('modules::mode'),
             'Modules.debug'     => (int) Config::get('modules::debug'),
             'Mail.pretend'      => (int) Config::get('mail.pretend'),
+            'OPcache.installed' => $opcacheExists,
+            'OPcache.enabled'   => $opcacheEnabled,
         ];
 
         /*
