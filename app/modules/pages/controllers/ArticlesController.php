@@ -17,14 +17,12 @@ class ArticlesController extends FrontController {
         $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                trans('app.id')         => 'id', 
                 trans('app.title')      => 'title',
                 trans('app.date')       => 'created_at'
             ],
             'tableRow'  => function($article)
             {
                 return [
-                    $article->id,
                     HTML::link(URL::route('articles.show', [$article->id]), $article->title),
                     $article->created_at
                 ];

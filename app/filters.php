@@ -41,7 +41,7 @@ Route::filter('admin', function()
     }
 
     if (! user()->hasAccess('backend')) {
-        return View::make('backend.noaccess');
+        return View::make('backend.no_access');
     }
 });
 

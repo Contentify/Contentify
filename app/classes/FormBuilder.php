@@ -346,7 +346,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a select element. It will take its values from a database table.
-     * It's smart and able to understand Ardent relationships of a model.
+     * It's smart and able to understand relationships of a model.
      * 
      * @param  string   $name               The name of the relation as defined in $model::relations
      * @param  string   $title              The caption of the select element

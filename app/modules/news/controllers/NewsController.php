@@ -17,15 +17,13 @@ class NewsController extends FrontController {
         $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                trans('app.id')         => 'id', 
                 trans('app.title')      => 'title', 
-                trans('app.category')   => NULL, 
+                trans('app.category')   => 'newscat_id', 
                 trans('app.date')       => 'created_at'
             ],
             'tableRow'  => function($news)
             {
                 return [
-                    $news->id,
                     HTML::link(URL::route('news.show', [$news->id]), $news->title),
                     $news->newscat->title,
                     $news->created_at

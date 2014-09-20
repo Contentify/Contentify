@@ -8,7 +8,17 @@ class GalleriesWidget extends Widget {
 
     public function render($parameters = array())
     {
-    	$images = Image::whereNotNull('gallery_id')->orderBy('created_at', 'DESC')->take(5)->get();
+        if (isset($parameters['categoryId'])) {
+            $categoryId = $parameters['categoryId'];
+        } else {
+            $categoryId = null;
+        }
+
+        if ($categoryId !== null) {
+    		$images = Image::whereGalleryId($categoryId)->orderBy('created_at', 'DESC')->take(5)->get();
+    	} else {
+    		$images = Image::whereNotNull('gallery_id')->orderBy('created_at', 'DESC')->take(5)->get();
+    	}
 
         return View::make('galleries::widget', compact('images'))->render();
     }

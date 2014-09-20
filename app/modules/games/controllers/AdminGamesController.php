@@ -5,7 +5,7 @@ use Hover, BackController;
 
 class AdminGamesController extends BackController {
 
-    protected $icon = 'joystick.png';
+    protected $icon = 'controller.png';
 
     public function __construct()
     {

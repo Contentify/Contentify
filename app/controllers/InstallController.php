@@ -141,6 +141,21 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
+        $this->create('tournaments', function($table)
+        {
+            $table->string('short', 6)->nullable();
+            $table->string('icon')->nullable();
+        },  [], ['slug']);
+        
+        $this->create('awards', function($table)
+        {
+            $table->string('url')->nullable();
+            $table->integer('position')->default(0);
+            $table->timestamp('achieved_at');
+        }, ['game_id', 'tournament_id'], ['slug']);
+
+        return; // DEBUG
+        
         $this->create('downloadcats', function($table) { }); // Supports slugs
 
         $this->create('downloads', function($table) 
@@ -149,9 +164,7 @@ class InstallController extends Controller {
             $table->string('file')->nullable();
             $table->integer('file_size')->default(0);
             $table->boolean('is_image')->default(false);
-        }, ['downloadcat_id']);
-
-        return; // DEBUG
+        }, ['downloadcat_id']);        
         
         $this->create('slidecats', function($table) { },  [], ['slug']); 
 
@@ -275,7 +288,7 @@ class InstallController extends Controller {
         {
             $table->string('short', 6)->nullable();
             $table->string('icon')->nullable();
-        });
+        }, [], ['slug']);
 
         $this->create('contact_messages', function($table)
         {
@@ -407,57 +420,61 @@ class InstallController extends Controller {
         Sentry::createGroup([
             'name'        => 'Admins',
             'permissions' => [
-                'frontend'  => true,
-                'internal'  => true,
-                'backend'   => true,
-                'adverts'   => PERM_DELETE,
-                'auth'      => PERM_DELETE,
-                'comments'  => PERM_DELETE,
-                'config'    => PERM_DELETE,
-                'contact'   => PERM_DELETE,
-                'diag'      => PERM_DELETE,
-                'downloads' => PERM_DELETE,
-                'galleries' => PERM_DELETE,
-                'games'     => PERM_DELETE,
-                'groups'    => PERM_DELETE,
-                'help'      => PERM_DELETE,
-                'images'    => PERM_DELETE,
-                'news'      => PERM_DELETE,
-                'pages'     => PERM_DELETE,
-                'partners'  => PERM_DELETE,
-                'slides'    => PERM_DELETE,
-                'teams'     => PERM_DELETE,
-                'users'     => PERM_DELETE,
-                'videos'    => PERM_DELETE,
+                'frontend'      => true,
+                'internal'      => true,
+                'backend'       => true,
+                'adverts'       => PERM_DELETE,
+                'auth'          => PERM_DELETE,
+                'awards'        => PERM_DELETE,
+                'comments'      => PERM_DELETE,
+                'config'        => PERM_DELETE,
+                'contact'       => PERM_DELETE,
+                'diag'          => PERM_DELETE,
+                'downloads'     => PERM_DELETE,
+                'galleries'     => PERM_DELETE,
+                'games'         => PERM_DELETE,
+                'groups'        => PERM_DELETE,
+                'help'          => PERM_DELETE,
+                'images'        => PERM_DELETE,
+                'news'          => PERM_DELETE,
+                'pages'         => PERM_DELETE,
+                'partners'      => PERM_DELETE,
+                'slides'        => PERM_DELETE,
+                'teams'         => PERM_DELETE,
+                'tournaments'   => PERM_DELETE,
+                'users'         => PERM_DELETE,
+                'videos'        => PERM_DELETE,
             ]
         ]);
 
         Sentry::createGroup([
             'name'        => 'Super-Admins',
             'permissions' => [
-                'frontend'  => true,
-                'internal'  => true,
-                'backend'   => true,
-                'adverts'   => PERM_DELETE,
-                'auth'      => PERM_DELETE,
-                'comments'  => PERM_DELETE,
-                'config'    => PERM_DELETE,
-                'contact'   => PERM_DELETE,
-                'diag'      => PERM_DELETE,
-                'downloads' => PERM_DELETE,
-                'galleries' => PERM_DELETE,
-                'games'     => PERM_DELETE,
-                'groups'    => PERM_DELETE,
-                'help'      => PERM_DELETE,
-                'images'    => PERM_DELETE,
-                'modules'   => PERM_DELETE,
-                'news'      => PERM_DELETE,
-                'pages'     => PERM_DELETE,
-                'partners'  => PERM_DELETE,
-                'slides'    => PERM_DELETE,
-                'teams'     => PERM_DELETE,
-                'users'     => PERM_DELETE,
-                'videos'    => PERM_DELETE,
+                'frontend'      => true,
+                'internal'      => true,
+                'backend'       => true,
+                'adverts'       => PERM_DELETE,
+                'auth'          => PERM_DELETE,
+                'awards'        => PERM_DELETE,
+                'comments'      => PERM_DELETE,
+                'config'        => PERM_DELETE,
+                'contact'       => PERM_DELETE,
+                'diag'          => PERM_DELETE,
+                'downloads'     => PERM_DELETE,
+                'galleries'     => PERM_DELETE,
+                'games'         => PERM_DELETE,
+                'groups'        => PERM_DELETE,
+                'help'          => PERM_DELETE,
+                'images'        => PERM_DELETE,
+                'modules'       => PERM_DELETE,
+                'news'          => PERM_DELETE,
+                'pages'         => PERM_DELETE,
+                'partners'      => PERM_DELETE,
+                'slides'        => PERM_DELETE,
+                'teams'         => PERM_DELETE,
+                'tournaments'   => PERM_DELETE,
+                'users'         => PERM_DELETE,
+                'videos'        => PERM_DELETE,
             ]
         ]);
     }
