@@ -2,7 +2,7 @@
     <div class="slides">
         <ul class="layout-h">
         	@foreach ($slides as $slide)
-            <li>
+            <li data-title="{{{ $slide->title }}}">
             	<a href="{{ $slide->url }}" title="{{{ $slide->title }}}" target="_blank">
 			        <img src="{{ $slide->uploadPath().$slide->image }}" alt="{{{ $slide->title }}}">
 			    </a>

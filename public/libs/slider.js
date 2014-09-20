@@ -29,7 +29,8 @@
             itemindex   : 1,        // Index of the item to activate at the beginning. The first item has index 1!
             delay       : 10000,    // Milliseconds, used by autoplay
             fadetime    : 'slow',   // 'slow' / 'normal / 'fast' / milliseconds. Usedby jquery.fadein() / fadeout()
-            autoplay    : true      // Enable or disable autoplaying
+            autoplay    : true,     // Enable or disable autoplaying
+            showTitle   : true      // Show the title of the slides in a h2.slide-title element?
         };
         this.opts       = $.extend(this.defaults, opts);        // Override the default options (if possible)
         this.itemindex  = this.opts.itemindex;                  // Protect itemindex by hiding it outside of opts
@@ -37,11 +38,17 @@
         this.interval   = null                                  // To keep the interval id
 
         var self = this; // Keep an instance of this widget for further use
+        var $h2 = $('<h2>').addClass('slide-title');
+        
+        if (self.opts.showTitle) {
+            $(el).append($h2); // Add h2 that displays the title of the active slide
+        }
 
         self.$el.find('.slides li').css('display','none');                                      // Hide all slides
         self.$el.find('.slides li:nth(' + (self.itemindex-1) + ')').css('display','block');     // Show a certain slide
         self.$el.find('.buttons li:nth(' + (self.itemindex-1) + ')').addClass('active');        // Set button as active
         var text = self.$el.find('.slides li:nth(' + (self.itemindex - 1) + ')').attr('data-title');
+        $h2.text(text);
 
         self.$el.find('.to-left').click(function(event)
         {
@@ -130,6 +137,9 @@
                     $(this).removeClass('active');
                 }
             });
+
+            var text = self.$el.find('.slides li:nth(' + (index - 1) + ')').attr('data-title');
+            $h2.text(text);
 
             if (self.interval != null) { 
                 startAutoplay(); // Restart autoplay, so it cannot switch to another slide during the next moment

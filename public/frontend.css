@@ -70,6 +70,7 @@ h1.page-title { }
 .slider .buttons { position: absolute; right: 20px; bottom: 20px; }
 .slider .buttons li { width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: rgba(0, 0, 0, 0.5); color: white; cursor: pointer; text-align: center; }
 .slider .buttons li.active{ background-color: rgba(0, 0, 0, 1); }
+.slider .slide-title { position: absolute; margin: 0px; left: 20px; bottom: 20px; color: white; text-shadow: 0px 0px 3px black; }
 
 /*
  * Modules
