@@ -2,10 +2,7 @@ Contentify uses several conventions you should be aware of.
 
 ## Module Names
 
-If module names refer to entities, e. g. "Game", prefer to pluralize them: "games". Some names are reserved. Please do not use them for custom modules:
-
-* comments
-* contentify
+If module names refer to entities, e. g. "Game", prefer to pluralize them: "games".
 
 ## Config
 

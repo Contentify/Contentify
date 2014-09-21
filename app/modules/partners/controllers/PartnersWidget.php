@@ -9,14 +9,14 @@ class PartnersWidget extends Widget {
     public function render($parameters = array())
     {
         if (isset($parameters['categoryId'])) {
-        	$categoryId = $parameters['categoryId'];
+            $categoryId = $parameters['categoryId'];
         } else {
-        	$partnercat = Partnercat::first();
-        	if ($partnercat) {
-        		$categoryId = $partnercat->id;
-        	} else {
-        		$categoryId = 0;
-        	}
+            $partnercat = Partnercat::first();
+            if ($partnercat) {
+                $categoryId = $partnercat->id;
+            } else {
+                $categoryId = 0;
+            }
         }
 
         $partners = Partner::wherePartnercatId($categoryId)->get();

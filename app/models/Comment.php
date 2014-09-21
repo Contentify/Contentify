@@ -31,6 +31,7 @@ class Comment extends BaseModel {
 
     /**
      * Render the comment (convert BBCode to HTML code)
+     * 
      * @return string
      */
     public function render()

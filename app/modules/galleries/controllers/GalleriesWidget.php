@@ -15,10 +15,10 @@ class GalleriesWidget extends Widget {
         }
 
         if ($categoryId !== null) {
-    		$images = Image::whereGalleryId($categoryId)->orderBy('created_at', 'DESC')->take(5)->get();
-    	} else {
-    		$images = Image::whereNotNull('gallery_id')->orderBy('created_at', 'DESC')->take(5)->get();
-    	}
+            $images = Image::whereGalleryId($categoryId)->orderBy('created_at', 'DESC')->take(5)->get();
+        } else {
+            $images = Image::whereNotNull('gallery_id')->orderBy('created_at', 'DESC')->take(5)->get();
+        }
 
         return View::make('galleries::widget', compact('images'))->render();
     }

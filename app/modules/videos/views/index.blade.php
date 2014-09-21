@@ -4,9 +4,9 @@
     @foreach ($videos as $video)
     <div class="video">
         <a href="{{{ url('videos/'.$video->id.'/'.$video->slug) }}}">
-        	@if ($video->provider == 'youtube')
-				<img src="http://img.youtube.com/vi/{{{ $video->permanent_id }}}/mqdefault.jpg" alt="{{{ $video->title }}}">
-        	@endif
+            @if ($video->provider == 'youtube')
+                <img src="http://img.youtube.com/vi/{{{ $video->permanent_id }}}/mqdefault.jpg" alt="{{{ $video->title }}}">
+            @endif
             {{{ $video->title }}}
         </a>
     </div>

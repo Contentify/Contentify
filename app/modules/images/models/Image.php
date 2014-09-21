@@ -18,13 +18,13 @@ class Image extends BaseModel {
 
     public function gallerySlug()
     {
-    	$slug = Str::slug($this->title);
+        $slug = Str::slug($this->title);
 
-    	if ($slug) {
-    		return '/'.$slug;
-    	} else {
-    		return null;
-    	}
+        if ($slug) {
+            return '/'.$slug;
+        } else {
+            return null;
+        }
     }
 
 }

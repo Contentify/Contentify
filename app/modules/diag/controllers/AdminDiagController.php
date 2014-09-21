@@ -35,6 +35,7 @@ class AdminDiagController extends BackController {
             'App.url'           => Config::get('app.url'),
             'App.debug'         => (int) Config::get('app.debug'),
             'App.key'           => $isPlacehoder ? trans('diag::placeholder') : trans('app.valid'),
+            'Cache.driver'      => Config::get('cache.driver'),
             'Modules.mode'      => Config::get('modules::mode'),
             'Modules.debug'     => (int) Config::get('modules::debug'),
             'Mail.pretend'      => (int) Config::get('mail.pretend'),

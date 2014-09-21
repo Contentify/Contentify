@@ -9,12 +9,12 @@ class Award extends BaseModel {
     protected $dates = ['deleted_at', 'achieved_at'];
 
     protected $fillable = [
-    	'title', 
-    	'url', 
-    	'position', 
-    	'achieved_at', 
-    	'game_id', 
-    	'tournament_id',
+        'title', 
+        'url', 
+        'position', 
+        'achieved_at', 
+        'game_id', 
+        'tournament_id',
     ];
 
     public static $rules = [
@@ -22,12 +22,13 @@ class Award extends BaseModel {
     ];
 
     public static $relationsData = [
-        'game' 			=> [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
-        'tournament' 	=> [self::BELONGS_TO, 'App\Modules\Tournaments\Models\Tournament'],
+        'game'          => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
+        'tournament'    => [self::BELONGS_TO, 'App\Modules\Tournaments\Models\Tournament'],
     ];
 
     /**
      * Returns HTML code of an icon representing the position (rank) achieved in the tournament.
+     * 
      * @return string HTML code of the icon
      */
     public function positionIcon()

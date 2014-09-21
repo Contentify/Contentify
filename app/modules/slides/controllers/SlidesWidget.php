@@ -9,14 +9,14 @@ class SlidesWidget extends Widget {
     public function render($parameters = array())
     {
         if (isset($parameters['categoryId'])) {
-        	$categoryId = $parameters['categoryId'];
+            $categoryId = $parameters['categoryId'];
         } else {
-        	$slidecat = Slidecat::first();
-        	if ($slidecat) {
-        		$categoryId = $slidecat->id;
-        	} else {
-        		$categoryId = 0;
-        	}
+            $slidecat = Slidecat::first();
+            if ($slidecat) {
+                $categoryId = $slidecat->id;
+            } else {
+                $categoryId = 0;
+            }
         }
 
         $slides = Slide::whereSlidecatId($categoryId)->get();

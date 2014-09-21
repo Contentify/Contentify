@@ -1,3 +1,11 @@
 {
-    "enabled": true
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "money.png",
+            "position": 123,
+            "title": "Advertisement",
+            "category": 2
+        }
+    ]
 }

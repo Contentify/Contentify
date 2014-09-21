@@ -5,7 +5,7 @@
 @else
     {{ Form::open(['url' => 'admin/videos']) }}
 @endif
-	{{ Form::smartText('title', trans('app.title')) }}
+    {{ Form::smartText('title', trans('app.title')) }}
 
     {{ Form::smartText('url', trans('app.url')) }}  
 
@@ -17,61 +17,62 @@
 {{ Form::close() }}
 
 <script>
-	$(document).ready(function()
-		{	
-			// Object with the names of all available providers:
-			var providers = {{ json_encode($modelClass::$providers) }}; 
+    $(document).ready(function()
+        {   
+            // Object with the names of all available providers:
+            var providers = {{ json_encode($modelClass::$providers) }}; 
 
-			/**
-			 * Selects a provider in the provider UI element
-			 * @param  {string} provider The providers unique name
-			 * @return void
-			 */
-			function selectProvider(provider)
-			{
-				$("#provider option[value='" + provider + "']").attr('selected', true);
-				$('#provider').selecter('update');
-			}
+            /**
+             * Selects a provider in the provider UI element
+             * @param  {string} provider The providers unique name
+             * @return void
+             */
+            function selectProvider(provider)
+            {
+                $("#provider option[value='" + provider + "']").attr('selected', true);
+                $('#provider').selecter('update');
+            }
 
-			/**
-			 * Retursn the name of the currently selected provider
-			 * @return {string} The provider's name
-			 */
-			function getProvider()
-			{
-				return $('#provider').val();
-			}
+            /**
+             * Retursn the name of the currently selected provider
+             * 
+     * @return {string} The provider's name
+             */
+            function getProvider()
+            {
+                return $('#provider').val();
+            }
 
-			/**
-			 * Get the YouTube video ID from a URL
-			 * @param  {string} 		url The YouTube video URL
-			 * @return {string|bool}    Returns the ID or false
-			 */
-			function getYoutubeId(url)
-			{
-				var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-			 	return (url.match(p)) ? RegExp.$1 : false ;
-			}
+            /**
+             * Get the YouTube video ID from a URL
+             * @param  {string}         url The YouTube video URL
+     * @return {string|bool}    Returns the ID or false
+             */
+            function getYoutubeId(url)
+            {
+                var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+                return (url.match(p)) ? RegExp.$1 : false ;
+            }
 
-			$('#url').keyup(function()
-			{
-				if (providers.youtube) {
-					var result = getYoutubeId($(this).val());
-					if (result !== false) {
-						$('#permanent_id').val(result);
-						selectProvider('youtube');
-					}
-				}
-			});
+            $('#url').keyup(function()
+            {
+                if (providers.youtube) {
+                    var result = getYoutubeId($(this).val());
+                    if (result !== false) {
+                        $('#permanent_id').val(result);
+                        selectProvider('youtube');
+                    }
+                }
+            });
 
-			$('#permanent_id').keyup(function()
-			{
-				switch (getProvider()) {
-					case 'youtube':
-						$('#url').val('https://www.youtube.com/watch?v=' + $(this).val());
-						break;
-				}
-			});
-		}
-	);
+            $('#permanent_id').keyup(function()
+            {
+                switch (getProvider()) {
+                    case 'youtube':
+                        $('#url').val('https://www.youtube.com/watch?v=' + $(this).val());
+                        break;
+                }
+            });
+        }
+    );
 </script>

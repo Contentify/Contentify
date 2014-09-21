@@ -193,7 +193,7 @@ class User extends SentryUser {
     /**
      * The throttle system is not part of the Sentry core module.
      * This helper method accesses the banned attribute.
-     *
+          *
      * @return boolean
      */
     public function isBanned()

@@ -20,7 +20,7 @@ abstract class FrontController extends BaseController {
 
     /**
      * Helper action method for searching. All we do here is to redirect with the input.
-     *
+          *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function search()

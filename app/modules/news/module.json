@@ -1,4 +1,11 @@
 {
     "enabled": true,
-    "search": ["news"]
+    "search": ["news"],
+    "admin-nav": [
+        {
+            "icon": "newspaper.png",
+            "position": 2,
+            "category": 1
+        }
+    ]
 }

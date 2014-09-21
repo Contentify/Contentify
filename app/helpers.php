@@ -13,6 +13,7 @@
 /**
  * Shortcut. Returns the current user model or null.
  * 
+ * 
  * @return User The User model
  */
 function user()

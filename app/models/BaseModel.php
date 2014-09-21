@@ -68,6 +68,7 @@ class BaseModel extends Eloquent {
 
     /**
      * True if model is slugable
+     * 
      * @return bool
      */
     public function slugable()
@@ -116,7 +117,7 @@ class BaseModel extends Eloquent {
      * This method is an alternative. The new SoftDeletingTrait adds an attribute 
      * named forceDeleting to the model, so if it exists we know the model
      * uses soft deleting.
-     *
+          *
      * @return bool
      */
     public function isSoftDeleting()

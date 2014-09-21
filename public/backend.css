@@ -202,12 +202,12 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
 .submenu a, .submenu a:visited { position: absolute; left: 0px; top: 0px; width: 233px; height: 100%; color: #CCCCCC; z-index: 2 }
 .submenu a:hover, submenu a:active { color: #ff6100 }
 .submenu img { position: absolute; left: 28px; }
-.menu1 { position: relative; background-image: url(theme/backend/nav_item_top.png); text-indent: 60px; height: 46px; line-height: 54px; }
-.menu1 img { top: 20px }
-.menu2 { position: relative; background-image: url(theme/backend/nav_item_mid.png); text-indent: 60px; height: 38px; line-height: 38px; }   
-.menu2 img { top: 13px }
-.menu3 { position: relative; background-image: url(theme/backend/nav_item_bot.png); text-indent: 60px; height: 49px; line-height: 42px;  }  
-.menu3 img { top: 13px }
+.submenu .item { position: relative; background-image: url(theme/backend/nav_item_mid.png); text-indent: 60px; height: 38px; line-height: 38px; }
+.submenu .item img { top: 13px }
+.submenu .item:first-child { background-image: url(theme/backend/nav_item_top.png); height: 46px; line-height: 54px; }
+.submenu .item:first-child img { top: 20px }
+.submenu .item:last-child { background-image: url(theme/backend/nav_item_bot.png); height: 49px; line-height: 42px; }
+.submenu .item:last-child img { top: 13px }
 .menu-bottom { background-image: url(theme/backend/menu_bottom.png); height: 17px }
 .applemenu { /*dont remove this class*/ }
 .applemenu div.submenu { /*DIV that contains each sub menu*/ /*dont remove this class*/ }

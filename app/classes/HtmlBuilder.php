@@ -1,6 +1,7 @@
 <?php namespace Contentify;
  
 use Illuminate\Html\HtmlBuilder as OriginalHtmlBuilder;
+use Contentify\BackNavGen;
 use OpenGraph, Session, URL;
 
 class HtmlBuilder extends OriginalHtmlBuilder
@@ -231,6 +232,18 @@ class HtmlBuilder extends OriginalHtmlBuilder
         }
 
         return '<a class="recycle-bin-button '.$class.'" href="'.$url.'">'.trans('app.recycle_bin').'</a>';
+    }
+
+    /**
+     * Helper method. Just passes through the HTML code
+     * BackNavGen::get() returns.
+     * 
+     * @return string
+     */
+    public function renderBackendNav()
+    {
+        $backNavGen = new BackNavGen();
+        return $backNavGen->get();
     }
 
 }

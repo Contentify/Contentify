@@ -1,4 +1,11 @@
 {
     "enabled": true,
-    "search": ["articles"]
+    "search": ["articles"],
+    "admin-nav": [
+        {
+            "icon": "doc_offlice.png",
+            "position": 3,
+            "category": 1
+        }
+    ]
 }

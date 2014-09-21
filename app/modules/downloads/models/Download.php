@@ -34,13 +34,13 @@ class Download extends BaseModel {
                 
                 $imgsize = getimagesize($fileName); // Try to gather infos about the image 
                 if ($imgsize[2]) {
-                	$download->is_image = true;
+                    $download->is_image = true;
 
-                	/*
-                	 * Create Thumbnail
-                	 */
-                	$size = 50;
-                	InterImage::make($fileName)->resize($size, $size, function ($constraint) {
+                    /*
+                     * Create Thumbnail
+                     */
+                    $size = 50;
+                    InterImage::make($fileName)->resize($size, $size, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($download->uploadPath(true).$size.'/'.$download->file); 
                 }

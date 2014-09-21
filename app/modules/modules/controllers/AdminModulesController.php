@@ -74,6 +74,7 @@ class AdminModulesController extends BackController {
         if ($result === false or $result === null) {
             $this->message(trans('modules::fail'));            
         } elseif ($result === true) {
+            $installer->after();
             $this->message(trans('modules::success'));
         } else {
             $this->pageOutput($result);

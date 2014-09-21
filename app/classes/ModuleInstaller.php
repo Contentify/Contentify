@@ -1,6 +1,7 @@
 <?php namespace Contentify;
 
 use Illuminate\Foundation\Composer;
+use Contentify\BackNavGen;
 
 class ModuleInstaller {
 
@@ -34,7 +35,6 @@ class ModuleInstaller {
      * Return false to terminate with error, true to finish 
      * or a string (or View) to pass visual output.
      * 
-     * 
      * @return string|bool
      */
     public function execute()
@@ -43,12 +43,26 @@ class ModuleInstaller {
     }
 
     /**
+     * This method is always executed after a module has been successfully installed.
+     * 
+     * @return void
+     */
+    public final function after()
+    {
+        /*
+         * Update backend navigation
+         */
+        $backNavGen = new BackNavGen();
+        $backNavGen->update(true);
+    }
+
+    /**
      * Helper function. Returns the URL of the installer for the next (or a given) step.
      * 
      * @param  int $step The step (null = auto)
      * @return string
      */
-    protected function nextStep($step = null)
+    protected final function nextStep($step = null)
     {
         if ($step === null) {
             $step = $this->step;
