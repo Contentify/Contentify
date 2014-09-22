@@ -4,4 +4,5 @@
     @endforeach
     {{ $comments->links() }}
 </div>
+
 {{ HTML::script('libs/comments.js') }}

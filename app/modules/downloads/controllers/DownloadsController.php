@@ -40,7 +40,6 @@ class DownloadsController extends FrontController {
         $downloads = Download::whereDownloadcatId($id)->paginate($perPage); 
 
         $this->title($downloadcat->title);
-        //$this->openGraph($downloadcat->openGraph());
 
         $this->pageView('downloads::category', compact('downloadcat', 'downloads'));
     }

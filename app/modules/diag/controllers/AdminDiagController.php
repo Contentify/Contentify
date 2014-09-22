@@ -29,18 +29,20 @@ class AdminDiagController extends BackController {
         $opcacheExists = (int) function_exists('opcache_get_status');
         $opcacheEnabled = $opcacheExists and opcache_get_status()['opcache_enabled'] ? 1 : 0;
         $settings = [
-            'Laravel.version'   => $appClass::VERSION,
-            'Artisan optimized' => $optimized,
-            'App.environment'   => App::environment(),
-            'App.url'           => Config::get('app.url'),
-            'App.debug'         => (int) Config::get('app.debug'),
-            'App.key'           => $isPlacehoder ? trans('diag::placeholder') : trans('app.valid'),
-            'Cache.driver'      => Config::get('cache.driver'),
-            'Modules.mode'      => Config::get('modules::mode'),
-            'Modules.debug'     => (int) Config::get('modules::debug'),
-            'Mail.pretend'      => (int) Config::get('mail.pretend'),
-            'OPcache.installed' => $opcacheExists,
-            'OPcache.enabled'   => $opcacheEnabled,
+            'Laravel.version'           => $appClass::VERSION,
+            'Artisan optimized'         => $optimized,
+            'App.environment'           => App::environment(),
+            'App.url'                   => Config::get('app.url'),
+            'App.debug'                 => (int) Config::get('app.debug'),
+            'App.key'                   => $isPlacehoder ? trans('diag::placeholder') : trans('app.valid'),
+            'Cache.driver'              => Config::get('cache.driver'),
+            'Modules.mode'              => Config::get('modules::mode'),
+            'Modules.debug'             => (int) Config::get('modules::debug'),
+            'Mail.pretend'              => (int) Config::get('mail.pretend'),
+            'OPcache.installed'         => $opcacheExists,
+            'OPcache.enabled'           => $opcacheEnabled,
+            'PHP.memory_limit'          => ini_get('memory_limit'),
+            'PHP.max_execution_time'    => ini_get('max_execution_time'),
         ];
 
         /*

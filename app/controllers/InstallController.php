@@ -612,7 +612,7 @@ class InstallController extends Controller {
          */
         Schema::create($tableName, function($table) use ($primaryKeys)
         {
-            $table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is used as storage engine
+            $table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is the storage engine
 
             /*
              * Add the primarey keys:

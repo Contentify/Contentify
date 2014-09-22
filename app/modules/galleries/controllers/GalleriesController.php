@@ -50,7 +50,6 @@ class GalleriesController extends FrontController {
         $image->save();
 
         $this->title($gallery->title);
-        //$this->openGraph($video->openGraph());
 
         $this->pageView('galleries::show', compact('gallery', 'image'));
     }
