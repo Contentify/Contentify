@@ -1,4 +1,11 @@
 {
     "enabled": true,
-    "search": ["videos"]
+    "search": ["videos"],
+    "admin-nav": [
+        {
+            "icon": "film.png",
+            "position": 3,
+            "category": 2
+        }
+    ]
 }

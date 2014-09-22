@@ -1,3 +1,11 @@
 {
-    "enabled": true
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "lock.png",
+            "position": 7,
+            "title": "Groups & Permissions",
+            "category": 4
+        }
+    ]
 }

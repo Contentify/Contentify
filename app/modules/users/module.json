@@ -1,4 +1,11 @@
 {
     "enabled": true,
-    "search": ["users"]
+    "search": ["users"],
+    "admin-nav": [
+        {
+            "icon": "user.png",
+            "position": 1,
+            "category": 4
+        }
+    ]
 }

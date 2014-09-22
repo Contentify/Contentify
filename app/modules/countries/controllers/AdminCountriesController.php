@@ -5,7 +5,7 @@ use HTML, File, BackController;
 
 class AdminCountriesController extends BackController {
 
-    protected $icon = 'joystick.png';
+    protected $icon = 'flag_blue.png';
 
     public function __construct()
     {

@@ -1,3 +1,9 @@
 {
-    "enabled": true
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "package.png",
+            "category": 4
+        }
+    ]
 }

@@ -1,3 +1,11 @@
 {
-    "enabled": true
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "coins.png",
+            "position": 5,
+            "title": "Sponsors & Partners",
+            "category": 2
+        }
+    ]
 }

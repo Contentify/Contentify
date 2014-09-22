@@ -1,3 +1,10 @@
 {
-    "enabled": true
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "email_open.png",
+            "position": 5,
+            "category": 4
+        }
+    ]
 }

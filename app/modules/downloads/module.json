@@ -1,3 +1,10 @@
 {
-    "enabled": true
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "folder.png",
+            "position": 7,
+            "category": 1
+        }
+    ]
 }

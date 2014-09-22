@@ -59,6 +59,10 @@ h1.page-title { }
 .form-actions { }
 .form-actions input[type=submit], .form-actions button { margin-right: 10px; }
 
+/* Content Table */
+.content-table { width: 100%; }
+.content-table th { text-align: left }
+
 /* Slider Default Styling - Feel free to overwrite */
 .slider { position: relative; width: 100%; height: 245px; /* Height of a single slide */ }
 .slider .slides { position: absolute; left: 0px; top: 0px; width: 100%; height: 100% }

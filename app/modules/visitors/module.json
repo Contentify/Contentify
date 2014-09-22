@@ -1,3 +1,10 @@
 {
-    "enabled": true
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "chart_bar.png",
+            "position": 6,
+            "category": 4
+        }
+    ]
 }
