@@ -141,27 +141,6 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
-        DB::insert('INSERT INTO games(title, short, icon) VALUES
-        ("Counter-Strike 1.6", "CS", "default/cs.gif"),
-        ("Counter-Strike: Source", "CS:S", "default/css.gif"),
-        ("Counter-Strike: Global Offensive", "CS:GO", "default/csgo.png"),
-        ("Call of Duty", "CoD", "default/cod.png"),
-        ("Battlefield", "BF", "default/bf.png"),
-        ("Unreal Tournament 3", "UT3", "default/ut3.png"),
-        ("Left 4 Dead", "L4D", "default/l4d.png"),
-        ("Crysis", "Crysis", "default/crysis.png"),
-        ("Quake", "Quake", "default/quake.gif"),
-        ("StarCraft II", "SC2", "default/sc2.png"),
-        ("Warcraft III", "WC3", "default/wc3.gif"),
-        ("Diablo III", "D3", "default/d3.png"),
-        ("DotA 2", "DotA", "default/dota2.png"),
-        ("League of Legends", "LoL", "default/lol.png"),
-        ("World of Warcraft", "WoW", "default/wow.png"),
-        ("World of Tanks", "WoT", "default/wot.png"),
-        ("Trackmania", "TM", "default/tm.gif"),
-        ("FIFA", "FIFA", "default/fifa.gif"),
-        ("Minecraft", "MS", "default/mc.png")');
-
         return; // DEBUG
         
         $this->create('tournaments', function($table)
@@ -407,6 +386,27 @@ class InstallController extends Controller {
         ("United Kingdom", "uk", "uk.png"),
         ("USA", "us", "us.png"),
         ("Venezuela", "ve", "ve.png")');
+
+        DB::insert('INSERT INTO games(title, short, icon) VALUES
+        ("Counter-Strike 1.6", "CS", "default/cs.gif"),
+        ("Counter-Strike: Source", "CS:S", "default/css.gif"),
+        ("Counter-Strike: Global Offensive", "CS:GO", "default/csgo.png"),
+        ("Call of Duty", "CoD", "default/cod.png"),
+        ("Battlefield", "BF", "default/bf.png"),
+        ("Unreal Tournament 3", "UT3", "default/ut3.png"),
+        ("Left 4 Dead", "L4D", "default/l4d.png"),
+        ("Crysis", "Crysis", "default/crysis.png"),
+        ("Quake", "Quake", "default/quake.gif"),
+        ("StarCraft II", "SC2", "default/sc2.png"),
+        ("Warcraft III", "WC3", "default/wc3.gif"),
+        ("Diablo III", "D3", "default/d3.png"),
+        ("DotA 2", "DotA", "default/dota2.png"),
+        ("League of Legends", "LoL", "default/lol.png"),
+        ("World of Warcraft", "WoW", "default/wow.png"),
+        ("World of Tanks", "WoT", "default/wot.png"),
+        ("Trackmania", "TM", "default/tm.gif"),
+        ("FIFA", "FIFA", "default/fifa.gif"),
+        ("Minecraft", "MS", "default/mc.png")');
     }
 
     /**
@@ -584,8 +584,9 @@ class InstallController extends Controller {
         foreach ($foreignKeys as $foreignKey) {
             Schema::table($tableName, function($table) use ($foreignKey)
             {
-                $table->integer($foreignKey)->unsigned();
-                //$table->foreign($foreignKey)->references('id')->on(str_plural($foreignKey));
+                $table->integer($foreignKey)->unsigned()->nullable();
+                //$foreignTable = str_plural(substr($foreignKey, 0, -3));
+                //$table->foreign($foreignKey)->references('id')->on($foreignTable);
             });
         }
     }
