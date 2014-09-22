@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Games\Controllers;
 
 use App\Modules\Games\Models\Game;
-use Hover, BackController;
+use HTML, BackController;
 
 class AdminGamesController extends BackController {
 
@@ -19,16 +19,17 @@ class AdminGamesController extends BackController {
         $this->indexPage([
             'tableHead' => [
                 trans('app.id')     => 'id', 
+                trans('app.icon')   => NULL,
                 trans('app.title')  => 'title'
             ],
             'tableRow' => function($game)
             {
-                $hover = new Hover();
-                if ($game->icon) $hover->image($game->uploadPath().$game->icon);
-
                 return [
                     $game->id,
-                    $hover.$game->title,
+                    $game->icon 
+                        ? HTML::image($game->uploadPath().$game->icon, $game->title, ['width' => 16, 'height' => 16]) 
+                        : NULL,
+                    $game->title,
                 ];            
             }
         ]);

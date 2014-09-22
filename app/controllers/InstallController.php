@@ -141,6 +141,29 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
         
+        DB::insert('INSERT INTO games(title, short, icon) VALUES
+        ("Counter-Strike 1.6", "CS", "default/cs.gif"),
+        ("Counter-Strike: Source", "CS:S", "default/css.gif"),
+        ("Counter-Strike: Global Offensive", "CS:GO", "default/csgo.png"),
+        ("Call of Duty", "CoD", "default/cod.png"),
+        ("Battlefield", "BF", "default/bf.png"),
+        ("Unreal Tournament 3", "UT3", "default/ut3.png"),
+        ("Left 4 Dead", "L4D", "default/l4d.png"),
+        ("Crysis", "Crysis", "default/crysis.png"),
+        ("Quake", "Quake", "default/quake.gif"),
+        ("StarCraft II", "SC2", "default/sc2.png"),
+        ("Warcraft III", "WC3", "default/wc3.gif"),
+        ("Diablo III", "D3", "default/d3.png"),
+        ("DotA 2", "DotA", "default/dota2.png"),
+        ("League of Legends", "LoL", "default/lol.png"),
+        ("World of Warcraft", "WoW", "default/wow.png"),
+        ("World of Tanks", "WoT", "default/wot.png"),
+        ("Trackmania", "TM", "default/tm.gif"),
+        ("FIFA", "FIFA", "default/fifa.gif"),
+        ("Minecraft", "MS", "default/mc.png")');
+
+        return; // DEBUG
+        
         $this->create('tournaments', function($table)
         {
             $table->string('short', 6)->nullable();
@@ -152,9 +175,7 @@ class InstallController extends Controller {
             $table->string('url')->nullable();
             $table->integer('position')->default(0);
             $table->timestamp('achieved_at');
-        }, ['game_id', 'tournament_id'], ['slug']);
-
-        return; // DEBUG
+        }, ['game_id', 'tournament_id'], ['slug']);        
         
         $this->create('downloadcats', function($table) { }); // Supports slugs
 

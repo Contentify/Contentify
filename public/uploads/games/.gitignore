@@ -3,3 +3,5 @@
 *.gif
 *.png
 *.bmp
+
+!default/*
