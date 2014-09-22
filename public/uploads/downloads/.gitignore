@@ -1,7 +1,2 @@
-*.jpg
-*.jpeg
-*.gif
-*.png
-*.bmp
-
-*.xml
+*.*
+!.gitignore
