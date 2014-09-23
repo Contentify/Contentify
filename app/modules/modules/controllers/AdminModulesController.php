@@ -61,6 +61,8 @@ class AdminModulesController extends BackController {
      */
     public function install($name, $step = 0)
     {
+        if (! $this->checkAccessCreate()) return;
+
         $module = new Module(['title' => $name]);
 
         $installerFile = $module->installer();

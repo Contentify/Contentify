@@ -21,6 +21,8 @@ class SearchController extends FrontController {
 
             $resultBags = array();
             foreach ($modules as $module) {
+                if (! $module->def('enabled')) continue;
+                
                 $controllers = $module->def('search'); // def() will return null if "search" is not defined
                 if ($controllers) { 
                     // A module might have more than one controller that supports the search:

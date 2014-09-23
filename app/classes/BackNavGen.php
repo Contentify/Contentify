@@ -29,6 +29,8 @@ class BackNavGen {
 
         $navItems = array();
         foreach ($modules as $module) {
+            if (! $module->def('enabled')) continue;
+            
             $moduleNavItems = $module->def('admin-nav'); // def() will return null if "admin-nav" is not defined
             if ($moduleNavItems) {
                 $counter = 0;
