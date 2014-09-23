@@ -1,3 +1,4 @@
+@if (sizeof($slides) > 0)
 <div id="slider{{ $categoryId }}" class="slider">
     <div class="slides">
         <ul class="layout-h">
@@ -28,3 +29,4 @@
         $('#slider{{ $categoryId }}').contentifySlider();
     });
 </script>
+@endif

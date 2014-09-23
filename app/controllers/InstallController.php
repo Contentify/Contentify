@@ -163,90 +163,22 @@ class InstallController extends Controller {
         
         return; // DEBUG
         
-        $this->create('tournaments', function($table)
+        Schema::dropIfExists('config');
+        Schema::create('config', function($table)
         {
-            $table->string('short', 6)->nullable();
-            $table->string('icon')->nullable();
-        },  [], ['slug']);
-        
-        $this->create('awards', function($table)
-        {
-            $table->string('url')->nullable();
-            $table->integer('position')->default(0);
-            $table->timestamp('achieved_at');
-        }, ['game_id', 'tournament_id'], ['slug']);        
-        
-        $this->create('downloadcats', function($table) { }); // Supports slugs
-
-        $this->create('downloads', function($table) 
-        { 
-            $table->text('description')->nullable();
-            $table->string('file')->nullable();
-            $table->integer('file_size')->default(0);
-            $table->boolean('is_image')->default(false);
-        }, ['downloadcat_id']);        
-        
-        $this->create('slidecats', function($table) { },  [], ['slug']); 
-
-        $this->create('slides', function($table)
-        {
-            $table->string('url')->nullable();
-            $table->string('image')->nullable();
-        }, ['slidecat_id'], ['slug']);
-
-        $this->create('videos', function($table)
-        {
-            $table->string('url')->nullable();
-            $table->string('permanent_id')->nullable();
-            $table->integer('position')->default(0);
+            $table->string('name', 255); // We can't name it "key" - it's a keyword in SQL. Eloquent can't handle it(?)
+            $table->primary('name');
+            $table->text('value')->nullable();
+            $table->timestamp('updated_at');
         });
-
-        $this->create('pagecats', function($table) { },  [], ['slug']); 
-
-        $this->create('pages', function($table)
+       
+        $this->create('visits', function($table)
         {
-            $table->text('text')->nullable();
-            $table->boolean('published')->default(false);
-            $table->timestamp('published_at');
-            $table->boolean('internal')->default(false);
-            $table->boolean('enable_comments')->default(false);
-        }, ['pagecat_id']);
+            $table->string('ip');
+            $table->integer('user_agents');
+            $table->date('visited_at');
+        }, array(), false);
 
-        $this->create('advertcats', function($table) { },  [], ['slug']); 
-
-        $this->create('adverts', function($table)
-        {
-            $table->text('code')->nullable();
-            $table->string('url')->nullable();
-            $table->string('image')->nullable();
-        }, ['advertcat_id']);
-
-        $this->create('partnercats', function($table) { },  [], ['slug']);
-
-        $this->create('partners', function($table)
-        {
-            $table->text('text')->nullable();
-            $table->string('url')->nullable();
-            $table->integer('position')->default(0);
-            $table->string('image')->nullable();
-        }, ['partnercat_id']);
-
-        $this->createPivot('team_user', function($table)
-        {
-            $table->string('task')->nullable();
-            $table->text('description')->nullable();
-            $table->integer('position')->default(0);
-        }, ['user_id', 'team_id']);
-
-        $this->create('teamcats', function($table) { },  [], ['slug']);
-
-        $this->create('teams', function($table) 
-        { 
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
-            $table->integer('position')->default(0);
-        }, ['teamcat_id']);
-               
         $this->create('languages', function($table) 
         { 
             $table->string('code', 2);
@@ -257,37 +189,39 @@ class InstallController extends Controller {
             $table->string('code', 3);
             $table->string('icon')->nullable();
         }, [], ['slug']); 
-
-        $this->create('galleries', function($table) { }); 
-        
-        $this->create('images', function($table)
-        {
-            $table->string('tags')->nullable();
-            $table->string('image')->nullable();
-        }, array(), ['title', 'slug']);
        
-        $this->create('visits', function($table)
-        {
-            $table->string('ip');
-            $table->integer('user_agents');
-            $table->date('visited_at');
-        }, array(), false);
-        
-        Schema::dropIfExists('config');
-        Schema::create('config', function($table)
-        {
-            $table->string('name', 255); // We can't name it "key" - it's a keyword in SQL. Eloquent can't handle it(?)
-            $table->primary('name');
-            $table->text('value')->nullable();
-            $table->timestamp('updated_at');
-        });
-        
         $this->create('comments', function($table)
         {
             $table->text('text')->nullable();
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true)->nullable();
-        }, array(), ['title', 'slug', 'access_counter']);      
+        }, array(), ['title', 'slug', 'access_counter']);  
+
+        $this->create('contact_messages', function($table)
+        {
+            $table->string('username', 30);
+            $table->string('email');
+            $table->text('text');
+            $table->string('ip');
+            $table->boolean('new')->default(true);
+        });
+
+        $this->create('games', function($table)
+        {
+            $table->string('short', 6)->nullable();
+            $table->string('icon')->nullable();
+        }, [], ['slug']);
+
+        $this->create('pagecats', function($table) { }, [], ['slug']); 
+
+        $this->create('pages', function($table)
+        {
+            $table->text('text')->nullable();
+            $table->boolean('published')->default(false);
+            $table->timestamp('published_at');
+            $table->boolean('internal')->default(false);
+            $table->boolean('enable_comments')->default(false);
+        }, ['pagecat_id']);
 
         $this->create('newscats', function($table)
         {
@@ -304,20 +238,87 @@ class InstallController extends Controller {
             $table->boolean('enable_comments')->default(false);
         }, ['newscat_id']);
 
-        $this->create('games', function($table)
+        $this->create('galleries', function($table) { }); 
+        
+        $this->create('images', function($table)
+        {
+            $table->string('tags')->nullable();
+            $table->string('image')->nullable();
+        }, array(), ['title', 'slug']);
+
+        $this->createPivot('team_user', function($table)
+        {
+            $table->string('task')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('position')->default(0);
+        }, ['user_id', 'team_id']);
+
+        $this->create('teamcats', function($table) { }, [], ['slug']);
+
+        $this->create('teams', function($table) 
+        { 
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('position')->default(0);
+        }, ['teamcat_id']);
+
+        $this->create('advertcats', function($table) { }, [], ['slug']); 
+
+        $this->create('adverts', function($table)
+        {
+            $table->text('code')->nullable();
+            $table->string('url')->nullable();
+            $table->string('image')->nullable();
+        }, ['advertcat_id']);
+
+        $this->create('partnercats', function($table) { }, [], ['slug']);
+
+        $this->create('partners', function($table)
+        {
+            $table->text('text')->nullable();
+            $table->string('url')->nullable();
+            $table->integer('position')->default(0);
+            $table->string('image')->nullable();
+        }, ['partnercat_id']);
+
+        $this->create('videos', function($table)
+        {
+            $table->string('url')->nullable();
+            $table->string('permanent_id')->nullable();
+            $table->integer('position')->default(0);
+        });
+
+        $this->create('downloadcats', function($table) { }); // Supports slugs
+
+        $this->create('downloads', function($table) 
+        { 
+            $table->text('description')->nullable();
+            $table->string('file')->nullable();
+            $table->integer('file_size')->default(0);
+            $table->boolean('is_image')->default(false);
+        }, ['downloadcat_id']);        
+        
+        $this->create('slidecats', function($table) { }, [], ['slug']); 
+
+        $this->create('slides', function($table)
+        {
+            $table->string('url')->nullable();
+            $table->string('image')->nullable();
+        }, ['slidecat_id'], ['slug']);
+
+               
+        $this->create('tournaments', function($table)
         {
             $table->string('short', 6)->nullable();
             $table->string('icon')->nullable();
-        }, [], ['slug']);
-
-        $this->create('contact_messages', function($table)
+        },  [], ['slug']);
+        
+        $this->create('awards', function($table)
         {
-            $table->string('username', 30);
-            $table->string('email');
-            $table->text('text');
-            $table->string('ip');
-            $table->boolean('new')->default(true);
-        });
+            $table->string('url')->nullable();
+            $table->integer('position')->default(0);
+            $table->timestamp('achieved_at');
+        }, ['game_id', 'tournament_id'], ['slug']);
 
         /*
          * Run migrations trough Artisan.
