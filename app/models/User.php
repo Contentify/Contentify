@@ -191,9 +191,19 @@ class User extends SentryUser {
     }
 
     /**
+     * Alias for isSuperUser()
+     * 
+     * @return boolean
+     */
+    public function isSuperAdmin()
+    {
+        return $this->isSuperUser();
+    }
+
+    /**
      * The throttle system is not part of the Sentry core module.
      * This helper method accesses the banned attribute.
-          *
+     *
      * @return boolean
      */
     public function isBanned()

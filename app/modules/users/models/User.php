@@ -13,7 +13,7 @@ class User extends BaseUser {
         'groups'    => [BaseModel::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
         'teams'     => [BaseModel::BELONGS_TO_MANY, 'App\Modules\Teams\Models\Team', 'table' => 'team_user'],
     ];
-
+    
     /**
      * Getter for $relationsData.
      * NOTE: This model does not inherit from BaseModel.

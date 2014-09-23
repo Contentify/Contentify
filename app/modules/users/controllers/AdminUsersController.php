@@ -61,6 +61,18 @@ class AdminUsersController extends BackController {
         ]);
     }
 
+    public function update($id)
+    {
+        $user = User::findOrFail($id);
+
+        if (! user()->isSuperAdmin() and $user->isSuperAdmin()) {
+            $this->message(trans('app.access_denied'));
+            return;
+        }
+
+        return parent::update($id);
+    }
+
     /**
      * Bans or unbans a user.
      * 
@@ -70,7 +82,11 @@ class AdminUsersController extends BackController {
      */
     public function ban($id, $ban = true)
     {
-        if (! $this->checkAccessUpdate()) return Response::make(trans('app.access_denied'), 500);
+        $user = User::findOrFail($id);
+
+        if (! $this->checkAccessDelete() or (! user()->isSuperAdmin() and $user->isSuperAdmin())) {
+            return Response::make(trans('app.access_denied'), 500);
+        }
 
         try {
             $throttle = Sentry::findThrottlerByUserId($id);

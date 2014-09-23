@@ -93,11 +93,11 @@ class InstallController extends Controller {
                 */
 
                 /*
-                 * Add user to group "Users"
+                 * Add user to group "Super-Admins"
                  */
                 /*
-                $adminGroup = Sentry::findGroupById(2); 
-                $user->addGroup($adminGroup);
+                $superAdminGroup = Sentry::findGroupById(5); 
+                $user->addGroup($superAdminGroup);
                 */
 
                 $title      = 'Database Setup Complete';
@@ -475,6 +475,7 @@ class InstallController extends Controller {
                 'frontend'      => true,
                 'internal'      => true,
                 'backend'       => true,
+                'superuser'     => true,
                 'adverts'       => PERM_DELETE,
                 'auth'          => PERM_DELETE,
                 'awards'        => PERM_DELETE,
