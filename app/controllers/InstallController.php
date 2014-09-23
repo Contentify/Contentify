@@ -112,10 +112,30 @@ class InstallController extends Controller {
                               <p>The current database name is: <br><code>'.$dbName.'</code></p>';
                 break;
             case 1:
+                if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+                    $version = '<span class="state yes">Yes, '.phpversion().'</span>';
+                } else {
+                    $version = '<span class="state no">No, '.phpversion().'</span>';
+                }
+                if (extension_loaded('mcrypt')) {
+                    $mCrypt = '<span class="state yes">Yes</span>';
+                } else {
+                    $mCrypt = '<span class="state no">No</span>';
+                }
+                if (extension_loaded('fileinfo')) {
+                    $fileInfo = '<span class="state yes">Yes</span>';
+                } else {
+                    $fileInfo = '<span class="state no">No</span>';
+                }
+
                 $title      = 'Server Requirements';
-                $content    = '<ul><li>PHP >= 5.4.0</li><li>MCrypt PHP Extension</li></ul>
-                              <p class="warning">Please don\'t continue 
-                              if your server does not meet these requirements!</p>';
+                $content    = "<ul>
+                              <li>PHP >= 5.4.0 $version</li>
+                              <li>MCrypt Extension $mCrypt</li>
+                              <li>FileInfo Extension $fileInfo</li>
+                              </ul>
+                              <p class=\"warning\">Please do not continue 
+                              if your server does not meet these requirements!</p>";
                 break;
             default:
                 $step       = 0; // Better save than sorry! (E.g. if step was -1)
@@ -181,7 +201,7 @@ class InstallController extends Controller {
             $table->integer('position')->default(0);
         });
 
-        $this->create('pagecats', function($table) { });
+        $this->create('pagecats', function($table) { },  [], ['slug']); 
 
         $this->create('pages', function($table)
         {
@@ -236,7 +256,7 @@ class InstallController extends Controller {
         { 
             $table->string('code', 3);
             $table->string('icon')->nullable();
-        });
+        }, [], ['slug']); 
 
         $this->create('galleries', function($table) { }); 
         
@@ -298,6 +318,14 @@ class InstallController extends Controller {
             $table->string('ip');
             $table->boolean('new')->default(true);
         });
+
+        /*
+         * Run migrations trough Artisan.
+         * Unfortunately it's not the simple Artisan::call('migrate')
+         * it should be.
+         */
+        define('STDIN', fopen('php://stdin', 'r'));
+        Artisan::call('migrate', ['--quiet' => true, '--force' => true]);
     }
 
     /**
@@ -503,7 +531,7 @@ class InstallController extends Controller {
     }
 
     /**
-     * Helper functions. Creates a database table.
+     * Helper function. Creates a database table.
      * 
      * @param  string           $tableName      The name of the tbale
      * @param  Closure          $tableRows      A closure defining the table rows
@@ -521,42 +549,33 @@ class InstallController extends Controller {
         /*
          * Add ID:
          */
-        Schema::create($tableName, function($table)
+        Schema::create($tableName, function($table) use ($tableRows, $foreignKeys, $contentObject)
         {
             $table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is used as storage engine
 
             $table->increments('id'); // Primary key (unique, auto-increment)
-        });
 
-        /*
-         * Add the table rows:
-         */
-        if ($tableRows) Schema::table($tableName, $tableRows);
-
-        /*
-         * Add the content object attributes:
-         */
-        if ($contentObject) {
-            Schema::table($tableName, function($table) use ($contentObject)
-            {
+            /*
+             * Add content object attributes:
+             */
+            if ($contentObject) {
                 if ($contentObject === true or ! in_array('title', $contentObject)) {
-                    /*
-                     * We can use after() to insert he title attribute right after id.
-                     * But after() only workws with MySQL databases so we have to check that:
-                     */
-                    if (strtolower(DB::connection()->getDriverName()) == 'mysql') {
-                        $table->string('title', 70)->after('id');
-                    } else {
-                        $table->string('title', 70);
-                    }
+                    $table->string('title', 70);
                 }
                 if ($contentObject === true or ! in_array('slug', $contentObject)) {
-                    if (strtolower(DB::connection()->getDriverName()) == 'mysql') {
-                        $table->string('slug')->unique()->after('id');
-                    } else {
-                        $table->string('slug')->unique();
-                    }
+                    $table->string('slug')->unique();
                 }
+            }
+
+            /*
+             * Add the table rows:
+             */
+            if ($tableRows) $tableRows($table);
+
+            /*
+             * Add content object attributes:
+             */
+            if ($contentObject) {
                 if ($contentObject === true or ! in_array('creator_id', $contentObject)) {
                     $table->integer('creator_id')->unsigned()->default(0);
                     //$table->foreign('creator_id')->references('id')->on('users');
@@ -568,29 +587,18 @@ class InstallController extends Controller {
                 if ($contentObject === true or ! in_array('access_counter', $contentObject)) {
                     $table->integer('access_counter')->default(0);
                 }
-                $table->timestamps();
-            });
 
-            /*
-             * Add soft deletes:
-             */ 
-            Schema::table($tableName, function($table)
-            {
-                $table->softDeletes();
-            });
-        }
+                $table->timestamps(); // Add timestamps (columns created_at, updated_at)
 
-        /*
-         * Add the foreign keys:
-         */
-        foreach ($foreignKeys as $foreignKey) {
-            Schema::table($tableName, function($table) use ($foreignKey)
-            {
+                $table->softDeletes(); // Add soft deletes (column deleted_at)
+            }
+
+            foreach ($foreignKeys as $foreignKey) {
                 $table->integer($foreignKey)->unsigned()->nullable();
                 //$foreignTable = str_plural(substr($foreignKey, 0, -3));
                 //$table->foreign($foreignKey)->references('id')->on($foreignTable);
-            });
-        }
+            }
+        });
     }
 
 

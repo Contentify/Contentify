@@ -28,13 +28,14 @@ class Config extends LaravelConfig {
     /**
      * Get the specified configuration value.
      *
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param  string  $key      Name of the key
+     * @param  mixed   $default  Default value
+     * @param  bool    $dbLookup If false, do not access the database table
      * @return mixed
      */
-    public static function get($key, $default = null)
+    public static function get($key, $default = null, $dbLookup = true)
     {
-        if (self::has($key)) {
+        if ($dbLookup and self::has($key)) {
             return self::$lastResult->value;
         } else {
             return LaravelConfig::get($key, $default);
