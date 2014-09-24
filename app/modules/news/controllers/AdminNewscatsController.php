@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\Newscat;
-use BackController;
+use Hover, BackController;
 
 class AdminNewscatsController extends BackController {
 
@@ -23,9 +23,12 @@ class AdminNewscatsController extends BackController {
             ],
             'tableRow' => function($newscat)
             {
+                $hover = new Hover();
+                if ($newscat->image) $hover->image($newscat->uploadPath().$newscat->image);
+
                 return [
                     $newscat->id,
-                    $newscat->title
+                    $hover.$newscat->title
                 ];
             }
         ]);

@@ -118,9 +118,9 @@
                                 <div class="item"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=matches">Matches</a></div>
                                 <div class="item"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/awards', 'Awards') }}</div>
                                 <div class="item"><img src="{{ asset('icons/server.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=gameservers">Gameservers</a></div>                                
-                                <div class="item"><img src="{{ asset('icons/clan.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=clans">Clans</a></div>
+                                <div class="item"><img src="{{ asset('icons/opponent.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/opponents', 'Opponents') }}</div>
                                 <div class="item"><img src="{{ asset('icons/joystick.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/tournaments', 'Tournaments') }}</div>
-                                <div class="item"><img src="{{ asset('icons/world.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=maps">Maps</a></div>
+                                <div class="item"><img src="{{ asset('icons/world.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/maps', 'Maps') }}</div>
                                 <div class="item"><img src="{{ asset('icons/controller.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/games', 'Games') }}</div>
                             </div>
                             <div class="menu-bottom"></div>

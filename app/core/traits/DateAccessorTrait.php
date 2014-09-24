@@ -1,5 +1,7 @@
 <?php namespace Contentify;
 
+use DateTime;
+
 /*
  * Use this trait to "extend" Eloquent models
  * so they use Contentify\Carbon. Take a look at the

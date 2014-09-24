@@ -24,7 +24,6 @@ function trans($id, $parameters = array(), $domain = 'messages', $locale = null)
     return app('translator')->trans($id, $parameters, $domain, $locale);
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | Register The Composer Auto Loader

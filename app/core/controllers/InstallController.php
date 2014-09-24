@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller; 
+use Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller, Closure; 
 
 class InstallController extends Controller {
 
@@ -162,13 +162,13 @@ class InstallController extends Controller {
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp() to create a datetime attribute.
          */
-        
+       
         return; // DEBUG
         
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
         {
-            $table->string('name', 255); // We can't name it "key" - it's a keyword in SQL. Eloquent can't handle it(?)
+            $table->string('name'); // We can't name it "key" - it's a keyword in SQL. Eloquent can't handle it(?)
             $table->primary('name');
             $table->text('value')->nullable();
             $table->timestamp('updated_at');
@@ -321,6 +321,19 @@ class InstallController extends Controller {
             $table->integer('position')->default(0);
             $table->timestamp('achieved_at');
         }, ['game_id', 'tournament_id'], ['slug']);
+
+        $this->create('opponents', function($table)
+        {
+            $table->string('short', 6)->nullable();
+            $table->string('url')->nullable();
+            $table->string('lineup');
+            $table->string('image')->nullable();
+        }, ['country_id']);
+        
+        $this->create('maps', function($table)
+        {
+            $table->string('image')->nullable();
+        }, ['game_id'], ['slug']);
 
         /*
          * Run migrations trough Artisan.
@@ -488,8 +501,10 @@ class InstallController extends Controller {
                 'groups'        => PERM_DELETE,
                 'help'          => PERM_DELETE,
                 'images'        => PERM_DELETE,
-                'modules'       => PERM_READ,
+                'maps'          => PERM_DELETE,
+                'modules'       => PERM_READ, // So Admins can't create modules that make them Super-Admins
                 'news'          => PERM_DELETE,
+                'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
                 'partners'      => PERM_DELETE,
                 'slides'        => PERM_DELETE,
@@ -520,8 +535,10 @@ class InstallController extends Controller {
                 'groups'        => PERM_DELETE,
                 'help'          => PERM_DELETE,
                 'images'        => PERM_DELETE,
+                'maps'          => PERM_DELETE,
                 'modules'       => PERM_DELETE,
                 'news'          => PERM_DELETE,
+                'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
                 'partners'      => PERM_DELETE,
                 'slides'        => PERM_DELETE,

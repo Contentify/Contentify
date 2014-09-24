@@ -2,8 +2,8 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "controller.png",
-            "position": 8,
+            "icon": "opponent.png",
+            "position": 5,
             "category": 3
         }
     ]

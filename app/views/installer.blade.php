@@ -40,6 +40,9 @@
         .navbut:active { margin-top: 4px; box-shadow: none; transition: all 0.08s linear; }
         .navbut.left { right: 154px; }
         .navbut.right { right: 0px; }
+        .state::before { content: ' - ' }
+        .state.yes { color: green }
+        .state.no { color: red }
     </style>
 </head>
 <body data-base-url="{{ url('/') }}">
