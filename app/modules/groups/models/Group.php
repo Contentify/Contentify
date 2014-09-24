@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Groups\Models;
 
 use App\Modules\Groups\Models\Permission;
-use SoftDeletingTrait, Sentry, BaseModel;
+use Hover, SoftDeletingTrait, Sentry, BaseModel;
 
 /*
  * Important note:
@@ -18,6 +18,10 @@ class Group extends BaseModel {
 
     public static $rules = [
         'name'     => 'required',
+    ];
+
+    public static $relationsData = [
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
     public function modifiable()

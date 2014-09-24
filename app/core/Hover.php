@@ -42,7 +42,21 @@ class Hover {
     public function text($text)
     {
         if ($text) {
-            $this->content .= '<p>'.$text.'</p>';
+            $this->content .= $text;
+        }
+        return $this;
+    }
+
+    /**
+     * Adds a text line to the content.
+     * 
+     * @param  string $line The text line to add
+     * @return Hover
+     */
+    public function line($line)
+    {
+        if ($line) {
+            $this->content .= '<p>'.$line.'</p>';
         }
         return $this;
     }
@@ -78,6 +92,42 @@ class Hover {
     }
 
     /**
+     * Adds model attribute values to the content
+     * 
+     * @param  object $model A model
+     * @param  array  $infos Array of model attribute names
+     * @return Hover
+     */
+    public function modelAttributes($model, $attributes = array())
+    {
+        foreach ($attributes as $attribute) {
+            switch ($attribute) {
+                case 'icon':
+                    if ($model->icon) {
+                        $this->image($model->uploadPath().$model->icon);
+                    }
+                    break;
+                case 'image':
+                    if ($model->image) {
+                        $this->image($model->uploadPath().$model->image);
+                    }
+                    break;
+                case 'access_counter':
+                    $this->line($model->access_counter.'x '.trans('app.accessed'));
+                    break;
+                case 'creator':
+                    if ($model->creator) {
+                        $this->line(trans('app.creator').': '.$model->creator->username);
+                    }
+                    break;
+                default:
+
+            }
+        }
+        return $this;
+    }
+
+    /**
      * Clear the content
      * 
      * @return Hover
@@ -100,6 +150,20 @@ class Hover {
         } else {
             return '';
         }
+    }
+
+    /**
+     * Renders the hover UI element and clears the content.
+     * 
+     * @return string
+     */
+    public function pull()
+    {
+        $output = $this->render();
+
+        $this->clear();
+
+        return $output;
     }
 
 }

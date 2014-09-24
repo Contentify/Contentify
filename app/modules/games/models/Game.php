@@ -17,4 +17,8 @@ class Game extends BaseModel {
         'short'     => 'required',
     ];
 
+    public static $relationsData = [
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
+    ];
+
 }

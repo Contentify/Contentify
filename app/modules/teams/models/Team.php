@@ -21,6 +21,7 @@ class Team extends BaseModel {
 
     public static $relationsData = [
         'teamcat'   => [self::BELONGS_TO, 'App\Modules\Teams\Models\Teamcat'],
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
     /**

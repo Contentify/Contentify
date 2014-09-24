@@ -55,7 +55,6 @@ class DownloadsController extends FrontController {
         $download = Download::findOrFail($id);
 
         $this->title($download->title);
-        //$this->openGraph($download->openGraph());
 
         $this->pageView('downloads::show', compact('download'));
     }

@@ -24,6 +24,7 @@ class Award extends BaseModel {
     public static $relationsData = [
         'game'          => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
         'tournament'    => [self::BELONGS_TO, 'App\Modules\Tournaments\Models\Tournament'],
+        'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
     /**

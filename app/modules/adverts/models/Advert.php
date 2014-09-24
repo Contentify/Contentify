@@ -18,7 +18,8 @@ class Advert extends BaseModel {
     ];
 
     public static $relationsData = [
-        'advertcat'   => [self::BELONGS_TO, 'App\Modules\Adverts\Models\Advertcat'],
+        'advertcat' => [self::BELONGS_TO, 'App\Modules\Adverts\Models\Advertcat'],
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
 }

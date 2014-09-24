@@ -23,14 +23,11 @@ class AdminTournamentsController extends BackController {
             ],
             'tableRow' => function($tournament)
             {
-                $hover = new Hover();
-                if ($tournament->icon) { 
-                    $hover->image($tournament->uploadPath().$tournament->icon);
-                }
+                Hover::modelAttributes($tournament, ['icon', 'creator']);
 
                 return [
                     $tournament->id,
-                    $hover.$tournament->title,
+                    Hover::pull().$tournament->title,
                 ];            
             }
         ]);

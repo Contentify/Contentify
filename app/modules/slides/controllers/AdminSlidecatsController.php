@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Slides\Controllers;
 
 use App\Modules\Slides\Models\Slidecat;
-use BackController;
+use Hover, BackController;
 
 class AdminSlidecatsController extends BackController {
 
@@ -23,9 +23,11 @@ class AdminSlidecatsController extends BackController {
             ],
             'tableRow' => function($slidecat)
             {
+                Hover::modelAttributes($slidecat, ['creator']);
+
                 return [
                     $slidecat->id,
-                    $slidecat->title
+                    Hover::pull().$slidecat->title
                 ];
             }
         ]);

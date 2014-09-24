@@ -157,6 +157,7 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
         // CMS service prodivers:
+        'Contentify\HoverServiceProvider',
 
         // Vendor service prodivers:
         'Way\Generators\GeneratorsServiceProvider',
@@ -235,7 +236,6 @@ return array(
         // CMS classes:
         'Captcha'               => 'Contentify\Captcha',
         'FormGenerator'         => 'Contentify\FormGenerator',
-        'Hover'                 => 'Contentify\Hover',
         'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
         'ContentFilter'         => 'Contentify\ContentFilter',

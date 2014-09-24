@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Pages\Controllers;
 
 use App\Modules\Pages\Models\Page;
-use URL, HTML, BackController;
+use Hover, URL, HTML, BackController;
 
 class AdminPagesController extends BackController {
 
@@ -27,6 +27,8 @@ class AdminPagesController extends BackController {
             ],
             'tableRow'  => function($page)
             {
+                Hover::modelAttributes($page, ['access_counter']);
+
                 switch ($page->pagecat_id) {
                     case '1':
                         $link = HTML::link(URL::route('articles.show', [$page->id]), $page->title);
@@ -41,7 +43,7 @@ class AdminPagesController extends BackController {
                 return [
                     $page->id,
                     $page->published ? HTML::image(asset('icons/accept.png'), 'True') : '',
-                    $link,
+                    Hover::pull().$link,
                     $page->pagecat->title,
                     HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username),
                     $page->created_at

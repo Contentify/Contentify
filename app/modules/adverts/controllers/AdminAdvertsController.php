@@ -25,12 +25,11 @@ class AdminAdvertsController extends BackController {
             ],
             'tableRow' => function($advert)
             {
-                $hover = new Hover();
-                if ($advert->image) $hover->image($advert->uploadPath().$advert->image);
+                Hover::modelAttributes($advert, ['image', 'access_counter', 'creator']);
 
                 return [
                     $advert->id,
-                    $hover.$advert->title,
+                    Hover::pull().$advert->title,
                     $advert->advertcat->title,
                 ];            
             }

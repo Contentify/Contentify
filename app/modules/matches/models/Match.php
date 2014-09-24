@@ -13,4 +13,8 @@ class Match extends BaseModel {
     public static $rules = [
     ];
 
+    public static $relationsData = [
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
+    ];
+
 }

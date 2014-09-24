@@ -87,6 +87,7 @@ return array(
     'search'        => 'Search',
     'recycle_bin'   => 'Recycle Bin',
     'max_size'      => 'Max. Size: :0Byte',
+    'accessed'      => 'accessed',
 
     /*
      * Backend template

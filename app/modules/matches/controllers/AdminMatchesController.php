@@ -23,12 +23,11 @@ class AdminMatchesController extends BackController {
             ],
             'tableRow' => function($match)
             {
-                //$hover = new Hover();
-                //if ($match->icon) $hover->image($game->uploadPath().$game->icon);
+                Hover::modelAttributes($match, ['access_counter', 'creator']);
 
                 return [
                     $match->id,
-                    //$game->title,
+                    //Hover.pull(),
                 ];            
             }
         ]);

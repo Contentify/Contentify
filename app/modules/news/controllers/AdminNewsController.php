@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Controllers;
 
 use App\Modules\News\Models\News;
-use HTML, URL, BackController;
+use Hover, HTML, URL, BackController;
 
 class AdminNewsController extends BackController {
 
@@ -27,10 +27,12 @@ class AdminNewsController extends BackController {
             ],
             'tableRow'  => function($news)
             {
+                Hover::modelAttributes($news, ['access_counter']);
+
                 return [
                     $news->id,
                     $news->published ? HTML::image(asset('icons/accept.png'), 'True') : '',
-                    HTML::link(URL::route('news.show', [$news->id]), $news->title),
+                    Hover::pull().HTML::link(URL::route('news.show', [$news->id]), $news->title),
                     HTML::link(URL::route('users.show', [$news->creator->id]), $news->creator->username),
                     $news->created_at
                 ];

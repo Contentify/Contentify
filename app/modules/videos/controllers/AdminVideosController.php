@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Videos\Controllers;
 
 use App\Modules\Videos\Models\Video;
-use BackController;
+use Hover, BackController;
 
 class AdminVideosController extends BackController {
 
@@ -24,9 +24,11 @@ class AdminVideosController extends BackController {
             ],
             'tableRow' => function($video)
             {
+                Hover::modelAttributes($video, ['creator']);
+
                 return [
                     $video->id,
-                    $video->title,
+                    Hover::pull().$video->title,
                     Video::$providers[$video->provider],
                 ];            
             }

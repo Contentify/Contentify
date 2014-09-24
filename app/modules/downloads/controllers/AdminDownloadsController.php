@@ -25,9 +25,11 @@ class AdminDownloadsController extends BackController {
             ],
             'tableRow' => function($download)
             {
+                Hover::modelAttributes($download, ['access_counter', 'creator']);
+
                 return [
                     $download->id,
-                    $download->title,
+                    Hover::pull().$download->title,
                     $download->downloadcat->title,
                 ];            
             }

@@ -18,6 +18,7 @@ class Map extends BaseModel {
 
     public static $relationsData = [
         'game'      => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
 }

@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Downloads\Controllers;
 
 use App\Modules\Downloads\Models\Downloadcat;
-use BackController;
+use Hover, BackController;
 
 class AdminDownloadcatsController extends BackController {
 
@@ -23,9 +23,11 @@ class AdminDownloadcatsController extends BackController {
             ],
             'tableRow' => function($downloadcat)
             {
+                Hover::modelAttributes($downloadcat, ['creator']);
+
                 return [
                     $downloadcat->id,
-                    $downloadcat->title
+                    Hover::pull().$downloadcat->title
                 ];
             }
         ]);

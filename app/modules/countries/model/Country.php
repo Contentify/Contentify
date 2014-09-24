@@ -16,5 +16,9 @@ class Country extends BaseModel {
         'title' => 'required',
         'code'  => 'required|min:2|max:3',
     ];
+
+    public static $relationsData = [
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
+    ];
     
 }

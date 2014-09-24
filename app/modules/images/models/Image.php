@@ -13,7 +13,8 @@ class Image extends BaseModel {
     ];
 
     public static $relationsData = [
-        'gallery' => [self::BELONGS_TO, 'App\Modules\Galleries\Models\Gallery']
+        'gallery'   => [self::BELONGS_TO, 'App\Modules\Galleries\Models\Gallery'],
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
     public function gallerySlug()

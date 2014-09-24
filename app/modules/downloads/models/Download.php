@@ -19,7 +19,8 @@ class Download extends BaseModel {
     ];
 
     public static $relationsData = [
-        'downloadcat' => [self::BELONGS_TO, 'App\Modules\Downloads\Models\Downloadcat']
+        'downloadcat'   => [self::BELONGS_TO, 'App\Modules\Downloads\Models\Downloadcat'],
+        'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
     public static function boot()

@@ -18,6 +18,10 @@ class Video extends BaseModel {
         'provider'      => 'required',
     ];
 
+    public static $relationsData = [
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
+    ];
+
     /**
      * Array with the names and titles of available video providers (platforms).
      * Be aware that if you add a provider you should also take a look at the tempaltes

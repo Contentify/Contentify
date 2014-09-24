@@ -25,12 +25,11 @@ class AdminSlidesController extends BackController {
             ],
             'tableRow' => function($slide)
             {
-                $hover = new Hover();
-                if ($slide->image) $hover->image($slide->uploadPath().$slide->image);
+                Hover::modelAttributes($slide, ['image', 'creator']);
 
                 return [
                     $slide->id,
-                    $hover.$slide->title,
+                    Hover::pull().$slide->title,
                     $slide->slidecat->title,
                 ];            
             }

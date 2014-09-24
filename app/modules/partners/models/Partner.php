@@ -19,7 +19,8 @@ class Partner extends BaseModel {
     ];
 
     public static $relationsData = [
-        'partnercat'   => [self::BELONGS_TO, 'App\Modules\Partners\Models\Partnercat'],
+        'partnercat'    => [self::BELONGS_TO, 'App\Modules\Partners\Models\Partnercat'],
+        'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
 }

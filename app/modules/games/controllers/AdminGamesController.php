@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Games\Controllers;
 
 use App\Modules\Games\Models\Game;
-use HTML, BackController;
+use Hover, HTML, BackController;
 
 class AdminGamesController extends BackController {
 
@@ -29,7 +29,7 @@ class AdminGamesController extends BackController {
                     $game->icon 
                         ? HTML::image($game->uploadPath().$game->icon, $game->title, ['width' => 16, 'height' => 16]) 
                         : NULL,
-                    $game->title,
+                    Hover::modelAttributes($game, ['creator'])->pull().$game->title,
                 ];            
             }
         ]);

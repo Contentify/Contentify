@@ -25,12 +25,11 @@ class AdminPartnersController extends BackController {
             ],
             'tableRow' => function($partner)
             {
-                $hover = new Hover();
-                if ($partner->image) $hover->image($partner->uploadPath().$partner->image);
+                Hover::modelAttributes($partner, ['image', 'access_counter', 'creator']);
 
                 return [
                     $partner->id,
-                    $hover.$partner->title,
+                    Hover::pull().$partner->title,
                     $partner->partnercat->title,
                 ];            
             }

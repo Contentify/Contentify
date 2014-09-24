@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Partners\Controllers;
 
 use App\Modules\Partners\Models\Partnercat;
-use BackController;
+use Hover, BackController;
 
 class AdminPartnercatsController extends BackController {
 
@@ -23,9 +23,11 @@ class AdminPartnercatsController extends BackController {
             ],
             'tableRow' => function($partnercat)
             {
+                Hover::modelAttributes($partnercat, ['creator']);
+
                 return [
                     $partnercat->id,
-                    $partnercat->title
+                    Hover::pull().$partnercat->title
                 ];
             }
         ]);

@@ -17,7 +17,8 @@ class Gallery extends BaseModel {
     ];
 
     public static $relationsData = [
-        'images' => [self::HAS_MANY, 'App\Modules\Images\Models\Image']
+        'images'    => [self::HAS_MANY, 'App\Modules\Images\Models\Image'],
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
 }

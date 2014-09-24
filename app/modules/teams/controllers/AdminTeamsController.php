@@ -24,12 +24,11 @@ class AdminTeamsController extends BackController {
             ],
             'tableRow' => function($team)
             {
-                $hover = new Hover();
-                if ($team->icon) $hover->image($team->uploadPath().$team->icon);
+                Hover::modelAttributes($team, ['image', 'access_counter', 'creator']);
 
                 return [
                     $team->id,
-                    $hover.$team->title,
+                    Hover::pull().$team->title,
                     $team->teamcat->title,
                 ];            
             }

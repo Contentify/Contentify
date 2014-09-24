@@ -24,16 +24,17 @@ class AdminMapsController extends BackController {
             ],
             'tableRow' => function($map)
             {
-                $hover = new Hover();
                 $icon = null;
                 if ($map->image) {
-                    $hover->image($map->uploadPath().$map->image);
+                    Hover::image($map->uploadPath().$map->image);
                     $icon = HTML::image($map->uploadPath().'16/'.$map->image, $map->title) ;
                 }
 
+                Hover::modelAttributes($map, ['creator']);
+
                 return [
                     $map->id,
-                    $hover.$icon.' '.$map->title,
+                    Hover::pull().$icon.' '.$map->title,
                     $map->game->title,
                 ];            
             }

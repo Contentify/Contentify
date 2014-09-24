@@ -23,8 +23,7 @@ class AdminOpponentsController extends BackController {
             ],
             'tableRow' => function($opponent)
             {
-                $hover = new Hover();
-                if ($opponent->image) $hover->image($opponent->uploadPath().$opponent->image);
+                Hover::modelAttributes($opponent, ['image', 'creator']);
 
                 $icon = $opponent->country->icon 
                     ? HTML::image($opponent->country->uploadPath().$opponent->country->icon, $opponent->country->title)
@@ -32,7 +31,7 @@ class AdminOpponentsController extends BackController {
 
                 return [
                     $opponent->id,
-                    $hover.$icon.' '.$opponent->title,
+                    Hover::pull().$icon.' '.$opponent->title,
                 ];            
             }
         ]);

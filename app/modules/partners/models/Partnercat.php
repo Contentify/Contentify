@@ -13,4 +13,9 @@ class Partnercat extends BaseModel {
     public static $rules = [
         'title'   => 'required',
     ];
+
+    public static $relationsData = [
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
+    ];
+
 }

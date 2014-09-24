@@ -23,12 +23,11 @@ class AdminNewscatsController extends BackController {
             ],
             'tableRow' => function($newscat)
             {
-                $hover = new Hover();
-                if ($newscat->image) $hover->image($newscat->uploadPath().$newscat->image);
+                Hover::modelAttributes($newscat, ['image', 'creator']);
 
                 return [
                     $newscat->id,
-                    $hover.$newscat->title
+                    Hover::pull().$newscat->title
                 ];
             }
         ]);

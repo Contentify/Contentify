@@ -21,6 +21,7 @@ class Opponent extends BaseModel {
 
     public static $relationsData = [
         'country'   => [self::BELONGS_TO, 'App\Modules\Countries\Models\Country'],
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
 }

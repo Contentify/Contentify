@@ -26,8 +26,7 @@ class AdminUsersController extends BackController {
             ],
             'tableRow'  => function($user)
             {
-                $hover = new Hover();
-                if ($user->image) $hover->image(asset('uploads/users/'.$user->image));
+                if ($user->image) Hover::image(asset('uploads/users/'.$user->image));
 
                 if ($user->hasAccess('internal', PERM_READ)) {
                     $membership = HTML::image('icons/tick.png');
@@ -43,7 +42,7 @@ class AdminUsersController extends BackController {
 
                 return [
                     $user->id,
-                    $hover.$user->username,
+                    Hover::pull().$user->username,
                     $user->email,
                     $membership,
                     $banned

@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Adverts\Controllers;
 
 use App\Modules\Adverts\Models\Advertcat;
-use BackController;
+use Hover, BackController;
 
 class AdminAdvertcatsController extends BackController {
 
@@ -23,9 +23,11 @@ class AdminAdvertcatsController extends BackController {
             ],
             'tableRow' => function($advertcat)
             {
+                Hover::modelAttributes($advertcat, ['creator']);
+
                 return [
                     $advertcat->id,
-                    $advertcat->title
+                    Hover::pull().$advertcat->title
                 ];
             }
         ]);

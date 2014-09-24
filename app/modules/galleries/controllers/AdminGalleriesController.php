@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Galleries\Controllers;
 
 use App\Modules\Galleries\Models\Gallery;
-use BackController;
+use Hover, BackController;
 
 class AdminGalleriesController extends BackController {
 
@@ -23,9 +23,11 @@ class AdminGalleriesController extends BackController {
             ],
             'tableRow' => function($gallery)
             {
+                Hover::modelAttributes($gallery, ['access_counter', 'creator']);
+
                 return [
                     $gallery->id,
-                    $gallery->title,
+                    Hover::pull().$gallery->title,
                 ];            
             }
         ]);
