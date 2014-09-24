@@ -1,7 +1,7 @@
 <?php namespace Contentify;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use DateAccessorTrait, ValidatingTrait, Eloquent;
+use Str, DB, DateAccessorTrait, ValidatingTrait, Eloquent, InvalidArgumentException, Exception;
 
 class BaseModel extends Eloquent {
 
@@ -208,15 +208,15 @@ class BaseModel extends Eloquent {
         $errorHeader  = "Relation '$relationName' on model '".get_called_class();
 
         if (!in_array($relationType, static::$relationTypes)) {
-            throw new \InvalidArgumentException($errorHeader.
+            throw new InvalidArgumentException($errorHeader.
             ' should have as first param one of the relation constants of the Ardent class.');
         }
         if (!isset($relation[1]) && $relationType != self::MORPH_TO) {
-            throw new \InvalidArgumentException($errorHeader.
+            throw new InvalidArgumentException($errorHeader.
             ' should have at least two params: relation type and classname.');
         }
         if (isset($relation[1]) && $relationType == self::MORPH_TO) {
-            throw new \InvalidArgumentException($errorHeader.
+            throw new InvalidArgumentException($errorHeader.
             ' is a morphTo relation and should not contain additional arguments.');
         }
 
@@ -232,7 +232,7 @@ class BaseModel extends Eloquent {
             }
 
             if ($missing['req']) {
-                throw new \InvalidArgumentException($errorHeader.'
+                throw new InvalidArgumentException($errorHeader.'
                     should contain the following key(s): '.join(', ', $missing['req']));
             }
             if ($missing['opt']) {

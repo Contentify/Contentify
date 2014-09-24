@@ -107,7 +107,7 @@ class News extends BaseModel {
             'lastBuildDate' => date('D, j M Y H:i:s ').'GMT'
         ]);
 
-        $newsCollection = News::orderBy('created_at', 'DESC')->take(20)->get();
+        $newsCollection = News::published()->orderBy('created_at', 'DESC')->take(20)->get();
         foreach ($newsCollection as $news) {
             $url = URL::route('news.show', $news->id);
 
