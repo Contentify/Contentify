@@ -4,8 +4,8 @@
     "admin-nav": [
         {
             "icon": "user.png",
-            "position": 1,
-            "category": 4
+            "category": 4,
+            "position": 1            
         }
     ]
 }

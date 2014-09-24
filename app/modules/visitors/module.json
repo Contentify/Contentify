@@ -3,8 +3,8 @@
     "admin-nav": [
         {
             "icon": "chart_bar.png",
-            "position": 6,
-            "category": 4
+            "category": 4,
+            "position": 6            
         }
     ]
 }

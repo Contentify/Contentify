@@ -3,8 +3,8 @@
     "admin-nav": [
         {
             "icon": "folder.png",
-            "position": 7,
-            "category": 1
+            "category": 1,
+            "position": 7            
         }
     ]
 }

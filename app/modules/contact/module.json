@@ -3,8 +3,8 @@
     "admin-nav": [
         {
             "icon": "email_open.png",
-            "position": 5,
-            "category": 4
+            "category": 4,
+            "position": 5            
         }
     ]
 }

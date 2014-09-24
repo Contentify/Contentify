@@ -4,8 +4,8 @@
     "admin-nav": [
         {
             "icon": "film.png",
-            "position": 3,
-            "category": 2
+            "category": 2,
+            "position": 3            
         }
     ]
 }

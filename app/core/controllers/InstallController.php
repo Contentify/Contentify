@@ -432,9 +432,9 @@ class InstallController extends Controller {
         ("Venezuela", "ve", "ve.png")');
 
         DB::insert('INSERT INTO games(title, short, icon) VALUES
-        ("Counter-Strike 1.6", "CS", "default/cs.gif"),
-        ("Counter-Strike: Source", "CS:S", "default/css.gif"),
         ("Counter-Strike: Global Offensive", "CS:GO", "default/csgo.png"),
+        ("Counter-Strike: Source", "CS:S", "default/css.gif"),
+        ("Counter-Strike 1.6", "CS", "default/cs.gif"),
         ("Call of Duty", "CoD", "default/cod.png"),
         ("Battlefield", "BF", "default/bf.png"),
         ("Unreal Tournament 3", "UT3", "default/ut3.png"),
@@ -451,6 +451,18 @@ class InstallController extends Controller {
         ("Trackmania", "TM", "default/tm.gif"),
         ("FIFA", "FIFA", "default/fifa.gif"),
         ("Minecraft", "MS", "default/mc.png")');
+
+        DB::insert('INSERT INTO maps(title, game_id) VALUES
+        ("Unknown", NULL),
+        ("de_dust", 1),
+        ("de_dust2", 1),
+        ("de_inferno", 1),
+        ("de_train", 1),
+        ("de_cbble", 1),
+        ("de_nuke", 1),
+        ("de_inferno", 1),
+        ("de_cache", 1),
+        ("de_mirage", 1)');
     }
 
     /**

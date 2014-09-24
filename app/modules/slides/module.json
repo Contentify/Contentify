@@ -3,8 +3,8 @@
     "admin-nav": [
         {
             "icon": "color_swatch.png",
-            "position": 2,
-            "category": 2
+            "category": 2,
+            "position": 2            
         }
     ]
 }

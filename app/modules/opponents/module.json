@@ -3,8 +3,8 @@
     "admin-nav": [
         {
             "icon": "opponent.png",
-            "position": 5,
-            "category": 3
+            "category": 3,
+            "position": 4            
         }
     ]
 }

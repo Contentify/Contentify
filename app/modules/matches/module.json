@@ -1,3 +1,10 @@
 {
-    "enabled": false
+    "enabled": false,
+    "admin-nav": [
+        {
+            "icon": "soccer.png",
+            "category": 3,
+            "position": 1            
+        }
+    ]
 }

@@ -4,8 +4,8 @@
     "admin-nav": [
         {
             "icon": "doc_offlice.png",
-            "position": 3,
-            "category": 1
+            "category": 1,
+            "position": 3            
         }
     ]
 }

@@ -4,8 +4,8 @@
     "admin-nav": [
         {
             "icon": "newspaper.png",
-            "position": 2,
-            "category": 1
+            "category": 1,
+            "position": 2            
         }
     ]
 }

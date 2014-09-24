@@ -3,8 +3,8 @@
     "admin-nav": [
         {
             "icon": "controller.png",
-            "position": 8,
-            "category": 3
+            "category": 3,
+            "position": 8            
         }
     ]
 }

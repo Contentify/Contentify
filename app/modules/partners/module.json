@@ -3,9 +3,9 @@
     "admin-nav": [
         {
             "icon": "coins.png",
+            "category": 2,
             "position": 5,
-            "title": "Sponsors & Partners",
-            "category": 2
+            "title": "Sponsors & Partners"            
         }
     ]
 }

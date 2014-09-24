@@ -3,14 +3,14 @@
     "admin-nav": [
         {
             "icon": "flag_red.png",
-            "position": 2,
-            "category": 4
+            "category": 4,
+            "position": 2            
         },
         {
             "icon": "group.png",
+            "category": 4,
             "position": 3,
             "title": "Team-Members",
-            "category": 4,
             "url": "admin/members"
         }
     ]

@@ -5,7 +5,7 @@ use Hover, BackController;
 
 class AdminMatchesController extends BackController {
 
-    protected $icon = 'joystick.png';
+    protected $icon = 'soccer.png';
 
     public function __construct()
     {
@@ -19,16 +19,16 @@ class AdminMatchesController extends BackController {
         $this->indexPage([
             'tableHead' => [
                 trans('app.id')     => 'id', 
-                trans('app.title')  => 'title'
+                //trans('app.title')  => 'title'
             ],
-            'tableRow' => function($game)
+            'tableRow' => function($match)
             {
-                $hover = new Hover();
-                if ($game->icon) $hover->image($game->uploadPath().$game->icon);
+                //$hover = new Hover();
+                //if ($match->icon) $hover->image($game->uploadPath().$game->icon);
 
                 return [
-                    $game->id,
-                    $hover.$game->title,
+                    $match->id,
+                    //$game->title,
                 ];            
             }
         ]);

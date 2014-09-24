@@ -3,9 +3,9 @@
     "admin-nav": [
         {
             "icon": "lock.png",
+            "category": 4,
             "position": 7,
-            "title": "Groups & Permissions",
-            "category": 4
+            "title": "Permission Groups"
         }
     ]
 }

@@ -133,7 +133,7 @@
                                 <div class="item"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
                                 <div class="item"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>
                                 <div class="item"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/visitors', 'Visitors') }}</div>
-                                <div class="item"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/groups', 'Groups & Permissions') }}</div>
+                                <div class="item"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/groups', 'Permission Groups') }}</div>
                             </div>
                             <div class="menu-bottom"></div>
                     </div>
