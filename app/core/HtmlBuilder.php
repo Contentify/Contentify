@@ -1,7 +1,6 @@
 <?php namespace Contentify;
  
 use Illuminate\Html\HtmlBuilder as OriginalHtmlBuilder;
-use Contentify\BackNavGen;
 use OpenGraph, Session, URL;
 
 class HtmlBuilder extends OriginalHtmlBuilder
@@ -94,7 +93,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * 
      * @param array     $header          Array with the table header items (String-Array)
      * @param array     $rows            Array with all the table rows items (Array containing String-Arrays)
-     * @param bool      $highlightFirst  Enable special look for the items in the first column? (true/false)
+     * @param bool      $brightenFirst   Enable special look for the items in the first column? (true/false)
      * @return string
      */
     public function table($header, $rows, $brightenFirst = true)
@@ -106,9 +105,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
          */
         $code .= '<tr>';
         foreach ($header as $value) {
-            $code .= '<th>';
-            $code .= $value;
-            $code .= '</th>';
+            $code .= '<th>'.$value.'</th>';
         }
         $code .= '</tr>';
 
@@ -116,11 +113,11 @@ class HtmlBuilder extends OriginalHtmlBuilder
          * Table body
          */
         foreach ($rows as $row) {
-            $code   .= '<tr>';
+            $code    .= '<tr>';
             $isFirst = true;
             foreach ($row as $value) {
                 if ($isFirst and $brightenFirst) {
-                    $code   .= '<td style="color: silver">';
+                    $code    .= '<td style="color: silver">';
                     $isFirst = false;
                 } else {
                     $code .= '<td>';

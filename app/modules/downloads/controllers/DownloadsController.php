@@ -2,7 +2,7 @@
 
 use App\Modules\Downloads\Models\Downloadcat;
 use App\Modules\Downloads\Models\Download;
-use Redirect, Config, URL, FrontController;
+use Response, Redirect, Config, URL, FrontController;
 
 class DownloadsController extends FrontController {
 
@@ -45,7 +45,7 @@ class DownloadsController extends FrontController {
     }
 
     /**
-     * Show a download
+     * Show a download detail page
      * 
      * @param  int $id The id of the download
      * @return void
@@ -73,7 +73,10 @@ class DownloadsController extends FrontController {
         $download->access_counter++;
         $download->save();
 
-        return Redirect::to($download->uploadPath().$download->file); // Go to file
+        $extension = \File::extension($download->file);
+        $shortName = $download->slug;
+        if ($extension) $shortName .= '.'.$extension;
+        return Response::download($download->uploadPath(true).$download->file, $shortName);
     }
 
     public function globalSearch($subject)
