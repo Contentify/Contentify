@@ -1,4 +1,6 @@
-<?php
+<?php namespace Contentify;
+
+use SoftDeletingTrait, BBCode;
 
 class Comment extends BaseModel {
 

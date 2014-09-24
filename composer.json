@@ -23,9 +23,10 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
 			"app/modules",
-			"app/classes",
-			"app/classes/facades",
-			"app/traits"
+			"app/core",
+			"app/core/traits",
+			"app/core/controllers",
+			"app/core/models"
 		]
 	},
 	"scripts": {

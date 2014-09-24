@@ -1,4 +1,4 @@
-<?php
+<?php namespace Contentify;
 
 abstract class Widget {
 

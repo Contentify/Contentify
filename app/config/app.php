@@ -186,7 +186,7 @@ return array(
         'Blade'                 => 'Illuminate\Support\Facades\Blade',
         'Cache'                 => 'Illuminate\Support\Facades\Cache',
         'ClassLoader'           => 'Illuminate\Support\ClassLoader',
-        'Config'                => 'Contentify\Config', // Original: Illuminate\Support\Facades\Config
+        //'Config'                => 'Illuminate\Support\Facades\Config',
         'Controller'            => 'Illuminate\Routing\Controller',
         'Cookie'                => 'Illuminate\Support\Facades\Cookie',
         'Crypt'                 => 'Illuminate\Support\Facades\Crypt',
@@ -227,10 +227,22 @@ return array(
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
         'ContentFilter'         => 'Contentify\ContentFilter',
         'MsgException'          => 'Contentify\MsgException',
-
-        // CMS classes extending vendor classes:
+        'DateAccessorTrait'     => 'Contentify\DateAccessorTrait',
+        'Config'                => 'Contentify\Config',
         'ModuleRoute'           => 'Contentify\ModuleRoute',
         'Carbon'                => 'Contentify\Carbon',
+
+        'InstallController'     => 'Contentify\InstallController',
+        'BaseController'        => 'Contentify\BaseController',
+        'FrontController'       => 'Contentify\FrontController',
+        'BackController'        => 'Contentify\BackController',
+        'Widget'                => 'Contentify\Widget',
+
+        'BaseModel'             => 'Contentify\BaseModel',
+        'Comment'               => 'Contentify\Comment',
+        'Group'                 => 'Contentify\Group',
+        'StiModel'              => 'Contentify\StiModel',
+        'User'                  => 'Contentify\User',
 
         // Vendor classes:       
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',

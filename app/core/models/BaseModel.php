@@ -1,6 +1,7 @@
-<?php
+<?php namespace Contentify;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use DateAccessorTrait, ValidatingTrait, Eloquent;
 
 class BaseModel extends Eloquent {
 

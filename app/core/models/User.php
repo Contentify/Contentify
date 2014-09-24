@@ -1,6 +1,7 @@
-<?php
+<?php namespace Contentify;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
+use Sentry, Session;
 
 class User extends SentryUser {
 
@@ -51,7 +52,7 @@ class User extends SentryUser {
     {
         parent::boot();
         
-        User::updated(function($user)
+        self::updated(function($user)
         {
             /*
              * Update the locale (since its stored in a session variable we need to update it)

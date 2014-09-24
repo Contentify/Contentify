@@ -1,4 +1,4 @@
-<?php
+<?php namespace Contentify;
 
 use Cartalyst\Sentry\Groups\Eloquent\Group as SentryModel;
 

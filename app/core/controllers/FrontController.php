@@ -1,8 +1,12 @@
-<?php
+<?php namespace Contentify;
+
+use View, Redirect;
 
 abstract class FrontController extends BaseController {
+
     /**
      * The layout that should be used for responses.
+     * @var string
      */
     protected $layout = 'frontend.layout_main';
 

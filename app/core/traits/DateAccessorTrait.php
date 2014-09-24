@@ -1,4 +1,4 @@
-<?php
+<?php namespace Contentify;
 
 /*
  * Use this trait to "extend" Eloquent models

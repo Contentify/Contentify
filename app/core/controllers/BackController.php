@@ -1,4 +1,6 @@
-<?php
+<?php namespace Contentify;
+
+use Lang, DB, Log, Input, File, View, Redirect, InterImage, Exception;
 
 abstract class BackController extends BaseController {
 

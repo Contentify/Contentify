@@ -1,4 +1,4 @@
-<?php
+<?php namespace Contentify;
 
 /*
  * Single Table Inheritance Model.

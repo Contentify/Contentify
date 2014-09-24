@@ -1,4 +1,6 @@
-<?php
+<?php namespace Contentify;
+
+use Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller; 
 
 class InstallController extends Controller {
 
