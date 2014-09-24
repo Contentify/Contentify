@@ -2,7 +2,7 @@
 
 use App\Modules\Downloads\Models\Downloadcat;
 use App\Modules\Downloads\Models\Download;
-use Response, Redirect, Config, URL, FrontController;
+use File, Response, Redirect, Config, URL, FrontController;
 
 class DownloadsController extends FrontController {
 
@@ -73,7 +73,7 @@ class DownloadsController extends FrontController {
         $download->access_counter++;
         $download->save();
 
-        $extension = \File::extension($download->file);
+        $extension = File::extension($download->file);
         $shortName = $download->slug;
         if ($extension) $shortName .= '.'.$extension;
         return Response::download($download->uploadPath(true).$download->file, $shortName);

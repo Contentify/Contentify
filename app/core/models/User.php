@@ -1,7 +1,7 @@
 <?php namespace Contentify;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use Sentry, Session;
+use Validator, Sentry, Session;
 
 class User extends SentryUser {
 
