@@ -17,4 +17,15 @@ class Match extends BaseModel {
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
+    /**
+     * Count the comments that are related to this match.
+     * 
+     * @return int
+     */
+    public function countComments()
+    {
+        return Comment::count('match', $this->id);
+    }
+
+
 }

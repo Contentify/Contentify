@@ -16,6 +16,33 @@ The slider widget comes with a default CSS styling. Don't hesistate to make any 
 
     .slider { position: relative; width: 100%; height: 245px; /* Height of a single slide */ }
 
+## Scrollers
+
+If you just need a UI container with items that can slide horizontally consider to implement a scroller insteaf of a slider. A scroller is a HTML container with a list of items and two scrolling buttons. Clicking on one of the buttons slides to the previous or the next item. Endless sliding in one direction is possible. Example markup:
+
+    <div class="scroller">
+        <ul class="layout-h">
+            <li>
+                Item 1
+            </li>
+            <li>
+                Item 2
+            </li>
+        </ul>
+        <a class="to-left" href="#">&lt;</a>
+        <a class="to-right" href="#">&gt;</a>
+    </div>
+
+    {{ HTML::script('libs/scroller.js') }}
+    <script>
+        $(document).ready(function()
+        {
+            $('.scroller').contentifyScroller();
+        });
+    </script>
+
+It's possible to display content with a JS scroller instead of a JS slider and vice versa.
+
 ## Videos
 
 Every video belongs to a provider. The only default provider is `youtube`. As you may guess, a provider is a platform that hosts videos. The `Modules\Videos\Models\Video` model stores a `$providers` array with available providers. You may add aditional providers to this array. If you do so you have to care for handling videos from these providers by modifying corresponding templates - at least `modules/videos/views/index.blade.php` and `show.blade.php`. You may also take a look at `admin_form.blade.php`.

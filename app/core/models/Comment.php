@@ -18,7 +18,7 @@ class Comment extends BaseModel {
 
     /**
      * Count the comments that are related to a certain foreign type (model).
-     * NOTE: The result of the SQL query is cached!
+     * NOTE: The result of the database query is cached!
      * 
      * @param  string   $foreignType Name of the foreign type (model)
      * @param  int      $foreignId   ID of the foreign type or null

@@ -49,4 +49,14 @@ class Download extends BaseModel {
         });
     }
 
+    /**
+     * Count the comments that are related to this download.
+     * 
+     * @return int
+     */
+    public function countComments()
+    {
+        return Comment::count('downloads', $this->id);
+    }
+
 }

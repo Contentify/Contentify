@@ -1,6 +1,6 @@
 <?php namespace Contentify\Traits;
 
-use DateTime;
+use Carbon, DateTime;
 
 /*
  * Use this trait to "extend" Eloquent models

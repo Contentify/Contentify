@@ -2,7 +2,8 @@ var contentify;
 
 $(document).ready(function()
 {
-    function Contentify() {
+    function Contentify() 
+    {
         var frameWork = this;
 
         /*
@@ -13,7 +14,8 @@ $(document).ready(function()
         this.locale     = $('meta[name="locale"]').attr('content');
         this.dateFormat = $('meta[name="date-format"]').attr('content');
 
-        this.urlParam = function(name) {
+        this.urlParam = function(name) 
+        {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)')
                 .exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
         }

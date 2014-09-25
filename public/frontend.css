@@ -76,6 +76,10 @@ h1.page-title { }
 .slider .buttons li.active{ background-color: rgba(0, 0, 0, 1); }
 .slider .slide-title { position: absolute; margin: 0px; left: 20px; bottom: 20px; color: white; text-shadow: 0px 0px 3px black; }
 
+.scroller { overflow-x: hidden; }
+.scroller ul {  }
+.scroller li { width: 100% }
+
 /*
  * Modules
  */

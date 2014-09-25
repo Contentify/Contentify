@@ -31,6 +31,16 @@ class Video extends BaseModel {
     public static $providers = ['youtube' => 'YouTube'];
 
     /**
+     * Count the comments that are related to this video.
+     * 
+     * @return int
+     */
+    public function countComments()
+    {
+        return Comment::count('videos', $this->id);
+    }
+
+    /**
      * Create an instance of OpenGraph that represents Open Graph tags.
      * 
      * @return array
