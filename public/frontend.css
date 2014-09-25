@@ -91,6 +91,8 @@ h1.page-title { }
 
 .page-videos .video-player iframe { width: 100%; border: none }
 
+.widget-videos img.cover { max-width: 100% }
+
 .page-galleries .galleries .item { float: left; display: block; width: 20%; height: 100px; overflow: hidden }
 .page-galleries .galleries .image { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: all 0.3s ease; }
 .page-galleries .galleries .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
