@@ -1,9 +1,10 @@
 <?php namespace Contentify;
 
-use Illuminate\Foundation\Composer;
+//use Illuminate\Foundation\Composer;
 use Contentify\BackNavGen;
+use Sentry, Group;
 
-class ModuleInstaller {
+abstract class ModuleInstaller {
 
     /**
      * The name of the module
@@ -16,6 +17,23 @@ class ModuleInstaller {
      * @var int
      */
     protected $step;
+
+    /**
+     * If true, the permisson [<moduleName> => PERM_DELETE]
+     * is added automatically.
+     * @var boolean
+     */
+    protected $addDefaultPermission = true;
+
+    /**
+     * Array consisting of pairs of permission names and levels.
+     * These permission are added to the super admin group.
+     * Example: array('permissionName' => 4)
+     * Note that per default a basic module permission is added,
+     * so you only need to use this array to provide extra perms.
+     * @var array
+     */
+    protected $extraPermissions = array();
 
     /**
      * Constructor call
@@ -37,10 +55,7 @@ class ModuleInstaller {
      * 
      * @return string|bool
      */
-    public function execute()
-    {
-        return false;
-    }
+    abstract public function execute();
 
     /**
      * This method is always executed after a module has been successfully installed.
@@ -52,8 +67,28 @@ class ModuleInstaller {
         /*
          * Update backend navigation
          */
-        $backNavGen = new BackNavGen();
-        $backNavGen->update(true);
+        (new BackNavGen())->update(true);
+
+        /*
+         * Add permissions
+         */
+        $group = Sentry::findGroupById(Group::SUPER_ADMIN_GROUP);
+        $groupPermissions = $group->permissions;
+
+        // Add default permisson
+        if ($this->addDefaultPermission) {
+            $groupPermissions[$this->module] = PERM_DELETE;
+        }
+
+        // Add additional permissions
+        if ($this->extraPermissions and is_array($this->extraPermissions)) {
+            foreach ($this->extraPermissions as $permisson => $level) {
+                $groupPermissions[$permisson] = $level;
+            }
+        }
+
+        $group->permissions = $groupPermissions;
+        $group->save();
     }
 
     /**

@@ -7,7 +7,7 @@ class Group extends SentryModel {
     /**
      * ID of the super admin group
      */
-    const SUPER_ADMIN_GROUP = 4;
+    const SUPER_ADMIN_GROUP = 5;
 
     /**
      * Allowed permissions values. 

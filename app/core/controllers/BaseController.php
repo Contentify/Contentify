@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use URL, HTML, Session, Input, View, Controller, Exception;
+use Config, URL, HTML, Session, Input, View, Controller, Exception;
 
 abstract class BaseController extends Controller {
 
