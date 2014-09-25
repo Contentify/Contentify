@@ -1,4 +1,4 @@
-<?php namespace Contentify;
+<?php namespace Contentify\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Str, DB, DateAccessorTrait, ValidatingTrait, Eloquent, InvalidArgumentException, Exception;

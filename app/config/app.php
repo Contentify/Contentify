@@ -140,7 +140,7 @@ return array(
         'Illuminate\Encryption\EncryptionServiceProvider',
         'Illuminate\Filesystem\FilesystemServiceProvider',
         'Illuminate\Hashing\HashServiceProvider',
-        'Contentify\HtmlServiceProvider', //'Illuminate\Html\HtmlServiceProvider',
+        //'Illuminate\Html\HtmlServiceProvider',
         'Illuminate\Log\LogServiceProvider',
         'Illuminate\Mail\MailServiceProvider',
         'Illuminate\Database\MigrationServiceProvider',
@@ -157,7 +157,8 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
         // CMS service prodivers:
-        'Contentify\HoverServiceProvider',
+        'Contentify\ServiceProviders\HtmlServiceProvider',
+        'Contentify\ServiceProviders\HoverServiceProvider',
 
         // Vendor service prodivers:
         'Way\Generators\GeneratorsServiceProvider',
@@ -240,22 +241,23 @@ return array(
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
         'ContentFilter'         => 'Contentify\ContentFilter',
         'MsgException'          => 'Contentify\MsgException',
-        'DateAccessorTrait'     => 'Contentify\DateAccessorTrait',
         'Config'                => 'Contentify\Config',
         'ModuleRoute'           => 'Contentify\ModuleRoute',
         'Carbon'                => 'Contentify\Carbon',
 
-        'InstallController'     => 'Contentify\InstallController',
-        'BaseController'        => 'Contentify\BaseController',
-        'FrontController'       => 'Contentify\FrontController',
-        'BackController'        => 'Contentify\BackController',
-        'Widget'                => 'Contentify\Widget',
+        'DateAccessorTrait'     => 'Contentify\Traits\DateAccessorTrait',
 
-        'BaseModel'             => 'Contentify\BaseModel',
-        'Comment'               => 'Contentify\Comment',
-        'Group'                 => 'Contentify\Group',
-        'StiModel'              => 'Contentify\StiModel',
-        'User'                  => 'Contentify\User',
+        'InstallController'     => 'Contentify\Controllers\InstallController',
+        'BaseController'        => 'Contentify\Controllers\BaseController',
+        'FrontController'       => 'Contentify\Controllers\FrontController',
+        'BackController'        => 'Contentify\Controllers\BackController',
+        'Widget'                => 'Contentify\Controllers\Widget',
+
+        'BaseModel'             => 'Contentify\Models\BaseModel',
+        'Comment'               => 'Contentify\Models\Comment',
+        'Group'                 => 'Contentify\Models\Group',
+        'StiModel'              => 'Contentify\Models\StiModel',
+        'User'                  => 'Contentify\Models\User',
 
         // Vendor classes:       
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',

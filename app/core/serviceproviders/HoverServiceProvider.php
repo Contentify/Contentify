@@ -1,4 +1,4 @@
-<?php namespace Contentify;
+<?php namespace Contentify\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;

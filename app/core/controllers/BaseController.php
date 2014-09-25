@@ -1,4 +1,4 @@
-<?php namespace Contentify;
+<?php namespace Contentify\Controllers;
 
 use URL, HTML, Session, Input, View, Controller, Exception;
 

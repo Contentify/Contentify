@@ -1,4 +1,4 @@
-<?php namespace Contentify;
+<?php namespace Contentify\Controllers;
 
 use Lang, DB, Log, Input, File, View, Redirect, InterImage, Exception;
 

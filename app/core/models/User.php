@@ -1,4 +1,4 @@
-<?php namespace Contentify;
+<?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 use Validator, Sentry, Session;
