@@ -2,9 +2,11 @@
 /vendor
 composer.phar
 composer.lock
+.env.*.php
+.env.php
 .DS_Store
-.dev/
-.idea/
 Thumbs.db
 console.lnk
 /app/config/mail.php
+.dev/
+.idea/

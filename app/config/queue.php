@@ -11,7 +11,7 @@ return array(
 	| API, giving you convenient access to each back-end using the same
 	| syntax for each one. Here you may set the default queue driver.
 	|
-	| Supported: "sync", "beanstalkd", "sqs", "iron"
+	| Supported: "sync", "beanstalkd", "sqs", "iron", "redis"
 	|
 	*/
 
@@ -51,7 +51,7 @@ return array(
 
 		'iron' => array(
 			'driver'  => 'iron',
-			'host'    => 'mq-aws-us-east-1.iron.io',
+			'host'    => 'localhost',
 			'token'   => 'your-token',
 			'project' => 'your-project-id',
 			'queue'   => 'your-queue-name',
