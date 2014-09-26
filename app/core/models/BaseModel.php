@@ -127,7 +127,8 @@ class BaseModel extends Eloquent {
     }
 
     /**
-     * Can be used to ease declaration of relationships in Ardent models.
+     * Can be used to ease declaration of relationships in models that extend the BaseModel class.
+     * This is derived from @link https://github.com/laravelbook/ardent
      * Follows closely the behavior of the relation methods used by Eloquent, but packing them into an indexed array
      * with relation constants make the code less cluttered.
      *
@@ -141,7 +142,7 @@ class BaseModel extends Eloquent {
      *
      * Example:
      * <code>
-     * class Order extends Ardent {
+     * class Order extends BaseModel {
      *     protected static $relations = array(
      *         'items'    => array(self::HAS_MANY, 'Item'),
      *         'owner'    => array(self::HAS_ONE, 'User', 'foreignKey' => 'user_id'),
@@ -195,12 +196,13 @@ class BaseModel extends Eloquent {
     /**
      * Looks for the relation in the {@link $relationsData} array and does the correct magic as Eloquent would require
      * inside relation methods. For more information, read the documentation of the mentioned property.
+     * This is derived from @link https://github.com/laravelbook/ardent
      *
      * @param string $relationName the relation key, camel-case version
      * @return \Illuminate\Database\Eloquent\Relations\Relation
      * @throws \InvalidArgumentException when the first param of the relation is not a relation type constant,
      *      or there's one or more arguments missing
-     * @see Ardent::relationsData
+     * @see BaseModel::relationsData
      */
     protected function handleRelationalArray($relationName) {
         $relation     = static::$relationsData[$relationName];
@@ -209,7 +211,7 @@ class BaseModel extends Eloquent {
 
         if (!in_array($relationType, static::$relationTypes)) {
             throw new InvalidArgumentException($errorHeader.
-            ' should have as first param one of the relation constants of the Ardent class.');
+            ' should have as first param one of the relation constants of the BaseModel class.');
         }
         if (!isset($relation[1]) && $relationType != self::MORPH_TO) {
             throw new InvalidArgumentException($errorHeader.
@@ -272,6 +274,7 @@ class BaseModel extends Eloquent {
     /**
      * Handle dynamic method calls into the method.
      * Overrided from {@link Eloquent} to implement recognition of the {@link $relationsData} array.
+     * This is derived from @link https://github.com/laravelbook/ardent
      *
      * @param  string $method
      * @param  array  $parameters
@@ -290,6 +293,7 @@ class BaseModel extends Eloquent {
      * Define an inverse one-to-one or many relationship.
      * Overriden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
      * $relationsData} array.
+     * This is derived from @link https://github.com/laravelbook/ardent
      *
      * @param  string  $related
      * @param  string  $foreignKey
@@ -325,6 +329,7 @@ class BaseModel extends Eloquent {
      * Define an polymorphic, inverse one-to-one or many relationship.
      * Overriden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
      * $relationsData} array.
+     * This is derived from @link https://github.com/laravelbook/ardent
      *
      * @param  string  $name
      * @param  string  $type
@@ -356,6 +361,7 @@ class BaseModel extends Eloquent {
     /**
      * Get an attribute from the model.
      * Overrided from {@link Eloquent} to implement recognition of the {@link $relationsData} array.
+     * This is derived from @link https://github.com/laravelbook/ardent
      *
      * @param  string $key
      * @return mixed

@@ -26,9 +26,8 @@ class Team extends BaseModel {
     ];
 
     /**
-     * Ardent does not support orderBy for pivot attributes 
-     * so we have to use Eloquent instead.
-     * @link https://github.com/laravelbook/ardent/issues/185
+     * The BaseModel's handleRelationalArray() method does not support 
+     * orderBy() for pivot attributes so we have to use oldschool Eloquent instead.
      */
     public function users()
     {

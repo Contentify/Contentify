@@ -104,7 +104,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a select element. It will take its values from a database table.
-     * This is meant for models that do not support Ardent relationships.
+     * This is meant for models that do not extend the BaseModel class.
      * 
      * @param  string   $name     The name of the attribute, e. g. "user_id"
      * @param  string   $title    The title of the select element
@@ -327,7 +327,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a select element. It will take its values from a database table.
-     * This is meant for models that do not support Ardent relationships.
+     * This is meant for models that do not extend the BaseModel class.
      * 
      * @param  string   $name     The name of the attribute, e. g. "user_id"
      * @param  string   $title    The title of the select element
@@ -586,7 +586,7 @@ class FormBuilder extends OriginalFormBuilder
     {
         $value = self::getValueAttribute($name);
 
-        $value =  $value ? $value : $default;
+        $value = $value ? $value : $default;
 
         return $value;
     }
