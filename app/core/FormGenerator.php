@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use DB, View;
+use Lang, DB, View;
 
 class FormGenerator {
 
@@ -9,6 +9,8 @@ class FormGenerator {
      * @var boolean
      */
     protected $fileHandling;
+
+    protected $moduleName;
 
     /**
      * Generates a simple but CMS compliant form template (Blade syntax).
@@ -21,6 +23,8 @@ class FormGenerator {
     public function generate($tableName, $moduleName = null)
     {
         if ($moduleName == null) $moduleName = $tableName;
+
+        $this->moduleName = $moduleName;
 
         $this->fileHandling = false;
 
@@ -63,12 +67,13 @@ class FormGenerator {
         ];
 
         $name       = strtolower($column->Field);
-        $title      = $this->makeTitle($name);
         $type       = strtolower($column->Type);
         $meta       = '';
         $size       = 0;
         $required   = (strtolower($column->Null) == 'no');
         $default    = $column->Default;
+
+        $title = $this->transformName($name);
 
         if ($default !== null) { // We need an exact match here (0 is a legit value!)
             $defParam = ", '{$default}'";
@@ -103,38 +108,39 @@ class FormGenerator {
             switch ($type) {
                 case 'tinyint':
                     if ($default === '0') $defParam = ''; // "Not checked" is the default value of checkboxes
-                    $html = "{{ Form::smartCheckbox('{$name}', '{$title}'{$defParam}) }}";
+                    $html = "{{ Form::smartCheckbox('{$name}', {$title}{$defParam}) }}";
                     break;
                 case 'int':
                     unset($attributes['maxlength']);
-                    $html = "{{ Form::smartNumeric('{$name}', '{$title}'{$defParam}) }}";
+                    $html = "{{ Form::smartNumeric('{$name}', {$title}{$defParam}) }}";
                     break;
                 case 'varchar':
-                    $html = "{{ Form::smartText('{$name}', '{$title}'{$defParam}) }}";
+                    $html = "{{ Form::smartText('{$name}', {$title}{$defParam}) }}";
                     break;
                 case 'text':
-                    $html = "{{ Form::smartTextarea('{$name}', '{$title}'{$defParam}) }}";
+                    $html = "{{ Form::smartTextarea('{$name}', {$title}{$defParam}) }}";
                     break;
                 case 'email':
-                    $html = "{{ Form::smartEmail('{$name}', '{$title}'{$defParam}) }}";
+                    $html = "{{ Form::smartEmail('{$name}', {$title}{$defParam}) }}";
                     break;
                 case 'password':
-                    $html = "{{ Form::smartPassword('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartPassword('{$name}', {$title}) }}";
                     break;
                 case 'url':
-                    $html = "{{ Form::smartUrl('{$name}', '{$title}'{$defParam}) }}";
+                    $html = "{{ Form::smartUrl('{$name}', {$title}{$defParam}) }}";
                     break;
                 case 'timestamp':
-                    $html = "{{ Form::smartDateTime('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartDateTime('{$name}', {$title}) }}";
                     break;
                 case 'image':
                     unset($attributes['maxlength']);
                     $this->fileHandling = true;
-                    $html = "{{ Form::smartImageFile('{$name}', '{$title}') }}";
+                    $html = "{{ Form::smartImageFile('{$name}', {$title}) }}";
                     break;
                 case 'foreign':
-                    $title = ucfirst(substr($name, 0, -3));
-                    $html = "{{ Form::smartSelectForeign('{$name}', '{$title}') }}";
+                    $title = $this->transformName(substr($name, 0, -3));
+                    $name = substr($name, 0, -3);
+                    $html = "{{ Form::smartSelectForeign('{$name}', {$title}) }}";
                     break;
                 default:
                     $html = "<!-- Unknown type: {$type} -->";
@@ -144,6 +150,25 @@ class FormGenerator {
         }
 
         return $html;
+    }
+
+    /**
+     * If the attribute name $name is the name of a key in a translation file,
+     * return code that calls the trans() function.
+     * If not, make him readable at least.
+     * 
+     * @param  string $name       The attribute name
+     * @return string
+     */
+    public function transformName($name)
+    {
+        if (Lang::has($this->moduleName.'::'.$name)) {
+            return "trans('".$this->moduleName."::$name')";
+        } elseif (Lang::has('app.'.$name)) {
+            return "trans('app.$name')";
+        } else {
+            return "'".$this->makeTitle($name)."'";
+        }
     }
 
     /**

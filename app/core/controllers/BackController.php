@@ -207,7 +207,6 @@ abstract class BackController extends BaseController {
                             } else {
                                 Log::warning("Form tries to fill guarded attribute '$attribute'.");
                             }
-
                             break;
                         case 'belongsToMany':
                             $sourceKey = class_basename(strtolower($modelClass)).'_'.$model->getKeyName();
@@ -445,7 +444,7 @@ abstract class BackController extends BaseController {
 
     /**
      * Helper action method for searching. All we do here is to redirect with the input.
-          *
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function search()

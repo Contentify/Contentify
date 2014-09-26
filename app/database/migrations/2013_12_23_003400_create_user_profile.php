@@ -6,7 +6,7 @@ class CreateUserProfile extends Migration {
 
     /**
      * Run the migrations.
-          *
+     *
      * @return void
      */
     public function up()
@@ -49,7 +49,7 @@ class CreateUserProfile extends Migration {
 
     /**
      * Reverse the migrations.
-          *
+     *
      * @return void
      */
     public function down()

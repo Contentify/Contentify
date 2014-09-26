@@ -151,13 +151,14 @@ return array(
         'Illuminate\Auth\Reminders\ReminderServiceProvider',
         'Illuminate\Database\SeedServiceProvider',
         'Illuminate\Session\SessionServiceProvider',
-        'Illuminate\Translation\TranslationServiceProvider',
+        //'Illuminate\Translation\TranslationServiceProvider',
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
 
         // CMS service prodivers:
         'Contentify\ServiceProviders\HtmlServiceProvider',
+        'Contentify\ServiceProviders\TranslationServiceProvider',
         'Contentify\ServiceProviders\HoverServiceProvider',
 
         // Vendor service prodivers:

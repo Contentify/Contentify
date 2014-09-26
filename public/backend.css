@@ -35,9 +35,15 @@ textarea { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; backgr
 input { border: 1px solid #CCC; border-radius: 3px; background-image:url(theme/bg_textbox.png); font-family: 'Open Sans', Arial; font-size: 13px; color: #666666; }
 input[type=checkbox] { width: auto !important; padding: 0px !important; cursor: pointer }
 input[type=text], input[type=url] { width: 300px; height: 22px !important; padding: 0px 10px }
-input[type=submit], input[type=reset] { height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
+input[type=submit], input[type=reset] { height: 26px; color: #666666;
+    background: linear-gradient(to bottom,  #ffffff 0%,#e6e6e6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=0 );
+} /* height = input["text"].height + 4px */
 input[type=file] { height: 26px; } /* height = input["text"].height + 4px */
-input[type=button], button { padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; height: 26px; background-image: url(theme/bg_button.png); color: #666666; } /* height = input["text"].height + 4px */
+input[type=button], button { padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; height: 26px; color: #666666;
+    background: linear-gradient(to bottom,  #ffffff 0%,#e6e6e6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=0 );
+} /* height = input["text"].height + 4px */
 input[type=submit]:focus, button:focus { border-color: #ff6100; }
 button img { vertical-align: bottom; }
 select { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); height: 26px; }
@@ -131,7 +137,10 @@ ul.pagination li.disabled { display: none }
 .bootstrap-datetimepicker-widget .icon-time { background-image: url(icons/clock_red.png) }
 .bootstrap-datetimepicker-widget .icon-date { background-image: url(icons/date.png) }
 .bootstrap-datetimepicker-widget .table-condensed th, .bootstrap-datetimepicker-widget .table-condensed td { padding: 4px 5px; text-align: center; vertical-align: middle; }
-.bootstrap-datetimepicker-widget a.btn { display: inline-block; width: 14px; height: 26px; line-height: 26px; padding: 0px 12px; border: 1px solid #CCCCCC; border-radius: 3px; background-image: url(theme/bg_button.png) }
+.bootstrap-datetimepicker-widget a.btn { display: inline-block; width: 14px; height: 26px; line-height: 26px; padding: 0px 12px; border: 1px solid #CCCCCC; border-radius: 3px;
+    background: linear-gradient(to bottom,  #ffffff 0%,#e6e6e6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=0 );
+}
 .bootstrap-datetimepicker-widget .icon-chevron-up::after { content: '+'; font-size: 21px; font-style: normal; font-weight: bold; }
 .bootstrap-datetimepicker-widget .icon-chevron-down::after { content: '-'; font-size: 21px; font-style: normal; font-weight: bold; }
 

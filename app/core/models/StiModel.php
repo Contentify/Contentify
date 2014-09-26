@@ -55,7 +55,7 @@ abstract class StiModel extends BaseModel
 
     /**
      * Create instance
-          *
+     *
      * @return Model
      */
     public function mapData(array $attributes)

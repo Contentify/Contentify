@@ -118,7 +118,7 @@ class BaseModel extends Eloquent {
      * This method is an alternative. The new SoftDeletingTrait adds an attribute 
      * named forceDeleting to the model, so if it exists we know the model
      * uses soft deleting.
-          *
+     *
      * @return bool
      */
     public function isSoftDeleting()
@@ -188,6 +188,11 @@ class BaseModel extends Eloquent {
         self::MORPH_TO, self::MORPH_ONE, self::MORPH_MANY
     );
 
+    /**
+     * Getter for $relationsData
+     * 
+     * @return array
+     */
     public static function relations()
     {
         return static::$relationsData;
