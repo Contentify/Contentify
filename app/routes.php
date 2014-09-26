@@ -92,9 +92,6 @@ Route::post('install', 'InstallController@index');
  */
 Route::get('test', function()
 {
-    $gen = new Contentify\BackNavGen();
-    die($gen->get());
-
     //$fg = new FormGenerator();
     //return '<pre>'.$fg->generate('pages').'</pre>';
 });

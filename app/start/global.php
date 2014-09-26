@@ -192,7 +192,19 @@ if (! Session::has('locale')) {
         Session::set('locale', user()->language->code);
         App::setLocale(Session::get('locale'));
     } else {
-        Session::set('locale', Lang::getLocale());
+        $clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        $languages = File::directories(app_path().'/lang');
+
+        array_walk($languages, function(&$value, $key)
+        {
+            $value = basename($value);
+        });
+
+        if (in_array($clientLanguage, $languages)) {
+            Session::set('locale', $clientLanguage);
+        } else {
+            Session::set('locale', Lang::getLocale());
+        }
     }
 } else {
     App::setLocale(Session::get('locale'));
