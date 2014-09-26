@@ -95,4 +95,6 @@ If the return values is not a boolean it will be added to the page output. You m
 
 Did you notice the `nextStep` method? This is a method provided by the base class. Its a helper and returns the URL of the "next step" of the current installation. If passed to a view its possible to create a link the user has to click to proceed to the next step.
 
-To start the installation open the "modules" module in the backend. It will display an install button near to modules that have an installer. It's not necessary to update the autoloading classmap. The "modules" module has its own loader for module installers.
+To start the installation open the "modules" module in the backend. It will display an install button near to modules that have an installer. It's not necessary to update the autoloading classmap before installing a module. The "modules" module does not depend on Composer autoloading but has its own loader for module installers.
+
+## 
