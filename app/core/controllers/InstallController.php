@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller, Closure; 
+use File, Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
 
 class InstallController extends Controller {
 
@@ -20,7 +20,7 @@ class InstallController extends Controller {
         $content    = '';
 
         switch ($step) {
-            case 5:
+            case 6:
                 $username               = Input::get('username');
                 $email                  = Input::get('email');
                 $password               = Input::get('password');
@@ -66,7 +66,7 @@ class InstallController extends Controller {
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
 
                 break;
-            case 4:
+            case 5:
                 $title      = 'Create Super-Admin User';
                 $content    = '<p>Fill in the details of your user account.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
@@ -78,7 +78,7 @@ class InstallController extends Controller {
                               Form::close();
 
                 break;
-            case 3:
+            case 4:
                 $this->createDatabase();
                 //$this->createSeed();
 
@@ -105,13 +105,33 @@ class InstallController extends Controller {
                 $title      = 'Database Setup Complete';
                 $content    = '<p>Database filled with initial seed.</p>';
                 break;
-            case 2:
+            case 3:
                 $dbCon      = Config::get('database.default');
                 $dbName     = Config::get("database.connections.{$dbCon}.database");
                 $title      = 'Database Setup';
                 $content    = '<p>Contentify will now setup the database.</p>
                               <p>Before you proceed make sure you have updated the database connection settings.</p>
                               <p>The current database name is: <br><code>'.$dbName.'</code></p>';
+                break;
+            case 2:
+                $writableDirs = [app_path().'/storage', public_path().'/uploads'];
+
+                $ul = '<ul>'; // HTML::ul() will encode HTML entities so we can't use it here
+                foreach ($writableDirs as $dir) {
+                    if (File::isWritable($dir)) {
+                        $ul .= '<li>'.$dir.'<span class="state yes">Yes</span></li>';
+                    } else {
+                        $ul .= '<li>'.$dir.'<span class="state no">No</span></li>';
+                    }
+                }
+                $ul .= '</ul>';
+
+                $title      = 'Writable Directories';
+                $content    = "<p>The application needs write access (CHMOD 777) to these directories 
+                              and their sub directories:</p>
+                              $ul
+                              <p class=\"warning\">Please do not continue 
+                              until all of these directories are writable!</p>";
                 break;
             case 1:
                 if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
@@ -162,9 +182,9 @@ class InstallController extends Controller {
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp() to create a datetime attribute.
          */
-       
+ 
         return; // DEBUG
-        
+
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
         {
@@ -335,6 +355,28 @@ class InstallController extends Controller {
             $table->string('image')->nullable();
         }, ['game_id'], ['slug']);
 
+        $this->create('match_scores', function($table)
+        {
+            $table->integer('left_score')->default(0);
+            $table->integer('right_score')->default(0);
+        }, ['match_id', 'map_id'], false);
+ 
+        $this->create('matches', function($table)
+        {
+            $table->integer('state')->default(0);
+            $table->boolean('featured')->default(false);
+            $table->string('url')->nullable();
+            $table->string('broadcast')->nullable();
+            $table->string('left_lineup')->nullable();
+            $table->string('right_lineup')->nullable();
+            $table->text('text');
+            $table->timestamp('played_at');
+            $table->integer('left_score')->default(0); // Total score
+            $table->integer('right_score')->default(0);
+        }, 
+        ['left_team_id' => 'team_id', 'right_team_id' => 'team_id', 'game_id', 'tournament_id'], 
+        ['title', 'slug']);
+
         /*
          * Run migrations trough Artisan.
          * Unfortunately it's not the simple Artisan::call('migrate')
@@ -463,6 +505,13 @@ class InstallController extends Controller {
         ("de_inferno", 1),
         ("de_cache", 1),
         ("de_mirage", 1)');
+
+        DB::insert('INSERT INTO tournaments(title, short) VALUES
+        ("Electronic Sports League", "ESL"),
+        ("E-Sports Entertainment Association", "ESEA"),
+        ("Major League Gaming", "MLG"),
+        ("Electronic Sports World Cup", "ESWC"),
+        ("Dreamhack", "DH")');
     }
 
     /**
@@ -514,6 +563,7 @@ class InstallController extends Controller {
                 'help'          => PERM_DELETE,
                 'images'        => PERM_DELETE,
                 'maps'          => PERM_DELETE,
+                'matches'       => PERM_DELETE,
                 'modules'       => PERM_READ, // So Admins can't create modules that make them Super-Admins
                 'news'          => PERM_DELETE,
                 'opponents'     => PERM_DELETE,
@@ -548,6 +598,7 @@ class InstallController extends Controller {
                 'help'          => PERM_DELETE,
                 'images'        => PERM_DELETE,
                 'maps'          => PERM_DELETE,
+                'matches'       => PERM_DELETE,
                 'modules'       => PERM_DELETE,
                 'news'          => PERM_DELETE,
                 'opponents'     => PERM_DELETE,
@@ -605,6 +656,22 @@ class InstallController extends Controller {
             if ($tableRows) $tableRows($table);
 
             /*
+             * Generate foreign keys
+             */
+            foreach ($foreignKeys as $key => $value) {
+                if (is_string($key)) {
+                    $localKey = $key;
+                    $remoteKey = $value;
+                } else {
+                    $localKey = $remoteKey = $value;
+                }
+
+                $table->integer($localKey)->unsigned()->nullable();
+                //$foreignTable = str_plural(substr($remoteKey, 0, -3));
+                //$table->foreign($localKey)->references('id')->on($foreignTable);
+            }
+
+            /*
              * Add content object attributes:
              */
             if ($contentObject) {
@@ -623,12 +690,6 @@ class InstallController extends Controller {
                 $table->timestamps(); // Add timestamps (columns created_at, updated_at)
 
                 $table->softDeletes(); // Add soft deletes (column deleted_at)
-            }
-
-            foreach ($foreignKeys as $foreignKey) {
-                $table->integer($foreignKey)->unsigned()->nullable();
-                //$foreignTable = str_plural(substr($foreignKey, 0, -3));
-                //$table->foreign($foreignKey)->references('id')->on($foreignTable);
             }
         });
     }
