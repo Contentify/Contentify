@@ -14,7 +14,9 @@ class Slide extends BaseModel {
 
     protected $rules = [
         'title'         => 'required',
-        'url'           => 'required',
+        'url'           => 'required|url',
+        'position'      => 'sometimes|integer',
+        'slidecat_id'   => 'required|integer'
     ];
 
     public static $relationsData = [

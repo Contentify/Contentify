@@ -12,10 +12,10 @@ class Partner extends BaseModel {
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
-    public static $rules = [
+    protected $rules = [
         'title'         => 'required',
-        'url'           => 'url',
-        'position'      => 'integer',
+        'url'           => 'required|url',
+        'position'      => 'required|integer',
     ];
 
     public static $relationsData = [

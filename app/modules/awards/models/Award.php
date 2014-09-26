@@ -17,8 +17,12 @@ class Award extends BaseModel {
         'tournament_id',
     ];
 
-    public static $rules = [
-        'title'     => 'required',
+    protected $rules = [
+        'title'         => 'required',
+        'url'           => 'sometimes|url',
+        'position'      => 'integer',
+        'game_id'       => 'integer',
+        'tournament_id' => 'integer',
     ];
 
     public static $relationsData = [

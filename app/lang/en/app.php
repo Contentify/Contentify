@@ -79,6 +79,8 @@ return array(
     'published'     => 'Published',
     'created_at'    => 'Created At',
     'internal'      => 'Internal',
+    'featured'      => 'Featured',
+    'state'         => 'State',
 
     /*
      * Misc

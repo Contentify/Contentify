@@ -45,4 +45,4 @@ It's possible to display content with a JS scroller instead of a JS slider and v
 
 ## Videos
 
-Every video belongs to a provider. The only default provider is `youtube`. As you may guess, a provider is a platform that hosts videos. The `Modules\Videos\Models\Video` model stores a `$providers` array with available providers. You may add aditional providers to this array. If you do so you have to care for handling videos from these providers by modifying corresponding templates - at least `modules/videos/views/index.blade.php` and `show.blade.php`. You may also take a look at `admin_form.blade.php`.
+Every video belongs to a provider. The only default provider is `youtube`. As you might guess, a provider is a platform that hosts videos. The `Modules\Videos\Models\Video` model stores a `$providers` array with available providers. You may add aditional providers to this array. If you do so you have to care for handling videos from these providers by modifying corresponding templates - at least `modules/videos/views/index.blade.php` and `show.blade.php`. You may also take a look at `admin_form.blade.php`.

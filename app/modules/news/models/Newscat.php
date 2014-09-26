@@ -12,7 +12,7 @@ class Newscat extends BaseModel {
 
     public static $fileHandling = ['image' => ['type' => 'image']];
     
-    public static $rules = [
+    protected $rules = [
         'title'   => 'required',
     ];
 

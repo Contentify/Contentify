@@ -10,8 +10,8 @@ class Advertcat extends BaseModel {
 
     protected $fillable = ['title'];
     
-    public static $rules = [
-        'title'   => 'required',
+    protected $rules = [
+        'title'   => 'required|size:3',
     ];
 
     public static $relationsData = [

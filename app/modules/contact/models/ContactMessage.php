@@ -10,11 +10,11 @@ class ContactMessage extends BaseModel {
 
     protected $fillable = ['username', 'email', 'title', 'text'];
 
-    public static $rules = [
+    protected $rules = [
         'username'  => 'required',
         'email'     => 'required|email',
-        'title'     => 'required',
-        'text'      => 'required',
+        'title'     => 'required|min:3',
+        'text'      => 'required|min:3',
     ];
 
 }

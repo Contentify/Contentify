@@ -10,7 +10,7 @@ class Pagecat extends BaseModel {
 
     protected $fillable = ['title'];
 
-    public static $rules = [
+    protected $rules = [
         'title'   => 'required',
     ];
 

@@ -8,8 +8,9 @@ class Image extends BaseModel {
 
     public static $fileHandling = ['image' => ['type' => 'image', 'thumbnails' => [100, 200]]];
 
-    public static $rules = [
-        'tags'     => 'required',
+    protected $rules = [
+        'tags'          => 'required',
+        'gallery_id'    => 'sometimes|integer',
     ];
 
     public static $relationsData = [

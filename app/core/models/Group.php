@@ -11,16 +11,15 @@ class Group extends SentryModel {
 
     /**
      * Allowed permissions values. 
-     * Sentry only supports 0 and 1 per default so we change it.
-     *
-     * 0 = [none]
-     * 1 = PERM_READ
-     * 2 = PERM_CREATE
-     * 3 = PERM_UPDATE
-     * 4 = PERM_DELETE
-     *
+     * Sentry only supports 0 and 1 per default so we override that.
      * @var array
      */
-    protected $allowedPermissionsValues = array(0, 1, 2, 3, 4);
+    protected $allowedPermissionsValues = array(
+        0, 
+        PERM_READ, 
+        PERM_CREATE, 
+        PERM_UPDATE, 
+        PERM_DELETE
+    );
 
 }

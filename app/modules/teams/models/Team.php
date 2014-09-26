@@ -14,9 +14,10 @@ class Team extends BaseModel {
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
-    public static $rules = [
-        'title'     => 'required',
-        'position'  => 'integer',
+    protected $rules = [
+        'title'         => 'required',
+        'position'      => 'sometimes|integer',
+        'teamcat_id'    => 'required|integer',
     ];
 
     public static $relationsData = [

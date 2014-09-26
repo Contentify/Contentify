@@ -12,9 +12,10 @@ class Advert extends BaseModel {
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
-    public static $rules = [
+    protected $rules = [
         'title'         => 'required',
-        'url'           => 'url',
+        'url'           => 'required|url',
+        'advertcat_id'  => 'required|integer'
     ];
 
     public static $relationsData = [

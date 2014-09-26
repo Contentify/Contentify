@@ -12,9 +12,9 @@ class Tournament extends BaseModel {
 
     public static $fileHandling = ['icon' => ['type' => 'image']];
 
-    public static $rules = [
+    protected $rules = [
         'title'     => 'required',
-        'short'     => 'required',
+        'short'     => 'required|max:6',
     ];
 
     public static $relationsData = [

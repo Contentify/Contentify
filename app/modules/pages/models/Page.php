@@ -24,8 +24,12 @@ class Page extends StiModel {
         'pagecat_id'
     ];
 
-    public static $rules = [
-        'title'     => 'required',
+    protected $rules = [
+        'title'             => 'required',
+        'published'         => 'in:0,1',
+        'internal'          => 'in:0,1',
+        'enable_comments'   => 'in:0,1',
+        'pagecat_id'        => 'required|integer'
     ];
 
     public static $relationsData = [

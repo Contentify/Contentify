@@ -6,7 +6,7 @@ class SettingsBag extends BaseModel {
 
     protected $fillable = ['app_analytics'];
 
-    public static $rules = [
+    protected $rules = [
         //'app_analytics' => 'required',
     ];
 

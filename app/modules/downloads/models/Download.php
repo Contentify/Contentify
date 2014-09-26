@@ -14,8 +14,9 @@ class Download extends BaseModel {
 
     public static $fileHandling = ['file'];
 
-    public static $rules = [
-        'title'     => 'required'
+    protected $rules = [
+        'title'             => 'required',
+        'downloadcat_id'    => 'required|integer'
     ];
 
     public static $relationsData = [

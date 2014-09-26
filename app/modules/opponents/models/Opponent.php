@@ -14,9 +14,11 @@ class Opponent extends BaseModel {
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
-    public static $rules = [
-        'title'     => 'required',
-        'short'     => 'required',
+    protected $rules = [
+        'title'         => 'required',
+        'short'         => 'required|max:6',
+        'url'           => 'sometimes|url',
+        'country_id'    => 'required|integer'
     ];
 
     public static $relationsData = [
