@@ -576,7 +576,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Laravel prioritises model values lower than the value passed to form elements.
-     * This method is an alternative to getValueAttribute, that prioritises model values higher.
+     * This method is an alternative to getValueAttribute() that prioritises model values higher.
      * 
      * @param string $name
      * @param mixed  $default

@@ -28,7 +28,9 @@ class HtmlServiceProvider extends OriginalHtmlServiceProvider
     {
         $this->app->bindShared('form', function($app)
         {
-            return new FormBuilder($app['html'], $app['url'], $app['session.store']->getToken());
+            $form = new FormBuilder($app['html'], $app['url'], $app['session.store']->getToken());
+
+            return $form->setSessionStore($app['session.store']);
         });
     }
 }

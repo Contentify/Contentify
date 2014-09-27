@@ -90,6 +90,9 @@ h1.page-title { }
 .create-comment textarea { width: 100%; height: 70px; margin-left: -20px; padding: 10px 20px; border: 2px solid silver; color: #666; }
 .create-comment textarea:focus { border-color: #ff6100; }
 
+.widget-partners img.filter { filter: grayscale(1); -webkit-filter: grayscale(1); transition: all 0.8s ease; }
+.widget-partners img.filter:hover { filter: grayscale(0); -webkit-filter: grayscale(0); transition: all 0.2s ease; }
+
 .page-videos .video { float: left; width: 33%; text-align: center; }
 .page-videos .video img { width: 90% }
 
