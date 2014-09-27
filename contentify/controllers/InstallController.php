@@ -106,8 +106,8 @@ class InstallController extends Controller {
                 $content    = '<p>Database filled with initial seed.</p>';
                 break;
             case 3:
-                $dbCon      = Config::get('database.default');
-                $dbName     = Config::get("database.connections.{$dbCon}.database");
+                $dbCon      = Config::get('database.default', null, false);
+                $dbName     = Config::get("database.connections.{$dbCon}.database", null, false);
                 $title      = 'Database Setup';
                 $content    = '<p>Contentify will now setup the database.</p>
                               <p>Before you proceed make sure you have updated the database connection settings.</p>
@@ -185,11 +185,34 @@ class InstallController extends Controller {
  
         return; // DEBUG
 
+        /**
+         * Run Sentry migrations trough Artisan.
+         * Unfortunately it's not the simple Artisan::call('migrate')
+         * that it should be.
+         * Note that Sentry tables do not establish any foreign constraints.
+         */
+        define('STDIN', fopen('php://stdin', 'r'));
+        $table = Config::get('database.migrations', null, false);
+        $result = DB::select('SHOW TABLES LIKE "'.$table.'"');
+        if (sizeof($result) > 0) { // Check if migrations table exists
+            Artisan::call('migrate:reset', ['--quiet' => true, '--force' => true]); // Delete old tables
+        }
+        Artisan::call('migrate', ['--package' => 'cartalyst/sentry', '--quiet' => true, '--force' => true]);
+
+        /*
+         * Deaticvate foreign key checks.
+         * This is one way to delete table with foreign constraints.
+         * Usually it's not possible to delete a table that has an attribute
+         * which is an foreign key of another table.
+         * Note that this is session-based, there is also a
+         * global way.
+         */
+        DB::statement('SET foreign_key_checks = 0');
+
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
         {
-            $table->string('name'); // We can't name it "key" - it's a keyword in SQL. Eloquent can't handle it(?)
-            $table->primary('name');
+            $table->string('name')->primary(); // We can't name it "key" - that's a keyword in SQL - Eloquent bug?
             $table->text('value')->nullable();
             $table->timestamp('updated_at');
         });
@@ -378,11 +401,13 @@ class InstallController extends Controller {
         ['title', 'slug']);
 
         /*
-         * Run migrations trough Artisan.
-         * Unfortunately it's not the simple Artisan::call('migrate')
-         * it should be.
+         * (Re)activate foreign key checks
          */
-        define('STDIN', fopen('php://stdin', 'r'));
+        DB::statement('SET foreign_key_checks = 1');
+
+        /*
+         * Run remaining (general) migrations trough Artisan.
+         */
         Artisan::call('migrate', ['--quiet' => true, '--force' => true]);
     }
 
@@ -392,10 +417,10 @@ class InstallController extends Controller {
      * @return void
      */
     protected function createSeed() {
-        //DB::table('config')->insert(['name' => 'app.analytics']);
-        // DEBUG
-        
+       
         //$this->createUserGroups();
+        
+        DB::table('config')->insert(['name' => 'app.analytics']);
 
         DB::table('pagecats')->insert([
             ['id' => '1', 'title' => 'Blog Post'],

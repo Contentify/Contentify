@@ -59,7 +59,7 @@
                 <a class="navbut left" href="{{ url('install?step='.($step - 1)) }}">Previous</a>
                 @endif
 
-                @if($step < 5)
+                @if($step < 6)
                 <a class="navbut right" href="{{ url('install?step='.($step + 1)) }}">Next</a>
                 @else
                 <a class="navbut right" href="{{ url('/') }}">Website</a>
@@ -68,38 +68,47 @@
         </div>
     </div>
     <script type="text/javascript">
-        $(document).ready(function()
+        $(window).resize(function()
         {
-            $(window).resize(function()
-            {
-                var paddingTop = 0.33 * ($(window).height() - $('#page-container').height());
-                $('#page-container').css('paddingTop', paddingTop);
-            });
-            $(window).resize();
+            var paddingTop = 0.33 * ($(window).height() - $('#page-container').height());
+            $('#page-container').css('paddingTop', paddingTop);
+        });
+        $(window).resize();
 
-            if({{ $step }} == 4) {
-                $('.navbut.right').click(function(event)
-                {
-                    event.preventDefault();
-                    $('form').get(0).submit();
-                });
+        if({{ $step }} == 4) {
+            $('.navbut.right').click(function(event)
+            {
+                event.preventDefault();
+                $('form').get(0).submit();
+            });
+        }
+
+        $('.navbut.left').mousedown(function()
+        {
+            $fullWidth = $('html').width();
+            $('body').animate({width: $fullWidth - 10}, {duration: 200, queue: true});
+        });
+        $('.navbut.right').mousedown(function()
+        {
+            if ($(this).attr('disabled')) {
+                $(this).removeAttr('href');
+                return false;
             }
 
-            $('.navbut.left').mousedown(function()
-            {
-                $fullWidth = $('html').width();
-                $('body').animate({width: $fullWidth - 10}, {duration: 200, queue: true});
-            });
-            $('.navbut.right').mousedown(function()
-            {
-                $fullWidth = $('html').width();
-                $('body').animate({width: $fullWidth + 10}, {duration: 200, queue: true});
-            });
-            $('.navbut.left, .navbut.right').mouseup(function()
-            {
-                $fullWidth = $('html').width();
-                $('body').animate({width: $fullWidth}, {duration: 200, queue: true});
-            });
+            $fullWidth = $('html').width();
+            $('body').animate({width: $fullWidth + 10}, {duration: 200, queue: true});
+        });
+        $('.navbut.right').mouseup(function(event)
+        {
+            if ({{ $step }} == 3) {
+                $(this).text('Working...');
+                $(this).attr('disabled', true);                
+            }
+        });
+        $('.navbut.left, .navbut.right').mouseup(function()
+        {
+            $fullWidth = $('html').width();
+            $('body').animate({width: $fullWidth}, {duration: 200, queue: true});
         });
     </script>
 </body>
