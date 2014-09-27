@@ -115,7 +115,7 @@
                             <div class="menu-bottom"></div>
                         <div class="silverheader"><div class="menu-head esports"><span class="hidden">eSports Content</span></div></div>
                             <div class="submenu">               
-                                <div class="item"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=matches">Matches</a></div>
+                                <div class="item"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/matches', 'Matches') }}</div>
                                 <div class="item"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/awards', 'Awards') }}</div>
                                 <div class="item"><img src="{{ asset('icons/server.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=gameservers">Gameservers</a></div>                                
                                 <div class="item"><img src="{{ asset('icons/opponent.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/opponents', 'Opponents') }}</div>

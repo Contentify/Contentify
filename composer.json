@@ -24,7 +24,7 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
 			"app/modules",
-			"app/core"
+			"contentify"
 		]
 	},
 	"scripts": {
