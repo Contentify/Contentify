@@ -27,7 +27,7 @@ class News extends BaseModel {
         'published'         => 'in:0,1',
         'internal'          => 'in:0,1',
         'enable_comments'   => 'in:0,1',
-        'newscat_id'        => 'required|inteeger',
+        'newscat_id'        => 'required|integer',
         'creator_id'        => 'required|integer',
     ];
 

@@ -1,4 +1,4 @@
-So you are a developer and you just have arrived here. How can you start developing websites with this CMS? We will try to give you an answer on this essential question in this chapter.
+So you are a developer and you just have arrived here. How can you start developing websites with this CMS? In this chapter we will try to give an answer to this essential question.
 
 ## The Base Layout
 

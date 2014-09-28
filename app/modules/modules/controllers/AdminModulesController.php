@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Modules\Controllers;
 
 use App\Modules\Modules\Models\Module;
-use HTML, BackController;
+use Cache, HTML, BackController;
 
 class AdminModulesController extends BackController {
 
@@ -23,6 +23,7 @@ class AdminModulesController extends BackController {
             'tableHead'     => [
                 trans('app.title')          => null,
                 trans('modules::enabled')   => null,
+                trans('app.state')          => null,
             ],
             'tableRow'      => function($module)
             {
@@ -32,9 +33,21 @@ class AdminModulesController extends BackController {
                     $enabled = HTML::image('icons/cross.png');
                 }
 
+                /*
+                 * Display if the module is installed
+                 */
+                $state = Cache::get('modules.installation.'.$module->title, null);
+                if ($state === true) {
+                    $state = trans('app.valid');
+                }
+                if ($state === false) {
+                    $state = trans('app.invalid');
+                }
+
                 return [
                     $module->title,
-                    $enabled
+                    $enabled,
+                    $state,
                 ];            
             },
             'actions'   => [
@@ -74,9 +87,11 @@ class AdminModulesController extends BackController {
         $result     = $installer->execute();
 
         if ($result === false or $result === null) {
+            Cache::forever('modules.installation.'.$name, false);
             $this->message(trans('modules::fail'));            
         } elseif ($result === true) {
             $installer->after();
+            Cache::forever('modules.installation.'.$name, true);
             $this->message(trans('modules::success'));
         } else {
             $this->pageOutput($result);
