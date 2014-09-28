@@ -37,4 +37,17 @@ class AdminOpponentsController extends BackController {
         ]);
     }
 
+    /**
+     * Returns the lineup of an opponent team
+     * 
+     * @param  int      $id ID of the opponent
+     * @return string
+     */
+    public function lineup($id)
+    {
+        $opponent = Opponent::findOrFail($id);
+
+        return $opponent->lineup;
+    }
+
 }
