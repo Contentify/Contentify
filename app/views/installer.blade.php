@@ -75,7 +75,7 @@
         });
         $(window).resize();
 
-        if({{ $step }} == 4) {
+        if({{ $step }} == 5) {
             $('.navbut.right').click(function(event)
             {
                 event.preventDefault();
@@ -98,13 +98,13 @@
             $fullWidth = $('html').width();
             $('body').animate({width: $fullWidth + 10}, {duration: 200, queue: true});
         });
-        $('.navbut.right').mouseup(function(event)
+        $('.navbut.right').click(function(event)
         {
             if ({{ $step }} == 3) {
                 $(this).text('Working...');
                 $(this).attr('disabled', true);                
             }
-        });
+        })
         $('.navbut.left, .navbut.right').mouseup(function()
         {
             $fullWidth = $('html').width();

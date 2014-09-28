@@ -200,7 +200,7 @@ abstract class BackController extends BaseController {
                      */
                     switch ($relation[0]) {
                         case 'belongsTo':
-                            $attribute = $name.'_'.$key;
+                            $attribute = snake_case($name).'_'.$key;
 
                             if ($model->isFillable($attribute)) {
                                 $model->$attribute = $value;
@@ -224,6 +224,7 @@ abstract class BackController extends BaseController {
 
                             if ($model->isFillable('relation_'.$name)) {
                                 if (sizeof($insertion) > 0) {
+                                    
                                     DB::table($relation['table'])->insert($insertion);
                                 }
                             } else {
