@@ -4,6 +4,13 @@ use Str, View, Sentry, Input, Redirect, Session, Captcha, FrontController, Excep
 
 class RegistrationController extends FrontController {
 
+    /**
+     * If set to true, user that register will be
+     * activated automatically. If set to false,
+     * an admin has to activate them manually.
+     */
+    const AUTO_ACTIVATE = true;
+
     public function getCreate()
     {
         $this->pageView('auth::register');
@@ -38,7 +45,7 @@ class RegistrationController extends FrontController {
                 'username'  => Input::get('username'),
                 'email'     => Input::get('email'),
                 'password'  => Input::get('password'),
-            ], true);
+            ], AUTO_ACTIVATE);
 
             $user->slug = Str::slug($user->username);
             $user->save();

@@ -4,8 +4,7 @@ use Illuminate\Html\FormBuilder as OriginalFormBuilder;
 use Crypt, URL, HTML, DB, Exception, MsgException;
 use \Carbon as AliasedCarbon; // If we just use Carbon we would use Contentify\Carbon and ignoring the alias!
 
-class FormBuilder extends OriginalFormBuilder
-{
+class FormBuilder extends OriginalFormBuilder {
 
     /**
      * Create HTML code for error displayment

@@ -160,6 +160,7 @@ return array(
         'Contentify\ServiceProviders\HtmlServiceProvider',
         'Contentify\ServiceProviders\TranslationServiceProvider',
         'Contentify\ServiceProviders\HoverServiceProvider',
+        'Contentify\ServiceProviders\ModuleRouteServiceProvider',
 
         // Vendor service prodivers:
         'Way\Generators\GeneratorsServiceProvider',
@@ -243,7 +244,7 @@ return array(
         'ContentFilter'         => 'Contentify\ContentFilter',
         'MsgException'          => 'Contentify\MsgException',
         'Config'                => 'Contentify\Config',
-        'ModuleRoute'           => 'Contentify\ModuleRoute',
+        'ModuleRoute'           => 'Contentify\Facades\ModuleRoute',
         'Carbon'                => 'Contentify\Carbon',
 
         'DateAccessorTrait'     => 'Contentify\Traits\DateAccessorTrait',

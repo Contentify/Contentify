@@ -91,7 +91,9 @@ Route::post('install', 'InstallController@index');
  * Testing
  */
 Route::get('test', function()
-{
+{ 
+    dd(Config::get('modules::mode'));
+
     //$class = 'App\Modules\Matches\Models\Match';
     //$match = $class::first();
     //$team = $match->leftTeam;

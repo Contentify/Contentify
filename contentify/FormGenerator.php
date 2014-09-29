@@ -139,7 +139,7 @@ class FormGenerator {
                     break;
                 case 'foreign':
                     $title = $this->transformName(substr($name, 0, -3));
-                    $name = substr($name, 0, -3);
+                    $name = camel_case(substr($name, 0, -3)); // Eloquent can't handle snake_cased relation names
                     $html = "{{ Form::smartSelectForeign('{$name}', {$title}) }}";
                     break;
                 default:

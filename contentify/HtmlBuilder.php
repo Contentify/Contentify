@@ -3,8 +3,7 @@
 use Illuminate\Html\HtmlBuilder as OriginalHtmlBuilder;
 use OpenGraph, Session, URL;
 
-class HtmlBuilder extends OriginalHtmlBuilder
-{
+class HtmlBuilder extends OriginalHtmlBuilder {
 
     /**
      * Renders a widget.

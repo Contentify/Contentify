@@ -3,8 +3,8 @@
 use Illuminate\Translation\TranslationServiceProvider as OriginalTranslationServiceProvider;
 use Contentify\Translator;
 
-class TranslationServiceProvider extends OriginalTranslationServiceProvider
-{
+class TranslationServiceProvider extends OriginalTranslationServiceProvider {
+
     public function register()
     {
         $this->registerLoader();
@@ -25,4 +25,5 @@ class TranslationServiceProvider extends OriginalTranslationServiceProvider
             return $trans;
         });
     }
+
 }

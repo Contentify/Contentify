@@ -2,8 +2,7 @@
  
 use Carbon\Carbon as OriginalCarbon;
 
-class Carbon extends OriginalCarbon
-{
+class Carbon extends OriginalCarbon {
     
     public function date()
     {

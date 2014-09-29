@@ -22,7 +22,7 @@ class Config extends LaravelConfig {
     public static function has($key, $dbLookup = true)
     {
         // LaravelConfig::has() will return true for an invalid (= not namespaced) key! So we don't trust has() here.
-        if (strpos($key, '.') !== false and LaravelConfig::has($key)) {
+        if ((strpos($key, '.') !== false or strpos($key, '::') !== false) and LaravelConfig::has($key)) {
             return true;
         } elseif ($dbLookup) {
             self::$lastResult = DB::table('config')->whereName($key)->first(); // Temporarily save the result 
@@ -44,7 +44,7 @@ class Config extends LaravelConfig {
     public static function get($key, $default = null, $dbLookup = true)
     {
         // LaravelConfig::has() will return true for an invalid (= not namespaced) key! So we don't trust has() here.
-        if (strpos($key, '.') !== false and LaravelConfig::has($key)) {
+        if ((strpos($key, '.') !== false or strpos($key, '::') !== false) and LaravelConfig::has($key)) {
             return LaravelConfig::get($key, $default);
         } elseif ($dbLookup and self::has($key)) {
             return self::$lastResult->value;

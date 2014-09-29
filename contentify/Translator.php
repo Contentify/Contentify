@@ -2,8 +2,7 @@
 
 use Illuminate\Translation\Translator as OriginalTranslator;
 
-class Translator extends OriginalTranslator
-{
+class Translator extends OriginalTranslator {
 
     public function has($key, $locale = null)
     {

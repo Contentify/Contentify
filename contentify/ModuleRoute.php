@@ -1,26 +1,32 @@
 <?php namespace Contentify;
 
-use Config, Route;
+use Str, Config, Route;
 
 class ModuleRoute {
-    
+  
     /**
-     * The name of the module
+     * The namespace for all modules
+     * @var  string
+     */
+    protected $namespace;
+
+    /**
+     * The name of the module set by context()
      * @var string
      */
-    protected static $moduleName;
+    protected $moduleName;
 
     /**
      * The path to the models of the module
      * @var string
      */
-    protected static $modelPath;
+    protected $modelPath;
 
     /**
      * The path to the controllers of the module
      * @var string
      */
-    protected static $controllerPath;
+    protected $controllerPath;
 
     /**
      * Set the context (name) of the module.
@@ -28,15 +34,24 @@ class ModuleRoute {
      * @param string $moduleName Name or path of the module.
      * @return void
      */
-    public static function context($moduleName)
+    public function context($moduleName)
     {
         $moduleName = class_basename($moduleName);
         $moduleName = ucfirst(strtolower($moduleName));
 
-        self::$moduleName       = $moduleName;
+        $this->moduleName       = $moduleName;
 
-        self::$modelPath        = 'App\Modules\\'.$moduleName.'\Models\\';
-        self::$controllerPath   = 'App\Modules\\'.$moduleName.'\Controllers\\';
+        /*
+         * Create the namespace from the directory path
+         */
+        if (! $this->namespace) {
+            $path               = Config::get('modules::path');
+            $studly             = Str::title(str_replace('/', ' ', $path));
+            $this->namespace    = str_replace(' ', '\\', $studly);
+        }
+
+        $this->modelPath        = $this->namespace.'\\'.$moduleName.'\Models\\';
+        $this->controllerPath   = $this->namespace.'\\'.$moduleName.'\Controllers\\';
     }
 
     /**
@@ -45,9 +60,9 @@ class ModuleRoute {
      * @param string $modelName The name of the model (without namespace)
      * @return Illuminate\Routing\Route
      */
-    public static function model($modelName)
+    public function model($modelName)
     {
-        return Route::model(self::$moduleName, self::$modelPath.$modelName);
+        return Route::model($this->moduleName, $this->modelPath.$modelName);
     }
 
     /**
@@ -57,9 +72,9 @@ class ModuleRoute {
      * @param  mixed  $target
      * @return Illuminate\Routing\Route
      */
-    public static function get($route, $target)
+    public function get($route, $target)
     {
-        return self::createRoute('get', $route, $target);
+        return $this->createRoute('get', $route, $target);
     }
 
     /**
@@ -69,9 +84,9 @@ class ModuleRoute {
      * @param  mixed  $target
      * @return Illuminate\Routing\Route
      */
-    public static function post($route, $target)
+    public function post($route, $target)
     {
-        return self::createRoute('post', $route, $target);
+        return $this->createRoute('post', $route, $target);
     }
 
     /**
@@ -81,9 +96,9 @@ class ModuleRoute {
      * @param  mixed  $target
      * @return Illuminate\Routing\Route
      */
-    public static function put($route, $target)
+    public function put($route, $target)
     {
-        return self::createRoute('put', $route, $target);
+        return $this->createRoute('put', $route, $target);
     }
 
     /**
@@ -93,9 +108,9 @@ class ModuleRoute {
      * @param  mixed  $target
      * @return Illuminate\Routing\Route
      */
-    public static function any($route, $target)
+    public function any($route, $target)
     {
-        return self::createRoute('any', $route, $target);
+        return $this->createRoute('any', $route, $target);
     }
 
     /**
@@ -106,9 +121,9 @@ class ModuleRoute {
      * @param  mixed  $target
      * @return Illuminate\Routing\Route
      */
-    public static function match($methods, $route, $target)
+    public function match($methods, $route, $target)
     {
-        return self::createRoute($methods, $route, $target);
+        return $this->createRoute($methods, $route, $target);
     }
 
     /**
@@ -119,11 +134,11 @@ class ModuleRoute {
      * @param  array  $parameters
      * @return void
      */
-    public static function controller($route, $target, $parameters = array())
+    public function controller($route, $target, $parameters = array())
     {
         //if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target; // Debugging
 
-        Route::controller($route, self::$controllerPath.$target, $parameters);
+        Route::controller($route, $this->controllerPath.$target, $parameters);
     }
 
     /**
@@ -134,11 +149,11 @@ class ModuleRoute {
      * @param  array  $parameters
      * @return void
      */
-    public static function resource($route, $target, $parameters = array())
+    public function resource($route, $target, $parameters = array())
     {
         //if (Config::get('app.debug')) $_SESSION['ModuleRoute.resource'] = $target; // Debugging
 
-        Route::resource($route, self::$controllerPath.$target, $parameters);
+        Route::resource($route, $this->controllerPath.$target, $parameters);
     }
 
     /**
@@ -149,7 +164,7 @@ class ModuleRoute {
      * @param  mixed                    $target
      * @return Illuminate\Routing\Route
      */
-    protected static function createRoute($methods, $route, $target)
+    protected function createRoute($methods, $route, $target)
     {
         //if (Config::get('app.debug')) $_SESSION['ModuleRoute.route'] = $target; // Debugging
 
@@ -170,7 +185,7 @@ class ModuleRoute {
              * If so, add the controller path.
              */
             if (str_contains($target['uses'], '@')) {
-                $target['uses'] = self::$controllerPath.$target['uses'];
+                $target['uses'] = $this->controllerPath.$target['uses'];
             }
         }
 

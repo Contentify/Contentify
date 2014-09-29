@@ -1,6 +1,6 @@
 <?php namespace Contentify\Models;
 
-use SoftDeletingTrait, BBCode;
+use Cache, SoftDeletingTrait, BBCode;
 
 class Comment extends BaseModel {
 
@@ -15,6 +15,29 @@ class Comment extends BaseModel {
     public static $relationsData = array(
         'creator' => array(self::BELONGS_TO, 'User'),
     );
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::saved(function ($comment)
+        {
+            $comment->cache();
+        });
+    }
+
+    /**
+     * Cache this comment - we don't want to parse BBCodes each time
+     * we want to display a comment.
+     * 
+     * @return void
+     */
+    public function cache()
+    {
+        $bbcode = new BBCode();
+        $rendered = $bbcode->render($this->text);
+        Cache::put('comments.comment.'.$this->id, $rendered, 60);
+    }
 
     /**
      * Count the comments that are related to a certain foreign type (model).
@@ -38,7 +61,12 @@ class Comment extends BaseModel {
      */
     public function render()
     {
-        $bbcode = new BBCode();
-        return $bbcode->render($this->text);
+        $key = 'comments.comment.'.$this->id;
+
+        if (! Cache::has($key)) {
+            $this->cache();
+        }
+
+        return Cache::get($key);
     }
 }

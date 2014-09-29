@@ -117,30 +117,6 @@ require app_path().'/blade_extensions.php';
 
 /*
 |--------------------------------------------------------------------------
-| Require HTML Extensions
-|--------------------------------------------------------------------------
-|
-| This will load the html_extensions file for the application. It's the
-| right place for HTML extensions.
-|
-*/
-
-require app_path().'/html_extensions.php';
-
-/*
-|--------------------------------------------------------------------------
-| Require Form Extensions
-|--------------------------------------------------------------------------
-|
-| This will load the form_extensions file for the application. It's the
-| right place for form extensions.
-|
-*/
-
-require app_path().'/form_extensions.php';
-
-/*
-|--------------------------------------------------------------------------
 | Require The Helpers File
 |--------------------------------------------------------------------------
 |
@@ -150,7 +126,6 @@ require app_path().'/form_extensions.php';
 */
 
 require app_path().'/helpers.php';
-
 
 /*
 |--------------------------------------------------------------------------
