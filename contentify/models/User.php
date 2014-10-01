@@ -216,4 +216,14 @@ class User extends SentryUser {
         return $throttle->isBanned();
     }
 
+    /**
+     * Compatibility function. Look at BaseModel->isSoftDeleting()
+     * 
+     * @return boolean
+     */
+    public function isSoftDeleting()
+    {
+        return false;
+    }
+
 }
