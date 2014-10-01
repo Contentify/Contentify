@@ -92,15 +92,6 @@ Route::post('install', 'InstallController@index');
  */
 Route::get('test', function()
 { 
-    dd(Config::get('modules::mode'));
-
-    //$class = 'App\Modules\Matches\Models\Match';
-    //$match = $class::first();
-    //$team = $match->leftTeam;
-    //dd($team);
-    //$game = $match->game;
-    //dd(DB::getQueryLog());
-
-    $fg = new FormGenerator();
-    return '<pre>'.$fg->generate('matches').'</pre>';
+    //$fg = new FormGenerator();
+    //return '<pre>'.$fg->generate('matches').'</pre>';
 });

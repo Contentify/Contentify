@@ -43,4 +43,17 @@ class CustomPagesController extends FrontController {
         $this->show(null, $slug);
     }
 
+    /**
+     * Show the default imprint page taht includes
+     * notes about the CMS.
+     * 
+     * @return void
+     */
+    public function showImprint()
+    {
+        $imprintText = CustomPage::findOrFail(1)->text;
+
+        $this->pageView('pages::imprint', compact('imprintText'));
+    }
+
 }

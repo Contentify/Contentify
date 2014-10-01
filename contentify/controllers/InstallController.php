@@ -428,6 +428,14 @@ class InstallController extends Controller {
             ['id' => '3', 'title' => 'Custom Content'],
         ]);
 
+        DB::table('pages')->insert([
+            'title'         => 'Imprint', 
+            'slug'          => 'imprint',
+            'text'          => 'Imprint Page Text',
+            'published'     => true,
+            'creator_id'    => 1,
+            'pagecat_id'    => 2]);
+
         DB::table('teamcats')->insert([
             ['id' => '1', 'title' => 'Staff'],
             ['id' => '2', 'title' => 'Gaming'],
