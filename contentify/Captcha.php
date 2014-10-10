@@ -9,7 +9,7 @@ class Captcha {
      * 
      * @return void
      */
-    public static function make() 
+    public function make() 
     {
         $captchaCode = strtolower(Str::random(4));
         Session::put('captchaCode', $captchaCode);
@@ -36,7 +36,7 @@ class Captcha {
      * @param   string  $value The potential captcha code
      * @return  bool
      */
-    public static function check($code) 
+    public function check($code) 
     {
         return ($code == Session::get('captchaCode'));
     }

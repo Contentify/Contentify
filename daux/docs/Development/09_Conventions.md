@@ -6,7 +6,7 @@ If module names refer to entities, e. g. "Game", prefer to pluralize them: "game
 
 ## Config
 
-Contentify extends Laravel's config class. Config values may be stored in config files in `app/config` (or `app/config/packages`) or inside the database. To avoid collisions, please use a namespace prefix. Example config key name:
+Contentify extends Laravel's config class. Config values may be stored in config files in `app/config/` (or `app/config/packages/`) or inside the database. To avoid collisions, please use a namespace prefix. Example config key name:
 ```php
 $title = Config::get('app.title');
 ```
@@ -46,6 +46,16 @@ To seperate a "model class" and a "model object" we use the term "model class" a
 * **redirect**: Redirect to this URL
 * **recycleBinMode**: Display deleted entities?
 * **_token**: CSRF token
+
+## Caching
+
+When putting data into the cache you should add a namespace to the key's name:
+
+    Cache::put('animals.unicorns.123', $unicorn, 60);
+
+This will help to avoid collisions. You may even prefix all you caching keys with a unique prefix such as `app` or `my`:
+
+    Cache::put('app.animals.unicorns.123', $unicorn, 60);
 
 ## Form Input Names
 

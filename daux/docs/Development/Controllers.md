@@ -9,7 +9,7 @@ All controllers should inherit from the BaseController class. Its constructor ad
 * *buildIndexPage*: Builds an index page from a model
 * Permission helper functions
 
-### buildIndexPage
+### buildIndexPage()
 
 This method returns a string with HTML code that renders an index page. Controllers usually handle a single model. These resource controllers help to build RESTful controllers around resources. The buildIndexPage implements the "index" action. You can pass a data array to configure how this page is rendered.
 
@@ -35,6 +35,7 @@ List of arguments the data array may use:
 
 * *buttons*: Array of names of default buttons ("new" and "category") or custom HTML code
 * *searchFor*: The attribute to search (e. g. "title"). Null will disable the search feature.
+* *infoText*: Info text that is displayed above the table. You may use HTML tags.
 * *dataSource*: Null or Array of entities. If null it will take the entities from the database. If an array is passed sorting, searching and pagination are not available.
 * *tableHead*: Array of items for the table head columns
 * *tableRow*: Closure returning an array of items for all columns of a single row
@@ -51,11 +52,41 @@ Extends the BaseController class. Controllers tied to the frontend should inheri
 
 Extends the BaseController class. Controllers tied to the backend should inherit from the BackController class. While the frontend controller class is lightweight, the backend controller comes with a lot of features. It sets the backend layout as template and passes several variables to it (module and controller name, controller icon, user picture, message notifier).
 
-The most outstanding feature is its ability to handle resource actions. It implements methods that create (and store), edit (and update) and delete (and restore) an entity. Controllers that inherit from the backend controller class always inherit those methods. Keep this in mind when creating routes for a resouce controller. Perhaps you have to close routes manually that you do not want to use. For example maybe your controller must not be able to delete the entities it handles. In this case you have to close the "delete" route manually.
+The most outstanding feature is its ability to handle resource actions. It implements methods that create (and store), edit (and update) and delete (and restore) an entity. This is well known as CRUD. Controllers that inherit from the backend controller class always inherit these methods. Keep this in mind when creating routes for a resource controller. Perhaps you have to disable routes manually that you do not want to use. For example maybe your controller must not be able to delete the entities it handles. In this case you have to close the "delete" route manually.
 
 > Use the `php artisan routes` command to list all available routes.
 
 If a method does not work in the way it's intended or the task to perform is too complex you are free to override it. But if it isn't necessary to override it's recommended to stick to the existing implementation.
 
+## Modifying CRUD Methods
 
+The simplest way to implement another behaviour for a CRUD action is to override the method:
 
+    // app/controllers/ExampleController.php that extends BackController
+
+    public function create()
+    {
+        // Your implementation
+    }
+
+Ofcourse you are still able to call the method of the BackController class:
+
+    public function create()
+    {
+        // Do stuff before...
+
+        parent::create();
+
+        // ...and after calling the method of the BackController class.
+    }
+
+It's possible to add extra data to the view that's created by a CRUD method:
+
+    public function create()
+    {
+        parent::create();
+
+        $games = Game::all();
+
+        $this->layout->page->with('games');
+    }

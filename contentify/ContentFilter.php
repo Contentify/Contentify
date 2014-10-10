@@ -10,7 +10,7 @@ class ContentFilter {
      * @param  string  $name The name of the content filter
      * @return boolean
      */
-    public static function has($name)
+    public function has($name)
     {
         if (! Input::has('filter')) return null;
 
@@ -40,7 +40,7 @@ class ContentFilter {
      * @param  string       $name The name of the content filter
      * @return string|null
      */
-    public static function get($name)
+    public function get($name)
     {
         if (! Input::has('filter')) return null;
 

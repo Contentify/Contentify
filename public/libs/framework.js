@@ -31,6 +31,41 @@ $(document).ready(function()
         });
 
         /*
+         * Template Manager
+         */
+        this.templateManager = new function() 
+        {
+            this.templates = { };
+
+            /*
+             * Adds a template
+             */
+            this.add = function(name, template) 
+            {
+                this.templates[name] = template;
+            };
+
+            /*
+             * Returns a rendered template
+             */
+            this.get = function(name, vars) 
+            {
+                if (typeof this.templates[name] === 'undefined') {
+                    return;
+                }
+
+                if (typeof vars !== 'object') {
+                    return this.templates[name];
+                }
+
+                return this.templates[name].replace(/\{\{ (.*?) \}\}/g, function() 
+                {
+                    return vars[arguments[1]];
+                });
+            };
+        };
+
+        /*
          * Numeric inputs
          */
         $('.numeric-input').keypress(function()

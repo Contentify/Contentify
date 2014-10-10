@@ -13,6 +13,9 @@
 </div>
 @endif
 
+@if ($infoText)
+<span class="info-text">{{ $infoText }}</span>
+@endif
 {{ $contentTable }}
 
 <div class="form-helpers bottom">

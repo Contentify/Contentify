@@ -217,13 +217,13 @@ class User extends SentryUser {
     }
 
     /**
-     * Compatibility function. Look at BaseModel->isSoftDeleting()
+     * This is a copy of an BaseModel method (for compatibility).
      * 
-     * @return boolean
+     * @return bool
      */
     public function isSoftDeleting()
     {
-        return false;
+        return property_exists($this, 'forceDeleting');
     }
 
 }

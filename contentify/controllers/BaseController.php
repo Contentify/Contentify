@@ -256,7 +256,8 @@ abstract class BaseController extends Controller {
             'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
             'order'         => 'desc',                          // Asc / desc
             'filter'        => false,                           // Bool: Apply filters? (Calls the model's scopeFilter method)
-            'dataSource'    => null                             // Null (means: take from database) or Closure
+            'dataSource'    => null,                            // Null (means: take from database) or Closure
+            'infoText'      => ''                               // String (may include HTML tags) with extra infos
         ];
 
         $data = array_merge($defaults, $data);
@@ -439,6 +440,7 @@ abstract class BaseController extends Controller {
          */
         $this->pageView('backend.model_index', [
             'buttons'       => $buttons,
+            'infoText'      => $data['infoText'],
             'contentTable'  => $contentTable,
             'sortSwitcher'  => $sortSwitcher,
             'recycleBin'    => $recycleBin,

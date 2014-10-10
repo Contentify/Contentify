@@ -36,15 +36,4 @@ class User extends BaseUser {
         return true;
     }
 
-
-    /**
-     * This is a copy of an BaseModel method (for compatibility).
-     * 
-     * @return bool
-     */
-    public function isSoftDeleting()
-    {
-        return property_exists($this, 'forceDeleting');
-    }
-
 }

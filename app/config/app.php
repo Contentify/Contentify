@@ -161,6 +161,9 @@ return array(
         'Contentify\ServiceProviders\TranslationServiceProvider',
         'Contentify\ServiceProviders\HoverServiceProvider',
         'Contentify\ServiceProviders\ModuleRouteServiceProvider',
+        'Contentify\ServiceProviders\ContentFilterServiceProvider',
+        'Contentify\ServiceProviders\CaptchaServiceProvider',
+        'Contentify\ServiceProviders\CommentsServiceProvider',
 
         // Vendor service prodivers:
         'Way\Generators\GeneratorsServiceProvider',
@@ -237,11 +240,8 @@ return array(
         'View'                  => 'Illuminate\Support\Facades\View',
 
         // CMS classes:
-        'Captcha'               => 'Contentify\Captcha',
         'FormGenerator'         => 'Contentify\FormGenerator',
-        'Comments'              => 'Contentify\Comments',
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
-        'ContentFilter'         => 'Contentify\ContentFilter',
         'MsgException'          => 'Contentify\MsgException',
         'Config'                => 'Contentify\Config',
         'ModuleRoute'           => 'Contentify\Facades\ModuleRoute',

@@ -10,7 +10,7 @@ class Config extends LaravelConfig {
      * 
      * @var stdClass
      */
-    private static $lastResult = null;
+    protected static $lastResult = null;
 
     /**
      * Determine if the given configuration value exists.
@@ -60,7 +60,7 @@ class Config extends LaravelConfig {
      * @param  mixed   $value
      * @return void
      */
-    public static function store($key, $value)
+    public function store($key, $value)
     {
         $result = DB::table('config')->whereName($key)
             ->update(array('value' => $value, 'updated_at' => new DateTime()));
@@ -82,7 +82,7 @@ class Config extends LaravelConfig {
      * @param  string  $key
      * @return void
      */
-    public static function delete($key)
+    public function delete($key)
     {
         $result = DB::table('config')->whereName($key)->delete();
     }

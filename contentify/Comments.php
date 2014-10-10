@@ -11,7 +11,7 @@ class Comments {
      * @param  int    $foreignId   ID, if the comments are related to a certain model instance
      * @return string
      */
-    public static function show($foreignType, $foreignId)
+    public function show($foreignType, $foreignId)
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
@@ -32,7 +32,7 @@ class Comments {
      * @param  int    $foreignId   ID, if the comments are related to a certain model instance
      * @return string
      */
-    public static function paginate($foreignType, $foreignId)
+    public function paginate($foreignType, $foreignId)
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
@@ -49,7 +49,7 @@ class Comments {
      * @param  int      $foreignId   The foreign id (can be 0)
      * @return \Illuminate\Http\Response
      */
-    public static function store($foreignType, $foreignId)
+    public function store($foreignType, $foreignId)
     {
         if (! user()->hasAccess('comments', PERM_CREATE)) {
             return;
@@ -76,7 +76,7 @@ class Comments {
      * @param  int $id The ID of the comment
      * @return mixed
      */
-    public static function get($id)
+    public function get($id)
     {
         $comment = Comment::findOrFail($id);
 
@@ -89,7 +89,7 @@ class Comments {
      * @param  int $id The ID of the comment
      * @return void
      */
-    public static function edit($id)
+    public function edit($id)
     {
         $comment = Comment::findOrFail($id);
 
@@ -106,7 +106,7 @@ class Comments {
      * @param  int $id The ID of the comment
      * @return \Illuminate\Http\Response
      */
-    public static function update($id)
+    public function update($id)
     {
         $comment = Comment::findOrFail($id);
 
@@ -132,7 +132,7 @@ class Comments {
      * @param  int $id The ID of the comment
      * @return \Illuminate\Http\Response
      */
-    public static function delete($id)
+    public function delete($id)
     {
         $comment = Comment::findOrFail($id);
 
@@ -144,4 +144,5 @@ class Comments {
 
         return Response::make('1', 200);
     }
+    
 }

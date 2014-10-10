@@ -23,3 +23,32 @@ Contentify delivers several [widgets](Widgets). They are handy little helpers th
 Contentify aims to provide as many features as possible out of the box. But it's meant to be a solid basement, not a all-in-one solution suitable for every purpose. If you reach its boundaries - expand them! One of our primary goals is to make customization as convenient as possible. 
 
 Therefore, don't hesistate to create your own widgets or even [modules](Modules). Integrate the CSS framework of your choice, for example Bootstrap. It's easy since the HTML files are prepared for Bootstrap. Utilize the power of [Composer](https://getcomposer.org) and [Packagist](https://packagist.org): Choose of thousands of packages that are easy to install since Laravel comes with Composer support. There is even more: Enjoy hundrets of packages that are developed [especially for Laravel](http://packalyst.com).
+
+## Extending the CMS
+
+### Overwriting Module Routes
+
+Routes that are defined in the `app/routes.php` file overwrite routes of modules (or genereally spoken they overwrite routes of packages) if they share the same route path. So let's imagine you want to modify the `getIndex()` method of the `App\Modules\Contact\ContactController` to pass additional data to the contact form view. Instead of editing the method itself create a new route in `app/routes.php` to overwrite the original route:
+
+    Route::get('contact', function()
+    {
+        // do something
+    });
+
+Well, it's not always that simple. Even in this example we face a challenge: We don't have access to controller methods. Since we are not inside a controller context we can't call `$this->pageView()` in the way the original method does. We have to create a new controller that extends the `BaseController` or even the `ContactController` class and implement the method there:
+
+    // app/route.php:
+    Route::get('contact', 'MyContactController@getIndex');
+
+    // app/controllers/MyContactController.php:
+    <?php
+
+    class MyContactController extends App\Modules\Contact\ContactController {
+
+        public function getIndex()
+        {
+            $extraData = array('exampleValue' => 123);
+            $this->pageView('contact::form', $extraData);
+        }
+
+    }
