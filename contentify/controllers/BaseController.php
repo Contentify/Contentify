@@ -345,8 +345,25 @@ abstract class BaseController extends Controller {
             } elseif (is_callable($data['filter'])) {
                 $models = $data['filter']($models);
             }
-            if ($data['search'] and $data['searchFor']) {
-                $models = $models->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%'); // Search for string
+            if ($data['search']) {
+                $pos = strpos($data['search'], ':');
+
+                if ($pos === false) {
+                    if (is_array($data['searchFor'])) {
+                        $models = $models->whereHas($data['searchFor'][0], function($query) use ($data)
+                        {
+                            $query->where($data['searchFor'][1], 'LIKE', '%'.$data['search'].'%');
+                        });
+                    } elseif ($data['searchFor']) {
+                        $models = $models->where($data['searchFor'], 'LIKE', '%'.$data['search'].'%');
+                    }
+                } else {
+                    $searchFor  = substr($data['search'], 0, $pos);
+                    $search     = substr($data['search'], $pos + 1);
+                    $models = $models->where($searchFor, 'LIKE', '%'.$search.'%');
+                    // TODO: Check if attribute $searchFor exists?
+                    // Use fillables &/ tableHead attribute names
+                }                 
             }
 
             $models = $models->paginate($perPage);
