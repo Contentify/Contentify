@@ -4,7 +4,7 @@ $(document).ready(function()
 {
     function Contentify() 
     {
-        var frameWork = this;
+        var framework = this;
 
         /*
          * Initizalize meta variables
@@ -26,7 +26,7 @@ $(document).ready(function()
         jQuery.ajaxPrefilter(function(options, request, xhr) 
         {
             if (! xhr.crossDomain) {
-                options.data += '&_token=' + frameWork.csrfToken;
+                options.data += '&_token=' + framework.csrfToken;
             }
         });
 
@@ -105,8 +105,8 @@ $(document).ready(function()
          */
         this.alert = function (type, title, clearAll)
         {
-            if (! frameWork.templateManager.has('alert')) {
-                frameWork.templateManager.add('alert', 
+            if (! framework.templateManager.has('alert')) {
+                framework.templateManager.add('alert', 
                     '<div class="alert alert-%%type%%">\
                     <button type="button" class="close">&times;</button>\
                     <h2>%%title%%</h2>\
@@ -114,7 +114,7 @@ $(document).ready(function()
                 );
             }
 
-            var $template = $(frameWork.templateManager.get('alert', {
+            var $template = $(framework.templateManager.get('alert', {
                 type: type,
                 title: title
             }));
@@ -124,13 +124,30 @@ $(document).ready(function()
                 $(this).parent().remove();
             });
 
-            if (clearAll) {
-                $('.alert-area').html('');
-            }
-            $('.alert-area').append($template);
+            var $alertArea = $('.alert-area');
 
-            $(window).scrollTop($('.alert-area').offset().top);
+            if (clearAll) {
+                $alertArea.html('');
+            }
+            $alertArea.append($template);
+
+            $(window).scrollTop($alertArea.offset().top);
         };
+
+        this.alertSuccess = function (title, clearAll)
+        {
+            framework.alert('success', title, clearAll);
+        }
+
+        this.alertWarning = function (title, clearAll)
+        {
+            framework.alert('warning', title, clearAll);
+        }
+
+        this.alertError = function (title, clearAll)
+        {
+            framework.alert('error', title, clearAll);
+        }
 
         /*
          * Add delete confirm dialogue
