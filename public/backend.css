@@ -58,10 +58,14 @@ select { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 
 
 h1.page-title { }
 
-/* Messages */
-.cms-message { margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x; }
-.cms-message h2 { margin: 0px; font-size: 12px; }
-.cms-message .text { }
+/* Message */
+.ui-message { margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x; }
+.ui-message h2 { margin: 0px; font-size: 12px; }
+.ui-message .text { }
+
+/* Alert */
+.alert { margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x; }
+.alert h2 { font-size: 12px; }
 
 /* Form */
 .form-errors { }
@@ -147,6 +151,9 @@ ul.pagination li.disabled { display: none }
 /* Tags */
 .form-group .bootstrap-tagsinput { max-width: 40% }
 
+/* Infotext */
+.info-text { color: #999 }
+
 /*
  * Subpages
  */
@@ -227,5 +234,3 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
 
 #footer { position: relative; width: 982px; height: 76px; margin-left: 2px; background-image: url(theme/backend/footer.png); }
 #footer a { display: block; position: absolute; background-image: url(theme/empty.png); left: 114px; top: 30px; width: 45px; height: 35px }
-
-

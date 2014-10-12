@@ -1,4 +1,4 @@
-<div class="cms-message">
+<div class="ui-message">
     <h2>{{ $title }}</h2>
 
     <div class="text">

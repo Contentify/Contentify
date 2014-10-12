@@ -38,7 +38,7 @@
         <div id="mid-container" class="clearfix">
             <div id="content">
                 @if (Session::get('_message'))
-                    <div class="cms-message">
+                    <div class="ui-message">
                         {{ Session::get('_message') }}
                     </div>
                 @endif

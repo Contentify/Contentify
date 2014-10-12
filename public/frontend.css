@@ -43,9 +43,13 @@ blockquote { background: #F4F4F4; border: 1px dotted gray; padding: 5px; margin:
 h1.page-title { }
 
 /* Messages */
-.cms-message { border: 2px solid silver; }
-.cms-message h2 { font-size: 14px }
-.cms-message .text { }
+.ui-message { border: 2px solid silver; }
+.ui-message h2 { font-size: 14px; }
+.ui-message .text { }
+
+/* Alert */
+.alert { border: 2px solid silver; }
+.alert h2 { font-size: 14px; }
 
 /* Form */
 .form-errors { }
@@ -124,6 +128,7 @@ h1.page-title { }
 .page-downloads .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; }
 .page-downloads .downloads .download { display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; background-image: url(theme/file.png); background-position: center top; background-repeat: no-repeat; }
 .page-downloads .downloads .download a { display: block; padding-top: 100px; background-position: center 20px; background-repeat: no-repeat; }
+
 
 /*
  * Mainlayout

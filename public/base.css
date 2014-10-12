@@ -37,3 +37,10 @@ ul.pagination li { display: list-item; float: left; margin: 0px; padding: 2px 5p
 .spoiler-wrapper .spoiler-toggle { padding: 10px 0px; content: '...'; cursor: pointer }
 .spoiler { height: 0px;  overflow: hidden; }
 .spoiler-wrapper.show .spoiler { height: auto; overflow: visible; }
+
+.alert { position: relative;  }
+.alert button { position: absolute; right: 10px; top: 0px; border: none; background: none; cursor: pointer; }
+.alert h2 { margin: 0px; }
+.alert-success { border-color: #d6e9c6 !important; background: #dff0d8 !important }
+.alert-warning { border-color: #faebcc !important; background: #fcf8e3 !important }
+.alert-error { border-color: #ebccd1 !important; background: #f2dede !important }

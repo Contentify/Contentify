@@ -46,6 +46,14 @@ $(document).ready(function()
             };
 
             /*
+             * Returns true if the template exists
+             */
+            this.has = function(name) 
+            {
+                return (typeof this.templates[name] !== 'undefined');
+            };
+
+            /*
              * Returns a rendered template
              */
             this.get = function(name, vars) 
@@ -58,7 +66,8 @@ $(document).ready(function()
                     return this.templates[name];
                 }
 
-                return this.templates[name].replace(/\{\{ (.*?) \}\}/g, function() 
+                // Note: It's possible to use {{ }} but this will confuse Blade.
+                return this.templates[name].replace(/%%(.*?)%%/g, function() 
                 {
                     return vars[arguments[1]];
                 });
@@ -85,6 +94,43 @@ $(document).ready(function()
                 }
             }
         });
+
+        /**
+         * Creates an alert HTML node inside the alert area.
+         *
+         * @param string type     The alert type e. g. sucess, alert
+         * @param string text     The text that should be shown
+         * @param bool   clearAll If true, this will hide all other alerts
+         * @return void
+         */
+        this.alert = function (type, title, clearAll)
+        {
+            if (! frameWork.templateManager.has('alert')) {
+                frameWork.templateManager.add('alert', 
+                    '<div class="alert alert-%%type%%">\
+                    <button type="button" class="close">&times;</button>\
+                    <h2>%%title%%</h2>\
+                    </div>'
+                );
+            }
+
+            var $template = $(frameWork.templateManager.get('alert', {
+                type: type,
+                title: title
+            }));
+
+            $template.find('button').click(function()
+            {
+                $(this).parent().remove();
+            });
+
+            if (clearAll) {
+                $('.alert-area').html('');
+            }
+            $('.alert-area').append($template);
+
+            $(window).scrollTop($('.alert-area').offset().top);
+        };
 
         /*
          * Add delete confirm dialogue
@@ -300,10 +346,6 @@ $(document).ready(function()
 
             return newDate;
         }
-
-        var now = new Date();
-        //console.log(this.formatDate(now, 'Y-m-d'));
-
     };
 
     contentify = new Contentify();

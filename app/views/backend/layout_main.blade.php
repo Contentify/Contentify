@@ -142,10 +142,13 @@
 
             <section id="main-content">
                     @if (Session::get('_message'))
-                    <div class="cms-message">
+                    <div class="ui-message">
                         {{ Session::get('_message') }}
                     </div>
                     @endif
+
+                    {{-- Render JavaScript alerts here --}}
+                    <div class="alert-area"></div>
                 
                     @if (isset($page))
                     <div class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
