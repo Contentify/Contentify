@@ -35,7 +35,7 @@
             <h2>Contentify Testpage</h2>
         </header>
 
-        <div id="mid-container">
+        <div id="mid-container" class="clearfix">
             <div id="content">
                 @if (Session::get('_message'))
                     <div class="cms-message">
@@ -81,8 +81,6 @@
                 <h3>Advert:</h3>
                 @widget('Adverts::Advert', ['categoryId' => 1])
             </aside>
-
-            <div class="clear"></div>
         </div>
     </div>
     {{ Config::get('app.analytics') }}

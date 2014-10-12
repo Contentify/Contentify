@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use View, Redirect;
+use Input, View, Redirect;
 
 abstract class FrontController extends BaseController {
 

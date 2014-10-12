@@ -1,6 +1,6 @@
 <h1 class="page-title">Downloads</h1>
 
-<div class="downloadcats">
+<div class="downloadcats clearfix">
     @foreach ($downloadcats as $downloadcat)
     <div class="downloadcat">
         <a href="{{{ url('downloads/category/'.$downloadcat->id.'/'.$downloadcat->slug) }}}">
@@ -11,5 +11,4 @@
     @endforeach
 </div>
 
-<div class="clear"></div>
 {{ $downloadcats->links() }}

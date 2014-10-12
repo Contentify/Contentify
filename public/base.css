@@ -17,7 +17,7 @@ form hr { margin: 30px 0px }
  * Classes
  */
 
-.clear { clear: both }
+.clearfix:after { display: block; clear: both; content: '.'; height: 0; visibility: hidden; }
 .hidden { display: none }
 .center-h { text-align: center; }
 

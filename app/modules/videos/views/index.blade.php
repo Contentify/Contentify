@@ -1,6 +1,6 @@
 <h1 class="page-title">Videos</h1>
 
-<div class="videos">
+<div class="videos clearfix">
     @foreach ($videos as $video)
     <div class="video">
         <a href="{{{ url('videos/'.$video->id.'/'.$video->slug) }}}">
@@ -13,5 +13,4 @@
     @endforeach
 </div>
 
-<div class="clear"></div>
 {{ $videos->links() }}
