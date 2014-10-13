@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Dashboard\Controllers;
 
-use View, Cache, BackController;
+use Log, View, Cache, BackController;
 
 class AdminDashboardController extends BackController {
 
@@ -21,7 +21,7 @@ class AdminDashboardController extends BackController {
     /**
      * Receive feed, render feed view, cache it and return the HTML code.
      * 
-     * @return string
+     * @return string|null
      */
     public function feed()
     {  
@@ -31,13 +31,22 @@ class AdminDashboardController extends BackController {
             $view = Cache::get($key);
         } else {
             // Note: File::get() can't access remote targets so we have to use the PHP function.
-            $content = file_get_contents(self::FEED_URL);
+            $content = @file_get_contents(self::FEED_URL);
+            
+            if ($content === false) {
+                // Create an empty key to avoid incessant fetching attempts 
+                Cache::put($key, '', 10);
+
+                Log::warning("Failed to fetch dashboard message feed '".self::FEED_URL."'");
+
+                return;
+            }
 
             $messages = json_decode($content);
 
             $view = View::make('dashboard::feed', compact('messages'))->render();
 
-            Cache::put($key, $view, 60 * 12);           
+            Cache::put($key, $view, 60 * 12);
         }        
 
         return $view;
