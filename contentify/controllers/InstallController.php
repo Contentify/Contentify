@@ -434,7 +434,8 @@ class InstallController extends Controller {
             'text'          => 'Imprint Page Text',
             'published'     => true,
             'creator_id'    => 1,
-            'pagecat_id'    => 2]);
+            'pagecat_id'    => 2
+        ]);
 
         DB::table('teamcats')->insert([
             ['id' => '1', 'title' => 'Staff'],

@@ -55,9 +55,9 @@ select { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 
 .page { }
 .form-head { display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; background-image: url(theme/backend/form_head.png); font-size: 14px; font-weight: bold !important; color: #666666 !important; }
 .form-head img { margin-right: 10px; vertical-align: text-top; }
-.page h2 { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-size: 13px }
 
 h1.page-title { }
+h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-size: 13px }
 
 /* Message */
 .ui-message { margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x; }
@@ -179,7 +179,9 @@ ul.pagination li.disabled { display: none }
 .page-dashboard .widgets-row td { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .page-dashboard .widgets-row th:first-child { width: 70% }
 .page-dashboard .feed-messages { float: left; margin-top: 20px }
+.page-dashboard .feed-messages table { width: 100%; table-layout: fixed; }
 .page-dashboard .feed-messages th:nth-child(2) { width: 100px }
+.page-dashboard .feed-messages td { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .page-dashboard .feed-messages img { vertical-align: text-bottom; }
 
 /*
@@ -240,10 +242,9 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
 .submenu .item:last-child { background-image: url(theme/backend/nav_item_bot.png); height: 49px; line-height: 42px; }
 .submenu .item:last-child img { top: 13px }
 .menu-bottom { background-image: url(theme/backend/menu_bottom.png); height: 17px }
-.applemenu { /*dont remove this class*/ }
-.applemenu div.submenu { /*DIV that contains each sub menu*/ /*dont remove this class*/ }
 
 #main-content { width: 686px; margin-left: 275px; }
 
 #footer { position: relative; width: 982px; height: 76px; margin-left: 2px; background-image: url(theme/backend/footer.png); }
 #footer a { display: block; position: absolute; background-image: url(theme/empty.png); left: 114px; top: 30px; width: 45px; height: 35px }
+#footer span { position: absolute; right: 20px; top: 40px; color: #444; /* text-shadow: 0px 1px 2px black; */ }

@@ -46,7 +46,7 @@ class AdminDashboardController extends BackController {
 
             $view = View::make('dashboard::feed', compact('messages'))->render();
 
-            Cache::put($key, $view, 60 * 12);
+            Cache::put($key, $view, 60 * 6);
         }        
 
         return $view;
