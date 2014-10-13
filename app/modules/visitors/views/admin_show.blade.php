@@ -1,19 +1,6 @@
-<div id="chart"></div>
-
-{{ HTML::script('libs/flot/flot.js') }}
+@include('visitors::chart')
 
 <script>
-    $.plot($("#chart"), [ [{{ $dataSet }}] ],
-        {
-            lines:  { show: true },
-            points: { show: true },
-            xaxis:  {min: 1, max: {{ $maxDay }}, tickSize: 1},
-            yaxis:  {min: 0},
-            colors: ["#FF6600"],
-            grid:   { borderWidth: 2, borderColor: '#BBB', hoverable: true, clickable: true }
-        }
-    );
-
     $("#chart").bind("plothover", function (event, pos, item) {
         if (item) {
             $('.days tbody tr').each(function()
@@ -36,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($days as $day)
+        @foreach ($chart->days as $day)
         <tr data-day="{{ $day->day }}">
             <td>{{ $day->date }}</td>
             <td>{{ $day->visitors }}</td>

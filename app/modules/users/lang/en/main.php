@@ -85,4 +85,9 @@ return array(
     'action_banned'     => 'User has been banned.',
     'action_unbanned'   => 'User has been unbanned.',
 
+    /* 
+     * Widget
+     */
+    'latest_users'  => 'Latest Users',
+
 );

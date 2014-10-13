@@ -69,4 +69,16 @@ class Comment extends BaseModel {
 
         return Cache::get($key);
     }
+
+    /**
+     * Return just the plain comment text.
+     * (Similar to render BBCode without the tags but it uses caching.)
+     * 
+     * @return string
+     */
+    public function plain()
+    {
+        return strip_tags($this->render());
+    }
+
 }

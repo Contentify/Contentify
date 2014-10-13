@@ -55,6 +55,7 @@ select { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 
 .page { }
 .form-head { display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; background-image: url(theme/backend/form_head.png); font-size: 14px; font-weight: bold !important; color: #666666 !important; }
 .form-head img { margin-right: 10px; vertical-align: text-top; }
+.page h2 { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-size: 13px }
 
 h1.page-title { }
 
@@ -101,7 +102,7 @@ h1.page-title { }
 .sort-switcher img { vertical-align: bottom; }
 .form-helpers .sort-switcher { margin: 0px }
 
-/* Recyclbe Bin Button */
+/* Recycle Bin Button */
 .recycle-bin-button {  display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px; }
 .recycle-bin-button.enabled { background-color: #333; color: white !important }
 .recycle-bin-button.disabled { background-color: #CCC; color: #999 !important }
@@ -168,6 +169,18 @@ ul.pagination li.disabled { display: none }
 
 .page-members div.data { display: none }
 .page-members td a { cursor: pointer; }
+
+.page-dashboard #chart { margin: 0px 0px 20px 5%; width: 90%; height: 200px }
+.page-dashboard .quick-access div { width: 84px; float: left; margin: 0px 13px 20px 13px; padding: 5px 0px; border: 1px solid #EEEEEE; border-radius: 5px; text-align: center;  }
+.page-dashboard .quick-access img { display: block; padding-left: 18px }
+.page-dashboard .widgets-row div { width: 50%; float: left }
+.page-dashboard .widgets-row div:first-child { box-sizing: border-box; padding-right: 10px }
+.page-dashboard .widgets-row table { width: 100%; table-layout: fixed; }
+.page-dashboard .widgets-row td { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.page-dashboard .widgets-row th:first-child { width: 70% }
+.page-dashboard .feed-messages { float: left; margin-top: 20px }
+.page-dashboard .feed-messages th:nth-child(2) { width: 100px }
+.page-dashboard .feed-messages img { vertical-align: text-bottom; }
 
 /*
  * Mainlayout

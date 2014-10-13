@@ -2,7 +2,7 @@ var contentify;
 
 $(document).ready(function()
 {
-    function Contentify() 
+    contentify = new function() 
     {
         var framework = this;
 
@@ -66,7 +66,7 @@ $(document).ready(function()
                     return this.templates[name];
                 }
 
-                // Note: It's possible to use {{ }} but this will confuse Blade.
+                // Note: It's possible to use {{ }} but it will confuse Blade.
                 return this.templates[name].replace(/%%(.*?)%%/g, function() 
                 {
                     return vars[arguments[1]];
@@ -96,7 +96,7 @@ $(document).ready(function()
         });
 
         /**
-         * Creates an alert HTML node inside the alert area.
+         * Creates an HTML alert inside the alert area.
          *
          * @param string type     The alert type e. g. sucess, alert
          * @param string text     The text that should be shown
@@ -223,10 +223,12 @@ $(document).ready(function()
          * Content filter UI: Set values
          */
         var filter = this.urlParam('filter');
+
         if (filter) {
             var filters = filter.split(',');
             var filterNames = [];
             var filterValues = [];
+
             $.each(filters, function(key, value)
             {
                 var values = value.split('-');
@@ -239,6 +241,7 @@ $(document).ready(function()
                     filterValues.push('');
                 }
             });
+
             $('.content-filter-ui *').each(function()
             {
                 var name = $(this).get(0).name;
@@ -250,7 +253,7 @@ $(document).ready(function()
         }
 
         /*
-         * Content filter UI: Event handler
+         * Content filter UI: "On change" event handler
          */
         $('.content-filter-ui *').change(function() 
         {
@@ -363,7 +366,5 @@ $(document).ready(function()
 
             return newDate;
         }
-    };
-
-    contentify = new Contentify();
+    };    
 });
