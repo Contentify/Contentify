@@ -49,6 +49,9 @@ return array(
     'music'         => 'Music',
     'film'          => 'Film',
 
+    'image'         => 'Portrait',
+    'avatar'        => 'Avatar',
+
     /*
      * Gender
      */

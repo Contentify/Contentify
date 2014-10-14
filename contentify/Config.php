@@ -5,7 +5,7 @@ use Cache, DB, DateTime;
 
 class Config extends LaravelConfig {
 
-    const CACHE_KEY_PREFIX = 'caonfig.keys.';
+    const CACHE_KEY_PREFIX = 'config.keys.';
 
     /**
      * The result of the last has() call

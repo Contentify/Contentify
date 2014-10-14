@@ -1,7 +1,7 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use Validator, Sentry, Session;
+use InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
 
@@ -40,6 +40,9 @@ class User extends SentryUser {
         'drink',
         'music',
         'film',
+
+        'image',
+        'avatar',
     ];
 
     /**
@@ -65,7 +68,7 @@ class User extends SentryUser {
     }
 
     /**
-     * Validate the user wiht Laravel validator class. Return true if valid.
+     * Validate the user with Laravel's validator class. Return true if valid.
      * 
      * @return boolean
      */
@@ -219,11 +222,41 @@ class User extends SentryUser {
     /**
      * This is a copy of an BaseModel method (for compatibility).
      * 
-     * @return bool
+     * @return boolean
      */
     public function isSoftDeleting()
     {
         return property_exists($this, 'forceDeleting');
+    }
+
+    /**
+     * Tries to upload an image
+     * 
+     * @param  string $fieldName Name of the form field
+     * @return Redirect|null
+     */
+    public function uploadImage($fieldName)
+    {
+        $file       = Input::file($fieldName);
+        $extension  = $file->getClientOriginalExtension();
+
+        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
+        if (! $imgsize[2]) {
+            return Redirect::route('users.edit', [$this->id])
+            ->withInput()->withErrors([trans('app.invalid_image')]);
+        }        
+
+        $filePath           = public_path().'/uploads/users/';
+        $fileName           = $this->id.'_'.$fieldName.'.'.$extension;
+        $uploadedFile       = $file->move($filePath, $fileName);
+        $this->$fieldName   = $fileName;
+        $this->save();
+
+        if ($fieldName == 'image') {
+            InterImage::make($filePath.'/'.$fileName)->resize(60, 60, function ($constraint) {
+                                        $constraint->aspectRatio();
+                                    })->save($filePath.'60/'.$fileName);
+        }
     }
 
 }

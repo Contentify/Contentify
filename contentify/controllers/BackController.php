@@ -33,7 +33,7 @@ abstract class BackController extends BaseController {
              * User profile picture
              */ 
             if (user()->image) {
-                $userImage = asset('uploads/users/thumbnails/'.user()->image);
+                $userImage = asset('uploads/users/60/'.user()->image);
             } else {
                 $userImage = asset('theme/user.png');
             }

@@ -1,7 +1,7 @@
 {{ Form::errors($errors) }}
 
 @if (isset($user))
-{{ Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'PUT']) }}
+{{ Form::model($user, ['route' => ['users.update', $user->id], 'files' => true, 'method' => 'PUT']) }}
 @else
 {{ Form::open(['url' => 'users']) }}
 @endif
@@ -45,6 +45,9 @@
     {{ Form::smartText('film', trans('users::film')) }}
 
     {{ Form::smartTextarea('about', trans('users::about')) }}
+
+    {{ Form::smartImageFile('image', trans('users::image')) }}
+    {{ Form::smartImageFile('avatar', trans('users::avatar')) }}
    
     {{ Form::actions(['submit' => trans('app.update')]) }}
 {{ Form::close() }}

@@ -77,6 +77,16 @@ class UsersController extends FrontController {
                 ->withInput()->withErrors($user->validatorMessages());
         }
 
+        if (Input::hasFile('image')) {
+            $result = $user->uploadImage('image');
+            if ($result) return $result;
+        }
+
+        if (Input::hasFile('avatar')) {
+            $result = $user->uploadImage('avatar');
+            if ($result) return $result;
+        }
+
         $user->save();
 
         $this->messageFlash(trans('app.updated', ['Profile']));
