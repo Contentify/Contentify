@@ -6,6 +6,11 @@ use Redirect, Input, File, DB, Config, View, BackController;
 
 class AdminConfigController extends BackController {
 
+    /**
+     * Path and file name of the log file.
+     */
+    const LOG_FILE = '/logs/laravel.log';
+
     protected $icon = 'cog.png';
     
     public function getIndex()
@@ -58,8 +63,10 @@ class AdminConfigController extends BackController {
     }
 
     /**
-     * This action method shows the phpinfo() command.
+     * This action method executes the phpinfo() command.
      * It uses a dirty hack to override the CSS classes phpinfo() uses.
+     *
+     * @return void
      */
     public function getInfo()
     {
@@ -92,6 +99,11 @@ class AdminConfigController extends BackController {
              "\n</div>\n");
     }
 
+    /**
+     * Optimize Database
+     * 
+     * @return void
+     */
     public function getOptimize()
     {
         if (! $this->checkAccessUpdate()) return;
@@ -111,6 +123,11 @@ class AdminConfigController extends BackController {
         $this->message(t('Database optimized.'));
     }
 
+    /**
+     * Create MySQL dump
+     * 
+     * @return void
+     */
     public function getExport()
     {
         if (! $this->checkAccessRead()) return;
@@ -140,18 +157,37 @@ class AdminConfigController extends BackController {
         }
     }
 
+    /**
+     * Show the log file content
+     * 
+     * @return void
+     */
     public function getLog()
     {
         if (! $this->checkAccessRead()) return;
 
-        $fileName = storage_path().'/logs/laravel.log';
-        if (File::exists($fileName))
-        {
+        $fileName = storage_path().self::LOG_FILE;
+        if (File::exists($fileName)) {
             $content = File::get($fileName, trans('config::log_empty'));
-            $this->pageOutput('<pre style="overflow: scroll">'.$content.'</pre>');
+            $this->pageView('config::show_log', compact('content'));
         } else {
             $this->message(trans('config::log_empty'));
         }
+    }
+
+    /**
+     * Delete the log file
+     * 
+     * @return void
+     */
+    public function clearLog()
+    {
+        $fileName = storage_path().self::LOG_FILE;
+        if (File::exists($fileName)) {
+            File::delete($fileName);
+        }
+
+        $this->message(trans('app.deleted', [$fileName]));
     }
 
 }

@@ -4,15 +4,13 @@
 (function ($) {
     'use strict';
 
-    /*
+    /**
      *  This function is available and called via $('...'').contentifySlider()
-     *  opts = options / parameters
+     *  @param {object} opts The options / parameters
      */
     $.fn.contentifySlider = function(opts) 
     {
-        /*
-         *  Go through all jQuery-objects the function might have received.
-         */
+        // Go through all jQuery-objects the function might have received.
         this.each(function() {
             new ContentifySlider(this, opts);
         });

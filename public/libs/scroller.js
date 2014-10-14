@@ -4,15 +4,13 @@
 (function ($) {
     'use strict';
 
-    /*
+    /**
      *  This function is available and called via $('...'').contentifyScroller()
-     *  opts = options / parameters
+     *  @param {object} opts The options / parameters
      */
     $.fn.contentifyScroller = function(opts) 
     {
-        /*
-         *  Go through all jQuery-objects the function might have received.
-         */
+        // Go through all jQuery-objects the function might have received.
         this.each(function() {
             new contentifyScroller(this, opts);
         });

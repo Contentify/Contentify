@@ -1,7 +1,9 @@
-<h2>Visitors</h2>
+@if (user()->hasAccess('users'))
+<h2 class="section">Visitors</h2>
 @widget('Visitors::Chart')
+@endif
 
-<h2>{{ trans('dashboard::quick_access') }}</h2>
+<h2 class="section">{{ trans('dashboard::quick_access') }}</h2>
 <div class="quick-access">     
     <div>
         <a href="{{ url('admin/news') }}"><img src="{{ asset('icons/48_news.png') }}" width="48" height="48" alt="Icon" />News</a>
