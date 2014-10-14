@@ -1,9 +1,11 @@
 <?php namespace Contentify;
 
 use Illuminate\Support\Facades\Config as LaravelConfig;
-use DB, DateTime;
+use Cache, DB, DateTime;
 
 class Config extends LaravelConfig {
+
+    const CACHE_KEY_PREFIX = 'caonfig.keys.';
 
     /**
      * The result of the last has() call
@@ -21,13 +23,17 @@ class Config extends LaravelConfig {
      */
     public static function has($key, $dbLookup = true)
     {
-        // LaravelConfig::has() will return true for an invalid (= not namespaced) key! So we don't trust has() here.
+        // LaravelConfig::has() will return true for an invalid (=not namespaced) key! So we can't trust has() blindly.
         if ((strpos($key, '.') !== false or strpos($key, '::') !== false) and LaravelConfig::has($key)) {
             return true;
         } elseif ($dbLookup) {
-            self::$lastResult = DB::table('config')->whereName($key)->first(); // Temporarily save the result 
-            
-            return (self::$lastResult != null);   
+            if (Cache::has(self::CACHE_KEY_PREFIX.$key)) {
+                return true;
+            } else {
+                self::$lastResult = DB::table('config')->whereName($key)->first(); // Temporarily save the result 
+                
+                return (self::$lastResult != null);   
+            }
         } else {
             return false;
         }             
@@ -43,11 +49,17 @@ class Config extends LaravelConfig {
      */
     public static function get($key, $default = null, $dbLookup = true)
     {
-        // LaravelConfig::has() will return true for an invalid (= not namespaced) key! So we don't trust has() here.
+        // LaravelConfig::has() will return true for an invalid (=not namespaced) key! So we can't trust has() blindly.
         if ((strpos($key, '.') !== false or strpos($key, '::') !== false) and LaravelConfig::has($key)) {
             return LaravelConfig::get($key, $default);
         } elseif ($dbLookup and self::has($key)) {
-            return self::$lastResult->value;
+            if (Cache::has(self::CACHE_KEY_PREFIX.$key)) {
+                return Cache::get(self::CACHE_KEY_PREFIX.$key);
+            } else {
+                Cache::put(self::CACHE_KEY_PREFIX.$key, self::$lastResult->value, 60);
+
+                return self::$lastResult->value;
+            }
         } else {
             return $default;
         }
@@ -74,6 +86,8 @@ class Config extends LaravelConfig {
         if ($result == 0) {
             DB::table('config')->insert(array('name' => $key, 'value' => $value, 'updated_at' => new DateTime()));
         }
+
+        Cache::put(self::CACHE_KEY_PREFIX.$key, $value, 60);
     }
 
     /**
@@ -85,5 +99,7 @@ class Config extends LaravelConfig {
     public function delete($key)
     {
         $result = DB::table('config')->whereName($key)->delete();
+
+        Cache::forget(self::CACHE_KEY_PREFIX.$key);
     }
 }
