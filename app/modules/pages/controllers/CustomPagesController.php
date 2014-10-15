@@ -15,7 +15,8 @@ class CustomPagesController extends FrontController {
     /**
      * Show a custom page
      * 
-     * @param  int $id The id of the custom page
+     * @param  int      $id     The ID of the custom page
+     * @param  string   $slug   The unique slug
      * @return void
      */
     public function show($id, $slug = null)
@@ -38,14 +39,20 @@ class CustomPagesController extends FrontController {
         $this->pageView('pages::show_custom_page', compact('customPage'));
     }
 
+    /**
+     * Show a custom page by slug instead of ID
+     * 
+     * @param  string $slug The unique slug
+     * @return void
+     */
     public function showBySlug($slug)
     {
         $this->show(null, $slug);
     }
 
     /**
-     * Show the default imprint page taht includes
-     * notes about the CMS.
+     * Show the default imprint page that includes
+     * infos about the CMS.
      * 
      * @return void
      */

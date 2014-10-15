@@ -1,7 +1,7 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use InterImage, Redirect, Input, Validator, Sentry, Session;
+use File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
 
@@ -40,9 +40,6 @@ class User extends SentryUser {
         'drink',
         'music',
         'film',
-
-        'image',
-        'avatar',
     ];
 
     /**
@@ -244,15 +241,24 @@ class User extends SentryUser {
         if (! $imgsize[2]) {
             return Redirect::route('users.edit', [$this->id])
             ->withInput()->withErrors([trans('app.invalid_image')]);
-        }        
+        }
 
-        $filePath           = public_path().'/uploads/users/';
+        $filePath = public_path().'/uploads/users/';
+
+        if (File::exists($filePath.$this->getOriginal($fieldName))) {
+            File::delete($filePath.$this->getOriginal($fieldName));
+        }
+
         $fileName           = $this->id.'_'.$fieldName.'.'.$extension;
         $uploadedFile       = $file->move($filePath, $fileName);
         $this->$fieldName   = $fileName;
         $this->save();
 
         if ($fieldName == 'image') {
+            if (File::exists($filePath.'60/'.$this->getOriginal($fieldName))) {
+                File::delete($filePath.'60/'.$this->getOriginal($fieldName));
+            }
+
             InterImage::make($filePath.'/'.$fileName)->resize(60, 60, function ($constraint) {
                                         $constraint->aspectRatio();
                                     })->save($filePath.'60/'.$fileName);

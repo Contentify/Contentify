@@ -24,7 +24,7 @@ class NewsController extends FrontController {
             'tableRow'  => function($news)
             {
                 return [
-                    HTML::link(URL::route('news.show', [$news->id]), $news->title),
+                    HTML::link(url('news/'.$news->id.'/'.$news->slug), $news->title),
                     $news->newscat->title,
                     $news->created_at
                 ];
@@ -52,12 +52,17 @@ class NewsController extends FrontController {
     /**
      * Show a news
      * 
-     * @param  int $id The id of the news
+     * @param  int      $id     The ID of the news
+     * @param  string   $slug   The unique slug
      * @return void
      */
-    public function show($id)
+    public function show($id, $slug = null)
     {
-        $news = News::whereId($id)->published()->firstOrFail();
+        if ($id) {
+            $news = News::whereId($id)->published()->firstOrFail();
+        } else {
+            $news = News::whereSlug($slug)->published()->firstOrFail();
+        }
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($news->internal and ! $hasAccess) {
@@ -71,6 +76,17 @@ class NewsController extends FrontController {
         $this->openGraph($news->openGraph());
 
         $this->pageView('news::show', compact('news'));
+    }
+
+    /**
+     * Show a news by slug instead of ID
+     * 
+     * @param  string $slug The unique slug
+     * @return void
+     */
+    public function showBySlug($slug)
+    {
+        $this->show(null, $slug);
     }
 
     public function globalSearch($subject)
