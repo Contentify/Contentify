@@ -81,6 +81,22 @@ App::down(function()
 
 /*
 |--------------------------------------------------------------------------
+| Tracking Execution Time
+|--------------------------------------------------------------------------
+|
+| Log the app execution time
+|
+*/
+
+App::finish(function() {
+    if (Config::get('app.debug')) {
+        echo "<script>console.log('App finish: ".round((microtime(true) - LARAVEL_START) * 1000, 3)." ms')</script>";
+    }
+});
+
+
+/*
+|--------------------------------------------------------------------------
 | Require The Custom Validators File
 |--------------------------------------------------------------------------
 |

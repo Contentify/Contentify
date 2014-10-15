@@ -92,6 +92,9 @@ Route::post('install', 'InstallController@index');
  */
 Route::get('test', function()
 { 
+    $ms = App\Modules\Matches\Models\MatchScore::findOrFail(1);
+    dd($ms->match->match_scores[0]);
+
     //$fg = new FormGenerator();
     //return '<pre>'.$fg->generate('matches').'</pre>';
 });

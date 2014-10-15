@@ -14,3 +14,11 @@ If PHP cancels the database setup with a "Maximum execution time of 30 seconds e
 
 * Try to increase the excution time: Open the `php.ini` config file and set [max_execution_time](http://php.net/manual/de/info.configuration.php#ini.max-execution-time) to an appropriate value (or simply set it to 0).
 * Contact our support team. They will send you an SQL dump file with a database that's ready for use. Import this file, for example with [PHPMyAdmin](http://www.phpmyadmin.net/).
+
+# Alpha I
+
+## Bad Performance
+
+Laravel 4.2 fails in handling a huge amount of routes. Since Contentify has roughly 300 routes performance is weak. Execute the `php artisan routes` command in your console to witness the madness. Laravel 5 offers route caching which we expect to be a solution for this problem. From the docs: "This is primarily useful on applications with 100+ routes and typically makes this portion of your code 50x faster. Literally!" (http://laravel.com/docs/)
+
+Right now module route loading needs at least several hundreds of milliseconds.
