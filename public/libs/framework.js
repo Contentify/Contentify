@@ -149,6 +149,21 @@ $(document).ready(function()
             framework.alert('error', title, clearAll);
         }
 
+        this.alertRequestFailed = function (response)
+        {
+            var text = 'Error: Request failed. ';
+
+            if (response.status) {
+                text += 'Code: ' + response.status + '. ';
+            }
+
+            if (response.statusText) {
+                text += 'Message: "' + response.statusText + '"';
+            }
+
+            framework.alertError(text);
+        }
+
         /*
          * Add delete confirm dialogue
          */

@@ -80,8 +80,8 @@
             <a id="quicklink8" class="quicklink" href="{{ url('admin/matches') }}" title="Matches" style="left: 820px"><!-- empty --></a>
             
             <a id="quicklink9" class="quicklink" href="{{ url('admin/users') }}" title="Users" style="left: 851px"><!-- empty --></a>
-            <a id="quicklink10" class="quicklink" href="{{ url('admin/members') }}" title="Members" style="left: 871px"><!-- empty --></a>
-            <a id="quicklink11" class="quicklink" href="{{ url('admin/config') }}" title="Settings" style="left: 891px"><!-- empty --></a>
+            <a id="quicklink10" class="quicklink" href="{{ url('admin/members') }}" title="Team-Members" style="left: 871px"><!-- empty --></a>
+            <a id="quicklink11" class="quicklink" href="{{ url('admin/config') }}" title="Config" style="left: 891px"><!-- empty --></a>
         </header>
         <section id="content-wrapper" class="clearfix">
             <aside id="sidebar">
