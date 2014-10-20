@@ -36,7 +36,7 @@
             /**
              * Retursn the name of the currently selected provider
              * 
-     * @return {string} The provider's name
+             * @return {string} The provider's name
              */
             function getProvider()
             {
@@ -46,7 +46,7 @@
             /**
              * Get the YouTube video ID from a URL
              * @param  {string}         url The YouTube video URL
-     * @return {string|bool}    Returns the ID or false
+             * @return {string|bool}    Returns the ID or false
              */
             function getYoutubeId(url)
             {

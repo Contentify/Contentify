@@ -41,9 +41,10 @@
                 var text = '{{ trans('users::action_unbanned') }}';
             }
             $('.banned-info').text(text);
-        }).error(function(response)
+        }).fail(function(response)
         {
-            $self.parent().html(response.responseText);
+            $self.parent().html('');
+            contentify.alertRequestFailed(response);
         });
     });
 </script>

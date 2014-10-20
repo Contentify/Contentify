@@ -52,7 +52,7 @@
             $previews.animate(
                 {marginLeft: $container.width() / 2 - index * $curImg.width() - $curImg.width() / 2}, 
                 {duration: 200, queue: false}
-                );
+            );
         });
 
         // Image previews: Scroll to the right

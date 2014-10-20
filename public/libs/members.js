@@ -20,7 +20,10 @@ $(document).ready(function()
                                 }).success(function(data)
                                 {
                                     render($td, userId, JSON.parse(data));
-                                })
+                                }).fail(function(response)
+                                {
+                                    contentify.alertRequestFailed(response);
+                                });
                             })
                     )
                     .append(
@@ -46,7 +49,10 @@ $(document).ready(function()
                                             }
                                         });
                                     })));
-                                })
+                                }).fail(function(response)
+                                {
+                                    contentify.alertRequestFailed(response);
+                                });
                             })
                     )
                     .append(' ' + name)
@@ -73,11 +79,17 @@ $(document).ready(function()
                                     }).success(function(data)
                                     {
                                         render($td, userId, JSON.parse(data));
-                                    })
+                                    }).fail(function(response)
+                                    {
+                                        contentify.alertRequestFailed(response);
+                                    });
                                 })
                             ));
                         }
-                    })
+                    }).fail(function(response)
+                    {
+                        contentify.alertRequestFailed(response);
+                    });
                 })
         );
     }

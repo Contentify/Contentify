@@ -20,9 +20,9 @@ $(document).ready(function()
         }).success(function(data)
         {
             $('#comments').append(data);
-        }).error(function(response)
+        }).fail(function(response)
         {
-            $('.create-comment').html(response.responseText);
+            contentify.alertRequestFailed(response);
         });
     });
 
@@ -58,14 +58,15 @@ $(document).ready(function()
                     var $el = $self.parent().html(data);
                     $el.find('.edit').click(editClickHandler);
                     $el.find('.delete').click(editClickHandler);
-                }).error(function(response)
+                }).fail(function(response)
                 {
                      $self.parent().html(response.responseText);
                 });
             });
-        }).error(function(response)
+        }).fail(function(response)
         {
-            $self.parent().html(response.responseText);
+            $self.parent().html('');
+            contentify.alertRequestFailed(response);
         });
     };
 
@@ -88,9 +89,10 @@ $(document).ready(function()
         {
             var $textarea    = $('.create-comment textarea');
             $textarea.val($textarea.val() + '[quote' + creator + ']' + comment.text + '[/quote]\n').focus();
-        }).error(function(response)
+        }).fail(function(response)
         {
-            $self.parent().html(response.responseText);
+            $self.parent().html('');
+            contentify.alertRequestFailed(response);
         });
     };
 
@@ -109,9 +111,10 @@ $(document).ready(function()
         }).success(function()
         {
             $self.parent().remove();
-        }).error(function(response)
+        }).fail(function(response)
         {
-             $self.parent().html(response.responseText);
+             $self.parent().html('');
+             contentify.alertRequestFailed(response);
         });
     };
 
@@ -136,14 +139,13 @@ $(document).ready(function()
         {
             $('#comments').html(data);
 
-
             $('.comment .edit').click(editClickHandler);
             $('.comment .quote').click(quoteClickHandler);
             $('.comment .delete').click(deleteClickHandler);
             $('#comments .pagination a').click(paginateClickHandler);
-        }).error(function(response)
+        }).fail(function(response)
         {
-
+            contentify.alertRequestFailed(response);
         });
     };
 
