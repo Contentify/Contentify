@@ -170,6 +170,10 @@ ul.pagination li.disabled { display: none }
 .page-members div.data { display: none }
 .page-members td a { cursor: pointer; }
 
+.page-matches .scores .item { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; margin-right: 10px; cursor: pointer; }
+.page-matches .scores .item .score { font-weight: bold }
+.page-matches .scores .add-new { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; font-weight: bold; cursor: pointer;}
+
 .page-dashboard #chart { margin: 0px 0px 20px 5%; width: 90%; height: 200px }
 .page-dashboard .quick-access div { width: 84px; float: left; margin: 0px 13px 20px 13px; padding: 5px 0px; border: 1px solid #EEEEEE; border-radius: 5px; text-align: center;  }
 .page-dashboard .quick-access img { display: block; padding-left: 18px }

@@ -1,8 +1,8 @@
 {
-    "enabled": false,
+    "enabled": true,
     "admin-nav": [
         {
-            "icon": "soccer.png",
+            "icon": "sport_soccer.png",
             "category": 3,
             "position": 1            
         }

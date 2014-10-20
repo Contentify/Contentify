@@ -382,6 +382,7 @@ class InstallController extends Controller {
         {
             $table->integer('left_score')->default(0);
             $table->integer('right_score')->default(0);
+            $table->timestamps();
         }, ['match_id', 'map_id'], false);
  
         $this->create('matches', function($table)

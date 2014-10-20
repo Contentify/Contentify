@@ -16,6 +16,7 @@
 
     {{ HTML::title($title) }}
 
+    <link rel="icon" type="image/png" href="{{ asset('img/logo_180.png') }}" />{{-- Opera Speed Dial Icon --}}
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{{ asset('rss/news.xml') }}">
 
@@ -37,13 +38,16 @@
 
         <div id="mid-container" class="clearfix">
             <div id="content">
+                @widget('Slides::Slides', ['categoryId' => 1])
+
                 @if (Session::get('_message'))
                     <div class="ui-message">
                         {{ Session::get('_message') }}
                     </div>
                 @endif
 
-                @widget('Slides::Slides', ['categoryId' => 1])
+                {{-- Render JavaScript alerts here --}}
+                <div class="alert-area"></div>                
 
                 <section class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
                     @if (isset($page))
@@ -72,6 +76,14 @@
                 <br>
                 <h3>Latest News:</h3>
                 @widget('News::News')
+
+                <br>
+                <h3>Featured Match:</h3>
+                @widget('Matches::FeaturedMatch')
+
+                <br>
+                <h3>Latest Matches:</h3>
+                @widget('Matches::Matches')
 
                 <br>
                 <h3>Partners:</h3>
