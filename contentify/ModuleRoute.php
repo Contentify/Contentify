@@ -29,7 +29,7 @@ class ModuleRoute {
     protected $controllerPath;
 
     /**
-     * Set the context (name) of the module.
+     * Sets the context (name) of the module.
      * 
      * @param string $moduleName Name or path of the module.
      * @return void
@@ -55,7 +55,7 @@ class ModuleRoute {
     }
 
     /**
-     * Bind a model to a route
+     * Binds a model to a route
      * 
      * @param string $modelName The name of the model (without namespace)
      * @return Illuminate\Routing\Route
@@ -66,7 +66,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create a route for method get.
+     * Creates a route for method "get".
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -78,7 +78,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create a route for method post.
+     * Creates a route for method "post".
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -90,7 +90,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create a route for method put.
+     * Creates a route for method "put".
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -102,7 +102,43 @@ class ModuleRoute {
     }
 
     /**
-     * Create a route for method any.
+     * Creates a route for method "patch".
+     * 
+     * @param  string $route
+     * @param  mixed  $target
+     * @return Illuminate\Routing\Route
+     */
+    public function patch($route, $target)
+    {
+        return $this->createRoute('patch', $route, $target);
+    }
+
+    /**
+     * Creates a route for method "delete".
+     * 
+     * @param  string $route
+     * @param  mixed  $target
+     * @return Illuminate\Routing\Route
+     */
+    public function delete($route, $target)
+    {
+        return $this->createRoute('delete', $route, $target);
+    }
+
+    /**
+     * Creates a route for method "options".
+     * 
+     * @param  string $route
+     * @param  mixed  $target
+     * @return Illuminate\Routing\Route
+     */
+    public function options($route, $target)
+    {
+        return $this->createRoute('options', $route, $target);
+    }
+
+    /**
+     * Creates a route for method "any".
      * 
      * @param  string $route
      * @param  mixed  $target
@@ -114,7 +150,7 @@ class ModuleRoute {
     }
 
     /**
-     * Create a route for several methods.
+     * Creates a route for several methods.
      *
      * @param  array  $methods
      * @param  string $route
@@ -136,8 +172,6 @@ class ModuleRoute {
      */
     public function controller($route, $target, $parameters = array())
     {
-        //if (Config::get('app.debug')) $_SESSION['ModuleRoute.controller'] = $target; // Debugging
-
         Route::controller($route, $this->controllerPath.$target, $parameters);
     }
 
@@ -151,13 +185,11 @@ class ModuleRoute {
      */
     public function resource($route, $target, $parameters = array())
     {
-        //if (Config::get('app.debug')) $_SESSION['ModuleRoute.resource'] = $target; // Debugging
-
         Route::resource($route, $this->controllerPath.$target, $parameters);
     }
 
     /**
-     * Create the route. Add paths.
+     * Creates the route. Adds paths.
      * 
      * @param  string|array             $methods
      * @param  string                   $route
@@ -166,8 +198,6 @@ class ModuleRoute {
      */
     protected function createRoute($methods, $route, $target)
     {
-        //if (Config::get('app.debug')) $_SESSION['ModuleRoute.route'] = $target; // Debugging
-
         /*
          * Ignore closures:
          */
