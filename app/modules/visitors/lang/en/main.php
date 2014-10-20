@@ -11,6 +11,11 @@ return array(
     |
     */
    
-    'visitors'       => 'Visitors',
+    'visitors'      => 'Visitors',
+
+    'today'         => 'Today',
+    'yesterday'     => 'Yesterday',
+    'month'         => 'Month',
+    'total'         => 'Total',
 
 );

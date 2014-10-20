@@ -92,6 +92,10 @@
                 <br>
                 <h3>Advert:</h3>
                 @widget('Adverts::Advert', ['categoryId' => 1])
+
+                <br>
+                <h3>Visitors:</h3>
+                @widget('Visitors::Visitors')
             </aside>
         </div>
     </div>
