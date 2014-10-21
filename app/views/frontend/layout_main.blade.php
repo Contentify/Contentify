@@ -27,7 +27,7 @@
     {{ HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}
     <![endif]-->
     {{ HTML::script('libs/jquery-1.10.2.min.js') }}
-    {{ HTML::script('libs/framework.js') }}
+    {{ HTML::script('libs/contentify.js') }}
     {{ HTML::script('libs/frontend.js') }}
 </head>
 <body>

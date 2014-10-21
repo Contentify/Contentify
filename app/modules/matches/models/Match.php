@@ -60,6 +60,7 @@ class Match extends BaseModel {
 
     /**
      * Array with the names of available match states.
+     * // TODO: Localization?
      * @var array
      */
     public static $states = [

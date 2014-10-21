@@ -39,7 +39,7 @@
     {{ HTML::script('libs/datetime/picker.min.js') }}
     {{ HTML::script('libs/tags/bootstrap-tagsinput.js') }}
     {{ HTML::script('libs/ckeditor/ckeditor.js') }}
-    {{ HTML::script('libs/framework.js') }}
+    {{ HTML::script('libs/contentify.js') }}
     {{ HTML::script('libs/backend.js') }}
 </head>
 <body>
