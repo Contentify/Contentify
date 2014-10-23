@@ -258,7 +258,8 @@ class BaseModel extends Eloquent {
 
             case self::BELONGS_TO_MANY:
                 $verifyArgs(array('table', 'foreignKey', 'otherKey'));
-                $relationship = $this->$relationType($relation[1], $relation['table'], $relation['foreignKey'], $relation['otherKey']);
+                $relationship = $this->$relationType($relation[1], $relation['table'], 
+                    $relation['foreignKey'], $relation['otherKey']);
                 if(isset($relation['pivotKeys']) && is_array($relation['pivotKeys']))
                     $relationship->withPivot($relation['pivotKeys']);
                 if(isset($relation['timestamps']) && $relation['timestamps']==true)

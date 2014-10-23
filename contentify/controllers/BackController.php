@@ -145,7 +145,8 @@ abstract class BackController extends BaseController {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); 
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, function ($constraint) {
+                            InterImage::make($filePath.'/'.$fileName)
+                                ->resize($thumbnail, $thumbnail, function ($constraint) {
                                     $constraint->aspectRatio();
                                 })->save($filePath.$thumbnail.'/'.$fileName); 
                         }
@@ -228,7 +229,8 @@ abstract class BackController extends BaseController {
                                     DB::table($relation['table'])->insert($insertion);
                                 }
                             } else {
-                                Log::warning("Form tries to fill guarded pivot table '$relation[table]' for relation '$name'.");
+                                Log::warning("Form tries to fill guarded pivot table '$relation[table]' \
+                                    for relation '$name'.");
                             }
 
                             break;
@@ -350,7 +352,8 @@ abstract class BackController extends BaseController {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails');
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)->resize($thumbnail, $thumbnail, function ($constraint) {
+                            InterImage::make($filePath.'/'.$fileName)
+                                ->resize($thumbnail, $thumbnail, function ($constraint) {
                                     $constraint->aspectRatio();
                                 })->save($filePath.$thumbnail.'/'.$fileName); 
                         }

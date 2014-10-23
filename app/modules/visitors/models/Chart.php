@@ -19,7 +19,8 @@ class Chart {
         $month      = date('m', $datetime);
         $year       = date('Y', $datetime);
         $dataSet    = '';
-        $days       = DB::table('visits')->select(DB::raw('SUM(user_agents) AS visitors, DAY(visited_at) AS day, visited_at AS date'))
+        $days       = DB::table('visits')
+                        ->select(DB::raw('SUM(user_agents) AS visitors, DAY(visited_at) AS day, visited_at AS date'))
                         ->where(DB::raw('MONTH(visited_at)'), '=', $month)
                         ->where(DB::raw('YEAR(visited_at)'), '=', $year)
                         ->orderBy('day', 'ASC')->groupBy('visited_at')->get();
@@ -30,7 +31,7 @@ class Chart {
                 if ($day->day == $i) {
                     $visitors       = $day->visitors;
                     $this->maxDay   = $i;
-                    $day->date      = new Carbon($day->date); // Replace with a Carbon instance - also enables localisation.
+                    $day->date      = new Carbon($day->date); // Replace with a Carbon instance (enables localisation)
                     break;
                 }
             }

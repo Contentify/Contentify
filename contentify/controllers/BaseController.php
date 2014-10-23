@@ -255,7 +255,7 @@ abstract class BaseController extends Controller {
             'brightenFirst' => true,                            // True / false
             'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
             'order'         => 'desc',                          // Asc / desc
-            'filter'        => false,                           // Bool: Apply filters? (Calls the model's scopeFilter method)
+            'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
             'dataSource'    => null,                            // Null (means: take from database) or Closure
             'infoText'      => ''                               // String (may include HTML tags) with extra infos
         ];
@@ -317,7 +317,7 @@ abstract class BaseController extends Controller {
         /*
          * Switch recycle bin mode: Show soft deleted models if recycle bin mode is enabled.
          */
-        if ($userInterface == 'admin' and (new $modelClass)->isSoftDeleting()) { // Create an model because isSoftDeleting() is tied to an instance
+        if ($userInterface == 'admin' and (new $modelClass)->isSoftDeleting()) { // isSoftDeleting() is instance-tied
             $recycleBinMode = Input::get('binmode');
             if ($recycleBinMode !== null) {
                 Session::put('recycleBinMode', (bool) $recycleBinMode);

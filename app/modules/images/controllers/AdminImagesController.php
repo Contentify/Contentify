@@ -28,7 +28,8 @@ class AdminImagesController extends BackController {
                     $image->uploadPath().'100/'.$image->image, 
                     'Image-Preview', ['class' => 'image']
                 );
-                $preview = '<a href="'.$image->uploadPath().$image->image.'" target="_blank">'.$imgCode.'</a><br>'.$image->tags;
+                $preview = '<a href="'.$image->uploadPath().$image->image.'" target="_blank">'.$imgCode.'</a>'
+                            .'<br>'.$image->tags;
                 if ($image->gallery) {
                     $preview .= '<br>'.link_to('galleries/'.$image->gallery->id, 'Gallery: '.$image->gallery->title);
                 }
