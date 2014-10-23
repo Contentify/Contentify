@@ -10,9 +10,4 @@ class SettingsBag extends BaseModel {
         //'app_analytics' => 'required',
     ];
 
-    public function getFillable()
-    {
-        return $this->fillable;
-    }
-
 }

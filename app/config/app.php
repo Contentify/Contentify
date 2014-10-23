@@ -253,6 +253,7 @@ return array(
         'BaseController'        => 'Contentify\Controllers\BaseController',
         'FrontController'       => 'Contentify\Controllers\FrontController',
         'BackController'        => 'Contentify\Controllers\BackController',
+        'ConfigController'      => 'Contentify\Controllers\ConfigController',
         'Widget'                => 'Contentify\Controllers\Widget',
 
         'BaseModel'             => 'Contentify\Models\BaseModel',
@@ -260,6 +261,7 @@ return array(
         'Group'                 => 'Contentify\Models\Group',
         'StiModel'              => 'Contentify\Models\StiModel',
         'User'                  => 'Contentify\Models\User',
+        'ConfigBag'             => 'Contentify\Models\ConfigBag',
 
         // Vendor classes:       
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
