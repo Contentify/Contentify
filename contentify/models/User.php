@@ -237,7 +237,12 @@ class User extends SentryUser {
         $file       = Input::file($fieldName);
         $extension  = $file->getClientOriginalExtension();
 
-        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
+        try {
+            $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
+        } catch (Exception $e) {
+            $imgsize = [2 => null];
+        }
+
         if (! $imgsize[2]) {
             return Redirect::route('users.edit', [$this->id])
             ->withInput()->withErrors([trans('app.invalid_image')]);
