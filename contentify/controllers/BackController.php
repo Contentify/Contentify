@@ -113,7 +113,12 @@ abstract class BackController extends BaseController {
                     $error      = false;
 
                     if (strtolower($fieldInfo['type']) == 'image') {
-                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
+                        try {
+                            $imgsize = getimagesize($file->getRealPath());     
+                        } catch (Exception $e) {
+                            $imgsize = [2 => null];
+                        }
+
                         if (! $imgsize[2]) {
                             $error = trans('app.invalid_image');
                         }
@@ -316,7 +321,12 @@ abstract class BackController extends BaseController {
                     $error      = false;
 
                     if (strtolower($fieldInfo['type']) == 'image') {
-                        $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
+                        try {
+                            $imgsize = getimagesize($file->getRealPath());     
+                        } catch (Exception $e) {
+                            $imgsize = [2 => null];
+                        }
+
                         if (! $imgsize[2]) {
                             $error = trans('app.invalid_image');
                         }
@@ -382,7 +392,12 @@ abstract class BackController extends BaseController {
         if (! $this->checkAccessDelete()) return;
 
         $modelClass = $this->modelClass;
-        $model      = $modelClass::withTrashed()->find($id);
+
+        if (method_exists($modelClass,'withTrashed')) {
+            $model  = $modelClass::withTrashed()->find($id);
+        } else {
+            $model  = $modelClass::find($id);
+        }
 
         if (! $model->modifiable()) {
             throw new Exception("Error: Model $modelClass is not modifiable.");
@@ -391,7 +406,9 @@ abstract class BackController extends BaseController {
         /*
          * Delete related files even if it's only a soft deletion.
          */
-        if (! $model->trashed() and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
+        if ((! method_exists($modelClass,'withTrashed') or ! $model->trashed()) 
+            and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
+            
             $filePath = $model->uploadPath(true);
 
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
@@ -419,7 +436,7 @@ abstract class BackController extends BaseController {
             }
         }
 
-        if (! $model->trashed()) {
+        if (! method_exists($modelClass,'withTrashed') or ! $model->trashed()) {
             $modelClass::destroy($id); // Delete model. If soft deletion is enabled for this model it's a soft deletion
         } else {
             $model->forceDelete(); // Finally delete this model
@@ -439,7 +456,13 @@ abstract class BackController extends BaseController {
         if (! $this->checkAccessDelete()) return;
 
         $modelClass = $this->modelClass;
-        $model      = $modelClass::withTrashed()->find($id);
+
+        if (method_exists($modelClass,'withTrashed')) {
+            $model  = $modelClass::withTrashed()->find($id);
+        } else {
+            $model  = $modelClass::find($id);
+        }
+
         $model->restore();
 
         $this->messageFlash(trans('app.restored', [$this->modelName]));
