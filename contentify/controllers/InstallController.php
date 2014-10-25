@@ -61,6 +61,20 @@ class InstallController extends Controller {
                  */
                 $adminGroup = Sentry::findGroupById(5); 
                 $user->addGroup($adminGroup);
+                
+                /*
+                 * Add user to group "Admins"
+                 */
+                $adminGroup = Sentry::findGroupById(5); 
+                $user->addGroup($adminGroup);
+                
+                /*
+                 * Delete the file taht indicates the app is not installed yet
+                 */
+                $filename = storage_path('meta/.install');
+                if (File::exists($filename)) {
+                    File::delete($filename);
+                }
 
                 $title      = 'Installation Complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
@@ -163,7 +177,7 @@ class InstallController extends Controller {
                 $step       = 0; // Better save than sorry! (E.g. if step was -1)
                 $title      = 'Welcome To Contentify';
                 $content    = '<p>Please click on the "Next" button to start the installation.</p>
-                              <p><a href="http://contentify.it/docs" target="_blank">Take a look at our documentation 
+                              <p><a href="'.url('../daux/Development/Installation').'" target="_blank">Take a look at our documentation 
                               (chapter "Installation") if you need help.</a></p>';
         }
         

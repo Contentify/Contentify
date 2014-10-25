@@ -85,7 +85,7 @@
                         url: contentify.baseUrl + 'admin/matches/scores/store',
                         type: 'POST',
                         data: {
-                            match_id:       "1345{{ $model->id }}",
+                            match_id:       "{{ $model->id }}",
                             map_id:         $('#map_id').val(),
                             left_score:     $('input[name=left_score]').val(),
                             right_score:    $('input[name=right_score]').val(),

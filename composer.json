@@ -26,7 +26,7 @@
 			"app/modules"
 		],
         "psr-4": {
-            "Contentify\\": "Contentify"
+            "Contentify\\": "contentify"
         }
 	},
 	"scripts": {

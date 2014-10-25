@@ -114,3 +114,15 @@ function pageClass()
     $pageClass = str_replace('admin-', '', $pageClass);
     return ! empty( $pageClass ) && $pageClass != '-' ? $pageClass : 'homepage'; 
 }
+
+/**
+ * Returns true if the application is installed
+ * 
+ * @return bool
+ */
+function installed()
+{
+    $path = storage_path('meta/.install');
+
+    return ! File::exists($path);
+}

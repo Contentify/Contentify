@@ -8,7 +8,6 @@ class AuthConfigBag extends ConfigBag {
 
     protected $fillable = [
         'registration',
-        'unicorns',
     ];
 
     protected $rules = [

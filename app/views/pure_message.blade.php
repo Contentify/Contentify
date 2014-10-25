@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
 
-    <base href="{{ Config::get('application.baseurl') }}">
+    <base href="{{ url('/') }}">
 
     <title>{{ Config::get('app.title') }}</title>
 

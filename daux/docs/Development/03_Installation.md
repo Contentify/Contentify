@@ -6,7 +6,7 @@
 
 You will also need a MySQL Database and it's recommended to activate Apache's mod_rewrite module (or Nginx' HttpRewriteModule).
 
-We strongly recommend to use Webspace that you can configure. You should be able to create vhosts at least. And there is a command-line interface called [Artisan](http://laravel.com/docs/artisan). You should ensure you can run it. With Artisan you may [enable maintenance mode](http://laravel.com/docs/configuration#maintenance-mode).
+We strongly recommend to use webspace that you can configure. You should be able to create vhosts at least. And there is a command-line interface called [Artisan](http://laravel.com/docs/artisan). You should ensure you can run it. With Artisan you may [enable maintenance mode](http://laravel.com/docs/configuration#maintenance-mode).
 
 # Install Missing PHP Extensions
 
