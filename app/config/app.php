@@ -165,7 +165,8 @@ return array(
         'Contentify\ServiceProviders\CaptchaServiceProvider',
         'Contentify\ServiceProviders\CommentsServiceProvider',
 
-        // Vendor service prodivers:
+        // Vendor service providers:
+        'ChrisKonnertz\OpenGraph\OpenGraphServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Creolab\LaravelModules\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
@@ -264,7 +265,7 @@ return array(
         'ConfigBag'             => 'Contentify\Models\ConfigBag',
 
         // Vendor classes:       
-        'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
+        'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraphFacade',
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Rss'                   => 'Thujohn\Rss\RssFacade',

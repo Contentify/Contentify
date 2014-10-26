@@ -72,7 +72,7 @@ function get_image_url($image)
         $imageUrl .= '.png';
     }
 
-    if (! starts_with($imageUrl, 'http://')) {
+    if (strpos($imageUrl, '://') === false) {
         $imageUrl = asset($imageUrl);
     }
 

@@ -10,6 +10,7 @@ $(document).ready(function()
          * Initizalize meta variables
          */
         this.baseUrl    = $('meta[name="base-url"]').attr('content') + '/';
+        this.assetUrl   = $('meta[name="asset-url"]').attr('content') + '/';
         this.csrfToken  = $('meta[name="csrf-token"]').attr('content');
         this.locale     = $('meta[name="locale"]').attr('content');
         this.dateFormat = $('meta[name="date-format"]').attr('content');
