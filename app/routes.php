@@ -88,15 +88,20 @@ Route::get('install', 'InstallController@index');
 Route::post('install', 'InstallController@index');
 
 /*
+ * Execute Cron Jobs
+ */
+Route::get('jobs', function()
+{
+    Jobs::run();
+
+    return Response::make('1', 200);
+});
+
+/*
  * Testing
  */
 Route::get('test', function()
 { 
-    OpenGraph::title('Apple Cookie');
-    dd(OpenGraph::renderTags());
-    //$ms = App\Modules\Matches\Models\MatchScore::findOrFail(1);
-    //dd($ms->match->match_scores[0]);
-
     //$fg = new FormGenerator();
     //return '<pre>'.$fg->generate('matches').'</pre>';
 });

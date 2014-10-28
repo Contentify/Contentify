@@ -1,9 +1,9 @@
 {{ Form::errors($errors) }}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.videos.update', $model->id], 'method' => 'PUT']) }}
+    {{ Form::model($model, ['route' => ['admin.streams.update', $model->id], 'method' => 'PUT']) }}
 @else
-    {{ Form::open(['url' => 'admin/videos']) }}
+    {{ Form::open(['url' => 'admin/streams']) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
 
@@ -44,23 +44,30 @@
             }
 
             /**
-             * Get the YouTube video ID from a URL
-             * @param  {string}         url The YouTube video URL
+             * Get the Twitch stream ID from a URL
+             * @param  {string}         url The Twitch stream URL
              * @return {string|bool}    Returns the ID or false
              */
-            function getYoutubeId(url)
+            function getTwitchId(url)
             {
-                var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-                return (url.match(p)) ? RegExp.$1 : false ;
+                var pos = url.lastIndexOf('/');
+                if (pos === -1) return false;
+
+                var id = url.substr(pos + 1);
+
+                if (id) {
+                    return id;
+                }
+                return false;
             }
 
             $('#url').keyup(function()
             {
-                if (providers.youtube) {
-                    var result = getYoutubeId($(this).val());
+                if (providers.twitch) {
+                    var result = getTwitchId($(this).val());
                     if (result !== false) {
                         $('#permanent_id').val(result);
-                        selectProvider('youtube');
+                        selectProvider('twitch');
                     }
                 }
             });
@@ -68,8 +75,8 @@
             $('#permanent_id').keyup(function()
             {
                 switch (getProvider()) {
-                    case 'youtube':
-                        $('#url').val('https://www.youtube.com/watch?v=' + $(this).val());
+                    case 'twitch':
+                        $('#url').val('http://www.twitch.tv/' + $(this).val());
                         break;
                 }
             });

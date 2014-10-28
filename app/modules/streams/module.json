@@ -1,0 +1,10 @@
+{
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "film_link.png",
+            "category": 2,
+            "position": 4            
+        }
+    ]
+}

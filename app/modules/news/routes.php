@@ -16,7 +16,8 @@ ModuleRoute::get(
 );
 ModuleRoute::post('admin/news/search', 'AdminNewsController@search');
 
-ModuleRoute::get('news', ['as' => 'news.show', 'uses' => 'NewsController@index']);
-ModuleRoute::get('news/{id}/{slug?}', 'NewsController@show')->where('id', '[0-9]+');
+ModuleRoute::get('news', 'NewsController@index');
+ModuleRoute::get('news/{id}/{slug?}', ['as' => 'news.show', 'uses' => 'NewsController@show'])
+    ->where('id', '[0-9]+');
 ModuleRoute::get('news/{slug}', 'NewsController@showBySlug');
 ModuleRoute::post('news/search', 'NewsController@search');

@@ -167,6 +167,7 @@ return array(
 
         // Vendor service providers:
         'ChrisKonnertz\OpenGraph\OpenGraphServiceProvider',
+        'ChrisKonnertz\Jobs\JobsServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Creolab\LaravelModules\ServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
@@ -267,6 +268,8 @@ return array(
         // Vendor classes:       
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraphFacade',
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
+        'Jobs'                  => 'ChrisKonnertz\Jobs\JobsFacade',
+        'Job'                   => 'ChrisKonnertz\Jobs\Job',
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image',

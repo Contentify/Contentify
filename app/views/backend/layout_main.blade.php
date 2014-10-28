@@ -107,7 +107,7 @@
                                 <div class="item"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/newscats', 'News-Categories') }}</div>
                                 <div class="item"><img src="{{ asset('icons/color_swatch.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/slides', 'Slides') }}</div>
                                 <div class="item"><img src="{{ asset('icons/film.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/videos', 'Videos') }}</div>
-                                <div class="item"><img src="{{ asset('icons/film_link.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=streams">Livestreams</a></div> 
+                                <div class="item"><img src="{{ asset('icons/film_link.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/streams', 'Streams') }}</div> 
                                 <div class="item"><img src="{{ asset('icons/coins.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/partners', 'Sponsors &amp; Partners') }}</div>
                                 <div class="item"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/adverts', 'Advertisement') }}</div>
                                 <div class="item"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=forumcats">Forum-Categories</a></div>

@@ -13,6 +13,7 @@
         "intervention/image": "dev-master",
         "chriskonnertz/open-graph": "dev-master",
         "chriskonnertz/bbcode": "dev-master",
+        "chriskonnertz/jobs": "dev-master",
         "watson/validating": "0.9.*"
 	},
 	"autoload": {
@@ -26,7 +27,8 @@
 			"app/modules"
 		],
         "psr-4": {
-            "Contentify\\": "contentify"
+            "Contentify\\": "contentify",
+            "ChrisKonnertz\\Jobs\\": "Jobs"
         }
 	},
 	"scripts": {

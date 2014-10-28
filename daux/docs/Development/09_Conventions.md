@@ -37,7 +37,7 @@ SQL does not offer an explicit way to give attributes a semantic meaning. Larave
 
 Please use English names for models - or at least a name that Laravel can singularize and pluralize.
 
-To seperate a "model class" and a "model object" we use the term "model class" and if we use the term "model" it refers to a "model object". A variable called "model class" contains the name of a model class with its namespace, whereas a variable called "model name" contains the name of a model class without the namespace.
+To seperate a "model class" and a "model object" we use the term "model class" here in Contentiverse and if we use the term "model" it refers to a "model object". A variable called "model class" contains the name of a model class with its namespace, whereas a variable called "model name" contains the name of a model class without the namespace.
 
 ## Session Variables
 
