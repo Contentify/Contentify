@@ -217,11 +217,39 @@ class InstallController extends Controller {
          * Deaticvate foreign key checks.
          * This is one way to delete table with foreign constraints.
          * Usually it's not possible to delete a table that has an attribute
-         * which is an foreign key of another table.
+         * which is a foreign key of another table.
          * Note that this is session-based, there is also a
          * global way.
          */
         DB::statement('SET foreign_key_checks = 0');
+
+
+        $this->create('forum_sections', function($table) 
+        { 
+            $table->boolean('root')->default(0);
+            $table->text('description')->nullable();
+            $table->integer('position')->default(0);
+            $table->boolean('internal')->default(false);
+            $table->integer('threads_count')->default(0);
+            $table->integer('posts_count')->default(0);
+        }, ['forum_section_id', 'latest_thread_id', 'team_id']);
+
+        $this->create('forum_threads', function($table) 
+        { 
+            $table->integer('posts_count')->default(0);
+            $table->boolean('sticky')->default(false);
+            $table->boolean('closed')->default(false);
+            $table->timestamp('started_at');
+            //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
+        }, ['forum_section_id']);
+
+        $this->create('forum_posts', function($table) 
+        { 
+            $table->text('text')->nullable();
+            $table->boolean('root')->default(0);
+        }, ['forum_thread_id'], ['slug']);
+
+        return;
 
         Schema::dropIfExists('config');
         Schema::create('config', function($table)
@@ -241,7 +269,7 @@ class InstallController extends Controller {
         $this->create('languages', function($table) 
         { 
             $table->string('code', 2);
-        });
+        }, [], ['slug']);
 
         $this->create('countries', function($table) 
         { 
@@ -344,7 +372,6 @@ class InstallController extends Controller {
         {
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
-            //$table->integer('position')->default(0);
             $table->string('provider');
         });
 
@@ -469,7 +496,8 @@ class InstallController extends Controller {
         ]);
 
         DB::table('languages')->insert([
-            ['id' => '1', 'title' => 'English', 'code' => 'en']
+            ['id' => '1', 'title' => 'English', 'code' => 'en'],
+            ['id' => '2', 'title' => 'Deutsch', 'code' => 'de']
         ]);
 
         DB::insert('INSERT INTO countries(title, code, icon) VALUES

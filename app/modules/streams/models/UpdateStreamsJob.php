@@ -9,7 +9,7 @@ class UpdateStreamsJob extends Job {
         $streams = Stream::all();
 
         /*
-         * Create a new array with stream sorted by provider
+         * Create a new array with streams sorted by provider
          */
         $streamsByProvider = [];
         foreach ($streams as $stream) {

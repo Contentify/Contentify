@@ -1,6 +1,7 @@
 <?php namespace App\Modules\Auth\Controllers;
 
-use Str, View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
+use App\Modules\Languages\Models\Language;
+use App, Lang, Str, View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {
 
@@ -38,14 +39,17 @@ class RegistrationController extends FrontController {
                     ->withInput()->withErrors(['message' => trans('app.captcha_invalid')]);
             }
 
+            $language = Language::whereCode(App::getLocale())->first();
+
             /*
              * Register user.
              */
             $user = Sentry::register([
-                'username'  => Input::get('username'),
-                'email'     => Input::get('email'),
-                'password'  => Input::get('password'),
-            ], AUTO_ACTIVATE);
+                'username'      => Input::get('username'),
+                'email'         => Input::get('email'),
+                'password'      => Input::get('password'),
+                'language_id'   => $language->id,
+            ], self::AUTO_ACTIVATE);
 
             $user->slug = Str::slug($user->username);
             $user->save();

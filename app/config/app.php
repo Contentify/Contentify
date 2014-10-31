@@ -166,7 +166,6 @@ return array(
         'Contentify\ServiceProviders\CommentsServiceProvider',
 
         // Vendor service providers:
-        'ChrisKonnertz\OpenGraph\OpenGraphServiceProvider',
         'ChrisKonnertz\Jobs\JobsServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Creolab\LaravelModules\ServiceProvider',
@@ -266,7 +265,7 @@ return array(
         'ConfigBag'             => 'Contentify\Models\ConfigBag',
 
         // Vendor classes:       
-        'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraphFacade',
+        'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
         'Jobs'                  => 'ChrisKonnertz\Jobs\JobsFacade',
         'Job'                   => 'ChrisKonnertz\Jobs\Job',

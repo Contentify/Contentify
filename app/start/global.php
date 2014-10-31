@@ -189,10 +189,10 @@ Jobs::addLazy('updateStreams', 'App\Modules\Streams\Models\UpdateStreamsJob');
 |
 */
 
-if (! Session::has('locale')) {
+if (! Session::has('app.locale')) {
     if (user()) {
-        Session::set('locale', user()->language->code);
-        App::setLocale(Session::get('locale'));
+        Session::set('app.locale', user()->language->code);
+        App::setLocale(Session::get('app.locale'));
     } else {
         if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -204,16 +204,16 @@ if (! Session::has('locale')) {
             });
 
             if (in_array($clientLanguage, $languages)) {
-                Session::set('locale', $clientLanguage);
+                Session::set('app.locale', $clientLanguage);
             } else {
-                Session::set('locale', Lang::getLocale());
+                Session::set('app.locale', Lang::getLocale());
             }
         } else {
-            Session::set('locale', Lang::getLocale());
+            Session::set('app.locale', Lang::getLocale());
         }
     }
 } else {
-    App::setLocale(Session::get('locale'));
+    App::setLocale(Session::get('app.locale'));
 }
 
 Carbon::setToStringFormat(trans('app.date_format'));

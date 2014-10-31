@@ -3,7 +3,7 @@
 use Cache, View, RuntimeException;
 
 /**
- * Backend Navi Generator class
+ * Backend Navigation Generator class
  */
 class BackNavGen {
 
@@ -35,6 +35,7 @@ class BackNavGen {
             if ($moduleNavItems) {
                 $counter = 0;
                 foreach ($moduleNavItems as $moduleNavItem) {
+                    // Set default values for... well for everything.
                     if (! isset($moduleNavItem['url'])) {
                         $counter++;
                         if ($counter > 1) {
@@ -56,6 +57,7 @@ class BackNavGen {
                     if (! isset($moduleNavItem['icon'])) {
                         $moduleNavItem['icon'] = 'newspaper.png';
                     }
+
                     $navItems[] = $moduleNavItem;
                 }
             }

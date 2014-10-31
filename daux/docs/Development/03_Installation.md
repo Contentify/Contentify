@@ -8,6 +8,30 @@ You will also need a MySQL Database and it's recommended to activate Apache's mo
 
 We strongly recommend to use webspace that you can configure. You should be able to create vhosts at least. And there is a command-line interface called [Artisan](http://laravel.com/docs/artisan). You should ensure you can run it. With Artisan you are ablte to [activate maintenance mode](http://laravel.com/docs/configuration#maintenance-mode).
 
+# Hosting
+
+If you do not have a hosting service so far or it does not meet the requirements listed above we suggest to give [DigitalOcean](http://www.digitalocean.com) a try. They offer an SSD server with 512 MB RAM and 20 GB disk space for only 5 USD per month.
+
+* Create a new droplet with Ubuntu. Choose to install the LAMP (Linux, Apache, MySQL and PHP) stack.
+* Connect to your server using an SSH client (e. g. [PuTTY](http://www.putty.org) for Windows)
+* Activate the mod_rewrite module: `sudo a2enmod rewrite`
+* Open `/etc/apache2/sites-available/000-default.conf` and add:
+
+```
+<Directory /var/www/>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    allow from all
+</Directory>
+```
+
+* Install phpMyAdmin: `sudo apt-get install phpmyadmin` It will ask you to tell it the MySQL password. You find it in `/etc/motd.tail`
+* Open `/etc/apache2/apache2.conf` and add `Include /etc/phpmyadmin/apache.conf`
+* Install the PHP mcrypt extension: `sudo php5enmod mcrypt`
+* Restart Apache: `sudo service apache2 restart`
+* Open phpMyAdmin (URL: `http://<ip>/phpmyadmin`, username: root) and create a new database. Name it `contentify`.
+
 # Install Missing PHP Extensions
 
 If PHP extensions are missing, you have to install them. The CMS cannot run without them being installed. Unfortunately installing PHP extesion can be exhausting. Therefore here are some hints.
@@ -30,7 +54,7 @@ Config files live in `app/config`. Important config files are:
 # Installation
 
 * (Download Contentify and configurate it)<!---* Run Composer with `php composer.phar update` to download the Laravel framework and to update dependencies ---><!---* Run package migrations with `php artisan migrate --package=cartalyst/sentry` --->
-* Set CHMOD 777 to these directories and their sub directories: `<contentify>/storage` and `<contentify>/public/uploads
+* Set CHMOD 777 to these directories and their sub directories: `<contentify>/storage`, `<contentify>/public/uploads` and `<contentify>/public/rss`
 * Run the installer. Example call: `http://localhost/contentify/install`
 
 The official Laravel docs have a [chapter covering the installation](http://laravel.com/docs/installation).
