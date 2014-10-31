@@ -46,7 +46,7 @@
             /**
              * Get the YouTube video ID from a URL
              * @param  {string}         url The YouTube video URL
-             * @return {string|bool}    Returns the ID or false
+             * @return {string|bool}        Returns the ID or false
              */
             function getYoutubeId(url)
             {
@@ -54,8 +54,27 @@
                 return (url.match(p)) ? RegExp.$1 : false ;
             }
 
+            /**
+             * Get the Vimeo video ID from a URL
+             * @param  {string}         url The Vimeo video URL
+             * @return {string|bool}        Returns the ID or false
+             */
+            function getVimeoId(url)
+            {
+                var p = /https?:\/\/(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/;
+                return (url.match(p)) ? RegExp.$3 : false ;
+            }
+
             $('#url').keyup(function()
             {
+                if (providers.vimeo) {
+                    var result = getVimeoId($(this).val());
+                    if (result !== false) {
+                        $('#permanent_id').val(result);
+                        selectProvider('vimeo');
+                    }
+                }
+
                 if (providers.youtube) {
                     var result = getYoutubeId($(this).val());
                     if (result !== false) {
@@ -65,11 +84,16 @@
                 }
             });
 
+            110030826
+
             $('#permanent_id').keyup(function()
             {
                 switch (getProvider()) {
                     case 'youtube':
                         $('#url').val('https://www.youtube.com/watch?v=' + $(this).val());
+                        break;
+                    case 'vimeo':
+                        $('#url').val('https://www.vimeo.com/' + $(this).val());
                         break;
                 }
             });

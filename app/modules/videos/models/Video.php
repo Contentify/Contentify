@@ -28,7 +28,7 @@ class Video extends BaseModel {
      * and add JS/HTML handling for the provider.
      * @var array
      */
-    public static $providers = ['youtube' => 'YouTube'];
+    public static $providers = ['youtube' => 'YouTube', 'vimeo' => 'Vimeo'];
 
     /**
      * Count the comments that are related to this video.
