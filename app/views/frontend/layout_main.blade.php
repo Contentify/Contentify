@@ -97,6 +97,10 @@
                 <br>
                 <h3>Visitors:</h3>
                 @widget('Visitors::Visitors')
+
+                                <br>
+                <h3>Streams:</h3>
+                @widget('Streams::Streams')
             </aside>
         </div>
     </div>
