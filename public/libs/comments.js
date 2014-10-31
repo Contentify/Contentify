@@ -3,11 +3,14 @@ $(document).ready(function()
     var foreignType = $('#comments').attr('data-foreign-type');
     var foreignId   = $('#comments').attr('data-foreign-id');
 
+    var $form       = $('.create-comment form');
+    var $textarea   = $('.create-comment textarea');
+
     $('.create-comment .save').click(function()
     {
         var $self   = $(this);
-        var text    = $('.create-comment textarea').val();
-        $('.create-comment form').remove();
+        var text    = $textarea.val();
+        $form.hide();
 
         $.ajax({
             url: contentify.baseUrl + 'comments/store',
@@ -40,21 +43,23 @@ $(document).ready(function()
             type: 'GET'
         }).success(function(comment)
         {
-            $('.create-comment textarea').val(comment.text).focus();
+            $form.show();
+            $textarea.val(comment.text).focus();
 
             $('.create-comment .save').click(function()
             {
+                $form.hide();
+
                 $.ajax({
                     url: contentify.baseUrl + 'comments/' + comment.id + '/update',
                     type: 'PUT',
                     data: { 
-                        text: $('.create-comment textarea').val(), 
+                        text: $textarea.val(), 
                         foreigntype: foreignType, 
                         foreignid: foreignId
                     }
                 }).success(function(data)
                 {
-                    $('.create-comment textarea').val('');
                     var $el = $self.parent().html(data);
                     $el.find('.edit').click(editClickHandler);
                     $el.find('.delete').click(editClickHandler);
@@ -70,7 +75,7 @@ $(document).ready(function()
         });
     };
 
-    $('.comment .edit').click(editClickHandler);
+    $('.page').on('click', '.comment .edit', editClickHandler);
 
     var quoteClickHandler = function(event)
     {
@@ -87,7 +92,6 @@ $(document).ready(function()
             type: 'GET'
         }).success(function(comment)
         {
-            var $textarea    = $('.create-comment textarea');
             $textarea.val($textarea.val() + '[quote' + creator + ']' + comment.text + '[/quote]\n').focus();
         }).fail(function(response)
         {
@@ -96,7 +100,7 @@ $(document).ready(function()
         });
     };
 
-    $('.comment .quote').click(quoteClickHandler);
+    $('.page').on('click', '.comment .quote', quoteClickHandler);
 
     var deleteClickHandler = function(event)
     {
@@ -118,7 +122,7 @@ $(document).ready(function()
         });
     };
 
-    $('.comment .delete').click(deleteClickHandler);
+    $('.page').on('click', '.comment .delete', deleteClickHandler);
 
     paginateClickHandler = function(event)
     {
