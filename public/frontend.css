@@ -99,7 +99,7 @@ h1.page-title { }
 .widget-partners img.filter:hover { filter: grayscale(0); -webkit-filter: grayscale(0); transition: all 0.2s ease; }
 
 .page-videos .video { float: left; width: 33%; text-align: center; }
-.page-videos .video img { width: 90% }
+.page-videos .video div { width: 90%; height: 150px; margin-left: auto; margin-right: auto; background-position: center; background-repeat: no-repeat; background-size: cover }
 
 .page-videos .video-player iframe { width: 100%; border: none }
 
