@@ -102,7 +102,7 @@
             ));
         });
 
-        $('.scores .item').on('click', function()
+        $('.page').on('click', '.scores .item', function()
         {
             var $el = $(this);
             var id = $el.attr('data-id');
@@ -110,22 +110,10 @@
             var compiled = contentify.templateManager.get('mapForm', 
                 {scoreLeft: $el.attr('data-left-score'), scoreRight: $el.attr('data-right-score')});
 
-            $.boxer($(compiled).append(
-                $('<button>').text('{{ trans('app.delete') }}').click(function()
-                {
-                    $.ajax({
-                        url: contentify.baseUrl + 'admin/matches/scores/' + id,
-                        type: 'DELETE'
-                    }).done(function(data) 
-                    {
-                        $el.remove();
-                    }).fail(function(response)
-                    {
-                        contentify.alertRequestFailed(response);
-                    });
-                    $.boxer('close');
-                })
-            ).append(
+            var $compiled = $(compiled);
+            $compiled.find('select').val($el.attr('data-map-id'));
+
+            $.boxer($compiled.append(
                 $('<button>').text('{{ trans('app.save') }}').click(function()
                 {
                     $.ajax({
@@ -139,6 +127,21 @@
                     }).done(function(data) 
                     {
                         $el.replaceWith(data);
+                    }).fail(function(response)
+                    {
+                        contentify.alertRequestFailed(response);
+                    });
+                    $.boxer('close');
+                })
+            ).append(
+                $('<button>').text('{{ trans('app.delete') }}').click(function()
+                {
+                    $.ajax({
+                        url: contentify.baseUrl + 'admin/matches/scores/' + id,
+                        type: 'DELETE'
+                    }).done(function(data) 
+                    {
+                        $el.remove();
                     }).fail(function(response)
                     {
                         contentify.alertRequestFailed(response);
