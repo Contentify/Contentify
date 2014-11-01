@@ -1,5 +1,5 @@
 <div class="widget-visitors">
-    <ul class="layout-v">
+    <ul class="list-unstyled">
         <li>
             <span>{{ trans('visitors::today') }}:</span> {{ $today }}
         </li>

@@ -97,7 +97,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
      */
     public function table($header, $rows, $brightenFirst = true)
     {
-        $code = '<table class="content-table">';
+        $code = '<table class="table">';
 
         /*
          * Table head

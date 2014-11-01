@@ -16,7 +16,7 @@
     </div>
 </div>
 <div class="details">
-    <table class="content-table h">
+    <table class="table h">
         <tbody>
             <tr>
                 <th>{{ trans('app.date') }}</th>

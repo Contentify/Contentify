@@ -11,7 +11,7 @@
         </a>
     </header>
     <div class="content">
-        <ul class="layout-v">
+        <ul class="list-unstyled">
         @foreach ($team->users as $user)
             <li>
                 <a href="{{ url('users/'.$user->id.'/'.$user->slug) }}">{{ $user->username }}</a>

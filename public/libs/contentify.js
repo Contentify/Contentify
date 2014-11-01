@@ -110,7 +110,7 @@ $(document).ready(function()
                 framework.templateManager.add('alert', 
                     '<div class="alert alert-%%type%%">\
                     <button type="button" class="close">&times;</button>\
-                    <h2>%%title%%</h2>\
+                    <h4>%%title%%</h2>\
                     </div>'
                 );
             }

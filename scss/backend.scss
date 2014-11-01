@@ -66,7 +66,7 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 
 /* Alert */
 .alert { margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x; }
-.alert h2 { font-size: 12px; }
+.alert h4 { font-size: 12px; }
 
 /* Form */
 .form-errors { }
@@ -82,12 +82,12 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 .form-actions { padding-top: 20px }
 .form-actions input[type=submit], .form-actions button { margin-right: 10px; }
 
-/* Content Table */
-.content-table { width: 100%; border: 1px solid #EFEFEF; }
-.content-table th { height: 30px; padding-left: 5px; line-height:30px; background-image: url(theme/backend/bg_tablehead.png); background-repeat: repeat-x; font-weight:bold; text-align: left }
-.content-table th a, .content-table th a:visited { color: gray; font-weight: bold } 
-.content-table td { padding: 5px; border: 1px solid #EFEFEF; background-image: url(theme/backend/bg_tablecell.png); background-repeat: repeat-x; background-position: left bottom; }
-.content-table tr:hover { color:#333333 }
+/* Table */
+.table { width: 100%; border: 1px solid #EFEFEF; }
+.table th { height: 30px; padding-left: 5px; line-height:30px; background-image: url(theme/backend/bg_tablehead.png); background-repeat: repeat-x; font-weight:bold; text-align: left }
+.table th a, .content-table th a:visited { color: gray; font-weight: bold } 
+.table td { padding: 5px; border: 1px solid #EFEFEF; background-image: url(theme/backend/bg_tablecell.png); background-repeat: repeat-x; background-position: left bottom; }
+.table tr:hover { color:#333333 }
 
 .form-helpers.top { min-height: 26px; margin-bottom: 20px; }
 .form-helpers.top button { margin-right: 10px }

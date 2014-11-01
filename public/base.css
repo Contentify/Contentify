@@ -35,27 +35,34 @@ form hr {
   visibility: hidden; }
 
 .hidden {
-  display: none; }
+  display: none;
+  visibility: hidden; }
 
-.center-h {
+.text-left {
+  text-align: left; }
+
+.text-center {
   text-align: center; }
 
-ul.layout-h {
+.text-right {
+  text-align: right; }
+
+ul.list-inline {
   list-style: none;
   margin: 0px;
   padding: 0px; }
 
-ul.layout-h li {
+ul.list-inline li {
   display: list-item;
   float: left;
   margin: 0px; }
 
-ul.layout-v {
+ul.list-unstyled {
   list-style: none;
   margin: 0px;
   padding: 0px; }
 
-ul.layout-v li {
+ul.list-unstyled li {
   margin: 0px;
   float: none; }
 
@@ -97,7 +104,7 @@ ul.pagination li {
 .alert {
   position: relative; }
 
-.alert button {
+.alert button.close {
   position: absolute;
   right: 10px;
   top: 0px;

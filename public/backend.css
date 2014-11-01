@@ -149,7 +149,7 @@ h2.section {
   background-image: url(theme/backend/bg_message.png);
   background-repeat: repeat-x; }
 
-.alert h2 {
+.alert h4 {
   font-size: 12px; }
 
 /* Form */
@@ -199,12 +199,12 @@ h2.section {
 .form-actions input[type=submit], .form-actions button {
   margin-right: 10px; }
 
-/* Content Table */
-.content-table {
+/* Table */
+.table {
   width: 100%;
   border: 1px solid #EFEFEF; }
 
-.content-table th {
+.table th {
   height: 30px;
   padding-left: 5px;
   line-height: 30px;
@@ -213,18 +213,18 @@ h2.section {
   font-weight: bold;
   text-align: left; }
 
-.content-table th a, .content-table th a:visited {
+.table th a, .content-table th a:visited {
   color: gray;
   font-weight: bold; }
 
-.content-table td {
+.table td {
   padding: 5px;
   border: 1px solid #EFEFEF;
   background-image: url(theme/backend/bg_tablecell.png);
   background-repeat: repeat-x;
   background-position: left bottom; }
 
-.content-table tr:hover {
+.table tr:hover {
   color: #333333; }
 
 .form-helpers.top {

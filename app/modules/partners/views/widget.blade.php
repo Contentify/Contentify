@@ -1,4 +1,4 @@
-<ul class="layout-v widget-partners">
+<ul class="list-unstyled widget-partners">
 @foreach ($partners as $partner)
 @if ($partner->image)
 <li>

@@ -1,4 +1,4 @@
-<ul class="layout-v">
+<ul class="list-unstyled">
     <li>{{ link_to('users/'.user()->id.'/'.user()->slug, trans('auth::profile')) }}</li>
     <li>{{ link_to('users/'.user()->id.'/edit', trans('auth::edit_profile')) }}</li>
     @if (user()->hasAccess('backend', PERM_READ))

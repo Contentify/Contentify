@@ -1,5 +1,5 @@
 <div class="widget-streams">
-    <ul class="layout-v">
+    <ul class="list-unstyled">
     @foreach ($streams as $stream)
         <li class="{{ $stream->online ? 'online' : 'offline' }}">
             <a href="{{ url('streams/'.$stream->id.'/'.$stream->slug) }}" title="{{{ $stream->title }}}">

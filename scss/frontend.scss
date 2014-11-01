@@ -12,7 +12,7 @@ a:active { color: #ff6100; text-decoration: none; font-weight: normal; }
 a:hover { color: #ff6100; text-decoration: none; font-weight: normal; }
 
 /* Headings */
-h1 { color: #ff6100; }
+h1 { }
 h2 { }
 h3 { }
 h4 { }
@@ -49,7 +49,7 @@ h1.page-title { }
 
 /* Alert */
 .alert { border: 2px solid silver; }
-.alert h2 { font-size: 14px; }
+.alert h4 { font-size: 14px; }
 .alert button { padding: 0px 10px }
 
 /* Form */
@@ -64,9 +64,9 @@ h1.page-title { }
 .form-actions { }
 .form-actions input[type=submit], .form-actions button { margin-right: 10px; }
 
-/* Content Table */
-.content-table { width: 100%; }
-.content-table th { text-align: left }
+/* Table */
+.table { width: 100%; }
+.table th { text-align: left }
 
 /* Slider Default Styling - Feel free to overwrite */
 .slider { position: relative; width: 100%; height: 245px; /* Height of a single slide */ }

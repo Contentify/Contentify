@@ -1,5 +1,5 @@
 <div class="widget-matches-latest">
-    <ul class="layout-v">
+    <ul class="list-unstyled">
         @foreach($matches as $match)
         <li>
             <a href="{{ url('matches/'.$match->id) }}">

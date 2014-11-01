@@ -28,10 +28,6 @@ a:hover {
 }
 
 /* Headings */
-h1 {
-  color: #ff6100;
-}
-
 /* Table Elements */
 table {
   font-family: Verdana;
@@ -91,7 +87,7 @@ blockquote {
   border: 2px solid silver;
 }
 
-.alert h2 {
+.alert h4 {
   font-size: 14px;
 }
 
@@ -136,12 +132,12 @@ blockquote {
   margin-right: 10px;
 }
 
-/* Content Table */
-.content-table {
+/* Table */
+.table {
   width: 100%;
 }
 
-.content-table th {
+.table th {
   text-align: left;
 }
 

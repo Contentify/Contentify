@@ -1,4 +1,4 @@
-<table class="content-table">
+<table class="table">
     <tr>
         <th>{{ trans('diag::setting') }}</th>
         <th>{{ trans('diag::value') }}</th>

@@ -1,5 +1,5 @@
 <div class="widget-galleries">
-    <ul class="layout-h">
+    <ul class="list-inline">
         @foreach ($images as $image)
         <li>
             <a class="item" href="{{{ url('galleries/'.$image->gallery->id.'/'.$image->id.$image->gallerySlug()) }}}#anchor-images" title="{{{ $image->title }}}">

@@ -1,5 +1,5 @@
 <div class="feed-messages">
-    <table class="content-table">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ trans('dashboard::latest_messages') }}</th>

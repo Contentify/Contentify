@@ -1,5 +1,5 @@
 <div class="widget-latest-users">
-    <table class="content-table">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ trans('users::latest_users') }}</th>

@@ -63,7 +63,7 @@
 
                 <br>
                 <h3>Navigation:</h3>
-                <ul class="layout-v">
+                <ul class="list-unstyled">
                     <li>{{ link_to('auth/registration/create', 'Registration') }}</li>
                     <li>{{ link_to('news', 'Newsarchive') }}</li>
                     <li>{{ link_to('contact', 'Contact') }}</li>

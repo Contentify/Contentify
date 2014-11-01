@@ -1,4 +1,4 @@
-<ul class="layout-v">
+<ul class="list-unstyled">
     @foreach ($newsCollection as $news)
     <li>
         {{ link_to('news/'.$news->id.'/'.$news->slug,  $news->title) }}

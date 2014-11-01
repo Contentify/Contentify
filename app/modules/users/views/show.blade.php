@@ -1,7 +1,7 @@
 <h1 class="page-title">{{ $user->username }}</h1>
 
 <div class="profile-basics">
-    <ul class="layout-v">
+    <ul class="list-unstyled">
         <li>
             <span class="title">{{ trans('app.name') }}:</span>
             @if ($user->country->icon)
@@ -39,7 +39,7 @@
 </div>
 
 <div class="profile-socials">
-    <ul class="layout-v">
+    <ul class="list-unstyled">
         <li>
             <span class="title">{{ trans('users::skype') }}:</span>
             {{{ $user->skype }}}
@@ -52,7 +52,7 @@
 </div>
 
 <div class="profile-pc">
-    <ul class="layout-v">
+    <ul class="list-unstyled">
         <li>
             <span class="title">{{ trans('users::cpu') }}:</span>
             {{{ $user->cpu }}}
@@ -97,7 +97,7 @@
 </div>
 
 <div class="profile-favs">
-    <ul class="layout-v">
+    <ul class="list-unstyled">
         <li>
             <span class="title">{{ trans('users::game') }}:</span>
             {{{ $user->game }}}

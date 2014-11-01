@@ -1,5 +1,5 @@
 <div class="widget-latest-comments">
-    <table class="content-table">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ trans('comments::latest_comments') }}</th>

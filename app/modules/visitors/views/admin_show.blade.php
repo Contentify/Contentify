@@ -15,7 +15,7 @@
     });
 </script>
 
-<table class="days content-table">
+<table class="days table">
     <thead>
         <tr>
             <th>{{ trans('app.date') }}</th>
