@@ -352,6 +352,7 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string   $sourceModelClass   Full name of the source model class
      * @param  mixed    $default            Null, an ID or an an array of IDs (if multiple selected items are possible)
      * @param  bool     $nullable           If true the select element can be empty
+     * @param  bool     $nullOption         If true an extra element that has a null value is added
      * @return string
      */
     public function smartSelectRelation($relationName, $title, $sourceModelClass, $default = null, 

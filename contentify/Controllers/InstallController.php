@@ -197,6 +197,38 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
+        $this->create('servers', function($table)
+        {
+            $table->string('ip');
+            $table->string('hoster')->nullable();
+            $table->integer('slots')->default(0);
+        }, ['game_id'], ['slug']);
+
+        $this->create('forumcats', function($table) 
+        { 
+            $table->boolean('root')->default(0);
+            $table->text('description')->nullable();
+            $table->integer('position')->default(0);
+            $table->boolean('internal')->default(false);
+            $table->integer('threads_count')->default(0);
+            $table->integer('posts_count')->default(0);
+        }, ['forumcat_id', 'latest_thread_id', 'team_id']);
+
+        $this->create('forum_threads', function($table) 
+        { 
+            $table->integer('posts_count')->default(0);
+            $table->boolean('sticky')->default(false);
+            $table->boolean('closed')->default(false);
+            $table->timestamp('started_at');
+            //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
+        }, ['forumcat_id']);
+
+        $this->create('forum_posts', function($table) 
+        { 
+            $table->text('text')->nullable();
+            $table->boolean('root')->default(0);
+        }, ['forum_thread_id'], ['slug']);
+
         return; // DEBUG
 
         /**
@@ -222,34 +254,6 @@ class InstallController extends Controller {
          * global way.
          */
         DB::statement('SET foreign_key_checks = 0');
-
-
-        $this->create('forum_sections', function($table) 
-        { 
-            $table->boolean('root')->default(0);
-            $table->text('description')->nullable();
-            $table->integer('position')->default(0);
-            $table->boolean('internal')->default(false);
-            $table->integer('threads_count')->default(0);
-            $table->integer('posts_count')->default(0);
-        }, ['forum_section_id', 'latest_thread_id', 'team_id']);
-
-        $this->create('forum_threads', function($table) 
-        { 
-            $table->integer('posts_count')->default(0);
-            $table->boolean('sticky')->default(false);
-            $table->boolean('closed')->default(false);
-            $table->timestamp('started_at');
-            //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
-        }, ['forum_section_id']);
-
-        $this->create('forum_posts', function($table) 
-        { 
-            $table->text('text')->nullable();
-            $table->boolean('root')->default(0);
-        }, ['forum_thread_id'], ['slug']);
-
-        return;
 
         Schema::dropIfExists('config');
         Schema::create('config', function($table)

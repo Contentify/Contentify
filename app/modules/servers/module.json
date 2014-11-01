@@ -2,9 +2,9 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "controller.png",
+            "icon": "server.png",
             "category": 3,
-            "position": 2            
+            "position": 7           
         }
     ]
 }

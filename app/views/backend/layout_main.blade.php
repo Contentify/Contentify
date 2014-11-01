@@ -110,19 +110,18 @@
                                 <div class="item"><img src="{{ asset('icons/film_link.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/streams', 'Streams') }}</div> 
                                 <div class="item"><img src="{{ asset('icons/coins.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/partners', 'Sponsors &amp; Partners') }}</div>
                                 <div class="item"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/adverts', 'Advertisement') }}</div>
-                                <div class="item"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=forumcats">Forum-Categories</a></div>
-                                <div class="item"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=forumboards">Forum-Boards</a></div>
+                                <div class="item"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/forumcats', 'Forum Sections') }}</div>
                             </div>
                             <div class="menu-bottom"></div>
                         <div class="silverheader"><div class="menu-head esports"><span class="hidden">eSports Content</span></div></div>
                             <div class="submenu">               
                                 <div class="item"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/matches', 'Matches') }}</div>
+                                <div class="item"><img src="{{ asset('icons/controller.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/games', 'Games') }}</div>
                                 <div class="item"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/awards', 'Awards') }}</div>
-                                <div class="item"><img src="{{ asset('icons/server.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=gameservers">Gameservers</a></div>                                
                                 <div class="item"><img src="{{ asset('icons/opponent.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/opponents', 'Opponents') }}</div>
                                 <div class="item"><img src="{{ asset('icons/joystick.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/tournaments', 'Tournaments') }}</div>
                                 <div class="item"><img src="{{ asset('icons/world.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/maps', 'Maps') }}</div>
-                                <div class="item"><img src="{{ asset('icons/controller.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/games', 'Games') }}</div>
+                                <div class="item"><img src="{{ asset('icons/server.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/servers', 'Servers') }}</div>  
                             </div>
                             <div class="menu-bottom"></div>
                             

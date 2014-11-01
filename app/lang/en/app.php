@@ -133,5 +133,6 @@ return array(
     'url'           => 'URL',
     'quote'         => 'Quote',
     'size'          => 'Size',
+    'ip'            => 'IP',
 
 );

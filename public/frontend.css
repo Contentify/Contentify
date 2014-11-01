@@ -155,6 +155,8 @@ h1.page-title { }
 .widget-matches-latest li .scores .lose { color: red }
 .widget-matches-latest li .scores .draw { color: orange }
 
+.page-servers .server { margin-bottom: 20px }
+
 /*
  * Mainlayout
  */

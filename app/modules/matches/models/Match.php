@@ -45,7 +45,7 @@ class Match extends BaseModel {
 
     protected $rules = [
         'state'     => 'integer|min:0',
-        'featured'  => 'in:0,1',
+        'featured'  => 'boolean',
         'url'       => 'sometimes|url',
     ];
 
