@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Downloads\Models;
 
-use InterImage, File, SoftDeletingTrait, BaseModel;
+use Exception, InterImage, File, SoftDeletingTrait, BaseModel;
 
 class Download extends BaseModel {
 
@@ -34,8 +34,13 @@ class Download extends BaseModel {
             if (File::isFile($fileName)) {
                 $download->file_size = File::size($fileName); // Save file size
                 
-                $imgsize = getimagesize($fileName); // Try to gather infos about the image 
-                if ($imgsize[2]) {
+                try {
+                    $imgData = getimagesize($fileName); // Try to gather infos about the image
+                } catch (Exception $e) {
+
+                }
+
+                if (! isset($imgData[2]) or ! $imgData[2]) {
                     $download->is_image = true;
 
                     /*

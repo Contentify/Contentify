@@ -89,7 +89,7 @@ abstract class BackController extends BaseController {
         if (isset($model['title']) and $model->slugable()) {
             $model->createSlug();
         }
-
+ 
         $okay = $model->save();
 
         if (! $okay) {
@@ -114,12 +114,12 @@ abstract class BackController extends BaseController {
 
                     if (strtolower($fieldInfo['type']) == 'image') {
                         try {
-                            $imgsize = getimagesize($file->getRealPath());     
+                            $imgData = getimagesize($file->getRealPath());     
                         } catch (Exception $e) {
-                            $imgsize = [2 => null];
+                            
                         }
 
-                        if (! $imgsize[2]) {
+                        if (! isset($imgData[2]) or ! $imgData[2]) {
                             $error = trans('app.invalid_image');
                         }
                     }
@@ -322,12 +322,12 @@ abstract class BackController extends BaseController {
 
                     if (strtolower($fieldInfo['type']) == 'image') {
                         try {
-                            $imgsize = getimagesize($file->getRealPath());     
+                            $imgData = getimagesize($file->getRealPath());     
                         } catch (Exception $e) {
-                            $imgsize = [2 => null];
+
                         }
 
-                        if (! $imgsize[2]) {
+                        if (! isset($imgData[2]) or ! $imgData[2]) {
                             $error = trans('app.invalid_image');
                         }
                     }

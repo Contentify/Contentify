@@ -24,9 +24,9 @@ class News extends BaseModel {
 
     protected $rules = [
         'title'             => 'required',
-        'published'         => 'in:0,1',
-        'internal'          => 'in:0,1',
-        'enable_comments'   => 'in:0,1',
+        'published'         => 'boolean',
+        'internal'          => 'boolean',
+        'enable_comments'   => 'boolean',
         'newscat_id'        => 'required|integer',
         'creator_id'        => 'required|integer',
     ];

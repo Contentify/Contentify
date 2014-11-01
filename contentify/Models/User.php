@@ -1,7 +1,7 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use File, InterImage, Redirect, Input, Validator, Sentry, Session;
+use Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
 
@@ -238,12 +238,12 @@ class User extends SentryUser {
         $extension  = $file->getClientOriginalExtension();
 
         try {
-            $imgsize = getimagesize($file->getRealPath()); // Try to gather infos about the image
+            $imgData = getimagesize($file->getRealPath()); // Try to gather infos about the image
         } catch (Exception $e) {
-            $imgsize = [2 => null];
+
         }
 
-        if (! $imgsize[2]) {
+        if (! isset($imgData[2]) or ! $imgData[2]) {
             return Redirect::route('users.edit', [$this->id])
             ->withInput()->withErrors([trans('app.invalid_image')]);
         }

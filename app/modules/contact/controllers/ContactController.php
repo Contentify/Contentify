@@ -23,4 +23,5 @@ class ContactController extends FrontController {
             return Redirect::to('contact')->withInput()->withErrors($msg->getErrors());
         }
     }
+    
 }
