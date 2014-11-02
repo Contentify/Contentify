@@ -2,25 +2,25 @@
 
 <div class="download-detail">
     {{ Form::open(array('url' => 'downloads/perform/'.$download->id)) }}
-        {{ Form::smartFieldOpen(trans('app.file')) }}
+        {{ Form::smartGroupOpen(null, trans('app.file')) }}
             {{{ $download->title }}}
-        {{ Form::smartFieldClose() }}
+        {{ Form::smartGroupClose() }}
 
-        {{ Form::smartFieldOpen(trans('app.category')) }}
+        {{ Form::smartGroupOpen(null, trans('app.category')) }}
             {{ $download->downloadcat->title }}
-        {{ Form::smartFieldClose() }}
+        {{ Form::smartGroupClose() }}
 
-        {{ Form::smartFieldOpen(trans('app.size')) }}
+        {{ Form::smartGroupOpen(null, trans('app.size')) }}
             {{ $download->file_size }} Bytes
-        {{ Form::smartFieldClose() }}
+        {{ Form::smartGroupClose() }}
 
-        {{ Form::smartFieldOpen(trans('downloads::download_counter')) }}
+        {{ Form::smartGroupOpen(null, trans('downloads::download_counter')) }}
             {{ $download->access_counter }}
-        {{ Form::smartFieldClose() }}
+        {{ Form::smartGroupClose() }}
 
-        {{ Form::smartFieldOpen(trans('downloads::traffic')) }}
+        {{ Form::smartGroupOpen(null, trans('downloads::traffic')) }}
             {{ $download->file_size * $download->access_counter }} Bytes
-        {{ Form::smartFieldClose() }}
+        {{ Form::smartGroupClose() }}
 
         @if ($download->description)
         <p>

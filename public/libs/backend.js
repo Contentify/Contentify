@@ -100,19 +100,27 @@ $(document).ready(function()
     {
         var $header     = $('#header');
         var $sidebar    = $('#sidebar');
+        var $main       = $('#main-content');
         var $footer     = $('#footer');
 
         // 22px = Sidebar offset
         if ($(window).scrollTop() > $header.height() - 22 && $(window).height() > $sidebar.height()) { 
             if ($(window).scrollTop() + $sidebar.height() + 22 < $footer.get(0).offsetTop) {
-                $sidebar.css({ 'position': 'fixed', top: '22px'});
+                $sidebar.css({'position': 'fixed', top: '22px'});
+               
+                $main.css({marginLeft: '272px', float: 'none'});     
             } else {
                 $sidebar.css({ 
                     'position': 'relative', top: $footer.get(0).offsetTop - $sidebar.height() - $header.height()
                 });
+                
+                 $main.css({marginLeft: 0, float: 'left'});
             }
         } else {
-            $sidebar.css({ 'position': 'relative', top: 'auto'});
+            $sidebar.css({'position': 'relative', top: 'auto'});
+            $main.css({marginLeft: 0, float: 'left'});
         }
     });
+
+    $(window).scroll();
 });

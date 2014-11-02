@@ -7,14 +7,14 @@
 @endif
     {{ Form::smartCheckbox('activated', trans('users::activated')) }}
 
-    {{ Form::smartFieldOpen(trans('users::banned')) }}
+    {{ Form::smartGroupOpen('banned', trans('users::banned')) }}
     @if ($model->isBanned())
         {{ Form::checkbox('banned', 'banned', true) }}
     @else 
         {{ Form::checkbox('banned', 'banned', false) }}
     @endif
     <span class="banned-info"></span>
-    {{ Form::smartFieldClose() }}
+    {{ Form::smartGroupClose() }}
 
     {{ Form::smartSelectRelation('groups', trans('users::groups'), $modelClass) }}
 

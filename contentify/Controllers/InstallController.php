@@ -197,13 +197,6 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
-        $this->create('servers', function($table)
-        {
-            $table->string('ip');
-            $table->string('hoster')->nullable();
-            $table->integer('slots')->default(0);
-        }, ['game_id'], ['slug']);
-
         $this->create('forumcats', function($table) 
         { 
             $table->boolean('root')->default(0);
@@ -227,7 +220,7 @@ class InstallController extends Controller {
         { 
             $table->text('text')->nullable();
             $table->boolean('root')->default(0);
-        }, ['forum_thread_id'], ['slug']);
+        }, ['forum_thread_id'], ['slug', 'title']);
 
         return; // DEBUG
 
@@ -456,6 +449,13 @@ class InstallController extends Controller {
             $table->integer('viewers')->default(0);
             $table->timestamp('renewed_at');
         });
+
+        $this->create('servers', function($table)
+        {
+            $table->string('ip');
+            $table->string('hoster')->nullable();
+            $table->integer('slots')->default(0);
+        }, ['game_id'], ['slug']);
 
         /*
          * (Re)activate foreign key checks

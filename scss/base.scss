@@ -17,11 +17,22 @@ form hr { margin: 30px 0px }
  * Classes
  */
 
+@for $i from 1 through 12 {
+     .col-sm-#{$i} { 
+        width: 100% / 12 * $i;
+    }
+ }
+
 .clearfix:after { display: block; clear: both; content: '.'; height: 0; visibility: hidden; }
 .hidden { display: none; visibility: hidden; }
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+
+.form-group::before { display: table; content: ' ' }
+.form-group::after { display: table; content: ' '; clear: both }
+.form-group > div { box-sizing: border-box; padding-left: 15px; float: left }
+.form-group div.checkbox { padding-top: 7px }
 
 ul.list-inline { list-style: none; margin: 0px; padding: 0px }
 ul.list-inline li { display: list-item; float: left; margin: 0px; }

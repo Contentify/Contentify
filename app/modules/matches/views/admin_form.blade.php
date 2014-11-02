@@ -22,15 +22,15 @@
 
     {{-- We can't add scores to a match that doesn't actually exist --}}
     @if (isset($model))
-    <div class="form-group scores">
-        {{ Form::label('Match Scores') }}
-        
-        @foreach ($model->match_scores as $matchScore)
-        @include('matches::admin_map', compact('matchScore'))
-        @endforeach
+    {{ Form::smartGroupOpen(null, 'Match Scores') }}
+        <div class="scores">
+            @foreach ($model->match_scores as $matchScore)
+            @include('matches::admin_map', compact('matchScore'))
+            @endforeach
 
-        <span class="add-new">+</span>
-    </div>
+            <span class="add-new">+</span>
+        </div>
+    {{ Form::smartGroupClose() }}
     @endif
 
     {{ Form::actions() }}
@@ -69,7 +69,7 @@
         {{-- We can't add scores to a match that doesn't actually exist --}}
         @if (isset($model))
 
-        var template = '<div class="boxer-confirm add-new"> {{ Form::smartSelectForeign('map_id', 'Map') }} {{ Form::smartFieldOpen(trans('matches::score')) }} <input type="text" name="left_score" style="width: 20px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="width: 20px" value="%%scoreRight%%"> {{ Form::smartFieldClose() }}</div>';
+        var template = '<div class="boxer-confirm add-new"> {{ Form::smartSelectForeign('map_id', 'Map') }} {{ Form::smartGroupOpen('left_score', trans('matches::score')) }} <input type="text" name="left_score" style="width: 20px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="width: 20px" value="%%scoreRight%%"> {{ Form::smartGroupClose() }}</div>';
 
         contentify.templateManager.add('mapForm', template);
 

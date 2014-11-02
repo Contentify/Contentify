@@ -158,23 +158,13 @@ h2.section {
 
 .form-group label {
   display: inline-block;
-  width: 15%;
-  padding-right: 20px;
+  padding-top: 7px;
   cursor: pointer;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  float: left; }
 
 .form-group label:after {
   /* content: ':'; */ }
-
-.form-group label.full-line {
-  display: block;
-  width: auto;
-  height: 30px;
-  line-height: 30px;
-  padding: 0px 10px;
-  border: 1px solid #EFEFEF;
-  background-image: url(theme/bg_textbox.png);
-  background-repeat: repeat-x; }
 
 .form-group input {
   width: 40%;
@@ -198,6 +188,19 @@ h2.section {
 
 .form-actions input[type=submit], .form-actions button {
   margin-right: 10px; }
+
+.form-editor {
+  margin-bottom: 20px; }
+
+.form-editor label.full-line {
+  display: block;
+  width: auto;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 10px;
+  border: 1px solid #EFEFEF;
+  background-image: url(theme/bg_textbox.png);
+  background-repeat: repeat-x; }
 
 /* Table */
 .table {
@@ -474,6 +477,9 @@ ul.pagination li.disabled {
 
 .page-members td a {
   cursor: pointer; }
+
+.page-matches .scores {
+  padding-top: 7px; }
 
 .page-matches .scores .item {
   padding: 5px 10px;
@@ -782,8 +788,7 @@ body {
   height: 17px; }
 
 #main-content {
-  width: 686px;
-  margin-left: 275px; }
+  width: 686px; }
 
 #footer {
   position: relative;

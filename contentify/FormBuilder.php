@@ -146,27 +146,32 @@ class FormBuilder extends OriginalFormBuilder {
     }
 
     /**
-     * Create HTML code for the opening part of a custom form field.
-     * 
+     * Create HTML code for the opening part of a custom form group.
+     *
+     * @param  string $title The name of the corresponding element (not the label itself!)
      * @param  string $title The title of the field
      * @return string
      */
-    public function smartFieldOpen($title = null)
+    public function smartGroupOpen($name = null, $title = null)
     {
         $partial = '<div class="form-group">';
-        if ($title) $partial .= self::label('', $title);
-        return $partial;
+
+        if ($title) {
+            $partial .= self::label($name, $title, ['class' => 'col-sm-2 control-label']);
+        }
+
+        return $partial.'<div class="col-sm-10">';
     }
 
     /**
-     * Create HTML code for the closing part of a custom form field.
+     * Create HTML code for the closing part of a custom form group.
      * 
      * @param  string $title The title of the field
      * @return string
      */
-    public function smartFieldClose()
+    public function smartGroupClose()
     {
-        return '</div>';
+        return '</div></div>';
     }
 
     /**
@@ -183,10 +188,9 @@ class FormBuilder extends OriginalFormBuilder {
 
         // Bugfix for Laravel checkbox bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
         $checkbox = self::hidden($name, false).self::checkbox($name, true, $default);
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
-            .$checkbox
-            .self::smartFieldClose();
+        $partial = self::smartGroupOpen($name, $title)
+            .'<div class="checkbox">'.$checkbox.'</div>'
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -201,10 +205,9 @@ class FormBuilder extends OriginalFormBuilder {
     public function smartText($name, $title, $default = null)
     {
         $value = self::getDefaultValue($name, $default);
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::text($name, $value)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -219,10 +222,9 @@ class FormBuilder extends OriginalFormBuilder {
     public function smartEmail($name = 'email', $title = 'Email', $default = null)
     {
         $value = self::getDefaultValue($name, $default);
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::email($name, $value)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -236,10 +238,9 @@ class FormBuilder extends OriginalFormBuilder {
     public function smartUrl($name = 'url', $title = 'URL', $default = null)
     {
         $value = self::getDefaultValue($name, $default);
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::url($name, $value)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -251,10 +252,9 @@ class FormBuilder extends OriginalFormBuilder {
      */
     public function smartPassword($name = 'password', $title = 'Password')
     {
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::password($name)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -278,10 +278,10 @@ class FormBuilder extends OriginalFormBuilder {
             $textarea   = self::textarea($name, $value);
         }
 
-        $partial    = self::smartFieldOpen()
+        $partial    = '<div class="form-editor">'
             .$label
             .$textarea
-            .self::smartFieldClose();
+            .'</div>';
         return $partial;
     }
 
@@ -296,10 +296,9 @@ class FormBuilder extends OriginalFormBuilder {
     public function smartNumeric($name, $title, $default = null)
     {
         $value = self::getDefaultValue($name, $default);
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::numeric($name, $value)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -317,10 +316,9 @@ class FormBuilder extends OriginalFormBuilder {
     {
         $value = self::getDefaultValue($name, $default);
 
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::select($name, $options, $value, $attributes)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -336,10 +334,9 @@ class FormBuilder extends OriginalFormBuilder {
      */
     public function smartSelectForeign($name, $title, $default = null, $nullable = false)
     {
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::selectForeign($name, $default, $nullable)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -440,11 +437,10 @@ class FormBuilder extends OriginalFormBuilder {
         }
         
         $name       = '_relation_'.$relationName;
-        $partial    = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial    = self::smartGroupOpen($name, $title)
             .self::hidden($name, false) // Dummy so even if no option is selected some data is sent
             .self::select($name, $options, $default, $elementAttributes)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -457,11 +453,10 @@ class FormBuilder extends OriginalFormBuilder {
      */
     public function smartFile($name = 'file', $title = 'File')
     {
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::file($name)
             .' '.trans('app.max_size', [ini_get('upload_max_filesize')])
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -498,13 +493,11 @@ class FormBuilder extends OriginalFormBuilder {
      */
     public function smartCaptcha($name = 'captcha', $title = 'Captcha')
     {
-        $label      = self::label($name, $title);
         $image      = HTML::image(URL::route('captcha'), 'Captcha');
-        $partial    = self::smartFieldOpen()
-            .$label
+        $partial    = self::smartGroupOpen($name, $title)
             .$image.' '
             .self::text($name)
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 
@@ -532,10 +525,11 @@ class FormBuilder extends OriginalFormBuilder {
         }
 
         $partial = '<div class="form-group date-time-picker input-append date">'
-            .self::label($name, $title)
+            .'<label for="'.$name.'" class="col-sm-2 control-label">'.$title.'</label>'
+            .'<div class="col-sm-10">'
             .self::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
             .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
-            .'</div>';
+            .'</div></div>';
         return $partial;
     }
 
@@ -551,10 +545,9 @@ class FormBuilder extends OriginalFormBuilder {
     {
         $value = self::getDefaultValue($name, $default);
 
-        $partial = self::smartFieldOpen()
-            .self::label($name, $title)
+        $partial = self::smartGroupOpen($name, $title)
             .self::text($name, $value, ['data-role' => 'tagsinput', 'placeholder' => 'Add tags'])
-            .self::smartFieldClose();
+            .self::smartGroupClose();
         return $partial;
     }
 

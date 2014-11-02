@@ -163,8 +163,8 @@
         </section>
         <footer id="footer">
             <a href="#" title="{{ trans('app.top') }}"><!-- empty --></a>
-            <span>&copy; 2009-{{ date('Y') }} design and code by contentify.it
+            <span>&copy; 2009-{{ date('Y') }} design and code by contentify.it</span>
         </footer>
-    </section>
+    </div>
 </body>
 </html>

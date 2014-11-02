@@ -72,15 +72,16 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 .form-errors { }
 .form-group { margin-bottom: 20px }
 .form-group.space-top {  }
-.form-group label { display: inline-block; width: 15%; padding-right: 20px; cursor: pointer; word-wrap: break-word; }
+.form-group label { display: inline-block; padding-top: 7px; cursor: pointer; word-wrap: break-word; float: left }
 .form-group label:after { /* content: ':'; */ }
-.form-group label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x }
 .form-group input { width: 40%; padding: 5px 10px; }
 .form-group input[type=text]:focus, .form-group input[type=password]:focus, .form-group input[type=url]:focus { border-color: #ff6100; color: #4082E3 }
 .form-group textarea { width: 40%; height: 100px; vertical-align: bottom; }
 .form-group textarea:focus { border-color: #ff6100; color: #4082E3 }
 .form-actions { padding-top: 20px }
 .form-actions input[type=submit], .form-actions button { margin-right: 10px; }
+.form-editor { margin-bottom: 20px }
+.form-editor label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x }
 
 /* Table */
 .table { width: 100%; border: 1px solid #EFEFEF; }
@@ -170,6 +171,7 @@ ul.pagination li.disabled { display: none }
 .page-members div.data { display: none }
 .page-members td a { cursor: pointer; }
 
+.page-matches .scores { padding-top: 7px }
 .page-matches .scores .item { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; margin-right: 10px; cursor: pointer; }
 .page-matches .scores .item .score { font-weight: bold }
 .page-matches .scores .add-new { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; font-weight: bold; cursor: pointer;}
@@ -247,7 +249,7 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
 .submenu .item:last-child img { top: 13px }
 .menu-bottom { background-image: url(theme/backend/menu_bottom.png); height: 17px }
 
-#main-content { width: 686px; margin-left: 275px; }
+#main-content { width: 686px; }
 
 #footer { position: relative; width: 982px; height: 76px; margin-left: 2px; background-image: url(theme/backend/footer.png); }
 #footer a { display: block; position: absolute; background-image: url(theme/empty.png); left: 114px; top: 30px; width: 45px; height: 35px }

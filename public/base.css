@@ -27,6 +27,42 @@ form hr {
 /*
  * Classes
  */
+.col-sm-1 {
+  width: 8.33333%; }
+
+.col-sm-2 {
+  width: 16.66667%; }
+
+.col-sm-3 {
+  width: 25%; }
+
+.col-sm-4 {
+  width: 33.33333%; }
+
+.col-sm-5 {
+  width: 41.66667%; }
+
+.col-sm-6 {
+  width: 50%; }
+
+.col-sm-7 {
+  width: 58.33333%; }
+
+.col-sm-8 {
+  width: 66.66667%; }
+
+.col-sm-9 {
+  width: 75%; }
+
+.col-sm-10 {
+  width: 83.33333%; }
+
+.col-sm-11 {
+  width: 91.66667%; }
+
+.col-sm-12 {
+  width: 100%; }
+
 .clearfix:after {
   display: block;
   clear: both;
@@ -46,6 +82,23 @@ form hr {
 
 .text-right {
   text-align: right; }
+
+.form-group::before {
+  display: table;
+  content: " "; }
+
+.form-group::after {
+  display: table;
+  content: ' ';
+  clear: both; }
+
+.form-group > div {
+  box-sizing: border-box;
+  padding-left: 15px;
+  float: left; }
+
+.form-group div.checkbox {
+  padding-top: 7px; }
 
 ul.list-inline {
   list-style: none;
