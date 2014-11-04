@@ -77,7 +77,6 @@ blockquote {
 .ui-message {
   border: 2px solid silver;
 }
-
 .ui-message h2 {
   font-size: 14px;
 }
@@ -86,11 +85,9 @@ blockquote {
 .alert {
   border: 2px solid silver;
 }
-
 .alert h4 {
   font-size: 14px;
 }
-
 .alert button {
   padding: 0px 10px;
 }
@@ -99,7 +96,6 @@ blockquote {
 .form-group {
   margin-bottom: 20px;
 }
-
 .form-group label {
   display: inline-block;
   padding: 7px 20px 0px 0px;
@@ -107,22 +103,18 @@ blockquote {
   cursor: pointer;
   word-wrap: break-word;
 }
-
 .form-group label:after {
   /* content: ':'; */
 }
-
 .form-group input {
   width: 40%;
   padding: 5px 10px;
   border: 2px solid silver;
   color: #4082e3;
 }
-
 .form-group input[type=text]:focus, .form-group input[type=password]:focus, .form-group input[type=url]:focus {
   border-color: #ff6100;
 }
-
 .form-group textarea {
   vertical-align: bottom;
 }
@@ -135,7 +127,6 @@ blockquote {
 .table {
   width: 100%;
 }
-
 .table th {
   text-align: left;
 }
@@ -147,7 +138,6 @@ blockquote {
   height: 245px;
   /* Height of a single slide */
 }
-
 .slider .slides {
   position: absolute;
   left: 0px;
@@ -155,14 +145,12 @@ blockquote {
   width: 100%;
   height: 100%;
 }
-
 .slider .slides ul {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-
 .slider .slides ul li {
   position: absolute;
   left: 0px;
@@ -170,7 +158,6 @@ blockquote {
   width: 100%;
   height: 100%;
 }
-
 .slider .to-left {
   position: absolute;
   left: 0px;
@@ -182,7 +169,6 @@ blockquote {
   color: white;
   text-align: center;
 }
-
 .slider .to-right {
   position: absolute;
   right: 0px;
@@ -194,17 +180,14 @@ blockquote {
   color: white;
   text-align: center;
 }
-
 .slider .to-left:hover, .slider .to-right:hover {
   background-color: black;
 }
-
 .slider .buttons {
   position: absolute;
   right: 20px;
   bottom: 20px;
 }
-
 .slider .buttons li {
   width: 30px;
   height: 30px;
@@ -215,11 +198,9 @@ blockquote {
   cursor: pointer;
   text-align: center;
 }
-
 .slider .buttons li.active {
   background-color: black;
 }
-
 .slider .slide-title {
   position: absolute;
   margin: 0px;
@@ -232,7 +213,6 @@ blockquote {
 .scroller {
   overflow-x: hidden;
 }
-
 .scroller li {
   width: 100%;
 }
@@ -243,16 +223,13 @@ blockquote {
 .create-comment {
   margin-top: 20px;
 }
-
 .create-comment .textarea-wrapper {
   margin: 20px 0px;
   padding: 0px 20px;
 }
-
 .create-comment p {
   margin: 0px;
 }
-
 .create-comment textarea {
   width: 100%;
   height: 70px;
@@ -261,7 +238,6 @@ blockquote {
   border: 2px solid silver;
   color: #666;
 }
-
 .create-comment textarea:focus {
   border-color: #ff6100;
 }
@@ -271,7 +247,6 @@ blockquote {
   -webkit-filter: grayscale(1);
   transition: all 0.8s ease;
 }
-
 .widget-partners img.filter:hover {
   filter: grayscale(0);
   -webkit-filter: grayscale(0);
@@ -283,7 +258,6 @@ blockquote {
   width: 33%;
   text-align: center;
 }
-
 .page-videos .video div {
   width: 90%;
   height: 150px;
@@ -312,7 +286,6 @@ blockquote {
   display: block;
   position: relative;
 }
-
 .widget-streams .viewers {
   float: right;
 }
@@ -324,7 +297,6 @@ blockquote {
   height: 100px;
   overflow: hidden;
 }
-
 .page-galleries .galleries .image {
   width: 100%;
   height: 100%;
@@ -333,7 +305,6 @@ blockquote {
   background-repeat: no-repeat;
   transition: all 0.3s ease;
 }
-
 .page-galleries .galleries .image:hover {
   transform: scale(1.1, 1.1);
   transition: all 0.3s ease;
@@ -342,23 +313,19 @@ blockquote {
 .page-galleries .images .image {
   text-align: center;
 }
-
 .page-galleries .images .image img {
   max-width: 100%;
   max-height: 500px;
   cursor: zoom-in;
 }
-
 .page-galleries .images .previews-wrapper {
   position: relative;
   height: 100px;
   overflow: hidden;
 }
-
 .page-galleries .images .previews {
   height: 100%;
 }
-
 .page-galleries .images .previews .item {
   float: left;
   display: block;
@@ -366,7 +333,6 @@ blockquote {
   height: 100%;
   overflow: hidden;
 }
-
 .page-galleries .images .previews .image {
   width: 100%;
   height: 100%;
@@ -375,12 +341,10 @@ blockquote {
   background-repeat: no-repeat;
   transition: all 0.3s ease;
 }
-
 .page-galleries .images .previews .image:hover {
   transform: scale(1.1, 1.1);
   transition: all 0.3s ease;
 }
-
 .page-galleries .images .previews-wrapper .link {
   opacity: 0.5;
   position: absolute;
@@ -392,15 +356,12 @@ blockquote {
   color: white;
   text-align: center;
 }
-
 .page-galleries .images .previews-wrapper:hover .link {
   opacity: 1;
 }
-
 .page-galleries .images .previews-wrapper .to-left {
   left: 0px;
 }
-
 .page-galleries .images .previews-wrapper .to-right {
   right: 0px;
 }
@@ -409,13 +370,11 @@ blockquote {
   width: 20%;
   height: 100px;
 }
-
 .widget-galleries .item {
   display: block;
   width: 100%;
   height: 100%;
 }
-
 .widget-galleries .item div {
   width: 100%;
   height: 100%;
@@ -428,7 +387,6 @@ blockquote {
   margin: 0px 20px 20px 20px;
   text-align: center;
 }
-
 .page-downloads .downloads .download {
   display: block;
   float: left;
@@ -439,7 +397,6 @@ blockquote {
   background-position: center top;
   background-repeat: no-repeat;
 }
-
 .page-downloads .downloads .download a {
   display: block;
   padding-top: 100px;
@@ -452,48 +409,40 @@ blockquote {
   text-align: center;
   float: left;
 }
-
 .page-matches .overview div > span {
   display: block;
 }
-
 .page-matches .overview .mid {
   padding-top: 40px;
   font-size: 30px;
 }
-
 .page-matches .overview .mid .left-win {
   color: green;
 }
-
 .page-matches .overview .mid .left-lose {
   color: red;
 }
-
 .page-matches .overview .mid .left-draw {
   color: orange;
 }
-
 .page-matches .details {
   margin-bottom: 20px;
   padding-top: 20px;
 }
-
+.page-matches div.scores {
+  /* Will only affect the 4th, 5th etc. item */
+}
 .page-matches div.scores .item {
   width: 33%;
   float: left;
   text-align: center;
 }
-
 .page-matches div.scores .item:nth-child(n+4) {
   margin-top: 20px;
 }
-
-/* Will only affect the 4th, 5th etc. item */
 .page-matches div.scores .item img {
   max-width: 100%;
 }
-
 .page-matches div.scores .item span {
   display: block;
 }
@@ -501,32 +450,55 @@ blockquote {
 .widget-matches-latest li {
   position: relative;
 }
-
 .widget-matches-latest li img {
   float: left;
   margin-right: 10px;
 }
-
 .widget-matches-latest li .scores {
   position: absolute;
   right: 0px;
   top: 0px;
 }
-
 .widget-matches-latest li .scores .win {
   color: green;
 }
-
 .widget-matches-latest li .scores .lose {
   color: red;
 }
-
 .widget-matches-latest li .scores .draw {
   color: orange;
 }
 
 .page-servers .server {
   margin-bottom: 20px;
+}
+
+.page-forum .root-section {
+  background-color: #eeffcc;
+  color: white;
+}
+.page-forum .sub-section {
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+}
+.page-forum .sub-section .info {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 60%;
+}
+.page-forum .sub-section .threads {
+  position: absolute;
+  left: 60%;
+  top: 0px;
+  width: 10%;
+}
+.page-forum .sub-section .latest {
+  position: absolute;
+  left: 70%;
+  top: 0px;
+  width: 30%;
 }
 
 /*
@@ -543,9 +515,8 @@ blockquote {
 #header {
   height: 100px;
   padding-left: 40px;
-  background-color: #eeeeee;
+  background-color: #EEE;
 }
-
 #header h2 {
   margin: 0px;
   line-height: 100px;
@@ -563,8 +534,5 @@ blockquote {
 #sidebar {
   width: 33%;
   margin-left: 66%;
-}
-
-#sidebar {
   padding-left: 40px;
 }

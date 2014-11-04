@@ -86,17 +86,14 @@ form hr {
 .form-group::before {
   display: table;
   content: " "; }
-
 .form-group::after {
   display: table;
   content: ' ';
   clear: both; }
-
 .form-group > div {
   box-sizing: border-box;
   padding-left: 15px;
   float: left; }
-
 .form-group div.checkbox {
   padding-top: 7px; }
 
@@ -104,31 +101,28 @@ ul.list-inline {
   list-style: none;
   margin: 0px;
   padding: 0px; }
-
-ul.list-inline li {
-  display: list-item;
-  float: left;
-  margin: 0px; }
+  ul.list-inline li {
+    display: list-item;
+    float: left;
+    margin: 0px; }
 
 ul.list-unstyled {
   list-style: none;
   margin: 0px;
   padding: 0px; }
-
-ul.list-unstyled li {
-  margin: 0px;
-  float: none; }
+  ul.list-unstyled li {
+    margin: 0px;
+    float: none; }
 
 ul.pagination {
   list-style: none;
   margin: 0px;
   padding: 0px; }
-
-ul.pagination li {
-  display: list-item;
-  float: left;
-  margin: 0px;
-  padding: 2px 5px; }
+  ul.pagination li {
+    display: list-item;
+    float: left;
+    margin: 0px;
+    padding: 2px 5px; }
 
 .numeric-input {
   text-align: right; }
@@ -137,36 +131,31 @@ ul.pagination li {
   margin: 20px 0px;
   padding: 0px 10px;
   background-color: #EEE; }
-
-.spoiler-wrapper.show {
-  padding-bottom: 10px; }
-
-.spoiler-wrapper .spoiler-toggle {
-  padding: 10px 0px;
-  content: '...';
-  cursor: pointer; }
+  .spoiler-wrapper .show {
+    padding-bottom: 10px; }
+  .spoiler-wrapper .spoiler-toggle {
+    padding: 10px 0px;
+    content: '...';
+    cursor: pointer; }
+  .spoiler-wrapper .show .spoiler {
+    height: auto;
+    overflow: visible; }
 
 .spoiler {
   height: 0px;
   overflow: hidden; }
 
-.spoiler-wrapper.show .spoiler {
-  height: auto;
-  overflow: visible; }
-
 .alert {
   position: relative; }
-
-.alert button.close {
-  position: absolute;
-  right: 10px;
-  top: 0px;
-  border: none;
-  background: none;
-  cursor: pointer; }
-
-.alert h2 {
-  margin: 0px; }
+  .alert button.close {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    border: none;
+    background: none;
+    cursor: pointer; }
+  .alert h2 {
+    margin: 0px; }
 
 .alert-success {
   border-color: #d6e9c6 !important;

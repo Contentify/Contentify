@@ -203,6 +203,7 @@ class InstallController extends Controller {
             $table->text('description')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('internal')->default(false);
+            $table->integer('level')->default(0);
             $table->integer('threads_count')->default(0);
             $table->integer('posts_count')->default(0);
         }, ['forumcat_id', 'latest_thread_id', 'team_id']);
