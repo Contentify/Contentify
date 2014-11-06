@@ -8,10 +8,10 @@ CKEDITOR.plugins.add('flags', {
                 function addFlag(flag)
                 {
                     var url = contentify.assetUrl + 'uploads/countries/' + flag + '.png';
-                    return '<img src="' + url + '" alt="' + flag + '">';
+                    return '<img src="' + url + '" title="' + flag + '" alt="' + flag + '">';
                 }
 
-                var flags = $('<div class="boxer-confirm">' + addFlag('eu') 
+                var flags = $('<div class="boxer-plain">' + addFlag('eu') 
                     + addFlag('at')
                     + addFlag('de')
                     + addFlag('dk')

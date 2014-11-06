@@ -69,7 +69,7 @@
         {{-- We can't add scores to a match that doesn't actually exist --}}
         @if (isset($model))
 
-        var template = '<div class="boxer-confirm add-new"> {{ Form::smartSelectForeign('map_id', 'Map') }} {{ Form::smartGroupOpen('left_score', trans('matches::score')) }} <input type="text" name="left_score" style="width: 20px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="width: 20px" value="%%scoreRight%%"> {{ Form::smartGroupClose() }}</div>';
+        var template = '<div class="boxer-plain add-new"> {{ Form::smartSelectForeign('map_id', 'Map') }} {{ Form::smartGroupOpen('left_score', trans('matches::score')) }} <input type="text" name="left_score" style="width: 20px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="width: 20px" value="%%scoreRight%%"> {{ Form::smartGroupClose() }}</div>';
 
         contentify.templateManager.add('mapForm', template);
 

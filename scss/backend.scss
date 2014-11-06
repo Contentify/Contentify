@@ -46,7 +46,7 @@ input[type=button], button { padding: 0px 10px; border: 1px solid #CCC; border-r
 } /* height = input["text"].height + 4px */
 input[type=submit]:focus, button:focus { border-color: #ff6100; }
 button img { vertical-align: bottom; }
-select { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); height: 26px; }
+select:not([size]) { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); height: 26px; }
 
 /*
  * Classes
@@ -64,7 +64,7 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 /* Message */
 .ui-message { 
     margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x;
-    h2 { margin: 0px; font-size: 12px; }
+    h4 { margin: 0px; font-size: 12px; }
     .text { }
 }
 
@@ -151,6 +151,9 @@ ul.pagination li {
 .hover-ui { display: none; }
 
 /* Confirm Question */
+.boxer-plain { 
+    width: 300px;
+}
 .boxer-confirm { 
     width: 300px;
     h2 { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: normal; }

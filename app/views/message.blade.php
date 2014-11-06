@@ -1,5 +1,5 @@
 <div class="ui-message">
-    <h2>{{ $title }}</h2>
+    <h4>{{ $title }}</h4>
 
     <div class="text">
         {{ $text }}

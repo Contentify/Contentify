@@ -93,7 +93,7 @@ input[type=submit]:focus, button:focus {
 button img {
   vertical-align: bottom; }
 
-select {
+select:not([size]) {
   margin: 0px;
   padding: 0px 10px;
   border: 1px solid #CCC;
@@ -135,7 +135,7 @@ h2.section {
   border: 1px solid #E7E7E7;
   background-image: url(theme/backend/bg_message.png);
   background-repeat: repeat-x; }
-  .ui-message h2 {
+  .ui-message h4 {
     margin: 0px;
     font-size: 12px; }
 
@@ -322,6 +322,9 @@ ul.pagination li {
   display: none; }
 
 /* Confirm Question */
+.boxer-plain {
+  width: 300px; }
+
 .boxer-confirm {
   width: 300px; }
   .boxer-confirm h2 {

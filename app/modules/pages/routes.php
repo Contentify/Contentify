@@ -17,3 +17,6 @@ ModuleRoute::get('imprint', ['as' => 'pages.showImprint', 'uses' => 'CustomPages
 ModuleRoute::get('articles', 'ArticlesController@index');
 ModuleRoute::get('articles/{id}', ['as' => 'articles.show', 'uses' => 'ArticlesController@show']);
 ModuleRoute::get('articles/{id}/{slug}', 'ArticlesController@show');
+
+ModuleRoute::get('editor-templates/{id}', 'TemplatesController@show');
+ModuleRoute::get('editor-templates', 'TemplatesController@index');

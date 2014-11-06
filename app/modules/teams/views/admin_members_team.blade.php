@@ -1,4 +1,4 @@
-<div class="boxer-confirm">
+<div class="boxer-plain">
     <select>
         @foreach ($teams as $team)
             <option value="{{ $team->id }}">
