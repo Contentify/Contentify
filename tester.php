@@ -43,7 +43,11 @@ class Tester {
         $this->line();
 
         $paths = $this->paths;
-        $writableDirs = [$paths['app'].'/storage', $paths['public'].'/uploads', $paths['public'].'/rss'];
+        $writableDirs = [
+            $paths['app'].'/storage', 
+            $paths['public'].'/uploads', 
+            $paths['public'].'/rss'
+        ];
 
         foreach ($writableDirs as $dir) {
             if (is_writable($dir)) {

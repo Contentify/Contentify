@@ -210,7 +210,7 @@ class InstallController extends Controller {
 
         $this->create('forum_threads', function($table) 
         { 
-            $table->integer('posts_count')->default(0);
+            $table->integer('posts_count')->default(1);
             $table->boolean('sticky')->default(false);
             $table->boolean('closed')->default(false);
             $table->timestamp('started_at');

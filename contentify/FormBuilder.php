@@ -1,7 +1,7 @@
 <?php namespace Contentify;
  
 use Illuminate\Html\FormBuilder as OriginalFormBuilder;
-use Crypt, URL, HTML, DB, Exception, MsgException;
+use App, Crypt, URL, HTML, DB, Exception, MsgException;
 use \Carbon as AliasedCarbon; // If we just use Carbon we would use Contentify\Carbon and ignoring the alias!
 
 class FormBuilder extends OriginalFormBuilder {
@@ -272,16 +272,24 @@ class FormBuilder extends OriginalFormBuilder {
 
         if ($editor) {
             $label      = self::label($name, $title, ['class' => 'full-line']);
-            $textarea   = self::textarea($name, $value, ['class' => 'ckeditor']);
-        } else {
-            $label      = self::label($name, $title);
-            $textarea   = self::textarea($name, $value);
-        }
+            $textarea   = self::textarea($name, $value, ['class' => 'editor']);
 
-        $partial    = '<div class="form-editor">'
-            .$label
-            .$textarea
-            .'</div>';
+            $code = "<script>CKEDITOR.replace('".$name."', {
+                language: '".App::getLocale()."',
+                extraPlugins: 'flags'
+            });</script>";
+
+            $partial    = '<div class="form-editor">'
+                .$label
+                .$textarea
+                .$code
+                .'</div>';
+        } else {
+            $partial    = self::smartGroupOpen($name, $title)
+                .self::textarea($name, $value)
+                .self::smartGroupClose();
+        }
+        
         return $partial;
     }
 
