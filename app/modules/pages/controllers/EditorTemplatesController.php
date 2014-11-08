@@ -3,7 +3,7 @@
 use App\Modules\Pages\Models\Fragment;
 use View, BackController;
 
-class TemplatesController extends BackController {
+class EditorTemplatesController extends BackController {
 
     /**
      * Returns a template with a select with all editor templates
@@ -12,11 +12,11 @@ class TemplatesController extends BackController {
      */
     public function index()
     {
-        // TODO: Rechte checken
+        // TODO: Permission check
 
         $templates = Fragment::all();
 
-        return View::make('pages::templates', compact('templates'));
+        return View::make('pages::editor_templates', compact('templates'));
     }
 
     /**
@@ -27,7 +27,7 @@ class TemplatesController extends BackController {
      */
     public function show($id)
     {
-        // TODO: Rechte checken
+        // TODO: Permission check
 
         $template = Fragment::findOrFail($id);
 

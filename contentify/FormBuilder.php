@@ -276,7 +276,7 @@ class FormBuilder extends OriginalFormBuilder {
 
             $code = "<script>CKEDITOR.replace('".$name."', {
                 language: '".App::getLocale()."',
-                extraPlugins: 'flags,templates'
+                extraPlugins: 'flags,templates,images'
             });</script>";
 
             $partial    = '<div class="form-editor">'

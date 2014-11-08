@@ -18,5 +18,5 @@ ModuleRoute::get('articles', 'ArticlesController@index');
 ModuleRoute::get('articles/{id}', ['as' => 'articles.show', 'uses' => 'ArticlesController@show']);
 ModuleRoute::get('articles/{id}/{slug}', 'ArticlesController@show');
 
-ModuleRoute::get('editor-templates/{id}', 'TemplatesController@show');
-ModuleRoute::get('editor-templates', 'TemplatesController@index');
+ModuleRoute::get('editor-templates/{id}', 'EditorTemplatesController@show');
+ModuleRoute::get('editor-templates', 'EditorTemplatesController@index');

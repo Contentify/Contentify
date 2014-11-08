@@ -64,7 +64,7 @@ form hr {
 .col-sm-12 {
   width: 100%; }
 
-.clearfix:after {
+.clearfix:after, .editor-images:after {
   display: block;
   clear: both;
   content: '.';
@@ -673,6 +673,17 @@ ul.pagination li {
     text-overflow: ellipsis; }
   .page-dashboard .feed-messages img {
     vertical-align: text-bottom; }
+
+.editor-images {
+  width: 330px; }
+  .editor-images .image {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0px 10px 10px 0px;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer; }
 
 /*
  * Mainlayout

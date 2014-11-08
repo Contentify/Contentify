@@ -237,6 +237,12 @@ ul.pagination li {
     }
 }
 
+.editor-images {
+    @extend .clearfix;
+    width: 330px;
+    .image { float: left; width: 100px; height: 100px; margin: 0px 10px 10px 0px; background-position: center; background-size: cover; cursor: pointer }
+}
+
 /*
  * Mainlayout
  */
