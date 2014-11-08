@@ -69,3 +69,5 @@ ul.pagination {
 .alert-success { border-color: #d6e9c6 !important; background: #dff0d8 !important }
 .alert-warning { border-color: #faebcc !important; background: #fcf8e3 !important }
 .alert-error { border-color: #ebccd1 !important; background: #f2dede !important }
+
+.ellipsis { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }

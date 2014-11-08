@@ -134,5 +134,7 @@ return array(
     'quote'         => 'Quote',
     'size'          => 'Size',
     'ip'            => 'IP',
+    'online'        => 'Online',
+    'viewers'       => 'Viewers',
 
 );

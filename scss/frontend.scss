@@ -1,4 +1,4 @@
-@import "base.css";
+@import "base";
 
 $primaryColor: #eeffcc;
 
@@ -135,8 +135,9 @@ h1.page-title { }
 .page-streams .stream-player iframe { width: 100%; border: none }
 
 .widget-streams {
-    a { display: block; position: relative; }
-    .viewers { float: right; }
+    a { display: block; position: relative;  }
+    .title { @extend .ellipsis; display: inline-block; width: 80% }
+    .viewers { position: absolute; right: 0px; }
 }
 
 .page-galleries .galleries {
