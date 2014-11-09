@@ -102,6 +102,5 @@ Route::get('jobs', function()
  */
 Route::get('test', function()
 { 
-    //$fg = new FormGenerator();
-    //return '<pre>'.$fg->generate('matches').'</pre>';
+
 });

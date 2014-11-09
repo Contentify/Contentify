@@ -237,9 +237,18 @@ ul.pagination li {
     }
 }
 
+.editor-flags {
+    img { cursor: pointer }
+}
+
 .editor-images {
-    @extend .clearfix;
-    width: 330px;
+    width: 350px;
+    .actions { 
+        padding-bottom: 20px;
+        input { width: 70%; margin-right: 5%; box-sizing: border-box }
+        button { width: 24%; box-sizing: border-box }
+    }
+    .images { height: 330px; overflow-y: scroll; }
     .image { float: left; width: 100px; height: 100px; margin: 0px 10px 10px 0px; background-position: center; background-size: cover; cursor: pointer }
 }
 

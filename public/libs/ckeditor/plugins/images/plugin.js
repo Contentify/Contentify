@@ -31,7 +31,7 @@ CKEDITOR.plugins.add('images', {
                     $.boxer($data);
                     setHandler($data);
 
-                    $data.find('button').click(function()
+                    function submit()
                     {
                         $.ajax({
                             url: contentify.baseUrl + 'editor-images',
@@ -45,6 +45,13 @@ CKEDITOR.plugins.add('images', {
                         {
                             contentify.alertRequestFailed(response);
                         });
+                    }
+
+                    $data.find('button').click(submit);
+                    $data.find('input').keypress(function(event) {
+                        if (event.which == 13) {
+                            submit();
+                        }
                     });
                 }).fail(function(response)
                 {

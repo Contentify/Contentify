@@ -11,4 +11,6 @@
 |
 */
 
+Artisan::add(new Contentify\Commands\GenerateFormCommand);
+
 Artisan::add(new ChrisKonnertz\Jobs\JobsCommand);

@@ -11,7 +11,7 @@ CKEDITOR.plugins.add('flags', {
                     return '<img src="' + url + '" title="' + flag + '" alt="' + flag + '">';
                 }
 
-                var flags = $('<div class="boxer-plain">' + addFlag('eu') 
+                var flags = $('<div class="boxer-plain editor-flags">' + addFlag('eu') 
                     + addFlag('at')
                     + addFlag('de')
                     + addFlag('dk')

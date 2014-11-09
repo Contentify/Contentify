@@ -64,7 +64,7 @@ form hr {
 .col-sm-12 {
   width: 100%; }
 
-.clearfix:after, .editor-images:after {
+.clearfix:after {
   display: block;
   clear: both;
   content: '.';
@@ -674,8 +674,23 @@ ul.pagination li {
   .page-dashboard .feed-messages img {
     vertical-align: text-bottom; }
 
+.editor-flags img {
+  cursor: pointer; }
+
 .editor-images {
-  width: 330px; }
+  width: 350px; }
+  .editor-images .actions {
+    padding-bottom: 20px; }
+    .editor-images .actions input {
+      width: 70%;
+      margin-right: 5%;
+      box-sizing: border-box; }
+    .editor-images .actions button {
+      width: 24%;
+      box-sizing: border-box; }
+  .editor-images .images {
+    height: 330px;
+    overflow-y: scroll; }
   .editor-images .image {
     float: left;
     width: 100px;
