@@ -274,9 +274,9 @@ class FormBuilder extends OriginalFormBuilder {
             $label      = self::label($name, $title, ['class' => 'full-line']);
             $textarea   = self::textarea($name, $value, ['class' => 'editor']);
 
-            $code = "<script>CKEDITOR.replace('".$name."', {
-                language: '".App::getLocale()."',
-                extraPlugins: 'flags,templates,images'
+            $code = "<script>var editorLocale = '".App::getLocale()."';
+            CKEDITOR.replace('".$name."', {
+                customConfig: 'custom_config.js'
             });</script>";
 
             $partial    = '<div class="form-editor">'
