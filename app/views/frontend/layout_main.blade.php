@@ -65,7 +65,7 @@
                 <h3>Navigation:</h3>
                 <ul class="list-unstyled">
                     <li>{{ link_to('auth/registration/create', 'Registration') }}</li>
-                    <li>{{ link_to('news', 'Newsarchive') }}</li>
+                    <!--<li>{{ link_to('news', 'Newsarchive') }}</li>-->
                     <!--<li>{{ link_to('contact', 'Contact') }}</li>-->
                     <li>{{ link_to('users', 'Users') }}</li>
                     <li>{{ link_to('articles', 'Articles') }}</li>

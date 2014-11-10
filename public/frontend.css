@@ -319,10 +319,10 @@ blockquote {
 }
 .form-group label {
   display: inline-block;
-  padding: 7px 20px 0px 0px;
-  text-align: right;
+  padding-top: 7px;
   cursor: pointer;
   word-wrap: break-word;
+  float: left;
 }
 .form-group label:after {
   /* content: ':'; */
@@ -699,28 +699,29 @@ blockquote {
   margin-bottom: 20px;
 }
 
-.page-forum .root-section {
-  background-color: #eeffcc;
+.page-forums .root-forum h2 {
+  background-color: #ff6100;
   color: white;
 }
-.page-forum .sub-section {
+.page-forums .sub-forum {
+  display: block;
   position: relative;
   height: 30px;
   overflow: hidden;
 }
-.page-forum .sub-section .info {
+.page-forums .sub-forum .info {
   position: absolute;
   left: 0px;
   top: 0px;
   width: 60%;
 }
-.page-forum .sub-section .threads {
+.page-forums .sub-forum .threads {
   position: absolute;
   left: 60%;
   top: 0px;
   width: 10%;
 }
-.page-forum .sub-section .latest {
+.page-forums .sub-forum .latest {
   position: absolute;
   left: 70%;
   top: 0px;

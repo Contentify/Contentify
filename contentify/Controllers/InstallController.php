@@ -56,6 +56,10 @@ class InstallController extends Controller {
                     'username'  => $username,
                 ), true);
 
+                 // TODO: Test if it's possible to integrate this into the register method?
+                $user->slug = Str::slug($user->username);
+                $user->forceSave();
+
                 /*
                  * Add user to group "Admins"
                  */
@@ -197,7 +201,7 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
-        $this->create('forumcats', function($table) 
+        $this->create('forums', function($table) 
         { 
             $table->boolean('root')->default(0);
             $table->text('description')->nullable();
@@ -206,7 +210,7 @@ class InstallController extends Controller {
             $table->integer('level')->default(0);
             $table->integer('threads_count')->default(0);
             $table->integer('posts_count')->default(0);
-        }, ['forumcat_id', 'latest_thread_id', 'team_id']);
+        }, ['forum_id', 'latest_thread_id', 'team_id']);
 
         $this->create('forum_threads', function($table) 
         { 
@@ -215,7 +219,7 @@ class InstallController extends Controller {
             $table->boolean('closed')->default(false);
             $table->timestamp('started_at');
             //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
-        }, ['forumcat_id']);
+        }, ['forum_id']);
 
         $this->create('forum_posts', function($table) 
         { 

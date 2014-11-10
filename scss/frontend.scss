@@ -1,6 +1,6 @@
 @import "base";
 
-$primaryColor: #eeffcc;
+$primaryColor: #ff6100;
 
 /*
  * Elements
@@ -63,7 +63,7 @@ h1.page-title { }
 .form-group { 
     margin-bottom: 20px;
     &.space-top {  }
-    label { display: inline-block; padding: 7px 20px 0px 0px; text-align: right; cursor: pointer; word-wrap: break-word; }
+    label { display: inline-block; padding-top: 7px; cursor: pointer; word-wrap: break-word; float: left }
     label:after { /* content: ':'; */ }
     input { width: 40%; padding: 5px 10px; border: 2px solid silver; color: #4082E3 }
     input[type=text]:focus, input[type=password]:focus, input[type=url]:focus { border-color: #ff6100; }
@@ -208,10 +208,10 @@ h1.page-title { }
 
 .page-servers .server { margin-bottom: 20px }
 
-.page-forum {
-    .root-section { background-color: $primaryColor; color: white }
-    .sub-section { 
-        position: relative; height: 30px; overflow: hidden;
+.page-forums {
+    .root-forum h2 { background-color: $primaryColor; color: white }
+    .sub-forum { 
+        display: block; position: relative; height: 30px; overflow: hidden;
         .info { position: absolute; left: 0px; top: 0px; width: 60%; }
         .threads { position: absolute; left: 60%; top: 0px; width: 10%; }
         .latest { position: absolute; left: 70%; top: 0px; width: 30% }
