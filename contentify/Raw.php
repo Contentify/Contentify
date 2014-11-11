@@ -12,11 +12,15 @@ class Raw {
      * Constructor call
      * 
      * @param string $value The value to print
-     * @param string $escape Another value that is auto escaped
+     * @param string $escape Another value that's going to get auto escaped
      */
-    public function __construct($value, $escape)
+    public function __construct($value, $escape = null)
     {
-        $this->value = $value.e($escape);
+        if ($escape !== null) {
+            $this->value = (string) $value.e($escape);
+        } else {
+            $this->value = (string) $value;
+        }
     }
 
     public function __toString()

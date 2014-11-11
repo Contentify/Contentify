@@ -13,7 +13,6 @@
 /**
  * Shortcut. Returns the current user model or null.
  * 
- * 
  * @return User The User model
  */
 function user()
@@ -27,7 +26,7 @@ function user()
  * from auto escaping.
  * 
  * @param  string $value The string value
- * @param  string $escape Another value that is auto escaped
+ * @param  string $escape Another value that's going to get auto escaped
  * @return Raw
  */
 function raw($value, $escape = null)

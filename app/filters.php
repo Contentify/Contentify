@@ -36,12 +36,20 @@ App::after(function($request, $response)
 Route::filter('admin', function()
 {
     if (! Sentry::check()) {
-        Session::set('redirect', Request::path());
-        return View::make('backend.auth');
+        if (Request::ajax()) {
+            return Response::make('Unauthorized', 401);
+        } else {
+            Session::set('redirect', Request::path());
+            return View::make('backend.auth');
+        }
     }
 
     if (! user()->hasAccess('backend')) {
-        return View::make('backend.no_access');
+        if (Request::ajax()) {
+            return Response::make('Unauthorized', 401);
+        } else {
+            return View::make('backend.no_access');
+        }
     }
 });
 
