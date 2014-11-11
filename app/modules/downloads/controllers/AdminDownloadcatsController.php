@@ -27,7 +27,7 @@ class AdminDownloadcatsController extends BackController {
 
                 return [
                     $downloadcat->id,
-                    Hover::pull().$downloadcat->title
+                    raw(Hover::pull(), $downloadcat->title)
                 ];
             }
         ]);

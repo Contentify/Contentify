@@ -31,8 +31,10 @@ class AdminContactController extends BackController {
             {
                 return [
                     $msg->id,
-                    $msg->new ? HTML::image(asset('icons/email_go.png')) : HTML::image(asset('icons/email_open.png')),
-                    link_to_route('admin.contact.show', $msg->title, [$msg->id]),
+                    raw($msg->new ? 
+                        HTML::image(asset('icons/email_go.png')) : 
+                        HTML::image(asset('icons/email_open.png'))),
+                    raw(link_to_route('admin.contact.show', $msg->title, [$msg->id])),
                     $msg->username,
                     $msg->created_at,
                 ];

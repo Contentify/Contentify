@@ -209,11 +209,26 @@ h1.page-title { }
 .page-servers .server { margin-bottom: 20px }
 
 .page-forums {
+    .action { border-radius: 3px; background-color: $primaryColor; color: white }
+}
+
+// Forums index page
+.page-forums {
     .root-forum h2 { background-color: $primaryColor; color: white }
     .sub-forum { 
         display: block; position: relative; height: 30px; overflow: hidden;
         .info { position: absolute; left: 0px; top: 0px; width: 60%; }
         .threads { position: absolute; left: 60%; top: 0px; width: 10%; }
+        .latest { position: absolute; left: 70%; top: 0px; width: 30% }
+    }
+}
+
+// Forums show_forum page
+.page-forums .threads {
+    .thread {
+        display: block; position: relative; height: 30px; overflow: hidden;
+        .info { position: absolute; left: 0px; top: 0px; width: 60%; }
+        .posts { position: absolute; left: 60%; top: 0px; width: 10%; }
         .latest { position: absolute; left: 70%; top: 0px; width: 30% }
     }
 }

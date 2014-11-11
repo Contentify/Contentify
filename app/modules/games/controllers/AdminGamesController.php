@@ -26,10 +26,10 @@ class AdminGamesController extends BackController {
             {
                 return [
                     $game->id,
-                    $game->icon 
+                    raw($game->icon 
                         ? HTML::image($game->uploadPath().$game->icon, $game->title, ['width' => 16, 'height' => 16]) 
-                        : NULL,
-                    Hover::modelAttributes($game, ['creator'])->pull().$game->title,
+                        : NULL),
+                    raw(Hover::modelAttributes($game, ['creator'])->pull(), $game->title),
                 ];            
             }
         ]);

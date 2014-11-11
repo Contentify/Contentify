@@ -29,7 +29,7 @@ class AdminAdvertsController extends BackController {
 
                 return [
                     $advert->id,
-                    Hover::pull().$advert->title,
+                    raw(Hover::pull(), $advert->title),
                     $advert->advertcat->title,
                 ];            
             }

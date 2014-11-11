@@ -28,7 +28,7 @@ class AdminTeamsController extends BackController {
 
                 return [
                     $team->id,
-                    Hover::pull().$team->title,
+                    raw(Hover::pull(), $team->title),
                     $team->teamcat->title,
                 ];            
             }

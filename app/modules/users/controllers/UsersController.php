@@ -27,7 +27,7 @@ class UsersController extends FrontController {
             {
                 return [
                     $user->id,
-                    link_to('users/'.$user->id.'/'.$user->slug, $user->username),
+                    raw(link_to('users/'.$user->id.'/'.$user->slug, $user->username)),
                     $user->first_name.' '.$user->last_name,
                     $user->created_at,
                     $user->last_login ? $user->last_login->toDateString() : null

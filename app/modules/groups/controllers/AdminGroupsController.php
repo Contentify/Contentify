@@ -25,7 +25,7 @@ class AdminGroupsController extends BackController {
             {
                 return [
                     $group->id,
-                    Hover::modelAttributes($group, ['creator'])->pull().$group->name,
+                    raw(Hover::modelAttributes($group, ['creator'])->pull(), $group->name),
                 ];            
             },
             'searchFor' => 'name'

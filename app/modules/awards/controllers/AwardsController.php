@@ -29,15 +29,15 @@ class AwardsController extends FrontController {
                 if ($award->game->icon) {
                     $game = HTML::image(
                         $award->game->uploadPath().$award->game->icon, 
-                        $award->game->title, // "alt" attribute
-                        ['title' => $award->game->title]); // "title" attribute
+                        e($award->game->title), // "alt" attribute
+                        ['title' => e($award->game->title)]); // "title" attribute
                 }
 
                 return [
-                    $award->positionIcon(),
-                    $award->url ? HTML::link($award->url, $award->title) : $award->title,
+                    raw($award->positionIcon()),
+                    raw($award->url ? HTML::link($award->url, e($award->title)) : e($award->title)),
                     $award->tournament ? $award->tournament->short : null,
-                    $game,
+                    raw($game),
                     $award->achieved_at,
                 ];
             },

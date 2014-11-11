@@ -22,6 +22,20 @@ function user()
 }
 
 /**
+ * Shortcut that creates a new instance of the Raw class.
+ * Methods may use the Raw class to prevent (HTML etc.) code
+ * from auto escaping.
+ * 
+ * @param  string $value The string value
+ * @param  string $escape Another value that is auto escaped
+ * @return Raw
+ */
+function raw($value, $escape = null)
+{
+    return new Raw($value, $escape);
+}
+
+/**
  * Returns HTML code of a "image link" - a link with and image (and maybe a text).
  * If $image has no extension, the extension will be ".png".
  * If $image does not contain a path, the path "icons" will be used.

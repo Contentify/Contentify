@@ -28,7 +28,7 @@ class AdminStreamsController extends BackController {
 
                 return [
                     $stream->id,
-                    Hover::pull().$stream->title,
+                    raw(Hover::pull(), $stream->title),
                     Stream::$providers[$stream->provider],
                 ];             
             }

@@ -31,7 +31,7 @@ class AdminOpponentsController extends BackController {
 
                 return [
                     $opponent->id,
-                    Hover::pull().$icon.' '.$opponent->title,
+                    raw(Hover::pull().$icon, ' '.$opponent->title),
                 ];            
             }
         ]);

@@ -263,6 +263,7 @@ return array(
         'StiModel'              => 'Contentify\Models\StiModel',
         'User'                  => 'Contentify\Models\User',
         'ConfigBag'             => 'Contentify\Models\ConfigBag',
+        'Raw'                   => 'Contentify\Raw',
 
         // Vendor classes:       
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',

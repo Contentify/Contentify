@@ -32,7 +32,7 @@ class AdminCountriesController extends BackController {
 
                 return [
                     $country->id,
-                    $icon,
+                    raw($icon),
                     $country->title,
                 ];            
             }

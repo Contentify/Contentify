@@ -37,15 +37,15 @@ class AdminPagesController extends BackController {
                         $link = HTML::link(URL::route('pages.showSlug', [$page->slug]), $page->title);
                         break;
                     default:
-                        $link = $page->title;
+                        $link = e($page->title);
                 }
 
                 return [
                     $page->id,
-                    $page->published ? HTML::image(asset('icons/accept.png'), 'True') : '',
-                    Hover::pull().$link,
+                    raw($page->published ? HTML::image(asset('icons/accept.png'), 'True') : null),
+                    raw(Hover::pull().$link),
                     $page->pagecat->title,
-                    HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username),
+                    raw(HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username)),
                     $page->created_at
                 ];
             }

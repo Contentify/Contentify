@@ -27,7 +27,7 @@ class AdminAdvertcatsController extends BackController {
 
                 return [
                     $advertcat->id,
-                    Hover::pull().$advertcat->title
+                    raw(Hover::pull(), $advertcat->title),
                 ];
             }
         ]);

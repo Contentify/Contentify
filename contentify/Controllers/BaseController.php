@@ -437,7 +437,7 @@ abstract class BaseController extends Controller {
                         $actionsCode .= $action($model);
                     }
                 }
-                $row[] = $actionsCode;
+                $row[] = raw($actionsCode);
             }
 
             if (is_callable($data['actions'])) {

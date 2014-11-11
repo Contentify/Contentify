@@ -34,7 +34,7 @@ class AdminMapsController extends BackController {
 
                 return [
                     $map->id,
-                    Hover::pull().$icon.' '.$map->title,
+                    raw(Hover::pull().$icon, ' '.$map->title),
                     $map->game->title,
                 ];            
             }

@@ -27,7 +27,7 @@ class AdminNewscatsController extends BackController {
 
                 return [
                     $newscat->id,
-                    Hover::pull().$newscat->title
+                    raw(Hover::pull(), $newscat->title)
                 ];
             }
         ]);

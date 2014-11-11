@@ -29,14 +29,14 @@ class AdminImagesController extends BackController {
                     'Image-Preview', ['class' => 'image']
                 );
                 $preview = '<a href="'.$image->uploadPath().$image->image.'" target="_blank">'.$imgCode.'</a>'
-                            .'<br>'.$image->tags;
+                            .'<br>'.e($image->tags);
                 if ($image->gallery) {
-                    $preview .= '<br>'.link_to('galleries/'.$image->gallery->id, 'Gallery: '.$image->gallery->title);
+                    $preview .= '<br>'.link_to('galleries/'.$image->gallery->id, 'Gallery: '.e($image->gallery->title));
                 }
 
                 return [
                     $image->id,
-                    $preview,
+                    raw($preview),
                     $image->created_at
                 ];
             },

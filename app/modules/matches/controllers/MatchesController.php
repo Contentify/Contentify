@@ -36,14 +36,14 @@ class MatchesController extends FrontController {
                         ['width' => 16, 'height' => 16]
                     );
                 } else {
-                    $game = '';
+                    $game = null;
                 }
 
                 return [
                     $match->played_at,
-                    $game,
-                    HTML::link(url('matches/'.$match->id), $match->right_team->title),       
-                    $match->scoreCode()
+                    raw($game),
+                    raw(HTML::link(url('matches/'.$match->id), $match->right_team->title)),
+                    raw($match->scoreCode())
                 ];
             },
             'actions'       => null,

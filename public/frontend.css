@@ -699,6 +699,12 @@ blockquote {
   margin-bottom: 20px;
 }
 
+.page-forums .action {
+  border-radius: 3px;
+  background-color: #ff6100;
+  color: white;
+}
+
 .page-forums .root-forum h2 {
   background-color: #ff6100;
   color: white;
@@ -722,6 +728,31 @@ blockquote {
   width: 10%;
 }
 .page-forums .sub-forum .latest {
+  position: absolute;
+  left: 70%;
+  top: 0px;
+  width: 30%;
+}
+
+.page-forums .threads .thread {
+  display: block;
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+}
+.page-forums .threads .thread .info {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 60%;
+}
+.page-forums .threads .thread .posts {
+  position: absolute;
+  left: 60%;
+  top: 0px;
+  width: 10%;
+}
+.page-forums .threads .thread .latest {
   position: absolute;
   left: 70%;
   top: 0px;

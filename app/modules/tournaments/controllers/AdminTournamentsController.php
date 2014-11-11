@@ -27,7 +27,7 @@ class AdminTournamentsController extends BackController {
 
                 return [
                     $tournament->id,
-                    Hover::pull().$tournament->title,
+                    raw(Hover::pull(), $tournament->title),
                 ];            
             }
         ]);

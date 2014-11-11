@@ -29,7 +29,7 @@ class AdminSlidesController extends BackController {
 
                 return [
                     $slide->id,
-                    Hover::pull().$slide->title,
+                    raw(Hover::pull(), $slide->title),
                     $slide->slidecat->title,
                 ];            
             }

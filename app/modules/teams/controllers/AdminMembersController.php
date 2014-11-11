@@ -27,13 +27,13 @@ class AdminMembersController extends BackController {
             {
                 $data = [];
                 foreach ($user->teams as $team) {
-                    $data[$team->id] = $team->title;
+                    $data[$team->id] = e($team->title);
                 }
 
                 return [
                     $user->id,
                     $user->username,
-                    '<div class="data" data-user-id="'.$user->id.'">'.json_encode($data).'</div>',
+                    raw('<div class="data" data-user-id="'.$user->id.'">'.json_encode($data).'</div>'),
                 ];            
             },
             'searchFor' => 'username',

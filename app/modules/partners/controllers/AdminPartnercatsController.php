@@ -27,7 +27,7 @@ class AdminPartnercatsController extends BackController {
 
                 return [
                     $partnercat->id,
-                    Hover::pull().$partnercat->title
+                    raw(Hover::pull(), $partnercat->title),
                 ];
             }
         ]);

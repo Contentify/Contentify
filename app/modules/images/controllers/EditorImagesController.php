@@ -30,7 +30,6 @@ class EditorImagesController extends BaseController {
         // TODO: Permission check
         
         $tag = Input::get('tag');
-        \Log::error('tag: '.$tag);
 
         $images = Image::where('tags', 'LIKE', '%'.$tag.'%')->orderBy('created_at', 'desc')->get();
 

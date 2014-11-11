@@ -42,10 +42,10 @@ class AdminUsersController extends BackController {
 
                 return [
                     $user->id,
-                    Hover::pull().$user->username,
+                    raw(Hover::pull(), $user->username),
                     $user->email,
-                    $membership,
-                    $banned
+                    raw($membership),
+                    raw($banned),
                 ];            
             },
             'searchFor' => 'username',

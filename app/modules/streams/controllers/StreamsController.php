@@ -25,11 +25,11 @@ class StreamsController extends FrontController {
             'tableRow'  => function($stream)
             {
                 return [
-                    HTML::link(url('streams/'.$stream->id.'/'.$stream->slug), $stream->title),
+                    raw(HTML::link(url('streams/'.$stream->id.'/'.$stream->slug), $stream->title)),
                     Stream::$providers[$stream->provider],
-                    $stream->online ? 
+                    raw($stream->online ? 
                         HTML::image(asset('icons/tick.png'), trans('app.yes')) :
-                        HTML::image(asset('icons/cross.png'), trans('app.no')),
+                        HTML::image(asset('icons/cross.png'), trans('app.no'))),
                     $stream->viewers,
                 ];
             },

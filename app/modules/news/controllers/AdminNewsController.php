@@ -31,9 +31,9 @@ class AdminNewsController extends BackController {
 
                 return [
                     $news->id,
-                    $news->published ? HTML::image(asset('icons/accept.png'), trans('app.yes')) : '',
-                    Hover::pull().HTML::link(URL::route('news.show', [$news->id]), $news->title),
-                    HTML::link(URL::route('users.show', [$news->creator->id]), $news->creator->username),
+                    raw($news->published ? HTML::image(asset('icons/accept.png'), trans('app.yes')) : null),
+                    raw(Hover::pull().HTML::link(URL::route('news.show', [$news->id]), $news->title)),
+                    raw(HTML::link(URL::route('users.show', [$news->creator->id]), $news->creator->username)),
                     $news->created_at
                 ];
             }

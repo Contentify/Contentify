@@ -24,7 +24,7 @@ class NewsController extends FrontController {
             'tableRow'  => function($news)
             {
                 return [
-                    HTML::link(url('news/'.$news->id.'/'.$news->slug), $news->title),
+                    raw(HTML::link(url('news/'.$news->id.'/'.$news->slug), $news->title)),
                     $news->newscat->title,
                     $news->created_at
                 ];

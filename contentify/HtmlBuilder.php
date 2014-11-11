@@ -115,6 +115,10 @@ class HtmlBuilder extends OriginalHtmlBuilder {
             $code    .= '<tr>';
             $isFirst = true;
             foreach ($row as $value) {
+                if (! is_a($value, 'Raw')) {
+                    $value = e($value); // Always auto escape except value is marked as raw
+                }
+
                 if ($isFirst and $brightenFirst) {
                     $code    .= '<td style="color: silver">';
                     $isFirst = false;

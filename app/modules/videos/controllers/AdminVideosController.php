@@ -28,7 +28,7 @@ class AdminVideosController extends BackController {
 
                 return [
                     $video->id,
-                    Hover::pull().$video->title,
+                    raw(Hover::pull(), $video->title),
                     Video::$providers[$video->provider],
                 ];            
             }

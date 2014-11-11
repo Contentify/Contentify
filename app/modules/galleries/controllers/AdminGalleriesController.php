@@ -27,7 +27,7 @@ class AdminGalleriesController extends BackController {
 
                 return [
                     $gallery->id,
-                    Hover::pull().$gallery->title,
+                    raw(Hover::pull(), $gallery->title),
                 ];            
             }
         ]);

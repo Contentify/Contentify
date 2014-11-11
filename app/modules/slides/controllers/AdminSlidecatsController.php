@@ -27,7 +27,7 @@ class AdminSlidecatsController extends BackController {
 
                 return [
                     $slidecat->id,
-                    Hover::pull().$slidecat->title
+                    raw(Hover::pull(), $slidecat->title),
                 ];
             }
         ]);

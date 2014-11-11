@@ -27,7 +27,7 @@ class AdminAwardsController extends BackController {
             {
                 return [
                     $award->id,
-                    $award->positionIcon(),
+                    raw($award->positionIcon()),
                     $award->title,
                     $award->achieved_at
                 ];            

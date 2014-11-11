@@ -46,7 +46,7 @@ class AdminModulesController extends BackController {
 
                 return [
                     $module->title,
-                    $enabled,
+                    raw($enabled),
                     $state,
                 ];            
             },

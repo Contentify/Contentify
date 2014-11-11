@@ -29,7 +29,7 @@ class AdminDownloadsController extends BackController {
 
                 return [
                     $download->id,
-                    Hover::pull().$download->title,
+                    raw(Hover::pull(), $download->title),
                     $download->downloadcat->title,
                 ];            
             }

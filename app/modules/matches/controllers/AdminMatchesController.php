@@ -34,8 +34,8 @@ class AdminMatchesController extends BackController {
 
                 return [
                     $match->id,
-                    $match->state == 1 ? HTML::image(asset('icons/accept.png'), trans('app.yes')) : null,
-                    Hover::pull().$match->left_team->title,
+                    raw($match->state == 1 ? HTML::image(asset('icons/accept.png'), trans('app.yes')) : null),
+                    raw(Hover::pull(), $match->left_team->title),
                     $match->right_team->title,
                     $match->tournament->short,
                     $match->played_at
