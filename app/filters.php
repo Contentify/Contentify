@@ -55,14 +55,10 @@ Route::filter('admin', function()
 
 Route::filter('auth', function()
 {
-    if (Auth::guest())
-    {
-        if (Request::ajax())
-        {
+    if (Auth::guest()) {
+        if (Request::ajax()) {
             return Response::make('Unauthorized', 401);
-        }
-        else
-        {
+        } else {
             return Redirect::guest('login');
         }
     }

@@ -4,15 +4,15 @@ class Raw {
 
     /**
      * The value to print
-     * @var string
+     * @var mixed
      */
     protected $value;
 
     /**
      * Constructor call
      * 
-     * @param string $value The value to print
-     * @param string $escape Another value that's going to get auto escaped
+     * @param mixed $value The value to print
+     * @param mixed $escape Another value that's going to be auto escaped
      */
     public function __construct($value, $escape = null)
     {

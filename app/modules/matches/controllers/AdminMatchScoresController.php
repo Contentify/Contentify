@@ -8,6 +8,8 @@ class AdminMatchScoresController extends BackController {
 
     public function store()
     {
+        if (! $this->checkAccessCreate()) return Response::make(null, 403);
+        
         $matchScore = new MatchScore(Input::all());
         
         $okay = $matchScore->save();
@@ -21,6 +23,8 @@ class AdminMatchScoresController extends BackController {
 
     public function update($id)
     {
+        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
+
         $matchScore = MatchScore::findOrFail($id);
         $matchScore->fill(Input::all());
 
@@ -35,6 +39,8 @@ class AdminMatchScoresController extends BackController {
 
     public function destroy($id)
     {
+        if (! $this->checkAccessDelete()) return Response::make(null, 403);
+
         MatchScore::destroy($id);
 
         Response::make(null, 200);

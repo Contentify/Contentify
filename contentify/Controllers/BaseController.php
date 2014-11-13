@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use OpenGraph, Config, URL, HTML, Session, Input, View, Controller, Exception;
+use OpenGraph, Request, Config, URL, HTML, Session, Input, View, Controller, Exception;
 
 abstract class BaseController extends Controller {
 
@@ -518,7 +518,10 @@ abstract class BaseController extends Controller {
         if ($this->hasAccessRead()) {
             return true;
         } else {
-            $this->message(trans('app.access_denied'));
+            if (! Request::ajax()) {
+                $this->message(trans('app.access_denied'));
+            }
+
             return false;
         }
     }
@@ -534,7 +537,10 @@ abstract class BaseController extends Controller {
         if ($this->hasAccessCreate()) {
             return true;
         } else {
-            $this->message(trans('app.access_denied'));
+            if (! Request::ajax()) {
+                $this->message(trans('app.access_denied'));
+            }
+
             return false;
         }
     }
@@ -550,7 +556,10 @@ abstract class BaseController extends Controller {
         if ($this->hasAccessUpdate()) {
             return true;
         } else {
-            $this->message(trans('app.access_denied'));
+            if (! Request::ajax()) {
+                $this->message(trans('app.access_denied'));
+            }
+
             return false;
         }
     }
@@ -566,7 +575,10 @@ abstract class BaseController extends Controller {
         if ($this->hasAccessDelete()) {
             return true;
         } else {
-            $this->message(trans('app.access_denied'));
+            if (! Request::ajax()) {
+                $this->message(trans('app.access_denied'));
+            }
+            
             return false;
         }
     }
