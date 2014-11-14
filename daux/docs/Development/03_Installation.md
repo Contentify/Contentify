@@ -8,6 +8,8 @@ You will also need a MySQL Database and it's recommended to activate Apache's mo
 
 We strongly recommend to use webspace that you can configure. You should be able to create vhosts at least. And there is a command-line interface called [Artisan](http://laravel.com/docs/artisan). You should ensure you can run it. With Artisan you are ablte to [activate maintenance mode](http://laravel.com/docs/configuration#maintenance-mode).
 
+We have added a simple script named `tester.php` that checks the requirements mentioned before. We recommend to run it once before starting the actual installer, because the installer depends on the CMS and therefore won't even start if the requirements are not fulfilled.
+
 # Hosting
 
 If you do not have a hosting service so far or it does not meet the requirements listed above we suggest to give [DigitalOcean](http://www.digitalocean.com) a try. They offer an SSD server with 512 MB RAM and 20 GB disk space for only 5 USD per month.
