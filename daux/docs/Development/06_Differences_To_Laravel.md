@@ -29,3 +29,14 @@ Contentify includes two user interfaces: Frontend and backend. Controllers that 
 # Sentry
 
 Sentry is a authorization and authentication package. It deals with user registration, authentication (login/logout) and permissions. Read more in the [Sentry manual](https://cartalyst.com/manual/sentry).
+
+# Config
+
+The CMS extends Laravel's `Config` class. It overwrites the `has` and `get` methods in a way that they also look values up on a database table called `config`. To store values in this database table, call the `store` method:
+
+    Config::store('key', 'value');
+
+To delete a config value from the database, call `delete`:
+
+    Config::delete('key');
+

@@ -19,7 +19,16 @@ Route::when('admin/*', 'admin');
 /*
  * Frontend dashboard.
  */ 
-Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Controllers\NewsController@showOverview']);
+if (! installed()) {
+    // TODO: This is just a dirty implementation only for pre-release testing!
+    Route::get('/', ['as' => 'home', 'uses' => function() {
+        $view = View::make('maintenance')->render();
+        echo $view;
+        die();
+    }]);
+} else {
+    Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Controllers\NewsController@showOverview']);
+}
 
 /*
  * Backend dashboard.

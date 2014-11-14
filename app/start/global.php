@@ -133,18 +133,6 @@ require app_path().'/blade_extensions.php';
 
 /*
 |--------------------------------------------------------------------------
-| Require The Helpers File
-|--------------------------------------------------------------------------
-|
-| Beside Laravel's very own helpers we may want to create our own.
-| This file is the location to store these helper functions.
-|
-*/
-
-require app_path().'/helpers.php';
-
-/*
-|--------------------------------------------------------------------------
 | Require The Visitor File
 |--------------------------------------------------------------------------
 |
