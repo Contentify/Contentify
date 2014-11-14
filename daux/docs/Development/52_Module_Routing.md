@@ -13,6 +13,9 @@ The context method tells the ModuleRoute class to prefix our `AdminController` w
 * *get*
 * *post*
 * *put*
+* *patch*
+* *delete*
+* *options*
 * *any*
 * *match*
 * *controller*

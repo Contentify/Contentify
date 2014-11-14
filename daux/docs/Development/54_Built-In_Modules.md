@@ -46,3 +46,7 @@ It's possible to display content with a JS scroller instead of a JS slider and v
 ## Videos
 
 Every video belongs to a provider. The only default provider is `youtube`. As you might guess, a provider is a platform that hosts videos. The `Modules\Videos\Models\Video` model stores a `$providers` array with available providers. You may add aditional providers to this array. If you do so you have to care for handling videos from these providers by modifying corresponding templates - at least `modules/videos/views/index.blade.php` and `show.blade.php`. You may also take a look at `admin_form.blade.php`.
+
+## Streams
+
+Streams - most likely hosted by [Twitch](http://twitch.tv/) - usually tend to be online or offline and to have at least zero viewers. The `Streams` module can display such information but it needs to frequently update them. Therefore it adds a job to the jobs manager. This job will be executed each time when the job manager is triggered by a cron job and the job is not cooling down. Therefore you need to create a cron job if you want automated updates. Read more at the [GitHub page of the Jobs package](https://github.com/chriskonnertz/Jobs).
