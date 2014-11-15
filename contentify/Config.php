@@ -5,14 +5,14 @@ use Cache, DB, DateTime;
 
 class Config extends LaravelConfig {
 
-    const CACHE_KEY_PREFIX = 'config.keys.';
+    const CACHE_IN_DB_PREFIX = 'config.inDb.';
+
+    const CACHE_VALUES_PREFIX = 'config.values.';
 
     /**
-     * The result of the last has() call
-     * 
-     * @var stdClass
+     * Cache time in seconds
      */
-    protected static $lastResult = null;
+    const CACHE_TIME = 300;
 
     /**
      * Determine if the given configuration value exists.
@@ -23,20 +23,33 @@ class Config extends LaravelConfig {
      */
     public static function has($key, $dbLookup = true)
     {
-        // LaravelConfig::has() will return true for an invalid (=not namespaced) key! So we can't trust has() blindly.
+        if (installed() and $dbLookup) {
+            $dbChecked = Cache::has(self::CACHE_IN_DB_PREFIX.$key);
+
+            if ($dbChecked) {
+                $inDb = Cache::get(self::CACHE_IN_DB_PREFIX.$key);
+
+                if ($inDb) {
+                    return true;
+                }
+            } else {
+                $result = DB::table('config')->whereName($key)->first();
+
+                if (is_null($result)) {
+                    Cache::put(self::CACHE_IN_DB_PREFIX.$key, false, self::CACHE_TIME);
+                } else {
+                    Cache::put(self::CACHE_IN_DB_PREFIX.$key, true, self::CACHE_TIME);
+                    Cache::put(self::CACHE_VALUES_PREFIX.$key, $result->value, self::CACHE_TIME);
+                    return true;                    
+                }
+            }
+        }
+
         if ((strpos($key, '.') !== false or strpos($key, '::') !== false) and LaravelConfig::has($key)) {
             return true;
-        } elseif ($dbLookup) {
-            if (Cache::has(self::CACHE_KEY_PREFIX.$key)) {
-                return true;
-            } else {
-                self::$lastResult = DB::table('config')->whereName($key)->first(); // Temporarily save the result 
-                
-                return (self::$lastResult != null);   
-            }
-        } else {
-            return false;
-        }             
+        }
+
+        return false;
     }
 
     /**
@@ -49,20 +62,33 @@ class Config extends LaravelConfig {
      */
     public static function get($key, $default = null, $dbLookup = true)
     {
-        // LaravelConfig::has() will return true for an invalid (=not namespaced) key! So we can't trust has() blindly.
+        if (installed() and $dbLookup) {
+            $dbChecked = Cache::has(self::CACHE_IN_DB_PREFIX.$key);
+
+            if ($dbChecked) {
+                $inDb = Cache::get(self::CACHE_IN_DB_PREFIX.$key);
+
+                if ($inDb) {
+                    return Cache::get(self::CACHE_VALUES_PREFIX.$key);
+                }
+            } else {
+                $result = DB::table('config')->whereName($key)->first();
+
+                if (is_null($result)) {
+                    Cache::put(self::CACHE_IN_DB_PREFIX.$key, false, self::CACHE_TIME);
+                } else {
+                    Cache::put(self::CACHE_IN_DB_PREFIX.$key, true, self::CACHE_TIME);
+                    Cache::put(self::CACHE_VALUES_PREFIX.$key, $result->value, self::CACHE_TIME);
+                    return $result->value;                    
+                }
+            }
+        }
+
         if ((strpos($key, '.') !== false or strpos($key, '::') !== false) and LaravelConfig::has($key)) {
             return LaravelConfig::get($key, $default);
-        } elseif ($dbLookup and self::has($key)) {
-            if (Cache::has(self::CACHE_KEY_PREFIX.$key)) {
-                return Cache::get(self::CACHE_KEY_PREFIX.$key);
-            } else {
-                Cache::put(self::CACHE_KEY_PREFIX.$key, self::$lastResult->value, 60);
-
-                return self::$lastResult->value;
-            }
-        } else {
-            return $default;
         }
+
+        return $default;
     }
 
     /**
@@ -87,7 +113,8 @@ class Config extends LaravelConfig {
             DB::table('config')->insert(array('name' => $key, 'value' => $value, 'updated_at' => new DateTime()));
         }
 
-        Cache::put(self::CACHE_KEY_PREFIX.$key, $value, 60);
+        Cache::put(self::CACHE_IN_DB_PREFIX.$key, true, self::CACHE_TIME);
+        Cache::put(self::CACHE_VALUES_PREFIX.$key, $value, self::CACHE_TIME);
     }
 
     /**
@@ -100,6 +127,7 @@ class Config extends LaravelConfig {
     {
         $result = DB::table('config')->whereName($key)->delete();
 
-        Cache::forget(self::CACHE_KEY_PREFIX.$key);
+        Cache::forget(self::CACHE_VALUES_PREFIX.$key);
+        Cache::put(self::CACHE_IN_DB_PREFIX.$key, false, self::CACHE_TIME);
     }
 }
