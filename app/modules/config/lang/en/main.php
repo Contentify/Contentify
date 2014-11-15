@@ -24,4 +24,11 @@ return array(
 
     'log_empty'         => 'The log file is empty.',
 
+
+    /*
+     * Config 
+     */
+    'analytics'         => 'Analytics Code',
+    'registration'      => 'Registration',
+
 );

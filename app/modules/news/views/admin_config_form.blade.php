@@ -1,7 +1,7 @@
 {{ Form::errors($errors) }}
 
 {{ Form::open(['method' => 'put']) }}
-    {{ Form::smartCheckbox('registration', trans('auth::config_reg'), $registration) }}
+    {{ Form::smartNumeric('example', trans('Example'), $example) }}
 
     {{ Form::actions(['submit']) }}
 {{ Form::close() }}

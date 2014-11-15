@@ -482,7 +482,10 @@ class InstallController extends Controller {
        
         //$this->createUserGroups();
         
-        DB::table('config')->insert(['name' => 'app.analytics']);
+        DB::table('config')->insert([
+            ['name' => 'app.analytics'],
+            ['name' => 'auth::registration', 'value' => 1]
+        ]);
 
         DB::table('pagecats')->insert([
             ['id' => '1', 'title' => 'Blog Post'],

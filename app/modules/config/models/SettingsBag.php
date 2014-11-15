@@ -4,10 +4,11 @@ use BaseModel;
 
 class SettingsBag extends BaseModel {
 
-    protected $fillable = ['app_analytics'];
+    // NOTE: The "app." is replaced with "app::"!
+    protected $fillable = ['app::analytics', 'auth::registration'];
 
     protected $rules = [
-        //'app_analytics' => 'required',
+        'auth::registration' => 'boolean',        
     ];
 
 }

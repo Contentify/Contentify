@@ -57,6 +57,7 @@ return array(
      */
     'create'        => 'Create new',
     'categories'    => 'Categories',
+    'config'        => 'Config',
     'actions'       => 'Actions',
     'edit'          => 'Edit',
     'delete'        => 'Delete',

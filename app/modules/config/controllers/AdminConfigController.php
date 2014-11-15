@@ -25,12 +25,12 @@ class AdminConfigController extends BackController {
 
         // We have to loop over all settings and check if they are listed as fillable:
         foreach ($settings as $setting) {
-            $settingName = str_replace('.', '_', $setting->name);
+            $settingName = str_replace('app.', 'app::', $setting->name);
             if (in_array($settingName, $settingsBag->getFillable())) {
                 $settingsBag->$settingName = $setting->value;
             }
         }
-
+        
         $this->pageView('config::admin_index', compact('settingsBag'));
     }
 
@@ -49,14 +49,14 @@ class AdminConfigController extends BackController {
         $settingsBag = new SettingsBag;
         $settingsBag->fill(Input::all());
 
-        if (! $settingsBag->validate()) {
+        if (! $settingsBag->isValid()) {
             return Redirect::to('admin/config')
                 ->withInput()->withErrors($settingsBag->getErrors());
         }
 
         // Save the settings one by one:
         foreach ($settingsBag->getFillable() as $settingName) {
-            $settingRealName = str_replace('_', '.', $settingName);
+            $settingRealName = str_replace('app::', 'app.', $settingName);
             DB::table('config')->whereName($settingRealName)->update(['value' => $settingsBag->$settingName]);
         }
 

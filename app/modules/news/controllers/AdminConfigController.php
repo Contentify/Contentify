@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Auth\Controllers;
+<?php namespace App\Modules\News\Controllers;
 
 use ConfigController;
 
@@ -6,7 +6,7 @@ class AdminConfigController extends ConfigController {
 
     public function __construct()
     {
-        $this->modelName = 'AuthConfigBag';
+        $this->modelName = 'NewsConfigBag';
 
         parent::__construct();
     }

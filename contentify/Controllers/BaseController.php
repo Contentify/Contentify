@@ -280,6 +280,10 @@ abstract class BaseController extends Controller {
                         $url = route($userInterface.'.'.str_singular(strtolower($this->module)).'cats.index');
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
+                    case 'config':
+                        $url = url($userInterface.'/'.str_singular(strtolower($this->module)).'/config') ;
+                        $buttons .= button(trans('app.config'), $url, 'cog');
+                        break;
                     default:
                         $buttons = $button;
                 }

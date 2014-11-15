@@ -51,9 +51,4 @@ return array(
     'backend'           => 'Admin-Backend',
     'logout'            => 'Logout',
 
-    /*
-     * Config 
-     */
-    'config_reg'        => 'Registration',
-
 );
