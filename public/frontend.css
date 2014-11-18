@@ -81,7 +81,7 @@ form hr {
   width: 100%;
 }
 
-.clearfix:after {
+.clearfix:after, .page-forums .sub-forums:after, .page-forums .threads:after, .page-forumthreads .post:after {
   display: block;
   clear: both;
   content: '.';
@@ -705,58 +705,121 @@ blockquote {
   color: white;
 }
 
+/* Forums index page */
 .page-forums .root-forum h2 {
+  margin: 0px;
+  padding: 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
   background-color: #ff6100;
+  font-size: 18px;
+  font-weight: normal;
   color: white;
 }
 .page-forums .sub-forum {
-  display: block;
-  position: relative;
-  height: 30px;
+  padding: 10px;
+  border: 2px solid #eeeeee;
+  border-top: none;
   overflow: hidden;
 }
 .page-forums .sub-forum .info {
-  position: absolute;
-  left: 0px;
-  top: 0px;
   width: 60%;
+  float: left;
+}
+.page-forums .sub-forum .info .desc {
+  display: block;
+  font-size: 10px;
 }
 .page-forums .sub-forum .threads {
-  position: absolute;
-  left: 60%;
-  top: 0px;
   width: 10%;
+  float: left;
 }
 .page-forums .sub-forum .latest {
-  position: absolute;
-  left: 70%;
-  top: 0px;
   width: 30%;
+  float: left;
+}
+.page-forums .sub-forum .latest .meta {
+  display: block;
+  font-size: 10px;
 }
 
+/* Forums show_forum page */
+.page-forums .buttons {
+  margin-bottom: 20px;
+}
 .page-forums .threads .thread {
-  display: block;
-  position: relative;
-  height: 30px;
+  padding: 10px;
+  border: 2px solid #eeeeee;
+  border-top: none;
   overflow: hidden;
 }
+.page-forums .threads .thread.head {
+  padding: 10px;
+  border: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: #ff6100;
+  font-size: 18px;
+  font-weight: normal;
+  color: white;
+}
 .page-forums .threads .thread .info {
+  width: 60%;
+  float: left;
+}
+.page-forums .threads .thread .info .meta {
+  display: block;
+  font-size: 10px;
+}
+.page-forums .threads .thread .posts {
+  width: 10%;
+  float: left;
+}
+.page-forums .threads .thread .latest {
+  width: 30%;
+  float: left;
+}
+.page-forums .threads .thread .latest .meta {
+  display: block;
+  font-size: 10px;
+}
+
+/* Forums show_thread page */
+.page-forumthreads .buttons {
+  margin-bottom: 20px;
+}
+.page-forumthreads .post {
+  position: relative;
+  margin-bottom: 10px;
+  border: 2px solid #EEE;
+}
+.page-forumthreads .post .meta {
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 60%;
+  width: 120px;
+  height: 100%;
+  min-height: 120px;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: #EEE;
+  float: left;
 }
-.page-forums .threads .thread .posts {
-  position: absolute;
-  left: 60%;
-  top: 0px;
-  width: 10%;
+.page-forumthreads .post .meta .username {
+  display: block;
 }
-.page-forums .threads .thread .latest {
-  position: absolute;
-  left: 70%;
-  top: 0px;
-  width: 30%;
+.page-forumthreads .post .meta .avatar {
+  display: block;
+}
+.page-forumthreads .post .content {
+  margin-left: 120px;
+  min-height: 140px;
+}
+.page-forumthreads .post .content .top-bar {
+  padding: 10px;
+}
+.page-forumthreads .post .content .text {
+  padding: 10px;
 }
 
 /*

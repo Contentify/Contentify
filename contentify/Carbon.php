@@ -11,7 +11,7 @@ class Carbon extends OriginalCarbon {
 
     public function dateTime()
     {
-        return $this->format(self::$toStringFormat).' '.$this->format('H:m:s');
+        return $this->format(self::$toStringFormat).' '.$this->format('H:i:s');
     }
 
 }

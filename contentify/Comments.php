@@ -18,10 +18,10 @@ class Comments {
         $comments = Comment::where('foreign_type', '=', $foreignType)->
             where('foreign_id', '=', $foreignId)->paginate($perPage);
 
-        echo(View::make('comments.show', compact('comments', 'foreignType', 'foreignId'))->render());
+        echo View::make('comments.show', compact('comments', 'foreignType', 'foreignId'))->render();
 
         if (user() and user()->hasAccess('comments', PERM_CREATE)) {
-            echo(View::make('comments.form', compact('foreignType', 'foreignId'))->render());
+            echo View::make('comments.form', compact('foreignType', 'foreignId'))->render();
         }
     }
 
@@ -97,7 +97,7 @@ class Comments {
             return Response::make(trans('app.access_denied'), 500);
         }
 
-        echo(View::make('comments.form', compact('comment'))->render());
+        echo View::make('comments.form', compact('comment'))->render();
     }
 
     /**
