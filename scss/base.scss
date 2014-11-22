@@ -18,21 +18,23 @@ form hr { margin: 30px 0px }
  */
 
 @for $i from 1 through 12 {
-     .col-sm-#{$i} { 
+    .col-sm-#{$i} { 
         width: 100% / 12 * $i;
     }
- }
+}
 
 .clearfix:after { display: block; clear: both; content: '.'; height: 0; visibility: hidden; }
 .hidden { display: none; visibility: hidden; }
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+.ellipsis { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 
 .form-group {
     &::before { display: table; content: ' ' }
     &::after { display: table; content: ' '; clear: both }
     > div { box-sizing: border-box; padding-left: 15px; float: left }
+    label { @extend .ellipsis }
     div.checkbox { padding-top: 7px }
 }
 
@@ -69,5 +71,3 @@ ul.pagination {
 .alert-success { border-color: #d6e9c6 !important; background: #dff0d8 !important }
 .alert-warning { border-color: #faebcc !important; background: #fcf8e3 !important }
 .alert-error { border-color: #ebccd1 !important; background: #f2dede !important }
-
-.ellipsis { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }

@@ -254,21 +254,28 @@ h1.page-title { }
 }
 
 /* Forums show_thread page */
-.page-forumthreads {
+.page-forumthreads, .page-forumposts {
     .buttons { margin-bottom: 20px }
     .post { 
         $metaWidth: 100px;
-        $minHeight: 120px;
+        $minHeight: 135px;
         @extend .clearfix; position: relative; margin-bottom: 10px; border: 2px solid #EEE;
-        .meta { 
+        .meta {
             position: absolute; left: 0px; top: 0px; width: $metaWidth + 20px; height: 100%; min-height: $minHeight; box-sizing: border-box; padding: 10px; background-color: #EEE; float: left;
-            .username { display: block; }
+            .username { @extend .ellipsis; display: block; }
             .avatar { display: block; }
+            .counter { display: block; }
         }
         .content { 
+            $padding: 10px;
             margin-left: $metaWidth + 20px; min-height: $minHeight + 20px;
-            .top-bar { padding: 10px; }
-            .text { padding: 10px; }
+            .top-bar { 
+                position: relative; padding: $padding; 
+                .buttons { position: absolute; right: $padding; top: $padding; }
+            }
+            .text { padding: $padding; word-wrap: break-word; overflow-x: hidden }
+            .text img { max-width: 100% }
+            .updated { padding: $padding; font-size: 10px; text-align: right; }
         }
     }
 }

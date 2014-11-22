@@ -217,13 +217,29 @@ class User extends SentryUser {
     }
 
     /**
-     * This is a copy of an BaseModel method (for compatibility).
+     * This is a copy of a BaseModel method (for compatibility).
      * 
      * @return boolean
      */
     public function isSoftDeleting()
     {
         return property_exists($this, 'forceDeleting');
+    }
+
+    /**
+     * This is a copy of a BaseModel method (for compatibility).
+     * 
+     * @param  bool $local If true, return a local path (e. g. "C:\Contentify\public/uploads/games/")
+     * @return string
+     */
+    public function uploadPath($local = false)
+    {
+        $path = '/uploads/users/';
+
+        if ($local) {
+            return public_path().$path;
+        }
+        return url('/').$path;
     }
 
     /**

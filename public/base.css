@@ -83,6 +83,11 @@ form hr {
 .text-right {
   text-align: right; }
 
+.ellipsis, .form-group label {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; }
+
 .form-group::before {
   display: table;
   content: " "; }
@@ -168,8 +173,3 @@ ul.pagination {
 .alert-error {
   border-color: #ebccd1 !important;
   background: #f2dede !important; }
-
-.ellipsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden; }

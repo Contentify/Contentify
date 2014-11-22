@@ -203,7 +203,6 @@ class InstallController extends Controller {
 
         $this->create('forums', function($table) 
         { 
-            $table->boolean('root')->default(0);
             $table->text('description')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('internal')->default(false);
@@ -217,7 +216,7 @@ class InstallController extends Controller {
             $table->integer('posts_count')->default(1);
             $table->boolean('sticky')->default(false);
             $table->boolean('closed')->default(false);
-            $table->timestamp('started_at');
+            //$table->timestamp('started_at'); // TODO: Do we need this or can we use created_at?
             //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
         }, ['forum_id']);
 
