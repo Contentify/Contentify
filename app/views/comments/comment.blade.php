@@ -3,7 +3,7 @@
         <h2>Comment written by {{ link_to('users/'.$comment->creator->id, $comment->creator->username, ['class' => 'creator-name']) }} at {{ $comment->created_at }}</h2>
     </header>
     <div class="text">
-        {{ $comment->render() }}
+        {{ $comment->renderText() }}
     </div>
     @if (user())
     @if (user()->hasAccess('comments', PERM_UPDATE) or $comment->creator->id == user()->id)

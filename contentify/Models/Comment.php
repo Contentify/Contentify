@@ -6,6 +6,8 @@ class Comment extends BaseModel {
 
     use SoftDeletingTrait;
 
+    const CACHE_KEY = 'comments.comment.';
+
     protected $fillable = array('text');
 
     public static $rules = array(
@@ -27,7 +29,7 @@ class Comment extends BaseModel {
     }
 
     /**
-     * Cache this comment - we don't want to parse BBCodes each time
+     * Caches this comment - we don't want to parse BBCodes each time
      * we want to display a comment.
      * 
      * @return void
@@ -36,11 +38,11 @@ class Comment extends BaseModel {
     {
         $bbcode = new BBCode();
         $rendered = $bbcode->render($this->text);
-        Cache::put('comments.comment.'.$this->id, $rendered, 60);
+        Cache::put(self::CACHE_KEY.$this->id, $rendered, 60);
     }
 
     /**
-     * Count the comments that are related to a certain foreign type (model).
+     * Counts the comments that are related to a certain foreign type (model).
      * NOTE: The result of the database query is cached!
      * 
      * @param  string   $foreignType Name of the foreign type (model)
@@ -55,13 +57,13 @@ class Comment extends BaseModel {
     }
 
     /**
-     * Render the comment (convert BBCode to HTML code)
+     * Renders the comment's text (with BBCode converted to HTML code)
      * 
      * @return string
      */
-    public function render()
+    public function renderText()
     {
-        $key = 'comments.comment.'.$this->id;
+        $key = self::CACHE_KEY.$this->id;
 
         if (! Cache::has($key)) {
             $this->cache();
