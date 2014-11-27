@@ -80,7 +80,7 @@ class Comment extends BaseModel {
      */
     public function plain()
     {
-        return strip_tags($this->render());
+        return strip_tags($this->renderText());
     }
 
 }
