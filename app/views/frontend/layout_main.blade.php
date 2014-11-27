@@ -75,7 +75,6 @@
                     <li>{{ link_to('streams', 'Streams') }}</li>
                     <li>{{ link_to('videos', 'Videos') }}</li>
                     <!--<li>{{ link_to('search', 'Search') }}</li>-->
-                    <li>{{ link_to('admin', 'Admin-Backend') }}</li>
                 </ul>
 
                 <br>
