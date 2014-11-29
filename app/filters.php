@@ -55,18 +55,13 @@ Route::filter('admin', function()
 
 Route::filter('auth', function()
 {
-    if (Auth::guest()) {
+    if (! Sentry::check()) {
         if (Request::ajax()) {
             return Response::make('Unauthorized', 401);
         } else {
-            return Redirect::guest('login');
+            return Redirect::to('auth/login');
         }
     }
-});
-
-Route::filter('auth.basic', function()
-{
-    return Auth::basic();
 });
 
 /*
