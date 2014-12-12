@@ -234,6 +234,10 @@ h1.page-title { }
 /* Forums show_forum page */
 .page-forums {
     .buttons { margin-bottom: 20px; }
+    .sub-forums {
+        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: $primaryColor; font-size: 18px; font-weight: normal; color: white; }
+        margin-bottom: 20px; 
+    }
     .threads {
         $borderColor: #EEE;
         @extend .clearfix; 
@@ -242,6 +246,7 @@ h1.page-title { }
             &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: $primaryColor; font-size: 18px; font-weight: normal; color: white; }
             .info { 
                 width: 60%; float: left;
+                .sticky, .closed { padding: 2px; border-radius: 3px; background-color: $primaryColor; font-size: 10px; color: white; }
                 .meta { display: block; font-size: 10px }
             }
             .posts { width: 10%; float: left }
@@ -279,6 +284,12 @@ h1.page-title { }
         }
     }
 }
+
+.widget-latest-threads {
+    li { position: relative; }
+    li .posts-count { position: absolute; right: 0px; top: 0px; }
+}
+
 
 /*
  * Mainlayout

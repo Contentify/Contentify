@@ -111,5 +111,8 @@ Route::get('jobs', function()
  */
 Route::get('test', function()
 { 
-
+    $class = "App\Modules\Forums\Models\Forum";
+    $forum = $class::findOrFail(3);
+    $forum->refresh();
+    echo 'refresh() called!';
 });

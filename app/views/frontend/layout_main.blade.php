@@ -90,6 +90,10 @@
                 @widget('Matches::Matches')
 
                 <br>
+                <h3>Latest Threads:</h3>
+                @widget('Forums::LatestThreads')
+
+                <br>
                 <h3>Partners:</h3>
                 @widget('Partners::Partners', ['categoryId' => 2])
 

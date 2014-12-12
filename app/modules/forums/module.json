@@ -1,0 +1,10 @@
+{
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "comment.png",
+            "category": 2,
+            "position": 7            
+        }
+    ]
+}
