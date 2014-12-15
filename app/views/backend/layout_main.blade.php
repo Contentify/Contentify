@@ -16,7 +16,7 @@
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 
-    {{ HTML::style('backend.css') }}
+    {{ HTML::style('css/backend.css') }}
     {{ HTML::style('libs/formstone/selecter.css') }}
     {{ HTML::style('libs/formstone/boxer.css') }}
     {{ HTML::style('libs/datetime/picker.min.css') }}

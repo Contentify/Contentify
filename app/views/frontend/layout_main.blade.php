@@ -21,7 +21,7 @@
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{{ asset('rss/news.xml') }}">
 
-    {{ HTML::style('frontend.css') }}
+    {{ HTML::style('css/frontend.css') }}
 
     <!--[if lt IE 9]>
     {{ HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}

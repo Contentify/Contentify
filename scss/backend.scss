@@ -31,8 +31,8 @@ td { vertical-align: top }
 /* Form Elements */
 form {  }
 fieldset { border: none; }
-textarea { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-family: Tahoma, Arial; color: #666666 }
-input { border: 1px solid #CCC; border-radius: 3px; background-image:url(theme/bg_textbox.png); font-family: 'Open Sans', Arial; font-size: 13px; color: #666666; }
+textarea { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: image-url('theme/bg_textbox.png'); background-repeat: repeat-x; font-family: Tahoma, Arial; color: #666666 }
+input { border: 1px solid #CCC; border-radius: 3px; background-image: image-url('theme/bg_textbox.png'); font-family: 'Open Sans', Arial; font-size: 13px; color: #666666; }
 input[type=checkbox] { width: auto !important; padding: 0px !important; cursor: pointer }
 input[type=text], input[type=url] { width: 300px; height: 22px !important; padding: 0px 10px }
 input[type=submit], input[type=reset] { height: 26px; color: #666666;
@@ -46,7 +46,7 @@ input[type=button], button { padding: 0px 10px; border: 1px solid #CCC; border-r
 } /* height = input["text"].height + 4px */
 input[type=submit]:focus, button:focus { border-color: #ff6100; }
 button img { vertical-align: bottom; }
-select:not([size]) { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: url(theme/bg_textbox.png); height: 26px; }
+select:not([size]) { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; border-radius: 3px; background-image: image-url('theme/bg_textbox.png'); height: 26px; }
 
 /*
  * Classes
@@ -54,23 +54,23 @@ select:not([size]) { margin: 0px; padding: 0px 10px; border: 1px solid #CCC; bor
 
 .page { }
 .form-head { 
-    display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; background-image: url(theme/backend/form_head.png); font-size: 14px; font-weight: bold !important; color: #666666 !important;
+    display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; background-image: image-url('theme/backend/form_head.png'); font-size: 14px; font-weight: bold !important; color: #666666 !important;
     img { margin-right: 10px; vertical-align: text-top; }
 }
 
 h1.page-title { }
-h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x; font-size: 13px }
+h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: image-url('theme/bg_textbox.png'); background-repeat: repeat-x; font-size: 13px }
 
 /* Message */
 .ui-message { 
-    margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x;
+    margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: image-url('theme/backend/bg_message.png'); background-repeat: repeat-x;
     h4 { margin: 0px; font-size: 12px; }
     .text { }
 }
 
 /* Alert */
 .alert { 
-    margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: url(theme/backend/bg_message.png); background-repeat: repeat-x;
+    margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; background-image: image-url('theme/backend/bg_message.png'); background-repeat: repeat-x;
     h4 { font-size: 12px; }
 }
 
@@ -92,15 +92,15 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 }
 .form-editor { 
     margin-bottom: 20px;
-    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: url(theme/bg_textbox.png); background-repeat: repeat-x }
+    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; background-image: image-url('theme/bg_textbox.png'); background-repeat: repeat-x }
 }
 
 /* Table */
 .table { 
     width: 100%; border: 1px solid #EFEFEF;
-    th { height: 30px; padding-left: 5px; line-height:30px; background-image: url(theme/backend/bg_tablehead.png); background-repeat: repeat-x; font-weight:bold; text-align: left }
+    th { height: 30px; padding-left: 5px; line-height:30px; background-image: image-url('theme/backend/bg_tablehead.png'); background-repeat: repeat-x; font-weight:bold; text-align: left }
     th a, th a:visited { color: gray; font-weight: bold } 
-    td { padding: 5px; border: 1px solid #EFEFEF; background-image: url(theme/backend/bg_tablecell.png); background-repeat: repeat-x; background-position: left bottom; }
+    td { padding: 5px; border: 1px solid #EFEFEF; background-image: image-url('theme/backend/bg_tablecell.png'); background-repeat: repeat-x; background-position: left bottom; }
     tr:hover { color:#333333 }
 }
 
@@ -113,7 +113,7 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 }
 
 /* Search-Box */
-.search-box input[type=text] { width: 170px; padding: 1px 10px; background-image: url(theme/backend/bg_searchbox.png); background-repeat: no-repeat; text-indent:20px }
+.search-box input[type=text] { width: 170px; padding: 1px 10px; background-image: image-url('theme/backend/bg_searchbox.png'); background-repeat: no-repeat; text-indent:20px }
 .form-helpers .search-box { float: right; }
 
 /* Sort-Switcher */
@@ -171,8 +171,8 @@ ul.pagination li {
     .collapse { height: 0px; overflow-y: hidden; }
     .collapse.in { height: auto }
     .picker-switch i { display: block; width: 100%; height: 26px; background-position: center; background-repeat: no-repeat; cursor: pointer }
-    .icon-time { background-image: url(icons/clock_red.png) }
-    .icon-date { background-image: url(icons/date.png) }
+    .icon-time { background-image: image-url('icons/clock_red.png') }
+    .icon-date { background-image: image-url('icons/date.png') }
     .table-condensed th, .bootstrap-datetimepicker-widget .table-condensed td { padding: 4px 5px; text-align: center; vertical-align: middle; }
     a.btn { display: inline-block; width: 14px; height: 26px; line-height: 26px; padding: 0px 12px; border: 1px solid #CCCCCC; border-radius: 3px;
         background: linear-gradient(to bottom,  #ffffff 0%,#e6e6e6 100%);
@@ -256,7 +256,7 @@ ul.pagination li {
  * Mainlayout
  */
 
-body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background-color: white; background-image: url(theme/backend/background.png); background-repeat: repeat-x; }
+body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background-color: white; background-image: image-url('theme/backend/background.png'); background-repeat: repeat-x; }
 
 #page-container { width: 986px; margin-left: auto; margin-right: auto }
 
@@ -265,11 +265,11 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
     img { vertical-align: text-top; margin-right: 10px }
 }
 
-#header { position: relative; width: 100%; height: 219px; background-image: url(theme/backend/header.png) }
-#header-logo { position: absolute; background-image:url(theme/empty.png); width: 270px; height: 92px }
+#header { position: relative; width: 100%; height: 219px; background-image: image-url('theme/backend/header.png') }
+#header-logo { position: absolute; background-image:image-url('theme/empty.png'); width: 270px; height: 92px }
 
 /* Header Nav */
-.hnav { position: absolute; background-image: url(theme/backend/headernav.png); top: 0px; height: 63px }
+.hnav { position: absolute; background-image: image-url('theme/backend/headernav.png'); top: 0px; height: 63px }
 #hnav1 { background-position: 0px 0px; left: 559px; width: 62px }
 #hnav1:hover { background-position: 0 -63px }
 #hnav2 { background-position: -62px 0px; left: 621px; width: 85px }
@@ -280,11 +280,11 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
 #hnav4:hover { background-position: -208px -63px }
 #hnav5 { background-position: -265px 0px; left: 824px; width: 79px }
 #hnav5:hover { background-position: -265px -63px }
-.quicklink { position: absolute; background-image: url(theme/empty.png); top: 160px; width: 13px; height: 19px }
+.quicklink { position: absolute; background-image: image-url('theme/empty.png'); top: 160px; width: 13px; height: 19px }
 
 #user-img { position: absolute; display: block; left: 6px; top: 112px; width: 45px; height: 60px }
 #user-img-overlay { position: absolute; display: block; left: 6px; top: 112px; z-index: 2 }
-#profile-link { position: absolute; display: block; background-image: url(theme/empty.png); left: 6px; top: 112px; width: 45px; height: 60px; z-index: 3 }
+#profile-link { position: absolute; display: block; background-image: image-url('theme/empty.png'); left: 6px; top: 112px; width: 45px; height: 60px; z-index: 3 }
 #info-box { 
     position: absolute; display: block; left: 72px; top: 120px; width: 180px; height: 50px; overflow: hidden; color: white; text-shadow: #404040 0px 1px 1px;
     span { display: block; margin-bottom: 10px }
@@ -292,18 +292,18 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
     a { color: inherit }
 }
 #info-bar { position: absolute; display: block; left: 670px; top: 95px; width: 230px; color: white; font-size: 11px; text-align: center }
-#tecslink { position: absolute; background-image: url(theme/empty.png); left: 931px; top: 92px; width: 15px; height: 20px }
+#tecslink { position: absolute; background-image: image-url('theme/empty.png'); left: 931px; top: 92px; width: 15px; height: 20px }
 
-#content-wrapper { width: 100%; min-height: 785px; padding-bottom: 100px; background-image: url(theme/backend/contentbg.png); }
+#content-wrapper { width: 100%; min-height: 785px; padding-bottom: 100px; background-image: image-url('theme/backend/contentbg.png'); }
 #sidebar { float: left; width: 237px; padding: 0px 15px 0px 20px }
 
 /* Sidebar Nav */
 .menu-head { 
     display: block; height: 51px; color: #FFFFFF; cursor: pointer;
-    &.daily { background-image: url(theme/backend/nav_header_daily.png) }
-    &.perma { background-image: url(theme/backend/nav_header_perma.png) }
-    &.esports { background-image: url(theme/backend/nav_header_esport.png) }
-    &.website { background-image: url(theme/backend/nav_header_website.png) }
+    &.daily { background-image: image-url('theme/backend/nav_header_daily.png') }
+    &.perma { background-image: image-url('theme/backend/nav_header_perma.png') }
+    &.esports { background-image: image-url('theme/backend/nav_header_esport.png') }
+    &.website { background-image: image-url('theme/backend/nav_header_website.png') }
 }
 .selected {  }
 .submenu {
@@ -311,24 +311,24 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
     a:hover, submenu a:active { color: #ff6100 }
     img { position: absolute; left: 28px; }
     .item { 
-        position: relative; background-image: url(theme/backend/nav_item_mid.png); text-indent: 60px; height: 38px; line-height: 38px;
+        position: relative; background-image: image-url('theme/backend/nav_item_mid.png'); text-indent: 60px; height: 38px; line-height: 38px;
         img { top: 13px }
         &:first-child { 
-            background-image: url(theme/backend/nav_item_top.png); height: 46px; line-height: 54px;
+            background-image: image-url('theme/backend/nav_item_top.png'); height: 46px; line-height: 54px;
             img { top: 20px }
         }
         &:last-child { 
-            background-image: url(theme/backend/nav_item_bot.png); height: 49px; line-height: 42px;
+            background-image: image-url('theme/backend/nav_item_bot.png'); height: 49px; line-height: 42px;
             img { top: 13px }
         }
     }
 }
-.menu-bottom { background-image: url(theme/backend/menu_bottom.png); height: 17px }
+.menu-bottom { background-image: image-url('theme/backend/menu_bottom.png'); height: 17px }
 
 #main-content { width: 686px; }
 
 #footer { 
-    position: relative; width: 982px; height: 76px; margin-left: 2px; background-image: url(theme/backend/footer.png);
-    a { display: block; position: absolute; background-image: url(theme/empty.png); left: 114px; top: 30px; width: 45px; height: 35px }
+    position: relative; width: 982px; height: 76px; margin-left: 2px; background-image: image-url('theme/backend/footer.png');
+    a { display: block; position: absolute; background-image: image-url('theme/empty.png'); left: 114px; top: 30px; width: 45px; height: 35px }
     span { position: absolute; right: 20px; top: 40px; color: #444; /* text-shadow: 0px 1px 2px black; */ }
 }

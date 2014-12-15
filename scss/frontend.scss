@@ -174,7 +174,7 @@ h1.page-title { }
 .page-downloads {
     .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; }
     .downloads .download { 
-        display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; background-image: url(theme/file.png); background-position: center top; background-repeat: no-repeat;
+        display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; background-image: image-url('theme/file.png'); background-position: center top; background-repeat: no-repeat;
         a { display: block; padding-top: 100px; background-position: center 20px; background-repeat: no-repeat; }
     }
 }

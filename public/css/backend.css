@@ -1,4 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+/* 
+ * Functions
+ */
 /*
  * Elements
  */
@@ -218,7 +221,7 @@ textarea {
   padding: 5px 10px;
   border: 1px solid #CCC;
   border-radius: 3px;
-  background-image: url(theme/bg_textbox.png);
+  background-image: url("../theme/bg_textbox.png");
   background-repeat: repeat-x;
   font-family: Tahoma, Arial;
   color: #666666; }
@@ -226,7 +229,7 @@ textarea {
 input {
   border: 1px solid #CCC;
   border-radius: 3px;
-  background-image: url(theme/bg_textbox.png);
+  background-image: url("../theme/bg_textbox.png");
   font-family: 'Open Sans', Arial;
   font-size: 13px;
   color: #666666; }
@@ -273,7 +276,7 @@ select:not([size]) {
   padding: 0px 10px;
   border: 1px solid #CCC;
   border-radius: 3px;
-  background-image: url(theme/bg_textbox.png);
+  background-image: url("../theme/bg_textbox.png");
   height: 26px; }
 
 /*
@@ -285,7 +288,7 @@ select:not([size]) {
   line-height: 60px;
   margin-bottom: 20px;
   padding-left: 15px;
-  background-image: url(theme/backend/form_head.png);
+  background-image: url("../theme/backend/form_head.png");
   font-size: 14px;
   font-weight: bold !important;
   color: #666666 !important; }
@@ -299,7 +302,7 @@ h2.section {
   margin: 20px 0px;
   padding: 0px 10px;
   border: 1px solid #EFEFEF;
-  background-image: url(theme/bg_textbox.png);
+  background-image: url("../theme/bg_textbox.png");
   background-repeat: repeat-x;
   font-size: 13px; }
 
@@ -308,7 +311,7 @@ h2.section {
   margin-bottom: 10px;
   padding: 5px;
   border: 1px solid #E7E7E7;
-  background-image: url(theme/backend/bg_message.png);
+  background-image: url("../theme/backend/bg_message.png");
   background-repeat: repeat-x; }
   .ui-message h4 {
     margin: 0px;
@@ -319,7 +322,7 @@ h2.section {
   margin-bottom: 10px;
   padding: 5px;
   border: 1px solid #E7E7E7;
-  background-image: url(theme/backend/bg_message.png);
+  background-image: url("../theme/backend/bg_message.png");
   background-repeat: repeat-x; }
   .alert h4 {
     font-size: 12px; }
@@ -363,7 +366,7 @@ h2.section {
     line-height: 30px;
     padding: 0px 10px;
     border: 1px solid #EFEFEF;
-    background-image: url(theme/bg_textbox.png);
+    background-image: url("../theme/bg_textbox.png");
     background-repeat: repeat-x; }
 
 /* Table */
@@ -374,7 +377,7 @@ h2.section {
     height: 30px;
     padding-left: 5px;
     line-height: 30px;
-    background-image: url(theme/backend/bg_tablehead.png);
+    background-image: url("../theme/backend/bg_tablehead.png");
     background-repeat: repeat-x;
     font-weight: bold;
     text-align: left; }
@@ -384,7 +387,7 @@ h2.section {
   .table td {
     padding: 5px;
     border: 1px solid #EFEFEF;
-    background-image: url(theme/backend/bg_tablecell.png);
+    background-image: url("../theme/backend/bg_tablecell.png");
     background-repeat: repeat-x;
     background-position: left bottom; }
   .table tr:hover {
@@ -405,7 +408,7 @@ h2.section {
 .search-box input[type=text] {
   width: 170px;
   padding: 1px 10px;
-  background-image: url(theme/backend/bg_searchbox.png);
+  background-image: url("../theme/backend/bg_searchbox.png");
   background-repeat: no-repeat;
   text-indent: 20px; }
 
@@ -551,9 +554,9 @@ ul.pagination li {
   background-repeat: no-repeat;
   cursor: pointer; }
 .bootstrap-datetimepicker-widget .icon-time {
-  background-image: url(icons/clock_red.png); }
+  background-image: url("../icons/clock_red.png"); }
 .bootstrap-datetimepicker-widget .icon-date {
-  background-image: url(icons/date.png); }
+  background-image: url("../icons/date.png"); }
 .bootstrap-datetimepicker-widget .table-condensed th, .bootstrap-datetimepicker-widget .bootstrap-datetimepicker-widget .table-condensed td {
   padding: 4px 5px;
   text-align: center;
@@ -708,7 +711,7 @@ body {
   font-size: 13px;
   color: #666;
   background-color: white;
-  background-image: url(theme/backend/background.png);
+  background-image: url("../theme/backend/background.png");
   background-repeat: repeat-x; }
 
 #page-container {
@@ -729,18 +732,18 @@ body {
   position: relative;
   width: 100%;
   height: 219px;
-  background-image: url(theme/backend/header.png); }
+  background-image: url("../theme/backend/header.png"); }
 
 #header-logo {
   position: absolute;
-  background-image: url(theme/empty.png);
+  background-image: url("../theme/empty.png");
   width: 270px;
   height: 92px; }
 
 /* Header Nav */
 .hnav {
   position: absolute;
-  background-image: url(theme/backend/headernav.png);
+  background-image: url("../theme/backend/headernav.png");
   top: 0px;
   height: 63px; }
 
@@ -786,7 +789,7 @@ body {
 
 .quicklink {
   position: absolute;
-  background-image: url(theme/empty.png);
+  background-image: url("../theme/empty.png");
   top: 160px;
   width: 13px;
   height: 19px; }
@@ -809,7 +812,7 @@ body {
 #profile-link {
   position: absolute;
   display: block;
-  background-image: url(theme/empty.png);
+  background-image: url("../theme/empty.png");
   left: 6px;
   top: 112px;
   width: 45px;
@@ -846,7 +849,7 @@ body {
 
 #tecslink {
   position: absolute;
-  background-image: url(theme/empty.png);
+  background-image: url("../theme/empty.png");
   left: 931px;
   top: 92px;
   width: 15px;
@@ -856,7 +859,7 @@ body {
   width: 100%;
   min-height: 785px;
   padding-bottom: 100px;
-  background-image: url(theme/backend/contentbg.png); }
+  background-image: url("../theme/backend/contentbg.png"); }
 
 #sidebar {
   float: left;
@@ -870,13 +873,13 @@ body {
   color: #FFFFFF;
   cursor: pointer; }
   .menu-head.daily {
-    background-image: url(theme/backend/nav_header_daily.png); }
+    background-image: url("../theme/backend/nav_header_daily.png"); }
   .menu-head.perma {
-    background-image: url(theme/backend/nav_header_perma.png); }
+    background-image: url("../theme/backend/nav_header_perma.png"); }
   .menu-head.esports {
-    background-image: url(theme/backend/nav_header_esport.png); }
+    background-image: url("../theme/backend/nav_header_esport.png"); }
   .menu-head.website {
-    background-image: url(theme/backend/nav_header_website.png); }
+    background-image: url("../theme/backend/nav_header_website.png"); }
 
 .submenu a, .submenu a:visited {
   position: absolute;
@@ -893,27 +896,27 @@ body {
   left: 28px; }
 .submenu .item {
   position: relative;
-  background-image: url(theme/backend/nav_item_mid.png);
+  background-image: url("../theme/backend/nav_item_mid.png");
   text-indent: 60px;
   height: 38px;
   line-height: 38px; }
   .submenu .item img {
     top: 13px; }
   .submenu .item:first-child {
-    background-image: url(theme/backend/nav_item_top.png);
+    background-image: url("../theme/backend/nav_item_top.png");
     height: 46px;
     line-height: 54px; }
     .submenu .item:first-child img {
       top: 20px; }
   .submenu .item:last-child {
-    background-image: url(theme/backend/nav_item_bot.png);
+    background-image: url("../theme/backend/nav_item_bot.png");
     height: 49px;
     line-height: 42px; }
     .submenu .item:last-child img {
       top: 13px; }
 
 .menu-bottom {
-  background-image: url(theme/backend/menu_bottom.png);
+  background-image: url("../theme/backend/menu_bottom.png");
   height: 17px; }
 
 #main-content {
@@ -924,11 +927,11 @@ body {
   width: 982px;
   height: 76px;
   margin-left: 2px;
-  background-image: url(theme/backend/footer.png); }
+  background-image: url("../theme/backend/footer.png"); }
   #footer a {
     display: block;
     position: absolute;
-    background-image: url(theme/empty.png);
+    background-image: url("../theme/empty.png");
     left: 114px;
     top: 30px;
     width: 45px;

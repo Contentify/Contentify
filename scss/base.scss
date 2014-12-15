@@ -1,3 +1,13 @@
+$http_images_path: "../";
+
+/* 
+ * Functions
+ */
+@function image-url($relative-url){
+  $tmpUrl: $http_images_path + $relative-url;
+  @return url($tmpUrl);
+}
+
 /*
  * Elements
  */

@@ -1,3 +1,6 @@
+/* 
+ * Functions
+ */
 /*
  * Elements
  */
@@ -619,7 +622,7 @@ blockquote {
   width: 100px;
   margin: 0px 20px 20px 20px;
   text-align: center;
-  background-image: url(theme/file.png);
+  background-image: url("../theme/file.png");
   background-position: center top;
   background-repeat: no-repeat;
 }
