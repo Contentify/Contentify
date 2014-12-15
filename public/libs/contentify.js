@@ -258,12 +258,17 @@ $(document).ready(function()
                 }
             });
 
-            $('.content-filter-ui *').each(function()
+            $('.content-filter-ui > *').each(function()
             {
                 var name = $(this).get(0).name;
                 var key = $.inArray(name, filterNames);
                 if (key > -1) {
-                    $(this).val(filterValues[key]);
+                    var val = filterValues[key];
+                    if ($(this).is(':checkbox')) {
+                        $(this).prop('checked', val);
+                    } else {
+                        $(this).val(val);
+                    }                    
                 }
             })
         }
@@ -271,7 +276,7 @@ $(document).ready(function()
         /*
          * Content filter UI: "On change" event handler
          */
-        $('.content-filter-ui *').change(function() 
+        $('.content-filter-ui > *').change(function() 
         {
             var filterUiUrl = $('.content-filter-ui').attr('data-url');
             var filter      = '';
@@ -279,6 +284,14 @@ $(document).ready(function()
             $('.content-filter-ui select').each(function() 
             {
                 if ($(this).val() != '') {
+                    if (filter != '') filter += ',';
+                    filter += $(this).attr('name') + '-' + $(this).val();
+                }
+            });
+
+            $('.content-filter-ui input[type=checkbox]').each(function() 
+            {
+                if ($(this).prop('checked')) {
                     if (filter != '') filter += ',';
                     filter += $(this).attr('name') + '-' + $(this).val();
                 }
