@@ -43,6 +43,8 @@ List of arguments the data array may use:
 * *brightenFirst*: Display the first colum values in a bright color? (useful to display IDs in a different style)
 * *sortby*: Name of the model attribute used for default sorting (e. g. "id")
 * *order*: Default order ("asc" or "desc")
+* *filter*: Boolean. If there is content filter UI, apply it to the models?
+* *permaFilter: Null or Closure. The model query is passed to the Closure so additional Eloquent manipulations (e. g. filtering with where clauses) is possible. The Closure must return the query.
 
 ## Frontend Controller
 

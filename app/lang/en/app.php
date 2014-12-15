@@ -119,6 +119,7 @@ return array(
     /*
      * General terms
      */
+    'date_time'     => 'Date & Time',
     'yes'           => 'Yes',
     'no'            => 'No',
     'valid'         => 'valid',
@@ -127,6 +128,7 @@ return array(
     'name'          => 'Name',
     'username'      => 'Username',
     'email'         => 'Email',
+    'password'      => 'Password',
     'file'          => 'File',
     'link'          => 'Link',
     'send'          => 'Send',
@@ -137,5 +139,6 @@ return array(
     'ip'            => 'IP',
     'online'        => 'Online',
     'viewers'       => 'Viewers',
+    'add_tags'      => 'Add tags'
 
 );

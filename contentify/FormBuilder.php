@@ -219,8 +219,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $default    The default value
      * @return string
      */
-    public function smartEmail($name = 'email', $title = 'Email', $default = null)
+    public function smartEmail($name = 'email', $title = null, $default = null)
     {
+        if (! $title) $title = trans('app.email');
+
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
             .self::email($name, $value)
@@ -235,8 +237,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $default    The default value
      * @return string
      */
-    public function smartUrl($name = 'url', $title = 'URL', $default = null)
+    public function smartUrl($name = 'url', $title = null, $default = null)
     {
+        if (! $title) $title = trans('app.url');
+
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
             .self::url($name, $value)
@@ -250,8 +254,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $title The title of the input element
      * @return string
      */
-    public function smartPassword($name = 'password', $title = 'Password')
+    public function smartPassword($name = 'password', $title = null)
     {
+        if (! $title) $title = trans('app.password');
+
         $partial = self::smartGroupOpen($name, $title)
             .self::password($name)
             .self::smartGroupClose();
@@ -266,9 +272,11 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $default    The default value
      * @return string
      */
-    public function smartTextarea($name = 'text', $title = 'Text', $editor = true, $default = null)
+    public function smartTextarea($name = 'text', $title = null, $editor = true, $default = null)
     {
         $value = self::getDefaultValue($name, $default);
+
+        if (! $title) $title = trans('app.text');
 
         if ($editor) {
             $label      = self::label($name, $title, ['class' => 'full-line']);
@@ -459,8 +467,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $title The title of the input element
      * @return string
      */
-    public function smartFile($name = 'file', $title = 'File')
+    public function smartFile($name = 'file', $title = null)
     {
+        if (! $title) $title = trans('app.file');
+
         $partial = self::smartGroupOpen($name, $title)
             .self::file($name)
             .' '.trans('app.max_size', [ini_get('upload_max_filesize')])
@@ -475,8 +485,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $title The title of the input element
      * @return string
      */
-    public function smartImageFile($name = 'image', $title = 'Image')
+    public function smartImageFile($name = 'image')
     {
+        if (! $title) $title = trans('app.image');
+
         return self::smartFile($name, $title);
     }
 
@@ -487,8 +499,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $title The title of the input element
      * @return string
      */
-    public function smartIconFile($name = 'icon', $title = 'Icon')
+    public function smartIconFile($name = 'icon', $title = null)
     {
+        if (! $title) $title = trans('app.icon');
+
         return self::smartImageFile($name, $title);
     }
 
@@ -517,8 +531,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $default    The default value
      * @return string
      */
-    public function smartDateTime($name = 'datetime', $title = 'Date & Time', $default = null)
+    public function smartDateTime($name = 'datetime', $title = null, $default = null)
     {
+        if (! $title) $title = trans('app.date_time');
+
         $value = self::getDefaultValue($name, $default);
 
         /*
@@ -554,7 +570,7 @@ class FormBuilder extends OriginalFormBuilder {
         $value = self::getDefaultValue($name, $default);
 
         $partial = self::smartGroupOpen($name, $title)
-            .self::text($name, $value, ['data-role' => 'tagsinput', 'placeholder' => 'Add tags'])
+            .self::text($name, $value, ['data-role' => 'tagsinput', 'placeholder' => trans('app.add_tags')])
             .self::smartGroupClose();
         return $partial;
     }

@@ -11,7 +11,7 @@
 
     {{ Form::smartSelectRelation('tournament', 'Tournament', $modelClass, null, true, true) }}
 
-    {{ Form::smartUrl('url', trans('app.url')) }}
+    {{ Form::smartUrl('url') }}
 
     {{ Form::smartNumeric('position', trans('app.position'), 0) }}
 
