@@ -74,6 +74,7 @@
                     <li>{{ link_to('matches', 'Matches') }}</li>
                     <li>{{ link_to('streams', 'Streams') }}</li>
                     <li>{{ link_to('videos', 'Videos') }}</li>
+                    <li>{{ link_to('forums', 'Forums') }}</li>
                     <!--<li>{{ link_to('search', 'Search') }}</li>-->
                 </ul>
 

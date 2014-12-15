@@ -861,6 +861,9 @@ blockquote {
 .page-forumthreads .post .content .text img, .page-forumposts .post .content .text img {
   max-width: 100%;
 }
+.page-forumthreads .post .content .text .signature, .page-forumposts .post .content .text .signature {
+  padding-top: 10px;
+}
 .page-forumthreads .post .content .updated, .page-forumposts .post .content .updated {
   padding: 10px;
   font-size: 10px;

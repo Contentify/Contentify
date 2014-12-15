@@ -20,6 +20,7 @@ class User extends SentryUser {
         'website',
 
         'about',
+        'signature',
 
         'skype',
         'steam_id',

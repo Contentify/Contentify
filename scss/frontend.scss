@@ -281,8 +281,11 @@ h1.page-title { }
                 position: relative; padding: $padding; 
                 .buttons { position: absolute; right: $padding; top: $padding; }
             }
-            .text { padding: $padding; word-wrap: break-word; overflow-x: hidden }
-            .text img { max-width: 100% }
+            .text { 
+                padding: $padding; word-wrap: break-word; overflow-x: hidden;
+                img { max-width: 100% } 
+                .signature { padding-top: $padding }
+            }
             .updated { padding: $padding; font-size: 10px; text-align: right; }
         }
     }

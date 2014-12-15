@@ -28,6 +28,7 @@ return array(
     'website'       => 'Website',
 
     'about'         => 'About',
+    'signature'     => 'Signature',
 
     'skype'         => 'Skype',
     'steam_id'      => 'Steam ID',

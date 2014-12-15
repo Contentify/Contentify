@@ -32,6 +32,13 @@
         </div>
         <div class="text">
             {{ $forumPost->renderText() }}
+
+            @if (user()->signature)
+            <div class="signature">
+                <hr>
+                {{{ user()->signature }}}
+            </div>
+            @endif
         </div>
         @if ($forumPost->updater_id and $forumPost->updated_at->diffInMinutes($forumPost->created_at) > 0)
         <div class="updated">

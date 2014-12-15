@@ -45,6 +45,7 @@
     {{ Form::smartText('film', trans('users::film')) }}
 
     {{ Form::smartTextarea('about', trans('users::about')) }}
+    {{ Form::smartText('signature', trans('users::signature')) }}
 
     {{ Form::smartImageFile('image', trans('users::image')) }}
     {{ Form::smartImageFile('avatar', trans('users::avatar')) }}

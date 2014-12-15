@@ -48,7 +48,11 @@
     </div>
 
     @foreach($forum->threads as $thread)
-    <div class="thread">
+    @if (user() and user()->last_login < $thread->updated_at)
+    <div class="thread new">
+    @else
+    <div class="thread old">
+    @endif
         <div class="info">
             @if ($thread->sticky)
             <span class="sticky">{{ trans('forums::sticky') }}</span>

@@ -485,7 +485,7 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $title The title of the input element
      * @return string
      */
-    public function smartImageFile($name = 'image')
+    public function smartImageFile($name = 'image', $title = null)
     {
         if (! $title) $title = trans('app.image');
 
