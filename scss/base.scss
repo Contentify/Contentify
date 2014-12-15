@@ -1,10 +1,8 @@
-$http_images_path: "../";
-
 /* 
  * Functions
  */
-@function image-url($relative-url){
-  $tmpUrl: $http_images_path + $relative-url;
+@function base-url($relative-url){
+  $tmpUrl: "../" + $relative-url;
   @return url($tmpUrl);
 }
 

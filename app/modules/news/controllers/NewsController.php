@@ -15,13 +15,13 @@ class NewsController extends FrontController {
     public function index()
     {
         $this->indexPage([
-            'buttons'   => null,
-            'tableHead' => [
+            'buttons'       => null,
+            'tableHead'     => [
                 trans('app.title')      => 'title', 
                 trans('app.category')   => 'newscat_id', 
                 trans('app.date')       => 'created_at'
             ],
-            'tableRow'  => function($news)
+            'tableRow'      => function($news)
             {
                 return [
                     raw(HTML::link(url('news/'.$news->id.'/'.$news->slug), $news->title)),
@@ -29,8 +29,12 @@ class NewsController extends FrontController {
                     $news->created_at
                 ];
             },
-            'actions'   => null,
-            'filter'    => true
+            'actions'       => null,
+            'filter'        => true,
+            'permaFilter'   => function($query)
+            {
+                return $query->published();
+            }
         ], 'front');
     }
 

@@ -256,6 +256,7 @@ abstract class BaseController extends Controller {
             'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
             'order'         => 'desc',                          // Asc / desc
             'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
+            'permaFilter'   => null,                            // Null / Closure: Add a permament filter to the query?
             'dataSource'    => null,                            // Null (means: take from database) or Closure
             'infoText'      => ''                               // String (may include HTML tags) with extra infos
         ];
@@ -341,14 +342,20 @@ abstract class BaseController extends Controller {
             $paginator  = null;
         } else {
             $models = $modelClass::orderBy($data['sortby'], $data['order']);
+
             if ($userInterface == 'admin' and Session::get('recycleBinMode')) {
                 $models = $models->withTrashed(); // Show trashed
             }
+
             if ($data['filter'] === true) {
                 $models = $models->filter();
             } elseif (is_callable($data['filter'])) {
                 $models = $data['filter']($models);
             }
+            if ($data['permaFilter']) {
+                $models = $data['permaFilter']($models);
+            }
+
             if ($data['search']) {
                 $pos = strpos($data['search'], ':');
 
