@@ -1,4 +1,4 @@
-<div class="widget-galleries">
+<div class="widget widget-galleries">
     <ul class="list-inline">
         @foreach ($images as $image)
         <li>

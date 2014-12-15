@@ -97,6 +97,8 @@
                 <h3>Partners:</h3>
                 @widget('Partners::Partners', ['categoryId' => 2])
 
+                @widget('Servers::Servers')
+
                 <br>
                 <h3>Advert:</h3>
                 @widget('Adverts::Advert', ['categoryId' => 1])

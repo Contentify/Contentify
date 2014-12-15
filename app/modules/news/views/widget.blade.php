@@ -1,3 +1,4 @@
+<div class="widget widget-news">
 <ul class="list-unstyled">
     @foreach ($newsCollection as $news)
     <li>

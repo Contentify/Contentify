@@ -1,4 +1,4 @@
-<div class="widget-visitors">
+<div class="widget widget-visitors">
     <ul class="list-unstyled">
         <li>
             <span>{{ trans('visitors::today') }}:</span> {{ $today }}

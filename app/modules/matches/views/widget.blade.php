@@ -1,4 +1,4 @@
-<div class="widget-matches-latest">
+<div class="widget widget-matches-latest">
     <ul class="list-unstyled">
         @foreach($matches as $match)
         <li>

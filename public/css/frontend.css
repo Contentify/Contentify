@@ -466,6 +466,9 @@ blockquote {
   border-color: #ff6100;
 }
 
+.widget-partners a {
+  text-align: center;
+}
 .widget-partners img.filter {
   filter: grayscale(1);
   -webkit-filter: grayscale(1);

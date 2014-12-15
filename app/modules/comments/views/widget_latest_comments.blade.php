@@ -1,4 +1,4 @@
-<div class="widget-latest-comments">
+<div class="widget widget-latest-comments">
     <table class="table">
         <thead>
             <tr>

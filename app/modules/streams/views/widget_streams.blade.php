@@ -1,4 +1,4 @@
-<div class="widget-streams">
+<div class="widget widget-streams">
     <ul class="list-unstyled">
     @foreach ($streams as $stream)
         <li class="{{ $stream->online ? 'online' : 'offline' }}">

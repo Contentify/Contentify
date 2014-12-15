@@ -118,9 +118,12 @@ h1.page-title { }
     textarea:focus { border-color: #ff6100; }
 }
 
-.widget-partners img {
-    &.filter { filter: grayscale(1); -webkit-filter: grayscale(1); transition: all 0.8s ease; }
-    &.filter:hover { filter: grayscale(0); -webkit-filter: grayscale(0); transition: all 0.2s ease; }
+.widget-partners {
+    a { text-align: center; }
+    img {
+        &.filter { filter: grayscale(1); -webkit-filter: grayscale(1); transition: all 0.8s ease; }
+        &.filter:hover { filter: grayscale(0); -webkit-filter: grayscale(0); transition: all 0.2s ease; }
+    }
 }
 
 .page-videos .video { 

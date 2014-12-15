@@ -1,4 +1,4 @@
-<div class="widget-latest-threads">
+<div class="widget widget-latest-threads">
     <ul class="list-unstyled">
     @foreach ($forumThreads as $forumThread)
         <li>
