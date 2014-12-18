@@ -705,13 +705,12 @@ blockquote {
   margin-bottom: 20px;
 }
 
+/* Forums index page */
 .page-forums .action {
   border-radius: 3px;
   background-color: #ff6100;
   color: white;
 }
-
-/* Forums index page */
 .page-forums .root-forum h2 {
   margin: 0px;
   padding: 10px;
@@ -860,6 +859,9 @@ blockquote {
 }
 .page-forumthreads .post .content .text img, .page-forumposts .post .content .text img {
   max-width: 100%;
+}
+.page-forumthreads .post .content .text hr, .page-forumposts .post .content .text hr {
+  border-color: #eeeeee;
 }
 .page-forumthreads .post .content .text .signature, .page-forumposts .post .content .text .signature {
   padding-top: 10px;

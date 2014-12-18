@@ -26,6 +26,7 @@
         input[type=text], input[type=email], input[type=password] { padding: 5px 10px; background-color: white; border: 1px solid silver; border-radius: 3px; font-family: 'Open Sans'; color: #4082E3 }
         input[type=text]:focus, input[type=email]:focus, input[type=password]:focus { border-color: #FF6100 }
         .form-group { margin-bottom: 20px }
+        .col-sm-10 { display: inline-block; }
 
         #page-container { width: 650px; min-height: 100px; margin-left: auto; margin-right: auto; }
         #logo { width: 100px; height: 100px; float: left }

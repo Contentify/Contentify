@@ -212,16 +212,18 @@ h1.page-title { }
 .page-servers .server { margin-bottom: 20px }
 
 .page-forums {
-    .action { border-radius: 3px; background-color: $primaryColor; color: white }
+    
 }
+
+$forumsBoxColor: #EEE;
 
 /* Forums index page */
 .page-forums {
-    $borderColor: #EEE;
+    .action { border-radius: 3px; background-color: $primaryColor; color: white }
     .root-forum h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: $primaryColor; font-size: 18px; font-weight: normal; color: white; }
     .sub-forums { @extend .clearfix; }
     .sub-forum {     
-        padding: 10px; border: 2px solid $borderColor; border-top: none; overflow: hidden;
+        padding: 10px; border: 2px solid $forumsBoxColor; border-top: none; overflow: hidden;
         .info { 
             width: 60%; float: left;
             .desc { display: block; font-size: 10px }
@@ -242,10 +244,10 @@ h1.page-title { }
         margin-bottom: 20px; 
     }
     .threads {
-        $borderColor: #EEE;
+        $forumsBoxColor: #EEE;
         @extend .clearfix; 
         .thread {
-            padding: 10px; border: 2px solid $borderColor; border-top: none; overflow: hidden;
+            padding: 10px; border: 2px solid $forumsBoxColor; border-top: none; overflow: hidden;
             &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: $primaryColor; font-size: 18px; font-weight: normal; color: white; }
             .info { 
                 width: 60%; float: left;
@@ -284,6 +286,7 @@ h1.page-title { }
             .text { 
                 padding: $padding; word-wrap: break-word; overflow-x: hidden;
                 img { max-width: 100% } 
+                hr { border-color: $forumsBoxColor }
                 .signature { padding-top: $padding }
             }
             .updated { padding: $padding; font-size: 10px; text-align: right; }

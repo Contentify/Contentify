@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use File, Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
+use Str, File, Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
 
 class InstallController extends Controller {
 
@@ -128,7 +128,7 @@ class InstallController extends Controller {
                 $dbName     = Config::get("database.connections.{$dbCon}.database", null, false);
                 $title      = 'Database Setup';
                 $content    = '<p>Contentify will now setup the database.</p>
-                              <p>Before you proceed make sure you have updated the database connection settings.</p>
+                              <p>Before you proceed make sure the database connection settings have been updated.</p>
                               <p>The current database name is: <br><code>'.$dbName.'</code></p>';
                 break;
             case 2:
@@ -200,31 +200,6 @@ class InstallController extends Controller {
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp() to create a datetime attribute.
          */
-
-        $this->create('forums', function($table) 
-        { 
-            $table->text('description')->nullable();
-            $table->integer('position')->default(0);
-            $table->boolean('internal')->default(false);
-            $table->integer('level')->default(0);
-            $table->integer('threads_count')->default(0);
-            $table->integer('posts_count')->default(0);
-        }, ['forum_id', 'latest_thread_id', 'team_id']);
-
-        $this->create('forum_threads', function($table) 
-        { 
-            $table->integer('posts_count')->default(1);
-            $table->boolean('sticky')->default(false);
-            $table->boolean('closed')->default(false);
-            //$table->timestamp('started_at'); // TODO: Do we need this or can we use created_at?
-            //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
-        }, ['forum_id']);
-
-        $this->create('forum_posts', function($table) 
-        { 
-            $table->text('text')->nullable();
-            $table->boolean('root')->default(0);
-        }, ['forum_thread_id'], ['slug', 'title']);
 
         return; // DEBUG
 
@@ -460,6 +435,31 @@ class InstallController extends Controller {
             $table->string('hoster')->nullable();
             $table->integer('slots')->default(0);
         }, ['game_id'], ['slug']);
+
+        $this->create('forums', function($table) 
+        { 
+            $table->text('description')->nullable();
+            $table->integer('position')->default(0);
+            $table->boolean('internal')->default(false);
+            $table->integer('level')->default(0);
+            $table->integer('threads_count')->default(0);
+            $table->integer('posts_count')->default(0);
+        }, ['forum_id', 'latest_thread_id', 'team_id']);
+
+        $this->create('forum_threads', function($table) 
+        { 
+            $table->integer('posts_count')->default(1);
+            $table->boolean('sticky')->default(false);
+            $table->boolean('closed')->default(false);
+            //$table->timestamp('started_at'); // TODO: Do we need this or can we use created_at?
+            //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
+        }, ['forum_id']);
+
+        $this->create('forum_posts', function($table) 
+        { 
+            $table->text('text')->nullable();
+            $table->boolean('root')->default(0);
+        }, ['forum_thread_id'], ['slug', 'title']);
 
         /*
          * (Re)activate foreign key checks
