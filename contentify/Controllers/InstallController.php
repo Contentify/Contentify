@@ -451,8 +451,6 @@ class InstallController extends Controller {
             $table->integer('posts_count')->default(1);
             $table->boolean('sticky')->default(false);
             $table->boolean('closed')->default(false);
-            //$table->timestamp('started_at'); // TODO: Do we need this or can we use created_at?
-            //$table->timestamp('latest_at'); // TODO: Do we need this or can we use updated_at?
         }, ['forum_id']);
 
         $this->create('forum_posts', function($table) 
@@ -460,6 +458,11 @@ class InstallController extends Controller {
             $table->text('text')->nullable();
             $table->boolean('root')->default(0);
         }, ['forum_thread_id'], ['slug', 'title']);
+
+        $this->create('forum_reports', function($table) 
+        { 
+            $table->text('text')->nullable();
+        }, ['forum_post_id'], ['title', 'slug']);
 
         /*
          * (Re)activate foreign key checks

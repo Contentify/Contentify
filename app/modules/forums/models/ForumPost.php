@@ -61,4 +61,15 @@ class ForumPost extends BaseModel {
         return Cache::get($key);
     }
 
+    /**
+     * Renders the forum post's text (WITHOUT BBCode)
+     * 
+     * @return string
+     */
+    public function renderTextRaw()
+    {
+        $bbcode = new BBCode();
+        return $bbcode->renderRaw($this->text);
+    }
+
 }

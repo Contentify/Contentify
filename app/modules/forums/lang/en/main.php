@@ -31,6 +31,11 @@ return array(
      * Posts
      */
     'quote'         => 'Quote',
-    'updated_at'    => 'Latest update: :0'
+    'report'        => 'Report',
+    'updated_at'    => 'Latest update: :0',
+
+    /* Post Reports */
+    'already_reported'  => 'You have already created a report for this post.',
+    'reported'          => 'The post has been reported.',
 
 );

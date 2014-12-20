@@ -84,7 +84,7 @@ form hr {
   width: 100%;
 }
 
-.clearfix:after, .page-forums .sub-forums:after, .page-forums .threads:after, .page-forumthreads .post:after, .page-forumposts .post:after {
+.clearfix:after, .page-forums .sub-forums:after, .page-forums .threads:after, .page-threads .post:after, .page-posts .post:after {
   display: block;
   clear: both;
   content: '.';
@@ -109,7 +109,7 @@ form hr {
   text-align: right;
 }
 
-.ellipsis, .form-group label, .widget-streams .title, .page-forumthreads .post .meta .username, .page-forumposts .post .meta .username {
+.ellipsis, .form-group label, .widget-streams .title, .page-threads .post .meta .username, .page-posts .post .meta .username {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -810,15 +810,15 @@ blockquote {
 }
 
 /* Forums show_thread page */
-.page-forumthreads .buttons, .page-forumposts .buttons {
+.page-threads .buttons, .page-posts .buttons {
   margin-bottom: 20px;
 }
-.page-forumthreads .post, .page-forumposts .post {
+.page-threads .post, .page-posts .post {
   position: relative;
   margin-bottom: 10px;
   border: 2px solid #EEE;
 }
-.page-forumthreads .post .meta, .page-forumposts .post .meta {
+.page-threads .post .meta, .page-posts .post .meta {
   position: absolute;
   left: 0px;
   top: 0px;
@@ -830,43 +830,43 @@ blockquote {
   background-color: #EEE;
   float: left;
 }
-.page-forumthreads .post .meta .username, .page-forumposts .post .meta .username {
+.page-threads .post .meta .username, .page-posts .post .meta .username {
   display: block;
 }
-.page-forumthreads .post .meta .avatar, .page-forumposts .post .meta .avatar {
+.page-threads .post .meta .avatar, .page-posts .post .meta .avatar {
   display: block;
 }
-.page-forumthreads .post .meta .counter, .page-forumposts .post .meta .counter {
+.page-threads .post .meta .counter, .page-posts .post .meta .counter {
   display: block;
 }
-.page-forumthreads .post .content, .page-forumposts .post .content {
+.page-threads .post .content, .page-posts .post .content {
   margin-left: 120px;
   min-height: 155px;
 }
-.page-forumthreads .post .content .top-bar, .page-forumposts .post .content .top-bar {
+.page-threads .post .content .top-bar, .page-posts .post .content .top-bar {
   position: relative;
   padding: 10px;
 }
-.page-forumthreads .post .content .top-bar .buttons, .page-forumposts .post .content .top-bar .buttons {
+.page-threads .post .content .top-bar .buttons, .page-posts .post .content .top-bar .buttons {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-.page-forumthreads .post .content .text, .page-forumposts .post .content .text {
+.page-threads .post .content .text, .page-posts .post .content .text {
   padding: 10px;
   word-wrap: break-word;
   overflow-x: hidden;
 }
-.page-forumthreads .post .content .text img, .page-forumposts .post .content .text img {
+.page-threads .post .content .text img, .page-posts .post .content .text img {
   max-width: 100%;
 }
-.page-forumthreads .post .content .text hr, .page-forumposts .post .content .text hr {
+.page-threads .post .content .text hr, .page-posts .post .content .text hr {
   border-color: #eeeeee;
 }
-.page-forumthreads .post .content .text .signature, .page-forumposts .post .content .text .signature {
+.page-threads .post .content .text .signature, .page-posts .post .content .text .signature {
   padding-top: 10px;
 }
-.page-forumthreads .post .content .updated, .page-forumposts .post .content .updated {
+.page-threads .post .content .updated, .page-posts .post .content .updated {
   padding: 10px;
   font-size: 10px;
   text-align: right;

@@ -5,6 +5,11 @@
             "icon": "comment.png",
             "category": 2,
             "position": 7            
+        },
+        {
+            "icon": "warning.png",
+            "category": 2,
+            "position": 8            
         }
     ]
 }

@@ -12,23 +12,32 @@ ModuleRoute::post('admin/forums/search', 'AdminForumsController@search');
 ModuleRoute::get('forums', 'ForumsController@index');
 ModuleRoute::get('forums/{id}/{slug?}', 'ForumsController@show')->where('id', '[0-9]+');
 
-ModuleRoute::get('forums/threads/{id}/{slug?}', 'ForumThreadsController@show')->where('id', '[0-9]+');
+ModuleRoute::get('forums/threads/{id}/{slug?}', 'ThreadsController@show')->where('id', '[0-9]+');
 Route::group(array('before' => 'auth'), function()
 {
-    ModuleRoute::get('forums/threads/create/{id}', 'ForumThreadsController@create');
-    ModuleRoute::post('forums/threads/{id}', 'ForumThreadsController@store');
-    ModuleRoute::get('forums/threads/edit/{id}', 'ForumThreadsController@edit');
-    ModuleRoute::put('forums/threads/{id}', 'ForumThreadsController@update');
-    ModuleRoute::get('forums/threads/sticky/{id}', 'ForumThreadsController@sticky');
-    ModuleRoute::get('forums/threads/closed/{id}', 'ForumThreadsController@closed');
-    ModuleRoute::get('forums/threads/move/{id}', 'ForumThreadsController@getMove');
-    ModuleRoute::post('forums/threads/move/{id}', 'ForumThreadsController@postMove');
-    ModuleRoute::get('forums/threads/delete/{id}', 'ForumThreadsController@delete');
+    ModuleRoute::get('forums/threads/create/{id}', 'ThreadsController@create');
+    ModuleRoute::post('forums/threads/{id}', 'ThreadsController@store');
+    ModuleRoute::get('forums/threads/edit/{id}', 'ThreadsController@edit');
+    ModuleRoute::put('forums/threads/{id}', 'ThreadsController@update');
+    ModuleRoute::get('forums/threads/sticky/{id}', 'ThreadsController@sticky');
+    ModuleRoute::get('forums/threads/closed/{id}', 'ThreadsController@closed');
+    ModuleRoute::get('forums/threads/move/{id}', 'ThreadsController@getMove');
+    ModuleRoute::post('forums/threads/move/{id}', 'ThreadsController@postMove');
+    ModuleRoute::get('forums/threads/delete/{id}', 'ThreadsController@delete');
 });
-ModuleRoute::post('forums/search', 'ForumThreadsController@search');
+ModuleRoute::post('forums/search', 'ThreadsController@search');
 
-ModuleRoute::get('forums/posts/perma/{id}/{slug?}', 'ForumPostsController@show');
-ModuleRoute::get('forums/posts/delete/{id}', 'ForumPostsController@delete');
-ModuleRoute::post('forums/posts/{id}', 'ForumPostsController@store');
-ModuleRoute::get('forums/posts/edit/{id}', 'ForumPostsController@edit');
-ModuleRoute::put('forums/posts/{id}', 'ForumPostsController@update');
+ModuleRoute::get('forums/posts/perma/{id}/{slug?}', 'PostsController@show');
+Route::group(array('before' => 'auth'), function()
+{
+    ModuleRoute::get('forums/posts/delete/{id}', 'PostsController@delete');
+    ModuleRoute::post('forums/posts/{id}', 'PostsController@store');
+    ModuleRoute::get('forums/posts/edit/{id}', 'PostsController@edit');
+    ModuleRoute::get('forums/posts/report/{id}', 'PostsController@report');
+    ModuleRoute::put('forums/posts/{id}', 'PostsController@update');
+});
+
+ModuleRoute::get('admin/forum-reports', 
+    ['as' => 'admin.reports.index', 'uses' => 'AdminReportsController@index']);
+ModuleRoute::delete('admin/forum-reports/{id}', 
+    ['as' => 'admin.reports.destroy', 'uses' => 'AdminReportsController@destroy']);

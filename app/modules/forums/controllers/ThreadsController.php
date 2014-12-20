@@ -5,7 +5,7 @@ use App\Modules\Forums\Models\ForumThread;
 use App\Modules\Forums\Models\ForumPost;
 use DB, Input, View, Redirect, URL, FrontController;
 
-class ForumThreadsController extends FrontController {
+class ThreadsController extends FrontController {
 
     /**
      * Shows a forum thread

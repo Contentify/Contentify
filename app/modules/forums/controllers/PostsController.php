@@ -1,9 +1,10 @@
 <?php namespace App\Modules\Forums\Controllers;
 
 use App\Modules\Forums\Models\ForumPost;
+use App\Modules\Forums\Models\ForumReport;
 use Input, Redirect, FrontController;
 
-class ForumPostsController extends FrontController {
+class PostsController extends FrontController {
 
     /**
      * Show a single post
@@ -138,6 +139,30 @@ class ForumPostsController extends FrontController {
         $forumPost->delete();
 
         $thread->refresh();
+    }
+
+    /**
+     * Reports a post
+     * 
+     * @param int The id of the post
+     */
+    public function report($id)
+    {
+        $forumPost = ForumPost::findOrFail($id); 
+
+        $forumReport = ForumReport::whereCreatorId(user()->id)->whereForumPostId($id)->first();   
+
+        if ($forumReport) {
+            $this->messageFlash(trans('forums::already_reported'));
+        } else {
+            $forumReport = new ForumReport(['forum_post_id' => $id]);
+            $forumReport->creator_id = user()->id;
+            $forumReport->save();
+
+            $this->messageFlash(trans('forums::reported'));
+        }
+
+        return Redirect::to('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
     }
 
 }

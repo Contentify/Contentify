@@ -111,6 +111,7 @@
                                 <div class="item"><img src="{{ asset('icons/coins.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/partners', 'Sponsors &amp; Partners') }}</div>
                                 <div class="item"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/adverts', 'Advertisement') }}</div>
                                 <div class="item"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/forums', 'Forums') }}</div>
+                                <div class="item"><img src="{{ asset('icons/warning.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/forum-reports', 'Forum Reports') }}</div>
                             </div>
                             <div class="menu-bottom"></div>
                         <div class="silverheader"><div class="menu-head esports"><span class="hidden">eSports Content</span></div></div>
