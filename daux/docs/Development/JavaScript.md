@@ -1,6 +1,6 @@
 > This chapter deals with a part of the frontend development. The term "frontend" is ambiguous. If we talk about the frontend we refer to the frontend interface - in contrast to the backend (admin) interface. Therefore this chapter is named "JavaScript" instead of "Frontend".
 
-The JavaScript files are located in the `libs` directory. Include a JS script to a Blade template like so:
+All JavaScript files are located in the `libs` directory. Include a JS script to a Blade template like so:
 
     {{ HTML::script('libs/frontend.js') }}
 
@@ -18,5 +18,6 @@ You should at least include jQuery, html5shiv (for Internet Explorer support), a
 * Adds support for spoilers
 * Adds support for filter UI elements
 
-
 It also automatically adds the CSRF token to all AJAX requests.
+
+Modules that provide JS scripts will include them on their own. You do not have to include them (or to care about them at all as long as you encapsulate all of your code to objects).

@@ -2,21 +2,22 @@ So you are a developer and you just have arrived here. How can you start develop
 
 ## The Base Layout
 
-The `app/views` folder contains all the "global" template files. They are either plain PHP files (\*.php) or [Blade](Blade) templates (*.blade.php). The most important sub directory is called `frontend`and it contains those templates that belong to the frontend. There you will find a file named `layout_main.blade`. That is, you guess it, the main layout of the website. Most likely you want to it.
+The `app/views` folder contains all the "global" template files. They are either plain PHP files (\*.php) or [Blade](Blade) templates (*.blade.php). The most important sub directory is called `frontend`and it contains those templates that belong to the frontend. There you will find a file named `layout_main.blade`. That is, you guess it, the main layout of the website. Most likely you want to it adjust it to the needs (primarily the design and layout) of your website.
 
-> When we talk about "frontend" or "backend" we referring to the interface. The frontend interface is what is visible for everyone: visitors, users, etc. The backend is only accessible by administrators (and users with extended permissions).
+> When we talk about "frontend" or "backend" we are referring to interfaces. The frontend interface is what is visible and accessible for everyone: visitors, users, etc. The backend interface is only accessible by administrators.
 
 ## Adding Images And More
 
-The `public` directory contains all thoses files that should be accessible from the outside. This is where the CSS files, the JS files, the images and the upload files life. 
+The `/public` directory contains all thoses files that should be accessible from the outside. This is where the CSS files, the JS files, the images and the upload files life. 
 
-* If you want to add images to the website place them into the `public/img` directory. Images that belong to the CMS are located in the `public/theme` directory.
-* JS files life in the `public/libs` directory. The main layout includes jQuery, `framework.js` and `frontend.js` by default.
-* CSS files are located right in the `public` directory. The main layout includes `base.css` and `frontend.css` out of the box.
+* If you want to add images to the website place them into the `public/img` directory. Images that belong to the CMS are located in the `/public/theme` directory.
+* JS files life in the `/public/libs` directory. The main layout includes jQuery, `framework.js` and `frontend.js` by default.
+* CSS files are located in the `/public/css` directory. The main layout includes `base.css` and `frontend.css` out of the box. `base.css` defines some general styling and is also included by the backend stylesheet, `backend.css`.
+* We use [SASS](http://sass-lang.com) as CSS pre-compiler. The SASS files are located in `/scss`.
 
-Remember that Laravel and Blade provide classes and helper functions to deal with URLs, assets and so on. You should use them instead of hardcoding URLs.
+Remember that Laravel and Blade provide classes (such as `Form` and `HTML`) and helper functions (such as `url` and asset()`) to deal with form elements, URLs, assets and so on. You should use them instead of hardcoding HTML form markup and URLs.
 
-Contentify delivers several [widgets](Widgets). They are handy little helpers that make it a piece of cake to display content. Take a look into the `controllers` directories of the modules to find them.
+Contentify delivers several [widgets](Widgets). They are handy little helpers that make it a piece of cake to display certain content. Take a look into the `controllers` directories of the modules to find them. For example, the forums widget - that shows the latest forum threads - lifes in `app/modules/forums/controllers/LatestThreadsWidgets.php`.
 
 ## Start To Code
 

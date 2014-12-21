@@ -64,4 +64,4 @@ This will help to avoid collisions. You may even prefix all you caching keys wit
 
 ## Code Style
 
-Contentify tries to stay close to Laravel's code style. This is very much equivalent to [PSR coding standards](https://github.com/php-fig/fig-standards/tree/master/accepted). We encourage you to stick to these standards to ensure good code quality.
+Contentify tries to stay close to Laravel's code style. This is very much equivalent to [PSR coding standards](https://github.com/php-fig/fig-standards/tree/master/accepted). We encourage you to stick to these standards to ensure good code readability.

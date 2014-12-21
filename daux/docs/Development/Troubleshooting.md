@@ -1,6 +1,6 @@
 This chapter deals with solutions for common errors and issues.
 
-## Register Globals
+## Register Globals Exception
 
 If a "Directive 'register_globals' is no longer available in PHP" exception is thrown please check your `php.ini`. Make sure `register_globals` is set to `off`.
 

@@ -1,4 +1,4 @@
-There are plenty of options to optimize the speed of your website. Call the diag admin page (`/diag`) to see all of them at at a glance.
+There are plenty of options to optimize the speed of your website. Call the diag admin page (`/diag`) to see all of them at a glance.
 
 ## Optimized Class loader
 

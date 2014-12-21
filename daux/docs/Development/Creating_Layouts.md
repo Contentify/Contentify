@@ -1,4 +1,4 @@
-The process of creating a website with Contentify heavily depends on creating the main front layout. This chapter deals with hints for this work step.
+The process of creating a website with Contentify heavily depends on creating the main frontend layout. This chapter deals with hints for this work step.
 
 ## Breadcrumb Navigation
 
