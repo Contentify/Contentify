@@ -7,9 +7,11 @@
             "position": 7            
         },
         {
+            "url": "admin/forum-reports",
             "icon": "warning.png",
+            "title": "Forum Reports",
             "category": 2,
-            "position": 8            
+            "position": 8        
         }
     ]
 }

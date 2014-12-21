@@ -308,7 +308,7 @@ body { font-family: 'Open Sans', Arial; font-size: 13px; color: #666; background
 .selected {  }
 .submenu {
      a, a:visited { position: absolute; left: 0px; top: 0px; width: 233px; height: 100%; color: #CCCCCC; z-index: 2 }
-    a:hover, submenu a:active { color: #ff6100 }
+    a:hover, a:active { color: #ff6100 }
     img { position: absolute; left: 28px; }
     .item { 
         position: relative; background-image: base-url('theme/backend/nav_item_mid.png'); text-indent: 60px; height: 38px; line-height: 38px;

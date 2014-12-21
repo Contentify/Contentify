@@ -87,57 +87,7 @@
         <section id="content-wrapper" class="clearfix">
             <aside id="sidebar">
                 <nav>
-                    {{-- HTML::renderBackendNav() --}}
-                    <div class="applemenu">
-                        <div class="silverheader"><div class="menu-head daily"><span class="hidden">Daily Content</span></div></div>
-                            <div class="submenu">
-                                <div class="item"><img src="{{ asset('icons/house.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/dashboard', 'Dashboard') }}</div>
-                                <div class="item"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.news.index') }}">News</a></div>
-                                <div class="item"><img src="{{ asset('icons/doc_offlice.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.pages.index') }}">Pages</a></div>
-                                <div class="item"><img src="{{ asset('icons/blog.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=headlines">Headlines</a></div>
-                                <div class="item"><img src="{{ asset('icons/date.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=events">Events</a></div>
-                                <div class="item"><img src="{{ asset('icons/chart_pie.png') }}" width="16" height="16" alt="icon"><a href="admin.php?site=polls">Polls</a></div>
-                                <div class="item"><img src="{{ asset('icons/folder.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/downloads', 'Downloads') }}</div>
-                                <div class="item"><img src="{{ asset('icons/picture.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/images', 'Images') }}</div>
-                                <div class="item"><img src="{{ asset('icons/photo.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/galleries', 'Galleries') }}</div>
-                            </div>
-                            <div class="menu-bottom"></div>
-                        <div class="silverheader"><div class="menu-head perma"><span class="hidden">Permanent Content</span></div></div>
-                            <div class="submenu">
-                                <div class="item"><img src="{{ asset('icons/newspaper.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/newscats', 'News-Categories') }}</div>
-                                <div class="item"><img src="{{ asset('icons/color_swatch.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/slides', 'Slides') }}</div>
-                                <div class="item"><img src="{{ asset('icons/film.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/videos', 'Videos') }}</div>
-                                <div class="item"><img src="{{ asset('icons/film_link.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/streams', 'Streams') }}</div> 
-                                <div class="item"><img src="{{ asset('icons/coins.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/partners', 'Sponsors &amp; Partners') }}</div>
-                                <div class="item"><img src="{{ asset('icons/money.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/adverts', 'Advertisement') }}</div>
-                                <div class="item"><img src="{{ asset('icons/comment.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/forums', 'Forums') }}</div>
-                                <div class="item"><img src="{{ asset('icons/warning.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/forum-reports', 'Forum Reports') }}</div>
-                            </div>
-                            <div class="menu-bottom"></div>
-                        <div class="silverheader"><div class="menu-head esports"><span class="hidden">eSports Content</span></div></div>
-                            <div class="submenu">               
-                                <div class="item"><img src="{{ asset('icons/sport_soccer.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/matches', 'Matches') }}</div>
-                                <div class="item"><img src="{{ asset('icons/controller.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/games', 'Games') }}</div>
-                                <div class="item"><img src="{{ asset('icons/award_star_gold_3.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/awards', 'Awards') }}</div>
-                                <div class="item"><img src="{{ asset('icons/opponent.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/opponents', 'Opponents') }}</div>
-                                <div class="item"><img src="{{ asset('icons/joystick.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/tournaments', 'Tournaments') }}</div>
-                                <div class="item"><img src="{{ asset('icons/world.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/maps', 'Maps') }}</div>
-                                <div class="item"><img src="{{ asset('icons/server.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/servers', 'Servers') }}</div>  
-                            </div>
-                            <div class="menu-bottom"></div>
-                            
-                        <div class="silverheader"><div class="menu-head website"><span class="hidden">Website</span></div></div>
-                            <div class="submenu">
-                                <div class="item"><img src="{{ asset('icons/user.png') }}" width="16" height="16" alt="icon"><a href="{{ route('admin.users.index') }}">Users</a></div>
-                                <div class="item"><img src="{{ asset('icons/flag_red.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/teams', 'Teams') }}</div>
-                                <div class="item"><img src="{{ asset('icons/group.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/members', 'Team-Members') }}</div>  
-                                <div class="item"><img src="{{ asset('icons/cog.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/config', 'Config') }}</div>  
-                                <div class="item"><img src="{{ asset('icons/email.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/contact', 'Contact') }}</div>
-                                <div class="item"><img src="{{ asset('icons/chart_bar.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/visitors', 'Visitors') }}</div>
-                                <div class="item"><img src="{{ asset('icons/lock.png') }}" width="16" height="16" alt="icon">{{ HTML::link('admin/groups', 'Permission Groups') }}</div>
-                            </div>
-                            <div class="menu-bottom"></div>
-                    </div>
+                    {{ HTML::renderBackendNav() }}
                 </nav>
             </aside>
 
