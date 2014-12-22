@@ -5,5 +5,5 @@
 </div>
 
 @if ($article->enable_comments)
-{{ Comments::show('articles', $article->id) }}
+    {{ Comments::show('articles', $article->id) }}
 @endif

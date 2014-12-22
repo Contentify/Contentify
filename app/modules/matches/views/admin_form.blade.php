@@ -31,15 +31,15 @@
 
     {{-- We can't add scores to a match that doesn't actually exist --}}
     @if (isset($model))
-    {{ Form::smartGroupOpen(null, 'Match Scores') }}
-        <div class="scores">
-            @foreach ($model->match_scores as $matchScore)
-            @include('matches::admin_map', compact('matchScore'))
-            @endforeach
+        {{ Form::smartGroupOpen(null, 'Match Scores') }}
+            <div class="scores">
+                @foreach ($model->match_scores as $matchScore)
+                    @include('matches::admin_map', compact('matchScore'))
+                @endforeach
 
-            <span class="add-new">+</span>
-        </div>
-    {{ Form::smartGroupClose() }}
+                <span class="add-new">+</span>
+            </div>
+        {{ Form::smartGroupClose() }}
     @endif
 
     {{ Form::actions() }}

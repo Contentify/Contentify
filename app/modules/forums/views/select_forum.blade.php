@@ -3,6 +3,7 @@
         @if ($empty)
             <option>-</option>
         @endif
+        
         @foreach ($forums as $forum)
             <?php 
                 if (isset($model) and $forum->id == $model->forum_id) {

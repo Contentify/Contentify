@@ -21,16 +21,16 @@
 <div class="forumPosts">
     <?php $forumPostNumber = $forumPosts->getFrom() ?>
     @foreach($forumPosts as $forumPost)
-    @include('forums::show_post', compact('forumPost', 'forumPostNumber'))
-    <?php $forumPostNumber++ ?>
+        @include('forums::show_post', compact('forumPost', 'forumPostNumber'))
+        <?php $forumPostNumber++ ?>
     @endforeach
 </div>
 
 @if ($forumThread->closed)
-{{ trans('forums::closed_info') }}
+    {{ trans('forums::closed_info') }}
 @else
     @if (user())
-    @include('forums::post_form', compact('forumThread'))
+        @include('forums::post_form', compact('forumThread'))
     @endif
 @endif
 

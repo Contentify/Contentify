@@ -1,9 +1,9 @@
 {{ Form::errors($errors) }}
 
 @if (isset($user))
-{{ Form::model($user, ['route' => ['users.update', $user->id], 'files' => true, 'method' => 'PUT']) }}
+    {{ Form::model($user, ['route' => ['users.update', $user->id], 'files' => true, 'method' => 'PUT']) }}
 @else
-{{ Form::open(['url' => 'users']) }}
+    {{ Form::open(['url' => 'users']) }}
 @endif
     {{ Form::smartText('username', trans('users::username')) }}
 

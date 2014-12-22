@@ -23,9 +23,9 @@
         {{ Form::smartGroupClose() }}
 
         @if ($download->description)
-        <p>
-            {{ $download->description }}
-        </p>
+            <p>
+                {{ $download->description }}
+            </p>
         @endif
 
         {{ Form::actions(['submit' => trans('downloads::perform_download')]) }}

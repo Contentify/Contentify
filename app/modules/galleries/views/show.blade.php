@@ -4,13 +4,12 @@
     <div class="image">
         <a href="{{ $image->uploadPath().$image->image }}" target="_blank" title="{{{ $image->title }}}">
             <img src="{{ $image->uploadPath().$image->image }}" />
-            @if ($image->title)
-            @endif
         </a>
         <p>
             {{{ $image->title }}}
         </p>
     </div>
+
     <div class="previews-wrapper">
         <div class="previews">
             @foreach ($gallery->images as $prevImage)
@@ -19,6 +18,7 @@
                 </a>
             @endforeach
         </div>
+        
         <a class="link to-left" href="#">&lt;</a>
         <a class="link to-right" href="#">&gt;</a>
     </div>

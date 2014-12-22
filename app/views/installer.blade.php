@@ -57,13 +57,13 @@
 
             <div class="buttons">
                 @if($step > 0)
-                <a class="navbut left" href="{{ url('install?step='.($step - 1)) }}">Previous</a>
+                    <a class="navbut left" href="{{ url('install?step='.($step - 1)) }}">Previous</a>
                 @endif
 
                 @if($step < 6)
-                <a class="navbut right" href="{{ url('install?step='.($step + 1)) }}">Next</a>
+                    <a class="navbut right" href="{{ url('install?step='.($step + 1)) }}">Next</a>
                 @else
-                <a class="navbut right" href="{{ url('/') }}">Website</a>
+                    <a class="navbut right" href="{{ url('/') }}">Website</a>
                 @endif
             </div>
         </div>

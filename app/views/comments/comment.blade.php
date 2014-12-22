@@ -6,14 +6,14 @@
         {{ $comment->renderText() }}
     </div>
     @if (user())
-    @if (user()->hasAccess('comments', PERM_UPDATE) or $comment->creator->id == user()->id)
-    {{ HTML::link(URL::route('comments.edit', [$comment->id]), trans('app.edit'), ['class' => 'edit', 'data-id' => $comment->id]) }}
-    @endif
-    @if (user())
-    {{ HTML::link(URL::to('#', [$comment->id]), trans('app.quote'), ['class' => 'quote', 'data-id' => $comment->id]) }}
-    @endif
-    @if (user()->hasAccess('comments', PERM_DELETE) or $comment->creator->id == user()->id)
-    {{ HTML::link(URL::route('comments.delete', [$comment->id]).'?method=DELETE', trans('app.delete'), ['class' => 'delete', 'data-id' => $comment->id]) }}
-    @endif
+        @if (user()->hasAccess('comments', PERM_UPDATE) or $comment->creator->id == user()->id)
+            {{ HTML::link(URL::route('comments.edit', [$comment->id]), trans('app.edit'), ['class' => 'edit', 'data-id' => $comment->id]) }}
+        @endif
+        @if (user())
+            {{ HTML::link(URL::to('#', [$comment->id]), trans('app.quote'), ['class' => 'quote', 'data-id' => $comment->id]) }}
+        @endif
+        @if (user()->hasAccess('comments', PERM_DELETE) or $comment->creator->id == user()->id)
+            {{ HTML::link(URL::route('comments.delete', [$comment->id]).'?method=DELETE', trans('app.delete'), ['class' => 'delete', 'data-id' => $comment->id]) }}
+        @endif
     @endif
 </article>

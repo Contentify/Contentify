@@ -1,6 +1,6 @@
 @if (user()->hasAccess('users'))
-<h2 class="section">Visitors</h2>
-@widget('Visitors::Chart')
+    <h2 class="section">Visitors</h2>
+    @widget('Visitors::Chart')
 @endif
 
 <h2 class="section">{{ trans('dashboard::quick_access') }}</h2>

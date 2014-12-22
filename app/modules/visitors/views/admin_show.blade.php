@@ -24,10 +24,10 @@
     </thead>
     <tbody>
         @foreach ($chart->days as $day)
-        <tr data-day="{{ $day->day }}">
-            <td>{{ $day->date }}</td>
-            <td>{{ $day->visitors }}</td>
-        </tr>
+            <tr data-day="{{ $day->day }}">
+                <td>{{ $day->date }}</td>
+                <td>{{ $day->visitors }}</td>
+            </tr>
         @endforeach
     </tbod>
 </table>

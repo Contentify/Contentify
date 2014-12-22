@@ -8,10 +8,10 @@
         </thead>
         <tbody>
             @foreach ($comments as $comment)
-            <tr>
-                <td title="{{ $comment->plainText() }}">{{ $comment->plainText(100) }}</td>
-                <td>{{ $comment->created_at }}</td>
-            </tr>
+                <tr>
+                    <td title="{{ $comment->plainText() }}">{{ $comment->plainText(100) }}</td>
+                    <td>{{ $comment->created_at }}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>

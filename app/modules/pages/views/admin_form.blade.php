@@ -1,9 +1,9 @@
 {{ Form::errors($errors) }}
 
 @if (isset($model))
-{{ Form::model($model, ['route' => ['admin.pages.update', $model->id], 'method' => 'PUT']) }}
+    {{ Form::model($model, ['route' => ['admin.pages.update', $model->id], 'method' => 'PUT']) }}
 @else
-{{ Form::open(['url' => 'admin/pages']) }}
+    {{ Form::open(['url' => 'admin/pages']) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
     

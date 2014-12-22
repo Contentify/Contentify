@@ -84,8 +84,6 @@
                 }
             });
 
-            110030826
-
             $('#permanent_id').keyup(function()
             {
                 switch (getProvider()) {

@@ -12,7 +12,7 @@
     <meta name="date-format" content="{{ trans('app.date_format') }}">
     {{ HTML::metaTags($metaTags) }}
     @if ($openGraph)
-    {{ HTML::openGraphTags($openGraph) }}
+        {{ HTML::openGraphTags($openGraph) }}
     @endif
 
     {{ HTML::title($title) }}
@@ -42,9 +42,9 @@
                 @widget('Slides::Slides', ['categoryId' => 1])
 
                 @if (Session::get('_message'))
-                <div class="ui-message">
-                    {{ Session::get('_message') }}
-                </div>
+                    <div class="ui-message">
+                        {{ Session::get('_message') }}
+                    </div>
                 @endif
 
                 {{-- Render JavaScript alerts here --}}
@@ -52,7 +52,7 @@
 
                 <section class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
                     @if (isset($page))
-                    {{ $page }}
+                        {{ $page }}
                     @endif
                 </section>
             </div>
@@ -114,6 +114,7 @@
             </aside>
         </div>
     </div>
+    
     {{ Config::get('app.analytics') }}
 </body>
 </html>

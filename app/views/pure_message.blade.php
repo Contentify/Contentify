@@ -42,6 +42,7 @@
 <body>
     <div id="container">
         @yield('content')
+        
         <script>
             $(document).ready(function() {
                 $('.message-box').css({'display': 'block', opacity: 0});

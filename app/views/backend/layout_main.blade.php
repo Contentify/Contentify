@@ -62,7 +62,7 @@
             <div id="info-box">
                 <span>Welcome, {{ Sentry::getUser()->username }}!</span> 
                 @if ($contactMessages)
-                {{ HTML::image(asset('icons/email.png'), 'Message') }} {{ $contactMessages }}
+                    {{ HTML::image(asset('icons/email.png'), 'Message') }} {{ $contactMessages }}
                 @endif
             </div>
             
@@ -93,22 +93,22 @@
 
             <section id="main-content">
                     @if (Session::get('_message'))
-                    <div class="ui-message">
-                        {{ Session::get('_message') }}
-                    </div>
+                        <div class="ui-message">
+                            {{ Session::get('_message') }}
+                        </div>
                     @endif
 
                     {{-- Render JavaScript alerts here --}}
                     <div class="alert-area"></div>
                 
                     @if (isset($page))
-                    <div class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
-                        <a class="form-head" href="{{ url('admin/'.strtolower($controller)) }}">
-                            <img src="{{ asset('icons/'.$controllerIcon) }}" width="16" height="16" alt="Icon">{{ $controller }}
-                        </a>
+                        <div class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
+                            <a class="form-head" href="{{ url('admin/'.strtolower($controller)) }}">
+                                <img src="{{ asset('icons/'.$controllerIcon) }}" width="16" height="16" alt="Icon">{{ $controller }}
+                            </a>
 
-                        {{ $page }}
-                    </div>
+                            {{ $page }}
+                        </div>
                     @endif
             </section>
         </section>

@@ -2,9 +2,9 @@
     <ul class="list-unstyled">
     @foreach ($forumThreads as $forumThread)
         @if (user() and user()->last_login < $forumThread->updated_at)
-        <li class="new">
+            <li class="new">
         @else
-        <li class="old">
+            <li class="old">
         @endif
             <a href="{{ url('forums/threads/'.$forumThread->id.'/'.$forumThread->slug) }}" title="{{{ $forumThread->title }}}">
                 <span class="title">{{{ $forumThread->title }}}</span>

@@ -4,6 +4,7 @@
 
 {{ Form::open(array('url' => 'auth/login')) }}
     {{ Form::smartEmail() }}
+    
     {{ Form::smartPassword() }}
 
     {{ Form::actions(['submit' => trans('auth::login')], false) }}

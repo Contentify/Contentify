@@ -11,12 +11,13 @@
 {{ Form::close() }}
 
 @if (isset($resultBags))
-@foreach ($resultBags as $resultBag)
-<h2>{{ trans('search::results_type') }} {{ $resultBag['title'] }}:</h2>
-<ul>
-    @foreach ($resultBag['results'] as $title => $url)
-    <li>{{ HTML::link($url, $title) }}</li>
+    @foreach ($resultBags as $resultBag)
+        <h2>{{ trans('search::results_type') }} {{ $resultBag['title'] }}:</h2>
+        
+        <ul>
+            @foreach ($resultBag['results'] as $title => $url)
+                <li>{{ HTML::link($url, $title) }}</li>
+            @endforeach
+        </ul>
     @endforeach
-</ul>
-@endforeach
 @endif
