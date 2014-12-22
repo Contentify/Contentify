@@ -11,7 +11,7 @@ class Slidecat extends BaseModel {
     protected $fillable = ['title'];
     
     protected $rules = [
-        'title'   => 'required',
+        'title'     => 'required|min:3',
     ];
 
     public static $relationsData = [

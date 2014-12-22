@@ -23,7 +23,7 @@ class News extends BaseModel {
     ];
 
     protected $rules = [
-        'title'             => 'required',
+        'title'             => 'required|min:3',
         'published'         => 'boolean',
         'internal'          => 'boolean',
         'enable_comments'   => 'boolean',

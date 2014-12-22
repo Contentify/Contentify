@@ -13,7 +13,7 @@ class Map extends BaseModel {
     public static $fileHandling = ['image' => ['type' => 'image', 'thumbnails' => 16]];
 
     protected $rules = [
-        'title'     => 'required',
+        'title'     => 'required|min:3',
         'game_id'   => 'required|integer',
     ];
 

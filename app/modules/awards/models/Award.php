@@ -18,7 +18,7 @@ class Award extends BaseModel {
     ];
 
     protected $rules = [
-        'title'         => 'required',
+        'title'         => 'required|min:3',
         'url'           => 'sometimes|url',
         'position'      => 'integer',
         'game_id'       => 'integer',

@@ -13,7 +13,7 @@ class Gallery extends BaseModel {
     protected $slugable = true;
 
     protected $rules = [
-        'title'     => 'required',
+        'title'     => 'required|min:3',
     ];
 
     public static $relationsData = [

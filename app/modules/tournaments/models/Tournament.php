@@ -13,7 +13,7 @@ class Tournament extends BaseModel {
     public static $fileHandling = ['icon' => ['type' => 'image']];
 
     protected $rules = [
-        'title'     => 'required',
+        'title'     => 'required|min:3',
         'short'     => 'required|max:6',
     ];
 

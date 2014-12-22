@@ -13,7 +13,7 @@ class Slide extends BaseModel {
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
-        'title'         => 'required',
+        'title'         => 'required|min:3',
         'url'           => 'required|url',
         'position'      => 'sometimes|integer',
         'slidecat_id'   => 'required|integer'

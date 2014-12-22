@@ -17,7 +17,7 @@ class Group extends BaseModel {
     protected $fillable = ['name', 'permissions'];
 
     protected $rules = [
-        'name'     => 'required',
+        'name'      => 'required|min:3',
     ];
 
     public static $relationsData = [

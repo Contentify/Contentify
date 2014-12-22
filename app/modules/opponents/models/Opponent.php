@@ -15,7 +15,7 @@ class Opponent extends BaseModel {
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
-        'title'         => 'required',
+        'title'         => 'required|min:3',
         'short'         => 'required|max:6',
         'url'           => 'sometimes|url',
         'country_id'    => 'required|integer'

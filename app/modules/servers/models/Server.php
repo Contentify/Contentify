@@ -11,8 +11,8 @@ class Server extends BaseModel {
     protected $fillable = ['title', 'ip', 'hoster', 'slots', 'game_id'];
 
     protected $rules = [
-        'title'     => 'required',
-        'ip'        => 'required|min:7', // If we enforce it to be an ip adding a port is invalid!
+        'title'     => 'required|min:3',
+        'ip'        => 'required|min:7', // If we enforce it to be an IP adding a port is invalid!
         'slots'     => 'integer|min:0',
         'game_id'   => 'integer',
     ];

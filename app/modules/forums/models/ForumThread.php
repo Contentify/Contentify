@@ -14,7 +14,7 @@ class ForumThread extends BaseModel {
     protected $fillable = ['title', 'sticky', 'closed', 'forum_id'];
 
     protected $rules = [
-        'title'     => 'required',
+        'title'     => 'required|min:3',
         'sticky'    => 'sometimes|boolean',
         'closed'    => 'sometimes|boolean',
         'forum_id'  => 'integer',

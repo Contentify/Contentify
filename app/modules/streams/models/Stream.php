@@ -13,7 +13,7 @@ class Stream extends BaseModel {
     protected $slugable = true;
 
     protected $rules = [
-        'title'         => 'required',
+        'title'         => 'required|min:3',
         'url'           => 'required|url',
         'provider'      => 'required',
     ];

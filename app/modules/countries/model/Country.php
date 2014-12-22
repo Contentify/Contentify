@@ -13,7 +13,7 @@ class Country extends BaseModel {
     public static $fileHandling = ['icon' => ['type' => 'image']];
 
     protected $rules = [
-        'title' => 'required',
+        'title' => 'required|min:3',
         'code'  => 'required|min:2|max:3',
     ];
 

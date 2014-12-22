@@ -11,7 +11,7 @@ class Pagecat extends BaseModel {
     protected $fillable = ['title'];
 
     protected $rules = [
-        'title'   => 'required',
+        'title'     => 'required|min:3',
     ];
 
 }

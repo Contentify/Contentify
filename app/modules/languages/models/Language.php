@@ -7,7 +7,7 @@ class Language extends BaseModel {
     protected $fillable = ['title', 'code'];
 
     protected $rules = [
-        'title' => 'required',
+        'title' => 'required|min:3',
         'code'  => 'required|max:6',
     ];
 
