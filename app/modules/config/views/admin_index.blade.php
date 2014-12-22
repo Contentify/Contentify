@@ -6,8 +6,8 @@
 {{ Form::errors($errors) }}
 
 {{ Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) }}
-    {{ Form::smartTextarea('app::analytics', trans('config::analytics'), false) }}    
-
+    {{ Form::smartTextarea('app::analytics', trans('config::analytics'), false) }} 
+       
     {{ Form::smartCheckbox('auth::registration', trans('config::registration')) }} 
 
     {{ Form::actions(['submit' => trans('app.update')], false) }}

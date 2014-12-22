@@ -6,18 +6,27 @@
     {{ Form::open(['url' => 'admin/matches', 'files' => true]) }}
 @endif
     {{ Form::smartSelect('state', trans('app.state'), $modelClass::$states); }}
+
     {{ Form::smartSelectRelation('leftTeam', trans('matches::left_team'), $modelClass) }}
+
     {{ Form::smartSelectRelation('rightTeam', trans('matches::right_team'), $modelClass) }}
+
     {{ Form::smartSelectRelation('game', 'Game', $modelClass) }}
+
     {{ Form::smartSelectRelation('tournament', 'Tournament', $modelClass) }}
 
     {{ Form::smartUrl('url', trans('app.url')) }}
+
     {{ Form::smartText('broadcast', trans('matches::broadcast')) }}
+
     {{ Form::smartText('left_lineup', trans('matches::left_lineup')) }}
+
     {{ Form::smartText('right_lineup', trans('matches::right_lineup')) }}
 
     {{ Form::smartTextarea('text', trans('app.description')) }}
+
     {{ Form::smartDateTime('played_at', trans('matches::played_at')) }}
+    
     {{ Form::smartCheckbox('featured', trans('app.featured')) }}
 
     {{-- We can't add scores to a match that doesn't actually exist --}}

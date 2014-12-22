@@ -6,7 +6,7 @@
     {{ Form::open(['url' => 'admin/downloads', 'files' => true]) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
-
+    
     {{ Form::smartSelectRelation('downloadcat', trans('app.category'), $modelClass) }}
 
     {{ Form::smartTextarea('description', trans('app.description'), false) }}

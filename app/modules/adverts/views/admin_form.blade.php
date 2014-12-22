@@ -6,10 +6,15 @@
 {{ Form::open(['url' => 'admin/adverts', 'files' => true]) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
+
     {{ Form::smartSelectRelation('advertcat', 'Advert '.trans('app.category'), $modelClass, null) }}
+
     {{ Form::smartTextarea('code', trans('app.code')) }}
+
     {{ Form::smartUrl('url', trans('app.url')) }}
+
     {{ Form::smartImageFile('image', trans('app.image')) }}
+    
     {{ Form::smartCheckbox('published', trans('app.published'), true) }}
         
     {{ Form::actions() }}

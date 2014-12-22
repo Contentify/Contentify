@@ -6,8 +6,11 @@
 {{ Form::open(['url' => 'admin/slides', 'files' => true]) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
+    
     {{ Form::smartSelectRelation('slidecat', 'Slide '.trans('app.category'), $modelClass, null) }}
+
     {{ Form::smartUrl('url', trans('app.url')) }}
+
     {{ Form::smartImageFile('image', trans('app.image')) }}
         
     {{ Form::actions() }}

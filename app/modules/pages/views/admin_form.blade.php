@@ -6,12 +6,17 @@
 {{ Form::open(['url' => 'admin/pages']) }}
 @endif
     {{ Form::smartText('title', trans('app.title')) }}
+    
     {{ Form::smartSelectForeign('pagecat_id', 'Page '.trans('app.type')) }}
+
     {{ Form::smartTextarea('text', trans('app.text')) }}
 
     {{ Form::smartDateTime('published_at', trans('news::publish_at')) }}
+
     {{ Form::smartCheckbox('published', trans('app.published'), true) }}
+
     {{ Form::smartCheckbox('internal', trans('app.internal')) }}
+
     {{ Form::smartCheckbox('enable_comments', trans('app.enable_comments'), true) }}
 
     {{ Form::actions() }}

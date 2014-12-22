@@ -8,7 +8,7 @@
     {{ Form::smartText('title', trans('app.title')) }}
 
     {{ Form::smartText('code', trans('app.code')) }}
-
+    
     {{ Form::smartIconFile() }}
 
     {{ Form::actions() }}

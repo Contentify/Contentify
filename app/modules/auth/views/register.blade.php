@@ -10,7 +10,7 @@
     {{ Form::smartPassword() }}
 
     {{ Form::smartPassword('password_confirmation', trans('auth::password')) }}
-
+    
     {{ Form::smartCaptcha() }}
 
     {{ Form::actions(['submit'], false) }}
