@@ -8,13 +8,14 @@ class Advert extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'code', 'url', 'advertcat_id'];
+    protected $fillable = ['title', 'code', 'url', 'published', 'advertcat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
         'title'         => 'required|min:3',
         'url'           => 'required|url',
+        'published'     => 'boolean',
         'advertcat_id'  => 'required|integer'
     ];
 
@@ -22,5 +23,13 @@ class Advert extends BaseModel {
         'advertcat' => [self::BELONGS_TO, 'App\Modules\Adverts\Models\Advertcat'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    /**
+     * Select only those that have been published
+     */
+    public function scopePublished($query)
+    {
+        return $query->wherePublished(true);
+    }
 
 }

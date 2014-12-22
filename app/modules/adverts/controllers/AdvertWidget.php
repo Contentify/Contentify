@@ -36,7 +36,7 @@ class AdvertWidget extends Widget {
             $containerId = (chr(ord(substr($containerId, 0, 1)) % 26 + 97)).$containerId;
         }
 
-        $advert = Advert::orderBy(DB::raw('RAND()'))->whereAdvertcatId($categoryId)->first();
+        $advert = Advert::orderBy(DB::raw('RAND()'))->published()->whereAdvertcatId($categoryId)->first();
 
         if ($advert) {
             return View::make('adverts::widget', compact('advert', 'containerId'))->render();

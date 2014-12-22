@@ -7,7 +7,7 @@ class PartnersController extends FrontController {
 
     public function index()
     {
-        $partners = Partner::orderBy('position', 'ASC')->get();
+        $partners = Partner::orderBy('position', 'ASC')->published()->get();
 
         $this->pageView('partners::index', compact('partners'));
     }
@@ -20,7 +20,7 @@ class PartnersController extends FrontController {
      */
     public function show($id)
     {
-        $partner = Partner::findOrFail($id);
+        $partner = Partner::published()->findOrFail($id);
 
         $partner->access_counter++;
         $partner->save();

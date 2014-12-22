@@ -11,6 +11,7 @@
     {{ Form::smartUrl('url', trans('app.url')) }}
     {{ Form::smartNumeric('position', trans('app.position'), 0) }}
     {{ Form::smartImageFile('image', trans('app.image')) }}
+    {{ Form::smartCheckbox('published', trans('app.published'), true) }}
         
     {{ Form::actions() }}
 {{ Form::close() }}

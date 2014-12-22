@@ -323,6 +323,7 @@ class InstallController extends Controller {
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
+            $table->boolean('published')->default(false);
         }, ['teamcat_id']);
 
         $this->create('advertcats', function($table) { }, [], ['slug']); 
@@ -331,6 +332,7 @@ class InstallController extends Controller {
         {
             $table->text('code')->nullable();
             $table->string('url')->nullable();
+            $table->boolean('published')->default(false);
             $table->string('image')->nullable();
         }, ['advertcat_id']);
 
@@ -341,6 +343,7 @@ class InstallController extends Controller {
             $table->text('text')->nullable();
             $table->string('url')->nullable();
             $table->integer('position')->default(0);
+            $table->boolean('published')->default(false);
             $table->string('image')->nullable();
         }, ['partnercat_id']);
 

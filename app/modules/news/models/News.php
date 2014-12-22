@@ -60,7 +60,7 @@ class News extends BaseModel {
     }
 
     /**
-     * Select only news that are published
+     * Select only news that have been published
      */
     public function scopePublished($query)
     {

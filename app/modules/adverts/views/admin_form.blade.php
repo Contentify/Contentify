@@ -10,6 +10,7 @@
     {{ Form::smartTextarea('code', trans('app.code')) }}
     {{ Form::smartUrl('url', trans('app.url')) }}
     {{ Form::smartImageFile('image', trans('app.image')) }}
+    {{ Form::smartCheckbox('published', trans('app.published'), true) }}
         
     {{ Form::actions() }}
 {{ Form::close() }}

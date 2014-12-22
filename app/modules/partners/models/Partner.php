@@ -8,13 +8,14 @@ class Partner extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'text', 'url', 'position', 'partnercat_id'];
+    protected $fillable = ['title', 'text', 'url', 'position', 'published', 'partnercat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
         'title'         => 'required|min:3',
         'url'           => 'required|url',
+        'published'     => 'boolean',
         'position'      => 'required|integer',
     ];
 
@@ -23,4 +24,12 @@ class Partner extends BaseModel {
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
+    /**
+     * Select only those that have been published
+     */
+    public function scopePublished($query)
+    {
+        return $query->wherePublished(true);
+    }
+    
 }

@@ -10,13 +10,14 @@ class Team extends BaseModel {
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'description', 'position', 'teamcat_id'];
+    protected $fillable = ['title', 'description', 'position', 'published', 'teamcat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
         'title'         => 'required|min:3',
         'position'      => 'sometimes|integer',
+        'published'     => 'boolean',
         'teamcat_id'    => 'required|integer',
     ];
 
@@ -36,4 +37,12 @@ class Team extends BaseModel {
             ->orderBy('pivot_position', 'asc');
     }
 
+    /**
+     * Select only those that have been published
+     */
+    public function scopePublished($query)
+    {
+        return $query->wherePublished(true);
+    }
+    
 }

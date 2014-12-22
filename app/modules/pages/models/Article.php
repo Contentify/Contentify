@@ -10,7 +10,7 @@ class Article extends Page {
     protected $subclassId = 1;
 
     /**
-     * Select only pages that are published
+     * Select only pages that have been published
      */
     public function scopePublished($query)
     {

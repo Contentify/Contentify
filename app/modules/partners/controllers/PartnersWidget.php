@@ -19,7 +19,7 @@ class PartnersWidget extends Widget {
             }
         }
 
-        $partners = Partner::wherePartnercatId($categoryId)->get();
+        $partners = Partner::wherePartnercatId($categoryId)->published()->get();
 
         return View::make('partners::widget', compact('partners'))->render();
     }
