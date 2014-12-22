@@ -62,14 +62,23 @@ class ForumPost extends BaseModel {
     }
 
     /**
-     * Renders the forum post's text (WITHOUT BBCode)
-     * 
+     * Return just the plain forum post's text (WITHOUT BBCode).
+     * (Similar to render BBCode without the tags but it uses caching.)
+     *
+     * @param int $max Limits the number of characters. 0/null = no limit
      * @return string
      */
-    public function renderTextRaw()
+    public function plainText($max = null)
     {
-        $bbcode = new BBCode();
-        return $bbcode->renderRaw($this->text);
+        $text = strip_tags($this->renderText());
+
+        if ($max) {
+            if (strlen($text) > $max) {
+                $text = substr($text, 0, $max).'...';
+            }
+        }
+
+        return $text;
     }
 
 }

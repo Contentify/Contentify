@@ -9,7 +9,7 @@
         <tbody>
             @foreach ($comments as $comment)
             <tr>
-                <td title="{{ $comment->plain() }}">{{ $comment->plain() }}</td>
+                <td title="{{ $comment->plainText() }}">{{ $comment->plainText(100) }}</td>
                 <td>{{ $comment->created_at }}</td>
             </tr>
             @endforeach

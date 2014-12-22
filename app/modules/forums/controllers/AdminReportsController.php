@@ -27,7 +27,7 @@ class AdminReportsController extends BackController {
                 $forumPost = $forumReport->post;
                 
                 $url = url('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
-                $link = HTML::link($url, $forumPost->renderTextRaw());
+                $link = HTML::link($url, $forumPost->plainText(80));
 
                 return [
                     $forumReport->id,

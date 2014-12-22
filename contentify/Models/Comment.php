@@ -73,14 +73,23 @@ class Comment extends BaseModel {
     }
 
     /**
-     * Return just the plain comment text.
+     * Return just the plain comment text (WITHOUT BBCode).
      * (Similar to render BBCode without the tags but it uses caching.)
-     * 
+     *
+     * @param int $max Limits the number of characters. 0/null = no limit
      * @return string
      */
-    public function plain()
+    public function plainText($max = null)
     {
-        return strip_tags($this->renderText());
+        $text = strip_tags($this->renderText());
+
+        if ($max) {
+            if (strlen($text) > $max) {
+                $text = substr($text, 0, $max).'...';
+            }
+        }
+
+        return $text;
     }
 
 }
