@@ -137,7 +137,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     }
 
     /**
-     * Returns HTML code of a "image link" - a link with and image (and maybe a text).
+     * Returns HTML code of a "image link" - a link with an image (and maybe a text).
      * If $image has no extension, the extension will be ".png".
      * If $image does not contain a path, the path "icons" will be used.
      * If $image has does not start with "http://" an asset link will be created.

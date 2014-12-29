@@ -48,31 +48,40 @@ class FormBuilder extends OriginalFormBuilder {
                 case 'submit':
                     $options['type'] = $type;
                     $options['name'] = '_form_submit';
+
                     if ($title == 'Submit') $title = trans('app.save');
+
                     $value = $title;
                     if ($showImages) $value = HTML::image(
                         asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]
                     ).' '.$value;
                     $partial .= self::button($value, $options);
+
                     break; 
                 case 'apply':
                     $options['type'] = 'submit';
                     $options['name'] = '_form_apply';
+
                     if ($title == 'Submit') $title = trans('app.apply');
+
                     $value = $title;
                     if ($showImages) $value = HTML::image(
                         asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]
                     ).' '.$value;
                     $partial .= self::button($value, $options);
+
                     break; 
                 case 'reset':
                     $options['type'] = $type;
+
                     if ($title == 'Submit') $title = trans('app.reset');
+
                     $value = $title;
                     if ($showImages) $value = HTML::image(
                         asset('icons/undo.png'), $value, ['width' => 16, 'height' => 16]
                     ).' '.$value;
                     $partial .= self::button($value, $options);
+
                     break; 
             }
             

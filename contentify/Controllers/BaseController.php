@@ -477,6 +477,88 @@ abstract class BaseController extends Controller {
             'showSearchBox' => $data['searchFor'] and (! $data['dataSource']) ? true : false
         ]);
     }
+    
+    /**
+     * Retrieve values from inputs (usually select elements) that deal with foreign models
+     * 
+     * @param  string   $modelClass  Full name of the model class
+     * @param  Model    $model       Object with this model type (by reference)
+     * @return void
+     */
+    protected function fillRelations($modelClass, &$model)
+    {
+        $relations = $modelClass::relations();
+
+        foreach (Input::all() as $name => $value) {
+            if (starts_with($name, '_relation_')) {
+                $name = substr($name, 10); // Remove the prefix to get the name of the relation
+
+                if ($value === '') {
+                    /*
+                     * Set $value to null instead of an empty string. This will prevent Eloquent from
+                     * changing it to (int) 0.
+                     */
+                    $value = null; 
+                }
+                
+                if (isset($relations[$name])) {
+                    $relation = $relations[$name];
+
+                    $foreignModelFull   = $relation[1]; // Fully classified foreign model name
+                    $foreignModel       = class_basename($foreignModelFull);
+                    $key                = (new $foreignModelFull)->getKeyName(); // Primary key of the model
+                    if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
+
+                    /*
+                     * Handle the different types of relations
+                     */
+                    switch ($relation[0]) {
+                        case 'belongsTo':
+                            $attribute = snake_case($name).'_'.$key;
+
+                            if ($model->isFillable($attribute)) {
+                                $model->$attribute = $value;
+                            } else {
+                                Log::warning("Form tries to fill guarded attribute '$attribute'.");
+                            }
+                            break;
+                        case 'belongsToMany':
+                            $sourceKey = class_basename(strtolower($modelClass)).'_'.$model->getKeyName();
+                            DB::table($relation['table'])->where($sourceKey, '=', $model->id)->delete();
+
+                            $insertion = [];
+                            foreach ($value as $id) {
+                                if ($id) {
+                                    $insertion[] = [
+                                        $sourceKey => $model->id,
+                                        strtolower($foreignModel).'_'.$key => $id
+                                    ];
+                                }
+                            }
+
+                            if ($model->isFillable('relation_'.$name)) {
+                                if (sizeof($insertion) > 0) {
+                                    
+                                    DB::table($relation['table'])->insert($insertion);
+                                }
+                            } else {
+                                Log::warning("Form tries to fill guarded pivot table '$relation[table]' \
+                                    for relation '$name'.");
+                            }
+
+                            break;
+                        default:
+                            throw new Exception(
+                                "Error: Unkown relation type '{$relation[0]}' for model of type '{$modelClass}'."
+                            );
+                    }
+                } else {
+                    Log::warning("Unknown relation '{$name}'."); // Just log it, don't throw an exception.
+                }
+            }
+        }
+
+    }
 
     /**
      * Returns true if the current user has read access to the module.
