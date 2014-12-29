@@ -107,7 +107,7 @@ class InstallController extends Controller {
                 $user = Sentry::createUser(array(
                     'email'     => 'daemon@contentify.it',
                     'username'  => 'Daemon',
-                    //'password'  => Str::random(),
+                    'password'  => Str::random(),
                     'activated' => false,
                 ));
                 */
@@ -116,8 +116,8 @@ class InstallController extends Controller {
                  * Add user to group "Super-Admins"
                  */
                 /*
-                $superAdminGroup = Sentry::findGroupById(5); 
-                $user->addGroup($superAdminGroup);
+                //$superAdminGroup = Sentry::findGroupById(5); 
+                //$user->addGroup($superAdminGroup);
                 */
 
                 $title      = 'Database Setup Complete';
@@ -528,7 +528,7 @@ class InstallController extends Controller {
         ("Bulgaria", "bg", "bg.png"),
         ("Canada", "ca", "ca.png"),
         ("Chile", "cl", "cl.png"),
-        ("China", "cn", "cn.co"),
+        ("China", "cn", "cn.png"),
         ("Colombia", "co", "co.png"),
         ("Czech Republic", "cz", "cz.png"),
         ("Croatia", "hr", "hr.png"),
@@ -570,13 +570,11 @@ class InstallController extends Controller {
         ("Sweden", "se", "se.png"),
         ("Syria", "sy", "sy.png"),
         ("Switzerland", "ch", "ch.png"),
-        ("Tibet", "ti", "ti.png"),
         ("Tunisia", "tn", "tn.png"),
         ("Turkey", "tr", "tr.png"),
         ("Ukraine", "ua", "ua.png"),
         ("United Kingdom", "uk", "uk.png"),
-        ("USA", "us", "us.png"),
-        ("Venezuela", "ve", "ve.png")');
+        ("USA", "us", "us.png")');
 
         DB::insert('INSERT INTO games(title, short, icon) VALUES
         ("Counter-Strike: Global Offensive", "CS:GO", "default/csgo.png"),

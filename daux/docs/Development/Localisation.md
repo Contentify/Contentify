@@ -10,6 +10,10 @@ Or use the `date` method to receive the same output. Call `dateTime` to receive 
 
     echo $news->created_at->dateTime(); // Example output: 1969-07-21 13:37:00
 
+To localise a timestamp (that is not an instance of Carbon but an integer), try this:
+
+    date(trans('app.date_format'), $timestamp)
+
 ## Eloquent Models And Carbon
 
 Eloquent converts only certain model attributes to Carbon instances:
