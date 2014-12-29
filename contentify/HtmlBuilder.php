@@ -181,6 +181,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     public function button($title, $url, $image = '')
     {
         $imageUrl = get_image_url($image);
+        
         if ($image) {
             $image = self::image($imageUrl, $title);    
         }
@@ -244,6 +245,17 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     {
         $backNavGen = new BackNavGen();
         return $backNavGen->get();
+    }
+
+    /**
+     * Returns HTML code for a font icon.
+     *
+     * @param string $icon The name of the icon
+     * @return string
+     */
+    public function fontIcon($icon)
+    {
+        return '<i class="fa fa-'.$icon.'"></i>';
     }
 
 }
