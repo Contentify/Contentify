@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Partners\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Partners\Models\Partner;
 use Hover, BackController;
 
 class AdminPartnersController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'coins.png';
 

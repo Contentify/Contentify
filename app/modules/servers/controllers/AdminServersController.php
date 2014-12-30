@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Servers\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Servers\Models\Server;
 use Hover, HTML, BackController;
 
 class AdminServersController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'server.png';
 

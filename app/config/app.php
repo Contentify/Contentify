@@ -249,6 +249,7 @@ return array(
         'Carbon'                => 'Contentify\Carbon',
 
         'DateAccessorTrait'     => 'Contentify\Traits\DateAccessorTrait',
+        'ModelHandlerTrait'     => 'Contentify\Traits\ModelHandlerTrait',
 
         'InstallController'     => 'Contentify\Controllers\InstallController',
         'BaseController'        => 'Contentify\Controllers\BaseController',

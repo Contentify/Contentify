@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use OpenGraph, Request, Config, URL, HTML, Session, Input, View, Controller, Exception;
+use Log, OpenGraph, Request, Config, URL, HTML, Session, Input, View, Controller, Exception;
 
 abstract class BaseController extends Controller {
 
@@ -557,7 +557,6 @@ abstract class BaseController extends Controller {
                 }
             }
         }
-
     }
 
     /**

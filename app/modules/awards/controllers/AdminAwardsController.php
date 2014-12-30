@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Awards\Controllers;
 
 use App\Modules\Awards\Models\Award;
+use ModelHandlerTrait;
 use BackController;
 
 class AdminAwardsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'award_star_gold_3.png';
 

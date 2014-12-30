@@ -1,9 +1,15 @@
 <?php namespace App\Modules\Forums\Controllers;
 
 use App\Modules\Forums\Models\Forum;
+use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
 class AdminForumsController extends BackController {
+
+    use ModelHandlerTrait { 
+        create as traitCreate;
+        edit as traitEdit;
+    }
 
     protected $icon = 'comment.png';
 
@@ -38,7 +44,7 @@ class AdminForumsController extends BackController {
 
     public function create()
     {
-        parent::create();
+        $this->traitCreate();
 
         $forums = Forum::all();      
 
@@ -47,7 +53,7 @@ class AdminForumsController extends BackController {
 
     public function edit($id)
     {
-        parent::edit($id);
+        $this->traitEdit($id);
 
         $forums = Forum::where('id', '!=', $id)->get();
 

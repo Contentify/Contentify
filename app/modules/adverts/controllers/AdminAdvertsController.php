@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Adverts\Controllers;
 
 use App\Modules\Adverts\Models\Advert;
+use ModelHandlerTrait;
 use Hover, BackController;
 
 class AdminAdvertsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'money.png';
 

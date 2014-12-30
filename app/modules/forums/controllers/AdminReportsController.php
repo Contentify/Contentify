@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Forums\Controllers;
 
 use App\Modules\Forums\Models\Forum;
+use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
 class AdminReportsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'warning.png';
 

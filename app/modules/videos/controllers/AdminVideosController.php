@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Videos\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Videos\Models\Video;
 use Hover, BackController;
 
 class AdminVideosController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'film.png';
 

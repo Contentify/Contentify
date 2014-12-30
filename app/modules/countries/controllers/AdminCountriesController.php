@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Countries\Controllers;
 
 use App\Modules\Countries\Models\Country;
+use ModelHandlerTrait;
 use HTML, File, BackController;
 
 class AdminCountriesController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'flag_blue.png';
 

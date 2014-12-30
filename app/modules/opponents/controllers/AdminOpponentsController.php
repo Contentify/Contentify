@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Opponents\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Opponents\Models\Opponent;
 use HTML, Hover, BackController;
 
 class AdminOpponentsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'controller.png';
 

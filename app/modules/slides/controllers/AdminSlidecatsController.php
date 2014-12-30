@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Slides\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Slides\Models\Slidecat;
 use Hover, BackController;
 
 class AdminSlidecatsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'color_swatch.png';
 

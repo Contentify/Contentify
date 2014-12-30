@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Streams\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Streams\Models\Stream;
 use Hover, HTML, BackController;
 
 class AdminStreamsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'film_link.png';
 

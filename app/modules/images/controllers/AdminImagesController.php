@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Images\Controllers;
 
 use App\Modules\Images\Models\Image;
+use ModelHandlerTrait;
 use HTML, BackController;
 
 class AdminImagesController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'picture.png';
 

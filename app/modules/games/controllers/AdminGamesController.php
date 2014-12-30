@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Games\Controllers;
 
 use App\Modules\Games\Models\Game;
+use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
 class AdminGamesController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'controller.png';
 

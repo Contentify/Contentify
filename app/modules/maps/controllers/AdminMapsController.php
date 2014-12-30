@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Maps\Controllers;
 
 use App\Modules\Maps\Models\Map;
+use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
 class AdminMapsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'world.png';
 

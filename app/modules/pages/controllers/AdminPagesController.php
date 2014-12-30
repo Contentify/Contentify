@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Pages\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Pages\Models\Page;
 use Hover, URL, HTML, BackController;
 
 class AdminPagesController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'doc_offlice.png';
 

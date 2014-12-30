@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Galleries\Controllers;
 
 use App\Modules\Galleries\Models\Gallery;
+use ModelHandlerTrait;
 use Hover, BackController;
 
 class AdminGalleriesController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'photo.png';
 

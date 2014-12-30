@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Contact\Controllers;
 
 use App\Modules\Contact\Models\ContactMessage;
+use ModelHandlerTrait;
 use HTML, View, BackController;
 
 class AdminContactController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'email_open.png';
 

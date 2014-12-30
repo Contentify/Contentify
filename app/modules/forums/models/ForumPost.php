@@ -14,6 +14,7 @@ class ForumPost extends BaseModel {
 
     protected $rules = [
         'text'      => 'required|min:3',
+        'thread_id' => 'integer'
     ];
 
     public static $relationsData = [

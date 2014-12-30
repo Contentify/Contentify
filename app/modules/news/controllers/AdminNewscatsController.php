@@ -1,9 +1,12 @@
 <?php namespace App\Modules\News\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\News\Models\Newscat;
 use Hover, BackController;
 
 class AdminNewscatsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'newspaper.png';
 

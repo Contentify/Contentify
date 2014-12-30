@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Teams\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Teams\Models\Team;
 use Hover, BackController;
 
 class AdminTeamsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'group.png';
 

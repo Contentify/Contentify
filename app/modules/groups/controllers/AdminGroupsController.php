@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Groups\Controllers;
 
 use App\Modules\Groups\Models\Group;
+use ModelHandlerTrait;
 use Hover, BackController;
 
 class AdminGroupsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'lock.png';
 

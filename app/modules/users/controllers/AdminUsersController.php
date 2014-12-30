@@ -1,8 +1,13 @@
 <?php namespace App\Modules\Users\Controllers;
 
+use ModelHandlerTrait;
 use Exception, Response, Sentry, HTML, User, Hover, BackController;
 
 class AdminUsersController extends BackController {
+
+    use ModelHandlerTrait {
+        update as traitUpdate;
+    }
 
     protected $icon = 'user.png';
 
@@ -69,7 +74,7 @@ class AdminUsersController extends BackController {
             return;
         }
 
-        return parent::update($id);
+        return $this->traitUpdate($id);
     }
 
     /**

@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Downloads\Controllers;
 
 use App\Modules\Downloads\Models\Download;
+use ModelHandlerTrait;
 use Hover, BackController;
 
 class AdminDownloadsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'folder.png';
 

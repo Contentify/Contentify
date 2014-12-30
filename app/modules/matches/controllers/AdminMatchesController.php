@@ -1,11 +1,16 @@
 <?php namespace App\Modules\Matches\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Matches\Models\Match;
 use App\Modules\Matches\Models\MatchScore;
 use App\Modules\Maps\Models\Map;
 use Input, HTML, Hover, BackController;
 
 class AdminMatchesController extends BackController {
+
+    use ModelHandlerTrait {
+        create as traitCreate;
+    }
 
     protected $icon = 'sport_soccer.png';
 
@@ -46,7 +51,7 @@ class AdminMatchesController extends BackController {
 
     public function create()
     {
-        parent::create();
+        $this->traitCreate();
 
         $maps = Map::all();
 

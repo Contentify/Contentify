@@ -1,7 +1,7 @@
 {{ Form::smartGroupOpen('forum_id', trans('forums::parent')) }}
     <select name="forum_id">
         @if ($empty)
-            <option>-</option>
+            <option value="">-</option>
         @endif
         
         @foreach ($forums as $forum)

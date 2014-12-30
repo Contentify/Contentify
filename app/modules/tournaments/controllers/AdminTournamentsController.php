@@ -1,9 +1,12 @@
 <?php namespace App\Modules\Tournaments\Controllers;
 
+use ModelHandlerTrait;
 use App\Modules\Tournaments\Models\Tournament;
 use Hover, BackController;
 
 class AdminTournamentsController extends BackController {
+
+    use ModelHandlerTrait;
 
     protected $icon = 'joystick.png';
 
