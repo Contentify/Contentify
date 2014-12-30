@@ -2,7 +2,7 @@ So you are a developer and you just have arrived here. How can you start develop
 
 ## The Base Layout
 
-The `app/views` folder contains all the "global" template files. They are either plain PHP files (\*.php) or [Blade](Blade) templates (*.blade.php). The most important sub directory is called `frontend`and it contains those templates that belong to the frontend. There you will find a file named `layout_main.blade`. That is, you guess it, the main layout of the website. Most likely you want to it adjust it to the needs (primarily the design and layout) of your website.
+The `app/views` folder contains all the "global" template files. They are either plain PHP files (\*.php) or [Blade](Blade) templates (\*.blade.php). The most important sub directory is called `frontend`and it contains those templates that belong to the frontend. There you will find a file named `layout_main.blade`. This is, you guess it, the main layout of the website. Most likely you want to adjust it to the needs (primarily the design and layout) of your website.
 
 > When we talk about "frontend" or "backend" we are referring to interfaces. The frontend interface is what is visible and accessible for everyone: visitors, users, etc. The backend interface is only accessible by administrators.
 
@@ -13,9 +13,9 @@ The `/public` directory contains all thoses files that should be accessible from
 * If you want to add images to the website place them into the `public/img` directory. Images that belong to the CMS are located in the `/public/theme` directory.
 * JS files life in the `/public/libs` directory. The main layout includes jQuery, `framework.js` and `frontend.js` by default.
 * CSS files are located in the `/public/css` directory. The main layout includes `base.css` and `frontend.css` out of the box. `base.css` defines some general styling and is also included by the backend stylesheet, `backend.css`.
-* We use [SASS](http://sass-lang.com) as CSS pre-compiler. The SASS files are located in `/scss`.
+* We use [LESS](http://lesscss.org) as CSS pre-compiler. The LESS files are located in `/less`. You need a LESS compiler to compile LESS files to CSS files. If you do not want to use LESS you may directly edit the CSS files.
 
-Remember that Laravel and Blade provide classes (such as `Form` and `HTML`) and helper functions (such as `url` and asset()`) to deal with form elements, URLs, assets and so on. You should use them instead of hardcoding HTML form markup and URLs.
+Remember that Laravel and Blade provide classes (such as `Form` and `HTML`) and helper functions (such as `url` and `asset()`) to deal with form elements, URLs, assets and so on. You should use them instead of hardcoding HTML form markup and URLs.
 
 Contentify delivers several [widgets](Widgets). They are handy little helpers that make it a piece of cake to display certain content. Take a look into the `controllers` directories of the modules to find them. For example, the forums widget - that shows the latest forum threads - lifes in `app/modules/forums/controllers/LatestThreadsWidgets.php`.
 
