@@ -54,39 +54,43 @@ Extends the BaseController class. Controllers tied to the frontend should inheri
 
 Extends the BaseController class. Controllers tied to the backend should inherit from the BackController class. While the frontend controller class is lightweight, the backend controller comes with a lot of features. It sets the backend layout as template and passes several variables to it (module and controller name, controller icon, user picture, message notifier).
 
-The most outstanding feature is its ability to handle resource actions. It implements methods that create (and store), edit (and update) and delete (and restore) an entity. This is well known as CRUD. Controllers that inherit from the backend controller class always inherit these methods. Keep this in mind when creating routes for a resource controller. Perhaps you have to disable routes manually that you do not want to use. For example maybe your controller must not be able to delete the entities it handles. In this case you have to close the "delete" route manually.
+The most outstanding feature is its ability to handle resource actions. It's capable of using a trait called `ModelHandlerTrait` that implements methods that create (and store), edit (and update) and delete (and restore) a model. This is well known as CRUD. Controllers that use the `ModelHandlerTrait` always inherit these methods. Keep this in mind when creating routes for a resource controller. Perhaps you have to disable routes manually that you do not want to use. For example maybe your controller must not be able to delete the models it handles. In this case you have to close the "delete" route manually.
 
 > Use the `php artisan routes` command to list all available routes.
 
 If a method does not work in the way it's intended or the task to perform is too complex you are free to override it. But if it isn't necessary to override it's recommended to stick to the existing implementation.
 
-## Modifying CRUD Methods
+## Modifying ModelHandlerTrait Methods
 
-The simplest way to implement another behaviour for a CRUD action is to override the method:
+The simplest way to implement another behaviour for a CRUD action is to rename the method and create a new one:
 
     // app/controllers/ExampleController.php that extends BackController
+
+    use ModelHandlerTrait {
+        create as traitCreate;
+    }
 
     public function create()
     {
         // Your implementation
     }
 
-Ofcourse you are still able to call the method of the BackController class:
+Ofcourse you are still able to call the method of the ModelHandlerTrait class:
 
     public function create()
     {
         // Do stuff before...
 
-        parent::create();
+        $this->traitCreate();
 
-        // ...and after calling the method of the BackController class.
+        // ...and after calling the method of the ModelHandlerTrait.
     }
 
-It's possible to add extra data to the view that's created by a CRUD method:
+It's possible to add extra data to the view that's created by a ModelHandlerTrait method:
 
     public function create()
     {
-        parent::create();
+        $this->traitCreate();
 
         $games = Game::all();
 
