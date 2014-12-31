@@ -1,6 +1,6 @@
 ## Contentify CMS
 
-Contentify is an eSports CMS based on the popular Laravel 4 framework.
+Contentify is an eSports CMS based on the popular Laravel framework.
 
 Website: [contentify.it/](http://contentify.it/)
 
