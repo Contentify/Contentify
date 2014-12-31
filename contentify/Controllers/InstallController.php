@@ -58,7 +58,7 @@ class InstallController extends Controller {
 
                  // TODO: Test if it's possible to integrate this into the register method?
                 $user->slug = Str::slug($user->username);
-                $user->forceSave();
+                $user->save();
 
                 /*
                  * Add user to group "Admins"
