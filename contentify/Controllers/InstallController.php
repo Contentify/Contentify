@@ -307,6 +307,8 @@ class InstallController extends Controller {
         {
             $table->string('tags')->nullable();
             $table->string('image')->nullable();
+            $table->integer('width')->default(0);
+            $table->integer('height')->default(0);
         }, ['gallery_id'], ['slug']);
 
         $this->createPivot('team_user', function($table)

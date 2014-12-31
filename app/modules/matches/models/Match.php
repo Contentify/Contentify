@@ -108,6 +108,7 @@ class Match extends BaseModel {
     /**
      * Returns the score of the match with HTML spans which 
      * indicate if the left or the right team is the winner.
+     * 
      * @return string The HTML code
      */
     public function scoreCode()
