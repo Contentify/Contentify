@@ -25,8 +25,9 @@ class Chart {
                         ->where(DB::raw('YEAR(visited_at)'), '=', $year)
                         ->orderBy('day', 'ASC')->groupBy('visited_at')->get();
 
-        for ($i = 1; $i < 31; $i++) {
+        for ($i = 1; $i <= 31; $i++) {
             $visitors = 0;
+
             foreach ($days as $day) {
                 if ($day->day == $i) {
                     $visitors       = $day->visitors;
@@ -35,8 +36,10 @@ class Chart {
                     break;
                 }
             }
+
             $dataSet .= '['.$i.','.$visitors.'], ';
         }
+        
         $this->dataSet = substr($dataSet, 0, -2); // Cut the last 2 characters: ", "
         $this->days = $days;
     }
