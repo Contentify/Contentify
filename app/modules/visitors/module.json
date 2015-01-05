@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "chart_bar.png",
+            "icon": "pie-chart",
             "category": 4,
             "position": 6            
         }

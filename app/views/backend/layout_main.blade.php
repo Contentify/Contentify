@@ -17,6 +17,7 @@
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 
     {{ HTML::style('css/backend.css') }}
+    {{ HTML::style('css/font-awesome.min.css') }}
     {{ HTML::style('libs/formstone/selecter.css') }}
     {{ HTML::style('libs/formstone/boxer.css') }}
     {{ HTML::style('libs/datetime/picker.min.css') }}
@@ -104,7 +105,7 @@
                     @if (isset($page))
                         <div class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
                             <a class="form-head" href="{{ url('admin/'.strtolower($controller)) }}">
-                                <img src="{{ asset('icons/'.$controllerIcon) }}" width="16" height="16" alt="Icon">{{ $controller }}
+                                {{ HTML::fontIcon($controllerIcon) }}{{ $controller }}
                             </a>
 
                             {{ $page }}

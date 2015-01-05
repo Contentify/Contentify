@@ -2,13 +2,13 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "comment.png",
+            "icon": "comment",
             "category": 2,
             "position": 7            
         },
         {
             "url": "admin/forum-reports",
-            "icon": "warning.png",
+            "icon": "warning",
             "title": "Forum Reports",
             "category": 2,
             "position": 8        

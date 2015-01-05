@@ -8,7 +8,7 @@ class AdminTeamsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'group.png';
+    protected $icon = 'flag';
 
     public function __construct()
     {

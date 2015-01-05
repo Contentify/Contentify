@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "lock.png",
+            "icon": "lock",
             "category": 4,
             "position": 7,
             "title": "Permission Groups"

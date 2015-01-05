@@ -8,7 +8,7 @@ class AdminGroupsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'lock.png';
+    protected $icon = 'lock';
 
     public function __construct()
     {

@@ -8,7 +8,7 @@ class AdminVideosController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'film.png';
+    protected $icon = 'youtube-play';
 
     public function __construct()
     {

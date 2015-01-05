@@ -8,7 +8,7 @@ class AdminReportsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'warning.png';
+    protected $icon = 'warning';
 
     public function __construct()
     {

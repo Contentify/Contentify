@@ -13,7 +13,7 @@ class AdminConfigController extends BackController {
      */
     const LOG_FILE = '/logs/laravel.log';
 
-    protected $icon = 'cog.png';
+    protected $icon = 'cog';
     
     public function getIndex()
     {

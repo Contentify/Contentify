@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "package.png",
+            "icon": "cubes",
             "category": 4
         }
     ]

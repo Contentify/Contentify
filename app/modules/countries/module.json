@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "flag_blue.png",
+            "icon": "flag",
             "category": 2
         }
     ]    

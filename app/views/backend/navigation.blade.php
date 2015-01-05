@@ -9,7 +9,7 @@
     <div class="submenu">
         @foreach ($navCategories[1] as $navItem)
             <div class="item">
-                <img src="{{ asset('icons/'.$navItem['icon']) }}" width="16" height="16" alt="Icon">{{ HTML::link($navItem['url'], $navItem['title']) }}
+                {{ HTML::fontIcon($navItem['icon']) }}{{ HTML::link($navItem['url'], $navItem['title']) }}
             </div>
         @endforeach
     </div>
@@ -24,7 +24,7 @@
     <div class="submenu">
         @foreach ($navCategories[2] as $navItem)
             <div class="item">
-                <img src="{{ asset('icons/'.$navItem['icon']) }}" width="16" height="16" alt="Icon">{{ HTML::link($navItem['url'], $navItem['title']) }}
+                {{ HTML::fontIcon($navItem['icon']) }}{{ HTML::link($navItem['url'], $navItem['title']) }}
             </div>
         @endforeach
     </div>
@@ -39,7 +39,7 @@
     <div class="submenu">               
         @foreach ($navCategories[3] as $navItem)
             <div class="item">
-                <img src="{{ asset('icons/'.$navItem['icon']) }}" width="16" height="16" alt="Icon">{{ HTML::link($navItem['url'], $navItem['title']) }}
+                {{ HTML::fontIcon($navItem['icon']) }}{{ HTML::link($navItem['url'], $navItem['title']) }}
             </div>
         @endforeach
     </div>
@@ -54,7 +54,7 @@
         <div class="submenu">
             @foreach ($navCategories[4] as $navItem)
                 <div class="item">
-                    <img src="{{ asset('icons/'.$navItem['icon']) }}" width="16" height="16" alt="Icon">{{ HTML::link($navItem['url'], $navItem['title']) }}
+                    {{ HTML::fontIcon($navItem['icon']) }}{{ HTML::link($navItem['url'], $navItem['title']) }}
                 </div>
             @endforeach
         </div>

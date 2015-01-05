@@ -8,7 +8,7 @@ class AdminGamesController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'controller.png';
+    protected $icon = 'gamepad';
 
     public function __construct()
     {

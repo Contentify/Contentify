@@ -8,7 +8,7 @@ class AdminAwardsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'award_star_gold_3.png';
+    protected $icon = 'trophy';
 
     public function __construct()
     {

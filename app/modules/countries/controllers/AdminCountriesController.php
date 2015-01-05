@@ -8,7 +8,7 @@ class AdminCountriesController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'flag_blue.png';
+    protected $icon = 'flag';
 
     public function __construct()
     {

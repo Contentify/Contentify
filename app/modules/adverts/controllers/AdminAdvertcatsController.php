@@ -8,7 +8,7 @@ class AdminAdvertcatsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'money.png';
+    protected $icon = 'bullhorn';
 
     public function __construct()
     {

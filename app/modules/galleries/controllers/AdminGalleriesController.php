@@ -8,7 +8,7 @@ class AdminGalleriesController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'photo.png';
+    protected $icon = 'file-photo-o';
 
     public function __construct()
     {

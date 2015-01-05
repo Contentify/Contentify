@@ -8,7 +8,7 @@ class AdminDownloadsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'folder.png';
+    protected $icon = 'folder';
 
     public function __construct()
     {

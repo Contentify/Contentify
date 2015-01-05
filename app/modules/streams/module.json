@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "film_link.png",
+            "icon": "video-camera",
             "category": 2,
             "position": 4            
         }

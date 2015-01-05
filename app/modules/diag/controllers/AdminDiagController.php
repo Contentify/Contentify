@@ -5,7 +5,7 @@ use App, Config, View, BackController, File, DB, PDO;
 
 class AdminDiagController extends BackController {
 
-    protected $icon = 'information.png';
+    protected $icon = 'info-circle';
     
     public function getIndex()
     {

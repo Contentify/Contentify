@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "award_star_gold_3.png",
+            "icon": "trophy",
             "category": 3,
             "position": 3
         }

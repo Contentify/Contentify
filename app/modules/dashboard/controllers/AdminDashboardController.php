@@ -9,7 +9,7 @@ class AdminDashboardController extends BackController {
      */
     const FEED_URL = 'http://www.contentify.it/share/feeds/cms.json';
 
-    protected $icon = 'house.png';
+    protected $icon = 'home';
 
     public function getIndex()
     {

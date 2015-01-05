@@ -8,7 +8,7 @@ class AdminPartnersController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'coins.png';
+    protected $icon = 'money';
 
     public function __construct()
     {

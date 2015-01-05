@@ -8,7 +8,7 @@ class AdminSlidecatsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'color_swatch.png';
+    protected $icon = 'play';
 
     public function __construct()
     {

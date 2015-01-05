@@ -52,9 +52,7 @@ class FormBuilder extends OriginalFormBuilder {
                     if ($title == 'Submit') $title = trans('app.save');
 
                     $value = $title;
-                    if ($showImages) $value = HTML::image(
-                        asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]
-                    ).' '.$value;
+                    if ($showImages) $value = HTML::fontIcon('save').' '.$value;
                     $partial .= self::button($value, $options);
 
                     break; 
@@ -65,9 +63,7 @@ class FormBuilder extends OriginalFormBuilder {
                     if ($title == 'Submit') $title = trans('app.apply');
 
                     $value = $title;
-                    if ($showImages) $value = HTML::image(
-                        asset('icons/disk.png'), $value, ['width' => 16, 'height' => 16]
-                    ).' '.$value;
+                    if ($showImages) $value = HTML::fontIcon('save').' '.$value;
                     $partial .= self::button($value, $options);
 
                     break; 
@@ -77,11 +73,9 @@ class FormBuilder extends OriginalFormBuilder {
                     if ($title == 'Submit') $title = trans('app.reset');
 
                     $value = $title;
-                    if ($showImages) $value = HTML::image(
-                        asset('icons/undo.png'), $value, ['width' => 16, 'height' => 16]
-                    ).' '.$value;
+                    if ($showImages) $value = HTML::fontIcon('undo').' '.$value;
                     $partial .= self::button($value, $options);
-
+                
                     break; 
             }
             

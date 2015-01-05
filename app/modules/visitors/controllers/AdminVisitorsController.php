@@ -5,7 +5,7 @@ use BackController;
 
 class AdminVisitorsController extends BackController {
 
-    protected $icon = 'chart_bar.png';
+    protected $icon = 'pie-chart';
 
     public function index()
     {

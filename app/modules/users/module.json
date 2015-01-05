@@ -3,7 +3,7 @@
     "search": ["users"],
     "admin-nav": [
         {
-            "icon": "user.png",
+            "icon": "user",
             "category": 4,
             "position": 1            
         }

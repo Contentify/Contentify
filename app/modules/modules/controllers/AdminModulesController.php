@@ -5,7 +5,7 @@ use Cache, HTML, BackController;
 
 class AdminModulesController extends BackController {
 
-    protected $icon = 'package.png';
+    protected $icon = 'cubes';
 
     public function __construct()
     {

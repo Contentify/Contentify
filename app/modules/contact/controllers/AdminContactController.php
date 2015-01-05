@@ -8,7 +8,7 @@ class AdminContactController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'email_open.png';
+    protected $icon = 'envelope';
 
     public function __construct()
     {

@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "folder.png",
+            "icon": "folder",
             "category": 1,
             "position": 7            
         }

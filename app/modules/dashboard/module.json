@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "house.png",
+            "icon": "home",
             "category": 1,
             "position": 1
         }

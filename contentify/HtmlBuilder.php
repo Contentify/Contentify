@@ -171,26 +171,53 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     }
 
     /**
-     * Returns HTML code for a button element. It may include an image element and a title text.
+     * Returns HTML code of an "icon link" - a link with an icon (and maybe a text).
+     * An icon font will be used to render the icon.
+     * 
+     * @param  string  $icon        The name of the icon
+     * @param  string  $url         The link URL
+     * @param  string  $title       The link title
+     * @param  boolean $showTitle   Show the title text?
+     * @param  array   $attributes  Apply these HTML attributes to the link element
+     * @return string
+     */
+    public function iconLink($icon, $title, $url, $showTitle = false, $attributes = array())
+    {
+        $icon = self::fontIcon($icon);
+
+        $titleText = '';
+        if ($showTitle) {
+            $titleText = ' '.$title;
+        }
+
+        /* 
+         * We have to create our Link without self::link(), because
+         * that method will not allow to use HTML code.
+         */ 
+        $attrs = self::attributes($attributes);
+        $link = '<a class="icon-link" href="'.$url.'" title="'.$title.'" '.$attrs.'>'.$icon.$titleText.'</a>';
+
+        return $link;
+    }
+
+    /**
+     * Returns HTML code for a button element. It may include an icon element and a title text.
      * 
      * @param  string $title The button title text
      * @param  string $url   The URL the button is targeting at
-     * @param  string $image The Image (see get_image_url())
+     * @param  string $icon  The name of the icon. It's rendered by an icon font.
      * @return string
      */
-    public function button($title, $url, $image = '')
+    public function button($title, $url, $icon = '')
     {
-        $imageUrl = get_image_url($image);
-        
-        if ($image) {
-            $image = self::image($imageUrl, $title);    
+        if ($icon) {
+            $icon = self::fontIcon($icon).' ';
         }
         
-        $button = '<button type="button" onclick="document.location.href=\''.$url.'\'">'.$image.' '.$title.'</button>';
+        $button = '<button type="button" onclick="document.location.href=\''.$url.'\'">'.$icon.$title.'</button>';
 
         return $button;
     }
-
     /**
      * Returns HTML code for a sort switcher (asc / desc).
      *

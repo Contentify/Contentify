@@ -3,7 +3,7 @@
     "search": ["news"],
     "admin-nav": [
         {
-            "icon": "newspaper.png",
+            "icon": "newspaper-o",
             "category": 1,
             "position": 2            
         }

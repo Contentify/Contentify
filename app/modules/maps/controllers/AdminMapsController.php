@@ -8,7 +8,7 @@ class AdminMapsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'world.png';
+    protected $icon = 'globe';
 
     public function __construct()
     {

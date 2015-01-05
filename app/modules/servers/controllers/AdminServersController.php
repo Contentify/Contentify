@@ -8,7 +8,7 @@ class AdminServersController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'server.png';
+    protected $icon = 'database';
 
     public function __construct()
     {

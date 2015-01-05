@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "color_swatch.png",
+            "icon": "play",
             "category": 2,
             "position": 2            
         }

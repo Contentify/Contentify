@@ -2,7 +2,7 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "email_open.png",
+            "icon": "envelope",
             "category": 4,
             "position": 5            
         }

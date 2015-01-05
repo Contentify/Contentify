@@ -12,7 +12,7 @@ class AdminMatchesController extends BackController {
         create as traitCreate;
     }
 
-    protected $icon = 'sport_soccer.png';
+    protected $icon = 'steam';
 
     public function __construct()
     {

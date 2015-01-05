@@ -8,7 +8,7 @@ class AdminImagesController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'picture.png';
+    protected $icon = 'image';
 
     public function __construct()
     {

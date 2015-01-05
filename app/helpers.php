@@ -53,16 +53,32 @@ function image_link($image, $title, $url, $showTitle = false, $attributes = arra
 }
 
 /**
- * Returns HTML code for a button element. It may include an image element and a title text.
+ * Returns HTML code of an "icon link" - a link with an icon (and maybe a text).
+ * An icon font will be used to render the icon.
+ * 
+ * @param  string  $icon        The name of the icon
+ * @param  string  $url         The link URL
+ * @param  string  $title       The link title
+ * @param  boolean $showTitle   Show the title text?
+ * @param  array   $attributes  Apply these HTML attributes to the link element
+ * @return string
+ */
+function icon_link($icon, $title, $url, $showTitle = false, $attributes = array())
+{
+    return HTML::iconLink($icon, $title, $url, $showTitle, $attributes);
+}
+
+/**
+ * Returns HTML code for a button element. It may include an icon element and a title text.
  * 
  * @param  string $title The button title text
  * @param  string $url   The URL the button is targeting at
- * @param  string $image The Image (see get_image_url())
+ * @param  string $icon  The name of the icon. It's rendered by an icon font.
  * @return string
  */
-function button($title, $url, $image = '')
+function button($title, $url, $icon = '')
 {
-    return HTML::button($title, $url, $image);
+    return HTML::button($title, $url, $icon);
 }
 
 /**

@@ -4,7 +4,7 @@ use BackController;
 
 class AdminHelpController extends BackController {
 
-    protected $icon = 'help.png';
+    protected $icon = 'question-circle';
 
     public function getIndex()
     {

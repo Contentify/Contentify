@@ -3,7 +3,7 @@
     "search": ["articles"],
     "admin-nav": [
         {
-            "icon": "doc_offlice.png",
+            "icon": "file",
             "category": 1,
             "position": 3            
         }

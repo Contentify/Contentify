@@ -275,7 +275,7 @@ abstract class BaseController extends Controller {
                 switch ($type) {
                     case 'new':
                         $url = route($userInterface.'.'.strtolower($this->controller).'.create');
-                        $buttons .= button(trans('app.create'), $url, 'add');
+                        $buttons .= button(trans('app.create'), $url, 'plus-circle');
                         break;
                     case 'category':
                         $url = route($userInterface.'.'.str_singular(strtolower($this->module)).'cats.index');
@@ -416,7 +416,7 @@ abstract class BaseController extends Controller {
                         switch ($action) {
                             case 'edit':
                                 if ($model->modifiable()) {
-                                    $actionsCode .= image_link('page_edit', 
+                                    $actionsCode .= icon_link('edit', 
                                         trans('app.edit'), 
                                         route($userInterface.'.'.strtolower($this->controller).'.edit', [$model->id]));
                                 }
@@ -424,7 +424,7 @@ abstract class BaseController extends Controller {
                             case 'delete':
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
                                 if ($model->modifiable()) {
-                                    $actionsCode .= image_link('bin', 
+                                    $actionsCode .= icon_link('trash', 
                                         trans('app.delete'), 
                                         route(
                                             $userInterface.'.'.strtolower($this->controller).'.destroy', 
@@ -436,7 +436,7 @@ abstract class BaseController extends Controller {
                                 break;
                             case 'restore':
                                 if ($model->isSoftDeleting() and $model->trashed()) {
-                                    $actionsCode .= image_link('undo', 
+                                    $actionsCode .= icon_link('undo', 
                                     trans('app.restore'), 
                                     route($userInterface.'.'.strtolower($this->controller).'.restore', [$model->id]));
                                 }

@@ -8,7 +8,7 @@ class AdminPagesController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'doc_offlice.png';
+    protected $icon = 'file';
 
     public function __construct()
     {

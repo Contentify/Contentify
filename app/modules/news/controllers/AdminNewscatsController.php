@@ -8,7 +8,7 @@ class AdminNewscatsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'newspaper.png';
+    protected $icon = 'newspaper-o';
 
     public function __construct()
     {

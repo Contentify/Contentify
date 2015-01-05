@@ -11,7 +11,7 @@ class AdminForumsController extends BackController {
         edit as traitEdit;
     }
 
-    protected $icon = 'comment.png';
+    protected $icon = 'comment';
 
     public function __construct()
     {

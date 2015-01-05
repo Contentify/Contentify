@@ -3,7 +3,7 @@
     "search": ["videos"],
     "admin-nav": [
         {
-            "icon": "film.png",
+            "icon": "youtube-play",
             "category": 2,
             "position": 3            
         }
