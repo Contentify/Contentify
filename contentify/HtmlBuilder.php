@@ -229,16 +229,16 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     {
         if ($order == 'asc') {
             $order  = 'desc';
-            $image  = 'theme/bullet_arrow_down.png';
+            $icon   = 'caret-down';
         } else {
             $order  = 'asc';
-            $image  = 'theme/bullet_arrow_up.png';
+            $icon   = 'caret-up';
         }
 
         $url = URL::current().'?sortby='.$sortby.'&order='.$order;
         if ($search) $url .= '&search='.urlencode($search);
 
-        $caption = trans('app.sorting').': <img src="'.asset($image).'" alt="Sorting" width="16" height="16" />';
+        $caption = trans('app.sorting').': '.self::fontIcon($icon);
         return '<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>';
     }
 

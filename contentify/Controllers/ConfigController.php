@@ -4,6 +4,8 @@ use Request, Input, Validator, Redirect, DB;
 
 abstract class ConfigController extends BackController {
 
+    protected $icon = 'cog';
+
     /*
      * Edit the config settings
      * $id is not used

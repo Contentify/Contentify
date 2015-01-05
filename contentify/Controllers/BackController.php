@@ -11,10 +11,10 @@ abstract class BackController extends BaseController {
     protected $layout = 'backend.layout_main';
 
     /**
-     * The file identifier of the controller icon
+     * The name of the controller icon. It's rendered with FontAwesome.
      * @var string
      */
-    protected $icon = 'page_white_text.png';
+    protected $icon = 'file';
 
     /**
      * Array with "evil" file extensions
