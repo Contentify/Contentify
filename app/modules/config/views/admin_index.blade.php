@@ -1,7 +1,7 @@
-{{ button(trans('config::button_info'), url('admin/config/info'), asset('icons/information.png')) }}&nbsp;
-{{ button(trans('config::button_optimize'), url('admin/config/optimize'), asset('icons/database_save.png')) }}&nbsp;
-{{ button(trans('config::button_dump'), url('admin/config/export'), asset('icons/database_save.png')) }}&nbsp;
-{{ button(trans('config::button_log'), url('admin/config/log'), asset('icons/page_white_text.png')) }}&nbsp;
+{{ button(trans('config::button_info'), url('admin/config/info'), 'info') }}&nbsp;
+{{ button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') }}&nbsp;
+{{ button(trans('config::button_dump'), url('admin/config/export'), 'database') }}&nbsp;
+{{ button(trans('config::button_log'), url('admin/config/log'), 'file-text-o') }}&nbsp;
 
 {{ Form::errors($errors) }}
 
