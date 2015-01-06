@@ -676,10 +676,10 @@ ul.pagination li.disabled {
   width: 90%;
   height: 200px;
 }
-.page-visitors .page-visitors table.days th {
+.page-visitors table.days th {
   width: 50%;
 }
-.page-visitors .page-visitors table.days tr.hover td {
+.page-visitors table.days tr.hover td {
   background-color: #DDD;
   background-image: none;
 }

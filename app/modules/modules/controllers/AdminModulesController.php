@@ -28,9 +28,9 @@ class AdminModulesController extends BackController {
             'tableRow'      => function($module)
             {
                 if ($module->enabled()) {
-                    $enabled = HTML::image('icons/tick.png');
+                    $enabled = HTML::fontIcon('check');
                 } else {
-                    $enabled = HTML::image('icons/cross.png');
+                    $enabled = HTML::fontIcon('close');
                 }
 
                 /*
@@ -54,7 +54,7 @@ class AdminModulesController extends BackController {
                 'install',
                 function($module) {
                     if ($module->installer() !== false) {
-                        return image_link('add',
+                        return icon_link('plus-circle',
                             trans('modules::install'), 
                             url('admin/modules/'.$module->title.'/install/0'),
                             false,

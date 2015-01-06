@@ -45,7 +45,7 @@ class AdminPagesController extends BackController {
 
                 return [
                     $page->id,
-                    raw($page->published ? HTML::image(asset('icons/accept.png'), 'True') : null),
+                    raw($page->published ? HTML::fontIcon('check') : null),
                     raw(Hover::pull().$link),
                     $page->pagecat->title,
                     raw(HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username)),

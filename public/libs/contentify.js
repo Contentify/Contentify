@@ -395,5 +395,16 @@ $(document).ready(function()
 
             return newDate;
         }
+
+        /**
+         * Returns HTML code for a font icon.
+         * 
+         * @param  {String} icon The name of the icon
+         * @return {String}
+         */
+        this.fontIcon = function (icon)
+        {
+            return '<i class="fa fa-' + icon + '"></i>';
+        }
     };    
 });

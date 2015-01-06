@@ -24,7 +24,7 @@ class AdminContactController extends BackController {
         $this->indexPage([
             'buttons' => null,
             'tableHead' => [
-                trans('app.ID')         => 'id', 
+                trans('app.id')         => 'id', 
                 trans('contact::new')   => 'new', 
                 trans('app.title')      => 'title', 
                 trans('app.creator')    => 'username', 
@@ -35,8 +35,8 @@ class AdminContactController extends BackController {
                 return [
                     $msg->id,
                     raw($msg->new ? 
-                        HTML::image(asset('icons/email_go.png')) : 
-                        HTML::image(asset('icons/email_open.png'))),
+                        HTML::fontIcon('envelope') : 
+                        null),
                     raw(link_to_route('admin.contact.show', $msg->title, [$msg->id])),
                     $msg->username,
                     $msg->created_at,

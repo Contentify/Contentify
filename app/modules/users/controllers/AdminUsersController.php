@@ -9,7 +9,7 @@ class AdminUsersController extends BackController {
         update as traitUpdate;
     }
 
-    protected $icon = 'user.png';
+    protected $icon = 'user';
 
     public function __construct()
     {
@@ -34,15 +34,15 @@ class AdminUsersController extends BackController {
                 if ($user->image) Hover::image(asset('uploads/users/'.$user->image));
 
                 if ($user->hasAccess('internal', PERM_READ)) {
-                    $membership = HTML::image('icons/tick.png');
+                    $membership = HTML::fontIcon('check');
                 } else {
-                    $membership = HTML::image('icons/cross.png');
+                    $membership = HTML::fontIcon('close');
                 }
 
                 if ($user->isBanned()) {
-                    $banned = HTML::image('icons/lock_delete.png');
+                    $banned = HTML::fontIcon('lock');
                 } else {
-                    $banned = HTML::image('icons/lock_open.png');
+                    $banned = HTML::fontIcon('unlock');
                 }
 
                 return [
@@ -57,7 +57,7 @@ class AdminUsersController extends BackController {
             'actions'   => [
                 'edit',
                 function($user) {
-                    return image_link('user_edit', 
+                    return icon_link('user', 
                         trans('users::edit_profile'), 
                         url('users/'.$user->id.'/edit'));
                 }

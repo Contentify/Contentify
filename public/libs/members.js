@@ -11,7 +11,7 @@ $(document).ready(function()
             $td.append(
                 $('<div>').attr('data-team-id', id)
                     .append(
-                        $('<a>').append($('<img src="' + contentify.assetUrl + 'icons/delete.png">'))
+                        $('<a>').append($(contentify.fontIcon('trash')))
                             .click(function() 
                             {
                                 $.ajax({
@@ -27,7 +27,7 @@ $(document).ready(function()
                             })
                     )
                     .append(
-                        $('<a>').append($('<img src="' + contentify.assetUrl + 'icons/user_edit.png">'))
+                        $('<a>').append($(contentify.fontIcon('edit')))
                             .click(function()
                             {
                                 $.ajax({
@@ -59,7 +59,7 @@ $(document).ready(function()
             );
         });
         $td.append(
-            $('<a class="add">').append($('<img src="' + contentify.assetUrl + 'icons/add.png">'))
+            $('<a class="add">').append($(contentify.fontIcon('plus-circle')))
                 .click(function()
                 {
                     $.ajax({
