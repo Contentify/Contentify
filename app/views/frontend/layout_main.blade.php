@@ -17,7 +17,7 @@
 
     {{ HTML::title($title) }}
 
-    <link rel="icon" type="image/png" href="{{ asset('img/logo_180.png') }}" />{{-- Opera Speed Dial Icon --}}
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon_180.png') }}" />{{-- Opera Speed Dial Icon --}}
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{{ asset('rss/news.xml') }}">
 

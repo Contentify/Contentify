@@ -218,6 +218,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
 
         return $button;
     }
+    
     /**
      * Returns HTML code for a sort switcher (asc / desc).
      *
