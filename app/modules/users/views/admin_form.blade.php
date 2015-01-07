@@ -18,7 +18,7 @@
 
     {{ Form::smartSelectRelation('groups', trans('users::groups'), $modelClass) }}
 
-    {{ Form::smartSelectRelation('teams', trans('users::teams'), $modelClass) }}
+    {{ Form::smartSelectRelation('teams', trans('users::teams'), $modelClass, null, true) }}
 
     {{ Form::actions() }}
 {{ Form::close() }}

@@ -8,7 +8,7 @@ class AdminTournamentsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'rocket';
+    protected $icon = 'crosshairs';
 
     public function __construct()
     {

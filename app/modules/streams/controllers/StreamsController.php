@@ -28,8 +28,8 @@ class StreamsController extends FrontController {
                     raw(HTML::link(url('streams/'.$stream->id.'/'.$stream->slug), $stream->title)),
                     Stream::$providers[$stream->provider],
                     raw($stream->online ? 
-                        HTML::image(asset('icons/tick.png'), trans('app.yes')) :
-                        HTML::image(asset('icons/cross.png'), trans('app.no'))),
+                        HTML::fontIcon('check') :
+                        HTML::fontIcon('close')),
                     $stream->viewers,
                 ];
             },
