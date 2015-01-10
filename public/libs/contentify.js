@@ -15,6 +15,12 @@ $(document).ready(function()
         this.locale     = $('meta[name="locale"]').attr('content');
         this.dateFormat = $('meta[name="date-format"]').attr('content');
 
+        /**
+         * Returns the value of a given URL parameter.
+         *
+         * @param {String} name The name of the parameter
+         * @return {String}
+         */
         this.urlParam = function(name) 
         {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)')
@@ -99,10 +105,9 @@ $(document).ready(function()
         /**
          * Creates an HTML alert inside the alert area.
          *
-         * @param string type     The alert type e. g. sucess, alert
-         * @param string text     The text that should be shown
-         * @param bool   clearAll If true, this will hide all other alerts
-         * @return void
+         * @param {String}  type     The alert type e. g. sucess, alert
+         * @param {String}  text     The text that should be shown
+         * @param {Boolean} clearAll If true, this will hide all other alerts
          */
         this.alert = function (type, title, clearAll)
         {
