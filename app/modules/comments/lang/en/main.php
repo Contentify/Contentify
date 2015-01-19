@@ -11,7 +11,9 @@ return array(
     |
     */
    
-   'create'             => 'Create Comment:',
+   'written_by'         => 'Comment written by',
+   'written_at'         => 'at',
+   'write'              => 'Write a comment:',
 
     /* 
      * Widget

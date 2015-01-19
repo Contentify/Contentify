@@ -6,7 +6,7 @@
     @endif
         {{ Form::hidden('_url', URL::current()) }}
 
-        <p>{{ trans('comments::create') }}</p>
+        <p>{{ trans('comments::write') }}</p>
 
         <div class="textarea-wrapper">
             {{ Form::textarea('text') }}

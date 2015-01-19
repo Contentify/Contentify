@@ -6316,13 +6316,13 @@ label[for] {
 /* URLs */
 a,
 a:visited {
-  color: #0e76c6;
+  color: #139cdc;
 }
 a:active {
-  color: #0e76c6;
+  color: #139cdc;
 }
 a:hover {
-  color: #0e76c6;
+  color: #139cdc;
 }
 /*
  * Classes
@@ -6334,7 +6334,7 @@ a:hover {
   border: 1px solid transparent;
   border-radius: 4px;
   background-color: #eee;
-  border: 1px solid #0e76c6;
+  border: 1px solid #139cdc;
 }
 .ui-message h4 {
   margin-top: 0;
@@ -6872,7 +6872,7 @@ textarea.model-search-box input {
 /* Forums index page */
 .page-forums .action {
   border-radius: 3px;
-  background-color: #0e76c6;
+  background-color: #139cdc;
   color: #ffffff;
 }
 .page-forums .root-forum h2 {
@@ -6880,7 +6880,7 @@ textarea.model-search-box input {
   padding: 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #0e76c6;
+  background-color: #139cdc;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -6939,7 +6939,7 @@ textarea.model-search-box input {
   padding: 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #0e76c6;
+  background-color: #139cdc;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -6971,7 +6971,7 @@ textarea.model-search-box input {
   border: none;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #0e76c6;
+  background-color: #139cdc;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -6984,7 +6984,7 @@ textarea.model-search-box input {
 .page-forums .threads .thread .info .closed {
   padding: 2px;
   border-radius: 3px;
-  background-color: #0e76c6;
+  background-color: #139cdc;
   font-size: 10px;
   color: white;
 }
@@ -7118,7 +7118,7 @@ textarea.model-search-box input {
  */
 #header {
   height: 100px;
-  background-color: #0e76c6;
+  background-color: #139cdc;
   color: white;
   cursor: pointer;
 }

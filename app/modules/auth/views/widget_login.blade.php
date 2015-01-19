@@ -7,5 +7,5 @@
         {{ Form::actions(['submit' => trans('auth::login')], false) }}
     {{ Form::close() }}
 
-    {{ link_to('auth/restore', trans('auth::restore_pw')) }}
+    {{ link_to('auth/restore', trans('auth::restore_pw'), ['class' => 'btn btn-default']) }}
 </div>

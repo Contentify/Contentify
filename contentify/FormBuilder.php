@@ -7,6 +7,18 @@ use \Carbon as AliasedCarbon; // If we just use Carbon we would use Contentify\C
 class FormBuilder extends OriginalFormBuilder {
 
     /**
+     * Form groups: Number of grid columns of the label column
+     * @var string    
+     */
+    protected $labelGridCols = 3;
+
+    /**
+     * Form groups: Number of grid columns of the controls column
+     * @var string
+     */
+    protected $controlGridCols = 9;
+
+    /**
      * Create HTML code for error displayment
      * 
      * @param  MessageBag $errors The errors to display
@@ -186,19 +198,17 @@ class FormBuilder extends OriginalFormBuilder {
      *
      * @param  string $title        The name of the corresponding element (not the label itself!)
      * @param  string $title        The title of the field
-     * @param  string $labelCol     Number of grid columns of the label column
-     * @param  string $controlsCol  Number of grid columns of the controls column
      * @return string
      */
-    public function smartGroupOpen($name = null, $title = null, $labelCol = 3, $controlsCol = 9)
+    public function smartGroupOpen($name = null, $title = null)
     {
         $partial = '<div class="form-group">';
 
         if ($title) {
-            $partial .= self::label($name, $title, ['class' => 'col-sm-'.$labelCol.' control-label']);
+            $partial .= self::label($name, $title, ['class' => 'col-sm-'.$this->labelGridCols.' control-label']);
         }
 
-        return $partial.'<div class="col-sm-'.$controlsCol.'">';
+        return $partial.'<div class="col-sm-'.$this->controlGridCols.'">';
     }
 
     /**
@@ -589,8 +599,8 @@ class FormBuilder extends OriginalFormBuilder {
         }
 
         $partial = '<div class="form-group date-time-picker input-append date">'
-            .'<label for="'.$name.'" class="col-sm-3 control-label">'.$title.'</label>'
-            .'<div class="col-sm-9">'
+            .'<label for="'.$name.'" class="col-sm-'.$this->labelGridCols.' control-label">'.$title.'</label>'
+            .'<div class="col-sm-'.$this->controlGridCols.'">'
             .self::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
             .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
             .'</div></div>';
@@ -646,6 +656,28 @@ class FormBuilder extends OriginalFormBuilder {
         $value = $value ? $value : $default;
 
         return $value;
+    }
+
+    /**
+     * Setter for $this->labelGridCols
+     *
+     * @param int $number
+     * @return void
+     */
+    public function labelGridCols($number)
+    {
+        $this->labelGridCols = $number;
+    }
+
+    /**
+     * Setter for $this->controlGridCols
+     *
+     * @param int $number
+     * @return void
+     */
+    public function controlGridCols($number)
+    {
+        $this->controlGridCols = $number;
     }
 
 }
