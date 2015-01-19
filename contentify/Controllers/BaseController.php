@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use DB, Log, OpenGraph, Request, Config, URL, HTML, Session, Input, View, Controller, Exception;
+use Sentry, DB, Log, OpenGraph, Request, Config, URL, HTML, Session, Input, View, Controller, Exception;
 
 abstract class BaseController extends Controller {
 
