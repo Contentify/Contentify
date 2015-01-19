@@ -36,10 +36,10 @@
         <div class="text">
             {{ $forumPost->renderText() }}
 
-            @if (user()->signature)
+            @if ($forumPost->creator->signature)
                 <div class="signature">
                     <hr>
-                    {{{ user()->signature }}}
+                    {{{ $forumPost->creator->signature }}}
                 </div>
             @endif
         </div>

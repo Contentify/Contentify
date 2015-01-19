@@ -451,14 +451,14 @@ h2.section {
   border-bottom: 1px dotted #CCC;
 }
 /* Search-Box */
-.search-box input[type=text] {
+.model-search-box input[type=text] {
   width: 170px;
   padding: 1px 10px;
   background: url('../theme/backend/bg_searchbox.png');
   background-repeat: no-repeat;
   text-indent: 20px;
 }
-.form-helpers .search-box {
+.form-helpers .model-search-box {
   float: right;
 }
 /* Sort-Switcher */

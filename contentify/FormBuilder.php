@@ -184,19 +184,21 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for the opening part of a custom form group.
      *
-     * @param  string $title The name of the corresponding element (not the label itself!)
-     * @param  string $title The title of the field
+     * @param  string $title        The name of the corresponding element (not the label itself!)
+     * @param  string $title        The title of the field
+     * @param  string $labelCol     Number of grid columns of the label column
+     * @param  string $controlsCol  Number of grid columns of the controls column
      * @return string
      */
-    public function smartGroupOpen($name = null, $title = null)
+    public function smartGroupOpen($name = null, $title = null, $labelCol = 2, $controlsCol = 10)
     {
         $partial = '<div class="form-group">';
 
         if ($title) {
-            $partial .= self::label($name, $title, ['class' => 'col-sm-2 control-label']);
+            $partial .= self::label($name, $title, ['class' => 'col-sm-'.$labelCol.' control-label']);
         }
 
-        return $partial.'<div class="col-sm-10">';
+        return $partial.'<div class="col-sm-'.$controlsCol.'">';
     }
 
     /**
