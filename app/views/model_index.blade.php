@@ -6,7 +6,7 @@
             <div class="search-box">
                 {{ Form::open(['url' => URL::current().'/search']) }}
                     {{ Form::text('search', $searchString, ['class' => 'search-string']) }}
-                    {{ Form::submit(trans('app.search')) }}
+                    {{ Form::submit(trans('app.search'), ['class' => 'btn btn-default']) }}
                 {{ Form::close() }}
             </div>
         @endif

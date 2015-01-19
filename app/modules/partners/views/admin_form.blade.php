@@ -9,7 +9,7 @@
     
     {{ Form::smartSelectRelation('partnercat', 'Partner '.trans('app.category'), $modelClass, null) }}
 
-    {{ Form::smartTextarea('text', trans('app.text')) }}
+    {{ Form::smartTextarea('text', trans('app.text'), true) }}
 
     {{ Form::smartUrl('url', trans('app.url')) }}
 

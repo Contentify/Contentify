@@ -20,6 +20,22 @@ class FormBuilder extends OriginalFormBuilder {
     }
 
     /**
+     * Open up a new HTML form. 
+     * Sets "form-horizontal" as the default class for forms.
+     *
+     * @param  array   $options
+     * @return string
+     */
+    public function open(array $options = array())
+    {
+        if (! isset($options['class'])) {
+            $options['class'] = 'form-horizontal';
+        }
+
+        return parent::open($options);
+    }
+
+    /**
      * Create HTML code for form action buttons (e. g. submit)
      * 
      * @param  array  $buttons Array of Buttons
@@ -81,6 +97,23 @@ class FormBuilder extends OriginalFormBuilder {
             
         }
         return $partial.'</div>';
+    }
+
+    /**
+     * Create a button element.
+     *
+     * @param  string  $value
+     * @param  array   $options
+     * @return string
+     */
+    public function button($value = null, $options = array())
+    {
+        if (! array_key_exists('class', $options))
+        {
+            $options['class'] = 'btn btn-default';
+        }
+
+        return parent::button($value, $options);
     }
 
     /**
@@ -272,10 +305,11 @@ class FormBuilder extends OriginalFormBuilder {
      * 
      * @param  string $name       The name of the input element
      * @param  string $title      The title of the input element
+     * @param  string $editor     Add WYSIWYG editor?
      * @param  string $default    The default value
      * @return string
      */
-    public function smartTextarea($name = 'text', $title = null, $editor = true, $default = null)
+    public function smartTextarea($name = 'text', $title = null, $editor = false, $default = null)
     {
         $value = self::getDefaultValue($name, $default);
 
@@ -520,8 +554,9 @@ class FormBuilder extends OriginalFormBuilder {
     {
         $image      = HTML::image(URL::route('captcha'), 'Captcha');
         $partial    = self::smartGroupOpen($name, $title)
-            .$image.' '
+            .'<div class="captcha">'.$image.' '
             .self::text($name)
+            .'</div>'
             .self::smartGroupClose();
         return $partial;
     }

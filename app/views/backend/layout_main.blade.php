@@ -4,6 +4,7 @@
     <!-- Running with Contentify CMS -->
 
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Contentify">
     <meta name="base-url" content="{{ url('/') }}">
     <meta name="asset-url" content="{{ asset('') }}">
@@ -24,8 +25,8 @@
     {{ HTML::style('libs/tags/bootstrap-tagsinput.css') }}
     
     <!--[if lt IE 9]>
-    {{ HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}
-    {{ HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}
+        {{ HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}
+        {{ HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}
     <![endif]-->
     {{ HTML::script('libs/jquery-1.10.2.min.js') }}
     {{ HTML::script('libs/quicktip.js') }}
@@ -58,10 +59,10 @@
         
             <img id="user-img" src="{{ $userImage }}" alt="User">
             <img id="user-img-overlay" src="{{ asset('theme/backend/photo.png') }}" width="45" height="60" alt="Overlay">
-            <a id="profile-link" href="{{ url('users/'.Sentry::getUser()->id) }}" title="Show your profile"><!-- empty--></a>
+            <a id="profile-link" href="{{ url('users/'.user()->id) }}" title="Show your profile"><!-- empty--></a>
             
             <div id="info-box">
-                <span>Welcome, {{ Sentry::getUser()->username }}!</span> 
+                <span>Welcome, {{ user()->username }}!</span> 
                 @if ($contactMessages)
                     {{ HTML::image(asset('icons/email.png'), 'Message') }} {{ $contactMessages }}
                 @endif
@@ -95,7 +96,9 @@
             <section id="main-content">
                     @if (Session::get('_message'))
                         <div class="ui-message">
-                            {{ Session::get('_message') }}
+                            <div class="text">
+                                {{ Session::get('_message') }}
+                            </div>
                         </div>
                     @endif
 

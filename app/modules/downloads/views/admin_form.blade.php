@@ -9,7 +9,7 @@
     
     {{ Form::smartSelectRelation('downloadcat', trans('app.category'), $modelClass) }}
 
-    {{ Form::smartTextarea('description', trans('app.description'), false) }}
+    {{ Form::smartTextarea('description', trans('app.description'), true) }}
 
     {{ Form::smartFile() }}
 

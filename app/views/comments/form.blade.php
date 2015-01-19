@@ -6,11 +6,12 @@
     @endif
         {{ Form::hidden('_url', URL::current()) }}
 
-        <p>Create Comment:</p>
+        <p>{{ trans('comments::create') }}</p>
+
         <div class="textarea-wrapper">
             {{ Form::textarea('text') }}
         </div>
 
-        {{ Form::button('Save', ['class' => 'save']) }}
+        {{ Form::button('Save', ['class' => 'save btn btn-default']) }}
     {{ Form::close() }}
 </div>

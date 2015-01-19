@@ -1,0 +1,15 @@
+/* 
+ * Functions
+ */
+.background-image(@relative-image-url) {
+    background: url('../@{relative-image-url}');
+}
+
+/*
+ * Classes
+ */
+.ellipsis { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+
+.form-group {
+    label { .ellipsis() }
+}

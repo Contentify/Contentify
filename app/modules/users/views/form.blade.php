@@ -9,7 +9,7 @@
 
     {{ Form::smartEmail('email', trans('users::email')) }}
 
-    {{ Form::smartGroupOpen(trans('users::password')) }}
+    {{ Form::smartGroupOpen(null, trans('users::password')) }}
         {{ button(trans('users::change'), url('users/'.$user->id.'/password')) }}
     {{ Form::smartGroupClose() }}
 
@@ -17,7 +17,7 @@
 
     {{ Form::smartText('last_name', trans('users::last_name')) }}
 
-    {{ Form::smartGroupOpen(trans('users::gender')) }}
+    {{ Form::smartGroupOpen('gender', trans('users::gender')) }}
         {{ Form::select('gender', array('0' => trans('users::unknown'), '1' => trans('users::female'), '2' => trans('users::male'), '3' => trans('users::other'))) }}
     {{ Form::smartGroupClose() }}
 

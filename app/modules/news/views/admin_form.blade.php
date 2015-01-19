@@ -11,9 +11,9 @@
 
     {{ Form::smartSelectRelation('creator', trans('app.author'), $modelClass, user()->id) }}
     
-    {{ Form::smartTextarea('intro', trans('news::intro')) }}
+    {{ Form::smartTextarea('intro', trans('news::intro'), true) }}
 
-    {{ Form::smartTextarea('text', trans('app.text')) }}
+    {{ Form::smartTextarea('text', trans('app.text'), true) }}
 
     {{ Form::smartDateTime('published_at', trans('news::publish_at')) }}
 

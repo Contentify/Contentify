@@ -23,7 +23,7 @@
 
     {{ Form::smartText('right_lineup', trans('matches::right_lineup')) }}
 
-    {{ Form::smartTextarea('text', trans('app.description')) }}
+    {{ Form::smartTextarea('text', trans('app.description'), true) }}
 
     {{ Form::smartDateTime('played_at', trans('matches::played_at')) }}
     

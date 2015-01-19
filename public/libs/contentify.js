@@ -114,8 +114,8 @@ $(document).ready(function()
             if (! framework.templateManager.has('alert')) {
                 framework.templateManager.add('alert', 
                     '<div class="alert alert-%%type%%">\
-                    <button type="button" class="close">&times;</button>\
-                    <h4>%%title%%</h2>\
+                    <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+                    %%title%%\
                     </div>'
                 );
             }
@@ -152,7 +152,12 @@ $(document).ready(function()
 
         this.alertError = function (title, clearAll)
         {
-            framework.alert('error', title, clearAll);
+            framework.alert('danger', title, clearAll);
+        }        
+
+        this.alertInfo= function (title, clearAll)
+        {
+            framework.alert('info', title, clearAll);
         }
 
         this.alertRequestFailed = function (response)

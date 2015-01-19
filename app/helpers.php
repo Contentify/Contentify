@@ -74,9 +74,10 @@ function icon_link($icon, $title, $url, $showTitle = false, $attributes = array(
  * @param  string $title The button title text
  * @param  string $url   The URL the button is targeting at
  * @param  string $icon  The name of the icon. It's rendered by an icon font.
+ * @param  array  $options  Apply these HTML attributes to the link element
  * @return string
  */
-function button($title, $url, $icon = '')
+function button($title, $url, $icon = '', $options = array())
 {
     return HTML::button($title, $url, $icon);
 }

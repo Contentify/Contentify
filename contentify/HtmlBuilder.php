@@ -178,10 +178,10 @@ class HtmlBuilder extends OriginalHtmlBuilder {
      * @param  string  $url         The link URL
      * @param  string  $title       The link title
      * @param  boolean $showTitle   Show the title text?
-     * @param  array   $attributes  Apply these HTML attributes to the link element
+     * @param  array   $options     Apply these HTML attributes to the link element
      * @return string
      */
-    public function iconLink($icon, $title, $url, $showTitle = false, $attributes = array())
+    public function iconLink($icon, $title, $url, $showTitle = false, $options = array())
     {
         $icon = self::fontIcon($icon);
 
@@ -194,8 +194,8 @@ class HtmlBuilder extends OriginalHtmlBuilder {
          * We have to create our Link without self::link(), because
          * that method will not allow to use HTML code.
          */ 
-        $attrs = self::attributes($attributes);
-        $link = '<a class="icon-link" href="'.$url.'" title="'.$title.'" '.$attrs.'>'.$icon.$titleText.'</a>';
+        $options = self::attributes($options);
+        $link = '<a class="icon-link" href="'.$url.'" title="'.$title.'" '.$options.'>'.$icon.$titleText.'</a>';
 
         return $link;
     }
@@ -203,18 +203,27 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Returns HTML code for a button element. It may include an icon element and a title text.
      * 
-     * @param  string $title The button title text
-     * @param  string $url   The URL the button is targeting at
-     * @param  string $icon  The name of the icon. It's rendered by an icon font.
+     * @param  string $title    The button title text
+     * @param  string $url      The URL the button is targeting at
+     * @param  string $icon     The name of the icon. It's rendered by an icon font.
+     * @param  array  $options  Apply these HTML attributes to the link element
      * @return string
      */
-    public function button($title, $url, $icon = '')
+    public function button($title, $url, $icon = '', $options = array())
     {
+        $action = 'onclick="document.location.href=\''.$url.'\'"';
+
         if ($icon) {
             $icon = self::fontIcon($icon).' ';
         }
+
+        if (! array_key_exists('class', $options)) {
+            $options['class'] = 'btn btn-default';
+        }
+
+        $options = self::attributes($options);
         
-        $button = '<button type="button" onclick="document.location.href=\''.$url.'\'">'.$icon.$title.'</button>';
+        $button = '<button type="button" '.$action.' '.$options.'>'.$icon.$title.'</button>';
 
         return $button;
     }

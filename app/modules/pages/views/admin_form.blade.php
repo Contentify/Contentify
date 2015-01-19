@@ -9,7 +9,7 @@
     
     {{ Form::smartSelectForeign('pagecat_id', 'Page '.trans('app.type')) }}
 
-    {{ Form::smartTextarea('text', trans('app.text')) }}
+    {{ Form::smartTextarea('text', trans('app.text'), true) }}
 
     {{ Form::smartDateTime('published_at', trans('news::publish_at')) }}
 

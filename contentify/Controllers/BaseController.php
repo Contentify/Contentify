@@ -466,7 +466,7 @@ abstract class BaseController extends Controller {
         /*
          * Generate the view
          */
-        $this->pageView('backend.model_index', [
+        $this->pageView('model_index', [
             'buttons'       => $buttons,
             'infoText'      => $data['infoText'],
             'contentTable'  => $contentTable,

@@ -11,9 +11,11 @@ return array(
     |
     */
    
+   'create'             => 'Create Comment:',
+
     /* 
      * Widget
      */
-    'latest_comments'  => 'Latest Comments',
+    'latest_comments'   => 'Latest Comments',
 
 );
