@@ -17,6 +17,8 @@
 
 body {  }
 
+label[for] { cursor: pointer; }
+
 /* URLs */
 a, a:visited { color: @primaryColor; }
 a:active { color: @primaryColor; }
@@ -45,6 +47,13 @@ a:hover { color: @primaryColor; }
         .form-control();
     }
     textarea { height: auto }
+}
+
+/* Content filter UI */
+.content-filter-ui {
+    select {
+        .form-control(); display: inline-block; width: 100px;
+    }
 }
 
 /* Search box for model index pages */

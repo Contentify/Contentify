@@ -190,7 +190,7 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $controlsCol  Number of grid columns of the controls column
      * @return string
      */
-    public function smartGroupOpen($name = null, $title = null, $labelCol = 2, $controlsCol = 10)
+    public function smartGroupOpen($name = null, $title = null, $labelCol = 3, $controlsCol = 9)
     {
         $partial = '<div class="form-group">';
 
@@ -589,8 +589,8 @@ class FormBuilder extends OriginalFormBuilder {
         }
 
         $partial = '<div class="form-group date-time-picker input-append date">'
-            .'<label for="'.$name.'" class="col-sm-2 control-label">'.$title.'</label>'
-            .'<div class="col-sm-10">'
+            .'<label for="'.$name.'" class="col-sm-3 control-label">'.$title.'</label>'
+            .'<div class="col-sm-9">'
             .self::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
             .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
             .'</div></div>';
