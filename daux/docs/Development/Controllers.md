@@ -36,7 +36,7 @@ List of arguments the data array may use:
 * *buttons*: Array of names of default buttons ("new" and "category") or custom HTML code
 * *searchFor*: The attribute to search (e. g. "title"). Null will disable the search feature.
 * *infoText*: Info text that is displayed above the table. You may use HTML tags.
-* *dataSource*: Null or Array of entities. If null it will take the entities from the database. If an array is passed sorting, searching and pagination are not available.
+* *dataSource*: Null or array of entities. If null it will take the entities from the database. If an array is passed sorting, searching and sorting are not available.
 * *tableHead*: Array of items for the table head columns
 * *tableRow*: Closure returning an array of items for all columns of a single row
 * *action*: Array of named action buttons for the "Action" column ("edit", "delete" or "restore") or Closures

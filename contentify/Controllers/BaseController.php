@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use Sentry, DB, Log, OpenGraph, Request, Config, URL, HTML, Session, Input, View, Controller, Exception;
+use Paginator, Sentry, DB, Log, OpenGraph, Request, Config, URL, HTML, Session, Input, View, Controller, Exception;
 
 abstract class BaseController extends Controller {
 
@@ -257,7 +257,7 @@ abstract class BaseController extends Controller {
             'order'         => 'desc',                          // Asc / desc
             'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
             'permaFilter'   => null,                            // Null / Closure: Add a permament filter to the query?
-            'dataSource'    => null,                            // Null (means: take from database) or Closure
+            'dataSource'    => null,                            // Null (means: take from database) or array
             'infoText'      => ''                               // String (may include HTML tags) with extra infos
         ];
 
@@ -282,7 +282,7 @@ abstract class BaseController extends Controller {
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
                     case 'config':
-                        $url = url($userInterface.'/'.str_singular(strtolower($this->module)).'/config') ;
+                        $url = url($userInterface.'/'.strtolower($this->module).'/config') ;
                         $buttons .= button(trans('app.config'), $url, 'cog');
                         break;
                     default:
@@ -338,8 +338,19 @@ abstract class BaseController extends Controller {
         $perPage = Config::get('app.'.$userInterface.'ItemsPerPage');
 
         if ($data['dataSource']) {
-            $models     = $data['dataSource'];
-            $paginator  = null;
+            $page  = Paginator::getCurrentPage();
+
+            if ($page) { // Ensure $page always starts at 0:
+                $page--;
+            } else {
+                $page = 0;
+            }
+
+            $offset = $page * $perPage;
+
+            $models = array_slice($data['dataSource'], $offset, $perPage); // We have to take the models from the array
+
+            $models = Paginator::make($models, sizeof($data['dataSource']), $perPage);
         } else {
             $models = $modelClass::orderBy($data['sortby'], $data['order']);
 
@@ -378,13 +389,13 @@ abstract class BaseController extends Controller {
             }
 
             $models = $models->paginate($perPage);
-
-            $paginator = $models->appends([
-                'sortby'    => $data['sortby'], 
-                'order'     => $data['order'], 
-                'search'    => $data['search']
-            ])->links();
         }
+
+        $paginator = $models->appends([
+            'sortby'    => $data['sortby'], 
+            'order'     => $data['order'], 
+            'search'    => $data['search']
+        ])->links();
 
         /*
          * Prepare the table head
