@@ -1,10 +1,10 @@
-<?php namespace App\Modules\News\Models;
+<?php namespace App\Modules\Forums\Models;
 
 use ConfigBag;
 
-class NewsConfigBag extends ConfigBag {
+class ForumConfigBag extends ConfigBag {
 
-    protected $namespace = 'news::';
+    protected $namespace = 'forums::';
 
     protected $fillable = [
         'example',

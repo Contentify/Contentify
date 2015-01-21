@@ -491,6 +491,7 @@ class InstallController extends Controller {
         
         DB::table('config')->insert([
             ['name' => 'app.analytics'],
+            ['name' => 'forums::example'],
             ['name' => 'auth::registration', 'value' => 1]
         ]);
 

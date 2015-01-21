@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Forums\Controllers;
 
-use App\Modules\Forums\Models\Forum;
+use App\Modules\Forums\Models\ForumReportCase;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
@@ -12,7 +12,7 @@ class AdminReportsController extends BackController {
 
     public function __construct()
     {
-        $this->modelName = 'ForumReport';
+        $this->modelName = 'ForumReportCase';
 
         parent::__construct();
     }
@@ -20,26 +20,31 @@ class AdminReportsController extends BackController {
     public function index()
     {
         $this->indexPage([
-            'buttons' => null,
-            'tableHead' => [
-                trans('app.id')                 => 'id', 
-                'Post ('.trans('app.text').')'  => null
+            'buttons'       => null,
+            'dataSource'    => ForumReportCase::findAll(),
+            'tableHead'     => [
+                '#'                             => null,
+                'Post ('.trans('app.text').')'  => null,
+                'Forum Reports'                 => null,
+                 trans('app.date')              => null,
             ],
-            'tableRow' => function($forumReport)
+            'tableRow' => function($forumReportCase)
             {
-                $forumPost = $forumReport->post;
+                $forumPost = $forumReportCase->post;
                 
-                $url = url('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
+                $url = url('forums/posts/perma/'.$forumPost->id);
                 $link = HTML::link($url, $forumPost->plainText(80));
 
                 return [
-                    $forumReport->id,
-                    raw(Hover::modelAttributes($forumReport, ['creator'])->pull().$link),
+                    $forumReportCase->index,
+                    raw($link),
+                    $forumReportCase->report_counter,
+                    $forumReportCase->updated_at,
                 ];            
             },
-            'actions' => ['delete'],
-            'sortBy' => 'level',
-            'order' => 'asc'
+            'actions'       => ['delete'],
+            'sortBy'        => 'level',
+            'order'         => 'asc'
         ]);
     }
 

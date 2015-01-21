@@ -2,6 +2,9 @@
 
 ModuleRoute::context(__DIR__);
 
+ModuleRoute::get('admin/forums/config', 'AdminConfigController@edit');
+ModuleRoute::put('admin/forums/config', 'AdminConfigController@update');
+
 ModuleRoute::resource('admin/forums', 'AdminForumsController');
 ModuleRoute::get(
     'admin/forums/{id}/restore', 

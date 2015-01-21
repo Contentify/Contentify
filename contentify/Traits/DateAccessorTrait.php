@@ -1,6 +1,6 @@
 <?php namespace Contentify\Traits;
 
-use Carbon, DateTime;
+use InvalidArgumentException, Carbon, DateTime;
 
 /*
  * Use this trait to "extend" Eloquent models
@@ -39,7 +39,7 @@ trait DateAccessorTrait {
              */
             try {
                 $value = Carbon::createFromFormat(trans('app.date_format').' H:m:s', $value);
-            } catch (Exception $e) {
+            } catch (InvalidArgumentException $e) {
                 $value = Carbon::createFromFormat($format, $value);
             }            
         }

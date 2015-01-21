@@ -1,4 +1,4 @@
-<div class="post">
+<div id="forum-post-id-{{ $forumPost->id }}" class="post">
     <div class="meta">
         <a href="{{ url('users/'.$forumPost->creator->id.'/'.$forumPost->creator->slug) }}">
             <span class="username" title="{{{ $forumPost->creator->username }}}">{{{ $forumPost->creator->username }}}</span>

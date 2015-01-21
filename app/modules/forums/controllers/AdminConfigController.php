@@ -1,4 +1,4 @@
-<?php namespace App\Modules\News\Controllers;
+<?php namespace App\Modules\Forums\Controllers;
 
 use ConfigController;
 
@@ -6,7 +6,7 @@ class AdminConfigController extends ConfigController {
 
     public function __construct()
     {
-        $this->modelName = 'NewsConfigBag';
+        $this->modelName = 'ForumConfigBag';
 
         parent::__construct();
     }

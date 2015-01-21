@@ -23,6 +23,7 @@ class AdminForumsController extends BackController {
     public function index()
     {
         $this->indexPage([
+            'buttons'   => ['new', 'config'],
             'tableHead' => [
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'

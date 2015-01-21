@@ -64,6 +64,7 @@ return array(
     'restore'       => 'Restore',
     
     'id'            => 'ID',
+    'index'         => 'Index',
     'title'         => 'Title',
     'short_title'   => 'Short Title',
     'author'        => 'Author',
@@ -79,6 +80,7 @@ return array(
     'date'          => 'Date',
     'published'     => 'Published',
     'created_at'    => 'Created At',
+    'updated_at'    => 'Updated At',
     'internal'      => 'Internal',
     'featured'      => 'Featured',
     'state'         => 'State',

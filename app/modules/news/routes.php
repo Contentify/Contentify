@@ -2,9 +2,6 @@
 
 ModuleRoute::context(__DIR__);
 
-ModuleRoute::get('admin/news/config', 'AdminConfigController@edit');
-ModuleRoute::put('admin/news/config', 'AdminConfigController@update');
-
 ModuleRoute::resource('admin/newscats', 'AdminNewscatsController');
 ModuleRoute::get(
     'admin/newscats/{id}/restore', 
