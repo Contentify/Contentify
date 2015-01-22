@@ -7,7 +7,7 @@ class AdminDashboardController extends BackController {
     /**
      * Feed URL
      */
-    const FEED_URL = 'http://www.contentify.it/share/feeds/cms.json';
+    const FEED_URL = 'http://www.contentify.org/share/feeds/cms.json';
 
     protected $icon = 'home';
 
