@@ -42,7 +42,6 @@ class AwardsController extends FrontController {
                 ];
             },
             'actions'   => null,
-            'filter'    => true
         ], 'front');
     }
 

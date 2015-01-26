@@ -10,3 +10,4 @@ ModuleRoute::get(
 ModuleRoute::post('admin/awards/search', 'AdminAwardsController@search');
 
 ModuleRoute::resource('awards', 'AwardsController', ['only' => ['index']]);
+ModuleRoute::post('awards/search', 'AwardsController@search');
