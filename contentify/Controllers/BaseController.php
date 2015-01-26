@@ -97,7 +97,7 @@ abstract class BaseController extends Controller {
      *
      * @param string $template Name of the template
      * @param array  $data     Array with data passed to the compile engine
-     * @param bool   $replace  Replace the output already  * 
+     * @param bool   $replace  Replace the output already added
      * @return void
      */
     protected function pageView($template = '', $data = array(), $replace = false)
@@ -117,7 +117,7 @@ abstract class BaseController extends Controller {
      * Shortcut for $this->layout->nest(): Adds a string to the main layout.
      *
      * @param string $output  HTML or text to output on the template.
-     * @param bool   $replace Replace the output already 
+     * @param bool   $replace Replace the output already added
      * @return void
      */
     protected function pageOutput($output, $replace = false)

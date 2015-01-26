@@ -11,11 +11,10 @@ return array(
     |
     */
    
-    'contact'       => 'Contact',
-    'message_sent'  => 'Thank you! Your message has been sent.',
-    'ip'            => 'IP',
-    'subject'       => 'Subject',
-    'message'       => 'Message',
-    'new'           => 'New', // is new?
+    'receiver'      => 'Receiver',
+    'inbox'         => 'Inbox',
+    'outbox'        => 'Outbox',
+    'message_sent'  => 'Your message has been sent.',
+    're'            => 'Re: ',
 
 );

@@ -469,6 +469,14 @@ class InstallController extends Controller {
             $table->text('text')->nullable();
         }, ['forum_post_id'], ['title', 'slug']);
 
+        $this->create('messages', function($table)
+        {
+            $table->text('text');
+            $table->boolean('new')->default(true);
+            $table->boolean('creator_visible')->default(true);
+            $table->boolean('receiver_visible')->default(true);
+        }, ['receiver_id']);
+
         /*
          * (Re)activate foreign key checks
          */

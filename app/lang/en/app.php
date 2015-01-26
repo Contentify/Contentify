@@ -84,6 +84,7 @@ return array(
     'internal'      => 'Internal',
     'featured'      => 'Featured',
     'state'         => 'State',
+    'new'           => 'New',
 
     /*
      * Misc
@@ -141,6 +142,7 @@ return array(
     'ip'            => 'IP',
     'online'        => 'Online',
     'viewers'       => 'Viewers',
-    'add_tags'      => 'Add tags'
+    'add_tags'      => 'Add tags',
+    'reply'         => 'Reply',
 
 );

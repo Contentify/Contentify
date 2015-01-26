@@ -1,7 +1,7 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
+use DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
 
@@ -285,6 +285,21 @@ class User extends SentryUser {
                                         $constraint->aspectRatio();
                                     })->save($filePath.'60/'.$fileName);
         }
+    }
+
+    /**
+     * Counts the new messages of this user.
+     * Uses DB caching.
+     * 
+     * @return int
+     */
+    public function countMessages()
+    {
+
+        $result = DB::table('messages')->select(DB::raw('COUNT(*) AS count'))->whereReceiverId($this->id)->whereReceiverVisible(true)->
+            whereNew(true)->remember(1)->first();
+
+        return $result->count;
     }
 
 }

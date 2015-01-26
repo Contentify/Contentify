@@ -58,4 +58,4 @@
     </tbody>
 </table>
 
-{{ Form::button(trans('contact::reply'), ['onclick' => "location.href='mailto:{$msg->email}'"]) }}
+{{ Form::button(trans('app.reply'), ['onclick' => "location.href='mailto:{$msg->email}'"]) }}
