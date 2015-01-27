@@ -7375,6 +7375,13 @@ textarea.model-search-box input {
   right: 0px;
   top: 0px;
 }
+.page-messages .text {
+  word-wrap: break-word;
+  overflow-x: hidden;
+}
+.page-messages .text img {
+  max-width: 100%;
+}
 /*
  * Mainlayout
  */

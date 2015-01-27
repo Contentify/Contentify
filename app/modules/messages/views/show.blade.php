@@ -10,7 +10,7 @@
     {{ link_to('users/'.$message->creator->id.'/'.$message->creator->slug, $message->creator->username) }} {{ HTML::fontIcon('angle-right') }} {{ link_to('users/'.$message->receiver->id.'/'.$message->receiver->slug, $message->receiver->username) }} - {{ $message->created_at->dateTime() }}
 </div>
 
-<div class="text space-top space-bottom">
+<div class="message-text space-top space-bottom">
     {{ $message->renderText() }}
 </div>
 

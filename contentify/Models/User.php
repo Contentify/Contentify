@@ -1,9 +1,11 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
+use Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
+
+    const CACHE_KEY_MESSAGES = 'users::messageCounter.';
 
     protected $fillable = [
         'username', 
@@ -289,15 +291,23 @@ class User extends SentryUser {
 
     /**
      * Counts the new messages of this user.
-     * Uses DB caching.
+     * Uses caching.
      * 
      * @return int
      */
     public function countMessages()
     {
+        $key = self::CACHE_KEY_MESSAGES.$this->id;
+
+        if (Cache::has($key)) {
+
+            return Cache::get($key);
+        }
 
         $result = DB::table('messages')->select(DB::raw('COUNT(*) AS count'))->whereReceiverId($this->id)->whereReceiverVisible(true)->
-            whereNew(true)->remember(1)->first();
+            whereNew(true)->first();
+
+        Cache::forever($key, $result->count);
 
         return $result->count;
     }

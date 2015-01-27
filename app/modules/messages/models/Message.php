@@ -1,14 +1,10 @@
 <?php namespace App\Modules\Messages\Models;
 
-use BBCode, Cache, User, SoftDeletingTrait, BaseModel;
+use BBCode, Cache, User, BaseModel;
 
 class Message extends BaseModel {
 
-    use SoftDeletingTrait;
-
     const CACHE_KEY = 'messages::texts.';
-
-    protected $dates = ['deleted_at'];
 
     protected $slugable = true;
 

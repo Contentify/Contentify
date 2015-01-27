@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Messages\Controllers;
 
 use App\Modules\Messages\Models\Message;
-use Input, Redirect, FrontController;
+use Cache, User, Input, Redirect, FrontController;
 
 class MessagesController extends FrontController {
 
@@ -16,6 +16,9 @@ class MessagesController extends FrontController {
 
         if ($message->receiver_id == user()->id) {
             $message->new = false;
+
+            // Reset the message counter cache of the receiving user:
+            Cache::forget(User::CACHE_KEY_MESSAGES.user()->id);
         }
 
         $message->access_counter++;
@@ -38,11 +41,14 @@ class MessagesController extends FrontController {
         $message->creator_id = user()->id;
         $message->updater_id = user()->id;
         $message->createSlug();
-        $okay = $message->setReceiverByName(Input::get('receiver_name'));
+        $message->setReceiverByName(Input::get('receiver_name'));
 
         $okay = $message->save();
 
         if ($okay) {
+            // Reset the message counter cache of the receiving user:
+            Cache::forget(User::CACHE_KEY_MESSAGES.$message->receiver_id);
+
             $this->messageFlash(trans('messages::message_sent'));
             return Redirect::to('messages/outbox');
         } else {
