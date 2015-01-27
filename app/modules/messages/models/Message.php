@@ -6,7 +6,7 @@ class Message extends BaseModel {
 
     use SoftDeletingTrait;
 
-    const CACHE_KEY = 'messages.texts.';
+    const CACHE_KEY = 'messages::texts.';
 
     protected $dates = ['deleted_at'];
 

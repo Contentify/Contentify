@@ -15,7 +15,7 @@ class BackNavGen {
     /**
      * Name of the cache key
      */
-    const CACHE_KEY = 'contentify.backNavTemplate';
+    const CACHE_KEY = 'app.backNavTemplate';
 
     /**
      * Returns the navigation items

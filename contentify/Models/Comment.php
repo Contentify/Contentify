@@ -6,7 +6,7 @@ class Comment extends BaseModel {
 
     use SoftDeletingTrait;
 
-    const CACHE_KEY = 'comments.comment.';
+    const CACHE_KEY = 'comments::comment.';
 
     protected $fillable = array('text');
 

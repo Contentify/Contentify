@@ -6,7 +6,7 @@ class ForumPost extends BaseModel {
 
     use SoftDeletingTrait;
 
-    const CACHE_KEY = 'forums.posts.';
+    const CACHE_KEY = 'forums::posts.';
 
     protected $dates = ['deleted_at'];
 

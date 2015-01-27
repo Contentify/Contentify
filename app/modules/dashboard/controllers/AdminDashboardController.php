@@ -25,7 +25,7 @@ class AdminDashboardController extends BackController {
      */
     public function feed()
     {  
-        $key = 'dashboard.feedMessages';
+        $key = 'dashboard::feedMessages';
 
         if (Cache::has($key)) {
             $view = Cache::get($key);

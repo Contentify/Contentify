@@ -9,13 +9,13 @@ class Config extends LaravelConfig {
      * Cache key prefix: The corresponding values contain bools that are true if the
      * config key has been retrieved from the DB already
      */
-    const CACHE_IN_DB_PREFIX = 'config.inDb.';
+    const CACHE_IN_DB_PREFIX = 'config::inDb.';
 
     /**
      * Cache key prefix: The corresponding values were cached after they habe been
      * retrieved from the DB
      */
-    const CACHE_VALUES_PREFIX = 'config.values.';
+    const CACHE_VALUES_PREFIX = 'config::values.';
 
     /**
      * Cache time in seconds

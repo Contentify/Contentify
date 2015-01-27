@@ -5,6 +5,8 @@ use Cache, HTML, BackController;
 
 class AdminModulesController extends BackController {
 
+    const CACHE_KEY = 'modules::installation.';
+
     protected $icon = 'cubes';
 
     public function __construct()
@@ -36,7 +38,7 @@ class AdminModulesController extends BackController {
                 /*
                  * Display if the module is installed
                  */
-                $state = Cache::get('modules.installation.'.$module->title, null);
+                $state = Cache::get(self::CACHE_KEY.$module->title, null);
                 if ($state === true) {
                     $state = trans('app.valid');
                 }
@@ -87,11 +89,11 @@ class AdminModulesController extends BackController {
         $result     = $installer->execute();
 
         if ($result === false or $result === null) {
-            Cache::forever('modules.installation.'.$name, false);
+            Cache::forever(self::CACHE_KEY.$name, false);
             $this->message(trans('modules::fail'));            
         } elseif ($result === true) {
             $installer->after();
-            Cache::forever('modules.installation.'.$name, true);
+            Cache::forever(self::CACHE_KEY.$name, true);
             $this->message(trans('modules::success'));
         } else {
             $this->pageOutput($result);
