@@ -28,7 +28,7 @@ class Stream extends BaseModel {
      * and add JS/HTML handling for the provider.
      * @var array
      */
-    public static $providers = ['twitch' => 'Twitch'];
+    public static $providers = ['twitch' => 'Twitch', 'hitbox' => 'Hitbox'];
 
     /**
      * Count the comments that are related to this video.

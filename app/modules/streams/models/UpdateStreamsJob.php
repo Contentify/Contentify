@@ -29,7 +29,12 @@ class UpdateStreamsJob extends Job {
                     $twitchApi  = new TwitchApi();
                     $twitchApi->updateStreams($streams);
 
-                    break;                  
+                    break;
+                case 'hitbox':
+                    $hitboxApi  = new HitboxApi();
+                    $hitboxApi->updateStreams($streams);
+
+                    break;                
             }
         }
     }

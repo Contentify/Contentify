@@ -7,10 +7,11 @@ class StreamApi {
     /**
      * Makes the API call
      * 
-     * @param  string $url The API url
+     * @param  string   $url    The API url
+     * @param  boolean  $parse  Parse the result?
      * @return mixed
      */
-    public function call($url)
+    public function apiCall($url, $parse = true)
     {
         $curl = curl_init();
         
@@ -24,13 +25,17 @@ class StreamApi {
         if ($result === false) {
             Log::warning('Streams job: cURL error: '.curl_error($curl));
             return null;
-        }        
-        
-        return $this->parseResponse($result);
+        }
+
+        if ($parse) {
+            return $this->parseResponse($result);    
+        }
+        return $result;        
     }
     
     /**
      * Parses the response
+     *
      * @param  string $response
      * @return mixed
      */

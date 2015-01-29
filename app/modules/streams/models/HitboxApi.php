@@ -2,18 +2,18 @@
 
 use DateTime;
 
-class TwitchApi extends StreamApi
+class HitboxApi extends StreamApi
 {
 
     /**
-     * API URL
+     * API URL - Docs: http://developers.hitbox.tv/start
      */
-    const URL = 'https://api.twitch.tv/kraken/';
+    const URL = 'http://api.hitbox.tv/';
 
     /**
-     * Channel list API call
+     * Stream (=media) info API call - Docs: http://developers.hitbox.tv/media
      */
-    const CHANNEL_LIST = 'streams?channel=';
+    const MEDIA_LIST = 'media/live/';
     
     /**
      * Returns a JSON object that also includes an array of stream infos
@@ -31,7 +31,7 @@ class TwitchApi extends StreamApi
             $list .= $stream->permanent_id;
         }
 
-        $response = $this->apiCall(self::URL.self::CHANNEL_LIST.$list);
+        $response = $this->apiCall(self::URL.self::MEDIA_LIST.$list);
         
         return $response;
     }
@@ -50,10 +50,10 @@ class TwitchApi extends StreamApi
             $stream->online     = false;
             $stream->viewers    = 0;
 
-            foreach ($data->streams as $streamInfo) {
-                if ($streamInfo->channel->name == $stream->permanent_id) {
-                    $stream->online     = true;
-                    $stream->viewers    = $streamInfo->viewers;
+            foreach ($data->livestream as $streamInfo) {
+                if ($streamInfo->media_name == $stream->permanent_id) {
+                    $stream->online     = $streamInfo->media_is_live;
+                    $stream->viewers    = $streamInfo->media_views;
                     break;
                 }
             }
