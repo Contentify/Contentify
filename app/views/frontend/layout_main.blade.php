@@ -111,9 +111,13 @@
                 <h3>Visitors</h3>
                 @widget('Visitors::Visitors')
 
-                                <br>
+                <br>
                 <h3>Streams</h3>
                 @widget('Streams::Streams')
+
+                <br>
+                <h3>Navigation</h3>
+                @widget('Navigations::Navigation')
             </aside>
         </div>
     </div>

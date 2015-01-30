@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Navi\Controllers;
+<?php namespace App\Modules\Navigations\Controllers;
 
 use Exception, View, Widget;
 
@@ -9,7 +9,7 @@ class BreadcrumbWidget extends Widget {
         if (sizeof($parameters) > 0) {
             $links = current($parameters);
     
-            return View::make('navi::breadcrumb_widget', compact('links'))->render();
+            return View::make('navigation::breadcrumb_widget', compact('links'))->render();
         } else {
             throw new Exception('Breadcrumb Widget: Missing array with breadcrumb links!');
         }

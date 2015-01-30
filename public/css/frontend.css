@@ -7375,12 +7375,27 @@ textarea.model-search-box input {
   right: 0px;
   top: 0px;
 }
-.page-messages .text {
+.page-messages .message-text {
   word-wrap: break-word;
   overflow-x: hidden;
 }
-.page-messages .text img {
+.page-messages .message-text img {
   max-width: 100%;
+}
+.widget-navigation .list-unstyled li.item-level-1 {
+  padding-left: 20px;
+}
+.widget-navigation .list-unstyled li.item-level-2 {
+  padding-left: 40px;
+}
+.widget-navigation .list-unstyled li.item-level-3 {
+  padding-left: 60px;
+}
+.widget-navigation .list-unstyled li.item-level-4 {
+  padding-left: 80px;
+}
+.widget-navigation .list-unstyled li.item-level-5 {
+  padding-left: 100px;
 }
 /*
  * Mainlayout

@@ -201,6 +201,18 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
+        $this->create('navigations', function($table)
+        {
+            $table->text('items')->nullable();
+        }, [], ['slug']);
+
+        $this->create('user_activities', function($table)
+        {
+            $table->boolean('frontend');
+            $table->text('info')->nullable();
+            $table->timestamp('created_at');
+        }, ['activity_id', 'user_id'], false);
+
         return; // DEBUG
 
         /**
