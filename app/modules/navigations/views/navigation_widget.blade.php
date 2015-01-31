@@ -1,4 +1,4 @@
-<div class="widget-navigation">
+<div class="widget-navigation-default widget-navigation">
     <ul class="list-unstyled">
         @foreach ($items as $item)
             <li class="item-level-{{ $item->level }}">
