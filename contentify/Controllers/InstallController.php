@@ -209,8 +209,10 @@ class InstallController extends Controller {
         $this->create('user_activities', function($table)
         {
             $table->boolean('frontend');
+            $table->string('model_class')->nullable();
             $table->text('info')->nullable();
             $table->timestamp('created_at');
+            $table->timestamp('updated_at');
         }, ['activity_id', 'user_id'], false);
 
         return; // DEBUG

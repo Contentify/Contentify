@@ -167,6 +167,7 @@ const PERM_DELETE    = 4;
 */
 
 Jobs::addLazy('updateStreams', 'App\Modules\Streams\Models\UpdateStreamsJob');
+Jobs::addLazy('deleteUserActivities', 'Contentify\Models\DeleteUserActivitiesJob');
 
 /*
 |--------------------------------------------------------------------------

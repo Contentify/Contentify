@@ -1,6 +1,6 @@
 <?php namespace Contentify\Traits;
 
-use Input, File, Redirect, InterImage, Exception;
+use UserActivities, Input, File, Redirect, InterImage, Exception;
 
 /*
  * Use this trait to "extend" Eloquent models
@@ -47,6 +47,8 @@ trait ModelHandlerTrait {
             return Redirect::route('admin.'.strtolower($this->controller).'.create')
                 ->withInput()->withErrors($model->getErrors());
         }
+
+        UserActivities::addCreate(false, user()->id, $this->modelClass);
 
         /*
          * File (and image) handling
@@ -174,6 +176,8 @@ trait ModelHandlerTrait {
             return Redirect::route('admin.'.strtolower($this->controller).'.edit', ['id' => $model->id])
                 ->withInput()->withErrors($model->getErrors());
         }
+
+        UserActivities::addUpdate(false, user()->id, $this->modelClass);
 
         /*
          * File (and image) handling
@@ -311,6 +315,8 @@ trait ModelHandlerTrait {
         } else {
             $model->forceDelete(); // Finally delete this model
         }
+
+        UserActivities::addDelete(false, user()->id, $this->modelClass);
 
         $this->messageFlash(trans('app.deleted', [$this->modelName]));
         return Redirect::route('admin.'.strtolower($this->controller).'.index');
