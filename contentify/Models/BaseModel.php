@@ -97,8 +97,13 @@ class BaseModel extends Eloquent {
              * (orderBy uses "natural sorting")
              */
             $model = static::orderBy(DB::Raw('LENGTH(slug) DESC, slug'), 'DESC')
-                ->whereRaw("slug REGEXP '^{$slug}(-[0-9]*)?$'")
-                ->withTrashed()->first();
+                ->whereRaw("slug REGEXP '^{$slug}(-[0-9]*)?$'");
+
+            if ($this->isSoftDeleting()) {
+                $model = $model->withTrashed();
+            }
+
+            $model = $model->first();
 
             /*
              * If the slug is in use already:

@@ -21,3 +21,15 @@
 .form-group {
     label { .ellipsis() }
 }
+
+.spoiler-wrapper { 
+    margin: 20px 0px; padding: 0px 10px; background-color: #EEE;
+    &.show { padding-bottom: 10px; }
+    .spoiler-toggle { padding: 10px 0px; cursor: pointer }
+    .spoiler-toggle::before { content: "\f0da"; font-family: 'FontAwesome' }
+    &.show {
+        .spoiler { height: auto; overflow: visible; }
+        .spoiler-toggle::before { content: "\f0d7"; }
+    }
+}
+.spoiler { height: 0px; overflow: hidden; }

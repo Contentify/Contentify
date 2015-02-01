@@ -6566,6 +6566,33 @@ button.close {
   white-space: nowrap;
   overflow: hidden;
 }
+.spoiler-wrapper {
+  margin: 20px 0px;
+  padding: 0px 10px;
+  background-color: #EEE;
+}
+.spoiler-wrapper.show {
+  padding-bottom: 10px;
+}
+.spoiler-wrapper .spoiler-toggle {
+  padding: 10px 0px;
+  cursor: pointer;
+}
+.spoiler-wrapper .spoiler-toggle::before {
+  content: "\f0da";
+  font-family: 'FontAwesome';
+}
+.spoiler-wrapper.show .spoiler {
+  height: auto;
+  overflow: visible;
+}
+.spoiler-wrapper.show .spoiler-toggle::before {
+  content: "\f0d7";
+}
+.spoiler {
+  height: 0px;
+  overflow: hidden;
+}
 /*
  * Global Variables
  */
