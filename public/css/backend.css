@@ -766,6 +766,30 @@ ul.pagination li.disabled {
 .page-dashboard .feed-messages img {
   vertical-align: text-bottom;
 }
+.page-navigations #items-table th.urls {
+  width: 50%;
+}
+.page-navigations #items-table th.actions {
+  width: 20%;
+}
+.page-navigations #items-table tr.item-level-1 td:first-child {
+  padding-left: 20px;
+}
+.page-navigations #items-table tr.item-level-2 td:first-child {
+  padding-left: 40px;
+}
+.page-navigations #items-table tr.item-level-3 td:first-child {
+  padding-left: 60px;
+}
+.page-navigations #items-table tr.item-level-4 td:first-child {
+  padding-left: 80px;
+}
+.page-navigations #items-table tr.item-level-5 td:first-child {
+  padding-left: 100px;
+}
+.page-navigations #item_add {
+  margin-top: 20px;
+}
 .editor-flags img {
   cursor: pointer;
 }

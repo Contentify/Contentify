@@ -7409,19 +7409,19 @@ textarea.model-search-box input {
 .page-messages .message-text img {
   max-width: 100%;
 }
-.widget-navigation-default .list-unstyled li.item-level-1 {
+.widget-navigation-default .list-unstyled li.item-level-0 {
   padding-left: 20px;
 }
-.widget-navigation-default .list-unstyled li.item-level-2 {
+.widget-navigation-default .list-unstyled li.item-level-1 {
   padding-left: 40px;
 }
-.widget-navigation-default .list-unstyled li.item-level-3 {
+.widget-navigation-default .list-unstyled li.item-level-2 {
   padding-left: 60px;
 }
-.widget-navigation-default .list-unstyled li.item-level-4 {
+.widget-navigation-default .list-unstyled li.item-level-3 {
   padding-left: 80px;
 }
-.widget-navigation-default .list-unstyled li.item-level-5 {
+.widget-navigation-default .list-unstyled li.item-level-4 {
   padding-left: 100px;
 }
 .widget-teams img {
