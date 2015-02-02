@@ -29,7 +29,7 @@
     $(document).ready(function()
     {
         var $items = $('.page input[name=items]');
-        var items = JSON.parse($items.val()); // Array of objects
+        var items = JSON.parse($items.val() ? $items.val() : '[]'); // Array of objects
         var $tableBody = $('#items-table tbody');
 
         var template = '<div class="boxer-plain add-new" data-index="%%index%%"> {{ Form::smartText('item_title', trans('app.title')) }} {{ Form::smartText('item_url', trans('app.url')) }}</div>';
@@ -110,7 +110,7 @@
 
                         break;
                     case 'delete':
-                        items.splice(0, 1);
+                        items.splice(index, 1);
                         break;
                 }
 

@@ -201,20 +201,6 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
-        $this->create('navigations', function($table)
-        {
-            $table->text('items')->nullable();
-        }, [], ['slug']);
-
-        $this->create('user_activities', function($table)
-        {
-            $table->boolean('frontend');
-            $table->string('model_class')->nullable();
-            $table->text('info')->nullable();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-        }, ['activity_id', 'user_id'], false);
-
         return; // DEBUG
 
         /**
@@ -490,6 +476,20 @@ class InstallController extends Controller {
             $table->boolean('creator_visible')->default(true);
             $table->boolean('receiver_visible')->default(true);
         }, ['receiver_id']);
+
+        $this->create('navigations', function($table)
+        {
+            $table->text('items')->nullable();
+        }, [], ['slug']);
+
+        $this->create('user_activities', function($table)
+        {
+            $table->boolean('frontend');
+            $table->string('model_class')->nullable();
+            $table->text('info')->nullable();
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
+        }, ['activity_id', 'user_id'], false);
 
         /*
          * (Re)activate foreign key checks
