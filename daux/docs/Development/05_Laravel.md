@@ -1,6 +1,6 @@
 Contentify is a CMS based on the popular Laravel 4 framework. Laravel is developed and maintained by Taylor Otwell and a small [team of developers](http://laravel.com/docs/introduction#development-team). It's one of the most advanced PHP frameworks ever made. Many believe it's the upcoming star of PHP frameworks.
 
-Contentify enhances Laravel. Understanding Laravel is a key requirement to understand Contentify. We believe that it's quite simple to learn the basics of Laravel so this should not be a show stopper. We recommend ["Code Bright" by Dayle Rees](http://daylerees.com/codebright/codebright) as a beginner guide. If you run into troubles with Laravel feel free to contact our [support team](http://contentify.it/support) or ask the Laravel community for help. These guys are great and will do their best to help you.
+Contentify enhances Laravel. Understanding Laravel is a key requirement to understand Contentify. We believe that it's quite simple to learn the basics of Laravel so this should not be a show stopper. We recommend ["Code Bright" by Dayle Rees](http://daylerees.com/codebright/codebright) as a beginner guide. If you run into troubles with Laravel feel free to contact our [support team](http://contentify.org/support) or ask the Laravel community for help. These guys are great and will do their best to help you.
 
 # Why We Choose Laravel
 

@@ -8,13 +8,13 @@ abstract class BaseController extends Controller {
      * The name of the module
      * @var string
      */
-    protected $module = '';
+    protected $moduleName = '';
 
     /**
      * The name of the controller (without class path)
      * @var string
      */
-    protected $controller = '';
+    protected $controllerName = '';
 
     /**
      * The name of the model (without class path)
@@ -39,10 +39,10 @@ abstract class BaseController extends Controller {
         /*
          * Save module and controller name
          */
-        $className          = get_class($this);
-        $this->module       = explode('\\', $className)[2];
-        $className          = class_basename($className);
-        $this->controller   = str_replace(['Admin', 'Controller'], '', $className);
+        $className              = get_class($this);
+        $this->moduleName       = explode('\\', $className)[2];
+        $className              = class_basename($className);
+        $this->controllerName   = str_replace(['Admin', 'Controller'], '', $className);
 
         /*
          * Set model full name
@@ -51,7 +51,7 @@ abstract class BaseController extends Controller {
             if (str_contains($this->modelName, '\\')) {
                 $this->modelClass = $this->modelName;
             } else {
-                $this->modelClass = 'App\Modules\\'.$this->module.'\Models\\'.$this->modelName;
+                $this->modelClass = 'App\Modules\\'.$this->moduleName.'\Models\\'.$this->modelName;
             }
         }
 
@@ -59,7 +59,7 @@ abstract class BaseController extends Controller {
          * Set CRUD form template name
          */
         if (! $this->formTemplate) {
-            if ($this->module === str_plural($this->modelName)) {
+            if ($this->moduleName === str_plural($this->modelName)) {
                 $this->formTemplate = 'form';
             } else {
                 // If modelname & modulename differ, the form name should be e. g. "users_form":
@@ -72,6 +72,31 @@ abstract class BaseController extends Controller {
          * Enable auto CSRF protection
          */ 
         $this->beforeFilter('csrf', ['on' => ['post', 'put', 'delete']]);
+    }
+
+    public function getModuleName()
+    {
+        return $this->moduleName;
+    }
+
+    public function getControllerName()
+    {
+        return $this->controllerName;
+    }
+
+    public function getModelName()
+    {
+        return $this->modelName;
+    }
+
+    public function getModelClass()
+    {
+        return $this->modelClass;
+    }
+
+    public function getFormTemplate()
+    {
+        return $this->formTemplate;
     }
 
     /**
@@ -100,7 +125,7 @@ abstract class BaseController extends Controller {
      * @param bool   $replace  Replace the output already added
      * @return void
      */
-    protected function pageView($template = '', $data = array(), $replace = false)
+    public function pageView($template = '', $data = array(), $replace = false)
     {
         if ($this->layout != null) {
             if ($replace or $this->layout->page == null) {
@@ -120,7 +145,7 @@ abstract class BaseController extends Controller {
      * @param bool   $replace Replace the output already added
      * @return void
      */
-    protected function pageOutput($output, $replace = false)
+    public function pageOutput($output, $replace = false)
     {
         if ($this->layout != null) {
             if ($replace) {
@@ -140,7 +165,7 @@ abstract class BaseController extends Controller {
      * @param string $text
      * @return void
      */
-    protected function message($title, $text = '')
+    public function message($title, $text = '')
     {
         if ($this->layout != null) {
             $this->layout->page .= View::make('message', ['title' => $title, 'text' => $text]);
@@ -155,7 +180,7 @@ abstract class BaseController extends Controller {
      * @param string $title
      * @return void
      */
-    protected function messageFlash($title)
+    public function messageFlash($title)
     {
         Session::flash('_message', $title);
     }
@@ -168,7 +193,7 @@ abstract class BaseController extends Controller {
      * @param string $content  Content of the meta tag
      * @return void
      */
-    protected function metaTag($name, $content)
+    public function metaTag($name, $content)
     {
         if ($this->layout != null) {
             $this->layout->metaTags[$name] = $content;
@@ -184,7 +209,7 @@ abstract class BaseController extends Controller {
      * @param string $title The title
      * @return void
      */
-    protected function title($title)
+    public function title($title)
     {
         if ($this->layout != null) {
             $this->layout->title = $title;
@@ -200,7 +225,7 @@ abstract class BaseController extends Controller {
      * @param OpenGraph $openGraph OpenGraph instance
      * @return void
      */
-    protected function openGraph(OpenGraph $openGraph)
+    public function openGraph(OpenGraph $openGraph)
     {
         if ($this->layout != null) {
             $this->layout->openGraph = $openGraph;
@@ -216,7 +241,7 @@ abstract class BaseController extends Controller {
      * @param array $links Array with items of title (key) and URLs (link)
      * @return void
      */
-    protected function breadcrumb($links = array())
+    public function breadcrumb($links = array())
     {
         if ($this->layout != null) {
             $this->layout->breadcrumb = $links;
@@ -232,7 +257,7 @@ abstract class BaseController extends Controller {
      * @param  string $userInterface    Frontend ("front") or backend ("admin")?
      * @return void
      */
-    protected function indexPage($data, $userInterface = 'admin')
+    public function indexPage($data, $userInterface = 'admin')
     {
         /*
          * Access checking is only available for the backend.
@@ -274,15 +299,15 @@ abstract class BaseController extends Controller {
                 $type = strtolower($button);
                 switch ($type) {
                     case 'new':
-                        $url = route($userInterface.'.'.strtolower($this->controller).'.create');
+                        $url = route($userInterface.'.'.strtolower($this->controllerName).'.create');
                         $buttons .= button(trans('app.create'), $url, 'plus-circle');
                         break;
                     case 'category':
-                        $url = route($userInterface.'.'.str_singular(strtolower($this->module)).'cats.index');
+                        $url = route($userInterface.'.'.str_singular(strtolower($this->moduleName)).'cats.index');
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
                     case 'config':
-                        $url = url($userInterface.'/'.strtolower($this->module).'/config') ;
+                        $url = url($userInterface.'/'.strtolower($this->moduleName).'/config') ;
                         $buttons .= button(trans('app.config'), $url, 'cog');
                         break;
                     default:
@@ -429,7 +454,7 @@ abstract class BaseController extends Controller {
                                 if ($model->modifiable()) {
                                     $actionsCode .= icon_link('edit', 
                                         trans('app.edit'), 
-                                        route($userInterface.'.'.strtolower($this->controller).'.edit', [$model->id]));
+                                        route($userInterface.'.'.strtolower($this->controllerName).'.edit', [$model->id]));
                                 }
                                 break;
                             case 'delete':
@@ -438,7 +463,7 @@ abstract class BaseController extends Controller {
                                     $actionsCode .= icon_link('trash', 
                                         trans('app.delete'), 
                                         route(
-                                            $userInterface.'.'.strtolower($this->controller).'.destroy', 
+                                            $userInterface.'.'.strtolower($this->controllerName).'.destroy', 
                                             [$model->id]
                                         ).$urlParams,
                                         false,
@@ -449,7 +474,7 @@ abstract class BaseController extends Controller {
                                 if ($model->isSoftDeleting() and $model->trashed()) {
                                     $actionsCode .= icon_link('undo', 
                                     trans('app.restore'), 
-                                    route($userInterface.'.'.strtolower($this->controller).'.restore', [$model->id]));
+                                    route($userInterface.'.'.strtolower($this->controllerName).'.restore', [$model->id]));
                                 }
                                 break;
                         }
@@ -496,7 +521,7 @@ abstract class BaseController extends Controller {
      * @param  Model    $model       Object with this model type (by reference)
      * @return void
      */
-    protected function fillRelations($modelClass, &$model)
+    public function fillRelations($modelClass, &$model)
     {
         $relations = $modelClass::relations();
 
@@ -577,7 +602,7 @@ abstract class BaseController extends Controller {
      */
     public function hasAccessRead() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), PERM_READ));
+        return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_READ));
     }
 
     /**
@@ -587,7 +612,7 @@ abstract class BaseController extends Controller {
      */
     public function hasAccessCreate() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), PERM_CREATE));
+        return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_CREATE));
     }
 
     /**
@@ -597,7 +622,7 @@ abstract class BaseController extends Controller {
      */
     public function hasAccessUpdate() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), PERM_UPDATE));
+        return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_UPDATE));
     }
 
     /**
@@ -607,7 +632,7 @@ abstract class BaseController extends Controller {
      */
     public function hasAccessDelete() 
     {
-        return (user() and user()->hasAccess(strtolower($this->module), PERM_DELETE));
+        return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_DELETE));
     }
 
     /**
@@ -701,4 +726,5 @@ abstract class BaseController extends Controller {
             return false;
         }
     }
+    
 }

@@ -17,8 +17,8 @@ abstract class FrontController extends BaseController {
         $self = $this;
         View::composer('frontend.layout_main', function($view) use ($self)
         { 
-            $view->with('module', $this->module);
-            $view->with('controller', $this->controller);
+            $view->with('moduleName', $this->moduleName);
+            $view->with('controllerName', $this->controllerName);
         });
     }
 
@@ -29,6 +29,7 @@ abstract class FrontController extends BaseController {
      */
     public function search()
     {
-        return Redirect::route(strtolower($this->controller).'.index')->withInput(Input::only('search'));
+        return Redirect::route(strtolower($this->controllerName).'.index')->withInput(Input::only('search'));
     }
+    
 }

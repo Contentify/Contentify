@@ -165,6 +165,7 @@ return array(
         'Contentify\ServiceProviders\CaptchaServiceProvider',
         'Contentify\ServiceProviders\CommentsServiceProvider',
         'Contentify\ServiceProviders\UserActivitiesServiceProvider',
+        'Contentify\ServiceProviders\ModelHandlerServiceProvider',
 
         // Vendor service providers:
         'ChrisKonnertz\Jobs\JobsServiceProvider',

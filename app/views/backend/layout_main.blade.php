@@ -106,9 +106,9 @@
                     <div class="alert-area"></div>
                 
                     @if (isset($page))
-                        <div class="page page-{{ strtolower($controller) }} page-{{ pageClass() }}">
-                            <a class="form-head" href="{{ url('admin/'.strtolower($controller)) }}">
-                                {{ HTML::fontIcon($controllerIcon) }}{{ $controller }}
+                        <div class="page page-{{ strtolower($controllerName) }} page-{{ pageClass() }}">
+                            <a class="form-head" href="{{ url('admin/'.strtolower($controllerName)) }}">
+                                {{ HTML::fontIcon($controllerIcon) }}{{ $controllerName }}
                             </a>
 
                             {{ $page }}
@@ -118,7 +118,7 @@
         </section>
         <footer id="footer">
             <a href="#" title="{{ trans('app.top') }}"><!-- empty --></a>
-            <span>&copy; 2009-{{ date('Y') }} design and code by contentify.it</span>
+            <span>&copy; 2009-{{ date('Y') }} design and code by contentify.org</span>
         </footer>
     </div>
 </body>

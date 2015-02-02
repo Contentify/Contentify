@@ -53,8 +53,8 @@ abstract class BackController extends BaseController {
             }
             $view->with('contactMessages', $contactMessages);
 
-            $view->with('module', $this->module);
-            $view->with('controller', $this->controller);
+            $view->with('moduleName', $this->moduleName);
+            $view->with('controllerName', $this->controllerName);
             $view->with('controllerIcon', $this->icon);
         });
     }

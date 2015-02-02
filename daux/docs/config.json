@@ -13,9 +13,9 @@
 	"twitter": ["contentifycms"],
 	"google_analytics": "",
 	"links": {
-		"Website": "http://contentify.it",
-		"Download": "http://contentify.it/download",
+		"Website": "http://contentify.org",
+		"Download": "http://contentify.org/download",
 		"GitHub Repo": "https://github.com/#",
-		"Help/Support/Bugs": "http://contentify.it/support"
+		"Help/Support/Bugs": "http://contentify.org/support"
 	}
 }

@@ -105,7 +105,7 @@ class InstallController extends Controller {
                  */
                 /*
                 $user = Sentry::createUser(array(
-                    'email'     => 'daemon@contentify.it',
+                    'email'     => 'daemon@contentify.org',
                     'username'  => 'Daemon',
                     'password'  => Str::random(),
                     'activated' => false,
