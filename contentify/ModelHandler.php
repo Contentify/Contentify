@@ -6,6 +6,12 @@ class ModelHandler {
 
     protected $controller;
 
+    /**
+     * Setter for $controller
+     * 
+     * @param  BaseController $controller The controller object
+     * @return void
+     */
     public function controller($controller)
     {
         $this->controller = $controller;

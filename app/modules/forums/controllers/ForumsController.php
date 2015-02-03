@@ -7,13 +7,13 @@ class ForumsController extends FrontController {
 
     public function index()
     {
-        $forums = Forum::with('forum')->isRoot()->get();
+        $forums = Forum::with('forum')->hasAccess()->isRoot()->get();
 
         $this->pageView('forums::index', compact('forums'));
     }
 
     /**
-     * Show a forum
+     * Shows a forum
      *
      * @param  int  $id The ID of the forum
      * @return void
@@ -24,7 +24,7 @@ class ForumsController extends FrontController {
         {
             $query->orderBy('sticky', 'desc')->orderBy('updated_at', 'desc');
 
-        }))->findOrFail($id);
+        }))->hasAccess()->findOrFail($id);
 
         $this->pageView('forums::show_forum', compact('forum'));
     }

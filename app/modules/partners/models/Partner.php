@@ -26,6 +26,9 @@ class Partner extends BaseModel {
 
     /**
      * Select only those that have been published
+     *
+     * @param Builder $query
+     * @return Builder
      */
     public function scopePublished($query)
     {

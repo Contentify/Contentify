@@ -11,6 +11,9 @@ class Article extends Page {
 
     /**
      * Select only pages that have been published
+     *
+     * @param Builder $query
+     * @return Builder
      */
     public function scopePublished($query)
     {

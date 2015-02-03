@@ -10,7 +10,10 @@ class CustomPage extends Page {
     protected $subclassId = 2;
 
     /**
-     * Select only pages that are published
+     * Select only pages that have been published
+     *
+     * @param Builder $query
+     * @return Builder
      */
     public function scopePublished($query)
     {

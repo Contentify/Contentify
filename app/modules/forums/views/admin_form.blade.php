@@ -15,6 +15,10 @@
 
     <hr>
 
+    <p>
+        {{ trans('forums::access_info') }}
+    </p>
+
     {{ Form::smartSelectRelation('team', 'Team', $modelClass, null, true, true) }}
 
     {{ Form::smartCheckbox('internal', trans('app.internal')) }}   

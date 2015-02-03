@@ -15,12 +15,13 @@ class Forum extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'description', 'position', 'internal', 'forum_id'];
+    protected $fillable = ['title', 'description', 'position', 'internal', 'team_id', 'forum_id'];
     
     protected $rules = [
         'title'     => 'required',
         'position'  => 'integer',
         'internal'  => 'boolean',
+        'team_id'   => 'sometimes|integer',
         'forum_id'  => 'sometimes|integer',
     ];
 
@@ -32,21 +33,6 @@ class Forum extends BaseModel {
         'team'          => [self::BELONGS_TO, 'App\Modules\Teams\Models\Team'],
         'forums'        => [self::HAS_MANY, 'App\Modules\Forums\Models\Forum'], // Sub forums
     ];
-
-    /**
-     * Select only forums that are root forums (with level = 0)
-     *
-     * @param Builder   $query  The Eloquent Builder object
-     * @param bool      $isRoot If set to false the method behvaes like "isNotRoot()"
-     */
-    public function scopeIsRoot($query, $isRoot = true)
-    {
-        if ($isRoot) {
-            return $query->whereLevel(0);    
-        } else {
-            return $query->where('level', '>', 0);
-        }
-    }
 
     public static function boot()
     {
@@ -75,7 +61,48 @@ class Forum extends BaseModel {
                     $foreignForum = $foreignForum->forum;
                 }
             }
+
+            /*
+             * If the forum is not a root forum, copy access rules of
+             * its parent forum.
+             */
+            if ($forum->level > 0) {
+                $forum->internal    = $forum->forum->internal;
+                $forum->team_id     = $forum->forum->team_id;
+            }
         });
+
+        self::saved(function($forum)
+        {
+            foreach ($forum->forums as $forum) {
+                $forum->refreshChildrensAccesRules(false);
+            }
+        });
+    }
+
+    /**
+     * Refreshes the access rules (internal, related to a team) of all childrens
+     * of a forum - and of their childrens and so on.
+     * (Note: Sub forums have the same access rules as their parent forums.)
+     * 
+     * @return void
+     */
+    public function refreshChildrensAccesRules()
+    {
+        /*
+         * If the forum is not a root forum, copy access rules of
+         * its parent forum.
+         */
+        $this->internal    = $this->forum->internal;
+        $this->team_id     = $this->forum->team_id;
+        $this->forceSave();
+
+        /*
+         * Recursive call of this method for all child forums
+         */
+        foreach ($this->forums as $forum) {
+            $forum->refreshChildrensAccesRules();
+        }
     }
 
     /**
@@ -112,6 +139,51 @@ class Forum extends BaseModel {
         if ($this->forum_id) {
             $this->forum->refresh();
         }
+    }
+
+    /**
+     * Select only forums that are root forums (with level = 0)
+     *
+     * @param Builder   $query  The Eloquent Builder object
+     * @param bool      $isRoot If set to false the method behaves like "isNotRoot()"
+     * @return Builder
+     */
+    public function scopeIsRoot($query, $isRoot = true)
+    {
+        if ($isRoot) {
+            return $query->whereLevel(0);    
+        } else {
+            return $query->where('level', '>', 0);
+        }
+    }
+
+    /**
+     * Select only those forums the user has access to
+     *
+     * @param Builder   $query  The Eloquent Builder object
+     * @param User      $user   User model or null if it's the current client
+     * @return Builder
+     */
+    public function scopeHasAccess($query, $user = null)
+    {
+        if (! $user) {
+            $user = user();
+        }
+
+        if ($user) {
+            $internal = $user->hasAccess('internal');
+
+            $teamIds = \DB::table('team_user')->whereUserId($user->id)->lists('team_id');
+            $teamIds[] = -1; // Add -1 as team ID so the SQL statments (`team_id` in (...)) always has valid syntax
+
+            return $query->where('internal', '<=', $internal)->where(function($query) use ($teamIds)
+            {
+                $query->whereNull('team_id')
+                      ->orWhereIn('team_id', $teamIds);
+            });
+        } else {
+            return $query->whereInternal(0)->whereNull('team_id');
+        }        
     }
 
 }

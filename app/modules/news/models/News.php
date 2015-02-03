@@ -61,6 +61,9 @@ class News extends BaseModel {
 
     /**
      * Select only news that have been published
+     *
+     * @param Builder $query
+     * @return Builder
      */
     public function scopePublished($query)
     {

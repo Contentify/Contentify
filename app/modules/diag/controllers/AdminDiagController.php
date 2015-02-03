@@ -62,7 +62,7 @@ class AdminDiagController extends BackController {
     }
 
     /**
-     * Helper function. Returns the value of an variable from a MySQl variables array retrieved from the database.
+     * Helper function. Returns the value of a variable from a MySQl variables array retrieved from the database.
      * 
      * @param  array    $vars    Array of variables
      * @param  string   $varName Name of variable
