@@ -38,7 +38,6 @@ class StreamsController extends FrontController {
         ], 'front');
     }
 
-
     /**
      * Show a stream
      * 

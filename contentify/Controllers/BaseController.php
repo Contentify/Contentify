@@ -74,26 +74,51 @@ abstract class BaseController extends Controller {
         $this->beforeFilter('csrf', ['on' => ['post', 'put', 'delete']]);
     }
 
+    /**
+     * Getter for $moduleName
+     * 
+     * @return string
+     */
     public function getModuleName()
     {
         return $this->moduleName;
     }
 
+    /**
+     * Getter for $controllerName
+     * 
+     * @return string
+     */
     public function getControllerName()
     {
         return $this->controllerName;
     }
 
+    /**
+     * Getter for $modelName
+     * 
+     * @return string
+     */
     public function getModelName()
     {
         return $this->modelName;
     }
 
+    /**
+     * Getter for $modelClass
+     * 
+     * @return string
+     */
     public function getModelClass()
     {
         return $this->modelClass;
     }
 
+    /**
+     * Getter for $formTemplate
+     * 
+     * @return string
+     */
     public function getFormTemplate()
     {
         return $this->formTemplate;

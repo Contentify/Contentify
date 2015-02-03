@@ -286,6 +286,24 @@ class ModelHandler {
     }
 
     /**
+     * Shows a model
+     * 
+     * @param  int  $id The ID of the model
+     * @return void
+     */
+    public function show($id)
+    {
+        $controller = $this->getControllerOrFail();
+
+        $modelClass = $controller->getModelClass();
+
+        $model = $modelClass::findOrFail($id);
+
+
+        $this->pageView(strtolower($controller->getModuleName()).'::show', compact('model'));
+    }
+
+    /**
      * CRUD: create model
      */
     public function create()
@@ -401,7 +419,6 @@ class ModelHandler {
             return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
         }
     }
-
 
     /**
      * CRUD: edit model
