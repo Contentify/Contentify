@@ -1,7 +1,7 @@
-<div id="forum-post-id-{{ $forumPost->id }}" class="post">
+<div id="forum-post-id-{{{ $forumPost->id }}}" class="post" data-id="{{{ $forumPost->id }}}">
     <div class="meta">
         <a href="{{ url('users/'.$forumPost->creator->id.'/'.$forumPost->creator->slug) }}">
-            <span class="username" title="{{{ $forumPost->creator->username }}}">{{{ $forumPost->creator->username }}}</span>
+            <span class="creator-name" title="{{{ $forumPost->creator->username }}}">{{{ $forumPost->creator->username }}}</span>
             @if ($forumPost->creator->avatar)
                 <img class="avatar" src="{{{ $forumPost->creator->uploadPath().$forumPost->creator->avatar }}}" alt="{{{ $forumPost->creator->username }}}">
             @endif

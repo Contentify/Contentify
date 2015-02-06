@@ -2,7 +2,7 @@
 
 use App\Modules\Forums\Models\ForumPost;
 use App\Modules\Forums\Models\ForumReport;
-use Input, Redirect, FrontController;
+use Response, Input, Redirect, FrontController;
 
 class PostsController extends FrontController {
 
@@ -16,6 +16,19 @@ class PostsController extends FrontController {
         $forumPost = ForumPost::findOrFail($id);
 
         $this->pageView('forums::show_single_post', compact('forumPost'));
+    }
+
+    /**
+     * Returns a forum post as JSON (as response to an AJAX call)
+     * 
+     * @param  int $id The ID of the post
+     * @return mixed
+     */
+    public function get($id)
+    {
+        $forumPost = ForumPost::findOrFail($id);
+
+        return Response::json($forumPost);
     }
 
     /**

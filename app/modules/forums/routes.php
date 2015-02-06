@@ -33,6 +33,7 @@ ModuleRoute::post('forums/search', 'ThreadsController@search');
 ModuleRoute::get('forums/posts/perma/{id}/{slug?}', 'PostsController@show');
 Route::group(array('before' => 'auth'), function()
 {
+    ModuleRoute::get('forums/posts/{id}', 'PostsController@get');
     ModuleRoute::get('forums/posts/delete/{id}', 'PostsController@delete');
     ModuleRoute::post('forums/posts/{id}', 'PostsController@store');
     ModuleRoute::get('forums/posts/edit/{id}', 'PostsController@edit');

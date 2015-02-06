@@ -1,9 +1,13 @@
 <h1 class="page-title">
+    @if ($forum->forum_id and $forum->forum->level > 0)
+        <a class="back" href="{{ url('forums/'.$forum->forum->id.'/'.$forum->forum->slug) }}">{{ HTML::fontIcon('chevron-left') }}</a>
+    @else
+        <a class="back" href="{{ url('forums') }}">{{ HTML::fontIcon('chevron-left') }}</a>
+    @endif
     {{ $forum->title }}
 </h1>
 
 <div class="buttons">
-    <a class="back" href="{{ url('forums') }}">&lt;</a>
     <a class="create" href="{{ url('forums/threads/create/'.$forum->id) }}">{{ trans('forums::create_thread') }}</a>
 </div>
 

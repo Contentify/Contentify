@@ -7339,8 +7339,8 @@ textarea.model-search-box input {
   background-color: #EEE;
   float: left;
 }
-.page-threads .post .meta .username,
-.page-posts .post .meta .username {
+.page-threads .post .meta .creator-name,
+.page-posts .post .meta .creator-name {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

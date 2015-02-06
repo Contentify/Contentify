@@ -1,5 +1,5 @@
 <h1 class="page-title">
-    <a class="back" href="{{ url('forums/'.$forumThread->forum->id.'/'.$forumThread->forum->slug) }}">&lt;</a>
+    <a class="back" href="{{ url('forums/'.$forumThread->forum->id.'/'.$forumThread->forum->slug) }}">{{ HTML::fontIcon('chevron-left') }}</a>
     {{{ $forumThread->title }}}
 </h1>
 
@@ -35,3 +35,31 @@
 @endif
 
 {{ $forumPosts->links() }}
+
+<script>
+    $(document).ready(function()
+    {
+        $('.page .post').click(function(event)
+        {
+            event.preventDefault();
+
+            var $self       = $(this);
+            var $textarea   = $('.page form textarea');
+            var id          = $self.attr('data-id');
+            var creator     = $self.find('.creator-name').text();
+
+            if (creator) creator = '=' + creator;
+
+            $.ajax({
+                url: contentify.baseUrl + 'forums/posts/' + id,
+                type: 'GET'
+            }).success(function(post)
+            {
+                $textarea.val($textarea.val() + '[quote' + creator + ']' + post.text + '[/quote]\n').focus();
+            }).fail(function(response)
+            {
+                contentify.alertRequestFailed(response);
+            });
+        });
+    });
+</script>
