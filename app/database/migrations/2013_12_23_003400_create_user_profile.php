@@ -45,7 +45,7 @@ class CreateUserProfile extends Migration {
             $table->string('avatar', 255)->nullable();
             $table->string('access_counter', 255)->default(0);
             $table->string('posts_count', 255)->default(0); // Forum posts counter
-            $table->string('signature', 255)->nullable(); // Forum signature
+            $table->text('signature')->nullable(); // Forum signature
         });
     }
 

@@ -87,13 +87,15 @@ class User extends SentryUser {
                 'gender'        => $this->gender,
                 'country_id'    => $this->country_id,
                 'language_id'   => $this->language_id,
+                'signature'     => $this->signature,
             ],
             [
                 'username'      => "alpha_spaces|required|min:3|not_in:edit,password|unique:users,username,{$this->id},id",
                 'email'         => "email|required|unique:users,email,{$this->id},id",
                 'gender'        => 'between:0,4',
                 'country_id'    => 'exists:countries,id',
-                'language_id'   => 'exists:languages,id'
+                'language_id'   => 'exists:languages,id',
+                'signature'     => 'max:255', // Warning: Don't make this too big!
             ]
         );
 
