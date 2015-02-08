@@ -13,7 +13,7 @@ class PostsController extends FrontController {
      */
     public function show($id)
     {
-        $forumPost = ForumPost::findOrFail($id);
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         $this->pageView('forums::show_single_post', compact('forumPost'));
     }
@@ -26,7 +26,7 @@ class PostsController extends FrontController {
      */
     public function get($id)
     {
-        $forumPost = ForumPost::findOrFail($id);
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         return Response::json($forumPost);
     }
@@ -42,7 +42,7 @@ class PostsController extends FrontController {
         $forumPost->creator_id = user()->id;
         $forumPost->thread_id = $id;
 
-        $forumThread = $forumPost->thread;
+        $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         if ($forumThread->closed) {
             $this->message(trans('forums::closed_info'));
@@ -74,7 +74,7 @@ class PostsController extends FrontController {
      */
     public function edit($id)
     {
-        $forumPost = ForumPost::findOrFail($id);
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
             return $this->message(trans('app.access_denied'));
@@ -97,7 +97,7 @@ class PostsController extends FrontController {
      */
     public function update($id)
     {
-        $forumPost = ForumPost::findOrFail($id);
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
             return $this->message(trans('app.access_denied'));
@@ -134,7 +134,7 @@ class PostsController extends FrontController {
     {
         if (! $this->checkAccessDelete()) return;
 
-        $forumPost = ForumPost::findOrFail($id);       
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);       
 
         /*
          * If the post is a root post, delete the thread instead of the post.
@@ -161,7 +161,7 @@ class PostsController extends FrontController {
      */
     public function report($id)
     {
-        $forumPost = ForumPost::findOrFail($id); 
+        $forumPost = ForumPost::isAccessible()->findOrFail($id); 
 
         $forumReport = ForumReport::whereCreatorId(user()->id)->whereForumPostId($id)->first();   
 

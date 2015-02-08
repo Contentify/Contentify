@@ -602,7 +602,7 @@ class FormBuilder extends OriginalFormBuilder {
             .'<label for="'.$name.'" class="col-sm-'.$this->labelGridCols.' control-label">'.$title.'</label>'
             .'<div class="col-sm-'.$this->controlGridCols.'">'
             .self::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
-            .'<span class="add-on"><img src="'.asset('icons/date.png').'" alt="Pick"/></span>'
+            .'<span class="add-on">'.HTML::fontIcon('calendar').'</span>'
             .'</div></div>';
         return $partial;
     }

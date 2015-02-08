@@ -34,7 +34,7 @@ class MessagesController extends FrontController {
         $this->pageView('messages::form', ['username' => $username]);
     }
 
-    public function post()
+    public function store()
     {
         $message = new Message(Input::all());
 

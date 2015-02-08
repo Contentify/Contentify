@@ -618,12 +618,6 @@ ul.pagination li.disabled {
   background-repeat: no-repeat;
   cursor: pointer;
 }
-.bootstrap-datetimepicker-widget .icon-time {
-  background: url('../icons/clock_red.png');
-}
-.bootstrap-datetimepicker-widget .icon-date {
-  background: url('../icons/date.png');
-}
 .bootstrap-datetimepicker-widget .table-condensed th,
 .bootstrap-datetimepicker-widget .bootstrap-datetimepicker-widget .table-condensed td {
   padding: 4px 5px;

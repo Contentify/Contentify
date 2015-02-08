@@ -15,7 +15,7 @@ class ThreadsController extends FrontController {
      */
     public function show($id)
     {
-        $forumThread = ForumThread::findOrFail($id);
+        $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $forumPosts = ForumPost::whereThreadId($forumThread->id)->orderBy('created_at', 'asc')->paginate(20);
 
@@ -39,6 +39,8 @@ class ThreadsController extends FrontController {
      */
     public function store($forumId)
     {
+        $forum = Forum::isAccessible()->findOrFail($forumId);
+
         $forumPost = new ForumPost(Input::all());
         $forumPost->root = true;
         $forumPost->creator_id = user()->id;
@@ -61,8 +63,7 @@ class ThreadsController extends FrontController {
         $forumThread->forceSave();
         $forumPost->thread_id = $forumThread->id;
         $forumPost->forceSave();
-
-        $forum = $forumThread->forum;
+        
         $forum->latest_thread_id = $forumThread->id;
         $forum->threads_count++;
         $forum->posts_count++;
@@ -83,7 +84,7 @@ class ThreadsController extends FrontController {
      */
     public function edit($id)
     {
-        $forumThread = ForumThread::findOrFail($id);
+        $forumThread = ForumThread::isAccessible()->findOrFail($id);
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
@@ -100,7 +101,7 @@ class ThreadsController extends FrontController {
      */
     public function update($id)
     {
-        $forumThread = ForumThread::findOrFail($id);
+        $forumThread = ForumThread::isAccessible()->findOrFail($id);
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
@@ -137,7 +138,7 @@ class ThreadsController extends FrontController {
      */
     public function delete($id)
     {
-        $forumPost = ForumPost::findOrFail($id);   
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);   
 
         $forumThread = ForumThread::findOrFail($id);
         $forum = $forumThread->forum;
@@ -173,7 +174,7 @@ class ThreadsController extends FrontController {
             return $this->message(trans('app.access_denied'));
         }
 
-        $forumThread = ForumThread::findOrFail($id);
+        $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $forumThread->sticky = 1 - $forumThread->sticky;
         $forumThread->forceSave();
@@ -193,7 +194,7 @@ class ThreadsController extends FrontController {
             return $this->message(trans('app.access_denied'));
         }
 
-        $forumThread = ForumThread::findOrFail($id);
+        $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $forumThread->closed = 1 - $forumThread->closed;
         $forumThread->forceSave();
@@ -213,7 +214,7 @@ class ThreadsController extends FrontController {
             return $this->message(trans('app.access_denied'));
         }
 
-        $model = ForumThread::findOrFail($id);
+        $model = ForumThread::isAccessible()->findOrFail($id);
         $modelClass = get_class($model);
 
         $forums = Forum::isRoot(false)->get(); 
@@ -232,7 +233,7 @@ class ThreadsController extends FrontController {
             return $this->message(trans('app.access_denied'));
         }
         
-        $forumThread = ForumThread::findOrFail($id);
+        $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $oldForum = $forumThread->forum;
 
@@ -249,7 +250,7 @@ class ThreadsController extends FrontController {
 
     public function globalSearch($subject)
     {
-        $forumThreads = ForumThread::where('title', 'LIKE', '%'.$subject.'%')->get();
+        $forumThreads = ForumThread::isAccessible()->where('forum_threads.title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = array();
         foreach ($forumThreads as $forumThread) {

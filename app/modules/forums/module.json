@@ -1,5 +1,6 @@
 {
     "enabled": true,
+    "search": ["threads"],
     "admin-nav": [
         {
             "icon": "comment",

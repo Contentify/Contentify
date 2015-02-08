@@ -15,6 +15,7 @@ class Award extends BaseModel {
         'achieved_at', 
         'game_id', 
         'tournament_id',
+        'team_id',
     ];
 
     protected $rules = [
@@ -23,11 +24,13 @@ class Award extends BaseModel {
         'position'      => 'integer',
         'game_id'       => 'integer',
         'tournament_id' => 'integer',
+        'team_id'       => 'integer',
     ];
 
     public static $relationsData = [
         'game'          => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
         'tournament'    => [self::BELONGS_TO, 'App\Modules\Tournaments\Models\Tournament'],
+        'team'          => [self::BELONGS_TO, 'App\Modules\Teams\Models\Team'],
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
@@ -40,12 +43,13 @@ class Award extends BaseModel {
     {
         $pos = $this->position;
 
-        $icon = 'award_star_nothing';
-        if ($pos == 1) $icon = 'award_star_gold_3';
-        if ($pos == 2) $icon = 'award_star_silver_3';
-        if ($pos == 3) $icon = 'award_star_bronze_3';
+        $icon = 'trophy';
+        $color = null;
+        if ($pos == 1) $color = 'gold';
+        if ($pos == 2) $color = 'silver';
+        if ($pos == 3) $color = '#CD7F32';
 
-        $icon = HTML::image(get_image_url($icon)).'&nbsp;'.$pos.'.';
+        $icon = HTML::fontIcon($icon, $color).'&nbsp;'.$pos.'.';
 
         return $icon;
     }

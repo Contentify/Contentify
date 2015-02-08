@@ -7,7 +7,7 @@ class ForumsController extends FrontController {
 
     public function index()
     {
-        $forums = Forum::with('forum')->hasAccess()->isRoot()->get();
+        $forums = Forum::with('forum')->isAccessible()->isRoot()->get();
 
         $this->pageView('forums::index', compact('forums'));
     }
@@ -24,7 +24,7 @@ class ForumsController extends FrontController {
         {
             $query->orderBy('sticky', 'desc')->orderBy('updated_at', 'desc');
 
-        }))->hasAccess()->findOrFail($id);
+        }))->isAccessible()->findOrFail($id);
 
         $this->pageView('forums::show_forum', compact('forum'));
     }

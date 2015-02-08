@@ -1,4 +1,4 @@
-{{ button(trans('app.delete'), url('admin/config/log/clear'), asset('icons/bin.png')) }}
+{{ button(trans('app.delete'), url('admin/config/log/clear'), 'trash') }}
 
 <pre style="overflow: scroll">
     {{ $content }}

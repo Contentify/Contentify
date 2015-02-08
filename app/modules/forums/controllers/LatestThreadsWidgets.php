@@ -7,8 +7,7 @@ class LatestThreadsWidget extends Widget {
 
     public function render($parameters = array())
     {
-        // TODO: Access check!
-        $forumThreads = ForumThread::orderBy('updated_at', 'DESC')->take(5)->get();
+        $forumThreads = ForumThread::isAccessible()->orderBy('forum_threads.updated_at', 'DESC')->take(5)->get();
 
         return View::make('forums::widget_latest_threads', compact('forumThreads'))->render();
     }

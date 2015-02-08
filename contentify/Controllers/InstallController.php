@@ -386,7 +386,7 @@ class InstallController extends Controller {
             $table->string('url')->nullable();
             $table->integer('position')->default(0);
             $table->timestamp('achieved_at');
-        }, ['game_id', 'tournament_id'], ['slug']);
+        }, ['game_id', 'tournament_id', 'team_id'], ['slug']);
 
         $this->create('opponents', function($table)
         {

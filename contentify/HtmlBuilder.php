@@ -239,10 +239,10 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     {
         if ($order == 'asc') {
             $order  = 'desc';
-            $icon   = 'caret-down';
+            $icon   = 'caret-up';
         } else {
             $order  = 'asc';
-            $icon   = 'caret-up';
+            $icon   = 'caret-down';
         }
 
         $url = URL::current().'?sortby='.$sortby.'&order='.$order;
@@ -287,12 +287,17 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Returns HTML code for a font icon.
      *
-     * @param string $icon The name of the icon
+     * @param string $icon  The name of the icon
+     * @param string $color The color of the icon (HTML color name or code)
      * @return string
      */
-    public function fontIcon($icon)
+    public function fontIcon($icon, $color = null)
     {
-        return '<i class="fa fa-'.$icon.'"></i>';
+        if ($color) {
+            $color = ' style="color: '.$color.'"';
+        }
+
+        return '<i class="fa fa-'.$icon.'"'.$color.'></i>';
     }
 
 }

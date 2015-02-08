@@ -15,15 +15,16 @@ class AwardsController extends FrontController {
     public function index()
     {
         $this->indexPage([
-            'buttons'   => null,
-            'tableHead' => [
+            'buttons'       => null,
+            'brightenFirst' => false,
+            'tableHead'     => [
                 trans('app.position')   => 'position', 
                 trans('app.title')      => 'title', 
                 trans('Tournament')     => 'tournament_id',
                 trans('Game')           => 'game_id',
                 trans('app.date')       => 'achieved_at',
             ],
-            'tableRow'  => function($award)
+            'tableRow'      => function($award)
             {
                 $game = '';
                 if ($award->game->icon) {
@@ -41,7 +42,7 @@ class AwardsController extends FrontController {
                     $award->achieved_at,
                 ];
             },
-            'actions'   => null,
+            'actions'       => null,
         ], 'front');
     }
 

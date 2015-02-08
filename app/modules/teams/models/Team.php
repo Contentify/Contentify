@@ -24,6 +24,7 @@ class Team extends BaseModel {
     public static $relationsData = [
         'members'   => [self::BELONGS_TO_MANY, 'User'],
         'teamcat'   => [self::BELONGS_TO, 'App\Modules\Teams\Models\Teamcat'],
+        'awards'    => [self::HAS_MANY, 'App\Modules\Awards\Models\Award'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

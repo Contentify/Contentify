@@ -47,7 +47,7 @@
 </head>
 <body>
     <div id="page-container">
-        <noscript><div id="nojavascript"><img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon"> {{ trans('app.no_js') }}</div></noscript>
+        <noscript><div id="nojavascript">{{ HTML::fontIcon('exclamation-circle') }} <img src="{{ asset('icons/exclamation.png') }}" width="16" height="16" alt="icon"> {{ trans('app.no_js') }}</div></noscript>
         <header id="header">
             <a id="header-logo" href="{{ route('admin.dashboard') }}" title="{{ trans('app.admin_dashboard') }}"><!-- empty --></a>
             

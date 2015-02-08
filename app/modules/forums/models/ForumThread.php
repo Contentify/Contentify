@@ -42,15 +42,18 @@ class ForumThread extends BaseModel {
     }
 
     /**
-     * Select only those forums the user has access to
+     * Select only those forum threads the user has access to.
+     * WARNING: Creates a JOIN with the forum_threads table.
      *
      * @param Builder   $query  The Eloquent Builder object
      * @param User      $user   User model or null if it's the current client
      * @return Builder
      */
-    public function scopeHasAccess($query, $user = null)
+    public function scopeIsAccessible($query, $user = null)
     {
-        /*
+        $query->select('forum_threads.*')
+            ->join('forums', 'forum_threads.forum_id', '=', 'forums.id');
+
         if (! $user) {
             $user = user();
         }
@@ -59,7 +62,7 @@ class ForumThread extends BaseModel {
             $internal = $user->hasAccess('internal');
 
             $teamIds = \DB::table('team_user')->whereUserId($user->id)->lists('team_id');
-            $teamIds[] = -1; // Add -1 as team ID so the SQL statments (`team_id` in (...)) always has valid syntax
+            $teamIds[] = -1; // Add -1 as team ID so the SQL statements (`team_id` in (...)) always has valid syntax
 
             return $query->where('internal', '<=', $internal)->where(function($query) use ($teamIds)
             {
@@ -68,8 +71,7 @@ class ForumThread extends BaseModel {
             });
         } else {
             return $query->whereInternal(0)->whereNull('team_id');
-        }
-        */    
+        }  
     }
 
 }
