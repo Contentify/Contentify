@@ -22,7 +22,7 @@
                         {{{ $subForum->title }}}
 
                         @if ($subForum->description)
-                            <span class="desc">{{{ $subForum->description }}}</span>
+                            <span class="desc">{{ $subForum->description }}</span>
                         @endif
                     </a>
                 </div>

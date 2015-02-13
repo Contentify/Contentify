@@ -39,7 +39,7 @@
 <script>
     $(document).ready(function()
     {
-        $('.page .post').click(function(event)
+        $('.page .post .quote').click(function(event)
         {
             event.preventDefault();
 
