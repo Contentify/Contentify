@@ -52,6 +52,7 @@ Config files live in `app/config`. Important config files are:
 
 * *app.php*: Application settings such as title and encryption key
 * *database.php*: Database settings such as connection setup. It's recommended to set `utf8_unicode_ci` as collation when you create the database. `utf8_general_ci` will work but [sorting will be inaccurate](http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci#766996).
+* *mail.php*: Email settings such as name and address for all e-mails that are sent by your application.
 
 # Installation
 

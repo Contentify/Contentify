@@ -33,8 +33,8 @@ return array(
     'code_invalid'      => 'Code does not match.',
     'new_pw'            => 'New Password',
     'email_new_pw'      => 'An email with your new password has been sent to your email address.',
-    'pw_link'           => 'Please open the following link to generate a new password for',
-    'email_ignore'      => 'If you don\'t want to generate a new password ignore this mail.',
+    'pw_link'           => 'Please click on the following link to generate a new password for :0.',
+    'email_ignore'      => 'If you do not want to generate a new password please ignore this mail.',
     'pw_generated'      => 'A new password has been generated for :0.',
 
     /* 

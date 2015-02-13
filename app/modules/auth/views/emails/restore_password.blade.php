@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <p>{{ trans('pw_link', [Config::get('app.title')] }}</p>
+    <p>{{ trans('auth::pw_link', [Config::get('app.title')]) }}</p>
 
     <table>
         <tr>

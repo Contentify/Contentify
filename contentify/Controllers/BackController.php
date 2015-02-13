@@ -30,16 +30,6 @@ abstract class BackController extends BaseController {
         View::composer('backend.layout_main', function($view) use ($self)
         { 
             /*
-             * User profile picture
-             */ 
-            if (user()->image) {
-                $userImage = asset('uploads/users/60/'.user()->image);
-            } else {
-                $userImage = asset('theme/user.png');
-            }
-            $view->with('userImage', $userImage);
-
-            /*
              * Contact messages
              */
             $contactMessages = null;

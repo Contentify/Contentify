@@ -34,10 +34,8 @@ class RestorePasswordController extends FrontController {
             });
 
             $this->message(
-                tans('auth::email_gen_pw')
+                trans('auth::email_gen_pw')
             );
-
-            //$this->pageView('auth::emails.restore_password', compact('user')); // DEBUG
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
             $this->message(trans('auth::email_invalid'));
             return;
@@ -63,7 +61,7 @@ class RestorePasswordController extends FrontController {
 
             $password = strtolower(Str::random(9)); // Generate a new password
 
-            Mail::send('auth::emails.send_password', compact('user'), function($message) use ($email, $user, $password)
+            Mail::send('auth::emails.send_password', compact('user', 'password'), function($message) use ($email, $user)
             {
                 $message->to($email, $user->username)->subject(trans('auth::new_pw'));
             });
