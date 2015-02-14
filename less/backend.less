@@ -48,12 +48,6 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
     .text { }
 }
 
-/* Alert */
-.alert { 
-    margin-bottom: 10px; padding: 5px; border: 1px solid #E7E7E7; .background-image('theme/backend/bg_message.png'); background-repeat: repeat-x;
-    h4 { font-size: 12px; }
-}
-
 /* Form */
 .form-errors { }
 .form-actions { 
@@ -62,7 +56,7 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 }
 .form-editor { 
     margin-bottom: 20px;
-    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; .background-image('theme/bg_textbox.png'); background-repeat: repeat-x }
+    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; }
 }
 
 .form-helpers {
@@ -99,8 +93,8 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 .hover-ui { display: none; }
 
 /* Datetime Picker */
-.date-time-picker input { width: 128px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; }
-.date-time-picker .add-on { display: inline-block; height: 22px; margin-left: 1px; padding: 5px 10px; border: 1px solid #CCCCCC; border-top-right-radius: 3px; border-bottom-right-radius: 3px; background-color: #F9F9F9; cursor: pointer }
+.date-time-picker input { color: @textblack; }
+.date-time-picker .input-group-addon { color: @textblack; cursor: pointer }
 
 /* Tags */
 /* .form-group .bootstrap-tagsinput { max-width: 40% } */
@@ -190,13 +184,11 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 
 
 body {
-    margin: 0px;
-    padding: 0px;
     font-weight: 400;
     font-size: 14px;
     color: @textblack;
     font-family: @font-family;
-    background-color: @lightgray;
+    background-color: @white;
 }
 
 *:focus {

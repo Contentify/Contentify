@@ -3,39 +3,18 @@ $(document).ready(function()
     /*
      * Add datetime picker
      */
-    $('.date-time-picker').datetimepicker();
-    $('.date-time-picker .add-on').click(function(event)
-    {
-        event.preventDefault();
-
-        $('.bootstrap-datetimepicker-widget').css({
-            position: 'absolute',
-            display: 'block',
-
-        });
-    });
-    $('.bootstrap-datetimepicker-widget .picker-switch a').click(function(event)
-    {
-        event.preventDefault();
-
-        $('.bootstrap-datetimepicker-widget .collapse').each(function()
-        {
-            if ($(this).hasClass('in')) {
-                $(this).removeClass('in')
-            } else {
-                $(this).addClass('in')
-            }
-        });
-
-        var $icon = $(this).find('i');
-
-        if ($icon.hasClass('icon-time')) {
-            $icon.removeClass('icon-time');
-            $icon.addClass('icon-date');
-        } else {
-            $icon.addClass('icon-time');
-            $icon.removeClass('icon-date');
-        }
+    $('.date-time-picker').datetimepicker({
+        format: contentify.dateFormat + '  HH:mm:ss',
+        icons: {
+            time: 'fa fa-clock-o',
+            date: 'fa fa-calendar',
+            up: 'fa fa-chevron-up',
+            down: 'fa fa-chevron-down',
+            previous: 'fa fa-chevron-left',
+            next: 'fa fa-chevron-right',
+            today: 'fa fa-screenshot',
+            clear: 'fa fa-trash'
+        },
     });
 
     /*

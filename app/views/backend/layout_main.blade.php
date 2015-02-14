@@ -10,28 +10,30 @@
     <meta name="asset-url" content="{{ asset('') }}">
     <meta name="csrf-token" content="{{ Session::get('_token') }}">
     <meta name="locale" content="{{ Config::get('app.locale') }}">
-    <meta name="date-format" content="{{ trans('app.date_format') }}">
+    <meta name="date-format" content="{{ trans('app.date_format_alt') }}">
     {{ HTML::metaTags($metaTags) }}
 
     {{ HTML::title($title) }}
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 
-    {{ HTML::style('css/font-awesome.min.css') }}
+    {{ HTML::style('vendor/font-awesome/css/font-awesome.min.css') }}
     {{ HTML::style('css/backend.css') }}
-    {{ HTML::style('libs/datetime/picker.min.css') }}
-    {{ HTML::style('libs/tags/bootstrap-tagsinput.css') }}
+    {{ HTML::style('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') }}
+    {{ HTML::style('vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') }}
     
     <!--[if lt IE 9]>
         {{ HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}
         {{ HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}
     <![endif]-->
-    {{ HTML::script('libs/jquery-1.10.2.min.js') }}
-    {{ HTML::script('libs/datetime/picker.min.js') }}
-    {{ HTML::script('libs/tags/bootstrap-tagsinput.js') }}
-    {{ HTML::script('libs/ckeditor/ckeditor.js') }}
-    {{ HTML::script('libs/contentify.js') }}
-    {{ HTML::script('libs/backend.js') }}
+    {{ HTML::script('vendor/jquery/jquery-1.11.2.min.js') }}
+    {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
+    {{ HTML::script('vendor/moment/moment.js') }}
+    {{ HTML::script('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}
+    {{ HTML::script('vendor/bootstrap-tagsinput/bootstrap-tagsinput.js') }}
+    {{ HTML::script('vendor/ckeditor/ckeditor.js') }}
+    {{ HTML::script('vendor/contentify/contentify.js') }}
+    {{ HTML::script('vendor/contentify/backend.js') }}
 </head>
 <body>
     <div id="page-container">
@@ -108,10 +110,6 @@
                 @endif
 
                 Version {{ Config::get('app.version') }}
-
-                { HTML::renderBackendNav() }
-
-                2009-{{ date('Y') }}
 
                 {{ trans('app.top') }}
 

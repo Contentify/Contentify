@@ -24,7 +24,7 @@
         </ul>
     </div>
 
-    {{ HTML::script('libs/slider.js') }}
+    {{ HTML::script('vendor/contentify/slider.js') }}
     <script>
         $(document).ready(function()
         {

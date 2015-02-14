@@ -6,4 +6,4 @@
     {{ $comments->links() }}
 </div>
 
-{{ HTML::script('libs/comments.js') }}
+{{ HTML::script('vendor/contentify/comments.js') }}

@@ -10,7 +10,7 @@
     <meta name="asset-url" content="{{ asset('') }}">
     <meta name="csrf-token" content="{{ Session::get('_token') }}">
     <meta name="locale" content="{{ Config::get('app.locale') }}">
-    <meta name="date-format" content="{{ trans('app.date_format') }}">
+    <meta name="date-format" content="{{ trans('app.date_format_alt') }}">
     {{ HTML::metaTags($metaTags) }}
     @if ($openGraph)
         {{ HTML::openGraphTags($openGraph) }}
@@ -22,17 +22,17 @@
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{{ asset('rss/news.xml') }}">
 
-    {{ HTML::style('css/font-awesome.min.css') }}
+    {{ HTML::style('vendor/font-awesome/css/font-awesome.min.css') }}
     {{ HTML::style('css/frontend.css') }}
 
     <!--[if lt IE 9]>
         {{ HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}
         {{ HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}
     <![endif]-->
-    {{ HTML::script('libs/jquery-1.10.2.min.js') }}
-    {{-- HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') --}}
-    {{ HTML::script('libs/contentify.js') }}
-    {{ HTML::script('libs/frontend.js') }}
+    {{ HTML::script('vendor/jquery/jquery-1.11.2.min.js') }}
+    {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
+    {{ HTML::script('vendor/contenify/contentify.js') }}
+    {{ HTML::script('vendor/contenify/frontend.js') }}
 </head>
 <body>
     <header id="header" onclick="window.location='{{ route('home') }}'">

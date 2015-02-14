@@ -40,7 +40,7 @@ class AdminMembersController extends BackController {
             'actions'   => null
         ]);
         
-        $this->pageOutput(HTML::script('libs/members.js'));
+        $this->pageOutput(HTML::script('vendor/contentify/members.js'));
     }
 
     /**

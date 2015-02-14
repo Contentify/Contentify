@@ -6567,6 +6567,9 @@ button.close {
   white-space: nowrap;
   overflow: hidden;
 }
+.numeric-input {
+  text-align: right;
+}
 .spoiler-wrapper {
   margin: 20px 0px;
   padding: 0px 10px;
@@ -6647,17 +6650,6 @@ h2.section {
   margin: 0px;
   font-size: 12px;
 }
-/* Alert */
-.alert {
-  margin-bottom: 10px;
-  padding: 5px;
-  border: 1px solid #E7E7E7;
-  background: url('../theme/backend/bg_message.png');
-  background-repeat: repeat-x;
-}
-.alert h4 {
-  font-size: 12px;
-}
 /* Form */
 .form-actions {
   padding-top: 20px;
@@ -6676,8 +6668,6 @@ h2.section {
   line-height: 30px;
   padding: 0px 10px;
   border: 1px solid #EFEFEF;
-  background: url('../theme/bg_textbox.png');
-  background-repeat: repeat-x;
 }
 .form-helpers.top {
   min-height: 26px;
@@ -6746,19 +6736,10 @@ h2.section {
 }
 /* Datetime Picker */
 .date-time-picker input {
-  width: 128px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+  color: #424242;
 }
-.date-time-picker .add-on {
-  display: inline-block;
-  height: 22px;
-  margin-left: 1px;
-  padding: 5px 10px;
-  border: 1px solid #CCCCCC;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-  background-color: #F9F9F9;
+.date-time-picker .input-group-addon {
+  color: #424242;
   cursor: pointer;
 }
 /* Tags */
@@ -6929,13 +6910,11 @@ h2.section {
  * Mainlayout
  */
 body {
-  margin: 0px;
-  padding: 0px;
   font-weight: 400;
   font-size: 14px;
   color: #424242;
   font-family: 'Open Sans', sans-serif;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
 }
 *:focus {
   outline: none;

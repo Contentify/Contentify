@@ -6566,6 +6566,9 @@ button.close {
   white-space: nowrap;
   overflow: hidden;
 }
+.numeric-input {
+  text-align: right;
+}
 .spoiler-wrapper {
   margin: 20px 0px;
   padding: 0px 10px;

@@ -1,6 +1,6 @@
 <div id="chart"></div>
 
-{{ HTML::script('libs/flot/flot.js') }}
+{{ HTML::script('vendor/flot/flot.js') }}
 
 <script>
     $.plot($("#chart"), [ [{{ $chart->dataSet }}] ],

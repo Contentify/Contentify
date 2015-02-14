@@ -598,12 +598,13 @@ class FormBuilder extends OriginalFormBuilder {
             $value = (new AliasedCarbon())->dateTime();
         }
 
-        $partial = '<div class="form-group date-time-picker input-append date">'
+        $partial = '<div class="form-group">'
             .'<label for="'.$name.'" class="col-sm-'.$this->labelGridCols.' control-label">'.$title.'</label>'
-            .'<div class="col-sm-'.$this->controlGridCols.'">'
-            .self::text($name, $value, ['data-format' => trans('app.date_format_alt').' hh:mm:ss'])
-            .'<span class="add-on">'.HTML::fontIcon('calendar').'</span>'
-            .'</div></div>';
+            .'<div class="col-sm-'.$this->controlGridCols.' ">'
+            .'<div class="input-group date-time-picker">'
+            .self::text($name, $value, ['class' => 'form-control', 'data-format' => trans('app.date_format_alt').' hh:mm:ss'])
+            .'<span class="input-group-addon">'.HTML::fontIcon('calendar').'</span>'
+            .'</div></div></div>';
         return $partial;
     }
 
