@@ -1,29 +1,3 @@
-/*
- * Initialize navigation script
- */
-ddaccordion.init({
-    headerclass: 'silverheader',    // Shared CSS class name of headers group
-    contentclass: 'submenu',        // Shared CSS class name of contents group
-    revealtype: 'click',            // Clicks / onmouseover on the header reveal? Values: "click", "clickgo", "mouseover"
-    mouseoverdelay: 200,            // If revealtype="mouseover", set delay in milliseconds before header expands onMouseover
-    collapseprev: true,             // Collapse previous content (so only one open at any time)? true/false
-    defaultexpanded: [0],           // index of content(s) open by default [index1, index2, etc] [] denotes no content
-    onemustopen: true,              // Specify whether at least one header should be open always (so never all headers closed)
-    animatedefault: false,          // Should contents open by default be animated into view?
-    persiststate: true,             // Persist state of opened contents within browser session?
-    toggleclass: ['', 'selected'],  // Two CSS classes to be applied to the header when it's collapsed and expanded
-    togglehtml: ['', '', ''],       // Additional HTML added to the header when it's collapsed and expanded
-    animatespeed: 'fast',           // Speed of animation: integer in milliseconds (ie: 200), or keywords "fast" etc.
-    oninit: function(headers, expandedindices) 
-    { 
-        // Custom code to run when headers have initalized
-    },
-    onopenclose: function(header, index, state, isuseractivated) 
-    { 
-        // Custom code to run whenever a header is opened or closed
-    }
-});
-
 $(document).ready(function()
 {  
     /*
@@ -65,62 +39,62 @@ $(document).ready(function()
     });
 
     /*
-     * Activate selecter plugin
+     * Open sidebar category
      */
-    $("select").selecter();
-
-    /*
-     * Add quicktip
-     */
-    $('*[title]').quicktip({
-        speed: 400
-    });
-    $('.hover-ui').parent().quicktip({
-        speed: 400
-    });
-
-    /*
-     * Update date and time
-     */
-    var timeoutTime = 1000; // ms
-
-    var updateDatetime = function () 
-    {
-        var now = contentify.formatDate(new Date(), contentify.dateFormat + ' - H:i')
-        $('#datetime').text(now);
+    var sessionKey = 'backend.sidebar.category';
+    var category = sessionStorage.getItem(sessionKey);
+    if (category) {
+        $('#sidebar .category:eq(' + category + ') .items').css('height', 'auto');
     }
 
-    updateDatetime();
-    var t = setInterval(updateDatetime, timeoutTime);
-
-    /*
-     * Make sidebar responsive to scrolling
-     */
-    $(window).scroll(function () 
+    var naviCategoryLocked = false;
+    function activateNaviCategory(index)
     {
-        var $header     = $('#header');
-        var $sidebar    = $('#sidebar');
-        var $main       = $('#main-content');
-        var $footer     = $('#footer');
+        $('#sidebar .category').each(function()
+        {
+            var $items = $(this).find('.items');
+            var height = $items.height();
 
-        // 22px = Sidebar offset
-        if ($(window).scrollTop() > $header.height() - 22 && $(window).height() > $sidebar.height()) { 
-            if ($(window).scrollTop() + $sidebar.height() + 22 < $footer.get(0).offsetTop) {
-                $sidebar.css({'position': 'fixed', top: '22px'});
-               
-                $main.css({marginLeft: '272px', float: 'none'});     
+            if ($(this).index() == index) {
+                if (height == 0) {
+                    $items.css('height', 'auto');
+                    height = $items.height();
+                    $items.css('height', 0);
+
+                    $items.animate({height: height}, {duration: 500, queue: false});
+                }
             } else {
-                $sidebar.css({ 
-                    'position': 'relative', top: $footer.get(0).offsetTop - $sidebar.height() - $header.height()
-                });
-                
-                 $main.css({marginLeft: 0, float: 'left'});
+                if (height > 0) {
+                    $items.animate({height: 0}, {duration: 500, queue: false});
+                }
             }
-        } else {
-            $sidebar.css({'position': 'relative', top: 'auto'});
-            $main.css({marginLeft: 0, float: 'left'});
-        }
+
+            $('#sidebar .category').removeClass('active');
+        });
+    }
+
+    $('#sidebar .category .head').click(function(event)
+    {
+        event.preventDefault();
+
+        var index = $(this).parent().index();
+        sessionStorage.setItem(sessionKey, index);
+        activateNaviCategory(index);
     });
 
-    $(window).scroll();
+    /*
+     * Adjust sidebar height to window height
+     */
+    $(window).resize(function()
+    {
+        var $sidebar = $('#sidebar');
+        var headerHeight = $('#header').height();
+
+
+        $sidebar.css('margin-top', headerHeight);
+        $sidebar.css('height', $(window).height() - headerHeight);
+    });
+
+    $(window).resize();
+
 });

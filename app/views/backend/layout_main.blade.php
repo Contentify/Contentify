@@ -62,8 +62,8 @@
         <!-- Header Ends -->
 
         <!-- Menu Starts -->
-        <aside id="menu">
-            <div id="account-menu">
+        <aside id="sidebar">
+            <div class="account">
                 <a id="profile-link" href="{{ url('users/'.user()->id) }}">
                     <div class="avatar">
                         @if (user()->image)
@@ -74,20 +74,8 @@
                     </div>
                 </a>                
             </div>
-            <div id="navigation">
-                <div class="side-menu dashboard active">
-                    <a href="{{ route('admin.dashboard') }}"><span class="fa fa-dashboard fa-fw"></span>Dashboard</a>
-                </div>
-                <div class="side-menu structure">
-                    <a href="{{ url('/admin/structure') }}"><span class="fa fa-sitemap fa-fw"></span>Structure</a>
-                </div>
-                <div class="side-menu modules">
-                    <a href="{{ url('/admin/modules') }}"><span class="fa fa-th fa-fw"></span>Modules</a>
-                </div>
-                <div class="side-menu administration">
-                    <a href="{{ url('/admin/administration') }}"><span class="fa fa-cog fa-fw"></span>Administration</a>
-                </div>
-            </div>
+            
+            {{ HTML::renderBackendNav() }}
         </aside>
         <!-- Menu Ends -->
         

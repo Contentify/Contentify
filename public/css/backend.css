@@ -6972,7 +6972,7 @@ header {
   background-color: #139cdc;
   color: #ffffff;
   font-size: 16px;
-  line-height: 3.5em;
+  line-height: 56px;
   position: fixed;
   left: 0px;
   right: 0px;
@@ -7003,27 +7003,25 @@ header nav ul li:hover a {
 header .header-logo {
   padding-left: 0px;
 }
-#menu {
+#sidebar {
   background-color: #1a1f23;
   height: 100%;
   position: fixed;
   width: 250px;
-  padding: 80px 0px 0px 0px;
+  box-sizing: border-box;
+  overflow: auto;
 }
-#menu a {
-  display: block;
-}
-#menu #account-menu {
+#sidebar .account {
   text-align: center;
-  margin: 0px 0px 40px 0px;
+  margin: 40px 0px;
 }
-#menu #account-menu .avatar {
+#sidebar .account .avatar {
   font-weight: 300;
   color: #ffffff;
   font-size: 18px;
   padding: 0px 0px 10px 0px;
 }
-#menu #account-menu .avatar .image {
+#sidebar .account .avatar .image {
   width: 100px;
   height: 100px;
   margin-left: auto;
@@ -7033,45 +7031,55 @@ header .header-logo {
   background-size: cover;
   border-radius: 100px;
 }
-#menu #account-menu .avatar .welcome {
+#sidebar .account .avatar .welcome {
   font-weight: 700;
   display: block;
+  margin-top: 10px;
 }
-#menu #account-menu span {
+#sidebar .account span {
   color: #ffffff;
   font-size: 16px;
   margin: 0px 10px 0px 10px;
 }
-#menu #navigation .side-menu {
-  margin: 0px 0px 40px 0px;
-}
-#menu #navigation .side-menu a {
-  color: #ffffff;
-  text-align: center;
-  font-weight: 300;
-  font-size: 22px;
-  padding: 10px 0px 10px 0px;
-}
-#menu #navigation .side-menu a span {
+#sidebar .navigation .category .head {
   display: block;
-  color: #f3f3f3;
-  font-size: 48px;
-  margin: 0 auto;
+  padding: 10px 20px;
+  margin-bottom: 1px;
+  background-color: #1e2429;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-#menu #navigation .side-menu:hover a {
-  color: #139cdc;
+#sidebar .navigation .category .items {
+  height: 0px;
+  overflow: hidden;
 }
-#menu #navigation .side-menu:hover a span {
-  color: #139cdc;
+#sidebar .navigation .category .items a {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  padding: 10px 20px;
+  color: #728797;
 }
-#menu #navigation .side-menu.active {
+#sidebar .navigation .category .items a i {
+  width: 30px;
+  text-align: center;
+}
+#sidebar .navigation .category .items a:active {
+  padding-left: 15px;
   border-left: 5px #139cdc solid;
+  background-color: #161a1d;
 }
-#menu #navigation .side-menu.active a {
-  color: #139cdc;
+#sidebar .navigation .category .items a:hover {
+  padding-left: 15px;
+  border-left: 5px #139cdc solid;
+  background-color: #161a1d;
 }
-#menu #navigation .side-menu.active a span {
-  color: #139cdc;
+#sidebar .navigation .category.active .items {
+  height: auto;
 }
 #content {
   margin: 0px 0px 0px 250px;

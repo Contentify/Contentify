@@ -231,11 +231,13 @@ img {
     margin: 0px;
 }
 
+@headerHeight: 56px;
+
 header {
     background-color: @blue;
     color: @white;
     font-size: 16px;
-    line-height: 3.5em;
+    line-height: @headerHeight;
     position: fixed;
     left: 0px;
     right: 0px;
@@ -267,18 +269,16 @@ header {
     }
 }
 
-#menu {
+#sidebar {
     background-color: @bgblack;
     height: 100%;
     position: fixed;
     width: 250px;
-    padding: 80px 0px 0px 0px;
-    a {
-        display: block;
-    }
-    #account-menu {
+    box-sizing: border-box; 
+    overflow: auto;
+    .account {
         text-align: center;
-        margin: 0px 0px 40px 0px;
+        margin: 40px 0px;
         .avatar {
             font-weight: 300;
             color: @white;
@@ -297,6 +297,7 @@ header {
             .welcome {
                 font-weight: 700;
                 display: block;
+                margin-top: 10px;
             }
         }
         span {
@@ -305,39 +306,45 @@ header {
             margin: 0px 10px 0px 10px;
         }
     }
-    #navigation {
-        .side-menu {
-            margin: 0px 0px 40px 0px;
-            a {
+    .navigation {
+        .category {
+            .head {
+                display: block;
+                padding: 10px 20px;
+                margin-bottom: 1px;
+                background-color: lighten(@bgblack, 2%);
                 color: @white;
-                text-align: center;
-                font-weight: 300;
-                font-size: 22px;
-                padding: 10px 0px 10px 0px;
-                span {
+                text-transform: uppercase;
+                .ellipsis();
+            }
+            .items {
+                height: 0px;
+                overflow: hidden;
+                a {
+                    .ellipsis();
                     display: block;
-                    color: @lightgray;
-                    font-size: 48px;
-                    margin: 0 auto;
-                }
-            }
-            &:hover {
-                a {
-                    color: @blue;
-                    span {
-                        color: @blue;
+                    padding: 10px 20px;
+                    color: lighten(@bgblack, 40%);
+
+                    i { 
+                        width: 30px; 
+                        text-align: center;
                     }
                 }
-            }
-            &.active {
-                border-left: 5px @blue solid;
-                a {
-                    color: @blue;
-                    span {
-                        color: @blue;
-                    }
+                a:active {
+                    padding-left:  15px;
+                    border-left: 5px @blue solid;
+                    background-color: darken(@bgblack, 2%);
+                }
+                a:hover {
+                    padding-left:  15px;
+                    border-left: 5px @blue solid;
+                    background-color: darken(@bgblack, 2%);
                 }
             }
+        }
+        .category.active .items {
+            height: auto;
         }
     }
 }
