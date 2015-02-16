@@ -1,5 +1,5 @@
 @if ($buttons or $showSearchBox)
-    <div class="form-helpers top">
+    <div class="toolbar top">
         {{ $buttons }}
 
         @if ($showSearchBox)
@@ -18,7 +18,7 @@
 @endif
 {{ $contentTable }}
 
-<div class="form-helpers bottom">
+<div class="toolbar bottom">
     {{ $sortSwitcher }}
     {{ $recycleBin }}
     {{ $paginator }}

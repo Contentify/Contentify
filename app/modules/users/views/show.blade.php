@@ -41,7 +41,15 @@
 <div class="profile-socials">
     <ul class="list-unstyled">
         <li>
-            <span class="title">{{ trans('users::skype') }}:</span>
+            <span class="title">Facebook:</span>
+            {{{ $user->facebook }}}
+        </li>
+        <li>
+            <span class="title">Twitter:</span>
+            {{{ $user->twitter }}}
+        </li>
+        <li>
+            <span class="title">Skype:</span>
             {{{ $user->skype }}}
         </li>
         <li>

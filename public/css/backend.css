@@ -2513,7 +2513,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #e1e1e1;
+  color: #555555;
 }
 .form-control {
   display: block;
@@ -2522,7 +2522,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #e1e1e1;
+  color: #555555;
   background-color: #ffffff;
   background-image: none;
   border: 1px solid #cccccc;
@@ -3767,7 +3767,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #e1e1e1;
+  color: #555555;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #cccccc;
@@ -3900,7 +3900,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #e1e1e1;
+  color: #555555;
   background-color: #ffffff;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
@@ -6567,6 +6567,9 @@ button.close {
   white-space: nowrap;
   overflow: hidden;
 }
+.form-group label[for] {
+  cursor: pointer;
+}
 .numeric-input {
   text-align: right;
 }
@@ -6651,6 +6654,74 @@ h2.section {
   font-size: 12px;
 }
 /* Form */
+.form-group label:after {
+  /* content: ':'; */
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.form-group input::-moz-placeholder,
+.form-group select::-moz-placeholder,
+.form-group textarea::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+.form-group input:-ms-input-placeholder,
+.form-group select:-ms-input-placeholder,
+.form-group textarea:-ms-input-placeholder {
+  color: #999999;
+}
+.form-group input::-webkit-input-placeholder,
+.form-group select::-webkit-input-placeholder,
+.form-group textarea::-webkit-input-placeholder {
+  color: #999999;
+}
+.form-group input[disabled],
+.form-group select[disabled],
+.form-group textarea[disabled],
+.form-group input[readonly],
+.form-group select[readonly],
+.form-group textarea[readonly],
+fieldset[disabled] .form-group input,
+fieldset[disabled] .form-group select,
+fieldset[disabled] .form-group textarea {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+textarea.form-group input,
+textarea.form-group select,
+textarea.form-group textarea {
+  height: auto;
+}
+.form-group textarea {
+  height: auto;
+}
 .form-actions {
   padding-top: 20px;
 }
@@ -6669,14 +6740,18 @@ h2.section {
   padding: 0px 10px;
   border: 1px solid #EFEFEF;
 }
-.form-helpers.top {
+.form-horizontal .control-label {
+  text-align: left;
+}
+.toolbar.top {
   min-height: 26px;
   margin-bottom: 20px;
 }
-.form-helpers.top button {
+.toolbar.top button {
   margin-right: 10px;
 }
-.form-helpers.bottom {
+.toolbar.bottom {
+  min-height: 34px;
   margin: 10px 0px;
   padding: 5px 0px;
   border-top: 1px dotted #CCC;
@@ -6684,13 +6759,59 @@ h2.section {
 }
 /* Search-Box */
 .model-search-box input[type=text] {
-  width: 170px;
-  padding: 1px 10px;
-  background: url('../theme/backend/bg_searchbox.png');
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  display: inline-block;
+  max-width: 170px;
+  background: url('../theme/searchbox_bg.png');
+  background-position: 10px center;
   background-repeat: no-repeat;
   text-indent: 20px;
 }
-.form-helpers .model-search-box {
+.model-search-box input[type=text]:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.model-search-box input[type=text]::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+.model-search-box input[type=text]:-ms-input-placeholder {
+  color: #999999;
+}
+.model-search-box input[type=text]::-webkit-input-placeholder {
+  color: #999999;
+}
+.model-search-box input[type=text][disabled],
+.model-search-box input[type=text][readonly],
+fieldset[disabled] .model-search-box input[type=text] {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  opacity: 1;
+}
+textarea.model-search-box input[type=text] {
+  height: auto;
+}
+.model-search-box input[type=submit] {
+  vertical-align: inherit;
+}
+.toolbar .model-search-box {
   float: right;
 }
 /* Sort-Switcher */
@@ -6705,7 +6826,7 @@ h2.section {
 .sort-switcher img {
   vertical-align: bottom;
 }
-.form-helpers .sort-switcher {
+.toolbar .sort-switcher {
   margin: 0px;
 }
 /* Recycle Bin Button */
@@ -6723,23 +6844,20 @@ h2.section {
   background-color: #DDD;
   color: #999999 !important;
 }
-.form-helpers .recycle-bin-button {
+.toolbar .recycle-bin-button {
   margin: 0px;
 }
 /* Pagination */
-.form-helpers ul.pagination {
+.toolbar ul.pagination {
   float: right;
+  margin: -4px 0px 0px 0px;
 }
 /* Tooltip */
 .hover-ui {
   display: none;
 }
 /* Datetime Picker */
-.date-time-picker input {
-  color: #424242;
-}
 .date-time-picker .input-group-addon {
-  color: #424242;
   cursor: pointer;
 }
 /* Tags */
@@ -6984,11 +7102,12 @@ header .header-logo {
 }
 #sidebar {
   background-color: #1a1f23;
-  height: 100%;
   position: fixed;
+  height: 100%;
   width: 250px;
   box-sizing: border-box;
   overflow: auto;
+  margin-top: 56px;
 }
 #sidebar .account {
   text-align: center;

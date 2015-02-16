@@ -12,8 +12,6 @@
 
 @textblack: #424242;
 @bgblack: #1a1f23;
-@lightgray: #f3f3f3;
-@gray: #e1e1e1;
 @blue: #139cdc;
 @hoverblue: #0A8CC9;
 @white: #fff;
@@ -50,6 +48,13 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 
 /* Form */
 .form-errors { }
+.form-group { 
+    label:after { /* content: ':'; */ }
+    input, select, textarea {
+        .form-control();
+    }
+    textarea { height: auto }
+}
 .form-actions { 
     padding-top: 20px; 
     input[type=submit], button { margin-right: 10px; }
@@ -58,25 +63,31 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
     margin-bottom: 20px;
     label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; }
 }
+.form-horizontal {
+    .control-label {
+        text-align: left;
+    }
+}
 
-.form-helpers {
+.toolbar {
     &.top { 
         min-height: 26px; margin-bottom: 20px;
         button { margin-right: 10px }
     }
-    &.bottom { margin: 10px 0px; padding: 5px 0px; border-top: 1px dotted #CCC; border-bottom: 1px dotted #CCC; }
+    &.bottom { min-height: 34px; margin: 10px 0px; padding: 5px 0px; border-top: 1px dotted #CCC; border-bottom: 1px dotted #CCC; }
 }
 
 /* Search-Box */
-.model-search-box input[type=text] { width: 170px; padding: 1px 10px; .background-image('theme/backend/bg_searchbox.png'); background-repeat: no-repeat; text-indent:20px }
-.form-helpers .model-search-box { float: right; }
+.model-search-box input[type=text] { .form-control(); display: inline-block; max-width: 170px; .background-image('theme/searchbox_bg.png'); background-position: 10px center; background-repeat: no-repeat; text-indent: 20px }
+.model-search-box input[type=submit] { vertical-align: inherit; }
+.toolbar .model-search-box { float: right; }
 
 /* Sort-Switcher */
 .sort-switcher { 
     display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px; background-color: @bgblack; color: white !important;
     img { vertical-align: bottom; }
 }
-.form-helpers .sort-switcher { margin: 0px }
+.toolbar .sort-switcher { margin: 0px }
 
 /* Recycle Bin Button */
 .recycle-bin-button { 
@@ -84,17 +95,16 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
     &.enabled { background-color: @bgblack; color: white !important }
     &.disabled { background-color: #DDD; color: #999 !important }
 }
-.form-helpers .recycle-bin-button { margin: 0px }
+.toolbar .recycle-bin-button { margin: 0px }
 
 /* Pagination */
-.form-helpers ul.pagination { float: right; }
+.toolbar ul.pagination { float: right; margin: -4px 0px 0px 0px }
 
 /* Tooltip */
 .hover-ui { display: none; }
 
 /* Datetime Picker */
-.date-time-picker input { color: @textblack; }
-.date-time-picker .input-group-addon { color: @textblack; cursor: pointer }
+.date-time-picker .input-group-addon { cursor: pointer }
 
 /* Tags */
 /* .form-group .bootstrap-tagsinput { max-width: 40% } */
@@ -263,11 +273,12 @@ header {
 
 #sidebar {
     background-color: @bgblack;
-    height: 100%;
     position: fixed;
+    height: 100%;
     width: 250px;
     box-sizing: border-box; 
     overflow: auto;
+    margin-top: @headerHeight;
     .account {
         text-align: center;
         margin: 40px 0px;

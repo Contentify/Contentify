@@ -6566,6 +6566,9 @@ button.close {
   white-space: nowrap;
   overflow: hidden;
 }
+.form-group label[for] {
+  cursor: pointer;
+}
 .numeric-input {
   text-align: right;
 }
@@ -6602,9 +6605,6 @@ button.close {
 /*
  * Elements
  */
-label[for] {
-  cursor: pointer;
-}
 /* URLs */
 a,
 a:visited {
@@ -6646,9 +6646,6 @@ a:hover {
   font-weight: bold;
 }
 /* Form */
-.form-group {
-  /*textarea { vertical-align: bottom; }*/
-}
 .form-group label:after {
   /* content: ':'; */
 }

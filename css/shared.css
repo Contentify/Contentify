@@ -32,6 +32,9 @@
   white-space: nowrap;
   overflow: hidden;
 }
+.form-group label[for] {
+  cursor: pointer;
+}
 .numeric-input {
   text-align: right;
 }

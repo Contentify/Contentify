@@ -31,7 +31,11 @@
 
     {{ Form::smartText('website', trans('users::website')) }}
 
-    {{ Form::smartText('skype', trans('users::skype')) }}
+    {{ Form::smartText('facebook', 'Facebook') }}
+
+    {{ Form::smartText('twitter', 'Twitter') }}
+
+    {{ Form::smartText('skype', 'Skype') }}
 
     {{ Form::smartText('steam_id', trans('users::steam_id')) }}
 

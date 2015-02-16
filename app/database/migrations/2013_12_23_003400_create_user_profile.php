@@ -22,6 +22,8 @@ class CreateUserProfile extends Migration {
             $table->text('about')->nullable();
 
             $table->string('skype')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
             $table->string('steam_id')->nullable();
 
             $table->string('cpu')->nullable();

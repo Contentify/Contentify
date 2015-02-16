@@ -19,7 +19,10 @@
 .space-bottom-huge { margin-bottom: 40px }
 
 .form-group {
-    label { .ellipsis() }
+    label { 
+        .ellipsis(); 
+        &[for] { cursor: pointer }
+    }
 }
 
 .numeric-input { text-align: right }

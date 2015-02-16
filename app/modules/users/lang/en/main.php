@@ -30,7 +30,6 @@ return array(
     'about'         => 'About',
     'signature'     => 'Signature',
 
-    'skype'         => 'Skype',
     'steam_id'      => 'Steam ID',
 
     'cpu'           => 'CPU',

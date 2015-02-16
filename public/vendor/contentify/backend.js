@@ -22,9 +22,11 @@ $(document).ready(function()
      */
     var sessionKey = 'backend.sidebar.category';
     var category = sessionStorage.getItem(sessionKey);
-    if (category) {
-        $('#sidebar .category:eq(' + category + ') .items').css('height', 'auto');
+    if (! category) {
+        category = 0;
     }
+    $('#sidebar .category:eq(' + category + ') .items').css('height', 'auto');
+
 
     var naviCategoryLocked = false;
     function activateNaviCategory(index)
@@ -69,8 +71,6 @@ $(document).ready(function()
         var $sidebar = $('#sidebar');
         var headerHeight = $('#header').height();
 
-
-        $sidebar.css('margin-top', headerHeight);
         $sidebar.css('height', $(window).height() - headerHeight);
     });
 
