@@ -8,5 +8,5 @@ composer.lock
 Thumbs.db
 console.lnk
 /app/config/mail.php
-.dev/
+.dev.lnk
 .idea/
