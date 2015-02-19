@@ -63,7 +63,7 @@ class MatchesController extends FrontController {
         $match->access_counter++;
         $match->save();
 
-        $this->title($match->leftTeam->title.' '.trans('match::vs').' '.$match->rightTeam->title);
+        $this->title($match->leftTeam->title.' '.trans('matches::vs').' '.$match->rightTeam->title);
 
         $this->pageView('matches::show', compact('match'));
     }
