@@ -23,6 +23,18 @@ class ThreadsController extends FrontController {
     }
 
     /**
+     * Shows all forum threads with new posts
+     *
+     * @return void
+     */
+    public function showNew()
+    {
+        $forumThreads = ForumThread::isAccessible()->where('forum_threads.updated_at', '>', user()->last_login)->get();
+
+        $this->pageView('forums::show_new_thread', compact('forumThreads'));
+    }
+
+    /**
      * Creates a thread (= create a root post)
      *
      * @param int  $forumId The ID of the forum

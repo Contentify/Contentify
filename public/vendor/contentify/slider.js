@@ -6,6 +6,7 @@
 
     /**
      *  This function is available and called via $('...'').contentifySlider()
+     *  
      *  @param {object} opts The options / parameters
      */
     $.fn.contentifySlider = function(opts) 
@@ -18,6 +19,7 @@
 
     /**
      * Creates an actual slider instance.
+     * 
      * @param {object} el   The slider DOM element
      * @param {object} opts The options object
      */

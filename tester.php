@@ -46,7 +46,8 @@ class Tester {
         $writableDirs = [
             $paths['app'].'/storage', 
             $paths['public'].'/uploads', 
-            $paths['public'].'/rss'
+            $paths['public'].'/rss',
+            $paths['public'].'/share',
         ];
 
         foreach ($writableDirs as $dir) {

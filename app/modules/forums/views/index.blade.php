@@ -2,6 +2,10 @@
     Forums
 </h1>
 
+<div class="buttons">
+    <a class="create" href="{{ url('forums/threads/new') }}">{{ trans('forums::show_new') }}</a>
+</div>
+
 @foreach($forums as $forum)
     <div class="root-forum">
         <h2>{{{ $forum->title }}}</h2>

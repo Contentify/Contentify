@@ -31,8 +31,8 @@
     <![endif]-->
     {{ HTML::script('vendor/jquery/jquery-1.11.2.min.js') }}
     {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
-    {{ HTML::script('vendor/contenify/contentify.js') }}
-    {{ HTML::script('vendor/contenify/frontend.js') }}
+    {{ HTML::script('vendor/contentify/contentify.js') }}
+    {{ HTML::script('vendor/contentify/frontend.js') }}
 </head>
 <body>
     <header id="header" onclick="window.location='{{ route('home') }}'">
@@ -64,6 +64,10 @@
             </div>
 
             <aside id="sidebar" class="col-md-4">
+                <h3>Shoutbox</h3>
+                @widget('Shouts::Shouts')
+                <br>
+
                 <h3>User Area</h3>
                 @widget('Auth::Login')
 

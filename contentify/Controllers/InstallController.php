@@ -132,7 +132,12 @@ class InstallController extends Controller {
                               <p>The current database name is: <br><code>'.$dbName.'</code></p>';
                 break;
             case 2:
-                $writableDirs = [app_path().'/storage', public_path().'/uploads', public_path().'/rss'];
+                $writableDirs = [
+                    app_path().'/storage', 
+                    public_path().'/uploads', 
+                    public_path().'/rss',
+                    public_path().'/share'
+                ];
 
                 $ul = '<ul>'; // HTML::ul() will encode HTML entities so we can't use it here
                 foreach ($writableDirs as $dir) {
@@ -200,6 +205,11 @@ class InstallController extends Controller {
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp() to create a datetime attribute.
          */
+
+        $this->create('shouts', function($table) 
+        { 
+            $table->text('text')->nullable();
+        }, [], ['title', 'slug', 'access_counter', 'updater_id']);
 
         return; // DEBUG
 

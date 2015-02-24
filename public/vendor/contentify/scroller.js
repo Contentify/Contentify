@@ -6,6 +6,7 @@
 
     /**
      *  This function is available and called via $('...'').contentifyScroller()
+     *  
      *  @param {object} opts The options / parameters
      */
     $.fn.contentifyScroller = function(opts) 
@@ -18,6 +19,7 @@
 
     /**
      * Creates an actual scroller instance.
+     * 
      * @param {object} el   The scroller DOM element
      * @param {object} opts The options object
      */

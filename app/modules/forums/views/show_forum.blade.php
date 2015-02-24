@@ -50,7 +50,7 @@
             Posts
         </div>
         <div class="latest">
-            Latest
+            {{ trans('app.latest') }}
         </div>
     </div>
 

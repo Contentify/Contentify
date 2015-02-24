@@ -144,5 +144,6 @@ return array(
     'viewers'       => 'Viewers',
     'add_tags'      => 'Add tags',
     'reply'         => 'Reply',
+    'latest'        => 'Latest',
 
 );

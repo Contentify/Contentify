@@ -2,6 +2,7 @@
 
 use App\Modules\Forums\Models\ForumPost;
 use App\Modules\Forums\Models\ForumReport;
+use App\Modules\Forums\Models\ForumThread;
 use Response, Input, Redirect, FrontController;
 
 class PostsController extends FrontController {

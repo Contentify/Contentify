@@ -16,6 +16,7 @@ ModuleRoute::get('forums', 'ForumsController@index');
 ModuleRoute::get('forums/{id}/{slug?}', 'ForumsController@show')->where('id', '[0-9]+');
 
 ModuleRoute::get('forums/threads/{id}/{slug?}', 'ThreadsController@show')->where('id', '[0-9]+');
+ModuleRoute::get('forums/threads/new', 'ThreadsController@showNew');
 Route::group(array('before' => 'auth'), function()
 {
     ModuleRoute::get('forums/threads/create/{id}', 'ThreadsController@create');

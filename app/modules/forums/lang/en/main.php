@@ -19,6 +19,7 @@ return array(
     'forum_circle'  => 'Invalid parent forum. You cannot create a cycle.',
     'max_level'     => 'Maximum nesting level has been reached.',
     'access_info'   => 'Changing access rules will have no effect if the forum is a sub forum.',
+    'show_new'      => 'Show New Posts',
 
     /*
      * Threads
