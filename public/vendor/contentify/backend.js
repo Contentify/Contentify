@@ -4,16 +4,16 @@ $(document).ready(function()
      * Add datetime picker
      */
     $('.date-time-picker').datetimepicker({
-        format: contentify.dateFormat + '  HH:mm:ss',
+        format: contentify.dateFormat + ' HH:mm:ss',
         icons: {
-            time: 'fa fa-clock-o',
-            date: 'fa fa-calendar',
-            up: 'fa fa-chevron-up',
-            down: 'fa fa-chevron-down',
-            previous: 'fa fa-chevron-left',
-            next: 'fa fa-chevron-right',
-            today: 'fa fa-screenshot',
-            clear: 'fa fa-trash'
+            time:       'fa fa-clock-o',
+            date:       'fa fa-calendar',
+            up:         'fa fa-chevron-up',
+            down:       'fa fa-chevron-down',
+            previous:   'fa fa-chevron-left',
+            next:       'fa fa-chevron-right',
+            today:      'fa fa-screenshot',
+            clear:      'fa fa-trash'
         },
     });
 
@@ -27,10 +27,14 @@ $(document).ready(function()
     }
     $('#sidebar .category:eq(' + category + ') .items').css('height', 'auto');
 
-
+    /*
+     * Make sidebar collapsible
+     */
     var naviCategoryLocked = false;
     function activateNaviCategory(index)
     {
+        var duration = 200;
+
         $('#sidebar .category').each(function()
         {
             var $items = $(this).find('.items');
@@ -42,11 +46,11 @@ $(document).ready(function()
                     height = $items.height();
                     $items.css('height', 0);
 
-                    $items.animate({height: height}, {duration: 500, queue: false});
+                    $items.animate({height: height}, {duration: duration, queue: false});
                 }
             } else {
                 if (height > 0) {
-                    $items.animate({height: 0}, {duration: 500, queue: false});
+                    $items.animate({height: 0}, {duration: duration, queue: false});
                 }
             }
 

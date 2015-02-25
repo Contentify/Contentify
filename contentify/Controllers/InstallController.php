@@ -206,11 +206,6 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
-        $this->create('shouts', function($table) 
-        { 
-            $table->text('text')->nullable();
-        }, [], ['title', 'slug', 'access_counter', 'updater_id']);
-
         return; // DEBUG
 
         /**
@@ -261,7 +256,7 @@ class InstallController extends Controller {
         { 
             $table->string('code', 3);
             $table->string('icon')->nullable();
-        }, [], ['slug']); 
+        }, [], ['slug']);
        
         $this->create('comments', function($table)
         {
@@ -277,7 +272,7 @@ class InstallController extends Controller {
             $table->text('text');
             $table->string('ip');
             $table->boolean('new')->default(true);
-        });
+        }, [], ['slug']);
 
         $this->create('games', function($table)
         {
@@ -500,6 +495,11 @@ class InstallController extends Controller {
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         }, ['activity_id', 'user_id'], false);
+
+        $this->create('shouts', function($table) 
+        { 
+            $table->text('text')->nullable();
+        }, [], ['title', 'slug', 'access_counter', 'updater_id']);
 
         /*
          * (Re)activate foreign key checks

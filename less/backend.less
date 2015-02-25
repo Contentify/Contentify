@@ -30,14 +30,8 @@
  * Classes
  */
 
-.page { }
-.form-head { 
-    display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; .background-image('theme/backend/form_head.png'); font-size: 14px; font-weight: bold !important; color: #666666 !important;
-    i { margin-right: 10px; padding: 2px 3px; border-radius: 3px; background-color: #4082E3; color: white }
-}
-
 h1.page-title { }
-h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10px; border: 1px solid #EFEFEF; .background-image('theme/bg_textbox.png'); background-repeat: repeat-x; font-size: 13px }
+h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 
 /* Message */
 .ui-message { 
@@ -139,10 +133,12 @@ h2.section { height: 30px; line-height: 30px; margin: 20px 0px; padding: 0px 10p
 }
 
 .page-dashboard {
-    #chart { margin: 0px 0px 20px 5%; width: 90%; height: 200px }
+    #chart { margin: 0px 0px 20px 5%; width: 90%; height: 250px }
     .quick-access {
-        div { width: 84px; float: left; margin: 0px 13px 20px 13px; padding: 5px 0px; border: 1px solid #EEEEEE; border-radius: 5px; text-align: center;  }
-        img { display: block; padding-left: 18px }
+        margin: 20px 0px;
+        div { width: 16.666%; box-sizing: border-box; float: left; padding: 10px; text-align: center; }
+        a { display: block; margin: 0px 10px; padding-bottom: 10px; border-radius: 5px; background-color: @blue; color: white; }
+        i { display: block; padding: 10px; font-size: 40px }
     } 
     .widgets-row {
         div { width: 50%; float: left }
@@ -244,6 +240,11 @@ header {
     left: 0px;
     right: 0px;
     z-index: 100;
+    .msg {
+        a {
+            color: @white;
+        }
+    }
     nav {
         float: right;
         ul {
@@ -354,120 +355,22 @@ header {
 
 #content {
     margin: 0px 0px 0px 250px;
-    padding: 80px 0px 0px 0px;
-    .statistic-box {
-        background-color: @white;
-        height: 90px;
-        text-align: center;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        .statistic-box-blue {
-            background-color: @blue;
-            font-size: 48px;
-            color: @white;
-            width: 25%;
-            float: left;
-            line-height: 1.85em;
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-bottom-left-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-bottomleft: 5px;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-        }
-        .value {
-            font-weight: 700;
-            width: 75%;
-            float: left;
-            font-size: 30px;
-            padding: 9px 0px 0px 0px;
-        }
-        .description {
-            font-weight: 300;
-            width: 75%;
-            float: left;
-            font-size: 20px;
-            padding: 0px 0px 9px 0px;
-        }
-    }   
-    #chart {
-        width: 100%;
-        height: 350px;
-    }
-    .blue-box {     
-        color: @white;
-        text-align: center;
-        font-size: 16px;
-        background-color: @blue;
-        margin-bottom: 15px;
-        padding: 10px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        span {
-            display: block;
-            margin: 0px 0px 11px 0px;
-            font-size: 48px;
-        }
-        &:hover {
-            background-color: @hoverblue;
-        }
-    }
-    .box-area {
-        background-color: @white;
-        margin: 20px 15px 20px 15px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        .box-header {
-            padding: 0px 20px 0px 0px;
-            height: 40px;
-            font-size: 18px;
-            line-height: 2.2em;
-            background-color: @blue;
-            color: @white;
-            -webkit-border-top-left-radius: 5px;
-            -webkit-border-top-right-radius: 5px;
-            -moz-border-radius-topleft: 5px;
-            -moz-border-radius-topright: 5px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            .icon-area {
-                background-color: @hoverblue;
-                float: left;
-                width: 40px;
-                text-align: center;
-                -webkit-border-top-left-radius: 5px;
-                -moz-border-radius-topleft: 5px;
-                border-top-left-radius: 5px;
-                font-size: 16px;
-                line-height: 2.5em;
-            }
-            .main-text {
-                font-weight: 700;
-                float: left;
-                padding: 0px 10px 0px 10px;
-            }
-            .small-text {
-                font-weight: 300;
-                float: left;
-            }
-            .edit-area {
-                float: right;
-                color: @white;
-                font-size: 16px;
-                line-height: 2.5em;
-                button {
-                    background-color: initial;
-                    border: none;
-                    padding: 0px;
-                }
-            }
-        }
-        .box-body {
-            padding: 20px;
-            clear: both;
-        }
+    padding-top: @headerHeight;
+}
+
+.page { 
+    max-width: 900px; margin: 0px 40px; 
+}
+.page-head {
+    display: block; margin-bottom: 40px; padding: 20px 0px 20px 40px; border-bottom: 1px solid silver;  
+    i { margin-right: 10px; padding: 2px 3px; border-radius: 3px; background-color: @blue; color: white }
+    //display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; .background-image('theme/backend/form_head.png'); font-size: 14px; font-weight: bold !important; color: #666666 !important;
+    
+}
+
+#footer {
+    margin-top: 40px; padding: 20px 40px; background-color: #eee; color: #999;
+    .top { 
+        color: silver; float: right
     }
 }

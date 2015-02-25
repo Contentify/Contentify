@@ -50,7 +50,10 @@
                     </a>
                 </div>
                 <div class="col-lg-10 header-navigation">
-                    <span class="fa fa-globe fa-fw"></span>Demoversion - Deutsch<span class="fa fa-chevron-down fa-fw"></span>
+                    @if ($contactMessages)
+                    <span class="msg">{{ HTML::fontIcon('envelope') }} {{ $contactMessages }}</span>
+                    @endif
+
                     <nav>
                         <ul>
                             <li><a href="{{ url('admin/help') }}"><span class="fa fa-question-circle fa-fw"></span>Help</a></li>
@@ -95,29 +98,25 @@
             <div class="alert-area"></div>
 
             @if (isset($page))
-                <div class="row page page-{{ strtolower($controllerName) }} page-{{ pageClass() }}">
-                    <div class="col-lg-12">
-                        {{ $page }}
-                    </div>
+                <a class="page-head" href="{{ url('admin/'.strtolower($controllerName)) }}">
+                        {{ HTML::fontIcon($controllerIcon) }}{{ $controllerName }}
+                </a>
+
+                <div class="page page-{{ strtolower($controllerName) }} page-{{ pageClass() }}">
+                    {{ $page }}
                 </div>
             @endif
+
+            <footer id="footer">
+                <span class="version">Version {{ Config::get('app.version') }}</span>
+                <a class="top" href="#">{{ trans('app.top') }}</a>
+            </footer>
         </section>
         <!-- Content Ends -->        
 
-        <!--
-                @if ($contactMessages)
-                    {{ HTML::image(asset('icons/email.png'), 'Message') }} {{ $contactMessages }}
-                @endif
+        <!-- 
 
-                Version {{ Config::get('app.version') }}
-
-                {{ trans('app.top') }}
-
-                <a class="form-head" href="{{ url('admin/'.strtolower($controllerName)) }}">
-                                {{ HTML::fontIcon($controllerIcon) }}{{ $controllerName }}
-                            </a>
-
-                -->
+        -->
     </div>
 </body>
 </html>
