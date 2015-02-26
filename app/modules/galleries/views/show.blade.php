@@ -3,7 +3,7 @@
 <div class="images">
     <div class="image">
         <a href="{{ $image->uploadPath().$image->image }}" target="_blank" title="{{{ $image->title }}}">
-            <img src="{{ $image->uploadPath().$image->image }}" />
+            <img src="{{ $image->uploadPath().$image->image }}">
         </a>
         <p>
             {{{ $image->title }}}

@@ -35,7 +35,7 @@
     </tbody>
 </table>
 
-<hr />
+<hr>
 
 <table class="table">
     <tbody>
