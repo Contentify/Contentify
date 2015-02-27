@@ -8,10 +8,10 @@ CKEDITOR.plugins.add('flags', {
                 function addFlag(flag)
                 {
                     var url = contentify.assetUrl + 'uploads/countries/' + flag + '.png';
-                    return '<img src="' + url + '" title="' + flag + '" alt="' + flag + '">';
+                    return '<img src="' + url + '" title="' + flag + '" alt="' + flag + '"> ';
                 }
 
-                var flags = $('<div class="boxer-plain editor-flags">' + addFlag('eu') 
+                var $flags = $('<div class="boxer-plain editor-flags">' + addFlag('eu') 
                     + addFlag('at')
                     + addFlag('de')
                     + addFlag('dk')
@@ -29,13 +29,13 @@ CKEDITOR.plugins.add('flags', {
                     + addFlag('us')
                     + '</div>');
                 
-                $(flags).find('img').click(function()
+                $flags.find('img').click(function()
                 {
                     editor.insertHtml(this.outerHTML);
-                    $.boxer('close');
+                    contentify.closeModal();
                 })
                 
-                $.boxer($(flags));
+                contentify.modal('Flags', $flags);
             }
         });
 

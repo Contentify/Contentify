@@ -20,14 +20,14 @@ CKEDITOR.plugins.add('templates', {
                         }).success(function(data)
                         {
                             editor.insertHtml(data);
-                            $.boxer('close');
+                            contentify.closeModal();
                         }).fail(function(response)
                         {
                             contentify.alertRequestFailed(response);
                         }); 
                     });
 
-                    $.boxer($data);
+                    contentify.modal('Templates', $data);
                 }).fail(function(response)
                 {
                     contentify.alertRequestFailed(response);

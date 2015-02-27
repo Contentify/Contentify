@@ -17,7 +17,7 @@ CKEDITOR.plugins.add('images', {
                         var img = '<img src="' + src + '">';
 
                         editor.insertHtml(img);
-                        $.boxer('close');
+                        contentify.closeModal();
                     });
                 }
 
@@ -28,7 +28,7 @@ CKEDITOR.plugins.add('images', {
                 {
                     var $data = $(data);
 
-                    $.boxer($data);
+                    contentify.modal('Images', $data);
                     setHandler($data);
 
                     function submit()

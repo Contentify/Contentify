@@ -106,6 +106,10 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 /* Infotext */
 /* .info-text { color: #999 } */
 
+/* Modale dialogue */
+.modal .form-group { .clearfix() }
+.modal .modal-footer button { .btn(); .btn-default() }
+
 /*
  * Subpages
  */
@@ -127,7 +131,7 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 
 .page-matches .scores { 
     padding-top: 7px;
-    .item { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; margin-right: 10px; cursor: pointer; }
+    .item { display: inline-block; margin: 0px 10px 10px 0px; padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; cursor: pointer; }
     .item .score { font-weight: bold }
     .add-new { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; font-weight: bold; cursor: pointer;}
 }
@@ -174,11 +178,10 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 }
 
 .editor-images {
-    width: 350px;
     .actions { 
         padding-bottom: 20px;
-        input { width: 70%; margin-right: 5%; box-sizing: border-box }
-        button { width: 24%; box-sizing: border-box }
+        input { .form-control(); display: inline-block; width: 70%; box-sizing: border-box }
+        button { width: 20%; box-sizing: border-box }
     }
     .images { height: 330px; overflow-y: scroll; }
     .image { float: left; width: 100px; height: 100px; margin: 0px 10px 10px 0px; background-position: center; background-size: cover; cursor: pointer }

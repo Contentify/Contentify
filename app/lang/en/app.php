@@ -145,5 +145,6 @@ return array(
     'add_tags'      => 'Add tags',
     'reply'         => 'Reply',
     'latest'        => 'Latest',
+    'item'          => 'Item',
 
 );

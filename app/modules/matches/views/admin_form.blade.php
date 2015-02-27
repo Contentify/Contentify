@@ -71,24 +71,22 @@
         $('select#_relation_rightTeam').change(loadRightLineup);
 
         //if (! isset($model))
-        //$('select#_relation_leftTeam').change();
-        //$('select#_relation_rightTeam').change();
+            //$('select#_relation_leftTeam').change();
+            //$('select#_relation_rightTeam').change();
         //endif
         
         {{-- We can't add scores to a match that doesn't actually exist --}}
         @if (isset($model))
+            var template = '{{ Form::smartSelectForeign('map_id', 'Map') }} {{ Form::smartGroupOpen('left_score', trans('matches::score')) }} <input type="text" name="left_score" style="display: inline-block; max-width: 50px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="display: inline-block; max-width: 50px" value="%%scoreRight%%"> {{ Form::smartGroupClose() }}';
 
-        var template = '<div class="boxer-plain add-new"> {{ Form::smartSelectForeign('map_id', 'Map') }} {{ Form::smartGroupOpen('left_score', trans('matches::score')) }} <input type="text" name="left_score" style="width: 20px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="width: 20px" value="%%scoreRight%%"> {{ Form::smartGroupClose() }}</div>';
+            contentify.templateManager.add('mapForm', template);
 
-        contentify.templateManager.add('mapForm', template);
+            $('.scores .add-new').click(function()
+            {
+                var $el = $(this);
+                var compiled = contentify.templateManager.get('mapForm', {scoreLeft: 0, scoreRight: 0});
 
-        $('.scores .add-new').click(function()
-        {
-            var $el = $(this);
-            var compiled = contentify.templateManager.get('mapForm', {scoreLeft: 0, scoreRight: 0});
-
-            $.boxer($(compiled).append(
-                $('<button>').text('{{ trans('app.save') }}').click(function()
+                var $footer = $('<button>').text('{{ trans('app.save') }}').click(function()
                 {
                     $.ajax({
                         url: contentify.baseUrl + 'admin/matches/scores/store',
@@ -106,60 +104,62 @@
                     {
                         contentify.alertRequestFailed(response);
                     });
-                    $.boxer('close');
-                })
-            ));
-        });
+                    contentify.closeModal();
+                });
 
-        $('.page').on('click', '.scores .item', function()
-        {
-            var $el = $(this);
-            var id = $el.attr('data-id');
+                contentify.modal('Map', compiled, $footer);
+            });
 
-            var compiled = contentify.templateManager.get('mapForm', 
-                {scoreLeft: $el.attr('data-left-score'), scoreRight: $el.attr('data-right-score')});
+            $('.page').on('click', '.scores .item', function()
+            {
+                var $el = $(this);
+                var id = $el.attr('data-id');
 
-            var $compiled = $(compiled);
-            $compiled.find('select').val($el.attr('data-map-id'));
+                var compiled = contentify.templateManager.get('mapForm', 
+                    {scoreLeft: $el.attr('data-left-score'), scoreRight: $el.attr('data-right-score')});
 
-            $.boxer($compiled.append(
-                $('<button>').text('{{ trans('app.save') }}').click(function()
-                {
-                    $.ajax({
-                        url: contentify.baseUrl + 'admin/matches/scores/' + $el.attr('data-id'),
-                        type: 'PUT',
-                        data: {
-                            map_id:         $('#map_id').val(),
-                            left_score:     $('input[name=left_score]').val(),
-                            right_score:    $('input[name=right_score]').val(),
-                        }
-                    }).done(function(data) 
+                var $compiled = $(compiled);
+                $compiled.find('select').val($el.attr('data-map-id'));
+
+                var $footer = $('<div>').append(
+                    $('<button>').text('{{ trans('app.save') }}').click(function()
                     {
-                        $el.replaceWith(data);
-                    }).fail(function(response)
+                        $.ajax({
+                            url: contentify.baseUrl + 'admin/matches/scores/' + $el.attr('data-id'),
+                            type: 'PUT',
+                            data: {
+                                map_id:         $('#map_id').val(),
+                                left_score:     $('input[name=left_score]').val(),
+                                right_score:    $('input[name=right_score]').val(),
+                            }
+                        }).done(function(data) 
+                        {
+                            $el.replaceWith(data);
+                        }).fail(function(response)
+                        {
+                            contentify.alertRequestFailed(response);
+                        });
+                        contentify.closeModal();
+                    })
+                ).append(
+                    $('<button>').text('{{ trans('app.delete') }}').click(function()
                     {
-                        contentify.alertRequestFailed(response);
-                    });
-                    $.boxer('close');
-                })
-            ).append(
-                $('<button>').text('{{ trans('app.delete') }}').click(function()
-                {
-                    $.ajax({
-                        url: contentify.baseUrl + 'admin/matches/scores/' + id,
-                        type: 'DELETE'
-                    }).done(function(data) 
-                    {
-                        $el.remove();
-                    }).fail(function(response)
-                    {
-                        contentify.alertRequestFailed(response);
-                    });
-                    $.boxer('close');
-                })
-            ));
-        });
+                        $.ajax({
+                            url: contentify.baseUrl + 'admin/matches/scores/' + id,
+                            type: 'DELETE'
+                        }).done(function(data) 
+                        {
+                            $el.remove();
+                        }).fail(function(response)
+                        {
+                            contentify.alertRequestFailed(response);
+                        });
+                        contentify.closeModal();
+                    })
+                );
 
+                contentify.modal('Map', $compiled, $footer);
+            });
         @endif        
 
     });

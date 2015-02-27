@@ -41,7 +41,6 @@
             {{ HTML::fontIcon('exclamation-circle') }} {{ trans('app.no_js') }}
         </noscript>
 
-        <!-- Header Starts -->
         <header id="header">
             <div class="row">
                 <div class="col-lg-2 header-logo">
@@ -64,9 +63,7 @@
                 </div>
             </div>
         </header>
-        <!-- Header Ends -->
 
-        <!-- Menu Starts -->
         <aside id="sidebar">
             <div class="account">
                 <a id="profile-link" href="{{ url('users/'.user()->id) }}">
@@ -82,9 +79,7 @@
             
             {{ HTML::renderBackendNav() }}
         </aside>
-        <!-- Menu Ends -->
-        
-        <!-- Content Starts -->
+
         <section id="content">
             @if (Session::get('_message'))
                 <div class="ui-message">
@@ -107,16 +102,12 @@
                 </div>
             @endif
 
+            <div class="clearfix"></div>
             <footer id="footer">
                 <span class="version">Version {{ Config::get('app.version') }}</span>
                 <a class="top" href="#">{{ trans('app.top') }}</a>
             </footer>
         </section>
-        <!-- Content Ends -->        
-
-        <!-- 
-
-        -->
     </div>
 </body>
 </html>

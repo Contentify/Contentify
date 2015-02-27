@@ -175,6 +175,65 @@ $(document).ready(function()
             framework.alertError(text);
         }
 
+        /**
+         * Adds a Bootstrap modal dialogue.
+         * To create close buttons, add this attribute: data-dismiss="modal" 
+         *
+         * @param {String} title   The title text
+         * @param {String} content Content text, HTML or jQuery object
+         * @param {String} footer  Footer text, HTML or jQuery object
+         */
+        this.modal = function(title, content, footer)
+        {
+            var modalTemplate = '<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">\
+                <div class="modal-dialog">\
+                    <div class="modal-content">\
+                        <div class="modal-header">\
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+                            <h4 class="modal-title">%%title%%</h4>\
+                        </div>\
+                        <div class="modal-body clearfix"></div>\
+                        <div class="modal-footer"></div>\
+                    </div>\
+                </div>\
+            </div>';
+
+            contentify.templateManager.add('modal', modalTemplate);
+
+            if (! title) {
+                title = '&nbsp;'; // There always has to be a title - even if its only a space
+            }
+            
+            var modal = contentify.templateManager.get('modal', {title: title});
+            
+            var $modal = $(modal);
+
+            $modal.find('.modal-body').append(content);
+
+            if (footer) {
+                $modal.find('.modal-footer').append(footer);
+            } else {
+                $modal.find('.modal-footer').remove();
+            }
+
+            $('body').append($modal);
+
+            $modal.modal();
+        }
+
+        /**
+         * Hides and destroys the modal dialogue
+         * 
+         */
+        this.closeModal = function()
+        {
+            $('.modal').modal('hide');
+
+            $('.modal').on('hidden.bs.modal', function (event) {
+                $(this).remove();
+            });
+        }
+
         /*
          * Add delete confirm dialogue
          */

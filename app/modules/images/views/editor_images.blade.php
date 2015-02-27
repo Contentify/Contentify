@@ -1,5 +1,5 @@
 @if (! $pure)
-    <div class="boxer-plain editor-images">
+    <div class="editor-images">
         <div class="actions">
             {{ Form::text('image') }}
             {{ Form::button(trans('app.search')) }}

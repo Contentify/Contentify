@@ -32,7 +32,7 @@
         var items = JSON.parse($items.val() ? $items.val() : '[]'); // Array of objects
         var $tableBody = $('#items-table tbody');
 
-        var template = '<div class="boxer-plain add-new" data-index="%%index%%"> {{ Form::smartText('item_title', trans('app.title')) }} {{ Form::smartText('item_url', trans('app.url')) }}</div>';
+        var template = '<div data-index="%%index%%"> {{ Form::smartText('item_title', trans('app.title')) }} {{ Form::smartText('item_url', trans('app.url')) }}</div>';
 
         contentify.templateManager.add('itemForm', template);
 
@@ -91,22 +91,22 @@
                         }
                         break;
                     case 'edit':
-                        var compiled = contentify.templateManager.get('itemForm', {index: index});
-                        var $compiled = $(compiled);
+                        var content = contentify.templateManager.get('itemForm', {index: index});
+                        var $content = $(content);
 
-                        $compiled.find('#item_title').val(items[index].title);
-                        $compiled.find('#item_url').val(items[index].url);
+                        $content.find('#item_title').val(items[index].title);
+                        $content.find('#item_url').val(items[index].url);
 
-                        $.boxer($compiled.append(
-                            $('<button>').text('{{ trans('app.save') }}').click(function()
-                            {
-                                items[index].title = $('#item_title').val();
-                                items[index].url = $('#item_url').val();
-                                renderAll();
-                                store();
-                                $.boxer('close');
-                            })
-                        ));
+                        var $footer = $('<button>').text('{{ trans('app.save') }}').click(function()
+                        {
+                            items[index].title = $('#item_title').val();
+                            items[index].url = $('#item_url').val();
+                            renderAll();
+                            store();
+                            contentify.closeModal();
+                        });
+
+                        contentify.modal('{{ trans('app.item') }}', $content, $footer);
 
                         break;
                     case 'delete':
@@ -144,23 +144,22 @@
 
         $('#item_add').click(function()
         {
-            var compiled = contentify.templateManager.get('itemForm',  {});
-            var $compiled = $(compiled);
+            var content = contentify.templateManager.get('itemForm',  {});
 
-            $.boxer($compiled.append(
-                $('<button>').text('{{ trans('app.save') }}').click(function()
-                {
-                    var item = {
-                        title: $('#item_title').val(),
-                        url: $('#item_url').val(),
-                        level: 0
-                    };
-                    items.push(item);
-                    renderAll();
-                    store();
-                    $.boxer('close');
-                })
-            ));
+            var $footer = $('<button>').text('{{ trans('app.save') }}').click(function()
+            {
+                var item = {
+                    title: $('#item_title').val(),
+                    url: $('#item_url').val(),
+                    level: 0
+                };
+                items.push(item);
+                renderAll();
+                store();
+                contentify.closeModal();
+            });
+
+            contentify.modal('{{ trans('app.item') }}', content, $footer);
         });
 
         renderAll();

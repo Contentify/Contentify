@@ -35,10 +35,8 @@ $(document).ready(function()
                                     type: 'GET'
                                 }).success(function(data)
                                 {
-                                    $.boxer($(data).append($('<button>').text('Save').click(function(event)
+                                    var $footer = $('<button>').text('Save').click(function(event)
                                     {
-                                        $.boxer('close');
-
                                         $.ajax({
                                             url: contentify.baseUrl + 'admin/members/update/' + userId + '/' + id,
                                             type: 'POST',
@@ -48,7 +46,11 @@ $(document).ready(function()
                                                 position:       $('#position').val(),
                                             }
                                         });
-                                    })));
+
+                                        contentify.closeModal();
+                                    });
+
+                                    contentify.modal('Team', data, $footer);
                                 }).fail(function(response)
                                 {
                                     contentify.alertRequestFailed(response);
@@ -68,23 +70,25 @@ $(document).ready(function()
                     }).success(function(data)
                     {
                         if (data) {
-                            $.boxer($(data).append(
-                                $('<button>').text('Add').click(function()
+                            var $footer = $('<button>').text('Add').click(function()
+                            {
+                                var teamId = $(this).parent().parent().find('select').val();
+
+                                $.ajax({
+                                    url: contentify.baseUrl + 'admin/members/add/' + userId + '/' + teamId,
+                                    type: 'POST'
+                                }).success(function(data)
                                 {
-                                    var teamId = $(this).parent().find('select').val();
-                                    $.boxer('close');
-                                    $.ajax({
-                                        url: contentify.baseUrl + 'admin/members/add/' + userId + '/' + teamId,
-                                        type: 'POST'
-                                    }).success(function(data)
-                                    {
-                                        render($td, userId, JSON.parse(data));
-                                    }).fail(function(response)
-                                    {
-                                        contentify.alertRequestFailed(response);
-                                    });
-                                })
-                            ));
+                                    render($td, userId, JSON.parse(data));
+                                }).fail(function(response)
+                                {
+                                    contentify.alertRequestFailed(response);
+                                });
+
+                                contentify.closeModal();
+                            });
+
+                            contentify.modal('Team', data, $footer);
                         }
                     }).fail(function(response)
                     {
