@@ -59,7 +59,7 @@ class ArticlesController extends FrontController {
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($article->internal and ! $hasAccess) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $article->access_counter++;

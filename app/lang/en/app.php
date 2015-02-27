@@ -103,7 +103,6 @@ return array(
     'tec_infos'         => 'Show infos about the technologies used',
     'view_profile'      => 'View your profile',
     'new_messages'      => 'One new message|:count new messages',
-    'no_messages'       => 'No new messages.',
     'top'               => 'Go to top',
 
     /*

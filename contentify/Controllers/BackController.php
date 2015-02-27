@@ -38,8 +38,6 @@ abstract class BackController extends BaseController {
                 
                 if ($count > 0) {
                     $contactMessages = link_to('admin/contact', Lang::choice('app.new_messages', $count));
-                } else {
-                    $contactMessages = trans('app.no_messages');
                 }
             }
             $view->with('contactMessages', $contactMessages);

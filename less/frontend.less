@@ -37,6 +37,7 @@ a:hover { color: @primaryColor; }
 /* Form */
 .form-errors { }
 .form-group { 
+    label { .text-overflow(); }
     label:after { /* content: ':'; */ }
     input, select, textarea {
         .form-control();
@@ -129,7 +130,7 @@ a:hover { color: @primaryColor; }
 
 .widget-streams {
     a { display: block; position: relative;  }
-    .title { .ellipsis(); display: inline-block; width: 80% }
+    .title { .text-overflow(); display: inline-block; width: 80% }
     .viewers { position: absolute; right: 0px; }
 }
 
@@ -258,7 +259,7 @@ a:hover { color: @primaryColor; }
         .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid #EEE;
         .meta {
             position: absolute; left: 0px; top: 0px; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: #EEE; float: left;
-            .creator-name { .ellipsis(); display: block; }
+            .creator-name { .text-overflow(); display: block; }
             .avatar { display: block; }
             .counter { display: block; }
         }

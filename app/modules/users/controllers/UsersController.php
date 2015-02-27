@@ -51,7 +51,7 @@ class UsersController extends FrontController {
     public function edit($id)
     {
         if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) {
-            $this->message(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
             return;
         }
 
@@ -63,7 +63,7 @@ class UsersController extends FrontController {
     public function update($id)
     {
         if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) {
-            $this->message(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
             return;
         }
 
@@ -89,7 +89,7 @@ class UsersController extends FrontController {
 
         $user->save();
 
-        $this->messageFlash(trans('app.updated', ['Profile']));
+        $this->alertFlash(trans('app.updated', ['Profile']));
         return Redirect::route('users.edit', [$id]);
     }
 
@@ -105,7 +105,7 @@ class UsersController extends FrontController {
     public function updatePassword($id)
     {
         if ((! user()) or (user()->id != $id)) {
-            $this->message(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
             return;
         }
 
@@ -147,7 +147,7 @@ class UsersController extends FrontController {
         $user->password = Input::get('password'); 
         $user->save();
 
-        $this->messageFlash(trans('app.updated', ['Password']));
+        $this->alertFlash(trans('app.updated', ['Password']));
         return Redirect::to("users/{$id}/edit");
 
     }

@@ -6538,10 +6538,27 @@ button.close {
 /*
  * Classes
  */
-.ellipsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+/* Responsive tables: No more tables. Needs JS to work! */
+.no-more-tables {
+  display: block;
+}
+.no-more-tables thead,
+.no-more-tables tbody,
+.no-more-tables th,
+.no-more-tables td,
+.no-more-tables tr {
+  display: block;
+}
+.no-more-tables thead {
+  display: none;
+}
+.no-more-tables tr {
+  border: 1px solid #ccc;
+}
+.no-more-tables td::before {
+  content: attr(data-td-title) ': ';
+  width: 50%;
+  font-weight: bold;
 }
 .space-top-small {
   margin-top: 10px;
@@ -6560,11 +6577,6 @@ button.close {
 }
 .space-bottom-huge {
   margin-bottom: 40px;
-}
-.form-group label {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 .form-group label[for] {
   cursor: pointer;
@@ -6646,6 +6658,11 @@ a:hover {
   font-weight: bold;
 }
 /* Form */
+.form-group label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .form-group label:after {
   /* content: ':'; */
 }
@@ -6972,9 +6989,9 @@ textarea.model-search-box input {
   position: relative;
 }
 .widget-streams .title {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
   display: inline-block;
   width: 80%;
 }
@@ -7341,9 +7358,9 @@ textarea.model-search-box input {
 }
 .page-threads .post .meta .creator-name,
 .page-posts .post .meta .creator-name {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
   display: block;
 }
 .page-threads .post .meta .avatar,

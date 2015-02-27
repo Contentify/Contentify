@@ -418,7 +418,7 @@ class ModelHandler {
             }
         }
 
-        $controller->messageFlash(trans('app.created', [$controller->getModelName()]));
+        $controller->alertFlash(trans('app.created', [$controller->getModelName()]));
         if (Input::get('_form_apply') !== null) {
             return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.edit', array($model->id));
         } else {
@@ -556,7 +556,7 @@ class ModelHandler {
             }
         }
 
-        $controller->messageFlash(trans('app.updated', [$controller->getModelName()]));
+        $controller->alertFlash(trans('app.updated', [$controller->getModelName()]));
         if (Input::get('_form_apply') !== null) {
             return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.edit', [$id]);
         } else {
@@ -628,7 +628,7 @@ class ModelHandler {
 
         UserActivities::addDelete(false, user()->id, $controller->getModelClass());
 
-        $controller->messageFlash(trans('app.deleted', [$controller->getModelName()]));
+        $controller->alertFlash(trans('app.deleted', [$controller->getModelName()]));
         return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
     }
 
@@ -653,7 +653,7 @@ class ModelHandler {
 
         $model->restore();
 
-        $controller->messageFlash(trans('app.restored', [$controller->getModelName()]));
+        $controller->alertFlash(trans('app.restored', [$controller->getModelName()]));
         return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
     }
 

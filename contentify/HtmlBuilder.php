@@ -102,11 +102,11 @@ class HtmlBuilder extends OriginalHtmlBuilder {
         /*
          * Table head
          */
-        $code .= '<tr>';
+        $code .= '<thead><tr>';
         foreach ($header as $value) {
             $code .= '<th>'.$value.'</th>';
         }
-        $code .= '</tr>';
+        $code .= '</tr></thead>';
 
         /*
          * Table body

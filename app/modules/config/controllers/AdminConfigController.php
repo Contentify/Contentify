@@ -60,7 +60,7 @@ class AdminConfigController extends BackController {
             DB::table('config')->whereName($settingRealName)->update(['value' => $settingsBag->$settingName]);
         }
 
-        $this->messageFlash(trans('app.updated', [$this->controller]));
+        $this->alertFlash(trans('app.updated', [$this->controller]));
         return Redirect::to('admin/config');
     }
 
@@ -118,11 +118,11 @@ class AdminConfigController extends BackController {
                 }
                 break;
             default:
-                $this->message(t('Sorry, "'.Config::get('database.default').'" does not support this feature.'));
+                $this->alertError(trans('config::not_supported', [Config::get('database.default')]));
                 return;
         }
 
-        $this->message(t('Database optimized.'));
+        $this->alertSuccess(t('Database optimized.'));
     }
 
     /**
@@ -149,12 +149,12 @@ class AdminConfigController extends BackController {
                 $dump->filename = $filename;
                 $dump->start();
 
-                $this->message(
+                $this->alertSuccess(
                     trans('config::db_export'), 
                     trans('config::db_file'));
                 break;
             default:
-                $this->message(trans('config::not_supported', [Config::get('database.default')]));
+                $this->alertError(trans('config::not_supported', [Config::get('database.default')]));
                 return;
         }
     }
@@ -173,7 +173,7 @@ class AdminConfigController extends BackController {
             $content = File::get($fileName, trans('config::log_empty'));
             $this->pageView('config::show_log', compact('content'));
         } else {
-            $this->message(trans('config::log_empty'));
+            $this->alertInfo(trans('config::log_empty'));
         }
     }
 
@@ -189,7 +189,7 @@ class AdminConfigController extends BackController {
             File::delete($fileName);
         }
 
-        $this->message(trans('app.deleted', [$fileName]));
+        $this->alertSuccess(trans('app.deleted', [$fileName]));
     }
 
 }

@@ -38,7 +38,7 @@ class GalleriesController extends FrontController {
             if ($gallery->images) {
                 $image = $gallery->images[0];
             } else {
-                $this->message(trans('app.not_found'));
+                $this->alertError(trans('app.not_found'));
                 return;
             }
         }

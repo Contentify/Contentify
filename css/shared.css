@@ -1,0 +1,79 @@
+/* 
+ * Functions
+ */
+/*
+ * Classes
+ */
+/* Responsive tables: No more tables. Needs JS to work! */
+.no-more-tables {
+  display: block;
+}
+.no-more-tables thead,
+.no-more-tables tbody,
+.no-more-tables th,
+.no-more-tables td,
+.no-more-tables tr {
+  display: block;
+}
+.no-more-tables thead {
+  display: none;
+}
+.no-more-tables tr {
+  border: 1px solid #ccc;
+}
+.no-more-tables td::before {
+  content: attr(data-td-title) ': ';
+  width: 50%;
+  font-weight: bold;
+}
+.space-top-small {
+  margin-top: 10px;
+}
+.space-top {
+  margin-top: 20px;
+}
+.space-top-huge {
+  margin-top: 40px;
+}
+.space-bottom-small {
+  margin-bottom: 10px;
+}
+.space-bottom {
+  margin-bottom: 20px;
+}
+.space-bottom-huge {
+  margin-bottom: 40px;
+}
+.form-group label[for] {
+  cursor: pointer;
+}
+.numeric-input {
+  text-align: right;
+}
+.spoiler-wrapper {
+  margin: 20px 0px;
+  padding: 0px 10px;
+  background-color: #EEE;
+}
+.spoiler-wrapper.show {
+  padding-bottom: 10px;
+}
+.spoiler-wrapper .spoiler-toggle {
+  padding: 10px 0px;
+  cursor: pointer;
+}
+.spoiler-wrapper .spoiler-toggle::before {
+  content: "\f0da";
+  font-family: 'FontAwesome';
+}
+.spoiler-wrapper.show .spoiler {
+  height: auto;
+  overflow: visible;
+}
+.spoiler-wrapper.show .spoiler-toggle::before {
+  content: "\f0d7";
+}
+.spoiler {
+  height: 0px;
+  overflow: hidden;
+}

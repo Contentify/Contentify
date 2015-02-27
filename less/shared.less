@@ -8,7 +8,15 @@
 /*
  * Classes
  */
-.ellipsis { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+
+/* Responsive tables: No more tables. Needs JS to work! */
+.no-more-tables {
+    display: block;
+    thead, tbody, th, td, tr { display: block; }
+    thead { display: none }
+    tr { border: 1px solid #ccc; }
+    td::before { content: attr(data-td-title) + ': '; width: 50%; font-weight: bold; }
+}
 
 .space-top-small { margin-top: 10px }
 .space-top { margin-top: 20px }
@@ -20,7 +28,6 @@
 
 .form-group {
     label { 
-        .ellipsis(); 
         &[for] { cursor: pointer }
     }
 }

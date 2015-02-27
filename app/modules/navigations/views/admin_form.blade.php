@@ -140,6 +140,8 @@
                 var uiItem = createUiItem(items[i], i);
                 $tableBody.append(uiItem);
             };
+
+            contentify.responsiveTables();
         }
 
         $('#item_add').click(function()

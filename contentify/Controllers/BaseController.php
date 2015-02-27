@@ -184,30 +184,80 @@ abstract class BaseController extends Controller {
     }
 
     /**
-     * Adds a message view to the main layout.
+     * Adds an alert view to the main layout.
      *
-     * @param string $title
-     * @param string $text
+     * @param string $type  The type (error, info, warning, success)
+     * @param string $title The title
+     * @param string $text  Optional text
      * @return void
      */
-    public function message($title, $text = '')
+    public function alert($type, $title, $text = '')
     {
         if ($this->layout != null) {
-            $this->layout->page .= View::make('message', ['title' => $title, 'text' => $text]);
+            $this->layout->page .= View::make('alert', ['type' => 'info', 'title' => $title, 'text' => $text]);
         } else {
             throw new Exception('Error: $this->layout is null!');
         }
     }
 
     /**
-     * Inserts a flash message to the main layout.
+     * Adds an success alert view to the main layout.
+     *
+     * @param string $title The title
+     * @param string $text  Optional text
+     * @return void
+     */
+    public function alertSuccess($title, $text = '')
+    {
+        $this->alert('success', $title, $text);
+    }
+
+    /**
+     * Adds a warning alert view to the main layout.
+     *
+     * @param string $title The title
+     * @param string $text  Optional text
+     * @return void
+     */
+    public function alertWarning($title, $text = '')
+    {
+        $this->alert('warning', $title, $text);
+    }
+
+    /**
+     * Adds an error (danger) alert view to the main layout.
+     *
+     * @param string $title The title
+     * @param string $text  Optional text
+     * @return void
+     */
+    public function alertError($title, $text = '')
+    {
+        $this->alert('danger', $title, $text);
+    }
+
+    /**
+     * Adds an info alert view to the main layout.
+     *
+     * @param string $title The title
+     * @param string $text  Optional text
+     * @return void
+     */
+    public function alertInfo($title, $text = '')
+    {
+        $this->alert('info', $title, $text);
+    }
+
+    /**
+     * Inserts a flash alert to the main layout.
+     * The type is 'info'.
      *
      * @param string $title
      * @return void
      */
-    public function messageFlash($title)
+    public function alertFlash($title)
     {
-        Session::flash('_message', $title);
+        Session::flash('_alert', $title);
     }
 
     /**
@@ -331,7 +381,7 @@ abstract class BaseController extends Controller {
 
     /**
      * Returns true if the current user has read access to the module.
-     * If not a message will be set.
+     * If not an alert will be set.
      * 
      * @return bool
      */
@@ -341,7 +391,7 @@ abstract class BaseController extends Controller {
             return true;
         } else {
             if (! Request::ajax()) {
-                $this->message(trans('app.access_denied'));
+                $this->alertError(trans('app.access_denied'));
             }
 
             return false;
@@ -350,7 +400,7 @@ abstract class BaseController extends Controller {
 
     /**
      * Returns true if the current user has create access to the module.
-     * If not a message will be set.
+     * If not an alert will be set.
      * 
      * @return bool
      */
@@ -360,7 +410,7 @@ abstract class BaseController extends Controller {
             return true;
         } else {
             if (! Request::ajax()) {
-                $this->message(trans('app.access_denied'));
+                $this->alertError(trans('app.access_denied'));
             }
 
             return false;
@@ -369,7 +419,7 @@ abstract class BaseController extends Controller {
 
     /**
      * Returns true if the current user has update access to the module.
-     * If not a message will be set.
+     * If not an alert will be set.
      * 
      * @return bool
      */
@@ -379,7 +429,7 @@ abstract class BaseController extends Controller {
             return true;
         } else {
             if (! Request::ajax()) {
-                $this->message(trans('app.access_denied'));
+                $this->alertError(trans('app.access_denied'));
             }
 
             return false;
@@ -388,7 +438,7 @@ abstract class BaseController extends Controller {
 
     /**
      * Returns true if the current user has delete access to the module.
-     * If not a message will be set.
+     * If not an alert will be set.
      * 
      * @return bool
      */
@@ -398,7 +448,7 @@ abstract class BaseController extends Controller {
             return true;
         } else {
             if (! Request::ajax()) {
-                $this->message(trans('app.access_denied'));
+                $this->alertError(trans('app.access_denied'));
             }
             
             return false;
@@ -407,7 +457,7 @@ abstract class BaseController extends Controller {
 
     /**
      * Returns true if the current user is authenticated.
-     * If not a message will be set.
+     * If not an alert will be set.
      * 
      * @return bool
      */
@@ -416,7 +466,7 @@ abstract class BaseController extends Controller {
         if (Sentry::check()) {
             return true;
         } else {
-            $this->message(trans('app.no_auth'));
+            $this->alertError(trans('app.no_auth'));
             return false;
         }
     }

@@ -70,7 +70,7 @@ class AdminUsersController extends BackController {
         $user = User::findOrFail($id);
 
         if (! user()->isSuperAdmin() and $user->isSuperAdmin()) {
-            $this->message(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
             return;
         }
 

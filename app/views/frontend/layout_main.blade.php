@@ -45,12 +45,8 @@
             <div id="content" class="col-md-8">
                 @widget('Slides::Slides', ['categoryId' => 1])
 
-                @if (Session::get('_message'))
-                    <div class="ui-message">
-                        <div class="text">
-                            {{ Session::get('_message') }}
-                        </div>
-                    </div>
+                @if (Session::get('_alert'))
+                    @include('alert', ['type' => 'info', 'title' => Session::get('_alert')])
                 @endif
 
                 {{-- Render JavaScript alerts here --}}

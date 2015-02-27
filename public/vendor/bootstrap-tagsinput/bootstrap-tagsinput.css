@@ -10,26 +10,25 @@
   border-radius: 4px;
   max-width: 100%;
   line-height: 22px;
+  cursor: text;
 }
-.bootstrap-tagsinput input {
-  border-radius: 3px;
+.bootstrap-tagsinput input { 
+  border: none;
   box-shadow: none;
   outline: none;
   background-color: transparent;
-  padding: 0px 0px 0px 5px;
+  padding: 0;
   margin: 0;
   width: auto !important;
   max-width: inherit;
 }
 .bootstrap-tagsinput input:focus {
-
+  border: none;
+  box-shadow: none;
 }
 .bootstrap-tagsinput .tag {
-  white-space: nowrap;
-  padding: 0px 2px;
-  border-radius: 3px;
-  background-color: #FF6100;
   margin-right: 2px;
+  background-color: #FF6100;
   color: white;
 }
 .bootstrap-tagsinput .tag [data-role="remove"] {

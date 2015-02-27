@@ -30,7 +30,7 @@
     {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
     {{ HTML::script('vendor/moment/moment.js') }}
     {{ HTML::script('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}
-    {{ HTML::script('vendor/bootstrap-tagsinput/bootstrap-tagsinput.js') }}
+    {{ HTML::script('vendor/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}
     {{ HTML::script('vendor/ckeditor/ckeditor.js') }}
     {{ HTML::script('vendor/contentify/contentify.js') }}
     {{ HTML::script('vendor/contentify/backend.js') }}
@@ -43,18 +43,18 @@
 
         <header id="header">
             <div class="row">
-                <div class="col-lg-2 header-logo">
+                <div class="header-logo">
                     <a href="{{ route('admin.dashboard') }}" title="{{ trans('app.admin_dashboard') }}">
                         {{ HTML::image(asset('theme/contentify_header_logo.png')) }}
                     </a>
                 </div>
-                <div class="col-lg-10 header-navigation">
+                <div class="header-navigation">
                     @if ($contactMessages)
                     <span class="msg">{{ HTML::fontIcon('envelope') }} {{ $contactMessages }}</span>
                     @endif
 
                     <nav>
-                        <ul>
+                        <ul class="list-inline">
                             <li><a href="{{ url('admin/help') }}"><span class="fa fa-question-circle fa-fw"></span>Help</a></li>
                             <li><a href="{{ route('home') }}"><span class="fa fa-eye fa-fw"></span>Website</a></li>
                             <li><a href="{{ route('logout') }}"><span class="fa fa-sign-out fa-fw"></span>Logout</a></li>
@@ -81,12 +81,8 @@
         </aside>
 
         <section id="content">
-            @if (Session::get('_message'))
-                <div class="ui-message">
-                    <div class="text">
-                        {{ Session::get('_message') }}
-                    </div>
-                </div>
+            @if (Session::get('_alert'))
+                @include('alert', ['type' => 'info', 'title' => Session::get('_alert')])
             @endif
 
             {{-- Render JavaScript alerts here --}}

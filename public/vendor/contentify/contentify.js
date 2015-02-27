@@ -237,30 +237,28 @@ $(document).ready(function()
         /*
          * Add delete confirm dialogue
          */
-        if ($.boxer) {
-            $('body').append($('<div />').boxer({})); // Bugfix or Boxer won't open due to a JS error
-            $('*[data-confirm-delete]').click(function(event)
-            {
-                event.preventDefault();
-                event.stopPropagation();
+        $('*[data-confirm-delete]').click(function(event)
+        {
+            event.preventDefault();
+            event.stopPropagation();
 
-                var $self = $(this);
+            var $self = $(this);
 
-                var $ui = $('<div class="boxer-confirm"><h2>Delete this item?</h2></div>')
-                    .append(
-                        $('<button>').text('Yes').click(function()
-                        {
-                            window.location = $self.attr('href');
-                        })
-                    ).append(
-                        $('<button>').text('No').click(function()
-                        {
-                            $.boxer('close');
-                        })
-                    );
-                $.boxer($ui);
-            });
-        }
+            var $footer = $('<div>')
+            .append(
+                $('<button>').text('Yes').click(function()
+                {
+                    window.location = $self.attr('href');
+                })
+            ).append(
+                $('<button>').text('No').click(function()
+                {
+                    contentify.closeModal();
+                })
+            );
+
+            framework.modal('Confirm', 'Delete this item?', $footer);
+        });
 
         /*
          * Add confirm dialogue
@@ -378,6 +376,37 @@ $(document).ready(function()
 
             window.location = filterUiUrl;
         });
+
+        /*
+         * Makes tables responsive: "No more tables"
+         */
+         this.responsiveTables = function() {
+            $('.table').each(function()
+            {
+                var $ths = $(this).find('thead th');
+
+                if ($ths.length == 0) {
+                    return;
+                }
+
+                var titles = [];
+                $ths.each(function()
+                {
+                    titles.push($(this).text());
+                })
+
+                $(this).find('tbody tr').each(function()
+                {
+                    $(this).find('td').each(function(index)
+                    {
+                        var title = titles[index];
+                        $(this).attr('data-td-title', title);
+                    });   
+                });            
+            });
+         }
+
+         framework.responsiveTables();
 
         /**
          * Returns a string formatted according to the given format string.

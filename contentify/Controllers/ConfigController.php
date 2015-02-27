@@ -65,7 +65,7 @@ abstract class ConfigController extends BackController {
             }
         });
 
-        $this->messageFlash(trans('app.updated', [$this->controller]));
+        $this->alertFlash(trans('app.updated', [$this->controller]));
         return Redirect::to(Request::url())->withInput();
     }
 

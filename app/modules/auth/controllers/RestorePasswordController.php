@@ -33,11 +33,11 @@ class RestorePasswordController extends FrontController {
                 $message->to($email, $user->username)->subject(trans('auth::password_reset'));
             });
 
-            $this->message(
+            $this->alertSuccess(
                 trans('auth::email_gen_pw')
             );
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-            $this->message(trans('auth::email_invalid'));
+            $this->alertError(trans('auth::email_invalid'));
             return;
         }
     }
@@ -55,7 +55,7 @@ class RestorePasswordController extends FrontController {
             $user = Sentry::findUserByLogin($email);
 
             if ($user->reset_password_code != $code) {
-                $this->message(trans('auth::code_invalid'));
+                $this->alertError(trans('auth::code_invalid'));
                 return;
             }
 
@@ -66,7 +66,7 @@ class RestorePasswordController extends FrontController {
                 $message->to($email, $user->username)->subject(trans('auth::new_pw'));
             });
 
-            $this->message(
+            $this->alertSuccess(
                 trans('auth::email_new_pw')
             );
 
@@ -78,7 +78,7 @@ class RestorePasswordController extends FrontController {
             $user->password = $password; 
             $user->save();
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-            $this->message(trans('auth::email_invalid'));
+            $this->alertError(trans('auth::email_invalid'));
             return;
         }
     }

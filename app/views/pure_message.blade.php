@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 
-    {{ HTML::script('libs/jquery-1.10.2.min.js') }}
+    {{ HTML::script('vendor/jquery/jquery-1.11.2.min.js') }}
 
     <style>
         @font-face {
@@ -36,7 +36,7 @@
         .message-box p { margin: 20px 0px 0px 0px; font-family: 'Droid Sans'; font-size: 14px; color: #666; }
         .message-box p a { color: #999; text-decoration: none }
         .message-box hr { margin: 15px 0px; border: none; border-bottom: 1px dotted #333 }
-        .message-box button { padding: 8px 16px; border: none; background-color: #3399ff; border-radius: 5px; font-family: 'Droid Sans'; font-size: 14px; color: white; text-transform: uppercase; cursor: pointer; }
+        .message-box button { padding: 8px 16px; border: none; background-color: #139cdc; border-radius: 5px; font-family: 'Droid Sans'; font-size: 14px; color: white; text-transform: uppercase; cursor: pointer; }
     </style>
 </head>
 <body>

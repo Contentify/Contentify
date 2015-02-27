@@ -70,7 +70,7 @@ class NewsController extends FrontController {
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($news->internal and ! $hasAccess) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $news->access_counter++;

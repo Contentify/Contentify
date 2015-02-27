@@ -46,7 +46,7 @@ class PostsController extends FrontController {
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         if ($forumThread->closed) {
-            $this->message(trans('forums::closed_info'));
+            $this->alertError(trans('forums::closed_info'));
             return;
         }
 
@@ -64,7 +64,7 @@ class PostsController extends FrontController {
         $user->posts_count++;
         $user->save();
 
-        $this->messageFlash(trans('app.created', ['Post']));
+        $this->alertFlash(trans('app.created', ['Post']));
         return Redirect::to('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
     }
 
@@ -78,7 +78,7 @@ class PostsController extends FrontController {
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         /*
@@ -101,7 +101,7 @@ class PostsController extends FrontController {
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         /*
@@ -121,7 +121,7 @@ class PostsController extends FrontController {
                 ->withInput()->withErrors($forumPost->getErrors()); // TODO: Keep this redirect??
         }
 
-        $this->messageFlash(trans('app.updated', ['Post']));
+        $this->alertFlash(trans('app.updated', ['Post']));
 
         return Redirect::to('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
     }
@@ -167,13 +167,13 @@ class PostsController extends FrontController {
         $forumReport = ForumReport::whereCreatorId(user()->id)->whereForumPostId($id)->first();   
 
         if ($forumReport) {
-            $this->messageFlash(trans('forums::already_reported'));
+            $this->alertFlash(trans('forums::already_reported'));
         } else {
             $forumReport = new ForumReport(['forum_post_id' => $id]);
             $forumReport->creator_id = user()->id;
             $forumReport->save();
 
-            $this->messageFlash(trans('forums::reported'));
+            $this->alertFlash(trans('forums::reported'));
         }
 
         return Redirect::to('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);

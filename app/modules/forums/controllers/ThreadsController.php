@@ -85,7 +85,7 @@ class ThreadsController extends FrontController {
         $user->posts_count++;
         $user->save();
 
-        $this->messageFlash(trans('app.created', ['Thread']));
+        $this->alertFlash(trans('app.created', ['Thread']));
         return Redirect::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);
     }
 
@@ -100,7 +100,7 @@ class ThreadsController extends FrontController {
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $this->pageView('forums::root_post_form', compact('forumThread', 'forumPost'));
@@ -117,7 +117,7 @@ class ThreadsController extends FrontController {
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $forumPost->fill(Input::all());
@@ -139,7 +139,7 @@ class ThreadsController extends FrontController {
         $forumPost->forceSave();
         $forumThread->forceSave();
 
-        $this->messageFlash(trans('app.updated', ['Thread']));
+        $this->alertFlash(trans('app.updated', ['Thread']));
         return Redirect::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);     
     }
 
@@ -183,7 +183,7 @@ class ThreadsController extends FrontController {
     public function sticky($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
@@ -191,7 +191,7 @@ class ThreadsController extends FrontController {
         $forumThread->sticky = 1 - $forumThread->sticky;
         $forumThread->forceSave();
 
-        $this->messageFlash(trans('app.updated', ['Thread']));
+        $this->alertFlash(trans('app.updated', ['Thread']));
         return Redirect::to('forums/'.$forumThread->forum->id);
     }
 
@@ -203,7 +203,7 @@ class ThreadsController extends FrontController {
     public function closed($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
@@ -211,7 +211,7 @@ class ThreadsController extends FrontController {
         $forumThread->closed = 1 - $forumThread->closed;
         $forumThread->forceSave();
 
-        $this->messageFlash(trans('app.updated', ['Thread']));
+        $this->alertFlash(trans('app.updated', ['Thread']));
         return Redirect::to('forums/'.$forumThread->forum->id);
     }
 
@@ -223,7 +223,7 @@ class ThreadsController extends FrontController {
     public function getMove($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $model = ForumThread::isAccessible()->findOrFail($id);
@@ -242,7 +242,7 @@ class ThreadsController extends FrontController {
     public function postMove($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
         
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
@@ -256,7 +256,7 @@ class ThreadsController extends FrontController {
         $newForum->refresh();
         $oldForum->refresh();
 
-        $this->messageFlash(trans('app.updated', ['Thread']));
+        $this->alertFlash(trans('app.updated', ['Thread']));
         return Redirect::to('forums/'.$forumThread->forum_id);
     }
 

@@ -18,7 +18,7 @@ class ContactController extends FrontController {
         $okay = $msg->save();
         
         if ($okay) {
-            $this->message(trans('contact::message_sent'));
+            $this->alertSuccess(trans('contact::message_sent'));
         } else {
             return Redirect::to('contact')->withInput()->withErrors($msg->getErrors());
         }

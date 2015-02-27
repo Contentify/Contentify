@@ -29,7 +29,7 @@ class CustomPagesController extends FrontController {
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($customPage->internal and ! $hasAccess) {
-            return $this->message(trans('app.access_denied'));
+            return $this->alertError(trans('app.access_denied'));
         }
 
         $customPage->access_counter++;

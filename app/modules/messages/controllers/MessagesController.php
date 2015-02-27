@@ -10,7 +10,7 @@ class MessagesController extends FrontController {
         $message = Message::findOrFail($id);
 
         if ($message->receiver_id != user()->id and $message->creator_id != user()->id) {
-            $this->message(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
             return;
         }
 
@@ -49,7 +49,7 @@ class MessagesController extends FrontController {
             // Reset the message counter cache of the receiving user:
             Cache::forget(User::CACHE_KEY_MESSAGES.$message->receiver_id);
 
-            $this->messageFlash(trans('messages::message_sent'));
+            $this->alertFlash(trans('messages::message_sent'));
             return Redirect::to('messages/outbox');
         } else {
             return Redirect::to('messages/create')->withInput()->withErrors($message->getErrors());
@@ -61,7 +61,7 @@ class MessagesController extends FrontController {
         $message = Message::findOrFail($id);
 
         if ($message->receiver_id != user()->id) {
-            $this->message(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
             return;
         }
 
@@ -79,7 +79,7 @@ class MessagesController extends FrontController {
         $message = Message::findOrFail($id);
 
         if ($message->receiver_id != user()->id and $message->creator_id != user()->id) {
-            $this->message(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
             return;
         }
 
@@ -95,7 +95,7 @@ class MessagesController extends FrontController {
             Message::destroy($id);
         }
 
-        $this->messageFlash(trans('app.deleted', ['Message']));
+        $this->alertFlash(trans('app.deleted', ['Message']));
         return Redirect::to('messages/inbox');
     }
     

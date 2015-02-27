@@ -8,6 +8,6 @@ class LogoutController extends FrontController {
     {
         Sentry::logout();
 
-        $this->message(trans('auth::logged_out'));
+        $this->alertInfo(trans('auth::logged_out'));
     }
 }

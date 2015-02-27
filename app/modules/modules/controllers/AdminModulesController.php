@@ -90,11 +90,11 @@ class AdminModulesController extends BackController {
 
         if ($result === false or $result === null) {
             Cache::forever(self::CACHE_KEY.$name, false);
-            $this->message(trans('modules::fail'));            
+            $this->alertError(trans('modules::fail'));            
         } elseif ($result === true) {
             $installer->after();
             Cache::forever(self::CACHE_KEY.$name, true);
-            $this->message(trans('modules::success'));
+            $this->alertSuccess(trans('modules::success'));
         } else {
             $this->pageOutput($result);
         }
