@@ -16,7 +16,7 @@
 @if ($infoText)
     <span class="info-text">{{ $infoText }}</span>
 @endif
-{{ $contentTable }}
+{{ $modelTable }}
 
 <div class="toolbar bottom">
     {{ $sortSwitcher }}

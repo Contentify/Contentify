@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" data-not-responsive="1">
     <tbody>
         <tr>
             <td>
@@ -37,7 +37,7 @@
 
 <hr>
 
-<table class="table">
+<table class="table" data-not-responsive="1">
     <tbody>
         <tr>
             <td>

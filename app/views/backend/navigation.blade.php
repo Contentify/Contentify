@@ -3,12 +3,12 @@
     {{-- Category 1 --}}
     <div class="category"> 
         <a href="#" class="head">
-            Daily Content
+            Daily<span> Content</span>
         </a>
         <div class="items">
             @foreach ($navCategories[1] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}">
-                    {{ HTML::fontIcon($navItem['icon']) }} {{{ $navItem['title'] }}}
+                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
+                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
                 </a>
             @endforeach
         </div>
@@ -17,12 +17,12 @@
     {{-- Category 2 --}}
     <div class="category"> 
         <a href="#" class="head">
-            Permanent Content
+            Perma<span>nent Content</span>
         </a>
         <div class="items">
             @foreach ($navCategories[2] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}">
-                    {{ HTML::fontIcon($navItem['icon']) }} {{{ $navItem['title'] }}}
+                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
+                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
                 </a>
             @endforeach
         </div>
@@ -31,12 +31,12 @@
     {{-- Category 3 --}}
     <div class="category">   
         <a href="#" class="head">
-            eSports Content
+            eSports<span> Content</span>
         </a>
         <div class="items">        
             @foreach ($navCategories[3] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}">
-                    {{ HTML::fontIcon($navItem['icon']) }} {{{ $navItem['title'] }}}
+                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
+                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
                 </a>
             @endforeach
         </div>
@@ -49,8 +49,8 @@
         </a>
         <div class="items">
             @foreach ($navCategories[4] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}">
-                    {{ HTML::fontIcon($navItem['icon']) }} {{{ $navItem['title'] }}}
+                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
+                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
                 </a>
             @endforeach
         </div>

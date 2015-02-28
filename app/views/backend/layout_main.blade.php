@@ -43,11 +43,9 @@
 
         <header id="header">
             <div class="row">
-                <div class="header-logo">
-                    <a href="{{ route('admin.dashboard') }}" title="{{ trans('app.admin_dashboard') }}">
-                        {{ HTML::image(asset('theme/contentify_header_logo.png')) }}
-                    </a>
-                </div>
+                <a class="header-logo" href="{{ route('admin.dashboard') }}" title="{{ trans('app.admin_dashboard') }}">
+                    {{ HTML::image(asset('theme/contentify_header_logo.png')) }}
+                </a>
                 <div class="header-navigation">
                     @if ($contactMessages)
                     <span class="msg">{{ HTML::fontIcon('envelope') }} {{ $contactMessages }}</span>
@@ -55,9 +53,9 @@
 
                     <nav>
                         <ul class="list-inline">
-                            <li><a href="{{ url('admin/help') }}"><span class="fa fa-question-circle fa-fw"></span>Help</a></li>
-                            <li><a href="{{ route('home') }}"><span class="fa fa-eye fa-fw"></span>Website</a></li>
-                            <li><a href="{{ route('logout') }}"><span class="fa fa-sign-out fa-fw"></span>Logout</a></li>
+                            <li><a href="{{ url('admin/help') }}" title="Help"><span class="fa fa-question-circle fa-fw"></span><span class="text">Help</span></a></li>
+                            <li><a href="{{ route('home') }}" title="Website"><span class="fa fa-eye fa-fw"></span><span class="text">Website</span></a></li>
+                            <li><a href="{{ route('logout') }}" title="Logout"><span class="fa fa-sign-out fa-fw"></span><span class="text">Logout</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -65,14 +63,14 @@
         </header>
 
         <aside id="sidebar">
+            <a class="hamburger" href="#">{{ HTML::fontIcon('navicon') }}</a>
             <div class="account">
                 <a id="profile-link" href="{{ url('users/'.user()->id) }}">
                     <div class="avatar">
                         @if (user()->image)
                             <div class="image" style="background-image: url('{{ asset('uploads/users/100/'.user()->image) }}')"></div>
                         @endif
-                        <div class="welcome">Welcome</div>
-                        {{ user()->username }}
+                        <div class="welcome">Welcome, <span>{{ user()->username }}</span></div>
                     </div>
                 </a>                
             </div>
@@ -80,7 +78,7 @@
             {{ HTML::renderBackendNav() }}
         </aside>
 
-        <section id="content">
+        <section id="content" class="clearfix">
             @if (Session::get('_alert'))
                 @include('alert', ['type' => 'info', 'title' => Session::get('_alert')])
             @endif
@@ -97,13 +95,12 @@
                     {{ $page }}
                 </div>
             @endif
-
-            <div class="clearfix"></div>
-            <footer id="footer">
-                <span class="version">Version {{ Config::get('app.version') }}</span>
-                <a class="top" href="#">{{ trans('app.top') }}</a>
-            </footer>
         </section>
+
+        <footer id="footer">
+            <span class="version">Version {{ Config::get('app.version') }}</span>
+            <a class="top" href="#">{{ trans('app.top') }}</a>
+        </footer>
     </div>
 </body>
 </html>

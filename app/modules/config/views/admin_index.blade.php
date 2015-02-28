@@ -1,7 +1,9 @@
-{{ button(trans('config::button_info'), url('admin/config/info'), 'info') }}&nbsp;
-{{ button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') }}&nbsp;
-{{ button(trans('config::button_dump'), url('admin/config/export'), 'database') }}&nbsp;
-{{ button(trans('config::button_log'), url('admin/config/log'), 'file-text-o') }}&nbsp;
+<div class="actions">
+    {{ button(trans('config::button_info'), url('admin/config/info'), 'info') }}&nbsp;
+    {{ button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') }}&nbsp;
+    {{ button(trans('config::button_dump'), url('admin/config/export'), 'database') }}&nbsp;
+    {{ button(trans('config::button_log'), url('admin/config/log'), 'file-text-o') }}&nbsp;
+</div>
 
 {{ Form::errors($errors) }}
 

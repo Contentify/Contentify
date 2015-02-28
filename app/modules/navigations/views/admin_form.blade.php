@@ -7,7 +7,7 @@
 @endif
     {{ Form::smartText('title', trans('app.title')) }} 
 
-    <table id="items-table" class="table">
+    <table id="items-table" class="table table-hover">
         <thead>
             <tr>
                 <th>{{ trans('app.title') }}</th>
@@ -43,12 +43,12 @@
 
         function createUiItem(item, index)
         {
-            var actions = '<a data-action="up" href="#">' + contentify.fontIcon('chevron-up') + '</a>' +
-                '<a data-action="down" href="#">' +  contentify.fontIcon('chevron-down') + '</a>' +
-                '<a data-action="left" href="#">' + contentify.fontIcon('chevron-left') + '</a>' +
-                '<a data-action="right" href="#">' + contentify.fontIcon('chevron-right') + '</a>' +
-                '<a data-action="edit" href="#">' + contentify.fontIcon('edit') + '</a>' + 
-                '<a data-action="delete" href="#">' + contentify.fontIcon('trash') + '</a>';
+            var actions = '<a class="icon-link" data-action="up" href="#">' + contentify.fontIcon('chevron-up') + '</a>' +
+                '<a class="icon-link" data-action="down" href="#">' +  contentify.fontIcon('chevron-down') + '</a>' +
+                '<a class="icon-link" data-action="left" href="#">' + contentify.fontIcon('chevron-left') + '</a>' +
+                '<a class="icon-link" data-action="right" href="#">' + contentify.fontIcon('chevron-right') + '</a>' +
+                '<a class="icon-link" data-action="edit" href="#">' + contentify.fontIcon('edit') + '</a>' + 
+                '<a class="icon-link" data-action="delete" href="#">' + contentify.fontIcon('trash') + '</a>';
 
             var $tr = $('<tr>').addClass('item-level-' + item.level).attr('data-index', index).append(
                 $('<td>').text(item.title)

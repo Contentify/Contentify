@@ -32,7 +32,7 @@
             <div class="awards">
                 <h2>Awards</h2>
 
-                <table class="table">
+                <table class="table" data-not-respsonsive="1">
                     <tbody>
                         @foreach ($team->awards as $award)
                             <tr>

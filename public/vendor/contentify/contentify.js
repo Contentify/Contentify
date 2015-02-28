@@ -379,9 +379,13 @@ $(document).ready(function()
         /*
          * Makes tables responsive: "No more tables"
          */
-         this.responsiveTables = function() {
+        this.responsiveTables = function() {
             $('.table').each(function()
             {
+                if ($(this).attr('data-not-responsive')) {
+                    return;
+                }
+
                 var $ths = $(this).find('thead th');
 
                 if ($ths.length == 0) {
@@ -403,9 +407,9 @@ $(document).ready(function()
                     });   
                 });            
             });
-         }
+        }
 
-         framework.responsiveTables();
+        framework.responsiveTables();
 
         /**
          * Returns a string formatted according to the given format string.
@@ -502,6 +506,19 @@ $(document).ready(function()
         this.fontIcon = function (icon)
         {
             return '<i class="fa fa-' + icon + '"></i>';
+        }
+
+        /**
+         * Scrolls smooth to the top of the document
+         * 
+         * @param  {String|Integer} speed The speed ('slow', 'normal', 'fast' or milliseconds)
+         */
+        this.scrollTop = function(speed) {
+            if (! speed) {
+                speed = 'normal';
+            }
+
+            $('html, body').animate({ scrollTop: 0 }, speed);
         }
     };    
 });

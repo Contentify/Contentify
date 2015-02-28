@@ -274,7 +274,7 @@ class ModelHandler {
         /*
          * Generate the table
          */
-        $contentTable = HTML::table($tableHead, $tableRows, $data['brightenFirst']);
+        $modelTable = HTML::table($tableHead, $tableRows, $data['brightenFirst']);
         
         /*
          * Generate the view
@@ -282,7 +282,7 @@ class ModelHandler {
         $controller->pageView('model_index', [
             'buttons'       => $buttons,
             'infoText'      => $data['infoText'],
-            'contentTable'  => $contentTable,
+            'modelTable'  => $modelTable,
             'sortSwitcher'  => $sortSwitcher,
             'recycleBin'    => $recycleBin,
             'paginator'     => $paginator,

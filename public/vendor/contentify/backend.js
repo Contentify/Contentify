@@ -20,8 +20,8 @@ $(document).ready(function()
     /*
      * Open sidebar category
      */
-    var sessionKey = 'backend.sidebar.category';
-    var category = sessionStorage.getItem(sessionKey);
+    var categorySessionKey = 'backend.sidebar.category';
+    var category = sessionStorage.getItem(categorySessionKey);
     if (! category) {
         category = 0;
     }
@@ -63,19 +63,62 @@ $(document).ready(function()
         event.preventDefault();
 
         var index = $(this).parent().index();
-        sessionStorage.setItem(sessionKey, index);
+        sessionStorage.setItem(categorySessionKey, index);
         activateNaviCategory(index);
+    });
+
+
+    var stateSessionKey = 'backend.sidebar.state';
+
+    var state = sessionStorage.getItem(stateSessionKey);
+
+    if (state) {
+        $('#sidebar').addClass('max');
+    }
+
+    $('#sidebar .hamburger').click(function(event)
+    {
+        event.preventDefault();
+
+        state = sessionStorage.getItem(stateSessionKey);
+
+        if (state) {
+            state = '';
+            $('#sidebar').removeClass('max');
+        } else {
+            state = 1;
+            $('#sidebar').addClass('max');
+        }
+
+        sessionStorage.setItem(stateSessionKey, state);
+    });
+
+    $('#footer .top').click(function(event)
+    {
+        event.preventDefault();
+
+        contentify.scrollTop();
     });
 
     /*
      * Adjust sidebar height to window height
+     * and set footer position
      */
     $(window).resize(function()
     {
-        var $sidebar = $('#sidebar');
-        var headerHeight = $('#header').height();
+        var $sidebar        = $('#sidebar');
+        var headerHeight    = $('#header').height();
+        var sidebarHeight   = $(window).height() - headerHeight;
 
-        $sidebar.css('height', $(window).height() - headerHeight);
+        $sidebar.css('height', sidebarHeight);
+
+        var $content = $('#content');
+        if (parseInt($content.css('marginLeft')) > 0) {
+            $content.css('minHeight', sidebarHeight - $('#footer').outerHeight() + parseInt($content.css('padding-top')));    
+        } else {
+            $content.css('minHeight', 'auto');
+        }
+        
     });
 
     $(window).resize();

@@ -113,8 +113,8 @@ return array(
     |
     */
 
-    'frontItemsPerPage' => 5,
-    'adminItemsPerPage' => 5,
+    'frontItemsPerPage' => 10,
+    'adminItemsPerPage' => 10,
 
     /*
     |--------------------------------------------------------------------------

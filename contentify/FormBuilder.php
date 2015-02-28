@@ -522,7 +522,7 @@ class FormBuilder extends OriginalFormBuilder {
 
         $partial = self::smartGroupOpen($name, $title)
             .self::file($name)
-            .' '.trans('app.max_size', [ini_get('upload_max_filesize')])
+            .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
             .self::smartGroupClose();
         return $partial;
     }
