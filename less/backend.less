@@ -10,10 +10,10 @@
  * Global Variables
  */
 
-@textblack: #424242;
+@textblack: rgb(85, 85, 85);
 @bgblack: #1a1f23;
-@blue: #139cdc;
-@hoverblue: #0A8CC9;
+@blue: #00afff;
+@hoverblue: darken(@blue, 5%);
 @white: #fff;
 
 @font-family: 'Open Sans', sans-serif;
@@ -31,6 +31,7 @@
     }
 }
 
+.btn { color: @textblack }
 .btn-default { 
     background: linear-gradient(to bottom,  #ffffff 0%,#e6e6e6 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=0 );
@@ -60,7 +61,7 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 }
 .form-editor { 
     margin-bottom: 20px;
-    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; padding: 0px 10px; border: 1px solid #EFEFEF; }
+    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; margin: 0px; padding: 0px 10px; border: 1px solid #cccccc; border-bottom: none; }
 }
 .form-horizontal {
     .control-label {
@@ -117,6 +118,7 @@ ul.pagination {
 
 /* Datetime Picker */
 .date-time-picker .input-group-addon { cursor: pointer }
+.bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover { background-color: @blue !important }
 
 /* Tags */
 .bootstrap-tagsinput {
@@ -170,7 +172,9 @@ ul.pagination {
     .quick-access {
         margin: 20px 0px;
         div { width: 16.666%; min-width: 120px; box-sizing: border-box; float: left; padding: 10px; text-align: center; }
-        a { display: block; margin: 0px 10px; padding-bottom: 10px; border-radius: 5px; background-color: @blue; color: white; }
+        a { display: block; margin: 0px 10px; padding-bottom: 10px; box-shadow: 0px 7px 0px @hoverblue; border-radius: 5px; background-color: @blue; color: white; }
+        a:hover { background-color: lighten(@blue, 5%) }
+        a:active { box-shadow: none; transform: translateY(7px); transition: all 0.08s linear; }
         i { display: block; padding: 10px; font-size: 40px }
     } 
     .widgets-row {
@@ -186,6 +190,7 @@ ul.pagination {
         th:nth-child(2) { width: 100px }
         td { .text-overflow(); }
         img { vertical-align: text-bottom; }
+        a { display: block }
     }
 }
 @media (max-width: @screen-phone) {
@@ -233,29 +238,25 @@ ul.pagination {
  */
 
 body {
-    font-weight: 400;
-    font-size: 14px;
+    font-size: 13px;
     color: @textblack;
     font-family: @font-family;
     background-color: @white;
 }
 
-*:focus {
-    outline: none;
-    outline-offset: 0px;
-}
-
-a:focus {
-    outline: none;
-    outline-offset: 0px;
-    text-decoration: none;
-}
-
 a {
-    color: @blue;
+    color: @textblack;
     text-decoration: none;
+    &:focus {
+        color: @textblack;
+        text-decoration: none;
+    }
     &:hover {
-        color: @blue;
+        color: @textblack;
+        text-decoration: none;
+    }
+    &:active {
+        color: @textblack;
         text-decoration: none;
     }
 }
@@ -279,9 +280,11 @@ img {
 @sidebarWidthSmall: 70px;
 
 header {
-    position: fixed; z-index: 100; left: 0px; right: 0px; background-color: @blue; color: @white; font-size: 16px; line-height: @headerHeight; box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
+    position: fixed; z-index: 100; left: 0px; right: 0px; background-color: @blue; color: @white; font-size: 14px; line-height: @headerHeight; box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
     a { color: @white; }
+    a:focus { color: @white } 
     a:hover { color: @white; }
+    a:active { color: @white; }
     nav {
         position: absolute; right: 0px; top: 0px;
         ul { margin: 0px; }
@@ -294,10 +297,10 @@ header {
     .msg { display: inline-block; margin-left: 40px; }
     .header-logo { display: block; width: @sidebarWidth; height: @headerHeight; float: left; }
 }
-@media (max-width: 840px) {
+@media (max-width: 790px) {
     header .msg { display: none; }
 }
-@media (max-width: 600px) {
+@media (max-width: 570px) {
     header nav .text { display: none }
 }
 @media (max-width: @screen-phone) {
@@ -359,7 +362,7 @@ header {
                 padding: 10px 20px;
                 margin-bottom: 1px;
                 background-color: lighten(@bgblack, 2%);
-                color: @white;
+                color: #82a4c0;
                 text-transform: uppercase;
                 .text-overflow();
             }
@@ -430,10 +433,8 @@ header {
     max-width: 900px; margin: 0px 40px; 
 }
 .page-head {
-    display: block; margin-bottom: 40px; padding: 20px 0px 20px 40px; border-bottom: 1px solid silver;  
-    i { margin-right: 10px; padding: 2px 3px; border-radius: 3px; background-color: @blue; color: white }
-    //display: block; height: 60px; line-height: 60px; margin-bottom: 20px; padding-left: 15px; .background-image('theme/backend/form_head.png'); font-size: 14px; font-weight: bold !important; color: #666666 !important;
-    
+    display: block; margin-bottom: 40px; padding: 20px 0px 20px 40px; border-bottom: 1px solid silver; font-weight: bold; 
+    i { margin-right: 10px; padding: 2px 3px; border-radius: 3px; background-color: @blue; color: white }  
 }
 @media (max-width: @screen-phone) {
     .page { margin: 0px 20px; }

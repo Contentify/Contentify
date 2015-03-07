@@ -44,7 +44,7 @@
         <header id="header">
             <div class="row">
                 <a class="header-logo" href="{{ route('admin.dashboard') }}" title="{{ trans('app.admin_dashboard') }}">
-                    {{ HTML::image(asset('theme/contentify_header_logo.png')) }}
+                    {{ HTML::image(asset('theme/header_logo.png')) }}
                 </a>
                 <div class="header-navigation">
                     @if ($contactMessages)

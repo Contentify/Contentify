@@ -22,5 +22,7 @@ CKEDITOR.editorConfig = function( config ) {
 
     config.language = editorLocale; 
 
+    config.uiColor = '#e6e6e6';
+
     config.extraPlugins = 'flags,templates,images';
 };
