@@ -53,9 +53,9 @@
 
                     <nav>
                         <ul class="list-inline">
-                            <li><a href="{{ url('admin/help') }}" title="Help"><span class="fa fa-question-circle fa-fw"></span><span class="text">Help</span></a></li>
-                            <li><a href="{{ route('home') }}" title="Website"><span class="fa fa-eye fa-fw"></span><span class="text">Website</span></a></li>
-                            <li><a href="{{ route('logout') }}" title="Logout"><span class="fa fa-sign-out fa-fw"></span><span class="text">Logout</span></a></li>
+                            <li><a href="{{ url('admin/help') }}" title="Help">{{ HTML::fontIcon('question-circle') }} <span class="text">Help</span></a></li>
+                            <li><a href="{{ route('home') }}" title="Website">{{ HTML::fontIcon('eye') }} <span class="text">Website</span></a></li>
+                            <li><a href="{{ route('logout') }}" title="Logout">{{ HTML::fontIcon('sign-out') }} <span class="text">Logout</span></a></li>
                         </ul>
                     </nav>
                 </div>

@@ -290,7 +290,8 @@ header {
         ul { margin: 0px; }
         li {
             float: left;
-            a { display: inline-block; padding: 0px 20px; height: @headerHeight }
+            .fadd { display: none !important; }
+            a { display: block; padding: 0px 20px; height: @headerHeight; font-weight: bold; text-transform: uppercase; }
             &:hover { background-color: @hoverblue; }
         }
     }

@@ -7473,10 +7473,15 @@ header nav ul {
 header nav li {
   float: left;
 }
+header nav li .fadd {
+  display: none !important;
+}
 header nav li a {
-  display: inline-block;
+  display: block;
   padding: 0px 20px;
   height: 56px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 header nav li:hover {
   background-color: #009ee6;

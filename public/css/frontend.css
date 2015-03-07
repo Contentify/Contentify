@@ -6620,13 +6620,13 @@ button.close {
 /* URLs */
 a,
 a:visited {
-  color: #139cdc;
+  color: #00afff;
 }
 a:active {
-  color: #139cdc;
+  color: #00afff;
 }
 a:hover {
-  color: #139cdc;
+  color: #00afff;
 }
 /*
  * Classes
@@ -6638,7 +6638,7 @@ a:hover {
   border: 1px solid transparent;
   border-radius: 4px;
   background-color: #eee;
-  border: 1px solid #139cdc;
+  border: 1px solid #00afff;
 }
 .ui-message h4 {
   margin-top: 0;
@@ -7178,7 +7178,7 @@ textarea.model-search-box input {
 /* Forums index page */
 .page-forums .action {
   border-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   color: #ffffff;
 }
 .page-forums .root-forum h2 {
@@ -7186,7 +7186,7 @@ textarea.model-search-box input {
   padding: 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -7245,7 +7245,7 @@ textarea.model-search-box input {
   padding: 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -7277,7 +7277,7 @@ textarea.model-search-box input {
   border: none;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -7290,7 +7290,7 @@ textarea.model-search-box input {
 .page-forums .threads .thread .info .closed {
   padding: 2px;
   border-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 10px;
   color: white;
 }
@@ -7414,7 +7414,7 @@ textarea.model-search-box input {
 /* Forums show_new_posts üage */
 .page-threads.page-forums-threads-new .action {
   border-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   color: #ffffff;
 }
 .page-threads.page-forums-threads-new .root-forum h2 {
@@ -7422,7 +7422,7 @@ textarea.model-search-box input {
   padding: 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -7480,7 +7480,7 @@ textarea.model-search-box input {
   padding: 10px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -7512,7 +7512,7 @@ textarea.model-search-box input {
   border: none;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 18px;
   font-weight: normal;
   color: white;
@@ -7525,7 +7525,7 @@ textarea.model-search-box input {
 .page-threads.page-forums-threads-new .threads .thread .info .closed {
   padding: 2px;
   border-radius: 3px;
-  background-color: #139cdc;
+  background-color: #00afff;
   font-size: 10px;
   color: white;
 }
@@ -7583,7 +7583,7 @@ textarea.model-search-box input {
  */
 #header {
   height: 100px;
-  background-color: #139cdc;
+  background-color: #00afff;
   color: white;
   cursor: pointer;
 }
