@@ -94,6 +94,7 @@ return array(
     'recycle_bin'   => 'Recycle Bin',
     'max_size'      => 'Max. Size: :0Byte',
     'accessed'      => 'accessed',
+    'no_items'      => 'There are no items.',
 
     /*
      * Backend template
