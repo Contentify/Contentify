@@ -68,7 +68,10 @@
                 <ul class="list-unstyled">
                     <li>{{ link_to('auth/registration/create', 'Registration') }}</li>
                     <li>{{ link_to('users', 'Users') }}</li>
-                    <li>{{ link_to('articles', 'Articles') }}</li>
+                    <li>{{ link_to('awards', 'Awards') }}</li>
+                    <li>{{ link_to('contact', 'Contact') }}</li>
+                    <li>{{ link_to('downloads', 'Downloads') }}</li>
+                    <li>{{ link_to('galleries', 'Galleries') }}</li>
                     <li>{{ link_to('partners', 'Partners') }}</li>
                     <li>{{ link_to('teams', 'Teams') }}</li>
                     <li>{{ link_to('matches', 'Matches') }}</li>
@@ -76,10 +79,6 @@
                     <li>{{ link_to('videos', 'Videos') }}</li>
                     <li>{{ link_to('forums', 'Forums') }}</li>
                 </ul>
-
-                <br>
-                <h3>Latest News</h3>
-                @widget('News::News')
 
                 <br>
                 <h3>Featured Match</h3>
@@ -110,10 +109,6 @@
                 <br>
                 <h3>Streams</h3>
                 @widget('Streams::Streams')
-
-                <br>
-                <h3>Navigation</h3>
-                @widget('Navigations::Navigation')
             </aside>
         </div>
     </div>

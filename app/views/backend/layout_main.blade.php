@@ -13,7 +13,11 @@
     <meta name="date-format" content="{{ trans('app.date_format_alt') }}">
     {{ HTML::metaTags($metaTags) }}
 
-    {{ HTML::title($title) }}
+    @if ($title)
+        {{ HTML::title($title) }}
+    @else
+        {{ HTML::title($controllerName) }}
+    @endif
 
     <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
 

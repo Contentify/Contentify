@@ -115,10 +115,8 @@ class InstallController extends Controller {
                 /*
                  * Add user to group "Super-Admins"
                  */
-                /*
                 //$superAdminGroup = Sentry::findGroupById(5); 
                 //$user->addGroup($superAdminGroup);
-                */
 
                 $title      = 'Database Setup Complete';
                 $content    = '<p>Database filled with initial seed.</p>';

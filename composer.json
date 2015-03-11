@@ -8,13 +8,13 @@
 		"laravel/framework": "4.2.*",
 		"way/generators": "~2.0",
 		"creolab/laravel-modules": "dev-master",
-		"cartalyst/sentry": "2.0.*",
+		"cartalyst/sentry": "2.1.*",
         "thujohn/rss": "dev-master",
         "intervention/image": "dev-master",
         "chriskonnertz/open-graph": "dev-master",
         "chriskonnertz/bbcode": "dev-master",
         "chriskonnertz/jobs": "dev-master",
-        "watson/validating": "0.9.*"
+        "watson/validating": "0.10.*"
 	},
 	"autoload": {
 		"classmap": [

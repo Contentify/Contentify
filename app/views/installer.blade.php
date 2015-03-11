@@ -19,12 +19,12 @@
         @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
         body { margin: 0px; padding: 0px; background-color: white; font-family: 'Open Sans', Arial; font-size: 16px; color: #444 }
-        a { color: #4082E3; text-decoration: none; }
+        a { color: #00afff; text-decoration: none; }
         code { color: #666 }
         p { margin: 15px 0px }
         label { display: inline-block; width: 100px; cursor: pointer; }
         label:after { content: ':'; }
-        input[type=text], input[type=email], input[type=password] { padding: 5px 10px; background-color: white; border: 1px solid silver; border-radius: 3px; font-family: 'Open Sans'; color: #4082E3 }
+        input[type=text], input[type=email], input[type=password] { padding: 5px 10px; background-color: white; border: 1px solid silver; border-radius: 3px; font-family: 'Open Sans'; color: #00afff }
         input[type=text]:focus, input[type=email]:focus, input[type=password]:focus { border-color: #FF6100 }
         .form-group { margin-bottom: 20px }
         .col-sm-10 { display: inline-block; }
@@ -49,7 +49,7 @@
 </head>
 <body data-base-url="{{ url('/') }}">
     <div id="page-container">
-        <a href="http://contentify.org" target="_blank"><img id="logo" src="{{ asset('theme/logo_180.png') }}" width="100" height="100" alt="Logo"></a>
+        <a href="http://contentify.org" target="_blank"><img id="logo" src="{{ asset('theme/logo_bw_180.png') }}" width="100" height="100" alt="Logo"></a>
         <div id="content">
             <h1>{{ $title }}</h1>
             <div class="text">

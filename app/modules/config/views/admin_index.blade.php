@@ -1,4 +1,5 @@
 <div class="actions">
+    {{ button(trans('Diagnostics'), url('admin/diag'), 'info') }}&nbsp;
     {{ button(trans('config::button_info'), url('admin/config/info'), 'info') }}&nbsp;
     {{ button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') }}&nbsp;
     {{ button(trans('config::button_dump'), url('admin/config/export'), 'database') }}&nbsp;
