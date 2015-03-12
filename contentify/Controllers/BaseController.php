@@ -138,7 +138,7 @@ abstract class BaseController extends Controller {
             $this->layout->metaTags         = [];
             $this->layout->openGraph        = null;
             $this->layout->title            = null;
-            $this->layout->breadcrumb       = [];
+            $this->layout->breadcrumb       = [trans('app.home') => route('home'), $this->moduleName => null];
         }
     }
 
@@ -311,7 +311,7 @@ abstract class BaseController extends Controller {
 
     /**
      * Sets the links for the breadcrumb navigation.
-     * Use the Navi::Breadcrump widget to render the breadcrum navi.
+     * Use the Navigations::Breadcrumb widget to render the breadcrumb navi.
      *
      * @param array $links Array with items of title (key) and URLs (link)
      * @return void

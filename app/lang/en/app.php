@@ -146,5 +146,6 @@ return array(
     'reply'         => 'Reply',
     'latest'        => 'Latest',
     'item'          => 'Item',
+    'home'          => 'Home',
 
 );

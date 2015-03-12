@@ -8,11 +8,11 @@ A breadcrumb navigation is a simple navigation that represents the current locat
 
 The navigation module includes a widget to display a breadcrumb navigation. Add the widget to the frontend layout template (or other templates) to render a breadcrumb navigation:
 
-    @widget('Navi::Breadcrumb', compact('breadcrumb'))
+    @widget('Navigations::Breadcrumb', compact('breadcrumb'))
 
 The variable `breadcrumb` is filled by the constrcutor of the base controller. It only contains the name of the current module. To pass trough a more detailed navigation you may use the breadcrumb method provided by the base controller:
 
-    // Inside of a controller inheriting from BaseController:
+    // Inside of a controller that is inheriting from BaseController:
     $links = ['News' => url('news'), 'We invented a new cookie recipe' => url('news/123')];
     $this->breadcrumb($links);
 

@@ -1,5 +1,15 @@
 <div class="breadcrumb-navi">
-    @foreach ($links as $title => $url)
-        {{ link_to($url,  $title) }}
-    @endforeach
+    @if ($links)
+        <ol class="breadcrumb">
+            @foreach ($links as $title => $url)
+                <li>
+                    @if ($url)
+                        {{ link_to($url,  $title) }}
+                    @else
+                        {{ $title }}
+                    @endif
+                </li>
+            @endforeach
+        </ol>
+    @endif
 </div>
