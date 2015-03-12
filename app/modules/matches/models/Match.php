@@ -133,16 +133,18 @@ class Match extends BaseModel {
         }
     }
 
+    /**
+     * Updates the match score that is directly written
+     * to the match model. That's a shortcut so you don't have to
+     * run trough all map results each time you want to know
+     * what the overall result is.
+     *
+     * @return void
+     */
     public function updateScore()
     {
         $matchScores = $this->match_scores;
 
-        /*
-         * Update the match score that is directly written
-         * to the match model. That's a shortcut so you don't have to
-         * run trough all map results each time you want to know
-         * what the overall result is.
-         */
         if (sizeof($matchScores) == 0) {
             $this->left_score  = 0;
             $this->right_score = 0;
