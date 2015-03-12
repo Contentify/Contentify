@@ -465,12 +465,12 @@ class InstallController extends Controller {
         { 
             $table->text('text')->nullable();
             $table->boolean('root')->default(0);
-        }, ['forum_thread_id'], ['slug', 'title']);
+        }, ['thread_id'], ['slug', 'title']);
 
         $this->create('forum_reports', function($table) 
         { 
             $table->text('text')->nullable();
-        }, ['forum_post_id'], ['title', 'slug']);
+        }, ['post_id'], ['title', 'slug']);
 
         $this->create('messages', function($table)
         {
