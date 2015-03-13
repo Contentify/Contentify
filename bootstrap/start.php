@@ -83,7 +83,7 @@ require $framework.'/Illuminate/Foundation/start.php';
 |
 | Beside Laravel's very own helpers we may want to create our own.
 | This file is the location to store these helper functions.
-| We include it very early durint the bootstrap process so we can use
+| We include it very early during the bootstrap process so we can use
 | the helper functions even when defining routes.
 |
 */

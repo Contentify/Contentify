@@ -17,7 +17,9 @@ class LoginController extends FrontController {
         ];
 
         try {
-            $user = Sentry::authenticate($credentials, false); // login the user (if possible)
+            $user = Sentry::authenticate($credentials, false); // Login the user (if possible)
+
+            Session::set('app.locale', user()->language->code); // Set session locale to account language
 
             if (Session::get('redirect')) {
                 $redirect = Redirect::to(Session::get('redirect'));
