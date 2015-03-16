@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use ModelHandler, Sentry, OpenGraph, Request, Session, View, Controller, Exception;
+use ModelHandler, Str, Sentry, OpenGraph, Request, Session, View, Controller, Exception;
 
 abstract class BaseController extends Controller {
 
@@ -158,6 +158,8 @@ abstract class BaseController extends Controller {
             } else {
                 $this->layout->page .= View::make($template, $data)->render();
             }
+
+            $this->layout->pageTemplateClass = 'page-'.Str::slug(str_replace('::', '-', $template));
         } else {
             throw new Exception('Error: Controller layout is null!');
         }

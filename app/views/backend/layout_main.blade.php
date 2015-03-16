@@ -95,7 +95,7 @@
                         {{ HTML::fontIcon($controllerIcon) }}{{ $controllerName }}
                 </a>
 
-                <div class="page page-{{ strtolower($controllerName) }} page-{{ pageClass() }}">
+                <div class="page page-{{ strtolower($controllerName) }} {{ $pageTemplateClass }}">
                     {{ $page }}
                 </div>
             @endif
