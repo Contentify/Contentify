@@ -139,6 +139,7 @@ abstract class BaseController extends Controller {
             $this->layout->openGraph        = null;
             $this->layout->title            = null;
             $this->layout->breadcrumb       = [trans('app.home') => route('home'), $this->moduleName => null];
+            $this->layout->templateClass    = null;
         }
     }
 
@@ -159,7 +160,7 @@ abstract class BaseController extends Controller {
                 $this->layout->page .= View::make($template, $data)->render();
             }
 
-            $this->layout->pageTemplateClass = 'page-'.Str::slug(str_replace('::', '-', $template));
+            $this->layout->templateClass = 'page-'.Str::slug(str_replace('::', '-', $template));
         } else {
             throw new Exception('Error: Controller layout is null!');
         }

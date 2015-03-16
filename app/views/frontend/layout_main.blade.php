@@ -52,7 +52,7 @@
                 {{-- Render JavaScript alerts here --}}
                 <div class="alert-area"></div>                
 
-                <section class="page page-{{ strtolower($controllerName) }} {{ $pageTemplateClass }}">
+                <section class="page page-{{ strtolower($controllerName) }} {{ $templateClass }}">
                     @if (isset($page))
                         {{ $page }}
                     @endif

@@ -50,7 +50,7 @@ class UsersController extends FrontController {
 
     public function edit($id)
     {
-        if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) {
+        if ((! user()) or (user()->id != $id and (! $this->hasAccessUpdate()))) {
             $this->alertError(trans('app.access_denied'));
             return;
         }
@@ -62,7 +62,7 @@ class UsersController extends FrontController {
 
     public function update($id)
     {
-        if ((! user()) or (user()->id != $id and (! $this->checkAccessUpdate()))) {
+        if ((! user()) or (user()->id != $id and (! $this->hasAccessUpdate()))) {
             $this->alertError(trans('app.access_denied'));
             return;
         }
