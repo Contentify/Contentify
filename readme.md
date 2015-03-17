@@ -1,3 +1,5 @@
+![Contentify Logo](http://www.contentify.org/share/img/logo_64.png)
+
 ## Contentify CMS
 
 Contentify is an eSports CMS based on the popular Laravel 4 framework.
