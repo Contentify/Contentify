@@ -1,6 +1,10 @@
-![Contentify Logo](http://www.contentify.org/share/img/logo_64.png)
+![Contentify Logo](http://www.contentify.org/share/img/logo_180.png)
 
 ## Contentify CMS
+
+[![Laravel](https://img.shields.io/badge/Laravel-4.2-orange.svg?style=flat-square)](http://laravel.com)
+[![Source](http://img.shields.io/badge/source-contenify/modules-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 
 Contentify is an eSports CMS based on the popular Laravel 4 framework.
 
