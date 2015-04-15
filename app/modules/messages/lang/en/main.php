@@ -16,5 +16,6 @@ return array(
     'outbox'        => 'Outbox',
     'message_sent'  => 'Your message has been sent.',
     're'            => 'Re: ',
+    'system_info'   => 'This message has been created automatically.'
 
 );

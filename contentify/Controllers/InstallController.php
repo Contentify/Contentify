@@ -478,6 +478,7 @@ class InstallController extends Controller {
             $table->boolean('new')->default(true);
             $table->boolean('creator_visible')->default(true);
             $table->boolean('receiver_visible')->default(true);
+            $table->boolean('sent_by_system')->default(false);
         }, ['receiver_id']);
 
         $this->create('navigations', function($table)
