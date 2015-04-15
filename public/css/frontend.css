@@ -7411,7 +7411,7 @@ textarea.model-search-box input {
   font-size: 10px;
   text-align: right;
 }
-/* Forums show_new_posts üage */
+/* Forums show_new_posts page */
 .page-threads.page-forums-threads-new .action {
   border-radius: 3px;
   background-color: #00afff;
@@ -7544,6 +7544,12 @@ textarea.model-search-box input {
 .page-threads.page-forums-threads-new .threads .thread .latest .meta {
   display: block;
   font-size: 10px;
+}
+.page-users-show .details {
+  text-align: center;
+}
+.page-users-show .details .actions {
+  margin-top: 20px;
 }
 .widget-latest-threads li {
   position: relative;

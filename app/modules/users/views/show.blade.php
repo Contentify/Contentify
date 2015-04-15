@@ -44,12 +44,18 @@
             </tbody>
         </table>
     </div>
-    <div class="col-md-4">
+    <div class="details col-md-4">
         @if ($user->image)
             <img src="{{ $user->uploadPath().$user->image }}" alt="{{ $user->username }}">
         @else
             <img src="{{ asset('theme/user.png') }}" alt="{{ $user->username }}">
         @endif
+
+        <div class="actions">
+            @if (user())
+                <a class="btn btn-default" href="{{ url('messages/create/'.$user->username) }}" title="Message">{{ HTML::fontIcon('envelope') }}</a>
+            @endif
+        </div>
     </div>
 </div>
 
