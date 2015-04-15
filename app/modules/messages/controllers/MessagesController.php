@@ -85,13 +85,15 @@ class MessagesController extends FrontController {
 
         if ($message->creator_id == user()->id) {
             $message->creator_visible = false;
+            $message->save();
         }
 
         if ($message->receiver_id == user()->id) {
             $message->receiver_visible = false;
+            $message->save();
         }
 
-        if (! $message->creator_visible and ! $message->receiver_visible) {
+        if ((! $message->creator_visible or $message->sent_by_system) and ! $message->receiver_visible) {
             Message::destroy($id);
         }
 
