@@ -147,5 +147,6 @@ return array(
     'latest'        => 'Latest',
     'item'          => 'Item',
     'home'          => 'Home',
+    'remove'        => 'Remove',
 
 );
