@@ -34,7 +34,11 @@ class UsersController extends FrontController {
                 ];            
             },
             'actions'   => null,
-            'searchFor' => 'username'
+            'searchFor' => 'username',
+            'permaFilter' => function($users)
+            {
+                return $users->where('id', '!=', 1); // Do not keep the daemon user
+            }
         ], 'front');
     }
 

@@ -7557,7 +7557,7 @@ header .header-logo {
   height: 80px;
   margin-left: auto;
   margin-right: auto;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 80px;

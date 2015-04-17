@@ -7545,12 +7545,6 @@ textarea.model-search-box input {
   display: block;
   font-size: 10px;
 }
-.page-users-show .details {
-  text-align: center;
-}
-.page-users-show .details .actions {
-  margin-top: 20px;
-}
 .widget-latest-threads li {
   position: relative;
 }
@@ -7558,6 +7552,22 @@ textarea.model-search-box input {
   position: absolute;
   right: 0px;
   top: 0px;
+}
+.page-users-show th {
+  width: 40%;
+}
+.page-users-show .profile-basics {
+  margin-bottom: 20px;
+}
+.page-users-show .details {
+  text-align: center;
+}
+.page-users-show .details img {
+  max-width: 180px;
+  max-height: 240px;
+}
+.page-users-show .details .actions {
+  margin-top: 20px;
 }
 .page-messages .message-text {
   word-wrap: break-word;

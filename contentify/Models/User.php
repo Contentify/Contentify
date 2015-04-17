@@ -334,7 +334,7 @@ class User extends SentryUser {
                 File::delete($filePath.'80/'.$this->getOriginal($fieldName));
             }
 
-            InterImage::make($filePath.'/'.$fileName)->resize(60, 60, function ($constraint) {
+            InterImage::make($filePath.'/'.$fileName)->resize(80, 80, function ($constraint) {
                                         $constraint->aspectRatio();
                                     })->save($filePath.'80/'.$fileName);
         }

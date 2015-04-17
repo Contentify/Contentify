@@ -286,16 +286,19 @@ a:hover { color: @primaryColor; }
     .page-forums();
 }
 
-.page-users-show .details {
-    text-align: center;
-    .actions {
-        margin-top: 20px;
-    }
-}
-
 .widget-latest-threads {
     li { position: relative; }
     li .posts-count { position: absolute; right: 0px; top: 0px; }
+}
+
+.page-users-show {
+    th { width: 40% }
+    .profile-basics { margin-bottom: 20px; }
+    .details {
+        img { max-width: 180px; max-height: 240px; }
+        text-align: center;
+        .actions { margin-top: 20px; }
+    }
 }
 
 .page-messages {
