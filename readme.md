@@ -16,9 +16,9 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Releases
 
-The current release is the version `Beta One`.
+The current release is `Beta One`.
 
-Download it here: [contentify.org/share/releases/contentify_beta1.zip](http://contentify.org/share/releases/contentify_beta1.zip)]
+You may download it here: [contentify.org/share/releases/contentify_beta1.zip](http://contentify.org/share/releases/contentify_beta1.zip)
 
 To install Contentify please follow the instructions in [daux/docs/Development/03_Installation.md](https://github.com/Contentify/Contentify/blob/master/daux/docs/Development/03_Installation.md).
 
@@ -26,7 +26,7 @@ To install Contentify please follow the instructions in [daux/docs/Development/0
 
 Create an issue right here on Github whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request .
 
-#### Coding style
+#### PHP Coding style
 
 * Contentify follows the [PSR-1 Coding Standard](http://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) with one exception:
     * Do not use `<?= ?>` tags
