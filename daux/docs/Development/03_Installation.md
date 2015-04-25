@@ -56,7 +56,7 @@ Config files live in `app/config`. Important config files are:
 
 # Installation
 
-* (Download Contentify and configurate it)<!---* Run Composer with `php composer.phar update` to download the Laravel framework and to update dependencies ---><!---* Run package migrations with `php artisan migrate --package=cartalyst/sentry` --->
+* (Download Contentify and configurate it)
 * Set CHMOD 777 to these directories and their sub directories: `<contentify>/storage`, `<contentify>/public/uploads` and `<contentify>/public/rss`
 * Run the installer. Example call: `http://localhost/contentify/install`
 
