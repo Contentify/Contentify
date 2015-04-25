@@ -13,3 +13,22 @@ Website: [contentify.org](http://contentify.org/)
 > WARNING: This is a beta version. 
 
 > WARNING: This repository does not contain code that is meant for release but only for development purposes. If you clone this repo you will not be able to install the CMS! Therefore, if you are interested in testing, please download a curated realease that is meant for testing.
+
+### Releases
+
+The current release is the version `Beta One`.
+
+Download it here: [contentify.org/share/releases/contentify_beta1.zip](http://contentify.org/share/releases/contentify_beta1.zip)]
+
+To install Contentify please follow the instructions in [daux/docs/Development/03_Installation.md](https://github.com/Contentify/Contentify/blob/master/daux/docs/Development/03_Installation.md).
+
+### Contribution
+
+Create an issue right here on Github whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request .
+
+#### Coding style
+
+* Contentify follows the [PSR-1 Coding Standard](http://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) with one exception:
+    * Do not use `<?= ?>` tags
+* Do not use tabs, only spaces
+* When in doubt, please follow the Laravel coding style
