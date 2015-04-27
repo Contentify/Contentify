@@ -3,6 +3,9 @@
 use User as BaseUser;
 use Sentry, BaseModel;
 
+/**
+ * NOTE: This is a helper class that extends the actual user class.
+ */
 class User extends BaseUser {
 
     protected $fillable = ['activated', 'relation_groups', 'relation_teams'];

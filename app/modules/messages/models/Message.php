@@ -54,8 +54,11 @@ class Message extends BaseModel {
      */
     public function cache()
     {
+        $escape = ! $this->sent_by_system; // System messages may contain HTML code
+
         $bbcode = new BBCode();
-        $rendered = $bbcode->render($this->text);
+        $rendered = $bbcode->render($this->text, $escape);
+
         Cache::put(self::CACHE_KEY.$this->id, $rendered, 60);
     }
 

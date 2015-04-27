@@ -72,7 +72,7 @@
                 <a id="profile-link" href="{{ url('users/'.user()->id) }}">
                     <div class="avatar">
                         @if (user()->image)
-                            <div class="image" style="background-image: url('{{ asset('uploads/users/100/'.user()->image) }}')"></div>
+                            <div class="image" style="background-image: url('{{ asset('uploads/users/80/'.user()->image) }}')"></div>
                         @endif
                         <div class="welcome">Welcome, <span>{{ user()->username }}</span></div>
                     </div>

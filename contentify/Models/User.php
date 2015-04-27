@@ -127,6 +127,53 @@ class User extends SentryUser {
     }
 
     /**
+     * Creates a new message that addresses this user
+     * 
+     * @param  string   $title        The message title
+     * @param  string   $text         The message text
+     * @param  int      $creatorId    The user ID of the creator
+     * @param  boolean  $sentBySystem [description]
+     * @return void
+     */
+    public function sendMessage($title, $text, $creatorId = null, $sentBySystem = false)
+    {
+        if (! $creatorId) {
+            if (user()) {
+                $creatorId = user()->id;
+            } else {
+                $creatorId = 1; // Daemon
+                $sentBySystem = true;
+            }
+        }
+
+        $message = new Message([
+            'title'             => $title,
+            'text'              => $text,
+        ]);
+
+        $message->creator_id        = $creatorId;
+        $message->updater_id        = $creatorId;
+        $message->receiver_id       = $this->id;
+        $message->sent_by_system    = true;
+        $message->createSlug();
+
+        $message->save();
+    }
+
+    /**
+     * Creates a new system message that addresses this user
+     * 
+     * @param  string   $title        The message title
+     * @param  string   $text         The message text
+     * @param  int      $creatorId    The user ID of the creator
+     * @return void
+     */
+    public function sendSystemMessage($title, $text, $creatorId = null)
+    {
+        $this->sendMessage($title, $text, $creatorId, true);
+    }
+
+    /**
      * See if a user has access to the passed permission(s).
      * Permissions are merged from all groups the user belongs to
      * and then are checked against the passed permission(s).
@@ -283,13 +330,13 @@ class User extends SentryUser {
         $this->save();
 
         if ($fieldName == 'image') {
-            if (File::exists($filePath.'60/'.$this->getOriginal($fieldName))) {
-                File::delete($filePath.'60/'.$this->getOriginal($fieldName));
+            if (File::exists($filePath.'80/'.$this->getOriginal($fieldName))) {
+                File::delete($filePath.'80/'.$this->getOriginal($fieldName));
             }
 
-            InterImage::make($filePath.'/'.$fileName)->resize(60, 60, function ($constraint) {
+            InterImage::make($filePath.'/'.$fileName)->resize(80, 80, function ($constraint) {
                                         $constraint->aspectRatio();
-                                    })->save($filePath.'60/'.$fileName);
+                                    })->save($filePath.'80/'.$fileName);
         }
     }
 
