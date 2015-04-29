@@ -107,7 +107,6 @@ class InstallController extends Controller {
                 $user = Sentry::createUser(array(
                     'email'     => 'daemon@contentify.org',
                     'username'  => 'Daemon',
-                    'slug'      => 'daemon',
                     'password'  => Str::random(),
                     'activated' => false,
                 ));
@@ -506,6 +505,12 @@ class InstallController extends Controller {
         { 
             $table->text('text')->nullable();
         }, [], ['title', 'slug', 'access_counter', 'updater_id']);
+
+        $this->createPivot('friends', function($table)
+        {
+            $table->boolean('confirmed')->default(false);
+            $table->timestamp('messaged_at');
+        }, ['sender_id', 'receiver_id']);
 
         /*
          * (Re)activate foreign key checks
