@@ -148,5 +148,6 @@ return array(
     'item'          => 'Item',
     'home'          => 'Home',
     'remove'        => 'Remove',
+    'of'            => 'of',
 
 );
