@@ -22,24 +22,31 @@ class Tester {
         if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
             $version = 'Yes, '.phpversion();
         } else {
-            $version = 'No, '.phpversion();
+            $version = $this->red('No, '.phpversion());
         }
 
         if (extension_loaded('mcrypt')) {
             $mCrypt = 'Yes';
         } else {
-            $mCrypt = 'No';
+            $mCrypt = $this->red('No');
         }
 
         if (extension_loaded('fileinfo')) {
             $fileInfo = 'Yes';
         } else {
-            $fileInfo = 'No';
+            $fileInfo = $this->red('No');
+        }
+
+        if (extension_loaded('pdo')) {
+            $pdo = 'Yes';
+        } else {
+            $pdo = $this->red('No');
         }
 
         $this->line('PHP-Version: '.$version);
         $this->line('PHP MCrypt Extension: '.$mCrypt);
         $this->line('PHP FileInfo Extension: '.$fileInfo);
+        $this->line('PHP PDO Extension: '.$pdo);
         $this->line();
 
         $paths = $this->paths;
@@ -54,10 +61,21 @@ class Tester {
             if (is_writable($dir)) {
                 $this->line($dir.' is writable');
             } else {
-                $this->line($dir.' is not writable');
+                $this->line($this->red($dir.' is not writable'));
             }
         }
         $this->line();
+    }
+
+    /**
+     * Color the passed text for CLI output (only in bash shells)
+     * 
+     * @param  string $text The text
+     * @return string
+     */
+    protected function red($text)
+    {
+        return "\033[0;31m".$text."\033[0m";
     }
 
     /**
