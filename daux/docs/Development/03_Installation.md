@@ -64,4 +64,4 @@ The official Laravel docs have a [chapter covering the installation](http://lara
 
 # Something Is Going Wrong?
 
-Installing Laravel can be a little tricky. If you experience problems take a look at the [Troubleshooting](Troubleshooting) chapter. If the problem isn't covered don't hesistate to contact our [support team](http://contentify.org/support).
+Installing Laravel can be a little tricky. If you experience problems take a look at the [Troubleshooting](Troubleshooting) chapter. If the problem isn't covered don't hesistate to contact us on [GitHub](https//github.com/Contentify/Contentify/issues).
