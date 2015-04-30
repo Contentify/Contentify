@@ -17,17 +17,7 @@ If you do not have a hosting service so far or it does not meet the requirements
 * Create a new droplet with Ubuntu. Choose to install the LAMP (Linux, Apache, MySQL and PHP) stack.
 * Connect to your server using an SSH client (e. g. [PuTTY](http://www.putty.org) for Windows)
 * Activate the mod_rewrite module: `sudo a2enmod rewrite`
-* Open `/etc/apache2/sites-available/000-default.conf` and add:
-
-```
-<Directory /var/www/>
-    Options Indexes FollowSymLinks MultiViews
-    AllowOverride All
-    Order allow,deny
-    allow from all
-</Directory>
-```
-
+* Open `/etc/apache2/sites-available/000-default.conf` and change line 12 `DocumentRoot /var/www/html` to `DocumentRoot /var/www/html/public`.
 * Install phpMyAdmin: `sudo apt-get install phpmyadmin` It will ask you to tell it the MySQL password. You find it in `/etc/motd.tail`
 * Open `/etc/apache2/apache2.conf` and add `Include /etc/phpmyadmin/apache.conf`
 * Install the PHP mcrypt extension: `sudo php5enmod mcrypt`
