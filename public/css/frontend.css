@@ -6959,6 +6959,9 @@ textarea.model-search-box input {
   -webkit-filter: grayscale(0);
   transition: all 0.2s ease;
 }
+.page-news .news .image img {
+  max-width: 100%;
+}
 .page-videos .video {
   float: left;
   width: 33%;
