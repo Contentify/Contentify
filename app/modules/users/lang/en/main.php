@@ -52,6 +52,9 @@ return array(
     'image'         => 'Portrait',
     'avatar'        => 'Avatar',
 
+    'send_msg'      => 'Send message',
+    'add_friend'    => 'Add as friend',
+
     /*
      * Gender
      */

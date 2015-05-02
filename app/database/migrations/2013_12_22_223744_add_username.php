@@ -14,7 +14,7 @@ class AddUsername extends Migration {
         Schema::table('users', function($table)
         {
             $table->string('username', 20)->unique();
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->integer('updater_id')->unsigned()->default(0);
         });
     }

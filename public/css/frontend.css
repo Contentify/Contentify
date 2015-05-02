@@ -6959,6 +6959,9 @@ textarea.model-search-box input {
   -webkit-filter: grayscale(0);
   transition: all 0.2s ease;
 }
+.page-news .news .image img {
+  max-width: 100%;
+}
 .page-videos .video {
   float: left;
   width: 33%;
@@ -7124,7 +7127,7 @@ textarea.model-search-box input {
 .page-matches .overview .mid .left-win {
   color: #008000;
 }
-.page-matches .overview .mid .left-lose {
+.page-matches .overview .mid .left-defeat {
   color: #ff0000;
 }
 .page-matches .overview .mid .left-draw {
@@ -7166,7 +7169,7 @@ textarea.model-search-box input {
 .widget-matches-latest li .scores .win {
   color: #008000;
 }
-.widget-matches-latest li .scores .lose {
+.widget-matches-latest li .scores .defeat {
   color: #ff0000;
 }
 .widget-matches-latest li .scores .draw {
@@ -7568,6 +7571,46 @@ textarea.model-search-box input {
 }
 .page-users-show .details .actions {
   margin-top: 20px;
+}
+.page-friends:before,
+.page-friends:after {
+  content: " ";
+  display: table;
+}
+.page-friends:after {
+  clear: both;
+}
+.page-friends:before,
+.page-friends:after {
+  content: " ";
+  display: table;
+}
+.page-friends:after {
+  clear: both;
+}
+.page-friends .friend {
+  float: left;
+  box-sizing: border-box;
+  width: 20%;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+  text-align: center;
+}
+.page-friends .friend span {
+  display: block;
+  margin-top: 10px;
+}
+.page-friends .friend img {
+  max-width: 100%;
+  max-height: 240px;
+}
+.page-friends .friend .actions {
+  margin-top: 20px;
+}
+@media (max-width: 480px) {
+  .page-friends .friend {
+    width: 33%;
+  }
 }
 .page-messages .message-text {
   word-wrap: break-word;

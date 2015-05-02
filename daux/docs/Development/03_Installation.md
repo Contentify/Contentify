@@ -17,10 +17,10 @@ If you do not have a hosting service so far or it does not meet the requirements
 * Create a new droplet with Ubuntu. Choose to install the LAMP (Linux, Apache, MySQL and PHP) stack.
 * Connect to your server using an SSH client (e. g. [PuTTY](http://www.putty.org) for Windows)
 * Activate the mod_rewrite module: `sudo a2enmod rewrite`
-* Open `/etc/apache2/sites-available/000-default.conf` and add:
+* Open `/etc/apache2/sites-available/000-default.conf` and change line 12 `DocumentRoot /var/www/html` to `DocumentRoot /var/www/html/public`. Right after that line paste this:
 
 ```
-<Directory /var/www/>
+<Directory "/var/www/html/public/">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride All
     Order allow,deny
@@ -28,6 +28,7 @@ If you do not have a hosting service so far or it does not meet the requirements
 </Directory>
 ```
 
+Ofcourse you can change the name of the `html` directory to something more meaningful.
 * Install phpMyAdmin: `sudo apt-get install phpmyadmin` It will ask you to tell it the MySQL password. You find it in `/etc/motd.tail`
 * Open `/etc/apache2/apache2.conf` and add `Include /etc/phpmyadmin/apache.conf`
 * Install the PHP mcrypt extension: `sudo php5enmod mcrypt`
@@ -64,4 +65,4 @@ The official Laravel docs have a [chapter covering the installation](http://lara
 
 # Something Is Going Wrong?
 
-Installing Laravel can be a little tricky. If you experience problems take a look at the [Troubleshooting](Troubleshooting) chapter. If the problem isn't covered don't hesistate to contact our [support team](http://contentify.org/support).
+Installing Laravel can be a little tricky. If you experience problems take a look at the [Troubleshooting](Troubleshooting) chapter. If the problem isn't covered don't hesistate to contact us on [GitHub](https//github.com/Contentify/Contentify/issues).

@@ -1,6 +1,6 @@
 ## Will You Update To Laravel 5.0?
 
-Yes, as soon as possible once a stable release has been published. It also depends on how long vendor packages need to update to Laravel 5.0.
+Yes, as soon as possible. Unfortunately we still have to wait for vendor packages that need to update to Laravel 5.0. Hurry please, [Cartalyst](https://medium.com/cartalyst-development/laravel-5-support-4c11e01c3337)!
 
 ## How Can I Fight Spambots?
 

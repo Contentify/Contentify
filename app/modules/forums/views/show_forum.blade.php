@@ -32,9 +32,13 @@
                 </div>
 
                 <div class="latest">
-                    <a href="{{ url('forums/threads/'.$subForum->latest_thread->id.'/'.$subForum->latest_thread->slug) }}" title="{{{ $subForum->latest_thread->title }}}">
-                        {{{ $subForum->latest_thread->updated_at }}}
-                    </a>
+                    @if ($subForum->latest_thread)
+                        <a href="{{ url('forums/threads/'.$subForum->latest_thread->id.'/'.$subForum->latest_thread->slug) }}" title="{{{ $subForum->latest_thread->title }}}">
+                            {{{ $subForum->latest_thread->updated_at }}}
+                        </a>
+                    @else
+                        -
+                    @endif
                 </div>
             </div>
         @endforeach

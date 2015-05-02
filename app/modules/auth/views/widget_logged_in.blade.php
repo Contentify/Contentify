@@ -9,6 +9,7 @@
                 {{ link_to('messages/inbox', 'Messages') }}
             @endif            
         </li>
+        <li>{{ link_to('friends/'.user()->id, trans('auth::friends')) }}</li>
         @if (user()->hasAccess('backend', PERM_READ))
             <li>{{ link_to('admin', trans('auth::backend')) }}</li>
         @endif

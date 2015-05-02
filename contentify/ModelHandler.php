@@ -380,7 +380,7 @@ class ModelHandler {
                         }
                     }
 
-                    if (in_array($extension, $this->evilFileExtensions)) {
+                    if (in_array($extension, $controller->getEvilFileExtensions())) {
                         $error = trans('app.bad_extension', [$extension]);
                     }
 
@@ -512,7 +512,7 @@ class ModelHandler {
                         }
                     }
 
-                    if (in_array($extension, $this->evilFileExtensions)) {
+                    if (in_array($extension, $controller->getEvilFileExtensions())) {
                         $error = trans('app.bad_extension', [$extension]);
                     }
 

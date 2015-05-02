@@ -48,6 +48,7 @@ return array(
      */
     'profile'           => 'Profile',
     'edit_profile'      => 'Edit Profile',
+    'friends'           => 'Friends',
     'backend'           => 'Admin-Backend',
     'logout'            => 'Logout',
 

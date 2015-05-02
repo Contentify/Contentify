@@ -117,6 +117,10 @@ a:hover { color: @primaryColor; }
     }
 }
 
+.page-news {
+    .news .image img { max-width: 100% }
+}
+
 .page-videos .video { 
     float: left; width: 33%; text-align: center;
     div { width: 90%; height: 150px; margin-left: auto; margin-right: auto; background-position: center; background-repeat: no-repeat; background-size: cover }
@@ -179,7 +183,7 @@ a:hover { color: @primaryColor; }
         div > span { display: block }
         .mid { padding-top: 40px; font-size: 30px; }
         .mid .left-win { color: green }
-        .mid .left-lose { color: red }
+        .mid .left-defeat { color: red }
         .mid .left-draw { color: orange }
     }
     .details { margin-bottom: 20px; padding-top: 20px; }
@@ -196,7 +200,7 @@ a:hover { color: @primaryColor; }
     li img { float: left; margin-right: 10px }
     li .scores { position: absolute; right: 0px; top: 0px; }
     li .scores .win { color: green }
-    li .scores .lose { color: red }
+    li .scores .defeat { color: red }
     li .scores .draw { color: orange }
 }
 
@@ -299,6 +303,19 @@ a:hover { color: @primaryColor; }
         text-align: center;
         .actions { margin-top: 20px; }
     }
+}
+
+.page-friends {
+    .clearfix();
+    .friend {
+        float: left; box-sizing: border-box; width: 20%; margin-bottom: 20px; padding: 0px 20px; text-align: center;
+        span { display: block; margin-top: 10px; }
+        img { max-width: 100%; max-height: 240px; }
+        .actions { margin-top: 20px; }
+    }
+}
+@media (max-width: @screen-phone) {
+    .page-friends .friend { width: 33% }
 }
 
 .page-messages {

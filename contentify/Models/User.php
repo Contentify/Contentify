@@ -1,6 +1,8 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
+use App\Modules\Messages\Models\Message;
+use App\Modules\Friends\Models\Friendship;
 use Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
@@ -124,6 +126,53 @@ class User extends SentryUser {
     public function teams()
     {
         return $this->belongsToMany('App\Modules\Teams\Models\Team')->withPivot('task', 'description', 'position');
+    }
+
+    /**
+     * Returns all friends of this user.
+     * NOTE: This is not a relationship. Eloquent does not support this kind of relationship.
+     *
+     * @return Collection
+     */
+    public function friends()
+    {
+        // Step 1: Receive all friendships of this user.
+        $friendships = Friendship::friendsOf($this->id)->get();
+
+        // Step 2: Extract the IDs of all friends
+        $ids = [];
+        foreach ($friendships as $friendship) {
+            if ($friendship->sender_id == $this->id) {
+                $ids[] = $friendship->receiver_id;
+            } else {
+                $ids[] = $friendship->sender_id;
+            }
+        }
+
+        // Step 3: Receive the user models of these friends
+        return self::whereIn('id', $ids)->get();
+    }
+
+    /**
+     * Checks if the user is friend with another user or not.
+     * 
+     * @param  int      $friendID The user ID of the friend (=other user)
+     * @return boolean
+     */
+    public function isFriendWith($friendID)
+    {
+        if (array_key_exists('friends', $this->getRelations())) {
+            foreach ($this->friends as $friend) {
+                if ($friend->id == $friendId) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        $friendship = Friendship::areFriends($this->id, $friendID)->first();
+
+        return ($friendship !== null);
     }
 
     /**

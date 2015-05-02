@@ -47,5 +47,10 @@ abstract class BackController extends BaseController {
             $view->with('controllerIcon', $this->icon);
         });
     }
+
+    public function getEvilFileExtensions()
+    {
+        return $this->evilFileExtensions;
+    }
     
 }

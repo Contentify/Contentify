@@ -1,3 +1,5 @@
+<h1 class="page-title">Profile</h1>
+
 {{ Form::errors($errors) }}
 
 @if (isset($user))

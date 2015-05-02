@@ -56,7 +56,7 @@ class InstallController extends Controller {
                     'username'  => $username,
                 ), true);
 
-                 // TODO: Test if it's possible to integrate this into the register method?
+                // NOTE: It's not possible to integrate this into the register method
                 $user->slug = Str::slug($user->username);
                 $user->save();
 
@@ -110,6 +110,12 @@ class InstallController extends Controller {
                     'password'  => Str::random(),
                     'activated' => false,
                 ));
+                */
+
+                // NOTE: It's not possible to integrate this into the register method
+                /*
+                $user->slug = Str::slug($user->username);
+                $user->save();
                 */
 
                 /*
@@ -499,6 +505,12 @@ class InstallController extends Controller {
         { 
             $table->text('text')->nullable();
         }, [], ['title', 'slug', 'access_counter', 'updater_id']);
+
+        $this->createPivot('friends', function($table)
+        {
+            $table->boolean('confirmed')->default(false);
+            $table->timestamp('messaged_at');
+        }, ['sender_id', 'receiver_id']);
 
         /*
          * (Re)activate foreign key checks

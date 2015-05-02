@@ -22,6 +22,16 @@ You may download it here: [contentify.org/share/releases/contentify_beta1.zip](h
 
 To install Contentify please follow the instructions in [daux/docs/Development/03_Installation.md](https://github.com/Contentify/Contentify/blob/master/daux/docs/Development/03_Installation.md).
 
+### Demo-Server
+
+* URL: http://46.101.143.161/
+* Email: `demo@contentify.org`
+* Password: `demodemo`
+
+> The server resets (database, uploaded files and cache) twice per hour.
+
+> Please note that the server does not have the latest build and therefore does not represent the git master branch!
+
 ### Contribution
 
 Create an issue right here on Github whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request .
