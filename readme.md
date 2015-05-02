@@ -34,7 +34,7 @@ To install Contentify please follow the instructions in [daux/docs/Development/0
 
 ### Contribution
 
-Create an issue right here on Github whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request .
+Create an issue right here on Github whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
 
 #### PHP Coding style
 
