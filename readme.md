@@ -12,7 +12,6 @@ Website: [contentify.org](http://contentify.org/)
 
 > WARNING: This is a beta version. 
 
-
 > WARNING: This repository does not contain code that is meant for release but only for development purposes. If you clone this repo you will not be able to install the CMS! Therefore, if you are interested in testing, please download a curated realease that is meant for testing.
 
 ### Releases
@@ -30,7 +29,6 @@ Email: `demo@contentify.org`
 Password: `demodemo`
 
 > The server resets (database, uploaded files and cache) twice per hour.
-
 
 > Please note that the server does not have the latest build and therefore does not represent the git master branch!
 
