@@ -7572,6 +7572,46 @@ textarea.model-search-box input {
 .page-users-show .details .actions {
   margin-top: 20px;
 }
+.page-friends:before,
+.page-friends:after {
+  content: " ";
+  display: table;
+}
+.page-friends:after {
+  clear: both;
+}
+.page-friends:before,
+.page-friends:after {
+  content: " ";
+  display: table;
+}
+.page-friends:after {
+  clear: both;
+}
+.page-friends .friend {
+  float: left;
+  box-sizing: border-box;
+  width: 20%;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+  text-align: center;
+}
+.page-friends .friend span {
+  display: block;
+  margin-top: 10px;
+}
+.page-friends .friend img {
+  max-width: 100%;
+  max-height: 240px;
+}
+.page-friends .friend .actions {
+  margin-top: 20px;
+}
+@media (max-width: 480px) {
+  .page-friends .friend {
+    width: 33%;
+  }
+}
 .page-messages .message-text {
   word-wrap: break-word;
   overflow-x: hidden;
