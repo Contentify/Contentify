@@ -3,23 +3,23 @@
 <div class="download-detail">
     {{ Form::open(array('url' => 'downloads/perform/'.$download->id)) }}
         {{ Form::smartGroupOpen(null, trans('app.file')) }}
-            {{{ $download->title }}}
+            <p class="form-control-static">{{{ $download->title }}}</p>
         {{ Form::smartGroupClose() }}
 
         {{ Form::smartGroupOpen(null, trans('app.category')) }}
-            {{ $download->downloadcat->title }}
+            <p class="form-control-static">{{ $download->downloadcat->title }}</p>
         {{ Form::smartGroupClose() }}
 
         {{ Form::smartGroupOpen(null, trans('app.size')) }}
-            {{ $download->file_size }} Bytes
+            <p class="form-control-static">{{ $download->file_size }} Bytes</p>
         {{ Form::smartGroupClose() }}
 
         {{ Form::smartGroupOpen(null, trans('downloads::download_counter')) }}
-            {{ $download->access_counter }}
+            <p class="form-control-static">{{ $download->access_counter }}</p>
         {{ Form::smartGroupClose() }}
 
         {{ Form::smartGroupOpen(null, trans('downloads::traffic')) }}
-            {{ $download->file_size * $download->access_counter }} Bytes
+            <p class="form-control-static">{{ $download->file_size * $download->access_counter }} Bytes</p>
         {{ Form::smartGroupClose() }}
 
         @if ($download->description)
