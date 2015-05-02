@@ -24,9 +24,9 @@ To install Contentify please follow the instructions in [daux/docs/Development/0
 
 ### Demo-Server
 
-URL: http://46.101.143.161/
-Email: `demo@contentify.org`
-Password: `demodemo`
+* URL: http://46.101.143.161/
+* Email: `demo@contentify.org`
+* Password: `demodemo`
 
 > The server resets (database, uploaded files and cache) twice per hour.
 
