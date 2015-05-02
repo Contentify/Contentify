@@ -123,9 +123,9 @@ class Match extends BaseModel {
 
         if ($this->left_score > $this->right_score) {
             return '<span class="left-win"><span class="win">'.$leftScore.
-                '</span>:<span class="loss">'.$rightScore.'</span></span>';
+                '</span>:<span class="defeat">'.$rightScore.'</span></span>';
         } elseif ($this->left_score < $this->right_score) {
-            return '<span class="left-loss"><span class="loss">'.$leftScore.
+            return '<span class="left-defeat"><span class="defeat">'.$leftScore.
                 '</span>:<span class="win">'.$rightScore.'</span></span>';
         } else {
             return '<span class="left-draw"><span class="draw">'.$leftScore.

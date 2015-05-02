@@ -7127,7 +7127,7 @@ textarea.model-search-box input {
 .page-matches .overview .mid .left-win {
   color: #008000;
 }
-.page-matches .overview .mid .left-lose {
+.page-matches .overview .mid .left-defeat {
   color: #ff0000;
 }
 .page-matches .overview .mid .left-draw {
@@ -7169,7 +7169,7 @@ textarea.model-search-box input {
 .widget-matches-latest li .scores .win {
   color: #008000;
 }
-.widget-matches-latest li .scores .lose {
+.widget-matches-latest li .scores .defeat {
   color: #ff0000;
 }
 .widget-matches-latest li .scores .draw {
