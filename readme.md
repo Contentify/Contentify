@@ -43,4 +43,3 @@ Create an issue right here on Github whenever you spot a bug. If you have a solu
     * There CAN be one `use` keyword per declaration. (But we often merge declarations, e. g. `use Crypt, URL, HTML, DB;`)
     * The last case segment of a `switch` structure CAN have a `break` keyword. (But usually we omit it.)
     * Closures MUST NOT be declared with a space after the `function` keyword.
-* Do not use tabs, only spaces
