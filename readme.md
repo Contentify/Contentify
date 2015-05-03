@@ -38,7 +38,9 @@ Create an issue right here on Github whenever you spot a bug. If you have a solu
 
 #### PHP Coding style
 
-* Contentify follows the [PSR-1 Coding Standard](http://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md) with one exception:
-    * Do not use `<?= ?>` tags
+* Contentify follows the [PSR-2 Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) with these exceptions:
+    * All PHP files MUST NOT end with a single blank line.
+    * There CAN be one `use` keyword per declaration. (But we often merge declarations, e. g. `use Crypt, URL, HTML, DB;`)
+    * The last case segment of a `switch` structure CAN have a `break` keyword. (But usually we omit it.)
+    * Closures MUST NOT be declared with a space after the function keyword.
 * Do not use tabs, only spaces
-* When in doubt, please follow the Laravel coding style
