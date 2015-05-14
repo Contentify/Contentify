@@ -40,9 +40,9 @@ class GenerateFormCommand extends Command {
     {
         $formGenerator = new FormGenerator;
 
-        $fileName = $this->argument('fileName');
-        $table = $this->argument('table');
-        $module = $this->argument('module');
+        $fileName   = $this->argument('fileName');
+        $table      = $this->argument('table');
+        $module     = $this->argument('module');
 
         $code = $formGenerator->generate($table, $module);
 
@@ -50,8 +50,8 @@ class GenerateFormCommand extends Command {
         file_put_contents($fileName, $code);
 
         $this->info('Done. Form has been generated: '.$fileName."\n");  
+        
         echo $code;
-      
     }
 
     /**
