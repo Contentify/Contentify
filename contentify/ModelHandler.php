@@ -100,7 +100,7 @@ class ModelHandler {
         /*
          * Get sort attributes.
          */
-        if (! $data['dataSource']) {
+        if (! is_array($data['dataSource'])) {
             if (Input::get('sortby')) {
                 $sortby = strtolower(Input::get('sortby'));
                 if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby; 
@@ -133,7 +133,7 @@ class ModelHandler {
          */
         $perPage = Config::get('app.'.$userInterface.'ItemsPerPage');
 
-        if ($data['dataSource']) {
+        if (is_array($data['dataSource'])) {
             $page  = Paginator::getCurrentPage();
 
             if ($page) { // Ensure $page always starts at 0:
