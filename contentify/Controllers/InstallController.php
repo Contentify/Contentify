@@ -132,7 +132,8 @@ class InstallController extends Controller {
                 $dbName     = Config::get("database.connections.{$dbCon}.database", null, false);
                 $title      = 'Database Setup';
                 $content    = '<p>Contentify will now setup the database.</p>
-                              <p>Before you proceed make sure the database connection settings have been updated.</p>
+                              <p>Before you proceed make sure the database connection settings have been updated in 
+                                <code>app/config/database.php</code>.</p>
                               <p>The current database name is: <br><code>'.$dbName.'</code></p>';
                 break;
             case 2:

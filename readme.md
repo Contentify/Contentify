@@ -16,9 +16,9 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Releases
 
-The current release is `Beta One`.
+The current release is `Beta Two`.
 
-You may download it here: [contentify.org/share/releases/contentify_beta1.zip](http://contentify.org/share/releases/contentify_beta1.zip)
+You may download it here: [contentify.org/share/releases/contentify_beta2.zip](http://contentify.org/share/releases/contentify_beta2.zip)
 
 To install Contentify please follow the instructions in [daux/docs/Development/03_Installation.md](https://github.com/Contentify/Contentify/blob/master/daux/docs/Development/03_Installation.md).
 
