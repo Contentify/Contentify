@@ -17,7 +17,7 @@ If you do not have a hosting service so far or it does not meet the requirements
 * Create a new droplet with Ubuntu. Choose to install the LAMP (Linux, Apache, MySQL and PHP) stack.
 * Connect to your server using an SSH client (e. g. [PuTTY](http://www.putty.org) for Windows)
 * Activate the mod_rewrite module: `sudo a2enmod rewrite`
-* Open `/etc/apache2/sites-available/000-default.conf` and change line 12 `DocumentRoot /var/www/html` to `DocumentRoot /var/www/html/public`. Right after that line paste this:
+* Open `/etc/apache2/sites-available/000-default.conf` and change line 12 `DocumentRoot /var/www/html` to `DocumentRoot /var/www/html/public`. In the next line paste this:
 
 ```
 <Directory "/var/www/html/public/">
