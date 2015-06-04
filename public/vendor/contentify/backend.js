@@ -21,11 +21,18 @@ $(document).ready(function()
      * Open sidebar category
      */
     var categorySessionKey = 'backend.sidebar.category';
+    var moduleSessionKey = 'backend.sidebar.module';
+
     var category = sessionStorage.getItem(categorySessionKey);
     if (! category) {
         category = 0;
     }
     $('#sidebar .category:eq(' + category + ') .items').css('height', 'auto');
+
+    var module = sessionStorage.getItem(moduleSessionKey);
+    if (module) {
+        $('#sidebar .category:eq(' + category + ') .item:eq(' + module + ')').addClass('active');
+    }  
 
     /*
      * Make sidebar collapsible
@@ -67,6 +74,10 @@ $(document).ready(function()
         activateNaviCategory(index);
     });
 
+    $('#sidebar .category .item').click(function()
+    {
+        sessionStorage.setItem(moduleSessionKey, $(this).index());
+    });
 
     var stateSessionKey = 'backend.sidebar.state';
 

@@ -7602,7 +7602,8 @@ header .header-logo {
   width: 30px;
   text-align: center;
 }
-#sidebar .navigation .category .items a:active {
+#sidebar .navigation .category .items a:active,
+#sidebar .navigation .category .items .item.active {
   padding-left: 15px;
   border-left: 5px #00afff solid;
   background-color: #161a1d;
