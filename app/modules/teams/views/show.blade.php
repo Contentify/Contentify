@@ -1,14 +1,12 @@
 <article class="team">
     <header>
-        <a href="{{ url('teams/'.$team->id.'/'.$team->slug) }}">
-            @if ($team->image)
-                <div class="image">
-                    <img src="{{ $team->uploadPath().$team->image }}" alt="{{{ $team->title }}}">
-                </div>
-            @endif
-            
-            <h2>{{{ $team->title }}}</h2>
-        </a>
+        <h2>{{{ $team->title }}}</h2>
+
+        @if ($team->image)
+            <div class="image">
+                <img src="{{ $team->uploadPath().$team->image }}" alt="{{{ $team->title }}}">
+            </div>
+        @endif
     </header>
 
     <div class="content">

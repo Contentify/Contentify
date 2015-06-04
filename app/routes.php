@@ -111,5 +111,12 @@ Route::get('jobs', function()
  */
 Route::get('test', function()
 { 
-
+    $controller = new InstallController();
+    $controller->create('events', function($table)
+    {
+        $table->text('text')->nullable();
+        $table->string('url')->nullable();
+        $table->string('location')->nullable();
+        $table->timestamp('starts_at');
+    });
 });

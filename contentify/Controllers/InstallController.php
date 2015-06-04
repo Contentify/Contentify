@@ -501,6 +501,15 @@ class InstallController extends Controller {
             $table->timestamp('messaged_at');
         }, ['sender_id', 'receiver_id']);
 
+        $this->create('events', function($table)
+        {
+            $table->text('text')->nullable();
+            $table->string('url')->nullable();
+            $table->string('location')->nullable();
+            $table->string('image')->nullable();
+            $table->timestamp('starts_at');
+        });
+
         /*
          * (Re)activate foreign key checks
          */
@@ -768,7 +777,7 @@ class InstallController extends Controller {
      * @param  boolean|array    $contentObject  Bool/array of attributes that won't be added (the array indicates true)
      * @return void
      */
-    private function create($tableName, Closure $tableRows, $foreignKeys = array(), $contentObject = true)
+    public function create($tableName, Closure $tableRows, $foreignKeys = array(), $contentObject = true)
     {
         /*
          * Delete existing table:
@@ -849,7 +858,7 @@ class InstallController extends Controller {
      * @param  array            $primaryKeys    An array with the names of both primary keys
      * @return void
      */
-    private function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
+    public function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
     {
         /*
          * Delete existing table:

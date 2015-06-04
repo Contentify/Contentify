@@ -22,7 +22,7 @@ class TeamsController extends FrontController {
     /**
      * Show a team
      * 
-     * @param  int $id The id of the news
+     * @param  int $id The id of the team
      * @return void
      */
     public function show($id)

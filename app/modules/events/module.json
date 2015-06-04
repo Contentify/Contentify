@@ -2,9 +2,9 @@
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "file-photo-o",
+            "icon": "map-marker",
             "category": 1,
-            "position": 7            
+            "position": 5
         }
     ]
 }
