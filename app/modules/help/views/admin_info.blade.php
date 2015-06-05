@@ -1,1 +1,0 @@
-admin.help.info
