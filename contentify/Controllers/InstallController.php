@@ -530,6 +530,9 @@ class InstallController extends Controller {
        
         $this->createUserGroups();
         
+        $tables = ['teamcats', 'newscats', 'partnercats', 'advertcats', 'downloadcats', 'slidecats'];
+        $this->createDefaultCategories($tables);
+
         DB::table('config')->insert([
             ['name' => 'app.analytics'],
             ['name' => 'forums::example'],
@@ -549,11 +552,6 @@ class InstallController extends Controller {
             'published'     => true,
             'creator_id'    => 1,
             'pagecat_id'    => 2
-        ]);
-
-        DB::table('teamcats')->insert([
-            ['id' => '1', 'title' => 'Staff'],
-            ['id' => '2', 'title' => 'Gaming'],
         ]);
 
         DB::table('languages')->insert([
@@ -887,5 +885,27 @@ class InstallController extends Controller {
          */
         if ($tableRows) Schema::table($tableName, $tableRows);
     }
-       
+      
+    /**
+     * Creates one or more default categories
+     * 
+     * @param  array $tables Array of table names
+     * @return void
+     */
+    public function createDefaultCategories($tables)
+    {
+        foreach ($tables as $table) {
+            DB::table($table)->insert([
+                [
+                    'id'            => '1', 
+                    'title'         => 'Default', 
+                    'creator_id'    => 1, 
+                    'updater_id'    => 1, 
+                    'created_at'    => DB::raw('NOW()'),
+                    'updated_at'    => DB::raw('NOW()'),
+                ],
+            ]);
+        }        
+    }
+
 }
