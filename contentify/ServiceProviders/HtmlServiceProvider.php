@@ -1,6 +1,6 @@
 <?php namespace Contentify\ServiceProviders;
 
-use Illuminate\Html\HtmlServiceProvider as OriginalHtmlServiceProvider;
+use Collective\Html\HtmlServiceProvider as OriginalHtmlServiceProvider;
 use Contentify\HtmlBuilder;
 use Contentify\FormBuilder;
  

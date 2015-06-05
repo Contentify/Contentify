@@ -529,10 +529,10 @@ class InstallController extends Controller {
     protected function createSeed() {
        
         $this->createUserGroups();
-        
+
         $tables = ['teamcats', 'newscats', 'partnercats', 'advertcats', 'downloadcats', 'slidecats'];
         $this->createDefaultCategories($tables);
-
+        
         DB::table('config')->insert([
             ['name' => 'app.analytics'],
             ['name' => 'forums::example'],
@@ -885,7 +885,7 @@ class InstallController extends Controller {
          */
         if ($tableRows) Schema::table($tableName, $tableRows);
     }
-      
+
     /**
      * Creates one or more default categories
      * 
@@ -907,5 +907,5 @@ class InstallController extends Controller {
             ]);
         }        
     }
-
+       
 }

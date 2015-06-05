@@ -1,6 +1,6 @@
-Contentify is a CMS based on the popular Laravel 4 framework. Laravel is developed and maintained by Taylor Otwell and a small [team of developers](http://laravel.com/docs/introduction#development-team). It's one of the most advanced PHP frameworks ever made. Many believe it's the upcoming star of PHP frameworks.
+Contentify is a CMS based on the popular Laravel 5 framework. Laravel is developed and maintained by Taylor Otwell and a small [team of developers](http://laravel.com/docs/4.0/introduction#development-team). It's one of the most advanced PHP frameworks ever made. Many believe it's the upcoming star of PHP frameworks.
 
-Contentify enhances Laravel. Understanding Laravel is a key requirement to understand Contentify. We believe that it's quite simple to learn the basics of Laravel so this should not be a show stopper. We recommend ["Code Bright" by Dayle Rees](http://daylerees.com/codebright/codebright) as a beginner guide. If you run into troubles with Laravel feel free to contact us on [GitHub](https://github.com/Contentify/Contentify/issues) or ask the Laravel community for help. These guys are great and will do their best to help you.
+Contentify enhances Laravel. Understanding Laravel is a key requirement to understand Contentify. We believe that it's quite simple to learn the basics of Laravel so this should not be a show stopper. We recommend ["Code Smart" by Dayle Rees](http://leanpub.com/codesmart) as a beginner guide. If you run into troubles with Laravel feel free to contact us on [GitHub](http://github.com/Contentify/Contentify/issues) or ask the Laravel community for help. These guys are great and will do their best to help you.
 
 # Why We Choose Laravel
 
@@ -16,7 +16,7 @@ Contentify enhances Laravel. Understanding Laravel is a key requirement to under
 * [Official Docs](http://laravel.com/docs)
 * [Official Forums](http://laravel.io/forum)
 * [GitHub](https://github.com/laravel/laravel)
-* [Best Beginner Guide: Code Bright](http://daylerees.com/codebright/codebright) (also available as book)
+* [Best Beginner Guide: Code Smart](http://leanpub.com/codesmart) (currently only available as book)
 * [@LaravelNews](https://twitter.com/laravelnews), [@DayleRees](https://twitter.com/daylerees), [@TaylorOtwell](https://twitter.com/taylorotwell)
 * [Screencast](https://laracasts.com/) (liable to pay costs)
 
@@ -100,7 +100,3 @@ It's that simple! Here is the Cookie class:
     }
 
 In fact this is all we need if the database table's name is "cookies". Laravel will pluralize the model's name and receive all attributes from the database table. Later on models will most likely have some code but that's it for now.
-
-## Official Quickstart Guide
-
-There is an [official quickstart guide](http://laravel.com/docs/quick). It's a good idea to read it as the next step to a basic understanding of Laravel.
