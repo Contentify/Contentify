@@ -129,7 +129,7 @@ return [
 	|
 	*/
 
-	'log' => 'daily',
+	'log' => 'single',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -243,6 +243,7 @@ return [
 		'Route'                 => 'Illuminate\Support\Facades\Route',
 		'Schema'                => 'Illuminate\Support\Facades\Schema',
 		'Session'               => 'Illuminate\Support\Facades\Session',
+        'SoftDeletingTrait'     => 'Illuminate\Database\Eloquent\SoftDeletes',
 		'Storage'               => 'Illuminate\Support\Facades\Storage',
 		'URL'                   => 'Illuminate\Support\Facades\URL',
 		'Validator'             => 'Illuminate\Support\Facades\Validator',

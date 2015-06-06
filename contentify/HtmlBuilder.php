@@ -1,6 +1,6 @@
 <?php namespace Contentify;
  
-use Illuminate\Html\HtmlBuilder as OriginalHtmlBuilder;
+use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
 use OpenGraph, Session, URL;
 
 class HtmlBuilder extends OriginalHtmlBuilder {

@@ -2,6 +2,38 @@
 
 /*
 |--------------------------------------------------------------------------
+| Pretend DELETE request method
+|--------------------------------------------------------------------------
+|
+| Since Laravel can't create URLs with request methods,
+| it needs a little help. We use the GET-parameter 'method' to 
+| pretend a DELETE request method.
+| This has to be done before the App starts.
+| (Ofcourse, with JS and AJAX / hidden form sending DELETE is possible.)
+| 
+*/
+
+if (isset($_GET['method']) and strtolower($_GET['method']) == 'delete') {
+    $_SERVER['REQUEST_METHOD'] = 'DELETE';
+}
+
+/*
+|--------------------------------------------------------------------------
+| Permission Levels
+|--------------------------------------------------------------------------
+|
+| Define constants for permisson levels 
+| (part of Sentry's user permission system).
+|
+*/
+
+const PERM_READ      = 1;
+const PERM_CREATE    = 2;
+const PERM_UPDATE    = 3;
+const PERM_DELETE    = 4;
+
+/*
+|--------------------------------------------------------------------------
 | Create The Application
 |--------------------------------------------------------------------------
 |
