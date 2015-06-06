@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fbfe9d43fc26a9c567715b2b8f53535c",
+    "hash": "b561ecbf4d3d62841b3481b9ce94feda",
     "packages": [
         {
             "name": "caffeinated/modules",
@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/bbcode.git",
-                "reference": "1b6458adc5d9bdd51b1dee65b59ac6a0efe49534"
+                "reference": "26f30f501e8c7b37a743f23285395d626af5a59f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/bbcode/zipball/1b6458adc5d9bdd51b1dee65b59ac6a0efe49534",
-                "reference": "1b6458adc5d9bdd51b1dee65b59ac6a0efe49534",
+                "url": "https://api.github.com/repos/chriskonnertz/bbcode/zipball/26f30f501e8c7b37a743f23285395d626af5a59f",
+                "reference": "26f30f501e8c7b37a743f23285395d626af5a59f",
                 "shasum": ""
             },
             "require": {
@@ -192,19 +192,18 @@
             ],
             "authors": [
                 {
-                    "name": "Chris Konnertz",
-                    "email": "siconize@gmail.com"
-                },
-                {
                     "name": "Kai Mallea",
                     "email": "kmallea@gmail.com"
+                },
+                {
+                    "name": "Chris Konnertz"
                 }
             ],
             "description": "A naive attempt at a BBCode 'parser' written in PHP. It uses regex and thus fails at complex, nested tags.",
             "keywords": [
                 "bbcode"
             ],
-            "time": "2015-02-01 12:41:27"
+            "time": "2015-06-06 10:57:03"
         },
         {
             "name": "chriskonnertz/jobs",
@@ -212,12 +211,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/Jobs.git",
-                "reference": "93e26ce3b592452962a1374dd720ba15a2599f94"
+                "reference": "1f83cef6ce369876c38d1a9dcd50aacc872f53dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/93e26ce3b592452962a1374dd720ba15a2599f94",
-                "reference": "93e26ce3b592452962a1374dd720ba15a2599f94",
+                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/1f83cef6ce369876c38d1a9dcd50aacc872f53dc",
+                "reference": "1f83cef6ce369876c38d1a9dcd50aacc872f53dc",
                 "shasum": ""
             },
             "require": {
@@ -225,8 +224,8 @@
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "ChrisKonnertz\\Jobs": "src/"
+                "psr-4": {
+                    "ChrisKonnertz\\Jobs\\": "src/ChrisKonnertz/Jobs"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -235,17 +234,15 @@
             ],
             "authors": [
                 {
-                    "name": "Chris Konnertz",
-                    "email": "siconize@gmail.com"
+                    "name": "Chris Konnertz"
                 }
             ],
             "description": "Simple cron job manager",
             "keywords": [
                 "cron jobs",
-                "laravel",
-                "laravel4"
+                "laravel"
             ],
-            "time": "2015-04-15 21:22:15"
+            "time": "2015-06-06 10:56:04"
         },
         {
             "name": "chriskonnertz/open-graph",
@@ -253,12 +250,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/open-graph.git",
-                "reference": "92e9455b1841cb42e5b699c57a6d3538cef5bff0"
+                "reference": "9476bf97f0db2dd44f7acbd2da848713b8ac6e12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/92e9455b1841cb42e5b699c57a6d3538cef5bff0",
-                "reference": "92e9455b1841cb42e5b699c57a6d3538cef5bff0",
+                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/9476bf97f0db2dd44f7acbd2da848713b8ac6e12",
+                "reference": "9476bf97f0db2dd44f7acbd2da848713b8ac6e12",
                 "shasum": ""
             },
             "require": {
@@ -276,8 +273,7 @@
             ],
             "authors": [
                 {
-                    "name": "Chris Konnertz",
-                    "email": "siconize@gmail.com"
+                    "name": "Chris Konnertz"
                 }
             ],
             "description": "Class that assists in building Open Graph meta tags",
@@ -287,7 +283,7 @@
                 "open graph",
                 "opengraph"
             ],
-            "time": "2015-05-22 18:25:27"
+            "time": "2015-06-06 10:56:16"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2508,16 +2504,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.3",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c"
+                "reference": "3703c4bb67c8700957dd41c843254658539d091d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/28a6b34e91d789b2608072ab3c82eaae7cdb973c",
-                "reference": "28a6b34e91d789b2608072ab3c82eaae7cdb973c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/3703c4bb67c8700957dd41c843254658539d091d",
+                "reference": "3703c4bb67c8700957dd41c843254658539d091d",
                 "shasum": ""
             },
             "require": {
@@ -2566,7 +2562,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-03 07:01:01"
+            "time": "2015-06-06 08:33:23"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2754,16 +2750,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.7.1",
+            "version": "4.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "bdd15c9ec6e16a307398d5385b3445673608e805"
+                "reference": "8e0c63329c8c4185296b8d357daa5c6bae43080f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bdd15c9ec6e16a307398d5385b3445673608e805",
-                "reference": "bdd15c9ec6e16a307398d5385b3445673608e805",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e0c63329c8c4185296b8d357daa5c6bae43080f",
+                "reference": "8e0c63329c8c4185296b8d357daa5c6bae43080f",
                 "shasum": ""
             },
             "require": {
@@ -2822,7 +2818,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-05 13:25:13"
+            "time": "2015-06-06 08:36:08"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

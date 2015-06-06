@@ -119,5 +119,6 @@ Route::get('test', function()
     });
     */
    
-   die('Hello World!');
+    $test = \HTML::gravatar('test@test.com');
+    dd($test);
 });

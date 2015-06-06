@@ -26,8 +26,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Contentify\\": "contentify",
-            "ChrisKonnertz\\Jobs\\": "Jobs"
+            "Contentify\\": "contentify"
         },
         "files": [
             "app/helpers.php"
