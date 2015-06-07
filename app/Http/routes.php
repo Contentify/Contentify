@@ -20,14 +20,11 @@ Route::when('admin/*', 'admin');
  * Frontend dashboard.
  */ 
 if (! installed()) {
-    // TODO: This is just a dirty implementation only for beta testing!
     Route::get('/', ['as' => 'home', 'uses' => function() {
-        //$view = View::make('maintenance')->render();
-        //echo $view;
         return Redirect::to('/install');
     }]);
 } else {
-    Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Controllers\NewsController@showOverview']);
+    Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Http\Controllers\NewsController@showOverview']);
 }
 
 /*

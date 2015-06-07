@@ -1,0 +1,11 @@
+{
+    "slug": "Dashboard",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "home",
+            "category": 1,
+            "position": 1
+        }
+    ]
+}

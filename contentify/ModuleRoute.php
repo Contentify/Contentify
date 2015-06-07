@@ -45,13 +45,11 @@ class ModuleRoute {
          * Create the namespace from the directory path
          */
         if (! $this->namespace) {
-            $path               = Config::get('modules::path');
-            $studly             = Str::title(str_replace('/', ' ', $path));
-            $this->namespace    = str_replace(' ', '\\', $studly);
+            $this->namespace    = Config::get('modules.namespace');
         }
 
-        $this->modelPath        = $this->namespace.'\\'.$moduleName.'\Models\\';
-        $this->controllerPath   = $this->namespace.'\\'.$moduleName.'\Controllers\\';
+        $this->modelPath        = $this->namespace.$moduleName.'\\';
+        $this->controllerPath   = $this->namespace.$moduleName.'\Http\Controllers\\';
     }
 
     /**

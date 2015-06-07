@@ -1,5 +1,5 @@
-<?php namespace App\Modules\News\Controllers;
-
+<?php namespace App\Modules\News\Http\Controllers;
+
 use App\Modules\News\Models\News;
 use View, Widget;
 

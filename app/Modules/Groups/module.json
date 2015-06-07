@@ -1,0 +1,12 @@
+{
+    "slug": "Groups",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "lock",
+            "category": 4,
+            "position": 8,
+            "title": "Permission Groups"
+        }
+    ]
+}

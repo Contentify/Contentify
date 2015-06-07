@@ -1,5 +1,5 @@
-<?php namespace App\Modules\News\Models;
-
+<?php namespace App\Modules\News;
+
 use SoftDeletingTrait, BaseModel;
 
 class Newscat extends BaseModel {

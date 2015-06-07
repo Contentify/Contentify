@@ -1,0 +1,11 @@
+{
+    "slug": "Galleries",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "file-photo-o",
+            "category": 1,
+            "position": 6            
+        }
+    ]
+}

@@ -1,5 +1,5 @@
-<?php namespace App\Modules\News\Models;
-
+<?php namespace App\Modules\News;
+
 use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
 class News extends BaseModel {

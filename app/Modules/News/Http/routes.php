@@ -1,7 +1,7 @@
 <?php
 
-ModuleRoute::context(__DIR__);
-
+ModuleRoute::context('News');
+
 ModuleRoute::resource('admin/newscats', 'AdminNewscatsController');
 ModuleRoute::get(
     'admin/newscats/{id}/restore', 

@@ -1,0 +1,10 @@
+{
+    "slug": "Modules",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "cubes",
+            "category": 4
+        }
+    ]
+}

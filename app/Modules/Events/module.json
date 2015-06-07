@@ -1,0 +1,11 @@
+{
+    "slug": "Events",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "map-marker",
+            "category": 1,
+            "position": 4
+        }
+    ]
+}
