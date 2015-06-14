@@ -16,10 +16,10 @@
 @endif
 </div>
 
-{{ $forumPosts->links() }}
+{{ $forumPosts->render() }}
 
 <div class="forumPosts">
-    <?php $forumPostNumber = $forumPosts->getFrom() ?>
+    <?php $forumPostNumber = $forumPosts->firstItem() ?>
     @foreach($forumPosts as $forumPost)
         @include('forums::show_post', compact('forumPost', 'forumPostNumber'))
         <?php $forumPostNumber++ ?>
@@ -34,7 +34,7 @@
     @endif
 @endif
 
-{{ $forumPosts->links() }}
+{{ $forumPosts->render() }}
 
 <script>
     $(document).ready(function()

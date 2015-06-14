@@ -27,4 +27,4 @@
     @endforeach
 </div>
 
-{{ $videos->links() }}
+{{ $videos->render() }}

@@ -38,4 +38,4 @@
     @endforeach
 </div>
 
-{{ $servers->links() }}
+{{ $servers->render() }}

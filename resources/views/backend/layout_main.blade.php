@@ -87,7 +87,7 @@
                 @include('alert', ['type' => 'info', 'title' => Session::get('_alert')])
             @endif
 
-            {{-- Render JavaScript alerts here --}}
+            <!-- Render JavaScript alerts here -->
             <div class="alert-area"></div>
 
             @if (isset($page))

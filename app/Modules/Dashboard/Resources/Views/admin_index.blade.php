@@ -20,7 +20,7 @@
         <a href="{{ url('admin/downloads') }}">{{ HTML::fontIcon('folder') }} Downloads</a>
     </div>
 
-    {{-- Second row  --}}
+    <!-- Second row  -->
 
     <div>
         <a href="{{ url('admin/users') }}">{{ HTML::fontIcon('user') }} Users</a>

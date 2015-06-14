@@ -191,7 +191,7 @@ class ModelHandler {
             'sortby'    => $data['sortby'], 
             'order'     => $data['order'], 
             'search'    => $data['search']
-        ])->links();
+        ])->render();
 
         /*
          * Prepare the table head

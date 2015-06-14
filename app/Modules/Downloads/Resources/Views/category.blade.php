@@ -15,4 +15,4 @@
 </div>
 
 <div class="clear"></div>
-{{ $downloads->links() }}
+{{ $downloads->render() }}

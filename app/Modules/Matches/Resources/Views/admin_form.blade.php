@@ -29,7 +29,7 @@
     
     {{ Form::smartCheckbox('featured', trans('app.featured')) }}
 
-    {{-- We can't add scores to a match that doesn't actually exist --}}
+    <!-- We can't add scores to a match that doesn't actually exist -->
     @if (isset($model))
         {{ Form::smartGroupOpen(null, 'Match Scores') }}
             <div class="scores">
@@ -75,7 +75,7 @@
             //$('select#_relation_rightTeam').change();
         //endif
         
-        {{-- We can't add scores to a match that doesn't actually exist --}}
+        // We can't add scores to a match that doesn't actually exist
         @if (isset($model))
             var template = '{{ Form::smartSelectForeign('map_id', 'Map') }} {{ Form::smartGroupOpen('left_score', trans('matches::score')) }} <input type="text" name="left_score" style="display: inline-block; max-width: 50px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="display: inline-block; max-width: 50px" value="%%scoreRight%%"> {{ Form::smartGroupClose() }}';
 

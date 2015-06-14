@@ -51,9 +51,15 @@ class Comment extends BaseModel {
      */
     public static function count($foreignType, $foreignId = null)
     {
-        $query = self::remember(5)->whereForeignType($foreignType);
-        if ($foreignId) $query->whereForeignId($foreignId);
-        return $query->count();
+        $key = 'comments.countByModel.'.$foreignType.'.'.$foreignId;
+
+        return Cache::remember($key, 5, function() use ($foreignType, $foreignId)
+        {
+            $query = self::whereForeignType($foreignType);
+            if ($foreignId) $query->whereForeignId($foreignId);
+
+            return $query->count();
+        });
     }
 
     /**

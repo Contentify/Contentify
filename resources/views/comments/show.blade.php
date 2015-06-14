@@ -3,7 +3,7 @@
         @include('comments.comment')
     @endforeach
     
-    {{ $comments->links() }}
+    {{ $comments->render() }}
 </div>
 
 {{ HTML::script('vendor/contentify/comments.js') }}

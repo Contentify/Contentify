@@ -14,4 +14,4 @@
     @endforeach
 </div>
 
-{{ $galleries->links() }}
+{{ $galleries->render() }}

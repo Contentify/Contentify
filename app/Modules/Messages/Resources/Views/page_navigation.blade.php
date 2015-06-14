@@ -1,6 +1,6 @@
 <div role="tabpanel" style="margin-bottom: 10px">
 
-    {{-- Nav tabs --}}
+    <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" <?php if ($active == 'inbox') echo 'class="active"' ?>>
             <a href="{{ url('messages/inbox') }}" role="tab">{{ trans('messages::inbox') }}</a>

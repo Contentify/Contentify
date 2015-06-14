@@ -115,7 +115,4 @@ Route::get('test', function()
 
     });
     */
-   
-    $test = \HTML::gravatar('test@test.com');
-    dd($test);
 });

@@ -11,4 +11,4 @@
     @endforeach
 </div>
 
-{{ $downloadcats->links() }}
+{{ $downloadcats->render() }}
