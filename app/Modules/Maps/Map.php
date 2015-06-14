@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Maps;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Map extends BaseModel {
@@ -18,7 +18,7 @@ class Map extends BaseModel {
     ];
 
     public static $relationsData = [
-        'game'      => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
+        'game'      => [self::BELONGS_TO, 'App\Modules\Games\Game'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

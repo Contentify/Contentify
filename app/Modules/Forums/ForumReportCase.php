@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Forums;
-
-use App\Modules\Forums\Models\ForumReport;
-use App\Modules\Forums\Models\ForumPost;
+
+use App\Modules\Forums\ForumReport;
+use App\Modules\Forums\ForumPost;
 use Carbon, DB, BaseModel;
 
 class ForumReportCase extends BaseModel {
@@ -36,7 +36,7 @@ class ForumReportCase extends BaseModel {
 
     public function post()
     {
-        return $this->belongsTo('App\Modules\Forums\Models\ForumPost');
+        return $this->belongsTo('App\Modules\Forums\ForumPost');
     }
 
 }

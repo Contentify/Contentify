@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Friends\Http\Controllers;
-
-use App\Modules\Friends\Models\Friendship;
-use App\Modules\Messages\Models\Message;
+
+use App\Modules\Friends\Friendship;
+use App\Modules\Messages\Message;
 use User, DB, Redirect, FrontController;
 
 class FriendsController extends FrontController {

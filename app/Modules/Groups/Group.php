@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Groups;
-
-use App\Modules\Groups\Models\Permission;
+
+use App\Modules\Groups\Permission;
 use Hover, SoftDeletingTrait, Sentry, BaseModel;
 
 /*

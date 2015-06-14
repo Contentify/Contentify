@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Servers;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Server extends BaseModel {
@@ -19,7 +19,7 @@ class Server extends BaseModel {
 
     public static $relationsData = [
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
-        'game'      => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
+        'game'      => [self::BELONGS_TO, 'App\Modules\Games\Game'],
     ];
 
 }

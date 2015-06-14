@@ -1,9 +1,9 @@
 <?php namespace App\Modules\Matches\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Matches\Models\Match;
-use App\Modules\Matches\Models\MatchScore;
-use App\Modules\Maps\Models\Map;
+use App\Modules\Matches\Match;
+use App\Modules\Matches\MatchScore;
+use App\Modules\Maps\Map;
 use Input, HTML, Hover, BackController;
 
 class AdminMatchesController extends BackController {

@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Users;
-
+
 use User as BaseUser;
 use Sentry, BaseModel;
 
@@ -14,7 +14,7 @@ class User extends BaseUser {
 
     public static $relationsData = [
         'groups'    => [BaseModel::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
-        'teams'     => [BaseModel::BELONGS_TO_MANY, 'App\Modules\Teams\Models\Team', 'table' => 'team_user'],
+        'teams'     => [BaseModel::BELONGS_TO_MANY, 'App\Modules\Teams\Team', 'table' => 'team_user'],
     ];
     
     /**

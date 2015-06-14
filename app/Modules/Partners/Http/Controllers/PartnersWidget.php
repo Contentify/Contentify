@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Partners\Http\Controllers;
-
-use App\Modules\Partners\Models\Partner;
-use App\Modules\Partners\Models\Partnercat;
+
+use App\Modules\Partners\Partner;
+use App\Modules\Partners\Partnercat;
 use DB, View, Widget;
 
 class PartnersWidget extends Widget {

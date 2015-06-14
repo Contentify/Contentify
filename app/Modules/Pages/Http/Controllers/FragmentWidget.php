@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Pages\Http\Controllers;
-
-use App\Modules\Pages\Models\Fragment;
+
+use App\Modules\Pages\Fragment;
 use Exception, Widget;
 
 class FragmentWidget extends Widget {

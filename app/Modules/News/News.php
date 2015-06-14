@@ -1,5 +1,5 @@
 <?php namespace App\Modules\News;
-
+
 use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
 class News extends BaseModel {
@@ -32,7 +32,7 @@ class News extends BaseModel {
     ];
 
     public static $relationsData = [
-        'newscat' => [self::BELONGS_TO, 'App\Modules\News\Models\Newscat'],
+        'newscat' => [self::BELONGS_TO, 'App\Modules\News\Newscat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

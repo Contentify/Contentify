@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Slides\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Slides\Models\Slide;
+use App\Modules\Slides\Slide;
 use Hover, BackController;
 
 class AdminSlidesController extends BackController {

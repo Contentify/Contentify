@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Partners\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Partners\Models\Partnercat;
+use App\Modules\Partners\Partnercat;
 use Hover, BackController;
 
 class AdminPartnercatsController extends BackController {

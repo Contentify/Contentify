@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Modules\Http\Controllers;
-
-use App\Modules\Modules\Models\Module;
+
+use App\Modules\Modules\Module;
 use Cache, HTML, BackController;
 
 class AdminModulesController extends BackController {

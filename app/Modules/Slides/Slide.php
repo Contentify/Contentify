@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Slides;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Slide extends BaseModel {
@@ -20,7 +20,7 @@ class Slide extends BaseModel {
     ];
 
     public static $relationsData = [
-        'slidecat'  => [self::BELONGS_TO, 'App\Modules\Slides\Models\Slidecat'],
+        'slidecat'  => [self::BELONGS_TO, 'App\Modules\Slides\Slidecat'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username']
     ];
 

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Downloads\Http\Controllers;
-
-use App\Modules\Downloads\Models\Download;
+
+use App\Modules\Downloads\Download;
 use ModelHandlerTrait;
 use Hover, BackController;
 

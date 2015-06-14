@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Matches\Http\Controllers;
-
-use App\Modules\Matches\Models\Match;
+
+use App\Modules\Matches\Match;
 use URL, HTML, FrontController;
 
 class MatchesController extends FrontController {

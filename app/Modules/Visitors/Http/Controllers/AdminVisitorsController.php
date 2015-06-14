@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Visitors\Http\Controllers;
-
-use App\Modules\Visitors\Models\Chart;
+
+use App\Modules\Visitors\Chart;
 use BackController;
 
 class AdminVisitorsController extends BackController {

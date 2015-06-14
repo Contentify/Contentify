@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Servers\Http\Controllers;
-
-use App\Modules\Servers\Models\Server;
+
+use App\Modules\Servers\Server;
 use Config, URL, FrontController;
 
 class ServersController extends FrontController {

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Servers\Http\Controllers;
-
-use App\Modules\Servers\Models\Server;
+
+use App\Modules\Servers\Server;
 use View, Widget;
 
 class ServersWidget extends Widget {

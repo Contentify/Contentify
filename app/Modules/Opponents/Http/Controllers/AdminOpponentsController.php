@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Opponents\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Opponents\Models\Opponent;
+use App\Modules\Opponents\Opponent;
 use HTML, Hover, BackController;
 
 class AdminOpponentsController extends BackController {

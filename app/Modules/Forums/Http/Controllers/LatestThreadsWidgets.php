@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Forums\Http\Controllers;
-
-use App\Modules\Forums\Models\ForumThread;
+
+use App\Modules\Forums\ForumThread;
 use View, Widget;
 
 class LatestThreadsWidget extends Widget {

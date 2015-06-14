@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Forums\Http\Controllers;
-
-use App\Modules\Forums\Models\ForumReportCase;
+
+use App\Modules\Forums\ForumReportCase;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 

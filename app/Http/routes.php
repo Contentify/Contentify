@@ -36,7 +36,7 @@ if (! installed()) {
 Route::get('admin', [
     'as' => 'admin.dashboard', 
     'before' => 'admin', 
-    'uses' => 'App\Modules\Dashboard\Controllers\AdminDashboardController@getindex'
+    'uses' => 'App\Modules\Dashboard\Http\Controllers\AdminDashboardController@getindex'
 ]);
 
 /*

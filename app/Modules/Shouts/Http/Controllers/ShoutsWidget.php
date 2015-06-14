@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Shouts\Http\Controllers;
-
-use App\Modules\Shouts\Models\Shout;
+
+use App\Modules\Shouts\Shout;
 use View, Widget;
 
 class ShoutsWidget extends Widget {

@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Pages\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Pages\Models\Page;
+use App\Modules\Pages\Page;
 use Hover, URL, HTML, BackController;
 
 class AdminPagesController extends BackController {

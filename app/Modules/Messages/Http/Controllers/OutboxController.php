@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Messages\Http\Controllers;
-
-use App\Modules\Messages\Models\Message;
+
+use App\Modules\Messages\Message;
 use HTML, FrontController;
 
 class OutboxController extends FrontController {

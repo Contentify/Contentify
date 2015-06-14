@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Matches\Http\Controllers;
-
-use App\Modules\Matches\Models\Match;
-use App\Modules\Matches\Models\MatchScore;
+
+use App\Modules\Matches\Match;
+use App\Modules\Matches\MatchScore;
 use Response, View, Input, BackController;
 
 class AdminMatchScoresController extends BackController {

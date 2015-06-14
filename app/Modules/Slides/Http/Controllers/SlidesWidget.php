@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Slides\Http\Controllers;
-
-use App\Modules\Slides\Models\Slide;
-use App\Modules\Slides\Models\Slidecat;
+
+use App\Modules\Slides\Slide;
+use App\Modules\Slides\Slidecat;
 use DB, View, Widget;
 
 class SlidesWidget extends Widget {

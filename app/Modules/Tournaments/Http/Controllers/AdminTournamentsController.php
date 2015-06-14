@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Tournaments\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Tournaments\Models\Tournament;
+use App\Modules\Tournaments\Tournament;
 use Hover, BackController;
 
 class AdminTournamentsController extends BackController {

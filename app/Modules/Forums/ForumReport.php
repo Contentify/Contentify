@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Forums;
-
+
 use BaseModel;
 
 class ForumReport extends BaseModel {
@@ -13,7 +13,7 @@ class ForumReport extends BaseModel {
     public static $relationsData = [
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
         'updater'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
-        'post'          => [self::BELONGS_TO, 'App\Modules\Forums\Models\ForumPost'],
+        'post'          => [self::BELONGS_TO, 'App\Modules\Forums\ForumPost'],
     ];
 
 }

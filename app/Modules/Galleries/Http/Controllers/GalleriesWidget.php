@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Galleries\Http\Controllers;
-
-use App\Modules\Images\Models\Image;
-use App\Modules\Galleries\Models\Gallery;
+
+use App\Modules\Images\Image;
+use App\Modules\Galleries\Gallery;
 use View, Widget;
 
 class GalleriesWidget extends Widget {

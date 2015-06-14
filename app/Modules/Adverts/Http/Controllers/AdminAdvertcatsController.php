@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Adverts\Http\Controllers;
-
-use App\Modules\Adverts\Models\Advertcat;
+
+use App\Modules\Adverts\Advertcat;
 use ModelHandlerTrait;
 use Hover, BackController;
 

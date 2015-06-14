@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Search\Http\Controllers;
-
+
 use Input, Redirect, Validator, FrontController;
 
 class SearchController extends FrontController {
@@ -28,7 +28,7 @@ class SearchController extends FrontController {
                     // A module might have more than one controller that supports the search:
                     foreach ($controllers as $controller) { 
                         $classPath = 'App\Modules\\'.ucfirst($module->name())
-                            .'\Controllers\\'.ucfirst($controller).'Controller';
+                            .'\Http\Controllers\\'.ucfirst($controller).'Controller';
                         $instance = new $classPath; // Create isntance of the controller...
                         $results = $instance->globalSearch($subject); // ...and call the search method.
                     }

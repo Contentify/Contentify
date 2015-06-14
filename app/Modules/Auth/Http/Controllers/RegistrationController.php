@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
-
-use App\Modules\Languages\Models\Language;
+
+use App\Modules\Languages\Language;
 use App, Lang, Str, View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {

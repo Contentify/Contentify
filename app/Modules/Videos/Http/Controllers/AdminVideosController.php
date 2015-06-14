@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Videos\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Videos\Models\Video;
+use App\Modules\Videos\Video;
 use Hover, BackController;
 
 class AdminVideosController extends BackController {

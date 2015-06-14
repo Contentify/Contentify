@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Awards;
-
+
 use HTML, SoftDeletingTrait, BaseModel;
 
 class Award extends BaseModel {
@@ -28,9 +28,9 @@ class Award extends BaseModel {
     ];
 
     public static $relationsData = [
-        'game'          => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
-        'tournament'    => [self::BELONGS_TO, 'App\Modules\Tournaments\Models\Tournament'],
-        'team'          => [self::BELONGS_TO, 'App\Modules\Teams\Models\Team'],
+        'game'          => [self::BELONGS_TO, 'App\Modules\Games\Game'],
+        'tournament'    => [self::BELONGS_TO, 'App\Modules\Tournaments\Tournament'],
+        'team'          => [self::BELONGS_TO, 'App\Modules\Teams\Team'],
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

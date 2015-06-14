@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Events\Http\Controllers;
-
-use App\Modules\Events\Models\Event;
+
+use App\Modules\Events\Event;
 use FrontController;
 
 class EventsController extends FrontController {

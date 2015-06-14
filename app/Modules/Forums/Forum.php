@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Forums;
-
+
 use DB, MsgException, SoftDeletingTrait, BaseModel;
 
 class Forum extends BaseModel {
@@ -27,11 +27,11 @@ class Forum extends BaseModel {
 
     public static $relationsData = [
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
-        'forum'         => [self::BELONGS_TO, 'App\Modules\Forums\Models\Forum'], // Parent forum
-        'latestThread'  => [self::BELONGS_TO, 'App\Modules\Forums\Models\ForumThread'],
-        'threads'       => [self::HAS_MANY, 'App\Modules\Forums\Models\ForumThread'],
-        'team'          => [self::BELONGS_TO, 'App\Modules\Teams\Models\Team'],
-        'forums'        => [self::HAS_MANY, 'App\Modules\Forums\Models\Forum'], // Sub forums
+        'forum'         => [self::BELONGS_TO, 'App\Modules\Forums\Forum'], // Parent forum
+        'latestThread'  => [self::BELONGS_TO, 'App\Modules\Forums\ForumThread'],
+        'threads'       => [self::HAS_MANY, 'App\Modules\Forums\ForumThread'],
+        'team'          => [self::BELONGS_TO, 'App\Modules\Teams\Team'],
+        'forums'        => [self::HAS_MANY, 'App\Modules\Forums\Forum'], // Sub forums
     ];
 
     public static function boot()

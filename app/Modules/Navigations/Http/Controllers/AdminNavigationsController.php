@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Navigations\Http\Controllers;
-
-use App\Modules\Navigations\Models\Navigation;
+
+use App\Modules\Navigations\Navigation;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 

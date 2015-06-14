@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Videos\Http\Controllers;
-
-use App\Modules\Videos\Models\Video;
+
+use App\Modules\Videos\Video;
 use Config, URL, FrontController;
 
 class VideosController extends FrontController {

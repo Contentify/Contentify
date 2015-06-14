@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Galleries;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Gallery extends BaseModel {
@@ -17,7 +17,7 @@ class Gallery extends BaseModel {
     ];
 
     public static $relationsData = [
-        'images'    => [self::HAS_MANY, 'App\Modules\Images\Models\Image'],
+        'images'    => [self::HAS_MANY, 'App\Modules\Images\Image'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

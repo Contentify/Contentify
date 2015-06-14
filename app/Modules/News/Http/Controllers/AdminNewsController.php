@@ -1,7 +1,7 @@
 <?php namespace App\Modules\News\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\News\Models\News;
+use App\Modules\News\News;
 use Hover, HTML, URL, BackController;
 
 class AdminNewsController extends BackController {

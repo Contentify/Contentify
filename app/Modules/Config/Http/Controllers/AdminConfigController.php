@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Config\Http\Controllers;
-
-use App\Modules\Config\Models\SettingsBag;
+
+use App\Modules\Config\SettingsBag;
 use Contentify\Vendor\MySqlDump;
 use Redirect, Input, File, DB, Config, View, BackController;
 

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Pages\Http\Controllers;
-
-use App\Modules\Pages\Models\CustomPage;
+
+use App\Modules\Pages\CustomPage;
 use URL, HTML, FrontController;
 
 class CustomPagesController extends FrontController {

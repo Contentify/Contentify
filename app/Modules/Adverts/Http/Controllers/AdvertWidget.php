@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Adverts\Http\Controllers;
-
-use App\Modules\Adverts\Models\Advert;
-use App\Modules\Adverts\Models\Advertcat;
+
+use App\Modules\Adverts\Advert;
+use App\Modules\Adverts\Advertcat;
 use Config, DB, View, Widget;
 
 class AdvertWidget extends Widget {

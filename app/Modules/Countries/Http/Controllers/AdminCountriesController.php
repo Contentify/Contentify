@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Countries\Http\Controllers;
-
-use App\Modules\Countries\Models\Country;
+
+use App\Modules\Countries\Country;
 use ModelHandlerTrait;
 use HTML, File, BackController;
 

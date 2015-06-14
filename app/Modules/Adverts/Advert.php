@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Adverts;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Advert extends BaseModel {
@@ -20,7 +20,7 @@ class Advert extends BaseModel {
     ];
 
     public static $relationsData = [
-        'advertcat' => [self::BELONGS_TO, 'App\Modules\Adverts\Models\Advertcat'],
+        'advertcat' => [self::BELONGS_TO, 'App\Modules\Adverts\Advertcat'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

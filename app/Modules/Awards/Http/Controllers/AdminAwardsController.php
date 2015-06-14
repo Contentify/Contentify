@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Awards\Http\Controllers;
-
-use App\Modules\Awards\Models\Award;
+
+use App\Modules\Awards\Award;
 use ModelHandlerTrait;
 use BackController;
 

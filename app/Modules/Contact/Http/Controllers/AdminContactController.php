@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Contact\Http\Controllers;
-
-use App\Modules\Contact\Models\ContactMessage;
+
+use App\Modules\Contact\ContactMessage;
 use ModelHandlerTrait;
 use HTML, View, BackController;
 

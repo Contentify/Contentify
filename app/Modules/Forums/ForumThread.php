@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Forums;
-
-use App\Modules\Forums\Models\ForumPost;
+
+use App\Modules\Forums\ForumPost;
 use SoftDeletingTrait, BaseModel;
 
 class ForumThread extends BaseModel {
@@ -22,8 +22,8 @@ class ForumThread extends BaseModel {
 
     public static $relationsData = [
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
-        'forum'     => [self::BELONGS_TO, 'App\Modules\Forums\Models\Forum'],
-        'posts'     => [self::HAS_MANY, 'App\Modules\Forums\Models\ForumPost'],
+        'forum'     => [self::BELONGS_TO, 'App\Modules\Forums\Forum'],
+        'posts'     => [self::HAS_MANY, 'App\Modules\Forums\ForumPost'],
     ];
 
     /**

@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Matches;
-
+
 use ContentFilter, SoftDeletingTrait, BaseModel;
 
 class Match extends BaseModel {
@@ -50,11 +50,11 @@ class Match extends BaseModel {
     ];
 
     public static $relationsData = [
-        'matchScores'  => [self::HAS_MANY, 'App\Modules\Matches\Models\MatchScore'],
-        'game'         => [self::BELONGS_TO, 'App\Modules\Games\Models\Game'],
-        'tournament'   => [self::BELONGS_TO, 'App\Modules\Tournaments\Models\Tournament'],
-        'leftTeam'     => [self::BELONGS_TO, 'App\Modules\Teams\Models\Team'],
-        'rightTeam'    => [self::BELONGS_TO, 'App\Modules\Opponents\Models\Opponent'],
+        'matchScores'  => [self::HAS_MANY, 'App\Modules\Matches\MatchScore'],
+        'game'         => [self::BELONGS_TO, 'App\Modules\Games\Game'],
+        'tournament'   => [self::BELONGS_TO, 'App\Modules\Tournaments\Tournament'],
+        'leftTeam'     => [self::BELONGS_TO, 'App\Modules\Teams\Team'],
+        'rightTeam'    => [self::BELONGS_TO, 'App\Modules\Opponents\Opponent'],
         'creator'      => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

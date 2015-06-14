@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Maps\Http\Controllers;
-
-use App\Modules\Maps\Models\Map;
+
+use App\Modules\Maps\Map;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 

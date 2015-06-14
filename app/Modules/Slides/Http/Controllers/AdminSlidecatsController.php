@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Slides\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Slides\Models\Slidecat;
+use App\Modules\Slides\Slidecat;
 use Hover, BackController;
 
 class AdminSlidecatsController extends BackController {

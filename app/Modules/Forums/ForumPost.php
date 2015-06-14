@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Forums;
-
+
 use BBCode, Cache, SoftDeletingTrait, BaseModel;
 
 class ForumPost extends BaseModel {
@@ -20,7 +20,7 @@ class ForumPost extends BaseModel {
     public static $relationsData = [
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
         'updater'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
-        'thread'        => [self::BELONGS_TO, 'App\Modules\Forums\Models\ForumThread'],
+        'thread'        => [self::BELONGS_TO, 'App\Modules\Forums\ForumThread'],
     ];
 
     public static function boot()

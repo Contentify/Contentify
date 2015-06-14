@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Matches;
-
+
 use BaseModel;
 
 class MatchScore extends BaseModel {
@@ -14,8 +14,8 @@ class MatchScore extends BaseModel {
     ];
 
     public static $relationsData = [
-        'match' => [self::BELONGS_TO, 'App\Modules\Matches\Models\Match'],
-        'map'   => [self::BELONGS_TO, 'App\Modules\Maps\Models\Map'],
+        'match' => [self::BELONGS_TO, 'App\Modules\Matches\Match'],
+        'map'   => [self::BELONGS_TO, 'App\Modules\Maps\Map'],
     ];
 
     public static function boot()

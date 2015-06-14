@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Pages;
-
-use App\Modules\Pages\Models\Page;
+
+use App\Modules\Pages\Page;
 use OpenGraph, DB;
 
 class Article extends Page {

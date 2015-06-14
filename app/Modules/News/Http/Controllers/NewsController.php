@@ -1,6 +1,6 @@
 <?php namespace App\Modules\News\Http\Controllers;
-
-use App\Modules\News\Models\News;
+
+use App\Modules\News\News;
 use URL, HTML, FrontController;
 
 class NewsController extends FrontController {

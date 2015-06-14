@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Partners\Http\Controllers;
-
-use App\Modules\Partners\Models\Partner;
+
+use App\Modules\Partners\Partner;
 use Redirect, FrontController;
 
 class PartnersController extends FrontController {

@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Navigations\Http\Controllers;
-
-use App\Modules\Navigations\Models\Navigation;
+
+use App\Modules\Navigations\Navigation;
 use Exception, View, Widget;
 
 class NavigationWidget extends Widget {

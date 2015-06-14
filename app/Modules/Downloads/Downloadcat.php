@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Downloads;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Downloadcat extends BaseModel {
@@ -17,7 +17,7 @@ class Downloadcat extends BaseModel {
     ];
 
     public static $relationsData = [
-        'downloads' => [self::HAS_MANY, 'App\Modules\Downloads\Models\Download'],
+        'downloads' => [self::HAS_MANY, 'App\Modules\Downloads\Download'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

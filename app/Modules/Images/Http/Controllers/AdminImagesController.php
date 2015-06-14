@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Images\Http\Controllers;
-
-use App\Modules\Images\Models\Image;
+
+use App\Modules\Images\Image;
 use ModelHandlerTrait;
 use HTML, BackController;
 

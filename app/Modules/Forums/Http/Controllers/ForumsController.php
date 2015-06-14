@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Forums\Http\Controllers;
-
-use App\Modules\Forums\Models\Forum;
+
+use App\Modules\Forums\Forum;
 use FrontController;
 
 class ForumsController extends FrontController {

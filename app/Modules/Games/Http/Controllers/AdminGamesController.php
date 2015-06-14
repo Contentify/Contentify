@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Games\Http\Controllers;
-
-use App\Modules\Games\Models\Game;
+
+use App\Modules\Games\Game;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 

@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Forums\Http\Controllers;
-
-use App\Modules\Forums\Models\ForumPost;
-use App\Modules\Forums\Models\ForumReport;
-use App\Modules\Forums\Models\ForumThread;
+
+use App\Modules\Forums\ForumPost;
+use App\Modules\Forums\ForumReport;
+use App\Modules\Forums\ForumThread;
 use Response, Input, Redirect, FrontController;
 
 class PostsController extends FrontController {

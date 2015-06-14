@@ -1,8 +1,8 @@
 <?php namespace App\Modules\Forums\Http\Controllers;
-
-use App\Modules\Forums\Models\Forum;
-use App\Modules\Forums\Models\ForumThread;
-use App\Modules\Forums\Models\ForumPost;
+
+use App\Modules\Forums\Forum;
+use App\Modules\Forums\ForumThread;
+use App\Modules\Forums\ForumPost;
 use DB, Input, View, Redirect, URL, FrontController;
 
 class ThreadsController extends FrontController {

@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Downloads;
-
+
 use Exception, InterImage, File, SoftDeletingTrait, BaseModel;
 
 class Download extends BaseModel {
@@ -20,7 +20,7 @@ class Download extends BaseModel {
     ];
 
     public static $relationsData = [
-        'downloadcat'   => [self::BELONGS_TO, 'App\Modules\Downloads\Models\Downloadcat'],
+        'downloadcat'   => [self::BELONGS_TO, 'App\Modules\Downloads\Downloadcat'],
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

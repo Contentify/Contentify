@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Servers\Http\Controllers;
-
+
 use ModelHandlerTrait;
-use App\Modules\Servers\Models\Server;
+use App\Modules\Servers\Server;
 use Hover, HTML, BackController;
 
 class AdminServersController extends BackController {

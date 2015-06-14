@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Groups\Http\Controllers;
-
-use App\Modules\Groups\Models\Group;
+
+use App\Modules\Groups\Group;
 use ModelHandlerTrait;
 use Hover, BackController;
 

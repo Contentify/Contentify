@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Shouts\Http\Controllers;
-
-use App\Modules\Shouts\Models\Shout;
+
+use App\Modules\Shouts\Shout;
 use Input, DB, Response, FrontController;
 
 class ShoutsController extends FrontController {
