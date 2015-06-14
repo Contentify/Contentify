@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Visitors\Http\Controllers;
 
-use DB, View, Widget;
+use Cache, DB, View, Widget;
 
 class VisitorsWidget extends Widget {
 
