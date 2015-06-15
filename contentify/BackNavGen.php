@@ -24,29 +24,32 @@ class BackNavGen {
      */
     public function getItems()
     {
-        $finder = app()['modules'];
-        $modules = $finder->modules(); // Retrieve all module info objects
+        $moduleBase = app()['modules'];
+        $modules = $moduleBase->all(); // Retrieve all module info objects
 
         $navItems = array();
         foreach ($modules as $module) {
-            if (! $module->def('enabled')) continue;
-            
-            $moduleNavItems = $module->def('admin-nav'); // def() will return null if "admin-nav" is not defined
-            if ($moduleNavItems) {
+            if (! $module['enabled']) continue;
+
+            if (isset($module['admin-nav'])) {
+                $moduleNavItems = $module['admin-nav'];
+
                 $counter = 0;
                 foreach ($moduleNavItems as $moduleNavItem) {
-                    // Set default values for... well for everything.
+                    /*
+                     * Set default values for... well for everything.
+                     */
                     if (! isset($moduleNavItem['url'])) {
                         $counter++;
                         if ($counter > 1) {
                             throw new RuntimeException(
-                                'Module "'.$module->name().'" tries to provide two navigation items with the same URL.'
+                                'Module "'.$module['slug'].'" tries to provide two navigation items with the same URL.'
                             );
                         }
-                        $moduleNavItem['url'] = 'admin/'.$module->name();
+                        $moduleNavItem['url'] = 'admin/'.$module['slug'];
                     }
                     if (! isset($moduleNavItem['title'])) {
-                        $moduleNavItem['title'] = ucfirst($module->name());
+                        $moduleNavItem['title'] = ucfirst($module['slug']);
                     }
                     if (! isset($moduleNavItem['position'])) {
                         $moduleNavItem['position'] = 999;

@@ -14,7 +14,7 @@
         "chriskonnertz/bbcode": "dev-master",
         "chriskonnertz/jobs": "dev-master",
         "watson/validating": "~1.0",
-        "caffeinated/modules": "^1.2"
+        "caffeinated/modules": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0",

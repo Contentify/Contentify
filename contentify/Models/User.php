@@ -1,8 +1,8 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
-use App\Modules\Messages\Models\Message;
-use App\Modules\Friends\Models\Friendship;
+use App\Modules\Messages\Message;
+use App\Modules\Friends\Friendship;
 use Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
@@ -115,17 +115,17 @@ class User extends SentryUser {
 
     public function country()
     {
-        return $this->belongsTo('App\Modules\Countries\Models\Country');
+        return $this->belongsTo('App\Modules\Countries\Country');
     }
 
     public function language()
     {
-        return $this->belongsTo('App\Modules\Languages\Models\Language');
+        return $this->belongsTo('App\Modules\Languages\Language');
     }
 
     public function teams()
     {
-        return $this->belongsToMany('App\Modules\Teams\Models\Team')->withPivot('task', 'description', 'position');
+        return $this->belongsToMany('App\Modules\Teams\Team')->withPivot('task', 'description', 'position');
     }
 
     /**

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Route;
+use Route, Session, Request, Sentry, Response, View, Redirect, Input, Crypt, MsgException;
 
 class RouteServiceProvider extends ServiceProvider {
 
