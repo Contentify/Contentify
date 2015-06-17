@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Thujohn\Rss\Rss;
 use Jobs, Session, File, Carbon, Lang, Validator, Blade, App, DB;
 
 class AppServiceProvider extends ServiceProvider {
@@ -139,6 +140,14 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
+		/*
+		 * The RSS package does not have a service provider for Laravel 5 (only for Laravel 4).
+		 * Therefore we have to register the rss service so the facade can use it.
+		 */
+		$this->app['rss'] = $this->app->share(function($app)
+		{
+			return new Rss;
+		});
 
 		/*
 		 * For better security by default, Laravel 5.0 escapes all output from both the {{ }} and {{{ }}} 

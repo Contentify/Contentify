@@ -199,7 +199,7 @@ return [
         //'Way\Generators\GeneratorsServiceProvider', // TODO: Delete this line
         'Caffeinated\Modules\ModulesServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
-        'Intervention\Image\ImageServiceProvider'
+        'Intervention\Image\ImageServiceProvider',
     ],
 
     /*
@@ -290,7 +290,7 @@ return [
         'Jobs'                  => 'ChrisKonnertz\Jobs\JobsFacade',
         'Job'                   => 'ChrisKonnertz\Jobs\Job',
         'Sentry'                => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-        'Rss'                   => 'Thujohn\Rss\RssFacade', // TODO: Check if RSS Facade is working!!
+        'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image',
         'ValidatingTrait'       => 'Watson\Validating\ValidatingTrait',
         //'Module' => 'Caffeinated\Modules\Facades\Module', // TODO: Delete this line if not needed!
