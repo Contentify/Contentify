@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Diag\Http\Controllers;
-
+
 use \Carbon\Carbon;
 use App, Config, View, BackController, File, DB, PDO;
 
@@ -14,17 +14,24 @@ class AdminDiagController extends BackController {
         /*
          * Check if Laravel is compiled to one single file
          */
-        $filename = app('path.base').'/bootstrap/compiled.php';
-        if (File::exists($filename)) {
+        $filenameOne = app('path.base').'/storage/framework/compiled.php';
+        $filenameTwo = app('path.base').'/vendor/compiled.php';
+        if (File::exists($filenameOne) or File::exists($filenameTwo)) {
             $optimized = '1 - '.trans('diag::compiled').': '.Carbon::createFromTimeStamp(filemtime($filename));
         } else {
             $optimized = 0;
         }  
 
         /*
+         * Count disabled modules
+         */
+        $moduleBase = app()['modules'];
+        $disabled = sizeof($moduleBase->disabled());
+
+        /*
          * Create array with names and values
          */
-        $isPlacehoder = (Config::get('app.key') == '01234567890123456789012345678912');
+        $placeholder = (Config::get('app.key') == '01234567890123456789012345678912');
         $appClass = get_class(app());
         $opcacheExists = (int) function_exists('opcache_get_status');
         $opcacheEnabled = $opcacheExists and opcache_get_status()['opcache_enabled'] ? 1 : 0;
@@ -34,10 +41,9 @@ class AdminDiagController extends BackController {
             'App.environment'           => App::environment(),
             'App.url'                   => Config::get('app.url'),
             'App.debug'                 => (int) Config::get('app.debug'),
-            'App.key'                   => $isPlacehoder ? trans('diag::placeholder') : trans('app.valid'),
-            'Cache.driver'              => Config::get('cache.driver'),
-            'Modules.mode'              => Config::get('modules::mode'),
-            'Modules.debug'             => (int) Config::get('modules::debug'),
+            'App.key'                   => $placeholder ? '<em>'.trans('diag::placeholder').'</em>' : trans('app.valid'),
+            'Cache.default'             => Config::get('cache.default'),
+            'Modules.disabled'          => $disabled,
             'Mail.pretend'              => (int) Config::get('mail.pretend'),
             'OPcache.installed'         => $opcacheExists,
             'OPcache.enabled'           => $opcacheEnabled,
