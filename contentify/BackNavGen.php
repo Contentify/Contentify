@@ -26,7 +26,7 @@ class BackNavGen {
     {
         $moduleBase = app()['modules'];
         $modules = $moduleBase->all(); // Retrieve all module info objects
-
+dd('yay');
         $navItems = array();
         foreach ($modules as $module) {
             if (! $module['enabled']) continue;
@@ -46,10 +46,10 @@ class BackNavGen {
                                 'Module "'.$module['slug'].'" tries to provide two navigation items with the same URL.'
                             );
                         }
-                        $moduleNavItem['url'] = 'admin/'.$module['slug'];
+                        $moduleNavItem['url'] = 'admin/'.strtolower($module['slug']);
                     }
                     if (! isset($moduleNavItem['title'])) {
-                        $moduleNavItem['title'] = ucfirst($module['slug']);
+                        $moduleNavItem['title'] = $module['slug'];
                     }
                     if (! isset($moduleNavItem['position'])) {
                         $moduleNavItem['position'] = 999;

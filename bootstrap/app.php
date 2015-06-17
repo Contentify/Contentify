@@ -27,10 +27,12 @@ if (isset($_GET['method']) and strtolower($_GET['method']) == 'delete') {
 |
 */
 
-const PERM_READ      = 1;
-const PERM_CREATE    = 2;
-const PERM_UPDATE    = 3;
-const PERM_DELETE    = 4;
+if (! defined('PERM_READ')) {
+    define('PERM_READ', 1);
+    define('PERM_CREATE', 2);
+    define('PERM_UPDATE', 3);
+    define('PERM_DELETE', 4);   
+}
 
 /*
 |--------------------------------------------------------------------------

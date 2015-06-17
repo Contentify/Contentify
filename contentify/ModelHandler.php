@@ -1,6 +1,7 @@
 <?php namespace Contentify;
 
-use Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage, Exception;
+use Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
+use Closure, Exception;
 
 class ModelHandler {
 
@@ -156,7 +157,7 @@ class ModelHandler {
 
             if ($data['filter'] === true) {
                 $models = $models->filter();
-            } elseif (is_callable($data['filter'])) {
+            } elseif ($data['filter'] instanceof Closure) {
                 $models = $data['filter']($models);
             }
             if ($data['permaFilter']) {
@@ -257,14 +258,15 @@ class ModelHandler {
                         }
                         $actionsCode .= ' ';
                     }
-                    if (is_callable($action)) {
+                    if ($action instanceof Closure) {
+                        dd($action);
                         $actionsCode .= $action($model);
                     }
                 }
                 $row[] = raw($actionsCode);
             }
 
-            if (is_callable($data['actions'])) {
+            if ($data['actions'] instanceof Closure) {
                 $row[] = $data['actions']($model);
             }
 
