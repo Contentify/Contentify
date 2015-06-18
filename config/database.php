@@ -52,7 +52,7 @@ return [
 		/*
 		'sqlite' => [
 			'driver'   => 'sqlite',
-			'database' => storage_path().'/database.sqlite',
+			'database' => storage_path('database.sqlite'),
 			'prefix'   => '',
 		],
 		*/
@@ -86,6 +86,7 @@ return [
 			'database' => env('DB_DATABASE', 'contentify'),
 			'username' => env('DB_USERNAME', 'root'),
 			'password' => env('DB_PASSWORD', ''),
+			'charset'  => 'utf8',
 			'prefix'   => '',
 		],
 

@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Forums;
 
 use App\Modules\Forums\ForumPost;
-use SoftDeletingTrait, BaseModel;
+use DB, SoftDeletingTrait, BaseModel;
 
 class ForumThread extends BaseModel {
 
@@ -61,7 +61,7 @@ class ForumThread extends BaseModel {
         if ($user) {
             $internal = $user->hasAccess('internal');
 
-            $teamIds = \DB::table('team_user')->whereUserId($user->id)->lists('team_id');
+            $teamIds = DB::table('team_user')->whereUserId($user->id)->lists('team_id');
             $teamIds[] = -1; // Add -1 as team ID so the SQL statements (`team_id` in (...)) always has valid syntax
 
             return $query->where('internal', '<=', $internal)->where(function($query) use ($teamIds)

@@ -8,7 +8,7 @@ class Tester {
      */
     public function run()
     {
-        if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+        if (version_compare(PHP_VERSION, '5.5.9') >= 0) {
             $version = 'Yes, '.phpversion();
         } else {
             $version = $this->red('No, '.phpversion());
@@ -67,8 +67,9 @@ class Tester {
         $this->line();
 
         $writableDirs = [
-            'storage', 
-            'public/uploads', 
+            'storage',
+            'bootstrap/cache',
+            'public/uploads',
             'public/rss',
             'public/share',
         ];

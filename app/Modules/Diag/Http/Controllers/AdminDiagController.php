@@ -14,9 +14,8 @@ class AdminDiagController extends BackController {
         /*
          * Check if Laravel is compiled to one single file
          */
-        $filenameOne = app('path.base').'/storage/framework/compiled.php';
-        $filenameTwo = app('path.base').'/vendor/compiled.php';
-        if (File::exists($filenameOne) or File::exists($filenameTwo)) {
+        $filename = app('path.base').'/bootstrap/cache/compiled.php';
+        if (File::exists($filename)) {
             $optimized = '1 - '.trans('diag::compiled').': '.Carbon::createFromTimeStamp(filemtime($filename));
         } else {
             $optimized = 0;

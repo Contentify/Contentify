@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG'),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -196,7 +196,6 @@ return [
          * Vendor service providers:
          */
         'ChrisKonnertz\Jobs\JobsServiceProvider',
-        //'Way\Generators\GeneratorsServiceProvider', // TODO: Delete this line
         'Caffeinated\Modules\ModulesServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
         'Intervention\Image\ImageServiceProvider',
@@ -253,6 +252,7 @@ return [
         'Controller'            => 'App\Http\Controllers\Controller',
         'Form'                  => 'Collective\Html\FormFacade',
         'HTML'                  => 'Collective\Html\HtmlFacade',
+        'Paginator'             => 'Illuminate\Pagination\LengthAwarePaginator',
 
         /*
          * CMS classes:

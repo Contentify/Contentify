@@ -1,164 +1,158 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Thujohn\Rss\Rss;
 use Jobs, Session, File, Carbon, Lang, Validator, Blade, App, DB;
 
 class AppServiceProvider extends ServiceProvider {
 
-	/**
-	 * Bootstrap any application services.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		/*
-		|--------------------------------------------------------------------------
-		| Custom Validation Rules
-		|--------------------------------------------------------------------------
-		|
-		| This is the right place for custom validators.
-		|
-		*/
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        /*
+        |--------------------------------------------------------------------------
+        | Custom Validation Rules
+        |--------------------------------------------------------------------------
+        |
+        | This is the right place for custom validators.
+        |
+        */
 
-		Validator::extend('alpha_spaces', function($attribute, $value)
-		{
-		    return preg_match('/^[\pL\s]+$/u', $value);
-		});
+        Validator::extend('alpha_spaces', function($attribute, $value)
+        {
+            return preg_match('/^[\pL\s]+$/u', $value);
+        });
 
-		/*
-		|--------------------------------------------------------------------------
-		| Blade Extensions
-		|--------------------------------------------------------------------------
-		|
-		| This is the right place to setup blade extensions
-		| that do not belong to modules.
-		|
-		*/
+        /*
+        |--------------------------------------------------------------------------
+        | Blade Extensions
+        |--------------------------------------------------------------------------
+        |
+        | This is the right place to setup blade extensions
+        | that do not belong to modules.
+        |
+        */
 
-		/*
-		 * Helper. Renders a widget.
-		 */
-		Blade::extend(function($view, $compiler) {
-		    $pattern = $compiler->createMatcher('widget');
+        /*
+         * Helper. Renders a widget.
+         */
+        Blade::directive('widget', function($expression) {
+            return '<?php echo HTML::widget'.$expression.'; ?>';
+        });
 
-		    return preg_replace_callback($pattern, function ($matches)
-		    {
-		        $arguments = $matches[2];
+        /*
+        |--------------------------------------------------------------------------
+        | Visitor Statistics
+        |--------------------------------------------------------------------------
+        |
+        | Updates the global visitor statistics.
+        |
+        */
 
-		        return '<?php echo HTML::widget'.$arguments.'; ?>';
-		    }, $view);
-		});
+        if (! App::runningInConsole() and installed()) {
+            $today          = time();
+            $isNewVisitor   = (Session::get('ipLogged') == null);
 
-		/*
-		|--------------------------------------------------------------------------
-		| Visitor Statistics
-		|--------------------------------------------------------------------------
-		|
-		| Updates the global visitor statistics.
-		|
-		*/
+            if (Session::get('ipLogged') and (Session::get('ipLogged') != date('d', $today))) {
+                $isNewVisitor = true; // Change of day makes every user a new visitor
+            }
 
-		if (! App::runningInConsole() and installed()) {
-		    $today          = time();
-		    $isNewVisitor   = (Session::get('ipLogged') == null);
+            if ($isNewVisitor) {   
+                $ip = getenv('REMOTE_ADDR'); // Get the client agent's IP
 
-		    if (Session::get('ipLogged') and (Session::get('ipLogged') != date('d', $today))) {
-		        $isNewVisitor = true; // Change of day makes every user a new visitor
-		    }
+                $rowsAffected = DB::table('visits')->whereIp($ip)->whereVisitedAt(date('Y-m-d', $today))
+                                    ->increment('user_agents');
 
-		    if ($isNewVisitor) {   
-		        $ip = getenv('REMOTE_ADDR'); // Get the client agent's IP
+                if (! $rowsAffected) {
+                    DB::table('visits')->insert(array('ip' => $ip, 'user_agents' => 1, 'visited_at' => date('Y-m-d', $today)));
+                }
+                
+                Session::put('ipLogged', date('d', $today)); // Keep in our session-mind the day we logged this IP
+            }
+        }
 
-		        $rowsAffected = DB::table('visits')->whereIp($ip)->whereVisitedAt(date('Y-m-d', $today))
-		                            ->increment('user_agents');
+        /*
+        |--------------------------------------------------------------------------
+        | Jobs
+        |--------------------------------------------------------------------------
+        |
+        | Register Jobs
+        |
+        */
 
-		        if (! $rowsAffected) {
-		            DB::table('visits')->insert(array('ip' => $ip, 'user_agents' => 1, 'visited_at' => date('Y-m-d', $today)));
-		        }
-		        
-		        Session::put('ipLogged', date('d', $today)); // Keep in our session-mind the day we logged this IP
-		    }
-		}
+        Jobs::addLazy('updateStreams', 'App\Modules\Streams\UpdateStreamsJob');
+        Jobs::addLazy('deleteUserActivities', 'Contentify\DeleteUserActivitiesJob');
 
-		/*
-		|--------------------------------------------------------------------------
-		| Jobs
-		|--------------------------------------------------------------------------
-		|
-		| Register Jobs
-		|
-		*/
+        /*
+        |--------------------------------------------------------------------------
+        | Language Settings
+        |--------------------------------------------------------------------------
+        |
+        | Set the language for the user (also if not logged in)
+        |
+        */
 
-		Jobs::addLazy('updateStreams', 'App\Modules\Streams\UpdateStreamsJob');
-		Jobs::addLazy('deleteUserActivities', 'Contentify\DeleteUserActivitiesJob');
+        if (! Session::has('app.locale')) {
+            if (user()) {
+                Session::set('app.locale', user()->language->code);
+                App::setLocale(Session::get('app.locale'));
+            } else {
+                if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+                    $clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+                    $languages = File::directories(base_path().'/resources/lang');
 
-		/*
-		|--------------------------------------------------------------------------
-		| Language Settings
-		|--------------------------------------------------------------------------
-		|
-		| Set the language for the user (also if not logged in)
-		|
-		*/
+                    array_walk($languages, function(&$value, $key)
+                    {
+                        $value = basename($value);
+                    });
 
-		if (! Session::has('app.locale')) {
-		    if (user()) {
-		        Session::set('app.locale', user()->language->code);
-		        App::setLocale(Session::get('app.locale'));
-		    } else {
-		        if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-		            $clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-		            $languages = File::directories(base_path().'/resources/lang');
+                    if (in_array($clientLanguage, $languages)) {
+                        Session::set('app.locale', $clientLanguage);
+                    } else {
+                        Session::set('app.locale', Lang::getLocale());
+                    }
+                } else {
+                    Session::set('app.locale', Lang::getLocale());
+                }
+            }
+        } else {
+            App::setLocale(Session::get('app.locale'));
+        }
 
-		            array_walk($languages, function(&$value, $key)
-		            {
-		                $value = basename($value);
-		            });
+        Carbon::setToStringFormat(trans('app.date_format'));
+    }
 
-		            if (in_array($clientLanguage, $languages)) {
-		                Session::set('app.locale', $clientLanguage);
-		            } else {
-		                Session::set('app.locale', Lang::getLocale());
-		            }
-		        } else {
-		            Session::set('app.locale', Lang::getLocale());
-		        }
-		    }
-		} else {
-		    App::setLocale(Session::get('app.locale'));
-		}
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        /*
+         * The RSS package does not have a service provider for Laravel 5 (only for Laravel 4).
+         * Therefore we have to register the rss service so the facade can use it.
+         */
+        $this->app['rss'] = $this->app->share(function($app)
+        {
+            return new Rss;
+        });
 
-		Carbon::setToStringFormat(trans('app.date_format'));
-	}
-
-	/**
-	 * Register any application services.
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
-		/*
-		 * The RSS package does not have a service provider for Laravel 5 (only for Laravel 4).
-		 * Therefore we have to register the rss service so the facade can use it.
-		 */
-		$this->app['rss'] = $this->app->share(function($app)
-		{
-			return new Rss;
-		});
-
-		/*
-		 * For better security by default, Laravel 5.0 escapes all output from both the {{ }} and {{{ }}} 
-		 * Blade directives. A new {!! !!} directive has been introduced to display raw, unescaped output. 
-		 * The most secure option when upgrading your application is to only use the new {!! !!} directive 
-		 * when you are certain that it is safe to display raw output.
-		 * However, if you must use the old Blade syntax, add the following lines:
-		 */
-		Blade::setRawTags('{{', '}}');
-		Blade::setContentTags('{{{', '}}}');
-		Blade::setEscapedContentTags('{{{', '}}}');
-	}
+        /*
+         * For better security by default, Laravel 5.0 escapes all output from both the {{ }} and {{{ }}} 
+         * Blade directives. A new {!! !!} directive has been introduced to display raw, unescaped output. 
+         * The most secure option when upgrading your application is to only use the new {!! !!} directive 
+         * when you are certain that it is safe to display raw output.
+         * However, if you must use the old Blade syntax, add the following lines:
+         */
+        Blade::setRawTags('{{', '}}');
+        Blade::setContentTags('{{{', '}}}');
+        Blade::setEscapedContentTags('{{{', '}}}');
+    }
 
 }

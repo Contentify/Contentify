@@ -152,7 +152,7 @@ class InstallController extends Controller {
                               until all of these directories are writable!</p>";
                 break;
             case 1:
-                if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+                if (version_compare(PHP_VERSION, '5.5.9') >= 0) {
                     $version = '<span class="state yes">Yes, '.phpversion().'</span>';
                 } else {
                     $version = '<span class="state no">No, '.phpversion().'</span>';
