@@ -31,7 +31,7 @@ class AdminReportsController extends BackController {
             'tableRow' => function($forumReportCase)
             {
                 $forumPost = $forumReportCase->post;
-                
+
                 $url = url('forums/posts/perma/'.$forumPost->id);
                 $link = HTML::link($url, $forumPost->plainText(80));
 

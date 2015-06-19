@@ -164,7 +164,7 @@ class PostsController extends FrontController {
     {
         $forumPost = ForumPost::isAccessible()->findOrFail($id); 
 
-        $forumReport = ForumReport::whereCreatorId(user()->id)->whereForumPostId($id)->first();   
+        $forumReport = ForumReport::whereCreatorId(user()->id)->wherePostId($id)->first();   
 
         if ($forumReport) {
             $this->alertFlash(trans('forums::already_reported'));

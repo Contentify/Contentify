@@ -26,7 +26,7 @@ class BackNavGen {
     {
         $moduleBase = app()['modules'];
         $modules = $moduleBase->all(); // Retrieve all module info objects
-dd('yay');
+
         $navItems = array();
         foreach ($modules as $module) {
             if (! $module['enabled']) continue;

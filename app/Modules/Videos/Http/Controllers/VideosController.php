@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Videos\Http\Controllers;
 
 use App\Modules\Videos\Video;
-use Config, URL, FrontController;
+use Request, Config, URL, FrontController;
 
 class VideosController extends FrontController {
 
@@ -16,7 +16,7 @@ class VideosController extends FrontController {
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $videos = Video::paginate($perPage);
+        $videos = Video::paginate($perPage)->setPath(Request::url());
 
         $this->pageView('videos::index', compact('videos'));
     }

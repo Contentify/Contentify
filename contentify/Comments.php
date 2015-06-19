@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use View, Response, Comment, Input;
+use View, Response, Comment, Input, Request;
 
 class Comments {
 
@@ -16,7 +16,7 @@ class Comments {
         $perPage = Config::get('app.frontItemsPerPage');
 
         $comments = Comment::where('foreign_type', '=', $foreignType)->
-            where('foreign_id', '=', $foreignId)->paginate($perPage);
+            where('foreign_id', '=', $foreignId)->paginate($perPage)->setPath(Request::url());
 
         echo View::make('comments.show', compact('comments', 'foreignType', 'foreignId'))->render();
 
@@ -37,7 +37,7 @@ class Comments {
         $perPage = Config::get('app.frontItemsPerPage');
 
         $comments = Comment::where('foreign_type', '=', $foreignType)
-            ->where('foreign_id', '=', $foreignId)->paginate($perPage);
+            ->where('foreign_id', '=', $foreignId)->paginate($perPage)->setPath(Request::url());
 
         return View::make('comments.paginate', compact('comments'))->render();
     }

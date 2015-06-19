@@ -3,7 +3,7 @@
 use App\Modules\Forums\Forum;
 use App\Modules\Forums\ForumThread;
 use App\Modules\Forums\ForumPost;
-use DB, Input, View, Redirect, URL, FrontController;
+use DB, Input, View, Redirect, Request, URL, FrontController;
 
 class ThreadsController extends FrontController {
 
@@ -17,7 +17,8 @@ class ThreadsController extends FrontController {
     {
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
-        $forumPosts = ForumPost::whereThreadId($forumThread->id)->orderBy('created_at', 'asc')->paginate(20);
+        $forumPosts = ForumPost::whereThreadId($forumThread->id)->orderBy('created_at', 'asc')
+            ->paginate(20)->setPath(Request::url());
 
         $this->pageView('forums::show_thread', compact('forumThread', 'forumPosts'));
     }

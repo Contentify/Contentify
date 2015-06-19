@@ -2,7 +2,7 @@
 
 use App\Modules\Images\Image;
 use App\Modules\Galleries\Gallery;
-use Config, URL, FrontController;
+use Request, Config, URL, FrontController;
 
 class GalleriesController extends FrontController {
 
@@ -17,7 +17,7 @@ class GalleriesController extends FrontController {
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $galleries = Gallery::paginate($perPage);
+        $galleries = Gallery::paginate($perPage)->setPath(Request::url());
 
         $this->pageView('galleries::index', compact('galleries'));
     }

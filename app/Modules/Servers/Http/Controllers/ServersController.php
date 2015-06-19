@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Servers\Http\Controllers;
 
 use App\Modules\Servers\Server;
-use Config, URL, FrontController;
+use Request, Config, URL, FrontController;
 
 class ServersController extends FrontController {
 
@@ -16,7 +16,7 @@ class ServersController extends FrontController {
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $servers = Server::paginate($perPage);
+        $servers = Server::paginate($perPage)->setPath(Request::url());
 
         $this->pageView('servers::index', compact('servers'));
     }

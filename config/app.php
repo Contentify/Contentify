@@ -252,7 +252,6 @@ return [
         'Controller'            => 'App\Http\Controllers\Controller',
         'Form'                  => 'Collective\Html\FormFacade',
         'HTML'                  => 'Collective\Html\HtmlFacade',
-        'Paginator'             => 'Illuminate\Pagination\LengthAwarePaginator',
 
         /*
          * CMS classes:
@@ -261,6 +260,7 @@ return [
         'ModuleInstaller'       => 'Contentify\ModuleInstaller',
         'MsgException'          => 'Contentify\MsgException',
         'Config'                => 'Contentify\Config',
+        'Paginator'             => 'Contentify\LengthAwarePaginator',
         'ModuleRoute'           => 'Contentify\Facades\ModuleRoute',
         'Carbon'                => 'Contentify\Carbon',
 

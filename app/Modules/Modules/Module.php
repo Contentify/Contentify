@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Modules;
-
+
 use Exception, File, BaseModel;
 
 class Module extends BaseModel {
@@ -49,11 +49,9 @@ class Module extends BaseModel {
 
     public function enabled()
     {
-        $finder     = app()['modules'];
-        $modules    = $finder->modules(); // Retrieve all module info objects
-        $module     = $modules[$this->title];
-        
-        return $module->enabled();
+        $moduleBase = app()['modules'];
+
+        return $moduleBase->isEnabled($this->title);
     }
 
 }

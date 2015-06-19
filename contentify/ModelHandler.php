@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
+use Request, Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
 use Closure, Exception;
 
 class ModelHandler {
@@ -135,7 +135,7 @@ class ModelHandler {
         $perPage = Config::get('app.'.$userInterface.'ItemsPerPage');
 
         if (is_array($data['dataSource'])) {
-            $page  = Paginator::getCurrentPage();
+            $page = (int) Paginator::resolveCurrentPage();
 
             if ($page) { // Ensure $page always starts at 0:
                 $page--;
@@ -147,7 +147,7 @@ class ModelHandler {
 
             $models = array_slice($data['dataSource'], $offset, $perPage); // We have to take the models from the array
 
-            $models = Paginator::make($models, sizeof($data['dataSource']), $perPage);
+            $models = new Paginator($models, sizeof($data['dataSource']), $perPage);
         } else {
             $models = $modelClass::orderBy($data['sortby'], $data['order']);
 
@@ -185,7 +185,7 @@ class ModelHandler {
                 }                 
             }
 
-            $models = $models->paginate($perPage);
+            $models = $models->paginate($perPage)->setPath(Request::url());
         }
 
         $paginator = $models->appends([
@@ -259,7 +259,6 @@ class ModelHandler {
                         $actionsCode .= ' ';
                     }
                     if ($action instanceof Closure) {
-                        dd($action);
                         $actionsCode .= $action($model);
                     }
                 }

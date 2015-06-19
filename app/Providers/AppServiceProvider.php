@@ -1,7 +1,6 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Thujohn\Rss\Rss;
 use Jobs, Session, File, Carbon, Lang, Validator, Blade, App, DB;
 

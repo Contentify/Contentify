@@ -2,7 +2,7 @@
 
 use App\Modules\Downloads\Downloadcat;
 use App\Modules\Downloads\Download;
-use File, Response, Redirect, Config, URL, FrontController;
+use File, Response, Redirect, Request, Config, URL, FrontController;
 
 class DownloadsController extends FrontController {
 
@@ -18,7 +18,7 @@ class DownloadsController extends FrontController {
         $perPage = Config::get('app.frontItemsPerPage');
 
         // NOTE: Add has('downloads') to show only categories that have downloads
-        $downloadcats = Downloadcat::paginate($perPage); 
+        $downloadcats = Downloadcat::paginate($perPage)->setPath(Request::url()); 
 
         $this->pageView('downloads::index', compact('downloadcats'));
     }
@@ -37,7 +37,7 @@ class DownloadsController extends FrontController {
         $downloadcat->save();
 
         $perPage = Config::get('app.frontItemsPerPage');
-        $downloads = Download::whereDownloadcatId($id)->paginate($perPage); 
+        $downloads = Download::whereDownloadcatId($id)->paginate($perPage)->setPath(Request::url()); 
 
         $this->title($downloadcat->title);
 
