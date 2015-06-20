@@ -11,11 +11,6 @@
 |
 */
 
-/* 
- * Admin filter:
- */ 
-Route::when('admin/*', 'admin');
-
 /*
  * Frontend dashboard.
  */ 
@@ -47,7 +42,7 @@ Route::get('comments/paginate/{foreignType}/{foreignId}', function($foreignType,
     return Comments::paginate($foreignType, $foreignId)->setPath(Request::url());
 });
 
-Route::post('comments/store', ['as' => 'comments.store', 'before' => 'csrf', 'uses' => function()
+Route::post('comments/store', ['as' => 'comments.store', 'middleware' => 'csrf', 'uses' => function()
 {
     $foreignType = Input::get('foreigntype');
     $foreignId = Input::get('foreignid');
@@ -64,12 +59,12 @@ Route::get('comments/{id}/edit', ['as' => 'comments.edit', 'uses' => function($i
     return Comments::edit($id);
 }]);
 
-Route::put('comments/{id}/update', ['as' => 'comments.update', 'before' => 'csrf', 'uses' => function($id)
+Route::put('comments/{id}/update', ['as' => 'comments.update', 'middleware' => 'csrf', 'uses' => function($id)
 {
     return Comments::update($id);
 }]);
 
-Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'before' => 'csrf', 'uses' => function($id)
+Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'middleware' => 'csrf', 'uses' => function($id)
 {
     return Comments::delete($id);
 }]);

@@ -1,7 +1,7 @@
 <?php
 
 ModuleRoute::context('Forums');
-
+
 ModuleRoute::get('admin/forums/config', 'AdminConfigController@edit');
 ModuleRoute::put('admin/forums/config', 'AdminConfigController@update');
 
@@ -17,7 +17,7 @@ ModuleRoute::get('forums/{id}/{slug?}', 'ForumsController@show')->where('id', '[
 
 ModuleRoute::get('forums/threads/{id}/{slug?}', 'ThreadsController@show')->where('id', '[0-9]+');
 ModuleRoute::get('forums/threads/new', 'ThreadsController@showNew');
-Route::group(array('before' => 'auth'), function()
+Route::group(array('middleware' => 'auth'), function()
 {
     ModuleRoute::get('forums/threads/create/{id}', 'ThreadsController@create');
     ModuleRoute::post('forums/threads/{id}', 'ThreadsController@store');
@@ -32,7 +32,7 @@ Route::group(array('before' => 'auth'), function()
 ModuleRoute::post('forums/search', 'ThreadsController@search');
 
 ModuleRoute::get('forums/posts/perma/{id}/{slug?}', 'PostsController@show');
-Route::group(array('before' => 'auth'), function()
+Route::group(array('middleware' => 'auth'), function()
 {
     ModuleRoute::get('forums/posts/{id}', 'PostsController@get');
     ModuleRoute::get('forums/posts/delete/{id}', 'PostsController@delete');

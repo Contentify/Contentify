@@ -71,7 +71,7 @@ abstract class BaseController extends Controller {
         /*
          * Enable auto CSRF protection
          */ 
-        $this->beforeFilter('csrf', ['on' => ['post', 'put', 'delete']]);
+        $this->middleware('csrf');
     }
 
     /**
