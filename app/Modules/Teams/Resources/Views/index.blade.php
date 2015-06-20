@@ -1,12 +1,12 @@
 @foreach ($teams as $team)
     <article class="team">
         <header>
-            <a href="{{ url('teams/'.$team->id.'/'.$team->slug) }}">
-                <h2>{{{ $team->title }}}</h2>
+            <a href="{!! url('teams/'.$team->id.'/'.$team->slug) !!}">
+                <h2>{{ $team->title }}</h2>
 
                 @if ($team->image)
                     <div class="image">
-                        <img src="{{ $team->uploadPath().$team->image }}" alt="{{{ $team->title }}}">
+                        <img src="{!! $team->uploadPath().$team->image !!}" alt="{{ $team->title }}">
                     </div>
                 @endif
             </a>
@@ -16,9 +16,9 @@
             <ul class="list-unstyled">
                 @foreach ($team->users as $user)
                     <li>
-                        <a href="{{ url('users/'.$user->id.'/'.$user->slug) }}">{{ $user->username }}</a>
+                        <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{!! $user->username !!}</a>
                         @if ($user->pivot->task)
-                            ({{ $user->pivot->task }})
+                            ({!! $user->pivot->task !!})
                         @endif
                     </li>
                 @endforeach

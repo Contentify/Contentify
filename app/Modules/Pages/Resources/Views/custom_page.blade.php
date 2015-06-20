@@ -1,5 +1,5 @@
-<h1 class="page-title">{{{ $customPage->title }}}</h1>
+<h1 class="page-title">{{ $customPage->title }}</h1>
 
 <div class="text">
-    {{ $customPage->text }}
+    {!! $customPage->text !!}
 </div>

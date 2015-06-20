@@ -5,13 +5,13 @@
 
     <meta charset="utf-8">
 
-    <base href="{{ url('/') }}">
+    <base href="{!! url('/') !!}">
 
-    <title>{{ Config::get('app.title') }}</title>
+    <title>{!! Config::get('app.title') !!}</title>
 
-    <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('theme/favicon.png') }}">
+    <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('theme/favicon.png') !!}">
 
-    {{ HTML::script('vendor/jquery/jquery-1.11.2.min.js') }}
+    {!! HTML::script('vendor/jquery/jquery-1.11.2.min.js') !!}
 
     <style>
         @font-face {

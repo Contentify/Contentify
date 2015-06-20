@@ -1,11 +1,11 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.advertcats.update', $model->id], 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.advertcats.update', $model->id], 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/advertcats']) }}
+    {!! Form::open(['url' => 'admin/advertcats']) !!}
 @endif
-    {{ Form::smartText('title', trans('app.title')) }}
+    {!! Form::smartText('title', trans('app.title')) !!}
         
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}

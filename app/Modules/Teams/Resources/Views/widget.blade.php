@@ -3,9 +3,9 @@
         @foreach ($teams as $team)
             <li>
                 @if ($team->image)
-                    <img src="{{{ $team->uploadPath().$team->image }}}" alt="{{{ $team->title }}}">
+                    <img src="{{ $team->uploadPath().$team->image }}" alt="{{ $team->title }}">
                 @endif
-                {{ link_to('teams/'.$team->id.'/'.$team->slug,  $team->title) }}
+                {!! link_to('teams/'.$team->id.'/'.$team->slug,  $team->title) !!}
             </li>
         @endforeach
     </ul>

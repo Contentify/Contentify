@@ -1,10 +1,10 @@
 <article class="team">
     <header>
-        <h2>{{{ $team->title }}}</h2>
+        <h2>{{ $team->title }}</h2>
 
         @if ($team->image)
             <div class="image">
-                <img src="{{ $team->uploadPath().$team->image }}" alt="{{{ $team->title }}}">
+                <img src="{!! $team->uploadPath().$team->image !!}" alt="{{ $team->title }}">
             </div>
         @endif
     </header>
@@ -13,13 +13,13 @@
         <ul class="list-unstyled">
             @foreach ($team->users as $user)
                 <li>
-                    <a href="{{ url('users/'.$user->id.'/'.Str::slug($user->username)) }}">{{ $user->username }}</a>
+                    <a href="{!! url('users/'.$user->id.'/'.Str::slug($user->username)) !!}">{!! $user->username !!}</a>
                     @if ($user->pivot->task)
-                        ({{ $user->pivot->task }})
+                        ({!! $user->pivot->task !!})
                     @endif
                     @if ($user->pivot->description)
                         <p>
-                            {{ $user->pivot->description }}
+                            {!! $user->pivot->description !!}
                         </p>
                     @endif
                 </li>
@@ -35,13 +35,13 @@
                         @foreach ($team->awards as $award)
                             <tr>
                                 <td>
-                                    {{ $award->positionIcon() }}<br>
+                                    {!! $award->positionIcon() !!}<br>
                                 </td>
                                 <td>
-                                    {{ $award->title }}<br>
+                                    {!! $award->title !!}<br>
                                 </td>
                                 <td>
-                                    {{ $award->tournament ? $award->tournament->short : null }}
+                                    {!! $award->tournament ? $award->tournament->short : null !!}
                                 </td>
                             </tr>
                         @endforeach

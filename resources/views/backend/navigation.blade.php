@@ -7,8 +7,8 @@
         </a>
         <div class="items">
             @foreach ($navCategories[1] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
-                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
+                <a class="item" href="{!! url($navItem['url']) !!}" title="{{ $navItem['title'] }}">
+                    {!! HTML::fontIcon($navItem['icon']) !!} <span>{{ $navItem['title'] }}</span>
                 </a>
             @endforeach
         </div>
@@ -21,8 +21,8 @@
         </a>
         <div class="items">
             @foreach ($navCategories[2] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
-                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
+                <a class="item" href="{!! url($navItem['url']) !!}" title="{{ $navItem['title'] }}">
+                    {!! HTML::fontIcon($navItem['icon']) !!} <span>{{ $navItem['title'] }}</span>
                 </a>
             @endforeach
         </div>
@@ -35,8 +35,8 @@
         </a>
         <div class="items">        
             @foreach ($navCategories[3] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
-                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
+                <a class="item" href="{!! url($navItem['url']) !!}" title="{{ $navItem['title'] }}">
+                    {!! HTML::fontIcon($navItem['icon']) !!} <span>{{ $navItem['title'] }}</span>
                 </a>
             @endforeach
         </div>
@@ -49,8 +49,8 @@
         </a>
         <div class="items">
             @foreach ($navCategories[4] as $navItem)
-                <a class="item" href="{{ url($navItem['url']) }}" title="{{{ $navItem['title'] }}}">
-                    {{ HTML::fontIcon($navItem['icon']) }} <span>{{{ $navItem['title'] }}}</span>
+                <a class="item" href="{!! url($navItem['url']) !!}" title="{{ $navItem['title'] }}">
+                    {!! HTML::fontIcon($navItem['icon']) !!} <span>{{ $navItem['title'] }}</span>
                 </a>
             @endforeach
         </div>

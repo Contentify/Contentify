@@ -3,8 +3,8 @@
         @foreach ($partners as $partner)
             @if ($partner->image)
                 <li>
-                    <a href="{{ url('partners/'.$partner->id) }}" title="{{{ $partner->title }}}" target="_blank">
-                        <img class="filter" src="{{ $partner->uploadPath().$partner->image }}" alt="{{{ $partner->title }}}">
+                    <a href="{!! url('partners/'.$partner->id) !!}" title="{{ $partner->title }}" target="_blank">
+                        <img class="filter" src="{!! $partner->uploadPath().$partner->image !!}" alt="{{ $partner->title }}">
                     </a>
                 </li>
             @endif

@@ -1,14 +1,14 @@
 <h1 class="page-title">
     @if ($forum->forum_id and $forum->forum->level > 0)
-        <a class="back" href="{{ url('forums/'.$forum->forum->id.'/'.$forum->forum->slug) }}">{{ HTML::fontIcon('chevron-left') }}</a>
+        <a class="back" href="{!! url('forums/'.$forum->forum->id.'/'.$forum->forum->slug) !!}">{!! HTML::fontIcon('chevron-left') !!}</a>
     @else
-        <a class="back" href="{{ url('forums') }}">{{ HTML::fontIcon('chevron-left') }}</a>
+        <a class="back" href="{!! url('forums') !!}">{!! HTML::fontIcon('chevron-left') !!}</a>
     @endif
-    {{ $forum->title }}
+    {!! $forum->title !!}
 </h1>
 
 <div class="buttons">
-    <a class="create" href="{{ url('forums/threads/create/'.$forum->id) }}">{{ trans('forums::create_thread') }}</a>
+    <a class="create" href="{!! url('forums/threads/create/'.$forum->id) !!}">{!! trans('forums::create_thread') !!}</a>
 </div>
 
 @if (sizeof($forum->forums) > 0)
@@ -18,23 +18,23 @@
         @foreach($forum->forums as $subForum)
             <div class="sub-forum">
                 <div class="info">
-                    <a href="{{ url('forums/'.$subForum->id.'/'.$subForum->slug) }}">
-                        {{{ $subForum->title }}}
+                    <a href="{!! url('forums/'.$subForum->id.'/'.$subForum->slug) !!}">
+                        {{ $subForum->title }}
 
                         @if ($subForum->description)
-                            <span class="desc">{{ $subForum->description }}</span>
+                            <span class="desc">{!! $subForum->description !!}</span>
                         @endif
                     </a>
                 </div>
 
                 <div class="threads">
-                    {{{ $subForum->threads_count }}}
+                    {{ $subForum->threads_count }}
                 </div>
 
                 <div class="latest">
                     @if ($subForum->latest_thread)
-                        <a href="{{ url('forums/threads/'.$subForum->latest_thread->id.'/'.$subForum->latest_thread->slug) }}" title="{{{ $subForum->latest_thread->title }}}">
-                            {{{ $subForum->latest_thread->updated_at }}}
+                        <a href="{!! url('forums/threads/'.$subForum->latest_thread->id.'/'.$subForum->latest_thread->slug) !!}" title="{{ $subForum->latest_thread->title }}">
+                            {{ $subForum->latest_thread->updated_at }}
                         </a>
                     @else
                         -
@@ -54,7 +54,7 @@
             Posts
         </div>
         <div class="latest">
-            {{ trans('app.latest') }}
+            {!! trans('app.latest') !!}
         </div>
     </div>
 
@@ -66,25 +66,25 @@
         @endif
             <div class="info">
                 @if ($thread->sticky)
-                    <span class="sticky">{{ trans('forums::sticky') }}</span>
+                    <span class="sticky">{!! trans('forums::sticky') !!}</span>
                 @endif
                 @if ($thread->closed)
-                    <span class="closed">{{ trans('forums::closed') }}</span>
+                    <span class="closed">{!! trans('forums::closed') !!}</span>
                 @endif
-                <a href="{{ url('forums/threads/'.$thread->id.'/'.$thread->slug) }}" title="{{{ $thread->title }}}">
-                    {{{ $thread->title }}}
-                    <span class="meta">{{{ $thread->creator->username }}} - {{ $thread->created_at->dateTime() }}</span>
+                <a href="{!! url('forums/threads/'.$thread->id.'/'.$thread->slug) !!}" title="{{ $thread->title }}">
+                    {{ $thread->title }}
+                    <span class="meta">{{ $thread->creator->username }} - {!! $thread->created_at->dateTime() !!}</span>
                 </a>
             </div>
             
             <div class="posts">
-                {{{ $thread->posts_count }}}
+                {{ $thread->posts_count }}
             </div>
 
             <div class="latest">
-                <a href="{{ url('forums/threads/'.$thread->id.'/'.$thread->slug) }}" title="{{{ $thread->title }}}">
-                    {{ $thread->updated_at->dateTime() }}
-                    <span class="meta">{{{ $thread->creator->username }}}</span>
+                <a href="{!! url('forums/threads/'.$thread->id.'/'.$thread->slug) !!}" title="{{ $thread->title }}">
+                    {!! $thread->updated_at->dateTime() !!}
+                    <span class="meta">{{ $thread->creator->username }}</span>
                 </a>
             </div>
         </div>

@@ -1,17 +1,17 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.downloads.update', $model->id], 'files' => true, 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.downloads.update', $model->id], 'files' => true, 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/downloads', 'files' => true]) }}
+    {!! Form::open(['url' => 'admin/downloads', 'files' => true]) !!}
 @endif
-    {{ Form::smartText('title', trans('app.title')) }}
+    {!! Form::smartText('title', trans('app.title')) !!}
     
-    {{ Form::smartSelectRelation('downloadcat', trans('app.category'), $modelClass) }}
+    {!! Form::smartSelectRelation('downloadcat', trans('app.category'), $modelClass) !!}
 
-    {{ Form::smartTextarea('description', trans('app.description'), true) }}
+    {!! Form::smartTextarea('description', trans('app.description'), true) !!}
 
-    {{ Form::smartFile() }}
+    {!! Form::smartFile() !!}
 
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}

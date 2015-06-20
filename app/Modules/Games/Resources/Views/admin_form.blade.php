@@ -1,15 +1,15 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.games.update', $model->id], 'files' => true, 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.games.update', $model->id], 'files' => true, 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/games', 'files' => true]) }}
+    {!! Form::open(['url' => 'admin/games', 'files' => true]) !!}
 @endif
-    {{ Form::smartText('title', trans('app.title')) }}
+    {!! Form::smartText('title', trans('app.title')) !!}
 
-    {{ Form::smartText('short', trans('app.short_title')) }}
+    {!! Form::smartText('short', trans('app.short_title')) !!}
 
-    {{ Form::smartIconFile() }}
+    {!! Form::smartIconFile() !!}
 
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}

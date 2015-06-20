@@ -6,36 +6,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Contentify">
-    <meta name="base-url" content="{{ url('/') }}">
-    <meta name="asset-url" content="{{ asset('') }}">
-    <meta name="csrf-token" content="{{ Session::get('_token') }}">
-    <meta name="locale" content="{{ Config::get('app.locale') }}">
-    <meta name="date-format" content="{{ trans('app.date_format_alt') }}">
-    {{ HTML::metaTags($metaTags) }}
+    <meta name="base-url" content="{!! url('/') !!}">
+    <meta name="asset-url" content="{!! asset('') !!}">
+    <meta name="csrf-token" content="{!! Session::get('_token') !!}">
+    <meta name="locale" content="{!! Config::get('app.locale') !!}">
+    <meta name="date-format" content="{!! trans('app.date_format_alt') !!}">
+    {!! HTML::metaTags($metaTags) !!}
     @if ($openGraph)
-        {{ HTML::openGraphTags($openGraph) }}
+        {!! HTML::openGraphTags($openGraph) !!}
     @endif
 
-    {{ HTML::title($title) }}
+    {!! HTML::title($title) !!}
 
-    <link rel="icon" type="image/png" href="{{ asset('img/favicon_180.png') }}"><!-- Opera Speed Dial Icon -->
-    <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
-    <link rel="alternate" type="application/rss+xml" title="RSS News" href="{{ asset('rss/news.xml') }}">
+    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Opera Speed Dial Icon -->
+    <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('favicon.png') !!}">
+    <link rel="alternate" type="application/rss+xml" title="RSS News" href="{!! asset('rss/news.xml') !!}">
 
-    {{ HTML::style('vendor/font-awesome/css/font-awesome.min.css') }}
-    {{ HTML::style('css/frontend.css') }}
+    {!! HTML::style('vendor/font-awesome/css/font-awesome.min.css') !!}
+    {!! HTML::style('css/frontend.css') !!}
 
     <!--[if lt IE 9]>
-        {{ HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}
-        {{ HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}
+        {!! HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}
+        {!! HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
     <![endif]-->
-    {{ HTML::script('vendor/jquery/jquery-1.11.2.min.js') }}
-    {{ HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}
-    {{ HTML::script('vendor/contentify/contentify.js') }}
-    {{ HTML::script('vendor/contentify/frontend.js') }}
+    {!! HTML::script('vendor/jquery/jquery-1.11.2.min.js') !!}
+    {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') !!}
+    {!! HTML::script('vendor/contentify/contentify.js') !!}
+    {!! HTML::script('vendor/contentify/frontend.js') !!}
 </head>
 <body>
-    <header id="header" onclick="window.location='{{ route('home') }}'">
+    <header id="header" onclick="window.location='{!! route('home') !!}'">
         <div class="container">
             <h2>Contentify Testpage</h2>
         </div>
@@ -52,9 +52,9 @@
                 <!-- Render JavaScript alerts here -->
                 <div class="alert-area"></div>                
 
-                <section class="page page-{{ strtolower($controllerName) }} {{ $templateClass }}">
+                <section class="page page-{!! strtolower($controllerName) !!} {!! $templateClass !!}">
                     @if (isset($page))
-                        {{ $page }}
+                        {!! $page !!}
                     @endif
                 </section>
             </div>
@@ -66,18 +66,18 @@
                 <br>
                 <h3>Navigation</h3>
                 <ul class="list-unstyled">
-                    <li>{{ link_to('auth/registration/create', 'Registration') }}</li>
-                    <li>{{ link_to('users', 'Users') }}</li>
-                    <li>{{ link_to('awards', 'Awards') }}</li>
-                    <li>{{ link_to('contact', 'Contact') }}</li>
-                    <li>{{ link_to('downloads', 'Downloads') }}</li>
-                    <li>{{ link_to('galleries', 'Galleries') }}</li>
-                    <li>{{ link_to('partners', 'Partners') }}</li>
-                    <li>{{ link_to('teams', 'Teams') }}</li>
-                    <li>{{ link_to('matches', 'Matches') }}</li>
-                    <li>{{ link_to('streams', 'Streams') }}</li>
-                    <li>{{ link_to('videos', 'Videos') }}</li>
-                    <li>{{ link_to('forums', 'Forums') }}</li>
+                    <li>{!! link_to('auth/registration/create', 'Registration') !!}</li>
+                    <li>{!! link_to('users', 'Users') !!}</li>
+                    <li>{!! link_to('awards', 'Awards') !!}</li>
+                    <li>{!! link_to('contact', 'Contact') !!}</li>
+                    <li>{!! link_to('downloads', 'Downloads') !!}</li>
+                    <li>{!! link_to('galleries', 'Galleries') !!}</li>
+                    <li>{!! link_to('partners', 'Partners') !!}</li>
+                    <li>{!! link_to('teams', 'Teams') !!}</li>
+                    <li>{!! link_to('matches', 'Matches') !!}</li>
+                    <li>{!! link_to('streams', 'Streams') !!}</li>
+                    <li>{!! link_to('videos', 'Videos') !!}</li>
+                    <li>{!! link_to('forums', 'Forums') !!}</li>
                 </ul>
 
                 <br>
@@ -115,6 +115,6 @@
         </div>
     </div>
     
-    {{ Config::get('app.analytics') }}
+    {!! Config::get('app.analytics') !!}
 </body>
 </html>

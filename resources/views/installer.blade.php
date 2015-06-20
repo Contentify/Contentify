@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Contentify - Step {{ $step + 1 }}</title>
+    <title>Contentify - Step {!! $step + 1 !!}</title>
 
     <meta name="generator" content="Contentify">
 
-    <link rel="shortcut icon" type="picture/x-icon" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('favicon.png') !!}">
 
     <!--[if lt IE 9]>
-        {{ HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}
-        {{ HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}
+        {!! HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}
+        {!! HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
     <![endif]-->
-    {{ HTML::script('vendor/jquery/jquery-1.11.2.min.js') }}
+    {!! HTML::script('vendor/jquery/jquery-1.11.2.min.js') !!}
     
     <style type="text/css">
         @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
@@ -47,24 +47,24 @@
         .state.no { color: red }
     </style>
 </head>
-<body data-base-url="{{ url('/') }}">
+<body data-base-url="{!! url('/') !!}">
     <div id="page-container">
-        <a href="http://contentify.org" target="_blank"><img id="logo" src="{{ asset('theme/logo_bw_180.png') }}" width="100" height="100" alt="Logo"></a>
+        <a href="http://contentify.org" target="_blank"><img id="logo" src="{!! asset('theme/logo_bw_180.png') !!}" width="100" height="100" alt="Logo"></a>
         <div id="content">
-            <h1>{{ $title }}</h1>
+            <h1>{!! $title !!}</h1>
             <div class="text">
-                {{ $content }}
+                {!! $content !!}
             </div>
 
             <div class="buttons">
                 @if($step > 0)
-                    <a class="navbut left" href="{{ url('install?step='.($step - 1)) }}">Previous</a>
+                    <a class="navbut left" href="{!! url('install?step='.($step - 1)) !!}">Previous</a>
                 @endif
 
                 @if($step < 6)
-                    <a class="navbut right" href="{{ url('install?step='.($step + 1)) }}">Next</a>
+                    <a class="navbut right" href="{!! url('install?step='.($step + 1)) !!}">Next</a>
                 @else
-                    <a class="navbut right" href="{{ url('/') }}">Website</a>
+                    <a class="navbut right" href="{!! url('/') !!}">Website</a>
                 @endif
             </div>
         </div>
@@ -77,7 +77,7 @@
         });
         $(window).resize();
 
-        if({{ $step }} == 5) {
+        if({!! $step !!} == 5) {
             $('.navbut.right').click(function(event)
             {
                 event.preventDefault();
@@ -102,7 +102,7 @@
         });
         $('.navbut.right').click(function(event)
         {
-            if ({{ $step }} == 3) {
+            if ({!! $step !!} == 3) {
                 $(this).text('Working...');
                 $(this).attr('disabled', true);                
             }

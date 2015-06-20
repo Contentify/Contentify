@@ -1,4 +1,4 @@
-{{ $imprintText }}
+{!! $imprintText !!}
 
 <hr>
 

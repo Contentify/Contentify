@@ -1,8 +1,8 @@
-<h1 class="page-title">{{{ $video->title }}}</h1>
+<h1 class="page-title">{{ $video->title }}</h1>
 
 <div class="video-player">
     @if ($video->provider == 'youtube')
-        <iframe src="//www.youtube.com/embed/{{{ $video->permanent_id }}}" allowfullscreen></iframe>
+        <iframe src="//www.youtube.com/embed/{{ $video->permanent_id }}" allowfullscreen></iframe>
         <script>
             $(document).ready(function()
             {
@@ -13,7 +13,7 @@
     @endif
 
     @if ($video->provider == 'vimeo')
-        <iframe src="//player.vimeo.com/video/{{{ $video->permanent_id }}}" allowfullscreen></iframe> <p><a href="http://vimeo.com/{{{ $video->permanent_id }}}">
+        <iframe src="//player.vimeo.com/video/{{ $video->permanent_id }}" allowfullscreen></iframe> <p><a href="http://vimeo.com/{{ $video->permanent_id }}">
         <script>
             $(document).ready(function()
             {
@@ -24,4 +24,4 @@
     @endif
 </div>
 
-{{ Comments::show('videos', $video->id) }}
+{!! Comments::show('videos', $video->id) !!}

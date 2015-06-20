@@ -4,9 +4,9 @@
             @foreach ($links as $title => $url)
                 <li>
                     @if ($url)
-                        {{ link_to($url,  $title) }}
+                        {!! link_to($url,  $title) !!}
                     @else
-                        {{ $title }}
+                        {!! $title !!}
                     @endif
                 </li>
             @endforeach

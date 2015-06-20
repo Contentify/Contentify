@@ -1,20 +1,20 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.groups.update', $model->id], 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.groups.update', $model->id], 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/groups']) }}
+    {!! Form::open(['url' => 'admin/groups']) !!}
 @endif
-    {{ Form::smartText('name', trans('app.title')) }}
+    {!! Form::smartText('name', trans('app.title')) !!}
 
-    {{ Form::hidden('permissions') }}
+    {!! Form::hidden('permissions') !!}
 
     @foreach ($modelClass::permissions((isset($model)) ? $model->id : null) as $permission)
-        {{ Form::smartSelect($permission->name, ucfirst($permission->name), $permission->values, $permission->current, ['class' => 'permission']) }}
+        {!! Form::smartSelect($permission->name, ucfirst($permission->name), $permission->values, $permission->current, ['class' => 'permission']) !!}
     @endforeach
 
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}
 
 <script type="text/javascript">
     $(document).ready(function()

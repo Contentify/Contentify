@@ -1,17 +1,17 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.slides.update', $model->id], 'files' => true, 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.slides.update', $model->id], 'files' => true, 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/slides', 'files' => true]) }}
+    {!! Form::open(['url' => 'admin/slides', 'files' => true]) !!}
 @endif
-    {{ Form::smartText('title', trans('app.title')) }}
+    {!! Form::smartText('title', trans('app.title')) !!}
     
-    {{ Form::smartSelectRelation('slidecat', 'Slide '.trans('app.category'), $modelClass, null) }}
+    {!! Form::smartSelectRelation('slidecat', 'Slide '.trans('app.category'), $modelClass, null) !!}
 
-    {{ Form::smartUrl('url', trans('app.url')) }}
+    {!! Form::smartUrl('url', trans('app.url')) !!}
 
-    {{ Form::smartImageFile('image', trans('app.image')) }}
+    {!! Form::smartImageFile('image', trans('app.image')) !!}
         
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}

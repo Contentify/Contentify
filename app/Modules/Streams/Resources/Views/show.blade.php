@@ -1,10 +1,10 @@
-<h1 class="page-title">{{{ $stream->title }}}</h1>
+<h1 class="page-title">{{ $stream->title }}</h1>
 
 <div class="stream-player">
     @if ($stream->provider == 'twitch')
-        <iframe src="http://www.twitch.tv/{{{ $stream->permanent_id }}}/embed"></iframe>
+        <iframe src="http://www.twitch.tv/{{ $stream->permanent_id }}/embed"></iframe>
         
-        <a href="http://www.twitch.tv/{{{ $stream->permanent_id }}}?tt_medium=live_embed&amp;tt_content=text_link">Watch live video from {{{ $stream->title }}} on www.twitch.tv</a>
+        <a href="http://www.twitch.tv/{{ $stream->permanent_id }}?tt_medium=live_embed&amp;tt_content=text_link">Watch live video from {{ $stream->title }} on www.twitch.tv</a>
 
         <script>
             $(document).ready(function()
@@ -15,9 +15,9 @@
         </script>
     @endif
     @if ($stream->provider == 'hitbox')
-        <iframe src="http://hitbox.tv/#!/embed/{{{ $stream->permanent_id }}}" autoplay="true"></iframe>
+        <iframe src="http://hitbox.tv/#!/embed/{{ $stream->permanent_id }}" autoplay="true"></iframe>
         
-        <a href="http://www.hitbox.tv/{{{ $stream->permanent_id }}}">Watch live video from {{{ $stream->title }}} on www.hitbox.tv</a>
+        <a href="http://www.hitbox.tv/{{ $stream->permanent_id }}">Watch live video from {{ $stream->title }} on www.hitbox.tv</a>
 
         <script>
             $(document).ready(function()
@@ -29,4 +29,4 @@
     @endif
 </div>
 
-{{ Comments::show('streams', $stream->id) }}
+{!! Comments::show('streams', $stream->id) !!}

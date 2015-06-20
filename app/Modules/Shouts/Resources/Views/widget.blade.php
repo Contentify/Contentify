@@ -3,14 +3,14 @@
         <?php for($i = sizeof($shouts) - 1; $i >= 0; $i--) { 
             $shout = $shouts[$i]; ?>
             <li>
-                <a class="user" href="users/{{ $shout->creator->id }}">{{ $shout->creator->username }}:</a><span class="text">{{ $shout->text }}</span>
+                <a class="user" href="users/{!! $shout->creator->id !!}">{!! $shout->creator->username !!}:</a><span class="text">{!! $shout->text !!}</span>
             </li>
         <?php } ?>
     </ul>
 
     <input type="text" name="shout_text" <?php if (! user()) echo 'readonly="readonly"' ?> >
 
-    <a class="shout" href="#" <?php if (user()) echo 'data-enabled="1"' ?>>{{ trans('app.send') }}</a>
+    <a class="shout" href="#" <?php if (user()) echo 'data-enabled="1"' ?>>{!! trans('app.send') !!}</a>
 </div>
 
 <script>
@@ -81,8 +81,8 @@
 
             if (text != '') {
                 @if (user())
-                    var username = '{{ user()->username }}';
-                    var id = {{user()->id }};
+                    var username = '{!! user()->username !!}';
+                    var id = {{user()->id !!};
                 @endif
                 
                 var $message = $('<li class="temp"><a class="user" href="' + contentify.baseUrl + 'users/' + id + '">' + username + ':</a><span class="text">' + text + '</span></li>');

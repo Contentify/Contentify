@@ -1,45 +1,45 @@
 
-<h2 class="section">{{ trans('dashboard::quick_access') }}</h2>
+<h2 class="section">{!! trans('dashboard::quick_access') !!}</h2>
 <div class="quick-access clearfix">     
     <div>
-        <a href="{{ url('admin/news') }}">{{ HTML::fontIcon('newspaper-o') }} News</a>
+        <a href="{!! url('admin/news') !!}">{!! HTML::fontIcon('newspaper-o') !!} News</a>
     </div>
     <div>
-        <a href="{{ url('admin/pages') }}">{{ HTML::fontIcon('file') }} Pages</a>
+        <a href="{!! url('admin/pages') !!}">{!! HTML::fontIcon('file') !!} Pages</a>
     </div>
     <div>
-        <a href="{{ url('admin/matches') }}">{{ HTML::fontIcon('crosshairs') }} Matches</a>
+        <a href="{!! url('admin/matches') !!}">{!! HTML::fontIcon('crosshairs') !!} Matches</a>
     </div>
     <div>
-        <a href="{{ url('admin/images') }}">{{ HTML::fontIcon('image') }} Images</a>
+        <a href="{!! url('admin/images') !!}">{!! HTML::fontIcon('image') !!} Images</a>
     </div>
     <div>
-        <a href="{{ url('admin/videos') }}">{{ HTML::fontIcon('youtube-play') }} Videos</a>
+        <a href="{!! url('admin/videos') !!}">{!! HTML::fontIcon('youtube-play') !!} Videos</a>
     </div>
     <div>
-        <a href="{{ url('admin/downloads') }}">{{ HTML::fontIcon('folder') }} Downloads</a>
+        <a href="{!! url('admin/downloads') !!}">{!! HTML::fontIcon('folder') !!} Downloads</a>
     </div>
 
     <!-- Second row  -->
 
     <div>
-        <a href="{{ url('admin/users') }}">{{ HTML::fontIcon('user') }} Users</a>
+        <a href="{!! url('admin/users') !!}">{!! HTML::fontIcon('user') !!} Users</a>
     </div>
 
     <div>
-        <a href="{{ url('admin/members') }}">{{ HTML::fontIcon('group') }} Members</a>
+        <a href="{!! url('admin/members') !!}">{!! HTML::fontIcon('group') !!} Members</a>
     </div>
     <div>
-        <a href="{{ url('admin/teams') }}">{{ HTML::fontIcon('flag') }} Teams</a>
+        <a href="{!! url('admin/teams') !!}">{!! HTML::fontIcon('flag') !!} Teams</a>
     </div>
     <div>
-        <a href="{{ url('admin/contact') }}">{{ HTML::fontIcon('envelope') }} Messages</a>
+        <a href="{!! url('admin/contact') !!}">{!! HTML::fontIcon('envelope') !!} Messages</a>
     </div>
     <div>
-        <a href="{{ url('admin/visitors') }}">{{ HTML::fontIcon('pie-chart') }} Visitors</a>
+        <a href="{!! url('admin/visitors') !!}">{!! HTML::fontIcon('pie-chart') !!} Visitors</a>
     </div>
     <div>
-        <a href="{{ url('admin/diag') }}">{{ HTML::fontIcon('cog') }} Diag</a>
+        <a href="{!! url('admin/diag') !!}">{!! HTML::fontIcon('cog') !!} Diag</a>
     </div>
 </div>
 
@@ -54,4 +54,4 @@
     @widget('Users::LatestUsers')
 </div>
 
-{{ $feed }}
+{!! $feed !!}

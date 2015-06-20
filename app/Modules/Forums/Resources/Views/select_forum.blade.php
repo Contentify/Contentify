@@ -1,4 +1,4 @@
-{{ Form::smartGroupOpen('forum_id', trans('forums::parent')) }}
+{!! Form::smartGroupOpen('forum_id', trans('forums::parent')) !!}
     <select name="forum_id">
         @if ($empty)
             <option value="">-</option>
@@ -13,7 +13,7 @@
                 }
             ?>
 
-            <option value="{{ $forum->id }}" {{ $selected }}>{{ $forum->title }}</option>
+            <option value="{!! $forum->id !!}" {!! $selected !!}>{!! $forum->title !!}</option>
         @endforeach
     </select>
-{{ Form::smartGroupClose() }}
+{!! Form::smartGroupClose() !!}

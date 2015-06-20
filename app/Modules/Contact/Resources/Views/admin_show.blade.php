@@ -2,34 +2,34 @@
     <tbody>
         <tr>
             <td>
-                {{ trans('app.creator') }}
+                {!! trans('app.creator') !!}
             </td>
             <td>
-                {{{ $msg->username }}}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{ trans('app.created_at') }}
-            </td>
-            <td>
-                {{ $msg->created_at }}
+                {{ $msg->username }}
             </td>
         </tr>
         <tr>
             <td>
-                {{ trans('app.email') }}
+                {!! trans('app.created_at') !!}
             </td>
             <td>
-                {{{ $msg->email }}}
+                {!! $msg->created_at !!}
             </td>
         </tr>
         <tr>
             <td>
-                {{ trans('contact::ip') }}
+                {!! trans('app.email') !!}
             </td>
             <td>
-                {{ $msg->ip }}
+                {{ $msg->email }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {!! trans('contact::ip') !!}
+            </td>
+            <td>
+                {!! $msg->ip !!}
             </td>
         </tr>
     </tbody>
@@ -41,21 +41,21 @@
     <tbody>
         <tr>
             <td>
-                {{ trans('contact::subject') }}
+                {!! trans('contact::subject') !!}
             </td>
             <td>
-                {{{ $msg->title }}}
+                {{ $msg->title }}
             </td>
         </tr>
         <tr>
             <td>
-                {{ trans('contact::message') }}
+                {!! trans('contact::message') !!}
             </td>
             <td>
-                {{ $msg->text }}
+                {!! $msg->text !!}
             </td>
         </tr>
     </tbody>
 </table>
 
-{{ Form::button(trans('app.reply'), ['onclick' => "location.href='mailto:{$msg->email}'"]) }}
+{!! Form::button(trans('app.reply'), ['onclick' => "location.href='mailto:{$msg->email}'"]) !!}

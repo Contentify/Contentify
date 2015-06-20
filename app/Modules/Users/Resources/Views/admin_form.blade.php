@@ -1,27 +1,27 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.users.update', $model->id], 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.users.update', $model->id], 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/users']) }}
+    {!! Form::open(['url' => 'admin/users']) !!}
 @endif
-    {{ Form::smartCheckbox('activated', trans('users::activated')) }}
+    {!! Form::smartCheckbox('activated', trans('users::activated')) !!}
 
-    {{ Form::smartGroupOpen('banned', trans('users::banned')) }}
+    {!! Form::smartGroupOpen('banned', trans('users::banned')) !!}
     @if ($model->isBanned())
-        {{ Form::checkbox('banned', 'banned', true) }}
+        {!! Form::checkbox('banned', 'banned', true) !!}
     @else 
-        {{ Form::checkbox('banned', 'banned', false) }}
+        {!! Form::checkbox('banned', 'banned', false) !!}
     @endif
     <span class="banned-info"></span>
-    {{ Form::smartGroupClose() }}
+    {!! Form::smartGroupClose() !!}
 
-    {{ Form::smartSelectRelation('groups', trans('users::groups'), $modelClass) }}
+    {!! Form::smartSelectRelation('groups', trans('users::groups'), $modelClass) !!}
 
-    {{ Form::smartSelectRelation('teams', trans('users::teams'), $modelClass, null, true) }}
+    {!! Form::smartSelectRelation('teams', trans('users::teams'), $modelClass, null, true) !!}
 
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}
 
 <script type="text/javascript">
     $('form [name=banned]').change(function()
@@ -30,15 +30,15 @@
         var $self = $(this);
 
         $.ajax({
-            url: contentify.baseUrl + 'admin/users/{{ $model->id}}/' + ban,
+            url: contentify.baseUrl + 'admin/users/{!! $model->id}}/' + ban,
             type: 'POST'
         }).success(function(data)
         {
             $self.get(0).checked = !!(+data);
             if (data == 1) {
-                var text = '{{ trans('users::action_banned') }}';
+                var text = '{!! trans('users::action_banned') !!}';
             } else {
-                var text = '{{ trans('users::action_unbanned') }}';
+                var text = '{!! trans('users::action_unbanned') !!}';
             }
             $('.banned-info').text(text);
         }).fail(function(response)

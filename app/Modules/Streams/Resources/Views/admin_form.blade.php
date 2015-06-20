@@ -1,26 +1,26 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.streams.update', $model->id], 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.streams.update', $model->id], 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/streams']) }}
+    {!! Form::open(['url' => 'admin/streams']) !!}
 @endif
-    {{ Form::smartText('title', trans('app.title')) }}
+    {!! Form::smartText('title', trans('app.title')) !!}
 
-    {{ Form::smartText('url', trans('app.url')) }}  
+    {!! Form::smartText('url', trans('app.url')) !!}  
 
-    {{ Form::smartText('permanent_id', trans('app.id')) }}
+    {!! Form::smartText('permanent_id', trans('app.id')) !!}
 
-    {{ Form::smartSelect('provider', trans('app.provider'), $modelClass::$providers); }}
+    {!! Form::smartSelect('provider', trans('app.provider'), $modelClass::$providers); !!}
 
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}
 
 <script>
     $(document).ready(function()
     {   
         // Object with the names of all available providers:
-        var providers = {{ json_encode($modelClass::$providers) }}; 
+        var providers = {!! json_encode($modelClass::$providers) !!}; 
 
         /**
          * Selects a provider in the provider UI element

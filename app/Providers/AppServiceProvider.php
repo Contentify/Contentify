@@ -141,17 +141,6 @@ class AppServiceProvider extends ServiceProvider {
         {
             return new Rss;
         });
-
-        /*
-         * For better security by default, Laravel 5.0 escapes all output from both the {{ }} and {{{ }}} 
-         * Blade directives. A new {!! !!} directive has been introduced to display raw, unescaped output. 
-         * The most secure option when upgrading your application is to only use the new {!! !!} directive 
-         * when you are certain that it is safe to display raw output.
-         * However, if you must use the old Blade syntax, add the following lines:
-         */
-        Blade::setRawTags('{{', '}}');
-        Blade::setContentTags('{{{', '}}}');
-        Blade::setEscapedContentTags('{{{', '}}}');
     }
 
 }

@@ -1,17 +1,17 @@
-<h1 class="page-title">{{ trans('contact::contact') }}</h1>
+<h1 class="page-title">{!! trans('contact::contact') !!}</h1>
 
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
-{{ Form::open(array('url' => 'contact/store')) }}
-    {{ Form::timestamp() }}
+{!! Form::open(array('url' => 'contact/store')) !!}
+    {!! Form::timestamp() !!}
 
-    {{ Form::smartText('username', trans('app.name')) }}
+    {!! Form::smartText('username', trans('app.name')) !!}
 
-    {{ Form::smartEmail() }}
+    {!! Form::smartEmail() !!}
 
-    {{ Form::smartText('title', trans('contact::subject')) }}
+    {!! Form::smartText('title', trans('contact::subject')) !!}
 
-    {{ Form::smartTextarea('text', trans('contact::message')) }}
+    {!! Form::smartTextarea('text', trans('contact::message')) !!}
 
-    {{ Form::actions(['submit' => trans('app.send')], false) }}
-{{ Form::close() }}
+    {!! Form::actions(['submit' => trans('app.send')], false) !!}
+{!! Form::close() !!}

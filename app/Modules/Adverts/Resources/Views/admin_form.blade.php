@@ -1,21 +1,21 @@
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {{ Form::model($model, ['route' => ['admin.adverts.update', $model->id], 'files' => true, 'method' => 'PUT']) }}
+    {!! Form::model($model, ['route' => ['admin.adverts.update', $model->id], 'files' => true, 'method' => 'PUT']) !!}
 @else
-    {{ Form::open(['url' => 'admin/adverts', 'files' => true]) }}
+    {!! Form::open(['url' => 'admin/adverts', 'files' => true]) !!}
 @endif
-    {{ Form::smartText('title', trans('app.title')) }}
+    {!! Form::smartText('title', trans('app.title')) !!}
 
-    {{ Form::smartSelectRelation('advertcat', 'Advert '.trans('app.category'), $modelClass, null) }}
+    {!! Form::smartSelectRelation('advertcat', 'Advert '.trans('app.category'), $modelClass, null) !!}
 
-    {{ Form::smartTextarea('code', trans('app.code')) }}
+    {!! Form::smartTextarea('code', trans('app.code')) !!}
 
-    {{ Form::smartUrl('url', trans('app.url')) }}
+    {!! Form::smartUrl('url', trans('app.url')) !!}
 
-    {{ Form::smartImageFile('image', trans('app.image')) }}
+    {!! Form::smartImageFile('image', trans('app.image')) !!}
     
-    {{ Form::smartCheckbox('published', trans('app.published'), true) }}
+    {!! Form::smartCheckbox('published', trans('app.published'), true) !!}
         
-    {{ Form::actions() }}
-{{ Form::close() }}
+    {!! Form::actions() !!}
+{!! Form::close() !!}

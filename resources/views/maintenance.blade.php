@@ -11,6 +11,6 @@
 
         <hr>
         
-        <button onclick="javascript:window.location='{{ route('home') }}'">Reload</button>
+        <button onclick="javascript:window.location='{!! route('home') !!}'">Reload</button>
     </div>
 @stop

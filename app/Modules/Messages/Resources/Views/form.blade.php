@@ -1,16 +1,16 @@
 @include('messages::page_navigation', ['active' => 'create'])
 
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
-{{ Form::open(['url' => 'messages']) }}
-    {{ Form::smartText('receiver_name', trans('messages::receiver'), isset($username) ? $username : null) }}
+{!! Form::open(['url' => 'messages']) !!}
+    {!! Form::smartText('receiver_name', trans('messages::receiver'), isset($username) ? $username : null) !!}
 
-    {{ Form::smartText('title', trans('app.title'), isset($title) ? $title : null) }}
+    {!! Form::smartText('title', trans('app.title'), isset($title) ? $title : null) !!}
 
-    {{ Form::smartTextarea('text', trans('app.text'), false, isset($text) ? $text : null) }}
+    {!! Form::smartTextarea('text', trans('app.text'), false, isset($text) ? $text : null) !!}
 
-    {{ Form::actions(['submit' => trans('app.send')]) }}
-{{ Form::close() }}
+    {!! Form::actions(['submit' => trans('app.send')]) !!}
+{!! Form::close() !!}
 
 <script>
     // Prevent users from losing their unsent message

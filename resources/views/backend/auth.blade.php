@@ -11,6 +11,6 @@
         
         <hr>
 
-        <button onclick="javascript:window.location='{{ route('login') }}'">Login</button>
+        <button onclick="javascript:window.location='{!! route('login') !!}'">Login</button>
     </div>
 @stop

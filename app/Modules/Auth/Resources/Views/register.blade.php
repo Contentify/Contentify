@@ -1,17 +1,17 @@
-<h1 class="page-title">{{ trans('auth::register') }}</h1>
+<h1 class="page-title">{!! trans('auth::register') !!}</h1>
 
-{{ Form::errors($errors) }}
+{!! Form::errors($errors) !!}
 
-{{ Form::open(array('url' => 'auth/registration/create')) }}
-    {{ Form::smartText('username', trans('app.username')) }}
+{!! Form::open(array('url' => 'auth/registration/create')) !!}
+    {!! Form::smartText('username', trans('app.username')) !!}
 
-    {{ Form::smartEmail() }}
+    {!! Form::smartEmail() !!}
 
-    {{ Form::smartPassword() }}
+    {!! Form::smartPassword() !!}
 
-    {{ Form::smartPassword('password_confirmation', trans('auth::password')) }}
+    {!! Form::smartPassword('password_confirmation', trans('auth::password')) !!}
     
-    {{ Form::smartCaptcha() }}
+    {!! Form::smartCaptcha() !!}
 
-    {{ Form::actions(['submit'], false) }}
-{{ Form::close() }}
+    {!! Form::actions(['submit'], false) !!}
+{!! Form::close() !!}

@@ -18,15 +18,15 @@
 <table class="days table">
     <thead>
         <tr>
-            <th>{{ trans('app.date') }}</th>
-            <th>{{ trans('visitors::visitors') }}</th>
+            <th>{!! trans('app.date') !!}</th>
+            <th>{!! trans('visitors::visitors') !!}</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($chart->days as $day)
-            <tr data-day="{{ $day->day }}">
-                <td>{{ $day->date }}</td>
-                <td>{{ $day->visitors }}</td>
+            <tr data-day="{!! $day->day !!}">
+                <td>{!! $day->date !!}</td>
+                <td>{!! $day->visitors !!}</td>
             </tr>
         @endforeach
     </tbod>
