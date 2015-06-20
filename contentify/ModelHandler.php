@@ -1,6 +1,7 @@
 <?php namespace Contentify;
 
-use Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage, Exception;
+use Request, Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
+use Closure, Exception;
 
 class ModelHandler {
 
@@ -134,7 +135,7 @@ class ModelHandler {
         $perPage = Config::get('app.'.$userInterface.'ItemsPerPage');
 
         if (is_array($data['dataSource'])) {
-            $page  = Paginator::getCurrentPage();
+            $page = (int) Paginator::resolveCurrentPage();
 
             if ($page) { // Ensure $page always starts at 0:
                 $page--;
@@ -146,7 +147,7 @@ class ModelHandler {
 
             $models = array_slice($data['dataSource'], $offset, $perPage); // We have to take the models from the array
 
-            $models = Paginator::make($models, sizeof($data['dataSource']), $perPage);
+            $models = new Paginator($models, sizeof($data['dataSource']), $perPage);
         } else {
             $models = $modelClass::orderBy($data['sortby'], $data['order']);
 
@@ -156,7 +157,7 @@ class ModelHandler {
 
             if ($data['filter'] === true) {
                 $models = $models->filter();
-            } elseif (is_callable($data['filter'])) {
+            } elseif ($data['filter'] instanceof Closure) {
                 $models = $data['filter']($models);
             }
             if ($data['permaFilter']) {
@@ -184,14 +185,14 @@ class ModelHandler {
                 }                 
             }
 
-            $models = $models->paginate($perPage);
+            $models = $models->paginate($perPage)->setPath(Request::url());
         }
 
         $paginator = $models->appends([
             'sortby'    => $data['sortby'], 
             'order'     => $data['order'], 
             'search'    => $data['search']
-        ])->links();
+        ])->render();
 
         /*
          * Prepare the table head
@@ -257,14 +258,14 @@ class ModelHandler {
                         }
                         $actionsCode .= ' ';
                     }
-                    if (is_callable($action)) {
+                    if ($action instanceof Closure) {
                         $actionsCode .= $action($model);
                     }
                 }
                 $row[] = raw($actionsCode);
             }
 
-            if (is_callable($data['actions'])) {
+            if ($data['actions'] instanceof Closure) {
                 $row[] = $data['actions']($model);
             }
 

@@ -3,23 +3,12 @@
 class Tester {
 
     /**
-     * Array with paths
-     * @var array
-     */
-    protected $paths = array();
-
-    public function __construct()
-    {
-        $this->paths = require __DIR__.'/bootstrap/paths.php';
-    }
-
-    /**
      * Run the tester
      * @return void
      */
     public function run()
     {
-        if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+        if (version_compare(PHP_VERSION, '5.5.9') >= 0) {
             $version = 'Yes, '.phpversion();
         } else {
             $version = $this->red('No, '.phpversion());
@@ -43,25 +32,53 @@ class Tester {
             $pdo = $this->red('No');
         }
 
+        if (extension_loaded('mbstring')) {
+            $mbstring = 'Yes';
+        } else {
+            $mbstring = $this->red('No');
+        }
+
+        if (extension_loaded('tokenizer')) {
+            $tokenizer = 'Yes';
+        } else {
+            $tokenizer = $this->red('No');
+        }
+
+        if (extension_loaded('openssl')) {
+            $openssl = 'Yes';
+        } else {
+            $openssl = $this->red('No');
+        }
+
+        if (extension_loaded('json')) {
+            $json = 'Yes';
+        } else {
+            $json = $this->red('No');
+        }
+
         $this->line('PHP-Version: '.$version);
         $this->line('PHP MCrypt Extension: '.$mCrypt);
         $this->line('PHP FileInfo Extension: '.$fileInfo);
         $this->line('PHP PDO Extension: '.$pdo);
+        $this->line('PHP MBString Extension: '.$mbstring);
+        $this->line('PHP Tokenizer Extension: '.$tokenizer);
+        $this->line('PHP OpenSSL Extension: '.$openssl);
+        $this->line('PHP JSON Extension Extension: '.$json);
         $this->line();
 
-        $paths = $this->paths;
         $writableDirs = [
-            $paths['app'].'/storage', 
-            $paths['public'].'/uploads', 
-            $paths['public'].'/rss',
-            $paths['public'].'/share',
+            'storage',
+            'bootstrap/cache',
+            'public/uploads',
+            'public/rss',
+            'public/share',
         ];
 
         foreach ($writableDirs as $dir) {
             if (is_writable($dir)) {
-                $this->line($dir.' is writable');
+                $this->line("Directory '$dir' is writable");
             } else {
-                $this->line($this->red($dir.' is not writable'));
+                $this->line($this->red("Directory '$dir' is writable"));
             }
         }
         $this->line();

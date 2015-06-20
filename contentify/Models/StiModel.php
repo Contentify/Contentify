@@ -65,8 +65,12 @@ abstract class StiModel extends BaseModel
         return new $className;
     }
 
-    public function newFromBuilder($attributes = array())
+    public function newFromBuilder($attributes = array(), $connection = null)
     {
+        if ($connection) {
+            throw new Exception('Error: STI model does not support the connection parameter.');            
+        }
+
         /*
          * Instead of using $this->newInstance(), call
          * newInstance() on the object from mapData

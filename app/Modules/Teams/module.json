@@ -1,0 +1,18 @@
+{
+    "slug": "Teams",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "flag",
+            "category": 4,
+            "position": 2            
+        },
+        {
+            "icon": "group",
+            "category": 4,
+            "position": 3,
+            "title": "Team-Members",
+            "url": "admin/members"
+        }
+    ]
+}

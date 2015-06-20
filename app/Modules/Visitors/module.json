@@ -1,0 +1,11 @@
+{
+    "slug": "Visitors",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "pie-chart",
+            "category": 4,
+            "position": 7            
+        }
+    ]
+}

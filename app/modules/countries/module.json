@@ -1,9 +1,0 @@
-{
-    "enabled": true,
-    "admin-nav": [
-        {
-            "icon": "flag",
-            "category": 2
-        }
-    ]    
-}

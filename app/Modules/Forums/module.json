@@ -1,0 +1,19 @@
+{
+    "slug": "Forums",
+    "enabled": true,
+    "search": ["threads"],
+    "admin-nav": [
+        {
+            "icon": "comment",
+            "category": 2,
+            "position": 7            
+        },
+        {
+            "url": "admin/forum-reports",
+            "icon": "warning",
+            "title": "Forum Reports",
+            "category": 2,
+            "position": 8        
+        }
+    ]
+}

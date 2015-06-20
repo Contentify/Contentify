@@ -152,7 +152,7 @@ function pageClass()
  */
 function installed()
 {
-    $path = storage_path('meta/.install');
+    $path = storage_path('app/.install');
 
     return ! File::exists($path);
 }

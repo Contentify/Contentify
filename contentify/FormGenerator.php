@@ -108,39 +108,39 @@ class FormGenerator {
             switch ($type) {
                 case 'tinyint':
                     if ($default === '0') $defParam = ''; // "Not checked" is the default value of checkboxes
-                    $html = "{{ Form::smartCheckbox('{$name}', {$title}{$defParam}) }}";
+                    $html = "{!! Form::smartCheckbox('{$name}', {$title}{$defParam}) !!}";
                     break;
                 case 'int':
                     unset($attributes['maxlength']);
-                    $html = "{{ Form::smartNumeric('{$name}', {$title}{$defParam}) }}";
+                    $html = "{!! Form::smartNumeric('{$name}', {$title}{$defParam}) !!}";
                     break;
                 case 'varchar':
-                    $html = "{{ Form::smartText('{$name}', {$title}{$defParam}) }}";
+                    $html = "{!! Form::smartText('{$name}', {$title}{$defParam}) !!}";
                     break;
                 case 'text':
-                    $html = "{{ Form::smartTextarea('{$name}', {$title}{$defParam}) }}";
+                    $html = "{!! Form::smartTextarea('{$name}', {$title}{$defParam}) !!}";
                     break;
                 case 'email':
-                    $html = "{{ Form::smartEmail('{$name}', {$title}{$defParam}) }}";
+                    $html = "{!! Form::smartEmail('{$name}', {$title}{$defParam}) !!}";
                     break;
                 case 'password':
-                    $html = "{{ Form::smartPassword('{$name}', {$title}) }}";
+                    $html = "{!! Form::smartPassword('{$name}', {$title}) !!}";
                     break;
                 case 'url':
-                    $html = "{{ Form::smartUrl('{$name}', {$title}{$defParam}) }}";
+                    $html = "{!! Form::smartUrl('{$name}', {$title}{$defParam}) !!}";
                     break;
                 case 'timestamp':
-                    $html = "{{ Form::smartDateTime('{$name}', {$title}) }}";
+                    $html = "{!! Form::smartDateTime('{$name}', {$title}) !!}";
                     break;
                 case 'image':
                     unset($attributes['maxlength']);
                     $this->fileHandling = true;
-                    $html = "{{ Form::smartImageFile('{$name}', {$title}) }}";
+                    $html = "{!! Form::smartImageFile('{$name}', {$title}) !!}";
                     break;
                 case 'foreign':
                     $title = $this->transformName(substr($name, 0, -3));
                     $name = camel_case(substr($name, 0, -3)); // Eloquent can't handle snake_cased relation names
-                    $html = "{{ Form::smartSelectForeign('{$name}', {$title}) }}";
+                    $html = "{!! Form::smartSelectForeign('{$name}', {$title}) !!}";
                     break;
                 default:
                     $html = "<!-- Unknown type: {$type} -->";

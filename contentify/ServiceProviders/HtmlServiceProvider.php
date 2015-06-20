@@ -1,9 +1,9 @@
 <?php namespace Contentify\ServiceProviders;
 
-use Illuminate\Html\HtmlServiceProvider as OriginalHtmlServiceProvider;
+use Collective\Html\HtmlServiceProvider as OriginalHtmlServiceProvider;
 use Contentify\HtmlBuilder;
 use Contentify\FormBuilder;
- 
+
 class HtmlServiceProvider extends OriginalHtmlServiceProvider {
     
     /**
@@ -13,7 +13,7 @@ class HtmlServiceProvider extends OriginalHtmlServiceProvider {
      */
     protected function registerHtmlBuilder()
     {
-        $this->app->bindShared('html', function($app)
+        $this->app->singleton('html', function($app)
         {
             return new HtmlBuilder($app['url']);
         });
@@ -26,7 +26,7 @@ class HtmlServiceProvider extends OriginalHtmlServiceProvider {
      */
     protected function registerFormBuilder()
     {
-        $this->app->bindShared('form', function($app)
+        $this->app->singleton('form', function($app)
         {
             $form = new FormBuilder($app['html'], $app['url'], $app['session.store']->getToken());
 

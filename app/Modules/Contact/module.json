@@ -1,0 +1,11 @@
+{
+    "slug": "Contact",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "icon": "envelope",
+            "category": 4,
+            "position": 6            
+        }
+    ]
+}

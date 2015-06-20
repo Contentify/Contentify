@@ -1,6 +1,6 @@
 <?php namespace Contentify;
  
-use Illuminate\Html\FormBuilder as OriginalFormBuilder;
+use Collective\Html\FormBuilder as OriginalFormBuilder;
 use App, Crypt, URL, HTML, DB, Exception, MsgException;
 use \Carbon as AliasedCarbon; // If we just use Carbon we would use Contentify\Carbon and ignoring the alias!
 

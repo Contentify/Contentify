@@ -152,7 +152,7 @@ class InstallController extends Controller {
                               until all of these directories are writable!</p>";
                 break;
             case 1:
-                if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+                if (version_compare(PHP_VERSION, '5.5.9') >= 0) {
                     $version = '<span class="state yes">Yes, '.phpversion().'</span>';
                 } else {
                     $version = '<span class="state no">No, '.phpversion().'</span>';
@@ -529,10 +529,10 @@ class InstallController extends Controller {
     protected function createSeed() {
        
         $this->createUserGroups();
-        
+
         $tables = ['teamcats', 'newscats', 'partnercats', 'advertcats', 'downloadcats', 'slidecats'];
         $this->createDefaultCategories($tables);
-
+        
         DB::table('config')->insert([
             ['name' => 'app.analytics'],
             ['name' => 'forums::example'],
@@ -885,7 +885,7 @@ class InstallController extends Controller {
          */
         if ($tableRows) Schema::table($tableName, $tableRows);
     }
-      
+
     /**
      * Creates one or more default categories
      * 
@@ -907,5 +907,5 @@ class InstallController extends Controller {
             ]);
         }        
     }
-
+       
 }

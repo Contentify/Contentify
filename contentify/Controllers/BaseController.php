@@ -51,7 +51,7 @@ abstract class BaseController extends Controller {
             if (str_contains($this->modelName, '\\')) {
                 $this->modelClass = $this->modelName;
             } else {
-                $this->modelClass = 'App\Modules\\'.$this->moduleName.'\Models\\'.$this->modelName;
+                $this->modelClass = 'App\Modules\\'.$this->moduleName.'\\'.$this->modelName;
             }
         }
 
@@ -71,7 +71,32 @@ abstract class BaseController extends Controller {
         /*
          * Enable auto CSRF protection
          */ 
-        $this->beforeFilter('csrf', ['on' => ['post', 'put', 'delete']]);
+        $this->middleware('csrf');
+    }
+
+    /**
+     * Execute an action on the controller.
+     * (This overrides a method of the Illuminate BaseController.)
+     *
+     * @param  string  $method
+     * @param  array   $parameters
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function callAction($method, $parameters)
+    {
+        $this->setupLayout();
+
+        $response = call_user_func_array(array($this, $method), $parameters);
+
+        // If no response is returned from the controller action and a layout is being
+        // used we will assume we want to just return the layout view as any nested
+        // views were probably bound on this view during this controller actions.
+        if (is_null($response) && ! is_null($this->layout))
+        {
+            $response = $this->layout;
+        }
+
+        return $response;
     }
 
     /**

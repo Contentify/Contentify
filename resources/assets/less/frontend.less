@@ -1,0 +1,356 @@
+/*
+ * Imports
+ */
+
+@import 'bootstrap/bootstrap';
+@import 'shared';
+
+/*
+ * Global Variables
+ */
+
+@primaryColor: #00afff;
+
+/*
+ * Elements
+ */
+
+/* URLs */
+a, a:visited { color: @primaryColor; }
+a:active { color: @primaryColor; }
+a:hover { color: @primaryColor; }
+
+/*
+ * Classes
+ */
+
+.page-title { }
+
+/* Messages */
+.ui-message { 
+    .alert();
+    background-color: #eee;
+    border: 1px solid @primaryColor;
+    .title { font-weight: bold }
+}
+
+/* Form */
+.form-errors { }
+.form-group { 
+    label { .text-overflow(); }
+    label:after { /* content: ':'; */ }
+    input, select, textarea {
+        .form-control();
+    }
+    textarea { height: auto }
+}
+
+/* Content filter UI */
+.content-filter-ui {
+    select {
+        .form-control(); display: inline-block; width: 100px;
+    }
+}
+
+/* Search box for model index pages */
+.model-search-box {
+    margin-bottom: 10px; text-align: right;
+    input {
+        .form-control(); width: auto; display: inline-block;
+    }
+    .btn {
+        vertical-align: top;
+    }
+}
+
+/* Captcha */
+.captcha {
+    input {
+        width: 100px; display: inline-block;
+    }
+}
+
+/* Slider Default Styling - Feel free to overwrite */
+.slider { 
+    position: relative; width: 100%; height: 245px; /* Height of a single slide */
+    .slides { 
+        position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;
+        ul { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        ul li { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; }
+    }
+    .to-left { position: absolute; left: 0px; top: 40%; width: 35px; height: 35px; line-height: 35px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center; }
+    .to-right { position: absolute; right: 0px; top: 40%; width: 35px; height: 35px; line-height: 35px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center }
+    .to-left:hover, .to-right:hover { background-color: rgba(0, 0, 0, 1); }
+    .buttons { 
+        position: absolute; right: 20px; bottom: 20px;
+        li { 
+            width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: rgba(0, 0, 0, 0.5); color: white; cursor: pointer; text-align: center;
+            &.active{ background-color: rgba(0, 0, 0, 1); }
+        }
+    }
+    .slide-title { position: absolute; margin: 0px; left: 20px; bottom: 20px; color: white; text-shadow: 0px 0px 3px black; }
+}
+
+.scroller { 
+    overflow-x: hidden;
+    ul {  }
+    li { width: 100% }
+}
+
+/*
+ * Modules
+ */
+
+.create-comment { 
+    margin-top: 20px;
+    .textarea-wrapper { margin: 20px 0px; padding: 0px 20px }
+    p { margin: 0px }
+    textarea { width: 100%; height: 70px; margin-left: -20px; padding: 10px 20px; border: 2px solid silver; color: #666; }
+    textarea:focus { border-color: #ff6100; }
+}
+
+.widget-partners {
+    a { text-align: center; }
+    img {
+        &.filter { filter: grayscale(1); -webkit-filter: grayscale(1); transition: all 0.8s ease; }
+        &.filter:hover { filter: grayscale(0); -webkit-filter: grayscale(0); transition: all 0.2s ease; }
+    }
+}
+
+.page-news {
+    .news .image img { max-width: 100% }
+}
+
+.page-videos .video { 
+    float: left; width: 33%; text-align: center;
+    div { width: 90%; height: 150px; margin-left: auto; margin-right: auto; background-position: center; background-repeat: no-repeat; background-size: cover }
+}
+
+.page-videos .video-player iframe { width: 100%; border: none }
+
+.widget-videos img.cover { max-width: 100% }
+
+.page-streams .stream-player iframe { width: 100%; border: none }
+
+.widget-streams {
+    a { display: block; position: relative;  }
+    .title { .text-overflow(); display: inline-block; width: 80% }
+    .viewers { position: absolute; right: 0px; }
+}
+
+.page-galleries .galleries {
+    .item { float: left; display: block; width: 20%; height: 100px; overflow: hidden }
+    .image { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: all 0.3s ease; }
+    .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
+}
+
+.page-galleries .images {
+    .image { text-align: center; }
+    .image img { max-width: 100%; max-height: 500px; cursor: zoom-in; }
+    .previews-wrapper { position: relative; height: 100px; overflow: hidden }
+    .previews { 
+        height: 100%;
+        .item { float: left; display: block; width: 100px; height: 100%; overflow: hidden; }
+        .image { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: all 0.3s ease; }
+        .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
+        .item.active {  }
+    }
+    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0px; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center; }
+    .previews-wrapper:hover .link { opacity: 1 }
+    .previews-wrapper .to-left { left: 0px; }
+    .previews-wrapper .to-right { right: 0px; }
+}
+
+.widget-galleries {
+    li { width: 20%; height: 100px }
+    .item { 
+        display: block; width: 100%; height: 100%;
+        div { width: 100%; height: 100% }
+    }
+}
+
+.page-downloads {
+    .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; }
+    .downloads .download { 
+        display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; .background-image('theme/file.png'); background-position: center top; background-repeat: no-repeat;
+        a { display: block; padding-top: 100px; background-position: center 20px; background-repeat: no-repeat; }
+    }
+}
+
+.page-matches {  
+    .overview {
+        div { width: 33%; text-align: center; float: left }
+        div > span { display: block }
+        .mid { padding-top: 40px; font-size: 30px; }
+        .mid .left-win { color: green }
+        .mid .left-defeat { color: red }
+        .mid .left-draw { color: orange }
+    }
+    .details { margin-bottom: 20px; padding-top: 20px; }
+    div.scores {
+        .item { width: 33%; float: left; text-align: center; }
+        .item:nth-child(n+4) { margin-top: 20px } /* Will only affect the 4th, 5th etc. item */
+        .item img { max-width: 100%; }
+        .item span { display: block; }
+    }
+}
+
+.widget-matches-latest {
+    li { position: relative; }
+    li img { float: left; margin-right: 10px }
+    li .scores { position: absolute; right: 0px; top: 0px; }
+    li .scores .win { color: green }
+    li .scores .defeat { color: red }
+    li .scores .draw { color: orange }
+}
+
+.page-servers .server { margin-bottom: 20px }
+
+@forumsBoxColor: #EEE;
+
+/* Forums index page */
+.page-forums {
+    .action { border-radius: 3px; background-color: @primaryColor; color: white }
+    .root-forum h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+    .sub-forums { .clearfix(); }
+    .sub-forum {     
+        padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
+        .info { 
+            width: 60%; float: left;
+            .desc { display: block; font-size: 10px }
+        }
+        .threads { width: 10%; float: left }
+        .latest { 
+            width: 30%; float: left;
+            .meta { display: block; font-size: 10px }
+        }
+    }
+}
+
+/* Forums show_forum page */
+.page-forums {
+    .buttons { margin-bottom: 20px; }
+    .sub-forums {
+        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+        margin-bottom: 20px; 
+    }
+    .threads {
+        @forumsBoxColor: #EEE;
+        .clearfix(); 
+        .thread {
+            padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
+            &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+            .info { 
+                width: 60%; float: left;
+                .sticky, .closed { padding: 2px; border-radius: 3px; background-color: @primaryColor; font-size: 10px; color: white; }
+                .meta { display: block; font-size: 10px }
+            }
+            .posts { width: 10%; float: left }
+            .latest { 
+                width: 30%; float: left;
+                .meta { display: block; font-size: 10px }
+            }
+        }
+    }
+}
+
+/* Forums show_thread page */
+.page-threads, .page-posts {
+    .buttons { margin-bottom: 20px }
+    .post { 
+        @metaWidth: 100px;
+        @minHeight: 135px;
+        .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid #EEE;
+        .meta {
+            position: absolute; left: 0px; top: 0px; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: #EEE; float: left;
+            .creator-name { .text-overflow(); display: block; }
+            .avatar { display: block; }
+            .counter { display: block; }
+        }
+        .content { 
+            @padding: 10px;
+            margin-left: @metaWidth + 20px; min-height: @minHeight + 20px;
+            .top-bar { 
+                position: relative; padding: @padding; 
+                .buttons { position: absolute; right: @padding; top: @padding; }
+            }
+            .text { 
+                padding: @padding; word-wrap: break-word; overflow-x: hidden;
+                img { max-width: 100% } 
+                hr { border-color: @forumsBoxColor }
+                .signature { padding-top: @padding }
+            }
+            .updated { padding: @padding; font-size: 10px; text-align: right; }
+        }
+    }
+}
+
+/* Forums show_new_posts page */
+.page-threads.page-forums-threads-new {
+    .page-forums();
+}
+
+.widget-latest-threads {
+    li { position: relative; }
+    li .posts-count { position: absolute; right: 0px; top: 0px; }
+}
+
+.page-users-show {
+    th { width: 40% }
+    .profile-basics { margin-bottom: 20px; }
+    .details {
+        img { max-width: 180px; max-height: 240px; }
+        text-align: center;
+        .actions { margin-top: 20px; }
+    }
+}
+
+.page-friends {
+    .clearfix();
+    .friend {
+        float: left; box-sizing: border-box; width: 20%; margin-bottom: 20px; padding: 0px 20px; text-align: center;
+        span { display: block; margin-top: 10px; }
+        img { max-width: 100%; max-height: 240px; }
+        .actions { margin-top: 20px; }
+    }
+}
+@media (max-width: @screen-phone) {
+    .page-friends .friend { width: 33% }
+}
+
+.page-messages {
+    .message-text {
+        word-wrap: break-word; overflow-x: hidden;
+        img { max-width: 100% }
+    }
+}
+
+.widget-navigation-default {
+    .list-unstyled {
+        li.item-level-0 { padding-left: 20px }
+        li.item-level-1 { padding-left: 40px }
+        li.item-level-2 { padding-left: 60px }
+        li.item-level-3 { padding-left: 80px }
+        li.item-level-4 { padding-left: 100px }
+    }
+}
+
+.widget-teams {
+    img { max-width: 100% }
+}
+
+.page-auth-login {
+    form { position: relative; }
+    .btn-restore { position: absolute; bottom: 0px; right: 0px; }
+}
+
+/*
+ * Mainlayout
+ */
+
+#header { 
+    height: 100px; background-color: @primaryColor; color: white; cursor: pointer;
+    h2 { margin: 0px; line-height: 100px; }
+}
+
+#mid-container { padding: 20px 0px; }

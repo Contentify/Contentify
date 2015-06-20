@@ -1,6 +1,6 @@
 <?php namespace Contentify;
  
-use Illuminate\Html\HtmlBuilder as OriginalHtmlBuilder;
+use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
 use OpenGraph, Session, URL;
 
 class HtmlBuilder extends OriginalHtmlBuilder {
@@ -21,7 +21,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
             throw new Exception("Error: Invalid widget classname '{$widgetName}'. Module name missing?");
         }
 
-        $className = 'App\Modules\\'.$path[0].'\Controllers\\'.$path[1].'Widget';
+        $className = 'App\Modules\\'.$path[0].'\Http\Controllers\\'.$path[1].'Widget';
         $widget = new $className();
 
         return $widget->render($parameters);
