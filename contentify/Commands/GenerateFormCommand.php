@@ -46,7 +46,7 @@ class GenerateFormCommand extends Command {
 
         $code = $formGenerator->generate($table, $module);
 
-        $fileName = $this->getLaravel()['path'].'/views/'.$fileName.'.blade.php';
+        $fileName = __DIR__.'/../../resources/views/'.$fileName.'.blade.php';
         file_put_contents($fileName, $code);
 
         $this->info('Done. Form has been generated: '.$fileName."\n");  
