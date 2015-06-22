@@ -137,8 +137,10 @@ function recycle_bin_button()
  * See for more: http://laravelsnippets.com/snippets/add-unique-body-id-helper
  * 
  * @return string
+ *
+ * @deprecated
  */
-function pageClass()
+function page_class()
 { 
     $pageClass = preg_replace('/\d-/', '', implode( '-', Request::segments() ) ); 
     $pageClass = str_replace('admin-', '', $pageClass);
