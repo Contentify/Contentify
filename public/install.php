@@ -24,7 +24,7 @@ class Tester {
             } else {
                 $info = $this->red('No');
             }
-            $this->line('PHP '.ucfirst($extension).' Extension '.$info);
+            $this->line('PHP '.ucfirst($extension).' Extension: '.$info);
         }
 
         $this->line();
@@ -63,7 +63,7 @@ class Tester {
             'fileinfo',
             'pdo',
             'mbstring',
-            'tokenizer',
+            'tokenisszer',
             'openssl',
             'json,'
         ];
@@ -95,7 +95,7 @@ class Tester {
         $results = [];
 
         foreach ($dirs as $dir) {
-            $results[$dir] = is_writable($dir);
+            $results[$dir] = is_writable(__DIR__.'/../'.$dir);
         }
 
         return $results;
@@ -109,7 +109,10 @@ class Tester {
      */
     protected function red($text)
     {
-        return "\033[0;31m".$text."\033[0m";
+        if ($this->isCli()) {
+            return "\033[0;31m".$text."\033[0m";
+        }
+        return '<span style="color: red">'.$text.'</span>';
     }
 
     /**

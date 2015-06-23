@@ -16,7 +16,7 @@
  */ 
 if (! installed()) {
     Route::get('/', ['as' => 'home', 'uses' => function() {
-        return Redirect::to('/install');
+        return Redirect::to('/install.php');
     }]);
 } else {
     Route::get('/', ['as' => 'home', 'uses' => 'App\Modules\News\Http\Controllers\NewsController@showOverview']);
