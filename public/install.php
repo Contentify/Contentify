@@ -10,17 +10,18 @@ class Tester {
     public function run()
     {
         if ($this->checkPhp()) {
-            $version = 'Yes, '.phpversion();
+            $version = $this->green('Yes, '.phpversion());
         } else {
             $version = $this->red('No, '.phpversion());
         }
         $this->line('PHP-Version: '.$version);
+        $this->line();
 
         $results = $this->checkExtensions();
 
         foreach ($results as $extension => $okay) { 
             if ($okay) {
-                $info = 'Yes';
+                $info = $this->green('Yes');
             } else {
                 $info = $this->red('No');
             }
@@ -33,9 +34,9 @@ class Tester {
 
         foreach ($results as $dir => $okay) {
             if ($okay) {
-                $this->line("Directory '$dir' is writable");
+                $this->line("Directory '$dir': ".$this->green('Writable'));
             } else {
-                $this->line($this->red("Directory '$dir' is writable"));
+                $this->line("Directory '$dir': ".$this->red('Not writable'));
             }
         }
         $this->line();
@@ -63,9 +64,9 @@ class Tester {
             'fileinfo',
             'pdo',
             'mbstring',
-            'tokenisszer',
+            'tokenizer',
             'openssl',
-            'json,'
+            'json',
         ];
 
         $results = [];
@@ -102,7 +103,7 @@ class Tester {
     }
 
     /**
-     * Color the passed text for CLI output (only in bash shells)
+     * Color the passed text for output
      * 
      * @param  string $text The text
      * @return string
@@ -113,6 +114,20 @@ class Tester {
             return "\033[0;31m".$text."\033[0m";
         }
         return '<span style="color: red">'.$text.'</span>';
+    }
+
+    /**
+     * Color the passed text for output
+     * 
+     * @param  string $text The text
+     * @return string
+     */
+    protected function green($text)
+    {
+        if ($this->isCli()) {
+            return "\033[0;32m".$text."\033[0m";
+        }
+        return '<span style="color: green">'.$text.'</span>';
     }
 
     /**
@@ -150,14 +165,18 @@ class Tester {
 
 $tester = new Tester;
 
-if (! file_exists(__DIR__.'/../storage/app/.install') and ! $tester->isCli()) {
-    die('Contentify already has been installed.');  
-}
-
-$tester->run();
-
 if ($tester->isCli()) {
-    die('The installer cannot be launched from a console. Please navigate to the website with a browser to install Contentify.');
+    $tester->run();
+
+    echo "The installer cannot be launched from a console.\n\r";
+    echo 'Please navigate to the website with a browser to install Contentify.';
 } else {
+    if (! file_exists(__DIR__.'/../storage/app/.install')) {
+        die('Contentify already has been installed.');  
+    }
+
+    echo '<html><head><style>body { margin: 20px; font-family: arial }</style></head><body>';
+    $tester->run();
     echo '<a href="./install" style="display: block; text-decoration: none; color: #00afff">Launch Installer</a>';
+    echo '</body></html>';
 }
