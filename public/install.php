@@ -113,7 +113,7 @@ class Tester {
         if ($this->isCli()) {
             return "\033[0;31m".$text."\033[0m";
         }
-        return '<span style="color: red">'.$text.'</span>';
+        return '</td><td><span style="color: #e74c3c">'.$text.'</span>';
     }
 
     /**
@@ -127,7 +127,7 @@ class Tester {
         if ($this->isCli()) {
             return "\033[0;32m".$text."\033[0m";
         }
-        return '<span style="color: green">'.$text.'</span>';
+        return '</td><td><span style="color: #2ecc71">'.$text.'</span>';
     }
 
     /**
@@ -141,7 +141,7 @@ class Tester {
         if ($this->isCli()) {
             echo $text." \n";    
         } else {
-            echo $text.'<br>';
+            echo '<tr><td>'.$text.'&nbsp;</td></tr>';
         }        
     }
 
@@ -175,8 +175,11 @@ if ($tester->isCli()) {
         die('Contentify already has been installed.');  
     }
 
-    echo '<html><head><style>body { margin: 20px; font-family: arial }</style></head><body>';
+    echo '<html><head><title>Installer</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <style>body { margin: 20px; font-family: "Open Sans", arial; color: #666 }</style></head><body><table>';
     $tester->run();
-    echo '<a href="./install" style="display: block; text-decoration: none; color: #00afff">Launch Installer</a>';
+    echo '</table><a href="./install" style="display: inline-block; padding: 20px; text-decoration: none; 
+        background-color: #00afff; color: white; font-size: 18px; border-radius: 5px">Launch Installer</a>';
     echo '</body></html>';
 }
