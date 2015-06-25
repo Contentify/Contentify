@@ -192,7 +192,7 @@ class InstallController extends Controller {
                 $step       = 0; // Better save than sorry! (E.g. if step was -1)
                 $title      = 'Welcome To Contentify';
                 $content    = '<p>Please click on the "Next" button to start the installation.</p>
-                              <p><a href="'.url('../daux/Development/Installation').'" target="_blank">Take a look at our documentation 
+                              <p><a href="https://github.com/Contentify/Contentify/wiki/Installation" target="_blank">Take a look at our documentation 
                               (chapter "Installation") if you need help.</a></p>';
         }
         
