@@ -13,6 +13,10 @@ class InstallController extends Controller {
      */
     public function index($step = -1, $errors = null) 
     {
+        if (! Config::get('app.debug')) {
+            die('Please enable debug mode to start the installer.');
+        }
+
         if ($step < 0) {
             $step   = (int) Input::get('step', 0);
         }
