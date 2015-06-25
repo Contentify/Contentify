@@ -79,7 +79,7 @@ class InstallController extends Controller {
                 /*
                  * Delete the file taht indicates the app is not installed yet
                  */
-                $filename = storage_path('meta/.install');
+                $filename = storage_path('app/.install');
                 if (File::exists($filename)) {
                     File::delete($filename);
                 }
@@ -132,7 +132,8 @@ class InstallController extends Controller {
                 break;
             case 2:
                 $writableDirs = [
-                    app_path().'/storage', 
+                    base_path().'/storage', 
+                    base_path().'/bootstrap/cache', 
                     public_path().'/uploads', 
                     public_path().'/rss',
                     public_path().'/share'
@@ -161,22 +162,28 @@ class InstallController extends Controller {
                 } else {
                     $version = '<span class="state no">No, '.phpversion().'</span>';
                 }
-                if (extension_loaded('mcrypt')) {
-                    $mCrypt = '<span class="state yes">Yes</span>';
+                if (extension_loaded('openssl')) {
+                    $openSsl = '<span class="state yes">Yes</span>';
                 } else {
-                    $mCrypt = '<span class="state no">No</span>';
+                    $openSsl = '<span class="state no">No</span>';
                 }
-                if (extension_loaded('fileinfo')) {
-                    $fileInfo = '<span class="state yes">Yes</span>';
+                if (extension_loaded('mbstring')) {
+                    $mbString = '<span class="state yes">Yes</span>';
                 } else {
-                    $fileInfo = '<span class="state no">No</span>';
+                    $mbString = '<span class="state no">No</span>';
+                }
+                if (extension_loaded('tokenizer')) {
+                    $tokenizer = '<span class="state yes">Yes</span>';
+                } else {
+                    $tokenizer = '<span class="state no">No</span>';
                 }
 
                 $title      = 'Server Requirements';
                 $content    = "<ul>
-                              <li>PHP >= 5.4.0 $version</li>
-                              <li>MCrypt Extension $mCrypt</li>
-                              <li>FileInfo Extension $fileInfo</li>
+                              <li>PHP >= 5.5.9 $version</li>
+                              <li>OpenSSL Extension $openSsl</li>
+                              <li>Mbstring Extension $mbString</li>
+                              <li>Tokenizer Extension $tokenizer</li>
                               </ul>
                               <p class=\"warning\">Please do not continue 
                               if your server does not meet these requirements!</p>";
@@ -217,7 +224,9 @@ class InstallController extends Controller {
         if (sizeof($result) > 0) { // Check if migrations table exists
             Artisan::call('migrate:reset', ['--quiet' => true, '--force' => true]); // Delete old tables
         }
-        Artisan::call('migrate', ['--package' => 'cartalyst/sentry', '--quiet' => true, '--force' => true]);
+        Artisan::call('migrate', 
+            ['--path' => 'vendor/cartalyst/sentry/src/migrations', '--quiet' => true, '--force' => true]
+        );
 
         /*
          * Deaticvate foreign key checks.
@@ -538,8 +547,8 @@ class InstallController extends Controller {
         $this->createDefaultCategories($tables);
         
         DB::table('config')->insert([
-            ['name' => 'app.analytics'],
-            ['name' => 'forums::example'],
+            ['name' => 'app.analytics', 'value' => ''],
+            ['name' => 'forums::example', 'value' => ''],
             ['name' => 'auth::registration', 'value' => 1]
         ]);
 

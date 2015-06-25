@@ -16,9 +16,9 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Releases
 
-The current release is `Beta Two`.
+The current release is `Beta Three`.
 
-You may download it here: [contentify.org/share/releases/contentify_beta2.zip](http://contentify.org/share/releases/contentify_beta2.zip)
+You may download it here: [contentify.org/share/releases/contentify_beta3.zip](http://contentify.org/share/releases/contentify_beta3.zip)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
