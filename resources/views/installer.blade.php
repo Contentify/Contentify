@@ -77,7 +77,7 @@
         });
         $(window).resize();
 
-        if({!! $step !!} == 5) {
+        if({!! $step !!} == 3 || {!! $step !!} == 5) {
             $('.navbut.right').click(function(event)
             {
                 event.preventDefault();

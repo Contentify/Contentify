@@ -46,8 +46,23 @@ return [
 
 	'connections' => [
 
+		'mysql' => [
+			'driver'    => 'mysql',
+			/*
+			 * These properties are set by the installer and stored in storage/app/database.php
+			 */
+			//'host'      => env('DB_HOST', 'localhost'),
+			//'database'  => env('DB_DATABASE', 'contentify'),
+			//'username'  => env('DB_USERNAME', 'root'),
+			//'password'  => env('DB_PASSWORD', ''),
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'strict'    => false,
+		],
+
 		/*
-		 * SQLite is currently not supported by Contentify.
+		 * The database types listed below are currently not supported by Contentify.
 		 */
 		/*
 		'sqlite' => [
@@ -55,20 +70,6 @@ return [
 			'database' => storage_path('database.sqlite'),
 			'prefix'   => '',
 		],
-		*/
-
-		'mysql' => [
-			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', 'contentify'),
-			'username'  => env('DB_USERNAME', 'root'),
-			'password'  => env('DB_PASSWORD', ''),
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-			'strict'    => false,
-		],
-
 		'pgsql' => [
 			'driver'   => 'pgsql',
 			'host'     => env('DB_HOST', 'localhost'),
@@ -89,6 +90,7 @@ return [
 			'charset'  => 'utf8',
 			'prefix'   => '',
 		],
+		*/
 
 	],
 
