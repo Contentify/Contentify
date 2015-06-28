@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use File;
 
 class ConfigServiceProvider extends ServiceProvider {
 
