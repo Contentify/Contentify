@@ -2,7 +2,7 @@
 
 use App\Modules\Config\SettingsBag;
 use Contentify\Vendor\MySqlDump;
-use Redirect, Input, File, DB, Config, View, BackController;
+use Str, Redirect, Input, File, DB, Config, View, BackController;
 
 class AdminConfigController extends BackController {
 
@@ -170,7 +170,27 @@ class AdminConfigController extends BackController {
 
         $fileName = storage_path().self::LOG_FILE;
         if (File::exists($fileName)) {
-            $content = File::get($fileName, trans('config::log_empty'));
+            //$content = File::get($fileName);
+
+            $lines = file($fileName);
+            $content = '';
+
+            foreach ($lines as $line) {
+                if (Str::startsWith($line, '[')) {
+                    if ($content) {
+                        $content .= '</div></div>';
+                    }
+                    $line = substr($line, 0, 21).'</span>'.substr($line, 21);
+                    $content .= '<div class="item"><span class="date">'.$line.'<div class="stack">';
+                } else {
+                    $content .= '<div class="line">'.$line.'</div>';
+                }
+            }
+
+            if ($content) {
+                $content .= '</div></div>';
+            }
+
             $this->pageView('config::show_log', compact('content'));
         } else {
             $this->alertInfo(trans('config::log_empty'));

@@ -7331,6 +7331,22 @@ fieldset[disabled] .modal .modal-footer button.active {
 .page-navigations #item_add {
   margin-top: 20px;
 }
+.page-config-show-log .item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.page-config-show-log .date {
+  color: #00afff;
+}
+.page-config-show-log .stack {
+  display: none;
+  padding: 10px 0px 10px 20px;
+}
+.page-config-show-log .line {
+  margin-bottom: 5px;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
 .editor-flags img {
   cursor: pointer;
 }
