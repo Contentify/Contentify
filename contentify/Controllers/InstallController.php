@@ -585,13 +585,18 @@ class InstallController extends Controller {
        
         $this->createUserGroups();
 
-        $tables = ['teamcats', 'newscats', 'partnercats', 'advertcats', 'downloadcats', 'slidecats'];
+        $tables = ['newscats', 'partnercats', 'advertcats', 'downloadcats', 'slidecats'];
         $this->createDefaultCategories($tables);
         
         DB::table('config')->insert([
             ['name' => 'app.analytics', 'value' => ''],
             ['name' => 'forums::example', 'value' => ''],
             ['name' => 'auth::registration', 'value' => 1]
+        ]);
+
+        DB::table('teamcats')->insert([
+            ['id' => '1', 'title' => 'Staff'],
+            ['id' => '2', 'title' => 'Gaming'],
         ]);
 
         DB::table('pagecats')->insert([
