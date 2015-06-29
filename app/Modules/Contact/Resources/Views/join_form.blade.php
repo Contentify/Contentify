@@ -1,17 +1,19 @@
-<h1 class="page-title">{!! trans('contact::contact') !!}</h1>
+<h1 class="page-title">{!! trans('contact::application') !!}</h1>
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => 'contact/store')) !!}
+{!! Form::open(array('url' => 'join-us/store')) !!}
     {!! Form::timestamp() !!}
 
     {!! Form::smartText('username', trans('app.name'), user() ? user()->username : null) !!}
 
     {!! Form::smartEmail('email', trans('app.email'), user() ? user()->email : null) !!}
 
-    {!! Form::smartText('title', trans('app.subject')) !!}
+    {!! Form::smartSelectForeign('team_id', 'Team') !!}
 
-    {!! Form::smartTextarea('text', trans('app.message')) !!}
+    {!! Form::smartText('role', trans('app.role')) !!}
+
+    {!! Form::smartTextarea('text', trans('contact::application')) !!}
 
     {!! Form::actions(['submit' => trans('app.send')], false) !!}
 {!! Form::close() !!}

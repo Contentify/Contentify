@@ -151,5 +151,8 @@ return [
     'home'          => 'Home',
     'remove'        => 'Remove',
     'of'            => 'of',
+    'role'          => 'Role',
+    'message'       => 'Message',
+    'subject'       => 'Subject',
 
 ];

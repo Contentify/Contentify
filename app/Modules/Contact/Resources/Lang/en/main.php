@@ -13,9 +13,7 @@ return array(
    
     'contact'       => 'Contact',
     'message_sent'  => 'Thank you! Your message has been sent.',
-    'ip'            => 'IP',
-    'subject'       => 'Subject',
-    'message'       => 'Message',
     'new'           => 'New', // is new?
+    'application'   => 'Application' // If the user applies for a role in one of the teams
 
 );

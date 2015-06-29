@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td>
-                {!! trans('contact::ip') !!}
+                {!! trans('app.ip') !!}
             </td>
             <td>
                 {!! $msg->ip !!}
@@ -41,7 +41,7 @@
     <tbody>
         <tr>
             <td>
-                {!! trans('contact::subject') !!}
+                {!! trans('app.subject') !!}
             </td>
             <td>
                 {{ $msg->title }}
@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td>
-                {!! trans('contact::message') !!}
+                {!! trans('app.message') !!}
             </td>
             <td>
                 {!! $msg->text !!}
