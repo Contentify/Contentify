@@ -38,7 +38,7 @@ class VerifyCsrfToken extends BaseVerifier {
                 $time = (int) $time;
                 
                 if ($time <= time() - 3) {
-                    return;
+                    return $next($request);
                 }
             }
 
