@@ -20,6 +20,7 @@ class AdminEventsController extends BackController {
     public function index()
     {
         $this->indexPage([
+            'sortby'    => 'starts_at',
             'tableHead' => [
                 trans('app.id')         => 'id', 
                 trans('app.title')      => 'title',

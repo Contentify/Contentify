@@ -170,10 +170,8 @@ class AdminConfigController extends BackController {
 
         $fileName = storage_path().self::LOG_FILE;
         if (File::exists($fileName)) {
-            //$content = File::get($fileName);
-
-            $lines = file($fileName);
-            $content = '';
+            $lines      = file($fileName);
+            $content    = '';
 
             foreach ($lines as $line) {
                 if (Str::startsWith($line, '[')) {
@@ -191,7 +189,9 @@ class AdminConfigController extends BackController {
                 $content .= '</div></div>';
             }
 
-            $this->pageView('config::show_log', compact('content'));
+            $size = File::size($fileName);
+
+            $this->pageView('config::show_log', compact('content', 'size'));
         } else {
             $this->alertInfo(trans('config::log_empty'));
         }
@@ -205,6 +205,7 @@ class AdminConfigController extends BackController {
     public function clearLog()
     {
         $fileName = storage_path().self::LOG_FILE;
+
         if (File::exists($fileName)) {
             File::delete($fileName);
         }
