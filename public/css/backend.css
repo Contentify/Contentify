@@ -7715,6 +7715,9 @@ header .header-logo {
   border-radius: 3px;
   background-color: #00afff;
   color: #ffffff;
+  display: inline-block; 
+  min-width: 16px; 
+  text-align: center;
 }
 @media (max-width: 480px) {
   .page {
