@@ -15,5 +15,7 @@
 
     {!! Form::smartNumeric('slots', trans('servers::slots'), 0) !!}
 
+    {!! Form::smartCheckbox('published', trans('app.published'), true) !!}
+
     {!! Form::actions() !!}
 {!! Form::close() !!}

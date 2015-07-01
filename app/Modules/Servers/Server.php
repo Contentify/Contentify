@@ -8,12 +8,13 @@ class Server extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'ip', 'hoster', 'slots', 'game_id'];
+    protected $fillable = ['title', 'ip', 'hoster', 'slots', 'published', 'game_id'];
 
     protected $rules = [
         'title'     => 'required|min:3',
         'ip'        => 'required|min:7', // If we enforce it to be an IP adding a port is invalid!
         'slots'     => 'integer|min:0',
+        'published' => 'boolean',
         'game_id'   => 'integer',
     ];
 
@@ -22,4 +23,15 @@ class Server extends BaseModel {
         'game'      => [self::BELONGS_TO, 'App\Modules\Games\Game'],
     ];
 
+    /**
+     * Select only those that have been published
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopePublished($query)
+    {
+        return $query->wherePublished(true);
+    }
+    
 }

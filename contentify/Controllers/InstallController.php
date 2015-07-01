@@ -492,6 +492,7 @@ class InstallController extends Controller {
             $table->string('ip');
             $table->string('hoster')->nullable();
             $table->integer('slots')->default(0);
+            $table->boolean('published')->default(false);
         }, ['game_id'], ['slug']);
 
         $this->create('forums', function($table) 

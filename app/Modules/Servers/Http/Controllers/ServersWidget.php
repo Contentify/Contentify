@@ -13,9 +13,9 @@ class ServersWidget extends Widget {
         }
 
         if ($onlyGameservers) {
-            $servers = Server::whereNotNull('game_id')->orderBy('created_at', 'DESC')->take(5)->get();
+            $servers = Server::whereNotNull('game_id')->orderBy('created_at', 'DESC')->published()->take(5)->get();
         } else {
-            $servers = Server::orderBy('created_at', 'DESC')->take(5)->get();
+            $servers = Server::orderBy('created_at', 'DESC')->published()->take(5)->get();
         }
         
         return View::make('servers::widget', compact('servers'))->render();

@@ -16,7 +16,7 @@ class ServersController extends FrontController {
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $servers = Server::paginate($perPage)->setPath(Request::url());
+        $servers = Server::published()->paginate($perPage)->setPath(Request::url());
 
         $this->pageView('servers::index', compact('servers'));
     }
