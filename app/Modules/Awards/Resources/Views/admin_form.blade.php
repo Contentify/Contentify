@@ -17,7 +17,7 @@
 
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
     
-    {!! Form::smartDateTime('achieved_at', trans('awards::achieved_at')) !!}
+    {!! Form::smartDateTime('achieved_at', trans('app.achieved_at')) !!}
 
     {!! Form::actions() !!}
 {!! Form::close() !!}

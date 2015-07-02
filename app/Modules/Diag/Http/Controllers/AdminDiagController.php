@@ -16,7 +16,7 @@ class AdminDiagController extends BackController {
          */
         $filename = app('path.base').'/bootstrap/cache/compiled.php';
         if (File::exists($filename)) {
-            $optimized = '1 - '.trans('diag::compiled').': '.Carbon::createFromTimeStamp(filemtime($filename));
+            $optimized = '1 - '.trans('app.compiled').': '.Carbon::createFromTimeStamp(filemtime($filename));
         } else {
             $optimized = 0;
         }  
@@ -40,7 +40,7 @@ class AdminDiagController extends BackController {
             'App.environment'           => App::environment(),
             'App.url'                   => Config::get('app.url'),
             'App.debug'                 => (int) Config::get('app.debug'),
-            'App.key'                   => $placeholder ? '<em>'.trans('diag::placeholder').'</em>' : trans('app.valid'),
+            'App.key'                   => $placeholder ? '<em>'.trans('app.placeholder').'</em>' : trans('app.valid'),
             'Cache.default'             => Config::get('cache.default'),
             'Modules.disabled'          => $disabled,
             'Mail.pretend'              => (int) Config::get('mail.pretend'),

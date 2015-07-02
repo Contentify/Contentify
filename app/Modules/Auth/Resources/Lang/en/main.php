@@ -10,9 +10,7 @@ return array(
     | This file keeps the language lines of the related module.
     |
     */
-   
-    'password'          => 'Password',
-   
+
     /*
      * Logout
      */

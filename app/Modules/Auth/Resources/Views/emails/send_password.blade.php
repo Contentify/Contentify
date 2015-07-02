@@ -12,7 +12,7 @@
             <td>{!! $user->email !!}</td>
         </tr>
         <tr>
-            <td><strong>{!! trans('auth::password') !!}:</strong></td>
+            <td><strong>{!! trans('app.password') !!}:</strong></td>
             <td>{!! $password !!}</td>
         </tr>
     </table>

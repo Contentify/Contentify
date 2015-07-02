@@ -82,6 +82,7 @@ return [
     'starts_at'     => 'Starts At',
     'created_at'    => 'Created At',
     'updated_at'    => 'Updated At',
+    'achieved_at'   => 'Achieved At',
     'internal'      => 'Internal',
     'featured'      => 'Featured',
     'state'         => 'State',
@@ -154,5 +155,11 @@ return [
     'role'          => 'Role',
     'message'       => 'Message',
     'subject'       => 'Subject',
+    'latest_msgs'   => 'Latest Feed-Messages', // Admin dashboard feed messages
+    'quick_access'  => 'Quick Access', // Admin dashboard quick access
+    'setting'       => 'Setting',
+    'value'         => 'Value',
+    'placeholder'   => 'Placeholder, please change!', // Diag module
+    'compiled'      => 'compiled',
 
 ];

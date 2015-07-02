@@ -9,7 +9,7 @@
 
     {!! Form::smartPassword() !!}
 
-    {!! Form::smartPassword('password_confirmation', trans('auth::password')) !!}
+    {!! Form::smartPassword('password_confirmation', trans('app.password')) !!}
     
     {!! Form::smartCaptcha() !!}
 

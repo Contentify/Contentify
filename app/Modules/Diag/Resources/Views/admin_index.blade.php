@@ -1,8 +1,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>{!! trans('diag::setting') !!}</th>
-            <th>{!! trans('diag::value') !!}</th>
+            <th>{!! trans('app.setting') !!}</th>
+            <th>{!! trans('app.value') !!}</th>
         </tr>
     </thead>
     <tbody>

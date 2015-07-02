@@ -2,7 +2,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{!! trans('dashboard::latest_messages') !!}</th>
+                <th>{!! trans('app.latest_msgs') !!}</th>
             </tr>
         </thead>
         <tbody>

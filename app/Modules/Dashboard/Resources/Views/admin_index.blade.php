@@ -1,5 +1,5 @@
 
-<h2 class="section">{!! trans('dashboard::quick_access') !!}</h2>
+<h2 class="section">{!! trans('app.quick_access') !!}</h2>
 <div class="quick-access clearfix">     
     <div>
         <a href="{!! url('admin/news') !!}">{!! HTML::fontIcon('newspaper-o') !!} News</a>
