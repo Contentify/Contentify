@@ -293,7 +293,6 @@ return [
         'Rss'                   => 'Thujohn\Rss\RssFacade',
         'InterImage'            => 'Intervention\Image\Facades\Image',
         'ValidatingTrait'       => 'Watson\Validating\ValidatingTrait',
-        //'Module' => 'Caffeinated\Modules\Facades\Module', // TODO: Delete this line if not needed!
     ],
 
 ];
