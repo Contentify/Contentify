@@ -40,7 +40,7 @@ class Download extends BaseModel {
 
                 }
 
-                if (! isset($imgData[2]) or ! $imgData[2]) {
+                if (isset($imgData[2]) and $imgData[2]) {
                     $download->is_image = true;
 
                     /*
