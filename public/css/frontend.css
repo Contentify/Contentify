@@ -7637,6 +7637,14 @@ textarea.model-search-box input {
 .widget-teams img {
   max-width: 100%;
 }
+.page-auth-login form {
+  position: relative;
+}
+.page-auth-login .btn-restore {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
 /*
  * Mainlayout
  */

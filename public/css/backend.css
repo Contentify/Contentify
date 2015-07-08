@@ -7710,13 +7710,13 @@ header .header-logo {
   font-weight: bold;
 }
 .page-head i {
+  display: inline-block;
+  min-width: 16px;
   margin-right: 10px;
   padding: 2px 3px;
   border-radius: 3px;
   background-color: #00afff;
-  color: #ffffff;
-  display: inline-block; 
-  min-width: 16px; 
+  color: white;
   text-align: center;
 }
 @media (max-width: 480px) {
