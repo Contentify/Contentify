@@ -271,7 +271,7 @@ class InstallController extends Controller {
         );
 
         /*
-         * Deaticvate foreign key checks.
+         * Deactivate foreign key checks.
          * This is one way to delete table with foreign constraints.
          * Usually it's not possible to delete a table that has an attribute
          * which is a foreign key of another table.

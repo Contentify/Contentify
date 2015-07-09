@@ -109,7 +109,7 @@ return [
 	|
 	*/
 
-	'cookie' => 'cotentify_session',
+	'cookie' => 'contentify_session',
 
 	/*
 	|--------------------------------------------------------------------------
