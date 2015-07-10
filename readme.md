@@ -22,7 +22,7 @@ You may download it here: [contentify.org/share/releases/contentify_beta3.zip](h
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
-### Demo-Server
+### Demo
 
 * URL: http://46.101.143.161/
 * Email: `demo@contentify.org`
