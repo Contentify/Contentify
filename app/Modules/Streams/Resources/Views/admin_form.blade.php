@@ -31,7 +31,6 @@
         function selectProvider(provider)
         {
             $("#provider option[value='" + provider + "']").attr('selected', true);
-            $('#provider').selecter('update');
         }
 
         /**

@@ -65,15 +65,6 @@
                 $('#right_lineup').val(data);
             });
         }
-
-        // "select#..." adresses the proper element when using Formstone\Selecter
-        $('select#_relation_leftTeam').change(loadLeftLineup);
-        $('select#_relation_rightTeam').change(loadRightLineup);
-
-        //if (! isset($model))
-            //$('select#_relation_leftTeam').change();
-            //$('select#_relation_rightTeam').change();
-        //endif
         
         // We can't add scores to a match that doesn't actually exist
         @if (isset($model))
