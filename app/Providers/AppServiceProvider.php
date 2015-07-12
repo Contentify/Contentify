@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Thujohn\Rss\Rss;
-use Jobs, Session, File, Carbon, Lang, Validator, Blade, App, DB;
+use Jobs, Session, Validator, Blade, App, DB;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -74,7 +74,7 @@ class AppServiceProvider extends ServiceProvider {
                 Session::put('ipLogged', date('d', $today)); // Keep in our session-mind the day we logged this IP
             }
         }
-
+       
         /*
         |--------------------------------------------------------------------------
         | Jobs
@@ -87,43 +87,6 @@ class AppServiceProvider extends ServiceProvider {
         Jobs::addLazy('updateStreams', 'App\Modules\Streams\UpdateStreamsJob');
         Jobs::addLazy('deleteUserActivities', 'Contentify\DeleteUserActivitiesJob');
 
-        /*
-        |--------------------------------------------------------------------------
-        | Language Settings
-        |--------------------------------------------------------------------------
-        |
-        | Set the language for the user (also if not logged in)
-        |
-        */
-
-        if (! Session::has('app.locale')) {
-            if (user()) {
-                Session::set('app.locale', user()->language->code);
-                App::setLocale(Session::get('app.locale'));
-            } else {
-                if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-                    $clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-                    $languages = File::directories(base_path().'/resources/lang');
-
-                    array_walk($languages, function(&$value, $key)
-                    {
-                        $value = basename($value);
-                    });
-
-                    if (in_array($clientLanguage, $languages)) {
-                        Session::set('app.locale', $clientLanguage);
-                    } else {
-                        Session::set('app.locale', Lang::getLocale());
-                    }
-                } else {
-                    Session::set('app.locale', Lang::getLocale());
-                }
-            }
-        } else {
-            App::setLocale(Session::get('app.locale'));
-        }
-
-        Carbon::setToStringFormat(trans('app.date_format'));
     }
 
     /**

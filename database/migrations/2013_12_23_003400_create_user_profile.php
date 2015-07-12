@@ -13,6 +13,7 @@ class CreateUserProfile extends Migration {
     {
         Schema::table('users', function($table)
         {
+            $table->timestamp('last_active');
             $table->integer('gender')->nullable()->default(0);
             $table->integer('country_id')->default('1');
             $table->integer('language_id')->default('1');

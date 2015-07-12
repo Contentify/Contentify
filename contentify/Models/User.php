@@ -3,9 +3,14 @@
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
 use App\Modules\Messages\Message;
 use App\Modules\Friends\Friendship;
-use Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
+use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
 class User extends SentryUser {
+
+    /**
+     * Decides how loing a user is considered being online. Unit: Seconds (= 5 Minutes)
+     */
+    const ONLINE_TIME = 300;
 
     const CACHE_KEY_MESSAGES = 'users::messageCounter.';
 
@@ -69,6 +74,16 @@ class User extends SentryUser {
                 Session::forget('locale');
             }
         });
+    }
+
+    /**
+     * Get the attributes that should be converted to dates.
+     *
+     * @return array
+     */
+    public function getDates()
+    {
+        return array_merge(parent::getDates(), array('activated_at', 'last_login', 'last_active'));
     }
 
     /**
@@ -410,6 +425,28 @@ class User extends SentryUser {
         Cache::forever($key, $result->count);
 
         return $result->count;
+    }
+
+    /**
+     * Decides either this user is online or offline
+     * 
+     * @return boolean
+     */
+    public function isOnline()
+    {
+        return (time() - $this->last_active->timestamp <= self::ONLINE_TIME);
+    }
+
+    /**
+     * Scope a query to only include users who are online.
+     *
+     * @return Builder
+     */
+    public function scopeOnline($query)
+    {
+        $dateTime = new Carbon();
+        $dateTime->subSeconds(self::ONLINE_TIME);
+        return $query->where('last_active', '>=', $dateTime);
     }
 
 }
