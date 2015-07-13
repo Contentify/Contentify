@@ -24,7 +24,7 @@ class RegistrationController extends FrontController {
              * Validation
              */
             $rules = array(
-                'username'  => 'alpha_spaces|required|min:3|not_in:edit,password|unique:users,username', 
+                'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password|unique:users,username', 
                 'email'     => 'email|unique:users,email', 
                 'password'  => 'required|min:6|confirmed'
             );

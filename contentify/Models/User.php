@@ -109,7 +109,7 @@ class User extends SentryUser {
                 'signature'     => $this->signature,
             ],
             [
-                'username'      => "alpha_spaces|required|min:3|not_in:edit,password|unique:users,username,{$this->id},id",
+                'username'      => "alpha_numeric_spaces|required|min:3|not_in:edit,password|unique:users,username,{$this->id},id",
                 'email'         => "email|required|unique:users,email,{$this->id},id",
                 'gender'        => 'between:0,4',
                 'country_id'    => 'exists:countries,id',

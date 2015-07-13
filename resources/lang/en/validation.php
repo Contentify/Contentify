@@ -103,6 +103,6 @@ return [
     |
     */
 
-    'alpha_spaces'     => 'The :attribute may only contain letters and spaces.'
+    'alpha_numeric_spaces' => 'The :attribute may only contain letters and spaces.'
     
 ];

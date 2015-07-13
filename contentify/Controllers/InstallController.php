@@ -41,7 +41,7 @@ class InstallController extends Controller {
                         'password_confirmation' => $password_confirmation,
                     ],
                     [
-                        'username'  => 'alpha_spaces|required|min:3|not_in:edit,password,daemon',
+                        'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password,daemon',
                         'email'     => 'email|required|unique:users,email',
                         'password'  => 'required|min:6|confirmed',
                     ]
