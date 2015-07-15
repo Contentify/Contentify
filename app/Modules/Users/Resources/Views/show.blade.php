@@ -15,7 +15,17 @@
                 </tr>
                 <tr>
                     <th class="title">{!! trans('users::gender') !!}:</th>
-                    <td>{{ $user->gender }}</td>
+                    <td>
+                        @if ($user->gender == 0)
+                            {!! HTML::fontIcon('genderless') !!} {{ trans('users::unknown') }}
+                        @elseif ($user->gender == 1)
+                            {!! HTML::fontIcon('venus') !!} {{ trans('users::female') }}
+                        @elseif ($user->gender == 2)
+                            {!! HTML::fontIcon('mars') !!} {{ trans('users::male') }}
+                        @elseif ($user->gender == 3)
+                            {!! HTML::fontIcon('genderless') !!} {{ trans('users::other') }}
+                        @endif                        
+                    </td>
                 </tr>
                 <tr>
                     <th class="title">{!! trans('users::language') !!}:</th>
