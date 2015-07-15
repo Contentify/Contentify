@@ -434,6 +434,10 @@ class User extends SentryUser {
      */
     public function isOnline()
     {
+        if ($this->last_active == null) {
+            return false;
+        }
+
         return (time() - $this->last_active->timestamp <= self::ONLINE_TIME);
     }
 

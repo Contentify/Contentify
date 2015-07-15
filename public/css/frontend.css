@@ -7596,13 +7596,13 @@ textarea.model-search-box input {
   padding: 0px 20px;
   text-align: center;
 }
-.page-friends .friend span {
-  display: block;
-  margin-top: 10px;
-}
 .page-friends .friend img {
   max-width: 100%;
   max-height: 240px;
+}
+.page-friends .friend .name {
+  display: block;
+  margin-top: 10px;
 }
 .page-friends .friend .actions {
   margin-top: 20px;

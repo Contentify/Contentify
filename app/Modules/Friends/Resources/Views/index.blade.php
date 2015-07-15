@@ -10,7 +10,12 @@
                     <img src="{!! asset('theme/user.png') !!}" alt="{!! $friend->username !!}">
                 @endif
             </div>
-            <span>{!! $friend->username !!}</span>
+            <div class="name">
+                @if ($friend->isOnline())
+                    {!! HTML::fontIcon('check-circle') !!}
+                @endif
+                {!! $friend->username !!} 
+            </div>
         </a>
 
         @if (user() and $user->id == user()->id)
