@@ -26,7 +26,6 @@ class Kernel extends HttpKernel {
      */
     protected $routeMiddleware = [
         'auth'          => \App\Http\Middleware\Authenticate::class,
-        //'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class, // TODO: Delete this?
         'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'csrf'          => \App\Http\Middleware\VerifyCsrfToken::class,
     ];

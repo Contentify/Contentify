@@ -12,7 +12,7 @@ class EditorTemplatesController extends BackController {
      */
     public function index()
     {
-        // TODO: Permission check
+        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
 
         $templates = Fragment::all();
 
@@ -27,7 +27,7 @@ class EditorTemplatesController extends BackController {
      */
     public function show($id)
     {
-        // TODO: Permission check
+        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
 
         $template = Fragment::findOrFail($id);
 

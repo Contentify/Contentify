@@ -54,7 +54,7 @@ class PostsController extends FrontController {
 
         if (! $valid) {
             return Redirect::to('forums/threads/create')
-                ->withInput()->withErrors($forumPost->getErrors()); // TODO: Keep this redirect??
+                ->withInput()->withErrors($forumPost->getErrors());
         }  
 
         $forumThread->posts_count++;
@@ -108,8 +108,7 @@ class PostsController extends FrontController {
          * If the post is a root post, delete the thread instead of the post.
          */
         if ($forumPost->root) {
-            // TODO: What to do? Redirect to the following?
-            //return Redirect::action('forums/thread/update/'.$forumPost->forum_thread_id);
+            return Redirect::action('forums/thread/update/'.$forumPost->forum_thread_id);
         }
 
         $forumPost->fill(Input::all());
@@ -118,7 +117,7 @@ class PostsController extends FrontController {
         
         if (! $valid) {
             return Redirect::to('forums/threads/edit/'.$forumPost->id)
-                ->withInput()->withErrors($forumPost->getErrors()); // TODO: Keep this redirect??
+                ->withInput()->withErrors($forumPost->getErrors());
         }
 
         $this->alertFlash(trans('app.updated', ['Post']));

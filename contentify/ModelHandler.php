@@ -414,7 +414,7 @@ class ModelHandler {
                         }
                     }
                 } else {
-                    // TODO Ignore missing files for now
+                    // Ignore missing files
                 }
             }
         }
@@ -552,7 +552,7 @@ class ModelHandler {
                         }
                     }
                 } else {
-                    // TODO Ignore missing files for now
+                    // Ignore missing files
                 }
             }
         }

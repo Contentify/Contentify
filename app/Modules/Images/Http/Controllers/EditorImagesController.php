@@ -12,7 +12,7 @@ class EditorImagesController extends BaseController {
      */
     public function index()
     {
-        // TODO: Permission check
+        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
 
         $images = Image::orderBy('created_at', 'desc')->take(9)->get();
 
@@ -27,7 +27,7 @@ class EditorImagesController extends BaseController {
      */
     public function search()
     {
-        // TODO: Permission check
+        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
         
         $tag = Input::get('tag');
 
