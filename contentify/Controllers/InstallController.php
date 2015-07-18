@@ -500,6 +500,7 @@ class InstallController extends Controller {
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
             $table->string('provider');
+            $table->string('thumbnail')->nullable();
             $table->boolean('online')->default(false);
             $table->integer('viewers')->default(0);
             $table->timestamp('renewed_at');

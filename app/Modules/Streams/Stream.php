@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Streams;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Stream extends BaseModel {
@@ -8,7 +8,7 @@ class Stream extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'url', 'permanent_id', 'provider'];
+    protected $fillable = ['title', 'url', 'permanent_id', 'provider', 'thumbnail'];
 
     protected $slugable = true;
 

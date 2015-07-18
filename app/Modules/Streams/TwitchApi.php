@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Streams;
-
+
 use DateTime;
 
 class TwitchApi extends StreamApi
@@ -14,7 +14,7 @@ class TwitchApi extends StreamApi
      * Channel list API call
      */
     const CHANNEL_LIST = 'streams?channel=';
-    
+   
     /**
      * Returns a JSON object that also includes an array of stream infos
      * 
@@ -54,6 +54,7 @@ class TwitchApi extends StreamApi
                 if ($streamInfo->channel->name == $stream->permanent_id) {
                     $stream->online     = true;
                     $stream->viewers    = $streamInfo->viewers;
+                    $stream->thumbnail  = $streamInfo->preview->medium;
                     break;
                 }
             }

@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Streams;
-
+
 use DateTime;
 
 class HitboxApi extends StreamApi
@@ -14,6 +14,11 @@ class HitboxApi extends StreamApi
      * Stream (=media) info API call - Docs: http://developers.hitbox.tv/media
      */
     const MEDIA_LIST = 'media/live/';
+
+    /**
+     * Prefix URL of the media server (for thumbnails)
+     */
+    const MEDIA_URL = 'http://edge.vie.hitbox.tv';
     
     /**
      * Returns a JSON object that also includes an array of stream infos
@@ -54,6 +59,7 @@ class HitboxApi extends StreamApi
                 if ($streamInfo->media_name == $stream->permanent_id) {
                     $stream->online     = $streamInfo->media_is_live;
                     $stream->viewers    = $streamInfo->media_views;
+                    $stream->thumbnail  = self::MEDIA_URL.$streamInfo->media_thumbnail;
                     break;
                 }
             }

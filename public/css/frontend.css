@@ -6965,6 +6965,7 @@ textarea.model-search-box input {
 .page-videos .video {
   float: left;
   width: 33%;
+  margin-bottom: 10px;
   text-align: center;
 }
 .page-videos .video div {
@@ -6982,6 +6983,22 @@ textarea.model-search-box input {
 }
 .widget-videos img.cover {
   max-width: 100%;
+}
+.page-streams .stream {
+  float: left;
+  width: 33%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.page-streams .stream div {
+  width: 90%;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #ddd;
 }
 .page-streams .stream-player iframe {
   width: 100%;

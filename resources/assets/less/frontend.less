@@ -121,16 +121,23 @@ a:hover { color: @primaryColor; }
     .news .image img { max-width: 100% }
 }
 
-.page-videos .video { 
-    float: left; width: 33%; text-align: center;
-    div { width: 90%; height: 150px; margin-left: auto; margin-right: auto; background-position: center; background-repeat: no-repeat; background-size: cover }
+.page-videos {
+    .video { 
+        float: left; width: 33%; margin-bottom: 10px; text-align: center;
+        div { width: 90%; height: 150px; margin-left: auto; margin-right: auto; background-position: center; background-repeat: no-repeat; background-size: cover }
+    }
+    .video-player iframe { width: 100%; border: none }
 }
-
-.page-videos .video-player iframe { width: 100%; border: none }
 
 .widget-videos img.cover { max-width: 100% }
 
-.page-streams .stream-player iframe { width: 100%; border: none }
+.page-streams {
+    .stream { 
+        float: left; width: 33%; margin-bottom: 10px; text-align: center;
+        div { width: 90%; height: 150px; margin-left: auto; margin-right: auto; background-position: center; background-repeat: no-repeat; background-size: cover; background-color: #ddd; }
+    }
+    .stream-player iframe { width: 100%; border: none }
+}
 
 .widget-streams {
     a { display: block; position: relative;  }
