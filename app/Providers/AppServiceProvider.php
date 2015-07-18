@@ -85,7 +85,7 @@ class AppServiceProvider extends ServiceProvider {
         */
 
         Jobs::addLazy('updateStreams', 'App\Modules\Streams\UpdateStreamsJob');
-        Jobs::addLazy('deleteUserActivities', 'Contentify\DeleteUserActivitiesJob');
+        Jobs::addLazy('deleteUserActivities', 'Contentify\Models\DeleteUserActivitiesJob');
 
     }
 

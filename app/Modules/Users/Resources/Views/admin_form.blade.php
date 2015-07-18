@@ -30,7 +30,7 @@
         var $self = $(this);
 
         $.ajax({
-            url: contentify.baseUrl + 'admin/users/{!! $model->id}}/' + ban,
+            url: contentify.baseUrl + 'admin/users/{!! $model->id !!}}/' + ban,
             type: 'POST'
         }).success(function(data)
         {
