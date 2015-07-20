@@ -6776,6 +6776,17 @@ textarea.form-group textarea {
 .form-horizontal .control-label {
   text-align: left;
 }
+.image-upload-prev {
+  margin-bottom: 10px;
+}
+.image-upload-prev img {
+  max-width: 100%;
+  max-height: 32px;
+  transition: all 0.1s linear;
+}
+.image-upload-prev img:hover {
+  max-height: 200px;
+}
 /* Toolbar */
 .toolbar.top {
   min-height: 26px;

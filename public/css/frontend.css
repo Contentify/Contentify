@@ -6731,6 +6731,12 @@ textarea.form-group textarea {
 .form-group textarea {
   height: auto;
 }
+.image-upload-prev {
+  margin-bottom: 10px;
+}
+.image-upload-prev img {
+  max-width: 100%;
+}
 /* Content filter UI */
 .content-filter-ui select {
   display: block;

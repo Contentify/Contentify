@@ -538,7 +538,21 @@ class FormBuilder extends OriginalFormBuilder {
     {
         if (! $title) $title = trans('app.image');
 
-        return self::smartFile($name, $title);
+        $prev = '';
+        $value = $this->getDefaultValue($name, null);
+        if ($value and method_exists($this->model, 'uploadPath')) {
+            $path = $this->model->uploadPath().$value;
+            $prev = '<div class="image-upload-prev">'
+                .'<a href="'.$path.'" target="_blank">'.HTML::image($path, $title).'</a>'
+                .'</div>';
+        }
+
+        $partial = self::smartGroupOpen($name, $title)
+            .$prev
+            .self::file($name)
+            .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
+            .self::smartGroupClose();
+        return $partial;
     }
 
     /**
