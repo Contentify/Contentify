@@ -27,6 +27,7 @@ class JoinController extends FrontController {
                 '<strong>'.trans('app.role').':</strong> '.Input::get('role').'<br><br>'.
                 '<strong>'.trans('contact::application').':</strong> <br><br>'. $msg->text;
             $msg->forceSave();
+            $msg->notify();
 
             $this->alertSuccess(trans('contact::message_sent'));
         } else {

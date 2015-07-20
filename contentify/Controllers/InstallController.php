@@ -81,12 +81,6 @@ class InstallController extends Controller {
                 $user->addGroup($adminGroup);
                 
                 /*
-                 * Add user to group "Admins"
-                 */
-                $adminGroup = Sentry::findGroupById(5); 
-                $user->addGroup($adminGroup);
-                
-                /*
                  * Delete the file that indicates if the app is installed or not
                  */
                 $filename = storage_path(self::INSTALL_FILE);
