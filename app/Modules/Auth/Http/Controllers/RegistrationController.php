@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
 
 use App\Modules\Languages\Language;
-use App, Lang, Str, View, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
+use Response, User, App, Lang, Str, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {
 
@@ -72,4 +72,20 @@ class RegistrationController extends FrontController {
             return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => $e->getMessage()]);
         }
     }
+
+    /**
+     * Check if a username is already taken
+     * 
+     * @return Response
+     */
+    public function checkUsername($username)
+    {
+        $user = User::whereUsername($username)->first();
+
+        if ($user) {
+            return Response::make('1');
+        }
+        return Response::make('0');
+    }
+
 }

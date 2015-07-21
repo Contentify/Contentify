@@ -21,6 +21,7 @@ return array(
      */
     'register'          => 'Register',
     'registered'        => 'Registration successful!',
+    'username_taken'    => 'Username already taken.',
 
     /*
      * Restore password

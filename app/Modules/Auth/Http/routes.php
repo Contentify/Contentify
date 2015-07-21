@@ -9,3 +9,5 @@ ModuleRoute::controller('auth/login', 'LoginController', ['getIndex' => 'login']
 ModuleRoute::controller('auth/logout', 'LogoutController', ['getIndex' => 'logout']);
 
 ModuleRoute::controller('auth/restore', 'RestorePasswordController');
+
+ModuleRoute::get('auth/username/check/{username}', 'RegistrationController@checkUsername');
