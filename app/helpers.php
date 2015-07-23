@@ -148,6 +148,41 @@ function page_class()
 }
 
 /**
+ * Replaces ASCII-Codes with HTML-Codes for emoji icons.
+ * We should cache the outcome.
+ * 
+ * @param  string $text
+ * @return string
+ */
+function emojis($text)
+{
+    $emojis = [
+        '&lt;/3'    => 'Heart', // </3
+        '&lt;3'     => 'Heart Broken', // <3
+        ':)'        => 'Smile',
+        ':D'        => 'Yell',
+        '=)'        => 'Big Smile',
+        ':*('       => 'Cry',
+        ':('        => 'Sad',
+        ':O'        => 'Suprise',
+        ':p'        => 'Tongue',
+        ';)'        => 'Wink',
+        'xD'        => 'Hilarious',
+        '&gt;.&lt;' => 'Afraid', // >.<
+        ':|'        => 'Neutral',
+        ':x'        => 'Speechless',
+    ];
+
+    foreach ($emojis as $short => $long) {
+        $image  = strtolower(str_replace(' ', '_', $long));
+        $path   = asset('theme/emojis/'.$image.'.png');
+        $text   = str_replace($short, '<img class="emoji" src="'.$path.'" title="'.$long.'" alt="'.$long.'">', $text);
+    }    
+
+    return $text;
+}
+
+/**
  * Returns true if the application is installed
  * 
  * @return bool

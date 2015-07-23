@@ -38,6 +38,7 @@ class Comment extends BaseModel {
     {
         $bbcode = new BBCode();
         $rendered = $bbcode->render($this->text);
+        $rendered = emojis($rendered);
         Cache::put(self::CACHE_KEY.$this->id, $rendered, 60);
     }
 
