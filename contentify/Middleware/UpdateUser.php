@@ -1,6 +1,6 @@
 <?php namespace Contentify\Middleware;
 
-use Session, Carbon, App, File, Lang, Closure;
+use DB, Session, Carbon, App, File, Lang, Closure;
 
 class UpdateUser {
 
@@ -15,11 +15,43 @@ class UpdateUser {
     {
         /*
         |--------------------------------------------------------------------------
+        | Visitor Statistics
+        |--------------------------------------------------------------------------
+        |
+        | Updates the global visitor statistics.
+        |
+        */
+
+        if (! App::runningInConsole() and installed()) {
+            $today          = time();
+            $isNewVisitor   = (Session::get('ipLogged') == null);
+
+            if (Session::get('ipLogged') and (Session::get('ipLogged') != date('d', $today))) {
+                $isNewVisitor = true; // Change of day makes every user a new visitor
+            }
+
+            if ($isNewVisitor) {   
+                $ip = getenv('REMOTE_ADDR'); // Get the client agent's IP
+
+                $rowsAffected = DB::table('visits')->whereIp($ip)->whereVisitedAt(date('Y-m-d', $today))
+                                    ->increment('user_agents');
+
+                if (! $rowsAffected) {
+                    DB::table('visits')
+                        ->insert(array('ip' => $ip, 'user_agents' => 1, 'visited_at' => date('Y-m-d', $today)));
+                }
+                
+                Session::put('ipLogged', date('d', $today)); // Keep in our session-mind the day we logged this IP
+            }
+        }
+
+        /*
+        |--------------------------------------------------------------------------
         | Update User's Last Active Time
         |--------------------------------------------------------------------------
         |
-        | To decide if a user si only or not we use an attribute in the 
-        | users table/user model called last_active. We update it to 
+        | To decide if a user is only or not we use an attribute in the 
+        | users table/model called last_active. We update it to 
         | the current time in a specific interval.
         |
         */
