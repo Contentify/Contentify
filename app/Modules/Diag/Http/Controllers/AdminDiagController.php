@@ -35,6 +35,13 @@ class AdminDiagController extends BackController {
         $opcacheExists = (int) function_exists('opcache_get_status');
         $opcacheEnabled = $opcacheExists and opcache_get_status()['opcache_enabled'] ? 1 : 0;
         $settings = [
+            'PHP.version'               => phpversion(),
+            'PHP.os'                    => PHP_OS,
+            'PHP.ini'                   => php_ini_loaded_file(),
+            'PHP.memory_limit'          => ini_get('memory_limit'),
+            'PHP.max_execution_time'    => ini_get('max_execution_time'),
+            'PHP.post_max_size'         => ini_get('post_max_size'),
+            'PHP.upload_max_filesize'   => ini_get('upload_max_filesize'),
             'Laravel.version'           => $appClass::VERSION,
             'Artisan optimized'         => $optimized,
             'App.environment'           => App::environment(),
@@ -46,8 +53,6 @@ class AdminDiagController extends BackController {
             'Mail.pretend'              => (int) Config::get('mail.pretend'),
             'OPcache.installed'         => $opcacheExists,
             'OPcache.enabled'           => $opcacheEnabled,
-            'PHP.memory_limit'          => ini_get('memory_limit'),
-            'PHP.max_execution_time'    => ini_get('max_execution_time'),
         ];
 
         /*

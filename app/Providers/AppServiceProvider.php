@@ -2,7 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Thujohn\Rss\Rss;
-use Jobs, Session, Validator, Blade, App, DB;
+use Jobs, Validator, Blade;
 
 class AppServiceProvider extends ServiceProvider {
 
