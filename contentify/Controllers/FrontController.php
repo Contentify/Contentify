@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use Input, View, Redirect;
+use URL, Input, View, Redirect;
 
 abstract class FrontController extends BaseController {
 
@@ -29,7 +29,9 @@ abstract class FrontController extends BaseController {
      */
     public function search()
     {
-        return Redirect::route(strtolower($this->controllerName).'.index')->withInput(Input::only('search'));
+        $url = URL::previous();
+
+        return Redirect::to($url)->withInput(Input::only('search'));
     }
     
 }
