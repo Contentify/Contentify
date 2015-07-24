@@ -221,35 +221,38 @@ a:hover { color: @primaryColor; }
 @forumsBoxColor: #EEE;
 
 /* Forums index page */
-.page-forums {
+.page-forums-index {
     .action { border-radius: 3px; background-color: @primaryColor; color: white }
-    .root-forum h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+    .root-forum {
+        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+        margin-top: 20px;
+    }
     .sub-forums { .clearfix(); }
     .sub-forum {     
         padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
+        &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
         .info { 
             width: 60%; float: left;
             .desc { display: block; font-size: 10px }
         }
-        .threads { width: 10%; float: left }
+        .counter { width: 15%; float: left }
         .latest { 
-            width: 30%; float: left;
+            width: 25%; float: left;
             .meta { display: block; font-size: 10px }
         }
     }
 }
 
 /* Forums show_forum page */
-.page-forums {
+.page-forums-show-forum {
     .buttons { margin-bottom: 20px; }
     .sub-forums {
-        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
-        margin-bottom: 20px; 
+        margin-bottom: 20px;
     }
-    .threads {
+    .threads, .sub-forums {
         @forumsBoxColor: #EEE;
         .clearfix(); 
-        .thread {
+        .thread, .sub-forum {
             padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
             &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
             .info { 
@@ -257,9 +260,9 @@ a:hover { color: @primaryColor; }
                 .sticky, .closed { padding: 2px; border-radius: 3px; background-color: @primaryColor; font-size: 10px; color: white; }
                 .meta { display: block; font-size: 10px }
             }
-            .posts { width: 10%; float: left }
+            .counter { width: 15%; float: left }
             .latest { 
-                width: 30%; float: left;
+                width: 25%; float: left;
                 .meta { display: block; font-size: 10px }
             }
         }
@@ -299,7 +302,7 @@ a:hover { color: @primaryColor; }
 
 /* Forums show_new_posts page */
 .page-threads.page-forums-threads-new {
-    .page-forums();
+    .page-forums-index();
 }
 
 .widget-latest-threads {

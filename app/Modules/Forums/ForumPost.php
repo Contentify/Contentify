@@ -85,7 +85,7 @@ class ForumPost extends BaseModel {
 
     /**
      * Select only those forums the user has access to.
-     * WARNING: Creates JOINs with the forum_threads and the forums table.
+     * WARNING: Creates JOINs with the forum_threads and the forums tables.
      *
      * @param Builder   $query  The Eloquent Builder object
      * @param User      $user   User model or null if it's the current client

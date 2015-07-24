@@ -13,7 +13,17 @@
 
 @if (sizeof($forum->forums) > 0)
     <div class="sub-forums">
-        <h2>Forums</h2>
+        <div class="sub-forum head">
+            <div class="info">
+                Forums
+            </div>
+            <div class="counter">
+                Threads
+            </div>
+            <div class="latest">
+                {!! trans('app.latest') !!}
+            </div>
+        </div>
 
         @foreach($forum->forums as $subForum)
             <div class="sub-forum">
@@ -27,7 +37,7 @@
                     </a>
                 </div>
 
-                <div class="threads">
+                <div class="counter">
                     {{ $subForum->threads_count }}
                 </div>
 
@@ -50,7 +60,7 @@
         <div class="info">
             Thread
         </div>
-        <div class="posts">
+        <div class="counter">
             Posts
         </div>
         <div class="latest">
@@ -77,7 +87,7 @@
                 </a>
             </div>
             
-            <div class="posts">
+            <div class="counter">
                 {{ $thread->posts_count }}
             </div>
 

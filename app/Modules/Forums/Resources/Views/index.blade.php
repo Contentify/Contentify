@@ -8,7 +8,17 @@
 
 @foreach($forums as $forum)
     <div class="root-forum">
-        <h2>{{ $forum->title }}</h2>
+        <div class="sub-forum head">
+            <div class="info">
+                {{ $forum->title }}
+            </div>
+            <div class="counter">
+                Threads
+            </div>
+            <div class="latest">
+                {!! trans('app.latest') !!}
+            </div>
+        </div>
 
         <div class="sub-forums">
             @foreach($forum->forums as $subForum)
@@ -23,7 +33,7 @@
                         </a>
                     </div>
 
-                    <div class="threads">
+                    <div class="counter">
                         {{ $subForum->threads_count }}
                     </div>
                     
