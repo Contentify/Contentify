@@ -6,6 +6,14 @@ class ForumPost extends BaseModel {
 
     use SoftDeletingTrait;
 
+    /**
+     * Pagination: Show how many posts per page?
+     */
+    const PER_PAGE = 20;
+
+    /**
+     * Name of the cache key
+     */
     const CACHE_KEY = 'forums::posts.';
 
     protected $dates = ['deleted_at'];
@@ -115,6 +123,29 @@ class ForumPost extends BaseModel {
         } else {
             return $query->whereInternal(0)->whereNull('team_id');
         }  
+    }
+
+    /**
+     * Returns a URL that links to the thread of the current post and focuses the current post
+     * 
+     * @return string
+     */
+    public function paginatedPostUrl()
+    {
+        // Counts the posts before the current post
+        $count = DB::table('forum_posts')->whereThreadId($this->thread_id)->whereNull('deleted_at')
+            ->where('created_at', '<', $this->created_at)->orderBy('created_at', 'asc')->count();
+
+        $extension = '';
+        if ($count >= self::PER_PAGE) {
+            $page       = floor($count / self::PER_PAGE + 1);
+            $extension  = '?page='.$page;
+        }
+        $extension .= '#forum-post-id-'.$this->id;
+
+        $url = 'forums/threads/'.$this->thread->id.'/'.$this->thread->slug.$extension;
+
+        return $url;
     }
 
 }

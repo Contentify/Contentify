@@ -7473,6 +7473,19 @@ textarea.model-search-box input {
   font-size: 10px;
   text-align: right;
 }
+.page-threads .post.highlight,
+.page-posts .post.highlight {
+  animation-name: posthighlight;
+  animation-duration: 3s;
+}
+@keyframes posthighlight {
+  0% {
+    border-color: #00afff;
+  }
+  100% {
+    border-color: #eeeeee;
+  }
+}
 /* Forums show_new_posts page */
 .page-threads.page-forums-threads-new .action {
   border-radius: 3px;

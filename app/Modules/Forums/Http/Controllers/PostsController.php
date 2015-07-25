@@ -65,7 +65,8 @@ class PostsController extends FrontController {
         $user->save();
 
         $this->alertFlash(trans('app.created', ['Post']));
-        return Redirect::to('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
+
+        return Redirect::to($forumPost->paginatedPostUrl());
     }
 
     /**
@@ -122,7 +123,7 @@ class PostsController extends FrontController {
 
         $this->alertFlash(trans('app.updated', ['Post']));
 
-        return Redirect::to('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
+        return Redirect::to($forumPost->paginatedPostUrl());
     }
 
     /**
@@ -152,6 +153,9 @@ class PostsController extends FrontController {
         $forumPost->delete();
 
         $thread->refresh();
+
+        $this->alertFlash(trans('app.deleted', ['Post']));
+        return Redirect::to('forums/threads/'.$thread->id.'/'.$thread->slug);
     }
 
     /**

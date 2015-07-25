@@ -18,7 +18,7 @@ class ThreadsController extends FrontController {
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $forumPosts = ForumPost::whereThreadId($forumThread->id)->orderBy('created_at', 'asc')
-            ->paginate(20)->setPath(Request::url());
+            ->paginate(ForumPost::PER_PAGE)->setPath(Request::url());
 
         $this->pageView('forums::show_thread', compact('forumThread', 'forumPosts'));
     }

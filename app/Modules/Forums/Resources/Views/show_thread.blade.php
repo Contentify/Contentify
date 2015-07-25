@@ -26,6 +26,10 @@
     @endforeach
 </div>
 
+@if ($forumPostNumber - $forumPosts->firstItem() > 2)
+    {!! $forumPosts->render() !!}
+@endif
+
 @if ($forumThread->closed)
     {!! trans('forums::closed_info') !!}
 @else
@@ -34,11 +38,18 @@
     @endif
 @endif
 
-{!! $forumPosts->render() !!}
-
 <script>
     $(document).ready(function()
     {
+        if (window.location.hash) {
+            var hash = window.location.hash; // Note: Starts with #
+            var $el = $(hash);
+
+            if ($el.length > 0) {
+                $el.addClass('highlight');
+            }
+        }
+
         $('.page .post .quote').click(function(event)
         {
             event.preventDefault();

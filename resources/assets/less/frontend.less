@@ -297,7 +297,20 @@ a:hover { color: @primaryColor; }
             }
             .updated { padding: @padding; font-size: 10px; text-align: right; }
         }
+        &.highlight {
+            animation-name: posthighlight;
+            animation-duration: 3s;
+        }
     }
+}
+
+@keyframes posthighlight {
+  0% {
+    border-color: @primaryColor;
+  }
+  100% {
+    border-color: @forumsBoxColor;
+  }
 }
 
 /* Forums show_new_posts page */
