@@ -9,6 +9,7 @@ class AdminForumsController extends BackController {
     use ModelHandlerTrait { 
         create as traitCreate;
         edit as traitEdit;
+        update as traitUpdate;
     }
 
     protected $icon = 'comment';
@@ -47,7 +48,7 @@ class AdminForumsController extends BackController {
     {
         $this->traitCreate();
 
-        $forums = Forum::all();      
+        $forums = Forum::all();
 
         $this->layout->page->with('forums', $forums);
     }
@@ -59,6 +60,30 @@ class AdminForumsController extends BackController {
         $forums = Forum::where('id', '!=', $id)->get();
 
         $this->layout->page->with('forums', $forums);
+    }
+
+    public function update($id)
+    {
+        $forum = Forum::findOrFail($id);
+
+        $oldParentId = $forum->forum_id;
+
+        $response = $this->traitUpdate($id);
+
+        $forum = Forum::findOrFail($id);
+
+        /*
+         * If the forum's parent forum changed we have to refresh
+         * the old and the new parent forum's meta infos
+         */
+        if ($forum->forum_id != $oldParentId) {
+            $oldParentForum = Forum::find($oldParentId);
+            $oldParentForum->refresh();
+
+            $forum->forum->refresh();
+        }
+
+        return $response;
     }
 
 }
