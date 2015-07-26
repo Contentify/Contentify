@@ -449,6 +449,9 @@ class FormBuilder extends OriginalFormBuilder {
             $options[''] = '-';
         }
         foreach ($models as $model) {
+            // A relation might have a value with the key 'title' that
+            // contains the name of the model attribute that represents
+            // the model title
             if (isset($relation['title'])) {
                 $modelTitle = $relation['title'];
             } else {
