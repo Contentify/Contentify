@@ -6,12 +6,12 @@
 <div class="buttons">
 @if (user())
     @if (user()->hasAccess('forums', PERM_UPDATE))
-        <a href="{!! url('forums/threads/sticky/'.$forumThread->id) !!}">{!! trans('forums::sticky') !!}</a>
-        <a href="{!! url('forums/threads/closed/'.$forumThread->id) !!}">{!! trans('forums::closed') !!}</a>
-        <a href="{!! url('forums/threads/move/'.$forumThread->id) !!}">{!!  trans('forums::move') !!}</a>
+        <a class="btn btn-default" href="{!! url('forums/threads/sticky/'.$forumThread->id) !!}">{!! trans('forums::sticky') !!}</a>
+        <a class="btn btn-default" href="{!! url('forums/threads/closed/'.$forumThread->id) !!}">{!! trans('forums::closed') !!}</a>
+        <a class="btn btn-default" href="{!! url('forums/threads/move/'.$forumThread->id) !!}">{!!  trans('forums::move') !!}</a>
     @endif
     @if (user()->hasAccess('forums', PERM_DELETE))
-        <a href="{!! url('forums/threads/delete/'.$forumThread->id) !!}">{!! trans('app.delete') !!}</a>
+        <a class="btn btn-default" href="{!! url('forums/threads/delete/'.$forumThread->id) !!}">{!! trans('app.delete') !!}</a>
     @endif
 @endif
 </div>

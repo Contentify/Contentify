@@ -8,7 +8,7 @@
 </h1>
 
 <div class="buttons">
-    <a class="create" href="{!! url('forums/threads/create/'.$forum->id) !!}">{!! trans('forums::create_thread') !!}</a>
+    <a class="btn btn-default create" href="{!! url('forums/threads/create/'.$forum->id) !!}">{!! trans('forums::create_thread') !!}</a>
 </div>
 
 @if (sizeof($forum->forums) > 0)

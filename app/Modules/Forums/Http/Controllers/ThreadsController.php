@@ -32,7 +32,7 @@ class ThreadsController extends FrontController {
     {
         $forumThreads = ForumThread::isAccessible()->where('forum_threads.updated_at', '>', user()->last_login)->get();
 
-        $this->pageView('forums::show_new_thread', compact('forumThreads'));
+        $this->pageView('forums::show_new_threads', compact('forumThreads'));
     }
 
     /**

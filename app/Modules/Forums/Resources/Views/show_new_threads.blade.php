@@ -8,7 +8,7 @@
         <div class="info">
             Thread
         </div>
-        <div class="posts">
+        <div class="counter">
             Posts
         </div>
         <div class="latest">
@@ -31,7 +31,7 @@
                 </a>
             </div>
             
-            <div class="posts">
+            <div class="counter">
                 {{ $thread->posts_count }}
             </div>
 

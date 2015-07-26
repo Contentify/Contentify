@@ -12,18 +12,18 @@
     <div class="content">
         <div class="top-bar">
             <span class="date-time">{!! $forumPost->created_at->dateTime() !!}</span>
-            <div class="buttons">
+            <div class="buttons hidden-lg">
                 @if (user())
-                    <a class="quote" href="#">{!! trans('forums::quote') !!}</a>
+                    <a class="btn btn-default btn-xs quote" href="#">{!! trans('forums::quote') !!}</a>
                     @if (user()->hasAccess('forums', PERM_UPDATE) or $forumPost->creator->id == user()->id)
-                        <a href="{!! url('forums/posts/edit/'.$forumPost->id) !!}">{!! trans('app.edit') !!}</a>
+                        <a class="btn btn-default btn-xs" href="{!! url('forums/posts/edit/'.$forumPost->id) !!}">{!! trans('app.edit') !!}</a>
                     @endif
                     @if (! $forumPost->root and (user()->hasAccess('forums', PERM_DELETE) or $forumPost->creator->id == user()->id))
-                        <a href="{!! url('forums/posts/delete/'.$forumPost->id) !!}">{!! trans('app.delete') !!}</a>
+                        <a class="btn btn-default btn-xs" href="{!! url('forums/posts/delete/'.$forumPost->id) !!}">{!! trans('app.delete') !!}</a>
                     @endif
-                    <a class="report" href="{!! url('forums/posts/report/'.$forumPost->id) !!}">{!! trans('forums::report') !!}</a>
+                    <a class="btn btn-default btn-xs report" href="{!! url('forums/posts/report/'.$forumPost->id) !!}">{!! trans('forums::report') !!}</a>
                 @endif
-                <a href="{!! url('forums/posts/perma/'.$forumPost->id) !!}"> 
+                <a class="btn btn-default btn-xs" href="{!! url('forums/posts/perma/'.$forumPost->id) !!}"> 
                     @if (isset($forumPostNumber))
                         #{!! $forumPostNumber !!}
                     @else

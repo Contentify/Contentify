@@ -3,7 +3,7 @@
 </h1>
 
 <div class="buttons">
-    <a class="create" href="{!! url('forums/threads/new') !!}">{!! trans('forums::show_new') !!}</a>
+    <a class="btn btn-default create" href="{!! url('forums/threads/new') !!}">{!! trans('forums::show_new') !!}</a>
 </div>
 
 @foreach($forums as $forum)

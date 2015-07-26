@@ -7272,48 +7272,69 @@ textarea.model-search-box input {
   display: block;
   font-size: 10px;
 }
-/* Forums show_forum page */
-.page-forums-show-forum .buttons {
+.page-forums-show-forum .buttons,
+.page-forums-show-new-threads .buttons {
   margin-bottom: 20px;
 }
-.page-forums-show-forum .sub-forums {
+.page-forums-show-forum .sub-forums,
+.page-forums-show-new-threads .sub-forums {
   margin-bottom: 20px;
 }
 .page-forums-show-forum .threads:before,
+.page-forums-show-new-threads .threads:before,
 .page-forums-show-forum .sub-forums:before,
+.page-forums-show-new-threads .sub-forums:before,
 .page-forums-show-forum .threads:after,
-.page-forums-show-forum .sub-forums:after {
+.page-forums-show-new-threads .threads:after,
+.page-forums-show-forum .sub-forums:after,
+.page-forums-show-new-threads .sub-forums:after {
   content: " ";
   display: table;
 }
 .page-forums-show-forum .threads:after,
-.page-forums-show-forum .sub-forums:after {
+.page-forums-show-new-threads .threads:after,
+.page-forums-show-forum .sub-forums:after,
+.page-forums-show-new-threads .sub-forums:after {
   clear: both;
 }
 .page-forums-show-forum .threads:before,
+.page-forums-show-new-threads .threads:before,
 .page-forums-show-forum .sub-forums:before,
+.page-forums-show-new-threads .sub-forums:before,
 .page-forums-show-forum .threads:after,
-.page-forums-show-forum .sub-forums:after {
+.page-forums-show-new-threads .threads:after,
+.page-forums-show-forum .sub-forums:after,
+.page-forums-show-new-threads .sub-forums:after {
   content: " ";
   display: table;
 }
 .page-forums-show-forum .threads:after,
-.page-forums-show-forum .sub-forums:after {
+.page-forums-show-new-threads .threads:after,
+.page-forums-show-forum .sub-forums:after,
+.page-forums-show-new-threads .sub-forums:after {
   clear: both;
 }
 .page-forums-show-forum .threads .thread,
+.page-forums-show-new-threads .threads .thread,
 .page-forums-show-forum .sub-forums .thread,
+.page-forums-show-new-threads .sub-forums .thread,
 .page-forums-show-forum .threads .sub-forum,
-.page-forums-show-forum .sub-forums .sub-forum {
+.page-forums-show-new-threads .threads .sub-forum,
+.page-forums-show-forum .sub-forums .sub-forum,
+.page-forums-show-new-threads .sub-forums .sub-forum {
   padding: 10px;
   border: 2px solid #eeeeee;
   border-top: none;
   overflow: hidden;
 }
 .page-forums-show-forum .threads .thread.head,
+.page-forums-show-new-threads .threads .thread.head,
 .page-forums-show-forum .sub-forums .thread.head,
+.page-forums-show-new-threads .sub-forums .thread.head,
 .page-forums-show-forum .threads .sub-forum.head,
-.page-forums-show-forum .sub-forums .sub-forum.head {
+.page-forums-show-new-threads .threads .sub-forum.head,
+.page-forums-show-forum .sub-forums .sub-forum.head,
+.page-forums-show-new-threads .sub-forums .sub-forum.head {
   padding: 10px;
   border: none;
   border-top-left-radius: 3px;
@@ -7324,20 +7345,32 @@ textarea.model-search-box input {
   color: white;
 }
 .page-forums-show-forum .threads .thread .info,
+.page-forums-show-new-threads .threads .thread .info,
 .page-forums-show-forum .sub-forums .thread .info,
+.page-forums-show-new-threads .sub-forums .thread .info,
 .page-forums-show-forum .threads .sub-forum .info,
-.page-forums-show-forum .sub-forums .sub-forum .info {
+.page-forums-show-new-threads .threads .sub-forum .info,
+.page-forums-show-forum .sub-forums .sub-forum .info,
+.page-forums-show-new-threads .sub-forums .sub-forum .info {
   width: 60%;
   float: left;
 }
 .page-forums-show-forum .threads .thread .info .sticky,
+.page-forums-show-new-threads .threads .thread .info .sticky,
 .page-forums-show-forum .sub-forums .thread .info .sticky,
+.page-forums-show-new-threads .sub-forums .thread .info .sticky,
 .page-forums-show-forum .threads .sub-forum .info .sticky,
+.page-forums-show-new-threads .threads .sub-forum .info .sticky,
 .page-forums-show-forum .sub-forums .sub-forum .info .sticky,
+.page-forums-show-new-threads .sub-forums .sub-forum .info .sticky,
 .page-forums-show-forum .threads .thread .info .closed,
+.page-forums-show-new-threads .threads .thread .info .closed,
 .page-forums-show-forum .sub-forums .thread .info .closed,
+.page-forums-show-new-threads .sub-forums .thread .info .closed,
 .page-forums-show-forum .threads .sub-forum .info .closed,
-.page-forums-show-forum .sub-forums .sub-forum .info .closed {
+.page-forums-show-new-threads .threads .sub-forum .info .closed,
+.page-forums-show-forum .sub-forums .sub-forum .info .closed,
+.page-forums-show-new-threads .sub-forums .sub-forum .info .closed {
   padding: 2px;
   border-radius: 3px;
   background-color: #00afff;
@@ -7345,34 +7378,49 @@ textarea.model-search-box input {
   color: white;
 }
 .page-forums-show-forum .threads .thread .info .meta,
+.page-forums-show-new-threads .threads .thread .info .meta,
 .page-forums-show-forum .sub-forums .thread .info .meta,
+.page-forums-show-new-threads .sub-forums .thread .info .meta,
 .page-forums-show-forum .threads .sub-forum .info .meta,
-.page-forums-show-forum .sub-forums .sub-forum .info .meta {
+.page-forums-show-new-threads .threads .sub-forum .info .meta,
+.page-forums-show-forum .sub-forums .sub-forum .info .meta,
+.page-forums-show-new-threads .sub-forums .sub-forum .info .meta {
   display: block;
   font-size: 10px;
 }
 .page-forums-show-forum .threads .thread .counter,
+.page-forums-show-new-threads .threads .thread .counter,
 .page-forums-show-forum .sub-forums .thread .counter,
+.page-forums-show-new-threads .sub-forums .thread .counter,
 .page-forums-show-forum .threads .sub-forum .counter,
-.page-forums-show-forum .sub-forums .sub-forum .counter {
+.page-forums-show-new-threads .threads .sub-forum .counter,
+.page-forums-show-forum .sub-forums .sub-forum .counter,
+.page-forums-show-new-threads .sub-forums .sub-forum .counter {
   width: 15%;
   float: left;
 }
 .page-forums-show-forum .threads .thread .latest,
+.page-forums-show-new-threads .threads .thread .latest,
 .page-forums-show-forum .sub-forums .thread .latest,
+.page-forums-show-new-threads .sub-forums .thread .latest,
 .page-forums-show-forum .threads .sub-forum .latest,
-.page-forums-show-forum .sub-forums .sub-forum .latest {
+.page-forums-show-new-threads .threads .sub-forum .latest,
+.page-forums-show-forum .sub-forums .sub-forum .latest,
+.page-forums-show-new-threads .sub-forums .sub-forum .latest {
   width: 25%;
   float: left;
 }
 .page-forums-show-forum .threads .thread .latest .meta,
+.page-forums-show-new-threads .threads .thread .latest .meta,
 .page-forums-show-forum .sub-forums .thread .latest .meta,
+.page-forums-show-new-threads .sub-forums .thread .latest .meta,
 .page-forums-show-forum .threads .sub-forum .latest .meta,
-.page-forums-show-forum .sub-forums .sub-forum .latest .meta {
+.page-forums-show-new-threads .threads .sub-forum .latest .meta,
+.page-forums-show-forum .sub-forums .sub-forum .latest .meta,
+.page-forums-show-new-threads .sub-forums .sub-forum .latest .meta {
   display: block;
   font-size: 10px;
 }
-/* Forums show_thread page */
 .page-threads .buttons,
 .page-posts .buttons {
   margin-bottom: 20px;
@@ -7478,6 +7526,10 @@ textarea.model-search-box input {
   animation-name: posthighlight;
   animation-duration: 3s;
 }
+.page-threads .post:hover .top-bar .buttons,
+.page-posts .post:hover .top-bar .buttons {
+  display: block !important;
+}
 @keyframes posthighlight {
   0% {
     border-color: #00afff;
@@ -7486,7 +7538,6 @@ textarea.model-search-box input {
     border-color: #eeeeee;
   }
 }
-/* Forums show_new_posts page */
 .page-threads.page-forums-threads-new .action {
   border-radius: 3px;
   background-color: #00afff;

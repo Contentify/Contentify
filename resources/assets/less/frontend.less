@@ -243,8 +243,7 @@ a:hover { color: @primaryColor; }
     }
 }
 
-/* Forums show_forum page */
-.page-forums-show-forum {
+.page-forums-show-forum, .page-forums-show-new-threads {
     .buttons { margin-bottom: 20px; }
     .sub-forums {
         margin-bottom: 20px;
@@ -269,7 +268,6 @@ a:hover { color: @primaryColor; }
     }
 }
 
-/* Forums show_thread page */
 .page-threads, .page-posts {
     .buttons { margin-bottom: 20px }
     .post { 
@@ -301,6 +299,9 @@ a:hover { color: @primaryColor; }
             animation-name: posthighlight;
             animation-duration: 3s;
         }
+        &:hover .top-bar .buttons {
+            display: block !important;
+        }
     }
 }
 
@@ -313,7 +314,6 @@ a:hover { color: @primaryColor; }
   }
 }
 
-/* Forums show_new_posts page */
 .page-threads.page-forums-threads-new {
     .page-forums-index();
 }
