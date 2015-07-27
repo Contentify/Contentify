@@ -10,15 +10,24 @@ abstract class FrontController extends BaseController {
      */
     protected $layout = 'frontend.layout_main';
 
-    public function __construct()
+    /**
+     * Setup the layout used by the controller.
+     * 
+     * param string $layoutName The name of the layout template file
+     * @return void
+     */
+    protected function setupLayout($layoutName = null)
     {
-        parent::__construct();
+        if (! $layoutName) {
+            $layoutName = $this->layout;
+        }
 
-        $self = $this;
-        View::composer('frontend.layout_main', function($view) use ($self)
+        parent::setupLayout($layoutName);
+
+        View::composer($layoutName, function($view)
         { 
-            $view->with('moduleName', $this->moduleName);
-            $view->with('controllerName', $this->controllerName);
+            $view->with('moduleName',       $this->moduleName);
+            $view->with('controllerName',   $this->controllerName);
         });
     }
 

@@ -39,7 +39,7 @@ class NewsController extends FrontController {
     }
 
     /**
-     * Show the preview of several news
+     * Show the preview of multiple news
      * 
      * @return void
      */

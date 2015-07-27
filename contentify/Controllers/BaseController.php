@@ -151,11 +151,16 @@ abstract class BaseController extends Controller {
 
     /**
      * Setup the layout used by the controller.
-     *
+     * 
+     * param string $layoutName The name of the layout template file
      * @return void
      */
-    protected function setupLayout()
+    protected function setupLayout($layoutName = null)
     {
+        if ($layoutName) {
+            $this->layout = $layoutName;
+        }
+
         if ( ! is_null($this->layout))
         {
             $this->layout                   = View::make($this->layout);
