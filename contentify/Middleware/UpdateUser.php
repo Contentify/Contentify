@@ -56,7 +56,7 @@ class UpdateUser {
         |
         */
 
-        if (user()) {
+        if (installed() and user()) {
             $lastActive = Session::get('lastActiveUpdate', 0);
 
             if (time() - $lastActive > 60) {

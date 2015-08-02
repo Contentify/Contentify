@@ -12,13 +12,13 @@ Website: [contentify.org](http://contentify.org/)
 
 > WARNING: This is a beta version. 
 
-> WARNING: This repository does include multiple branches, but currently none of them is a release branch. Therefore, if you are interested in testing, please download a curated realease that is meant for testing.
+> WARNING: This repository does include multiple branches, but currently none of them is a release branch. Therefore, if you are interested in testing, please download a realease that is meant for testing.
 
 ### Releases
 
-The current release is `Beta Three`.
+The current release is `Beta Four`.
 
-You may download it here: [contentify.org/share/releases/contentify_beta3.zip](http://contentify.org/share/releases/contentify_beta3.zip)
+You may download it here: [contentify.org/share/releases/contentify_beta4.zip](http://contentify.org/share/releases/contentify_beta4.zip)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
