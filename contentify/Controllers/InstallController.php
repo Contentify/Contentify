@@ -707,7 +707,7 @@ class InstallController extends Controller {
         ("Diablo III", "D3", "default/d3.png"),
         ("DotA 2", "DotA", "default/dota2.png"),
         ("League of Legends", "LoL", "default/lol.png"),
-        ("Heart of the Storm", "HotS", "default/hots.png"),
+        ("Heroes of the Storm", "HotS", "default/hots.png"),
         ("World of Warcraft", "WoW", "default/wow.png"),
         ("World of Tanks", "WoT", "default/wot.png"),
         ("Trackmania", "TM", "default/tm.gif"),
