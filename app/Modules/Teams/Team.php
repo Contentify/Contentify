@@ -10,7 +10,7 @@ class Team extends BaseModel {
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'description', 'position', 'published', 'teamcat_id'];
+    protected $fillable = ['title', 'text', 'position', 'published', 'teamcat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 

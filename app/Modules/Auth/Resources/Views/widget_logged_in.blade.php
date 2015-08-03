@@ -7,7 +7,7 @@
                 {!! link_to('messages/inbox', user()->countMessages().' Messages') !!}
             @else
                 {!! link_to('messages/inbox', 'Messages') !!}
-            @endif            
+            @endif
         </li>
         <li>{!! link_to('friends/'.user()->id, trans('auth::friends')) !!}</li>
         @if (user()->hasAccess('backend', PERM_READ))

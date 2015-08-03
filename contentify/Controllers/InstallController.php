@@ -387,7 +387,7 @@ class InstallController extends Controller {
 
         $this->create('teams', function($table) 
         { 
-            $table->text('description')->nullable();
+            $table->text('text')->nullable();
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
