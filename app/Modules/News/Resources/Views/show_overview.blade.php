@@ -17,8 +17,8 @@
                     </a>
                 </div>
             @endif
-            <div class="intro">
-                {!! $news->intro !!}
+            <div class="summary">
+                {!! $news->summary !!}
             </div>
         </div>
         {!! $news->countComments() !!} {!! trans('app.comments') !!} - {!! link_to('news/'.$news->id.'/'.$news->slug, trans('app.read_more')) !!}

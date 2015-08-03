@@ -10,8 +10,8 @@
                 <img src="{!! $news->newscat->uploadPath().$news->newscat->image !!}" alt="{{ $news->newscat->title }}">
             </div>
         @endif
-        <div class="intro">
-            {!! $news->intro !!}
+        <div class="summary">
+            {!! $news->summary !!}
         </div>
         <div class="text">
             {!! $news->text !!}

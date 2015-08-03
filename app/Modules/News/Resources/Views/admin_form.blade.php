@@ -11,7 +11,7 @@
 
     {!! Form::smartSelectRelation('creator', trans('app.author'), $modelClass, user()->id) !!}
     
-    {!! Form::smartTextarea('intro', trans('news::intro'), true) !!}
+    {!! Form::smartTextarea('summary', trans('news::summary'), true) !!}
 
     {!! Form::smartTextarea('text', trans('app.text'), true) !!}
 

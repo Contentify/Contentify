@@ -12,7 +12,7 @@ class News extends BaseModel {
 
     protected $fillable = [
         'title', 
-        'intro', 
+        'summary', 
         'text', 
         'published', 
         'published_at',
@@ -92,7 +92,7 @@ class News extends BaseModel {
         $og->title($this->title)
             ->type('article')
             ->image($this->newscat->uploadPath().$this->newscat->image)
-            ->description($this->intro)
+            ->description($this->summary)
             ->url();
 
         return $og;
@@ -121,7 +121,7 @@ class News extends BaseModel {
 
             $feed->item([
                 'title'             => $news->title, 
-                'description|cdata' => $news->intro, 
+                'description|cdata' => $news->summary, 
                 'link'              => $url,
                 'guid'              => $url,
                 'pubDate'           => date('D, j M Y H:i:s ', $news->created_at->timestamp).'GMT'

@@ -358,7 +358,7 @@ class InstallController extends Controller {
 
         $this->create('news', function($table)
         {
-            $table->text('intro')->nullable();
+            $table->text('summary')->nullable();
             $table->text('text')->nullable();
             $table->boolean('published')->default(false);
             $table->timestamp('published_at');
