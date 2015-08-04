@@ -13,9 +13,9 @@
         <ul class="list-unstyled">
             @foreach ($team->users as $user)
                 <li>
-                    <a href="{!! url('users/'.$user->id.'/'.Str::slug($user->username)) !!}">{!! $user->username !!}</a>
+                    <a href="{!! url('users/'.$user->id.'/'.Str::slug($user->username)) !!}">{{ $user->username }}</a>
                     @if ($user->pivot->task)
-                        ({!! $user->pivot->task !!})
+                        ({{ $user->pivot->task }})
                     @endif
                     @if ($user->pivot->description)
                         <p>
@@ -38,10 +38,10 @@
                                     {!! $award->positionIcon() !!}<br>
                                 </td>
                                 <td>
-                                    {!! $award->title !!}<br>
+                                    {{ $award->title }}<br>
                                 </td>
                                 <td>
-                                    {!! $award->tournament ? $award->tournament->short : null !!}
+                                    {{ $award->tournament ? $award->tournament->short : null }}
                                 </td>
                             </tr>
                         @endforeach
