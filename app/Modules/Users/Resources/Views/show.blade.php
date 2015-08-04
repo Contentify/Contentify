@@ -77,15 +77,15 @@
                 <tbody>
                     <tr>
                         <th class="title">Facebook:</th>
-                        <td>{{ $user->facebook }}</td>
+                        <td><a href="{{ url('http://www.facebook.com/'.$user->facebook) }}" target="_blank">{{ $user->facebook }}</a></td>
                     </tr>
                     <tr>
                         <th class="title">Twitter:</th>
-                        <td>{{ $user->twitter }}</td>
+                        <td><a href="{{ url('http://www.twitter.com/'.$user->twitter) }}" target="_blank">{{ $user->twitter }}</a></td>
                     </tr>
                     <tr>
                         <th class="title">Skype:</th>
-                        <td>{{ $user->skype }}</td>
+                        <td><a href="{{ url('skype:35?'.$user->facebook) }}" target="_blank">{{ $user->skype }}</a></td>
                     </tr>
                     <tr>
                         <th class="title">{!! trans('users::steam_id') !!}:</th>
@@ -163,7 +163,7 @@
                         <td>{{ $user->headset }}</td>
                     </tr>
                     <tr>
-                        <th class="title">{!! trans('users::mousepad') !!}:</span>
+                        <th class="title">{!! trans('users::mousepad') !!}:</th>
                         <td>{{ $user->mousepad }}</td>
                     </tr>
                 </tbody>
