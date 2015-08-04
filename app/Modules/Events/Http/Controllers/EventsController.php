@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
-use FrontController;
+use Request, FrontController;
 
 class EventsController extends FrontController {
 
@@ -32,6 +32,21 @@ class EventsController extends FrontController {
         $this->title($event->title);
 
         $this->pageView('events::show', compact('event'));
+    }
+
+    /**
+     * Show calendar with all events
+     * 
+     * @return void
+     */
+    public function calendar($year = null, $month = null)
+    {
+        if (Request::ajax()) {
+            $widget = new CalendarWidget;
+            return $widget->render(compact('year', 'month'));
+        } else {
+            $this->pageView('events::calendar', compact('year', 'month'));
+        }
     }
 
 }

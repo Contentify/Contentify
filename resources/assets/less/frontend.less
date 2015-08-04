@@ -353,6 +353,27 @@ a:hover { color: @primaryColor; }
     }
 }
 
+.page-events-calendar {
+    .day-names div {
+        width: (1 / 7) * 100%;
+        float: left;
+        .text-overflow();
+    }
+    .day {
+        float: left;
+        width: (1 / 7) * 100%;
+        height: 100px;
+        overflow-y: auto;
+        .day-number { 
+            display: block;
+        }
+        a {
+            display: block;
+            .text-overflow();
+        }
+    }
+}
+
 .widget-navigation-default {
     .list-unstyled {
         li.item-level-0 { padding-left: 20px }
