@@ -191,8 +191,7 @@ a:hover { color: @primaryColor; }
 
 .page-matches {  
     .overview {
-        div { width: 33%; text-align: center; float: left }
-        div > span { display: block }
+        & > div { width: 33%; text-align: center; float: left }
         .mid { padding-top: 40px; font-size: 30px; }
         .mid .left-win { color: green }
         .mid .left-defeat { color: red }
@@ -364,12 +363,15 @@ a:hover { color: @primaryColor; }
         width: (1 / 7) * 100%;
         height: 100px;
         overflow-y: auto;
-        .day-number { 
-            display: block;
-        }
         a {
             display: block;
             .text-overflow();
+        }
+        &.before-month, &.after-month {
+            cursor: pointer;
+        }
+        &.today {
+            border: 1px solid @primaryColor;
         }
     }
 }

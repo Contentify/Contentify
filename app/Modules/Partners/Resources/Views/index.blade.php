@@ -15,7 +15,7 @@
             </p>
 
             @if ($partner->url)
-                <a href="{{ $partner->url }}">{{ $partner->url }}</a>
+                <a href="{{ url('partners/url/'.$partner->id) }}" title="{{ $partner->title }}" target="_blank">{{ $partner->url }}</a>
             @endif
         </div>
     </article>

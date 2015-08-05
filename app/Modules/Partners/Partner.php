@@ -8,6 +8,8 @@ class Partner extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
+    protected $slugable = true;
+
     protected $fillable = ['title', 'text', 'url', 'position', 'published', 'partnercat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];

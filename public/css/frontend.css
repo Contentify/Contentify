@@ -7135,13 +7135,10 @@ textarea.model-search-box input {
   background-position: center 20px;
   background-repeat: no-repeat;
 }
-.page-matches .overview div {
+.page-matches .overview > div {
   width: 33%;
   text-align: center;
   float: left;
-}
-.page-matches .overview div > span {
-  display: block;
 }
 .page-matches .overview .mid {
   padding-top: 40px;
@@ -7692,14 +7689,18 @@ textarea.model-search-box input {
   height: 100px;
   overflow-y: auto;
 }
-.page-events-calendar .day .day-number {
-  display: block;
-}
 .page-events-calendar .day a {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.page-events-calendar .day.before-month,
+.page-events-calendar .day.after-month {
+  cursor: pointer;
+}
+.page-events-calendar .day.today {
+  border: 1px solid #00afff;
 }
 .widget-navigation-default .list-unstyled li.item-level-0 {
   padding-left: 20px;

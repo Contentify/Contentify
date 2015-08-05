@@ -1,7 +1,7 @@
 <?php
 
 ModuleRoute::context('Partners');
-
+
 ModuleRoute::resource('admin/partnercats', 'AdminPartnercatsController');
 ModuleRoute::get(
     'admin/partnercats/{id}/restore', 
@@ -16,5 +16,5 @@ ModuleRoute::get(
 );
 ModuleRoute::post('admin/partners/search', 'AdminPartnersController@search');
 
-ModuleRoute::resource('partners', 'PartnersController', ['only' => ['index', 'show']]);
-ModuleRoute::get('partners/{id}/{slug}', 'PartnersController@show');
+ModuleRoute::resource('partners', 'PartnersController', ['only' => ['index']]);
+ModuleRoute::get('partners/url/{id}/{slug?}', 'PartnersController@url');

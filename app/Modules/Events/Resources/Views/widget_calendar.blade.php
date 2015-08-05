@@ -39,18 +39,23 @@
             @else
                 @if ($day <= $lastOfMonth)
                     <?php 
-                        $class = '';
-                        $content = '';
+                        $hasEvents  = '';
+                        $today      = '';
+                        $content    = '';
+
+                        if ($day->isToday()) {
+                            $today = 'today';
+                        }
                     ?>
                     @while (sizeof($events) > 0 and $day->isSameDay($events->last()->starts_at))
                         <?php 
-                            $class = 'has-events';
-                            $event = $events->pop();
+                            $hasEvents  = 'has-events';
+                            $event      = $events->pop();
                             $content .= '<a href="'.url('events/'.$event->id.'/'.$event->slug).'" title="'.e($event->title).'" target="blank">'.e($event->title).'</a>';
                         ?>
                     @endwhile
 
-                    <div class="day in-month {{ $class }}">
+                    <div class="day in-month {{ $hasEvents }} {{ $today }}">
                         <span class="day-number">{{ $day->day }}</span>
                         {!! $content !!}
                     </div>
@@ -67,13 +72,21 @@
 <script>
     $(document).ready(function() 
     {
-        $('.widget .buttons .prev, .widget .buttons .next').click(function(event)
+        $('.widget-calendar .buttons .prev, .widget-calendar .buttons .next').click(function(event)
         {
             event.preventDefault();
 
             var $widget = $(this).parent().parent();
             
             $widget.load($(this).attr('href'));
+        });
+        $('.widget-calendar .day.before-month').click(function()
+        {
+            $('.widget-calendar .buttons .prev').click();
+        });
+        $('.widget-calendar .day.after-month').click(function()
+        {
+            $('.widget-calendar .buttons .next').click();
         });
     });
 </script>

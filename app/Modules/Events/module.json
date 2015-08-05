@@ -1,9 +1,9 @@
 {
-    "slug": "Events",
+    "slug": "Events",
     "enabled": true,
     "admin-nav": [
         {
-            "icon": "map-marker",
+            "icon": "calendar",
             "category": 1,
             "position": 4
         }

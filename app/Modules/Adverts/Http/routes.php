@@ -1,7 +1,7 @@
 <?php
 
 ModuleRoute::context('Adverts');
-
+
 ModuleRoute::resource('admin/advertcats', 'AdminAdvertcatsController');
 ModuleRoute::get(
     'admin/advertcats/{id}/restore', 
@@ -16,5 +16,4 @@ ModuleRoute::get(
 );
 ModuleRoute::post('admin/adverts/search', 'AdminAdvertsController@search');
 
-ModuleRoute::resource('adverts', 'AdvertsController', ['only' => ['show']]);
-ModuleRoute::get('adverts/{id}/{slug}', 'AdvertsController@show');
+ModuleRoute::get('adverts/url/{id}/{slug?}', 'AdvertsController@url');

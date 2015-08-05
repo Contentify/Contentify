@@ -6,12 +6,12 @@ use Redirect, FrontController;
 class AdvertsController extends FrontController {
 
     /**
-     * Show the website of an advert
+     * Navigate to the website of an advert
      * 
      * @param  int $id The id of the advert
      * @return Redirect
      */
-    public function show($id)
+    public function url($id)
     {
         $advert = Advert::findOrFail($id);
 

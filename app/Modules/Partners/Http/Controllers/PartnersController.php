@@ -13,12 +13,12 @@ class PartnersController extends FrontController {
     }
 
     /**
-     * Show the website of a partner
+     * Navigate to the website of a partner
      * 
      * @param  int $id The id of the partner
      * @return Redirect
      */
-    public function show($id)
+    public function url($id)
     {
         $partner = Partner::published()->findOrFail($id);
 

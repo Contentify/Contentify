@@ -1,7 +1,10 @@
 <div class="overview clearfix">
     <div class="left">
         <img src="{!! asset('img/logo_180.png') !!}" width="120" height="120" alt="Logo">
-        <span>{{ $match->left_team->title }}</span>
+        <div class="team-name">
+            <img src="{{ asset('uploads/countries/eu.png') }}"> 
+            {{ $match->left_team->title }}
+        </div>
     </div>
     <div class="mid">
         {!! $match->scoreCode() !!}
@@ -12,7 +15,12 @@
         @else
             <img src="{!! asset('theme/no_opponent.jpg') !!}" width="120" height="120" alt="Logo">
         @endif
-        <span>{{ $match->right_team->title }}</span> 
+        <div class="team-name">
+            @if ($match->right_team->country->icon)
+                <img src="{{ $match->right_team->country->uploadPath().$match->right_team->country->icon }}">
+            @endif
+            {{ $match->right_team->title }}
+        </div> 
     </div>
 </div>
 <div class="details">
