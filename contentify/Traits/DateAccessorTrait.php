@@ -31,14 +31,13 @@ trait DateAccessorTrait {
         {
             $value = Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
         }
-        elseif ( ! $value instanceof DateTime)
-        {
+        else {
             /*
              * Try to create the DateTime with the local date format.
              * If this isn't working, try the format used by the database connection.
              */
             try {
-                $value = Carbon::createFromFormat(trans('app.date_format').' H:m:s', $value);
+                $value = Carbon::createFromFormat(trans('app.date_format').' H:i:s', $value);
             } catch (InvalidArgumentException $e) {
                 $value = Carbon::createFromFormat($format, $value);
             }            
