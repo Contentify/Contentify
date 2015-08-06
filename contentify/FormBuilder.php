@@ -198,11 +198,12 @@ class FormBuilder extends OriginalFormBuilder {
      *
      * @param  string $title        The name of the corresponding element (not the label itself!)
      * @param  string $title        The title of the field
+     * @param  string $class        Additional class(es)
      * @return string
      */
-    public function smartGroupOpen($name = null, $title = null)
+    public function smartGroupOpen($name = null, $title = null, $class = null)
     {
-        $partial = '<div class="form-group">';
+        $partial = '<div class="form-group '.$class.'">';
 
         if ($title) {
             $partial .= self::label($name, $title, ['class' => 'col-sm-'.$this->labelGridCols.' control-label']);
@@ -596,9 +597,10 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $name       The name of the input element
      * @param  string $title      The title of the input element
      * @param  string $default    The default value
+     * @param  string $onlyDate   If true, do not display time
      * @return string
      */
-    public function smartDateTime($name = 'datetime', $title = null, $default = null)
+    public function smartDateTime($name = 'datetime', $title = null, $default = null, $onlyDate = false)
     {
         if (! $title) $title = trans('app.date_time');
 
@@ -615,16 +617,34 @@ class FormBuilder extends OriginalFormBuilder {
             $value = (new AliasedCarbon())->dateTime();
         }
 
+        $time = '';
+        if (! $onlyDate) {
+            $time = ' HH:mm:ss';
+        }
+
         $partial = '<div class="form-group">'
             .'<label for="'.$name.'" class="col-sm-'.$this->labelGridCols.' control-label">'.$title.'</label>'
             .'<div class="col-sm-'.$this->controlGridCols.' ">'
             .'<div class="input-group date-time-picker">'
-            .self::text($name, $value, ['class' => 'form-control', 'data-format' => trans('app.date_format_alt').' hh:mm:ss'])
+            .self::text($name, $value, ['class' => 'form-control', 'data-format' => trans('app.date_format_alt').$time])
             .'<span class="input-group-addon">'.HTML::fontIcon('calendar').'</span>'
             .'</div></div></div>';
         return $partial;
     }
 
+    /**
+     * Create HTML code for a date input element.
+     * 
+     * @param  string $name       The name of the input element
+     * @param  string $title      The title of the input element
+     * @param  string $default    The default value
+     * @return string
+     */
+    public function smartDate($name = 'date', $title = null, $default = null)
+    {
+        return self::smartDateTime($name, $title, $default, true);
+    }
+    
     /**
      * Create HTML code for a tag element.
      * 

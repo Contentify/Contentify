@@ -10,7 +10,7 @@
     <meta name="asset-url" content="{!! asset('') !!}">
     <meta name="csrf-token" content="{!! Session::get('_token') !!}">
     <meta name="locale" content="{!! Config::get('app.locale') !!}">
-    <meta name="date-format" content="{!! trans('app.date_format_alt') !!}">
+    <meta name="date-format" content="{!! trans('app.date_format') !!}">
     {!! HTML::metaTags($metaTags) !!}
     @if ($openGraph)
         {!! HTML::openGraphTags($openGraph) !!}

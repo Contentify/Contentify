@@ -58,8 +58,10 @@ class CustomPagesController extends FrontController {
      */
     public function showImprint()
     {
-        $imprintText = CustomPage::findOrFail(1)->text;
+        $customPage = CustomPage::findOrFail(1);
+        $imprintText = $customPage->text;
 
+        $this->title($customPage->title);
         $this->pageView('pages::imprint', compact('imprintText'));
     }
 

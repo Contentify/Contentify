@@ -6843,6 +6843,14 @@ textarea.model-search-box input {
   width: 100px;
   display: inline-block;
 }
+/* Datetime Picker */
+.date-time-picker .input-group-addon {
+  cursor: pointer;
+}
+.bootstrap-datetimepicker-widget td.active,
+.bootstrap-datetimepicker-widget td.active:hover {
+  background-color: #00afff !important;
+}
 /* Slider Default Styling - Feel free to overwrite */
 .slider {
   position: relative;

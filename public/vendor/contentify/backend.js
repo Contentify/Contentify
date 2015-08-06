@@ -1,23 +1,6 @@
 $(document).ready(function()
 {  
     /*
-     * Add datetime picker
-     */
-    $('.date-time-picker').datetimepicker({
-        format: contentify.dateFormat + ' HH:mm:ss',
-        icons: {
-            time:       'fa fa-clock-o',
-            date:       'fa fa-calendar',
-            up:         'fa fa-chevron-up',
-            down:       'fa fa-chevron-down',
-            previous:   'fa fa-chevron-left',
-            next:       'fa fa-chevron-right',
-            today:      'fa fa-screenshot',
-            clear:      'fa fa-trash'
-        },
-    });
-
-    /*
      * Open sidebar category
      */
     var categorySessionKey = 'backend.sidebar.category';

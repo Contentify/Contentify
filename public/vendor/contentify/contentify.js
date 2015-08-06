@@ -102,6 +102,26 @@ $(document).ready(function()
             }
         });
 
+        /*
+         * Add datetime picker
+         */
+        $('.date-time-picker').each(function() 
+        {
+            $(this).datetimepicker({
+                format: $(this).find('input').attr('data-format'),
+                icons: {
+                    time:       'fa fa-clock-o',
+                    date:       'fa fa-calendar',
+                    up:         'fa fa-chevron-up',
+                    down:       'fa fa-chevron-down',
+                    previous:   'fa fa-chevron-left',
+                    next:       'fa fa-chevron-right',
+                    today:      'fa fa-screenshot',
+                    clear:      'fa fa-trash'
+                },
+            });
+        });
+
         /**
          * Creates an HTML alert inside the alert area.
          *

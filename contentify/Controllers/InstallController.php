@@ -625,7 +625,9 @@ class InstallController extends Controller {
             'text'          => 'Imprint Page Text',
             'published'     => true,
             'creator_id'    => 1,
-            'pagecat_id'    => 2
+            'pagecat_id'    => 2,
+            'created_at'    => DB::raw('NOW()'),
+            'updated_at'    => DB::raw('NOW()'),
         ]);
 
         DB::table('languages')->insert([
