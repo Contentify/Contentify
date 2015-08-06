@@ -48,23 +48,23 @@
 <script>
     $(document).ready(function()
     {
-        function loadLeftLineup()
+        $('select#_relation_leftTeam').change(function ()
         {
             var id = $(this).val();
             $.get(contentify.baseUrl + 'admin/teams/' + id + '/lineup', function(data)
             {
                 $('#left_lineup').val(data);
             });
-        }
+        });
 
-        function loadRightLineup()
+        $('select#_relation_rightTeam').change(function ()
         {
             var id = $(this).val();
             $.get(contentify.baseUrl + 'admin/opponents/' + id + '/lineup', function(data)
             {
                 $('#right_lineup').val(data);
             });
-        }
+        });
         
         // We can't add scores to a match that doesn't actually exist
         @if (isset($model))
