@@ -134,4 +134,23 @@ $(document).ready(function()
 
     $(window).resize();
 
+    /*
+     * Display hover UI via Boostrap tooltip
+     */
+    $('.hover-ui').each(function()
+    {
+        var $parent = $(this).parent();
+
+        if ($parent.is('td')) {
+            $parent.attr('data-toggle',     'tooltip');
+            $parent.attr('data-html',       'true');
+            $parent.attr('data-placement',  'top');
+            $parent.attr('data-trigger',    'hover');
+            $parent.attr('data-title',      $(this).html());
+            $parent.attr('data-container',  'body');
+
+            $parent.tooltip();
+        }
+    });
+    
 });
