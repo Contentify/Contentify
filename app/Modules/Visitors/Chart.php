@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Visitors;
-
+
 use Carbon, DB;
 
 class Chart {
