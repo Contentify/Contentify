@@ -1,3 +1,5 @@
+<h1 class="page-title">Messages</h1>
+
 <div role="tabpanel" style="margin-bottom: 10px">
 
     <!-- Nav tabs -->

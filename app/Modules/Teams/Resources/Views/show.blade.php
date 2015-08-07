@@ -1,6 +1,6 @@
 <article class="team">
     <header>
-        <h2>{{ $team->title }}</h2>
+        <h1 class="page-title inside">{{ $team->title }}</h1>
 
         @if ($team->image)
             <div class="image">

@@ -46,6 +46,7 @@ class OutboxController extends FrontController {
                  return $query->whereCreatorId(user()->id)->whereCreatorVisible(true);
             },
             'brightenFirst' => false,
+            'pageTitle'     => false,
         ], 'front');
     }
 

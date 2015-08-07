@@ -1,3 +1,5 @@
+<h1 class="page-title">Match</h1>
+
 <div class="overview clearfix">
     <div class="left">
         <img src="{!! asset('img/logo_180.png') !!}" width="120" height="120" alt="Logo">

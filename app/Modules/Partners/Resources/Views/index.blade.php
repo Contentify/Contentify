@@ -1,3 +1,5 @@
+<h1 class="page-title model-index">Partners</h1>
+
 @foreach ($partners as $partner)
     <article class="partner">
         <header>

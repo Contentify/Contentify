@@ -46,6 +46,7 @@ class InboxController extends FrontController {
                  return $query->whereReceiverId(user()->id)->whereReceiverVisible(true);
             },
             'brightenFirst' => false,
+            'pageTitle'     => false,
         ], 'front');
     }
 

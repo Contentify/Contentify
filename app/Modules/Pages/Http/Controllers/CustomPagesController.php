@@ -19,7 +19,7 @@ class CustomPagesController extends FrontController {
      * @param  string   $slug   The unique slug
      * @return void
      */
-    public function show($id, $slug = null)
+    public function show($id, $slug = null, $isImprint = false)
     {
         if ($id) {
             $customPage = CustomPage::whereId($id)->published()->firstOrFail();    
@@ -36,7 +36,7 @@ class CustomPagesController extends FrontController {
         $customPage->save();
 
         $this->title($customPage->title);
-        $this->pageView('pages::show_custom_page', compact('customPage'));
+        $this->pageView('pages::show_custom_page', compact('customPage', 'isImprint'));
     }
 
     /**
@@ -58,11 +58,7 @@ class CustomPagesController extends FrontController {
      */
     public function showImprint()
     {
-        $customPage = CustomPage::findOrFail(1);
-        $imprintText = $customPage->text;
-
-        $this->title($customPage->title);
-        $this->pageView('pages::imprint', compact('imprintText'));
+        return $this->show(1, null, true);
     }
 
 }

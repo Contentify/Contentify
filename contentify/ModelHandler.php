@@ -53,7 +53,8 @@ class ModelHandler {
             'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
             'permaFilter'   => null,                            // Null / Closure: Add a permament filter to the query?
             'dataSource'    => null,                            // Null (means: take from database) or array
-            'infoText'      => ''                               // String (may include HTML tags) with extra infos
+            'infoText'      => '',                              // String (may include HTML tags) with extra infos
+            'pageTitle'     => true,                            // False: no, true: auto, string: defines a custom title
         ];
 
         $data = array_merge($defaults, $data);
@@ -283,12 +284,13 @@ class ModelHandler {
         $controller->pageView('model_index', [
             'buttons'       => $buttons,
             'infoText'      => $data['infoText'],
-            'modelTable'  => $modelTable,
+            'modelTable'    => $modelTable,
             'sortSwitcher'  => $sortSwitcher,
             'recycleBin'    => $recycleBin,
             'paginator'     => $paginator,
             'searchString'  => $data['search'],
-            'showSearchBox' => $data['searchFor'] and (! $data['dataSource']) ? true : false
+            'showSearchBox' => $data['searchFor'] and (! $data['dataSource']) ? true : false,
+            'pageTitle'     => $data['pageTitle'] === true ? $controller->getModuleName() : $data['pageTitle'],
         ]);
     }
 

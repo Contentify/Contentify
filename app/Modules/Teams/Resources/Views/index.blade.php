@@ -1,3 +1,5 @@
+<h1 class="page-title">Teams</h1>
+
 @foreach ($teams as $team)
     <article class="team">
         <header>

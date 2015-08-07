@@ -47,6 +47,7 @@ class MatchesController extends FrontController {
                 ];
             },
             'actions'       => null,
+            'pageTitle'     => false,
         ], 'front');
     }
 

@@ -1,3 +1,7 @@
+@if ($pageTitle)
+    <h1 class="page-title model-index">{{ $pageTitle }}</h1>
+@endif
+
 @if ($buttons or $showSearchBox)
     <div class="toolbar top">
         {!! $buttons !!}
