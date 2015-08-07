@@ -2,6 +2,11 @@
 
 abstract class Widget {
 
+	/**
+	 * Default limit for DB queries
+	 */
+	const LIMIT = 5;
+
     /**
      * Abstract. Renders the widget.
      * 

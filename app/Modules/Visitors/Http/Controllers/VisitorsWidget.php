@@ -26,8 +26,8 @@ class VisitorsWidget extends Widget {
         $month = Cache::remember('visitors.widget.month', 30, function()
         {
             return DB::table('visits')->select(DB::raw('SUM(user_agents) AS user_agents'))
-            ->whereMonth('visited_at', '=', DB::raw('MONTH(CURRENT_DATE)'))
-            ->whereYear('visited_at', '=', DB::raw('YEAR(CURRENT_DATE)'))
+            ->where(DB::raw('MONTH(visited_at)'), '=', DB::raw('MONTH(CURRENT_DATE)')) // Note: whereMonth won't work!
+            ->where(DB::raw('YEAR(visited_at)'), '=', DB::raw('YEAR(CURRENT_DATE)'))
             ->get()[0]->user_agents;
         });
 

@@ -10,7 +10,7 @@ class FragmentWidget extends Widget {
         if (isset($parameters['id'])) {
             $id = $parameters['id'];
         } else {
-            throw new Exception('Fragment Widget: ID parameter missing');
+            throw new Exception('Fragment Widget: ID parameter missing.');
         }
 
         $fragment = Fragment::findOrFail($id);

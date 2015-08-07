@@ -8,6 +8,8 @@ class GalleriesWidget extends Widget {
 
     public function render($parameters = array())
     {
+        $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        
         if (isset($parameters['categoryId'])) {
             $categoryId = (int) $parameters['categoryId'];
         } else {
@@ -21,12 +23,12 @@ class GalleriesWidget extends Widget {
         }
 
         if ($random) {
-            $images = Image::whereNotNull('gallery_id')->orderBy(DB::raw('RAND()'))->take(5)->get();
+            $images = Image::whereNotNull('gallery_id')->orderBy(DB::raw('RAND()'))->take($limit)->get();
         } else {
             if ($categoryId !== null) {
-                $images = Image::whereGalleryId($categoryId)->orderBy('created_at', 'DESC')->take(5)->get();
+                $images = Image::whereGalleryId($categoryId)->orderBy('created_at', 'DESC')->take($limit)->get();
             } else {
-                $images = Image::whereNotNull('gallery_id')->orderBy('created_at', 'DESC')->take(5)->get();
+                $images = Image::whereNotNull('gallery_id')->orderBy('created_at', 'DESC')->take($limit)->get();
             }
         }
 
