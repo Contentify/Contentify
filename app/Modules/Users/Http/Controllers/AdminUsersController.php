@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Users\Http\Controllers;
-
+
 use ModelHandlerTrait;
 use Exception, Response, Sentry, HTML, User, Hover, BackController;
 
@@ -89,7 +89,7 @@ class AdminUsersController extends BackController {
         $user = User::findOrFail($id);
 
         if (! $this->checkAccessDelete() or (! user()->isSuperAdmin() and $user->isSuperAdmin())) {
-            return Response::make(trans('app.access_denied'), 500);
+            return Response::make(trans('app.access_denied'), 403);
         }
 
         try {

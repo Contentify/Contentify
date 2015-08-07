@@ -51,8 +51,8 @@ class Comments {
      */
     public function store($foreignType, $foreignId)
     {
-        if (! user()->hasAccess('comments', PERM_CREATE)) {
-            return;
+        if (! user() or ! user()->hasAccess('comments', PERM_CREATE)) {
+            return Response::make(trans('app.access_denied'), 403);
         }
 
         $comment = new Comment(Input::all());
@@ -94,7 +94,7 @@ class Comments {
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
-            return Response::make(trans('app.access_denied'), 500);
+            return Response::make(trans('app.access_denied'), 403);
         }
 
         echo View::make('comments.form', compact('comment'))->render();
@@ -111,7 +111,7 @@ class Comments {
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
-            return Response::make(trans('app.access_denied'), 500);
+            return Response::make(trans('app.access_denied'), 403);
         }
 
         $comment->fill(Input::all());
@@ -137,7 +137,7 @@ class Comments {
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_DELETE) and $comment->creator->id != user()->id)) {
-            return Response::make(trans('app.access_denied'), 500);
+            return Response::make(trans('app.access_denied'), 403);
         }
 
         $comment->delete();

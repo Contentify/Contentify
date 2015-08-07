@@ -579,6 +579,13 @@ class InstallController extends Controller {
             $table->timestamp('starts_at');
         });
 
+        $this->create('ratings', function($table)
+        {
+            $table->integer('rating');
+            $table->string('foreign_type', 30);
+            $table->integer('foreign_id', false, true)->nullable();
+        }, ['user_id'], false);
+
         /*
          * (Re)activate foreign key checks
          */
@@ -753,6 +760,7 @@ class InstallController extends Controller {
             'permissions' => [
                 'frontend'  => true,
                 'comments'  => PERM_CREATE, // Users can also update and delete their own comments
+                'ratings'   => PERM_CREATE,
             ]
         ]);
 
@@ -762,6 +770,7 @@ class InstallController extends Controller {
                 'frontend'  => true,
                 'internal'  => true,
                 'comments'  => PERM_CREATE,
+                'ratings'   => PERM_CREATE,
             ]
         ]);
 
@@ -788,11 +797,12 @@ class InstallController extends Controller {
                 'images'        => PERM_DELETE,
                 'maps'          => PERM_DELETE,
                 'matches'       => PERM_DELETE,
-                'modules'       => PERM_READ, // So Admins can't create modules that make them Super-Admins
+                'modules'       => PERM_READ, // So admins can't create modules that make them super admins
                 'news'          => PERM_DELETE,
                 'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
                 'partners'      => PERM_DELETE,
+                'ratings'       => PERM_DELETE,
                 'servers'       => PERM_DELETE,
                 'slides'        => PERM_DELETE,
                 'streams'       => PERM_DELETE,
@@ -832,6 +842,7 @@ class InstallController extends Controller {
                 'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
                 'partners'      => PERM_DELETE,
+                'ratings'       => PERM_DELETE,
                 'servers'       => PERM_DELETE,
                 'slides'        => PERM_DELETE,
                 'streams'       => PERM_DELETE,
@@ -919,7 +930,9 @@ class InstallController extends Controller {
 
                 $table->timestamps(); // Add timestamps (columns created_at, updated_at)
 
-                $table->softDeletes(); // Add soft deletes (column deleted_at)
+                if ($contentObject === true or ! in_array('deleted_at', $contentObject)) {
+                    $table->softDeletes(); // Add soft deletes (column deleted_at)
+                }
             }
         });
     }

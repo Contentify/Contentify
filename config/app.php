@@ -190,6 +190,7 @@ return [
         'Contentify\ServiceProviders\ContentFilterServiceProvider',
         'Contentify\ServiceProviders\CaptchaServiceProvider',
         'Contentify\ServiceProviders\CommentsServiceProvider',
+        'Contentify\ServiceProviders\RatingsServiceProvider',
         'Contentify\ServiceProviders\UserActivitiesServiceProvider',
         'Contentify\ServiceProviders\ModelHandlerServiceProvider',
 

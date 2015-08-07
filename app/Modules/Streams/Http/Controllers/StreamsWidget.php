@@ -11,7 +11,7 @@ class StreamsWidget extends Widget {
 
         $streams = Stream::orderBy('online', 'DESC')->orderBy('viewers', 'DESC')->take($limit)->get();
 
-        return View::make('streams::widget_streams', compact('streams'))->render();
+        return View::make('streams::widget', compact('streams'))->render();
     }
 
 }

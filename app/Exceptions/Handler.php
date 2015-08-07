@@ -38,7 +38,7 @@ class Handler extends ExceptionHandler {
 	public function render($request, Exception $exception)
 	{
 	    if (is_a($exception, 'MsgException')) {
-	        return Response::make(View::make('error_message', compact('exception')), 404);
+	        return Response::make(View::make('error_message', compact('exception')), 500);
 	    }
 
 	    if (! Config::get('app.debug')) { // If we are in debug mode we do not want to override Laravel's error output

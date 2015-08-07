@@ -6843,6 +6843,20 @@ textarea.model-search-box input {
   width: 100px;
   display: inline-block;
 }
+/* Ratings */
+.rating .stars {
+  margin-bottom: 10px;
+}
+.rating .stars i {
+  float: left;
+  padding: 0px 2px;
+}
+.rating .stars.enabled i {
+  cursor: pointer;
+}
+.rating .stars .active {
+  color: #00afff;
+}
 /* Datetime Picker */
 .date-time-picker .input-group-addon {
   cursor: pointer;

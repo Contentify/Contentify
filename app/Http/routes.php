@@ -70,6 +70,16 @@ Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'middleware' =
 }]);
 
 /*
+ * Ratings
+ */
+Route::post('ratings/store', ['as' => 'ratings.store', 'middleware' => 'csrf', 'uses' => function()
+{
+    $foreignType = Input::get('foreigntype');
+    $foreignId = Input::get('foreignid');
+    return Ratings::store($foreignType, $foreignId);
+}]);
+
+/*
  * Captcha
  */
 Route::get('captcha', ['as' => 'captcha', 'uses' => function()

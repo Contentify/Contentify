@@ -37,7 +37,7 @@ class VisitorsWidget extends Widget {
             ->get()[0]->user_agents;
         });       
 
-        return View::make('visitors::widget_visitors', compact('today', 'yesterday', 'month', 'total'))->render();
+        return View::make('visitors::widget', compact('today', 'yesterday', 'month', 'total'))->render();
     }
 
 }

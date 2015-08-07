@@ -75,6 +75,16 @@ a:hover { color: @primaryColor; }
     }
 }
 
+/* Ratings */
+.rating {
+    .stars { 
+        margin-bottom: 10px;
+        i { float: left; padding: 0px 2px; }
+        &.enabled i { cursor: pointer; }
+        .active { color: @primaryColor }
+    }     
+}
+
 /* Datetime Picker */
 .date-time-picker .input-group-addon { cursor: pointer; }
 .bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover { background-color: @primaryColor !important }
