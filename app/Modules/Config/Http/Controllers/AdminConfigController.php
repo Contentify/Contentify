@@ -60,7 +60,7 @@ class AdminConfigController extends BackController {
             DB::table('config')->whereName($settingRealName)->update(['value' => $settingsBag->$settingName]);
         }
 
-        $this->alertFlash(trans('app.updated', [$this->controller]));
+        $this->alertFlash(trans('app.updated', [$this->controllerName]));
         return Redirect::to('admin/config');
     }
 
