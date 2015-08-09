@@ -6657,6 +6657,9 @@ button.close {
   box-shadow: 0px 0px 0px 2px #eee;
   border-color: #c0c0c0;
 }
+h1.page-title.model-index {
+  display: none;
+}
 h2.section {
   margin: 0px 0px 20px 0px;
   font-size: 14px;

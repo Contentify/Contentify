@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Users\Http\Controllers;
-
+
 use Cartalyst\Sentry\Users\WrongPasswordException;
 use Str, Validator, Sentry, Redirect, Input, User, FrontController;
 
@@ -162,7 +162,7 @@ class UsersController extends FrontController {
 
         $results = array();
         foreach ($users as $user) {
-            $results[$user->username] = URL::to('users/'.$user->id.'/show');
+            $results[$user->username] = url('users/'.$user->id.'/'.$user->slug);
         }
 
         return $results;

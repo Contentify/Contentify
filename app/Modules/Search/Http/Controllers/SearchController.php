@@ -16,18 +16,18 @@ class SearchController extends FrontController {
         $validator = Validator::make(['subject' => $subject], ['subject' => 'required|min:3']);
         
         if ($validator->passes()) {
-            $finder = app()['modules'];
-            $modules = $finder->modules(); // Retrieve all module info objects
+            $moduleRepo = app()['modules'];
+            $modules = $moduleRepo->all(); // Retrieve all module info objects
 
             $resultBags = array();
             foreach ($modules as $module) {
-                if (! $module->def('enabled')) continue;
+                if (! $module['enabled']) continue;
                 
-                $controllers = $module->def('search'); // def() will return null if "search" is not defined
+                $controllers = isset($module['search']) ? $module['search'] : null;
                 if ($controllers) { 
                     // A module might have more than one controller that supports the search:
                     foreach ($controllers as $controller) { 
-                        $classPath = 'App\Modules\\'.ucfirst($module->name())
+                        $classPath = 'App\Modules\\'.ucfirst($module['slug'])
                             .'\Http\Controllers\\'.ucfirst($controller).'Controller';
                         $instance = new $classPath; // Create isntance of the controller...
                         $results = $instance->globalSearch($subject); // ...and call the search method.

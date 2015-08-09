@@ -13,7 +13,7 @@
         <ul class="list-unstyled">
             @foreach ($team->users as $user)
                 <li>
-                    <a href="{!! url('users/'.$user->id.'/'.Str::slug($user->username)) !!}">{{ $user->username }}</a>
+                    <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{{ $user->username }}</a>
                     @if ($user->pivot->task)
                         ({{ $user->pivot->task }})
                     @endif
