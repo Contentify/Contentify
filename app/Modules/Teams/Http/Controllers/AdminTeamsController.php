@@ -2,7 +2,7 @@
 
 use ModelHandlerTrait;
 use App\Modules\Teams\Team;
-use Hover, BackController;
+use Hover, HTML, BackController;
 
 class AdminTeamsController extends BackController {
 
@@ -31,7 +31,7 @@ class AdminTeamsController extends BackController {
 
                 return [
                     $team->id,
-                    raw(Hover::pull(), $team->title),
+                    raw(Hover::pull().HTML::link('teams/'.$team->id.'/'.$team->slug, $team->title)),
                     $team->teamcat->title,
                 ];            
             }

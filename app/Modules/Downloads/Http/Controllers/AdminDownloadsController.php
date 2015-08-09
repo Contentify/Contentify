@@ -2,7 +2,7 @@
 
 use App\Modules\Downloads\Download;
 use ModelHandlerTrait;
-use Hover, BackController;
+use Hover, HTML, BackController;
 
 class AdminDownloadsController extends BackController {
 
@@ -32,7 +32,7 @@ class AdminDownloadsController extends BackController {
 
                 return [
                     $download->id,
-                    raw(Hover::pull(), $download->title),
+                    raw(Hover::pull().HTML::link('downloads/'.$download->id.'/'.$download->slug, $download->title)),
                     $download->downloadcat->title,
                 ];            
             }

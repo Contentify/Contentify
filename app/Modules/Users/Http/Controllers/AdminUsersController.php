@@ -47,7 +47,7 @@ class AdminUsersController extends BackController {
 
                 return [
                     $user->id,
-                    raw(Hover::pull(), $user->username),
+                    raw(Hover::pull().HTML::link('users/'.$user->id.'/'.$user->slug, $user->username)),
                     $user->email,
                     raw($membership),
                     raw($banned),

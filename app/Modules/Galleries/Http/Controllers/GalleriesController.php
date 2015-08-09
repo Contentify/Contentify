@@ -35,10 +35,10 @@ class GalleriesController extends FrontController {
         if ($imageId) {
             $image = Image::findOrFail($imageId);
         } else {
-            if ($gallery->images) {
+            if (sizeof($gallery->images) > 0) {
                 $image = $gallery->images[0];
             } else {
-                $this->alertError(trans('app.not_found'));
+                $this->alertError(trans('app.no_items'));
                 return;
             }
         }

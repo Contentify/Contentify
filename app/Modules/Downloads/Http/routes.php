@@ -1,7 +1,7 @@
 <?php
 
 ModuleRoute::context('Downloads');
-
+
 ModuleRoute::resource('admin/downloadcats', 'AdminDownloadcatsController');
 ModuleRoute::get(
     'admin/downloadcats/{id}/restore', 
@@ -17,7 +17,7 @@ ModuleRoute::get(
 ModuleRoute::post('admin/downloads/search', 'AdminDownloadsController@search');
 
 ModuleRoute::resource('downloads', 'DownloadsController', ['only' => ['index', 'show']]);
-ModuleRoute::get('downloads/category/{id}/{slug}', 'DownloadsController@showCategory');
-ModuleRoute::get('downloads/{id}/{slug}', 'DownloadsController@show');
+ModuleRoute::get('downloads/category/{id}/{slug?}', 'DownloadsController@showCategory');
+ModuleRoute::get('downloads/{id}/{slug?}', 'DownloadsController@show');
 ModuleRoute::post('downloads/perform/{id}', 'DownloadsController@perform');
 ModuleRoute::post('downloads/search', 'DownloadsController@search');

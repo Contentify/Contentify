@@ -2,7 +2,7 @@
 
 use ModelHandlerTrait;
 use App\Modules\Videos\Video;
-use Hover, BackController;
+use Hover, HTML, BackController;
 
 class AdminVideosController extends BackController {
 
@@ -31,7 +31,7 @@ class AdminVideosController extends BackController {
 
                 return [
                     $video->id,
-                    raw(Hover::pull(), $video->title),
+                    raw(Hover::pull().HTML::link('videos/'.$video->id.'/'.$video->slug, $video->title)),
                     Video::$providers[$video->provider],
                 ];            
             }

@@ -172,7 +172,7 @@ class PostsController extends FrontController {
         if ($forumReport) {
             $this->alertFlash(trans('forums::already_reported'));
         } else {
-            $forumReport = new ForumReport(['forum_post_id' => $id]);
+            $forumReport = new ForumReport(['post_id' => $id]);
             $forumReport->creator_id = user()->id;
             $forumReport->save();
 

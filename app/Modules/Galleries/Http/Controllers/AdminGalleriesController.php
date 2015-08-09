@@ -2,7 +2,7 @@
 
 use App\Modules\Galleries\Gallery;
 use ModelHandlerTrait;
-use Hover, BackController;
+use Hover, HTML, BackController;
 
 class AdminGalleriesController extends BackController {
 
@@ -30,7 +30,7 @@ class AdminGalleriesController extends BackController {
 
                 return [
                     $gallery->id,
-                    raw(Hover::pull(), $gallery->title),
+                    raw(Hover::pull().HTML::link('galleries/'.$gallery->id, $gallery->title)),
                 ];            
             }
         ]);

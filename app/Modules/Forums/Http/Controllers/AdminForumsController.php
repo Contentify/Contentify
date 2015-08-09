@@ -31,12 +31,20 @@ class AdminForumsController extends BackController {
             ],
             'tableRow' => function($forum)
             {
-                $title = e($forum->title);
-                if ($forum->level == 0) $title = '<strong>'.$title.'</strong>';
+                $title  = e($forum->title);
+                $url    = url('forums');
+
+                if ($forum->level == 0) {
+                    $title = '<strong>'.$title.'</strong>';
+                } else {
+                    $url .= '/'.$forum->id.'/'.$forum->slug;
+                }
+
+                $link = '<a href="'.$url.'">'.$title.'</a>';
 
                 return [
                     $forum->id,
-                    raw(Hover::modelAttributes($forum, ['creator'])->pull().$title),
+                    raw(Hover::modelAttributes($forum, ['creator'])->pull().$link),
                 ];            
             },
             'sortBy' => 'level',

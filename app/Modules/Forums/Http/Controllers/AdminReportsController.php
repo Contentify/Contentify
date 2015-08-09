@@ -32,8 +32,7 @@ class AdminReportsController extends BackController {
             {
                 $forumPost = $forumReportCase->post;
 
-                $url = url('forums/posts/perma/'.$forumPost->id);
-                $link = HTML::link($url, $forumPost->plainText(80));
+                $link = HTML::link($forumPost->paginatedPostUrl(), $forumPost->plainText(80));
 
                 return [
                     $forumReportCase->index,
