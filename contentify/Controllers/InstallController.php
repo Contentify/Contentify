@@ -457,7 +457,7 @@ class InstallController extends Controller {
         {
             $table->string('short', 6)->nullable();
             $table->string('url')->nullable();
-            $table->string('lineup');
+            $table->string('lineup')->nullable();
             $table->string('image')->nullable();
         }, ['country_id']);
         
@@ -633,6 +633,16 @@ class InstallController extends Controller {
             'published'     => true,
             'creator_id'    => 1,
             'pagecat_id'    => 2,
+            'created_at'    => DB::raw('NOW()'),
+            'updated_at'    => DB::raw('NOW()'),
+        ]);
+
+        DB::table('opponents')->insert([
+            'title'         => 'To Be Announced',
+            'slug'          => 'tba',
+            'short'         => 'TBA',
+            'country_id'    => 1,
+            'creator_id'    => 1,
             'created_at'    => DB::raw('NOW()'),
             'updated_at'    => DB::raw('NOW()'),
         ]);

@@ -14,9 +14,9 @@ class Captcha {
         $captchaCode = strtolower(Str::random(4));
         Session::put('captchaCode', $captchaCode);
 
-        $img = ImageCreateFromJPEG(public_path().'/theme/captcha.jpg'); // Create image from file
+        $img = imagecreatefromjpeg(public_path().'/theme/captcha.jpg'); // Create image from file
         
-        $color      = ImageColorAllocate($img, rand(0, 50), rand(0, 50), rand(0, 50));
+        $color      = imagecolorallocate($img, rand(0, 50), rand(0, 50), rand(0, 50));
         $font       = public_path().'/theme/xfiles.ttf';
         $fheight    = 12; // Font height
         $angle      = rand(-3, 3);
@@ -38,6 +38,7 @@ class Captcha {
      */
     public function check($code) 
     {
+        // Note: We do not need (want?) a strict string comparison here.
         return ($code == Session::get('captchaCode'));
     }
 }   
