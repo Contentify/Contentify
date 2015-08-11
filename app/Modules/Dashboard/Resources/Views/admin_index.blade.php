@@ -39,7 +39,7 @@
         <a href="{!! url('admin/visitors') !!}">{!! HTML::fontIcon('pie-chart') !!} Visitors</a>
     </div>
     <div>
-        <a href="{!! url('admin/diag') !!}">{!! HTML::fontIcon('cog') !!} Diag</a>
+        <a href="{!! url('admin/config') !!}">{!! HTML::fontIcon('cog') !!} Config</a>
     </div>
 </div>
 
