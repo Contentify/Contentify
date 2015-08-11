@@ -2,7 +2,7 @@
 
 use App\Modules\Config\SettingsBag;
 use Contentify\Vendor\MySqlDump;
-use Str, Redirect, Input, File, DB, Config, View, BackController;
+use Cache, Str, Redirect, Input, File, DB, Config, View, BackController;
 
 class AdminConfigController extends BackController {
 
@@ -57,7 +57,25 @@ class AdminConfigController extends BackController {
         // Save the settings one by one:
         foreach ($settingsBag->getFillable() as $settingName) {
             $settingRealName = str_replace('app::', 'app.', $settingName);
-            DB::table('config')->whereName($settingRealName)->update(['value' => $settingsBag->$settingName]);
+            
+            $result = DB::table('config')->whereName($settingRealName)
+                ->update(['value' => $settingsBag->$settingName, 'updated_at' => DB::raw('NOW()')]);
+
+            /*
+             * If the key does not exist we need to create it
+             * $result contains the number of affected rows.
+             * With using a timestamp we ensure that when updating a value
+             * the row is always affacted, eventhough if the value does not change.
+             */
+            if ($result == 0) {
+                DB::table('config')->insert(array(
+                    'name'          => $settingRealName, 
+                    'value'         => $settingsBag->$settingName, 
+                    'updated_at'    => DB::raw('NOW()'))
+                );
+            }
+
+            Config::clearCache($settingRealName);
         }
 
         $this->alertFlash(trans('app.updated', [$this->controllerName]));

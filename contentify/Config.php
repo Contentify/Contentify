@@ -106,7 +106,7 @@ class Config extends LaravelConfig {
      * @param  mixed   $value
      * @return void
      */
-    public function store($key, $value)
+    public static function store($key, $value)
     {
         $result = DB::table('config')->whereName($key)
             ->update(array('value' => $value, 'updated_at' => new DateTime()));
@@ -131,11 +131,23 @@ class Config extends LaravelConfig {
      * @param  string  $key
      * @return void
      */
-    public function delete($key)
+    public static function delete($key)
     {
         $result = DB::table('config')->whereName($key)->delete();
 
-        Cache::forget(self::CACHE_VALUES_PREFIX.$key);
-        Cache::put(self::CACHE_IN_DB_PREFIX.$key, false, self::CACHE_TIME);
+        self::clearCache($key);
     }
+
+    /**
+     * Clear the cache for a given configuration key.
+     *
+     * @param  string  $key
+     * @return void
+     */
+    public static function clearCache($key)
+    {
+        Cache::forget(self::CACHE_VALUES_PREFIX.$key);
+        Cache::forget(self::CACHE_IN_DB_PREFIX.$key);
+    }
+
 }
