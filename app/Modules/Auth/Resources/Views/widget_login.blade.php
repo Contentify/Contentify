@@ -1,5 +1,5 @@
 <div class="widget widget-auth-login">
-    {!! Form::open(array('url' => 'auth/login')) !!}
+    {!! Form::open(array('url' => url('auth/login', null, Config::get('app.https')))) !!}
         {!! Form::smartEmail() !!}
         
         {!! Form::smartPassword() !!}

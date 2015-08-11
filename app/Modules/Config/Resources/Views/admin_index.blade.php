@@ -13,5 +13,7 @@
        
     {!! Form::smartCheckbox('auth::registration', trans('config::registration')) !!} 
 
+    {!! Form::smartCheckbox('app::https', 'HTTPS') !!} 
+
     {!! Form::actions(['submit' => trans('app.update')], false) !!}
 {!! Form::close() !!}
