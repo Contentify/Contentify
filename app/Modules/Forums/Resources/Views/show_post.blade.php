@@ -14,7 +14,9 @@
             <span class="date-time">{!! $forumPost->created_at->dateTime() !!}</span>
             <div class="buttons hidden-lg">
                 @if (user())
-                    <a class="btn btn-default btn-xs quote" href="#">{!! trans('forums::quote') !!}</a>
+                    @if (! $forumPost->thread->closed)
+                        <a class="btn btn-default btn-xs quote" href="#">{!! trans('forums::quote') !!}</a>
+                    @endif
                     @if (user()->hasAccess('forums', PERM_UPDATE) or $forumPost->creator->id == user()->id)
                         <a class="btn btn-default btn-xs" href="{!! url('forums/posts/edit/'.$forumPost->id) !!}">{!! trans('app.edit') !!}</a>
                     @endif
