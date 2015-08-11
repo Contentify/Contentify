@@ -23,7 +23,9 @@
                     @if (! $forumPost->root and (user()->hasAccess('forums', PERM_DELETE) or $forumPost->creator->id == user()->id))
                         <a class="btn btn-default btn-xs" href="{!! url('forums/posts/delete/'.$forumPost->id) !!}">{!! trans('app.delete') !!}</a>
                     @endif
-                    <a class="btn btn-default btn-xs report" href="{!! url('forums/posts/report/'.$forumPost->id) !!}">{!! trans('forums::report') !!}</a>
+                    @if (Config::get('forums::reports'))
+                        <a class="btn btn-default btn-xs report" href="{!! url('forums/posts/report/'.$forumPost->id) !!}">{!! trans('forums::report') !!}</a>
+                    @endif
                 @endif
                 <a class="btn btn-default btn-xs" href="{!! url('forums/posts/perma/'.$forumPost->id) !!}"> 
                     @if (isset($forumPostNumber))

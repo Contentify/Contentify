@@ -1,7 +1,7 @@
 {!! Form::errors($errors) !!}
 
 {!! Form::open(['method' => 'put']) !!}
-    {!! Form::smartNumeric('example', trans('Example'), $example) !!}
+    {!! Form::smartCheckbox('reports', 'Forum Reports', isset($reports) ? $reports : null) !!}
 
     {!! Form::actions(['submit']) !!}
 {!! Form::close() !!}

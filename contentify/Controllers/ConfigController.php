@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use Request, Input, Validator, Redirect, DB;
+use Config, Request, Input, Validator, Redirect, DB;
 
 abstract class ConfigController extends BackController {
 
@@ -59,13 +59,23 @@ abstract class ConfigController extends BackController {
         DB::transaction(function() use ($input, $namespace)
         {
             foreach ($input as $name => $value) {
-                $res = DB::table('config')
-                    ->whereName($namespace.$name)
-                    ->update(['value' => $value]);
+
+                $result = DB::table('config')->whereName($namespace.$name)
+                    ->update(['value' => $value, 'updated_at' => DB::raw('NOW()')]);
+
+                if ($result == 0) {
+                    DB::table('config')->insert(array(
+                        'name'          => $namespace.$name,
+                        'value'         => $value, 
+                        'updated_at'    => DB::raw('NOW()'))
+                    );
+                }
+
+                Config::clearCache($namespace.$name);
             }
         });
 
-        $this->alertFlash(trans('app.updated', [$this->controller]));
+        $this->alertFlash(trans('app.updated', [$this->controllerName]));
         return Redirect::to(Request::url())->withInput();
     }
 

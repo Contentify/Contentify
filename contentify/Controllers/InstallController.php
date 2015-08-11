@@ -610,9 +610,10 @@ class InstallController extends Controller {
         $this->createDefaultCategories($tables);
         
         DB::table('config')->insert([
-            ['name' => 'app.analytics', 'value' => ''],
-            ['name' => 'forums::example', 'value' => ''],
-            ['name' => 'auth::registration', 'value' => 1]
+            ['name' => 'app.analytics',         'value' => ''],
+            ['name' => 'app.https',             'value' => 0],
+            ['name' => 'auth::registration',    'value' => 1],
+            ['name' => 'forums::reports',       'value' => 1],
         ]);
 
         DB::table('teamcats')->insert([
