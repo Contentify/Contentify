@@ -21,7 +21,8 @@ class AdminUsersController extends BackController {
     public function index()
     {
         $this->indexPage([
-            'buttons'   => null,
+            'buttons'   => ['<a href="'.url('admin/activities').'" class="btn btn-default">'.HTML::fontIcon('history')
+                .' Activities</a>'],
             'tableHead' => [
                 trans('app.id')             => 'id', 
                 trans('app.username')       => 'username',

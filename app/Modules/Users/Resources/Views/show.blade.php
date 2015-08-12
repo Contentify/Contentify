@@ -2,7 +2,7 @@
 
 <div class="profile-basics row">
     <div class="col-md-8">
-        <table class="table h">
+        <table class="table horizontal">
             <tbody>
                 <tr>
                     <th class="title">{!! trans('app.name') !!}</th>
@@ -73,7 +73,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="profile-socials">
-            <table class="table h">
+            <table class="table horizontal">
                 <tbody>
                     <tr>
                         <th class="title">Facebook:</th>
@@ -96,7 +96,7 @@
         </div>
 
         <div class="profile-favs">
-            <table class="table h">
+            <table class="table horizontal">
                 <tbody>
                     <tr>
                         <th class="title">{!! trans('users::game') !!}:</th>
@@ -124,7 +124,7 @@
     </div>
     <div class="col-md-6">
         <div class="profile-pc">
-            <table class="table h">
+            <table class="table horizontal">
                 <tbody>
                     <tr>
                         <th class="title">{!! trans('users::cpu') !!}:</th>

@@ -12,7 +12,7 @@
             </a>
         </header>
         
-        <table class="table h">
+        <table class="table horizontal">
             <tbody>
                 <tr>
                     <th>{!! trans('app.starts_at') !!}</th>

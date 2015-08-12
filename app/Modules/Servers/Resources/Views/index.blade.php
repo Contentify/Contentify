@@ -3,7 +3,7 @@
 <div class="servers clearfix">
     @foreach ($servers as $server)
         <div class="server">
-            <table class="table h">
+            <table class="table horizontal">
                 <tbody>
                     <tr>
                         <th>{!! trans('app.title') !!}</th>

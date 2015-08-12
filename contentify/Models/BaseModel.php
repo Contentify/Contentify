@@ -93,6 +93,14 @@ class BaseModel extends Eloquent {
 
         if ($unique) {
             /*
+             * If the model has a valid slug already and the title has
+             * not been changed, do nothing - just keep the current slug.
+             */
+            if ($this->slug and ! $this->isDirty('title')) {
+                return;
+            }
+
+            /*
              * Retrieve the model with the highest slug counter.
              * (orderBy uses "natural sorting")
              */
@@ -104,7 +112,6 @@ class BaseModel extends Eloquent {
             }
 
             $model = $model->first();
-
             /*
              * If the slug is in use already:
              * Extract the counter value, increase it and create the new slug.

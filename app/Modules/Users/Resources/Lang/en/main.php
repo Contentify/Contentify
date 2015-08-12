@@ -96,4 +96,11 @@ return array(
      */
     'latest_users'  => 'Latest Users',
 
+    /*
+     * Activities
+     */
+    'frontend'      => 'Frontend', 
+    'model_class'   => 'Model',
+    'activity'      => 'Activity',
+
 );

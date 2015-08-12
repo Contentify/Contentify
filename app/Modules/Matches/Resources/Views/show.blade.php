@@ -26,7 +26,7 @@
     </div>
 </div>
 <div class="details">
-    <table class="table h">
+    <table class="table horizontal">
         <tbody>
             <tr>
                 <th>{!! trans('app.date') !!}</th>

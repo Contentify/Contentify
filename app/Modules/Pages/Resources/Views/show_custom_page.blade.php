@@ -4,7 +4,7 @@
     {!! $customPage->text !!}
 </div>
 
-@if (isset($isImprint) and $isImprint)
+@if (isset($isImpressum) and $isImpressum)
 	<hr>
 
 	<h3>CMS</h3>

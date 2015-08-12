@@ -1,6 +1,6 @@
 <h1 class="page-title">{{ $event->title }}</h1>
 
-<table class="table h">
+<table class="table horizontal">
     <tbody>
         <tr>
             <th>{!! trans('app.starts_at') !!}</th>

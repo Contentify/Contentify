@@ -135,5 +135,15 @@ class UserActivities {
         UserActivity::where('created_at', '<', DB::raw('NOW() - INTERVAL '.$weeks.' WEEK'))->delete();
     }
 
+    /**
+     * Deletes all user activities.
+     *
+     * @return void
+     */
+    public function deleteAll()
+    {
+        UserActivity::truncate();
+    }
+
 }
 

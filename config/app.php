@@ -281,6 +281,7 @@ return [
         'Group'                 => 'Contentify\Models\Group',
         'StiModel'              => 'Contentify\Models\StiModel',
         'User'                  => 'Contentify\Models\User',
+        'UserActivity'          => 'Contentify\Models\UserActivity',
         'ConfigBag'             => 'Contentify\Models\ConfigBag',
         'Raw'                   => 'Contentify\Raw',
 
