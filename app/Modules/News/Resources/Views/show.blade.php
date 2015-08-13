@@ -1,7 +1,7 @@
 <article class="news">
     <header>
         <h1 class="page-title inside">{{ $news->title }}</h1>
-        <span><time>{{ $news->created_at }}</time> {!! trans('news::written_by') !!} {!! link_to('users/'.$news->creator->id.'/'.$news->creator->slug, $news->creator->slug) !!} {!! trans('news::in') !!} {{ $news->newscat->title }}</span>
+        <span><time>{{ $news->created_at }}</time> {{ trans('news::written_by') }} {!! link_to('users/'.$news->creator->id.'/'.$news->creator->slug, $news->creator->slug) !!} {{ trans('news::in') }} {{ $news->newscat->title }}</span>
     </header>
     
     <div class="content">
@@ -17,6 +17,8 @@
             {!! $news->text !!}
         </div>
     </div>
+
+    @include('share')
 </article>
 
 @if ($news->enable_comments)

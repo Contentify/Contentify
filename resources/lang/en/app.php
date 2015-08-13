@@ -97,6 +97,7 @@ return [
     'max_size'      => 'Max. Size: :0Byte',
     'accessed'      => 'accessed',
     'no_items'      => 'There are no items.',
+    'share_this'    => 'Share this',
 
     /*
      * Backend template
