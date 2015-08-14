@@ -108,10 +108,11 @@ class Match extends BaseModel {
     /**
      * Returns the score of the match with HTML spans which 
      * indicate if the left or the right team is the winner.
-     * 
+     *
+     * @param int $minDigits Minimal number of digits - preprend 0 if result has not enough digits
      * @return string The HTML code
      */
-    public function scoreCode()
+    public function scoreCode($minDigits = 2)
     {
         $leftScore  = $this->left_score;
         $rightScore = $this->right_score;
@@ -119,6 +120,13 @@ class Match extends BaseModel {
         if ($this->state != self::STATE_CLOSED and $leftScore == 0 and $rightScore == 0) {
             $leftScore  = '?';
             $rightScore = '?';
+        } else {
+            if (strlen($leftScore) < $minDigits) {
+                $leftScore = str_repeat('0', $minDigits - strlen($leftScore)).$leftScore;
+            }
+            if (strlen($rightScore) < $minDigits) {
+                $rightScore = str_repeat('0', $minDigits - strlen($rightScore)).$rightScore;
+            }
         }
 
         if ($this->left_score > $this->right_score) {
