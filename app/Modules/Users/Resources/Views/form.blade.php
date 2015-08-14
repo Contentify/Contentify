@@ -15,6 +15,10 @@
         {!! button(trans('users::change'), url('users/'.$user->id.'/password')) !!}
     {!! Form::smartGroupClose() !!}
 
+    {!! Form::smartSelectForeign('language_id', trans('users::localisation')) !!}
+
+    {!! Form::helpBlock(trans('users::local_info')) !!}
+
     {!! Form::smartText('first_name', trans('users::first_name')) !!}
 
     {!! Form::smartText('last_name', trans('users::last_name')) !!}
@@ -23,9 +27,7 @@
         {!! Form::select('gender', array('0' => trans('users::unknown'), '1' => trans('users::female'), '2' => trans('users::male'), '3' => trans('users::other'))) !!}
     {!! Form::smartGroupClose() !!}
 
-    {!! Form::smartSelectForeign('country_id', trans('users::country')) !!}
-
-    {!! Form::smartSelectForeign('language_id', trans('users::language')) !!}
+    {!! Form::smartSelectForeign('country_id', trans('users::country')) !!}    
 
     {!! Form::smartText('birthdate', trans('users::birthdate')) !!}
 

@@ -28,10 +28,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <th class="title">{!! trans('users::language') !!}:</th>
-                    <td>{{ $user->language->title }}</td>
-                </tr>
-                <tr>
                     <th class="title">{!! trans('users::birthdate') !!}:</th>
                     <td>{{ $user->birthdate }}</td>
                 </tr>

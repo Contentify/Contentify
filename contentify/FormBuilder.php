@@ -680,6 +680,23 @@ class FormBuilder extends OriginalFormBuilder {
     }
 
     /**
+     * Adds a Bootstrap help block.
+     * 
+     * @param  string $text The text inside the block.
+     * @return string
+     */
+    public function helpBlock($text) 
+    {
+        $partial = '<div class="form-group">'
+            .'<div class="col-sm-'.$this->labelGridCols.' "></div>'
+            .'<div class="col-sm-'.$this->controlGridCols.' ">'
+            .'<span class="help-block">'.$text.'</span>'
+            .'</div></div>';
+
+        return $partial;
+    }
+
+    /**
      * Laravel prioritises model values lower than the value passed to form elements.
      * This method is an alternative to getValueAttribute() that prioritises model values higher.
      * 
