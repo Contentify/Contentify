@@ -20,6 +20,8 @@ class ThreadsController extends FrontController {
         $forumPosts = ForumPost::whereThreadId($forumThread->id)->orderBy('created_at', 'asc')
             ->paginate(ForumPost::PER_PAGE)->setPath(Request::url());
 
+        $this->title($forumThread->title);
+
         $this->pageView('forums::show_thread', compact('forumThread', 'forumPosts'));
     }
 

@@ -26,6 +26,8 @@ class ForumsController extends FrontController {
 
         }))->isAccessible()->findOrFail($id);
 
+        $this->title($forum->title);
+
         $this->pageView('forums::show_forum', compact('forum'));
     }
 

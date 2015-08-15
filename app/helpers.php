@@ -183,43 +183,20 @@ function emojis($text)
 }
 
 /**
- * Tries to translate a module name.
+ * Tries to translate a module/model/controller name.
  * 
- * @param  string $name The name of the module
- * @return string
- */
-function trans_module($name)
-{
-    $name       = Str::snake($name);
-    $appKey     = 'app.module_'.$name;
-    $moduleKey  = $name.'::module_'.$name;
-    $translator = app('translator');
-    
-    if ($translator->has($moduleKey)) {
-        return trans($moduleKey);
-    }
-
-    if ($translator->has($appKey)) {
-        return trans($appKey);
-    }
-
-    return $name;
-}
-
-/**
- * Tries to translate a model name.
- * 
- * @param  string $name     The name of the model
+ * @param  string $name     The name of the module/model/controller
  * @param  string $module   The name of the module
- * @return string
+ * @return string 
  */
-function trans_model($name, $module = null)
+function trans_object($name, $module = null)
 {
-    $name       = Str::snake($name);
-    $appKey     = 'app.model_'.$name;
-    $moduleKey  = $module.'::model_'.$name;
     $translator = app('translator');
-    
+
+    $name       = Str::snake($name);
+    $moduleKey  = $module.'::object_'.$name;
+    $appKey     = 'app.object_'.$name;
+
     if ($module and $translator->has($moduleKey)) {
         return trans($moduleKey);
     }

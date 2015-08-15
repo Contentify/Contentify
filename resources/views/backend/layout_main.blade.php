@@ -16,7 +16,7 @@
     @if ($title)
         {!! HTML::title($title) !!}
     @else
-        {!! HTML::title($controllerName) !!}
+        {!! HTML::title(trans_object($controllerName, $moduleName)) !!}
     @endif
 
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('theme/favicon.png') !!}">
@@ -93,9 +93,9 @@
             @if (isset($page))
                 <a class="page-head" href="{!! url('admin/'.strtolower($controllerName)) !!}">
                     {!! HTML::fontIcon($controllerIcon) !!}
-                    {!! trans_module($moduleName) !!}
+                    {!! trans_object($moduleName, $moduleName) !!}
                     @if ($controllerName != $moduleName)
-                        \ {!! $controllerName !!}
+                        \ {!! trans_object($controllerName, $moduleName) !!}
                     @endif
                 </a>
 
