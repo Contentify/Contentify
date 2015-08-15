@@ -1,4 +1,4 @@
-<h1 class="page-title">{!! trans('auth::login') !!}</h1>
+<h1 class="page-title">{!! trans_object('login') !!}</h1>
 
 {!! Form::errors($errors) !!}
 

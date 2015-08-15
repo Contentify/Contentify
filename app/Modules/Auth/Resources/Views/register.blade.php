@@ -1,4 +1,4 @@
-<h1 class="page-title">{!! trans('auth::register') !!}</h1>
+<h1 class="page-title">{!! trans_object('registration') !!}</h1>
 
 {!! Form::errors($errors) !!}
 

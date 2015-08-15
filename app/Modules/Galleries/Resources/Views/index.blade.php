@@ -1,4 +1,4 @@
-<h1 class="page-title">Galleries</h1>
+<h1 class="page-title">{{ trans_object('galleries') }}</h1>
 
 <div class="galleries">
     @foreach ($galleries as $gallery)

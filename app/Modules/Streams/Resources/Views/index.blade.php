@@ -1,4 +1,4 @@
-<h1 class="page-title">Streams</h1>
+<h1 class="page-title">{{ trans_object('streams') }}</h1>
 
 <div class="streams clearfix">
     @foreach ($streams as $stream)

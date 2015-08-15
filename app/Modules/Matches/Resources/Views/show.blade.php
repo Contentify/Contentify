@@ -1,4 +1,4 @@
-<h1 class="page-title">Match</h1>
+<h1 class="page-title">{{ trans_object('match') }}</h1>
 
 <div class="overview clearfix">
     <div class="left">

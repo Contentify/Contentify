@@ -1,4 +1,4 @@
-<h1 class="page-title">Servers</h1>
+<h1 class="page-title">{{ trans_object('servers') }}</h1>
 
 <div class="servers clearfix">
     @foreach ($servers as $server)

@@ -1,4 +1,4 @@
-<h1 class="page-title">Teams</h1>
+<h1 class="page-title">{{ trans_object('teams') }}</h1>
 
 @foreach ($teams as $team)
     <article class="team">

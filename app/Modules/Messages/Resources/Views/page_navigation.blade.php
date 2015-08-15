@@ -1,4 +1,4 @@
-<h1 class="page-title">Messages</h1>
+<h1 class="page-title">{{ trans_object('messages') }}</h1>
 
 <div role="tabpanel" style="margin-bottom: 10px">
 

@@ -16,7 +16,11 @@
         {!! HTML::openGraphTags($openGraph) !!}
     @endif
 
-    {!! HTML::title($title) !!}
+    @if ($title)
+        {!! HTML::title($title) !!}
+    @else
+        {!! HTML::title(trans_object($controllerName, $moduleName)) !!}
+    @endif
 
     <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Opera Speed Dial Icon -->
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('favicon.png') !!}">

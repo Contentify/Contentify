@@ -1,4 +1,4 @@
-<h1 class="page-title"><a href="{!! url('downloads/category/'.$download->downloadcat->id.'/'.$download->downloadcat->slug) !!}">Downloads - {!! $download->downloadcat->title !!}</a></h1>
+<h1 class="page-title"><a href="{!! url('downloads/category/'.$download->downloadcat->id.'/'.$download->downloadcat->slug) !!}">{ trans_object('downloads') }} - {!! $download->downloadcat->title !!}</a></h1>
 
 <div class="download-detail">
     {!! Form::open(array('url' => 'downloads/perform/'.$download->id)) !!}

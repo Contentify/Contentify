@@ -1,4 +1,4 @@
-<h1 class="page-title">Profile</h1>
+<h1 class="page-title">{{ trans('app.profile') }}</h1>
 
 {!! Form::errors($errors) !!}
 

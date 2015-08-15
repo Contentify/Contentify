@@ -1,4 +1,4 @@
-<h1 class="page-title">Friends {!! trans('app.of') !!} {!! $user->username !!}</h1>
+<h1 class="page-title">{{ trans_object('friends') }} {!! trans('app.of') !!} {!! $user->username !!}</h1>
 
 @foreach ($user->friends() as $friend)
     <div class="friend">

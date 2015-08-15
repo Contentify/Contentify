@@ -49,6 +49,7 @@ class UsersController extends FrontController {
         $user->access_counter++;
         $user->save();
 
+        $this->title($user->username);
         $this->pageView('users::show', compact('user'));
     }
 
@@ -61,6 +62,7 @@ class UsersController extends FrontController {
 
         $user = User::findOrFail($id);
 
+        $this->title($user->username);
         $this->pageView('users::form', compact('user'));
     }
 

@@ -45,6 +45,7 @@ class EventsController extends FrontController {
             $widget = new CalendarWidget;
             return $widget->render(compact('year', 'month'));
         } else {
+            $this->title(trans('app.calendar'));
             $this->pageView('events::calendar', compact('year', 'month'));
         }
     }

@@ -162,6 +162,9 @@ return [
     'value'         => 'Value',
     'placeholder'   => 'Placeholder, please change!', // Diag module
     'compiled'      => 'compiled',
+    'calendar'      => 'Calendar',
+    'profile'       => 'Profile',
+    'edit_profile'  => 'Edit Profile',
 
     /*
      * Module names

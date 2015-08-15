@@ -1,4 +1,4 @@
-<h1 class="page-title">Downloads</h1>
+<h1 class="page-title">{{ trans_object('downloads') }}</h1>
 
 <div class="downloadcats clearfix">
     @foreach ($downloadcats as $downloadcat)

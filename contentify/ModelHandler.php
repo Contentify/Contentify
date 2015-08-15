@@ -281,6 +281,7 @@ class ModelHandler {
         /*
          * Generate the view
          */
+        $pageTitle = $data['pageTitle'] === true ? trans_object($controller->getModuleName()) : $data['pageTitle'];
         $controller->pageView('model_index', [
             'buttons'       => $buttons,
             'infoText'      => $data['infoText'],
@@ -290,7 +291,7 @@ class ModelHandler {
             'paginator'     => $paginator,
             'searchString'  => $data['search'],
             'showSearchBox' => $data['searchFor'] and (! $data['dataSource']) ? true : false,
-            'pageTitle'     => $data['pageTitle'] === true ? $controller->getModuleName() : $data['pageTitle'],
+            'pageTitle'     => $pageTitle,
         ]);
     }
 

@@ -1,4 +1,4 @@
-<h1 class="page-title">Downloads - {{ $downloadcat->title }}</h1>
+<h1 class="page-title">{{ trans_object('downloads') }} - {{ $downloadcat->title }}</h1>
 
 <div class="downloads">
     @foreach ($downloads as $download)
