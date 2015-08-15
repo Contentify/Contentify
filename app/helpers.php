@@ -183,6 +183,55 @@ function emojis($text)
 }
 
 /**
+ * Tries to translate a module name.
+ * 
+ * @param  string $name The name of the module
+ * @return string
+ */
+function trans_module($name)
+{
+    $name       = Str::snake($name);
+    $appKey     = 'app.module_'.$name;
+    $moduleKey  = $name.'::module_'.$name;
+    $translator = app('translator');
+    
+    if ($translator->has($moduleKey)) {
+        return trans($moduleKey);
+    }
+
+    if ($translator->has($appKey)) {
+        return trans($appKey);
+    }
+
+    return $name;
+}
+
+/**
+ * Tries to translate a model name.
+ * 
+ * @param  string $name     The name of the model
+ * @param  string $module   The name of the module
+ * @return string
+ */
+function trans_model($name, $module = null)
+{
+    $name       = Str::snake($name);
+    $appKey     = 'app.model_'.$name;
+    $moduleKey  = $module.'::model_'.$name;
+    $translator = app('translator');
+    
+    if ($module and $translator->has($moduleKey)) {
+        return trans($moduleKey);
+    }
+
+    if ($translator->has($appKey)) {
+        return trans($appKey);
+    }
+
+    return $name;
+}
+
+/**
  * Returns true if the application is installed
  * 
  * @return bool

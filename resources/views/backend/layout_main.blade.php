@@ -92,7 +92,11 @@
 
             @if (isset($page))
                 <a class="page-head" href="{!! url('admin/'.strtolower($controllerName)) !!}">
-                        {!! HTML::fontIcon($controllerIcon) !!}{!! $controllerName !!}
+                    {!! HTML::fontIcon($controllerIcon) !!}
+                    {!! trans_module($moduleName) !!}
+                    @if ($controllerName != $moduleName)
+                        \ {!! $controllerName !!}
+                    @endif
                 </a>
 
                 <div class="page page-{!! strtolower($controllerName) !!} {!! $templateClass !!}">
