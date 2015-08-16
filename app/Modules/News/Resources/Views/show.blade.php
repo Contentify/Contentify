@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    @include('share')
+    @include('share', ['shareTitle' => $news->title])
 </article>
 
 @if ($news->enable_comments)
