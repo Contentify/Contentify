@@ -29,6 +29,9 @@ class TeamsController extends FrontController {
     {
         $team = Team::findOrFail($id);
 
+        $team->access_counter++;
+        $team->save();
+
         $this->title($team->title);
 
         $this->pageView('teams::show', compact('team'));
