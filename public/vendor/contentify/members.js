@@ -45,6 +45,9 @@ $(document).ready(function()
                                                 description:    $('#description').val(),
                                                 position:       $('#position').val(),
                                             }
+                                        }).fail(function(response)
+                                        {
+                                            contentify.alertRequestFailed(response);
                                         });
 
                                         contentify.closeModal();

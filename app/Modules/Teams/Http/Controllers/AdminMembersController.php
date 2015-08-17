@@ -128,7 +128,7 @@ class AdminMembersController extends BackController {
             }
         }
         
-        return Response::make(0);
+        return Response::make(400);
     }
 
     /**
