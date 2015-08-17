@@ -405,6 +405,28 @@ class User extends SentryUser {
     }
 
     /**
+     * Deletes a user image.
+     * 
+     * @param  string $fieldName Name of the form field
+     * @return void
+     */
+    public function deleteImage($fieldName)
+    {
+        $filePath = public_path().'/uploads/users/';
+
+        if (File::exists($filePath.$this->getOriginal($fieldName))) {
+            File::delete($filePath.$this->getOriginal($fieldName));
+        }
+
+        if (File::exists($filePath.'80/'.$this->getOriginal($fieldName))) {
+            File::delete($filePath.'80/'.$this->getOriginal($fieldName));
+        }
+
+        $this->$fieldName = '';
+        $this->save();
+    }
+
+    /**
      * Counts the new messages of this user.
      * Uses caching.
      * 

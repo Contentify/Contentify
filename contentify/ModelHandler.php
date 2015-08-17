@@ -554,7 +554,16 @@ class ModelHandler {
                         }
                     }
                 } else {
-                    // Ignore missing files
+                    // We use the filename '.' to signalize we want to delete the file.
+                    if (Input::get($fieldName) == '.') {
+                        $oldFile = $model->uploadPath(true).$model->$fieldName;
+                        if (File::isFile($oldFile)) {
+                            File::delete($oldFile);
+                        }
+
+                        $model->$fieldName  = '';
+                        $model->forceSave(); // Save model again, without validation
+                    }
                 }
             }
         }

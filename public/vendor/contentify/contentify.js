@@ -540,5 +540,28 @@ $(document).ready(function()
 
             $('html, body').animate({ scrollTop: 0 }, speed);
         }
+
+        /*
+         * File upload: Delete button
+         */
+        $('input[type=file]').each(function()
+        {
+            var $fileInput = $(this);
+            var $parent = $(this).parent();
+            var $root = $parent.parent();
+            var $preview = $root.find('.image-upload-prev');
+            var $p = $root.find('p.help-block');
+
+            $(this).parent().find('.input-group-addon.delete').click(function()
+            {
+                $fileInput.attr('type', 'hidden');
+                $fileInput.val('.');
+
+                $preview.remove();
+                $(this).remove();
+
+                $p.text($fileInput.attr('data-info'));
+            });
+        });
     };    
 });

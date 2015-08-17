@@ -6779,6 +6779,13 @@ textarea.form-group textarea {
 .form-horizontal .control-label {
   text-align: left;
 }
+.input-group .input-group-addon {
+  border: 1px solid #f0f0f0;
+}
+/* File Upload */
+.input-group-addon.delete {
+  cursor: pointer;
+}
 .image-upload-prev {
   margin-bottom: 10px;
 }
@@ -6927,7 +6934,6 @@ ul.pagination li.active span {
 /* Datetime Picker */
 .date-time-picker .input-group-addon {
   cursor: pointer;
-  border: 1px solid #f0f0f0;
 }
 .bootstrap-datetimepicker-widget td.active,
 .bootstrap-datetimepicker-widget td.active:hover {

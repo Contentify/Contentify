@@ -525,7 +525,10 @@ class FormBuilder extends OriginalFormBuilder {
         if (! $title) $title = trans('app.file');
 
         $partial = self::smartGroupOpen($name, $title)
-            .self::file($name)
+            .'<div class="input-group">'
+            .self::file($name, ['class' => 'form-control', 'data-info' => trans('app.save_to_del')])
+            .'<span class="input-group-addon delete">'.HTML::fontIcon('trash').'</span>'
+            .'</div>'
             .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
             .self::smartGroupClose();
         return $partial;
@@ -553,7 +556,10 @@ class FormBuilder extends OriginalFormBuilder {
 
         $partial = self::smartGroupOpen($name, $title)
             .$prev
-            .self::file($name)
+            .'<div class="input-group">'
+            .self::file($name, ['class' => 'form-control', 'data-info' => trans('app.save_to_del')])
+            .'<span class="input-group-addon delete">'.HTML::fontIcon('trash').'</span>'
+            .'</div>'
             .'<p class="help-block">'.trans('app.max_size', [ini_get('upload_max_filesize')]).'</p>'
             .self::smartGroupClose();
         return $partial;

@@ -11,11 +11,11 @@ return [
     |
     */
    
-   /*
-    * Date format patterns
-    */
-   'date_format'        => 'Y-m-d',         // PHP default, for Carbon ( http://www.php.net/manual/en/function.date.php )
-   'date_format_alt'    => 'YYYY-MM-DD',    // for the date time picker UI widget
+    /*
+     * Date format patterns
+     */
+    'date_format'        => 'Y-m-d',         // PHP default, for Carbon ( http://www.php.net/manual/en/function.date.php )
+    'date_format_alt'    => 'YYYY-MM-DD',    // for the date time picker UI widget
    
     /*
      * Security
@@ -98,6 +98,7 @@ return [
     'accessed'      => 'accessed',
     'no_items'      => 'There are no items.',
     'share_this'    => 'Share this',
+    'save_to_del'   => 'Save this form to delete this file.',
 
     /*
      * Backend template

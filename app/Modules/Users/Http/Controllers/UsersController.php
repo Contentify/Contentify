@@ -86,11 +86,15 @@ class UsersController extends FrontController {
         if (Input::hasFile('image')) {
             $result = $user->uploadImage('image');
             if ($result) return $result;
+        } elseif (Input::get('image') == '.') {
+            $user->deleteImage('image');
         }
 
         if (Input::hasFile('avatar')) {
             $result = $user->uploadImage('avatar');
             if ($result) return $result;
+        } elseif (Input::get('avatar') == '.') {
+            $user->deleteImage('avatar');
         }
 
         $user->save();

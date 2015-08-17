@@ -6731,6 +6731,10 @@ textarea.form-group textarea {
 .form-group textarea {
   height: auto;
 }
+/* File Upload */
+.input-group-addon.delete {
+  cursor: pointer;
+}
 .image-upload-prev {
   margin-bottom: 10px;
 }
