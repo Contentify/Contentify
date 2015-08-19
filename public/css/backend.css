@@ -7180,8 +7180,8 @@ fieldset[disabled] .modal .modal-footer button.active {
 .page-images .image {
   position: relative;
   float: left;
-  width: 33.333%;
-  padding-top: 33%;
+  width: 20%;
+  padding-top: 20%;
   background-size: cover;
   background-position: center;
   box-shadow: inset 0px 0px 0px 1px white;
@@ -7324,6 +7324,10 @@ fieldset[disabled] .page-images .image .actions a.active {
   margin-right: 0px;
 }
 @media (max-width: 768px) {
+  .page-images .image {
+    width: 33.33%;
+    padding-top: 33%;
+  }
   .page-images .info,
   .page-images .actions {
     display: block !important;
@@ -7333,6 +7337,12 @@ fieldset[disabled] .page-images .image .actions a.active {
   }
   .page-images .actions a {
     padding: 1px 5px !important;
+  }
+}
+@media (max-width: 850px) {
+  .page-images .image {
+    width: 25%;
+    padding-top: 25%;
   }
 }
 .page-config form {

@@ -11,7 +11,7 @@
 
 <div class="clearfix">
 	@foreach ($images as $image)
-		<div class="image" style="background-image: url('{{ $image->uploadPath().$image->image }}')">
+		<div class="image" style="background-image: url('{{ $image->uploadPath().'200/'.$image->image }}')">
 			<a class="show" href="{{ $image->uploadPath().$image->image }}" target="_blank"></a>
 			<div class="info">
 				{{ $image->tags }}

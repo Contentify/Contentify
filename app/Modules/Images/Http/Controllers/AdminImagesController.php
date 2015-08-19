@@ -19,7 +19,7 @@ class AdminImagesController extends BackController {
 
     public function index()
     {            
-        $perPage = 9; //Config::get('app.frontItemsPerPage');
+        $perPage = 15;
 
         if (Input::old('search')) {
             $searchString = Input::old('search');
