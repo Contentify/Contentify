@@ -7177,9 +7177,163 @@ fieldset[disabled] .modal .modal-footer button.active {
 /*
  * Subpages
  */
-.page-images .table .image {
-  max-width: 500px;
-  max-height: 100px;
+.page-images .image {
+  position: relative;
+  float: left;
+  width: 33.333%;
+  padding-top: 33%;
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 0px 0px 0px 1px white;
+}
+.page-images .image .show {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+.page-images .image .info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: none;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-weight: bold;
+}
+.page-images .image .actions {
+  display: none;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+.page-images .image .actions a {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #555555;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+  background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+}
+.page-images .image .actions a:focus,
+.page-images .image .actions a:active:focus,
+.page-images .image .actions a.active:focus,
+.page-images .image .actions a.focus,
+.page-images .image .actions a:active.focus,
+.page-images .image .actions a.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.page-images .image .actions a:hover,
+.page-images .image .actions a:focus,
+.page-images .image .actions a.focus {
+  color: #333333;
+  text-decoration: none;
+}
+.page-images .image .actions a:active,
+.page-images .image .actions a.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.page-images .image .actions a.disabled,
+.page-images .image .actions a[disabled],
+fieldset[disabled] .page-images .image .actions a {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.page-images .image .actions a:hover,
+.page-images .image .actions a:focus,
+.page-images .image .actions a.focus,
+.page-images .image .actions a:active,
+.page-images .image .actions a.active,
+.open > .dropdown-toggle.page-images .image .actions a {
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.page-images .image .actions a:active,
+.page-images .image .actions a.active,
+.open > .dropdown-toggle.page-images .image .actions a {
+  background-image: none;
+}
+.page-images .image .actions a.disabled,
+.page-images .image .actions a[disabled],
+fieldset[disabled] .page-images .image .actions a,
+.page-images .image .actions a.disabled:hover,
+.page-images .image .actions a[disabled]:hover,
+fieldset[disabled] .page-images .image .actions a:hover,
+.page-images .image .actions a.disabled:focus,
+.page-images .image .actions a[disabled]:focus,
+fieldset[disabled] .page-images .image .actions a:focus,
+.page-images .image .actions a.disabled.focus,
+.page-images .image .actions a[disabled].focus,
+fieldset[disabled] .page-images .image .actions a.focus,
+.page-images .image .actions a.disabled:active,
+.page-images .image .actions a[disabled]:active,
+fieldset[disabled] .page-images .image .actions a:active,
+.page-images .image .actions a.disabled.active,
+.page-images .image .actions a[disabled].active,
+fieldset[disabled] .page-images .image .actions a.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.page-images .image .actions a .badge {
+  color: #ffffff;
+  background-color: #333333;
+}
+.page-images .image:hover .info,
+.page-images .image:hover .actions {
+  display: block;
+}
+.page-images .image:nth-child(3n+3) {
+  margin-right: 0px;
+}
+@media (max-width: 768px) {
+  .page-images .info,
+  .page-images .actions {
+    display: block !important;
+  }
+  .page-images .info .gallery {
+    display: none;
+  }
+  .page-images .actions a {
+    padding: 1px 5px !important;
+  }
 }
 .page-config form {
   margin-top: 40px;

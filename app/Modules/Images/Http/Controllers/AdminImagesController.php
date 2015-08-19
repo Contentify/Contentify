@@ -2,7 +2,7 @@
 
 use App\Modules\Images\Image;
 use ModelHandlerTrait;
-use HTML, BackController;
+use Input, Request, Config, HTML, BackController;
 
 class AdminImagesController extends BackController {
 
@@ -18,33 +18,18 @@ class AdminImagesController extends BackController {
     }
 
     public function index()
-    {
-        $this->indexPage([
-            'tableHead' => [
-                trans('app.id')         => 'id', 
-                trans('app.image')      => null,
-                trans('app.created_at') => 'created_at'
-            ],
-            'tableRow' => function($image)
-            {
-                $imgCode = HTML::image(
-                    $image->uploadPath().'100/'.$image->image, 
-                    'Image-Preview', ['class' => 'image']
-                );
-                $preview = '<a href="'.$image->uploadPath().$image->image.'" target="_blank">'.$imgCode.'</a>'
-                            .'<br>'.e($image->tags);
-                if ($image->gallery) {
-                    $preview .= '<br>'.link_to('galleries/'.$image->gallery->id, 'Gallery: '.e($image->gallery->title));
-                }
+    {            
+        $perPage = 9; //Config::get('app.frontItemsPerPage');
 
-                return [
-                    $image->id,
-                    raw($preview),
-                    $image->created_at
-                ];
-            },
-            'searchFor' => 'tags'
-        ]);
+        if (Input::old('search')) {
+            $searchString = Input::old('search');
+            $images = Image::where('tags', 'LIKE', '%'.$searchString.'%')->orderBy('created_at', 'desc')->paginate($perPage)->setPath(Request::url());
+        } else {
+            $searchString = null;
+            $images = Image::orderBy('created_at', 'desc')->paginate($perPage)->setPath(Request::url());
+        }
+
+        $this->pageView('images::admin_index', compact('images', 'searchString'));
     }
 
 }

@@ -155,7 +155,34 @@ ul.pagination {
  * Subpages
  */
 
-.page-images .table .image { max-width: 500px; max-height: 100px }
+.page-images {
+    .image {
+        position: relative; float: left; width: 33.333%; padding-top: 33%; background-size: cover; background-position: center;
+        box-shadow: inset 0px 0px 0px 1px white;
+        .show { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; }
+        .info { 
+            .text-overflow();
+            display: none; position: absolute; left: 0px; top: 0px; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center; font-weight: bold; 
+        }
+        .actions { 
+            display: none; position: absolute; left: 0px; bottom: 0px; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center;
+            a { .btn(); .btn-default(); }
+        }
+        &:hover .info, &:hover .actions {
+            display: block;
+        }
+    }
+    .image:nth-child(3n+3) {
+        margin-right: 0px;
+    }
+}
+@media (max-width: @screen-tablet) {
+    .page-images {
+        .info, .actions { display: block !important }
+        .info .gallery { display: none }
+        .actions a { padding: 1px 5px !important; }
+    }
+}
 
 .page-config {
     form { margin-top: 40px }
