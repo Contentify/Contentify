@@ -6954,9 +6954,6 @@ textarea.model-search-box input {
 .scroller li {
   width: 100%;
 }
-/*
- * Modules
- */
 .create-comment {
   margin-top: 20px;
 }
@@ -6978,6 +6975,12 @@ textarea.model-search-box input {
 .create-comment textarea:focus {
   border-color: #ff6100;
 }
+.comments-login-info {
+  margin-top: 10px;
+}
+/*
+ * Modules
+ */
 .widget-partners a {
   text-align: center;
 }
