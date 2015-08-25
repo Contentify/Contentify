@@ -32,6 +32,7 @@ Route::group(array('middleware' => 'auth'), function()
 ModuleRoute::post('forums/search', 'ThreadsController@search');
 
 ModuleRoute::get('forums/posts/perma/{id}/{slug?}', 'PostsController@show');
+ModuleRoute::get('forums/posts/user/{id}/{slug?}', 'PostsController@showUserPosts');
 Route::group(array('middleware' => 'auth'), function()
 {
     ModuleRoute::get('forums/posts/{id}', 'PostsController@get');

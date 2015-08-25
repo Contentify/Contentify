@@ -143,7 +143,7 @@ class ForumPost extends BaseModel {
         }
         $extension .= '#forum-post-id-'.$this->id;
 
-        $url = 'forums/threads/'.$this->thread->id.'/'.$this->thread->slug.$extension;
+        $url = url('forums/threads/'.$this->thread->id.'/'.$this->thread->slug.$extension);
 
         return $url;
     }

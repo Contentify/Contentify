@@ -3,7 +3,7 @@
 use App\Modules\Forums\ForumPost;
 use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumThread;
-use Response, Input, Redirect, FrontController;
+use User, Request, Response, Input, Redirect, FrontController;
 
 class PostsController extends FrontController {
 
@@ -180,6 +180,21 @@ class PostsController extends FrontController {
         }
 
         return Redirect::to('forums/threads/'.$forumPost->thread->id.'/'.$forumPost->thread->slug);
+    }
+
+    /**
+     * Shows the latest posts of a user
+     * 
+     * @param int The id of the user
+     */
+    public function showUserPosts($userId)
+    {
+        $user = User::findOrFail($userId);
+
+        $forumPosts = ForumPost::where('forum_posts.creator_id', '=', $userId)->isAccessible($user)
+            ->orderBy('updated_at', 'DESC')->paginate(10)->setPath(Request::url()); 
+
+        $this->pageView('forums::show_user_posts', compact('forumPosts'));
     }
 
 }

@@ -220,6 +220,8 @@ return [
     'object_download'           => 'Download',
     'object_downloadcat'        => 'Download-Category',
     'object_event'              => 'Event',
+    'object_posts'              => 'Post',
+    'object_thread'             => 'Thread',
     'object_forum'              => 'Forum',
     'object_forum_post'         => 'Forum Post',
     'object_forum_report'       => 'Forum Report',

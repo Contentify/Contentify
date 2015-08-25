@@ -14,12 +14,13 @@ return array(
     /*
      * Forums
      */
-    'parent'        => 'Parent Forum',
-    'create_thread' => 'Create Thread',
-    'forum_circle'  => 'Invalid parent forum. You cannot create a cycle.',
-    'max_level'     => 'Maximum nesting level has been reached.',
-    'access_info'   => 'Changing access rules will have no effect if the forum is a sub forum.',
-    'show_new'      => 'Show New Posts',
+    'parent'            => 'Parent Forum',
+    'create_thread'     => 'Create Thread',
+    'forum_circle'      => 'Invalid parent forum. You cannot create a cycle.',
+    'max_level'         => 'Maximum nesting level has been reached.',
+    'access_info'       => 'Changing access rules will have no effect if the forum is a sub forum.',
+    'show_new'          => 'Show New Posts',
+    'show_user_posts'   => 'Show Latest Forums Posts',
 
     /*
      * Threads
