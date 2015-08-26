@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Users\Http\Controllers;
 
 use ModelHandlerTrait;
-use Exception, Response, Sentry, HTML, User, Hover, BackController;
+use Exception, Input, Response, Sentry, HTML, User, Hover, BackController;
 
 class AdminUsersController extends BackController {
 
@@ -69,10 +69,24 @@ class AdminUsersController extends BackController {
     public function update($id)
     {
         $user = User::findOrFail($id);
+        
+        /*
+         * Ensure that "Admins" are not able to promote themselves to "Superadmins"
+         */
+        if (! user()->isSuperAdmin()) { 
+            $groupIds = Input::get('_relation_groups');
 
-        if (! user()->isSuperAdmin() and $user->isSuperAdmin()) {
-            $this->alertError(trans('app.access_denied'));
-            return;
+            foreach ($groupIds as $groupId) {
+                // $groupId may be an empty string
+                if ($groupId) {
+                    $group = Sentry::findGroupById($groupId);
+
+                    if ($group->permissions['superuser'] == '1') {
+                        $this->alertError(trans('app.access_denied'));
+                        return;
+                    }
+                }                
+            }
         }
 
         return $this->traitUpdate($id);
