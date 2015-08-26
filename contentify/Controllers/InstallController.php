@@ -141,7 +141,7 @@ class InstallController extends Controller {
                 );
 
                 $this->createDatabase();
-                $this->createSeed();
+                $this->createUserGroups();
 
                 /*
                  * Create the deamon user (with ID = 1)
@@ -156,6 +156,8 @@ class InstallController extends Controller {
                 // NOTE: It's not possible to integrate this into the register method
                 $user->slug = Str::slug($user->username);
                 $user->save();
+
+                $this->createSeed();
 
                 $title      = 'Database Setup Complete';
                 $content    = '<p>Database filled with initial seed.</p>';
@@ -266,7 +268,15 @@ class InstallController extends Controller {
          * - We recommend to use timestamp() to create a datetime attribute.
          */
 
-        /**
+        /*
+         * If possible (safe mode not enabled), set the execution time limit
+         * to more than just the default 30 seconds.
+         */
+        if (! ini_get('safe_mode') and ini_get('max_execution_time') < 120) {
+            set_time_limit(120);
+        }
+
+        /*
          * Run Sentry migrations trough Artisan.
          * Unfortunately it's not the simple Artisan::call('migrate')
          * that it should be.
@@ -309,8 +319,9 @@ class InstallController extends Controller {
 
         $this->create('languages', function($table) 
         { 
+            $table->string('title');
             $table->string('code', 2);
-        }, [], ['slug']);
+        }, [], false);
 
         $this->create('countries', function($table) 
         { 
@@ -557,7 +568,8 @@ class InstallController extends Controller {
             $table->text('info')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
-        }, ['activity_id', 'user_id'], false);
+            $table->integer('activity_id');
+        }, ['user_id'], false);
 
         $this->create('shouts', function($table) 
         { 
@@ -602,10 +614,8 @@ class InstallController extends Controller {
      * 
      * @return void
      */
-    protected function createSeed() {
-       
-        $this->createUserGroups();
-
+    protected function createSeed() 
+    {      
         $tables = ['newscats', 'partnercats', 'advertcats', 'downloadcats', 'slidecats'];
         $this->createDefaultCategories($tables);
         
@@ -617,14 +627,14 @@ class InstallController extends Controller {
         ]);
 
         DB::table('teamcats')->insert([
-            ['id' => '1', 'title' => 'Staff'],
-            ['id' => '2', 'title' => 'Gaming'],
+            ['id' => '1', 'title' => 'Staff', 'creator_id' => 1, 'updater_id' => 1],
+            ['id' => '2', 'title' => 'Gaming', 'creator_id' => 1, 'updater_id' => 1],
         ]);
 
         DB::table('pagecats')->insert([
-            ['id' => '1', 'title' => 'Blog Post'],
-            ['id' => '2', 'title' => 'Custom Page'],
-            ['id' => '3', 'title' => 'Custom Content'],
+            ['id' => '1', 'title' => 'Blog Post', 'creator_id' => 1, 'updater_id' => 1],
+            ['id' => '2', 'title' => 'Custom Page', 'creator_id' => 1, 'updater_id' => 1],
+            ['id' => '3', 'title' => 'Custom Content', 'creator_id' => 1, 'updater_id' => 1],
         ]);
 
         DB::table('pages')->insert([
@@ -647,10 +657,117 @@ information about your stored data, and possibly entitlement to correction, bloc
 <br><br><i>From: </i><a href="http://www.twigg.de/" target="_blank">http://www.twigg.de/</a>',
             'published'     => true,
             'creator_id'    => 1,
+            'updater_id'    => 1,
             'pagecat_id'    => 2,
             'created_at'    => DB::raw('NOW()'),
             'updated_at'    => DB::raw('NOW()'),
         ]);
+
+
+        DB::table('languages')->insert([
+            ['id' => '1', 'title' => 'English', 'code' => 'en'],
+            ['id' => '2', 'title' => 'Deutsch', 'code' => 'de']
+        ]);
+
+        DB::insert('INSERT INTO countries(title, code, icon, creator_id, updater_id) VALUES
+        ("European Union", "eu", "eu.png", 1, 1),
+        ("Argentina", "ar", "ar.png", 1, 1),
+        ("Australia", "au", "au.png", 1, 1),
+        ("Austria", "at", "at.png", 1, 1),
+        ("Belgium", "be", "be.png", 1, 1),
+        ("Bosnia Herzegowina", "ba", "ba.png", 1, 1),
+        ("Brazil", "br", "br.png", 1, 1),
+        ("Bulgaria", "bg", "bg.png", 1, 1),
+        ("Canada", "ca", "ca.png", 1, 1),
+        ("Chile", "cl", "cl.png", 1, 1),
+        ("China", "cn", "cn.png", 1, 1),
+        ("Colombia", "co", "co.png", 1, 1),
+        ("Czech Republic", "cz", "cz.png", 1, 1),
+        ("Croatia", "hr", "hr.png", 1, 1),
+        ("Cyprus", "cy", "cy.png", 1, 1),
+        ("Denmark", "dk", "dk.png", 1, 1),
+        ("Estonia", "ee", "ee.png", 1, 1),
+        ("Finland", "fi", "fi.png", 1, 1),
+        ("Faroe Islands", "fo", "fo.png", 1, 1),
+        ("France", "fr", "fr.png", 1, 1),
+        ("Germany", "de", "de.png", 1, 1),
+        ("Greece", "gr", "gr.png", 1, 1),
+        ("Hungary", "hu", "hu.png", 1, 1),
+        ("Iceland", "is", "is.png", 1, 1),
+        ("Ireland", "ie", "ie.png", 1, 1),
+        ("Israel", "il", "il.png", 1, 1),
+        ("Italy", "it", "it.png", 1, 1),
+        ("Japan", "jp", "jp.png", 1, 1),
+        ("Korea", "kr", "kr.png", 1, 1),
+        ("Latvia", "lv", "lv.png", 1, 1),
+        ("Lithuania", "lt", "lt.png", 1, 1),
+        ("Luxemburg", "lu", "lu.png", 1, 1),
+        ("Malaysia", "my", "my.png", 1, 1),
+        ("Malta", "mt", "mt.png", 1, 1),
+        ("Netherlands", "nl", "nl.png", 1, 1),
+        ("Mexico", "mx", "mx.png", 1, 1),
+        ("Mongolia", "mn", "mn.png", 1, 1),
+        ("New Zealand", "nz", "nz.png", 1, 1),
+        ("Norway", "no", "no.png", 1, 1),
+        ("Poland", "pl", "pl.png", 1, 1),
+        ("Portugal", "pt", "pt.png", 1, 1),
+        ("Romania", "ro", "ro.png", 1, 1),
+        ("Russian Federation", "ru", "ru.png", 1, 1),
+        ("Singapore", "sg", "sg.png", 1, 1),
+        ("Slovak Republic", "sk", "sk.png", 1, 1),
+        ("Slovenia", "si", "si.png", 1, 1),
+        ("Taiwan", "tw", "tw.png", 1, 1),
+        ("South Africa", "za", "za.png", 1, 1),
+        ("Spain", "es", "es.png", 1, 1),
+        ("Sweden", "se", "se.png", 1, 1),
+        ("Syria", "sy", "sy.png", 1, 1),
+        ("Switzerland", "ch", "ch.png", 1, 1),
+        ("Tunisia", "tn", "tn.png", 1, 1),
+        ("Turkey", "tr", "tr.png", 1, 1),
+        ("Ukraine", "ua", "ua.png", 1, 1),
+        ("United Kingdom", "uk", "uk.png", 1, 1),
+        ("USA", "us", "us.png", 1, 1)');
+
+        DB::insert('INSERT INTO games(title, short, icon, creator_id, updater_id) VALUES
+        ("Counter-Strike: Global Offensive", "CS:GO", "default/csgo.png", 1, 1),
+        ("Counter-Strike: Source", "CS:S", "default/css.gif", 1, 1),
+        ("Counter-Strike 1.6", "CS", "default/cs.gif", 1, 1),
+        ("Call of Duty", "CoD", "default/cod.png", 1, 1),
+        ("Battlefield", "BF", "default/bf.png", 1, 1),
+        ("Unreal Tournament 3", "UT3", "default/ut3.png", 1, 1),
+        ("Left 4 Dead", "L4D", "default/l4d.png", 1, 1),
+        ("Crysis", "Crysis", "default/crysis.png", 1, 1),
+        ("Quake", "Quake", "default/quake.gif", 1, 1),
+        ("StarCraft II", "SC2", "default/sc2.png", 1, 1),
+        ("Warcraft III", "WC3", "default/wc3.gif", 1, 1),
+        ("Diablo III", "D3", "default/d3.png", 1, 1),
+        ("DotA 2", "DotA", "default/dota2.png", 1, 1),
+        ("League of Legends", "LoL", "default/lol.png", 1, 1),
+        ("Heroes of the Storm", "HotS", "default/hots.png", 1, 1),
+        ("World of Warcraft", "WoW", "default/wow.png", 1, 1),
+        ("World of Tanks", "WoT", "default/wot.png", 1, 1),
+        ("Trackmania", "TM", "default/tm.gif", 1, 1),
+        ("FIFA", "FIFA", "default/fifa.gif", 1, 1),
+        ("Minecraft", "MS", "default/mc.png", 1, 1)');
+
+        DB::insert('INSERT INTO maps(title, game_id, creator_id, updater_id) VALUES
+        ("Unknown", NULL, 1, 1),
+        ("de_dust", 1, 1, 1),
+        ("de_dust2", 1, 1, 1),
+        ("de_inferno", 1, 1, 1),
+        ("de_train", 1, 1, 1),
+        ("de_cbble", 1, 1, 1),
+        ("de_nuke", 1, 1, 1),
+        ("de_inferno", 1, 1, 1),
+        ("de_cache", 1, 1, 1),
+        ("de_mirage", 1, 1, 1)');
+
+        DB::insert('INSERT INTO tournaments(title, short, creator_id, updater_id) VALUES
+        ("Electronic Sports League", "ESL", 1, 1),
+        ("E-Sports Entertainment Association", "ESEA", 1, 1),
+        ("Major League Gaming", "MLG", 1, 1),
+        ("Electronic Sports World Cup", "ESWC", 1, 1),
+        ("Dreamhack", "DH", 1, 1)');
 
         DB::table('opponents')->insert([
             'title'         => 'To Be Announced',
@@ -658,114 +775,10 @@ information about your stored data, and possibly entitlement to correction, bloc
             'short'         => 'TBA',
             'country_id'    => 1,
             'creator_id'    => 1,
+            'updater_id'    => 1,
             'created_at'    => DB::raw('NOW()'),
             'updated_at'    => DB::raw('NOW()'),
         ]);
-
-        DB::table('languages')->insert([
-            ['id' => '1', 'title' => 'English', 'code' => 'en'],
-            ['id' => '2', 'title' => 'Deutsch', 'code' => 'de']
-        ]);
-
-        DB::insert('INSERT INTO countries(title, code, icon) VALUES
-        ("European Union", "eu", "eu.png"),
-        ("Argentina", "ar", "ar.png"),
-        ("Australia", "au", "au.png"),
-        ("Austria", "at", "at.png"),
-        ("Belgium", "be", "be.png"),
-        ("Bosnia Herzegowina", "ba", "ba.png"),
-        ("Brazil", "br", "br.png"),
-        ("Bulgaria", "bg", "bg.png"),
-        ("Canada", "ca", "ca.png"),
-        ("Chile", "cl", "cl.png"),
-        ("China", "cn", "cn.png"),
-        ("Colombia", "co", "co.png"),
-        ("Czech Republic", "cz", "cz.png"),
-        ("Croatia", "hr", "hr.png"),
-        ("Cyprus", "cy", "cy.png"),
-        ("Denmark", "dk", "dk.png"),
-        ("Estonia", "ee", "ee.png"),
-        ("Finland", "fi", "fi.png"),
-        ("Faroe Islands", "fo", "fo.png"),
-        ("France", "fr", "fr.png"),
-        ("Germany", "de", "de.png"),
-        ("Greece", "gr", "gr.png"),
-        ("Hungary", "hu", "hu.png"),
-        ("Iceland", "is", "is.png"),
-        ("Ireland", "ie", "ie.png"),
-        ("Israel", "il", "il.png"),
-        ("Italy", "it", "it.png"),
-        ("Japan", "jp", "jp.png"),
-        ("Korea", "kr", "kr.png"),
-        ("Latvia", "lv", "lv.png"),
-        ("Lithuania", "lt", "lt.png"),
-        ("Luxemburg", "lu", "lu.png"),
-        ("Malaysia", "my", "my.png"),
-        ("Malta", "mt", "mt.png"),
-        ("Netherlands", "nl", "nl.png"),
-        ("Mexico", "mx", "mx.png"),
-        ("Mongolia", "mn", "mn.png"),
-        ("New Zealand", "nz", "nz.png"),
-        ("Norway", "no", "no.png"),
-        ("Poland", "pl", "pl.png"),
-        ("Portugal", "pt", "pt.png"),
-        ("Romania", "ro", "ro.png"),
-        ("Russian Federation", "ru", "ru.png"),
-        ("Singapore", "sg", "sg.png"),
-        ("Slovak Republic", "sk", "sk.png"),
-        ("Slovenia", "si", "si.png"),
-        ("Taiwan", "tw", "tw.png"),
-        ("South Africa", "za", "za.png"),
-        ("Spain", "es", "es.png"),
-        ("Sweden", "se", "se.png"),
-        ("Syria", "sy", "sy.png"),
-        ("Switzerland", "ch", "ch.png"),
-        ("Tunisia", "tn", "tn.png"),
-        ("Turkey", "tr", "tr.png"),
-        ("Ukraine", "ua", "ua.png"),
-        ("United Kingdom", "uk", "uk.png"),
-        ("USA", "us", "us.png")');
-
-        DB::insert('INSERT INTO games(title, short, icon) VALUES
-        ("Counter-Strike: Global Offensive", "CS:GO", "default/csgo.png"),
-        ("Counter-Strike: Source", "CS:S", "default/css.gif"),
-        ("Counter-Strike 1.6", "CS", "default/cs.gif"),
-        ("Call of Duty", "CoD", "default/cod.png"),
-        ("Battlefield", "BF", "default/bf.png"),
-        ("Unreal Tournament 3", "UT3", "default/ut3.png"),
-        ("Left 4 Dead", "L4D", "default/l4d.png"),
-        ("Crysis", "Crysis", "default/crysis.png"),
-        ("Quake", "Quake", "default/quake.gif"),
-        ("StarCraft II", "SC2", "default/sc2.png"),
-        ("Warcraft III", "WC3", "default/wc3.gif"),
-        ("Diablo III", "D3", "default/d3.png"),
-        ("DotA 2", "DotA", "default/dota2.png"),
-        ("League of Legends", "LoL", "default/lol.png"),
-        ("Heroes of the Storm", "HotS", "default/hots.png"),
-        ("World of Warcraft", "WoW", "default/wow.png"),
-        ("World of Tanks", "WoT", "default/wot.png"),
-        ("Trackmania", "TM", "default/tm.gif"),
-        ("FIFA", "FIFA", "default/fifa.gif"),
-        ("Minecraft", "MS", "default/mc.png")');
-
-        DB::insert('INSERT INTO maps(title, game_id) VALUES
-        ("Unknown", NULL),
-        ("de_dust", 1),
-        ("de_dust2", 1),
-        ("de_inferno", 1),
-        ("de_train", 1),
-        ("de_cbble", 1),
-        ("de_nuke", 1),
-        ("de_inferno", 1),
-        ("de_cache", 1),
-        ("de_mirage", 1)');
-
-        DB::insert('INSERT INTO tournaments(title, short) VALUES
-        ("Electronic Sports League", "ESL"),
-        ("E-Sports Entertainment Association", "ESEA"),
-        ("Major League Gaming", "MLG"),
-        ("Electronic Sports World Cup", "ESWC"),
-        ("Dreamhack", "DH")');
     }
 
     /**
@@ -935,8 +948,8 @@ information about your stored data, and possibly entitlement to correction, bloc
                 }
 
                 $table->integer($localKey)->unsigned()->nullable();
-                //$foreignTable = str_plural(substr($remoteKey, 0, -3));
-                //$table->foreign($localKey)->references('id')->on($foreignTable);
+                $foreignTable = str_plural(substr($remoteKey, 0, -3));
+                $table->foreign($localKey)->references('id')->on($foreignTable);
             }
 
             /*
@@ -945,11 +958,11 @@ information about your stored data, and possibly entitlement to correction, bloc
             if ($contentObject) {
                 if ($contentObject === true or ! in_array('creator_id', $contentObject)) {
                     $table->integer('creator_id')->unsigned()->default(0);
-                    //$table->foreign('creator_id')->references('id')->on('users');
+                    $table->foreign('creator_id')->references('id')->on('users');
                 }
                 if ($contentObject === true or ! in_array('updater_id', $contentObject)) {
                     $table->integer('updater_id')->unsigned()->default(0);
-                    //$table->foreign('updater_id')->references('id')->on('users');
+                    $table->foreign('updater_id')->references('id')->on('users');
                 }
                 if ($contentObject === true or ! in_array('access_counter', $contentObject)) {
                     $table->integer('access_counter')->default(0);
