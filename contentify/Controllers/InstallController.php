@@ -315,7 +315,7 @@ class InstallController extends Controller {
             $table->string('ip');
             $table->integer('user_agents');
             $table->date('visited_at');
-        }, array(), false);
+        }, [], false);
 
         $this->create('languages', function($table) 
         { 
@@ -334,7 +334,7 @@ class InstallController extends Controller {
             $table->text('text')->nullable();
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true)->nullable();
-        }, array(), ['title', 'slug', 'access_counter']);  
+        }, [], ['title', 'slug', 'access_counter']);  
 
         $this->create('contact_messages', function($table)
         {
@@ -790,7 +790,7 @@ information about your stored data, and possibly entitlement to correction, bloc
     {
         Sentry::createGroup([
             'name'        => 'Visitors',
-            'permissions' => array()
+            'permissions' => []
         ]);
 
         Sentry::createGroup([
