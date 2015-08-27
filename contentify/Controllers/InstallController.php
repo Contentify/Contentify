@@ -343,7 +343,7 @@ class InstallController extends Controller {
             $table->text('text');
             $table->string('ip');
             $table->boolean('new')->default(true);
-        }, [], ['slug']);
+        }, [], ['slug', 'creator_id', 'updater_id']);
 
         $this->create('games', function($table)
         {

@@ -1,61 +1,13 @@
-<table class="table" data-not-responsive="1">
-    <tbody>
-        <tr>
-            <td>
-                {!! trans('app.creator') !!}
-            </td>
-            <td>
-                {{ $msg->username }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {!! trans('app.created_at') !!}
-            </td>
-            <td>
-                {!! $msg->created_at !!}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {!! trans('app.email') !!}
-            </td>
-            <td>
-                {{ $msg->email }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {!! trans('app.ip') !!}
-            </td>
-            <td>
-                {!! $msg->ip !!}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<h2>{{ $msg->title }}</h2>
 
 <hr>
 
-<table class="table" data-not-responsive="1">
-    <tbody>
-        <tr>
-            <td>
-                {!! trans('app.subject') !!}
-            </td>
-            <td>
-                {{ $msg->title }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {!! trans('app.message') !!}
-            </td>
-            <td>
-                {!! $msg->text !!}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<blockquote>{!! $msg->text !!}</blockquote> 
+
+<hr>
+
+<p><strong>{{ trans('app.creator') }}:</strong> {{ $msg->username }} ({{ trans('app.email') }}: {{ $msg->email }}, {{ trans('app.ip') }}: {{ $msg->ip }}) - <strong>{{ trans('app.created_at') }}:</strong>  {!! $msg->created_at->dateTime() !!}</p>
+
+<hr>
 
 {!! Form::button(trans('app.reply'), ['onclick' => "location.href='mailto:{$msg->email}'"]) !!}

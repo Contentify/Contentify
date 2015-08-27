@@ -97,9 +97,12 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
     &:focus { .focus() }
 }
 .model-search-box input[type=submit] { vertical-align: inherit; }
-.toolbar .model-search-box { float: right; }
-@media (max-width: @screen-phone) {
-    .toolbar .model-search-box { float: none; margin-top: 10px; }
+.toolbar .model-search-box { display: inline; float: right; }
+@media (max-width: 805px) {
+    .toolbar button { margin-bottom: 10px; }
+}
+@media (max-width: 540px) {
+    .toolbar .model-search-box { display: block; float: none; margin-top: 10px; }
 }
 
 /* Sort-Switcher */
@@ -184,10 +187,8 @@ ul.pagination {
         .actions a { padding: 1px 5px !important; }
     }
 }
-@media (max-width: 850px) {
-    .page-images {
-        .image { width: 25%; padding-top: 25%; }
-    }
+@media (max-width: 400px) {
+    .page-images .image { width: 50%; padding-top: 50%; }
 }
 
 .page-config {
@@ -203,7 +204,10 @@ ul.pagination {
 
 .page-members {
     div.data { display: none }
-    td a { cursor: pointer; }
+    table {
+        div { margin-bottom: 10px }
+        .icon-link { margin-right: 10px; }
+    }
 }
 
 .page-matches .scores { 
@@ -239,10 +243,17 @@ ul.pagination {
         a { display: block }
     }
 }
+@media (max-width: @screen-tablet) {
+    .page-dashboard {
+        .quick-access {
+            div { width: 25%; min-width: 100px; padding: 10px 0px }
+        }
+    }
+}
 @media (max-width: @screen-phone) {
     .page-dashboard {
         .quick-access {
-            div { width: 33%; padding: 10px 0px }
+            div { width: 33%; min-width: 33%; padding: 10px 0px }
             a { margin: 0px 5px; }
             i { font-size: 30px; }
         }

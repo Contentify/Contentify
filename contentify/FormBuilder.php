@@ -333,8 +333,9 @@ class FormBuilder extends OriginalFormBuilder {
             $textarea   = self::textarea($name, $value, ['class' => 'editor']);
 
             $code = "<script>var editorLocale = '".App::getLocale()."';
+            var config = window.innerWidth > 768 ? 'custom_config.js' : 'custom_config_mobile.js';
             CKEDITOR.replace('".$name."', {
-                customConfig: 'custom_config.js'
+                customConfig: config
             });</script>";
 
             $partial    = '<div class="form-editor">'

@@ -157,6 +157,15 @@ abstract class BaseController extends Controller {
      */
     protected function setupLayout($layoutName = null)
     {
+        /*
+         * Controllers that directly extend the BaseController class might not have
+         * the layout property (most likely because they only handle AJAX requests
+         * and return JSON, not an HTML document)
+         */
+        if (! property_exists($this, 'layout')) {
+            return;
+        }
+
         if ($layoutName) {
             $this->layout = $layoutName;
         }

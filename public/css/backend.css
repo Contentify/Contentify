@@ -6869,10 +6869,17 @@ textarea.model-search-box input[type=text] {
   vertical-align: inherit;
 }
 .toolbar .model-search-box {
+  display: inline;
   float: right;
 }
-@media (max-width: 480px) {
+@media (max-width: 805px) {
+  .toolbar button {
+    margin-bottom: 10px;
+  }
+}
+@media (max-width: 540px) {
   .toolbar .model-search-box {
+    display: block;
     float: none;
     margin-top: 10px;
   }
@@ -7339,10 +7346,10 @@ fieldset[disabled] .page-images .image .actions a.active {
     padding: 1px 5px !important;
   }
 }
-@media (max-width: 850px) {
+@media (max-width: 400px) {
   .page-images .image {
-    width: 25%;
-    padding-top: 25%;
+    width: 50%;
+    padding-top: 50%;
   }
 }
 .page-config form {
@@ -7366,8 +7373,11 @@ fieldset[disabled] .page-images .image .actions a.active {
 .page-members div.data {
   display: none;
 }
-.page-members td a {
-  cursor: pointer;
+.page-members table div {
+  margin-bottom: 10px;
+}
+.page-members table .icon-link {
+  margin-right: 10px;
 }
 .page-matches .scores {
   padding-top: 7px;
@@ -7470,9 +7480,17 @@ fieldset[disabled] .page-images .image .actions a.active {
 .page-dashboard .feed-messages a {
   display: block;
 }
+@media (max-width: 768px) {
+  .page-dashboard .quick-access div {
+    width: 25%;
+    min-width: 100px;
+    padding: 10px 0px;
+  }
+}
 @media (max-width: 480px) {
   .page-dashboard .quick-access div {
     width: 33%;
+    min-width: 33%;
     padding: 10px 0px;
   }
   .page-dashboard .quick-access a {
