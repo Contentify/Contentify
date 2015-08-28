@@ -11,7 +11,9 @@ return array(
     |
     */
    
-    'setting'       => 'Setting',
-
+    'receiver'      => 'Empfänger',
+    'message_sent'  => 'Ihre Nachricht wurde gesendet.',
+    're'            => 'Re: ',
+    'system_info'   => 'Diese Nachricht wurde automatisch erstellt.',
 
 );

@@ -94,7 +94,7 @@ return [
     'sorting'       => 'Sorting',
     'search'        => 'Search',
     'recycle_bin'   => 'Recycle Bin',
-    'max_size'      => 'Max. Size: :0Byte',
+    'max_size'      => 'Max. Size: :0Bytes',
     'accessed'      => 'accessed',
     'no_items'      => 'There are no items.',
     'share_this'    => 'Share this',
@@ -105,8 +105,6 @@ return [
      */
     'no_js'             => 'JavaScript not enabled. Please enable JavaScript!',
     'admin_dashboard'   => 'Admin-Dashboard',
-    'tec_infos'         => 'Show infos about the technologies used',
-    'view_profile'      => 'View your profile',
     'new_messages'      => 'One new message|:count new messages',
     'top'               => 'Go to top',
 
@@ -131,6 +129,8 @@ return [
     'no'            => 'No',
     'valid'         => 'valid',
     'invalid'       => 'invalid',
+    'enabled'       => 'Enabled',
+    'disbaled'      => 'Disabled',
     'read_more'     => 'Read more...',
     'name'          => 'Name',
     'username'      => 'Username',
@@ -138,6 +138,7 @@ return [
     'password'      => 'Password',
     'file'          => 'File',
     'link'          => 'Link',
+    'link'          => 'Links',
     'send'          => 'Send',
     'position'      => 'Position',
     'location'      => 'Location',
@@ -166,6 +167,25 @@ return [
     'calendar'      => 'Calendar',
     'profile'       => 'Profile',
     'edit_profile'  => 'Edit Profile',
+    'install'       => 'Install',
+    'total'         => 'Total',
+
+    /*
+     * Days
+     */
+    'yeah'          => 'Year',
+    'month'         => 'Month',
+    'day'           => 'Day',
+    'today'         => 'Today',
+    'yesterday'     => 'Yesterday',
+    'tomorrow'      => 'Tomorrow',
+    'monday'        => 'Monday',
+    'tuesday'       => 'Tuesday',
+    'wednesday'     => 'Wednesday',
+    'thursday'      => 'Thursday',
+    'friday'        => 'Friday',
+    'saturday'      => 'Saturday',
+    'sunday'        => 'Sunday', 
 
     /*
      * Module names
@@ -174,7 +194,7 @@ return [
     'object_auth'           => 'Authentication',
     'object_awards'         => 'Awards',
     'object_comments'       => 'Comments',
-    'object_config'         => 'Config',
+    'object_config'         => 'Configuration',
     'object_contact'        => 'Contact',
     'object_coutries'       => 'Countries',
     'object_dashboard'      => 'Dashboard',
@@ -215,7 +235,7 @@ return [
     'object_advertcat'          => 'Advertisement-Category',
     'object_award'              => 'Award',
     'object_contact_message'    => 'Contact Message',
-    'object_join_message'       => 'Join Message',
+    'object_join_message'       => 'Application',
     'object_country'            => 'Country',
     'object_download'           => 'Download',
     'object_downloadcat'        => 'Download-Category',

@@ -1,6 +1,7 @@
 {
-    "slug": "Streams",
+    "slug": "Streams",
     "enabled": true,
+    "search": ["streams"],
     "admin-nav": [
         {
             "icon": "video-camera",

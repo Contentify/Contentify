@@ -25,7 +25,7 @@ class AdminContactController extends BackController {
             'buttons' => null,
             'tableHead' => [
                 trans('app.id')         => 'id', 
-                trans('contact::new')   => 'new', 
+                trans('app.new')        => 'new', 
                 trans('app.title')      => 'title', 
                 trans('app.creator')    => 'username', 
                 trans('app.created_at') => 'created_at'

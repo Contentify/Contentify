@@ -16,7 +16,7 @@ return array(
     'button_info'       => 'PHP-Info',
     'button_optimize'   => 'Optimize Database',
     'button_dump'       => 'Export Database',
-    'button_log'        => 'Log-File',
+    'button_log'        => 'Log File',
 
     'db_export'         => 'The database was exported.',
     'db_file'           => 'A .sql-file was created on the webspace.',
@@ -29,6 +29,6 @@ return array(
      * Config 
      */
     'analytics'         => 'Analytics Code',
-    'registration'      => 'Registration',
+    'registration'      => 'Registrierung',
 
 );

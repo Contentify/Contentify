@@ -11,11 +11,13 @@ return array(
     |
     */
    
-    'visitors'      => 'Visitors',
-
-    'today'         => 'Today',
-    'yesterday'     => 'Yesterday',
-    'month'         => 'Month',
-    'total'         => 'Total',
+    'broadcast'     => 'Broadcast',
+    'left_team'     => 'Heimteam',
+    'right_team'    => 'Gastteam',
+    'left_lineup'   => 'Heimteam-Aufstellung',
+    'right_lineup'  => 'Gastteam-Lineup',
+    'played_at'     => 'Gespielt Am',
+    'score'         => 'Ergebnis',
+    'vs'            => 'vs',
 
 );

@@ -27,7 +27,7 @@ return array(
      * Restore password
      */
     'password_reset'    => 'Password Reset',
-    'email_gen_pw'      => 'An email has been to the given email address. Follow the instruction to generate a new password.',
+    'email_gen_pw'      => 'An email has been sent to the given email address. Follow the instruction to generate a new password.',
     'email_invalid'     => 'No user found with the given email address.',
     'code_invalid'      => 'Code does not match.',
     'new_pw'            => 'New Password',
@@ -40,7 +40,6 @@ return array(
      * Login 
      */
     'login'             => 'Login',
-    'restore_pw'        => 'Restore Password',  
 
     /*
      * Widget

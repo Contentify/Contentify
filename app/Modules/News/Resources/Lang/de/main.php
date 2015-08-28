@@ -11,9 +11,11 @@ return array(
     |
     */
    
-    'receiver'      => 'Receiver',
-    'message_sent'  => 'Your message has been sent.',
-    're'            => 'Re: ',
-    'system_info'   => 'This message has been created automatically.',
+    'summary'       => 'Zusammenfassung',
+    'written_by'    => 'verfasst von',
+    'in'            => 'in', // in category
+    'publish_at'    => 'Veröffentlichen um', // in category
+    'rss_last'      => 'Die Letzten 20 News',
+    'rss_news'      => 'News'
 
 );

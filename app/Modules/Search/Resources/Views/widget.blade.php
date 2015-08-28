@@ -2,8 +2,8 @@
     {!! Form::open(array('url' => 'search/create')) !!}
         <input name="_createdat" type="hidden" value="{!! time() !!}">
 
-        {!! Form::smartText('subject', trans('search::subject')) !!}
+        {!! Form::smartText('subject', trans('app.subject')) !!}
 
-        {!! Form::actions(['submit' => trans('search::search')], false) !!}
+        {!! Form::actions(['submit' => trans('app.search')], false) !!}
     {!! Form::close() !!}
 </div>

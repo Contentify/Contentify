@@ -19,7 +19,7 @@
     <thead>
         <tr>
             <th>{!! trans('app.date') !!}</th>
-            <th>{!! trans('visitors::visitors') !!}</th>
+            <th>{!! trans('app.object_visitors') !!}</th>
         </tr>
     </thead>
     <tbody>

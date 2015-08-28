@@ -17,11 +17,11 @@ class UsersController extends FrontController {
         $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                trans('app.id')                 => 'id',  
-                trans('app.username')           => 'username',
-                trans('app.name')               => 'first_name',
-                trans('users::registration')    => 'created_at',
-                trans('users::last_login')      => 'last_login',
+                trans('app.id')                     => 'id',  
+                trans('app.username')               => 'username',
+                trans('app.name')                   => 'first_name',
+                trans('app.object_registration')    => 'created_at',
+                trans('users::last_login')          => 'last_login',
             ],
             'tableRow' => function($user)
             {
@@ -99,7 +99,7 @@ class UsersController extends FrontController {
 
         $user->save();
 
-        $this->alertFlash(trans('app.updated', ['Profile']));
+        $this->alertFlash(trans('app.updated', [trans('app.profile')]));
         return Redirect::route('users.edit', [$id]);
     }
 

@@ -1,0 +1,1 @@
+NOTE: German translations equal .en so we do not need a language file for .de!

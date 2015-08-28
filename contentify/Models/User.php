@@ -71,7 +71,7 @@ class User extends SentryUser {
              * when changed in profile or use just logged in.
              */
             if (user() and user()->id == $user->id) {
-                Session::forget('locale');
+                Session::forget('app.locale');
             }
         });
     }

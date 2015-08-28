@@ -11,9 +11,14 @@ return array(
     |
     */
    
-    'receiver'      => 'Receiver',
-    'message_sent'  => 'Your message has been sent.',
-    're'            => 'Re: ',
-    'system_info'   => 'This message has been created automatically.',
+   'written_by'         => 'Kommentar geschrieben von',
+   'written_at'         => 'um',
+   'write'              => 'Einen Kommentar schreiben:',
+   'login_info'         => 'Um einen Kommentar zu schreiben, :0 oder :1.',
+
+    /* 
+     * Widget
+     */
+    'latest_comments'   => 'Neueste Kommentare',
 
 );

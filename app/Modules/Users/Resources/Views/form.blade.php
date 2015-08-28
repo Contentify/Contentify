@@ -7,11 +7,11 @@
 @else
     {!! Form::open(['url' => 'users']) !!}
 @endif
-    {!! Form::smartText('username', trans('users::username')) !!}
+    {!! Form::smartText('username', trans('app.username')) !!}
 
-    {!! Form::smartEmail('email', trans('users::email')) !!}
+    {!! Form::smartEmail('email', trans('app.email')) !!}
 
-    {!! Form::smartGroupOpen(null, trans('users::password')) !!}
+    {!! Form::smartGroupOpen(null, trans('app.password')) !!}
         {!! button(trans('users::change'), url('users/'.$user->id.'/password')) !!}
     {!! Form::smartGroupClose() !!}
 
@@ -27,7 +27,7 @@
         {!! Form::select('gender', array('0' => trans('users::unknown'), '1' => trans('users::female'), '2' => trans('users::male'), '3' => trans('users::other'))) !!}
     {!! Form::smartGroupClose() !!}
 
-    {!! Form::smartSelectForeign('country_id', trans('users::country')) !!}    
+    {!! Form::smartSelectForeign('country_id', trans('app.object_country')) !!}    
 
     {!! Form::smartText('birthdate', trans('users::birthdate')) !!}
 
@@ -63,7 +63,7 @@
 
     {!! Form::smartText('mousepad', trans('users::mousepad')) !!}
 
-    {!! Form::smartText('game', trans('users::game')) !!}
+    {!! Form::smartText('game', trans('app.object_game')) !!}
 
     {!! Form::smartText('food', trans('users::food')) !!}
 

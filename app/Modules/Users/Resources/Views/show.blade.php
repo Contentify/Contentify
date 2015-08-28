@@ -96,7 +96,7 @@
             <table class="table horizontal">
                 <tbody>
                     <tr>
-                        <th class="title">{!! trans('users::game') !!}:</th>
+                        <th class="title">{!! trans('app.object_game') !!}:</th>
                         <td>{{ $user->game }}</td>
                     </tr>
                     <tr>

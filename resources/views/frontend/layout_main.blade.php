@@ -64,56 +64,56 @@
             </div>
 
             <aside id="sidebar" class="col-md-4">
-                <h3>User Area</h3>
+                <h3>{{ trans('app.object_user') }} {{ trans('app.links') }}</h3>
                 @widget('Auth::Login')
 
                 <br>
-                <h3>Navigation</h3>
+                <h3>{{ trans('app.object_navigation') }}</h3>
                 <ul class="list-unstyled">
-                    <li>{!! link_to('auth/registration/create', 'Registration') !!}</li>
-                    <li>{!! link_to('users', 'Users') !!}</li>
-                    <li>{!! link_to('awards', 'Awards') !!}</li>
-                    <li>{!! link_to('contact', 'Contact') !!}</li>
-                    <li>{!! link_to('downloads', 'Downloads') !!}</li>
-                    <li>{!! link_to('galleries', 'Galleries') !!}</li>
-                    <li>{!! link_to('partners', 'Partners') !!}</li>
-                    <li>{!! link_to('teams', 'Teams') !!}</li>
-                    <li>{!! link_to('matches', 'Matches') !!}</li>
-                    <li>{!! link_to('streams', 'Streams') !!}</li>
-                    <li>{!! link_to('videos', 'Videos') !!}</li>
-                    <li>{!! link_to('forums', 'Forums') !!}</li>
+                    <li>{!! link_to('auth/registration/create', trans('app.object_registration')) !!}</li>
+                    <li>{!! link_to('users', trans('app.object_users')) !!}</li>
+                    <li>{!! link_to('awards', trans('app.object_awards')) !!}</li>
+                    <li>{!! link_to('contact', trans('app.object_contact')) !!}</li>
+                    <li>{!! link_to('downloads', trans('app.object_downloads')) !!}</li>
+                    <li>{!! link_to('galleries', trans('app.object_galleries')) !!}</li>
+                    <li>{!! link_to('partners', trans('app.object_partners')) !!}</li>
+                    <li>{!! link_to('teams', trans('app.object_teams')) !!}</li>
+                    <li>{!! link_to('matches', trans('app.object_matches')) !!}</li>
+                    <li>{!! link_to('streams', trans('app.object_streams')) !!}</li>
+                    <li>{!! link_to('videos', trans('app.object_videos')) !!}</li>
+                    <li>{!! link_to('forums', trans('app.object_forums')) !!}</li>
                 </ul>
 
                 <br>
-                <h3>Featured Match</h3>
+                <h3>{{ trans('app.featured') }} {{ trans('app.object_match') }}</h3>
                 @widget('Matches::FeaturedMatch')
 
                 <br>
-                <h3>Latest Matches</h3>
+                <h3>{{ trans('app.latest') }} {{ trans('app.object_matches') }}</h3>
                 @widget('Matches::Matches')
 
                 <br>
-                <h3>Latest Threads</h3>
+                <h3>{{ trans('app.latest') }} Threads</h3>
                 @widget('Forums::LatestThreads')
 
                 <br>
-                <h3>Partners</h3>
+                <h3>{{ trans('app.object_partners') }}</h3>
                 @widget('Partners::Partners', ['categoryId' => 2])
 
                 <br>
-                <h3>Servers</h3>
+                <h3>{{ trans('app.object_servers') }}</h3>
                 @widget('Servers::Servers')
 
                 <br>
-                <h3>Advert</h3>
+                <h3>{{ trans('app.object_advert') }}</h3>
                 @widget('Adverts::Advert', ['categoryId' => 1])
 
                 <br>
-                <h3>Visitors</h3>
+                <h3>{{ trans('app.object_visitors') }}</h3>
                 @widget('Visitors::Visitors')
 
                 <br>
-                <h3>Streams</h3>
+                <h3>{{ trans('app.object_streams') }}</h3>
                 @widget('Streams::Streams')
             </aside>
         </div>

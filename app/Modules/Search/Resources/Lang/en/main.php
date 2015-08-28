@@ -11,9 +11,6 @@ return array(
     |
     */
    
-    'subject'       => 'Subject',
-    'search'        => 'Search',
-    'results_type'  => 'Results of type'
-
+    'results_type'  => 'Results of type', // "results of type x"
 
 );

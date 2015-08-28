@@ -23,13 +23,13 @@
     </div>
 
     <div class="day-names">
-        <div>Monday</div>
-        <div>Tuesday</div>
-        <div>Wednesday</div>
-        <div>Thursday</div>
-        <div>Friday</div>
-        <div>Saturday</div>
-        <div>Sunday</div>
+        <div>{{ trans('app.monday') }}</div>
+        <div>{{ trans('app.tuesday') }}</div>
+        <div>{{ trans('app.wednesday') }}</div>
+        <div>{{ trans('app.thursday') }}</div>
+        <div>{{ trans('app.friday') }}</div>
+        <div>{{ trans('app.saturday') }}</div>
+        <div>{{ trans('app.sunday') }}</div>
     </div>
 
     <div class="days">

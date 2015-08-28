@@ -10,10 +10,15 @@ return array(
     | This file keeps the language lines of the related module.
     |
     */
-   
-    'contact'       => 'Contact',
+
     'message_sent'  => 'Thank you! Your message has been sent.',
-    'new'           => 'New', // is new?
-    'application'   => 'Application' // If the user applies for a role in one of the teams
+    'application'   => 'Application', // If the user applies for a role in one of the teams
+
+    /*
+     * Email
+     */
+    'mail_title'    => 'New Contact Message',
+    'mail_created'  => 'created a new contact message.',
+    'mail_link'     => 'Click here to view the message.',
 
 );

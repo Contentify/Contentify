@@ -1,13 +1,13 @@
 <html lang="en">
 <head>
-    <title>New Contact Message</title>
+    <title>{{ trans('contact::mail_title' }}</title>
     <meta charset="utf-8">
 </head>
 <body>
-    <p><strong>{{ $msg->username }}</strong> created a new contact message.</p>
+    <p><strong>{{ $msg->username }}</strong> {{ trans('contact::mail_created') }}</p>
 
-    <p>Subject: <em>{{ $msg->title }}</em></p>
+    <p>{{ trans('app.subject') }}: <em>{{ $msg->title }}</em></p>
     
-    <p>{!! link_to('admin/contact/'.$msg->id, 'Click here to view the message.') !!}</p>
+    <p>{!! link_to('admin/contact/'.$msg->id, trans('contact::mail_link')) !!}</p>
 </body>
 </html>

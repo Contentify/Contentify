@@ -59,7 +59,7 @@ class AdminUsersController extends BackController {
                 'edit',
                 function($user) {
                     return icon_link('user', 
-                        trans('users::edit_profile'), 
+                        trans('app.edit_profile'), 
                         url('users/'.$user->id.'/edit'));
                 }
             ]

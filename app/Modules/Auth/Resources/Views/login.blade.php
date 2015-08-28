@@ -10,4 +10,4 @@
     {!! Form::actions(['submit' => trans('auth::login')], false) !!}
 {!! Form::close() !!}
 
-{!! link_to('auth/restore', trans('auth::restore_pw'), ['class' => 'btn btn-default btn-restore']) !!}
+{!! link_to('auth/restore', trans('auth::password_reset'), ['class' => 'btn btn-default btn-restore']) !!}

@@ -14,14 +14,9 @@ return array(
     /*
      * Profile
      */
-    'username'      => 'Username',
-    'email'         => 'Email',
-    'password'      => 'Password',
-
     'first_name'    => 'First Name',
     'last_name'     => 'Last Name',
     'gender'        => 'Gender',
-    'country'       => 'Country',
     'localisation'  => 'Localisation',
     'local_info'    => 'Sets the interface language and the date format.',
     'birthdate'     => 'Birthdate',
@@ -44,7 +39,6 @@ return array(
     'headset'       => 'Headset',
     'mousepad'      => 'Mousepad',
 
-    'game'          => 'Game',
     'food'          => 'Food',
     'drink'         => 'Drink',
     'music'         => 'Music',
@@ -76,7 +70,6 @@ return array(
     /*
      * User list
      */
-    'registration'  => 'Registration',
     'last_login'    => 'Last Login',
 
     /*
@@ -85,9 +78,6 @@ return array(
     'membership'    => 'Membership',
     'banned'        => 'Banned',
     'activated'     => 'Activated',
-    'groups'        => 'Permission Groups',
-    'teams'         => 'Teams',
-    'edit_profile'  => 'Edit Profile',
 
     'action_banned'     => 'User has been banned.',
     'action_unbanned'   => 'User has been unbanned.',

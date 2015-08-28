@@ -11,8 +11,6 @@ return array(
     |
     */
    
-    'enabled'       => 'Enabled',
-    'install'       => 'Install',
     'installation'  => 'Module Installation',
     'fail'          => 'Error: Module installation failed.',
     'success'       => 'Module installation complete.'

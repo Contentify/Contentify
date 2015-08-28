@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
-use Request, FrontController;
+use URL, Request, FrontController;
 
 class EventsController extends FrontController {
 
@@ -48,6 +48,18 @@ class EventsController extends FrontController {
             $this->title(trans('app.calendar'));
             $this->pageView('events::calendar', compact('year', 'month'));
         }
+    }
+
+    public function globalSearch($subject)
+    {
+        $events = Event::where('title', 'LIKE', '%'.$subject.'%')->get();
+
+        $results = array();
+        foreach ($events as $event) {
+            $results[$event->title] = URL::to('events/'.$event->id.'/'.$event->slug);
+        }
+
+        return $results;
     }
 
 }

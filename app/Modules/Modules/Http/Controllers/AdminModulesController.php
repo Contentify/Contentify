@@ -24,7 +24,7 @@ class AdminModulesController extends BackController {
             'brightenFirst' => false,
             'tableHead'     => [
                 trans('app.title')          => null,
-                trans('modules::enabled')   => null,
+                trans('app.enabled')   => null,
                 trans('app.state')          => null,
             ],
             'tableRow'      => function($module)
@@ -57,7 +57,7 @@ class AdminModulesController extends BackController {
                 function($module) {
                     if ($module->installer() !== false) {
                         return icon_link('plus-circle',
-                            trans('modules::install'), 
+                            trans('app.install'), 
                             url('admin/modules/'.$module->title.'/install/0'),
                             false,
                             ['data-confirm' => trans('modules::installation')]);

@@ -70,4 +70,16 @@ class StreamsController extends FrontController {
         $this->pageView('streams::show', compact('stream'));
     }
 
+    public function globalSearch($subject)
+    {
+        $streams = Stream::where('title', 'LIKE', '%'.$subject.'%')->get();
+
+        $results = array();
+        foreach ($streams as $stream) {
+            $results[$stream->title] = URL::to('streams/'.$stream->id.'/'.$stream->slug);
+        }
+
+        return $results;
+    }
+
 }

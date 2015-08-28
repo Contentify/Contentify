@@ -11,9 +11,12 @@ return array(
     |
     */
    
-    'receiver'      => 'Receiver',
-    'message_sent'  => 'Your message has been sent.',
-    're'            => 'Re: ',
-    'system_info'   => 'This message has been created automatically.',
+    'permissions'   => 'Berechtigungen',
+
+    'none'          => 'Keine',
+    'read'          => 'Lesen',
+    'create'        => 'Erstellen',
+    'update'        => 'Editieren',
+    'delete'        => 'Löschen',
 
 );
