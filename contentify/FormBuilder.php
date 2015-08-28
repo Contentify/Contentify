@@ -168,7 +168,17 @@ class FormBuilder extends OriginalFormBuilder {
         $modelName = str_plural(substr($name, 0, $pos));
         $attribute = substr($name, $pos + 1);
 
-        $models = DB::table(str_plural($modelName))->whereDeletedAt(null)->get();
+        /*
+         * We have a problem here. We do not know the exact model. Therefore there is no way to
+         * check if it uses soft deletion or not. The dirty way is to assume it does and to blindly 
+         * try to query the models. If it does not have the deleted_at attribute we catch the DB 
+         * exception and give it another try - without the WHERE clause.
+         */
+        try {
+            $models = DB::table(str_plural($modelName))->whereDeletedAt(null)->get();
+        } catch (Exception $e) {
+            $models = DB::table(str_plural($modelName))->get();
+        }        
 
         if (! $nullable and sizeof($models) == 0) {
             throw new MsgException(trans('app.list_empty', [$modelName]));
