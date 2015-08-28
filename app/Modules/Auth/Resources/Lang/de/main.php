@@ -32,7 +32,7 @@ return array(
     'code_invalid'      => 'Der Code ist ungültig.',
     'new_pw'            => 'Neues Passwort',
     'email_new_pw'      => 'Eine Email mit Ihrem neuen Passwort wurde an Ihre Email-Adresse gesendet.',
-    'pw_link'           => 'PBitte klicken Sie auf den nachfolgenden Link, um ein neues Passwort für :0 zu  generieren.',
+    'pw_link'           => 'Bitte klicken Sie auf den nachfolgenden Link, um ein neues Passwort für :0 zu  generieren.',
     'email_ignore'      => 'Falls Sie kein neues Passwort generieren lassen möchten, ignorieren Sie diese Email bitte.',
     'pw_generated'      => 'Ein neues Passwort wurde für :0 generiert.',
 
