@@ -527,7 +527,7 @@ class InstallController extends Controller {
             $table->integer('level')->default(0);
             $table->integer('threads_count')->default(0);
             $table->integer('posts_count')->default(0);
-        }, ['forum_id', 'latest_thread_id', 'team_id']);
+        }, ['forum_id', 'latest_thread_id' => 'forum_thread_id', 'team_id']);
 
         $this->create('forum_threads', function($table) 
         { 
@@ -540,12 +540,12 @@ class InstallController extends Controller {
         { 
             $table->text('text')->nullable();
             $table->boolean('root')->default(0);
-        }, ['thread_id'], ['slug', 'title']);
+        }, ['thread_id' => 'forum_threads_id'], ['slug', 'title']);
 
         $this->create('forum_reports', function($table) 
         { 
             $table->text('text')->nullable();
-        }, ['post_id'], ['title', 'slug']);
+        }, ['post_id' => 'forum_posts_id'], ['title', 'slug']);
 
         $this->create('messages', function($table)
         {
@@ -957,11 +957,11 @@ information about your stored data, and possibly entitlement to correction, bloc
              */
             if ($contentObject) {
                 if ($contentObject === true or ! in_array('creator_id', $contentObject)) {
-                    $table->integer('creator_id')->unsigned()->default(0);
+                    $table->integer('creator_id')->unsigned()->nullable();
                     $table->foreign('creator_id')->references('id')->on('users');
                 }
                 if ($contentObject === true or ! in_array('updater_id', $contentObject)) {
-                    $table->integer('updater_id')->unsigned()->default(0);
+                    $table->integer('updater_id')->unsigned()->nullable();
                     $table->foreign('updater_id')->references('id')->on('users');
                 }
                 if ($contentObject === true or ! in_array('access_counter', $contentObject)) {

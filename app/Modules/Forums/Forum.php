@@ -81,6 +81,17 @@ class Forum extends BaseModel {
     }
 
     /**
+     * Attribute mutator
+     * 
+     * @param mixed $value The value
+     */
+    public function setForumIdAttribute($value)
+    {
+        $this->attributes['forum_id'] = $value;
+        //$this->attributes['forum_id'] = $value ? $value : null;
+    }
+
+    /**
      * Refreshes the access rules (internal, related to a team) of all childrens
      * of a forum - and of their childrens and so on.
      * (Note: Sub forums have the same access rules as their parent forums.)

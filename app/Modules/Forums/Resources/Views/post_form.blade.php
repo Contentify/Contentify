@@ -1,3 +1,5 @@
+<h1 class="page-title">{{ trans('app.edit') }}</h1>
+
 @if (! isset($forumThread))
     {!! Form::model($forumPost, ['url' => ['forums/posts/'.$forumPost->id], 'method' => 'PUT']) !!}
 @else

@@ -15,7 +15,7 @@ return array(
      * Forums
      */
     'parent'            => 'Eltern-Forum',
-    'create_thread'     => 'Thread Erstellen',
+    'create_thread'     => 'Thread erstellen',
     'forum_circle'      => 'Ungültiges Eltern-Forum. Zyklen sind nicht erlaubt.',
     'max_level'         => 'Das maximale Verschachtelungslevel wurd erreicht.',
     'access_info'       => 'Wenn das Forum ein Unterforum ist, wird das Ändern der Zugriffsberechtigungen keinen Effekt haben.',

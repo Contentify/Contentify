@@ -1,6 +1,6 @@
 <h1 class="page-title">{{ trans_object('downloads') }} - {{ $downloadcat->title }}</h1>
 
-<div class="downloads">
+<div class="downloads clearfix">
     @foreach ($downloads as $download)
         <div class="download">
             @if ($download->is_image)

@@ -59,10 +59,12 @@ class ThreadsController extends FrontController {
         $forumPost = new ForumPost(Input::all());
         $forumPost->root = true;
         $forumPost->creator_id = user()->id;
+        $forumPost->updater_id = null;
 
         $forumThread = new ForumThread(Input::all());
         $forumThread->forum_id = $forumId;
         $forumThread->creator_id = user()->id;
+        $forumThread->updater_id = null;
         $forumThread->createSlug();
 
         if (! $forumPost->isValid()) {

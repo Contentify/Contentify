@@ -168,6 +168,7 @@ return [
     'profile'       => 'Profile',
     'edit_profile'  => 'Edit Profile',
     'install'       => 'Install',
+    'preview'       => 'Preview',
     'total'         => 'Total',
 
     /*
@@ -294,5 +295,6 @@ return [
     'object_slidecats'          => 'Slide-Categories',
     'object_member'             => 'Members',
     'object_activities'         => 'Activities',
+    'object_threads'             => 'Threads',
 
 ];

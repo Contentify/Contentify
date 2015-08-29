@@ -6762,6 +6762,7 @@ textarea.form-group textarea {
 .form-actions input[type=submit],
 .form-actions button {
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 .form-editor {
   margin-bottom: 20px;

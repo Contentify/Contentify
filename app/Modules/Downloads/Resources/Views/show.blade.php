@@ -1,10 +1,16 @@
-<h1 class="page-title"><a href="{!! url('downloads/category/'.$download->downloadcat->id.'/'.$download->downloadcat->slug) !!}">{ trans_object('downloads') }} - {!! $download->downloadcat->title !!}</a></h1>
+<h1 class="page-title"><a href="{!! url('downloads/category/'.$download->downloadcat->id.'/'.$download->downloadcat->slug) !!}">{{ trans_object('downloads') }} - {!! $download->downloadcat->title !!}</a></h1>
 
 <div class="download-detail">
     {!! Form::open(array('url' => 'downloads/perform/'.$download->id)) !!}
         {!! Form::smartGroupOpen(null, trans('app.file')) !!}
             <p class="form-control-static">{{ $download->title }}</p>
         {!! Form::smartGroupClose() !!}
+
+        @if ($download->is_image)
+            {!! Form::smartGroupOpen(null, trans('app.preview')) !!}
+                <img src="{!! $download->uploadPath().'50/'.$download->file !!}" alt="{{ trans('app.preview') }}">
+            {!! Form::smartGroupClose() !!}
+        @endif
 
         {!! Form::smartGroupOpen(null, trans('app.category')) !!}
             <p class="form-control-static">{!! $download->downloadcat->title !!}</p>

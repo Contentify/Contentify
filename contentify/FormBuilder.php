@@ -57,6 +57,7 @@ class FormBuilder extends OriginalFormBuilder {
     public function actions($buttons = array('submit', 'apply', 'reset'), $showImages = true)
     {
         $partial = '<div class="form-actions">';
+
         foreach ($buttons as $type => $options) {
             if (is_string($type)) {
                 if (is_string($options)) {
@@ -77,7 +78,9 @@ class FormBuilder extends OriginalFormBuilder {
                     $options['type'] = $type;
                     $options['name'] = '_form_submit';
 
-                    if ($title == 'Submit') $title = trans('app.save');
+                    if ($title == 'Submit') {
+                        $title = trans('app.save');
+                    }
 
                     $value = $title;
                     if ($showImages) $value = HTML::fontIcon('save').' '.$value;
@@ -88,7 +91,9 @@ class FormBuilder extends OriginalFormBuilder {
                     $options['type'] = 'submit';
                     $options['name'] = '_form_apply';
 
-                    if ($title == 'Submit') $title = trans('app.apply');
+                    if ($title == 'Submit' or $title == 'Apply') {
+                        $title = trans('app.apply');
+                    }
 
                     $value = $title;
                     if ($showImages) $value = HTML::fontIcon('save').' '.$value;
@@ -98,7 +103,9 @@ class FormBuilder extends OriginalFormBuilder {
                 case 'reset':
                     $options['type'] = $type;
 
-                    if ($title == 'Submit') $title = trans('app.reset');
+                    if ($title == 'Submit' or $title == 'Reset') {
+                        $title = trans('app.reset');
+                    }
 
                     $value = $title;
                     if ($showImages) $value = HTML::fontIcon('undo').' '.$value;
@@ -108,6 +115,7 @@ class FormBuilder extends OriginalFormBuilder {
             }
             
         }
+
         return $partial.'</div>';
     }
 

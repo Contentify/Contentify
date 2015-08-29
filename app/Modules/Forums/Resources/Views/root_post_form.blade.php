@@ -1,3 +1,5 @@
+<h1 class="page-title">{{ trans('forums::create_thread') }}</h1>
+
 @if (isset($forumThread))
     {!! Form::model($forumThread, ['url' => ['forums/threads/'.$forumThread->id], 'method' => 'PUT']) !!}
 @else

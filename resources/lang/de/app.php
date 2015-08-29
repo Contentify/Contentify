@@ -168,6 +168,7 @@ return [
     'profile'       => 'Profil',
     'edit_profile'  => 'Profil editieren',
     'install'       => 'Installieren',
+    'preview'       => 'Vorschau',
     'total'         => 'Gesamt',
 
     /*
@@ -190,7 +191,7 @@ return [
     /*
      * Module names
      */
-    'object_adverts'        => 'Werbemittel',
+    'object_adverts'        => 'Werbung',
     'object_auth'           => 'Authentifizierung ',
     'object_awards'         => 'Awards',
     'object_comments'       => 'Kommentare',
@@ -294,5 +295,6 @@ return [
     'object_slidecats'          => 'Slide-Kategorien',
     'object_member'             => 'Mitglieder',
     'object_activities'         => 'Aktivitäten',
+    'object_threads'             => 'Threads',
 
 ];

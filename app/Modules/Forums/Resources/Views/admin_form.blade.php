@@ -15,9 +15,9 @@
 
     <hr>
 
-    <p>
+    <div class="well">
         {!! trans('forums::access_info') !!}
-    </p>
+    </div>
 
     {!! Form::smartSelectRelation('team', 'Team', $modelClass, null, true, true) !!}
 
