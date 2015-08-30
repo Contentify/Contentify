@@ -35,7 +35,7 @@ class AdminServersController extends BackController {
                 return [
                     $server->id,
                     raw($gameIcon),
-                    raw(Hover::modelAttributes($server, ['creator'])->pull(), $server->title),
+                    raw(Hover::modelAttributes($server, ['creator'])->pull().HTML::link('servers', $server->title)),
                     $server->ip,
                 ];            
             }

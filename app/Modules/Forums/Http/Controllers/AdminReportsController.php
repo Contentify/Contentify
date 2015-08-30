@@ -23,10 +23,10 @@ class AdminReportsController extends BackController {
             'buttons'       => null,
             'dataSource'    => ForumReportCase::findAll(),
             'tableHead'     => [
-                '#'                             => null,
-                'Post ('.trans('app.text').')'  => null,
-                'Forum Reports'                 => null,
-                 trans('app.date')              => null,
+                '#'                                                     => null,
+                trans('app.object_post').' ('.trans('app.text').')'     => null,
+                trans('app.object_reports')                             => null,
+                trans('app.date')                                       => null,
             ],
             'tableRow' => function($forumReportCase)
             {

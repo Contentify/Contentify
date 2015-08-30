@@ -7,11 +7,11 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
-    {!! Form::smartSelectRelation('game', 'Game', $modelClass) !!}
+    {!! Form::smartSelectRelation('game', trans('app.object_game'), $modelClass) !!}
 
-    {!! Form::smartSelectRelation('tournament', 'Tournament', $modelClass, null, true, true) !!}
+    {!! Form::smartSelectRelation('tournament', trans('app.object_tournament'), $modelClass, null, true, true) !!}
 
-    {!! Form::smartSelectRelation('team', 'Team', $modelClass, null, true, true) !!}
+    {!! Form::smartSelectRelation('team', trans('app.object_team'), $modelClass, null, true, true) !!}
 
     {!! Form::smartUrl('url') !!}
 

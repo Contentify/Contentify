@@ -2,7 +2,7 @@
 
 <div class="overview clearfix">
     <div class="left">
-        <img src="{!! asset('img/logo_180.png') !!}" width="120" height="120" alt="Logo">
+        <img src="{!! asset('img/logo_180.png') !!}" alt="{{ $match->left_team->title }}">
         <div class="team-name">
             <img src="{{ asset('uploads/countries/eu.png') }}"> 
             {{ $match->left_team->title }}
@@ -13,9 +13,9 @@
     </div>
     <div class="right">
         @if ($match->right_team->image)
-            <img src="{!! $match->right_team->uploadPath().$match->right_team->image !!}" width="120" height="120" alt="Logo">
+            <img src="{!! $match->right_team->uploadPath().$match->right_team->image !!}" alt="{{ $match->right_team->title }}">
         @else
-            <img src="{!! asset('theme/no_opponent.jpg') !!}" width="120" height="120" alt="Logo">
+            <img src="{!! asset('theme/no_opponent.jpg') !!}" alt="{{ $match->right_team->title }}">
         @endif
         <div class="team-name">
             @if ($match->right_team->country->icon)
@@ -33,17 +33,17 @@
                 <td>{!! $match->played_at->dateTime() !!} - {!! $match::$states[$match->state] !!}</td>
             </tr>
             <tr>
-                <th>{!! trans('Game') !!}</th>
+                <th>{!! trans('app.object_game') !!}</th>
                 <td>{!! $match->game->title !!}</td>
             </tr>
             <tr>
-                <th>{!! trans('Tournament') !!}</th>
+                <th>{!! trans('app.object_tournament') !!}</th>
                 <td>{!! $match->tournament->title !!}</td>
             </tr>
             @if ($match->url)
                 <tr>
                     <th>{!! trans('app.url') !!}</th>
-                    <td><a href="{!! $match->url !!}" target="_blank" title="Match {!! trans('app.url') !!}">{!! $match->url !!}</a></td>
+                    <td><a href="{!! $match->url !!}" target="_blank" title="{{ trans('app.object_match')}} {!! trans('app.url') !!}">{!! $match->url !!}</a></td>
                 </tr>
             @endif
             @if ($match->url)

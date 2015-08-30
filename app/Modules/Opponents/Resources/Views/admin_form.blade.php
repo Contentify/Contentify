@@ -9,7 +9,7 @@
 
     {!! Form::smartText('short', trans('app.short_title')) !!}
 
-    {!! Form::smartSelectRelation('country', 'Country', $modelClass) !!}
+    {!! Form::smartSelectRelation('country', trans('app.object_country'), $modelClass) !!}
 
     {!! Form::smartText('url', trans('app.url')) !!}
 

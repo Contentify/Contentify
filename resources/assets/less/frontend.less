@@ -96,8 +96,8 @@ a:hover { color: @primaryColor; }
     position: relative; width: 100%; height: 245px; /* Height of a single slide */
     .slides { 
         position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;
-        ul { position: relative; width: 100%; height: 100%; overflow: hidden; }
-        ul li { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; }
+        ul { position: relative; width: 100%; height: 100%; overflow: hidden; margin-left: 0px; }
+        ul li { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; padding: 0px; }
     }
     .to-left { position: absolute; left: 0px; top: 40%; width: 35px; height: 35px; line-height: 35px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center; }
     .to-right { position: absolute; right: 0px; top: 40%; width: 35px; height: 35px; line-height: 35px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center }
@@ -154,6 +154,9 @@ a:hover { color: @primaryColor; }
     }
     .video-player iframe { width: 100%; border: none }
 }
+@media (max-width: @screen-phone) {
+    .page-videos .video { width: 100% }
+}
 
 .widget-videos img.cover { max-width: 100% }
 
@@ -163,6 +166,9 @@ a:hover { color: @primaryColor; }
         div { width: 90%; height: 150px; margin-left: auto; margin-right: auto; background-position: center; background-repeat: no-repeat; background-size: cover; background-color: #ddd; }
     }
     .stream-player iframe { width: 100%; border: none }
+}
+@media (max-width: @screen-phone) {
+    .page-streams .stream { width: 100% }
 }
 
 .widget-streams {
@@ -175,6 +181,9 @@ a:hover { color: @primaryColor; }
     .item { float: left; display: block; width: 20%; height: 100px; overflow: hidden }
     .image { width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; transition: all 0.3s ease; }
     .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
+}
+@media (max-width: @screen-phone) {
+    .page-galleries .galleries .item { width: 33% }
 }
 
 .page-galleries .images {
@@ -213,6 +222,7 @@ a:hover { color: @primaryColor; }
 .page-matches {  
     .overview {
         & > div { width: 33%; text-align: center; float: left }
+        img { max-width: 120px; max-height: 120px }
         .mid { padding-top: 40px; font-size: 30px; }
         .mid .left-win { color: green }
         .mid .left-defeat { color: red }
@@ -224,6 +234,13 @@ a:hover { color: @primaryColor; }
         .item:nth-child(n+4) { margin-top: 20px } /* Will only affect the 4th, 5th etc. item */
         .item img { max-width: 100%; }
         .item span { display: block; }
+    }
+}
+@media (max-width: @screen-phone) {
+    .page-matches {
+        .overview {
+            img { max-width: 80px; max-height: 80px }
+        }
     }
 }
 
@@ -248,19 +265,24 @@ a:hover { color: @primaryColor; }
         margin-top: 20px;
     }
     .sub-forums { .clearfix(); }
-    .sub-forum {     
+    .sub-forum {
         padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
-        &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+        &.head { 
+            padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; 
+        }
         .info { 
-            width: 60%; float: left;
+            width: 55%; float: left;
             .desc { display: block; font-size: 10px }
         }
-        .counter { width: 15%; float: left }
+        .counter { width: 20%; float: left }
         .latest { 
             width: 25%; float: left;
             .meta { display: block; font-size: 10px }
         }
     }
+}
+@media (max-width: 500px) {
+    .page-forums-index .sub-forum .counter { display: none }
 }
 
 .page-forums-show-forum, .page-forums-show-new-threads {
@@ -284,6 +306,14 @@ a:hover { color: @primaryColor; }
                 width: 25%; float: left;
                 .meta { display: block; font-size: 10px }
             }
+        }
+    }
+}
+@media (max-width: 500px) {
+    .page-forums-show-forum, .page-forums-show-new-threads {
+        .threads, .sub-forums {
+            .counter { display: none }
+            .latest a { display: block; font-size: 10px }
         }
     }
 }
@@ -321,6 +351,21 @@ a:hover { color: @primaryColor; }
         }
         &:hover .top-bar .buttons {
             display: block !important;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .page-threads, .page-posts {
+        .buttons a { margin-bottom: 10px }
+        .post {
+            .meta { 
+                position: relative; width: auto; min-height: 0; float: none; 
+                .avatar { float: right; max-width: 16px; max-height: 16px; }
+            }
+            .content { 
+                margin-left: 0px; min-height: 0; 
+                .buttons { position: relative !important; right: auto !important; }
+            }
         }
     }
 }

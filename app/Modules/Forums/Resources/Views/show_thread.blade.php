@@ -55,9 +55,10 @@
             event.preventDefault();
 
             var $self       = $(this);
+            var $post       = $self.closest('.post');
             var $textarea   = $('.page form textarea');
-            var id          = $self.attr('data-id');
-            var creator     = $self.find('.creator-name').text();
+            var id          = $post.attr('data-id');
+            var creator     = $post.find('.creator-name').text();
 
             if (creator) creator = '=' + creator;
 

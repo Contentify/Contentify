@@ -30,7 +30,7 @@ class AdminMatchesController extends BackController {
                 trans('app.state')              => 'state',
                 trans('matches::left_team')     => 'left_team_id',
                 trans('matches::right_team')    => 'right_team_id',
-                trans('Tournament')             => 'tournament_id',
+                trans('app.object_tournament')  => 'tournament_id',
                 trans('matches::played_at')     => 'played_at'
             ],
             'tableRow' => function($match)

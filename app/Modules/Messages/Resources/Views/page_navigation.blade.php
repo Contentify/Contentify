@@ -11,7 +11,7 @@
             <a href="{!! url('messages/outbox') !!}" role="tab">{!! trans('app.object_outbox') !!}</a>
         </li>
         <li role="presentation" <?php if ($active == 'create') echo 'class="active"' ?>>
-            <a href="{!! url('messages/create') !!}" role="tab">{!! trans('app.create') !!}</a>
+            <a href="{!! url('messages/create') !!}" role="tab">{!! trans('app.send') !!}</a>
         </li>
     </ul>
 

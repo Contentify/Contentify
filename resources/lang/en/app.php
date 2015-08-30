@@ -148,6 +148,7 @@ return [
     'ip'            => 'IP',
     'online'        => 'Online',
     'viewers'       => 'Viewers',
+    'task'          => 'Task',
     'add_tags'      => 'Add tags',
     'reply'         => 'Reply',
     'latest'        => 'Latest',
@@ -241,7 +242,7 @@ return [
     'object_download'           => 'Download',
     'object_downloadcat'        => 'Download-Category',
     'object_event'              => 'Event',
-    'object_posts'              => 'Post',
+    'object_post'               => 'Post',
     'object_thread'             => 'Thread',
     'object_forum'              => 'Forum',
     'object_forum_post'         => 'Forum Post',
@@ -295,6 +296,7 @@ return [
     'object_slidecats'          => 'Slide-Categories',
     'object_member'             => 'Members',
     'object_activities'         => 'Activities',
-    'object_threads'             => 'Threads',
+    'object_threads'            => 'Threads',
+    'object_match_scores'       => 'Match Scores',
 
 ];

@@ -21,9 +21,9 @@ class AdminMapsController extends BackController {
     {
         $this->indexPage([
             'tableHead' => [
-                trans('app.id')     => 'id', 
-                trans('app.title')  => 'title',
-                trans('Game')       => 'game_id'
+                trans('app.id')             => 'id', 
+                trans('app.title')          => 'title',
+                trans('app.object_game')    => 'game_id'
             ],
             'tableRow' => function($map)
             {

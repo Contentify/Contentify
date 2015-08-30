@@ -19,7 +19,7 @@
         {!! trans('forums::access_info') !!}
     </div>
 
-    {!! Form::smartSelectRelation('team', 'Team', $modelClass, null, true, true) !!}
+    {!! Form::smartSelectRelation('team', trans('app.object_team'), $modelClass, null, true, true) !!}
 
     {!! Form::smartCheckbox('internal', trans('app.internal')) !!}   
 

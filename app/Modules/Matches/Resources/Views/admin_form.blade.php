@@ -11,9 +11,9 @@
 
     {!! Form::smartSelectRelation('rightTeam', trans('matches::right_team'), $modelClass) !!}
 
-    {!! Form::smartSelectRelation('game', 'Game', $modelClass) !!}
+    {!! Form::smartSelectRelation('game', trans('app.object_game'), $modelClass) !!}
 
-    {!! Form::smartSelectRelation('tournament', 'Tournament', $modelClass) !!}
+    {!! Form::smartSelectRelation('tournament', trans('app.object_tournament'), $modelClass) !!}
 
     {!! Form::smartUrl('url', trans('app.url')) !!}
 
@@ -31,7 +31,7 @@
 
     <!-- We can't add scores to a match that doesn't actually exist -->
     @if (isset($model))
-        {!! Form::smartGroupOpen(null, 'Match Scores') !!}
+        {!! Form::smartGroupOpen(null, trans('app.object_match_scores')) !!}
             <div class="scores">
                 @foreach ($model->match_scores as $matchScore)
                     @include('matches::admin_map', compact('matchScore'))

@@ -19,9 +19,9 @@ class AdminMembersController extends BackController {
         $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                trans('app.id')         => 'id', 
-                trans('app.username')   => 'username',
-                trans('users::teams')   => null,
+                trans('app.id')             => 'id', 
+                trans('app.username')       => 'username',
+                trans('app.object_teams')   => null,
             ],
             'tableRow' => function($user)
             {

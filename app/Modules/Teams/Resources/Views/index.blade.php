@@ -8,7 +8,7 @@
 
                 @if ($team->image)
                     <div class="image">
-                        <img src="{!! $team->uploadPath().$team->image !!}" alt="{{ $team->title }}">
+                        <img class="img-responsive" src="{!! $team->uploadPath().$team->image !!}" alt="{{ $team->title }}">
                     </div>
                 @endif
             </a>

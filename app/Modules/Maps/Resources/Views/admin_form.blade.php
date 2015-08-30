@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
-    {!! Form::smartSelectRelation('game', 'Game', $modelClass) !!}
+    {!! Form::smartSelectRelation('game', trans('app.object_game'), $modelClass) !!}
 
     {!! Form::smartImageFile() !!}
 

@@ -14,8 +14,8 @@ return array(
     'permissions'       => 'Berechtigungen',
 
     'button_info'       => 'PHP-Info',
-    'button_optimize'   => 'Datenbank Optimieren',
-    'button_dump'       => 'Datenbank Exportieren',
+    'button_optimize'   => 'Datenbank optimieren',
+    'button_dump'       => 'Datenbank eportieren',
     'button_log'        => 'Log-Datei',
 
     'db_export'         => 'Die Datenbank wurde exportiert.',
@@ -23,7 +23,6 @@ return array(
     'not_supported'     => 'Entschuldigung, :0 unterstützt dieses Feature nicht.',
 
     'log_empty'         => 'Die Log-Datei ist leer.',
-
 
     /*
      * Config 
