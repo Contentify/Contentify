@@ -24,13 +24,13 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Demo
 
+> IMPORTANT NOTE: The demo server currently does not have the latest build and therefore does not represent the git master branch!
+
 * URL: http://46.101.143.161/
 * Email: `demo@contentify.org`
 * Password: `demodemo`
 
 > The server resets (database, uploaded files and cache) twice per hour.
-
-> Please note that the server does not have the latest build and therefore does not represent the git master branch!
 
 ### Contribution
 
