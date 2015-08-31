@@ -87,8 +87,7 @@ class Forum extends BaseModel {
      */
     public function setForumIdAttribute($value)
     {
-        $this->attributes['forum_id'] = $value;
-        //$this->attributes['forum_id'] = $value ? $value : null;
+        $this->attributes['forum_id'] = $value ? $value : null;
     }
 
     /**

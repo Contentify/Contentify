@@ -17,6 +17,14 @@ class BackNavGen {
      */
     const CACHE_KEY = 'app.backNavTemplate';
 
+    protected $locale = null;
+
+    public function __construct()
+    {
+        $session = app('session');
+        $this->locale = $session->get('app.locale');
+    }
+
     /**
      * Returns the navigation items
      * 
@@ -24,6 +32,7 @@ class BackNavGen {
      */
     public function getItems()
     {
+        $translator = app('translator');
         $moduleBase = app()['modules'];
         $modules = $moduleBase->all(); // Retrieve all module info objects
 
@@ -61,6 +70,18 @@ class BackNavGen {
                         $moduleNavItem['icon'] = 'newspaper.png';
                     }
 
+                    if (! isset($moduleNavItem['translate']) or $moduleNavItem['translate'] === false) {
+                        $key = 'app.object_'.strtolower($moduleNavItem['title']);
+                        if ($translator->has($key)) {
+                            $moduleNavItem['title'] = $translator->get($key);
+                        }
+                    } else {
+                        $key = $moduleNavItem['translate'];
+                        if ($translator->has($key)) {
+                            $moduleNavItem['title'] = $translator->get($key);
+                        }
+                    }
+
                     $navItems[] = $moduleNavItem;
                 }
             }
@@ -76,7 +97,7 @@ class BackNavGen {
      */
     public function make($update = false)
     {
-        if (! Cache::has(self::CACHE_KEY) or $update) {
+        if (! Cache::has(self::CACHE_KEY.'_'.$this->locale) or $update) {
             $navItems = $this->getItems();
             $navCategories = array();
 
@@ -91,7 +112,7 @@ class BackNavGen {
             }
 
             $view = View::make('backend.navigation', compact('navCategories'));
-            Cache::forever(self::CACHE_KEY, $view->render());
+            Cache::forever(self::CACHE_KEY.'_'.$this->locale, $view->render());
         }
     }
 
@@ -114,7 +135,7 @@ class BackNavGen {
     {
         $this->make();
 
-        return Cache::get(self::CACHE_KEY);
+        return Cache::get(self::CACHE_KEY.'_'.$this->locale);
     }
 
 }

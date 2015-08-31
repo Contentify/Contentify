@@ -10,15 +10,15 @@ Contentify is an eSports CMS based on the popular Laravel 5.1 framework.
 
 Website: [contentify.org](http://contentify.org/)
 
-> WARNING: This is a beta version. 
+> WARNING: This is a release candidate version. It does include all features but it is not ready for production.
 
 > WARNING: This repository does include multiple branches, but currently none of them is a release branch. Therefore, if you are interested in testing, please download a realease that is meant for testing.
 
 ### Releases
 
-The current release is `Beta Four`.
+The current release is `Release Candidate`.
 
-You may download it here: [contentify.org/share/releases/contentify_beta4.zip](http://contentify.org/share/releases/contentify_beta4.zip)
+You may download it here: [contentify.org/share/releases/contentify_rc.zip](http://contentify.org/share/releases/contentify_rc.zip)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 

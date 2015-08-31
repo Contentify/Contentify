@@ -1,5 +1,5 @@
 {
-    "slug": "Teams",
+    "slug": "Teams",
     "enabled": true,
     "admin-nav": [
         {
@@ -11,7 +11,7 @@
             "icon": "group",
             "category": 4,
             "position": 3,
-            "title": "Team-Members",
+            "translate": "app.team_members",
             "url": "admin/members"
         }
     ]
