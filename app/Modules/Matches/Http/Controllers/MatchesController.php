@@ -23,7 +23,7 @@ class MatchesController extends FrontController {
             'searchFor' => ['rightTeam', 'title'], 
             'tableHead'     => [
                 trans('app.date')               => 'played_at',
-                trans('Game')                   => 'game_id',
+                trans('app.object_game')        => 'game_id',
                 trans('matches::right_team')    => 'right_team_id',
                 trans('matches::score')         => 'left_score'
             ],

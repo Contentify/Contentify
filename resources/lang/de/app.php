@@ -101,12 +101,21 @@ return [
     'save_to_del'   => 'Speichern Sie dieses Formular, um die Datei zu löschen.',
 
     /*
+     * JS
+     */
+    'request_failed'    => 'Fehler: Anfrage fehlgeschlagen.',
+    'delete_item'       => 'Soll dieses Objekt wirklich gelöscht werden?',
+    'perform_action'    => 'Soll diese Aktion wirklich durchgeführt werden?',
+
+    /*
      * Backend template
      */
     'no_js'             => 'JavaScript nicht aktiviert. Bitte aktivieren Sie JavaScript!',
     'admin_dashboard'   => 'Admin-Dashboard',
     'new_messages'      => 'Eine neue Nachricht|:count neue Nachrichten',
     'top'               => 'Nach oben',
+    'help'              => 'Hilfe',
+    'welcome'           => 'Willkommen',
 
     /*
      * Comments
@@ -165,9 +174,12 @@ return [
     'value'         => 'Wert',
     'placeholder'   => 'Platzhalter, bitte ändern!', // Diag module
     'compiled'      => 'kompiliert',
+    'website'       => 'Website',
     'calendar'      => 'Kalender',
     'profile'       => 'Profil',
     'edit_profile'  => 'Profil editieren',
+    'add'           => 'Hinzufügen',
+    'logout'        => 'Abmelden',
     'install'       => 'Installieren',
     'preview'       => 'Vorschau',
     'total'         => 'Gesamt',
@@ -294,7 +306,7 @@ return [
     'object_custom_pages'       => 'Eigene Seiten',
     'object_partnercats'        => 'Partner-Kategorien',
     'object_slidecats'          => 'Slide-Kategorien',
-    'object_member'             => 'Mitglieder',
+    'object_members'            => 'Mitglieder',
     'object_activities'         => 'Aktivitäten',
     'object_threads'            => 'Threads',
     'object_match_scores'       => 'Match-Ergebnisse',

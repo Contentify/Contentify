@@ -16,6 +16,5 @@ return array(
     'in'            => 'in', // in category
     'publish_at'    => 'Publish at', // in category
     'rss_last'      => 'Last 20 News',
-    'rss_news'      => 'News'
 
 );

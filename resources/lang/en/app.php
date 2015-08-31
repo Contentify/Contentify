@@ -101,12 +101,21 @@ return [
     'save_to_del'   => 'Save this form to delete this file.',
 
     /*
+     * JS
+     */
+    'request_failed'    => 'Error: Request failed.',
+    'delete_item'       => 'Delete this item?',
+    'perform_action'    => 'Execute this action?',
+
+    /*
      * Backend template
      */
     'no_js'             => 'JavaScript not enabled. Please enable JavaScript!',
     'admin_dashboard'   => 'Admin-Dashboard',
     'new_messages'      => 'One new message|:count new messages',
     'top'               => 'Go to top',
+    'help'              => 'Help',
+    'welcome'           => 'Welcome',
 
     /*
      * Comments
@@ -165,9 +174,12 @@ return [
     'value'         => 'Value',
     'placeholder'   => 'Placeholder, please change!', // Diag module
     'compiled'      => 'compiled',
+    'website'       => 'Website',
     'calendar'      => 'Calendar',
     'profile'       => 'Profile',
     'edit_profile'  => 'Edit Profile',
+    'add'           => 'Add',
+    'logout'        => 'Logout',
     'install'       => 'Install',
     'preview'       => 'Preview',
     'total'         => 'Total',
@@ -294,7 +306,7 @@ return [
     'object_custom_pages'       => 'Custom Pages',
     'object_partnercats'        => 'Partner-Categories',
     'object_slidecats'          => 'Slide-Categories',
-    'object_member'             => 'Members',
+    'object_members'            => 'Members',
     'object_activities'         => 'Activities',
     'object_threads'            => 'Threads',
     'object_match_scores'       => 'Match Scores',

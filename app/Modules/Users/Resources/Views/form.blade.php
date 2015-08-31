@@ -33,7 +33,7 @@
 
     {!! Form::smartText('occupation', trans('users::occupation')) !!}
 
-    {!! Form::smartText('website', trans('users::website')) !!}
+    {!! Form::smartText('website', trans('app.website')) !!}
 
     {!! Form::smartText('facebook', 'Facebook') !!}
 

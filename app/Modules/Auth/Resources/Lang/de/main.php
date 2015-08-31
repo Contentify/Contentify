@@ -26,7 +26,7 @@ return array(
     /*
      * Restore password
      */
-    'password_reset'    => 'Passwort Zurücksetzen',
+    'password_reset'    => 'Passwort zurücksetzen',
     'email_gen_pw'      => 'Eine Email wurde zur angegebenen Adresse gesendet. Folgen Sie den Anweisungen, um ein neues Passwort zu generieren.',
     'email_invalid'     => 'Es wurde kein Benutzer mit der angegebenen Email-Adresse gefunden.',
     'code_invalid'      => 'Der Code ist ungültig.',
@@ -45,6 +45,5 @@ return array(
      * Widget
      */
     'backend'           => 'Admin-Backend',
-    'logout'            => 'Abmelden',
 
 );

@@ -18,11 +18,11 @@ class AwardsController extends FrontController {
             'buttons'       => null,
             'brightenFirst' => false,
             'tableHead'     => [
-                trans('app.position')   => 'position', 
-                trans('app.title')      => 'title', 
-                trans('Tournament')     => 'tournament_id',
-                trans('Game')           => 'game_id',
-                trans('app.date')       => 'achieved_at',
+                trans('app.position')           => 'position', 
+                trans('app.title')              => 'title', 
+                trans('app.object_tournament')  => 'tournament_id',
+                trans('app.object_game')        => 'game_id',
+                trans('app.date')               => 'achieved_at',
             ],
             'tableRow'      => function($award)
             {

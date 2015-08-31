@@ -13,6 +13,6 @@
         @if (user()->hasAccess('backend', PERM_READ))
             <li>{!! link_to('admin', trans('auth::backend')) !!}</li>
         @endif
-        <li>{!! link_to('auth/logout', trans('auth::logout')) !!}</li>
+        <li>{!! link_to('auth/logout', trans('app.logout')) !!}</li>
     </ul>
 </div>

@@ -36,7 +36,7 @@
                     <td>{{ $user->occupation }}</td>
                 </tr>
                 <tr>
-                    <th class="title">{!! trans('users::website') !!}:</th>
+                    <th class="title">{!! trans('app.website') !!}:</th>
                     <td>
                         @if(e($user->website))
                             {!! HTML::link(e($user->website)) !!}

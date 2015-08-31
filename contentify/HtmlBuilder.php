@@ -300,4 +300,19 @@ class HtmlBuilder extends OriginalHtmlBuilder {
         return '<i class="fa fa-'.$icon.'"'.$color.'></i>';
     }
 
+    /**
+     * Returns JS code that creates a variable that contains a (JSON) object
+     * with the translations of the app namespace. This allows us to access 
+     * translations in the frontend (via JS).
+     * 
+     * @return string
+     */
+    public function jsTranslations()
+    {
+        $translator = app('translator');
+        $items = $translator->get('app');
+
+        return '<script>var contentifyTranslations = '.json_encode($items).';</script>';
+    }
+
 }

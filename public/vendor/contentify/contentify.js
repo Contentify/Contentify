@@ -15,6 +15,10 @@ $(document).ready(function()
         this.locale     = $('meta[name="locale"]').attr('content');
         this.dateFormat = $('meta[name="date-format"]').attr('content');
 
+        if (contentifyTranslations) {
+            this.translations = contentifyTranslations;
+        }
+
         /**
          * Returns the value of a given URL parameter.
          *
@@ -182,14 +186,14 @@ $(document).ready(function()
 
         this.alertRequestFailed = function (response)
         {
-            var text = 'Error: Request failed. ';
+            var text = framework.translations.request_failed;
 
             if (response.status) {
-                text += 'Code: ' + response.status + '. ';
+                text += framework.translations.code + ': ' + response.status + '. ';
             }
 
             if (response.statusText) {
-                text += 'Message: "' + response.statusText + '"';
+                text += framework.translations.object_message + ': "' + response.statusText + '"';
             }
 
             framework.alertError(text);
@@ -266,18 +270,18 @@ $(document).ready(function()
 
             var $footer = $('<div>')
             .append(
-                $('<button>').text('Yes').click(function()
+                $('<button>').text(framework.translations.yes).click(function()
                 {
                     window.location = $self.attr('href');
                 })
             ).append(
-                $('<button>').text('No').click(function()
+                $('<button>').text(framework.translations.no).click(function()
                 {
                     contentify.closeModal();
                 })
             );
 
-            framework.modal('Confirm', 'Delete this item?', $footer);
+            framework.modal('Confirm', framework.translations.delete_item, $footer);
         });
 
         /*
@@ -293,18 +297,18 @@ $(document).ready(function()
 
             var $footer = $('<div>')
             .append(
-                $('<button>').text('Yes').click(function()
+                $('<button>').text(framework.translations.yes).click(function()
                 {
                     window.location = $self.attr('href');
                 })
             ).append(
-                $('<button>').text('No').click(function()
+                $('<button>').text(framework.translations.no).click(function()
                 {
                     contentify.closeModal();
                 })
             );
 
-            framework.modal('Execute this action?', message, $footer);
+            framework.modal(framework.translations.perform_action, message, $footer);
         });
 
         /*

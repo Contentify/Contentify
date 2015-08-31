@@ -26,6 +26,7 @@
     {!! HTML::style('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') !!}
     {!! HTML::style('vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') !!}
     
+    {!! HTML::jsTranslations() !!}
     <!--[if lt IE 9]>
         {!! HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}
         {!! HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
@@ -57,9 +58,9 @@
 
                     <nav>
                         <ul class="list-inline">
-                            <li><a href="http://github.com/Contentify/Contentify/wiki" title="Help">{!! HTML::fontIcon('question-circle') !!} <span class="text">Help</span></a></li>
-                            <li><a href="{!! route('home') !!}" title="Website">{!! HTML::fontIcon('eye') !!} <span class="text">Website</span></a></li>
-                            <li><a href="{!! route('logout') !!}" title="Logout">{!! HTML::fontIcon('sign-out') !!} <span class="text">Logout</span></a></li>
+                            <li><a href="http://github.com/Contentify/Contentify/wiki" title="Help">{!! HTML::fontIcon('question-circle') !!} <span class="text">{{ trans('app.help') }}</span></a></li>
+                            <li><a href="{!! route('home') !!}" title="Website">{!! HTML::fontIcon('eye') !!} <span class="text">{{ trans('app.website') }}</span></a></li>
+                            <li><a href="{!! route('logout') !!}" title="Logout">{!! HTML::fontIcon('sign-out') !!} <span class="text">{{ trans('app.logout') }}</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -74,7 +75,7 @@
                         @if (user()->image)
                             <div class="image" style="background-image: url('{!! asset('uploads/users/80/'.user()->image) !!}')"></div>
                         @endif
-                        <div class="welcome">Welcome, <span>{!! user()->username !!}</span></div>
+                        <div class="welcome">{{ trans('app.welcome') }}, <span>{!! user()->username !!}</span></div>
                     </div>
                 </a>                
             </div>

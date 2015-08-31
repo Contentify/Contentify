@@ -35,7 +35,7 @@ $(document).ready(function()
                                     type: 'GET'
                                 }).success(function(data)
                                 {
-                                    var $footer = $('<button>').text('Save').click(function(event)
+                                    var $footer = $('<button>').text(contentify.translations.save).click(function(event)
                                     {
                                         $.ajax({
                                             url: contentify.baseUrl + 'admin/members/update/' + userId + '/' + id,
@@ -53,7 +53,7 @@ $(document).ready(function()
                                         contentify.closeModal();
                                     });
 
-                                    contentify.modal('Team', data, $footer);
+                                    contentify.modal(contentify.translations.object_team, data, $footer);
                                 }).fail(function(response)
                                 {
                                     contentify.alertRequestFailed(response);
@@ -73,7 +73,7 @@ $(document).ready(function()
                     }).success(function(data)
                     {
                         if (data) {
-                            var $footer = $('<button>').text('Add').click(function()
+                            var $footer = $('<button>').text(contentify.translations.add).click(function()
                             {
                                 var teamId = $(this).parent().parent().find('select').val();
 
@@ -91,7 +91,7 @@ $(document).ready(function()
                                 contentify.closeModal();
                             });
 
-                            contentify.modal('Team', data, $footer);
+                            contentify.modal(contentify.translations.object_team, data, $footer);
                         }
                     }).fail(function(response)
                     {

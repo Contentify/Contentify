@@ -21,7 +21,6 @@ return array(
     'local_info'    => 'Bestimmt die Interfacesprache und das Datumsformat.',
     'birthdate'     => 'Gebursttag',
     'occupation'    => 'Beruf',
-    'website'       => 'Website',
 
     'about'         => 'Über Mich',
     'signature'     => 'Signatur',

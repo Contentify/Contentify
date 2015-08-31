@@ -45,6 +45,5 @@ return array(
      * Widget
      */
     'backend'           => 'Admin-Backend',
-    'logout'            => 'Logout',
 
 );
