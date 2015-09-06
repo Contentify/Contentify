@@ -2,8 +2,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{!! trans('comments::latest_comments') !!}</th>
-                <th>{!! trans('app.date') !!}</th>
+                <th>{{ trans('comments::latest_comments') }}</th>
+                <th>{{ trans('app.date') }}</th>
             </tr>
         </thead>
         <tbody>

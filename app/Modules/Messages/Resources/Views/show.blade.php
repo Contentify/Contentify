@@ -1,7 +1,7 @@
 @include('messages::page_navigation', ['active' => null])
 
 <div class="title">
-    <h2>{!! $message->title !!}</h2>
+    <h2>{{ $message->title }}</h2>
 </div>
 
 <hr>
@@ -13,7 +13,7 @@
 @endif
 
 <div class="meta">
-    {!! link_to('users/'.$message->creator->id.'/'.$message->creator->slug, $message->creator->username) !!} {!! HTML::fontIcon('angle-right') !!} {!! link_to('users/'.$message->receiver->id.'/'.$message->receiver->slug, $message->receiver->username) !!} - {!! $message->created_at->dateTime() !!}
+    {!! link_to('users/'.$message->creator->id.'/'.$message->creator->slug, $message->creator->username) !!} {!! HTML::fontIcon('angle-right') !!} {!! link_to('users/'.$message->receiver->id.'/'.$message->receiver->slug, $message->receiver->username) !!} - {{ $message->created_at->dateTime() }}
 </div>
 
 <div class="message-text space-top space-bottom">

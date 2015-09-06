@@ -1,4 +1,4 @@
-<h1 class="page-title">{!! $user->username !!}</h1>
+<h1 class="page-title">{{ $user->username }}</h1>
 
 <div class="profile-basics row">
     <div class="col-md-8">
@@ -52,9 +52,9 @@
     </div>
     <div class="details col-md-4">
         @if ($user->image)
-            <img src="{!! $user->uploadPath().$user->image !!}" alt="{!! $user->username !!}">
+            <img src="{!! $user->uploadPath().$user->image !!}" alt="{{ $user->username }}">
         @else
-            <img src="{!! asset('theme/user.png') !!}" alt="{!! $user->username !!}">
+            <img src="{!! asset('theme/user.png') !!}" alt="{{ $user->username }}">
         @endif
 
         <div class="actions">

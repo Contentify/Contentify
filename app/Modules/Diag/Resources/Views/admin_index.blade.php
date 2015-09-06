@@ -1,8 +1,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>{!! trans('app.setting') !!}</th>
-            <th>{!! trans('app.value') !!}</th>
+            <th>{{ trans('app.setting') }}</th>
+            <th>{{ trans('app.value') }}</th>
         </tr>
     </thead>
     <tbody>

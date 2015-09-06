@@ -19,7 +19,7 @@
                     @endif
                     @if ($user->pivot->description)
                         <p>
-                            {!! $user->pivot->description !!}
+                            {{ $user->pivot->description }}
                         </p>
                     @endif
                 </li>

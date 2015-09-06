@@ -27,7 +27,7 @@
                 @endif
                 <a href="{!! url('forums/threads/'.$thread->id.'/'.$thread->slug) !!}" title="{{ $thread->title }}">
                     {{ $thread->title }}
-                    <span class="meta">{{ $thread->creator->username }} - {!! $thread->created_at->dateTime() !!}</span>
+                    <span class="meta">{{ $thread->creator->username }} - {{ $thread->created_at->dateTime() }}</span>
                 </a>
             </div>
             
@@ -37,7 +37,7 @@
 
             <div class="latest">
                 <a href="{!! url('forums/threads/'.$thread->id.'/'.$thread->slug) !!}" title="{{ $thread->title }}">
-                    {!! $thread->updated_at->dateTime() !!}
+                    {{ $thread->updated_at->dateTime() }}
                     <span class="meta">{{ $thread->creator->username }}</span>
                 </a>
             </div>

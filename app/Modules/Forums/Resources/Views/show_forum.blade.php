@@ -4,7 +4,7 @@
     @else
         <a class="back" href="{!! url('forums') !!}">{!! HTML::fontIcon('chevron-left') !!}</a>
     @endif
-    {!! $forum->title !!}
+    {{ $forum->title }}
 </h1>
 
 <div class="buttons">
@@ -32,7 +32,7 @@
                         {{ $subForum->title }}
 
                         @if ($subForum->description)
-                            <span class="desc">{!! $subForum->description !!}</span>
+                            <span class="desc">{{ $subForum->description }}</span>
                         @endif
                     </a>
                 </div>
@@ -83,7 +83,7 @@
                 @endif
                 <a href="{!! url('forums/threads/'.$thread->id.'/'.$thread->slug) !!}" title="{{ $thread->title }}">
                     {{ $thread->title }}
-                    <span class="meta">{{ $thread->creator->username }} - {!! $thread->created_at->dateTime() !!}</span>
+                    <span class="meta">{{ $thread->creator->username }} - {{ $thread->created_at->dateTime() }}</span>
                 </a>
             </div>
             
@@ -93,7 +93,7 @@
 
             <div class="latest">
                 <a href="{!! url('forums/threads/'.$thread->id.'/'.$thread->slug) !!}" title="{{ $thread->title }}">
-                    {!! $thread->updated_at->dateTime() !!}
+                    {{ $thread->updated_at->dateTime() }}
                     <span class="meta">{{ $thread->creator->username }}</span>
                 </a>
             </div>

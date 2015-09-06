@@ -13,7 +13,7 @@
                 }
             ?>
 
-            <option value="{!! $forum->id !!}" {!! $selected !!}>{!! $forum->title !!}</option>
+            <option value="{{ $forum->id }}" {!! $selected !!}>{{ $forum->title }}</option>
         @endforeach
     </select>
 {!! Form::smartGroupClose() !!}

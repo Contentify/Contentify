@@ -30,36 +30,36 @@
         <tbody>
             <tr>
                 <th>{!! trans('app.date') !!}</th>
-                <td>{!! $match->played_at->dateTime() !!} - {!! $match::$states[$match->state] !!}</td>
+                <td>{{ $match->played_at->dateTime() }} - {{ $match::$states[$match->state] }}</td>
             </tr>
             <tr>
                 <th>{!! trans('app.object_game') !!}</th>
-                <td>{!! $match->game->title !!}</td>
+                <td>{{ $match->game->title }}</td>
             </tr>
             <tr>
                 <th>{!! trans('app.object_tournament') !!}</th>
-                <td>{!! $match->tournament->title !!}</td>
+                <td>{{ $match->tournament->title }}</td>
             </tr>
             @if ($match->url)
                 <tr>
                     <th>{!! trans('app.url') !!}</th>
-                    <td><a href="{!! $match->url !!}" target="_blank" title="{{ trans('app.object_match')}} {!! trans('app.url') !!}">{!! $match->url !!}</a></td>
+                    <td><a href="{{ $match->url }}" target="_blank" title="{{ trans('app.object_match')}} {{ trans('app.url') }}">{{ $match->url }}</a></td>
                 </tr>
             @endif
             @if ($match->url)
                 <tr>
                     <th>{!! trans('matches::broadcast') !!}</th>
-                    <td>{!! $match->broadcast !!}</td>
+                    <td>{{ $match->broadcast }}</td>
                 </tr>
             @endif
             @if ($match->left_lineup or $match->right_lineup)
                 <tr>
                     <th>{!! trans('matches::left_lineup') !!}</th>
-                    <td>{!! $match->left_lineup !!}</td>
+                    <td>{{ $match->left_lineup }}</td>
                 </tr>
                 <tr>
                     <th>{!! trans('matches::right_lineup') !!}</th>
-                    <td>{!! $match->right_lineup !!}</td>
+                    <td>{{ $match->right_lineup }}</td>
                 </tr>
             @endif
         </tbody>
@@ -71,9 +71,9 @@
         @foreach ($match->match_scores as $matchScore)
             <div class="item">
                 @if ($matchScore->map->image)
-                    <img src="{!! $matchScore->map->uploadPath().$matchScore->map->image !!}" alt="{!! $matchScore->map->title !!}">
+                    <img src="{!! $matchScore->map->uploadPath().$matchScore->map->image !!}" alt="{{ $matchScore->map->title }}">
                 @endif
-                <span>{!! $matchScore->map->title !!}: {!! $matchScore->left_score !!}:{!! $matchScore->right_score !!}</span>
+                <span>{{ $matchScore->map->title }}: {{ $matchScore->left_score }}:{{ $matchScore->right_score }}</span>
             </div>
         @endforeach
 </div>

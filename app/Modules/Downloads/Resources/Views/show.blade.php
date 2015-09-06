@@ -1,4 +1,4 @@
-<h1 class="page-title"><a href="{!! url('downloads/category/'.$download->downloadcat->id.'/'.$download->downloadcat->slug) !!}">{{ trans_object('downloads') }} - {!! $download->downloadcat->title !!}</a></h1>
+<h1 class="page-title"><a href="{!! url('downloads/category/'.$download->downloadcat->id.'/'.$download->downloadcat->slug) !!}">{{ trans_object('downloads') }} - {{ $download->downloadcat->title }}</a></h1>
 
 <div class="download-detail">
     {!! Form::open(array('url' => 'downloads/perform/'.$download->id)) !!}
@@ -13,19 +13,19 @@
         @endif
 
         {!! Form::smartGroupOpen(null, trans('app.category')) !!}
-            <p class="form-control-static">{!! $download->downloadcat->title !!}</p>
+            <p class="form-control-static">{{ $download->downloadcat->title }}</p>
         {!! Form::smartGroupClose() !!}
 
         {!! Form::smartGroupOpen(null, trans('app.size')) !!}
-            <p class="form-control-static">{!! $download->file_size !!} Bytes</p>
+            <p class="form-control-static">{{ $download->file_size }} Bytes</p>
         {!! Form::smartGroupClose() !!}
 
         {!! Form::smartGroupOpen(null, trans('downloads::download_counter')) !!}
-            <p class="form-control-static">{!! $download->access_counter !!}</p>
+            <p class="form-control-static">{{ $download->access_counter }}</p>
         {!! Form::smartGroupClose() !!}
 
         {!! Form::smartGroupOpen(null, trans('downloads::traffic')) !!}
-            <p class="form-control-static">{!! $download->file_size * $download->access_counter !!} Bytes</p>
+            <p class="form-control-static">{{ $download->file_size * $download->access_counter }} Bytes</p>
         {!! Form::smartGroupClose() !!}
 
         @if ($download->description)

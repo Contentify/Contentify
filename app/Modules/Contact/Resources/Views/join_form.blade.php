@@ -1,4 +1,4 @@
-<h1 class="page-title">{!! trans('contact::application') !!}</h1>
+<h1 class="page-title">{{ trans('contact::application') }}</h1>
 
 {!! Form::errors($errors) !!}
 

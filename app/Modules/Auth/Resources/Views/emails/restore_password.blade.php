@@ -1,22 +1,22 @@
 <html lang="en">
 <head>
-    <title>{!! trans('auth::password_reset') !!}</title>
+    <title>{{ trans('auth::password_reset') }}</title>
     <meta charset="utf-8">
 </head>
 <body>
-    <p>{!! trans('auth::pw_link', [Config::get('app.title')]) !!}</p>
+    <p>{{ trans('auth::pw_link', [Config::get('app.title')]) }}</p>
 
     <table>
         <tr>
-            <td><strong>{!! trans('app.email') !!}:</strong></td>
-            <td>{!! $user->email !!}</td>
+            <td><strong>{{ trans('app.email') }}:</strong></td>
+            <td>{{ $user->email }}</td>
         </tr>
         <tr>
-            <td><strong>{!! trans('app.link') !!}:</strong></td>
+            <td><strong>{{ trans('app.link') }}:</strong></td>
             <td>{!! link_to('auth/restore/new/'.$user->email.'/'.$user->reset_password_code) !!}</td>
         </tr>
     </table>
     
-    <p>{!! trans('auth::email_ignore') !!}</p>
+    <p>{{ trans('auth::email_ignore') }}</p>
 </body>
 </html>

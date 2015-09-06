@@ -9,7 +9,7 @@
 
     @include('forums::select_forum', ['model' => isset($model) ? $model : null, 'forums' => $forums, 'empty' => true])
 
-    {!! Form::smartTextarea('description', trans('app.description'), true) !!}
+    {!! Form::smartTextarea('description', trans('app.description'), false) !!}
 
     {!! Form::smartNumeric('position', trans('app.position')) !!}
 

@@ -26,7 +26,7 @@
                             {{ $subForum->title }}
 
                             @if ($subForum->description)
-                                <span class="desc">{!! $subForum->description !!}</span>
+                                <span class="desc">{{ $subForum->description }}</span>
                             @endif
                         </a>
                     </div>
@@ -39,7 +39,7 @@
                         @if ($subForum->latest_thread)
                             <a href="{!! url('forums/threads/'.$subForum->latest_thread->id.'/'.$subForum->latest_thread->slug) !!}" title="{{ $subForum->latest_thread->title }}">
                                 {{ $subForum->latest_thread->title }}
-                                <span class="meta">{!! $subForum->latest_thread->updated_at->dateTime() !!}</span>
+                                <span class="meta">{{ $subForum->latest_thread->updated_at->dateTime() }}</span>
                             </a>
                         @else
                             -

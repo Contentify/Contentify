@@ -8,7 +8,7 @@
         @endif
             <a href="{!! url('forums/threads/'.$forumThread->id.'/'.$forumThread->slug) !!}" title="{{ $forumThread->title }}">
                 <span class="title">{{ $forumThread->title }}</span>
-                <span class="posts-count">{!! $forumThread->posts_count !!}</span>
+                <span class="posts-count">{{ $forumThread->posts_count }}</span>
             </a>
         </li>   
     @endforeach
