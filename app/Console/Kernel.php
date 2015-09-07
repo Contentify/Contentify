@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel {
     {
         /*
          * This is just an example! Do not activate this.
+         * NOTE: We recommend to use Contentify jobs instead of Laravel jobs!
          */
         //$schedule->command('jobs')->everyMinute();
     }

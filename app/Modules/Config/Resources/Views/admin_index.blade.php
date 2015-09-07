@@ -15,5 +15,7 @@
 
     {!! Form::smartCheckbox('app::https', 'HTTPS') !!} 
 
+    {!! Form::smartCheckbox('app::dbBackup', trans('config::db_backup')) !!} 
+
     {!! Form::actions(['submit' => trans('app.update')], false) !!}
 {!! Form::close() !!}

@@ -157,8 +157,8 @@ class AdminConfigController extends BackController {
                 $dump = new MySqlDump();
 
                 $con        = Config::get('database.connections.mysql');
-                $time       = time();
-                $filename   = storage_path().'/database/'.$time.'.sql';
+                $dateTime   = date('M-d-Y_H-i');
+                $filename   = storage_path().'/database/'.$dateTime.'.sql';
 
                 $dump->host     = $con['host'];
                 $dump->user     = $con['username'];
@@ -169,7 +169,7 @@ class AdminConfigController extends BackController {
 
                 $this->alertSuccess(
                     trans('config::db_export'), 
-                    trans('config::db_file'));
+                    trans('config::db_file', [$filename]));
                 break;
             default:
                 $this->alertError(trans('config::not_supported', [Config::get('database.default')]));

@@ -622,6 +622,7 @@ class InstallController extends Controller {
         DB::table('config')->insert([
             ['name' => 'app.analytics',         'value' => ''],
             ['name' => 'app.https',             'value' => 0],
+            ['name' => 'app.dbBackup',          'value' => 0],
             ['name' => 'auth::registration',    'value' => 1],
             ['name' => 'forums::reports',       'value' => 1],
         ]);

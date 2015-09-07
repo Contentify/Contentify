@@ -1,8 +1,10 @@
 <?php namespace App\Modules\Streams;
-
+
 use Job;
 
 class UpdateStreamsJob extends Job {
+
+    protected $timeSpan = 300; // 5 minutes
 
     public function run($executed)
     {
