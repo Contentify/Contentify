@@ -497,7 +497,7 @@ class InstallController extends Controller {
             $table->integer('left_score')->default(0); // Total score
             $table->integer('right_score')->default(0);
         }, 
-        ['left_team_id' => 'team_id', 'right_team_id' => 'team_id', 'game_id', 'tournament_id'], 
+        ['left_team_id' => 'team_id', 'right_team_id' => 'opponent_id', 'game_id', 'tournament_id'], 
         ['title', 'slug']);
 
         $this->create('streams', function($table)
