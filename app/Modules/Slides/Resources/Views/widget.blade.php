@@ -12,8 +12,8 @@
             </ul>
         </div>
 
-        <a class="to-left" href="#">&lt;</a>
-        <a class="to-right" href="#">&gt;</a>
+        <a class="to-left" href="#">{!! HTML::fontIcon('angle-left') !!}</a>
+        <a class="to-right" href="#">{!! HTML::fontIcon('angle-right') !!}</a>
         
         <ul class="buttons list-inline" title="Switch to">
             @foreach ($slides as $index => $slide)

@@ -99,7 +99,7 @@
 
                 <br>
                 <h3>{{ trans('app.object_partners') }}</h3>
-                @widget('Partners::Partners', ['categoryId' => 2])
+                @widget('Partners::Partners', ['categoryId' => 1])
 
                 <br>
                 <h3>{{ trans('app.object_servers') }}</h3>

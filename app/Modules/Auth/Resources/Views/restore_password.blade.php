@@ -1,4 +1,4 @@
-<h1 class="page-title">{{ trans('auth::restore_pw') }}</h1>
+<h1 class="page-title">{{ trans('auth::password_reset') }}</h1>
 
 {!! Form::errors($errors) !!}
 

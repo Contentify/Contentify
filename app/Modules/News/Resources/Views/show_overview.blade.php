@@ -21,6 +21,8 @@
                 {!! $news->summary !!}
             </div>
         </div>
-        {{ $news->countComments() }} {!! trans('app.comments') !!} - {!! link_to('news/'.$news->id.'/'.$news->slug, trans('app.read_more')) !!}
+        <div class="meta">
+            {{ $news->countComments() }} {!! trans('app.comments') !!} - {!! link_to('news/'.$news->id.'/'.$news->slug, trans('app.read_more')) !!}
+        </div>
     </article>
 @endforeach

@@ -11,6 +11,27 @@
 
 @primaryColor: #00afff;
 
+/* Text selection */
+::-moz-selection { color: white; background: @primaryColor; }
+::selection { color: white; background-color: @primaryColor; } 
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: darken(@primaryColor, 40%);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darken(@primaryColor, 20%); 
+
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: @primaryColor;
+}
+
 /*
  * Elements
  */
@@ -98,6 +119,7 @@ a:hover { color: @primaryColor; }
         position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;
         ul { position: relative; width: 100%; height: 100%; overflow: hidden; margin-left: 0px; }
         ul li { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; padding: 0px; }
+        a { display: block; text-align: center }
     }
     .to-left { position: absolute; left: 0px; top: 40%; width: 35px; height: 35px; line-height: 35px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center; }
     .to-right { position: absolute; right: 0px; top: 40%; width: 35px; height: 35px; line-height: 35px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center }
@@ -109,7 +131,7 @@ a:hover { color: @primaryColor; }
             &.active{ background-color: rgba(0, 0, 0, 1); }
         }
     }
-    .slide-title { position: absolute; margin: 0px; left: 20px; bottom: 20px; color: white; text-shadow: 0px 0px 3px black; }
+    .slide-title { position: absolute; max-width: ~"calc(100% - 40px)" /* 40 = left * 2 */; margin: 0px; left: 20px; bottom: 20px; color: white; text-shadow: 0px 0px 3px black; }
 }
 
 .scroller { 
@@ -136,7 +158,7 @@ a:hover { color: @primaryColor; }
  */
 
 .widget-partners {
-    a { text-align: center; }
+    a { display: block; text-align: center; }
     img {
         &.filter { filter: grayscale(1); -webkit-filter: grayscale(1); transition: all 0.8s ease; }
         &.filter:hover { filter: grayscale(0); -webkit-filter: grayscale(0); transition: all 0.2s ease; }
@@ -246,6 +268,7 @@ a:hover { color: @primaryColor; }
 
 .widget-matches-latest {
     li { position: relative; }
+    li a { display: block; }
     li img { float: left; margin-right: 10px }
     li .scores { position: absolute; right: 0px; top: 0px; }
     li .scores .win { color: green }
@@ -291,7 +314,6 @@ a:hover { color: @primaryColor; }
         margin-bottom: 20px;
     }
     .threads, .sub-forums {
-        @forumsBoxColor: #EEE;
         .clearfix(); 
         .thread, .sub-forum {
             padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
@@ -323,7 +345,7 @@ a:hover { color: @primaryColor; }
     .post { 
         @metaWidth: 100px;
         @minHeight: 135px;
-        .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid #EEE;
+        .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid @forumsBoxColor;
         .meta {
             position: absolute; left: 0px; top: 0px; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: #EEE; float: left;
             .creator-name { .text-overflow(); display: block; }

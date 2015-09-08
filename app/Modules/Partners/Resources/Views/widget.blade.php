@@ -1,4 +1,4 @@
-<div class="widget widget-partners"
+<div class="widget widget-partners">
     <ul class="list-unstyled widget-partners">
         @foreach ($partners as $partner)
             @if ($partner->image)

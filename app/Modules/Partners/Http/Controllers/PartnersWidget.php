@@ -19,7 +19,7 @@ class PartnersWidget extends Widget {
             }
         }
 
-        $partners = Partner::wherePartnercatId($categoryId)->published()->get();
+        $partners = Partner::wherePartnercatId($categoryId)->published()->orderBy('position', 'ASC')->get();
 
         return View::make('partners::widget', compact('partners'))->render();
     }
