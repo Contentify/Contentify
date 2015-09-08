@@ -1,7 +1,13 @@
 {
+  "name": "Contentify",
+  "description": "Contentify eSports CMS",
+  "author": "Contentify.org",
+  "main": "Gruntfile.js",
   "private": true,
   "devDependencies": {
-    "gulp": "^3.8.8",
-    "laravel-elixir": "^2.0.0"
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "jit-grunt": "^0.9.1"
   }
 }
