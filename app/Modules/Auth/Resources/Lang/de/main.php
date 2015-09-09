@@ -22,6 +22,7 @@ return array(
     'register'          => 'Registrieren',
     'registered'        => 'Registrierung erfolgreich!',
     'username_taken'    => 'Der Benutzername ist bereits vergeben.',
+    'password_length'   => 'Ihr Passwort muss mindestens sechs Zeichen besitzen.',
 
     /*
      * Restore password

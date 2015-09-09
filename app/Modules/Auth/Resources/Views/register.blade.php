@@ -13,6 +13,8 @@
 
     {!! Form::smartPassword() !!}
 
+    {!! Form::helpBlock(trans('auth::password_length')) !!}
+
     {!! Form::smartPassword('password_confirmation', trans('app.password')) !!}
     
     {!! Form::smartCaptcha() !!}
