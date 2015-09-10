@@ -68,7 +68,7 @@
         
         // We can't add scores to a match that doesn't actually exist
         @if (isset($model))
-            var template = '{!! Form::smartSelectForeign('map_id', 'Map') !!} {!! Form::smartGroupOpen('left_score', trans('matches::score')) !!} <input type="text" name="left_score" style="display: inline-block; max-width: 50px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="display: inline-block; max-width: 50px" value="%%scoreRight%%"> {!! Form::smartGroupClose() !!}';
+            var template = '{!! Form::smartSelectForeign('map_id', trans('app.object_map')) !!} {!! Form::smartGroupOpen('left_score', trans('matches::score')) !!} <input type="text" name="left_score" style="display: inline-block; max-width: 50px" value="%%scoreLeft%%"> : <input type="text" name="right_score" style="display: inline-block; max-width: 50px" value="%%scoreRight%%"> {!! Form::smartGroupClose() !!}';
 
             contentify.templateManager.add('mapForm', template);
 
@@ -98,7 +98,7 @@
                     contentify.closeModal();
                 });
 
-                contentify.modal('Map', compiled, $footer);
+                contentify.modal('{{ trans('app.object_map') }}', compiled, $footer);
             });
 
             $('.page').on('click', '.scores .item', function()
@@ -149,7 +149,7 @@
                     })
                 );
 
-                contentify.modal('Map', $compiled, $footer);
+                contentify.modal('{{ trans('app.object_map') }}', $compiled, $footer);
             });
         @endif        
 

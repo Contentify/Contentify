@@ -19,7 +19,7 @@ class SlidesWidget extends Widget {
             }
         }
 
-        $slides = Slide::whereSlidecatId($categoryId)->get();
+        $slides = Slide::whereSlidecatId($categoryId)->published()->orderBy('position', 'ASC')->get();
 
         return View::make('slides::widget', compact('slides', 'categoryId'))->render();
     }

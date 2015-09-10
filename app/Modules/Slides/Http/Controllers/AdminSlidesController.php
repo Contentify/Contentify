@@ -2,7 +2,7 @@
 
 use ModelHandlerTrait;
 use App\Modules\Slides\Slide;
-use Hover, BackController;
+use HTML, Hover, BackController;
 
 class AdminSlidesController extends BackController {
 
@@ -23,6 +23,7 @@ class AdminSlidesController extends BackController {
             'buttons'   => ['new', 'category'],
             'tableHead' => [
                 trans('app.id')             => 'id', 
+                trans('app.published')      => 'published', 
                 trans('app.title')          => 'title',
                 trans('app.category')       => 'slidecat_id', 
             ],
@@ -32,6 +33,7 @@ class AdminSlidesController extends BackController {
 
                 return [
                     $slide->id,
+                    raw($slide->published ? HTML::fontIcon('check') : null),
                     raw(Hover::pull(), $slide->title),
                     $slide->slidecat->title,
                 ];            

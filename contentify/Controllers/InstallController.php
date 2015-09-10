@@ -448,6 +448,8 @@ class InstallController extends Controller {
         {
             $table->string('url')->nullable();
             $table->string('image')->nullable();
+            $table->integer('position')->default(0);
+            $table->boolean('published')->default(false);
         }, ['slidecat_id'], ['slug']);
 
                

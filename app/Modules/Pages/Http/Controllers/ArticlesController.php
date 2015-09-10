@@ -33,21 +33,6 @@ class ArticlesController extends FrontController {
     }
 
     /**
-     * Show the preview of several news
-     * 
-     * @return void
-     */
-    public function showOverview()
-    {
-        // Internal news are protected and require the "internal" permission:
-        $hasAccess = (user() and user()->hasAccess('internal'));
-        $newsCollection = News::published()->where('internal', '<=', $hasAccess)->filter()
-            ->orderBy('created_at', 'DESC')->take(5)->get();
-
-        $this->pageView('news::show_overview', compact('newsCollection'));
-    }
-
-    /**
      * Show an article
      * 
      * @param  int $id The id of the article
@@ -74,7 +59,7 @@ class ArticlesController extends FrontController {
 
     public function globalSearch($subject)
     {
-        $articles = Article::where('title', 'LIKE', '%'.$subject.'%')->get();
+        $articles = Article::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = array();
         foreach ($articles as $article) {

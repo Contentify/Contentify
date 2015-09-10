@@ -95,7 +95,7 @@ class NewsController extends FrontController {
 
     public function globalSearch($subject)
     {
-        $newsCollection = News::where('title', 'LIKE', '%'.$subject.'%')->get();
+        $newsCollection = News::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = array();
         foreach ($newsCollection as $news) {

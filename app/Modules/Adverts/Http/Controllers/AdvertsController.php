@@ -13,7 +13,7 @@ class AdvertsController extends FrontController {
      */
     public function url($id)
     {
-        $advert = Advert::findOrFail($id);
+        $advert = Advert::published()->findOrFail($id);
 
         $advert->access_counter++;
         $advert->save();

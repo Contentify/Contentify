@@ -8,7 +8,7 @@ class Slide extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'url', 'position', 'slidecat_id'];
+    protected $fillable = ['title', 'url', 'position', 'published', 'slidecat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
@@ -16,6 +16,7 @@ class Slide extends BaseModel {
         'title'         => 'required|min:3',
         'url'           => 'required|url',
         'position'      => 'sometimes|integer',
+        'published'     => 'boolean',
         'slidecat_id'   => 'required|integer'
     ];
 
@@ -24,4 +25,15 @@ class Slide extends BaseModel {
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username']
     ];
 
+    /**
+     * Select only those that have been published
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopePublished($query)
+    {
+        return $query->wherePublished(true);
+    }
+    
 }

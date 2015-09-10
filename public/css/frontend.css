@@ -6614,6 +6614,28 @@ button.close {
 /*
  * Global Variables
  */
+/* Text selection */
+::-moz-selection {
+  color: white;
+  background: #00afff;
+}
+::selection {
+  color: white;
+  background-color: #00afff;
+}
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: #002333;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #006999;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00afff;
+}
 /*
  * Elements
  */
@@ -6898,6 +6920,10 @@ textarea.model-search-box input {
   height: 100%;
   padding: 0px;
 }
+.slider .slides a {
+  display: block;
+  text-align: center;
+}
 .slider .to-left {
   position: absolute;
   left: 0px;
@@ -6944,6 +6970,7 @@ textarea.model-search-box input {
 }
 .slider .slide-title {
   position: absolute;
+  max-width: calc(100% - 40px) /* 40 = left * 2 */;
   margin: 0px;
   left: 20px;
   bottom: 20px;
@@ -6984,7 +7011,11 @@ textarea.model-search-box input {
  * Modules
  */
 .widget-partners a {
+  display: block;
   text-align: center;
+}
+.widget-partners img {
+  max-width: 100%;
 }
 .widget-partners img.filter {
   filter: grayscale(1);
@@ -7232,6 +7263,9 @@ textarea.model-search-box input {
 }
 .widget-matches-latest li {
   position: relative;
+}
+.widget-matches-latest li a {
+  display: block;
 }
 .widget-matches-latest li img {
   float: left;
@@ -7502,7 +7536,7 @@ textarea.model-search-box input {
 .page-posts .post {
   position: relative;
   margin-bottom: 10px;
-  border: 2px solid #EEE;
+  border: 2px solid #eeeeee;
 }
 .page-threads .post:before,
 .page-posts .post:before,

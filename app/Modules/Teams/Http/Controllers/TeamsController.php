@@ -14,7 +14,7 @@ class TeamsController extends FrontController {
 
     public function index()
     {
-        $teams = Team::orderBy('position', 'ASC')->get();
+        $teams = Team::published()->orderBy('position', 'ASC')->get();
 
         $this->pageView('teams::index', compact('teams'));
     }
@@ -27,7 +27,7 @@ class TeamsController extends FrontController {
      */
     public function show($id)
     {
-        $team = Team::findOrFail($id);
+        $team = Team::published()->findOrFail($id);
 
         $team->access_counter++;
         $team->save();
