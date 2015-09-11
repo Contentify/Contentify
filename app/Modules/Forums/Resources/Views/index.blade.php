@@ -1,7 +1,9 @@
 <h1 class="page-title">{{ trans_object('forums') }}</h1>
 
 <div class="buttons">
-    <a class="btn btn-default create" href="{!! url('forums/threads/new') !!}">{!! trans('forums::show_new') !!}</a>
+    @if (user())
+        <a class="btn btn-default create" href="{!! url('forums/threads/new') !!}">{!! trans('forums::show_new') !!}</a>
+    @endif
 </div>
 
 @foreach($forums as $forum)
