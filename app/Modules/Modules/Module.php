@@ -13,7 +13,7 @@ class Module extends BaseModel {
      */
     public static function findAll()
     {
-        $dirs = File::directories(app_path().'/modules');
+        $dirs = File::directories(app_path().'/Modules');
 
         array_walk($dirs, 'self::createInstance');
 
