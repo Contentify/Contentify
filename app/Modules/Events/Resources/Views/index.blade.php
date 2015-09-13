@@ -1,3 +1,5 @@
+<h1 class="page-title">{{ trans('app.object_events') }}</h1>
+
 @foreach ($events as $event)
     <article class="event">
         <header>
