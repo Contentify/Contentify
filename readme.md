@@ -14,7 +14,7 @@ Website: [contentify.org](http://contentify.org/)
 
 > WARNING: This repository does include multiple branches, but currently none of them is a release branch. Therefore, if you are interested in testing, please download a realease that is meant for testing.
 
-### Releases
+### Download
 
 The current release is `Release Candidate`.
 
