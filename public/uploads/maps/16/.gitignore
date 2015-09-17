@@ -1,0 +1,17 @@
+*.jpg
+*.jpeg
+*.gif
+*.png
+*.bmp
+
+!unknown.jpg
+!cs_dust.jpg
+!cs_dust2.jpg
+!cs_inferno.jpg
+!cs_train.jpg
+!cs_cbble.jpg
+!cs_nuke.jpg
+!cs_cache.jpg
+!cs_mirage.jpg
+!cs_season.jpg
+!cs_overpass.jpg
