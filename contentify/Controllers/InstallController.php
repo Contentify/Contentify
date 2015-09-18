@@ -456,6 +456,7 @@ class InstallController extends Controller {
         $this->create('tournaments', function($table)
         {
             $table->string('short', 6)->nullable();
+            $table->string('url')->nullable();
             $table->string('icon')->nullable();
         },  [], ['slug']);
         

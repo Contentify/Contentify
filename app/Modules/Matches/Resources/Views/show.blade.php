@@ -38,7 +38,13 @@
             </tr>
             <tr>
                 <th>{!! trans('app.object_tournament') !!}</th>
-                <td>{{ $match->tournament->title }}</td>
+                <td>
+                    @if ($match->tournament->url)
+                        <a href="{{ $match->tournament->url }}" target="_blank"  title="{{ $match->tournament->title }}">{{ $match->tournament->title }}</a>
+                    @else
+                        {{ $match->tournament->title }}
+                    @endif
+                </td>
             </tr>
             @if ($match->url)
                 <tr>
@@ -49,7 +55,7 @@
             @if ($match->url)
                 <tr>
                     <th>{!! trans('matches::broadcast') !!}</th>
-                    <td>{{ $match->broadcast }}</td>
+                    <td>><a href="{{ $match->broadcast }}" target="_blank" title="{{ trans('matches::broadcast') }}">{{ $match->broadcast }}</a></td>
                 </tr>
             @endif
             @if ($match->left_lineup or $match->right_lineup)

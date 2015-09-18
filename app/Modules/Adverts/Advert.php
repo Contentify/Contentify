@@ -14,7 +14,7 @@ class Advert extends BaseModel {
 
     protected $rules = [
         'title'         => 'required|min:3',
-        'url'           => 'required|url',
+        'url'           => 'sometimes|url',
         'published'     => 'boolean',
         'advertcat_id'  => 'required|integer'
     ];

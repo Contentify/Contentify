@@ -9,7 +9,7 @@
 
     {!! Form::smartTextarea('text', trans('app.text')) !!}
 
-    {!! Form::smartText('url', trans('app.url')) !!}
+    {!! Form::smartUrl() !!}
 
     {!! Form::smartText('location', trans('app.location')) !!}
 

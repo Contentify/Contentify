@@ -9,7 +9,7 @@
     
     {!! Form::smartSelectRelation('slidecat', 'Slide '.trans('app.category'), $modelClass, null) !!}
 
-    {!! Form::smartUrl('url', trans('app.url')) !!}
+    {!! Form::smartUrl() !!}
 
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
 

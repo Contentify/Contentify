@@ -13,7 +13,7 @@
 
     {!! Form::smartSelectRelation('team', trans('app.object_team'), $modelClass, null, true, true) !!}
 
-    {!! Form::smartUrl('url') !!}
+    {!! Form::smartUrl() !!}
 
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
     

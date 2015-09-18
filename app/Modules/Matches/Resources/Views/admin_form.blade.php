@@ -15,9 +15,9 @@
 
     {!! Form::smartSelectRelation('tournament', trans('app.object_tournament'), $modelClass) !!}
 
-    {!! Form::smartUrl('url', trans('app.url')) !!}
+    {!! Form::smartUrl() !!}
 
-    {!! Form::smartText('broadcast', trans('matches::broadcast')) !!}
+    {!! Form::smartUrl('broadcast', trans('matches::broadcast')) !!}
 
     {!! Form::smartText('left_lineup', trans('matches::left_lineup')) !!}
 

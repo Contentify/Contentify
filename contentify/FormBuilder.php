@@ -8,12 +8,14 @@ class FormBuilder extends OriginalFormBuilder {
 
     /**
      * Form groups: Number of grid columns of the label column
+     * 
      * @var string    
      */
     protected $labelGridCols = 3;
 
     /**
      * Form groups: Number of grid columns of the controls column
+     * 
      * @var string
      */
     protected $controlGridCols = 9;
@@ -154,6 +156,31 @@ class FormBuilder extends OriginalFormBuilder {
         $options['class'] .= 'numeric-input';
         
         $partial = self::input('text', $name, $value, $options);
+        return $partial;
+    }
+
+    /**
+     * Create HTML code for a URL input element.
+     * 
+     * @param  string $name       The name of the input element
+     * @param  string $value      The default value
+     * @param  array  $options    Array with attributes
+     * @return string
+     */
+    public function url($name, $value = null, $options = array())
+    {
+        if (isset($options['class'])) {
+            $options['class'] = ' ';
+        } else {
+            $options['class'] = '';  
+        }
+        $options['class'] .= 'url';
+
+        if (! isset($options['placeholder'])) {
+            $options['placeholder'] = 'http://www.example.com';
+        }
+        
+        $partial = self::input('url', $name, $value, $options);
         return $partial;
     }
 
@@ -299,6 +326,7 @@ class FormBuilder extends OriginalFormBuilder {
 
     /**
      * Create HTML code for a URL input element.
+     * 
      * @param  string $name       The name of the input element
      * @param  string $title      The title of the input element
      * @param  string $default    The default value
@@ -317,6 +345,7 @@ class FormBuilder extends OriginalFormBuilder {
 
     /**
      * Create HTML code for a password input element.
+     * 
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string

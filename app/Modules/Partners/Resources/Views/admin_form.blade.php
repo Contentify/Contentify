@@ -11,7 +11,7 @@
 
     {!! Form::smartTextarea('text', trans('app.text'), true) !!}
 
-    {!! Form::smartUrl('url', trans('app.url')) !!}
+    {!! Form::smartUrl() !!}
 
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
 
