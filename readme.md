@@ -12,7 +12,9 @@ Website: [contentify.org](http://contentify.org/)
 
 > WARNING: This is a release candidate version. It does include all features but it is not ready for production.
 
-> WARNING: This repository does include multiple branches, but currently none of them is a release branch. Therefore, if you are interested in testing, please download a realease that is meant for testing.
+### Clone Repository
+
+Clone this repository (`master` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Download
 
