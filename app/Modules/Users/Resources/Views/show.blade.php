@@ -74,19 +74,37 @@
                 <tbody>
                     <tr>
                         <th class="title">Facebook:</th>
-                        <td><a href="{{ url('http://www.facebook.com/'.$user->facebook) }}" target="_blank">{{ $user->facebook }}</a></td>
+                        <td>
+                            @if (filter_var($user->facebook, FILTER_VALIDATE_URL))
+                                <a href="{{ $user->facebook }}" target="_blank">{{ trans('app.link') }}</a>
+                            @else
+                                <a href="http://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a>
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th class="title">Twitter:</th>
-                        <td><a href="{{ url('http://www.twitter.com/'.$user->twitter) }}" target="_blank">{{ $user->twitter }}</a></td>
+                        <td>
+                            @if (filter_var($user->twitter, FILTER_VALIDATE_URL))
+                                <a href="{{ $user->twitter }}" target="_blank">{{ trans('app.link') }}</a>
+                            @else
+                                <a href="http://www.twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a>
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <th class="title">Skype:</th>
-                        <td><a href="{{ url('skype:35?'.$user->facebook) }}" target="_blank">{{ $user->skype }}</a></td>
+                        <td><a href="skype:35?{{ $user->skype }}" target="_blank">{{ $user->skype }}</a></td>
                     </tr>
                     <tr>
                         <th class="title">{!! trans('users::steam_id') !!}:</th>
-                        <td><a href="http://steamcommunity.com/id/{{ $user->steam_id }}">{{ $user->steam_id }}</a></td>
+                        <td>
+                            @if (filter_var($user->steam_id, FILTER_VALIDATE_URL))
+                                <a href="{{ $user->steam_id }}" target="_blank">{{ trans('app.link') }}</a>
+                            @else
+                                <a href="http://steamcommunity.com/id/{{ $user->steam_id }}" target="_blank">{{ $user->steam_id }}</a>
+                            @endif
+                        </td>
                     </tr>
                 </tbody>
             </table>
