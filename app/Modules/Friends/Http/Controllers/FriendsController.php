@@ -29,7 +29,7 @@ class FriendsController extends FrontController {
     {
         $friend = User::findOrFail($id);
 
-        $friendship = Friendship::areFriends(user()->id, $id)->first();
+        $friendship = Friendship::areFriends(user()->id, $id, false)->first();
 
         $friendshipImpossible = ($friendship and 
             ($friendship->confirmed or $friendship->messaged_at->timestamp > time() - 60 * 10)); // 10 Minutes
@@ -69,7 +69,7 @@ class FriendsController extends FrontController {
     {
         $friend = User::findOrFail($id);
 
-        $friendship = Friendship::areFriends(user()->id, $id)->first();
+        $friendship = Friendship::areFriends(user()->id, $id, false)->first();
 
         if (! $friendship or $friendship->confirmed) {
             $this->alertFlash(trans('friends::request_error'));
@@ -84,7 +84,7 @@ class FriendsController extends FrontController {
     }
 
     /**
-     * Destroys a friendship (=destroys the user-to-user-relationship)
+     * Destroys a friendship (= destroys the user-to-user-relationship)
      * 
      * @param  int $id The ID if the user (friend)
      * @return Redirect
@@ -93,16 +93,19 @@ class FriendsController extends FrontController {
     {
         $friend = User::findOrFail($id);
         
+        // NOTE: Only receive confirmed friendships.
+        // It's important that users can only delete confirmed friendship to avoid abuse for friendship request spamming
         $friendship = Friendship::areFriends(user()->id, $id)->firstOrFail();
 
-        // It's important that users can only delete confirmed friendship to avoid abuse for friendship request spamming
-        DB::table('friends')->whereSenderId($friendship->sender_id)->whereReceiverId($friendship->receiver_id)
-            ->whereConfirmed(true)->delete();
+        if ($friendship) {
+            DB::table('friends')->whereSenderId($friendship->sender_id)->whereReceiverId($friendship->receiver_id)
+                ->delete();
 
-        $friend->sendSystemMessage(
-            trans('friends::deletion_title'),
-            trans('friends::deletion_text', [user()->username])
-        );
+            $friend->sendSystemMessage(
+                trans('friends::deletion_title'),
+                trans('friends::deletion_text', [user()->username])
+            );
+        }        
 
         $this->alertFlash(trans('app.deleted', ['Friendship'])); // Friendship terminated. Take this, diction!
         return Redirect::to('friends/'.user()->id);
