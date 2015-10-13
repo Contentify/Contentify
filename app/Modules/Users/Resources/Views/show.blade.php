@@ -39,7 +39,13 @@
                     <th class="title">{!! trans('app.website') !!}:</th>
                     <td>
                         @if(e($user->website))
-                            {!! HTML::link(e($user->website)) !!}
+                            @if(e($user->website))
+                                @if (filter_var($user->website, FILTER_VALIDATE_URL))
+                                    {!! HTML::link(e($user->website)) !!}
+                                @else
+                                    {!! HTML::link('http://www.'.e($user->website), e($user->website)) !!}
+                                @endif
+                            @endif
                         @endif
                     </td>
                 </tr>
