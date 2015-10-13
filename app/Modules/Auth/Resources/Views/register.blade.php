@@ -11,9 +11,9 @@
 
     {!! Form::smartEmail() !!}
 
-    {!! Form::smartPassword() !!}
-
     {!! Form::helpBlock(trans('auth::password_length')) !!}
+
+    {!! Form::smartPassword() !!}    
 
     {!! Form::smartPassword('password_confirmation', trans('app.password')) !!}
     
