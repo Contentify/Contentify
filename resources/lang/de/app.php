@@ -167,7 +167,7 @@ return [
     'of'            => 'von',
     'role'          => 'Rolle',
     'message'       => 'Nachricht',
-    'subject'       => 'Subjekt',
+    'subject'       => 'Titel', // Vague translation
     'latest_msgs'   => 'Neueste Feed-Nachrichten', // Admin dashboard feed messages
     'quick_access'  => 'Schnellzugriff', // Admin dashboard quick access
     'setting'       => 'Einstellung',
