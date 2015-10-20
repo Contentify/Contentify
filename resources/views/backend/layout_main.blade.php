@@ -19,6 +19,7 @@
         {!! HTML::title(trans_object($controllerName, $moduleName)) !!}
     @endif
 
+    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Big icon -->
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('theme/favicon.png') !!}">
 
     {!! HTML::style('vendor/font-awesome/css/font-awesome.min.css') !!}
