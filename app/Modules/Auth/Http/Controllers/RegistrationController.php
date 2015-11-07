@@ -15,7 +15,7 @@ class RegistrationController extends FrontController {
     public function getCreate()
     {
         if (user()) {
-            $this->alertSuccess(trans('auth::register_twice'));    
+            $this->alertError(trans('auth::register_twice'));    
             return;
         }        
 

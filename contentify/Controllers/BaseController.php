@@ -236,7 +236,7 @@ abstract class BaseController extends Controller {
     public function alert($type, $title, $text = '')
     {
         if ($this->layout != null) {
-            $this->layout->page .= View::make('alert', ['type' => 'info', 'title' => $title, 'text' => $text]);
+            $this->layout->page .= View::make('alert', ['type' => $type, 'title' => $title, 'text' => $text]);
         } else {
             throw new Exception('Error: $this->layout is null!');
         }
