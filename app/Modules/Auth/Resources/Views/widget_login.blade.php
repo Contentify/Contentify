@@ -4,7 +4,6 @@
         
         {!! Form::smartPassword() !!}
 
-        {!! Form::actions(['submit' => trans('auth::login')], false) !!}
         <div class="form-actions">
         	<button type="submit" class="btn btn-default">{{ trans('auth::login') }}</button>
 
