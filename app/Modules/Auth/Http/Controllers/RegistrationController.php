@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
 
 use App\Modules\Languages\Language;
-use Response, User, App, Lang, Str, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
+use Response, User, App, Str, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {
 
@@ -47,7 +47,7 @@ class RegistrationController extends FrontController {
             $language = Language::whereCode(App::getLocale())->first();
 
             /*
-             * Register user.
+             * Register user
              */
             $user = Sentry::register([
                 'username'      => Input::get('username'),

@@ -1,15 +1,17 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
-
-use View, Sentry, Input, Session, Redirect, Exception, FrontController;
+
+use Invisnik\LaravelSteamAuth\SteamAuth;
+use App\Modules\Languages\Language;
+use App, User, Str, View, Sentry, Input, Session, Redirect, Exception, FrontController;
 
 class LoginController extends FrontController {
     
-    public function getIndex()
+    public function getLogin()
     {
         $this->pageView('auth::login');
     }
 
-    public function postIndex()
+    public function postLogin()
     {
         $credentials = [
             'email'     => Input::get('email'),
@@ -19,17 +21,90 @@ class LoginController extends FrontController {
         try {
             $user = Sentry::authenticate($credentials, false); // Login the user (if possible)
 
-            Session::set('app.locale', user()->language->code); // Set session locale to account language
-
-            if (Session::get('redirect')) {
-                $redirect = Redirect::to(Session::get('redirect'));
-                Session::forget('redirect');
-                return $redirect;
-            } else {
-                return Redirect::to('/');   
-            }
+            return $this->afterLoginActions();
         } catch(Exception $e) {
             return Redirect::to('auth/login')->withErrors(['message' => $e->getMessage()]);
         }
     }
+
+    public function getSteam(SteamAuth $steam)
+    {
+        if ($steam->validate()) { 
+            $info = $steam->getUserInfo();
+
+            if ($info !== null) {
+                $user = User::where('steam_auth_id', $info->getSteamID64())->first();
+
+                if ($user !== null) {
+                    Sentry::loginAndRemember($user);
+
+                    return $this->afterLoginActions();
+                } else {
+                    $username = $info->getNick();
+
+                    /*
+                     * The username has to be unique so ensure that it is
+                     */
+                    $i = 1;
+                    while ($user = User::whereUsername($username)->first()) {
+                        $username = $info->getNick().($i++);
+                    }
+
+                    $language = Language::whereCode(App::getLocale())->first();
+
+                    /*
+                     * Register user.
+                     */
+                    $user = Sentry::register([
+                        'username'      => $username,
+                        'email'         => 'contentify.org',
+                        'password'      => Str::random(), // So no one can login without Steam auth
+                        'language_id'   => $language->id,
+                    ], true); // Auto activate the user
+
+                    $user->slug = Str::slug($user->username);
+                    $user->email = $info->getSteamID64().'@nomail.contentify.org'; // Email has to be unique and != null
+                    $user->steam_auth_id = $info->getSteamID64();
+                    $user->save();
+
+                    /*
+                     * Add user to group "Users"
+                     * This group is a basic group that isn't deletable so we do know it exists.
+                     * (If it does'nt exist, we have a serious problem.)
+                     */
+                    $userGroup = Sentry::findGroupById(2);
+                    $user->addGroup($userGroup);
+
+                    /*
+                     * Login user
+                     */
+                    Sentry::loginAndRemember($user);
+                    
+                    $this->alertFlash(trans('auth::steam_registered'));
+                    return Redirect::to('/users/'.$user->id.'/edit');
+                }
+            }
+        } else {
+            return $steam->redirect(); //redirect to steam login page
+        }
+    }
+
+    /**
+     * Executes addinional actions after user login
+     * 
+     * @return Redirect
+     */
+    public function afterLoginActions()
+    {
+        Session::set('app.locale', user()->language->code); // Set session locale to account language
+
+        if (Session::get('redirect')) {
+            $redirect = Redirect::to(Session::get('redirect'));
+            Session::forget('redirect');
+            return $redirect;
+        } else {
+            return Redirect::to('/');
+        }
+    }
+
 }

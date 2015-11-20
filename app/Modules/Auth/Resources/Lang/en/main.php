@@ -21,6 +21,7 @@ return array(
      */
     'register'          => 'Register',
     'registered'        => 'Registration successful!',
+    'steam_registered'  => 'Registration via Steam successful! If you want to enable login via email as well, please set your email address and request a new password.',
     'username_taken'    => 'Username already taken.',
     'password_length'   => 'Your password must be at least 6 characters long.',
     'register_twice'    => 'You are already registered.',

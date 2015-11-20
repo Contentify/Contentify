@@ -13,6 +13,7 @@ class CreateUserProfile extends Migration {
     {
         Schema::table('users', function($table)
         {
+            $table->string('steam_auth_id')->nullable();
             $table->timestamp('last_active');
             $table->integer('gender')->nullable()->default(0);
             $table->integer('country_id')->default('1');

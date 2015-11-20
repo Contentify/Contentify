@@ -201,6 +201,7 @@ return [
         'Caffeinated\Modules\ModulesServiceProvider',
         'Cartalyst\Sentry\SentryServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Invisnik\LaravelSteamAuth\SteamServiceProvider',
     ],
 
     /*

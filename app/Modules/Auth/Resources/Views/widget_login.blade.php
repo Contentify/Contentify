@@ -9,8 +9,7 @@
 
         	{!! link_to('auth/restore', trans('auth::password_reset'), ['class' => 'btn btn-default']) !!}
 
+    		<a class="btn btn-default" href="{{ url('auth/steam') }}">{!! HTML::fontIcon('steam') !!} STEAM {{ trans('auth::login') }}</a>
         </div>
     {!! Form::close() !!}
-
-    {!! link_to('auth/restore', trans('auth::password_reset'), ['class' => 'btn btn-default']) !!}
 </div>
