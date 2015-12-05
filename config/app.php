@@ -133,6 +133,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Google ReCAPTCHA Secret
+    |--------------------------------------------------------------------------
+    |
+    | If you use Google ReCAPTCHA to protect your website from bots,
+    | this is the place to enter the server secret.
+    |
+    */
+
+    'recaptcha_secret' => '',
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
