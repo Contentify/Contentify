@@ -22,7 +22,7 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Demo
 
-* URL: http://46.101.143.161/
+* URL: [demo.contentify.org](http://demo.contentify.org/]
 * Email: `demo@contentify.org`
 * Password: `demodemo`
 
