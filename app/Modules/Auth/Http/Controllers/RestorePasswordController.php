@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
-
+
 use Cartalyst\Sentry\Users\UserNotFoundException;
 use Str, Mail, Sentry, Redirect, Captcha, User, Input, FrontController;
 
@@ -36,7 +36,7 @@ class RestorePasswordController extends FrontController {
             $this->alertSuccess(
                 trans('auth::email_gen_pw')
             );
-        } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
+        } catch (UserNotFoundException $e) {
             $this->alertError(trans('auth::email_invalid'));
             return;
         }
@@ -77,7 +77,7 @@ class RestorePasswordController extends FrontController {
              */
             $user->password = $password; 
             $user->save();
-        } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
+        } catch (UserNotFoundException $e) {
             $this->alertError(trans('auth::email_invalid'));
             return;
         }
