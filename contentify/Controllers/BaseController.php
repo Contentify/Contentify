@@ -221,7 +221,7 @@ abstract class BaseController extends Controller {
                 $this->layout->page .= $output;
             }
         } else {
-            throw new Exception('Error: $this->layout is null!');
+            throw new Exception('Error: Controller layout is null!');
         }
     }
 
@@ -238,7 +238,7 @@ abstract class BaseController extends Controller {
         if ($this->layout != null) {
             $this->layout->page .= View::make('alert', ['type' => $type, 'title' => $title, 'text' => $text]);
         } else {
-            throw new Exception('Error: $this->layout is null!');
+            throw new Exception('Error: Controller layout is null!');
         }
     }
 
