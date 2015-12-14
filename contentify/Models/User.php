@@ -1,17 +1,20 @@
 <?php namespace Contentify\Models;
 
-use Cartalyst\Sentry\Users\Eloquent\User as SentryUser;
+use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
 use App\Modules\Messages\Message;
 use App\Modules\Friends\Friendship;
 use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
 
-class User extends SentryUser {
+class User extends SentinelUser {
 
     /**
      * Decides how loing a user is considered being online. Unit: Seconds (= 5 Minutes)
      */
     const ONLINE_TIME = 300;
 
+    /**
+     * Name of the cache key for the user message counter
+     */
     const CACHE_KEY_MESSAGES = 'users::messageCounter.';
 
     protected $fillable = [
@@ -255,7 +258,7 @@ class User extends SentryUser {
      */
     public function hasAccess($permissions, $level = 1, $all = true)
     {
-        if ($this->isSuperUser())
+        if ($this->isSuperAdmin())
         {
             return true;
         }
@@ -310,13 +313,13 @@ class User extends SentryUser {
     }
 
     /**
-     * Alias for isSuperUser()
+     * Returns true if the current user is a super admin
      * 
      * @return boolean
      */
     public function isSuperAdmin()
     {
-        return $this->isSuperUser();
+        return $this->inRole('super-admins');
     }
 
     /**

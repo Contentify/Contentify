@@ -2,7 +2,7 @@
 
 use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Modules\Languages\Language;
-use App, User, Str, View, Sentry, Input, Session, Redirect, Exception, FrontController;
+use App, User, Str, View, Sentinel, Input, Session, Redirect, Exception, FrontController;
 
 class LoginController extends FrontController {
     
@@ -19,7 +19,7 @@ class LoginController extends FrontController {
         ];
 
         try {
-            $user = Sentry::authenticate($credentials, false); // Login the user (if possible)
+            $user = Sentinel::authenticate($credentials, false); // Login the user (if possible)
 
             return $this->afterLoginActions();
         } catch(Exception $e) {
@@ -36,7 +36,7 @@ class LoginController extends FrontController {
                 $user = User::where('steam_auth_id', $info->getSteamID64())->first();
 
                 if ($user !== null) {
-                    Sentry::loginAndRemember($user);
+                    Sentinel::loginAndRemember($user);
 
                     return $this->afterLoginActions();
                 } else {
@@ -55,7 +55,7 @@ class LoginController extends FrontController {
                     /*
                      * Register user.
                      */
-                    $user = Sentry::register([
+                    $user = Sentinel::register([
                         'username'      => $username,
                         'email'         => 'contentify.org',
                         'password'      => Str::random(), // So no one can login without Steam auth
@@ -68,24 +68,24 @@ class LoginController extends FrontController {
                     $user->save();
 
                     /*
-                     * Add user to group "Users"
-                     * This group is a basic group that isn't deletable so we do know it exists.
-                     * (If it does'nt exist, we have a serious problem.)
+                     * Add user to role "Users"
+                     * This role is a basic role that isn't deletable so we do know it exists.
+                     * (If it doesn't exist, we have a serious problem.)
                      */
-                    $userGroup = Sentry::findGroupById(2);
-                    $user->addGroup($userGroup);
+                    $userRole = Sentinel::findRoleBySlug('users');
+                    $userRole->users()->attach($user);
 
                     /*
                      * Login user
                      */
-                    Sentry::loginAndRemember($user);
+                    Sentinel::loginAndRemember($user);
                     
                     $this->alertFlash(trans('auth::steam_registered'));
                     return Redirect::to('/users/'.$user->id.'/edit');
                 }
             }
         } else {
-            return $steam->redirect(); //redirect to steam login page
+            return $steam->redirect(); // Redirect to Steam login page
         }
     }
 
