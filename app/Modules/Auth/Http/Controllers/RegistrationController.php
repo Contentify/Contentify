@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
 
 use App\Modules\Languages\Language;
-use Response, User, App, Str, Sentry, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
+use Response, User, App, Str, Sentinel, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {
 
@@ -49,7 +49,7 @@ class RegistrationController extends FrontController {
             /*
              * Register user
              */
-            $user = Sentry::register([
+            $user = Sentinel::register([
                 'username'      => Input::get('username'),
                 'email'         => Input::get('email'),
                 'password'      => Input::get('password'),
@@ -60,17 +60,17 @@ class RegistrationController extends FrontController {
             $user->save();
 
             /*
-             * Add user to group "Users"
-             * This group is a basic group that isn't deletable so we do know it exists.
+             * Add user to role "Users"
+             * This role is a basic role that isn't deletable so we do know it exists.
              * (If it does'nt exist, we have a serious problem.)
              */
-            $userGroup = Sentry::findGroupById(2);
-            $user->addGroup($userGroup);
+            $userRole = Sentinel::findRoleBySlug('users');
+            $userRole->users()->attach($user);
 
             /*
              * Login user
              */
-            Sentry::login($user, false);
+            Sentinel::login($user, false);
 
             $this->alertSuccess(trans('auth::registered'));
         } catch(Exception $e) {
