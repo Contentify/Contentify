@@ -17,7 +17,7 @@
  */
 function user()
 {
-    return Sentry::getUser();
+    return Sentinel::getUser();
 }
 
 /**
