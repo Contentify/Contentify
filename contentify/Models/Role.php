@@ -5,11 +5,6 @@ use Cartalyst\Sentinel\Roles\EloquentRole as OriginalModel;
 class Role extends OriginalModel {
 
     /**
-     * ID of the super admin role
-     */
-    const SUPER_ADMIN_ROLE = 5;
-
-    /**
      * Allowed permissions values. 
      * Sentinel only supports 0 and 1 per default so we override that.
      * @var array

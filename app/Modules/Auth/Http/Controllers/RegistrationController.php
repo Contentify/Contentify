@@ -62,7 +62,7 @@ class RegistrationController extends FrontController {
             /*
              * Add user to role "Users"
              * This role is a basic role that isn't deletable so we do know it exists.
-             * (If it does'nt exist, we have a serious problem.)
+             * (If it doesn't exist, we have a serious problem.)
              */
             $userRole = Sentinel::findRoleBySlug('users');
             $userRole->users()->attach($user);
