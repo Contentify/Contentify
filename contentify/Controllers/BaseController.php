@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use ModelHandler, Str, Sentry, OpenGraph, Request, Session, View, Controller, Exception;
+use ModelHandler, Str, Sentinel, OpenGraph, Request, Session, View, Controller, Exception;
 
 abstract class BaseController extends Controller {
 
@@ -505,7 +505,7 @@ abstract class BaseController extends Controller {
      */
     public function checkAuth()
     {
-        if (Sentry::check()) {
+        if (Sentinel::check()) {
             return true;
         } else {
             $this->alertError(trans('app.no_auth'));

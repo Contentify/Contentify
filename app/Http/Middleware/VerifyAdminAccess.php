@@ -1,6 +1,6 @@
 <?php namespace App\Http\Middleware;
 
-use Session, Sentry, Closure;
+use Session, Sentinel, Closure;
 
 class VerifyAdminAccess {
 
@@ -16,7 +16,7 @@ class VerifyAdminAccess {
         $path = $request->path();
 
         if ($path === 'admin' or starts_with($path, 'admin/')) {
-            if (! Sentry::check()) {
+            if (! Sentinel::check()) {
                 if ($request->ajax()) {
                     return response('Unauthorized', 401);
                 } else {

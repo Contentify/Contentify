@@ -1,12 +1,12 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
-
-use View, Sentry, Input, Session, Redirect, FrontController;
+
+use View, Sentinel, Input, Session, Redirect, FrontController;
 
 class LogoutController extends FrontController {
 
     public function getIndex()
     {
-        Sentry::logout();
+        Sentinel::logout();
 
         $this->alertInfo(trans('auth::logged_out'));
     }

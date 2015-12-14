@@ -2,7 +2,7 @@
 
 //use Illuminate\Foundation\Composer;
 use Contentify\BackNavGen;
-use Sentry, Group;
+use Sentinel, Group;
 
 abstract class ModuleInstaller {
 

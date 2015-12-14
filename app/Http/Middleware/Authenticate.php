@@ -1,6 +1,6 @@
 <?php namespace App\Http\Middleware;
 
-use Session, Sentry, Closure;
+use Session, Sentinel, Closure;
 
 class Authenticate {
 
@@ -13,7 +13,7 @@ class Authenticate {
      */
     public function handle($request, Closure $next)
     {
-        if (! Sentry::check()) {
+        if (! Sentinel::check()) {
             if ($request->ajax()) {
                 return response('Unauthorized', 401);
             } else {
