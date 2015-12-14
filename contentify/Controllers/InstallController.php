@@ -288,9 +288,9 @@ class InstallController extends Controller {
         if (sizeof($result) > 0) { // Check if migrations table exists
             Artisan::call('migrate:reset', ['--quiet' => true, '--force' => true]); // Delete old tables
         }
-        Artisan::call('migrate', 
-            ['--path' => 'vendor/cartalyst/sentry/src/migrations', '--quiet' => true, '--force' => true]
-        );
+        //Artisan::call('migrate', // TODO: Test if we can remove this 
+        //    ['--path' => 'vendor/cartalyst/sentry/src/migrations', '--quiet' => true, '--force' => true]
+        //);
 
         /*
          * Deactivate foreign key checks.

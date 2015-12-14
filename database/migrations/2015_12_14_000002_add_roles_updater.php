@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddGroupUpdater extends Migration {
+class AddRolesUpdater extends Migration {
 
     /**
      * Run the migrations.
@@ -11,7 +11,7 @@ class AddGroupUpdater extends Migration {
      */
     public function up()
     {
-        Schema::table('groups', function($table)
+        Schema::table('roles', function($table)
         {
             $table->integer('creator_id')->unsigned()->default(0);
             $table->integer('updater_id')->unsigned()->default(0);
