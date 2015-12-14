@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use Str, File, Input, Validator, Sentry, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
+use Str, File, Input, Validator, Sentinel, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
 
 class InstallController extends Controller {
 
@@ -64,7 +64,7 @@ class InstallController extends Controller {
                 /*
                  * Create the admin user (with ID = 2)
                  */
-                $user = Sentry::register(array(
+                $user = Sentinel::register(array(
                     'email'     => $email,
                     'password'  => $password,
                     'username'  => $username,
@@ -75,10 +75,10 @@ class InstallController extends Controller {
                 $user->save();
 
                 /*
-                 * Add user to group "Admins"
+                 * Add user to role "Admins"
                  */
-                $adminGroup = Sentry::findGroupById(5); 
-                $user->addGroup($adminGroup);
+                $adminRole = Sentinel::findRoleById(5); 
+                $adminRol->users()->attach($user);
                 
                 /*
                  * Delete the file that indicates if the app is installed or not
@@ -141,12 +141,12 @@ class InstallController extends Controller {
                 );
 
                 $this->createDatabase();
-                $this->createUserGroups();
+                $this->createUserRoles();
 
                 /*
-                 * Create the deamon user (with ID = 1)
+                 * Create the daemon user (with ID = 1)
                  */
-                $user = Sentry::createUser(array(
+                $user = Sentinel::create(array(
                     'email'     => 'daemon@contentify.org',
                     'username'  => 'Daemon',
                     'password'  => Str::random(),
@@ -246,7 +246,7 @@ class InstallController extends Controller {
                 break;
             default:
                 $step       = 0; // Better save than sorry! (E.g. if step was -1)
-                $title      = 'Welcome To Contentify';
+                $title      = 'Welcome To Contentify 2';
                 $content    = '<p>Please click on the "Next" button to start the installation.</p>
                               <p><a href="https://github.com/Contentify/Contentify/wiki/Installation" target="_blank">Take a look at our documentation 
                               (chapter "Installation") if you need help.</a></p>';
@@ -277,10 +277,10 @@ class InstallController extends Controller {
         }
 
         /*
-         * Run Sentry migrations trough Artisan.
+         * Run Sentinel migrations trough Artisan.
          * Unfortunately it's not the simple Artisan::call('migrate')
          * that it should be.
-         * Note that Sentry tables do not establish any foreign constraints.
+         * Note that Sentinel tables do not establish any foreign constraints.
          */
         define('STDIN', fopen('php://stdin', 'r'));
         $table = Config::get('database.migrations', null, false);
@@ -288,9 +288,9 @@ class InstallController extends Controller {
         if (sizeof($result) > 0) { // Check if migrations table exists
             Artisan::call('migrate:reset', ['--quiet' => true, '--force' => true]); // Delete old tables
         }
-        //Artisan::call('migrate', // TODO: Test if we can remove this 
-        //    ['--path' => 'vendor/cartalyst/sentry/src/migrations', '--quiet' => true, '--force' => true]
-        //);
+        Artisan::call('migrate', 
+            ['--path' => 'vendor/cartalyst/sentinel/src/migrations', '--quiet' => true, '--force' => true]
+        );
 
         /*
          * Deactivate foreign key checks.
@@ -788,18 +788,20 @@ information about your stored data, and possibly entitlement to correction, bloc
     }
 
     /**
-     * Create user permision groups
+     * Create user permission roles
      * 
      * @return void
      */
-    protected function createUserGroups()
+    protected function createUserRoles()
     {
-        Sentry::createGroup([
+        $repo = Sentinel::getRoleRepository();
+
+        $repo->createModel()->create([
             'name'        => 'Visitors',
             'permissions' => []
         ]);
 
-        Sentry::createGroup([
+        $repo->createModel()->create([
             'name'        => 'Users',
             'permissions' => [
                 'frontend'  => true,
@@ -808,7 +810,7 @@ information about your stored data, and possibly entitlement to correction, bloc
             ]
         ]);
 
-        Sentry::createGroup([
+        $repo->createModel()->create([
             'name'        => 'Members',
             'permissions' => [
                 'frontend'  => true,
@@ -818,7 +820,7 @@ information about your stored data, and possibly entitlement to correction, bloc
             ]
         ]);
 
-        Sentry::createGroup([
+        $repo->createModel()->create([
             'name'        => 'Admins',
             'permissions' => [
                 'frontend'      => true,
@@ -837,7 +839,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'forums'        => PERM_DELETE,
                 'galleries'     => PERM_DELETE,
                 'games'         => PERM_DELETE,
-                'groups'        => PERM_DELETE,
+                'roles'         => PERM_DELETE,
                 'help'          => PERM_DELETE,
                 'images'        => PERM_DELETE,
                 'maps'          => PERM_DELETE,
@@ -858,7 +860,7 @@ information about your stored data, and possibly entitlement to correction, bloc
             ]
         ]);
 
-        Sentry::createGroup([
+        $repo->createModel()->create([
             'name'        => 'Super-Admins',
             'permissions' => [
                 'frontend'      => true,
@@ -878,7 +880,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'forums'        => PERM_DELETE,
                 'galleries'     => PERM_DELETE,
                 'games'         => PERM_DELETE,
-                'groups'        => PERM_DELETE,
+                'roles'         => PERM_DELETE,
                 'help'          => PERM_DELETE,
                 'images'        => PERM_DELETE,
                 'maps'          => PERM_DELETE,
