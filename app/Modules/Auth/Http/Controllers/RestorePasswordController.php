@@ -1,7 +1,6 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
 
-use Cartalyst\Sentry\Users\UserNotFoundException;
-use Str, Mail, Sentry, Redirect, Captcha, User, Input, FrontController;
+use Str, Mail, Sentinel, Reminder, Redirect, Captcha, User, Input, FrontController;
 
 class RestorePasswordController extends FrontController {
     
@@ -23,23 +22,23 @@ class RestorePasswordController extends FrontController {
 
         $email = Input::get('email');
 
-        try {
-            $user = Sentry::findUserByLogin($email);    
+        $user = Sentinel::findByCredentials(['login' => $email]);
 
-            $user->getResetPasswordCode(); // This will generate (and return) a new code
-
-            Mail::send('auth::emails.restore_password', compact('user'), function($message) use ($email, $user)
-            {
-                $message->to($email, $user->username)->subject(trans('auth::password_reset'));
-            });
-
-            $this->alertSuccess(
-                trans('auth::email_gen_pw')
-            );
-        } catch (UserNotFoundException $e) {
+        if (! $user) {
             $this->alertError(trans('auth::email_invalid'));
             return;
         }
+
+        $reminder = Reminder::create($user); // This will generate a new code
+
+        Mail::send('auth::emails.restore_password', compact('user', 'reminder'), function($message) use ($email, $user)
+        {
+            $message->to($email, $user->username)->subject(trans('auth::password_reset'));
+        });
+
+        $this->alertSuccess(
+            trans('auth::email_gen_pw')
+        );
     }
 
     /**
@@ -51,35 +50,28 @@ class RestorePasswordController extends FrontController {
      */
     public function getNew($email, $code)
     {
-        try {
-            $user = Sentry::findUserByLogin($email);
+        $user = Sentinel::findByCredentials(['login' => $email]);
 
-            if ($user->reset_password_code != $code) {
-                $this->alertError(trans('auth::code_invalid'));
-                return;
-            }
-
-            $password = strtolower(Str::random(9)); // Generate a new password
-
-            Mail::send('auth::emails.send_password', compact('user', 'password'), function($message) use ($email, $user)
-            {
-                $message->to($email, $user->username)->subject(trans('auth::new_pw'));
-            });
-
-            $this->alertSuccess(
-                trans('auth::email_new_pw')
-            );
-
-            /*
-             * Save the new password. Please note that we do not need to
-             * crypt the password. The user model inherits from SentryUser and
-             * will do the work.
-             */
-            $user->password = $password; 
-            $user->save();
-        } catch (UserNotFoundException $e) {
+        if (! $user) {
             $this->alertError(trans('auth::email_invalid'));
             return;
         }
+
+        $password = strtolower(Str::random(9)); // Generate a new password
+
+        // Check the stored code with the passed and if they match, save the new password.
+        if (! Reminder::complete($user, $code, $password)) {
+            $this->alertError(trans('auth::code_invalid'));
+            return;
+        }
+
+        Mail::send('auth::emails.send_password', compact('user', 'password'), function($message) use ($email, $user)
+        {
+            $message->to($email, $user->username)->subject(trans('auth::new_pw'));
+        });
+
+        $this->alertSuccess(
+            trans('auth::email_new_pw')
+        );
     }
 }

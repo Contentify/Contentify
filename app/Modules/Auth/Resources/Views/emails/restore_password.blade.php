@@ -13,7 +13,7 @@
         </tr>
         <tr>
             <td><strong>{{ trans('app.link') }}:</strong></td>
-            <td>{!! link_to('auth/restore/new/'.$user->email.'/'.$user->reset_password_code) !!}</td>
+            <td>{!! link_to('auth/restore/new/'.$user->email.'/'.$reminder->code) !!}</td>
         </tr>
     </table>
     
