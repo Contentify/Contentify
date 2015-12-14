@@ -18,12 +18,12 @@ class LoginController extends FrontController {
             'password'  => Input::get('password')
         ];
 
-        try {
-            $user = Sentinel::authenticate($credentials, false); // Login the user (if possible)
+        $user = Sentinel::authenticate($credentials, false); // Login the user (if possible)
 
+        if ($user) {
             return $this->afterLoginActions();
-        } catch(Exception $e) {
-            return Redirect::to('auth/login')->withErrors(['message' => $e->getMessage()]);
+        } else {
+            return Redirect::to('auth/login');
         }
     }
 
