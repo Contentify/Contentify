@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "72b1abb1cd94fcb47772be88b6a6eb8b",
-    "content-hash": "d34277c29072f8090014b926ff2720a8",
+    "hash": "3c2dbe9dbc185626610da12037d0f87a",
+    "content-hash": "3178e749fd551a2325c0a11598626722",
     "packages": [
         {
             "name": "caffeinated/modules",
-            "version": "v2.1.10",
+            "version": "v2.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/modules.git",
-                "reference": "04f2af6ab1f3ca9d5a1533f59b0fcd5b0f343bd9"
+                "reference": "5442f1ee6a483627cc2f4113af9deea6e24efe5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/modules/zipball/04f2af6ab1f3ca9d5a1533f59b0fcd5b0f343bd9",
-                "reference": "04f2af6ab1f3ca9d5a1533f59b0fcd5b0f343bd9",
+                "url": "https://api.github.com/repos/caffeinated/modules/zipball/5442f1ee6a483627cc2f4113af9deea6e24efe5f",
+                "reference": "5442f1ee6a483627cc2f4113af9deea6e24efe5f",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
                 "laravel",
                 "modules"
             ],
-            "time": "2015-12-03 20:03:46"
+            "time": "2015-12-11 19:21:55"
         },
         {
             "name": "cartalyst/sentinel",
@@ -151,106 +151,6 @@
                 "security"
             ],
             "time": "2015-11-26 00:03:11"
-        },
-        {
-            "name": "cartalyst/sentry",
-            "version": "dev-feature/laravel-5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cartalyst/sentry.git",
-                "reference": "092192e969520bb287b402fbe77ab070d4267910"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cartalyst/sentry/zipball/092192e969520bb287b402fbe77ab070d4267910",
-                "reference": "092192e969520bb287b402fbe77ab070d4267910",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "illuminate/cookie": "~4.0|~5.0",
-                "illuminate/database": "~4.0|~5.0",
-                "illuminate/http": "~4.0|~5.0",
-                "illuminate/session": "~4.0|~5.0",
-                "ircmaxell/password-compat": "1.0.*",
-                "mockery/mockery": "0.9.*"
-            },
-            "suggest": {
-                "happydemon/txt": "Required Text helpers when using the Kohana implementation",
-                "illuminate/database": "Default sentry user, group and throttling implementations.",
-                "ircmaxell/password-compat": "Default hashing uses PHP 5.5 password_* functions, with forward-compatible support."
-            },
-            "type": "library",
-            "extra": {
-                "component": "package",
-                "frameworks": [
-                    "Laravel 3",
-                    "Laravel 4",
-                    "CodeIgniter 3",
-                    "FuelPHP 1",
-                    "Kohana"
-                ],
-                "versions": {
-                    "1": "1.1/master",
-                    "2": "master"
-                },
-                "branch-alias": {
-                    "dev-master": "2.2.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/Cartalyst/Sentry/Groups/Exceptions.php",
-                    "src/Cartalyst/Sentry/Throttling/Exceptions.php",
-                    "src/Cartalyst/Sentry/Users/Exceptions.php",
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Cartalyst\\Sentry": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Ben Corlett",
-                    "email": "ben.corlett@cartalyst.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Cartalyst LLC",
-                    "email": "help@cartalyst.com"
-                },
-                {
-                    "name": "Bruno Gaspar",
-                    "email": "bruno.gaspar@cartalyst.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dan Syme",
-                    "email": "dan.syme@cartalyst.com",
-                    "role": "Creator & Designer"
-                },
-                {
-                    "name": "Daniel Petrie",
-                    "email": "dan.petrie@cartalyst.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP 5.3+ Fully-featured Authentication & Authorization System",
-            "keywords": [
-                "auth",
-                "codeigniter",
-                "fuelphp",
-                "kohana",
-                "laravel",
-                "security"
-            ],
-            "time": "2015-04-20 12:47:58"
         },
         {
             "name": "cartalyst/support",
@@ -408,12 +308,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/open-graph.git",
-                "reference": "eab22d34f7b1a749cc333e7b69780bc0d2791ce5"
+                "reference": "1a818c039483ae9cfe8bca1c7afdcf660d95bd9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/eab22d34f7b1a749cc333e7b69780bc0d2791ce5",
-                "reference": "eab22d34f7b1a749cc333e7b69780bc0d2791ce5",
+                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/1a818c039483ae9cfe8bca1c7afdcf660d95bd9e",
+                "reference": "1a818c039483ae9cfe8bca1c7afdcf660d95bd9e",
                 "shasum": ""
             },
             "require": {
@@ -445,7 +345,7 @@
                 "open graph",
                 "opengraph"
             ],
-            "time": "2015-11-19 11:56:36"
+            "time": "2015-12-12 13:59:45"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2618,16 +2518,16 @@
         },
         {
             "name": "watson/validating",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dwightwatson/validating.git",
-                "reference": "24b3b0b933180ef997d99e3c342f95955abbbdf2"
+                "reference": "1f3579148671a71faf79b95521f29ceeed1268a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dwightwatson/validating/zipball/24b3b0b933180ef997d99e3c342f95955abbbdf2",
-                "reference": "24b3b0b933180ef997d99e3c342f95955abbbdf2",
+                "url": "https://api.github.com/repos/dwightwatson/validating/zipball/1f3579148671a71faf79b95521f29ceeed1268a9",
+                "reference": "1f3579148671a71faf79b95521f29ceeed1268a9",
                 "shasum": ""
             },
             "require": {
@@ -2669,7 +2569,7 @@
                 "laravel",
                 "validation"
             ],
-            "time": "2015-11-21 02:31:18"
+            "time": "2015-12-10 13:32:37"
         }
     ],
     "packages-dev": [
@@ -3352,16 +3252,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.20",
+            "version": "4.8.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7438c43bc2bbb2febe1723eb595b1c49283a26ad"
+                "reference": "ea76b17bced0500a28098626b84eda12dbcf119c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7438c43bc2bbb2febe1723eb595b1c49283a26ad",
-                "reference": "7438c43bc2bbb2febe1723eb595b1c49283a26ad",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ea76b17bced0500a28098626b84eda12dbcf119c",
+                "reference": "ea76b17bced0500a28098626b84eda12dbcf119c",
                 "shasum": ""
             },
             "require": {
@@ -3370,7 +3270,7 @@
                 "ext-pcre": "*",
                 "ext-reflection": "*",
                 "ext-spl": "*",
-                "php": "~5.3.3|~5.4|~5.5|~5.6",
+                "php": ">=5.3.3",
                 "phpspec/prophecy": "^1.3.1",
                 "phpunit/php-code-coverage": "~2.1",
                 "phpunit/php-file-iterator": "~1.4",
@@ -3420,7 +3320,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-12-10 07:48:52"
+            "time": "2015-12-12 07:45:58"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3902,7 +3802,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cartalyst/sentry": 20,
         "intervention/image": 20,
         "chriskonnertz/open-graph": 20,
         "chriskonnertz/bbcode": 20,
