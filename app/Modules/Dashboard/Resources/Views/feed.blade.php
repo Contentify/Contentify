@@ -6,13 +6,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($messages as $message)
-                <tr>
-                    <td title="{{ $message->text }}">
-                        <a href="{!! url($message->url) !!}" target="_blank">{!! HTML::fontIcon($message->icon) !!} {!! date(trans('app.date_format'), $message->timestamp) !!}: {!! $message->text !!}</a>
-                    </td>
-                </tr>
-            @endforeach
+            @if (is_array($messages))
+                @foreach($messages as $message)
+                    <tr>
+                        <td title="{{ $message->text }}">
+                            <a href="{!! url($message->url) !!}" target="_blank">{!! HTML::fontIcon($message->icon) !!} {!! date(trans('app.date_format'), $message->timestamp) !!}: {!! $message->text !!}</a>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
         </tbody>
     </table>
 </div>

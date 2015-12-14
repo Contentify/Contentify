@@ -4,7 +4,7 @@ use UserActivities, Job;
 
 class DeleteUserActivitiesJob extends Job {
 
-	protected $timeSpan = 86400; // 24h (once per day)
+	protected $timeSpan = 1440; // 60 minutes * 24 = 24h (once per day)
 
     public function run($executed)
     {

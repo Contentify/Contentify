@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use Session, Str;
+use Session, Str, Request, Config;
 
 class Captcha {
 
@@ -41,4 +41,38 @@ class Captcha {
         // Note: We do not need (want?) a strict string comparison here.
         return ($code == Session::get('captchaCode'));
     }
+    
+    /**
+     * Checks if the captcha code is valid, 
+     * using Google ReCAPTCHA.
+     * 
+     * @param   string  $value The potential captcha code
+     * @return  bool
+     */
+    public function checkReCaptcha($code)
+    {
+        $data = [
+            'secret'    => Config::get('app.recaptcha_secret'),
+            'response'  => $code,
+            'remoteip'  => Request::getClientIp(),
+        ];
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+
+        $curl = curl_init();
+        
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);         
+
+        $result = curl_exec($curl);
+
+        $resultArray = json_decode($result, true);
+
+        return (isset($resultArray['success']) and $resultArray['success']);
+    }
+
 }   

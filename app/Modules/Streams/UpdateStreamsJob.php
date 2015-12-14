@@ -4,7 +4,7 @@ use Job;
 
 class UpdateStreamsJob extends Job {
 
-    protected $timeSpan = 300; // 5 minutes
+    protected $timeSpan = 5; // Minutes
 
     public function run($executed)
     {
