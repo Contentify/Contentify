@@ -1,10 +1,10 @@
-<?php namespace App\Modules\Groups\Http\Controllers;
+<?php namespace App\Modules\Roles\Http\Controllers;
 
-use App\Modules\Groups\Group;
+use App\Modules\Roles\Role;
 use ModelHandlerTrait;
 use Hover, BackController;
 
-class AdminGroupsController extends BackController {
+class AdminRolesController extends BackController {
 
     use ModelHandlerTrait;
 
@@ -12,7 +12,7 @@ class AdminGroupsController extends BackController {
 
     public function __construct()
     {
-        $this->modelName = 'Group';
+        $this->modelName = 'Role';
 
         parent::__construct();
     }
@@ -24,11 +24,11 @@ class AdminGroupsController extends BackController {
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'name'
             ],
-            'tableRow' => function($group)
+            'tableRow' => function($role)
             {
                 return [
-                    $group->id,
-                    raw(Hover::modelAttributes($group, ['creator'])->pull(), $group->name),
+                    $role->id,
+                    raw(Hover::modelAttributes($role, ['creator'])->pull(), $role->name),
                 ];            
             },
             'searchFor' => 'name'

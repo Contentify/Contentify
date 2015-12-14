@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Users;
 
 use User as BaseUser;
-use Sentry, BaseModel;
+use BaseModel;
 
 /**
  * NOTE: This is a helper class that extends the actual user class.
@@ -13,7 +13,7 @@ class User extends BaseUser {
     protected $slugable = true;
 
     public static $relationsData = [
-        'groups'    => [BaseModel::BELONGS_TO_MANY, 'Group', 'table' => 'users_groups'],
+        'roles'     => [BaseModel::BELONGS_TO_MANY, 'Role', 'table' => 'role_users'],
         'teams'     => [BaseModel::BELONGS_TO_MANY, 'App\Modules\Teams\Team', 'table' => 'team_user'],
     ];
     

@@ -1,9 +1,9 @@
 {!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {!! Form::model($model, ['route' => ['admin.groups.update', $model->id], 'method' => 'PUT']) !!}
+    {!! Form::model($model, ['route' => ['admin.roles.update', $model->id], 'method' => 'PUT']) !!}
 @else
-    {!! Form::open(['url' => 'admin/groups']) !!}
+    {!! Form::open(['url' => 'admin/roles']) !!}
 @endif
     {!! Form::smartText('name', trans('app.title')) !!}
 

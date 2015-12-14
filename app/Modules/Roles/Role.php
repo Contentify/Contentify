@@ -1,16 +1,16 @@
-<?php namespace App\Modules\Groups;
+<?php namespace App\Modules\Roles;
 
-use App\Modules\Groups\Permission;
-use Hover, SoftDeletingTrait, Sentry, BaseModel;
+use App\Modules\Roles\Permission;
+use Hover, SoftDeletingTrait, Sentinel, BaseModel;
 
 /*
  * Important note:
- * This is not the same model that Sentry uses.
- * This model is only a helper so we can CRUD groups.
- * (See also: Sentry\Gropus\Eloquent\Group)
+ * This is not the same model that Sentinel uses.
+ * This model is only a helper so we can CRUD roles.
+ * (See also: Cartalyst\Sentinel\Roles\EloquentRole)
  */
 
-class Group extends BaseModel {
+class Role extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
@@ -26,35 +26,37 @@ class Group extends BaseModel {
 
     public function modifiable()
     {
-        return ($this->id > 5);
+        $adminRole = Sentinel::findRoleBySlug('super-admins');
+
+        return ($this->id > $adminRole->id);
     }
 
     /**
      * Creates an array of permissions 
      * (Permission model with name, possible values and current value)
-     * for the given group (or)
+     * for the given role
      * 
-     * @param  int $id ID of a group
+     * @param  int $id ID of a role
      * @return array
      */
     static public function permissions($id = null)
     {
 
         /*
-         * Retrieve permission of the super admins group.
-         * We assume the s. a. group has all available permissions on max level.
+         * Retrieve permission of the super admins role.
+         * We assume this role has all available permissions on max level.
          */
-        $group = Sentry::findGroupById(5);
+        $role = Sentinel::findRoleBySlug('super-admins');
 
-        $originalPermissions = $group->getPermissions();
+        $originalPermissions = $role->getPermissions();
 
         /*
-         * Retrieve permissions of a certain group
+         * Retrieve permissions of a certain role
          */
         if ($id) {
-            $group = Sentry::findGroupById($id);
+            $role = Sentinel::findRoleById($id);
 
-            $currentPermissions = $group->getPermissions();
+            $currentPermissions = $role->getPermissions();
         }
 
         /*
@@ -69,11 +71,11 @@ class Group extends BaseModel {
                 ];
             } else { // Levels
                 $values = [
-                    0 => trans('groups::none'), 
-                    1 => trans('groups::read'),
-                    2 => trans('groups::create'),
-                    3 => trans('groups::update'),
-                    4 => trans('groups::delete'),
+                    0 => trans('roles::none'), 
+                    1 => trans('roles::read'),
+                    2 => trans('roles::create'),
+                    3 => trans('roles::update'),
+                    4 => trans('roles::delete'),
                 ];
             }
 

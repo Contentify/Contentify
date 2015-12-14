@@ -3,7 +3,7 @@
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Session\TokenMismatchException;
-use Route, Session, Request, Sentry, Response, View, Redirect, Input, Crypt, MsgException;
+use Route, Session, Request, Response, View, Redirect, Input, Crypt, MsgException;
 
 class RouteServiceProvider extends ServiceProvider {
 
