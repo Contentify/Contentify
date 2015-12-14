@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use Session, Str, Request, Config;
+use Session, Str, Request;
 
 class Captcha {
 
