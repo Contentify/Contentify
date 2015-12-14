@@ -78,7 +78,7 @@ class InstallController extends Controller {
                  * Add user to role "Admins"
                  */
                 $adminRole = Sentinel::findRoleById(5); 
-                $adminRol->users()->attach($user);
+                $adminRole->users()->attach($user);
                 
                 /*
                  * Delete the file that indicates if the app is installed or not
@@ -798,11 +798,13 @@ information about your stored data, and possibly entitlement to correction, bloc
 
         $repo->createModel()->create([
             'name'        => 'Visitors',
+            'slug'        => 'visitors',
             'permissions' => []
         ]);
 
         $repo->createModel()->create([
             'name'        => 'Users',
+            'slug'        => 'users',
             'permissions' => [
                 'frontend'  => true,
                 'comments'  => PERM_CREATE, // Users can also update and delete their own comments
@@ -812,6 +814,7 @@ information about your stored data, and possibly entitlement to correction, bloc
 
         $repo->createModel()->create([
             'name'        => 'Members',
+            'slug'        => 'members',
             'permissions' => [
                 'frontend'  => true,
                 'internal'  => true,
@@ -822,6 +825,7 @@ information about your stored data, and possibly entitlement to correction, bloc
 
         $repo->createModel()->create([
             'name'        => 'Admins',
+            'slug'        => 'admins',
             'permissions' => [
                 'frontend'      => true,
                 'internal'      => true,
@@ -862,6 +866,7 @@ information about your stored data, and possibly entitlement to correction, bloc
 
         $repo->createModel()->create([
             'name'        => 'Super-Admins',
+            'slug'        => 'super-admins',
             'permissions' => [
                 'frontend'      => true,
                 'internal'      => true,
