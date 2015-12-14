@@ -27,7 +27,7 @@ abstract class ModuleInstaller {
 
     /**
      * Array consisting of pairs of permission names and levels.
-     * These permission are added to the super admin group.
+     * These permission are added to the super admin role.
      * Example: array('permissionName' => 4)
      * Note that per default a basic module permission is added,
      * so you only need to use this array to provide extra perms.
@@ -72,23 +72,23 @@ abstract class ModuleInstaller {
         /*
          * Add permissions
          */
-        $group = Sentry::findGroupById(Group::SUPER_ADMIN_GROUP);
-        $groupPermissions = $group->permissions;
+        $role = Sentinel::findRoleBySlug('super-admins');
+        $rolePermissions = $role->permissions;
 
         // Add default permisson
         if ($this->addDefaultPermission) {
-            $groupPermissions[$this->module] = PERM_DELETE;
+            $rolePermissions[$this->module] = PERM_DELETE;
         }
 
         // Add additional permissions
         if ($this->extraPermissions and is_array($this->extraPermissions)) {
             foreach ($this->extraPermissions as $permisson => $level) {
-                $groupPermissions[$permisson] = $level;
+                $rolePermissions[$permisson] = $level;
             }
         }
 
-        $group->permissions = $groupPermissions;
-        $group->save();
+        $role->permissions = $rolePermissions;
+        $role->save();
     }
 
     /**
