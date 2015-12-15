@@ -1,7 +1,6 @@
 <?php namespace App\Modules\Users\Http\Controllers;
 
-use Cartalyst\Sentry\Users\WrongPasswordException;
-use Str, Validator, Sentry, Redirect, Input, User, FrontController;
+use Str, Validator, Sentinel, Redirect, Input, User, FrontController;
 
 class UsersController extends FrontController {
 
@@ -131,31 +130,27 @@ class UsersController extends FrontController {
 
         $user = User::findOrFail($id);
 
-        try
-        {
-            $credentials = array(
-                'email'    => $user->email,
-                'password' => Input::get('password_current'),
-            );
+        $credentials = array(
+            'email'    => $user->email,
+            'password' => Input::get('password_current'),
+        );
 
-            /*
-             * Try to authenticate the user. If it succeeds the
-             * "old password" is valid.
-             */
-            Sentry::authenticate($credentials, false);
-        }
-        catch (WrongPasswordException $e)
-        {
-            return Redirect::to("users/{$id}/password")->withErrors(['message' => $e->getMessage()]);
+        /*
+         * Try to authenticate the user. If it succeeds the
+         * "old password" is valid.
+         */
+        $authenticatedUser = Sentinel::authenticate($credentials, false);
+
+        if (! $authenticatedUser) {
+            $this->alertFlash(trans('app.access_denied'));
+            return Redirect::to("users/{$id}/password");
         }
 
         /*
          * Save the new password. Please note that we do not need to
-         * crypt the password. The user model inherits from SentryUser and
-         * will do the work.
+         * crypt the password. Sentinel will do the work.
          */
-        $user->password = Input::get('password'); 
-        $user->save();
+        Sentinel::update($user, ['password' => Input::get('password')]);
 
         $this->alertFlash(trans('app.updated', ['Password']));
         return Redirect::to("users/{$id}/edit");

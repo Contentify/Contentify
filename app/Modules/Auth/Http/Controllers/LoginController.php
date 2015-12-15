@@ -23,6 +23,7 @@ class LoginController extends FrontController {
         if ($user) {
             return $this->afterLoginActions();
         } else {
+            $this->alertFlash(trans('app.access_denied'));
             return Redirect::to('auth/login');
         }
     }

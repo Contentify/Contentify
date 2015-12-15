@@ -81,7 +81,7 @@ class AdminUsersController extends BackController {
                 if ($roleId) {
                     $role = Sentinel::findRoleById($roleId);
 
-                    if ($role->permissions['superuser'] == '1') {
+                    if ($role->permissions['superadmin'] == '1') {
                         $this->alertError(trans('app.access_denied'));
                         return;
                     }

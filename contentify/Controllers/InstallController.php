@@ -871,7 +871,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'frontend'      => true,
                 'internal'      => true,
                 'backend'       => true,
-                'superuser'     => true,
+                'superadmin'    => true,
                 'adverts'       => PERM_DELETE,
                 'auth'          => PERM_DELETE,
                 'awards'        => PERM_DELETE,
