@@ -75,9 +75,9 @@ class InstallController extends Controller {
                 $user->save();
 
                 /*
-                 * Add user to role "Admins"
+                 * Add user to role "Super-Admins"
                  */
-                $adminRole = Sentinel::findRoleBySlug('admins'); 
+                $adminRole = Sentinel::findRoleBySlug('super-admins'); 
                 $adminRole->users()->attach($user);
                 
                 /*

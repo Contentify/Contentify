@@ -242,32 +242,6 @@ class User extends SentinelUser {
 
     /**
      * See if a user has access to the passed permission(s).
-     * Permissions are merged from all groups the user belongs to
-     * and then are checked against the passed permission(s).
-     *
-     * If multiple permissions are passed, the user must
-     * have access to all permissions passed through, unless the
-     * "all" flag is set to false.
-     *
-     * Super users have access no matter what.
-     *
-     * @param  string|array  $permissions   String of a single permission or array of multiple permissions
-     * @param  bool          $level         Desired level
-     * @param  bool          $all           Do all permission need to hit the level?
-     * @return bool
-     */
-    public function hasAccess($permissions, $level = 1, $all = true)
-    {
-        if ($this->isSuperAdmin())
-        {
-            return true;
-        }
-
-        return $this->hasPermission($permissions, $level, $all);
-    }
-
-    /**
-     * See if a user has access to the passed permission(s).
      * This overwrites Sentry's lowlevel permission system
      * and adds the level attribute.
      *
@@ -276,7 +250,7 @@ class User extends SentinelUser {
      * @param  bool          $all           Do all permission need to hit the level?
      * @return bool
      */
-    public function hasPermission($permissions, $level = 1, $all = true)
+    public function hasPermissionLegacy($permissions, $level = 1, $all = true)
     {
         $mergedPermissions = $this->getMergedPermissions(); // Permission the user has
 

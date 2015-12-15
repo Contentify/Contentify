@@ -8,12 +8,12 @@ use BaseModel;
  */
 class User extends BaseUser {
 
-    protected $fillable = ['activated', 'relation_groups', 'relation_teams'];
+    protected $fillable = ['activated', 'relation_roles', 'relation_teams'];
 
     protected $slugable = true;
 
     public static $relationsData = [
-        'roles'     => [BaseModel::BELONGS_TO_MANY, 'Role', 'table' => 'role_users'],
+        'roles'     => [BaseModel::BELONGS_TO_MANY, 'App\Modules\Roles\Role', 'table' => 'role_users'],
         'teams'     => [BaseModel::BELONGS_TO_MANY, 'App\Modules\Teams\Team', 'table' => 'team_user'],
     ];
     

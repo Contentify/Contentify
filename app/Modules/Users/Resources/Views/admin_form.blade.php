@@ -16,7 +16,7 @@
     <span class="banned-info"></span>
     {!! Form::smartGroupClose() !!}
 
-    {!! Form::smartSelectRelation('groups', trans('app.object_groups'), $modelClass) !!}
+    {!! Form::smartSelectRelation('roles', trans('app.object_roles'), $modelClass) !!}
 
     {!! Form::smartSelectRelation('teams', trans('app.object_teams'), $modelClass, null, true) !!}
 

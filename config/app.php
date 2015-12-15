@@ -291,7 +291,6 @@ return [
 
         'BaseModel'             => 'Contentify\Models\BaseModel',
         'Comment'               => 'Contentify\Models\Comment',
-        'Role'                  => 'Contentify\Models\Role',
         'StiModel'              => 'Contentify\Models\StiModel',
         'User'                  => 'Contentify\Models\User',
         'UserActivity'          => 'Contentify\Models\UserActivity',

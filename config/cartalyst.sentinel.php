@@ -68,7 +68,7 @@ return [
 
     'roles' => [
 
-        'model' => 'Role', // Original: 'Cartalyst\Sentinel\Roles\EloquentRole',
+        'model' => 'Cartalyst\Sentinel\Roles\EloquentRole',
 
     ],
 
@@ -95,7 +95,10 @@ return [
 
     'permissions' => [
 
-        'class' => 'Cartalyst\Sentinel\Permissions\StandardPermissions',
+        // Original: 'Cartalyst\Sentinel\Permissions\StandardPermissions',
+        // NOTE: If you want to create your own permission implementation
+        // you should Contentify\Models\StandardPermissions as a strating point.
+        'class' => 'Contentify\Models\StandardPermissions',
 
     ],
 
