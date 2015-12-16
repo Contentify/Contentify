@@ -39,7 +39,7 @@ class ContactMessage extends BaseModel {
                 $mail->cc($user->email, $user->username);
             }
 
-            $mail->subject('New Contact Message');
+            $mail->subject(trans('app.new').': '.trans('app.object_contact_message'));
         });
     }
 
