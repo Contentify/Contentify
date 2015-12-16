@@ -9,10 +9,11 @@ use Hover, SoftDeletingTrait, Sentinel, BaseModel;
  * This model is only a helper so we can CRUD roles.
  * (See also: Cartalyst\Sentinel\Roles\EloquentRole)
  */
-
 class Role extends BaseModel {
 
     protected $dates = ['deleted_at'];
+
+    protected $slugable = true;
 
     protected $fillable = ['name', 'permissions'];
 
@@ -23,6 +24,18 @@ class Role extends BaseModel {
     public static $relationsData = [
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::saving(function($role)
+        {
+           if (! $role->slug) {
+                $role->createSlug(true, 'name');
+           }
+        });
+    }
 
     public function modifiable()
     {
@@ -36,12 +49,11 @@ class Role extends BaseModel {
      * (Permission model with name, possible values and current value)
      * for the given role
      * 
-     * @param  int $id ID of a role
+     * @param  int $roleId The ID of a role
      * @return array
      */
-    static public function permissions($id = null)
+    static public function permissions($roleId = null)
     {
-
         /*
          * Retrieve permission of the super admins role.
          * We assume this role has all available permissions on max level.
@@ -53,8 +65,8 @@ class Role extends BaseModel {
         /*
          * Retrieve permissions of a certain role
          */
-        if ($id) {
-            $role = Sentinel::findRoleById($id);
+        if ($roleId) {
+            $role = Sentinel::findRoleById($roleId);
 
             $currentPermissions = $role->getPermissions();
         }
@@ -82,7 +94,7 @@ class Role extends BaseModel {
             /*
              * Current permission value
              */
-            if ($id and isset($currentPermissions[$name])) {
+            if ($roleId and isset($currentPermissions[$name])) {
                 $current = $currentPermissions[$name];
             } else {
                 $current = null;

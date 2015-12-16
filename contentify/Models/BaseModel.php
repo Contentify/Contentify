@@ -84,23 +84,24 @@ class BaseModel extends Eloquent {
     /**
      * Creates a simple slug or a unique slug
      * 
-     * @param  bool   $unique   Unique or not?
+     * @param  bool   $unique         Unique or not?
+     * @param  string $titleAttribute The name of the title attribute
      * @return void
      */
-    function createSlug($unique = true)
+    public function createSlug($unique = true, $titleAttribute = 'title')
     {
         if (! $this->slugable) {
             throw new Exception('This model does not support slugs.');
         }
 
-        $slug = Str::slug($this->title);
+        $slug = Str::slug($this->$titleAttribute);
 
         if ($unique) {
             /*
              * If the model has a valid slug already and the title has
              * not been changed, do nothing - just keep the current slug.
              */
-            if ($this->slug and ! $this->isDirty('title')) {
+            if ($this->slug and ! $this->isDirty($titleAttribute)) {
                 return;
             }
 
