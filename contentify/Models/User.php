@@ -3,7 +3,7 @@
 use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
 use App\Modules\Messages\Message;
 use App\Modules\Friends\Friendship;
-use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentry, Session;
+use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentinel, Session;
 
 class User extends SentinelUser {
 
@@ -404,6 +404,25 @@ class User extends SentinelUser {
         $dateTime = new Carbon();
         $dateTime->subSeconds(self::ONLINE_TIME);
         return $query->where('last_active', '>=', $dateTime);
+    }
+
+    /**
+     * Returns all users with access to the passed right(s)
+     * 
+     * @param  string|array $permissions The permission(s)
+     * @param  int          $level       The level of the permission(s)
+     * @return Collection
+     */
+    public function findAllUsersWithAccess($permissions, $level = 1) {
+        if ( ! is_array($permissions)) {
+            $permissions = (array) $permissions;
+        }
+
+        $users = Sentinel::getUserRepository()->get()->filter(function ($user) use ($permissions) {
+            return $user->hasAccess($permissions, $level);
+        });
+
+        return $users;
     }
 
 }

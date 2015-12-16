@@ -24,7 +24,7 @@ class ContactMessage extends BaseModel {
      */
     public function notify()
     {
-        $users = Sentinel::findRoleByName('admins')->users();
+        $users = user()->findAllUsersWithAccess('contact', PERM_READ);
 
         if (! $users) {
             return;
