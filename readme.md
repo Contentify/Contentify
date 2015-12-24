@@ -16,7 +16,7 @@ Clone this repository (`master` branch) via git. Via console, switch to the Cont
 
 ### Download
 
-Download it here: [contentify.org/share/releases/contentify_1_0_0.zip](http://contentify.org/share/releases/contentify_1_0_0.zip)
+Download it here: [contentify.org/share/releases/contentify_1_1_0.zip](http://contentify.org/share/releases/contentify_1_1_0.zip)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
