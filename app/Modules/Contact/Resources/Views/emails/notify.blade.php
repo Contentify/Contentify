@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>{{ trans('contact::mail_title' }}</title>
+    <title>{{ trans('contact::mail_title') }}</title>
     <meta charset="utf-8">
 </head>
 <body>
