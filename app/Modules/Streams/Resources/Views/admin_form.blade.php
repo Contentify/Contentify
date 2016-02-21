@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
-    {!! Form::smartText() !!}  
+    {!! Form::smartUrl() !!}
 
     {!! Form::smartText('permanent_id', trans('app.id')) !!}
 
