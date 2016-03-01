@@ -32,7 +32,7 @@ You may download the demo website project here: [contentify.org/share/contentify
 
 ### Contribution
 
-Create an issue right here on Github whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
+Create an issue right here on GitHub whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
 
 #### PHP Coding style
 
