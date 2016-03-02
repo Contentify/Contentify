@@ -7598,6 +7598,8 @@ textarea.model-search-box input {
 .page-threads .post .meta .avatar,
 .page-posts .post .meta .avatar {
   display: block;
+  max-width: 100px;
+  max-height: 100px;
 }
 .page-threads .post .meta .counter,
 .page-posts .post .meta .counter {
