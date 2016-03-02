@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
-    {!! Form::smartText() !!}  
+    {!! Form::smartUrl() !!}  
 
     {!! Form::smartText('permanent_id', trans('app.id')) !!}
 
@@ -33,7 +33,7 @@
             }
 
             /**
-             * Retursn the name of the currently selected provider
+             * Returns the name of the currently selected provider
              * 
              * @return {string} The provider's name
              */
