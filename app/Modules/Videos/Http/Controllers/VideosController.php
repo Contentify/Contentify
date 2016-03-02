@@ -16,7 +16,7 @@ class VideosController extends FrontController {
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $videos = Video::paginate($perPage)->setPath(Request::url());
+        $videos = Video::orderBy('created_at', 'DESC')->paginate($perPage)->setPath(Request::url());
 
         $this->pageView('videos::index', compact('videos'));
     }
