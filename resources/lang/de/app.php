@@ -156,6 +156,7 @@ return [
     'size'          => 'Größe',
     'ip'            => 'IP',
     'online'        => 'Online',
+    'offline'       => 'Offline',
     'viewers'       => 'Betrachter',
     'task'          => 'Aufgabe',
     'add_tags'      => 'Tags hinzufügen',
