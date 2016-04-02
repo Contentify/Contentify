@@ -21,7 +21,7 @@
 			</div>
 			<div class="actions">
 				{!! icon_link('edit', trans('app.edit'), route('admin.images.edit', [$image->id])) !!}
-				{!! icon_link('trash', trans('app.delete'), route('admin.images.destroy', [$image->id]), false, ['data-confirm-delete' => true]) !!}
+				{!! icon_link('trash', trans('app.delete'), route('admin.images.destroy', [$image->id]).'?method=DELETE&_token='.csrf_token(), false, ['data-confirm-delete' => true]) !!}
 			</div>
 		</div>
 	@endforeach
