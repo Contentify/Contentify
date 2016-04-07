@@ -20,7 +20,7 @@ class VerifyCsrfToken extends BaseVerifier {
             return $next($request);
         }
 
-        if (! Str::equals($request->session()->token(), $request->input('_token')))
+        if (! hash_equals($request->session()->token(), $request->input('_token')))
         {
             throw new TokenMismatchException;
         }

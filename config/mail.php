@@ -67,7 +67,7 @@ return [
 	|
 	*/
 
-	'encryption' => 'tls',
+	'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,6 +119,7 @@ return [
 	|
 	*/
 
-	'pretend' => false,
+	// No longer supprot since Laravel 5.2! The documentation recommends:
+	// "Instead, use the log mail driver, which performs the same function"
 
 ];

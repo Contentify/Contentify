@@ -15,7 +15,7 @@ class HtmlServiceProvider extends OriginalHtmlServiceProvider {
     {
         $this->app->singleton('html', function($app)
         {
-            return new HtmlBuilder($app['url']);
+            return new HtmlBuilder($app['url'], $app['view']);
         });
     }
  
@@ -28,7 +28,7 @@ class HtmlServiceProvider extends OriginalHtmlServiceProvider {
     {
         $this->app->singleton('form', function($app)
         {
-            $form = new FormBuilder($app['html'], $app['url'], $app['session.store']->getToken());
+            $form = new FormBuilder($app['html'], $app['url'], $app['view'], $app['session.store']->getToken());
 
             return $form->setSessionStore($app['session.store']);
         });

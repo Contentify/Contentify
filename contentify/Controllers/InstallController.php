@@ -265,7 +265,7 @@ class InstallController extends Controller {
         /*
          * Notice: 
          * - The default length of strings is 255 chars.
-         * - We recommend to use timestamp() to create a datetime attribute.
+         * - We recommend to use timestamp($name)->nullable() to create a datetime attribute.
          */
 
         /*
@@ -307,7 +307,7 @@ class InstallController extends Controller {
         {
             $table->string('name')->primary(); // We can't name it "key" - that's a keyword in SQL - Eloquent bug?
             $table->text('value')->nullable();
-            $table->timestamp('updated_at');
+            $table->timestamp('updated_at')->nullable();
         });
        
         $this->create('visits', function($table)
@@ -357,7 +357,7 @@ class InstallController extends Controller {
         {
             $table->text('text')->nullable();
             $table->boolean('published')->default(false);
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
             $table->boolean('enable_comments')->default(false);
         }, ['pagecat_id']);
@@ -372,7 +372,7 @@ class InstallController extends Controller {
             $table->text('summary')->nullable();
             $table->text('text')->nullable();
             $table->boolean('published')->default(false);
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
             $table->boolean('enable_comments')->default(false);
         }, ['newscat_id']);
@@ -464,7 +464,7 @@ class InstallController extends Controller {
         {
             $table->string('url')->nullable();
             $table->integer('position')->default(0);
-            $table->timestamp('achieved_at');
+            $table->timestamp('achieved_at')->nullable();
         }, ['game_id', 'tournament_id', 'team_id'], ['slug']);
 
         $this->create('opponents', function($table)
@@ -484,7 +484,7 @@ class InstallController extends Controller {
         {
             $table->integer('left_score')->default(0);
             $table->integer('right_score')->default(0);
-            $table->timestamps();
+            $table->nullableTimestamps();
         }, ['match_id', 'map_id'], false);
  
         $this->create('matches', function($table)
@@ -496,7 +496,7 @@ class InstallController extends Controller {
             $table->string('left_lineup')->nullable();
             $table->string('right_lineup')->nullable();
             $table->text('text');
-            $table->timestamp('played_at');
+            $table->timestamp('played_at')->nullable();
             $table->integer('left_score')->default(0); // Total score
             $table->integer('right_score')->default(0);
         }, 
@@ -511,7 +511,7 @@ class InstallController extends Controller {
             $table->string('thumbnail')->nullable();
             $table->boolean('online')->default(false);
             $table->integer('viewers')->default(0);
-            $table->timestamp('renewed_at');
+            $table->timestamp('renewed_at')->nullable();
         });
 
         $this->create('servers', function($table)
@@ -569,8 +569,8 @@ class InstallController extends Controller {
             $table->boolean('frontend');
             $table->string('model_class')->nullable();
             $table->text('info')->nullable();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
             $table->integer('activity_id');
         }, ['user_id'], false);
 
@@ -582,7 +582,7 @@ class InstallController extends Controller {
         $this->createPivot('friends', function($table)
         {
             $table->boolean('confirmed')->default(false);
-            $table->timestamp('messaged_at');
+            $table->timestamp('messaged_at')->nullable();
         }, ['sender_id', 'receiver_id']);
 
         $this->create('events', function($table)
@@ -591,7 +591,7 @@ class InstallController extends Controller {
             $table->string('url')->nullable();
             $table->string('location')->nullable();
             $table->string('image')->nullable();
-            $table->timestamp('starts_at');
+            $table->timestamp('starts_at')->nullable();
         });
 
         $this->create('ratings', function($table)
@@ -981,7 +981,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                     $table->integer('access_counter')->default(0);
                 }
 
-                $table->timestamps(); // Add timestamps (columns created_at, updated_at)
+                $table->nullableTimestamps(); // Add timestamps (columns created_at, updated_at)
 
                 if ($contentObject === true or ! in_array('deleted_at', $contentObject)) {
                     $table->softDeletes(); // Add soft deletes (column deleted_at)
