@@ -6906,7 +6906,7 @@ textarea.model-search-box input[type=text] {
   margin: 10px 0px;
   padding: 3px 7px;
   border-radius: 3px;
-  background-color: #1a1f23;
+  background-color: #222e38;
   color: white !important;
 }
 .sort-switcher img {
@@ -6923,7 +6923,7 @@ textarea.model-search-box input[type=text] {
   border-radius: 3px;
 }
 .recycle-bin-button.enabled {
-  background-color: #1a1f23;
+  background-color: #222e38;
   color: #ffffff !important;
 }
 .recycle-bin-button.disabled {
@@ -7773,7 +7773,7 @@ header .header-logo {
   }
 }
 #sidebar {
-  background-color: #1a1f23;
+  background-color: #222e38;
   position: fixed;
   height: 100%;
   width: 230px;
@@ -7817,7 +7817,7 @@ header .header-logo {
   display: block;
   padding: 10px 20px;
   margin-bottom: 1px;
-  background-color: #1e2429;
+  background-color: #26333e;
   color: #82a4c0;
   text-transform: uppercase;
   overflow: hidden;
@@ -7834,7 +7834,7 @@ header .header-logo {
   white-space: nowrap;
   display: block;
   padding: 10px 20px;
-  color: #728797;
+  color: #7995ad;
 }
 #sidebar .navigation .category .items a i {
   width: 30px;
@@ -7844,12 +7844,12 @@ header .header-logo {
 #sidebar .navigation .category .items .item.active {
   padding-left: 15px;
   border-left: 5px #00afff solid;
-  background-color: #161a1d;
+  background-color: #1e2932;
 }
 #sidebar .navigation .category .items a:hover {
   padding-left: 15px;
   border-left: 5px #00afff solid;
-  background-color: #161a1d;
+  background-color: #1e2932;
 }
 #sidebar .navigation .category.active .items {
   height: auto;
