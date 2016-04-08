@@ -192,7 +192,7 @@ class PostsController extends FrontController {
         $user = User::findOrFail($userId);
 
         $forumPosts = ForumPost::where('forum_posts.creator_id', '=', $userId)->isAccessible($user)
-            ->orderBy('updated_at', 'DESC')->paginate(10)->setPath(Request::url()); 
+            ->orderBy('updated_at', 'DESC')->paginate(10); 
 
         $this->pageView('forums::show_user_posts', compact('forumPosts'));
     }

@@ -37,7 +37,7 @@ class Comments {
         $perPage = Config::get('app.frontItemsPerPage');
 
         $comments = Comment::where('foreign_type', '=', $foreignType)
-            ->where('foreign_id', '=', $foreignId)->paginate($perPage)->setPath(Request::url());
+            ->where('foreign_id', '=', $foreignId)->paginate($perPage);
 
         return View::make('comments.paginate', compact('comments'))->render();
     }

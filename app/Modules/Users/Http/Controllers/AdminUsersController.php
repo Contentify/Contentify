@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Users\Http\Controllers;
 
 use ModelHandlerTrait;
-use Exception, Input, Response, Sentinel, HTML, User, Hover, BackController;
+use Exception, Input, Response, Activation, Sentinel, HTML, User, Hover, BackController;
 
 class AdminUsersController extends BackController {
 
@@ -28,7 +28,7 @@ class AdminUsersController extends BackController {
                 trans('app.username')       => 'username',
                 trans('app.email')          => 'email',
                 trans('users::membership')  => null,
-                trans('users::banned')      => null,
+                trans('users::banned')      => 'banned',
             ],
             'tableRow'  => function($user)
             {
@@ -40,7 +40,7 @@ class AdminUsersController extends BackController {
                     $membership = HTML::fontIcon('close');
                 }
 
-                if ($user->isBanned()) {
+                if ($user->banned) {
                     $banned = HTML::fontIcon('lock');
                 } else {
                     $banned = HTML::fontIcon('unlock');
@@ -93,13 +93,13 @@ class AdminUsersController extends BackController {
     }
 
     /**
-     * Bans or unbans a user.
+     * Activate or deactivates a user.
      * 
      * @param  int  $id     The ID of the user
-     * @param  bool $ban    Ban (true) or unban (false)?
+     * @param  bool $ban    Activate (true) or deactivate (false)?
      * @return Response
      */
-    public function ban($id, $ban = true)
+    public function activate($id, $activate = true)
     {
         $user = User::findOrFail($id);
 
@@ -107,14 +107,18 @@ class AdminUsersController extends BackController {
             return Response::make(trans('app.access_denied'), 403);
         }
 
-        try {
-            $throttle = Sentry::findThrottlerByUserId($id);
+        try {           
+            if ($activate) {
+                $activation = Activation::exists($user);
 
-            if ($ban) {
-                $throttle->ban();
+                if (! $activation) {
+                     $activation = Activation::create($user);
+                }
+
+                $completed = Activation::complete($user, $activation->code);
                 return Response::make('1', 200);
             } else {
-                $throttle->unBan();
+                Activation::remove($user);
                 return Response::make('0', 200);
             }          
         } catch (Exception $e) {

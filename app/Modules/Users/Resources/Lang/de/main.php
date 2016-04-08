@@ -78,8 +78,8 @@ return array(
     'banned'        => 'Gesperrt',
     'activated'     => 'Aktiviert',
 
-    'action_banned'     => 'Der Benutzer wurde gesperrt.',
-    'action_unbanned'   => 'Der Benutzer wurde entsperrt.',
+    'action_activated'     => 'Der Benutzer wurde aktiviert.',
+    'action_deactivated'   => 'Der Benutzer wurde deaktiviert.',
 
     /* 
      * Widget

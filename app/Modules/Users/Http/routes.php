@@ -10,7 +10,7 @@ ModuleRoute::post('users/search', 'UsersController@search');
 
 ModuleRoute::resource('admin/users', 'AdminUsersController', ['only' => ['index', 'edit', 'update']]);
 ModuleRoute::post('admin/users/search', 'AdminUsersController@search');
-ModuleRoute::post('admin/users/{id}/{ban}', 'AdminUsersController@ban');
+ModuleRoute::post('admin/users/{id}/{activate}', 'AdminUsersController@activate');
 
 ModuleRoute::get('admin/activities', 'AdminActivitiesController@index');
 ModuleRoute::get('admin/activities/delete/all', 'AdminActivitiesController@deleteAll');

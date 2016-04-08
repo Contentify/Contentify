@@ -11,7 +11,7 @@ class Kernel extends ConsoleKernel {
      * @var array
      */
     protected $commands = [
-        'Contentify\Commands\GenerateFormCommand',
+        'Contentify\Commands\MakeFormCommand',
         'ChrisKonnertz\Jobs\JobsCommand',
     ];
 

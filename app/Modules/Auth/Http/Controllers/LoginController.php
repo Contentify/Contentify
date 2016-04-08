@@ -20,6 +20,11 @@ class LoginController extends FrontController {
 
         $user = Sentinel::authenticate($credentials, false); // Login the user (if possible)
 
+        if ($user->banned) {
+            Sentinel::logout();
+            $user = null;
+        }
+
         if ($user) {
             return $this->afterLoginActions();
         } else {
@@ -37,6 +42,11 @@ class LoginController extends FrontController {
                 $user = User::where('steam_auth_id', $info->getSteamID64())->first();
 
                 if ($user !== null) {
+                    if ($user->banned) {
+                        $this->alertFlash(trans('app.access_denied'));
+                        return Redirect::to('auth/login');
+                    }
+
                     Sentinel::loginAndRemember($user);
 
                     return $this->afterLoginActions();

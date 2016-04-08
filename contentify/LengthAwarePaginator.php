@@ -20,8 +20,7 @@ class LengthAwarePaginator extends OriginalPaginator {
         parent::__construct($items, $total, $perPage, $currentPage, $options);
 
         /*
-         * The original paginator always adds a trailing slash.
-         * So we have to overwrite the $path variable with the path without a trailing slash.
+         * Set the $path variable to the current URL.
          */
         $this->path = Request::url();
     }

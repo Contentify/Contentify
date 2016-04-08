@@ -17,7 +17,7 @@ class GalleriesController extends FrontController {
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $galleries = Gallery::paginate($perPage)->setPath(Request::url());
+        $galleries = Gallery::paginate($perPage);
 
         $this->pageView('galleries::index', compact('galleries'));
     }

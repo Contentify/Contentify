@@ -8,7 +8,7 @@ use BaseModel;
  */
 class User extends BaseUser {
 
-    protected $fillable = ['activated', 'relation_roles', 'relation_teams'];
+    protected $fillable = ['banned', 'relation_roles', 'relation_teams'];
 
     protected $slugable = true;
 

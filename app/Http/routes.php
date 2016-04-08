@@ -39,7 +39,7 @@ Route::get('admin', [
  */
 Route::get('comments/paginate/{foreignType}/{foreignId}', function($foreignType, $foreignId)
 {
-    return Comments::paginate($foreignType, $foreignId)->setPath(Request::url());
+    return Comments::paginate($foreignType, $foreignId);
 });
 
 Route::post('comments/store', ['as' => 'comments.store', 'middleware' => 'csrf', 'uses' => function()

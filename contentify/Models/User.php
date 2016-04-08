@@ -3,7 +3,7 @@
 use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
 use App\Modules\Messages\Message;
 use App\Modules\Friends\Friendship;
-use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Sentinel, Session;
+use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Activation, Sentinel, Session;
 
 class User extends SentinelUser {
 
@@ -251,18 +251,14 @@ class User extends SentinelUser {
     }
 
     /**
-     * The throttle system is not part of the Sentry core module.
-     * This helper method accesses the banned attribute.
+     * The throttle system is not part of the Sentinel core module.
+     * This helper method accesses the activated attribute.
      *
      * @return boolean
      */
-    public function isBanned()
+    public function isActivated()
     {
-        // This is what Sentry gives us to get the banned attribute... Not cool.
-        // If there is a better way let us know.
-        $throttle = Sentry::findThrottlerByUserId($this->id);
-
-        return $throttle->isBanned();
+        return Activation::completed($this);
     }
 
     /**

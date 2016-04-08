@@ -5,14 +5,14 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use FormGenerator;
 
-class GenerateFormCommand extends Command {
+class MakeFormCommand extends Command {
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'generate:form';
+    protected $name = 'make:form';
 
     /**
      * The console command description.

@@ -23,10 +23,11 @@ class AdminImagesController extends BackController {
 
         if (Input::old('search')) {
             $searchString = Input::old('search');
-            $images = Image::where('tags', 'LIKE', '%'.$searchString.'%')->orderBy('created_at', 'desc')->paginate($perPage)->setPath(Request::url());
+            $images = Image::where('tags', 'LIKE', '%'.$searchString.'%')
+                ->orderBy('created_at', 'desc')->paginate($perPage);
         } else {
             $searchString = null;
-            $images = Image::orderBy('created_at', 'desc')->paginate($perPage)->setPath(Request::url());
+            $images = Image::orderBy('created_at', 'desc')->paginate($perPage);
         }
 
         $this->pageView('images::admin_index', compact('images', 'searchString'));

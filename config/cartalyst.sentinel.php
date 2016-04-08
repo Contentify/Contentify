@@ -97,7 +97,7 @@ return [
 
         // Original: 'Cartalyst\Sentinel\Permissions\StandardPermissions',
         // NOTE: If you want to create your own permission implementation
-        // you should Contentify\Models\StandardPermissions as a strating point.
+        // you should use Contentify\Models\StandardPermissions as a start.
         'class' => 'Contentify\Models\StandardPermissions',
 
     ],
@@ -137,7 +137,7 @@ return [
     'checkpoints' => [
 
         'throttle',
-        'activation',
+        'activation'
 
     ],
 

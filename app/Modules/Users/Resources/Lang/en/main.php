@@ -78,8 +78,8 @@ return array(
     'banned'        => 'Banned',
     'activated'     => 'Activated',
 
-    'action_banned'     => 'User has been banned.',
-    'action_unbanned'   => 'User has been unbanned.',
+    'action_activated'     => 'User has been activated.',
+    'action_deactivated'   => 'User has been deactivated.',
 
     /* 
      * Widget

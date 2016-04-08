@@ -186,7 +186,7 @@ class ModelHandler {
                 }                 
             }
 
-            $models = $models->paginate($perPage)->setPath(Request::url());
+            $models = $models->paginate($perPage);
         }
 
         $paginator = $models->appends([
