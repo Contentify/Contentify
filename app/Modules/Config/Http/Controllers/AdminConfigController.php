@@ -186,9 +186,9 @@ class AdminConfigController extends BackController {
     {
         if (! $this->checkAccessRead()) return;
 
-        $fileName = storage_path().self::LOG_FILE;
-        if (File::exists($fileName)) {
-            $lines      = file($fileName);
+        $filename = storage_path().self::LOG_FILE;
+        if (File::exists($filename)) {
+            $lines      = file($filename);
             $content    = '';
 
             foreach ($lines as $line) {
@@ -207,7 +207,7 @@ class AdminConfigController extends BackController {
                 $content .= '</div></div>';
             }
 
-            $size = File::size($fileName);
+            $size = File::size($filename);
 
             $this->pageView('config::show_log', compact('content', 'size'));
         } else {
@@ -222,13 +222,13 @@ class AdminConfigController extends BackController {
      */
     public function clearLog()
     {
-        $fileName = storage_path().self::LOG_FILE;
+        $filename = storage_path().self::LOG_FILE;
 
-        if (File::exists($fileName)) {
-            File::delete($fileName);
+        if (File::exists($filename)) {
+            File::delete($filename);
         }
 
-        $this->alertSuccess(trans('app.deleted', [$fileName]));
+        $this->alertSuccess(trans('app.deleted', [$filename]));
     }
 
 }

@@ -30,12 +30,12 @@ class Download extends BaseModel {
 
         self::saving(function($download)
         {
-            $fileName = $download->uploadPath(true).$download->file;
-            if (File::isFile($fileName)) {
-                $download->file_size = File::size($fileName); // Save file size
+            $filename = $download->uploadPath(true).$download->file;
+            if (File::isFile($filename)) {
+                $download->file_size = File::size($filename); // Save file size
                 
                 try {
-                    $imgData = getimagesize($fileName); // Try to gather infos about the image
+                    $imgData = getimagesize($filename); // Try to gather infos about the image
                 } catch (Exception $e) {
 
                 }
@@ -47,7 +47,7 @@ class Download extends BaseModel {
                      * Create Thumbnail
                      */
                     $size = 50;
-                    InterImage::make($fileName)->resize($size, $size, function ($constraint) {
+                    InterImage::make($filename)->resize($size, $size, function ($constraint) {
                         $constraint->aspectRatio();
                     })->save($download->uploadPath(true).$size.'/'.$download->file); 
                 }

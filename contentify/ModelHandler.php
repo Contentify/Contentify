@@ -394,9 +394,9 @@ class ModelHandler {
                     }
                     
                     $filePath           = $model->uploadPath(true);
-                    $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
-                    $uploadedFile       = $file->move($filePath, $fileName);
-                    $model->$fieldName  = $fileName;
+                    $filename           = $model->id.'_'.$fieldName.'.'.$extension;
+                    $uploadedFile       = $file->move($filePath, $filename);
+                    $model->$fieldName  = $filename;
                     $model->forceSave(); // Save model again, without validation
 
                     /*
@@ -409,10 +409,10 @@ class ModelHandler {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); 
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)
+                            InterImage::make($filePath.'/'.$filename)
                                 ->resize($thumbnail, $thumbnail, function ($constraint) {
                                     $constraint->aspectRatio();
-                                })->save($filePath.$thumbnail.'/'.$fileName); 
+                                })->save($filePath.$thumbnail.'/'.$filename); 
                         }
                     }
                 } else {
@@ -532,9 +532,9 @@ class ModelHandler {
                     }
 
                     $filePath           = $model->uploadPath(true);
-                    $fileName           = $model->id.'_'.$fieldName.'.'.$extension;
-                    $uploadedFile       = $file->move($filePath, $fileName);
-                    $model->$fieldName  = $fileName;
+                    $filename           = $model->id.'_'.$fieldName.'.'.$extension;
+                    $uploadedFile       = $file->move($filePath, $filename);
+                    $model->$fieldName  = $filename;
                     $model->forceSave(); // Save model again, without validation
 
                     /*
@@ -547,10 +547,10 @@ class ModelHandler {
                         if (! is_array($thumbnails)) $thumbnails = compact('thumbnails');
 
                         foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$fileName)
+                            InterImage::make($filePath.'/'.$filename)
                                 ->resize($thumbnail, $thumbnail, function ($constraint) {
                                     $constraint->aspectRatio();
-                                })->save($filePath.$thumbnail.'/'.$fileName); 
+                                })->save($filePath.$thumbnail.'/'.$filename); 
                         }
                     }
                 } else {
@@ -623,9 +623,9 @@ class ModelHandler {
                     if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
 
                     foreach ($thumbnails as $thumbnail) {
-                        $fileName = $filePath.$thumbnail.'/'.$model->$fieldName;
-                        if (File::isFile($fileName)) {
-                            File::delete($fileName);
+                        $filename = $filePath.$thumbnail.'/'.$model->$fieldName;
+                        if (File::isFile($filename)) {
+                            File::delete($filename);
                         }
                     }
                 }

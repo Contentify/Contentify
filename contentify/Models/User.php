@@ -315,9 +315,9 @@ class User extends SentinelUser {
             File::delete($filePath.$this->getOriginal($fieldName));
         }
 
-        $fileName           = $this->id.'_'.$fieldName.'.'.$extension;
-        $uploadedFile       = $file->move($filePath, $fileName);
-        $this->$fieldName   = $fileName;
+        $filename           = $this->id.'_'.$fieldName.'.'.$extension;
+        $uploadedFile       = $file->move($filePath, $filename);
+        $this->$fieldName   = $filename;
         $this->save();
 
         if ($fieldName == 'image') {
@@ -325,9 +325,9 @@ class User extends SentinelUser {
                 File::delete($filePath.'80/'.$this->getOriginal($fieldName));
             }
 
-            InterImage::make($filePath.'/'.$fileName)->resize(80, 80, function ($constraint) {
+            InterImage::make($filePath.'/'.$filename)->resize(80, 80, function ($constraint) {
                                         $constraint->aspectRatio();
-                                    })->save($filePath.'80/'.$fileName);
+                                    })->save($filePath.'80/'.$filename);
         }
     }
 

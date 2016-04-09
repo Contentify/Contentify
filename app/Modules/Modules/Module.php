@@ -38,10 +38,10 @@ class Module extends BaseModel {
      */
     public function installer()
     {
-        $fileName = app_path().'/modules/'.$this->title.'/Installer.php';
+        $filename = app_path().'/modules/'.$this->title.'/Installer.php';
         
-        if (File::exists($fileName)) {
-            return $fileName;
+        if (File::exists($filename)) {
+            return $filename;
         } else {
             return false;
         }

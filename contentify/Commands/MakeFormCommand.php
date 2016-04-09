@@ -40,16 +40,16 @@ class MakeFormCommand extends Command {
     {
         $formGenerator = new FormGenerator;
 
-        $fileName   = $this->argument('fileName');
+        $filename   = $this->argument('filename');
         $table      = $this->argument('table');
         $module     = $this->argument('module');
 
         $code = $formGenerator->generate($table, $module);
 
-        $fileName = __DIR__.'/../../resources/views/'.$fileName.'.blade.php';
-        file_put_contents($fileName, $code);
+        $filename = __DIR__.'/../../resources/views/'.$filename.'.blade.php';
+        file_put_contents($filename, $code);
 
-        $this->info('Done. Form has been generated: '.$fileName."\n");  
+        $this->info('Done. Form has been generated: '.$filename."\n");  
         
         echo $code;
     }
@@ -62,7 +62,7 @@ class MakeFormCommand extends Command {
     protected function getArguments()
     {
         return [
-            ['fileName', InputArgument::REQUIRED, 'The file name (without extension) of the generated template.'],
+            ['filename', InputArgument::REQUIRED, 'The file name (without extension) of the generated template.'],
             ['table', InputArgument::REQUIRED, 'The name of the desired table.'],
             ['module', InputArgument::OPTIONAL, 'The name of the desired module.']
         ];
