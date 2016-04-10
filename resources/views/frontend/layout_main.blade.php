@@ -22,7 +22,7 @@
         {!! HTML::title(trans_object($controllerName, $moduleName)) !!}
     @endif
 
-    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Big icon -->
+    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Opera Speed Dial Icon -->
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('favicon.png') !!}">
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{!! asset('rss/news.xml') !!}">
 
@@ -40,16 +40,44 @@
     {!! HTML::script('vendor/contentify/frontend.js') !!}    
 </head>
 <body>
-    <header id="header" onclick="window.location='{!! route('home') !!}'">
+    <header id="header">
         <div class="container">
-            <h2>Contentify Testpage</h2>
+            <div class="top-bar">
+                <a class="header-logo" href="{!! route('home') !!}">
+                    {!! HTML::image(asset('img/header_logo.png')) !!}
+                </a>
+                <div class="right">
+                    @widget('Auth::Login')
+                </div>
+            </div>
         </div>
+        <nav>
+            <div class="container">
+                <ul>
+                    <li class="icon">{!! HTML::fontIcon('bars') !!}</li>
+                    <li>{!! link_to('/', trans('app.home'), ['class' => 'active']) !!}</li>
+                    <li>{!! link_to('teams', trans('app.object_teams')) !!}</li>
+                    <li>{!! link_to('partners', trans('app.object_partners')) !!}</li>
+                    <li>{!! link_to('matches', trans('app.object_matches')) !!}</li>
+                    <li>{!! link_to('streams', trans('app.object_streams')) !!}</li>
+                    <li>{!! link_to('videos', trans('app.object_videos')) !!}</li>
+                    <li>{!! link_to('forums', trans('app.object_forums')) !!}</li>
+                </ul>
+                <div class="right">
+                    <a href="https://www.facebook.com/contentifycms" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
+                    <a href="https://twitter.com/ContentifyCMS" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
+                    <a href="https://www.youtube.com/channel/UC2gIIZzySdgxrQ3jM4jmoqQ" target="_blank">{!! HTML::fontIcon('youtube') !!}</a>
+                </div>
+            </div>
+        </nav>
     </header>
-    <div class="container">       
+
+    @widget('Slides::Slides', ['categoryId' => 1])
+
+    <div class="divider"></div>
+    <div class="container">
         <div id="mid-container" class="row">
             <div id="content" class="col-md-8">
-                @widget('Slides::Slides', ['categoryId' => 1])
-
                 @if (Session::get('_alert'))
                     @include('alert', ['type' => 'info', 'title' => Session::get('_alert')])
                 @endif
@@ -65,60 +93,66 @@
             </div>
 
             <aside id="sidebar" class="col-md-4">
-                <h3>{{ trans('app.object_user') }} {{ trans('app.links') }}</h3>
-                @widget('Auth::Login')
+                <div class="border">
+                    <h3>
+                        {{ trans('app.object_partners') }}
+                        <a href="{{ url('partners') }}">{!! HTML::fontIcon('plus') !!}</a>
+                    </h3>
+                    @widget('Partners::Partners')
 
-                <br>
-                <h3>{{ trans('app.object_navigation') }}</h3>
-                <ul class="list-unstyled">
-                    <li>{!! link_to('auth/registration/create', trans('app.object_registration')) !!}</li>
-                    <li>{!! link_to('users', trans('app.object_users')) !!}</li>
-                    <li>{!! link_to('awards', trans('app.object_awards')) !!}</li>
-                    <li>{!! link_to('contact', trans('app.object_contact')) !!}</li>
-                    <li>{!! link_to('downloads', trans('app.object_downloads')) !!}</li>
-                    <li>{!! link_to('galleries', trans('app.object_galleries')) !!}</li>
-                    <li>{!! link_to('partners', trans('app.object_partners')) !!}</li>
-                    <li>{!! link_to('teams', trans('app.object_teams')) !!}</li>
-                    <li>{!! link_to('matches', trans('app.object_matches')) !!}</li>
-                    <li>{!! link_to('streams', trans('app.object_streams')) !!}</li>
-                    <li>{!! link_to('videos', trans('app.object_videos')) !!}</li>
-                    <li>{!! link_to('forums', trans('app.object_forums')) !!}</li>
-                </ul>
+                    <br>    
+                    <h3>
+                        {{ trans('app.latest') }} {{ trans('app.object_matches') }}
+                        <a href="{{ url('matches') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
+                    </h3>
+                    @widget('Matches::Matches')
 
-                <br>
-                <h3>{{ trans('app.featured') }} {{ trans('app.object_match') }}</h3>
-                @widget('Matches::FeaturedMatch')
-
-                <br>
-                <h3>{{ trans('app.latest') }} {{ trans('app.object_matches') }}</h3>
-                @widget('Matches::Matches')
-
-                <br>
-                <h3>{{ trans('app.latest') }} Threads</h3>
-                @widget('Forums::LatestThreads')
-
-                <br>
-                <h3>{{ trans('app.object_partners') }}</h3>
-                @widget('Partners::Partners', ['categoryId' => 1])
-
-                <br>
-                <h3>{{ trans('app.object_servers') }}</h3>
-                @widget('Servers::Servers')
-
-                <br>
-                <h3>{{ trans('app.object_advert') }}</h3>
-                @widget('Adverts::Advert', ['categoryId' => 1])
-
-                <br>
-                <h3>{{ trans('app.object_visitors') }}</h3>
-                @widget('Visitors::Visitors')
-
-                <br>
-                <h3>{{ trans('app.object_streams') }}</h3>
-                @widget('Streams::Streams')
+                    <br>
+                    <h3>
+                        {{ trans('app.object_streams') }}
+                        <a href="{{ url('streams') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
+                    </h3>
+                    @widget('Streams::Streams')
+                </div>
             </aside>
         </div>
     </div>
+    <footer id="footer">
+        <div class="links">
+            <div class="container">
+                <nav>
+                    <ul class="list-inline">
+                        <li class="icon">{!! HTML::fontIcon('bars') !!}</li>
+                        <li>{!! link_to('/', trans('app.home'), ['class' => 'active']) !!}</li>
+                        
+                        <li>{!! link_to('search', trans('app.object_search')) !!}</li>
+                        <li>{!! link_to('servers', trans('app.object_servers')) !!}</li>
+                        <li>{!! link_to('galleries', trans('app.object_galleries')) !!}</li>
+                        <li>{!! link_to('awards', trans('app.object_awards')) !!}</li>
+                        <li>{!! link_to('events', trans('app.object_events')) !!}</li>
+                        <li>{!! link_to('downloads', trans('app.object_downloads')) !!}</li>
+                        <li>{!! link_to('contact', trans('app.object_contact')) !!}</li>
+                        <li>{!! link_to('impressum', 'Impressum') !!}</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="more">
+            <div class="container">
+                <span class="info">&copy; {{ date('Y') }} by <a class="cms" href="http://www.contentify.org" target="_blank">Contentify.org</a></span>
+
+                <span class="visitors-label">{{ trans('app.object_visitors') }}:</span>
+                @widget('Visitors::Visitors')
+
+                <div class="right">
+                    <a href="https://www.facebook.com/contentifycms" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
+                    <a href="https://twitter.com/ContentifyCMS" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
+                    <a href="https://www.youtube.com/channel/UC2gIIZzySdgxrQ3jM4jmoqQ" target="_blank">{!! HTML::fontIcon('youtube') !!}</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </footer>
     
     {!! Config::get('app.analytics') !!}
 </body>

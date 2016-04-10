@@ -42,14 +42,22 @@
         var $h2 = $('<h2>').addClass('slide-title');
         
         if (self.opts.showTitle) {
-            $(el).append($h2); // Add h2 that displays the title of the active slide
+            $(el).find('.container').append($h2); // Add h2 that displays the title of the active slide
         }
 
         self.$el.find('.slides li').css('display','none');                                      // Hide all slides
-        self.$el.find('.slides li:nth(' + (self.itemIndex-1) + ')').css('display','block');     // Show a certain slide
+
+        var $li = self.$el.find('.slides li:nth(' + (self.itemIndex - 1) + ')');
+        $li.css('display','block');     // Show a certain slide
         self.$el.find('.buttons li:nth(' + (self.itemIndex-1) + ')').addClass('active');        // Set button as active
-        var text = self.$el.find('.slides li:nth(' + (self.itemIndex - 1) + ')').attr('data-title');
-        $h2.text(text);
+        var text = $li.attr('data-title');
+        var url = $li.find('a').attr('href');
+
+        if (text == 'notitle') {
+            $h2.html('');
+        } else {
+            $h2.html('<a href="' + url + '">' + text + '</a>');
+        }        
 
         self.$el.find('.to-left').click(function(event)
         {
@@ -144,8 +152,15 @@
                 }
             });
 
-            var text = self.$el.find('.slides li:nth(' + (index - 1) + ')').attr('data-title');
-            $h2.text(text);
+            var $li =  self.$el.find('.slides li:nth(' + (index - 1) + ')');
+            var text = $li.attr('data-title');
+            var url = $li.find('a').attr('href');
+
+            if (text == 'notitle') {
+                $h2.html('');
+            } else {
+                $h2.html('<a href="' + url + '">' + text + '</a>');
+            }
 
             if (self.interval != null) { 
                 startAutoplay(); // Restart autoplay, so it cannot switch to another slide during the next moment

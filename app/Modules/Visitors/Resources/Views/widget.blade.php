@@ -1,5 +1,5 @@
 <div class="widget widget-visitors">
-    <ul class="list-unstyled">
+    <ul class="list-inline">
         <li>
             <span>{!! trans('app.today') !!}:</span> {!! $today !!}
         </li>

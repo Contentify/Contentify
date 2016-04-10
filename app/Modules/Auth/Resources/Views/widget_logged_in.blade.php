@@ -1,5 +1,5 @@
 <div class="widget widget-auth-logged-in">
-    <ul class="list-unstyled">
+    <ul class="list-inline">
         <li>{!! link_to('users/'.user()->id.'/'.user()->slug, trans('app.profile')) !!}</li>
         <li>{!! link_to('users/'.user()->id.'/edit', trans('app.edit_profile')) !!}</li>
         <li>
