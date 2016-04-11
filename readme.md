@@ -1,4 +1,4 @@
-![Contentify Logo](http://www.contentify.org/img/hero.png)
+![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
 ## Contentify CMS
 
