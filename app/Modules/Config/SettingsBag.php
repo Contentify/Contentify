@@ -5,7 +5,15 @@ use BaseModel;
 class SettingsBag extends BaseModel {
 
     // NOTE: The "app." is replaced with "app::"!
-    protected $fillable = ['app::analytics', 'auth::registration', 'app::https', 'app::dbBackup'];
+    protected $fillable = [
+    	'app::facebook',
+    	'app::twitter',
+    	'app::youtube',
+    	'app::analytics', 
+    	'auth::registration', 
+    	'app::https', 
+    	'app::dbBackup',
+    ];
 
     protected $rules = [
         'auth::registration'    => 'boolean',      

@@ -9,13 +9,23 @@
 {!! Form::errors($errors) !!}
 
 {!! Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) !!}
-    {!! Form::smartTextarea('app::analytics', trans('config::analytics'), false) !!} 
+    {!! Form::smartUrl('app::facebook', 'Facebook') !!} 
+
+    {!! Form::smartUrl('app::twitter', 'Twitter') !!} 
+
+    {!! Form::smartUrl('app::youtube', 'YouTube') !!} 
+
+    <hr>
        
     {!! Form::smartCheckbox('auth::registration', trans('config::registration')) !!} 
 
     {!! Form::smartCheckbox('app::https', 'HTTPS') !!} 
 
     {!! Form::smartCheckbox('app::dbBackup', trans('config::db_backup')) !!} 
+
+    <hr>   
+
+    {!! Form::smartTextarea('app::analytics', trans('config::analytics'), false) !!} 
 
     {!! Form::actions(['submit' => trans('app.update')], false) !!}
 {!! Form::close() !!}
