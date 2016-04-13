@@ -172,7 +172,7 @@ if ($tester->isCli()) {
     echo 'Please navigate to the website with a browser to install Contentify.';
 } else {
     if (! file_exists(__DIR__.'/../storage/app/.install')) {
-        die('Contentify already has been installed.');  
+        die('Contentify has been installed already.');  
     }
 
     echo '<html><head><title>Installer</title>

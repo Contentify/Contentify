@@ -6673,6 +6673,9 @@ a:hover {
   font-weight: bold;
   text-transform: uppercase;
 }
+.page-title a {
+  color: #ffffff;
+}
 .page {
   margin-bottom: 20px;
   padding: 20px;
@@ -6738,6 +6741,7 @@ a:hover {
   background-color: transparent;
   color: #00afff;
 }
+.btn:focus,
 .btn:hover {
   border-color: #00afff;
   background-color: #00afff;
@@ -8017,7 +8021,7 @@ textarea.model-search-box input {
 }
 .page-auth-login .btn-restore {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   right: 40px;
 }
 /*

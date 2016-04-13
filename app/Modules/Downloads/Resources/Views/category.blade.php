@@ -1,4 +1,4 @@
-<h1 class="page-title">{{ trans_object('downloads') }} - {{ $downloadcat->title }}</h1>
+<h1 class="page-title"><a class="back" href="{!! url('downloads') !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ trans_object('downloads') }} - {{ $downloadcat->title }}</h1>
 
 <div class="downloads clearfix">
     @foreach ($downloads as $download)

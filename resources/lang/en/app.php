@@ -185,6 +185,8 @@ return [
     'install'       => 'Install',
     'preview'       => 'Preview',
     'total'         => 'Total',
+    'nothing_new'   => 'Sorry, nothing new. Please return later.',
+    'back'          => 'Back',
 
     /*
      * Days

@@ -1,6 +1,6 @@
 <article class="team">
     <header>
-        <h1 class="page-title inside">{{ $team->title }}</h1>
+        <h1 class="page-title inside"><a class="back" href="{!! url('teams') !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ $team->title }}</h1>
 
         @if ($team->image)
             <div class="image">

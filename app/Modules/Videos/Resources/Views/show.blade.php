@@ -1,4 +1,4 @@
-<h1 class="page-title">{{ $video->title }}</h1>
+<h1 class="page-title"><a class="back" href="{!! url('videos') !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ $video->title }}</h1>
 
 <div class="video-player">
     @if ($video->provider == 'youtube')

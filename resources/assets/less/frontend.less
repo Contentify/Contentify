@@ -55,7 +55,10 @@ a:hover { color: @primaryColor; text-decoration: none }
  * Classes
  */
 
-.page-title { margin: 0px 0px 20px 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: white; font-size: 16px; font-weight: bold; text-transform: uppercase }
+.page-title { 
+    margin: 0px 0px 20px 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: white; font-size: 16px; font-weight: bold; text-transform: uppercase; 
+    a { color: white }
+}
 .page { margin-bottom: 20px; padding: 20px; background-color: @darker; }
 .alert { border-radius: 0px; }
 .alert-info { background-color: @primaryColor; color: white; border: none; border-left: 4px solid darken(@primaryColor, 20%) }
@@ -74,7 +77,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 
 /* Form */
 .btn, .input-group-addon { border-radius: 0px; border-color: @primaryColor; background-color: transparent; color: @primaryColor }
-.btn:hover { border-color: @primaryColor; background-color: @primaryColor; color: white; }
+.btn:focus, .btn:hover { border-color: @primaryColor; background-color: @primaryColor; color: white; }
 .input-group-addon { border-left: 1px solid @primaryColor !important }
 
 .form-errors { }
@@ -543,7 +546,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 
 .page-auth-login {
     form { position: relative; }
-    .btn-restore { position: absolute; bottom: 20px; right: 40px; }
+    .btn-restore { position: absolute; bottom: 40px; right: 40px; }
 }
 
 /*

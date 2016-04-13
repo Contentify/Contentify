@@ -185,6 +185,8 @@ return [
     'install'       => 'Installieren',
     'preview'       => 'Vorschau',
     'total'         => 'Gesamt',
+    'nothing_new'   => 'Entschuldigung, es gibt noch nichts Neues. Bitte versuchen Sie es später erneut.',
+    'back'          => 'Zurück',
 
     /*
      * Days

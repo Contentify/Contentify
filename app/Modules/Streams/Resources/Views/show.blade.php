@@ -1,4 +1,4 @@
-<h1 class="page-title">{{ $stream->title }}</h1>
+<h1 class="page-title"><a class="back" href="{!! url('streams') !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ $stream->title }}</h1>
 
 <div class="stream-player">
     @if ($stream->provider == 'twitch')
