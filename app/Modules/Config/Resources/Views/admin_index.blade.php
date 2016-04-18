@@ -9,6 +9,10 @@
 {!! Form::errors($errors) !!}
 
 {!! Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) !!}
+    {!! Form::smartSelect('app::theme', trans('app.theme'), $themes) !!} 
+
+    <hr>
+
     {!! Form::smartUrl('app::facebook', 'Facebook') !!} 
 
     {!! Form::smartUrl('app::twitter', 'Twitter') !!} 

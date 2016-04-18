@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 	    less: {
-	      	development: {
+	      	publish: {
 	        	options: {
 	          		compress: true,
 	          		yuicompress: true,
@@ -14,6 +14,18 @@ module.exports = function(grunt) {
 	        		// destination file and source file
 	          		'public/css/frontend.css': 'resources/assets/less/frontend.less', 
 	          		'public/css/backend.css': 'resources/assets/less/backend.less'
+	        	}
+	      	},
+	      	theme: {
+	        	options: {
+	          		compress: true,
+	          		yuicompress: true,
+	          		optimization: 2
+	        	},
+	        	files: {
+	        		// destination file and source file
+	          		'app/Modules/DefaultTheme/Resources/Assets/css/frontend.css': 'resources/assets/less/frontend.less', 
+	          		'app/Modules/DefaultTheme/Resources/Assets/css/backend.css': 'resources/assets/less/backend.less'
 	        	}
 	      	}
 	    },
@@ -28,6 +40,7 @@ module.exports = function(grunt) {
 	    }
 	});
 
-	grunt.registerTask('default', ['less']);
-	grunt.registerTask('dev', ['less', 'watch']);
+	grunt.registerTask('default', ['less:publish']); // compile the less files of the cms to the public css css folder
+	grunt.registerTask('theme', ['less:theme']); // compile the less files of the cms to the default theme css folder
+	grunt.registerTask('watch', ['less:publish', 'watch']);	
 };

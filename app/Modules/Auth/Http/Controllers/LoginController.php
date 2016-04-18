@@ -20,7 +20,7 @@ class LoginController extends FrontController {
 
         $user = Sentinel::authenticate($credentials, false); // Login the user (if possible)
 
-        if ($user->banned) {
+        if ($user and $user->banned) {
             Sentinel::logout();
             $user = null;
         }

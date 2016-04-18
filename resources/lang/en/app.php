@@ -87,6 +87,7 @@ return [
     'featured'      => 'Featured',
     'state'         => 'State',
     'new'           => 'New',
+    'theme'         => 'Theme',
 
     /*
      * Misc

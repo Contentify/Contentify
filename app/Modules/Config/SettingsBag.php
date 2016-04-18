@@ -6,6 +6,7 @@ class SettingsBag extends BaseModel {
 
     // NOTE: The "app." is replaced with "app::"!
     protected $fillable = [
+        'app::theme',
     	'app::facebook',
     	'app::twitter',
     	'app::youtube',

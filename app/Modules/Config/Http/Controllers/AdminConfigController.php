@@ -2,7 +2,7 @@
 
 use App\Modules\Config\SettingsBag;
 use Contentify\Vendor\MySqlDump;
-use Cache, Str, Redirect, Input, File, DB, Config, View, BackController;
+use Artisan, Str, Redirect, Input, File, DB, Config, BackController;
 
 class AdminConfigController extends BackController {
 
@@ -30,8 +30,20 @@ class AdminConfigController extends BackController {
                 $settingsBag->$settingName = $setting->value;
             }
         }
-        
-        $this->pageView('config::admin_index', compact('settingsBag'));
+
+        $moduleRepo = app()['modules'];
+        $modules = $moduleRepo->all(); // Retrieve all module info objects
+
+        $themes = [];
+        foreach ($modules as $name => $module) {
+            if (! $module['enabled']) continue;
+
+            if (isset($module['theme']) and $module['theme']) {
+                $themes[$name] = $module['slug'];
+            }
+        }
+
+        $this->pageView('config::admin_index', compact('settingsBag', 'themes'));
     }
 
     /**
@@ -52,6 +64,12 @@ class AdminConfigController extends BackController {
         if (! $settingsBag->isValid()) {
             return Redirect::to('admin/config')
                 ->withInput()->withErrors($settingsBag->getErrors());
+        }
+
+        $oldTheme = Config::get('app.theme');
+
+        if ($oldTheme != $settingsBag['app::theme']) {
+            Artisan::call('vendor:publish', ['--tag' => [lcfirst($settingsBag['app::theme'])], '--force' => true]);
         }
 
         // Save the settings one by one:

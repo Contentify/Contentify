@@ -1,14 +1,15 @@
 <?php namespace Contentify\Controllers;
 
-use URL, Input, View, Redirect;
+use URL, Input, View, Redirect, Config;
 
 abstract class FrontController extends BaseController {
 
     /**
      * The layout that should be used for responses.
+     * If null the layout of the chosen theme will be loaded.
      * @var string
      */
-    protected $layout = 'frontend.layout_main';
+    protected $layout = null;
 
     /**
      * Setup the layout used by the controller.
@@ -19,7 +20,7 @@ abstract class FrontController extends BaseController {
     protected function setupLayout($layoutName = null)
     {
         if (! $layoutName) {
-            $layoutName = $this->layout;
+            $layoutName = $this->layout? $this->layout : lcfirst(Config::get('app.theme')).'::layout';
         }
 
         parent::setupLayout($layoutName);
