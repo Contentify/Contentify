@@ -43,7 +43,12 @@ class UsersController extends FrontController {
 
     public function show($id)
     {
-        $user = User::whereId($id)->whereActivated(true)->firstOrFail();
+        $user = User::whereId($id)->firstOrFail();
+
+        if (! $user->isActivated()) {
+            $this->alertInfo(trans('app.access_denied'));
+            return;
+        }
 
         $user->access_counter++;
         $user->save();
