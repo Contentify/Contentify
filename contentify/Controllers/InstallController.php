@@ -623,6 +623,7 @@ class InstallController extends Controller {
         $this->createDefaultCategories($tables);
         
         DB::table('config')->insert([
+            ['name' => 'app.theme',             'value' => 'DefaultTheme'],
             ['name' => 'app.analytics',         'value' => ''],
             ['name' => 'app.https',             'value' => 0],
             ['name' => 'app.dbBackup',          'value' => 0],
