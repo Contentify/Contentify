@@ -145,9 +145,9 @@
                 @widget('Visitors::Visitors')
 
                 <div class="right">
-                    <a href="{{ Config::get('app.facebook') }}" target="_blank" title="Facebook">{!! HTML::fontIcon('facebook') !!}</a>
-                    <a href="{{ Config::get('app.twitter') }}" target="_blank" title="Twitter">{!! HTML::fontIcon('twitter') !!}</a>
-                    <a href="{{ Config::get('app.youtube') }}" target="_blank" title="YouTube">{!! HTML::fontIcon('youtube') !!}</a>
+                    <a href="https://www.facebook.com/{{ Config::get('app.facebook') }}" target="_blank" title="Facebook">{!! HTML::fontIcon('facebook') !!}</a>
+                    <a href="https://twitter.com/{{ Config::get('app.twitter') }}" target="_blank" title="Twitter">{!! HTML::fontIcon('twitter') !!}</a>
+                    <a href="https://www.youtube.com/channel/{{ Config::get('app.youtube') }}" target="_blank" title="YouTube">{!! HTML::fontIcon('youtube') !!}</a>
                 </div>
             </div>
             </div>

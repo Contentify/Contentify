@@ -628,9 +628,9 @@ class InstallController extends Controller {
             ['name' => 'app.dbBackup',          'value' => 0],
             ['name' => 'auth::registration',    'value' => 1],
             ['name' => 'forums::reports',       'value' => 1],
-            ['name' => 'app.twitter',           'value' => 'https://twitter.com/ContentifyCMS'],
-            ['name' => 'app.facebook',          'value' => 'https://www.facebook.com/contentifycms'],
-            ['name' => 'app.youtube',           'value' => 'https://www.youtube.com/channel/UC2gIIZzySdgxrQ3jM4jmoqQ'],
+            ['name' => 'app.twitter',           'value' => 'ContentifyCMS'],
+            ['name' => 'app.facebook',          'value' => 'contentifycms'],
+            ['name' => 'app.youtube',           'value' => 'UC2gIIZzySdgxrQ3jM4jmoqQ'],
         ]);
 
         DB::table('teamcats')->insert([

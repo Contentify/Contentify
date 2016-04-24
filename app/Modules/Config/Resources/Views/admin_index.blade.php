@@ -13,11 +13,11 @@
 
     <hr>
 
-    {!! Form::smartUrl('app::facebook', 'Facebook') !!} 
+    {!! Form::smartText('app::facebook', 'Facebook') !!} 
 
-    {!! Form::smartUrl('app::twitter', 'Twitter') !!} 
+    {!! Form::smartText('app::twitter', 'Twitter') !!} 
 
-    {!! Form::smartUrl('app::youtube', 'YouTube') !!} 
+    {!! Form::smartText('app::youtube', 'YouTube') !!} 
 
     <hr>
        
