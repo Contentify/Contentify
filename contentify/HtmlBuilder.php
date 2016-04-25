@@ -289,15 +289,16 @@ class HtmlBuilder extends OriginalHtmlBuilder {
      *
      * @param string $icon  The name of the icon
      * @param string $color The color of the icon (HTML color name or code)
+     * @param string $class Use this parameter to add additional CSS classes
      * @return string
      */
-    public function fontIcon($icon, $color = null)
+    public function fontIcon($icon, $color = null, $class = null)
     {
         if ($color) {
             $color = ' style="color: '.$color.'"';
         }
 
-        return '<i class="fa fa-'.$icon.'"'.$color.'></i>';
+        return '<i class="fa fa-'.$icon.' '.$class.'"'.$color.'></i>';
     }
 
     /**
