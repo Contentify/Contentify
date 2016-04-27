@@ -19,7 +19,7 @@ return array(
     'gender'        => 'Geschlecht',
     'localisation'  => 'Lokalisierung',
     'local_info'    => 'Bestimmt die Interfacesprache und das Datumsformat.',
-    'birthdate'     => 'Gebursttag',
+    'birthdate'     => 'Geburtstag',
     'occupation'    => 'Beruf',
 
     'about'         => 'Über Mich',
