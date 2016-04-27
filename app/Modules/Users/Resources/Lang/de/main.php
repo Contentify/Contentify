@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return array(
 
@@ -10,7 +10,7 @@ return array(
     | This file keeps the language lines of the related module.
     |
     */
-   
+
     /*
      * Profile
      */
@@ -19,7 +19,7 @@ return array(
     'gender'        => 'Geschlecht',
     'localisation'  => 'Lokalisierung',
     'local_info'    => 'Bestimmt die Interfacesprache und das Datumsformat.',
-    'birthdate'     => 'Gebursttag',
+    'birthdate'     => 'Geburtstag',
     'occupation'    => 'Beruf',
 
     'about'         => 'Über Mich',
@@ -81,7 +81,7 @@ return array(
     'action_banned'     => 'Der Benutzer wurde gesperrt.',
     'action_unbanned'   => 'Der Benutzer wurde entsperrt.',
 
-    /* 
+    /*
      * Widget
      */
     'latest_users'  => 'Neueste Benutzer',
@@ -89,7 +89,7 @@ return array(
     /*
      * Activities
      */
-    'frontend'      => 'Frontend', 
+    'frontend'      => 'Frontend',
     'model_class'   => 'Model',
     'activity'      => 'Aktivität',
 
