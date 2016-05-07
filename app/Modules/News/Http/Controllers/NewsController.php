@@ -1,7 +1,8 @@
 <?php namespace App\Modules\News\Http\Controllers;
 
 use App\Modules\News\News;
-use URL, HTML, FrontController;
+use App\Modules\Videos\Video;
+use View, Request, DB, URL, HTML, FrontController;
 
 class NewsController extends FrontController {
 
@@ -51,6 +52,62 @@ class NewsController extends FrontController {
             ->orderBy('created_at', 'DESC')->take(5)->get();
 
         $this->pageView('news::show_overview', compact('newsCollection'));
+    }
+
+    public function showStream($offset = null)
+    {
+        if ($offset) {
+            $offset = (int) $offset;
+        } else {
+            $offset = time();
+        }
+        $offset = DB::raw('FROM_UNIXTIME('.$offset.')');
+
+        $colums = 2;
+        $rows = 3;
+        $limit = $colums * $rows;
+        $streamItems = [];
+
+        /*
+         * News
+         */
+        $hasAccess = (user() and user()->hasAccess('internal')); // Internal news are protected
+        $newsCollection = News::published()->where('internal', '<=', $hasAccess)->where('updated_at', '<', $offset)
+            ->orderBy('updated_at', 'DESC')->take($limit)->get();
+
+        foreach ($newsCollection as $news) {
+            $news->itemType = 'news';
+            $streamItems[] = $news;
+        }
+
+        /*
+         * Videos
+         */
+        $videos = Video::where('updated_at', '<', $offset)->orderBy('updated_at', 'DESC')->take($limit)->get();
+
+        foreach ($videos as $video) {
+            $video->itemType = 'video';
+            $streamItems[] = $video;
+        }
+
+        /*
+         * Sort the stream.
+         * NOTE: All items need to have the updated_at timestamp attribute!
+         */
+        usort($streamItems, function($itemOne, $itemTwo) 
+        {
+            return ($itemOne->updated_at->timestamp > $itemTwo->updated_at->timestamp) ? -1 : 1;
+        });
+
+        $oldSize = sizeof($streamItems);
+        $streamItems = array_slice($streamItems, 0, $limit);
+        $more = (int) ($oldSize > sizeof($streamItems));
+
+        if (Request::ajax()) {
+            return View::make('news::show_stream_ajax', compact('streamItems', 'more'));
+        } else {
+            $this->pageView('news::show_stream', compact('streamItems', 'more', 'limit'));    
+        }        
     }
 
     /**

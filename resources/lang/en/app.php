@@ -87,7 +87,6 @@ return [
     'featured'      => 'Featured',
     'state'         => 'State',
     'new'           => 'New',
-    'theme'         => 'Theme',
 
     /*
      * Misc
@@ -188,6 +187,8 @@ return [
     'total'         => 'Total',
     'nothing_new'   => 'Sorry, nothing new. Please return later.',
     'back'          => 'Back',
+    'theme'         => 'Theme',
+    'loading'       => 'Loading',
 
     /*
      * Days
