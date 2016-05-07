@@ -52,6 +52,7 @@ class AdminDiagController extends BackController {
             'App.url'                   => Config::get('app.url'),
             'App.debug'                 => (int) Config::get('app.debug'),
             'App.key'                   => $placeholder ? '<b>'.trans('app.placeholder').'</b>' : trans('app.valid'),
+            'App.timezone'              => Config::get('app.timezone'),
             'Cache.default'             => Config::get('cache.default'),
             'Modules.disabled'          => $disabled,
             'Mail.pretend'              => (int) Config::get('mail.pretend'),
