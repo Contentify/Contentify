@@ -24,4 +24,25 @@ class Translator extends OriginalTranslator {
         return $this->get($id, $parameters, $locale);
     }
 
+    /**
+     * Make the place-holder replacements on a line.
+     * NOTE: The original method will sometimes capitalize values - 
+     * we do not like that.
+     *
+     * @param  string  $line
+     * @param  array   $replace
+     * @return string
+     */
+    protected function makeReplacements($line, array $replace)
+    {
+        $replace = $this->sortReplacements($replace);
+
+        foreach ($replace as $key => $value)
+        {
+            $line = str_replace(':'.$key, $value, $line);
+        }
+
+        return $line;
+    }
+
 }

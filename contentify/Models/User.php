@@ -326,8 +326,8 @@ class User extends SentinelUser {
             }
 
             InterImage::make($filePath.'/'.$filename)->resize(80, 80, function ($constraint) {
-                                        $constraint->aspectRatio();
-                                    })->save($filePath.'80/'.$filename);
+                $constraint->aspectRatio();
+            })->save($filePath.'80/'.$filename);
         }
     }
 
