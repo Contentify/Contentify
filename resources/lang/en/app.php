@@ -51,6 +51,7 @@ return [
     'list_empty'    => 'Please create at least one ":0" before you continue.',
     'invalid_image' => 'Invalid image file',
     'bad_extension' => "Uploading of files with ':0' extension is restricted.",
+    'delete_error'  => "Error: This object has :0 dependencies (ID: ':1')! Please remove them first.",
 
     /*
      * Model index building
@@ -216,7 +217,7 @@ return [
     'object_comments'       => 'Comments',
     'object_config'         => 'Configuration',
     'object_contact'        => 'Contact',
-    'object_coutries'       => 'Countries',
+    'object_countries'      => 'Countries',
     'object_dashboard'      => 'Dashboard',
     'object_diag'           => 'Diagnostics',
     'object_downloads'      => 'Downloads',

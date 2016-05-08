@@ -22,6 +22,7 @@ class Role extends BaseModel {
     ];
 
     public static $relationsData = [
+        'users'     => [self::BELONGS_TO_MANY, 'User', 'table' => 'role_users', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

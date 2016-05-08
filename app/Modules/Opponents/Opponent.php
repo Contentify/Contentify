@@ -22,6 +22,9 @@ class Opponent extends BaseModel {
     ];
 
     public static $relationsData = [
+        'matches'   => [
+            self::HAS_MANY, 'App\Modules\Matches\Match', 'foreignKey' => 'right_team_id', 'dependency' => true
+        ],
         'country'   => [self::BELONGS_TO, 'App\Modules\Countries\Country'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];

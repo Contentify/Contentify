@@ -23,7 +23,7 @@ class ForumThread extends BaseModel {
     public static $relationsData = [
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
         'forum'     => [self::BELONGS_TO, 'App\Modules\Forums\Forum'],
-        'posts'     => [self::HAS_MANY, 'App\Modules\Forums\ForumPost'],
+        'posts'     => [self::HAS_MANY, 'App\Modules\Forums\ForumPost', 'dependency' => true],
     ];
 
     /**

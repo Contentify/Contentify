@@ -29,9 +29,9 @@ class Forum extends BaseModel {
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
         'forum'         => [self::BELONGS_TO, 'App\Modules\Forums\Forum'], // Parent forum
         'latestThread'  => [self::BELONGS_TO, 'App\Modules\Forums\ForumThread'],
-        'threads'       => [self::HAS_MANY, 'App\Modules\Forums\ForumThread'],
+        'threads'       => [self::HAS_MANY, 'App\Modules\Forums\ForumThread', 'dependency' => true],
         'team'          => [self::BELONGS_TO, 'App\Modules\Teams\Team'],
-        'forums'        => [self::HAS_MANY, 'App\Modules\Forums\Forum'], // Sub forums
+        'forums'        => [self::HAS_MANY, 'App\Modules\Forums\Forum', 'dependency' => true], // Sub forums
     ];
 
     public static function boot()

@@ -51,6 +51,7 @@ return [
     'list_empty'    => 'Bitte erstellen Sie mindestens ein/eine ":0", ehe Sie fortfahren.',
     'invalid_image' => 'Ungültige Bilddatei',
     'bad_extension' => "Das Hochladen von Dateien mit der Endung ':0' ist nicht erlaubt.",
+    'delete_error'  => "Fehler: Dieses Objekt besitzt :0 Abhängigkeiten (ID: ':1')! Bitte diese zunächst aufheben.",
 
     /*
      * Model index building
@@ -66,7 +67,7 @@ return [
     'id'            => 'ID',
     'index'         => 'Index',
     'title'         => 'Titel',
-    'short_title'   => 'Kurzer Title',
+    'short_title'   => 'Kurzer Titel',
     'author'        => 'Autor',
     'creator'       => 'Ersteller',
     'category'      => 'Kategorie',
@@ -216,7 +217,7 @@ return [
     'object_comments'       => 'Kommentare',
     'object_config'         => 'Einstellungen',
     'object_contact'        => 'Kontakt',
-    'object_coutries'       => 'Staaten',
+    'object_countries'      => 'Staaten',
     'object_dashboard'      => 'Dashboard',
     'object_diag'           => 'Diagnose',
     'object_downloads'      => 'Downloads',

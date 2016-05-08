@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Countries;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Country extends BaseModel {
@@ -18,6 +18,8 @@ class Country extends BaseModel {
     ];
 
     public static $relationsData = [
+        'users'     => [self::HAS_MANY, 'User', 'dependency' => true],
+        'opponents' => [self::HAS_MANY, 'App\Modules\Opponents\Opponent', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
     

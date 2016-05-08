@@ -19,6 +19,8 @@ class Tournament extends BaseModel {
     ];
 
     public static $relationsData = [
+        'awards'    => [self::HAS_MANY, 'App\Modules\Awards\Award', 'dependency' => true],
+        'matches'   => [self::HAS_MANY, 'App\Modules\Matches\Match', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

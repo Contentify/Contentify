@@ -1,5 +1,5 @@
 <?php namespace App\Modules\News;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Newscat extends BaseModel {
@@ -17,6 +17,7 @@ class Newscat extends BaseModel {
     ];
 
     public static $relationsData = [
+        'news'      => [self::HAS_MANY, 'App\Modules\News\News', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
     

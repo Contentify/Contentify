@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Teams;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Teamcat extends BaseModel {
@@ -15,6 +15,7 @@ class Teamcat extends BaseModel {
     ];
  
     public static $relationsData = [
+    	'teams'     => [self::HAS_MANY, 'App\Modules\Teams\Team', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
        

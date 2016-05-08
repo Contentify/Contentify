@@ -17,7 +17,7 @@ class Downloadcat extends BaseModel {
     ];
 
     public static $relationsData = [
-        'downloads' => [self::HAS_MANY, 'App\Modules\Downloads\Download'],
+        'downloads' => [self::HAS_MANY, 'App\Modules\Downloads\Download', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

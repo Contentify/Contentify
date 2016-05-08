@@ -22,9 +22,12 @@ class Team extends BaseModel {
     ];
 
     public static $relationsData = [
+        'matches'   => [
+            self::HAS_MANY, 'App\Modules\Matches\Match', 'foreignKey' => 'left_team_id', 'dependency' => true
+        ],
         'members'   => [self::BELONGS_TO_MANY, 'User'],
         'teamcat'   => [self::BELONGS_TO, 'App\Modules\Teams\Teamcat'],
-        'awards'    => [self::HAS_MANY, 'App\Modules\Awards\Award'],
+        'awards'    => [self::HAS_MANY, 'App\Modules\Awards\Award', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

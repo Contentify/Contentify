@@ -589,7 +589,7 @@ class ModelHandler {
 
         $modelClass = $controller->getModelClass();
 
-        if (method_exists($modelClass,'withTrashed')) {
+        if (method_exists($modelClass, 'withTrashed')) {
             $model  = $modelClass::withTrashed()->find($id);
         } else {
             $model  = $modelClass::find($id);
@@ -599,10 +599,23 @@ class ModelHandler {
             throw new Exception("Error: Model $modelClass is not modifiable.");
         }
 
+        if (method_exists($modelClass, 'relations')) {
+            $relations = $modelClass::relations();
+            foreach ($relations as $name => $relation) {
+                if (array_key_exists('dependency', $relation) and $relation['dependency']) {
+                    $dependencies = $model->$name;
+                    if (sizeof($dependencies) > 0) {
+                        $controller->alertFlash(trans('app.delete_error', [sizeof($dependencies), $name]));
+                        return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
+                    }
+                }                
+            }
+        }
+
         /*
          * Delete related files even if it's only a soft deletion.
          */
-        if ((! method_exists($modelClass,'withTrashed') or ! $model->trashed()) 
+        if ((! method_exists($modelClass, 'withTrashed') or ! $model->trashed()) 
             and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
             
             $filePath = $model->uploadPath(true);
@@ -632,7 +645,7 @@ class ModelHandler {
             }
         }
 
-        if (! method_exists($modelClass,'withTrashed') or ! $model->trashed()) {
+        if (! method_exists($modelClass, 'withTrashed') or ! $model->trashed()) {
             $modelClass::destroy($id); // Delete model. If soft deletion is enabled for this model it's a soft deletion
         } else {
             $model->forceDelete(); // Finally delete this model
@@ -657,7 +670,7 @@ class ModelHandler {
 
         $modelClass = $controller->getModelClass();
 
-        if (method_exists($modelClass,'withTrashed')) {
+        if (method_exists($modelClass, 'withTrashed')) {
             $model  = $modelClass::withTrashed()->find($id);
         } else {
             $model  = $modelClass::find($id);
