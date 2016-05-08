@@ -212,7 +212,7 @@ return [
     'object_comments'       => 'Comments',
     'object_config'         => 'Configuration',
     'object_contact'        => 'Contact',
-    'object_coutries'       => 'Countries',
+    'object_countries'      => 'Countries',
     'object_dashboard'      => 'Dashboard',
     'object_diag'           => 'Diagnostics',
     'object_downloads'      => 'Downloads',
