@@ -14,6 +14,7 @@
 @customFont: 'Titillium Web';
 @primaryColor: #00afff;
 @secondaryColor: #FF6100; // orange: FF6100; green: 00ffb3
+@textColor: white;
 @red: #ff4000;
 @green: #00ff4e;
 @orange: #ffa800;
@@ -231,7 +232,8 @@ a:hover { color: @primaryColor; text-decoration: none }
     .item:nth-child(odd) { border-right: 5px solid black; }
     .item.new {  transform: scale(0.9); }
     .image { display: block; height: 200px; background-size: cover; background-position: center; }
-    h2 { width: 100%; .text-overflow() }
+    h2 { width: 100%; .text-overflow(); }
+    a { color: @textColor; }
 }
 @media (max-width: 600px) {
     .page-news-show-stream {
@@ -357,7 +359,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 @forumsBoxColor: @primaryColor;
 
 .page-forums, .page-threads {
-    h1 a { color: white; }
+    h1 a { color: @textColor; }
 }
 
 /* Forums index page */
@@ -567,7 +569,7 @@ a:hover { color: @primaryColor; text-decoration: none }
  * Mainlayout
  */
 
-body { background-color: @darkest; font-family: @customFont; color: white; }
+body { background-color: @darkest; font-family: @customFont; color: @textColor; }
 
 .widget-auth-logged-in a {
     display: inline-block; padding: 5px 10px; border: 1px solid lighten(@dark, 10%); color: lighten(@dark, 20%);
@@ -653,7 +655,7 @@ body { background-color: @darkest; font-family: @customFont; color: white; }
     }
     .more {
         padding: 40px 0px; background-color: @dark;
-        .info a { color: white }
+        .info a { color: @textColor }
         .visitors-label { 
             margin-left: 10px; color: lighten(@dark, 20%); font-weight: bold;
             &:before { content: '-'; margin-right: 10px; } 

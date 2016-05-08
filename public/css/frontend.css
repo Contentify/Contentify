@@ -7199,6 +7199,9 @@ textarea.model-search-box input {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.page-news-show-stream a {
+  color: #ffffff;
+}
 @media (max-width: 600px) {
   .page-news-show-stream .image {
     height: 100px;
@@ -7483,7 +7486,7 @@ textarea.model-search-box input {
 }
 .page-forums h1 a,
 .page-threads h1 a {
-  color: white;
+  color: #ffffff;
 }
 /* Forums index page */
 .page-forums-index .action {
@@ -8072,7 +8075,7 @@ textarea.model-search-box input {
 body {
   background-color: #090a0c;
   font-family: 'Titillium Web';
-  color: white;
+  color: #ffffff;
 }
 .widget-auth-logged-in a {
   display: inline-block;

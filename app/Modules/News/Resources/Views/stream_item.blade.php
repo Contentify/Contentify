@@ -14,7 +14,9 @@
             </a>
         @endif
 
-        <h2 title="{{ $item->title }}">{{ $item->title }}</h2>
+        <h2 title="{{ $item->title }}">
+            <a href="{!! 'news/'.$item->id.'/'.$item->slug !!}">{{ $item->title }}</a>
+        </h2>
 
         <div class="meta below">
             <time>{{ $item->updated_at }}</time> - {!! link_to('users/'.$item->creator->id.'/'.$item->creator->slug, $item->creator->username) !!}
@@ -35,7 +37,9 @@
             </a>
         @endif
 
-        <h2 title="{{ $item->title }}">{{ $item->title }}</h2>
+        <h2 title="{{ $item->title }}">
+            <a href="{!! 'videos/'.$item->id.'/'.$item->slug !!}">{{ $item->title }}</a>
+        </h2>
 
         <div class="meta below">
             <time>{{ $item->updated_at }}</time> - {!! link_to('users/'.$item->creator->id.'/'.$item->creator->slug, $item->creator->username) !!}
