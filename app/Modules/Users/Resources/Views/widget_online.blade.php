@@ -1,5 +1,5 @@
 <div class="widget widget-online">
-    <table class="table">      
+    <table class="table">
         <tbody>
             @foreach ($users as $user)
                 <tr>

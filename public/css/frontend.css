@@ -7970,6 +7970,20 @@ textarea.model-search-box input {
 .page-users-show .details .actions {
   margin-top: 20px;
 }
+.widget-random-user {
+  padding: 10px;
+}
+.widget-random-user a {
+  display: block;
+  text-align: center;
+}
+.widget-random-user .image {
+  text-align: center;
+}
+.widget-random-user .image img {
+  max-width: 90%;
+  max-height: 240px;
+}
 .page-friends:before,
 .page-friends:after {
   content: " ";
