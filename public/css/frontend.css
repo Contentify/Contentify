@@ -8077,6 +8077,9 @@ textarea.model-search-box input {
   padding: 20px 0px;
   background-color: #202427;
 }
+.page-teams-show .lineup h3 {
+  margin-top: 0px;
+}
 .page-teams-show .lineup img {
   max-width: 180px;
   max-height: 240px;

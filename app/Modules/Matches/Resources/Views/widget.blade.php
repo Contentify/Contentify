@@ -2,16 +2,12 @@
     <ul class="list-unstyled">
         @foreach($matches as $match)
             <li>
-                <a href="{{ url('matches/'.$match->id) }}">
-                    @if ($match->game->icon)
-                        <img src="{!! $match->game->uploadPath().$match->game->icon !!}" width="16" height="16" alt="{{ $match->game->title }}">
+                <a href="{{ url('matches/'.$match->id) }}" title="{{ $match->played_at }} | {{ $match->tournament->title }}">
+                    @if ($match->right_team->image)
+                        <img src="{!! $match->right_team->uploadPath().$match->right_team->image !!}" width="30" height="30" alt="{{ $match->right_team->title }}">
                     @endif
                     <span class="right-team">{{ trans('matches::vs').' '.$match->right_team->title }}</span>
                     <span class="scores">{!! $match->scoreCode() !!}</span>
-                    <div>
-                        <small class="tournament">{{ $match->tournament->title }}</small> - 
-                        <small class="date">{{ $match->played_at }}</small>
-                    </div>
                 </a>
             </li>
         @endforeach
