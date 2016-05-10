@@ -119,8 +119,8 @@ class Match extends BaseModel {
         $rightScore = $this->right_score;
 
         if ($this->state != self::STATE_CLOSED and $leftScore == 0 and $rightScore == 0) {
-            $leftScore  = '?';
-            $rightScore = '?';
+            $leftScore  = '??';
+            $rightScore = '??';
         } else {
             if (strlen($leftScore) < $minDigits) {
                 $leftScore = str_repeat('0', $minDigits - strlen($leftScore)).$leftScore;

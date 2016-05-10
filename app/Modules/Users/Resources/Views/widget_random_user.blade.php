@@ -7,6 +7,11 @@
                 <img src="{!! asset('theme/user.png') !!}" alt="{{ $user->username }}">
             @endif
         </div>
-        {{ $user->username }}
+        <div>
+            @if ($user->country->icon)
+                {!! HTML::image($user->country->uploadPath().$user->country->icon, $user->country->title) !!}
+            @endif
+            {{ $user->username }}
+        </div>
     </a>
 </div>

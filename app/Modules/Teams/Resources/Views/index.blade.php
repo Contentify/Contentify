@@ -15,7 +15,8 @@
         </header>
         
         <div class="content">
-            <ul class="list-unstyled">
+            <ul class="list-inline">
+                <li>{{ trans('app.lineup') }}:</li>
                 @foreach ($team->users as $user)
                     <li>
                         <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{{ $user->username }}</a>

@@ -7420,13 +7420,13 @@ textarea.model-search-box input {
   font-size: 30px;
 }
 .page-matches .overview .mid .left-win {
-  color: #008000;
+  color: #00ff4e;
 }
 .page-matches .overview .mid .left-defeat {
-  color: #ff0000;
+  color: #ff4000;
 }
 .page-matches .overview .mid .left-draw {
-  color: #ffa500;
+  color: #ffa800;
 }
 .page-matches .details {
   margin-bottom: 20px;
@@ -8071,6 +8071,24 @@ textarea.model-search-box input {
 }
 .widget-navigation-default .list-unstyled li.item-level-4 {
   padding-left: 100px;
+}
+.page-teams-show .lineup li {
+  margin: 20px 0px;
+  padding: 20px 0px;
+  background-color: #202427;
+}
+.page-teams-show .lineup img {
+  max-width: 180px;
+  max-height: 240px;
+}
+.page-teams-show .matches .left-win {
+  color: #00ff4e;
+}
+.page-teams-show .matches .left-defeat {
+  color: #ff4000;
+}
+.page-teams-show .matches .left-draw {
+  color: #ffa800;
 }
 .widget-teams img {
   max-width: 100%;

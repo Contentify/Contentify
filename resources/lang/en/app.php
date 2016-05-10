@@ -190,6 +190,7 @@ return [
     'back'          => 'Back',
     'theme'         => 'Theme',
     'loading'       => 'Loading',
+    'lineup'        => 'Lineup',
 
     /*
      * Days

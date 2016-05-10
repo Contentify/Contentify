@@ -10,38 +10,80 @@
     </header>
 
     <div class="content">
-        <ul class="list-unstyled">
+        <ul class="list-unstyled lineup">
             @foreach ($team->users as $user)
-                <li>
-                    <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{{ $user->username }}</a>
-                    @if ($user->pivot->task)
-                        ({{ $user->pivot->task }})
-                    @endif
-                    @if ($user->pivot->description)
-                        <p>
-                            {{ $user->pivot->description }}
-                        </p>
-                    @endif
+                <li class="row">
+                    <div class="col-md-4">
+                        <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}"><img src="{!! $user->image ? $user->uploadPath().$user->image : asset('theme/user.png') !!}" alt="{{ $user->title }}"></a>
+                    </div>
+                    <div class="col-md-8">
+                        <h3><a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{{ $user->username }}</a></h3>
+                        @if ($user->pivot->task)
+                            <h4 class="task">{{ $user->pivot->task }}</h4>
+                        @endif
+                        @if ($user->pivot->description)
+                            <p class="description">
+                                {{ $user->pivot->description }}
+                            </p>
+                        @endif
+                        <div class="links">
+                            @if (filter_var($user->facebook, FILTER_VALIDATE_URL))
+                                <a class="btn" href="{{ $user->facebook }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
+                            @else
+                                <a class="btn" href="http://www.facebook.com/{{ $user->facebook }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
+                            @endif
+
+                             @if (filter_var($user->twitter, FILTER_VALIDATE_URL))
+                                <a class="btn" href="{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
+                            @else
+                                <a class="btn" href="http://www.twitter.com/{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
+                            @endif
+                        </div>
+                    </div>                    
                 </li>
             @endforeach
         </ul>
 
         @if (sizeof($team->awards) > 0)
             <div class="awards">
-                <h2>Awards</h2>
+                <h2>{{ trans('app.object_awards') }}</h2>
 
                 <table class="table" data-not-respsonsive="1">
                     <tbody>
-                        @foreach ($team->awards as $award)
+                        @foreach ($team->awards->slice(0, 5) as $award)
                             <tr>
                                 <td>
-                                    {!! $award->positionIcon() !!}<br>
+                                    {!! $award->positionIcon() !!}
                                 </td>
                                 <td>
-                                    {{ $award->title }}<br>
+                                    {{ $award->title }}
                                 </td>
                                 <td>
                                     {{ $award->tournament ? $award->tournament->short : null }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
+
+        @if (sizeof($team->matches) > 0)
+            <div class="matches">
+                <h2>{{ trans('app.object_matches') }}</h2>
+
+                <table class="table" data-not-respsonsive="1">
+                    <tbody>
+                        @foreach ($team->matches->slice(0, 5) as $match)
+                            <tr>
+                                <td>
+                                    {!! HTML::image($match->game->uploadPath().$match->game->icon, $match->game->title, ['width' => 16, 'height' => 16]) !!}
+                                </td>
+                                <td>
+                                    <a href="{{ url('matches/'.$match->id) }}">{{ $match->right_team->title }}</a>
+                                </td>
+                                <td>
+                                    {!! $match->scoreCode() !!}
                                 </td>
                             </tr>
                         @endforeach

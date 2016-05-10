@@ -13,7 +13,7 @@
 
     {!! Form::smartUrl() !!}
 
-    {!! Form::smartText('lineup', trans('opponents::lineup')) !!}
+    {!! Form::smartText('lineup', trans('app.lineup')) !!}
 
     {!! Form::smartImageFile() !!}
 

@@ -324,9 +324,9 @@ a:hover { color: @primaryColor; text-decoration: none }
         & > div { width: 33%; text-align: center; float: left }
         img { max-width: 120px; max-height: 120px }
         .mid { padding-top: 40px; font-size: 30px; }
-        .mid .left-win { color: green }
-        .mid .left-defeat { color: red }
-        .mid .left-draw { color: orange }
+        .mid .left-win { color: @green }
+        .mid .left-defeat { color: @red }
+        .mid .left-draw { color: @orange }
     }
     .details { margin-bottom: 20px; padding-top: 20px; }
     div.scores {
@@ -562,6 +562,18 @@ a:hover { color: @primaryColor; text-decoration: none }
         li.item-level-2 { padding-left: 60px }
         li.item-level-3 { padding-left: 80px }
         li.item-level-4 { padding-left: 100px }
+    }
+}
+
+.page-teams-show {
+    .lineup {
+        li { margin: 20px 0px; padding: 20px 0px; background-color: @dark; }
+        img { max-width: 180px; max-height: 240px; }
+    }
+    .matches {
+        .left-win { color: @green }
+        .left-defeat { color: @red }
+        .left-draw { color: @orange }
     }
 }
 

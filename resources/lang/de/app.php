@@ -190,6 +190,7 @@ return [
     'back'          => 'Zurück',
     'theme'         => 'Design',
     'loading'       => 'Lade',
+    'lineup'        => 'Aufstellung',
 
     /*
      * Days
