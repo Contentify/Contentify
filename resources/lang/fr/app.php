@@ -94,7 +94,7 @@ return [
     'sorting'       => 'Trier',
     'search'        => 'Rechercher',
     'recycle_bin'   => 'Corbeille',
-    'max_size'      => 'Taille Max: :0Bytes',
+    'max_size'      => 'Taille Max: :0 Bytes',
     'accessed'      => 'accédé',
     'no_items'      => 'Il y a aucun item.',
     'share_this'    => 'Partager',
@@ -149,8 +149,8 @@ return [
     'link'          => 'Lien',
     'links'         => 'Liens',
     'send'          => 'Envoyer',
-    'position'      => 'Position', # ??
-    'location'      => 'Location', # ??
+    'position'      => 'Position',
+    'location'      => 'Emplacement', # ??
     'url'           => 'URL',
     'quote'         => 'Citer',
     'size'          => 'Taille',
@@ -169,11 +169,11 @@ return [
     'role'          => 'Rôle',
     'message'       => 'Message',
     'subject'       => 'Sujet',
-    'latest_msgs'   => 'Dernier Feed-Messages', // Admin dashboard feed messages // ????
+    'latest_msgs'   => 'Dernier Messages', // Admin dashboard feed messages // ????
     'quick_access'  => 'Accès rapide', // Admin dashboard quick access
     'setting'       => 'Paramètre',
     'value'         => 'Valeur',
-    'placeholder'   => 'Placeholder, please change!', // Diag module // ?????
+    'placeholder'   => 'Clé de développement par défaut, il faut la changer!', // Diag module
     'compiled'      => 'compilé',
     'website'       => 'Site internet',
     'calendar'      => 'Calendrier',
@@ -235,7 +235,7 @@ return [
     'object_partners'       => 'Partenaires',
     'object_search'         => 'Rechercher',
     'object_servers'        => 'Serveurs',
-    'object_shouts'         => 'Shouts', // ??
+    'object_shouts'         => 'Annonce',
     'object_slides'         => 'Slides',
     'object_streams'        => 'Streams',
     'object_teams'          => 'Equipes',
@@ -256,12 +256,12 @@ return [
     'object_download'           => 'Téléchargement',
     'object_downloadcat'        => 'Catégorie de téléchargement',
     'object_event'              => 'Evènement',
-    'object_post'               => 'Post', // ?
-    'object_thread'             => 'Thread', // ?
-    'object_forum'              => 'Forum', // ?
-    'object_forum_post'         => 'Forum Post', // ?
-    'object_forum_report'       => 'Forum Report', // ?
-    'object_forum_thread'       => 'Forum Thread', // ?
+    'object_post'               => 'Message',
+    'object_thread'             => 'Sujet',
+    'object_forum'              => 'Forum',
+    'object_forum_post'         => 'Message Forum',
+    'object_forum_report'       => 'Signalement Forum',
+    'object_forum_thread'       => 'Sujet Forum',
     'object_gallery'            => 'Gallerie',
     'object_game'               => 'Jeu',
     'object_group'              => 'Groupe',
@@ -300,8 +300,8 @@ return [
     'object_registration'       => 'Inscription',
     'object_restore_password'   => 'Réinitialiser le mot de passe',
     'object_join'               => 'Rejoindre',
-    'object_reports'            => 'Signaler',
-    'object_forum_reports'      => 'Forum-Reports', // ?
+    'object_reports'            => 'Signalement',
+    'object_forum_reports'      => 'Signalement Forum',
     'object_inbox'              => 'Boîte de réception',
     'object_outbox'             => 'Boîte d\'envoie',
     'object_newscats'           => 'Catégories d\'annonces',
@@ -311,7 +311,7 @@ return [
     'object_slidecats'          => 'Catégories slides',
     'object_members'            => 'Membres',
     'object_activities'         => 'Activités',
-    'object_threads'            => 'Threads', // ?
+    'object_threads'            => 'Sujets',
     'object_match_scores'       => 'Scores de match',
 
 ];

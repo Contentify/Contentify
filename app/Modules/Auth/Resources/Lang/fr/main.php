@@ -46,6 +46,6 @@ return array(
     /*
      * Widget
      */
-    'backend'           => 'Admin-Panel',
+    'backend'           => 'Administration',
 
 );
