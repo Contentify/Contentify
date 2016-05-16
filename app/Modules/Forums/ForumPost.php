@@ -35,6 +35,12 @@ class ForumPost extends BaseModel {
     {
         parent::boot();
 
+        // Delete all related forum post reports
+        self::deleted(function ($forumPost)
+        {
+            DB::table('forum_reports')->wherePostId($forumPost->id)->delete();
+        });
+
         self::saved(function ($forumPost)
         {
             $forumPost->cache();
