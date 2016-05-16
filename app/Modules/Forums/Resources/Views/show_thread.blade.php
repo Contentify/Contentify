@@ -6,8 +6,18 @@
 <div class="buttons">
 @if (user())
     @if (user()->hasAccess('forums', PERM_UPDATE))
-        <a class="btn btn-default" href="{!! url('forums/threads/sticky/'.$forumThread->id) !!}">{!! trans('forums::sticky') !!}</a>
-        <a class="btn btn-default" href="{!! url('forums/threads/closed/'.$forumThread->id) !!}">{!! trans('forums::closed') !!}</a>
+        <a class="btn btn-default" href="{!! url('forums/threads/sticky/'.$forumThread->id) !!}">
+            @if ($forumThread->sticky)
+                {!! HTML::fontIcon('check') !!}
+            @endif
+            {!! trans('forums::sticky') !!}
+        </a>
+        <a class="btn btn-default" href="{!! url('forums/threads/closed/'.$forumThread->id) !!}">
+            @if ($forumThread->closed)
+                {!! HTML::fontIcon('check') !!}
+            @endif
+            {!! trans('forums::closed') !!}
+            </a>
         <a class="btn btn-default" href="{!! url('forums/threads/move/'.$forumThread->id) !!}">{!!  trans('forums::move') !!}</a>
     @endif
     @if (user()->hasAccess('forums', PERM_DELETE))
