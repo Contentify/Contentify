@@ -139,7 +139,7 @@ return [
     'valid'         => 'valide',
     'invalid'       => 'invalide',
     'enabled'       => 'Activé',
-    'disbaled'      => 'Désactivé',
+    'disabled'      => 'Désactivé',
     'read_more'     => 'Lire plus...',
     'name'          => 'Nom',
     'username'      => 'Nom d\'utilisateur',
