@@ -185,10 +185,10 @@ return [
     'install'       => 'Installer',
     'preview'       => 'Previsualiser',
     'total'         => 'Total',
-    'nothing_new'   => 'Sorry, nothing new. Please return later.',
-    'back'          => 'Back',
-    'theme'         => 'Theme',
-    'loading'       => 'Loading',
+    'nothing_new'   => 'Désoler, rien de nouveau. Revenez plus tard.',
+    'back'          => 'Retour',
+    'theme'         => 'Thème',
+    'loading'       => 'Chargement',
     'lineup'        => 'Composition',
 
     /*
