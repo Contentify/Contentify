@@ -854,6 +854,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'maps'          => PERM_DELETE,
                 'matches'       => PERM_DELETE,
                 'modules'       => PERM_READ, // So admins can't create modules that make them super admins
+                'navigations'   => PERM_DELETE,
                 'news'          => PERM_DELETE,
                 'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
@@ -896,6 +897,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'maps'          => PERM_DELETE,
                 'matches'       => PERM_DELETE,
                 'modules'       => PERM_DELETE,
+                'navigations'   => PERM_DELETE,
                 'news'          => PERM_DELETE,
                 'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
