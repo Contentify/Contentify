@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Navigations;
-
+
 use SoftDeletingTrait, BaseModel;
 
 class Navigation extends BaseModel {
@@ -8,10 +8,11 @@ class Navigation extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'items'];
+    protected $fillable = ['title', 'translate', 'items'];
 
     protected $rules = [
         'title'     => 'required|min:3',
+        'translate' => 'boolean',
     ];
 
     public static $relationsData = [

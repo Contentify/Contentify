@@ -191,6 +191,7 @@ return [
     'theme'         => 'Design',
     'loading'       => 'Lade',
     'lineup'        => 'Aufstellung',
+    'translate'     => 'Übersetzen',
 
     /*
      * Days

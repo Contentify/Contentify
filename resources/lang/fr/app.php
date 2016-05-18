@@ -190,6 +190,7 @@ return [
     'theme'         => 'Thème',
     'loading'       => 'Chargement',
     'lineup'        => 'Composition',
+    'translate'     => 'Traduire',
 
     /*
      * Days

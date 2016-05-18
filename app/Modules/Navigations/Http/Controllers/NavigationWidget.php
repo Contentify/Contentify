@@ -19,9 +19,11 @@ class NavigationWidget extends Widget {
             $navigation = Navigation::firstOrFail();
         }
 
+        $translate = $navigation->translate;
+
         $items = json_decode($navigation->items);
 
-        return View::make($template, compact('items'))->render();
+        return View::make($template, compact('items', 'translate'))->render();
     }
 
 }

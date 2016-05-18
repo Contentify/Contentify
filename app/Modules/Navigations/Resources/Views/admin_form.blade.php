@@ -5,7 +5,9 @@
 @else
     {!! Form::open(['url' => 'admin/navigations']) !!}
 @endif
-    {!! Form::smartText('title', trans('app.title')) !!} 
+    {!! Form::smartText('title', trans('app.title')) !!}
+
+    {!! Form::smartCheckbox('translate', trans('app.translate')) !!}
 
     <table id="items-table" class="table table-hover">
         <thead>

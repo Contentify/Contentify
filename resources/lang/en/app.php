@@ -191,6 +191,7 @@ return [
     'theme'         => 'Theme',
     'loading'       => 'Loading',
     'lineup'        => 'Lineup',
+    'translate'     => 'Translate',
 
     /*
      * Days

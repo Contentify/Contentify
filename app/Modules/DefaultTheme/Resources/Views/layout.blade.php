@@ -76,6 +76,7 @@
 
     <div class="divider"></div>
     <div class="container">
+        @widget('Navigations::Navigation')
         <div id="mid-container" class="row">
             <div id="content" class="col-md-8">
                 @if (Session::get('_alert'))
