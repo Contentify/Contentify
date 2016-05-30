@@ -52,7 +52,7 @@
                     <td><a href="{{ $match->url }}" target="_blank" title="{{ trans('app.object_match')}} {{ trans('app.url') }}">{{ $match->url }}</a></td>
                 </tr>
             @endif
-            @if ($match->url)
+            @if ($match->broadcast)
                 <tr>
                     <th>{!! trans('matches::broadcast') !!}</th>
                     <td>><a href="{{ $match->broadcast }}" target="_blank" title="{{ trans('matches::broadcast') }}">{{ $match->broadcast }}</a></td>
