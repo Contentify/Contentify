@@ -48,14 +48,16 @@
 <script>
     $(document).ready(function()
     {
-        $('select#_relation_leftTeam').change(function ()
+        var leftTeamLineup = function()
         {
             var id = $(this).val();
             $.get(contentify.baseUrl + 'admin/teams/' + id + '/lineup', function(data)
             {
                 $('#left_lineup').val(data);
             });
-        });
+        };
+
+        $('select#_relation_leftTeam').change(leftTeamLineup);
 
         $('select#_relation_rightTeam').change(function ()
         {
@@ -65,6 +67,10 @@
                 $('#right_lineup').val(data);
             });
         });
+
+        @if (! isset($model))
+            leftTeamLineup.call($('select#_relation_leftTeam'));
+        @endif
         
         // We can't add scores to a match that doesn't actually exist
         @if (isset($model))
