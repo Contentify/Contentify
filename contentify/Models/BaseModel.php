@@ -1,7 +1,7 @@
 <?php namespace Contentify\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Str, DB, DateAccessorTrait, ValidatingTrait, Eloquent, InvalidArgumentException, Exception;
+use File, Input, Str, DB, DateAccessorTrait, ValidatingTrait, Eloquent, InvalidArgumentException, Exception;
 
 class BaseModel extends Eloquent {
 
@@ -57,6 +57,76 @@ class BaseModel extends Eloquent {
         }
 
         return $base.'/uploads/'.$dir.'/';
+    }
+
+    /**
+     * Tries to upload a file. It tries to delete the existing (old) file,
+     * if isntead of a file the string "." was sent.
+     * Returns null or an error message (if an image file is invalid).
+     * 
+     * @param  string $fieldName  The name of the form field
+     * @param  bool   $isImage    If true ensure the file is an image
+     * @param  array  $thumbnails For images only: Array with closures or sizes of thumbnails
+     * @return string|null
+     */
+    public function uploadFile($fieldName, $isImage = false, $thumbnails = array())
+    {
+        $file = Input::file($fieldName);
+
+        if ($file == null and Input::get($fieldName) != '.') {
+            return;
+        }
+        
+        if ($file) {
+            $extension  = $file->getClientOriginalExtension();
+
+            if ($isImage) {
+                try {
+                    $imgData = getimagesize($file->getRealPath()); // Try to gather infos about the image
+                } catch (Exception $e) {
+                    // Do nothing.
+                }
+
+                if (! isset($imgData[2]) or ! $imgData[2]) { // Check if image has a size. If not, it's not an image.
+                    return trans('app.invalid_image');
+                }
+            }
+        }
+
+        $filePath = $this->uploadPath(true);
+
+        if (File::exists($filePath.$this->getOriginal($fieldName))) {
+            File::delete($filePath.$this->getOriginal($fieldName)); // Delete the old file
+        }
+
+        if ($file) {
+            $filename           = $this->id.'_'.$fieldName.'.'.$extension;
+            $uploadedFile       = $file->move($filePath, $filename);
+            $this->$fieldName   = $filename;
+            $this->save();
+        } else {
+            $this->$fieldName   = '';
+            $this->save();
+        }   
+
+        if ($isImage) {
+            foreach ($thumbnails as $thumbnail) {
+                if (is_callable($humbnail)) {
+                    $thumbnail($file ? $filePath.$filename : null); // Let the closure handle the thumbnailing
+                } else {
+                    if (File::exists($filePath.$thumbnail.'/'.$this->getOriginal($fieldName))) {
+                        File::delete($filePath.$thumbnail.'/'.$this->getOriginal($fieldName)); // Delete old thumbnail
+                    }
+
+                    if ($file) {
+                        InterImage::make($filePath.'/'.$filename)->resize($thumbnail, $thumbnail, function ($constraint) 
+                        {
+                            $constraint->aspectRatio(); // Keep the aspect ratio
+                        })->save($filePath.$thumbnail.'/'.$filename);
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -321,6 +391,7 @@ class BaseModel extends Eloquent {
      * @param  string  $related
      * @param  string  $foreignKey
      * @param  string  $otherKey
+     * @param  string  $relation
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function belongsTo($related, $foreignKey = NULL, $otherKey = NULL, $relation = NULL) {
