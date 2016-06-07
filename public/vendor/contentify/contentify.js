@@ -189,6 +189,9 @@ $(document).ready(function()
             var text = framework.translations.request_failed;
 
             if (response.status) {
+                if (text) {
+                    text += ' ';
+                }
                 text += framework.translations.code + ': ' + response.status + '. ';
             }
 
@@ -281,7 +284,7 @@ $(document).ready(function()
                 })
             );
 
-            framework.modal('Confirm', framework.translations.delete_item, $footer);
+            framework.modal(framework.translations.confirm, framework.translations.delete_item, $footer);
         });
 
         /*
