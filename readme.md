@@ -16,7 +16,7 @@ Clone this repository (`master` branch) via git. Via console, switch to the Cont
 
 ### Download
 
-Download it here: [contentify.org/share/releases/contentify_1_0_0.zip](http://contentify.org/share/releases/contentify_1_0_0.zip)
+Download it here: _Currently not available._
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
@@ -29,6 +29,8 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 > The server resets (database, uploaded files and cache) twice per hour.
 
 You may download the demo website project here: [contentify.org/share/contentify_demo.zip](http://www.contentify.org/share/contentify_demo.zip)
+
+> NOTE: The demo website is running with Contentify 1.0.
 
 ### Contribution
 

@@ -290,7 +290,7 @@ class User extends SentinelUser {
     /**
      * Tries to upload an image
      * 
-     * @param  string $fieldName Name of the form field
+     * @param  string $fieldName The name of the form field
      * @return Redirect|null
      */
     public function uploadImage($fieldName)
