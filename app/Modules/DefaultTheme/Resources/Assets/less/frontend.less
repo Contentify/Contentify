@@ -4,8 +4,8 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,300,700);
 
-@import 'bootstrap/bootstrap';
-@import 'shared';
+@import '/../../../../../../resources/assets/less/bootstrap/bootstrap';
+@import '/../../../../../../resources/assets/less/shared';
 
 /*
  * Global Variables
@@ -57,14 +57,17 @@ a:hover { color: @primaryColor; text-decoration: none }
  */
 
 .page-title { 
-    margin: 0px 0px 20px 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: white; font-size: 16px; font-weight: bold; text-transform: uppercase; 
-    a { color: white }
+    margin: 0px 0px 20px 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: @textColor; font-size: 16px; font-weight: bold; text-transform: uppercase; 
+    a { color: @textColor }
 }
 .page { margin-bottom: 20px; padding: 20px; background-color: @darker; }
-.alert { border-radius: 0px; }
-.alert-info { background-color: @primaryColor; color: white; border: none; border-left: 4px solid darken(@primaryColor, 20%) }
-.alert-success { background-color: @green; color: white; border: none; border-left: 4px solid darken(@green, 20%) }
-.alert-error { background-color: @red; color: white; border: none; border-left: 4px solid darken(@red, 20%) }
+.alert { 
+    border-radius: 0px; 
+    a { color: @textColor }
+}
+.alert-info { background-color: @primaryColor; color: @textColor; border: none; border-left: 4px solid darken(@primaryColor, 20%) }
+.alert-success { background-color: @green; color: @textColor; border: none; border-left: 4px solid darken(@green, 20%) }
+.alert-error { background-color: @red; color: @textColor; border: none; border-left: 4px solid darken(@red, 20%) }
 .well { background-color: black; border-color: @dark; }
 
 /* Messages */
@@ -78,7 +81,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 
 /* Form */
 .btn, .input-group-addon { border-radius: 0px; border-color: @primaryColor; background-color: transparent; color: @primaryColor }
-.btn:focus, .btn:hover { border-color: @primaryColor; background-color: @primaryColor; color: white; }
+.btn:focus, .btn:hover { border-color: @primaryColor; background-color: @primaryColor; color: @textColor; }
 .input-group-addon { border-left: 1px solid @primaryColor !important }
 
 .form-errors { }
@@ -91,7 +94,7 @@ a:hover { color: @primaryColor; text-decoration: none }
         border: none;
         border-bottom: 2px solid @primaryColor;
         border-radius: 1px;
-        color: white;
+        color: @textColor;
         &:focus { box-shadow: none !important; }
     }
     textarea { height: auto }
@@ -109,7 +112,7 @@ a:hover { color: @primaryColor; text-decoration: none }
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     background-color: @primaryColor;
-    color: white;
+    color: @textColor;
 }
 
 /* Content filter UI */
@@ -161,22 +164,22 @@ a:hover { color: @primaryColor; text-decoration: none }
         a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0px }
         img { max-width: 100%;  }
     }
-    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: white; opacity: 0.2; text-align: center; }
-    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: white; opacity: 0.2; text-align: center }
+    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; }
+    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center }
     .to-left:hover, .to-right:hover { opacity: 1 }
     .buttons { 
         position: absolute; right: 40px; bottom: 40px;
         ul { margin-bottom: 0px; }
         li { 
             width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: black; color: rgba(255, 255, 255, 0.5); opacity: 0.5; cursor: pointer; text-align: center;
-            &.active{ outline: 1px solid @primaryColor; color: white; }
+            &.active{ outline: 1px solid @primaryColor; color: @textColor; }
         }
-        li:hover { opacity: 1; color: white; }
+        li:hover { opacity: 1; color: @textColor; }
     }
     .container { position: relative; height: 100%; }
     .slide-title { 
         position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0px; left: 40px; bottom: 40px; color: white; text-shadow: 0px 0px 3px black; background-color: rgba(0, 0, 0, 0.7);
-        a { display: inline-block; padding: 20px; color: white; }
+        a { display: inline-block; padding: 20px; color: @textColor; }
     }
 }
 @media (max-width: 990px) {
@@ -297,7 +300,7 @@ a:hover { color: @primaryColor; text-decoration: none }
         .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
         .item.active {  }
     }
-    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0px; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: white; text-align: center; }
+    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0px; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: @textColor; text-align: center; }
     .previews-wrapper:hover .link { opacity: 1 }
     .previews-wrapper .to-left { left: 0px; }
     .previews-wrapper .to-right { right: 0px; }
@@ -364,16 +367,16 @@ a:hover { color: @primaryColor; text-decoration: none }
 
 /* Forums index page */
 .page-forums-index {
-    .action { border-radius: 3px; background-color: @primaryColor; color: white }
+    .action { border-radius: 3px; background-color: @primaryColor; color: @textColor }
     .root-forum {
-        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
         margin-top: 20px;
     }
     .sub-forums { .clearfix(); }
     .sub-forum {
         padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
         &.head { 
-            padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; 
+            padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; 
         }
         .info { 
             width: 55%; float: left;
@@ -399,10 +402,10 @@ a:hover { color: @primaryColor; text-decoration: none }
         .clearfix(); 
         .thread, .sub-forum {
             padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
-            &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: white; }
+            &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
             .info { 
                 width: 60%; float: left;
-                .sticky, .closed { padding: 2px; border-radius: 3px; background-color: @primaryColor; font-size: 10px; color: white; }
+                .sticky, .closed { padding: 2px; border-radius: 3px; background-color: @primaryColor; font-size: 10px; color: @textColor; }
                 .meta { display: block; font-size: 10px }
             }
             .counter { width: 15%; float: left }
@@ -555,6 +558,64 @@ a:hover { color: @primaryColor; text-decoration: none }
     }
 }
 
+.page-cups-show {
+    .image { 
+        margin: 20px 0px; text-align: center;
+        img { max-width: 100%; }
+    }
+    .actions { margin: 20px 0px; padding: 20px; border: 2px solid @primaryColor; font-size: 1.5em; text-align: center; }
+    #description .text { margin: 20px 0px; }
+    #bracket { overflow: auto }
+    .bracket {
+        @borderColor: @textColor;
+        display: flex; flex-direction: row;
+        .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0px; }
+        .round .spacer { flex-grow: 1; }
+        .round .spacer:first-child, .round .spacer:last-child { flex-grow: .5; }
+        .match { padding-left: 20px; }
+        .match.winner { font-weight: bold; }
+        .match .score { float: right; margin-right: 5px; }
+        .match-top { border-bottom: 1px solid @borderColor;  }
+        .match-spacer { border-right: 1px solid @borderColor; min-height: 40px; display: flex; justify-content: center; flex-direction: column; text-align: right; padding-right: 5px; flex-grow: 1; }
+        .match-bottom { border-top: 1px solid @borderColor; }
+    }
+}
+.page-cups-teams-overview, .page-cups-show-team {
+    li { margin-bottom: 10px; }
+    .image { 
+        margin: 20px 0px; 
+        img { max-height: 200px; }
+    }
+}
+.page-cups-show-match {  
+    .overview {
+        & > div { width: 33%; text-align: center; float: left }
+        img { max-width: 120px; }
+        a { display: block }
+        .mid { padding-top: 40px; font-size: 30px; }
+        .mid .left-win { color: @green }
+        .mid .left-defeat { color: @red }
+        .mid .left-draw { color: @orange }
+    }
+    .details { 
+        margin-bottom: 20px; padding-top: 20px; 
+        form { margin-bottom: 5px }
+        form:last-child { margin-bottom: 0px }
+        input { width: 50px; text-align: center; }
+    }
+}
+@media (max-width: @screen-phone) {
+    .page-matches {
+        .overview {
+            img { max-width: 80px; max-height: 80px }
+        }
+    }
+}
+
+.widget-featured-cup {
+    img { margin: 20px 0px; }
+}
+
 .widget-navigation-default {
     .list-unstyled {
         li.item-level-0 { padding-left: 20px }
@@ -592,6 +653,9 @@ a:hover { color: @primaryColor; text-decoration: none }
  */
 
 body { background-color: @darkest; font-family: @customFont; color: @textColor; }
+th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !important }
+.nav-tabs li.active a { border-left: @dark !important; border-top: @dark !important; border-right: @dark !important; background-color: @dark !important; color: @textColor !important }
+.nav-tabs a:hover { background-color: @dark !important }
 
 .widget-auth-logged-in a {
     display: inline-block; padding: 5px 10px; border: 1px solid lighten(@dark, 10%); color: lighten(@dark, 20%);
