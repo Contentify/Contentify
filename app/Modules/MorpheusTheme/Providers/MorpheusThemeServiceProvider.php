@@ -1,11 +1,11 @@
-<?php namespace App\Modules\DefaultTheme\Providers;
+<?php namespace App\Modules\MorpheusTheme\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;
 
-class DefaultThemeServiceProvider extends ServiceProvider {
+class MorpheusThemeServiceProvider extends ServiceProvider {
 
-    protected $namespace = 'defaultTheme';
+    protected $namespace = 'morpheusTheme';
 
     public function register()
     {
