@@ -25,7 +25,8 @@ return [
     /*
      * Errors
      */
-    'not_found' => 'Ressource konnte nicht gefunden werden.',
+    'not_found'     => 'Ressource konnte nicht gefunden werden.',
+    'not_possible'  => 'Entschuldigung, diese Aktion ist derzeit nicht verfügbar.',
 
     /*
      * User permisssions
@@ -192,6 +193,16 @@ return [
     'loading'       => 'Lade',
     'lineup'        => 'Aufstellung',
     'translate'     => 'Übersetzen',
+    'successful'    => 'Erfolgreich!',
+    'slots'         => 'Slots',
+    'mode'          => 'Modus',
+    'prize'         => 'Preis',
+    'closed'        => 'Geschlossen',
+    'leave'         => 'Verlassen',
+    'join'          => 'Beitreten',
+    'confirm'       => 'Bestätigen',
+    'rules'         => 'Regeln',
+    'round'         => 'Runde',
 
     /*
      * Days
@@ -220,6 +231,7 @@ return [
     'object_config'         => 'Einstellungen',
     'object_contact'        => 'Kontakt',
     'object_countries'      => 'Staaten',
+    'object_cups'           => 'Cups',
     'object_dashboard'      => 'Dashboard',
     'object_diag'           => 'Diagnose',
     'object_downloads'      => 'Downloads',
@@ -260,6 +272,7 @@ return [
     'object_contact_message'    => 'Kontaktnachricht',
     'object_join_message'       => 'Bewerbung',
     'object_country'            => 'Staat',
+    'object_cup'                => 'Cup',
     'object_download'           => 'Download',
     'object_downloadcat'        => 'Download-Kategorie',
     'object_event'              => 'Event',
@@ -320,5 +333,6 @@ return [
     'object_activities'         => 'Aktivitäten',
     'object_threads'            => 'Threads',
     'object_match_scores'       => 'Match-Ergebnisse',
+    'object_participants'       => 'Teilnehmer',
 
 ];

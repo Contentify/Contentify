@@ -25,7 +25,8 @@ return [
     /*
      * Errors
      */
-    'not_found' => 'Resource not found.',
+    'not_found'     => 'Resource not found.',
+    'not_possible'  => 'Sorry, but this action is not available right now.',
 
     /*
      * User permisssions
@@ -192,6 +193,16 @@ return [
     'loading'       => 'Loading',
     'lineup'        => 'Lineup',
     'translate'     => 'Translate',
+    'successful'    => 'Successful!',
+    'slots'         => 'Slots',
+    'mode'          => 'Mode',
+    'prize'         => 'Prize',
+    'closed'        => 'Closed',
+    'leave'         => 'Leave',
+    'join'          => 'Join',
+    'confirm'       => 'Confirm',
+    'rules'         => 'Rules',
+    'round'         => 'Round',
 
     /*
      * Days
@@ -220,6 +231,7 @@ return [
     'object_config'         => 'Configuration',
     'object_contact'        => 'Contact',
     'object_countries'      => 'Countries',
+    'object_cups'           => 'Cups',
     'object_dashboard'      => 'Dashboard',
     'object_diag'           => 'Diagnostics',
     'object_downloads'      => 'Downloads',
@@ -260,6 +272,7 @@ return [
     'object_contact_message'    => 'Contact Message',
     'object_join_message'       => 'Application',
     'object_country'            => 'Country',
+    'object_cup'                => 'Cup',
     'object_download'           => 'Download',
     'object_downloadcat'        => 'Download-Category',
     'object_event'              => 'Event',
@@ -320,5 +333,6 @@ return [
     'object_activities'         => 'Activities',
     'object_threads'            => 'Threads',
     'object_match_scores'       => 'Match Scores',
+    'object_participants'       => 'Participants',
 
 ];

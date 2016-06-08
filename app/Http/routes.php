@@ -115,9 +115,9 @@ Route::get('test', function()
 { 
     /*
     $controller = new InstallController();
-    $controller->create('table', function($table)
+    $controller->create('table_name', function($table)
     {
-
+        $table->string('attribute_name')->nullable();
     });
     */
 });
