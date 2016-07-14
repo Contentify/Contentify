@@ -589,7 +589,7 @@ class ModelHandler {
 
         $modelClass = $controller->getModelClass();
 
-        if (method_exists($modelClass, 'withTrashed')) {
+        if (method_exists($modelClass, 'trashed')) {
             $model  = $modelClass::withTrashed()->find($id);
         } else {
             $model  = $modelClass::find($id);
@@ -615,7 +615,7 @@ class ModelHandler {
         /*
          * Delete related files even if it's only a soft deletion.
          */
-        if ((! method_exists($modelClass, 'withTrashed') or ! $model->trashed()) 
+        if ((! method_exists($modelClass, 'trashed') or ! $model->trashed()) 
             and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
             
             $filePath = $model->uploadPath(true);
@@ -645,7 +645,7 @@ class ModelHandler {
             }
         }
 
-        if (! method_exists($modelClass, 'withTrashed') or ! $model->trashed()) {
+        if (! method_exists($modelClass, 'trashed') or ! $model->trashed()) {
             $modelClass::destroy($id); // Delete model. If soft deletion is enabled for this model it's a soft deletion
         } else {
             $model->forceDelete(); // Finally delete this model
