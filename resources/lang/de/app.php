@@ -95,7 +95,7 @@ return [
      */
     'sorting'       => 'Sortierung',
     'search'        => 'Suchen',
-    'recycle_bin'   => 'Parpierkorb',
+    'recycle_bin'   => 'Papierkorb',
     'max_size'      => 'Max. Größe: :0Bytes',
     'accessed'      => 'aufgerufen',
     'no_items'      => 'Es gibt noch keine Einträge.',
