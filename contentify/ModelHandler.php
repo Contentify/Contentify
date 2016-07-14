@@ -670,11 +670,12 @@ class ModelHandler {
 
         $modelClass = $controller->getModelClass();
 
-        if (method_exists($modelClass, 'withTrashed')) {
+        // TODO: Remove unnecessary code
+        //if (method_exists($modelClass, 'trashed')) {
             $model  = $modelClass::withTrashed()->find($id);
-        } else {
-            $model  = $modelClass::find($id);
-        }
+        //} else {
+        //    $model  = $modelClass::find($id);
+        //}
 
         $model->restore();
 
