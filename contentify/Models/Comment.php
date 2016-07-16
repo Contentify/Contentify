@@ -10,7 +10,7 @@ class Comment extends BaseModel {
 
     protected $fillable = array('text');
 
-    public static $rules = array(
+    public $rules = array(
         'text'  => 'required|min:3',
     );
 
