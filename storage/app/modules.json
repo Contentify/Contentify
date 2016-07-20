@@ -21,6 +21,7 @@
     "Matches": true,
     "Maps": true,
     "Countries": true,
+    "Cups": true,
     "Dashboard": true,
     "Contact": true,
     "Config": true,

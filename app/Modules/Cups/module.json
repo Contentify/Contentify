@@ -1,0 +1,11 @@
+{
+    "slug": "Cups",
+    "enabled": true,
+    "admin-nav": [
+        {
+            "url": "admin/cups",
+            "icon": "share-alt",
+            "category": 3     
+        }
+    ]
+}

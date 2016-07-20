@@ -8,7 +8,7 @@ class Slide extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'url', 'position', 'published', 'slidecat_id'];
+    protected $fillable = ['title', 'text', 'url', 'position', 'published', 'slidecat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 

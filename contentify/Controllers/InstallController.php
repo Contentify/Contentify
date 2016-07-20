@@ -446,12 +446,12 @@ class InstallController extends Controller {
 
         $this->create('slides', function($table)
         {
+            $table->text('text')->nullable();
             $table->string('url')->nullable();
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
         }, ['slidecat_id'], ['slug']);
-
                
         $this->create('tournaments', function($table)
         {
@@ -601,6 +601,80 @@ class InstallController extends Controller {
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true)->nullable();
         }, ['user_id'], false);
+
+        $this->create('cups_teams', function($table)
+        {
+            $table->string('image')->nullable();
+            $table->string('password')->nullable();
+            $table->boolean('hidden')->default(false);
+        });
+
+        Schema::dropIfExists('cups_team_members');
+        Schema::create('cups_team_members', function($table)
+        {
+            $table->integer('team_id');
+            $table->integer('user_id');
+            $table->boolean('organizer')->default(false);
+            $table->primary(['team_id', 'user_id']);
+        });
+
+        $this->create('cups', function($table)
+        {
+            $table->text('description')->nullable();
+            $table->text('rulebook')->nullable(); // Note: We cannot name this attribute "rules"
+            $table->integer('players_per_team');
+            $table->integer('slots');
+            $table->string('prize');
+            $table->string('image')->nullable();
+            $table->timestamp('join_at')->nullable();
+            $table->timestamp('check_in_at')->nullable();
+            $table->timestamp('start_at')->nullable();
+            $table->boolean('featured')->default(false);
+            $table->boolean('published')->default(false);
+            $table->boolean('closed')->default(false);
+        },  ['game_id']);
+
+        Schema::dropIfExists('cups_participants');
+        Schema::create('cups_participants', function($table)
+        {
+            $table->integer('cup_id');
+            $table->integer('participant_id');
+            $table->boolean('checked_in')->default(false);
+            $table->primary(['cup_id', 'participant_id']);
+        });
+
+        $this->create('cups_matches', function($table)
+        {
+            $table->integer('round');
+            $table->integer('row');
+            $table->boolean('with_teams'); // Helper attribute. Value is determined by the cup.
+            $table->integer('left_participant_id');
+            $table->integer('right_participant_id');
+            $table->integer('winner_id')->default(0);
+            $table->integer('next_match_id')->default(0);
+            $table->integer('left_score')->default(0); // Total score
+            $table->integer('right_score')->default(0);
+            $table->boolean('left_confirmed')->default(false);
+            $table->boolean('right_confirmed')->default(false);
+        }, 
+        ['cup_id'], ['title', 'slug']);
+        
+        Schema::dropIfExists('cups_users');
+        Schema::create('cups_users', function($table)
+        {
+            $table->integer('cup_id');
+            $table->integer('user_id');
+            $table->boolean('cup_closed')->default(false); // Helper attribute. Value is determined by the cup.
+            $table->primary(['cup_id', 'user_id']);
+        });
+
+        Schema::dropIfExists('cups_referees');
+        Schema::create('cups_referees', function($table)
+        {
+            $table->integer('cup_id');
+            $table->integer('user_id');
+            $table->primary(['cup_id', 'user_id']);
+        });
 
         /*
          * (Re)activate foreign key checks
@@ -843,6 +917,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'config'        => PERM_DELETE,
                 'contact'       => PERM_DELETE,
                 'countries'     => PERM_DELETE,
+                'cups'          => PERM_DELETE,
                 'diag'          => PERM_DELETE,
                 'downloads'     => PERM_DELETE,
                 'events'        => PERM_DELETE,
@@ -886,6 +961,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'config'        => PERM_DELETE,
                 'contact'       => PERM_DELETE,
                 'countries'     => PERM_DELETE,
+                'cups'          => PERM_DELETE,
                 'diag'          => PERM_DELETE,
                 'downloads'     => PERM_DELETE,
                 'events'        => PERM_DELETE,

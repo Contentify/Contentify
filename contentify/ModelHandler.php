@@ -742,6 +742,12 @@ class ModelHandler {
                             }
                             break;
                         case 'belongsToMany':
+                            if ($model->id === null) {
+                                throw new Exception(
+                                    "Error: Relation '$name' tries to retrieve the model ID, but the ID is null."
+                                );  
+                            }
+
                             $sourceKey = class_basename(strtolower($modelClass)).'_'.$model->getKeyName();
                             DB::table($relation['table'])->where($sourceKey, '=', $model->id)->delete();
 
@@ -768,7 +774,7 @@ class ModelHandler {
                             break;
                         default:
                             throw new Exception(
-                                "Error: Unkown relation type '{$relation[0]}' for model of type '{$modelClass}'."
+                                "Error: Unsupported relation type '{$relation[0]}' for model of type '{$modelClass}'."
                             );
                     }
                 } else {

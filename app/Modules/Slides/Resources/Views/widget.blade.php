@@ -7,6 +7,9 @@
                         <a href="{{ $slide->url }}" title="{{ $slide->title }}" target="_blank" style="background-image: url('{!! $slide->uploadPath().$slide->image !!}')">
                             {{ $slide->title }}
                         </a>
+                        @if ($slide->text)
+                            <div class="text">{{ $slide->text }}</div>
+                        @endif
                     </li>
                 @endforeach
             </ul>
