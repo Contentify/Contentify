@@ -1,4 +1,5 @@
-Cups:
+Cups
+----
 
 - Single-Elimination
 - The maximum of participants per cup is 1024
@@ -15,5 +16,5 @@ Cups:
 - Between the official start of the cup and the revealing of the bracket admins will have two minutes to correct the seeding. During this time span the matches and the bracket are only visible for them.
 - Sometimes both participants of a match will accidentally confirm an invalid result. Sometimes participants will leave the cup after they ahve lost a match without confirm the result. These things happen - maybe not not often, but they do. Therefore we strongly recommend that every cup is accompanied by at least one refugee (who should be an admin). The task of the refugee is to confirm results if one participant of a match does not and to correct the winner of a match if the wrong participant was recorded as the winner.
 
-NOTE:
+**NOTE:**
 Only super admins have admin rights on the frontend pages of the cups module (this may be changed in the future).
