@@ -184,7 +184,7 @@ class TeamsController extends FrontController {
         $team = new Team;
 
         $team->title = trim(Input::get('title'));
-        $team->slug = $team->createSlug();
+        $team->createSlug();
         $team->password = Input::get('password');
         $team->creator_id = user()->id;
         
