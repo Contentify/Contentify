@@ -152,7 +152,7 @@ class ModelHandler {
         } else {
             $models = $modelClass::orderBy($data['sortby'], $data['order']);
 
-            if ($userInterface == 'admin' and Session::get('recycleBinMode')) {
+            if ($userInterface == 'admin' and Session::get('recycleBinMode') and (new $modelClass)->isSoftDeleting()) {
                 $models = $models->withTrashed(); // Show trashed
             }
 

@@ -30,7 +30,7 @@ class User extends BaseUser {
     }
 
     /**
-     * This is a copy of an BaseModel method (for compatibility).
+     * This is a copy of a BaseModel method (for compatibility).
      * 
      * @return bool
      */

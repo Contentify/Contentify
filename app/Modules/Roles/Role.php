@@ -42,7 +42,7 @@ class Role extends BaseModel {
     {
         $adminRole = Sentinel::findRoleBySlug('super-admins');
 
-        return ($this->id > $adminRole->id);
+        return (parent::modifiable() and $this->id > $adminRole->id);
     }
 
     /**

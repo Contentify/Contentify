@@ -138,7 +138,8 @@ class BaseModel extends Eloquent {
      */
     public function modifiable()
     {
-        return true;
+        // One cannot edit or delete a deleted model
+        return (! $this->isSoftDeleting() or ! $this->trashed());
     }
 
     /**
