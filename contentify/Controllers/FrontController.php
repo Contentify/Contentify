@@ -41,10 +41,6 @@ abstract class FrontController extends BaseController {
     {
         $url = URL::previous();
 
-        // Alternative:
-        //$class = static::class;
-        //$url = URL::action($class.'@index');
-
         return Redirect::to($url)->withInput(Input::only('search'));
     }
     

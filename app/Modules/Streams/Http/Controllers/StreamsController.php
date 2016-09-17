@@ -69,7 +69,14 @@ class StreamsController extends FrontController {
 
         $this->pageView('streams::show', compact('stream'));
     }
-
+    
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
     public function globalSearch($subject)
     {
         $streams = Stream::where('title', 'LIKE', '%'.$subject.'%')->get();

@@ -49,7 +49,14 @@ class EventsController extends FrontController {
             $this->pageView('events::calendar', compact('year', 'month'));
         }
     }
-
+    
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
     public function globalSearch($subject)
     {
         $events = Event::where('title', 'LIKE', '%'.$subject.'%')->get();

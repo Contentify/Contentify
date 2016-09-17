@@ -282,4 +282,23 @@ class CupsController extends FrontController {
         return Redirect::to('cups/'.$cup->id.'/'.$cup->slug);
     }
 
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
+    public function globalSearch($subject)
+    {
+        $cups = Cup::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
+
+        $results = array();
+        foreach ($cups as $cup) {
+            $results[$cup->title] = URL::to('cups/'.$cup->id.'/'.$cup->slug);
+        }
+
+        return $results;
+    }
+
 }

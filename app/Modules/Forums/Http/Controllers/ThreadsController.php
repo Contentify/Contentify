@@ -264,7 +264,14 @@ class ThreadsController extends FrontController {
         $this->alertFlash(trans('app.updated', ['Thread']));
         return Redirect::to('forums/'.$forumThread->forum_id);
     }
-
+    
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with result for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
     public function globalSearch($subject)
     {
         $forumThreads = ForumThread::isAccessible()->where('forum_threads.title', 'LIKE', '%'.$subject.'%')->get();

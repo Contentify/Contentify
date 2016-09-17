@@ -2,7 +2,7 @@
 
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
-use Response, DB, Validator, Str, Redirect, Input, User, View, FrontController;
+use URL, Response, DB, Validator, Str, Redirect, Input, User, View, FrontController;
 
 class TeamsController extends FrontController {
 
@@ -293,6 +293,25 @@ class TeamsController extends FrontController {
             $this->alertError(trans('app.access_denied'));
             return;
         }       
+    }
+
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
+    public function globalSearch($subject)
+    {
+        $teams = Team::where('title', 'LIKE', '%'.$subject.'%')->get();
+
+        $results = array();
+        foreach ($teams as $team) {
+            $results[$team->title] = URL::to('cups/teams/'.$team->id.'/'.$team->slug);
+        }
+
+        return $results;
     }
 
 }

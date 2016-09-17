@@ -77,7 +77,14 @@ class DownloadsController extends FrontController {
         if ($extension) $shortName .= '.'.$extension;
         return Response::download($download->uploadPath(true).$download->file, $shortName);
     }
-
+    
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
     public function globalSearch($subject)
     {
         $downloads = Download::where('title', 'LIKE', '%'.$subject.'%')->get();

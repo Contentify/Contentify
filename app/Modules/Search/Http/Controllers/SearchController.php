@@ -29,8 +29,18 @@ class SearchController extends FrontController {
                     foreach ($controllers as $controller) { 
                         $classPath = 'App\Modules\\'.ucfirst($module['slug'])
                             .'\Http\Controllers\\'.ucfirst($controller).'Controller';
-                        $instance = new $classPath; // Create isntance of the controller...
-                        $results = $instance->globalSearch($subject); // ...and call the search method.
+
+                        $instance = new $classPath; // Create instance of the controller...
+
+                        try {
+                            $results = $instance->globalSearch($subject); // ...and call the search method.
+                        } catch(BadMethodCallException $ex) {
+                            die(var_dump($ex));
+                            throw new Exception(
+                                'Error: Controller "'.$classPath.'" does not implement the globalSearch() method. '.
+                                'You have to implement this method if you want this controller to be searchable.'
+                            );
+                        }
                         
                         if (sizeof($results) > 0) {
                             $resultBags[] = ['title' => $controller, 'results' => $results];

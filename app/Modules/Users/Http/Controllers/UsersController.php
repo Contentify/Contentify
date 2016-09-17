@@ -161,7 +161,14 @@ class UsersController extends FrontController {
         return Redirect::to("users/{$id}/edit");
 
     }
-
+    
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
     public function globalSearch($subject)
     {
         $users = User::where('username', 'LIKE', '%'.$subject.'%')->get();

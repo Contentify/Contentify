@@ -40,6 +40,13 @@ class VideosController extends FrontController {
         $this->pageView('videos::show', compact('video'));
     }
 
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
     public function globalSearch($subject)
     {
         $videos = Video::where('title', 'LIKE', '%'.$subject.'%')->get();

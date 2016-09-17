@@ -149,7 +149,14 @@ class NewsController extends FrontController {
     {
         $this->show(null, $slug);
     }
-
+    
+    /**
+     * This method is called by the global search (SearchController->postCreate()).
+     * Its purpose is to return an array with results for a specific search query.
+     * 
+     * @param  string $subject The search term
+     * @return string[]
+     */
     public function globalSearch($subject)
     {
         $newsCollection = News::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
