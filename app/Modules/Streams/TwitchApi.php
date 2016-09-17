@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Streams;
 
-use DateTime;
+use Log, DateTime;
 
 class TwitchApi extends StreamApi
 {
@@ -45,6 +45,11 @@ class TwitchApi extends StreamApi
     public function updateStreams(array $streams)
     {
         $data = $this->getStreams($streams);
+
+        if (isset($data->error)) {
+            Log::error('Twitch API error: '.$data->error.' - '.$data->message);
+            return;
+        }
 
         foreach ($streams as $stream) {
             $stream->online     = false;
