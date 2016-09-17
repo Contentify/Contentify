@@ -230,7 +230,7 @@ return [
     'object_config'         => 'Configuration',
     'object_contact'        => 'Contact',
     'object_countries'      => 'Pays',
-    'object_cups'           => 'Cup',
+    'object_cups'           => 'Tournois',
     'object_dashboard'      => 'Tableau de bord',
     'object_diag'           => 'Diagnostiques',
     'object_downloads'      => 'Téléchargements',
