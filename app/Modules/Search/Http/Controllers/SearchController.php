@@ -31,11 +31,10 @@ class SearchController extends FrontController {
                             .'\Http\Controllers\\'.ucfirst($controller).'Controller';
                         $instance = new $classPath; // Create isntance of the controller...
                         $results = $instance->globalSearch($subject); // ...and call the search method.
-                    }
-
-                    if (sizeof($results) > 0) {
-                        // Wrap the results in a result bag:
-                        $resultBags[] = ['title' => $controller, 'results' => $results]; 
+                        
+                        if (sizeof($results) > 0) {
+                            $resultBags[] = ['title' => $controller, 'results' => $results];
+                        }
                     }
                 }
             }
