@@ -9,7 +9,7 @@
 
     <title>{{ Config::get('app.title') }}</title>
 
-    <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('theme/favicon.png') !!}">
+    <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('img/default/favicon.png') !!}">
 
     {!! HTML::script('vendor/jquery/jquery-1.11.3.min.js') !!}
 

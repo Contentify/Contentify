@@ -14,7 +14,7 @@
             @foreach ($team->users as $user)
                 <li class="row">
                     <div class="col-md-4">
-                        <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}"><img src="{!! $user->image ? $user->uploadPath().$user->image : asset('theme/user.png') !!}" alt="{{ $user->title }}"></a>
+                        <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}"><img src="{!! $user->image ? $user->uploadPath().$user->image : asset('img/default/no_user.png') !!}" alt="{{ $user->title }}"></a>
                     </div>
                     <div class="col-md-8">
                         <h3><a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{{ $user->username }}</a></h3>

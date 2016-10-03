@@ -6,7 +6,7 @@
                     @if ($match->right_team->image)
                         <img src="{!! $match->right_team->uploadPath().$match->right_team->image !!}" width="30" height="30" alt="{{ $match->right_team->title }}">
                     @endif
-                    <span class="right-team">{{ trans('matches::vs').' '.$match->right_team->title }}</span>
+                    <span class="right-team"><span class="vs">{{ trans('matches::vs') }}</span> {{ $match->right_team->title }}</span>
                     <span class="scores">{!! $match->scoreCode() !!}</span>
                 </a>
             </li>

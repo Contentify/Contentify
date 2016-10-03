@@ -20,7 +20,7 @@
     @endif
 
     <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Big icon -->
-    <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('theme/favicon.png') !!}">
+    <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('img/default/favicon.png') !!}">
 
     {!! HTML::style('vendor/font-awesome/css/font-awesome.min.css') !!}
     {!! HTML::style('css/backend.css') !!}
@@ -50,7 +50,7 @@
         <header id="header">
             <div class="row">
                 <a class="header-logo" href="{!! route('admin.dashboard') !!}" title="{!! trans('app.admin_dashboard') !!}">
-                    {!! HTML::image(asset('theme/header_logo.png')) !!}
+                    {!! HTML::image(asset('img/default/header_logo.png')) !!}
                 </a>
                 <div class="header-navigation">
                     @if ($contactMessages)

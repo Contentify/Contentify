@@ -49,7 +49,7 @@
 </head>
 <body data-base-url="{!! url('/') !!}">
     <div id="page-container">
-        <a href="http://contentify.org" target="_blank"><img id="logo" src="{!! asset('theme/logo_bw_180.png') !!}" width="100" height="100" alt="Logo"></a>
+        <a href="http://contentify.org" target="_blank"><img id="logo" src="{!! asset('img/default/logo_bw_180.png') !!}" width="100" height="100" alt="Logo"></a>
         <div id="content">
             <h1>{!! $title !!}</h1>
             <div class="text">

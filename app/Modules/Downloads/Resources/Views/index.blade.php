@@ -4,7 +4,7 @@
     @foreach ($downloadcats as $downloadcat)
         <div class="downloadcat">
             <a href="{{ url('downloads/category/'.$downloadcat->id.'/'.$downloadcat->slug) }}">
-                <img src="{!! asset('theme/folder.png') !!}">
+                <img src="{!! asset('img/default/folder.png') !!}">
                 {{ $downloadcat->title }}
             </a>
         </div>

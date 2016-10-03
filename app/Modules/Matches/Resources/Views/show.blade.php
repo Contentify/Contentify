@@ -15,7 +15,7 @@
         @if ($match->right_team->image)
             <img src="{!! $match->right_team->uploadPath().$match->right_team->image !!}" alt="{{ $match->right_team->title }}">
         @else
-            <img src="{!! asset('theme/no_opponent.png') !!}" alt="{{ $match->right_team->title }}">
+            <img src="{!! asset('img/default/no_opponent.png') !!}" alt="{{ $match->right_team->title }}">
         @endif
         <div class="team-name">
             @if ($match->right_team->country->icon)

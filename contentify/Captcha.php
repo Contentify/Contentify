@@ -19,10 +19,10 @@ class Captcha {
         $captchaCode = strtolower(Str::random(4));
         Session::put('captchaCode', $captchaCode);
 
-        $img = imagecreatefromjpeg(public_path().'/theme/captcha.jpg'); // Create image from file
+        $img = imagecreatefromjpeg(public_path().'/img/default/captcha.jpg'); // Create image from file
         
         $color      = imagecolorallocate($img, rand(0, 50), rand(0, 50), rand(0, 50));
-        $font       = public_path().'/theme/xfiles.ttf';
+        $font       = public_path().'/img/default/xfiles.ttf';
         $fheight    = 12; // Font height
         $angle      = rand(-3, 3);
         $x          = rand(3, 17);

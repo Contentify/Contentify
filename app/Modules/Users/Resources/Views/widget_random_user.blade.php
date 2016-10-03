@@ -4,7 +4,7 @@
             @if ($user->image)
                 <img src="{!! $user->uploadPath().$user->image !!}" alt="{{ $user->username }}">
             @else
-                <img src="{!! asset('theme/user.png') !!}" alt="{{ $user->username }}">
+                <img src="{!! asset('img/default/no_user.png') !!}" alt="{{ $user->username }}">
             @endif
         </div>
         <div>

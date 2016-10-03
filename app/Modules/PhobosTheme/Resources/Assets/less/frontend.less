@@ -12,7 +12,7 @@
  */
 
 @customFont: 'Titillium Web';
-@primaryColor: #00afff;
+@primaryColor: #cc3e26;
 @secondaryColor: #FF6100; // orange: FF6100; green: 00ffb3
 @textColor: white;
 @red: #ff4000;
@@ -80,7 +80,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 }
 
 /* Form */
-.btn, .input-group-addon { border-radius: 0px; border-color: @primaryColor; background-color: transparent; color: @primaryColor }
+.btn, .input-group-addon { border-radius: 2px; border-color: @primaryColor; background-color: transparent; color: @primaryColor }
 .btn:focus, .btn:hover { border-color: @primaryColor; background-color: @primaryColor; color: @textColor; }
 .input-group-addon { border-left: 1px solid @primaryColor !important }
 
@@ -308,7 +308,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 
 .widget-galleries {
     ul { font-size: 0; /* ignore white space */ }
-    li { width: 20%; height: 100px }
+    li { width: 25%; height: 100px; }
     .item { 
         display: block; width: 100%; height: 100%;
         div { width: 100%; height: 100% }
@@ -318,7 +318,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 .page-downloads {
     .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; }
     .downloads .download { 
-        display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; .background-image('theme/file.png'); background-position: center top; background-repeat: no-repeat;
+        display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; .background-image('img/default/file.png'); background-position: center top; background-repeat: no-repeat;
         a { display: block; padding-top: 100px; background-position: center 20px; background-repeat: no-repeat; }
     }
 }
@@ -653,128 +653,132 @@ a:hover { color: @primaryColor; text-decoration: none }
  * Mainlayout
  */
 
+html { font-size: 16px; }
 body { background-color: @darkest; font-family: @customFont; color: @textColor; }
 th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !important }
 .nav-tabs li.active a { border-left: @dark !important; border-top: @dark !important; border-right: @dark !important; background-color: @dark !important; color: @textColor !important }
 .nav-tabs a:hover { background-color: @dark !important }
 
-.widget-auth-logged-in a {
-    display: inline-block; padding: 5px 10px; border: 1px solid lighten(@dark, 10%); color: lighten(@dark, 20%);
-}
-
 #header { 
+    position: absolute; z-index: 2; width: 100%; background-color: rgba(0, 0, 0, 0.5);
     .top-bar { 
-        height: 80px; padding: 25px 0px;
-        .header-logo { margin: 0px 20px }
-        img { max-height: 30px; }
-        .right { 
-            float: right; padding-top: 0px;
+        position: relative; height: 80px;
+        .header-logo { 
+            float: left;
+            img { max-height: 40px; margin-top: 20px; margin-right: 100px; }
         }
-    }
-    nav {
-        .container { position: relative; }
-        background-color: @dark; border-top: 1px solid lighten(@dark, 10%); border-bottom: 4px solid darken(@dark, 4%);
-        ul { margin: 10px 0px; border-left: 1px solid lighten(@dark, 10%); }
-        a { display: inline-block; position: relative; height: 60px; line-height: 60px; padding: 0px 20px; font-weight: bold; text-decoration: none; text-transform: uppercase; }
-        li a:before { content: ' '; display: none; position: absolute; left: 20px; right: 20px; bottom: 0px; height: 2px; background-color: @primaryColor }
-        li a.active:before, li:hover a:before { display: block; }
-        li.icon { margin-left: 20px; color: lighten(@dark, 10%); }
-        .right { 
-            position: absolute; right: 0px; top: 10px;
-            a { color: lighten(@dark, 10%); }
-            a:hover { transform: scale(1.5); transition: all 0.08s linear; }
+        nav { 
+            float: left; margin: 20px 0px; font-size: 1rem; font-weight: bold; text-transform: uppercase;
+            ul { .list-inline(); }
+            a { display: block; height: 40px; line-height: 40px; color: @textColor }
+            a:hover { color: @primaryColor }
+            .active { color: @primaryColor !important }
+        }
+        .user { 
+            position: absolute; right: 0px; margin: 20px 0px; height: 40px; line-height: 40px; font-size: 1rem;
+            .image { display: inline-block; width: 40px; height: 40px; border-radius: 40px; border: 2px solid @primaryColor; background-position: center; background-size: cover; vertical-align: middle; }
+            .dropdown { display: inline-block; margin-left: 20px; }
+            .dropdown.open .btn { border-color: @primaryColor; background-color: @primaryColor  }
         }
     }
 }
-@media (min-width: 991px) {
-    #header nav ul { .list-inline(); }
+@media (min-width: 1190px) {
+    #header nav li { margin-left: 20px; }
 }
 @media (max-width: 990px) {
-    #header {
-        .top-bar {
-            height: auto; text-align: center;
-            .right { float: none; padding-top: 20px; }
-        }
-        nav {
-            ul { 
-                .list-unstyled(); border: none;
-                .icon { cursor: pointer;  }
-                a { display: none; height: 40px; line-height: 40px; }
-                li a:before { display: none !important; }
-                li:not(.icon):hover { background-color: lighten(@dark, 10%); }
-            }
-            .right { display: none; }
-            &.max a { display: block; }
-        }
-
-    }
-}
-@media (max-width: 600px) {
-    #header {
-        .right { 
-            padding-top: 0px; 
-            a { margin-top: 20px; }
-        }
-
-    }  
+    #header nav { width: 100%; }
 }
 
-.divider { height: 4px; margin-bottom: 20px; background-color: @primaryColor; }
-
-#sidebar {
-    padding-left: 20px; border-left: 1px solid @darker;
-    .border { padding: 20px; background-color: @darker; }
-    h3 { margin: 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: black; font-size: 16px; font-weight: bold; text-transform: uppercase }
-    h3 a { float: right; color: darken(@primaryColor, 30%); }
-    h3 a:hover { transform: scale(1.5); transition: all 0.08s linear; }
-    .widget { 
-        line-height: 40px; 
-        li { margin: 2px 0px; padding: 0px 10px; background-color: darken(@darker, 2%); }
-        li:hover { background-color: darken(@darker, 4%); }
+.slider {
+    height: 600px;
+    .slides a { 
+        height: 601px; filter: grayscale(1) brightness(0.4); -webkit-filter: grayscale(1) brightness(0.4); 
     }
+    .to-left, .to-right { top: 40%; opacity: .4; }
+    .slide-title { 
+        width: 100%; text-align: center; bottom: auto; top: 35%; background-color: transparent;
+        a { font-size: 3rem; color: @primaryColor; text-transform: uppercase; font-weight: bold; }
+    }
+    .text { top: 50%; left: 0px; right: 0px; max-width: 50%; margin-left: auto; margin-right: auto; font-size: 1.5rem; position: absolute; text-align: center; }
+    .buttons { width: 100%; right: auto; text-align: center; }
+}
+@media (max-width: 990px) {
+   .slider {
+        .slide-title { 
+            a { font-size: 2rem; }
+        }
+        .text { top: 60%; max-width: 80%; font-size: 1rem; }
+        .to-left, .to-right { top: auto; bottom: 20px; }
+    } 
+}
 
+.widget-partners {
+    padding: 20px 0px;
+    ul { .list-inline(); }
+    li { width: 24%; text-align: center; }
+    img { max-width: 80%; opacity: 0.75 }
+    img:hover { opacity: 1 }
+}
+
+#sidebar h3 {
+    position: relative; height: 60px; line-height: 20px; margin: 0px; padding: 20px; background-color: @dark; font-weight: bold; font-size: 18px; text-transform: uppercase;
+    a {
+        position: absolute; display: block; right: 0px; top: 0px; width: 60px; height: 60px; line-height: 60px; background-color: lighten(@dark, 3%); text-align: center; transition: 0.1s all;
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+.widget-matches-latest {
+    a { 
+        position: relative; height: 60px; line-height: 20px; margin: 0px; padding: 20px; background-color: @darker; 
+        &:hover { background-color: lighten(@dark, 3%) }
+    }
+    .vs { color: darken(@primaryColor, 20%) !important; text-transform: lowercase; }
+    .scores {
+        position: absolute; display: block; right: 0px !important; top: 0px; width: 60px; height: 60px; line-height: 60px; text-align: center; color: white !important;
+    }    
+}
+
+.widget-galleries {
+    text-align: center;
+    ul { margin: 0px }
+    li { width: 33%; padding: 0px; }
+    .image { outline: 1px solid fade(@primaryColor, 50%); outline-offset: -1px; }
+    .image:hover { outline-color: @primaryColor; -webkit-filter: brightness(1.1); filter: brightness(1.1); transition: all 0.3s ease }
+}
+
+.widget-teams {
+    a { 
+        display:block; margin: 0px 0px 2px 0px; outline: 1px solid fade(@primaryColor, 50%); outline-offset: -1px; 
+        &:hover { outline-color: @primaryColor; -webkit-filter: brightness(1.1); filter: brightness(1.1); transition: all 0.3s ease }
+    }
 }
 
 #footer {
+    margin: 40px 0px;
     .links {
-        margin-top: 40px; padding: 40px 0px; background-color: @darker; color: @primaryColor; font-weight: bold; text-transform: uppercase;
-        a { padding: 10px; }
+        .clearfix();
+        height: 60px;
+        .footer-logo { 
+            float: left;
+            img { max-height: 40px; }
+        }
+        nav {
+            font-weight: bold; text-transform: uppercase;
+            li { margin-left: 20px; }
+            a { padding: 10px 0px; display: block; }
+        }
     }
     .more {
-        padding: 40px 0px; background-color: @dark;
-        .info a { color: @textColor }
-        .visitors-label { 
-            margin-left: 10px; color: lighten(@dark, 20%); font-weight: bold;
-            &:before { content: '-'; margin-right: 10px; } 
+        a { color: darken(white, 50%) }
+        .info { 
+            margin-right: 100px; color: darken(white, 50%);
         }
-        .widget-visitors {
-            display: inline-block;
-            ul { 
-                display: inline-block; color: lighten(@dark, 20%); font-weight: bold;
-                li { padding: 0px; }
-                span { font-weight: normal; }                
-            }
+        .social-link {
+            font-size: 20px;
         }
-        .right { 
-            float: right;
-            a { display: inline-block; padding: 0px 10px; color: lighten(@dark, 10%); }
-            a:hover { transform: scale(1.5); transition: all 0.08s linear; }
-        }
-    }
-}
-@media (max-width: 990px) {
-    #footer {
-        text-align: center;
-        .links {
-            padding: 40px 0px 0px 0px;
-            li { margin-bottom: 20px;  }
-        }
-        .more {
-            .stats { 
-                display: block; margin-top: 20px;
-                &:before { display: none; }
-            }
-            .right { float: none; margin-top: 20px; }
-        }
+        .col-md-8 { text-align: right; }
     }
 }

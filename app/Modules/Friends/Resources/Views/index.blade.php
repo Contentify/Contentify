@@ -7,7 +7,7 @@
                 @if ($friend->image)
                     <img src="{!! $friend->uploadPath().$friend->image !!}" alt="{{ $friend->username }}">
                 @else
-                    <img src="{!! asset('theme/user.png') !!}" alt="{{ $friend->username }}">
+                    <img src="{!! asset('img/default/no_user.png') !!}" alt="{{ $friend->username }}">
                 @endif
             </div>
             <div class="name">
