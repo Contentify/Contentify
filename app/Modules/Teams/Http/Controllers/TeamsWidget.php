@@ -10,9 +10,9 @@ class TeamsWidget extends Widget {
     	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
         if (isset($parameters['categoryId'])) {
-            $teams = Teams::whereTeamcatId($parameters['categoryId'])->published()->orderBy('title', 'ASC')->get();
+            $teams = Team::whereTeamcatId($parameters['categoryId'])->published()->orderBy('title', 'ASC')->get();
         } else {
-            $teams = Teams::published()->orderBy('title', 'ASC')->get();
+            $teams = Team::published()->orderBy('title', 'ASC')->get();
         }
 
         return View::make('teams::widget', compact('teams'))->render();
