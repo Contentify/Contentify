@@ -16,7 +16,7 @@ Clone this repository (`master` branch) via git. Via console, switch to the Cont
 
 ### Download
 
-Download it here: _Currently not available._
+Download it here: [2.0-alpha](https://github.com/Contentify/Contentify/releases/tag/v2.0-alpha)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
@@ -31,6 +31,12 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 You may download the demo website project here: [contentify.org/share/contentify_demo.zip](http://www.contentify.org/share/contentify_demo.zip)
 
 > NOTE: The demo website is running with Contentify 1.0.
+
+### Support
+
+You can get support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail.
+
+Contentify 1.x and 2.x both have long term support that includes bugfixes.
 
 ### Contribution
 
