@@ -201,7 +201,7 @@ return [
     'join'          => 'Joindre',
     'confirm'       => 'Confirmer',
     'rules'         => 'Règles',
-    'round'         => 'Rond',
+    'round'         => 'Manche',
 
     /*
      * Days
