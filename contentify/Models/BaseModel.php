@@ -251,10 +251,15 @@ class BaseModel extends Eloquent {
      */
     protected static $relationsData = array();
 
+    /** This class "has one model" if its ID is an FK in that model */
     const HAS_ONE = 'hasOne';
 
+    /** This class "has many models" if its ID is an FK in those models */
     const HAS_MANY = 'hasMany';
 
+    const HAS_MANY_THROUGH = 'hasManyThrough';
+
+    /** This class "belongs to a model" if it has a FK from that model */
     const BELONGS_TO = 'belongsTo';
 
     const BELONGS_TO_MANY = 'belongsToMany';
@@ -265,15 +270,20 @@ class BaseModel extends Eloquent {
 
     const MORPH_MANY = 'morphMany';
 
+    const MORPH_TO_MANY = 'morphToMany';
+
+    const MORPHED_BY_MANY = 'morphedByMany';
+
     /**
      * Array of relations used to verify arguments used in the {@link $relationsData}
      *
      * @var array
      */
     protected static $relationTypes = array(
-        self::HAS_ONE, self::HAS_MANY,
+        self::HAS_ONE, self::HAS_MANY, self::HAS_MANY_THROUGH,
         self::BELONGS_TO, self::BELONGS_TO_MANY,
-        self::MORPH_TO, self::MORPH_ONE, self::MORPH_MANY
+        self::MORPH_TO, self::MORPH_ONE, self::MORPH_MANY,
+        self::MORPH_TO_MANY, self::MORPHED_BY_MANY
     );
 
     /**
@@ -340,28 +350,37 @@ class BaseModel extends Eloquent {
         switch ($relationType) {
             case self::HAS_ONE:
             case self::HAS_MANY:
+                $verifyArgs(['foreignKey', 'localKey']);
+                return $this->$relationType($relation[1], $relation['foreignKey'], $relation['localKey']);
+            case self::HAS_MANY_THROUGH:
+                $verifyArgs(['firstKey', 'secondKey', 'localKey'], ['through']);
+                return $this->$relationType($relation[1], $relation['through'], $relation['firstKey'], $relation['secondKey'], $relation['localKey']);
             case self::BELONGS_TO:
-                $verifyArgs(array('foreignKey'));
-                return $this->$relationType($relation[1], $relation['foreignKey']);
-
+                $verifyArgs(['foreignKey', 'otherKey', 'relation']);
+                return $this->$relationType($relation[1], $relation['foreignKey'], $relation['otherKey'], $relation['relation']);
             case self::BELONGS_TO_MANY:
-                $verifyArgs(array('table', 'foreignKey', 'otherKey'));
-                $relationship = $this->$relationType($relation[1], $relation['table'], 
-                    $relation['foreignKey'], $relation['otherKey']);
-                if(isset($relation['pivotKeys']) && is_array($relation['pivotKeys']))
+                $verifyArgs(['table', 'foreignKey', 'otherKey', 'relation']);
+                $relationship = $this->$relationType($relation[1], $relation['table'], $relation['foreignKey'], $relation['otherKey'], $relation['relation']);
+                if(isset($relation['pivotKeys']) && is_array($relation['pivotKeys'])) {
                     $relationship->withPivot($relation['pivotKeys']);
-                if(isset($relation['timestamps']) && $relation['timestamps']==true)
+                }
+                if(isset($relation['timestamps']) && $relation['timestamps']) {
                     $relationship->withTimestamps();
+                }
                 return $relationship;
-
             case self::MORPH_TO:
-                $verifyArgs(array('name', 'type', 'id'));
+                $verifyArgs(['name', 'type', 'id']);
                 return $this->$relationType($relation['name'], $relation['type'], $relation['id']);
-
             case self::MORPH_ONE:
             case self::MORPH_MANY:
-                $verifyArgs(array('type', 'id'), array('name'));
-                return $this->$relationType($relation[1], $relation['name'], $relation['type'], $relation['id']);
+                $verifyArgs(['type', 'id', 'localKey'], ['name']);
+                return $this->$relationType($relation[1], $relation['name'], $relation['type'], $relation['id'], $relation['localKey']);
+            case self::MORPH_TO_MANY:
+                $verifyArgs(['table', 'foreignKey', 'otherKey', 'inverse'], ['name']);
+                return $this->$relationType($relation[1], $relation['name'], $relation['table'], $relation['foreignKey'], $relation['otherKey'], $relation['inverse']);
+            case self::MORPHED_BY_MANY:
+                $verifyArgs(['table', 'foreignKey', 'otherKey'], ['name']);
+                return $this->$relationType($relation[1], $relation['name'], $relation['table'], $relation['foreignKey'], $relation['otherKey']);
         }
     }
 
@@ -382,7 +401,6 @@ class BaseModel extends Eloquent {
         return parent::__call($method, $parameters);
     }
 
-
     /**
      * Define an inverse one-to-one or many relationship.
      * Overriden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
@@ -396,13 +414,17 @@ class BaseModel extends Eloquent {
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function belongsTo($related, $foreignKey = NULL, $otherKey = NULL, $relation = NULL) {
-        $backtrace = debug_backtrace(false);
-        $caller = ($backtrace[1]['function'] == 'handleRelationalArray')? $backtrace[3] : $backtrace[1];
-
         // If no foreign key was supplied, we can use a backtrace to guess the proper
         // foreign key name by using the name of the relationship function, which
         // when combined with an "_id" should conventionally match the columns.
-        $relation = $caller['function'];
+        if (is_null($relation)) {
+            $backtrace = debug_backtrace(false, 4);
+            if ($backtrace[1]['function'] == 'handleRelationalArray') {
+                $relation = $backtrace[1]['args'][0];
+            } else {
+                $relation = $backtrace[3]['function'];
+            }
+        }
 
         if (is_null($foreignKey)) {
             $foreignKey = snake_case($relation).'_id';
@@ -439,7 +461,6 @@ class BaseModel extends Eloquent {
         {
             $backtrace = debug_backtrace(false);
             $caller = ($backtrace[1]['function'] == 'handleRelationalArray')? $backtrace[3] : $backtrace[1];
-
             $name = snake_case($caller['function']);
         }
 
