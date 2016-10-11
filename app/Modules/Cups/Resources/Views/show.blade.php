@@ -114,7 +114,7 @@
                         <td>{!! $cup->description !!}</td>
                     </tr>
                 @endif
-                @if ($cup->referees)
+                @if(!$cup->referees->isEmpty())
                     <tr>
                         <th>{{ trans('cups::referees') }}</th>
                         <td>
