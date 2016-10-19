@@ -243,7 +243,7 @@ class TeamsController extends FrontController {
 
         $team = Team::findOrFail($id);
         $team->title = trim(Input::get('title'));
-        $team->slug = $team->createSlug();
+        $team->createSlug();
         $team->password = Input::get('password');
         $team->updater_id = user()->id;
 
@@ -284,7 +284,7 @@ class TeamsController extends FrontController {
         if ($team->isOrganizer(user()) or user()->isSuperAdmin()) {
             $team->hidden = true;
             $team->title = 'Deleted';
-            $team->slug = $team->createSlug();
+            $team->createSlug();
             $team->forceSave();
             $team->removeMembers();
             $this->alertSuccess(trans('app.successful'));
