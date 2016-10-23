@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('img/default/favicon.png') !!}">
 
-    {!! HTML::script('vendor/jquery/jquery-1.11.3.min.js') !!}
+    {!! HTML::script('vendor/jquery/jquery-1.12.4.min.js') !!}
 
     <style>
         @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
