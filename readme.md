@@ -32,11 +32,9 @@ You may download the demo website project here: [contentify.org/share/contentify
 
 > NOTE: The demo website is running with Contentify 1.0.
 
-### Support
+### Support & Updates
 
-You can get support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail.
-
-Contentify 1.x and 2.x both have long term support that includes bugfixes.
+You can get support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. Both Contentify 1.x and 2.x have long term support (LTS) that includes bugfixes. Our version strategy is partially dependent on the release strategy of the underlying framework, Laravel.
 
 ### Contribution
 
