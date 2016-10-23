@@ -10,7 +10,7 @@ Contentify is an eSports CMS based on the popular Laravel 5.1 framework. Build y
 
 Website: [contentify.org](http://contentify.org/)
 
-> NOTE: This is a stable, but old version! Please consider moving on to [Contentify 2](https://github.com/Contentify/Contentify/issues/52).
+> NOTE: This is the stable, but old 1.2 version! we still maintain 1.2, however, please consider moving on to [Contentify 2](https://github.com/Contentify/Contentify/issues/52).
 
 ### Clone Repository
 
