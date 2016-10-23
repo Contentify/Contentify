@@ -84,8 +84,8 @@ class InstallController extends Controller {
                  * Delete the file that indicates if the app is installed or not
                  */
                 $filename = storage_path(self::INSTALL_FILE);
-                if (File::exists($filename)) {
-                    File::delete($filename);
+                if (! File::exists($filename)) {
+                    File::put($filename, time());
                 }
 
                 $title      = 'Installation Complete';

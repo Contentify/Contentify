@@ -217,5 +217,5 @@ function installed()
 {
     $path = storage_path('app/.install');
 
-    return ! File::exists($path);
+    return File::exists($path);
 }
