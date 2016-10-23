@@ -34,7 +34,9 @@ You may download the demo website project here: [contentify.org/share/contentify
 
 ### Support & Updates
 
-You can get support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. Both Contentify 1.x and 2.x have long term support (LTS) that includes bugfixes. Our version strategy is partially dependent on the release strategy of the underlying framework, Laravel. This mean we will release major releases quite often but they do not have to implement a lot of new features. Unfortunately the Contentify team does not have enough resources to write tools that allow website admins to update their Contentify websites to new major releases. We regret this but this is the only way we can stick close to current Laravel versions and do major changes to the CMS.
+You can get support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. Both Contentify 1.x and 2.x have long term support (LTS) that includes bugfixes. 
+
+Our version strategy is partially dependent on the release strategy of the underlying framework, Laravel. This means we will publish major releases quite often but they might not implement a lot of new features. Unfortunately the Contentify team does not have enough resources to write tools that allow website admins to update their Contentify websites to new major releases. We regret this but this is the only way we can stick close to current Laravel versions and do major changes to the CMS.
 
 ### Contribution
 
