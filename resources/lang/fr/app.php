@@ -197,7 +197,7 @@ return [
     'mode'          => 'Mode',
     'prize'         => 'Prix',
     'closed'        => 'Fermé',
-    'leave'         => 'Laisser',
+    'leave'         => 'Quitter',
     'join'          => 'Joindre',
     'confirm'       => 'Confirmer',
     'rules'         => 'Règles',
