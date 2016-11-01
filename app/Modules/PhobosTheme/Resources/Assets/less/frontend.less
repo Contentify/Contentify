@@ -95,7 +95,7 @@ a:hover { color: @primaryColor; text-decoration: none }
         border-bottom: 2px solid @primaryColor;
         border-radius: 1px;
         color: @textColor;
-        &:focus { box-shadow: none !important; }
+        &:focus { border-color: lighten(@primaryColor, 10%); box-shadow: none !important; }
     }
     textarea { height: auto }
 }
@@ -780,5 +780,13 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
             font-size: 20px;
         }
         .col-md-8 { text-align: right; }
+    }
+}
+@media (max-width: @screen-md-min) {
+    #footer {
+        text-align: center;
+        .footer-logo { float: none !important; }
+        .info { display: block; margin-right: 0px !important; clear: both; }
+        .list-inline { padding-top: 20px; text-align: center; }
     }
 }
