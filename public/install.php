@@ -88,9 +88,7 @@ class Tester {
         $dirs = array(
             'storage',
             'bootstrap/cache',
-            'public/uploads',
-            'public/rss',
-            'public/share',
+            'public',
         );
 
         $results = array();

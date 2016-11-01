@@ -188,9 +188,7 @@ class InstallController extends Controller {
                 $writableDirs = [
                     base_path().'/storage', 
                     base_path().'/bootstrap/cache', 
-                    public_path().'/uploads', 
-                    public_path().'/rss',
-                    public_path().'/share'
+                    public_path()
                 ];
 
                 $ul = '<ul>'; // HTML::ul() will encode HTML entities so we can't use it here
