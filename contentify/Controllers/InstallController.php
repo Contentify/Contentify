@@ -703,8 +703,9 @@ class InstallController extends Controller {
             ['name' => 'auth::registration',    'value' => 1],
             ['name' => 'forums::reports',       'value' => 1],
             ['name' => 'app.twitter',           'value' => 'ContentifyCMS'],
-            ['name' => 'app.facebook',          'value' => 'contentifycms'],
+            ['name' => 'app.facebook',          'value' => 'contentifycms'], 
             ['name' => 'app.youtube',           'value' => 'UC2gIIZzySdgxrQ3jM4jmoqQ'],
+            ['name' => 'app.twitchKey',         'value' => ''],
         ]);
 
         DB::table('teamcats')->insert([

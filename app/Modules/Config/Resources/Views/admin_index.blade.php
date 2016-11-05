@@ -19,6 +19,8 @@
 
     {!! Form::smartText('app::youtube', 'YouTube') !!} 
 
+    {!! Form::smartText('app::twitchKey', 'Twitch API Key') !!} 
+
     <hr>
        
     {!! Form::smartCheckbox('auth::registration', trans('config::registration')) !!} 

@@ -4,12 +4,13 @@ use BaseModel;
 
 class SettingsBag extends BaseModel {
 
-    // NOTE: The "app." is replaced with "app::"!
+    // NOTE: "app." is replaced with "app::"!
     protected $fillable = [
         'app::theme',
     	'app::facebook',
     	'app::twitter',
     	'app::youtube',
+        'app::twitchKey',
     	'app::analytics', 
     	'auth::registration', 
     	'app::https', 

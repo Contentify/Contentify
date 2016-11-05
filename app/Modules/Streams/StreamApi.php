@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Streams;
-
+
 use Log;
 
 class StreamApi {
@@ -7,7 +7,7 @@ class StreamApi {
     /**
      * Makes the API call
      * 
-     * @param  string   $url    The API url
+     * @param  string   $url    The API URL
      * @param  boolean  $parse  Parse the result?
      * @return mixed
      */
