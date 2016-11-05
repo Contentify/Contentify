@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Streams;
 
-use Log, DateTime;
+use Config, Log, DateTime;
 
 class TwitchApi extends StreamApi
 {
@@ -14,6 +14,11 @@ class TwitchApi extends StreamApi
      * Channel list API call
      */
     const CHANNEL_LIST = 'streams?channel=';
+
+    /**
+    * API key query parameter
+    */
+    const API_KEY_QUERY = '&client_id=';
    
     /**
      * Returns a JSON object that also includes an array of stream infos
@@ -23,6 +28,8 @@ class TwitchApi extends StreamApi
      */
     public function getStreams(array $streams)
     {
+        $apiKey = Config::get('app.twitchKey');
+
         $list = '';
         foreach ($streams as $stream) {
             if ($list) {
@@ -31,7 +38,7 @@ class TwitchApi extends StreamApi
             $list .= $stream->permanent_id;
         }
 
-        $response = $this->apiCall(self::URL.self::CHANNEL_LIST.$list);
+        $response = $this->apiCall(self::URL.self::CHANNEL_LIST.$list.self::API_KEY_QUERY.$apiKey);
         
         return $response;
     }

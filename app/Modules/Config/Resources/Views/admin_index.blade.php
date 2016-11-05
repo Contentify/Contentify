@@ -17,5 +17,7 @@
 
     {!! Form::smartCheckbox('app::dbBackup', trans('config::db_backup')) !!} 
 
+    {!! Form::smartText('app::twitchKey', 'Twitch API Key') !!}
+
     {!! Form::actions(['submit' => trans('app.update')], false) !!}
 {!! Form::close() !!}

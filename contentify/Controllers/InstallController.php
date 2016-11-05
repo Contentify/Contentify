@@ -626,6 +626,7 @@ class InstallController extends Controller {
             ['name' => 'app.analytics',         'value' => ''],
             ['name' => 'app.https',             'value' => 0],
             ['name' => 'app.dbBackup',          'value' => 0],
+            ['name' => 'app.twitchKey',         'value' => ''],
             ['name' => 'auth::registration',    'value' => 1],
             ['name' => 'forums::reports',       'value' => 1],
         ]);
