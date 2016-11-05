@@ -5,11 +5,6 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 	    less: {
 	      	publish: {
-	        	options: {
-	          		compress: true,
-	          		yuicompress: true,
-	          		optimization: 2
-	        	},
 	        	files: {
 	        		// destination file and source file
                     'Assets/css/frontend.css': 'Assets/less/frontend.less',

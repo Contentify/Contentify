@@ -64,9 +64,9 @@
                     <li>{!! link_to('forums', trans('app.object_forums')) !!}</li>
                 </ul>
                 <div class="right">
-                    <a href="https://www.facebook.com/contentifycms" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
-                    <a href="https://twitter.com/ContentifyCMS" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
-                    <a href="https://www.youtube.com/channel/UC2gIIZzySdgxrQ3jM4jmoqQ" target="_blank">{!! HTML::fontIcon('youtube') !!}</a>
+                    <a href="https://www.facebook.com/{{ Config::get('app.facebook') }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
+                    <a href="https://twitter.com/{{ Config::get('app.twitter') }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
+                    <a href="https://www.youtube.com/channel/{{ Config::get('app.youtube') }}" target="_blank">{!! HTML::fontIcon('youtube') !!}</a>
                 </div>
             </div>
         </nav>
