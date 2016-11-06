@@ -4,7 +4,7 @@ class Tester {
 
     /**
      * Run the tester
-     * 
+     *
      * @return void
      */
     public function run()
@@ -19,7 +19,7 @@ class Tester {
 
         $results = $this->checkExtensions();
 
-        foreach ($results as $extension => $okay) { 
+        foreach ($results as $extension => $okay) {
             if ($okay) {
                 $info = $this->green('Yes');
             } else {
@@ -30,7 +30,7 @@ class Tester {
 
         $this->line();
 
-        $results = $this->checkDirs();     
+        $results = $this->checkDirs();
 
         foreach ($results as $dir => $okay) {
             if ($okay) {
@@ -44,7 +44,7 @@ class Tester {
 
     /**
      * Checks if the PHP version is correct
-     * 
+     *
      * @return boolean
      */
     public function checkPhp()
@@ -54,7 +54,7 @@ class Tester {
 
     /**
      * Returns a list of PHP extensions names and their state
-     * 
+     *
      * @return array
      */
     public function checkExtensions()
@@ -80,7 +80,7 @@ class Tester {
 
     /**
      * Returns a list of dir names and their state
-     * 
+     *
      * @return array
      */
     public function checkDirs()
@@ -102,7 +102,7 @@ class Tester {
 
     /**
      * Color the passed text for output
-     * 
+     *
      * @param  string $text The text
      * @return string
      */
@@ -116,7 +116,7 @@ class Tester {
 
     /**
      * Color the passed text for output
-     * 
+     *
      * @param  string $text The text
      * @return string
      */
@@ -130,17 +130,17 @@ class Tester {
 
     /**
      * Echo this line
-     * 
+     *
      * @param  string $text The line of text
      * @return void
      */
     protected function line($text = null)
     {
         if ($this->isCli()) {
-            echo $text." \n";    
+            echo $text." \n";
         } else {
             echo '<tr><td>'.$text.'&nbsp;</td></tr>';
-        }        
+        }
     }
 
     /**
@@ -169,7 +169,7 @@ if ($tester->isCli()) {
     echo "The installer cannot be launched from a console.\n\r";
     echo 'Please navigate to the website with a browser to install Contentify.';
 } else {
-    if (! file_exists(__DIR__.'/../storage/app/.install')) {
+    if (file_exists(__DIR__.'/../storage/app/.install')) {
         die('Contentify has been installed already.');  
     }
 
