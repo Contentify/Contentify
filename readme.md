@@ -28,9 +28,7 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 > The server resets (database, uploaded files and cache) twice per hour.
 
-You may download the demo website project here: [contentify.org/share/contentify_demo.zip](http://www.contentify.org/share/contentify_demo.zip)
-
-> NOTE: The demo website is running with Contentify 1.0.
+> NOTE: The demo website is running with Contentify 2.0 Beta.
 
 ### Support & Updates
 
