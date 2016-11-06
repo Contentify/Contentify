@@ -178,6 +178,7 @@ class InstallController extends Controller {
                               Form::smartText('host', 'Host', $settings['host']).
                               Form::smartText('database', 'Database', $settings['database']).
                               Form::smartText('username', 'Username', $settings['username']).
+                              // Note: We can't use smartPassword(), because it cannot set a default value.
                               Form::smartText('password', 'Password', $settings['password']).
                               Form::close().
                               '<p>For more settings, take a look at <code>config/database.php</code>.</p>';
