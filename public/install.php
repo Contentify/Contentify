@@ -60,7 +60,6 @@ class Tester {
     public function checkExtensions()
     {
         $extensions = array(
-            'mcrypt',
             'fileinfo',
             'pdo',
             'mbstring',
