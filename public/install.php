@@ -169,8 +169,9 @@ if ($tester->isCli()) {
     echo "The installer cannot be launched from a console.\n\r";
     echo 'Please navigate to the website with a browser to install Contentify.';
 } else {
-    if (file_exists(__DIR__.'/../storage/app/.install')) {
-        die('Contentify has been installed already.');  
+    $filename = 'storage/app/.install';
+    if (file_exists(__DIR__.'/../'.$filename)) {
+        die('Contentify has been installed already. Remove this file if you want to reinstall it: '.$filename);  
     }
 
     echo '<html><head><title>Installer</title>
