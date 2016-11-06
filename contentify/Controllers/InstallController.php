@@ -164,8 +164,7 @@ class InstallController extends Controller {
 
                 break;
             case 3:
-                // NOTE: Ignore the password fore security reasons
-                $settings = ['host' => 'localhost', 'database' => 'contentify', 'username' => 'root'];
+                $settings = ['host' => 'localhost', 'database' => 'contentify', 'username' => 'root', 'password' => ''];
 
                 $filename = storage_path(self::INI_FILE);
                 if (File::exists($filename)) {
@@ -179,7 +178,7 @@ class InstallController extends Controller {
                               Form::smartText('host', 'Host', $settings['host']).
                               Form::smartText('database', 'Database', $settings['database']).
                               Form::smartText('username', 'Username', $settings['username']).
-                              Form::smartText('password', 'Password').
+                              Form::smartPassword('password', 'Password', $settings['password']).
                               Form::close().
                               '<p>For more settings, take a look at <code>config/database.php</code>.</p>';
                
