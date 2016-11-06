@@ -73,7 +73,7 @@ return [
 
     'frontItemsPerPage' => 10,
     'adminItemsPerPage' => 10,
-    
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -127,7 +127,7 @@ return [
 
     'key' => env('APP_KEY', '01234567890123456789012345678912'),
 
-    'cipher' => MCRYPT_RIJNDAEL_128,
+    'cipher' => 'AES-256-CBC',
 
     /*
     |--------------------------------------------------------------------------
@@ -309,7 +309,7 @@ return [
 
         /*
          * Vendor classes:
-         */       
+         */
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
         'Jobs'                  => 'ChrisKonnertz\Jobs\JobsFacade',
