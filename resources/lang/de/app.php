@@ -21,6 +21,7 @@ return [
      * Security
      */
     'spam_protection' => 'Um Spam vorzubeugen, müssen Sie einige Sekunden warten, ehe Sie dieses Formular absenden können.',
+    'debug_warning'   => 'Warnung: Der Debug-Modus ist aktiviert, obwohl dies ein Produktivserver zu sein scheint!',
 
     /*
      * Errors

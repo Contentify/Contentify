@@ -21,6 +21,7 @@ return [
      * Security
      */
     'spam_protection' => 'For spam protection, you have to wait a few seconds until you can submit this form.',
+    'debug_warning'   => 'Warning: Debug mode is enabled but this does not seem to be a development server!',
 
     /*
      * Errors

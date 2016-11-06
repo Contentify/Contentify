@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Dashboard\Http\Controllers;
-
-use Log, View, Cache, BackController;
+
+use Log, View, Config, Cache, BackController;
 
 class AdminDashboardController extends BackController {
 
@@ -14,6 +14,10 @@ class AdminDashboardController extends BackController {
     public function getIndex()
     {
         $feed = $this->feed();
+
+        if (Config::get('app.env') == 'production' and Config::get('app.debug') and $_SERVER['HTTP_HOST'] == 'localhost') {
+            $this->alertWarning(trans('app.debug_warning'));
+        }
 
         $this->pageView('dashboard::admin_index', compact('feed'));
     }
