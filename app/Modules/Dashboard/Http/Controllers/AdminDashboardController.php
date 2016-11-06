@@ -15,7 +15,7 @@ class AdminDashboardController extends BackController {
     {
         $feed = $this->feed();
 
-        if (Config::get('app.env') == 'production' and Config::get('app.debug') and $_SERVER['HTTP_HOST'] == 'localhost') {
+        if (Config::get('app.env') == 'production' and Config::get('app.debug') and $_SERVER['HTTP_HOST'] != 'localhost') {
             $this->alertWarning(trans('app.debug_warning'));
         }
 
