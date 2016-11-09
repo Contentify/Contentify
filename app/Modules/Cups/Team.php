@@ -106,7 +106,7 @@ class Team extends BaseModel {
     /**
      * Returns true if the team is locked. This means the team is in a cup that is 
      * not closed and no member is allowed to leave and no user is allowed to join.
-     * // TODO: Maybe only check for cups that already are in the join phase?
+     * TODO: Maybe only check for cups that already are in the join phase?
      * 
      * @return boolean
      */
