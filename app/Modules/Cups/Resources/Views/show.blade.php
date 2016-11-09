@@ -30,22 +30,25 @@
                             You are participating. Please wait for the check-in phase.
                             <!-- We do not need a leave button. Participants that do not check-in are ignored anyway. -->
                         @else
-                            Click here to join the cup: 
-
                             @if ($cup->forTeams())
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Join now <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($cup->teamsOfUser(user(), true) as $team)
-                                            @if ($team->countMembers() >= $cup->players_per_team)
-                                                <li><a href="{!! url('cups/join/'.$cup->id.'/'.$team->id) !!}">{{ $team->title }}</a></li>
-                                            @endif
-                                        @endforeach
-                                        <li><a href="{{ url('cups/teams/create') }}"><em>{{ trans('app.object_team') }}: {{ trans('app.create') }}</em></a></li>
-                                    </ul>
-                                </div>
+                                @if(!$cup->teamsOfUser(user())->isEmpty())
+                                    Click here to join the cup: 
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Join now <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($cup->teamsOfUser(user(), true) as $team)
+                                                @if ($team->countMembers() >= $cup->players_per_team)
+                                                    <li><a href="{!! url('cups/join/'.$cup->id.'/'.$team->id) !!}">{{ $team->title }}</a></li>
+                                                @endif
+                                            @endforeach
+                                            <li><a href="{{ url('cups/teams/create') }}"><em>{{ trans('app.object_team') }}: {{ trans('app.create') }}</em></a></li>
+                                        </ul>
+                                    </div>
+                                 @else
+                                    You have no team for join the cup: <a class="btn btn-default" href="{!! url('cups/teams/create') !!}">Create team</a>
+                                 @endif
                             @else
                                 <a class="btn btn-default" href="{!! url('cups/join/'.$cup->id.'/'.user()->id) !!}">Join now</a>
                             @endif
