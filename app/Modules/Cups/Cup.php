@@ -282,7 +282,7 @@ class Cup extends BaseModel {
             return false;
         }
 
-        return DB::table('cups_participants')->whereParticipantId($participant->id)->value('checked_in');
+        return DB::table('cups_participants')->whereParticipantId($participant->id)->whereCupId($this->id)->value('checked_in');
     }
 
     /**
