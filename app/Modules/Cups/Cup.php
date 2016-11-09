@@ -4,10 +4,22 @@ use MsgException, User, DB, BaseModel;
 
 class Cup extends BaseModel {
 
+    /**
+     * Array with all possible values of: How many players have to be in a team at least?
+     * @var int[]
+     */
     public static $playersPerTeamValues = [1, 2, 3, 4, 5, 6];
 
+    /**
+     * Array with all possible values of: How many players/teams can participate in a cup?
+     * @var int[]
+     */
     public static $slotValues = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
 
+    /**
+     * Temporary stores a collection of matches to avoid unecessary database queries
+     * @var Collection|null A collection of matches
+     */
     protected $matchesStored = null;
 
     protected $dates = ['deleted_at', 'join_at', 'check_in_at', 'start_at'];
