@@ -43,6 +43,7 @@
                                                     <li><a href="{!! url('cups/join/'.$cup->id.'/'.$team->id) !!}">{{ $team->title }}</a></li>
                                                 @endif
                                             @endforeach
+                                            <li><a href="{{ url('cups/teams/overview/'.user()->id) }}"><em>{{ trans('cups::my_teams') }}</em></a></li>
                                             <li><a href="{{ url('cups/teams/create') }}"><em>{{ trans('app.object_team') }}: {{ trans('app.create') }}</em></a></li>
                                         </ul>
                                     </div>
