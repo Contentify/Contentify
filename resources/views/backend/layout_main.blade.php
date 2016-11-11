@@ -71,7 +71,7 @@
         <aside id="sidebar">
             <a class="hamburger" href="#">{!! HTML::fontIcon('navicon') !!}</a>
             <div class="account">
-                <a id="profile-link" href="{!! url('users/'.user()->id) !!}">
+                <a id="profile-link" href="{!! url('users/'.user()->id.'/'.user()->slug) !!}">
                     <div class="avatar">
                         @if (user()->image)
                             <div class="image" style="background-image: url('{!! asset('uploads/users/80/'.user()->image) !!}')"></div>

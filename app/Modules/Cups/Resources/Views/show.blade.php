@@ -31,7 +31,7 @@
                             <!-- We do not need a leave button. Participants that do not check-in are ignored anyway. -->
                         @else
                             @if ($cup->forTeams())
-                                @if(!$cup->teamsOfUser(user())->isEmpty())
+                                @if (!$cup->teamsOfUser(user())->isEmpty())
                                     @if ($team->countMembers() < $cup->players_per_team)
                                         Click here to join the cup: 
                                         <div class="btn-group">

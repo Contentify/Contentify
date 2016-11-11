@@ -20,7 +20,13 @@
         </tr>
         @foreach($cup->participants as $participant)
             <tr>
-                <td>{{ $cup->forTeams() ? $participant->title : $participant->username }}</td>
+                <td>
+                    @if ($cup->forTeams())
+                        <a href="{{ url('cups/teams/'.$participant->id.'/'.$participant->slug) }}">{{ $participant->title }}</a>
+                    @else
+                        <a href="{{ url('users/'.$participant->id.'/'.$participant->slug) }}">{{ $participant->username }}</a>
+                    @endif
+                </td>
                 <td>{!! $participant->pivot->checked_in ? HTML::fontIcon('check') : HTML::fontIcon('close') !!}</td>
                 <td>
                     @if ($cup->start_at->timestamp > time())
