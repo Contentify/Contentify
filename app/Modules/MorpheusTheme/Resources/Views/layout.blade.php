@@ -117,14 +117,14 @@
                     <br>
                     <h3>
                         Cups
-                        <a href="{{ url('streams') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
+                        <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
                     </h3>
                     @widget('Cups::FeaturedCup')
 
                     <br>
                     <h3>
                         Cup Control
-                        <a href="{{ url('streams') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
+                        <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
                     </h3>
                     @widget('Cups::CupsControl')
                 </div>
