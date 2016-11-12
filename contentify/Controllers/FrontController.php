@@ -1,6 +1,6 @@
 <?php namespace Contentify\Controllers;
 
-use URL, Input, View, Redirect, Config;
+use Exception, URL, Input, View, Redirect, Config;
 
 abstract class FrontController extends BaseController {
 
@@ -20,7 +20,13 @@ abstract class FrontController extends BaseController {
     protected function setupLayout($layoutName = null)
     {
         if (! $layoutName) {
-            $layoutName = $this->layout? $this->layout : lcfirst(Config::get('app.theme')).'::layout';
+            $theme = Config::get('app.theme');
+
+            if (! $theme or true) {
+                throw new Exception('Error: Could not determine the theme name from the config!');
+            }
+
+            $layoutName = $this->layout? $this->layout : lcfirst($theme).'::layout';
         }
 
         parent::setupLayout($layoutName);
