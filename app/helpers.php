@@ -215,7 +215,7 @@ function trans_object($name, $module = null)
  */
 function installed()
 {
-    $path = storage_path('app/.install');
+    $path = storage_path('app/.installed');
 
     return File::exists($path);
 }

@@ -7,7 +7,7 @@ class InstallController extends Controller {
     /**
      * (Relative) path to the file that indicates if the app is installed or not
      */
-    const INSTALL_FILE = 'app/.install';
+    const INSTALL_FILE = 'app/.installed';
 
     /**
      * (Relative) path to the database ini file
@@ -79,17 +79,22 @@ class InstallController extends Controller {
                  */
                 $adminRole = Sentinel::findRoleBySlug('super-admins'); 
                 $adminRole->users()->attach($user);
-                
+
                 /*
                  * Delete the file that indicates if the app is installed or not
                  */
                 $filename = storage_path(self::INSTALL_FILE);
-                if (! File::exists($filename)) {
-                    File::put($filename, time());
-                }
 
                 $title      = 'Installation Complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
+
+                if (File::isWritable($filename)) {
+                  if (! File::exists($filename)) {
+                    File::put($filename, time());
+                  }
+                } else {
+                  $content .= '<p><b>ERROR:</b> Cannot create '.$filename.'! Please delete it manually.';
+                }
 
                 break;
             case 5:
