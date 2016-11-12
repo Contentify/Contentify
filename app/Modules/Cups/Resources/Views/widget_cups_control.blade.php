@@ -12,7 +12,7 @@
             @endforeach
         </ul>
     @else
-        You are not registered for any cups. <a href="{{ url('cups') }}">Join a cup now!</a>
+        {{ trans('in_no_cups') }} <a href="{{ url('cups') }}">{{ trans('join_a_cup') }}</a>
     @endif
 
     @if (user())

@@ -23,19 +23,19 @@
                 @if (user())
                     @if ($cup->join_at->timestamp > time())
                         <!-- Earlier than join_at -->
-                        The cup registration is not open yet - please wait until the join phase starts.
+                        {{ trans('cannot_join') }}
                     @elseif ($cup->check_in_at->timestamp > time())
                         <!-- Between join_at and check_in_at -->
                         @if ($cup->isUserInCup(user()))
-                            You are participating. Please wait for the check-in phase.
+                            {{ trans('joined') }}
                             <!-- We do not need a leave button. Participants that do not check-in are ignored anyway. -->
                         @else
                             @if ($cup->forTeams())
                                 @if (!$cup->teamsOfUser(user())->isEmpty())
-                                    Click here to join the cup: 
+                                    {{ trans('join_hint') }}
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Join now <span class="caret"></span>
+                                            {{ trans('join') }} <span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu">
                                             @foreach ($cup->teamsOfUser(user(), true) as $team)
@@ -48,10 +48,10 @@
                                         </ul>
                                     </div>
                                  @else
-                                    You have no team to join the cup! <a class="btn btn-default" href="{!! url('cups/teams/create') !!}">Create team</a>
+                                    {{ trans('no_team') }} <a class="btn btn-default" href="{!! url('cups/teams/create') !!}">{{ trans('create_team') }}</a>
                                  @endif
                             @else
-                                <a class="btn btn-default" href="{!! url('cups/join/'.$cup->id.'/'.user()->id) !!}">Join now</a>
+                                <a class="btn btn-default" href="{!! url('cups/join/'.$cup->id.'/'.user()->id) !!}">{{ trans('join') }}</a>
                             @endif
                         @endif
                     @elseif ($cup->start_at->timestamp > time())
@@ -59,24 +59,24 @@
                         <?php $participant = $cup->getParticipantOfUser(user()) ?>
                         @if ($participant)
                             @if ($cup->hasParticipantCheckedIn($participant))
-                                Click here to check-out:
+                                {{ trans('check_out') }}
                                 <a class="btn btn-default" href="{!! url('cups/check-out/'.$cup->id) !!}">Check-out now</a>
                             @else
-                                Click here to check-in:
+                                {{ trans('in') }}
                                 <a class="btn btn-default" href="{!! url('cups/check-in/'.$cup->id) !!}">Check-in now</a>
                             @endif
                         @else
-                            You are not participating in this cup.
+                            {{ trans('not_participating') }}
                         @endif                        
                     @elseif (! $cup->closed)
                         <!-- After start_at and cup is opened -->
-                        The cup is running. Please check the brackets to see the matches.
+                        {{ trans('cup_running') }}
                     @else ($cup->closed)
                         <!-- After start_at and cup is closed -->
-                        The cup has been closed.
+                        {{ trans('cup_closed') }}
                     @endif
                 @else
-                    <a class="btn btn-default" href="{!! url('auth/login') !!}">Login to get access to this cup!</a>
+                    <a class="btn btn-default" href="{!! url('auth/login') !!}">{{ trans('login_hint') }}</a>
                 @endif
             </div>
 
