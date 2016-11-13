@@ -12,7 +12,7 @@
             @endforeach
         </ul>
     @else
-        {{ trans('in_no_cups') }} <a href="{{ url('cups') }}">{{ trans('join_a_cup') }}</a>
+        {{ trans('cups::in_no_cups') }} <a href="{{ url('cups') }}">{{ trans('cups::join_a_cup') }}</a>
     @endif
 
     @if (user())
