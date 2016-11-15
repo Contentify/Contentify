@@ -8,6 +8,8 @@ class LogoutController extends FrontController {
     {
         Sentinel::logout();
 
-        $this->alertInfo(trans('auth::logged_out'));
+        $this->alertFlash(trans('auth::logged_out'));
+
+        return redirect('/');
     }
 }
