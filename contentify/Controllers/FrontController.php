@@ -22,7 +22,7 @@ abstract class FrontController extends BaseController {
         if (! $layoutName) {
             $theme = Config::get('app.theme');
 
-            if (! $theme or true) {
+            if (! $theme or false) {
                 throw new Exception('Error: Could not determine the theme name from the config!');
             }
 
