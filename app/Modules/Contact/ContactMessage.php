@@ -31,11 +31,11 @@ class ContactMessage extends BaseModel {
         }
 
         Mail::send('contact::emails.notify', ['msg' => $this], function ($mail) use ($users) {
-            $user = array_pop($users);
+            $user = $users->pop();
 
             $mail->to($user->email, $user->username);
 
-            while ($user = array_pop($users)) {
+            while ($user = $users->pop()) {
                 $mail->cc($user->email, $user->username);
             }
 
