@@ -414,7 +414,7 @@ class User extends SentinelUser {
             $permissions = (array) $permissions;
         }
 
-        $users = Sentinel::getUserRepository()->get()->filter(function ($user) use ($permissions) {
+        $users = Sentinel::getUserRepository()->get()->filter(function ($user) use ($permissions, $level) {
             return $user->hasAccess($permissions, $level);
         });
 
