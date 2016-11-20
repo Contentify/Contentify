@@ -27,6 +27,11 @@ class InstallController extends Controller {
             die('Please enable the debug mode to start the installer.');
         }
 
+         $filename = storage_path(self::INSTALL_FILE);
+         if (file_exists($filename)) {
+             die('Contentify has been installed already. Remove this file if you want to reinstall it: '.$filename);  
+         }
+
         if ($step < 0) {
             $step   = (int) Input::get('step', 0);
         }
