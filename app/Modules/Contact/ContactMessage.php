@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Contact;
 
-use Mail, Sentinel, SoftDeletingTrait, BaseModel;
+use Mail, Sentinel, SoftDeletingTrait, BaseModel, User;
 
 class ContactMessage extends BaseModel {
 
@@ -24,7 +24,7 @@ class ContactMessage extends BaseModel {
      */
     public function notify()
     {
-        $users = user()->findAllUsersWithAccess('contact', PERM_READ);
+        $users = User::findAllUsersWithAccess('contact', PERM_READ);
 
         if (! $users) {
             return;
