@@ -409,7 +409,7 @@ class User extends SentinelUser {
      * @param  int          $level       The level of the permission(s)
      * @return Collection
      */
-    public function findAllUsersWithAccess($permissions, $level = 1) {
+    public static function findAllUsersWithAccess($permissions, $level = 1) {
         if ( ! is_array($permissions)) {
             $permissions = (array) $permissions;
         }
