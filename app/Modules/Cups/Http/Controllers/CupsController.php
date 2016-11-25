@@ -210,8 +210,8 @@ class CupsController extends FrontController {
             return;
         }
 
-        $firstId = Input::get('first_id_id');
-        $secondId = Input::get('second_id_id');
+        $firstId = Input::get('first_id');
+        $secondId = Input::get('second_id');
 
         if ($firstId == $secondId) {
             $this->alertError(trans('app.not_possible'));
