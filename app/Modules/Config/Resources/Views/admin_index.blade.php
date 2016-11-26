@@ -10,6 +10,8 @@
 
 {!! Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) !!}
     {!! Form::smartSelect('app::theme', trans('app.theme'), $themes) !!} 
+    {!! Form::smartCheckbox('app::theme_christmas', trans('app.theme_christmas')) !!} 
+    {!! Form::smartText('app::theme_snow_color', trans('app.theme_snow_color')) !!} 
 
     <hr>
 

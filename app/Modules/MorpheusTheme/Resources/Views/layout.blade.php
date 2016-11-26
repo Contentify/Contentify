@@ -40,6 +40,9 @@
     {!! HTML::script('vendor/contentify/frontend.js') !!}    
 </head>
 <body>
+    @if(Config::get('app.theme_christmas') == 1)
+        @include('snow');
+    @endif
     <header id="header">
         <div class="container">
             <div class="top-bar">
