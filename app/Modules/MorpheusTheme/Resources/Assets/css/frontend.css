@@ -8270,6 +8270,10 @@ td {
   border: 1px solid #434343;
   color: #5c5c5c;
 }
+#header {
+  position: relative;
+  z-index: 1;
+}
 #header .top-bar {
   height: 80px;
   padding: 25px 0px;
