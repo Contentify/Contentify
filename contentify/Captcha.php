@@ -56,20 +56,19 @@ class Captcha {
      */
     public function checkReCaptcha($code)
     {
-        $data = [
+        $data = array(
             'secret'    => Config::get('app.recaptcha_secret'),
             'response'  => $code,
-            'remoteip'  => Request::getClientIp(),
-        ];
+            'remoteip'  => Request::getClientIp()
+        );
 
         $curl = curl_init();
         
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($curl, CURLOPT_URL, self::API_URL);
         curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);         
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data)); 
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);        
 
         $result = curl_exec($curl);
 
