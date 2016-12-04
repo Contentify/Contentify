@@ -15,6 +15,11 @@ class InstallController extends Controller {
     const INI_FILE = 'app/database.ini';
 
     /**
+     * URL of the Contentify.org API call after a successful installation.
+     */
+    const API_URL = 'http://www.contentify.org/api.php?action=send-statistics';
+
+    /**
      * Index action method
      * 
      * @param  integer                              $step   Step number
@@ -98,8 +103,10 @@ class InstallController extends Controller {
                     File::put($filename, time());
                   }
                 } else {
-                  $content .= '<p><b>ERROR:</b> Cannot create '.$filename.'! Please delete it manually.';
+                  $content .= '<p><b>ERROR:</b> Cannot create '.$filename.'! Please create it manually.';
                 }
+
+                $this->sendStatistics();
 
                 break;
             case 5:
@@ -1092,7 +1099,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param  array            $primaryKeys    An array with the names of both primary keys
      * @return void
      */
-    public function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
+    protected function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
     {
         /*
          * Delete existing table:
@@ -1128,7 +1135,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param  array $tables Array of table names
      * @return void
      */
-    public function createDefaultCategories($tables)
+    protected function createDefaultCategories($tables)
     {
         foreach ($tables as $table) {
             DB::table($table)->insert([
@@ -1142,6 +1149,26 @@ information about your stored data, and possibly entitlement to correction, bloc
                 ],
             ]);
         }        
+    }
+
+    /**
+     * The installer will send some infos that are supposed to help understanding
+     * the usage of the CMS. Ofcourse no sensible information will be sent!
+     * Infos sent: Time and version of the CMS and of PHP. That's all. 
+     * Check the code if you want to verify this statement.
+     * 
+     * @return void
+     */
+    protected function sendStatistics()
+    {
+        $url = self::API_URL;
+        $url .= '&type=installtion';
+        $url .= '&cms_version='.Config::get('app.version');
+        $url .= '&php_version='.PHP_VERSION;
+
+        // Use file_get_contents() to make the request,
+        // so it will also work if CURL is not installed.
+        file_get_contents($url);
     }
        
 }
