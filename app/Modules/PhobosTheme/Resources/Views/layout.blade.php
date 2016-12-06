@@ -27,7 +27,7 @@
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{!! asset('rss/news.xml') !!}">
 
     {!! HTML::style('vendor/font-awesome/css/font-awesome.min.css') !!}
-    {!! HTML::style(HTML::cachedAssetPath('css/frontend.css')) !!}
+    {!! HTML::style(HTML::versionedAssetPath('css/frontend.css')) !!}
 
     {!! HTML::jsTranslations() !!}
     <!--[if lt IE 9]>
