@@ -1,9 +1,14 @@
 <?php namespace Contentify;
  
 use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
-use OpenGraph, Session, URL;
+use Exception, OpenGraph, Cache, Session, URL;
 
 class HtmlBuilder extends OriginalHtmlBuilder {
+
+    /**
+     * The cache key used in cachedAssetPath()
+     */
+    const ASSET_PATH_CACHE_KEY = 'asset.pathCache.timestamp';
 
     /**
      * Renders a widget.
@@ -314,6 +319,45 @@ class HtmlBuilder extends OriginalHtmlBuilder {
         $items = $translator->get('app');
 
         return '<script>var contentifyTranslations = '.json_encode($items).';</script>';
+    }
+
+    /**
+     * Pass the relative file name of an asset to this function, for example "css/style.css".
+     * It will return something like "css/style.css?v=123456789".
+     * If the cache key self::ASSET_PATH_CACHE_KEY is cleared it will create 
+     * a new version number and thus browsers are forced to reload the asset.
+     * 
+     * @param  string $assetPath Unversioned asset path
+     * @return string
+     */
+    public function versionedAssetPath($assetPath)
+    {
+        if (strpos($assetPath, '?') === false) {
+            $queryChar = '?';
+        } else {
+            $queryChar = '&';
+        }
+
+        $key = self::ASSET_PATH_CACHE_KEY;
+        if (Cache::has($key)) {
+            $version = Cache::get($key);
+        } else {
+            $version = time();
+            Cache::forever($key, $version);
+        }      
+
+        return $assetPath.$queryChar.'v='.$version;
+    }
+
+    /**
+     * Removes the cache entry for asset path versioning,
+     * thus forcing a refresh for the cached paths.
+     * 
+     * @return void
+     */
+    public function refreshAssetPaths()
+    {
+        Cache::forget(self::ASSET_PATH_CACHE_KEY);
     }
 
 }

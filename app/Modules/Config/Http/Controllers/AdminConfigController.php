@@ -2,7 +2,7 @@
 
 use App\Modules\Config\SettingsBag;
 use Contentify\Vendor\MySqlDump;
-use Artisan, Str, Redirect, Input, File, DB, Config, BackController;
+use Artisan, HTML, Str, Redirect, Input, File, DB, Config, BackController;
 
 class AdminConfigController extends BackController {
 
@@ -70,6 +70,7 @@ class AdminConfigController extends BackController {
 
         if ($oldTheme != $settingsBag['app::theme']) {
             Artisan::call('vendor:publish', ['--tag' => [lcfirst($settingsBag['app::theme'])], '--force' => true]);
+            HTML::refreshAssetPaths();
         }
 
         // Save the settings one by one:
