@@ -1,6 +1,5 @@
 {
     "slug": "Cups",
-    "enabled": true,
     "search": ["cups", "teams"],
     "admin-nav": [
         {

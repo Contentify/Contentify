@@ -1,43 +1,539 @@
 {
-    "Pages": true,
-    "Partners": true,
-    "Phobos Theme": true,
-    "Roles": true,
-    "Opponents": true,
-    "News": true,
-    "Modules": true,
-    "Morpheus Theme": true,
-    "Navigations": true,
-    "Search": true,
-    "Servers": true,
-    "Users": true,
-    "Videos": true,
-    "Visitors": true,
-    "Tournaments": true,
-    "Teams": true,
-    "Shouts": true,
-    "Slides": true,
-    "Streams": true,
-    "Messages": true,
-    "Matches": true,
-    "Countries": true,
-    "Cups": true,
-    "Dashboard": true,
-    "Diag": true,
-    "Contact": true,
-    "Config": true,
-    "Auth": true,
-    "Awards": true,
-    "Comments": true,
-    "Downloads": true,
-    "Events": true,
-    "Images": true,
-    "Languages": true,
-    "Maps": true,
-    "Games": true,
-    "Galleries": true,
-    "Example": true,
-    "Forums": true,
-    "Friends": true,
-    "Adverts": true
+    "Adverts": {
+        "basename": "Adverts",
+        "0": true,
+        "slug": "Adverts",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "bullhorn",
+                "category": 2,
+                "position": 6
+            }
+        ],
+        "order": 9001
+    },
+    "Auth": {
+        "basename": "Auth",
+        "0": true,
+        "slug": "Auth",
+        "enabled": true,
+        "order": 9001
+    },
+    "Awards": {
+        "basename": "Awards",
+        "0": true,
+        "slug": "Awards",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "trophy",
+                "category": 3,
+                "position": 3
+            }
+        ],
+        "order": 9001
+    },
+    "Comments": {
+        "basename": "Comments",
+        "0": true,
+        "slug": "Comments",
+        "enabled": true,
+        "order": 9001
+    },
+    "Config": {
+        "basename": "Config",
+        "0": true,
+        "slug": "Config",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "cog",
+                "category": 4,
+                "position": 5
+            }
+        ],
+        "order": 9001
+    },
+    "Contact": {
+        "basename": "Contact",
+        "0": true,
+        "slug": "Contact",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "envelope",
+                "category": 4,
+                "position": 6
+            }
+        ],
+        "order": 9001
+    },
+    "Countries": {
+        "basename": "Countries",
+        "0": true,
+        "slug": "Countries",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "flag",
+                "category": 2
+            }
+        ],
+        "order": 9001
+    },
+    "Cups": {
+        "basename": "Cups",
+        "0": true,
+        "slug": "Cups",
+        "enabled": true,
+        "search": [
+            "cups",
+            "teams"
+        ],
+        "admin-nav": [
+            {
+                "url": "admin\/cups",
+                "icon": "share-alt",
+                "category": 3
+            }
+        ],
+        "order": 9001
+    },
+    "Dashboard": {
+        "basename": "Dashboard",
+        "0": true,
+        "slug": "Dashboard",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "home",
+                "category": 1,
+                "position": 1
+            }
+        ],
+        "order": 9001
+    },
+    "Diag": {
+        "basename": "Diag",
+        "0": true,
+        "slug": "Diag",
+        "enabled": true,
+        "order": 9001
+    },
+    "Downloads": {
+        "basename": "Downloads",
+        "0": true,
+        "slug": "Downloads",
+        "enabled": true,
+        "search": [
+            "downloads"
+        ],
+        "admin-nav": [
+            {
+                "icon": "folder",
+                "category": 1,
+                "position": 7
+            }
+        ],
+        "order": 9001
+    },
+    "Events": {
+        "basename": "Events",
+        "0": true,
+        "slug": "Events",
+        "enabled": true,
+        "search": [
+            "events"
+        ],
+        "admin-nav": [
+            {
+                "icon": "calendar",
+                "category": 1,
+                "position": 4
+            }
+        ],
+        "order": 9001
+    },
+    "Example": {
+        "basename": "Example",
+        "0": true,
+        "slug": "Example",
+        "enabled": true,
+        "order": 9001
+    },
+    "Forums": {
+        "basename": "Forums",
+        "0": true,
+        "slug": "Forums",
+        "enabled": true,
+        "search": [
+            "threads"
+        ],
+        "admin-nav": [
+            {
+                "icon": "comment",
+                "category": 2,
+                "position": 7
+            },
+            {
+                "url": "admin\/forum-reports",
+                "icon": "warning",
+                "translate": "app.object_forum_reports",
+                "category": 2,
+                "position": 8
+            }
+        ],
+        "order": 9001
+    },
+    "Friends": {
+        "basename": "Friends",
+        "0": true,
+        "slug": "Friends",
+        "enabled": true,
+        "order": 9001
+    },
+    "Galleries": {
+        "basename": "Galleries",
+        "0": true,
+        "slug": "Galleries",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "file-photo-o",
+                "category": 1,
+                "position": 6
+            }
+        ],
+        "order": 9001
+    },
+    "Games": {
+        "basename": "Games",
+        "0": true,
+        "slug": "Games",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "gamepad",
+                "category": 3,
+                "position": 2
+            }
+        ],
+        "order": 9001
+    },
+    "Images": {
+        "basename": "Images",
+        "0": true,
+        "slug": "Images",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "image",
+                "category": 1,
+                "position": 5
+            }
+        ],
+        "order": 9001
+    },
+    "Languages": {
+        "basename": "Languages",
+        "0": true,
+        "slug": "Languages",
+        "enabled": true,
+        "order": 9001
+    },
+    "Maps": {
+        "basename": "Maps",
+        "0": true,
+        "slug": "Maps",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "globe",
+                "category": 3,
+                "position": 6
+            }
+        ],
+        "order": 9001
+    },
+    "Matches": {
+        "basename": "Matches",
+        "0": true,
+        "slug": "Matches",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "crosshairs",
+                "category": 3,
+                "position": 1
+            }
+        ],
+        "order": 9001
+    },
+    "Messages": {
+        "basename": "Messages",
+        "0": true,
+        "slug": "Messages",
+        "enabled": true,
+        "order": 9001
+    },
+    "Modules": {
+        "basename": "Modules",
+        "0": true,
+        "slug": "Modules",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "cubes",
+                "category": 4
+            }
+        ],
+        "order": 9001
+    },
+    "MorpheusTheme": {
+        "basename": "MorpheusTheme",
+        "slug": "Morpheus Theme",
+        "enabled": true,
+        "theme": true,
+        "order": 9001
+    },
+    "Navigations": {
+        "basename": "Navigations",
+        "0": true,
+        "slug": "Navigations",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "navicon",
+                "category": 4,
+                "position": 4
+            }
+        ],
+        "order": 9001
+    },
+    "News": {
+        "basename": "News",
+        "0": true,
+        "slug": "News",
+        "enabled": true,
+        "search": [
+            "news"
+        ],
+        "admin-nav": [
+            {
+                "icon": "newspaper-o",
+                "category": 1,
+                "position": 2
+            }
+        ],
+        "order": 9001
+    },
+    "Opponents": {
+        "basename": "Opponents",
+        "0": true,
+        "slug": "Opponents",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "shield",
+                "category": 3,
+                "position": 4
+            }
+        ],
+        "order": 9001
+    },
+    "Pages": {
+        "basename": "Pages",
+        "0": true,
+        "slug": "Pages",
+        "enabled": true,
+        "search": [
+            "articles"
+        ],
+        "admin-nav": [
+            {
+                "icon": "file",
+                "category": 1,
+                "position": 3
+            }
+        ],
+        "order": 9001
+    },
+    "Partners": {
+        "basename": "Partners",
+        "0": true,
+        "slug": "Partners",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "money",
+                "category": 2,
+                "position": 5
+            }
+        ],
+        "order": 9001
+    },
+    "PhobosTheme": {
+        "basename": "PhobosTheme",
+        "slug": "Phobos Theme",
+        "enabled": true,
+        "theme": true,
+        "order": 9001
+    },
+    "Roles": {
+        "basename": "Roles",
+        "0": true,
+        "slug": "Roles",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "lock",
+                "category": 4,
+                "position": 8
+            }
+        ],
+        "order": 9001
+    },
+    "Search": {
+        "basename": "Search",
+        "0": true,
+        "slug": "Search",
+        "enabled": true,
+        "order": 9001
+    },
+    "Servers": {
+        "basename": "Servers",
+        "0": true,
+        "slug": "Servers",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "database",
+                "category": 3,
+                "position": 7
+            }
+        ],
+        "order": 9001
+    },
+    "Shouts": {
+        "basename": "Shouts",
+        "0": true,
+        "slug": "Shouts",
+        "enabled": true,
+        "order": 9001
+    },
+    "Slides": {
+        "basename": "Slides",
+        "0": true,
+        "slug": "Slides",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "play",
+                "category": 2,
+                "position": 2
+            }
+        ],
+        "order": 9001
+    },
+    "Streams": {
+        "basename": "Streams",
+        "0": true,
+        "slug": "Streams",
+        "enabled": true,
+        "search": [
+            "streams"
+        ],
+        "admin-nav": [
+            {
+                "icon": "video-camera",
+                "category": 2,
+                "position": 4
+            }
+        ],
+        "order": 9001
+    },
+    "Teams": {
+        "basename": "Teams",
+        "0": true,
+        "slug": "Teams",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "flag",
+                "category": 4,
+                "position": 2
+            },
+            {
+                "icon": "group",
+                "category": 4,
+                "position": 3,
+                "translate": "app.team_members",
+                "url": "admin\/members"
+            }
+        ],
+        "order": 9001
+    },
+    "Tournaments": {
+        "basename": "Tournaments",
+        "0": true,
+        "slug": "Tournaments",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "crosshairs",
+                "category": 3,
+                "position": 5
+            }
+        ],
+        "order": 9001
+    },
+    "Users": {
+        "basename": "Users",
+        "0": true,
+        "slug": "Users",
+        "enabled": true,
+        "search": [
+            "users"
+        ],
+        "admin-nav": [
+            {
+                "icon": "user",
+                "category": 4,
+                "position": 1
+            }
+        ],
+        "order": 9001
+    },
+    "Videos": {
+        "basename": "Videos",
+        "0": true,
+        "slug": "Videos",
+        "enabled": true,
+        "search": [
+            "videos"
+        ],
+        "admin-nav": [
+            {
+                "icon": "youtube-play",
+                "category": 2,
+                "position": 3
+            }
+        ],
+        "order": 9001
+    },
+    "Visitors": {
+        "basename": "Visitors",
+        "0": true,
+        "slug": "Visitors",
+        "enabled": true,
+        "admin-nav": [
+            {
+                "icon": "pie-chart",
+                "category": 4,
+                "position": 7
+            }
+        ],
+        "order": 9001
+    }
 }

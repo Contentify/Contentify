@@ -1,6 +1,5 @@
 {
-    "slug": "Visitors",
-    "enabled": true,
+    "slug": "Visitors",
     "admin-nav": [
         {
             "icon": "pie-chart",

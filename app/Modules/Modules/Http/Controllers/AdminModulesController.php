@@ -23,9 +23,9 @@ class AdminModulesController extends BackController {
             'dataSource'    => Module::findAll(),
             'brightenFirst' => false,
             'tableHead'     => [
-                trans('app.title')          => null,
+                trans('app.title')     => null,
                 trans('app.enabled')   => null,
-                trans('app.state')          => null,
+                trans('app.state')     => null,
             ],
             'tableRow'      => function($module)
             {

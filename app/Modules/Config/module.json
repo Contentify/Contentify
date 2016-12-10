@@ -1,6 +1,5 @@
 {
-    "slug": "Config",
-    "enabled": true,
+    "slug": "Config",
     "admin-nav": [
         {
             "icon": "cog",

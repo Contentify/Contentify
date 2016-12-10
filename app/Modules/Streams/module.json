@@ -1,6 +1,5 @@
 {
     "slug": "Streams",
-    "enabled": true,
     "search": ["streams"],
     "admin-nav": [
         {

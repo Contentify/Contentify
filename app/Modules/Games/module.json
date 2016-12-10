@@ -1,6 +1,5 @@
 {
-    "slug": "Games",
-    "enabled": true,
+    "slug": "Games",
     "admin-nav": [
         {
             "icon": "gamepad",

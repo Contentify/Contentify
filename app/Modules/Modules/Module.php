@@ -47,6 +47,11 @@ class Module extends BaseModel {
         }
     }
 
+    /**
+     * Check if a module is enabled. 
+     * 
+     * @return boolean
+     */
     public function enabled()
     {
         $moduleBase = app()['modules'];
