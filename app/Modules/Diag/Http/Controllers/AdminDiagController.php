@@ -38,6 +38,7 @@ class AdminDiagController extends BackController {
             'PHP.version'               => phpversion(),
             'PHP.os'                    => PHP_OS,
             'PHP.ini'                   => php_ini_loaded_file(),
+            'PHP.disk_free_space'       => round(disk_free_space('.') / 1024 / 1024).'M',
             'PHP.memory_limit'          => ini_get('memory_limit'),
             'PHP.max_execution_time'    => ini_get('max_execution_time'),
             'PHP.post_max_size'         => ini_get('post_max_size'),

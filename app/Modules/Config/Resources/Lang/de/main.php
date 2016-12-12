@@ -15,7 +15,7 @@ return array(
 
     'button_info'       => 'PHP-Info',
     'button_optimize'   => 'Datenbank optimieren',
-    'button_dump'       => 'Datenbank eportieren',
+    'button_dump'       => 'Datenbank exportieren',
     'button_log'        => 'Log-Datei',
 
     'db_export'         => 'Die Datenbank wurde exportiert.',
