@@ -14,7 +14,7 @@ class Tester {
         } else {
             $version = $this->red('No, '.phpversion());
         }
-        $this->line('PHP-Version: '.$version);
+        $this->line('PHP-Version: '.$version.' (5.6.4 recommended)');
         $this->line();
 
         $results = $this->checkExtensions();
