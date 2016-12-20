@@ -235,7 +235,7 @@ class InstallController extends Controller {
 
                 $title      = 'Server Requirements';
                 $content    = "<ul>
-                              <li>PHP >= 5.5.9 $version</li>
+                              <li>PHP >= 5.5.9 (>= 5.6.4 recommended) $version</li>
                               <li>OpenSSL Extension $openSsl</li>
                               <li>Mbstring Extension $mbString</li>
                               <li>Tokenizer Extension $tokenizer</li>
