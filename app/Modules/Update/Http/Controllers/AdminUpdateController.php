@@ -46,7 +46,6 @@ class AdminUpdateController extends BackController {
         // Check if there is a newer version
         $currentVersion = Config::get('app.version');
         $nextVersion = $this->incrementVersion($currentVersion);
-        $nextVersion = '2.0-rc'; // TODO FIXME REMOVE THIS!
         $url = self::REPO_URL.$nextVersion;
 
         $fileHeaders = @get_headers($url);
@@ -81,7 +80,6 @@ class AdminUpdateController extends BackController {
         }
 
         $currentVersion = Config::get('app.version');
-        $nextVersion = '2.0-dev'; // TODO FIXME REMOVE THIS!
         $nextVersion = $this->incrementVersion($currentVersion);
 
         $output = null;
