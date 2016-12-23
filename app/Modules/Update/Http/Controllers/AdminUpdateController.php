@@ -81,14 +81,14 @@ class AdminUpdateController extends BackController {
         }
 
         $currentVersion = Config::get('app.version');
-        $nextVersion = '2.0-rc'; // TODO FIXME REMOVE THIS!
+        $nextVersion = '2.0-dev'; // TODO FIXME REMOVE THIS!
         $nextVersion = $this->incrementVersion($currentVersion);
 
         $output = null;
         $returnCode = null;
         $result = exec('git checkout -f '.$nextVersion, $output, $returnCode);
-
-        Cache::forever(self::CACHE_KEY_RESULT, $output);
+        $output = implode('<br>', $output);
+        Cache::forever(self::CACHE_KEY_RESULT, '<b>Return code: '.$returnCode.'</b><br><br>'.$output);
         Cache::forget(self::CACHE_KEY_TIMESTAMP);
 
         // TODO Implement the unfinished part of the updater with an asynchronous update process
