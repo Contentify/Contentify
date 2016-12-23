@@ -164,8 +164,8 @@ a:hover { color: @primaryColor; text-decoration: none }
         a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0px }
         img { max-width: 100%;  }
     }
-    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; }
-    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center }
+    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
+    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
     .to-left:hover, .to-right:hover { opacity: 1 }
     .buttons { 
         position: absolute; right: 40px; bottom: 40px;
@@ -176,7 +176,7 @@ a:hover { color: @primaryColor; text-decoration: none }
         }
         li:hover { opacity: 1; color: @textColor; }
     }
-    .container { position: relative; height: 100%; }
+    .container { position: relative; height: 100%; z-index: 1; }
     .slide-title { 
         position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0px; left: 40px; bottom: 40px; color: white; text-shadow: 0px 0px 3px black; background-color: rgba(0, 0, 0, 0.7);
         a { display: inline-block; padding: 20px; color: @textColor; }
@@ -568,17 +568,7 @@ a:hover { color: @primaryColor; text-decoration: none }
     #description .text { margin: 20px 0px; }
     #bracket { overflow: auto }
     .bracket {
-        @borderColor: @textColor;
-        display: flex; flex-direction: row;
-        .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0px; }
-        .round .spacer { flex-grow: 1; }
-        .round .spacer:first-child, .round .spacer:last-child { flex-grow: .5; }
-        .match { padding-left: 20px; }
-        .match.winner { font-weight: bold; }
-        .match .score { float: right; margin-right: 5px; }
-        .match-top { border-bottom: 1px solid @borderColor;  }
-        .match-spacer { border-right: 1px solid @borderColor; min-height: 40px; display: flex; justify-content: center; flex-direction: column; text-align: right; padding-right: 5px; flex-grow: 1; }
-        .match-bottom { border-top: 1px solid @borderColor; }
+        @borderColor: @textColor;     
     }
 }
 .page-cups-teams-overview, .page-cups-show-team {
@@ -713,6 +703,8 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 }
 
 .widget-partners {
+    z-index: 1;
+    position: relative;
     padding: 20px 0px;
     ul { .list-inline(); }
     li { width: 24%; text-align: center; }
@@ -720,8 +712,13 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
     img:hover { opacity: 1 }
 }
 
+#mid-container {
+    position: relative;
+    z-index: 1;
+}
+
 #sidebar h3 {
-    position: relative; height: 60px; line-height: 20px; margin: 0px; padding: 20px; background-color: @dark; font-weight: bold; font-size: 18px; text-transform: uppercase;
+    position: relative; height: 60px; line-height: 20px; margin: 0px; padding: 20px; background-color: @dark; font-weight: bold; font-size: 18px; text-transform: uppercase; z-index: 1;
     a {
         position: absolute; display: block; right: 0px; top: 0px; width: 60px; height: 60px; line-height: 60px; background-color: lighten(@dark, 3%); text-align: center; transition: 0.1s all;
         &:hover {
@@ -758,6 +755,8 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 
 #footer {
     margin: 40px 0px;
+    z-index: 1;
+    position: relative;
     .links {
         .clearfix();
         height: 60px;
@@ -784,6 +783,8 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 }
 @media (max-width: @screen-md-min) {
     #footer {
+        z-index: 1;
+        position: relative;
         text-align: center;
         .footer-logo { float: none !important; }
         .info { display: block; margin-right: 0px !important; clear: both; }

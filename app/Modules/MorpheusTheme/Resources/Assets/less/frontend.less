@@ -164,11 +164,11 @@ a:hover { color: @primaryColor; text-decoration: none }
         a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0px }
         img { max-width: 100%;  }
     }
-    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; }
-    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center }
+    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
+    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
     .to-left:hover, .to-right:hover { opacity: 1 }
     .buttons { 
-        position: absolute; right: 40px; bottom: 40px;
+        position: absolute; right: 40px; bottom: 40px; z-index: 1;
         ul { margin-bottom: 0px; }
         li { 
             width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: black; color: rgba(255, 255, 255, 0.5); opacity: 0.5; cursor: pointer; text-align: center;
@@ -178,7 +178,7 @@ a:hover { color: @primaryColor; text-decoration: none }
     }
     .container { position: relative; height: 100%; }
     .slide-title { 
-        position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0px; left: 40px; bottom: 40px; color: white; text-shadow: 0px 0px 3px black; background-color: rgba(0, 0, 0, 0.7);
+        position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0px; left: 40px; bottom: 40px; color: white; text-shadow: 0px 0px 3px black; background-color: rgba(0, 0, 0, 0.7); z-index: 1;
         a { display: inline-block; padding: 20px; color: @textColor; }
     }
 }
@@ -663,8 +663,10 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 }
 
 #header { 
+
     .top-bar { 
         height: 80px; padding: 25px 0px;
+        position: relative; z-index: 1;
         .header-logo { margin: 0px 20px }
         img { max-height: 30px; }
         .right { 
@@ -674,13 +676,13 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
     nav {
         .container { position: relative; }
         background-color: @dark; border-top: 1px solid lighten(@dark, 10%); border-bottom: 4px solid darken(@dark, 4%);
-        ul { margin: 10px 0px; border-left: 1px solid lighten(@dark, 10%); }
+        ul { margin: 10px 0px; border-left: 1px solid lighten(@dark, 10%); z-index: 1; position: relative; }
         a { display: inline-block; position: relative; height: 60px; line-height: 60px; padding: 0px 20px; font-weight: bold; text-decoration: none; text-transform: uppercase; }
         li a:before { content: ' '; display: none; position: absolute; left: 20px; right: 20px; bottom: 0px; height: 2px; background-color: @primaryColor }
         li a.active:before, li:hover a:before { display: block; }
         li.icon { margin-left: 20px; color: lighten(@dark, 10%); }
         .right { 
-            position: absolute; right: 0px; top: 10px;
+            position: absolute; right: 0px; top: 10px; z-index: 1;
             a { color: lighten(@dark, 10%); }
             a:hover { transform: scale(1.5); transition: all 0.08s linear; }
         }
@@ -735,20 +737,25 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 
 }
 
+#mid-container {
+    position: relative;
+    z-index: 1;
+}
+
 #footer {
     .links {
         margin-top: 40px; padding: 40px 0px; background-color: @darker; color: @primaryColor; font-weight: bold; text-transform: uppercase;
-        a { padding: 10px; }
+        a { padding: 10px; position: relative; z-index: 1; }
     }
     .more {
         padding: 40px 0px; background-color: @dark;
-        .info a { color: @textColor }
+        .info a { color: @textColor; position: relative; z-index: 1; }
         .visitors-label { 
-            margin-left: 10px; color: lighten(@dark, 20%); font-weight: bold;
+            margin-left: 10px; color: lighten(@dark, 20%); font-weight: bold; position: relative; z-index: 1;
             &:before { content: '-'; margin-right: 10px; } 
         }
         .widget-visitors {
-            display: inline-block;
+            display: inline-block; position: relative; z-index: 1;
             ul { 
                 display: inline-block; color: lighten(@dark, 20%); font-weight: bold;
                 li { padding: 0px; }
@@ -756,7 +763,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
             }
         }
         .right { 
-            float: right;
+            position: relative; float: right; z-index: 1;
             a { display: inline-block; padding: 0px 10px; color: lighten(@dark, 10%); }
             a:hover { transform: scale(1.5); transition: all 0.08s linear; }
         }
@@ -767,14 +774,14 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
         text-align: center;
         .links {
             padding: 40px 0px 0px 0px;
-            li { margin-bottom: 20px;  }
+            li { margin-bottom: 20px; position: relative; z-index: 1; }
         }
         .more {
             .stats { 
                 display: block; margin-top: 20px;
                 &:before { display: none; }
             }
-            .right { float: none; margin-top: 20px; }
+            .right { position: relative; float: none; margin-top: 20px; z-index: 1; }
         }
     }
 }
