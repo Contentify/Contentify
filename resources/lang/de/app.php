@@ -140,7 +140,7 @@ return [
     'yes'           => 'Ja',
     'no'            => 'Nein',
     'valid'         => 'gültig',
-    'invalid'       => 'ungültih',
+    'invalid'       => 'ungültig',
     'enabled'       => 'Aktiviert',
     'disabled'      => 'Deaktiviert',
     'read_more'     => 'Weiterlesen...',
