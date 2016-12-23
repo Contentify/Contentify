@@ -259,7 +259,8 @@ return [
     'object_streams'        => 'Streams',
     'object_teams'          => 'Equipes',
     'object_tournaments'    => 'Compétitions',
-    'object_users'          => 'Utilisateurs',
+    'object_update'         => 'Actualisation',
+    'object_users'          => 'Utilisateurs',    
     'object_videos'         => 'Vidéos',
     'object_visitors'       => 'Visiteurs',
 

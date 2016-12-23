@@ -1,0 +1,10 @@
+{
+    "slug": "Update",
+    "admin-nav": [
+        {
+            "icon": "cloud-download",
+            "category": 4,
+            "position": 10
+        }
+    ]
+}

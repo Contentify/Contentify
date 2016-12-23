@@ -310,6 +310,7 @@ return [
     'object_team'               => 'Team',
     'object_teamcat'            => 'Team-Kategorie',
     'object_tournament'         => 'Turnier',
+    'object_update'             => 'Update',
     'object_user'               => 'Benutzer',
     'object_video'              => 'Video',
 

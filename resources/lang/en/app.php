@@ -260,6 +260,7 @@ return [
     'object_streams'        => 'Streams',
     'object_teams'          => 'Teams',
     'object_tournaments'    => 'Tournaments',
+    'object_update'         => 'Update',
     'object_users'          => 'Users',
     'object_videos'         => 'Videos',
     'object_visitors'       => 'Visitors',
