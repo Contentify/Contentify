@@ -1,65 +1,68 @@
-<div class="bracket" style="min-width: {{ $cup->rounds() * 200 }}px">
-    <?php $rows = $cup->slots // Inital value - not correct! ?>
-    <?php $matches = $cup->matchesDetailed() ?>
-    <?php $lastRound = '' ?>
+{!! HTML::script('vendor/jquery-bracket/jquery.bracket.min.js') !!}
+{!! HTML::style('vendor/jquery-bracket/jquery.bracket.min.css') !!}
 
-    @for ($round = 1; $round < $cup->rounds(); $round++)
-        <?php $rows = ceil($rows / 2) ?>
-        <?php $roundMatches = $matches->where('round', $round) ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var matchData = {
+            "teams": {!! $cup->renderBracket()['teams'] !!},
+            "results": {!! $cup->renderBracket()['results'] !!}
+        }
+        
+        function Bracket() {
+            var BracketWidth = $('#content').width() - 120;
+            var NbSlots = {!! $cup->slots !!};
+            var NbRound = Math.log(NbSlots)/Math.log(2);
+            if(NbSlots < 32) {
+                if($('#content').width() < 768) {
+                    var RoundMargin = 25;
+                    var ScoreWidth = 25;
+                    var MatchMargin = 60;
+                }
+                else {
+                    var RoundMargin = 80;
+                    var ScoreWidth = 40;
+                    var MatchMargin = 100;
+                }
+            }
+            else {
+                if($('#content').width() < 768) {
+                    var RoundMargin = 25;
+                    var ScoreWidth = 25;
+                    var MatchMargin = 20;
+                }
+                else {
+                    var RoundMargin = 55;
+                    var ScoreWidth = 25;
+                    var MatchMargin = 60;
+                }
+            }
+            var TeamWidth = (BracketWidth - (( RoundMargin * ( NbRound - 1 )) + ScoreWidth * NbRound ))/NbRound;
+            var BracketParameters = {
+                skipConsolationRound: true,
+                teamWidth: TeamWidth,
+                scoreWidth: ScoreWidth,
+                matchMargin: MatchMargin,
+                roundMargin: RoundMargin,
+                init: matchData
+            }
+            setTimeout(function() {
+                $('#bracket-view').bracket(BracketParameters);
+            }, 1000);
 
-        <ul class="round round-{{ $round }}">
-            @for ($row = 1; $row <= $rows; $row++)
-                <?php $match = $roundMatches->where('row', $row)->pop(); ?>
+        }
+        $(Bracket)
+        $(window).bind('resize', function() {
+            $(Bracket)
+        });
+    });
+    
+</script>
+<div id="bracket-view" style="overflow: hidden;">
 
-                @if ($match)
-                    <li class="spacer">&nbsp;</li>
-
-                    <li class="match match-top <?php if ($match->winner_id and $match->winner_id == $match->left_participant_id) echo 'winner' ?>" data-id="{{ $match->left_participant_id }}"> 
-                        @include('cups::participant', ['cup' => $cup, 'participant' => $match->left_participant])
-                        <span class="score">{{ $match->left_score }}</span>
-                    </li>
-                    <li class="match match-spacer"><a href="{{ url('cups/matches/'.$match->id) }}">{{ trans('matches::vs') }}</a></li>
-                    <li class="match match-bottom <?php if ($match->winner_id and $match->winner_id == $match->right_participant_id) echo 'winner' ?>" data-id="{{ $match->right_participant_id }}">
-                        @include('cups::participant', ['cup' => $cup, 'participant' => $match->right_participant])
-                        <span class="score">{{ $match->right_score }}</span>
-                    </li>
-                @else
-                    <?php // Match not yet created ?>
-                    
-                    <li class="spacer">&nbsp;</li>
-
-                    <li class="match match-top">-</li>
-                    <li class="match match-spacer">{{ trans('matches::vs') }}</li>
-                    <li class="match match-bottom ">-</li>
-                @endif
-               
-                @if ($round == $cup->rounds() - 1)
-                    <?php
-                        // Last round (the final match)
-
-                        $winner = '-';
-                        if ($match and $match->winner_id == $match->left_participant_id) {
-                            $winner = view('cups::participant', ['cup' => $cup, 'participant' => $match->left_participant]);
-                        }
-                        if ($match and $match->winner_id == $match->right_participant_id) {
-                            $winner = view('cups::participant', ['cup' => $cup, 'participant' => $match->right_participant]);
-                        }
-                        $lastRound .= 
-                            '<li class="spacer">&nbsp;</li>
-                            <li class="match match-top winner">'.$winner.'</li>';
-                    ?>
-                @endif
-            @endfor
-            <li class="spacer">&nbsp;</li>
-        </ul>
-    @endfor
-
-    <ul class="round round-{{ $round + 1 }} round-last">
-        {!! $lastRound !!}
-        <li class="spacer">&nbsp;</li>
-    </ul>
 </div>
 
+
+<?php $matches = $cup->matchesDetailed() ?>
 @if (user() and user()->isSuperAdmin())
     @if ($cup->start_at->timestamp < time() and $cup->start_at->timestamp + 120 > time())
         {!! Form::open(['url' => 'cups/swap/'.$cup->id, 'class' => 'form-inline']) !!}
