@@ -17,8 +17,8 @@
         </div>
     @endif
 
-    @if ($hasGit) 
-        @if ($nextVersion)
+    @if ($nextVersion)
+        @if (ini_get('allow_url_fopen'))
             <p>Please create a backup of all files and we recommend that you create a backup of the database as well.</p>
 
             <div class="well">
@@ -27,15 +27,19 @@
                 <button class="btn btn-default">Start update</button>
             </div>
         @else
-            <div class="alert alert-warning" role="alert">
-                <p><b>Update server not reachable or no update found.</b></p>
+            <div class="alert alert-danger" role="alert">
+                <p><b>Cannot download the updater, because the PHP option <em>allow_url_fopen</em> is set to false.</b></p>
             </div>
         @endif
-    @else 
-        <div class="alert alert-warning" role="alert">
-            <p><b>Git is not <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">installed</a> or could not be found!</b></p>
-
-            <p>Please install Git and ensure it is executable.</p>
-        </div>
+    @else
+        @if ($serverReachable)
+            <div class="alert alert-info" role="alert">
+                <p><b>No update available, this is the latest version!</b></p>
+            </div>
+        @else
+            <div class="alert alert-danger" role="alert">
+                <p><b>Update server not reachable. Please try again or contact the support team.</b></p>
+            </div>
+        @endif
     @endif
 {!! Form::close() !!}

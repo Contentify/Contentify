@@ -6,10 +6,9 @@ use Response, Config, Cache, Exception, BackController;
 class AdminUpdateController extends BackController {
 
     /**
-     * Base of the URL to the repository. This is just used to check for
-     * existence, not to download something.
+     * Base of the URL to the updater file.
      */
-    const REPO_URL = 'https://github.com/Contentify/Contentify/releases/tag/v';
+    const UPDATER_URL = 'http://contentify.org/share/update/updater-v';
 
     /**
      * Defines the desired value for max_execution_time (=5 minutes)
@@ -20,11 +19,6 @@ class AdminUpdateController extends BackController {
      * Defines the cache key used for storing the time of the start of the update
      */
     const CACHE_KEY_TIMESTAMP = 'app.update.timestamp';
-
-    /**
-     * Defines the cache key used for storing the result of the update process
-     */
-    const CACHE_KEY_RESULT = 'app.update.result';
 
     protected $icon = 'cloud-download';
 
@@ -38,32 +32,32 @@ class AdminUpdateController extends BackController {
     {
         $running = Cache::has(self::CACHE_KEY_TIMESTAMP);
 
-        // Check if git is installed. We need it to perform the update.
-        $result = exec('git --version');
-        $expectedResult = 'git version ';
-        $hasGit = (substr($result, 0, strlen($expectedResult)) === $expectedResult);
-
-        // Check if there is a newer version
         $currentVersion = Config::get('app.version');
         $nextVersion = $this->incrementVersion($currentVersion);
-        $url = self::REPO_URL.$nextVersion;
+
+        $url = $this->buildUpdaterUrl();
 
         $fileHeaders = @get_headers($url);
-        if (! $fileHeaders || $fileHeaders[0] != 'HTTP/1.1 200 OK') {
+
+        $serverReachable = true;
+        if (! $fileHeaders) {
+            $serverReachable = false;
+            $nextVersion = null;
+        } elseif (in_array('HTTP/1.1 404 Not Found', $fileHeaders)) {
             $nextVersion = null;
         }
 
         $data = [
             'executionTimeTarget' => self::EXECUTION_TIME_TARGET, 
-            'running' => $running, 
-            'hasGit' => $hasGit,
+            'running' => $running,
+            'serverReachable' => $serverReachable,
             'nextVersion' => $nextVersion
         ];
         $this->pageView('update::admin_index', $data);
     }
 
     /**
-     * Tries to perform the update
+     * Tries to download the updater and then perform the update
      * 
      * @return void
     */
@@ -79,56 +73,29 @@ class AdminUpdateController extends BackController {
             set_time_limit(self::EXECUTION_TIME_TARGET);
         }
 
-        $currentVersion = Config::get('app.version');
-        $nextVersion = $this->incrementVersion($currentVersion);
+        $url = $this->buildUpdaterUrl();
 
-        $output = null;
-        $returnCode = null;
-        $result = exec('git checkout -f '.$nextVersion, $output, $returnCode);
-        $output = implode('<br>', $output);
-        Cache::forever(self::CACHE_KEY_RESULT, '<b>Return code: '.$returnCode.'</b><br><br>'.$output);
-        Cache::forget(self::CACHE_KEY_TIMESTAMP);
+        $updaterPath = storage_path('app/updater.php');
+        $result = file_put_contents($updaterPath, fopen($url, 'r'));
 
-        // TODO Implement the unfinished part of the updater with an asynchronous update process
-        //$this->pageView('update::admin_update_overview', compact('threadId'));
-        $this->completed();
-    }
-
-    /**
-     * Returns the current status. 
-     * Returns -1 if the update process is not running,
-     * returns the duration (in seconds) otherwise.
-     * Notice that this method might be called AFTER the update
-     * so this implementation has to be compatible with the
-     * updater of the old AND the new version!
-     * 
-     * @return Response
-     */
-    public function status()
-    {
-        $timestamp = Cache::get(self::CACHE_KEY_TIMESTAMP);
-
-        if ($timestamp === null) {
-            return Response::make('-1');
-        } else {
-            $duration = time() - $timestamp;
-            return Response::make($duration);
+        if ($result === false) {
+            Cache::forget(self::CACHE_KEY_TIMESTAMP);
+            $this->alertError('Error: Downloading the updater failed.');
+            return;
         }
-    }
 
-    /**
-     * Shows the result of the update process.
-     * Notice that this method might be called AFTER the update
-     * so this implementation has to be compatible with the
-     * updater of the old AND the new version!
-     * 
-     * @return void
-     */
-    public function completed()
-    {
-        $result = Cache::get(self::CACHE_KEY_RESULT);
+        $result = require $updaterPath;
+        $updater = new \Contentify\Updater();
 
-        $this->alertInfo('Update process finished.', $result);
+        try {
+            $updater->update();
+
+            $this->alertInfo('Update completed. Welcome to version '.$updater->getVersion().'!');
+        } catch (Exception $ex) {
+            $this->alertInfo('Update failed. There was an error during the update process: '.$ex->getMessage());
+        }
+
+        Cache::forget(self::CACHE_KEY_TIMESTAMP);
     }
 
     /**
@@ -165,6 +132,20 @@ class AdminUpdateController extends BackController {
         $minor++;
 
         return $major.'.'.$minor;
+    }
+
+    /**
+     * Returns the URL of the CDN with the download of the updater
+     * of the next version
+     * 
+     * @return string URL
+     */
+    protected function buildUpdaterUrl()
+    {
+        $currentVersion = Config::get('app.version');
+        $nextVersion = $this->incrementVersion($currentVersion);
+
+        return self::UPDATER_URL.$nextVersion;
     }
 
 }
