@@ -38,6 +38,7 @@ ModuleRoute::put('cups/teams/{teamId}', 'TeamsController@update');
 ModuleRoute::get('cups/teams/delete/{teamId}', 'TeamsController@delete');
 
 ModuleRoute::get('cups/matches/{matchId}/{slug?}', 'MatchesController@show')->where('matchId', '[0-9]+');
+ModuleRoute::get('cups/match/{matchId}', 'MatchesController@matchDetail')->where('matchId', '[0-9]+');
 ModuleRoute::post('cups/matches/confirm-left/{matchId}', 'MatchesController@confirmLeft');
 ModuleRoute::post('cups/matches/confirm-right/{matchId}', 'MatchesController@confirmRight');
 ModuleRoute::post('cups/matches/winner', 'MatchesController@winner');

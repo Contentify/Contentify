@@ -115,6 +115,32 @@ a:hover { color: @primaryColor; text-decoration: none }
     color: @textColor;
 }
 
+/* Tooltip */
+.hover-show-match { 
+    padding: 10px 10px 10px 5px;
+    .overview {
+        min-width: 241px;
+        text-align: center;
+        float: left;
+        font-family: 'Titillium Web';
+        & > div.left { 
+            width: 35%; text-align: center; float: left;
+            a { color: #000; }
+        }
+        & > div.mid { width: 30%; text-align: center; float: left }
+        & > div.right { 
+            width: 35%; text-align: center; float: left;
+            a { color: #000; }
+        }
+    }
+    a.btn.btn-success {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: -10px;
+        border-radius: 3px;
+    }
+}
+
 /* Content filter UI */
 .content-filter-ui {
     select {

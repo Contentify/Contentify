@@ -351,4 +351,49 @@ class Cup extends BaseModel {
         return (int) ceil(log($participants) / log(2) + 1);
     }
 
+    /**
+     * Returns collection of participants to render bracket in JSON.
+     * 
+     * @return array
+     */
+    public function renderBracket()
+    {
+
+        $matches = Match::select('left_participant_id', 'left_score', 'right_participant_id', 'right_score', 'round', 'row')->whereCupId($this->id)->whereRound(1)->orderBy('row', 'asc')->get();
+        $cup = Cup::select('slots')->whereId($this->id)->first();
+
+        $teams = array();
+        $results = array();
+        $nbRounds = log($cup->slots)/log(2);
+        $rounds = array();
+
+        for ($i = 1; $i <= $nbRounds; $i++) {
+            $rounds[] = $i;
+        }
+
+        foreach ($matches as $key => $match) {
+            $teams[] = array($match->left_participant ? $match->left_participant->username : "Wildcard", $match->right_participant ? $match->right_participant->username : "Wildcard");
+        }
+
+        foreach ($rounds as $round) {
+            $matches = Match::select('id', 'left_participant_id', 'left_confirmed', 'right_confirmed', 'left_score', 'right_participant_id', 'right_score', 'round')->whereCupId($this->id)->whereRound($round)->orderBy('row', 'asc')->get();
+            foreach ($matches as $match) {
+                if($match->left_confirmed && $match->right_confirmed) {
+                    $results[0][$round][] = array($match->left_score, $match->right_score, $match->id);
+                }
+                else {
+                    $results[0][$round][] = array(0, 0, $match->id);
+                }
+            }
+        }
+
+        array_splice($results[0], $cup->slots / 2);
+        
+        $teams = json_encode($teams);
+        $results = json_encode($results);
+        $bracket = array('teams' => $teams, 'results' => $results);
+
+        return $bracket;
+    }
+
 }

@@ -53,5 +53,6 @@ return array(
     'new_match'         => 'A new match has been generated!',
     'change_winner'     => 'Change winner',
     'next_match'        => 'Next Match',
+    'view_match'        => 'View the match',
 
 );

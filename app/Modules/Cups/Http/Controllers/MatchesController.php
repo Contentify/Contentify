@@ -3,7 +3,7 @@
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
 use App\Modules\Cups\Match;
-use Input, Redirect, FrontController;
+use Input, Redirect, Request, Response, View, FrontController;
 
 class MatchesController extends FrontController {
 
@@ -177,6 +177,30 @@ class MatchesController extends FrontController {
 
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('cups/matches/'.$match->id);
+    }
+
+    /**
+     * Shows a cup match
+     * 
+     * @param  int  $id The ID of the match
+     * @return response
+     */
+    public function matchDetail(Request $request, $id)
+    {
+        if(Request::ajax()) {
+            $match = Match::findOrFail($id);
+
+            if ($match->with_teams) {
+                $leftName = $match->left_participant ? $match->left_participant->title : 'Wildcard';
+                $rightName = $match->right_participant ? $match->right_participant->title : 'Wildcard';
+            } else {
+                $leftName = $match->left_participant ? $match->left_participant->username : 'Wildcard';
+                $rightName = $match->right_participant ? $match->right_participant->username : 'Wildcard';
+            }
+            $this->title($leftName.' '.trans('matches::vs').' '.$rightName); 
+
+            return Response::json(['view' => View::make('cups::hover_match', compact('match'))->render()]);
+        }
     }
 
 }
