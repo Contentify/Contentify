@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - 2.0 RC
+## Contentify CMS - 2.0
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.2-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
@@ -16,7 +16,7 @@ Clone this repository (`master` branch) via git. Via console, switch to the Cont
 
 ### Download
 
-Download it here: [2.0-beta](https://github.com/Contentify/Contentify/releases/tag/v2.0-beta)
+Download it here: [2.0](https://github.com/Contentify/Contentify/releases/tag/v2.0)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 

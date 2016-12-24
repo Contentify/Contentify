@@ -103,7 +103,7 @@ class InstallController extends Controller {
                     File::put($filename, time());
                   }
                 } else {
-                  $content .= '<p><b>ERROR:</b> Cannot create '.$filename.'! Please create it manually.';
+                  $content .= '<p><b>Error:</b> Cannot create '.$filename.'! Please create it manually.';
                 }
 
                 $this->sendStatistics();
