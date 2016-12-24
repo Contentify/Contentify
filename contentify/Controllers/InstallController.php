@@ -111,7 +111,7 @@ class InstallController extends Controller {
                 break;
             case 5:
                 $title      = 'Create Super-Admin User';
-                $content    = '<p>Fill in the details of your user account.</p>'.
+                $content    = '<p>Please fill in the details of your user account.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
                               Form::open(['url' => 'install?step='.($step + 1)]).
                               Form::smartText('username', 'Username').
