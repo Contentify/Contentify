@@ -98,7 +98,7 @@ class InstallController extends Controller {
                 $title      = 'Installation Complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
 
-                if (File::isWritable($filename)) {
+                if (File::isWritable(File::dirname($filename))) {
                   if (! File::exists($filename)) {
                     File::put($filename, time());
                   }
