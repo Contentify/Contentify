@@ -115,9 +115,9 @@ class InstallController extends Controller {
                               '<div class="warning">'.Form::errors($errors).'</div>'.
                               Form::open(['url' => 'install?step='.($step + 1)]).
                               Form::smartText('username', 'Username').
-                              Form::smartEmail().
+                              Form::smartEmail(). // TODO: Title will be translated! Change this?
                               Form::smartPassword().
-                              Form::smartPassword('password_confirmation', 'Password').
+                              Form::smartPassword('password_confirmation').
                               Form::close();
 
                 break;
