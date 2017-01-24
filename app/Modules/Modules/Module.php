@@ -48,7 +48,7 @@ class Module extends BaseModel {
     }
 
     /**
-     * Check if a module is enabled. 
+     * Check if the module is enabled. 
      * 
      * @return boolean
      */
