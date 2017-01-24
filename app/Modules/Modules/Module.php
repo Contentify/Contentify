@@ -60,7 +60,7 @@ class Module extends BaseModel {
         // so we can get the slug for the isEnabled() method.
         $moduleInfos = $moduleBase->where('basename', $this->title);
 
-        return $moduleBase->isEnabled($moduleInfos->slug);
+        return $moduleBase->isEnabled($moduleInfos['slug']);
     }
 
 }
