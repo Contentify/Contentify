@@ -39,7 +39,7 @@ class LoginController extends FrontController {
             $info = $steam->getUserInfo();
 
             if ($info !== null) {
-                $user = User::where('steam_auth_id', $info->getSteamID64())->first();
+                $user = User::where('steam_auth_id', $info->steamID64)->first();
 
                 if ($user !== null) {
                     if ($user->banned) {
@@ -51,14 +51,14 @@ class LoginController extends FrontController {
 
                     return $this->afterLoginActions();
                 } else {
-                    $username = $info->getNick();
+                    $username = $info->personaname;
 
                     /*
                      * The username has to be unique so ensure that it is
                      */
                     $i = 1;
                     while ($user = User::whereUsername($username)->first()) {
-                        $username = $info->getNick().($i++);
+                        $username = $info->personaname.($i++);
                     }
 
                     $language = Language::whereCode(App::getLocale())->first();
@@ -74,8 +74,8 @@ class LoginController extends FrontController {
                     ], true); // Auto activate the user
 
                     $user->slug = Str::slug($user->username);
-                    $user->email = $info->getSteamID64().'@nomail.contentify.org'; // Email has to be unique and != null
-                    $user->steam_auth_id = $info->getSteamID64();
+                    $user->email = $info->steamID64.'@nomail.contentify.org'; // Email has to be unique and != null
+                    $user->steam_auth_id = $info->steamID64;
                     $user->save();
 
                     /*
