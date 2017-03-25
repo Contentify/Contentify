@@ -7136,6 +7136,9 @@ textarea.model-search-box input {
 .comments-login-info {
   margin-top: 10px;
 }
+#comments .comment .text { 
+  word-wrap: break-word; 
+}
 /*
  * Modules
  */
