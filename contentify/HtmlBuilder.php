@@ -339,7 +339,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
         }
 
         $key = self::ASSET_PATH_CACHE_KEY;
-        if (Cache::has($key)) {
+        if (Cache::has($key) and ! Config::get('app.debug')) {
             $version = Cache::get($key);
         } else {
             $version = time();
