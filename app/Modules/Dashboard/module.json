@@ -1,6 +1,5 @@
 {
-    "slug": "Dashboard",
-    "enabled": true,
+    "slug": "Dashboard",
     "admin-nav": [
         {
             "icon": "home",

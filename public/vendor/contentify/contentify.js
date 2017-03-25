@@ -441,6 +441,8 @@ $(document).ready(function()
         /**
          * Returns a string formatted according to the given format string.
          * According to http://www.php.net/manual/en/function.date.php
+         * Note that Contentify also ships with Moment.js, a JS library that 
+         * also has this feature: http://momentjs.com/docs/#/displaying/format/
          * 
          * @param  {Date}   date   The date
          * @param  {String} format The format string
@@ -525,7 +527,7 @@ $(document).ready(function()
         }
 
         /**
-         * Returns HTML code for a font icon.
+         * Returns HTML code for a font icon in Font Awesome style.
          * 
          * @param  {String} icon The name of the icon
          * @return {String}

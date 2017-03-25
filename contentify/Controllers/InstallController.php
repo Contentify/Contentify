@@ -15,6 +15,11 @@ class InstallController extends Controller {
     const INI_FILE = 'app/database.ini';
 
     /**
+     * URL of the Contentify.org API call after a successful installation.
+     */
+    const API_URL = 'http://www.contentify.org/api.php?action=send-statistics';
+
+    /**
      * Index action method
      * 
      * @param  integer                              $step   Step number
@@ -93,24 +98,26 @@ class InstallController extends Controller {
                 $title      = 'Installation Complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
 
-                if (File::isWritable($filename)) {
+                if (File::isWritable(File::dirname($filename))) {
                   if (! File::exists($filename)) {
                     File::put($filename, time());
                   }
                 } else {
-                  $content .= '<p><b>ERROR:</b> Cannot create '.$filename.'! Please delete it manually.';
+                  $content .= '<p><b>Error:</b> Cannot create '.$filename.'! Please create it manually.';
                 }
+
+                $this->sendStatistics();
 
                 break;
             case 5:
                 $title      = 'Create Super-Admin User';
-                $content    = '<p>Fill in the details of your user account.</p>'.
+                $content    = '<p>Please fill in the details of your user account.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
                               Form::open(['url' => 'install?step='.($step + 1)]).
                               Form::smartText('username', 'Username').
-                              Form::smartEmail().
+                              Form::smartEmail(). // TODO: Title will be translated! Change this?
                               Form::smartPassword().
-                              Form::smartPassword('password_confirmation', 'Password').
+                              Form::smartPassword('password_confirmation').
                               Form::close();
 
                 break;
@@ -277,10 +284,14 @@ class InstallController extends Controller {
          */
 
         /*
-         * If possible (safe mode not enabled), set the execution time limit
-         * to more than just the default 30 seconds.
+         * If possible (safe mode not enabled and use of set_time_limit not forbidden), 
+         * set the execution time limit to more than just the default 30 seconds.
          */
-        if (! ini_get('safe_mode') and ini_get('max_execution_time') < 120) {
+        $disabledFunctions = explode(',', ini_get('disable_functions'));
+        if (! ini_get('safe_mode') and 
+            ! in_array('set_time_limit', $disabledFunctions) and 
+            ini_get('max_execution_time') < 120) 
+        {
             set_time_limit(120);
         }
 
@@ -1094,7 +1105,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param  array            $primaryKeys    An array with the names of both primary keys
      * @return void
      */
-    public function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
+    protected function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
     {
         /*
          * Delete existing table:
@@ -1130,7 +1141,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param  array $tables Array of table names
      * @return void
      */
-    public function createDefaultCategories($tables)
+    protected function createDefaultCategories($tables)
     {
         foreach ($tables as $table) {
             DB::table($table)->insert([
@@ -1144,6 +1155,26 @@ information about your stored data, and possibly entitlement to correction, bloc
                 ],
             ]);
         }        
+    }
+
+    /**
+     * The installer will send some infos that are supposed to help understanding
+     * the usage of the CMS. Ofcourse no sensible information will be sent!
+     * Infos sent: Time and version of the CMS and of PHP. That's all. 
+     * Check the code if you want to verify this statement.
+     * 
+     * @return void
+     */
+    protected function sendStatistics()
+    {
+        $url = self::API_URL;
+        $url .= '&type=installtion';
+        $url .= '&cms_version='.Config::get('app.version');
+        $url .= '&php_version='.PHP_VERSION;
+
+        // Use file_get_contents() to make the request,
+        // so it will also work if CURL is not installed.
+        file_get_contents($url);
     }
        
 }

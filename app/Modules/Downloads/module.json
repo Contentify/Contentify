@@ -1,6 +1,5 @@
 {
     "slug": "Downloads",
-    "enabled": true,
     "search": ["downloads"],
     "admin-nav": [
         {

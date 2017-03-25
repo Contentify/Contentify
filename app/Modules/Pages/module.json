@@ -1,6 +1,5 @@
 {
-    "slug": "Pages",
-    "enabled": true,
+    "slug": "Pages",
     "search": ["articles"],
     "admin-nav": [
         {

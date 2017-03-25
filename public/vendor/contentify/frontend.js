@@ -1,3 +1,4 @@
+// This script is used by all vanilla themes.
 $(document).ready(function()
 {
 	var navKey = 'navIndex';
@@ -15,7 +16,8 @@ $(document).ready(function()
 
 	$nav.find('a').click(function(event)
 	{
-		sessionStorage.setItem(navKey, $(this).parent().index() - 1); // -1 because of icon li
+		var offset = $(this).parent().parent().find('li.icon').length;
+		sessionStorage.setItem(navKey, $(this).parent().index() - offset); // -offset because of icon li
 	});
 
 	$('#header nav .icon').click(function(event)

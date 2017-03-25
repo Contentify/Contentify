@@ -1,6 +1,5 @@
 {
-    "slug": "Servers",
-    "enabled": true,
+    "slug": "Servers",
     "admin-nav": [
         {
             "icon": "database",

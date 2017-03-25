@@ -1,6 +1,5 @@
 {
-    "slug": "Galleries",
-    "enabled": true,
+    "slug": "Galleries",
     "admin-nav": [
         {
             "icon": "file-photo-o",

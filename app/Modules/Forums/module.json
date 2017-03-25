@@ -1,6 +1,5 @@
 {
     "slug": "Forums",
-    "enabled": true,
     "search": ["threads"],
     "admin-nav": [
         {

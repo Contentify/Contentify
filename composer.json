@@ -14,7 +14,7 @@
         "chriskonnertz/bbcode": "dev-master",
         "chriskonnertz/jobs": "dev-master",
         "watson/validating": "~2.0",
-        "caffeinated/modules": "~2.0",
+        "caffeinated/modules": "~3.0",
         "invisnik/laravel-steam-auth": "2.*"
     },
     "require-dev": {

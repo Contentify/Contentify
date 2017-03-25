@@ -21,7 +21,7 @@ return [
      * Security
      */
     'spam_protection' => 'Spam Protection, merci d\'attendre quelques secondes avant de valider le formulaire.',
-    'debug_warning'   => 'Avertissement: Le mode debug est activé, bien que cela semble être un serveur de production!',
+    'debug_warning'   => 'Avertissement: Le mode debug est activé, alors que le site est en production!',
 
     /*
      * Errors
@@ -260,7 +260,8 @@ return [
     'object_streams'        => 'Streams',
     'object_teams'          => 'Equipes',
     'object_tournaments'    => 'Compétitions',
-    'object_users'          => 'Utilisateurs',
+    'object_update'         => 'Actualisation',
+    'object_users'          => 'Utilisateurs',    
     'object_videos'         => 'Vidéos',
     'object_visitors'       => 'Visiteurs',
 

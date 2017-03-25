@@ -1,6 +1,5 @@
 {
-    "slug": "News",
-    "enabled": true,
+    "slug": "News",
     "search": ["news"],
     "admin-nav": [
         {

@@ -47,11 +47,20 @@ class Module extends BaseModel {
         }
     }
 
+    /**
+     * Check if the module is enabled. 
+     * 
+     * @return boolean
+     */
     public function enabled()
     {
         $moduleBase = app()['modules'];
 
-        return $moduleBase->isEnabled($this->title);
+        // Get module infos by the basename property which we know,
+        // so we can get the slug for the isEnabled() method.
+        $moduleInfos = $moduleBase->where('basename', $this->title);
+
+        return $moduleBase->isEnabled($moduleInfos['slug']);
     }
 
 }

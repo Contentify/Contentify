@@ -1,6 +1,5 @@
 {
-    "slug": "Countries",
-    "enabled": true,
+    "slug": "Countries",
     "admin-nav": [
         {
             "icon": "flag",

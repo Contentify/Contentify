@@ -1,6 +1,5 @@
 {
-    "slug": "Videos",
-    "enabled": true,
+    "slug": "Videos",
     "search": ["videos"],
     "admin-nav": [
         {

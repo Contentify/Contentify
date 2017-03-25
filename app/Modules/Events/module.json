@@ -1,6 +1,5 @@
 {
     "slug": "Events",
-    "enabled": true,
     "search": ["events"],
     "admin-nav": [
         {

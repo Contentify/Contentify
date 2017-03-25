@@ -1,6 +1,5 @@
 {
-    "slug": "Navigations",
-    "enabled": true,
+    "slug": "Navigations",
     "admin-nav": [
         {
             "icon": "navicon",

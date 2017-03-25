@@ -1,6 +1,5 @@
 {
-    "slug": "Images",
-    "enabled": true,
+    "slug": "Images",
     "admin-nav": [
         {
             "icon": "image",

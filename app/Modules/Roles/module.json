@@ -1,6 +1,5 @@
 {
     "slug": "Roles",
-    "enabled": true,
     "admin-nav": [
         {
             "icon": "lock",

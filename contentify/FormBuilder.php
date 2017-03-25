@@ -281,7 +281,7 @@ class FormBuilder extends OriginalFormBuilder {
         $value = self::getDefaultValue($name, $default);
 
         // Bugfix for Laravel checkbox bug ( http://nielson.io/2014/02/handling-checkbox-input-in-laravel/ ):
-        $checkbox = self::hidden($name, false).self::checkbox($name, true, $value);
+        $checkbox = self::hidden($name, false).self::checkbox($name, 1, $value);
         $partial = self::smartGroupOpen($name, $title)
             .'<div class="checkbox">'.$checkbox.'</div>'
             .self::smartGroupClose();

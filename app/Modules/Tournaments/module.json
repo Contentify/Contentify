@@ -1,6 +1,5 @@
 {
-    "slug": "Tournaments",
-    "enabled": true,
+    "slug": "Tournaments",
     "admin-nav": [
         {
             "icon": "crosshairs",

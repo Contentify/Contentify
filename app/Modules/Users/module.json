@@ -1,6 +1,5 @@
 {
-    "slug": "Users",
-    "enabled": true,
+    "slug": "Users",
     "search": ["users"],
     "admin-nav": [
         {

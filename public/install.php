@@ -30,8 +30,15 @@ class Tester {
 
         $this->line();
 
-        $results = $this->checkDirs();
+        if (is_dir(__DIR__.'/../vendor')) {
+            $this->line('Vendor libraries installed: '.$this->green('Yes'));
+        } else {
+            $this->line('Vendor libraries installed: '.$this->red('No - please run "composer install"!'));
+        }
 
+        $this->line();
+
+        $results = $this->checkDirs();
         foreach ($results as $dir => $okay) {
             if ($okay) {
                 $this->line("Directory '$dir': ".$this->green('Writable'));
@@ -66,6 +73,7 @@ class Tester {
             'tokenizer',
             'openssl',
             'json',
+            'curl'
         );
 
         $results = array();
@@ -170,7 +178,7 @@ if ($tester->isCli()) {
 } else {
     $filename = 'storage/app/.installed';
     if (file_exists(__DIR__.'/../'.$filename)) {
-        die('Contentify has been installed already. Remove this file if you want to reinstall it: '.$filename);  
+        die('Contentify has already been installed. Remove this file if you want to reinstall it: '.$filename);  
     }
 
     echo '<html><head><title>Installer</title>

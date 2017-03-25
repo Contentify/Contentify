@@ -1,6 +1,5 @@
 {
-    "slug": "Contact",
-    "enabled": true,
+    "slug": "Contact",
     "admin-nav": [
         {
             "icon": "envelope",
