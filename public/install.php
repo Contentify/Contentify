@@ -73,6 +73,7 @@ class Tester {
             'tokenizer',
             'openssl',
             'json',
+            'curl'
         );
 
         $results = array();
