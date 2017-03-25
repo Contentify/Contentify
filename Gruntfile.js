@@ -12,13 +12,17 @@ module.exports = function(grunt) {
                 },
                 files: {
                     // destination file and source file
-                    'public/css/backend.css': 'resources/assets/less/backend.less'
+                    'public/css/backend.css': 'resources/assets/less/backend.less',
+                    'public/css/frontend.css': 'resources/assets/less/frontend.less'
                 }
             }
         },
         watch: {
             styles: {
-                files: ['resources/assets/less/backend.less'], // files to watch
+                files: [
+                    'resources/assets/less/backend.less',
+                    'resources/assets/less/frontend.less',
+                ], // files to watch
                 tasks: ['less'], // tasks to run
                 options: {
                     nospawn: true
