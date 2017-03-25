@@ -192,7 +192,7 @@ return [
     'back'              => 'Back',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Christmas Mode (Snow)',
-    'theme_snow_color'  => 'Flakes colors',
+    'theme_snow_color'  => 'Flakes color',
     'loading'           => 'Loading',
     'lineup'            => 'Lineup',
     'translate'         => 'Translate',
