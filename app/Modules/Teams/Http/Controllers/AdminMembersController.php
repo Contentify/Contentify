@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Teams\Http\Controllers;
 
 use App\Modules\Teams\Team;
-use Input, Response, View, HTML, DB, User, BackController;
+use Redirect, Input, Response, View, HTML, DB, User, BackController;
 
 class AdminMembersController extends BackController {
 
@@ -151,6 +151,16 @@ class AdminMembersController extends BackController {
         ]);
 
         return Response::make(1);
+    }
+    
+        /**
+     * Helper action method for searching. All we do here is to redirect with the input.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postSearch()
+    {
+        return Redirect::to('admin/members')->withInput(Input::only('search'));
     }
 
 }
