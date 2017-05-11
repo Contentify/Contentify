@@ -159,7 +159,7 @@ class AdminConfigController extends BackController {
                 return;
         }
 
-        $this->alertSuccess(t('Database optimized.'));
+        $this->alertSuccess(trans('Database optimized.'));
     }
 
     /**
