@@ -31,7 +31,7 @@
     <!-- Category 3 -->
     <div class="category">   
         <a href="#" class="head">
-            eSports<span> Content</span>
+            esports<span> Content</span>
         </a>
         <div class="items">        
             @foreach ($navCategories[3] as $navItem)
