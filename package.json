@@ -1,6 +1,6 @@
 {
   "name": "Contentify",
-  "description": "Contentify eSports CMS",
+  "description": "Contentify esports CMS",
   "author": "Contentify.org",
   "main": "Gruntfile.js",
   "private": true,
