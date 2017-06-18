@@ -7,11 +7,11 @@ class StandardPermissions extends OriginalStandardPermissions
 
     /**
      * See if a user has access to all of the passed permission(s).
-     * This overwrites Sentinel's lowlevel permission system
+     * This overwrites Sentinel's low-level permission system
      * and adds the level attribute.
      *
      * @param  string|array  $permissions   String of a single permission or array of multiple permissions
-     * @param  bool          $level         Desired level
+     * @param  int           $level         Desired level
      * @return bool
      */
     public function hasAccess($permissions, $level = 1)
@@ -33,11 +33,11 @@ class StandardPermissions extends OriginalStandardPermissions
 
     /**
      * See if a user has access to at least one of the passed permission(s).
-     * This overwrites Sentinel's lowlevel permission system
+     * This overwrites Sentinel's low-level permission system
      * and adds the level attribute.
      *
      * @param  string|array  $permissions   String of a single permission or array of multiple permissions
-     * @param  bool          $level         Desired level
+     * @param  int           $level         Desired level
      * @return bool
      */
     public function hasAnyAccess($permissions, $level = 1)
@@ -59,7 +59,7 @@ class StandardPermissions extends OriginalStandardPermissions
 
     /**
      * Checks a permission in the prepared array, including wildcard checks and permissions.
-     * This overwrites Sentinel's lowlevel permission system and adds the level attribute.
+     * This overwrites Sentinel's low-level permission system and adds the level attribute.
      *
      * @param  array    $prepared
      * @param  string   $permission

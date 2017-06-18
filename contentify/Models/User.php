@@ -59,7 +59,7 @@ class User extends SentinelUser {
 
     /**
      * Array containing validator messages after validate method was called.
-     * @var Illuminate\Support\MessageBag
+     * @var \Illuminate\Support\MessageBag
      */
     private $validatorMessages = null;
 
@@ -174,10 +174,10 @@ class User extends SentinelUser {
     /**
      * Checks if the user is friend with another user or not.
      * 
-     * @param  int      $friendID The user ID of the friend (=other user)
+     * @param  int      $friendId The user ID of the friend (=other user)
      * @return boolean
      */
-    public function isFriendWith($friendID)
+    public function isFriendWith($friendId)
     {
         if (array_key_exists('friends', $this->getRelations())) {
             foreach ($this->friends as $friend) {
@@ -188,7 +188,7 @@ class User extends SentinelUser {
             return false;
         }
 
-        $friendship = Friendship::areFriends($this->id, $friendID)->first();
+        $friendship = Friendship::areFriends($this->id, $friendId)->first();
 
         return ($friendship !== null);
     }

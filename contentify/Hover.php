@@ -11,7 +11,7 @@ class Hover {
     private $content = null;
 
     /**
-     * Code for an HTML element that contians the content
+     * Code for an HTML element that contains the content
      * @var string
      */
     private $wrapperTag = '<div class="hover-ui">%%</div>';
@@ -94,8 +94,8 @@ class Hover {
     /**
      * Adds model attribute values to the content
      * 
-     * @param  object $model A model
-     * @param  array  $infos Array of model attribute names
+     * @param  object $model      A model
+     * @param  array  $attributes Array of model attribute names
      * @return Hover
      */
     public function modelAttributes($model, $attributes = array())

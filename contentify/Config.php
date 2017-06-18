@@ -25,8 +25,8 @@ class Config extends LaravelConfig {
     /**
      * Determine if the given configuration value exists.
      *
-     * @param  string  $key
-     * @param  bool    $dbLookup If false, do not access the database table
+     * @param  string $key      The key for the value
+     * @param  bool   $dbLookup If false, do not access the database table
      * @return bool
      */
     public static function has($key, $dbLookup = true)
@@ -102,8 +102,8 @@ class Config extends LaravelConfig {
     /**
      * Store a given configuration value into DB.
      *
-     * @param  string  $key
-     * @param  mixed   $value
+     * @param  string  $key     The name of the key
+     * @param  mixed   $value   The value
      * @return void
      */
     public static function store($key, $value)
@@ -128,7 +128,7 @@ class Config extends LaravelConfig {
     /**
      * Delete a given configuration value from DB.
      *
-     * @param  string  $key
+     * @param  string  $key The name of the key
      * @return void
      */
     public static function delete($key)
@@ -141,7 +141,7 @@ class Config extends LaravelConfig {
     /**
      * Clear the cache for a given configuration key.
      *
-     * @param  string  $key
+     * @param  string  $key The name of the key
      * @return void
      */
     public static function clearCache($key)

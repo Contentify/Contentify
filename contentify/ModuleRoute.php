@@ -56,7 +56,7 @@ class ModuleRoute {
      * Binds a model to a route
      * 
      * @param string $modelName The name of the model (without namespace)
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function model($modelName)
     {
@@ -68,7 +68,7 @@ class ModuleRoute {
      * 
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function get($route, $target)
     {
@@ -80,7 +80,7 @@ class ModuleRoute {
      * 
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function post($route, $target)
     {
@@ -92,7 +92,7 @@ class ModuleRoute {
      * 
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function put($route, $target)
     {
@@ -104,7 +104,7 @@ class ModuleRoute {
      * 
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function patch($route, $target)
     {
@@ -116,7 +116,7 @@ class ModuleRoute {
      * 
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function delete($route, $target)
     {
@@ -128,7 +128,7 @@ class ModuleRoute {
      * 
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function options($route, $target)
     {
@@ -140,7 +140,7 @@ class ModuleRoute {
      * 
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function any($route, $target)
     {
@@ -153,7 +153,7 @@ class ModuleRoute {
      * @param  array  $methods
      * @param  string $route
      * @param  mixed  $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     public function match($methods, $route, $target)
     {
@@ -192,7 +192,7 @@ class ModuleRoute {
      * @param  string|array             $methods
      * @param  string                   $route
      * @param  mixed                    $target
-     * @return Illuminate\Routing\Route
+     * @return \Illuminate\Routing\Route
      */
     protected function createRoute($methods, $route, $target)
     {

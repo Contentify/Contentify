@@ -16,7 +16,7 @@ abstract class StiModel extends BaseModel
     protected $subclassField = null;
 
     /**
-     * Indicates if the inheriting class is a sublcass
+     * Indicates if the inheriting class is a subclass
      * @var boolean
      */
     protected $isSubclass = false;

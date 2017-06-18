@@ -22,8 +22,8 @@ class InstallController extends Controller {
     /**
      * Index action method
      * 
-     * @param  integer                              $step   Step number
-     * @param  null|Illuminate\Support\MessageBag   $errors Validation errors
+     * @param  integer                             $step   Step number
+     * @param  null|\Illuminate\Support\MessageBag $errors Validation errors
      * @return View
      */
     public function index($step = -1, $errors = null) 
@@ -1168,7 +1168,7 @@ information about your stored data, and possibly entitlement to correction, bloc
     protected function sendStatistics()
     {
         $url = self::API_URL;
-        $url .= '&type=installtion';
+        $url .= '&type=installation';
         $url .= '&cms_version='.Config::get('app.version');
         $url .= '&php_version='.PHP_VERSION;
 

@@ -23,12 +23,12 @@ class Captcha {
         
         $color      = imagecolorallocate($img, rand(0, 50), rand(0, 50), rand(0, 50));
         $font       = public_path().'/img/default/xfiles.ttf';
-        $fheight    = 12; // Font height
+        $fontHeight = 12; // Font height
         $angle      = rand(-3, 3);
         $x          = rand(3, 17);
         $y          = 16; // y = 0 is located at the BOTTOM of the picture!
         
-        imagettftext($img, $fheight, $angle, $x, $y, $color, $font, $captchaCode); // Add text to image
+        imagettftext($img, $fontHeight, $angle, $x, $y, $color, $font, $captchaCode); // Add text to image
         
         imagejpeg($img); // Display image
         
@@ -38,7 +38,7 @@ class Captcha {
     /**
      * Checks if the captcha code is valid
      * 
-     * @param   string  $value The potential captcha code
+     * @param   string $code The potential captcha code
      * @return  bool
      */
     public function check($code) 
@@ -51,7 +51,7 @@ class Captcha {
      * Checks if the captcha code is valid, 
      * using Google ReCAPTCHA.
      * 
-     * @param   string  $value The potential captcha code
+     * @param   string $code The potential captcha code
      * @return  bool
      */
     public function checkReCaptcha($code)

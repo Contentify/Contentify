@@ -61,7 +61,7 @@ class BaseModel extends Eloquent {
 
     /**
      * Tries to upload a file. It tries to delete the existing (old) file,
-     * if isntead of a file the string "." was sent.
+     * if instead of a file the string "." was sent.
      * Returns null or an error message (if an image file is invalid).
      * 
      * @param  string $fieldName  The name of the form field
@@ -154,10 +154,11 @@ class BaseModel extends Eloquent {
 
     /**
      * Creates a simple slug or a unique slug
-     * 
+     *
      * @param  bool   $unique         Unique or not?
      * @param  string $titleAttribute The name of the title attribute
      * @return void
+     * @throws Exception
      */
     public function createSlug($unique = true, $titleAttribute = 'title')
     {
@@ -386,7 +387,7 @@ class BaseModel extends Eloquent {
 
     /**
      * Handle dynamic method calls into the method.
-     * Overrided from {@link Eloquent} to implement recognition of the {@link $relationsData} array.
+     * Overridden from {@link Eloquent} to implement recognition of the {@link $relationsData} array.
      * This is derived from @link https://github.com/laravelbook/ardent
      *
      * @param  string $method
@@ -403,7 +404,7 @@ class BaseModel extends Eloquent {
 
     /**
      * Define an inverse one-to-one or many relationship.
-     * Overriden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
+     * Overridden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
      * $relationsData} array.
      * This is derived from @link https://github.com/laravelbook/ardent
      *
@@ -444,7 +445,7 @@ class BaseModel extends Eloquent {
 
     /**
      * Define an polymorphic, inverse one-to-one or many relationship.
-     * Overriden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
+     * Overridden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
      * $relationsData} array.
      * This is derived from @link https://github.com/laravelbook/ardent
      *
@@ -476,7 +477,7 @@ class BaseModel extends Eloquent {
 
     /**
      * Get an attribute from the model.
-     * Overrided from {@link Eloquent} to implement recognition of the {@link $relationsData} array.
+     * Overridden from {@link Eloquent} to implement recognition of the {@link $relationsData} array.
      * This is derived from @link https://github.com/laravelbook/ardent
      *
      * @param  string $key

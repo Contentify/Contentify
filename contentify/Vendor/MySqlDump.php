@@ -51,7 +51,7 @@ class MySqlDump {
      *
      * @param string $filename Name of file to write sql dump to
      * @return bool
-     * @throws Exception
+     * @throws \Exception
      */
     public function start($filename = '')
     {
@@ -119,7 +119,7 @@ class MySqlDump {
      * Output routine
      *
      * @param string $string SQL to write to dump file
-     * @throws Exception
+     * @throws \Exception
      */
     private function write($string)
     {

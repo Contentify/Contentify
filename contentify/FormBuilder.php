@@ -21,7 +21,7 @@ class FormBuilder extends OriginalFormBuilder {
     protected $controlGridCols = 9;
 
     /**
-     * Create HTML code for error displayment
+     * Create HTML code for displaying errors
      * 
      * @param  MessageBag $errors The errors to display
      * @return string
@@ -124,8 +124,8 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create a button element.
      *
-     * @param  string  $value
-     * @param  array   $options
+     * @param  string  $value   The value (= label) of the button
+     * @param  array   $options Array with attributes
      * @return string
      */
     public function button($value = null, $options = array())
@@ -187,12 +187,12 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a select element. It will take its values from a database table.
      * This is meant for models that do not extend the BaseModel class.
-     * 
-     * @param  string   $name     The name of the attribute, e. g. "user_id"
-     * @param  string   $title    The title of the select element
-     * @param  mixed    $default  Null or an ID
-     * @param  bool     $nullable If true the result can be empty and a "none selected" option is added
+     *
+     * @param  string $name     The name of the attribute, e. g. "user_id"
+     * @param  mixed  $default  Null or an ID
+     * @param  bool   $nullable If true the result can be empty and a "none selected" option is added
      * @return string
+     * @throws Exception
      */
     public function selectForeign($name, $default = null, $nullable = false)
     {
@@ -241,7 +241,7 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for the opening part of a custom form group.
      *
-     * @param  string $title        The name of the corresponding element (not the label itself!)
+     * @param  string $name         The name of the corresponding element (not the label itself!)
      * @param  string $title        The title of the field
      * @param  string $class        Additional class(es)
      * @return string
@@ -260,7 +260,6 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for the closing part of a custom form group.
      * 
-     * @param  string $title The title of the field
      * @return string
      */
     public function smartGroupClose()
@@ -365,7 +364,7 @@ class FormBuilder extends OriginalFormBuilder {
      * 
      * @param  string $name       The name of the input element
      * @param  string $title      The title of the input element
-     * @param  string $editor     Add WYSIWYG editor?
+     * @param  bool   $editor     Add WYSIWYG editor?
      * @param  string $default    The default value
      * @return string
      */
@@ -457,14 +456,15 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a select element. It will take its values from a database table.
      * It's smart and able to understand relationships of a model.
-     * 
-     * @param  string   $name               The name of the relation as defined in $model::relations
-     * @param  string   $title              The caption of the select element
-     * @param  string   $sourceModelClass   Full name of the source model class
-     * @param  mixed    $default            Null, an ID or an an array of IDs (if multiple selected items are possible)
-     * @param  bool     $nullable           If true the select element can be empty
-     * @param  bool     $nullOption         If true an extra element that has a null value is added
+     *
+     * @param  string $relationName     The name of the relation as defined in $model::relations
+     * @param  string $title            The caption of the select element
+     * @param  string $sourceModelClass Full name of the source model class
+     * @param  mixed  $default          Null, an ID or an an array of IDs (if multiple selected items are possible)
+     * @param  bool   $nullable         If true the select element can be empty
+     * @param  bool   $nullOption       If true an extra element that has a null value is added
      * @return string
+     * @throws Exception
      */
     public function smartSelectRelation($relationName, $title, $sourceModelClass, $default = null, 
         $nullable = false, $nullOption = false)
@@ -651,7 +651,7 @@ class FormBuilder extends OriginalFormBuilder {
      * @param  string $name       The name of the input element
      * @param  string $title      The title of the input element
      * @param  string $default    The default value
-     * @param  string $onlyDate   If true, do not display time
+     * @param  bool   $onlyDate   If true, do not display time
      * @return string
      */
     public function smartDateTime($name = 'datetime', $title = null, $default = null, $onlyDate = false)

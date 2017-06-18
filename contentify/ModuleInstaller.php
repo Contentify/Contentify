@@ -19,7 +19,7 @@ abstract class ModuleInstaller {
     protected $step;
 
     /**
-     * If true, the permisson [<moduleName> => PERM_DELETE]
+     * If true, the permission [<moduleName> => PERM_DELETE]
      * is added automatically.
      * @var boolean
      */
@@ -75,7 +75,7 @@ abstract class ModuleInstaller {
         $role = Sentinel::findRoleBySlug('super-admins');
         $rolePermissions = $role->permissions;
 
-        // Add default permisson
+        // Add default permission
         if ($this->addDefaultPermission) {
             $rolePermissions[$this->module] = PERM_DELETE;
         }

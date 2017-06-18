@@ -152,7 +152,7 @@ abstract class BaseController extends Controller {
     /**
      * Setup the layout used by the controller.
      * 
-     * param string $layoutName The name of the layout template file
+     * @param string $layoutName The name of the layout template file
      * @return void
      */
     protected function setupLayout($layoutName = null)
@@ -189,6 +189,7 @@ abstract class BaseController extends Controller {
      * @param array  $data     Array with data passed to the compile engine
      * @param bool   $replace  Replace the output already added
      * @return void
+     * @throws Exception
      */
     public function pageView($template = '', $data = array(), $replace = false)
     {
@@ -211,6 +212,7 @@ abstract class BaseController extends Controller {
      * @param string $output  HTML or text to output on the template.
      * @param bool   $replace Replace the output already added
      * @return void
+     * @throws Exception
      */
     public function pageOutput($output, $replace = false)
     {
@@ -232,6 +234,7 @@ abstract class BaseController extends Controller {
      * @param string $title The title
      * @param string $text  Optional text
      * @return void
+     * @throws Exception
      */
     public function alert($type, $title, $text = '')
     {
@@ -306,9 +309,10 @@ abstract class BaseController extends Controller {
      * Adds a meta tag to the variables of the main layout.
      * Use HTML::metaTags() to render them.
      *
-     * @param string $template Name of the meta tag
-     * @param string $content  Content of the meta tag
+     * @param string $name    Name of the meta tag
+     * @param string $content Content of the meta tag
      * @return void
+     * @throws Exception
      */
     public function metaTag($name, $content)
     {
@@ -325,6 +329,7 @@ abstract class BaseController extends Controller {
      *
      * @param string $title The title
      * @return void
+     * @throws Exception
      */
     public function title($title)
     {
@@ -341,6 +346,7 @@ abstract class BaseController extends Controller {
      *
      * @param OpenGraph $openGraph OpenGraph instance
      * @return void
+     * @throws Exception
      */
     public function openGraph(OpenGraph $openGraph)
     {
@@ -357,6 +363,7 @@ abstract class BaseController extends Controller {
      *
      * @param array $links Array with items of title (key) and URLs (link)
      * @return void
+     * @throws Exception
      */
     public function breadcrumb($links = array())
     {

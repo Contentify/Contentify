@@ -9,7 +9,8 @@ abstract class Widget {
 
     /**
      * Abstract. Renders the widget.
-     * 
+     *
+     * @param array $parameters Parameters passed to the widget. Keys should to be strings
      * @return void
      */
     abstract public function render($parameters = array());

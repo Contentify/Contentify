@@ -432,7 +432,7 @@ class ModelHandler {
     /**
      * CRUD: edit model
      * 
-     * @param  int The id of the model
+     * @param int $id The id of the model
      */
     public function edit($id)
     {
@@ -456,7 +456,7 @@ class ModelHandler {
     /**
      * CRUD: update model
      * 
-     * @param  int The id of the model
+     * @param int $id The id of the model
      */
     public function update($id)
     {
@@ -579,7 +579,7 @@ class ModelHandler {
     /**
      * CRUD: delete model
      * 
-     * @param  int The id of the model
+     * @param int $id The id of the model
      */
     public function destroy($id)
     {
@@ -660,7 +660,7 @@ class ModelHandler {
     /**
      * CRUD-related: restore model after soft deletion
      * 
-     * @param  int The id of the model
+     * @param int $id The id of the model
      */
     public function restore($id)
     {
@@ -786,8 +786,9 @@ class ModelHandler {
 
     /**
      * Returns the controller object or throws an exception if it's null
-     * 
+     *
      * @return object The controller object
+     * @throws Exception
      */
     protected function getControllerOrFail()
     {

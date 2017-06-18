@@ -17,6 +17,10 @@ class BackNavGen {
      */
     const CACHE_KEY = 'app.backNavTemplate';
 
+    /**
+     * The current locale, for example 'en'
+     * @var string
+     */
     protected $locale = null;
 
     public function __construct()
@@ -92,7 +96,7 @@ class BackNavGen {
     /**
      * Create the backend navigation, put it into a view,
      * render it and cache it.
-     * @param  boolean $update Enforce cache update
+     * @param  boolean $update Enforce cache update?
      * @return void
      */
     public function make($update = false)

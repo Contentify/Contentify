@@ -13,9 +13,10 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Renders a widget.
      *
-     * @param string    $widgetName The class name of the widget. For module widgets it's <Module>::<Widget>
-     * @param array     $parameters Array with parameters (name-value-pairs)
+     * @param string $widgetName The class name of the widget. For module widgets it's <Module>::<Widget>
+     * @param array  $parameters Array with parameters (name-value-pairs)
      * @return string
+     * @throws Exception
      */
     public function widget($widgetName, $parameters = null)
     { 
@@ -82,12 +83,12 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Renders Open Graph tags
      *
-     * @param  OpenGraph The Open Graph instance
+     * @param  OpenGraph $openGraph The Open Graph instance
      * @return string
      */
-    public function openGraphTags(OpenGraph $og)
+    public function openGraphTags(OpenGraph $openGraph)
     { 
-        $output = $og->renderTags();
+        $output = $openGraph->renderTags();
 
         return $output;
     }
@@ -232,15 +233,16 @@ class HtmlBuilder extends OriginalHtmlBuilder {
 
         return $button;
     }
-    
+
     /**
      * Returns HTML code for a sort switcher (asc / desc).
      *
-     * @param string $sortby    Attribute of the model, e.g. "id"
-     * @param string $order     Current sorting order, "asc" or "desc"
+     * @param string      $sortBy Attribute of the model, e.g. "id"
+     * @param string      $order  Current sorting order, "asc" or "desc"
+     * @param string|null $search Current search term
      * @return string
      */
-    public function sortSwitcher($sortby, $order = null, $search = null)
+    public function sortSwitcher($sortBy, $order = null, $search = null)
     {
         if ($order == 'asc') {
             $order  = 'desc';
@@ -250,7 +252,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
             $icon   = 'caret-down';
         }
 
-        $url = URL::current().'?sortby='.$sortby.'&order='.$order;
+        $url = URL::current().'?sortby='.$sortBy.'&order='.$order;
         if ($search) $url .= '&search='.urlencode($search);
 
         $caption = trans('app.sorting').': '.self::fontIcon($icon);

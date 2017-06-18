@@ -13,9 +13,10 @@ abstract class FrontController extends BaseController {
 
     /**
      * Setup the layout used by the controller.
-     * 
-     * param string $layoutName The name of the layout template file
+     *
+     * @param string $layoutName The name of the layout template file
      * @return void
+     * @throws Exception
      */
     protected function setupLayout($layoutName = null)
     {

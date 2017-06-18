@@ -50,9 +50,9 @@ class FormGenerator {
     /**
      * Creates a single form field.
      * Returns null if the field is ignored.
-     * 
+     *
      * @param  stdClass $column The Column object
-     * @return $string
+     * @return null|string
      */
     protected function buildField($column)
     {
@@ -172,7 +172,7 @@ class FormGenerator {
     }
 
     /**
-     * Convert a snake_case sring to a title (single words, ucfirst)
+     * Convert a snake_case string to a title (single words, ucfirst)
      * 
      * @param  string $snakeCase The snake cased string
      * @return string
