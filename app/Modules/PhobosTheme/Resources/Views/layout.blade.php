@@ -63,9 +63,9 @@
                     <div class="user">
                         @if (user())
                             @if (user()->image)
-                                <span class="image" style="background-image: url({{ asset('img/default/no_user.png') }})"></span>
-                            @else
                                 <span class="image" style="background-image: url({{ user()->uploadPath().'80/'.user()->image }})"></span>
+                            @else
+                                <span class="image" style="background-image: url({{ asset('img/default/no_user.png') }})"></span>
                             @endif
                             <div class="dropdown">
                                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{user()->username }} <span class="caret"></span></button>
