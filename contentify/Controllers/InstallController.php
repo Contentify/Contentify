@@ -287,7 +287,7 @@ class InstallController extends Controller {
          * If possible (safe mode not enabled), set the execution time limit
          * to more than just the default 30 seconds.
          */
-        if (! ini_get('safe_mode') and ini_get('max_execution_time') < 120) {
+        if (! ini_get('safe_mode') and function_exists('set_time_limit') and ini_get('max_execution_time') < 120) {
             set_time_limit(120);
         }
 
