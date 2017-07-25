@@ -1,5 +1,6 @@
-.idea/
 /vendor
 /node_modules
+.idea/
 .env
+.iml
 console.lnk
