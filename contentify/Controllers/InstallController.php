@@ -100,7 +100,7 @@ class InstallController extends Controller {
                  */
                 $filename = storage_path(self::INSTALL_FILE);
 
-                $title      = 'Installation Complete';
+                $title      = 'Installation complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
 
                 if (File::isWritable(File::dirname($filename))) {
@@ -115,7 +115,7 @@ class InstallController extends Controller {
 
                 break;
             case 5:
-                $title      = 'Create Super-Admin User';
+                $title      = 'Create super-admin user';
                 $content    = '<p>Please fill in the details of your user account.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
                               Form::open(['url' => 'install?step='.($step + 1)]).
@@ -181,7 +181,7 @@ class InstallController extends Controller {
 
                 $this->createSeed();
 
-                $title      = 'Database Setup Complete';
+                $title      = 'Database setup complete';
                 $content    = '<p>Database filled with initial seed.</p>';
 
                 break;
@@ -193,7 +193,7 @@ class InstallController extends Controller {
                     $settings = parse_ini_file($filename);
                 }
 
-                $title      = 'Database Setup';
+                $title      = 'Database setup';
                 $content    = '<p>Fill in the database connection settings.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
                               Form::open(['url' => 'install?step='.($step + 1)]).
@@ -223,7 +223,7 @@ class InstallController extends Controller {
                 }
                 $ul .= '</ul>';
 
-                $title      = 'Writable Directories';
+                $title      = 'Writable directories';
                 $content    = "<p>The application needs write access (CHMOD 777) to these directories 
                               and their sub directories:</p>
                               $ul
@@ -253,7 +253,7 @@ class InstallController extends Controller {
                     $tokenizer = '<span class="state no">No</span>';
                 }
 
-                $title      = 'Server Requirements';
+                $title      = 'Server requirements';
                 $content    = "<ul>
                               <li>PHP >= 5.5.9 $version</li>
                               <li>OpenSSL Extension $openSsl</li>
@@ -266,7 +266,7 @@ class InstallController extends Controller {
                 break;
             default:
                 $step       = 0; // Better save than sorry! (E.g. if step was -1)
-                $title      = 'Welcome To Contentify 2';
+                $title      = 'Welcome to Contentify 2';
                 $content    = '<p>Please click on the "Next" button to start the installation.</p>
                               <p><a href="https://github.com/Contentify/Contentify/wiki/Installation" target="_blank">Take a look at our documentation 
                               (chapter "Installation") if you need help.</a></p>';
