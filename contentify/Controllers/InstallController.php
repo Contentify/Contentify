@@ -20,6 +20,11 @@ class InstallController extends Controller {
     const API_URL = 'http://www.contentify.org/api.php?action=send-statistics';
 
     /**
+     * The installer will try to increase the time limit to this value (in minutes) if possible
+     */
+    const MAX_TIME_LIMIT = 5 * 60;
+
+    /**
      * Index action method
      * 
      * @param  integer                             $step   Step number
@@ -287,9 +292,8 @@ class InstallController extends Controller {
          * If possible (safe mode not enabled and use of set_time_limit not forbidden), 
          * set the execution time limit to more than just the default 30 seconds.
          */
-        if (! ini_get('safe_mode') and function_exists('set_time_limit') and ini_get('max_execution_time') < 120) 
-        {
-            set_time_limit(120);
+        if (! ini_get('safe_mode') and function_exists('set_time_limit') and ini_get('max_execution_time') < self::MAX_TIME_LIMIT) {
+            set_time_limit(self::MAX_TIME_LIMIT);
         }
 
         /*
