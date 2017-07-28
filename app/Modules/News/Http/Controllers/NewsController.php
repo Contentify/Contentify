@@ -63,9 +63,9 @@ class NewsController extends FrontController {
         }
         $offset = DB::raw('FROM_UNIXTIME('.$offset.')');
 
-        $colums = 2;
+        $columns = 2;
         $rows = 3;
-        $limit = $colums * $rows;
+        $limit = $columns * $rows;
         $streamItems = [];
 
         /*
