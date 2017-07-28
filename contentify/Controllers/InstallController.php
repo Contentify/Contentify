@@ -27,7 +27,7 @@ class InstallController extends Controller {
     /**
      * Index action method
      * 
-     * @param  integer                             $step   Step number
+     * @param  int                                 $step   Step number
      * @param  null|\Illuminate\Support\MessageBag $errors Validation errors
      * @return View
      */
@@ -43,7 +43,7 @@ class InstallController extends Controller {
         }
 
         if ($step < 0) {
-            $step   = (int) Input::get('step', 0);
+            $step = (int) Input::get('step', 0);
         }
         $title      = '';
         $content    = '';

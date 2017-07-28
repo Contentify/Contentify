@@ -23,7 +23,7 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for displaying errors
      * 
-     * @param  MessageBag $errors The errors to display
+     * @param  \Illuminate\Support\MessageBag $errors The errors to display
      * @return string
      */
     public function errors($errors)
