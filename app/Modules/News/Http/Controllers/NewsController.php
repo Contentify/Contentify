@@ -54,6 +54,12 @@ class NewsController extends FrontController {
         $this->pageView('news::show_overview', compact('newsCollection'));
     }
 
+    /**
+     * Shows a "stream" of "news" (or in generally: generated content) with news and videos
+     *
+     * @param int|string|null $offset
+     * @return void
+     */
     public function showStream($offset = null)
     {
         if ($offset) {
