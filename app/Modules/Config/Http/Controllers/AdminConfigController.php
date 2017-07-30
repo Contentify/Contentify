@@ -8,7 +8,7 @@ class AdminConfigController extends BackController {
 
     /**
      * Path and file name of the log file.
-     * Note that chagning this constant won't 
+     * Note that changing this constant won't
      * change where Monolog creates the file.
      */
     const LOG_FILE = '/logs/laravel.log';
