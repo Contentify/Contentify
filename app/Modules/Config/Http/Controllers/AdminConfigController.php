@@ -51,8 +51,9 @@ class AdminConfigController extends BackController {
      * Note that we have to create the parameter $id eventhough we won't use it:
      * The update method inherits from BackController->update($id).
      * We allow $id to be null so we do not have to pass an argument.
-     * 
+     *
      * @param mixed $id Unused parameter
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id = null)
     {
