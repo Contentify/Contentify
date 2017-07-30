@@ -150,7 +150,7 @@ class User extends SentinelUser {
      * Returns all friends of this user.
      * NOTE: This is not a relationship. Eloquent does not support this kind of relationship.
      *
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function friends()
     {
@@ -291,7 +291,7 @@ class User extends SentinelUser {
      * Tries to upload an image
      * 
      * @param  string $fieldName The name of the form field
-     * @return Redirect|null
+     * @return null|\Illuminate\Http\RedirectResponse
      */
     public function uploadImage($fieldName)
     {
@@ -407,7 +407,7 @@ class User extends SentinelUser {
      * 
      * @param  string|array $permissions The permission(s)
      * @param  int          $level       The level of the permission(s)
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public static function findAllUsersWithAccess($permissions, $level = 1) {
         if ( ! is_array($permissions)) {
