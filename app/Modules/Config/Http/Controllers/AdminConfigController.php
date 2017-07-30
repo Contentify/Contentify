@@ -85,7 +85,7 @@ class AdminConfigController extends BackController {
              * If the key does not exist we need to create it
              * $result contains the number of affected rows.
              * With using a timestamp we ensure that when updating a value
-             * the row is always affacted, eventhough if the value does not change.
+             * the row is always affected, even though if the value does not change.
              */
             if ($result == 0) {
                 DB::table('config')->insert(array(
