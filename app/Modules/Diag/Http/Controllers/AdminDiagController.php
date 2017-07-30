@@ -45,7 +45,7 @@ class AdminDiagController extends BackController {
             'PHP.max_execution_time'    => ini_get('max_execution_time'),
             'PHP.post_max_size'         => ini_get('post_max_size'),
             'PHP.upload_max_filesize'   => ini_get('upload_max_filesize'),
-            'PHP.date.timezone'         => ini_get('date.timezone'),
+            'PHP.date.timezone'         => date_default_timezone_get(),
             'Server.addr'               => $_SERVER['SERVER_ADDR'],
             'Server.name'               => $_SERVER['SERVER_NAME'],
             'Server.software'           => $_SERVER['SERVER_SOFTWARE'],
