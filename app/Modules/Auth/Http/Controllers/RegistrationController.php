@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Auth\Http\Controllers;
 
 use App\Modules\Languages\Language;
-use Response, User, App, Str, Sentinel, Input, Redirect, Session, Captcha, FrontController, Exception, Validator;
+use Response, User, App, Sentinel, Input, Redirect, Captcha, FrontController, Exception, Validator;
 
 class RegistrationController extends FrontController {
 
@@ -56,7 +56,7 @@ class RegistrationController extends FrontController {
                 'language_id'   => $language->id,
             ], self::AUTO_ACTIVATE);
 
-            $user->slug = Str::slug($user->username);
+            $user->createSlug(true, 'username');
             $user->save();
 
             /*

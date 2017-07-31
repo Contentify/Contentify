@@ -86,7 +86,7 @@ class InstallController extends Controller {
                 ), true);
 
                 // NOTE: It's not possible to integrate this into the register method
-                $user->slug = Str::slug($user->username);
+                $user->createSlug(true, 'username');
                 $user->save();
 
                 /*
@@ -176,7 +176,7 @@ class InstallController extends Controller {
                 ));
 
                 // NOTE: It's not possible to integrate this into the register method
-                $user->slug = Str::slug($user->username);
+                $user->createSlug(true, 'username');
                 $user->save();
 
                 $this->createSeed();

@@ -1,13 +1,16 @@
 <?php namespace Contentify\Models;
 
+use Contentify\Traits\SlugTrait;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use File, Input, Str, DB, DateAccessorTrait, ValidatingTrait, Eloquent, InvalidArgumentException, Exception;
+use File, Input, DateAccessorTrait, ValidatingTrait, Eloquent, InvalidArgumentException, Exception;
 
 class BaseModel extends Eloquent {
 
     use ValidatingTrait;
 
     use DateAccessorTrait;
+
+    use SlugTrait;
 
     /**
      * True if model is slugable
@@ -51,7 +54,6 @@ class BaseModel extends Eloquent {
         } else {
             $base = asset('');
             
-            if (endsWith($base, '/')) {
             if (ends_with($base, '/')) {
                 $base = substr($base, 0, -1);
             }
@@ -151,56 +153,6 @@ class BaseModel extends Eloquent {
     public function slugable()
     {
         return $this->slugable;
-    }
-
-    /**
-     * Creates a simple slug or a unique slug
-     *
-     * @param  bool   $unique         Unique or not?
-     * @param  string $titleAttribute The name of the title attribute
-     * @return void
-     * @throws Exception
-     */
-    public function createSlug($unique = true, $titleAttribute = 'title')
-    {
-        if (! $this->slugable) {
-            throw new Exception('This model does not support slugs.');
-        }
-
-        $slug = Str::slug($this->$titleAttribute);
-
-        if ($unique) {
-            /*
-             * If the model has a valid slug already and the title has
-             * not been changed, do nothing - just keep the current slug.
-             */
-            if ($this->slug and ! $this->isDirty($titleAttribute)) {
-                return;
-            }
-
-            /*
-             * Retrieve the model with the highest slug counter.
-             * (orderBy uses "natural sorting")
-             */
-            $model = static::orderBy(DB::Raw('LENGTH(slug) DESC, slug'), 'DESC')
-                ->whereRaw("slug REGEXP '^{$slug}(-[0-9]*)?$'");
-
-            if ($this->isSoftDeleting()) {
-                $model = $model->withTrashed();
-            }
-
-            $model = $model->first();
-            /*
-             * If the slug is in use already:
-             * Extract the counter value, increase it and create the new slug.
-             */
-            if ($model) {
-                $max = (int) substr($model->slug, strlen($slug) + 1);
-                $slug .= '-'.($max + 1);
-            }
-        }
-
-        $this->slug = $slug;
     }
 
     /**

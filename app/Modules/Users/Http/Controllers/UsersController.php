@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Users\Http\Controllers;
 
-use Str, Validator, Sentinel, Redirect, Input, User, FrontController;
+use Validator, Sentinel, Redirect, Input, User, FrontController;
 
 class UsersController extends FrontController {
 
@@ -80,7 +80,7 @@ class UsersController extends FrontController {
         $user = User::findOrFail($id);
 
         $user->fill(Input::all());
-        $user->slug = Str::slug($user->username);
+        $user->createSlug(true, 'username');
 
         if (! $user->validate()) {
             return Redirect::route('users.edit', [$id])

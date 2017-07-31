@@ -2,7 +2,7 @@
 
 use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Modules\Languages\Language;
-use App, User, Str, View, Sentinel, Input, Session, Redirect, Exception, FrontController;
+use App, User, Str, Sentinel, Input, Session, Config, Redirect, Exception, FrontController;
 
 class LoginController extends FrontController {
     
@@ -35,10 +35,19 @@ class LoginController extends FrontController {
 
     public function getSteam(SteamAuth $steam)
     {
+        $apiKey = Config::get('steam-auth.api_key');
+
+        if (! $apiKey) {
+            // Throw an exception if no API key has been set. if we do not throw this exception
+            // the API call will fail but return a vague error message, so better ensure clarity.
+            throw new Exception('Error: No API key set in the steam-auth config file. Please set it!');
+        }
+
         if ($steam->validate()) { 
             $info = $steam->getUserInfo();
 
             if ($info !== null) {
+                /** @var User $user */
                 $user = User::where('steam_auth_id', $info->steamID64)->first();
 
                 if ($user !== null) {
@@ -73,7 +82,7 @@ class LoginController extends FrontController {
                         'language_id'   => $language->id,
                     ], true); // Auto activate the user
 
-                    $user->slug = Str::slug($user->username);
+                    $user->createSlug(true, 'username');
                     $user->email = $info->steamID64.'@nomail.contentify.org'; // Email has to be unique and != null
                     $user->steam_auth_id = $info->steamID64;
                     $user->save();

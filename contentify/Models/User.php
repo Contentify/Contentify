@@ -1,14 +1,17 @@
 <?php namespace Contentify\Models;
 
 use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
+use Contentify\Traits\SlugTrait;
 use App\Modules\Messages\Message;
 use App\Modules\Friends\Friendship;
-use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Activation, Sentinel, Session;
+use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Activation, Sentinel, Session, Str;
 
 class User extends SentinelUser {
 
+    use SlugTrait;
+
     /**
-     * Decides how loing a user is considered being online. Unit: Seconds (= 5 Minutes)
+     * Decides how long a user is considered being online. Unit: Seconds (= 5 Minutes)
      */
     const ONLINE_TIME = 300;
 
@@ -16,6 +19,12 @@ class User extends SentinelUser {
      * Name of the cache key for the user message counter
      */
     const CACHE_KEY_MESSAGES = 'users::messageCounter.';
+
+    /**
+     * True if model is slugable. Usage in SlugTrait.
+     * @var bool
+     */
+    protected $slugable = true;
 
     protected $fillable = [
         'username', 
