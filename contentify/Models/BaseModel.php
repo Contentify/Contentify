@@ -52,6 +52,7 @@ class BaseModel extends Eloquent {
             $base = asset('');
             
             if (endsWith($base, '/')) {
+            if (ends_with($base, '/')) {
                 $base = substr($base, 0, -1);
             }
         }
