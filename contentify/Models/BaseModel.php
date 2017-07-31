@@ -111,7 +111,7 @@ class BaseModel extends Eloquent {
 
         if ($isImage) {
             foreach ($thumbnails as $thumbnail) {
-                if (is_callable($humbnail)) {
+                if (is_callable($thumbnail)) {
                     $thumbnail($file ? $filePath.$filename : null); // Let the closure handle the thumbnailing
                 } else {
                     if (File::exists($filePath.$thumbnail.'/'.$this->getOriginal($fieldName))) {
