@@ -9,6 +9,10 @@ return [
     /*
      * Enter your API Key (http://steamcommunity.com/dev/apikey) here:
      */
-    'api_key' => ''
+    'api_key' => '',
+    /*
+     * Is using https ?
+     */
+    'https' => false
 
 ];
