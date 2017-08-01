@@ -6,7 +6,7 @@ use Redirect, FrontController;
 class AdvertsController extends FrontController {
 
     /**
-     * Navigate to the website of an advert
+     * Navigate to the URL of an advert
      * 
      * @param  int $id The id of the advert
      * @return Redirect
