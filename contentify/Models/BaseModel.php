@@ -20,7 +20,7 @@ class BaseModel extends Eloquent {
 
     /**
      * Name of the upload directory (null = name of class)
-     * @var string
+     * @var string|null
      */
     protected $uploadDir = null;
 

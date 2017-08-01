@@ -25,6 +25,13 @@ class Advert extends BaseModel {
     ];
 
     /**
+     * Usually the name would be "adverts" but ad blockers
+     * recognize this part of the URl and would block the image
+     * @var string|null
+     */
+    protected $uploadDir = 'influence';
+
+    /**
      * Select only those that have been published
      *
      * @param Builder $query

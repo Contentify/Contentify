@@ -49,9 +49,9 @@
 @endif
 
 <div class="widgets-row">
-    @widget('Comments::LatestComments')
-
     @widget('Users::LatestUsers')
+
+    @widget('Comments::LatestComments')
 </div>
 
 {!! $feed !!}

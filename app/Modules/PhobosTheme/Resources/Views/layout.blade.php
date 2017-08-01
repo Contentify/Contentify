@@ -146,6 +146,11 @@
                         <a href="{{ url('teams') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus-square') !!}</a>
                     </h3>
                     @widget('Teams::Teams')
+
+                    <br>
+                    <div class="text-center">
+                        @widget('Adverts::Advert')
+                    </div>
                 </div>
             </aside>
         </div>
