@@ -12,7 +12,7 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Clone Repository
 
-Clone this repository (`master` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+Clone this repository (`2.1-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Download
 
