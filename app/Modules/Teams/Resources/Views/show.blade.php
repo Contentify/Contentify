@@ -56,7 +56,13 @@
                                     {!! $award->positionIcon() !!}
                                 </td>
                                 <td>
-                                    {{ $award->title }}
+                                    @if ($award->url)
+                                        <a href="{{ $award->url }}" target="_blank" title="{{ $award->title }}">
+                                            {{ $award->title }}
+                                        </a>
+                                    @else
+                                        {{ $award->title }}
+                                    @endif
                                 </td>
                                 <td>
                                     {{ $award->tournament ? $award->tournament->short : null }}
