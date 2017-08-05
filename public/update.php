@@ -7,6 +7,11 @@ require __DIR__.'/../AppBridge.php';
 class Updater {
 
     /**
+     * The number of the version this this updater can update
+     */
+    const SUPPORTED_VERSIONS = ['2.0'];
+
+    /**
      * Welcome text, HTML code. Will be displayed without HTML tags
      * when on console.
      * 
@@ -79,11 +84,16 @@ EOD;
         }
 
         try {
-            $this->$method();
-            $this->printPageEnd();
+            $errorCode = $this->$method();
         } catch (\Exception $exception) {
-            return $exception->getCode();
+            $errorCode = $exception->getCode();
         }
+
+        if ($errorCode != 0) {
+            $this->print($this->createErrorText('Error: Code '.$errorCode));
+        }
+            
+        $this->printPageEnd();
 
         return 0;
     }
@@ -91,7 +101,7 @@ EOD;
     /**
      * Show a page with infos and ask the user to confirm the update
      * 
-     * @return bool
+     * @return int Error code
      */
     public function welcome()
     {
@@ -108,25 +118,72 @@ EOD;
     /**
      * Actually performs the update
      * 
-     * @return bool
+     * @return int Error code
      */
     public function perform()
     {
+        $this->print('Updating the database...');
+
+        $appConfig = $this->app->loadConfig('app');
+        $newVersion = $appConfig['version'];
+
         $pdo = $this->app->createDatabaseConnection();
 
-        // TODO implement
+        // TODO Use table name prefix
+        $pdoStatement = $pdo->query('SELECT `value` FROM `config` WHERE `name` = "app.version"');
+
+        if ($result === false) {
+            $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
+            return $pdo->errorInfo()[0];
+        }
+
+        $currentVersion = $pdoStatement->fetchColumn();
+
+        if (! ($currentVersion === false or (version_compare($currentVersion, $newVersion) < 0))) {
+            $this->print($this->createErrorText('Error: Cannot update from version '.$currentVersion.'!'));
+            return -1;
+        }
+
+        $result = $this->updateDatabase($pdo);
+
+        if ($result === false) {            
+            $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
+            return $pdo->errorInfo()[0];
+        }
+
+        $result = $pdo->query("REPLACE `config` (`name`, `value`, `updated_at`) VALUES
+             ('app.version', '$newVersion', NOW())");
+
+        if ($result === false) {
+            $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
+            return $pdo->errorInfo()[0];
+        }
         
         return $this->goodbye();
     }
 
     /**
+     * This function performs all the database changes
+     * 
+     * @param \PDO $pdo The connection object
+     * @return bool|\PDOStatement Return false if a query failed
+     */
+    public function updateDatabase(\PDO $pdo)
+    {
+        $updateQuery = "INSERT INTO `config` (`name`, `value`, `updated_at`) VALUES
+        ('app.theme_christmas', '', '2017-03-25 12:28:29'),
+        ('app.theme_snow_color', 'white', '2017-03-25 12:28:29');";
+
+        return $pdo->query($updateQuery);
+    }
+
+    /**
      * Show the success message
      * 
-     * @return bool
+     * @return int Error code
      */
     public function goodbye()
     {
-        // Note: We have to reload the config since we do not know fore sure if it has been loaded already
         $appConfig = $this->app->loadConfig('app');
         $newVersion = $appConfig['version'];
 
@@ -136,7 +193,20 @@ EOD;
 
         $this->print($goodbyeText);
 
-        return true;
+        return 0;
+    }
+
+    /**
+     * Creates a text snippet that will be styled as a error
+     * when dsisplayed on a HTML document. (You can also
+     * display it on console without styling problems.)
+     * 
+     * @param string $text The text of the error
+     * @return string
+     */
+    protected function createErrorText($text)
+    {
+        return '<div class="error">'.$text.'</div>';
     }
 
     /**
@@ -157,16 +227,18 @@ EOD;
     /**
      * Prints a HTML link on a HTML coument or 
      * directly asks for confirmation when on console
+     * Note: Call the updater with the -quiet option
+     * from the console to suppress questions.
      * 
      * @param string $title The title; will be escaped
      * @param string $step The name of the next step / method
-     * @return bool|null
+     * @return int Error code
      */
     protected function printConfirm($title, $step)
     {
         if ($this->app->isCli()) {
             // We use Symfony's console component to ask for user input
-            $input = new \Symfony\Component\Console\Input\StringInput('');
+            $input = new \Symfony\Component\Console\Input\ArgvInput();
             $output = new \Symfony\Component\Console\Output\ConsoleOutput();
 
             $questionHelper = new \Symfony\Component\Console\Helper\QuestionHelper();
@@ -174,17 +246,20 @@ EOD;
                 'Pleae confirm: '.$title.' [y/n]', true
             );
 
-            $confirmed = $questionHelper->ask($input, $output, $question);
+            $confirmed = true;
+            if (! $input->hasParameterOption('-quiet')) {
+                $confirmed = $questionHelper->ask($input, $output, $question);
+            }
 
             if ($confirmed) {
-                $this->$step();
+                return $this->$step();
             } else {
                 return -1;
             }
         } else {
             echo '<div><a class="btn" href="?step='.$step.'">'.htmlentities($title).'</a></div>';
 
-            return null;
+            return 0;
         }
     }
 
@@ -204,7 +279,8 @@ EOD;
                 '<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">'.
                 '<style>body { margin: 20px; font-family: "Open Sans", arial; color: #666 } '.
                 '.btn { display: inline-block; padding: 20px; text-decoration: none; '.
-                'background-color: #00afff; color: white; font-size: 18px; border-radius: 5px }</style>'.
+                'background-color: #00afff; color: white; font-size: 18px; border-radius: 5px } '.
+                '.error { padding: 20px 0; color: #e74c3c; font-weight: bold; } </style>'.
                 '<title>'.$title.'</title></head><body>';
         }
     }

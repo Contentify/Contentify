@@ -96,14 +96,20 @@ class AppBridge
      */
     public function createDatabaseConnection()
     {
+        $config = $this->loadConfig('database');
+
         $configFile = $this->storageDir.'app/database.ini';
         $settings = parse_ini_file($configFile);
 
-        // This will only work for MySQL database
-        // TODO: Use config/database.php config file to make this less rigid
-        $dsn = 'mysql:dbname='.$settings['database'].';host='.$settings['host'];
+        // This will only work for MySQL database. If we ever want to support
+        // more than just MySQL we have to adapt this code.
+        // (Unfortunately we cannot use Laravel's ConnectionFactory class easily.)
+        $default = $config['default'];
+        $dsn =  $config['connections'][$default]['driver'].':dbname='.$settings['database'].';host='.$settings['host'];
 
         $pdo = new PDO($dsn, $settings['username'], $settings['password']);
+
+        return $pdo;
     }
 
     /**
