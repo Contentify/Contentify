@@ -243,7 +243,7 @@ EOD;
 
             $questionHelper = new \Symfony\Component\Console\Helper\QuestionHelper();
             $question = new \Symfony\Component\Console\Question\ConfirmationQuestion(
-                'Pleae confirm: '.$title.' [y/n]', true
+                'Please confirm: '.$title.' [y/n]', true
             );
 
             $confirmed = true;
