@@ -361,7 +361,7 @@ abstract class BaseController extends Controller {
      * Sets the links for the breadcrumb navigation.
      * Use the Navigations::Breadcrumb widget to render the breadcrumb navi.
      *
-     * @param array $links Array with items of title (key) and URLs (link)
+     * @param string[] $links Array with items of title (key) and URLs (link)
      * @return void
      * @throws Exception
      */
