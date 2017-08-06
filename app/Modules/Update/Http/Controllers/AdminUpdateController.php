@@ -85,7 +85,8 @@ class AdminUpdateController extends BackController {
         }
 
         $result = require $updaterPath;
-        $updater = new \Contentify\Updater();
+        /** @var UpdaterInterface $updater */
+        $updater = new \Contentify\Updater($this);
 
         try {
             $updater->update();
