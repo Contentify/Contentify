@@ -100,7 +100,7 @@ EOD;
         }
 
         if ($errorCode != self::CODE_OKAY) {
-            $this->print($this->createErrorText('Error: Code '.$errorCode));
+            $this->printText($this->createErrorText('Error: Code '.$errorCode));
         }
             
         $this->printPageEnd();
@@ -121,7 +121,7 @@ EOD;
         $welcomeText = $this->welcomeText;
         $welcomeText = str_replace('%version%', $newVersion, $welcomeText);
 
-        $this->print($welcomeText);
+        $this->printText($welcomeText);
         return $this->printConfirm('Update', 'perform');
     }
 
@@ -132,7 +132,7 @@ EOD;
      */
     public function perform()
     {
-        $this->print('Updating the database...');
+        $this->printText('Updating the database...');
 
         $appConfig = $this->app->getConfig('app');
         $newVersion = $appConfig['version'];
@@ -145,7 +145,7 @@ EOD;
         $pdoStatement = $pdo->query('SELECT `value` FROM `'.$prefix.'config` WHERE `name` = "app.version"');
 
         if ($result === false) {
-            $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
+            $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
 
@@ -153,13 +153,13 @@ EOD;
 
         $versionsText = implode(', ', self::SUPPORTED_VERSIONS) ;
         if (! ($currentVersion === false or (version_compare($currentVersion, $newVersion) < 0))) {
-            $this->print($this->createErrorText(
+            $this->printText($this->createErrorText(
                 'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText)
             );
             return self::CODE_ABORTED;
         }
         if ($currentVersion !== false and ! in_array($currentVersion, self::SUPPORTED_VERSIONS)) {
-            $this->print($this->createErrorText(
+            $this->printText($this->createErrorText(
                 'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText)
             );
             return self::CODE_ABORTED;
@@ -168,7 +168,7 @@ EOD;
         $result = $this->updateDatabase($pdo, $prefix);
 
         if ($result === false) {            
-            $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
+            $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
 
@@ -176,7 +176,7 @@ EOD;
             ('app.version', '$newVersion', NOW())");
 
         if ($result === false) {
-            $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
+            $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
         
@@ -215,7 +215,7 @@ EOD;
         $goodbyeText = str_replace('%version%', $newVersion, $goodbyeText);
         $goodbyeText = str_replace('%file%', __FILE__, $goodbyeText);
 
-        $this->print($goodbyeText);
+        $this->printText($goodbyeText);
 
         return self::CODE_OKAY;
     }
@@ -239,7 +239,7 @@ EOD;
      * @param string $text HTML code or plain text
      * @return void
      */
-    protected function print($text)
+    protected function printText($text)
     {
         if ($this->app->isCli()) {
             $text = strip_tags($text);
