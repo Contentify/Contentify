@@ -1,7 +1,7 @@
 <?php
 
 // Includes the class + Composer autoloader + Laravel helper functions
-// Note that this means that we have access to Laravel and Symfony components!
+// Note that this means that we have access to Laravel and Symfony components.
 require __DIR__.'/../AppBridge.php';
 
 class Updater {
@@ -291,7 +291,7 @@ EOD;
      * Prints the start of a "page".
      * ATTENTION: Do not forget to also call printPageEnd()!
      * 
-     * @param $title Title of the page (only relevant for HTML documents)
+     * @param string $title Title of the page (only relevant for HTML documents)
      * @return void
      */
     protected function printPageStart($title = __CLASS__)
