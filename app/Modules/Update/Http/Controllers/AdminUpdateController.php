@@ -75,7 +75,7 @@ class AdminUpdateController extends BackController {
 
         $url = $this->buildUpdaterUrl();
 
-        $updaterPath = storage_path('app/updater.php');
+        $updaterPath = storage_path('app/Updater.php');
         $result = file_put_contents($updaterPath, fopen($url, 'r'));
 
         if ($result === false) {
