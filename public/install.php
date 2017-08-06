@@ -181,7 +181,7 @@ if ($tester->isCli()) {
         die('Contentify has already been installed. Remove this file if you want to reinstall it: '.$filename);  
     }
 
-    echo '<html><head><title>Installer</title>
+    echo '<html><head><meta charset="utf-8"><title>Installer</title>
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <style>body { margin: 20px; font-family: "Open Sans", arial; color: #666 }</style></head><body><table>';
     $tester->run();

@@ -275,13 +275,13 @@ EOD;
         if ($this->app->isCli()) {
             echo "\n\n";
         } else {
-            echo '<!DOCTYPE html><html><head>'.
+            echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>'.$title.'</title>'.
                 '<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">'.
                 '<style>body { margin: 20px; font-family: "Open Sans", arial; color: #666 } '.
                 '.btn { display: inline-block; padding: 20px; text-decoration: none; '.
                 'background-color: #00afff; color: white; font-size: 18px; border-radius: 5px } '.
                 '.error { padding: 20px 0; color: #e74c3c; font-weight: bold; } </style>'.
-                '<title>'.$title.'</title></head><body>';
+                '</head><body>';
         }
     }
 
