@@ -12,6 +12,16 @@ class Updater {
     const SUPPORTED_VERSIONS = ['2.0'];
 
     /**
+     * Error code that will be returned if there was no error
+     */
+    const CODE_OKAY = 0;
+
+    /**
+     * Error code that will be returned if the user aborted the update process
+     */
+    const CODE_ABORTED = -1;
+
+    /**
      * Welcome text, HTML code. Will be displayed without HTML tags
      * when on console.
      * 
@@ -59,7 +69,7 @@ EOD;
      * Main method of this class, calls other method for the different
      * steps / pages of the update process.
      * 
-     * @return int Returns the error code or 0
+     * @return int Returns the error code or self::CODE_OKAY
      */
     public function run()
     {
@@ -89,13 +99,13 @@ EOD;
             $errorCode = $exception->getCode();
         }
 
-        if ($errorCode != 0) {
+        if ($errorCode != self::CODE_OKAY) {
             $this->print($this->createErrorText('Error: Code '.$errorCode));
         }
             
         $this->printPageEnd();
 
-        return 0;
+        return self::CODE_OKAY;
     }
 
     /**
@@ -139,9 +149,18 @@ EOD;
 
         $currentVersion = $pdoStatement->fetchColumn();
 
+        $versionsText = implode(', ', self::SUPPORTED_VERSIONS) ;
         if (! ($currentVersion === false or (version_compare($currentVersion, $newVersion) < 0))) {
-            $this->print($this->createErrorText('Error: Cannot update from version '.$currentVersion.'!'));
-            return -1;
+            $this->print($this->createErrorText(
+                'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText)
+            );
+            return self::CODE_ABORTED;
+        }
+        if ($currentVersion !== false and ! in_array($currentVersion, self::SUPPORTED_VERSIONS)) {
+            $this->print($this->createErrorText(
+                'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText)
+            );
+            return self::CODE_ABORTED;
         }
 
         $result = $this->updateDatabase($pdo);
@@ -170,6 +189,8 @@ EOD;
      */
     public function updateDatabase(\PDO $pdo)
     {
+        // How to: Export the new database - for example via phpMyAdmin - 
+        // and then copy the relevant statements from the .sql file to this place
         $updateQuery = "INSERT INTO `config` (`name`, `value`, `updated_at`) VALUES
         ('app.theme_christmas', '', '2017-03-25 12:28:29'),
         ('app.theme_snow_color', 'white', '2017-03-25 12:28:29');";
@@ -193,7 +214,7 @@ EOD;
 
         $this->print($goodbyeText);
 
-        return 0;
+        return self::CODE_OKAY;
     }
 
     /**
@@ -254,12 +275,12 @@ EOD;
             if ($confirmed) {
                 return $this->$step();
             } else {
-                return -1;
+                return self::CODE_ABORTED;
             }
         } else {
             echo '<div><a class="btn" href="?step='.$step.'">'.htmlentities($title).'</a></div>';
 
-            return 0;
+            return self::CODE_OKAY;
         }
     }
 
