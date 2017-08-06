@@ -115,7 +115,7 @@ EOD;
      */
     public function welcome()
     {
-        $appConfig = $this->app->loadConfig('app');
+        $appConfig = $this->app->getConfig('app');
         $newVersion = $appConfig['version'];
 
         $welcomeText = $this->welcomeText;
@@ -134,13 +134,15 @@ EOD;
     {
         $this->print('Updating the database...');
 
-        $appConfig = $this->app->loadConfig('app');
+        $appConfig = $this->app->getConfig('app');
         $newVersion = $appConfig['version'];
+
+        $connectionDetails = $this->app->getDatabaseConnectionDetails();
+        $prefix = isset($connectionDetails['prefix']) ? $connectionDetails['prefix'] : '';
 
         $pdo = $this->app->createDatabaseConnection();
 
-        // TODO Use table name prefix
-        $pdoStatement = $pdo->query('SELECT `value` FROM `config` WHERE `name` = "app.version"');
+        $pdoStatement = $pdo->query('SELECT `value` FROM `'.$prefix.'config` WHERE `name` = "app.version"');
 
         if ($result === false) {
             $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
@@ -163,15 +165,15 @@ EOD;
             return self::CODE_ABORTED;
         }
 
-        $result = $this->updateDatabase($pdo);
+        $result = $this->updateDatabase($pdo, $prefix);
 
         if ($result === false) {            
             $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
 
-        $result = $pdo->query("REPLACE `config` (`name`, `value`, `updated_at`) VALUES
-             ('app.version', '$newVersion', NOW())");
+        $result = $pdo->query("REPLACE `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
+            ('app.version', '$newVersion', NOW())");
 
         if ($result === false) {
             $this->print('Could not execute the database query: '.$pdo->errorInfo()[2]);
@@ -185,13 +187,14 @@ EOD;
      * This function performs all the database changes
      * 
      * @param \PDO $pdo The connection object
+     * @param string $prefix The database table prefix (can be an empty string)
      * @return bool|\PDOStatement Return false if a query failed
      */
-    public function updateDatabase(\PDO $pdo)
+    public function updateDatabase(\PDO $pdo, $prefix)
     {
         // How to: Export the new database - for example via phpMyAdmin - 
         // and then copy the relevant statements from the .sql file to this place
-        $updateQuery = "INSERT INTO `config` (`name`, `value`, `updated_at`) VALUES
+        $updateQuery = "INSERT INTO `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
         ('app.theme_christmas', '', '2017-03-25 12:28:29'),
         ('app.theme_snow_color', 'white', '2017-03-25 12:28:29');";
 
@@ -205,7 +208,7 @@ EOD;
      */
     public function goodbye()
     {
-        $appConfig = $this->app->loadConfig('app');
+        $appConfig = $this->app->getConfig('app');
         $newVersion = $appConfig['version'];
 
         $goodbyeText = $this->goodbyeText;

@@ -49,6 +49,14 @@ class AppBridge
      */
     protected $storageDir = '';
 
+    /**
+     * Array that stores the configs so we do not have 
+     * to reload them for each config access
+     * 
+     * @var array
+     */
+    protected $configs = [];
+
     public function __construct()
     {
         $this->configDir = $this->appDir.'config/';
@@ -76,8 +84,9 @@ class AppBridge
     }
 
     /**
-     * Returns the values of a config file. 
+     * Loads and returns the values of a config file. 
      * Does not check if the file is a valid config file!
+     * Use getConfig() if you do not want to enforece reloading.
      *
      * @param string $name The (file) name of the config; without path
      * @return array[]
@@ -90,22 +99,59 @@ class AppBridge
     }
 
     /**
+     * Returns the values of a config file.
+     * Uses caching so it does not read the file
+     * for each request.
+     * 
+     * @param string $name The (file) name of the config; without path
+     * @return array[]
+     */
+    public function getConfig($name)
+    {
+        if (array_key_exists($name, $this->configs)) {
+            return $this->configs[$name];
+        } else {
+            $config = $this->loadConfig($name);
+
+            $this->configs[$name] = $config;
+
+            return $config;
+        }
+    }
+
+    /**
+     * Returns the part of the database config that contains 
+     * the connection details of a specific connection.
+     * 
+     * @param string $connection Key/name of the connection. Empty = use default
+     * @return array
+     */
+    public function getDatabaseConnectionDetails($connection = '')
+    {
+        $config = $this->getConfig('database');
+
+        if (! $connection) {
+            $connection = $config['default'];
+        }
+
+        return $config['connections'][$connection];
+    }
+
+    /**
      * Creates a new database connection object and returns it
      * 
      * @return \PDO
      */
     public function createDatabaseConnection()
     {
-        $config = $this->loadConfig('database');
-
         $configFile = $this->storageDir.'app/database.ini';
         $settings = parse_ini_file($configFile);
 
         // This will only work for MySQL database. If we ever want to support
         // more than just MySQL we have to adapt this code.
         // (Unfortunately we cannot use Laravel's ConnectionFactory class easily.)
-        $default = $config['default'];
-        $dsn =  $config['connections'][$default]['driver'].':dbname='.$settings['database'].';host='.$settings['host'];
+        $driver = $this->getDatabaseConnectionDetails()['driver'];
+        $dsn = $driver.':dbname='.$settings['database'].';host='.$settings['host'];
 
         $pdo = new PDO($dsn, $settings['username'], $settings['password']);
 
