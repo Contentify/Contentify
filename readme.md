@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v2.1-dev
+## Contentify CMS - v2.1
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.2-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
@@ -12,13 +12,19 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Clone Repository
 
-Clone this repository (`2.1-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+Clone this repository (`2.1` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Download
 
-Download it here: [2.0](https://github.com/Contentify/Contentify/releases/tag/v2.0)
+Download it here: [2.1](https://github.com/Contentify/Contentify/releases/tag/v2.1)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+
+### Update
+
+To update from v2.0 to 2.1: First delete the `vendor` folder in the current Contentify installation. 
+Then download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
+Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `"http://localhost/public/update.php`.
 
 ### Demo
 
