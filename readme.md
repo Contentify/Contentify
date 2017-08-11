@@ -24,7 +24,7 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 To update from v2.0 to 2.1: First delete the `vendor` folder in the current Contentify installation. 
 Then download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
-Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `"http://localhost/public/update.php`.
+Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
 
 ### Demo
 
