@@ -266,7 +266,7 @@ class InstallController extends Controller {
                 break;
             default:
                 $step       = 0; // Better save than sorry! (E.g. if step was -1)
-                $title      = 'Welcome to Contentify 2';
+                $title      = 'Welcome to Contentify '.Config::get('app.version');
                 $content    = '<p>Please click on the "Next" button to start the installation.</p>
                               <p><a href="https://github.com/Contentify/Contentify/wiki/Installation" target="_blank">Take a look at our documentation 
                               (chapter "Installation") if you need help.</a></p>';
