@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v2.1
+## Contentify CMS - v2.2-dev
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.2-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
@@ -12,7 +12,7 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Clone Repository
 
-Clone this repository (`2.1` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+Clone this repository (`2.2-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Download
 
