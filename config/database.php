@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'fetch' => PDO::FETCH_CLASS,
+	'fetch' => PDO::FETCH_OBJ,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => 'mysql',
+    'default' => env('DB_CONNECTION', 'mysql'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -49,16 +49,18 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
 			/*
-			 * These properties are set by the installer and stored in storage/app/database.php
+			 * These settings are set by the installer and are stored in storage/app/database.ini
 			 */
 			//'host'      => env('DB_HOST', 'localhost'),
 			//'database'  => env('DB_DATABASE', 'contentify'),
 			//'username'  => env('DB_USERNAME', 'root'),
 			//'password'  => env('DB_PASSWORD', ''),
+            'port'      => env('DB_PORT', '3306'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
-			'strict'    => false,
+            'strict'    => true,
+            'engine'    => null,
 		],
 
 		/*
@@ -67,29 +69,22 @@ return [
 		/*
 		'sqlite' => [
 			'driver'   => 'sqlite',
-			'database' => storage_path('database.sqlite'),
+			'database' => env('DB_DATABASE', database_path('database.sqlite')),
 			'prefix'   => '',
-		],
-		'pgsql' => [
-			'driver'   => 'pgsql',
-			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'contentify'),
-			'username' => env('DB_USERNAME', 'root'),
-			'password' => env('DB_PASSWORD', ''),
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
 		],
 
-		'sqlsrv' => [
-			'driver'   => 'sqlsrv',
-			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'contentify'),
-			'username' => env('DB_USERNAME', 'root'),
-			'password' => env('DB_PASSWORD', ''),
-			'charset'  => 'utf8',
-			'prefix'   => '',
-		],
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
 		*/
 
 	],
@@ -122,11 +117,12 @@ return [
 
 		'cluster' => false,
 
-		'default' => [
-			'host'     => '127.0.0.1',
-			'port'     => 6379,
-			'database' => 0,
-		],
+        'default' => [
+            'host' => env('REDIS_HOST', '127.0.0.1'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => 0,
+        ],
 
 	],
 

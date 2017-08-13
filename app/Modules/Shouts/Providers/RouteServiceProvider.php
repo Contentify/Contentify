@@ -9,7 +9,7 @@ class RouteServiceProvider extends ServiceProvider {
     {
         $router->group(['namespace' => $this->namespace], function($router)
         {
-            require (config('modules.path').'/Shouts/Http/routes.php');
+            require (config('modules.path').'/Shouts/Http/web.php');
         });
     }
 

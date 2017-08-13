@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 use Illuminate\Session\TokenMismatchException;
-use Closure, Str, Crypt, MsgException;
+use Closure, Crypt, MsgException;
 
 class VerifyCsrfToken extends BaseVerifier {
 

@@ -2,10 +2,6 @@
 
 use Exception, Config, Response, View;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler {
 
@@ -15,10 +11,12 @@ class Handler extends ExceptionHandler {
 	 * @var array
 	 */
 	protected $dontReport = [
-	    AuthorizationException::class,
-	    HttpException::class,
-	    ModelNotFoundException::class,
-	    ValidationException::class,
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
+        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Session\TokenMismatchException::class,
+        \Illuminate\Validation\ValidationException::class,
 	];
 
 	/**
@@ -48,7 +46,7 @@ class Handler extends ExceptionHandler {
 	    }
 
 	    if (! Config::get('app.debug')) { // If we are in debug mode we do not want to override Laravel's error output
-	        if (is_a($exception, 'Illuminate\Database\Eloquent\ModelNotFoundException')) {
+	        if (is_a($exception, \Illuminate\Database\Eloquent\ModelNotFoundException::class)) {
 	            return Response::make(View::make('error_not_found'), 404);
 	        }
 

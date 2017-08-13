@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider {
          * Helper. Renders a widget.
          */
         Blade::directive('widget', function($expression) {
-            return '<?php echo HTML::widget'.$expression.'; ?>';
+            return '<?php echo HTML::widget('.$expression.'); ?>';
         });
        
         /*

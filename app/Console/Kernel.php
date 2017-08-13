@@ -23,11 +23,18 @@ class Kernel extends ConsoleKernel {
      */
     protected function schedule(Schedule $schedule)
     {
-        /*
-         * This is just an example! Do not activate this.
-         * NOTE: We recommend to use Contentify jobs instead of Laravel jobs!
-         */
-        //$schedule->command('jobs')->everyMinute();
+        // $schedule->command('inspire')
+        //          ->hourly();
+    }
+
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require base_path('routes/console.php');
     }
 
 }
