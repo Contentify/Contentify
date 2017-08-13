@@ -4,6 +4,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | The name (title) of this web application.
+    |
+    */
+
+    'name' => 'Contentify',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -26,17 +37,6 @@ return [
     */
 
     'debug' => env('APP_DEBUG', true),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Name
-    |--------------------------------------------------------------------------
-    |
-    | The name (title) of this web application.
-    |
-    */
-
-    'name' => 'Contentify',
 
     /*
     |--------------------------------------------------------------------------
@@ -144,6 +144,8 @@ return [
 
     'log' => env('APP_LOG', 'single'),
 
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
     /*
     |--------------------------------------------------------------------------
     | Google ReCAPTCHA Secret
@@ -184,13 +186,14 @@ return [
         'Illuminate\Foundation\Providers\FoundationServiceProvider',
         'Illuminate\Hashing\HashServiceProvider',
         'Illuminate\Mail\MailServiceProvider',
+        'Illuminate\Notifications\NotificationServiceProvider',
         'Illuminate\Pagination\PaginationServiceProvider',
         'Illuminate\Pipeline\PipelineServiceProvider',
         'Illuminate\Queue\QueueServiceProvider',
         'Illuminate\Redis\RedisServiceProvider',
         'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
         'Illuminate\Session\SessionServiceProvider',
-        //'Illuminate\Translation\TranslationServiceProvider',
+        //'Illuminate\Translation\TranslationServiceProvider', // Replaced by custom translation service provider
         'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
 
@@ -198,7 +201,8 @@ return [
          * Application Service Providers...
          */
         'App\Providers\AppServiceProvider',
-        'App\Providers\ConfigServiceProvider',
+        //'App\Providers\AuthServiceProvider' // We do not use Laravel's authentication
+        'App\Providers\ConfigServiceProvider', // Custom service provider
         'App\Providers\EventServiceProvider',
         'App\Providers\RouteServiceProvider',
 
@@ -245,19 +249,20 @@ return [
         'Blade'                 => 'Illuminate\Support\Facades\Blade',
         'Bus'                   => 'Illuminate\Support\Facades\Bus',
         'Cache'                 => 'Illuminate\Support\Facades\Cache',
-        //'Config'                => 'Illuminate\Support\Facades\Config',
+        //'Config'                => 'Illuminate\Support\Facades\Config', // Replaced by custom config facade
         'Cookie'                => 'Illuminate\Support\Facades\Cookie',
         'Crypt'                 => 'Illuminate\Support\Facades\Crypt',
         'DB'                    => 'Illuminate\Support\Facades\DB',
         'Eloquent'              => 'Illuminate\Database\Eloquent\Model',
         'Event'                 => 'Illuminate\Support\Facades\Event',
         'File'                  => 'Illuminate\Support\Facades\File',
+        'Gate'                  => 'Illuminate\Support\Facades\Gate::class',
         'Hash'                  => 'Illuminate\Support\Facades\Hash',
-        'Input'                 => 'Illuminate\Support\Facades\Input',
-        'Inspiring'             => 'Illuminate\Foundation\Inspiring',
+        'Input'                 => 'Illuminate\Support\Facades\Input', // "Unofficial" alias since Laravel 5.2
         'Lang'                  => 'Illuminate\Support\Facades\Lang',
         'Log'                   => 'Illuminate\Support\Facades\Log',
         'Mail'                  => 'Illuminate\Support\Facades\Mail',
+        'Notification'          => 'Illuminate\Support\Facades\Notification::class',
         'Password'              => 'Illuminate\Support\Facades\Password',
         'Queue'                 => 'Illuminate\Support\Facades\Queue',
         'Redirect'              => 'Illuminate\Support\Facades\Redirect',
