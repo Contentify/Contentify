@@ -5,24 +5,25 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "laravel/framework": "5.2.*",
-        "laravelcollective/html": "5.2.*",
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*",
+        "laravelcollective/html": "5.3.*",
         "cartalyst/sentinel": "2.0.*",
         "thujohn/rss": "~1.0",
         "intervention/image": "dev-master",
         "chriskonnertz/open-graph": "dev-master",
         "chriskonnertz/bbcode": "dev-master",
         "chriskonnertz/jobs": "dev-master",
-        "watson/validating": "~2.0",
-        "caffeinated/modules": "~3.0",
+        "watson/validating": "~3.0",
+        "caffeinated/modules": "~4.0",
         "invisnik/laravel-steam-auth": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "symfony/dom-crawler": "~3.0",
-        "symfony/css-selector": "~3.0"
+        "phpunit/phpunit": "~5.0",
+        "symfony/dom-crawler": "3.1.*",
+        "symfony/css-selector": "3.1.*"
     },
     "autoload": {
         "classmap": [
@@ -43,7 +44,7 @@
     },
     "scripts": {
         "post-root-package-install": [
-            "php -r \"copy('.env.example', '.env');\""
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "php artisan key:generate"
@@ -58,6 +59,7 @@
         ]
     },
     "config": {
-        "preferred-install": "dist"
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }
