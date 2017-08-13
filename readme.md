@@ -22,9 +22,12 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Update
 
-To update from v2.0 to 2.1: First delete the `vendor` folder in the current Contentify installation. 
-Then download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
+To update from v2.1 to 2.2:
+* Make a backup of your files and your database!
+* Delete the `vendor` folder in the current Contentify installation
+* Download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
 Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
+* Open `config/app.php` with a text editor and change the "name" property to the name of your website
 
 ### Demo
 
@@ -36,9 +39,9 @@ Now run the updater script via console with `php <contentify>/public/update.php`
 
 > NOTE: The demo website is running with Contentify 2.0 Beta.
 
-### Support & Updates
+### Support
 
-You can get support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. Both Contentify 1.x and 2.x have long term support (LTS) that includes bugfixes. 
+You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. Both Contentify 1.x and 2.x have long term support (LTS) that includes bug fixes. 
 
 Our version strategy is partially dependent on the release strategy of the underlying framework, Laravel. This means we will publish major releases quite often but they might not implement a lot of new features. Unfortunately the Contentify team does not have enough resources to write tools that allow website admins to update their Contentify websites to new major releases. We regret this but this is the only way we can stick close to current Laravel versions and do major changes to the CMS.
 
