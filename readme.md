@@ -6,7 +6,7 @@
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 
-Contentify is an esports CMS based on the popular Laravel 5.2 framework. Build your team website with a modern CMS.
+Contentify is an esports CMS based on the popular Laravel 5.3 framework. Build your team website with a modern CMS.
 
 Website: [contentify.org](http://contentify.org/)
 
