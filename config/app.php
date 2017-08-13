@@ -29,14 +29,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Title
+    | Application Name
     |--------------------------------------------------------------------------
     |
-    | The name of this web application.
+    | The name (title) of this web application.
     |
     */
 
-    'title' => 'Contentify',
+    'name' => 'Contentify',
 
     /*
     |--------------------------------------------------------------------------

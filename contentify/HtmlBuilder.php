@@ -1,6 +1,7 @@
 <?php namespace Contentify;
  
 use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
+use Contentify\Controllers\Widget;
 use Exception, OpenGraph, Cache, Session, URL;
 
 class HtmlBuilder extends OriginalHtmlBuilder {
@@ -28,6 +29,8 @@ class HtmlBuilder extends OriginalHtmlBuilder {
         }
 
         $className = 'App\Modules\\'.$path[0].'\Http\Controllers\\'.$path[1].'Widget';
+
+        /** @var Widget $widget */
         $widget = new $className();
 
         return $widget->render($parameters);
@@ -72,9 +75,9 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     public function title($title = null)
     { 
         if ($title) {
-            $title .= ' - '.Config::get('app.title');
+            $title .= ' - '.Config::get('app.name');
         } else {
-            $title = Config::get('app.title');
+            $title = Config::get('app.name');
         }
 
         return '<title>'.$title.'</title>';

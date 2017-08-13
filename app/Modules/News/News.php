@@ -108,7 +108,7 @@ class News extends BaseModel {
         $feed = Rss::feed('2.0', 'UTF-8');
 
         $feed->channel([
-            'title'         => Config::get('app.title').' '.trans('app.object_news'), 
+            'title'         => Config::get('app.name').' '.trans('app.object_news'),
             'description'   => trans('news::rss_last'), 
             'language'      => Lang::getLocale(),
             'link'          => Config::get('app.url'),

@@ -10,8 +10,8 @@ abstract class Widget {
     /**
      * Abstract. Renders the widget.
      *
-     * @param array $parameters Parameters passed to the widget. Keys should to be strings
-     * @return void
+     * @param array $parameters Parameters passed to the widget. Keys should be strings
+     * @return string
      */
     abstract public function render($parameters = array());
     
