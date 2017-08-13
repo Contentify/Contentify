@@ -13,7 +13,7 @@
 /**
  * Shortcut. Returns the current user model or null.
  * 
- * @return User|null The User model
+ * @return \Cartalyst\Sentinel\Users\UserInterface|null
  */
 function user()
 {
@@ -74,10 +74,9 @@ function icon_link($icon, $title, $url, $showTitle = false, $attributes = array(
  * @param  string $title The button title text
  * @param  string $url   The URL the button is targeting at
  * @param  string $icon  The name of the icon. It's rendered by an icon font.
- * @param  array  $options  Apply these HTML attributes to the link element
  * @return string
  */
-function button($title, $url, $icon = '', $options = array())
+function button($title, $url, $icon = '')
 {
     return HTML::button($title, $url, $icon);
 }
@@ -112,13 +111,14 @@ function get_image_url($image)
 /**
  * Returns HTML code for a sort switcher (asc / desc).
  *
- * @param string $sortby    Attribute of the entity, e.g. "id"
- * @param string $order     Current sorting order, "asc" or "desc"
+ * @param string $sortBy Attribute of the entity, e.g. "id"
+ * @param string $order  Current sorting order, "asc" or "desc"
+ * @param null   $search
  * @return string
  */
-function sort_switcher($sortby, $order = null, $search = null)
+function sort_switcher($sortBy, $order = null, $search = null)
 {
-    return HTML::sortSwitcher($sortby, $order, $search);
+    return HTML::sortSwitcher($sortBy, $order, $search);
 }
 
 /**
