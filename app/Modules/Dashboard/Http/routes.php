@@ -1,5 +1,6 @@
 <?php
 
 ModuleRoute::context('Dashboard');
-
-ModuleRoute::controller('admin/dashboard', 'AdminDashboardController');
+
+
+ModuleRoute::get('auth/dashboard', 'AdminDashboardController@getIndex');

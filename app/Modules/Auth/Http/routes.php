@@ -2,14 +2,17 @@
 
 ModuleRoute::context('Auth');
 
-ModuleRoute::controller('auth/registration', 'RegistrationController');
+ModuleRoute::get('auth/registration', 'RegistrationController@getCreate');
+ModuleRoute::post('auth/registration', 'RegistrationController@postCreate');
 
 ModuleRoute::get('auth/steam', 'LoginController@getSteam');
 ModuleRoute::get('auth/login', ['as' => 'login', 'uses' => 'LoginController@getLogin']);
 ModuleRoute::post('auth/login', 'LoginController@postLogin');
 
-ModuleRoute::controller('auth/logout', 'LogoutController', ['getIndex' => 'logout']);
+ModuleRoute::get('auth/logout', 'LogoutController@getIndex');
 
-ModuleRoute::controller('auth/restore', 'RestorePasswordController');
+ModuleRoute::get('auth/restore', 'LogoutController@getIndex');
+ModuleRoute::post('auth/restore', 'LogoutController@postIndex');
+ModuleRoute::post('auth/restore/new/{email}/{code}', 'LogoutController@getNew');
 
 ModuleRoute::get('auth/username/check/{username}', 'RegistrationController@checkUsername');

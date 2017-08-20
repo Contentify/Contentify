@@ -48,7 +48,7 @@ class AdminConfigController extends BackController {
 
     /**
      * Updates the settings.
-     * Note that we have to create the parameter $id eventhough we won't use it:
+     * Note that we have to create the parameter $id even though we won't use it:
      * The update method inherits from BackController->update($id).
      * We allow $id to be null so we do not have to pass an argument.
      *

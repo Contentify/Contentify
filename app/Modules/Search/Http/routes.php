@@ -1,5 +1,7 @@
 <?php
 
 ModuleRoute::context('Search');
-
-ModuleRoute::controller('search', 'SearchController');
+
+
+ModuleRoute::get('search', 'SearchController@getIndex');
+ModuleRoute::post('search/create', 'SearchController@postCreate');

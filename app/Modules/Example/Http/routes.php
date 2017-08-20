@@ -1,5 +1,6 @@
 <?php
 
 ModuleRoute::context('Example');
-
-ModuleRoute::controller('example', 'ExampleController');
+
+
+ModuleRoute::get('example', 'ExampleController@getIndex');

@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use Str, Config, Route;
+use Config, Route;
 
 class ModuleRoute {
   
@@ -56,11 +56,11 @@ class ModuleRoute {
      * Binds a model to a route
      * 
      * @param string $modelName The name of the model (without namespace)
-     * @return \Illuminate\Routing\Route
+     * @return void
      */
     public function model($modelName)
     {
-        return Route::model($this->moduleName, $this->modelPath.$modelName);
+        Route::model($this->moduleName, $this->modelPath.$modelName);
     }
 
     /**
@@ -161,16 +161,22 @@ class ModuleRoute {
     }
 
     /**
-     * Controller routing (for RESTful controllers).
-     * 
+     * Method stub for the old controller()-method.
+     * Controller routing (for RESTful controllers) is no longer supported,
+     * because Laravel does no longer support it.
+     * Please replace any calls of this method by explicit
+     * calls of methods such as get().
+     *
      * @param  string $route
      * @param  string $target
      * @param  array  $parameters
      * @return void
+     * @throws \Exception
      */
     public function controller($route, $target, $parameters = array())
     {
-        Route::controller($route, $this->controllerPath.$target, $parameters);
+        // TODO Remove the whole method in the next version of the CMS
+        throw new \Exception('Error: Contentify no longer supports this method.');
     }
 
     /**
@@ -202,7 +208,7 @@ class ModuleRoute {
         if (is_string($target) or is_array($target)) {
             
             /* 
-             * Alway create an array:
+             * Always create an array:
              */
             if (! is_array($target)) {
                 $target = ['uses' => $target];

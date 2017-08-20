@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Example\Http\Controllers;
-
+
 use FrontController;
 
 class ExampleController extends FrontController {
