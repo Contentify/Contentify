@@ -223,7 +223,7 @@ EOD;
 
     /**
      * Creates a text snippet that will be styled as a error
-     * when dsisplayed on a HTML document. (You can also
+     * when displayed on a HTML document. (You can also
      * display it on console without styling problems.)
      * 
      * @param string $text The text of the error
