@@ -125,7 +125,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', '01234567890123456789012345678912'),
+    'key' => env('APP_KEY', '12345678901234567890123456789012'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -256,13 +256,13 @@ return [
         'Eloquent'              => 'Illuminate\Database\Eloquent\Model',
         'Event'                 => 'Illuminate\Support\Facades\Event',
         'File'                  => 'Illuminate\Support\Facades\File',
-        'Gate'                  => 'Illuminate\Support\Facades\Gate::class',
+        'Gate'                  => 'Illuminate\Support\Facades\Gate',
         'Hash'                  => 'Illuminate\Support\Facades\Hash',
         'Input'                 => 'Illuminate\Support\Facades\Input', // "Unofficial" alias since Laravel 5.2
         'Lang'                  => 'Illuminate\Support\Facades\Lang',
         'Log'                   => 'Illuminate\Support\Facades\Log',
         'Mail'                  => 'Illuminate\Support\Facades\Mail',
-        'Notification'          => 'Illuminate\Support\Facades\Notification::class',
+        'Notification'          => 'Illuminate\Support\Facades\Notification',
         'Password'              => 'Illuminate\Support\Facades\Password',
         'Queue'                 => 'Illuminate\Support\Facades\Queue',
         'Redirect'              => 'Illuminate\Support\Facades\Redirect',

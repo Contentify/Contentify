@@ -120,7 +120,7 @@ class AdminConfigController extends BackController {
         preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
         
         $this->pageOutput('<div class="phpinfodisplay"><style type="text/css">'."\n".
-             join("\n",
+             implode("\n",
                  array_map(
                      create_function(
                          '$i',

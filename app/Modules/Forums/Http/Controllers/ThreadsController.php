@@ -51,6 +51,7 @@ class ThreadsController extends FrontController {
      * Stores a thread
      *
      * @param int $forumId The ID of the forum
+     * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function store($forumId)
     {
@@ -97,7 +98,7 @@ class ThreadsController extends FrontController {
     /**
      * Edits a thread
      * 
-     * @param int The id of the thread
+     * @param int $id The id of the thread
      */
     public function edit($id)
     {
@@ -113,8 +114,9 @@ class ThreadsController extends FrontController {
 
     /**
      * Updates a thread
-     * 
-     * @param int The id of the thread
+     *
+     * @param int $id The id of the thread
+     * @return $this|\Illuminate\Http\RedirectResponse|void
      */
     public function update($id)
     {
@@ -151,7 +153,7 @@ class ThreadsController extends FrontController {
     /**
      * Deletes a thread
      * 
-     * @param int The id of the thread
+     * @param int $id The id of the thread
      */
     public function delete($id)
     {
@@ -184,6 +186,7 @@ class ThreadsController extends FrontController {
      * Makes a thread sticky or unsticky
      *
      * @param int $id The ID of the thread
+     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function sticky($id)
     {
@@ -204,6 +207,7 @@ class ThreadsController extends FrontController {
      * Closes a thread or reopens it
      *
      * @param int $id The ID of the thread
+     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function closed($id)
     {
@@ -242,7 +246,8 @@ class ThreadsController extends FrontController {
     /**
      * Moves a thread
      *
-     * @param int  $id The ID of the thread
+     * @param int $id The ID of the thread
+     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function postMove($id)
     {

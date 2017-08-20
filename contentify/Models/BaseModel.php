@@ -292,7 +292,7 @@ class BaseModel extends Eloquent {
 
             if ($missing['req']) {
                 throw new InvalidArgumentException($errorHeader.'
-                    should contain the following key(s): '.join(', ', $missing['req']));
+                    should contain the following key(s): '.implode(', ', $missing['req']));
             }
             if ($missing['opt']) {
                 foreach ($missing['opt'] as $include) {
