@@ -32,7 +32,7 @@ Now run the updater script via console with `php <contentify>/public/update.php`
 If you have created a module for Contentify 2.1 please also take a look at the
 [guide to upgrade to Larvel 5.3](https://laravel.com/docs/5.3/upgrade#upgrade-5.3.0) since the changes mentioned there
 may affect your code. Especially take a look at the changes regarding routing (resource parameters and the 
-`Route::controller`method which is no longer available).
+`Route::controller` method which is no longer available).
 
 ### Demo
 
