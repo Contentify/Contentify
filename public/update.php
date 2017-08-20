@@ -68,8 +68,9 @@ EOD;
     /**
      * Main method of this class, calls other method for the different
      * steps / pages of the update process.
-     * 
+     *
      * @return int Returns the error code or self::CODE_OKAY
+     * @throws Exception
      */
     public function run()
     {
@@ -144,7 +145,7 @@ EOD;
 
         $pdoStatement = $pdo->query('SELECT `value` FROM `'.$prefix.'config` WHERE `name` = "app.version"');
 
-        if ($result === false) {
+        if ($pdoStatement === false) {
             $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
@@ -249,7 +250,7 @@ EOD;
     }
 
     /**
-     * Prints a HTML link on a HTML coument or 
+     * Prints a HTML link on a HTML document or
      * directly asks for confirmation when on console
      * Note: Call the updater with the -quiet option
      * from the console to suppress questions.
