@@ -29,6 +29,8 @@ class Module extends BaseModel {
     protected static function createInstance(&$item)
     {
         $item = new Module(['title' => class_basename($item)]);
+        
+        return $item;
     }
 
     /**
