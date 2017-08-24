@@ -176,7 +176,9 @@ class ModuleRoute {
     public function controller($route, $target, $parameters = array())
     {
         // TODO Remove the whole method in the next version of the CMS
-        throw new \Exception('Error: Contentify no longer supports this method.');
+        throw new \Exception(
+            'Error: Method controller() is no longer supported. Please replace any calls by explicit calls'
+        );
     }
 
     /**
