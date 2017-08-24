@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Modules;
 
-use Exception, File, BaseModel;
+use File, BaseModel;
 
 class Module extends BaseModel {
 
@@ -29,6 +29,8 @@ class Module extends BaseModel {
     protected static function createInstance(&$item)
     {
         $item = new Module(['title' => class_basename($item)]);
+
+        return $item;
     }
 
     /**
