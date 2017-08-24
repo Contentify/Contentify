@@ -9,13 +9,13 @@
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "5.3.*",
         "cartalyst/sentinel": "2.0.*",
-        "thujohn/rss": "~1.0",
+        "thujohn/rss": "1.*",
         "intervention/image": "dev-master",
         "chriskonnertz/open-graph": "dev-master",
         "chriskonnertz/bbcode": "dev-master",
         "chriskonnertz/jobs": "dev-master",
-        "watson/validating": "~3.0",
-        "caffeinated/modules": "~4.0",
+        "watson/validating": "3.*",
+        "caffeinated/modules": "4.*",
         "invisnik/laravel-steam-auth": "2.*"
     },
     "require-dev": {
