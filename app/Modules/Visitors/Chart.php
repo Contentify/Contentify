@@ -4,10 +4,19 @@ use Carbon, DB;
 
 class Chart {
 
+    /**
+     * @var string
+     */
     protected $dataSet;
 
+    /**
+     * @var \Illuminate\Support\Collection
+     */
     protected $days;
 
+    /**
+     * @var int
+     */
     protected $maxDay;
 
     public function __construct()
