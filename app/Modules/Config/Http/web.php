@@ -4,9 +4,9 @@ ModuleRoute::context('Config');
 
 
 ModuleRoute::get('admin/config/log/clear', 'AdminConfigController@clearLog');
-ModuleRoute::get('admin/config', 'getIndex');
-ModuleRoute::get('admin/config/info', 'getInfo');
-ModuleRoute::get('admin/config/optimize', 'getOptimize');
-ModuleRoute::get('admin/config/export', 'getExport');
-ModuleRoute::get('admin/config/log', 'getLog');
+ModuleRoute::get('admin/config', 'AdminConfigController@getIndex');
+ModuleRoute::get('admin/config/info', 'AdminConfigController@getInfo');
+ModuleRoute::get('admin/config/optimize', 'AdminConfigController@getOptimize');
+ModuleRoute::get('admin/config/export', 'AdminConfigController@getExport');
+ModuleRoute::get('admin/config/log', 'AdminConfigController@getLog');
 ModuleRoute::put('admin/config', ['as' => 'admin.config.update', 'uses' => 'AdminConfigController@update']);
