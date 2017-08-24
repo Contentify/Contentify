@@ -1,5 +1,6 @@
 <?php
 
 ModuleRoute::context('Diag');
-
-ModuleRoute::controller('admin/diag', 'AdminDiagController');
+
+
+ModuleRoute::get('admin/diag', 'AdminDiagController@getIndex');

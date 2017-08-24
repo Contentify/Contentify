@@ -14,8 +14,6 @@ ModuleRoute::post('admin/teams/search', 'AdminTeamsController@search');
 ModuleRoute::resource('teams', 'TeamsController', ['only' => ['index', 'show']]);
 ModuleRoute::get('teams/{id}/{slug}', 'TeamsController@show');
 
-ModuleRoute::controller('admin/members', 'AdminMembersController');
-
 ModuleRoute::get('admin/members', 'AdminMembersController@getIndex');
 ModuleRoute::delete('admin/members/delete/{userId}/{teamId}', 'AdminMembersController@deleteDelete');
 ModuleRoute::get('admin/members/add/{id}', 'AdminMembersController@add');
