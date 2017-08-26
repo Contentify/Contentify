@@ -7,7 +7,7 @@ class RouteServiceProvider extends ServiceProvider {
 
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function($router)
+        $router->group(['middleware' => 'web', 'namespace' => $this->namespace], function($router)
         {
             require (config('modules.path').'/Videos/Http/web.php');
         });
