@@ -67,11 +67,6 @@ abstract class BaseController extends Controller {
             }
             if (starts_with(strtolower($className), 'admin')) $this->formTemplate = 'admin_'.$this->formTemplate;
         }
-
-        /*
-         * Enable auto CSRF protection
-         */ 
-        $this->middleware('csrf');
     }
 
     /**
