@@ -26,7 +26,7 @@ if (! installed()) {
  * Backend dashboard.
  * We prefer to use a route here instead of inside the modules' own routing file.
  * So there can't exist multiple modules that try to declare themselves as dashboard.
- * (Well, ofcourse they may try to... since routing is global. But they should not.)
+ * (Well, of course they may try to... since routing is global. But they should not.)
  */ 
 Route::get('admin', [
     'as' => 'admin.dashboard', 
@@ -42,7 +42,7 @@ Route::get('comments/paginate/{foreignType}/{foreignId}', function($foreignType,
     return Comments::paginate($foreignType, $foreignId);
 });
 
-Route::post('comments/store', ['as' => 'comments.store', 'middleware' => 'csrf', 'uses' => function()
+Route::post('comments/store', ['as' => 'comments.store', 'uses' => function()
 {
     $foreignType = Input::get('foreigntype');
     $foreignId = Input::get('foreignid');
@@ -59,12 +59,12 @@ Route::get('comments/{id}/edit', ['as' => 'comments.edit', 'uses' => function($i
     return Comments::edit($id);
 }]);
 
-Route::put('comments/{id}/update', ['as' => 'comments.update', 'middleware' => 'csrf', 'uses' => function($id)
+Route::put('comments/{id}/update', ['as' => 'comments.update', 'uses' => function($id)
 {
     return Comments::update($id);
 }]);
 
-Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'middleware' => 'csrf', 'uses' => function($id)
+Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'uses' => function($id)
 {
     return Comments::delete($id);
 }]);
@@ -72,7 +72,7 @@ Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'middleware' =
 /*
  * Ratings
  */
-Route::post('ratings/store', ['as' => 'ratings.store', 'middleware' => 'csrf', 'uses' => function()
+Route::post('ratings/store', ['as' => 'ratings.store', 'uses' => function()
 {
     $foreignType = Input::get('foreigntype');
     $foreignId = Input::get('foreignid');

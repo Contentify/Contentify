@@ -14218,12 +14218,12 @@ namespace Contentify\Facades {
          * Edits a comment
          *
          * @param int $id The ID of the comment
-         * @return void 
+         * @return mixed
          * @static 
          */ 
         public static function edit($id)
         {
-            \Contentify\Comments::edit($id);
+            return \Contentify\Comments::edit($id);
         }
         
         /**

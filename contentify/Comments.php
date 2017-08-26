@@ -47,7 +47,7 @@ class Comments {
      * 
      * @param  string   $foreignType The foreign type identifier
      * @param  int      $foreignId   The foreign id (can be 0)
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function store($foreignType, $foreignId)
     {
@@ -74,7 +74,7 @@ class Comments {
      * Returns a comment as JSON (as response to an AJAX call)
      * 
      * @param  int $id The ID of the comment
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
     public function get($id)
     {
@@ -87,7 +87,7 @@ class Comments {
      * Edits a comment
      * 
      * @param  int $id The ID of the comment
-     * @return void
+     * @return \Illuminate\Http\Response|null
      */
     public function edit($id)
     {
@@ -104,7 +104,7 @@ class Comments {
      * Updates a comment
      * 
      * @param  int $id The ID of the comment
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function update($id)
     {
