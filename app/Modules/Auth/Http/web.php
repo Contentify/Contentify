@@ -9,7 +9,7 @@ ModuleRoute::get('auth/steam', 'LoginController@getSteam');
 ModuleRoute::get('auth/login', ['as' => 'login', 'uses' => 'LoginController@getLogin']);
 ModuleRoute::post('auth/login', 'LoginController@postLogin');
 
-ModuleRoute::get('auth/logout', 'LogoutController@getIndex');
+ModuleRoute::get('auth/logout',  ['as' => 'logout', 'uses' => 'LogoutController@getIndex']);
 
 ModuleRoute::get('auth/restore', 'LogoutController@getIndex');
 ModuleRoute::post('auth/restore', 'LogoutController@postIndex');

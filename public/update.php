@@ -195,9 +195,8 @@ EOD;
     {
         // How to: Export the new database - for example via phpMyAdmin - 
         // and then copy the relevant statements from the .sql file to this place
-        $updateQuery = "INSERT INTO `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
-        ('app.theme_christmas', '', '2017-03-25 12:28:29'),
-        ('app.theme_snow_color', 'white', '2017-03-25 12:28:29');";
+        $updateQuery = "ALTER TABLE {$prefix}cups_teams ADD cups_points INT DEFAULT 0;
+            ALTER TABLE {$prefix}users ADD cups_points INT DEFAULT 0;";
 
         return $pdo->query($updateQuery);
     }
