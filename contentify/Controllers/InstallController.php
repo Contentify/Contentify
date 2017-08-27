@@ -29,7 +29,7 @@ class InstallController extends Controller {
      * 
      * @param  int                                 $step   Step number
      * @param  null|\Illuminate\Support\MessageBag $errors Validation errors
-     * @return View
+     * @return \Illuminate\Contracts\View\View
      */
     public function index($step = -1, $errors = null) 
     {
@@ -627,6 +627,7 @@ class InstallController extends Controller {
             $table->string('image')->nullable();
             $table->string('password')->nullable();
             $table->boolean('hidden')->default(false);
+            $table->integer('cup_points')->default(0);
         });
 
         Schema::dropIfExists('cups_team_members');
@@ -726,6 +727,7 @@ class InstallController extends Controller {
             ['name' => 'app.dbBackup',          'value' => 0],
             ['name' => 'auth::registration',    'value' => 1],
             ['name' => 'forums::reports',       'value' => 1],
+            ['name' => 'cups::cup_points',      'value' => 10],
             ['name' => 'app.twitter',           'value' => 'ContentifyCMS'],
             ['name' => 'app.facebook',          'value' => 'contentifycms'], 
             ['name' => 'app.youtube',           'value' => 'UC2gIIZzySdgxrQ3jM4jmoqQ'],
@@ -1160,7 +1162,7 @@ information about your stored data, and possibly entitlement to correction, bloc
 
     /**
      * The installer will send some infos that are supposed to help understanding
-     * the usage of the CMS. Ofcourse no sensible information will be sent!
+     * the usage of the CMS. Of course no sensible information will be sent!
      * Infos sent: Time and version of the CMS and of PHP. That's all. 
      * Check the code if you want to verify this statement.
      * 

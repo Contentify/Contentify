@@ -3180,7 +3180,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $table
          * @param string $column
-         * @return \Doctrine\DBAL\Schema\Column 
+         * @return \Doctrine\DBAL\Schema\Column
          * @static 
          */ 
         public static function getDoctrineColumn($table, $column)
@@ -17548,7 +17548,7 @@ namespace  {
 
     class ConfigController extends \Contentify\Controllers\ConfigController {}
 
-    class Widget extends \Contentify\Controllers\Widget {}
+    abstract class Widget extends \Contentify\Controllers\Widget {}
 
     class BaseModel extends \Contentify\Models\BaseModel {}
 

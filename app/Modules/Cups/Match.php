@@ -1,6 +1,6 @@
 <?php namespace App\Modules\Cups;
 
-use Carbon, BaseModel;
+use User, Config, Carbon, BaseModel;
 
 class Match extends BaseModel {
 
@@ -128,7 +128,7 @@ class Match extends BaseModel {
             // This means every member of the team is allowed to confirm the result.
             // It does not matter if the member is an organizer.
             // This is just an arbitrary design decision.
-            return ($right_participant->isMember($user));
+            return ($this->right_participant->isMember($user));
         } else {
             return ($user->id == $this->right_participant->id);
         }
@@ -197,9 +197,16 @@ class Match extends BaseModel {
         }
 
         // Cup completed?
-        if ($this->round == $this->cup->rounds()) {
-            $cup->closed = true;
-            $cup->save();
+        if ($this->round + 1 == $this->cup->rounds()) {
+            $points = Config::get('cups::cup_points');
+            if ($this->with_teams) {
+                Team::find($this->winner_id)->increment('cup_points', $points);
+            } else {
+                User::find($this->winner_id)->increment('cup_points', $points);
+            }
+
+            $this->cup->closed = true;
+            $this->cup->save();
             return null;
         }
 

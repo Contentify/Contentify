@@ -15,7 +15,7 @@ class Team extends BaseModel {
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
-        'title'  => 'required|min:3|max:15'
+        'title'  => 'required|min:3|max:20'
     ];
 
     /**

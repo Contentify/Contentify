@@ -204,6 +204,7 @@ return [
     'confirm'           => 'Confirmer',
     'rules'             => 'Règles',
     'round'             => 'Manche',
+    'cup_points'        => 'Tournoi points',
 
     /*
      * Days

@@ -53,6 +53,12 @@
                     <th class="title">{!! trans('users::about') !!}:</th>
                     <td>{{ $user->about }}</td>
                 </tr>
+                @if ($user->cup_points > 0)
+                    <tr>
+                        <th class="title">{!! trans('app.cup_points') !!}:</th>
+                        <td>{{ $user->cup_points }}</td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>

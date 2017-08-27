@@ -28,7 +28,7 @@ abstract class ConfigController extends BackController {
         $pos = strlen($namespace);
         $settings = [];
         foreach ($rawSettings as $setting) {
-            $setting = (array) $setting;
+            $setting = (array) $setting; // Convert from stdClass to array
             $name = substr($setting['name'], $pos);
             $settings[$name] = $setting['value'];
         }

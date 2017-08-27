@@ -23,7 +23,7 @@ class AdminCupsController extends BackController {
     public function index()
     {
         $this->indexPage([
-            'buttons' => [button(trans('app.create'), url('admin/cups/create'), 'plus-circle')],
+            'buttons' => [button(trans('app.create'), url('admin/cups/create'), 'plus-circle'), 'config'],
             'tableHead' => [
                 trans('app.id')            => 'id', 
                 trans('app.published')     => 'published', 
@@ -76,7 +76,7 @@ class AdminCupsController extends BackController {
      * Generates the matches for the first round of the cup
      * 
      * @param  int $cupId The ID of the cup
-     * @return Redirect
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function seed($cupId) 
     {
@@ -87,7 +87,7 @@ class AdminCupsController extends BackController {
             ->get()->shuffle();
 
         // Set the amount of slots to the lowest possible value
-        // (not less than the number of participants, ofcourse)
+        // (not less than the number of participants, of course)
         $slotValues = Cup::$slotValues;
         arsort($slotValues); // Sort from high to low
         foreach ($slotValues as $slots) {

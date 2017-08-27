@@ -1,5 +1,5 @@
 <?php namespace App\Modules\Forums\Http\Controllers;
-
+
 use ConfigController;
 
 class AdminConfigController extends ConfigController {

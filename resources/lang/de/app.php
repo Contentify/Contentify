@@ -206,6 +206,7 @@ return [
     'confirm'           => 'Bestätigen',
     'rules'             => 'Regeln',
     'round'             => 'Runde',
+    'cup_points'        => 'Cup-Punkte',
 
     /*
      * Days

@@ -2,6 +2,9 @@
 
 ModuleRoute::context('Cups');
 
+ModuleRoute::get('admin/cups/config', 'AdminConfigController@edit');
+ModuleRoute::put('admin/cups/config', 'AdminConfigController@update');
+
 ModuleRoute::get('cups', 'CupsController@index');
 ModuleRoute::get('cups/{id}/{slug?}', 'CupsController@show')
     ->where('id', '[0-9]+');

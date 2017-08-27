@@ -11,10 +11,11 @@ Cups
 - The cup module is 100% independent of other modules (it depends on other modules but no other module depends on the cup module). Therefore you can deactivate it - if you want to - without affecting any other modules.
 - Refugees do not have additional rights
 - Only Super-admins have additional rights
-- When creating the seed (the matches of the first round), the number of slots will be reduced to the minimum (not less than the number of participants, ofcourse). This is necessary due to the way wildcard-matches are generated.
-- You have to start the seeding manually. This is by purpose so you will have time to check the participants before acutally starting the cup.
+- When creating the seed (the matches of the first round), the number of slots will be reduced to the minimum (not less than the number of participants, of course). This is necessary due to the way wildcard-matches are generated.
+- You have to start the seeding manually. This is by purpose so you will have time to check the participants before actually starting the cup.
 - Between the official start of the cup and the revealing of the bracket admins will have two minutes to correct the seeding. During this time span the matches and the bracket are only visible for them.
-- Sometimes both participants of a match will accidentally confirm an invalid result. Sometimes participants will leave the cup after they ahve lost a match without confirm the result. These things happen - maybe not not often, but they do. Therefore we strongly recommend that every cup is accompanied by at least one refugee (who should be an admin). The task of the refugee is to confirm results if one participant of a match does not and to correct the winner of a match if the wrong participant was recorded as the winner.
+- Sometimes both participants of a match will accidentally confirm an invalid result. Sometimes participants will leave the cup after they have lost a match without confirm the result. These things happen - maybe not very often, but they do. Therefore we strongly recommend that every cup is accompanied by at least one refugee (who should be an admin). The task of the refugee is to confirm results if one participant of a match does not and to correct the winner of a match if the wrong participant was recorded as the winner.
+- After the last match has been completed, the cup will be closed automatically. The winner of the cup (user or team) will receive "cup points" for winning a cup. You can change the amount of points in the admin backend in the cups settings.
 
 **NOTE:**
 Only super admins have admin rights on the frontend pages of the cups module (this may be changed in the future).

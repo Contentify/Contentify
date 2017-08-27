@@ -11,6 +11,10 @@
     </div>
 @endif
 
+@if ($team->cup_points > 0)
+    <p>{!! trans('app.cup_points') !!}: {{ $team->cup_points }}</p>
+@endif
+
 @if (sizeof($team->members) > 0)
     <h2>{{ trans('app.object_members') }}</h2>
     <table class="table">

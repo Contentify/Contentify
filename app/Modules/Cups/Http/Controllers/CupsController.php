@@ -83,7 +83,7 @@ class CupsController extends FrontController {
      * 
      * @param  int $cupId
      * @param  int $participantId
-     * @return Redirect|null
+     * @return RedirectResponse|null
      */
     public function join($cupId, $participantId)
     {
@@ -197,10 +197,10 @@ class CupsController extends FrontController {
     }
 
     /**
-     * Tries to swap (the postion of) two participants during the seeding phase.
+     * Tries to swap (the position of) two participants during the seeding phase.
      * 
      * @param  int $cupId The cup ID
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function swap($cupId)
     {

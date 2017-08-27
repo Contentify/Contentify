@@ -193,10 +193,12 @@ EOD;
      */
     public function updateDatabase(\PDO $pdo, $prefix)
     {
-        // How to: Export the new database - for example via phpMyAdmin - 
+        // HOW TO: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
-        $updateQuery = "ALTER TABLE {$prefix}cups_teams ADD cups_points INT DEFAULT 0;
-            ALTER TABLE {$prefix}users ADD cups_points INT DEFAULT 0;";
+        $updateQuery = "ALTER TABLE {$prefix}cups_teams ADD cup_points INT DEFAULT 0;
+            ALTER TABLE {$prefix}users ADD cup_points INT DEFAULT 0;
+            INSERT INTO `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
+            ('cups::cup_points', 10, null);";
 
         return $pdo->query($updateQuery);
     }
