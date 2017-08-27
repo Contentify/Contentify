@@ -191,10 +191,6 @@ class ModuleRoute {
      */
     public function resource($route, $target, $parameters = array())
     {
-        if (! isset($parameters['name'])) {
-            $parameters['name'] = str_replace('/', '.', $route);
-        }
-
         Route::resource($route, $this->controllerPath.$target, $parameters);
     }
 
