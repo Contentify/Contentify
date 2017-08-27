@@ -2,6 +2,9 @@
 
 use Config, Route;
 
+/**
+ * This class decorates the Route class of Laravel
+ */
 class ModuleRoute {
   
     /**
@@ -192,6 +195,17 @@ class ModuleRoute {
     public function resource($route, $target, $parameters = array())
     {
         Route::resource($route, $this->controllerPath.$target, $parameters);
+    }
+
+    /**
+     * Register an array of resource controllers.
+     *
+     * @param  array  $resources
+     * @return void
+     */
+    public function resources(array $resources)
+    {
+        Route::resources($resources);
     }
 
     /**
