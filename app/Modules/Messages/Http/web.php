@@ -2,7 +2,7 @@
 
 ModuleRoute::context('Messages');
 
-Route::group(array('middleware' => 'auth'), function()
+ModuleRoute::group(array('middleware' => 'auth'), function()
 {
     ModuleRoute::get('messages/{id}/{slug?}', 'MessagesController@show')->where('id', '[0-9]+');
     ModuleRoute::get('messages/create/{username?}', 'MessagesController@create');

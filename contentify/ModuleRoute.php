@@ -177,7 +177,7 @@ class ModuleRoute {
     {
         // TODO Remove the whole method in the next version of the CMS
         throw new \Exception(
-            'Error: Method controller() is no longer supported. Please replace any calls by explicit calls'
+            'Error: Method ModuleRoute::controller() is no longer supported. Please replace any calls by explicit calls'
         );
     }
 
@@ -191,7 +191,23 @@ class ModuleRoute {
      */
     public function resource($route, $target, $parameters = array())
     {
+        if (! isset($parameters['name'])) {
+            $parameters['name'] = str_replace('/', '.', $route);
+        }
+
         Route::resource($route, $this->controllerPath.$target, $parameters);
+    }
+
+    /**
+     * Create a route group with shared attributes.
+     *
+     * @param  array  $attributes
+     * @param  \Closure  $callback
+     * @return void
+     */
+    public function group(array $attributes, \Closure $callback)
+    {
+        Route::group($attributes, $callback);
     }
 
     /**

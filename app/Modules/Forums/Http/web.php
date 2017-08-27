@@ -17,7 +17,7 @@ ModuleRoute::get('forums/{id}/{slug?}', 'ForumsController@show')->where('id', '[
 
 ModuleRoute::get('forums/threads/{id}/{slug?}', 'ThreadsController@show')->where('id', '[0-9]+');
 ModuleRoute::get('forums/threads/new', 'ThreadsController@showNew');
-Route::group(array('middleware' => 'auth'), function()
+ModuleRoute::group(array('middleware' => 'auth'), function()
 {
     ModuleRoute::get('forums/threads/create/{id}', 'ThreadsController@create');
     ModuleRoute::post('forums/threads/{id}', 'ThreadsController@store');
@@ -33,7 +33,7 @@ ModuleRoute::post('forums/search', 'ThreadsController@search');
 
 ModuleRoute::get('forums/posts/perma/{id}/{slug?}', 'PostsController@show');
 ModuleRoute::get('forums/posts/user/{id}/{slug?}', 'PostsController@showUserPosts');
-Route::group(array('middleware' => 'auth'), function()
+ModuleRoute::group(array('middleware' => 'auth'), function()
 {
     ModuleRoute::get('forums/posts/{id}', 'PostsController@get');
     ModuleRoute::get('forums/posts/delete/{id}', 'PostsController@delete');
