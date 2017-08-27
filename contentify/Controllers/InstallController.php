@@ -168,7 +168,7 @@ class InstallController extends Controller {
                 /*
                  * Create the daemon user (with ID = 1)
                  */
-                $user = Sentinel::create(array(
+                $user = Sentinel::register(array(
                     'email'     => 'daemon@contentify.org',
                     'username'  => 'Daemon',
                     'password'  => Str::random(),
