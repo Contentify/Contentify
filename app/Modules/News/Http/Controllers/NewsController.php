@@ -49,7 +49,7 @@ class NewsController extends FrontController {
         // Internal news are protected and require the "internal" permission:
         $hasAccess = (user() and user()->hasAccess('internal'));
         $newsCollection = News::published()->where('internal', '<=', $hasAccess)->filter()
-            ->orderBy('created_at', 'DESC')->take(5)->get();
+            ->orderBy('created_at', 'DESC')->paginate(5);
 
         $this->pageView('news::show_overview', compact('newsCollection'));
     }

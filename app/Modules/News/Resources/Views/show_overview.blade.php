@@ -26,3 +26,5 @@
         </div>
     </article>
 @endforeach
+
+{{ $newsCollection->links() }}
