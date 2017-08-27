@@ -17,8 +17,8 @@ class Cup extends BaseModel {
     public static $slotValues = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
 
     /**
-     * Temporary stores a collection of matches to avoid unecessary database queries
-     * @var Collection|null A collection of matches
+     * Temporary stores a collection of matches to avoid unnecessary database queries
+     * @var \Illuminate\Database\Eloquent\Collection|null A collection of matches
      */
     protected $matchesStored = null;
 
@@ -90,14 +90,12 @@ class Cup extends BaseModel {
                 DB::table('cups_users')->whereCupId($cup->id)->update(['cup_closed' => $cup->closed]);
             }
         });
-
-
     }
 
     /**
      * Relationship: Returns all participants of this cup
      * 
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function participants()
     {
@@ -113,7 +111,7 @@ class Cup extends BaseModel {
     /**
      * Relationship: Returns all matches of this cup (ordered by round and round-row)
      * 
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function matches()
     {
@@ -124,8 +122,8 @@ class Cup extends BaseModel {
      * Returns all matches of this cup with their participants.
      * This imitates Eloquent's eager loading so it only executes three MySQL queries.
      *
-     * @param bool refresh If true, force database query
-     * @return Collection
+     * @param bool $refresh If true, force database query
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function matchesDetailed($refresh = false)
     {
@@ -204,7 +202,7 @@ class Cup extends BaseModel {
      */
     public function participantIds()
     {
-        return DB::table('cups_participants')->whereCupId($this->id)->lists('participant_id');
+        return DB::table('cups_participants')->whereCupId($this->id)->pluck('participant_id');
     }
 
     /**
@@ -234,7 +232,7 @@ class Cup extends BaseModel {
 
         if ($this->forTeams()) {
             $teams = $this->participants;
-            $userTeamIds = DB::table('cups_team_members')->whereUserId($user->id)->lists('team_id');
+            $userTeamIds = DB::table('cups_team_members')->whereUserId($user->id)->pluck('team_id');
 
             if ($teams) {
                 foreach ($teams as $team) {
@@ -290,7 +288,7 @@ class Cup extends BaseModel {
      * 
      * @param  User     $user        The user object
      * @param  boolean  $isOrganizer If true, return only those teams where the user is organizer
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function teamsOfUser($user, $isOrganizer = false)
     {
@@ -300,7 +298,7 @@ class Cup extends BaseModel {
             $query->whereOrganizer(true);
         }
 
-        $userTeamIds = $query->lists('team_id');
+        $userTeamIds = $query->pluck('team_id');
 
         return Team::whereIn('id', $userTeamIds)->get();
     }
@@ -310,7 +308,7 @@ class Cup extends BaseModel {
      * 
      * @param User $user     The user object
      * @param bool $onlyOpen If true return only cups that still are open
-     * @return Collection|null
+     * @return \Illuminate\Database\Eloquent\Collection|null
      */
     public function cupsByUser($user, $onlyOpen = false)
     {
@@ -322,7 +320,7 @@ class Cup extends BaseModel {
         if ($onlyOpen) {
             $query->whereCupClosed(false);
         }
-        $userCupIds = $query->lists('cup_id');
+        $userCupIds = $query->pluck('cup_id');
 
         $query = Cup::wherePublished(true);
         if ($onlyOpen) {

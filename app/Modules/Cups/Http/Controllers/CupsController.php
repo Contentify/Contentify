@@ -110,10 +110,10 @@ class CupsController extends FrontController {
             }
 
             // Get the IDs of all team members
-            $memberIds = DB::table('cups_team_members')->whereTeamId($participantId)->lists('user_id');
+            $memberIds = DB::table('cups_team_members')->whereTeamId($participantId)->pluck('user_id');
 
             // Get the ID of all team members that are already in this cup (with another team)
-            $cupUserIds = DB::table('cups_users')->whereCupId($cup->id)->whereIn('user_id', $memberIds)->lists('user_id');
+            $cupUserIds = DB::table('cups_users')->whereCupId($cup->id)->whereIn('user_id', $memberIds)->pluck('user_id');
 
             if ($cupUserIds) {
                 $cupUsers = User::whereIn('id', $cupUserIds)->get();

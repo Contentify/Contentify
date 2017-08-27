@@ -35,7 +35,7 @@ class ShoutsController extends FrontController {
      */
     protected function deleteOld()
     {
-        $ids = DB::table('shouts')->orderBy('created_at', 'desc')->take(20)->lists('id');
+        $ids = DB::table('shouts')->orderBy('created_at', 'desc')->take(20)->pluck('id');
 
         $ids[] = 0;
 

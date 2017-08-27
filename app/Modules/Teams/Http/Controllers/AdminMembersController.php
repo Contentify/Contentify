@@ -72,7 +72,7 @@ class AdminMembersController extends BackController {
      */
     public function getAdd($userId)
     {
-        $ids = DB::table('team_user')->whereUserId($userId)->lists('team_id');
+        $ids = DB::table('team_user')->whereUserId($userId)->pluck('team_id');
 
         if (sizeof($ids) > 0) {
             $teams = Team::whereNotIn('id', $ids)->get();
