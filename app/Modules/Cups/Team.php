@@ -143,7 +143,8 @@ class Team extends BaseModel {
     public function removeMembers($memberIds = array())
     {
         if (sizeof($memberIds) == 0) {
-            $memberIds = DB::table('cups_team_members')->whereTeamId($this->id)->pluck('user_id'); // Get all members
+            // Get all members
+            $memberIds = DB::table('cups_team_members')->whereTeamId($this->id)->pluck('user_id')->toArray();
         }
 
         //$cupIds = DB::table('cups_participants')->whereTeamId($this->id)->lists('team_id'); // Get all cups

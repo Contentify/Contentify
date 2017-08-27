@@ -8,7 +8,7 @@ class ShoutsController extends FrontController {
     /**
      * Stores a shout
      * 
-     * @return void
+     * @return Response
      */
     public function store()
     {
@@ -32,10 +32,12 @@ class ShoutsController extends FrontController {
 
     /**
      * Deletes all shouts that are not part of the 20 newest shouts
+     *
+     * @return void
      */
     protected function deleteOld()
     {
-        $ids = DB::table('shouts')->orderBy('created_at', 'desc')->take(20)->pluck('id');
+        $ids = DB::table('shouts')->orderBy('created_at', 'desc')->take(20)->pluck('id')->toArray();
 
         $ids[] = 0;
 

@@ -298,7 +298,7 @@ class Cup extends BaseModel {
             $query->whereOrganizer(true);
         }
 
-        $userTeamIds = $query->pluck('team_id');
+        $userTeamIds = $query->pluck('team_id')->toArray();
 
         return Team::whereIn('id', $userTeamIds)->get();
     }
@@ -320,7 +320,7 @@ class Cup extends BaseModel {
         if ($onlyOpen) {
             $query->whereCupClosed(false);
         }
-        $userCupIds = $query->pluck('cup_id');
+        $userCupIds = $query->pluck('cup_id')->toArray();
 
         $query = Cup::wherePublished(true);
         if ($onlyOpen) {

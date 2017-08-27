@@ -68,11 +68,11 @@ class AdminMembersController extends BackController {
      * Return form for joining a team
      * 
      * @param  int $userId
-     * @return Response
+     * @return Response|View
      */
     public function getAdd($userId)
     {
-        $ids = DB::table('team_user')->whereUserId($userId)->pluck('team_id');
+        $ids = DB::table('team_user')->whereUserId($userId)->pluck('team_id')->toArray();
 
         if (sizeof($ids) > 0) {
             $teams = Team::whereNotIn('id', $ids)->get();

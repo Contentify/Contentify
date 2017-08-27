@@ -183,7 +183,7 @@ class Forum extends BaseModel {
         if ($user) {
             $internal = $user->hasAccess('internal');
 
-            $teamIds = DB::table('team_user')->whereUserId($user->id)->pluck('team_id');
+            $teamIds = DB::table('team_user')->whereUserId($user->id)->pluck('team_id')->toArray();
             $teamIds[] = -1; // Add -1 as team ID so the SQL statements (`team_id` in (...)) always has valid syntax
 
             return $query->where('internal', '<=', $internal)->where(function($query) use ($teamIds)
