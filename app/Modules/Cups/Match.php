@@ -97,7 +97,7 @@ class Match extends BaseModel {
             // This means every member of the team is allowed to confirm the result.
             // It does not matter if the member is an organizer.
             // This is just an arbitrary design decision.
-            return ($left_participant->isMember($user));
+            return ($this->left_participant->isMember($user));
         } else {
             return ($user->id == $this->left_participant->id);
         }
