@@ -564,7 +564,7 @@ a:hover { color: @primaryColor; text-decoration: none }
 }
 
 .page-cups-show {
-    .image { 
+    .image {
         margin: 20px 0px; text-align: center;
         img { max-width: 100%; }
     }
@@ -572,17 +572,27 @@ a:hover { color: @primaryColor; text-decoration: none }
     #description .text { margin: 20px 0px; }
     #bracket { overflow: auto }
     .bracket {
-        @borderColor: @textColor;     
+        @borderColor: @textColor;
+        display: flex; flex-direction: row;
+        .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0px; }
+        .round .spacer { flex-grow: 1; }
+        .round .spacer:first-child, .round .spacer:last-child { flex-grow: .5; }
+        .match { padding-left: 20px; }
+        .match.winner { font-weight: bold; }
+        .match .score { float: right; margin-right: 5px; }
+        .match-top { border-bottom: 1px solid @borderColor;  }
+        .match-spacer { border-right: 1px solid @borderColor; min-height: 40px; display: flex; justify-content: center; flex-direction: column; text-align: right; padding-right: 5px; flex-grow: 1; }
+        .match-bottom { border-top: 1px solid @borderColor; }
     }
 }
 .page-cups-teams-overview, .page-cups-show-team {
     li { margin-bottom: 10px; }
-    .image { 
-        margin: 20px 0px; 
+    .image {
+        margin: 20px 0px;
         img { max-height: 200px; }
     }
 }
-.page-cups-show-match {  
+.page-cups-show-match {
     .overview {
         & > div { width: 33%; text-align: center; float: left }
         img { max-width: 120px; }
@@ -592,8 +602,8 @@ a:hover { color: @primaryColor; text-decoration: none }
         .mid .left-defeat { color: @red }
         .mid .left-draw { color: @orange }
     }
-    .details { 
-        margin-bottom: 20px; padding-top: 20px; 
+    .details {
+        margin-bottom: 20px; padding-top: 20px;
         form { margin-bottom: 5px }
         form:last-child { margin-bottom: 0px }
         input { width: 50px; text-align: center; }
