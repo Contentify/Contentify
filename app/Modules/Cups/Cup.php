@@ -198,7 +198,7 @@ class Cup extends BaseModel {
     /**
      * Returns an array with the IDs of the participants of this cup
      * 
-     * @return array
+     * @return \Illuminate\Support\Collection
      */
     public function participantIds()
     {
@@ -248,7 +248,7 @@ class Cup extends BaseModel {
         } else {
             $participantIds = $this->participantIds();
 
-            if (in_array($user->id, $participantIds)) {
+            if ($participantIds->contains($user->id)) {
                 return $user;
             } else {
                 return null;

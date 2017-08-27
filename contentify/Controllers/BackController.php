@@ -18,7 +18,7 @@ abstract class BackController extends BaseController {
 
     /**
      * Array with "evil" file extensions
-     * @var array
+     * @var string[]
      */
     protected $evilFileExtensions = ['php'];
 
@@ -48,6 +48,12 @@ abstract class BackController extends BaseController {
         });
     }
 
+    /**
+     * Returns an array with "evil" file extensions.
+     * Getter for the evilFileExtensions property.
+     *
+     * @return string[]
+     */
     public function getEvilFileExtensions()
     {
         return $this->evilFileExtensions;

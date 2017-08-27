@@ -53,9 +53,9 @@
         @foreach ($team->cups as $cup)
             <tr>
                 <td><a href="{{ url('cup/'.$cup->id.'/'.$cup->slug) }}">{{ $cup->title }}</a></td>
-                <td>{{ $cup->players_per_team }}on{{ $cup->players_per_team }}</a></td>
-                <td>{{ $cup->game->short }}</a></td>
-                <td>{{ $cup->start_at }}</a></td>
+                <td>{{ $cup->players_per_team }}on{{ $cup->players_per_team }}</td>
+                <td>{{ $cup->game->short }}</td>
+                <td>{{ $cup->start_at }}</td>
             </tr>
         @endforeach
     </table>
