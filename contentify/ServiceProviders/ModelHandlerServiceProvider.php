@@ -14,8 +14,7 @@ class ModelHandlerServiceProvider extends ServiceProvider {
     public function register()
     {
         // Register instance container to the underlying class object
-        $this->app['modelHandler'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('modelHandler', function () {
             return new ModelHandler;
         });
 

@@ -14,8 +14,7 @@ class RatingsServiceProvider extends ServiceProvider {
     public function register()
     {
         // Register instance container to the underlying class object
-        $this->app['ratings'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('ratings', function () {
             return new Ratings;
         });
 

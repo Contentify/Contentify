@@ -14,8 +14,7 @@ class ContentFilterServiceProvider extends ServiceProvider {
     public function register()
     {
         // Register instance container to the underlying class object
-        $this->app['contentFilter'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('contentFilter', function () {
             return new ContentFilter;
         });
 

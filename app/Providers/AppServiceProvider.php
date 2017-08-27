@@ -68,10 +68,9 @@ class AppServiceProvider extends ServiceProvider {
     {
         /*
          * The RSS package does not have a service provider for Laravel 5 (only for Laravel 4).
-         * Therefore we have to register the rss service so the facade can use it.
+         * Therefore we have to register the RSS service so the facade can use it.
          */
-        $this->app['rss'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('rss', function () {
             return new Rss;
         });
     }

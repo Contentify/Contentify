@@ -14,8 +14,7 @@ class ModuleRouteServiceProvider extends ServiceProvider {
     public function register()
     {
         // Register instance container to the underlying class object
-        $this->app['moduleRoute'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('moduleRoute', function () {
             return new ModuleRoute;
         });
 

@@ -14,8 +14,7 @@ class HoverServiceProvider extends ServiceProvider {
     public function register()
     {
         // Register instance container to the underlying class object
-        $this->app['hover'] = $this->app->share(function($app)
-        {
+        $this->app->singleton('hover', function () {
             return new Hover;
         });
 
