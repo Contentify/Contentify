@@ -15,7 +15,7 @@ class UserActivitiesServiceProvider extends ServiceProvider {
     {
         // Register instance container to the underlying class object
         $this->app->singleton('userActivities', function () {
-            return new userActivities;
+            return new UserActivities;
         });
 
         // Shortcut so we don't need to add an alias in app/config/app.php
