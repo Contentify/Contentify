@@ -197,7 +197,7 @@ class Match extends BaseModel {
         }
 
         // Cup completed?
-        if ($this->round == $this->cup->rounds()) {
+        if ($this->round + 1 == $this->cup->rounds()) {
             $this->cup->closed = true;
             $this->cup->save();
             return null;
