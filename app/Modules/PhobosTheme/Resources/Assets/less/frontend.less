@@ -107,6 +107,18 @@ a:hover { color: @primaryColor; text-decoration: none }
     img { max-width: 100%; }
 }
 
+/* Pagination */
+ul.pagination {
+    span, a, .disabled span { background-color: @dark; border-color: @primaryColor; color: white }
+    li.active, li.active span { background-color: @primaryColor; border-color: @primaryColor; }
+    .disabled { opacity: 0.5 }
+}
+
+.toolbar ul.pagination { float: right; margin: -4px 0px 0px 0px }
+@media (max-width: @screen-phone) {
+    .toolbar ul.pagination { display: block; float: none; margin: 20px 0px }
+}
+
 /* Modal */
 .modal .modal-header {
     border-top-left-radius: 3px;
