@@ -97,7 +97,7 @@ class Match extends BaseModel {
             // This means every member of the team is allowed to confirm the result.
             // It does not matter if the member is an organizer.
             // This is just an arbitrary design decision.
-            return ($left_participant->isMember($user));
+            return ($this->left_participant->isMember($user));
         } else {
             return ($user->id == $this->left_participant->id);
         }
@@ -128,7 +128,7 @@ class Match extends BaseModel {
             // This means every member of the team is allowed to confirm the result.
             // It does not matter if the member is an organizer.
             // This is just an arbitrary design decision.
-            return ($right_participant->isMember($user));
+            return ($this->right_participant->isMember($user));
         } else {
             return ($user->id == $this->right_participant->id);
         }
@@ -198,8 +198,8 @@ class Match extends BaseModel {
 
         // Cup completed?
         if ($this->round == $this->cup->rounds()) {
-            $cup->closed = true;
-            $cup->save();
+            $this->cup->closed = true;
+            $this->cup->save();
             return null;
         }
 
