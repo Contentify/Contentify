@@ -138,7 +138,7 @@ class MySqlDump {
     }
 
     /**
-     * Writting header for dump file
+     * Writing header for dump file
      *
      * @return null
      */

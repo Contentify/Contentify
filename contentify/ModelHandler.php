@@ -25,7 +25,7 @@ class ModelHandler {
      * @param  string $userInterface    Frontend ("front") or backend ("admin")?
      * @return void
      */
-    public function index($data, $userInterface = 'admin')
+    public function index(array $data, $userInterface = 'admin')
     {
         $controller = $this->getControllerOrFail();
 
