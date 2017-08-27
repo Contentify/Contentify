@@ -30,7 +30,7 @@ return [
     'not_possible'  => 'Sorry, but this action is not available right now.',
 
     /*
-     * User permisssions
+     * User permissions
      */ 
     'no_auth'       => 'Access denied. Please log in.',
     'access_denied' => 'Access denied. You need permissions.',
@@ -293,7 +293,7 @@ return [
     'object_map'                => 'Map',
     'object_match'              => 'Match',
     'object_match_score'        => 'Match Score',
-    'object_messages'           => 'Message',
+    'object_message'            => 'Message',
     'object_module'             => 'Module',
     'object_navigation'         => 'Navigation',
     'object_newscat'            => 'News-Category',

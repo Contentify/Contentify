@@ -30,7 +30,7 @@ return [
     'not_possible'  => 'Désolé, cette action est actuellement indisponible.',
 
     /*
-     * User permisssions
+     * User permissions
      */ 
     'no_auth'       => 'Accès refusé. Merci de vous connecter.',
     'access_denied' => 'Accès refusé. Vous n\'avez pas la permisssion.',
@@ -292,7 +292,7 @@ return [
     'object_map'                => 'Map',
     'object_match'              => 'Match',
     'object_match_score'        => 'Score du Match',
-    'object_messages'           => 'Message',
+    'object_message'            => 'Message',
     'object_module'             => 'Module',
     'object_navigation'         => 'Navigation',
     'object_newscat'            => 'Categorie de news',

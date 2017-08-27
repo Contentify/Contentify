@@ -30,7 +30,7 @@ return [
     'not_possible'  => 'Entschuldigung, diese Aktion ist derzeit nicht verfügbar.',
 
     /*
-     * User permisssions
+     * User permissions
      */ 
     'no_auth'       => 'Zugriff verweigert. Bitte melden Sie sich an.',
     'access_denied' => 'Zugriff verweigert. Sie verfügen nicht über die benötigten Berechtigungen.',
@@ -292,7 +292,7 @@ return [
     'object_map'                => 'Map',
     'object_match'              => 'Match',
     'object_match_score'        => 'Matchergebnis',
-    'object_messages'           => 'Nachricht',
+    'object_message'            => 'Nachricht',
     'object_module'             => 'Modul',
     'object_navigation'         => 'Navigation',
     'object_newscat'            => 'News-Kategorie',
