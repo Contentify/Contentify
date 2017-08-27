@@ -205,7 +205,9 @@ class ModuleRoute {
      */
     public function resources(array $resources)
     {
-        Route::resources($resources);
+        foreach ($resources as $name => $controller) {
+            $this->resource($name, $controller);
+        }
     }
 
     /**
