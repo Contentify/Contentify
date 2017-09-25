@@ -9290,34 +9290,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Register an array of controllers with wildcard routing.
-         *
-         * @param array $controllers
-         * @return void 
-         * @deprecated since version 5.2.
-         * @static 
-         */ 
-        public static function controllers($controllers)
-        {
-            \Illuminate\Routing\Router::controllers($controllers);
-        }
-        
-        /**
-         * Route a controller to a URI with wildcard routing.
-         *
-         * @param string $uri
-         * @param string $controller
-         * @param array $names
-         * @return void 
-         * @deprecated since version 5.2.
-         * @static 
-         */ 
-        public static function controller($uri, $controller, $names = array())
-        {
-            \Illuminate\Routing\Router::controller($uri, $controller, $names);
-        }
-        
-        /**
          * Set the unmapped global resource parameters to singular.
          *
          * @return void 
@@ -13828,6 +13800,13 @@ namespace Contentify {
 namespace Contentify\Facades { 
 
     class ModuleRoute {
+
+        const ADMIN_NAME_PREFIX = 'admin.';
+
+        public static function getAdminNamePrefix()
+        {
+            return \Contentify\ModuleRoute::getAdminNamePrefix();
+        }
         
         /**
          * Sets the context (name) of the module.
@@ -13984,6 +13963,18 @@ namespace Contentify\Facades {
         public static function resource($route, $target, $parameters = array())
         {
             \Contentify\ModuleRoute::resource($route, $target, $parameters);
+        }
+
+        /**
+         * Create a route group with shared attributes.
+         *
+         * @param  array  $attributes
+         * @param  \Closure  $callback
+         * @return void
+         */
+        public static function group(array $attributes, \Closure $callback)
+        {
+            \Contentify\ModuleRoute::group($attributes, $callback);
         }
          
     }

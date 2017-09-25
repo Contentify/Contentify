@@ -6,6 +6,14 @@ use Config, Route;
  * This class decorates the Route class of Laravel
  */
 class ModuleRoute {
+
+    /**
+     * Since Laravel 5.3 we have to manually prefix the names
+     * of backend (admin) routes. We use this const as the prefix.
+     * Note that it is not possible to directly access this constant
+     * if the facade of this class is used. Use the getter instead!
+     */
+    const ADMIN_NAME_PREFIX = 'admin.';
   
     /**
      * The namespace for all modules
@@ -261,6 +269,16 @@ class ModuleRoute {
         } else {
             return Route::$methods($route, $target);
         }
+    }
+
+    /**
+     * Returns the prefix for the names of backend (admin) routes
+     *
+     * @return string
+     */
+    public function getAdminNamePrefix()
+    {
+        return self::ADMIN_NAME_PREFIX;
     }
 
 }
