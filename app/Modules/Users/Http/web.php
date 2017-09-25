@@ -8,10 +8,12 @@ ModuleRoute::resource('users', 'UsersController', ['only' => ['index', 'show', '
 ModuleRoute::get('users/{id}/{slug}', 'UsersController@show');
 ModuleRoute::post('users/search', 'UsersController@search');
 
-ModuleRoute::resource('admin/users', 'AdminUsersController', ['only' => ['index', 'edit', 'update']]);
-ModuleRoute::post('admin/users/search', 'AdminUsersController@search');
-ModuleRoute::post('admin/users/{id}/{activate}', 'AdminUsersController@activate');
+ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
+    ModuleRoute::resource('admin/users', 'AdminUsersController', ['only' => ['index', 'edit', 'update']]);
+    ModuleRoute::post('admin/users/search', 'AdminUsersController@search');
+    ModuleRoute::post('admin/users/{id}/{activate}', 'AdminUsersController@activate');
 
-ModuleRoute::get('admin/activities', 'AdminActivitiesController@index');
-ModuleRoute::get('admin/activities/delete/all', 'AdminActivitiesController@deleteAll');
-ModuleRoute::post('admin/activities/search', 'AdminActivitiesController@search');
+    ModuleRoute::get('admin/activities', 'AdminActivitiesController@index');
+    ModuleRoute::get('admin/activities/delete/all', 'AdminActivitiesController@deleteAll');
+    ModuleRoute::post('admin/activities/search', 'AdminActivitiesController@search');
+});

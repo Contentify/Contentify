@@ -94,9 +94,9 @@ class AdminUsersController extends BackController {
 
     /**
      * Activate or deactivates a user.
-     * 
-     * @param  int  $id     The ID of the user
-     * @param  bool $ban    Activate (true) or deactivate (false)?
+     *
+     * @param  int  $id       The ID of the user
+     * @param  bool $activate Activate (true) or deactivate (false)?
      * @return Response
      */
     public function activate($id, $activate = true)

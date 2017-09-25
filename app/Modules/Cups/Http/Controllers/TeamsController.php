@@ -48,8 +48,7 @@ class TeamsController extends FrontController {
     public function organizer($teamId, $userId)
     {
         $team = Team::findOrFail($teamId);
-        $user = User::findOrFail($userId);
-        \Log::error(Input::get('organizer'));
+        $user = User::findOrFail($userId); // We do not use the $user var but we use findOrFail() for a check
         $isOrganizer = (bool) Input::get('organizer');
 
         if (! user()) {
@@ -156,7 +155,6 @@ class TeamsController extends FrontController {
     /**
      * Shows a form that allows the user to create a team.
      * 
-     * @param  int $teamId The ID of the team
      * @return void
      */
     public function create()

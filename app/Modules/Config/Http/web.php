@@ -2,7 +2,6 @@
 
 ModuleRoute::context('Config');
 
-
 ModuleRoute::get('admin/config/log/clear', 'AdminConfigController@clearLog');
 ModuleRoute::get('admin/config', 'AdminConfigController@getIndex');
 ModuleRoute::get('admin/config/info', 'AdminConfigController@getInfo');
