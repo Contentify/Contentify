@@ -34,7 +34,7 @@ class VerifyAdminAccess {
             }
         }
 
-        return $next($request);     
+        return $next($request);
     }
 
 }
