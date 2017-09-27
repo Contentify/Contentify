@@ -6,34 +6,39 @@ trait ModelHandlerTrait {
 
     /**
      * CRUD: create model
+     *
+     * @return void
      */
     public function create()
     {
         ModelHandler::controller($this);
 
-        return ModelHandler::create();
+        ModelHandler::create();
     }
 
     /**
      * CRUD: store model
+     *
+     * @return void
      */
     public function store()
     {
         ModelHandler::controller($this);
 
-        return ModelHandler::store();
+        ModelHandler::store();
     }
 
     /**
      * CRUD: edit model
-     * 
-     * @param  int The id of the model
+     *
+     * @param  int $id The id of the model
+     * @return void
      */
     public function edit($id)
     {
         ModelHandler::controller($this);
 
-        return ModelHandler::edit($id);
+        ModelHandler::edit($id);
     }
 
     /**
