@@ -18,4 +18,4 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::post('admin/adverts/search', 'AdminAdvertsController@search');
 });
 
-ModuleRoute::get('adverts/url/{id}/{slug?}', 'AdvertsController@url');
+ModuleRoute::get('adverts/url/{id}', 'AdvertsController@url');

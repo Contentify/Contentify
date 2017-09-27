@@ -9,7 +9,7 @@ class AdvertsController extends FrontController {
      * Navigate to the URL of an advert
      * 
      * @param  int $id The id of the advert
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function url($id)
     {
