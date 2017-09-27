@@ -22,7 +22,7 @@ if (isset($_GET['method']) and strtolower($_GET['method']) == 'delete') {
 | Permission Levels
 |--------------------------------------------------------------------------
 |
-| Define constants for permisson levels 
+| Define constants for permission levels
 | (part of Sentry's user permission system).
 |
 */
