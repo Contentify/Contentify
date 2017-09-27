@@ -432,7 +432,7 @@ class InstallController extends Controller {
             $table->string('url')->nullable();
             $table->boolean('published')->default(false);
             $table->string('image')->nullable();
-        }, ['advertcat_id']);
+        }, ['advertcat_id'], ['slug']);
 
         $this->create('partnercats', function($table) { }, [], ['slug']);
 
