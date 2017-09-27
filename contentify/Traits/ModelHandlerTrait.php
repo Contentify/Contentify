@@ -38,8 +38,9 @@ trait ModelHandlerTrait {
 
     /**
      * CRUD: update model
-     * 
-     * @param  int The id of the model
+     *
+     * @param  int $id The id of the model
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id)
     {
@@ -50,8 +51,9 @@ trait ModelHandlerTrait {
 
     /**
      * CRUD: delete model
-     * 
-     * @param  int The id of the model
+     *
+     * @param  int $id The id of the model
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -62,8 +64,9 @@ trait ModelHandlerTrait {
 
     /**
      * CRUD-related: restore model after soft deletion
-     * 
-     * @param  int The id of the model
+     *
+     * @param  int $id The id of the model
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function restore($id)
     {

@@ -314,6 +314,8 @@ class ModelHandler {
 
     /**
      * CRUD: create model
+     *
+     * @return void
      */
     public function create()
     {
@@ -329,6 +331,8 @@ class ModelHandler {
 
     /**
      * CRUD: store model
+     *
+     * @return void
      */
     public function store()
     {
@@ -431,8 +435,10 @@ class ModelHandler {
 
     /**
      * CRUD: edit model
-     * 
+     *
      * @param int $id The id of the model
+     * @return void
+     * @throws Exception
      */
     public function edit($id)
     {
@@ -455,8 +461,9 @@ class ModelHandler {
 
     /**
      * CRUD: update model
-     * 
+     *
      * @param int $id The id of the model
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id)
     {
@@ -578,8 +585,9 @@ class ModelHandler {
 
     /**
      * CRUD: delete model
-     * 
+     *
      * @param int $id The id of the model
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -659,23 +667,19 @@ class ModelHandler {
 
     /**
      * CRUD-related: restore model after soft deletion
-     * 
+     *
      * @param int $id The id of the model
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function restore($id)
     {
         $controller = $this->getControllerOrFail();
 
-        if (! $controller->checkAccessDelete()) return;
+        if (! $controller->checkAccessDelete()) return null;
 
         $modelClass = $controller->getModelClass();
 
-        // TODO: Remove unnecessary code
-        //if (method_exists($modelClass, 'trashed')) {
-            $model  = $modelClass::withTrashed()->find($id);
-        //} else {
-        //    $model  = $modelClass::find($id);
-        //}
+        $model  = $modelClass::withTrashed()->find($id);
 
         $model->restore();
 
@@ -696,13 +700,13 @@ class ModelHandler {
             ->withInput(Input::only('search'));
     }
 
-    
     /**
      * Retrieve values from inputs (usually select elements) that deal with foreign models
-     * 
-     * @param  string   $modelClass  Full name of the model class
-     * @param  Model    $model       Object with this model type (by reference)
+     *
+     * @param  string $modelClass Full name of the model class
+     * @param  Model  $model      Object with this model type (by reference)
      * @return void
+     * @throws Exception
      */
     public function fillRelations($modelClass, &$model)
     {
