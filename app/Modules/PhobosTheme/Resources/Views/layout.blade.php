@@ -92,7 +92,9 @@
 
                             <a class="btn btn-default" href="{{ url('auth/registration/create') }}" title="{{ trans('auth::register') }}">{!! HTML::fontIcon('plus') !!}</a>
 
-                            <a class="btn btn-default" href="{{ url('auth/steam') }}" title="STEAM {{ trans('auth::login') }}">{!! HTML::fontIcon('steam') !!}</a>
+                            @if (Config::get('steam-auth.api_key'))
+                                <a class="btn btn-default" href="{{ url('auth/steam') }}" title="STEAM {{ trans('auth::login') }}">{!! HTML::fontIcon('steam') !!}</a>
+                            @endif
                         @endif
                     </div>
                 </div>
