@@ -19,13 +19,13 @@ trait ModelHandlerTrait {
     /**
      * CRUD: store model
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function store()
     {
         ModelHandler::controller($this);
 
-        ModelHandler::store();
+        return ModelHandler::store();
     }
 
     /**

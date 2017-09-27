@@ -332,7 +332,7 @@ class ModelHandler {
     /**
      * CRUD: store model
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function store()
     {
@@ -464,6 +464,7 @@ class ModelHandler {
      *
      * @param int $id The id of the model
      * @return \Illuminate\Http\RedirectResponse
+     * @throws Exception
      */
     public function update($id)
     {
