@@ -317,6 +317,12 @@ class User extends SentinelUser {
             return Redirect::route('users.edit', [$this->id])
             ->withInput()->withErrors([trans('app.invalid_image')]);
         }
+        
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+        if (! in_array(strtolower($extension), $allowedExtensions)) {
+            return Redirect::route('users.edit', [$this->id])
+            ->withInput()->withErrors([trans('app.invalid_image')]);
+        }
 
         $filePath = public_path().'/uploads/users/';
 
