@@ -93,6 +93,11 @@ class BaseModel extends Eloquent {
                 if (! isset($imgData[2]) or ! $imgData[2]) { // Check if image has a size. If not, it's not an image.
                     return trans('app.invalid_image');
                 }
+
+                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+                if (! in_array(strtolower($extension), $allowedExtensions)) {
+                    return trans('app.invalid_image');
+                }
             }
         }
 
