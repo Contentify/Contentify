@@ -5,6 +5,9 @@ use Closure, Exception;
 
 class ModelHandler {
 
+    /**
+     * @var BaseController
+     */
     protected $controller;
 
     /**
@@ -51,7 +54,7 @@ class ModelHandler {
             'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
             'order'         => 'desc',                          // Asc / desc
             'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
-            'permaFilter'   => null,                            // Null / Closure: Add a permament filter to the query?
+            'permaFilter'   => null,                            // Null / Closure: Add a permanent filter to the query?
             'dataSource'    => null,                            // Null (means: take from database) or array
             'infoText'      => '',                              // String (may include HTML tags) with extra infos
             'pageTitle'     => true,                            // False: no, true: auto, string: defines a custom title
@@ -385,9 +388,14 @@ class ModelHandler {
                         if (! isset($imgData[2]) or ! $imgData[2]) {
                             $error = trans('app.invalid_image');
                         }
+
+                        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+                        if (! in_array(strtolower($extension), $allowedExtensions)) {
+                            $error = trans('app.invalid_image');
+                        }
                     }
 
-                    if (in_array($extension, $controller->getEvilFileExtensions())) {
+                    if (in_array(strtolower($extension), $controller->getEvilFileExtensions())) {
                         $error = trans('app.bad_extension', [$extension]);
                     }
 
@@ -521,9 +529,14 @@ class ModelHandler {
                         if (! isset($imgData[2]) or ! $imgData[2]) {
                             $error = trans('app.invalid_image');
                         }
+
+                        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
+                        if (! in_array(strtolower($extension), $allowedExtensions)) {
+                            $error = trans('app.invalid_image');
+                        }
                     }
 
-                    if (in_array($extension, $controller->getEvilFileExtensions())) {
+                    if (in_array(strtolower($extension), $controller->getEvilFileExtensions())) {
                         $error = trans('app.bad_extension', [$extension]);
                     }
 
@@ -792,7 +805,7 @@ class ModelHandler {
     /**
      * Returns the controller object or throws an exception if it's null
      *
-     * @return object The controller object
+     * @return BaseController The controller object
      * @throws Exception
      */
     protected function getControllerOrFail()
