@@ -232,7 +232,7 @@ class InstallController extends Controller {
 
                 break;
             case 1:
-                if (version_compare(PHP_VERSION, '5.5.9') >= 0) {
+                if (version_compare(PHP_VERSION, '5.6.4') >= 0) {
                     $version = '<span class="state yes">Yes, '.phpversion().'</span>';
                 } else {
                     $version = '<span class="state no">No, '.phpversion().'</span>';

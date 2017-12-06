@@ -30,6 +30,19 @@ class Tester {
 
         $this->line();
 
+        $results = $this->checkFunctions();
+
+        foreach ($results as $function => $okay) {
+            if ($okay) {
+                $info = $this->green('Yes');
+            } else {
+                $info = $this->red('No');
+            }
+            $this->line('PHP '.ucfirst($function).' Function: '.$info);
+        }
+
+        $this->line();
+
         if (is_dir(__DIR__.'/../vendor')) {
             $this->line('Vendor libraries installed: '.$this->green('Yes'));
         } else {
@@ -56,13 +69,13 @@ class Tester {
      */
     public function checkPhp()
     {
-        return (version_compare(PHP_VERSION, '5.5.9') >= 0);
+        return (version_compare(PHP_VERSION, '5.6.4') >= 0);
     }
 
     /**
      * Returns a list of PHP extensions names and their state
      *
-     * @return array
+     * @return bool[]
      */
     public function checkExtensions()
     {
@@ -86,9 +99,29 @@ class Tester {
     }
 
     /**
+     * Returns a list of PHP function names and their state
+     *
+     * @return bool[]
+     */
+    public function checkFunctions()
+    {
+        $functions = array(
+            'escapeshellarg',
+        );
+
+        $results = array();
+
+        foreach ($functions as $function) {
+            $results[$function] = function_exists($function);
+        }
+
+        return $results;
+    }
+
+    /**
      * Returns a list of dir names and their state
      *
-     * @return array
+     * @return bool[]
      */
     public function checkDirs()
     {
@@ -153,7 +186,7 @@ class Tester {
     /**
      * Determine if PHP is being run from the CLI
      * 
-     * @return boolean
+     * @return bool
      */
     public function isCli()
     {
