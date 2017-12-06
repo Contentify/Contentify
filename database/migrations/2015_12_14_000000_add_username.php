@@ -14,7 +14,9 @@ class AddUsername extends Migration {
         Schema::table('users', function($table)
         {
             $table->string('username', 20)->unique();
-            $table->string('slug')->unique();
+            // Note: An empty string is not a valid value for the slug attribute, however,
+            // we have to allow this, because Sentinel will fill it it in its register() method.
+            $table->string('slug')->unique()->default('');
             $table->integer('updater_id')->unsigned()->default(0);
         });
     }
