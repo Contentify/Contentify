@@ -715,8 +715,8 @@ class InstallController extends Controller {
      */
     protected function createSeed() 
     {      
-        $tables = ['newscats', 'partnercats', 'advertcats', 'downloadcats', 'slidecats'];
-        $this->createDefaultCategories($tables);
+        $this->createDefaultCategories(['newscats', 'partnercats', 'advertcats', 'slidecats']);
+        $this->createDefaultCategories(['downloadcats'], true);
         
         DB::table('config')->insert([
             ['name' => 'app.theme',             'value' => 'PhobosTheme'],
@@ -1141,23 +1141,30 @@ information about your stored data, and possibly entitlement to correction, bloc
     /**
      * Creates one or more default categories
      * 
-     * @param  array $tables Array of table names
+     * @param array $tables   Array of table names
+     * @param bool  $withSlug If true, also fill the slug attribute
      * @return void
      */
-    protected function createDefaultCategories($tables)
+    protected function createDefaultCategories($tables, $withSlug = false)
     {
         foreach ($tables as $table) {
+            $values = [
+                'id'            => '1',
+                'title'         => 'Default',
+                'creator_id'    => 1,
+                'updater_id'    => 1,
+                'created_at'    => DB::raw('NOW()'),
+                'updated_at'    => DB::raw('NOW()'),
+            ];
+
+            if ($withSlug) {
+                $values['slug'] = 'default';
+            }
+
             DB::table($table)->insert([
-                [
-                    'id'            => '1', 
-                    'title'         => 'Default', 
-                    'creator_id'    => 1, 
-                    'updater_id'    => 1, 
-                    'created_at'    => DB::raw('NOW()'),
-                    'updated_at'    => DB::raw('NOW()'),
-                ],
+                $values
             ]);
-        }        
+        }
     }
 
     /**
