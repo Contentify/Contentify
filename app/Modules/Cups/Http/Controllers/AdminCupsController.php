@@ -55,7 +55,7 @@ class AdminCupsController extends BackController {
                 },
                 function($cup) {
                     return icon_link(
-                        'group', 
+                        'users',
                         trans('app.object_participants'), 
                         url('admin/cups/participants/'.$cup->id)
                     );

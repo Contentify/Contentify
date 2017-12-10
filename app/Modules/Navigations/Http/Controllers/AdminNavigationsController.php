@@ -8,7 +8,7 @@ class AdminNavigationsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'navicon';
+    protected $icon = 'bars';
 
     public function __construct()
     {

@@ -8,7 +8,7 @@ class AdminReportsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'warning';
+    protected $icon = 'exclamation-triangle';
 
     public function __construct()
     {

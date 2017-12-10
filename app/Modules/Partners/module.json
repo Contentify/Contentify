@@ -2,7 +2,7 @@
     "slug": "Partners",
     "admin-nav": [
         {
-            "icon": "money",
+            "icon": "money-bill-alt",
             "category": 2,
             "position": 5          
         }

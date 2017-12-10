@@ -6,7 +6,7 @@
                     <h4><a href="{{ url('cups/'.$cup->id.'/'.$cup->slug) }}" title="{{ $cup->title }}">{{ $cup->title }}</a></h4>
                     
                     <p class="infos">
-                        {!! HTML::fontIcon('crosshairs') !!} {{ $cup->players_per_team.'on'.$cup->players_per_team }} {{ trans('app.mode') }}, {!! HTML::fontIcon('calendar') !!} {{ $cup->start_at }}, {!! HTML::fontIcon('clock-o') !!} {{ $cup->start_at->format('H:i') }}
+                        {!! HTML::fontIcon('crosshairs') !!} {{ $cup->players_per_team.'on'.$cup->players_per_team }} {{ trans('app.mode') }}, {!! HTML::fontIcon('calendar') !!} {{ $cup->start_at }}, {!! HTML::fontIcon('clock') !!} {{ $cup->start_at->format('H:i') }}
                     </p>
                 </li>
             @endforeach

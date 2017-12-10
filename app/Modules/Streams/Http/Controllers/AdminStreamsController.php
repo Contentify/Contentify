@@ -8,7 +8,7 @@ class AdminStreamsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'video-camera';
+    protected $icon = 'video';
 
     public function __construct()
     {

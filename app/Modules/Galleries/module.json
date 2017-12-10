@@ -2,7 +2,7 @@
     "slug": "Galleries",
     "admin-nav": [
         {
-            "icon": "file-photo-o",
+            "icon": "file-image",
             "category": 1,
             "position": 6            
         }

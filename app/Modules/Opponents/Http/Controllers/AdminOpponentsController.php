@@ -8,7 +8,7 @@ class AdminOpponentsController extends BackController {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'shield';
+    protected $icon = 'shield-alt';
 
     public function __construct()
     {

@@ -351,24 +351,27 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Returns HTML code for a font icon.
      *
-     * @param string $icon  The name of the icon
-     * @param string $color The color of the icon (HTML color name or code)
-     * @param string $class Use this parameter to add additional CSS classes
+     * @param string      $icon     The name of the icon
+     * @param string|null $color    The color of the icon (HTML color name or code)
+     * @param string|null $class    Use this parameter to add additional CSS classes
+     * @param string|null $category The name of the category (solid: fas, regular: far/fa, light: fal, brands: fab)
      * @return string
      */
-    public function fontIcon($icon, $color = null, $class = null)
+    public function fontIcon($icon, $color = null, $class = null, $category = null)
     {
         if ($color) {
             $color = ' style="color: '.$color.'"';
         }
 
-        // These categories are available: solid: fas, regular: far, light: fal, brands: fab
-        $category = 'fa';
-        // Brand icons have there own category class. They only way to find out which class
-        // we have to use is to maintain a list with the names of all brand icons and then
-        // to check if the current icon name is in this list.
-        if (in_array($icon, $this->getBrandIconNames())) {
-            $category = 'fab';
+        if (! $category) {
+            $category = 'fas';
+
+            // Brand icons have there own category class. They only way to find out which class
+            // we have to use is to maintain a list with the names of all brand icons and then
+            // to check if the current icon name is in this list.
+            if (in_array($icon, $this->getBrandIconNames())) {
+                $category = 'fab';
+            }
         }
 
         return '<i class="'.$category.' fa-'.$icon.' '.$class.'"'.$color.'></i>';

@@ -5,7 +5,7 @@ use Redirect, Input, Response, View, HTML, DB, User, BackController;
 
 class AdminMembersController extends BackController {
 
-    protected $icon = 'group';
+    protected $icon = 'users';
 
     public function __construct()
     {

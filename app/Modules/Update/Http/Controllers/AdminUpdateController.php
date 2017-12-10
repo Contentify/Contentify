@@ -20,7 +20,7 @@ class AdminUpdateController extends BackController {
      */
     const CACHE_KEY_TIMESTAMP = 'app.update.timestamp';
 
-    protected $icon = 'cloud-download';
+    protected $icon = 'cloud-download-alt';
 
     /**
      * Shows the update intro page. Shows information about the update,

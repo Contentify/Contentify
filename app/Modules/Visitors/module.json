@@ -2,7 +2,7 @@
     "slug": "Visitors",
     "admin-nav": [
         {
-            "icon": "pie-chart",
+            "icon": "chart-pie",
             "category": 4,
             "position": 7            
         }

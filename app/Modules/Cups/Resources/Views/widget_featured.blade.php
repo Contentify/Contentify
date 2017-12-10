@@ -7,7 +7,7 @@
         @endif
 
         <p class="infos">
-            {!! HTML::fontIcon('group') !!} {{ $cup->slots }} {{ trans('app.slots') }}, {!! HTML::fontIcon('crosshairs') !!} {{ $cup->players_per_team.'on'.$cup->players_per_team }} {{ trans('app.mode') }}, {!! HTML::fontIcon('calendar') !!} {{ $cup->start_at }}
+            {!! HTML::fontIcon('users') !!} {{ $cup->slots }} {{ trans('app.slots') }}, {!! HTML::fontIcon('crosshairs') !!} {{ $cup->players_per_team.'on'.$cup->players_per_team }} {{ trans('app.mode') }}, {!! HTML::fontIcon('calendar') !!} {{ $cup->start_at }}
         </p>
     </a>
 </div>

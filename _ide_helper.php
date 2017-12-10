@@ -13174,19 +13174,21 @@ namespace Collective\Html {
         {
             return \Contentify\HtmlBuilder::renderBackendNav();
         }
-        
+
+
         /**
          * Returns HTML code for a font icon.
          *
-         * @param string $icon The name of the icon
-         * @param string $color The color of the icon (HTML color name or code)
-         * @param string $class Use this parameter to add additional CSS classes
-         * @return string 
-         * @static 
-         */ 
-        public static function fontIcon($icon, $color = null, $class = null)
+         * @param string      $icon     The name of the icon
+         * @param string|null $color    The color of the icon (HTML color name or code)
+         * @param string|null $class    Use this parameter to add additional CSS classes
+         * @param string|null $category The name of the category (solid: fas, regular: far/fa, light: fal, brands: fab)
+         * @return string
+         * @static
+         */
+        public static function fontIcon($icon, $color = null, $class = null, $category = null)
         {
-            return \Contentify\HtmlBuilder::fontIcon($icon, $color, $class);
+            return \Contentify\HtmlBuilder::fontIcon($icon, $color, $class, $category);
         }
         
         /**

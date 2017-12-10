@@ -7,7 +7,7 @@
             "position": 2            
         },
         {
-            "icon": "group",
+            "icon": "users",
             "category": 4,
             "position": 3,
             "translate": "app.team_members",

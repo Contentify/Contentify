@@ -2,7 +2,7 @@
     "slug": "Update",
     "admin-nav": [
         {
-            "icon": "cloud-download",
+            "icon": "cloud-download-alt",
             "category": 4,
             "position": 10
         }

@@ -7,7 +7,7 @@ use Redirect, DB, Input, User, HTML, Hover, BackController;
 
 class AdminParticipantsController extends BackController {
 
-    protected $icon = 'group';
+    protected $icon = 'users';
 
     public function index($cupId)
     {

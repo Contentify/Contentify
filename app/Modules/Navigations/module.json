@@ -2,7 +2,7 @@
     "slug": "Navigations",
     "admin-nav": [
         {
-            "icon": "navicon",
+            "icon": "bars",
             "category": 4,
             "position": 4
         }

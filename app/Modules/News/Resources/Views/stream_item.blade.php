@@ -2,7 +2,7 @@
     <div class="item news" data-timestamp="{{ $item->updated_at->timestamp }}" data-time-offset="{{ $item->updated_at->offsetHours }}" data-more={{ $more }}>
         <div class="meta above clearfix">
             <div class="category pull-left">
-                {!! HTML::fontIcon('newspaper-o') !!} {!! trans('app.object_news') !!}
+                {!! HTML::fontIcon('newspaper') !!} {!! trans('app.object_news') !!}
             </div>
             <div class="comments pull-right" title="{!! trans('app.comments') !!}">
                 {!! HTML::fontIcon('comments') !!} {{ $item->countComments() }}
@@ -28,7 +28,7 @@
     <div class="item video" data-timestamp="{{ $item->updated_at->timestamp }}" data-time-offset="{{ $item->updated_at->offsetHours }}" data-more={{ $more }}>
         <div class="meta above clearfix">
             <div class="category">
-                {!! HTML::fontIcon('youtube-play') !!} {!! trans('app.object_video') !!}
+                {!! HTML::fontIcon('youtube') !!} {!! trans('app.object_video') !!}
             </div>
         </div>
 

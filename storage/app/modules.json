@@ -163,7 +163,7 @@
             },
             {
                 "url": "admin\/forum-reports",
-                "icon": "warning",
+                "icon": "exclamation-triangle",
                 "translate": "app.object_forum_reports",
                 "category": 2,
                 "position": 8
@@ -183,7 +183,7 @@
         "slug": "Galleries",
         "admin-nav": [
             {
-                "icon": "file-photo-o",
+                "icon": "file-image",
                 "category": 1,
                 "position": 6
             }
@@ -280,7 +280,7 @@
         "slug": "Navigations",
         "admin-nav": [
             {
-                "icon": "navicon",
+                "icon": "bars",
                 "category": 4,
                 "position": 4
             }
@@ -296,7 +296,7 @@
         ],
         "admin-nav": [
             {
-                "icon": "newspaper-o",
+                "icon": "newspaper",
                 "category": 1,
                 "position": 2
             }
@@ -309,7 +309,7 @@
         "slug": "Opponents",
         "admin-nav": [
             {
-                "icon": "shield",
+                "icon": "shield-alt",
                 "category": 3,
                 "position": 4
             }
@@ -338,7 +338,7 @@
         "slug": "Partners",
         "admin-nav": [
             {
-                "icon": "money",
+                "icon": "money-bill-alt",
                 "category": 2,
                 "position": 5
             }
@@ -412,7 +412,7 @@
         ],
         "admin-nav": [
             {
-                "icon": "video-camera",
+                "icon": "video",
                 "category": 2,
                 "position": 4
             }
@@ -430,7 +430,7 @@
                 "position": 2
             },
             {
-                "icon": "group",
+                "icon": "users",
                 "category": 4,
                 "position": 3,
                 "translate": "app.team_members",
@@ -458,7 +458,7 @@
         "slug": "Update",
         "admin-nav": [
             {
-                "icon": "cloud-download",
+                "icon": "cloud-download-alt",
                 "category": 4,
                 "position": 10
             }
@@ -490,7 +490,7 @@
         ],
         "admin-nav": [
             {
-                "icon": "youtube-play",
+                "icon": "youtube",
                 "category": 2,
                 "position": 3
             }
@@ -503,7 +503,7 @@
         "slug": "Visitors",
         "admin-nav": [
             {
-                "icon": "pie-chart",
+                "icon": "chart-pie",
                 "category": 4,
                 "position": 7
             }

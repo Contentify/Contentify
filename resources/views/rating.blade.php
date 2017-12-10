@@ -6,7 +6,7 @@
             @if ( $i + 0.5 <= $rating) 
                 {!! HTML::fontIcon('star') !!}
             @else
-                {!! HTML::fontIcon('star-o') !!}
+                {!! HTML::fontIcon('star', null, null, 'far') !!}
             @endif
         @endfor            
     </div>
@@ -48,9 +48,9 @@
                         }
                     }).success(function(data)
                     {
-                        $('.rating .stars i').removeClass('fa-star').addClass('fa-star-o');
-                        $('.rating .stars i:lt(' + rating + ')').removeClass('fa-star-o')
-                            .addClass('fa-star').addClass('active');
+                        $('.rating .stars i').removeClass('fas').addClass('far');
+                        $('.rating .stars i:lt(' + rating + ')').removeClass('far')
+                            .addClass('fas').addClass('active');
 
                         $('.rating .stars').removeClass('enabled');
 
