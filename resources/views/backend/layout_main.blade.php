@@ -22,7 +22,7 @@
     <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Big icon -->
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('img/default/favicon.png') !!}">
 
-    {!! HTML::style('vendor/font-awesome/css/font-awesome.min.css') !!}
+    {!! HTML::style('vendor/font-awesome/css/fontawesome-all.min.css') !!}
     {!! HTML::style('css/backend.css') !!}
     {!! HTML::style('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') !!}
     {!! HTML::style('vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') !!}
