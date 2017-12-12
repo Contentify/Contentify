@@ -13,6 +13,8 @@
 
     {!! Form::smartText('hoster', trans('servers::hoster')) !!}
 
+    {!! Form::smartTextarea('description', trans('app.description')) !!}
+
     {!! Form::smartNumeric('slots', trans('servers::slots'), 0) !!}
 
     {!! Form::smartCheckbox('published', trans('app.published'), true) !!}

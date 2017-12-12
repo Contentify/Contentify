@@ -11,13 +11,19 @@
                     </tr>
                     @if ($server->game)
                         <tr>
-                            <th>Game</th>
+                            <th>{!! trans('app.object_game') !!}</th>
                             <td>
                                 @if ($server->game->icon)
                                     {!! HTML::image($server->game->uploadPath().$server->game->icon, $server->game->title) !!}
                                 @endif
                                 {{ $server->game->title }}
                             </td>
+                        </tr>
+                    @endif
+                    @if ($server->description)
+                        <tr>
+                            <th>{!! trans('app.description') !!}</th>
+                            <td>{{ $server->description }}</td>
                         </tr>
                     @endif
                     <tr>

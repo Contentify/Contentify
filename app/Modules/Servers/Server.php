@@ -8,7 +8,7 @@ class Server extends BaseModel {
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'ip', 'hoster', 'slots', 'published', 'game_id'];
+    protected $fillable = ['title', 'ip', 'hoster', 'slots', 'description', 'published', 'game_id'];
 
     protected $rules = [
         'title'     => 'required|min:3',

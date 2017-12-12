@@ -168,7 +168,7 @@ EOD;
 
         $result = $this->updateDatabase($pdo, $prefix);
 
-        if ($result === false) {            
+        if ($result === false) {
             $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
@@ -198,7 +198,8 @@ EOD;
         $updateQuery = "ALTER TABLE {$prefix}cups_teams ADD cup_points INT DEFAULT 0;
             ALTER TABLE {$prefix}users ADD cup_points INT DEFAULT 0;
             INSERT INTO `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
-            ('cups::cup_points', 10, null);";
+            ('cups::cup_points', 10, null);
+            ALTER TABLE {$prefix}servers ADD description TEXT NULL;";
 
         return $pdo->query($updateQuery);
     }
