@@ -28,6 +28,7 @@ To update from v2.1 to 2.2:
 * Clear the cache by running `php artisan cache:clear` via console or deleting all files and folders in 
 `storage/framework/cache` and `storage/framework/views`
 * Download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
+* If you have made changes to the files in the `config` folder, you have to add them again.
 * Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
 
 If you have created a module for Contentify 2.1 or below please also take a look at the
