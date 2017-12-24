@@ -166,11 +166,15 @@ EOD;
             return self::CODE_ABORTED;
         }
 
-        $result = $this->updateDatabase($pdo, $prefix);
+        $queries = $this->updateDatabase($prefix);
 
-        if ($result === false) {
-            $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
-            return $pdo->errorInfo()[0];
+        foreach ($queries as $query) {
+            $result = $pdo->query($query);
+
+            if ($result === false) {
+                $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
+                return $pdo->errorInfo()[0];
+            }
         }
 
         $result = $pdo->query("REPLACE `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
@@ -185,23 +189,22 @@ EOD;
     }
 
     /**
-     * This function performs all the database changes
+     * This function has to return a string array with queries that perform all the database changes
      * 
-     * @param \PDO $pdo The connection object
      * @param string $prefix The database table prefix (can be an empty string)
-     * @return bool|\PDOStatement Return false if a query failed
+     * @return string[]
      */
-    public function updateDatabase(\PDO $pdo, $prefix)
+    public function updateDatabase($prefix)
     {
         // HOW TO: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
-        $updateQuery = "ALTER TABLE {$prefix}cups_teams ADD cup_points INT DEFAULT 0;
-            ALTER TABLE {$prefix}users ADD cup_points INT DEFAULT 0;
-            INSERT INTO `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
-            ('cups::cup_points', 10, null);
-            ALTER TABLE {$prefix}servers ADD description TEXT NULL;";
+        $updateQueries = ["ALTER TABLE {$prefix}cups_teams ADD cup_points INT DEFAULT 0",
+            "ALTER TABLE {$prefix}users ADD cup_points INT DEFAULT 0",
+            "INSERT INTO `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
+            ('cups::cup_points', 10, null)",
+            "ALTER TABLE {$prefix}servers ADD description TEXT NULL"];
 
-        return $pdo->query($updateQuery);
+        return $updateQueries;
     }
 
     /**
