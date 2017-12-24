@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v2.2-dev
+## Contentify CMS - v2.2
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.3-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
@@ -12,11 +12,11 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Clone Repository
 
-Clone this repository (`2.2-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+Clone this repository (`2.2` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Download
 
-Download it here: [2.1](https://github.com/Contentify/Contentify/releases/tag/v2.1)
+Download it here: [2.2](https://github.com/Contentify/Contentify/releases/tag/v2.2)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
@@ -25,11 +25,12 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 To update from v2.1 to 2.2:
 * Make a backup of your files and your database!
 * Delete the `vendor` folder in the current Contentify installation
+* Clear the cache by running `php artisan cache:clear` via console or deleting all files and folders in 
+`storage/framework/cache` and `storage/framework/views`
 * Download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
-Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
-* Open `config/app.php` with a text editor and change the "name" property to the name of your website
+* Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
 
-If you have created a module for Contentify 2.1 or older please also take a look at the
+If you have created a module for Contentify 2.1 or below please also take a look at the
 [guide to upgrade to Larvel 5.3](https://laravel.com/docs/5.3/upgrade#upgrade-5.3.0) since the changes mentioned there
 may affect your code. Especially take a look at the changes regarding routing (resource parameters and the 
 `Route::controller` method which is no longer available). 
