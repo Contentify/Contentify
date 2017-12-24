@@ -22,6 +22,8 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Update
 
+> Important: Contentify now requires PHP 5.6.4 or 7.x!
+
 To update from v2.1 to 2.2:
 * Make a backup of your files and your database!
 * Delete the `vendor` folder in the current Contentify installation
