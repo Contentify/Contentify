@@ -2,4 +2,4 @@
 
 ModuleRoute::context('Dashboard');
 
-ModuleRoute::get('auth/dashboard', 'AdminDashboardController@getIndex');
+ModuleRoute::get('admin/dashboard', 'AdminDashboardController@getIndex');
