@@ -15,7 +15,7 @@ class CreateUserProfile extends Migration {
         {
             $table->boolean('banned')->default(false);
             $table->string('steam_auth_id')->nullable();
-            $table->timestamp('last_active')->nullable();
+            $table->timestamp('last_active')->nullable()->default(null);
             $table->integer('gender')->nullable()->default(0);
             $table->integer('country_id')->default('1');
             $table->integer('language_id')->default('1');
