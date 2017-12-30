@@ -2,7 +2,7 @@
 
 use SoftDeletingTrait, BaseModel;
 
-class Pagecat extends BaseModel {
+class PageCat extends BaseModel {
 
     use SoftDeletingTrait;
 

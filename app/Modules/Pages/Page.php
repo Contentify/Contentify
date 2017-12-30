@@ -33,7 +33,7 @@ class Page extends StiModel {
     ];
 
     public static $relationsData = [
-        'pagecat' => [self::BELONGS_TO, 'App\Modules\Pages\Pagecat'],
+        'pagecat' => [self::BELONGS_TO, 'App\Modules\Pages\PageCat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
