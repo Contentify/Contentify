@@ -100,7 +100,7 @@ class AdminUsersController extends BackController {
     /**
      * This method does not delete a user but deactivates the account and removes profile information
      *
-     * @param $id
+     * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function destroy($id)
