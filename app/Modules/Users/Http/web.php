@@ -9,7 +9,7 @@ ModuleRoute::get('users/{id}/{slug}', 'UsersController@show');
 ModuleRoute::post('users/search', 'UsersController@search');
 
 ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
-    ModuleRoute::resource('admin/users', 'AdminUsersController', ['only' => ['index', 'edit', 'update']]);
+    ModuleRoute::resource('admin/users', 'AdminUsersController', ['only' => ['index', 'edit', 'update', 'destroy']]);
     ModuleRoute::post('admin/users/search', 'AdminUsersController@search');
     ModuleRoute::post('admin/users/{id}/{activate}', 'AdminUsersController@activate');
 

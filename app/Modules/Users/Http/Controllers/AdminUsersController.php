@@ -1,7 +1,7 @@
 <?php namespace App\Modules\Users\Http\Controllers;
 
 use ModelHandlerTrait;
-use Exception, Input, Response, Activation, Sentinel, HTML, User, Hover, BackController;
+use Exception, Input, Response, Redirect, Str, Activation, Sentinel, HTML, User, Hover, BackController;
 
 class AdminUsersController extends BackController {
 
@@ -24,7 +24,7 @@ class AdminUsersController extends BackController {
             'buttons'   => ['<a href="'.url('admin/activities').'" class="btn btn-default">'.HTML::fontIcon('history')
                 .' Activities</a>'],
             'tableHead' => [
-                trans('app.id')             => 'id', 
+                trans('app.id')             => 'id',
                 trans('app.username')       => 'username',
                 trans('app.email')          => 'email',
                 trans('users::membership')  => null,
@@ -52,16 +52,21 @@ class AdminUsersController extends BackController {
                     $user->email,
                     raw($membership),
                     raw($banned),
-                ];            
+                ];
             },
             'searchFor' => 'username',
             'actions'   => [
                 'edit',
                 function($user) {
-                    return icon_link('user', 
-                        trans('app.edit_profile'), 
-                        url('users/'.$user->id.'/edit'));
-                }
+                    return icon_link('user', trans('app.edit_profile'), url('users/'.$user->id.'/edit')).' ';
+                },
+                function($user) {
+                    return icon_link(
+                        'trash',
+                        trans('app.delete'),
+                        url('admin/users/'.$user->id).'?method=DELETE&_token='.csrf_token()
+                    );
+                },
             ]
         ]);
     }
@@ -71,7 +76,7 @@ class AdminUsersController extends BackController {
         $user = User::findOrFail($id);
         
         /*
-         * Ensure that "Admins" are not able to promote themselves to "Superadmins"
+         * Ensure that admins are not able to promote themselves to superadmins
          */
         if (! user()->isSuperAdmin()) { 
             $roleIds = Input::get('_relation_roles');
@@ -83,9 +88,9 @@ class AdminUsersController extends BackController {
 
                     if ($role->permissions['superadmin'] == '1') {
                         $this->alertError(trans('app.access_denied'));
-                        return;
+                        return null;
                     }
-                }                
+                }
             }
         }
 
@@ -93,7 +98,46 @@ class AdminUsersController extends BackController {
     }
 
     /**
-     * Activate or deactivates a user.
+     * This method does not delete a user but deactivates the account and removes profile information
+     *
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function destroy($id)
+    {
+        // This call also checks for permissions
+        $this->activate($id, false);
+
+        $user = User::findOrFail($id);
+
+        // Do not allow to disable your own account
+        if (user()->id == $id) {
+            return Response::make(trans('app.access_denied'), 403);
+        }
+
+        $user->deleteImage('image');
+        $user->deleteImage('avatar');
+
+        $ignoreFillables = ['email', 'username', 'country_id', 'language_id'];
+        $fillables = $user->getFillable();
+        foreach ($fillables as $fillable) {
+            if (! in_array($fillable, $ignoreFillables))
+                $user->{$fillable} = null;
+        }
+
+        $user->banned = true;
+        $user->password = Str::random();
+        $user->cup_points = 0;
+        $user->steam_auth_id = null;
+
+        $user->save();
+
+        $this->alertFlash(trans('app.successful'));
+        return Redirect::to('admin/users');
+    }
+
+    /**
+     * Activates or deactivates a user.
      *
      * @param  int  $id       The ID of the user
      * @param  bool $activate Activate (true) or deactivate (false)?
