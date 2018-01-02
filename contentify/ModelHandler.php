@@ -1,6 +1,6 @@
 <?php namespace Contentify;
 
-use Request, Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
+use Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
 use Closure, Exception;
 
 class ModelHandler {
@@ -107,8 +107,8 @@ class ModelHandler {
          */
         if (! is_array($data['dataSource'])) {
             if (Input::get('sortby')) {
-                $sortby = strtolower(Input::get('sortby'));
-                if (in_array($sortby, $data['tableHead'])) $data['sortby'] = $sortby; 
+                $sortBy = strtolower(Input::get('sortby'));
+                if (in_array($sortBy, $data['tableHead'])) $data['sortby'] = $sortBy;
 
                 $order = strtolower(Input::get('order'));
                 if ($order === 'desc' or $order === 'asc') {
@@ -202,9 +202,9 @@ class ModelHandler {
          * Prepare the table head
          */
         $tableHead = array();
-        foreach ($data['tableHead'] as $title => $sortby) {
-            if ($sortby != null) {
-                $tableHead[] = HTML::link(URL::current().'?sortby='.urlencode($sortby), $title);
+        foreach ($data['tableHead'] as $title => $sortBy) {
+            if ($sortBy != null) {
+                $tableHead[] = HTML::link(URL::current().'?sortby='.urlencode($sortBy), $title);
             } else {
                 $tableHead[] = $title;
             }
@@ -602,6 +602,7 @@ class ModelHandler {
      *
      * @param int $id The id of the model
      * @return \Illuminate\Http\RedirectResponse
+     * @throws Exception
      */
     public function destroy($id)
     {
@@ -682,7 +683,7 @@ class ModelHandler {
     /**
      * CRUD-related: restore model after soft deletion
      *
-     * @param int $id The id of the model
+     * @param int $id The ID of the model
      * @return \Illuminate\Http\RedirectResponse|null
      */
     public function restore($id)
@@ -717,8 +718,8 @@ class ModelHandler {
     /**
      * Retrieve values from inputs (usually select elements) that deal with foreign models
      *
-     * @param  string $modelClass Full name of the model class
-     * @param  Model  $model      Object with this model type (by reference)
+     * @param  string    $modelClass Full name of the model class
+     * @param  BaseModel $model      Object with this model type (by reference)
      * @return void
      * @throws Exception
      */

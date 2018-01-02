@@ -33,6 +33,13 @@ class LoginController extends FrontController {
         }
     }
 
+    /**
+     * Login with STEAM account
+     *
+     * @param SteamAuth $steam
+     * @return Redirect
+     * @throws Exception
+     */
     public function getSteam(SteamAuth $steam)
     {
         $apiKey = Config::get('steam-auth.api_key');

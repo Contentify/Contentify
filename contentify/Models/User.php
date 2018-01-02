@@ -91,7 +91,7 @@ class User extends SentinelUser {
     /**
      * Get the attributes that should be converted to dates.
      *
-     * @return array
+     * @return string[]
      */
     public function getDates()
     {
@@ -101,7 +101,7 @@ class User extends SentinelUser {
     /**
      * Validate the user with Laravel's validator class. Return true if valid.
      * 
-     * @return boolean
+     * @return bool
      */
     public function validate()
     {
@@ -157,7 +157,7 @@ class User extends SentinelUser {
 
     /**
      * Returns all friends of this user.
-     * NOTE: This is not a relationship. Eloquent does not support this kind of relationship.
+     * ATTENTION: This is not a relationship. Eloquent does not support this kind of relationship.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -217,7 +217,7 @@ class User extends SentinelUser {
             if (user()) {
                 $creatorId = user()->id;
             } else {
-                $creatorId = 1; // Daemon
+                $creatorId = 1; // This is the daemon user
                 $sentBySystem = true;
             }
         }
