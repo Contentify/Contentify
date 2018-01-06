@@ -161,7 +161,7 @@ class AppBridge
     /**
      * Returns true if the application is installed
      * 
-     * @return boolean
+     * @return booln
      */
     public function isAppInstalled()
     {
@@ -172,7 +172,7 @@ class AppBridge
     /**
      * Determine if PHP is being run from the CLI
      * 
-     * @return boolean
+     * @return bool
      */
     public function isCli()
     {
