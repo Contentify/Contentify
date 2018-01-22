@@ -1171,7 +1171,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * The installer will send some infos that are supposed to help understanding
      * the usage of the CMS. Of course no sensible information will be sent!
      * Infos sent: Time and version of the CMS and of PHP. That's all. 
-     * Check the code if you want to verify this statement.
+     * Check the code if you do not trust this statement.
      * 
      * @return void
      */
