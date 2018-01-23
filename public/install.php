@@ -59,7 +59,22 @@ class Tester {
                 $this->line("Directory '$dir': ".$this->red('Not writable'));
             }
         }
+
         $this->line();
+
+        $apacheSig = 'Apache/';
+        if (substr($_SERVER['SERVER_SOFTWARE'], 0, strlen($apacheSig)) === $apacheSig) {
+            $this->line('Webserver: '.$this->green('Apache'));
+
+            $modRewrite = in_array('mod_rewrite', apache_get_modules());
+            if ($modRewrite) {
+                $this->line('mod_rewrite enabled: '.$this->green('Yes'));
+            } else {
+                $this->line('mod_rewrite enabled: '.$this->red('No - please enable it via "sudo a2enmod rewrite"!'));
+            }
+
+            $this->line();
+        }
     }
 
     /**

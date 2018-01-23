@@ -38,8 +38,9 @@ class InstallController extends Controller {
         }
 
         $filename = storage_path(self::INSTALL_FILE);
+        $filename = str_replace(base_path(), '', $filename); // Make the path relative
         if (file_exists($filename)) {
-            die('Contentify has been installed already. Remove this file if you want to reinstall it: '.$filename);  
+            die('Contentify has been installed already. Remove this file if you want to reinstall it: ...'.$filename);
         }
 
         if ($step < 0) {
@@ -1123,7 +1124,7 @@ information about your stored data, and possibly entitlement to correction, bloc
             $table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is the storage engine
 
             /*
-             * Add the primarey keys:
+             * Add the primary keys:
              */
             foreach ($primaryKeys as $primaryKey) {
                 $table->integer($primaryKey)->unsigned();
@@ -1168,9 +1169,9 @@ information about your stored data, and possibly entitlement to correction, bloc
     }
 
     /**
-     * The installer will send some infos that are supposed to help understanding
+     * The installer will send some info that are supposed to help understanding
      * the usage of the CMS. Of course no sensible information will be sent!
-     * Infos sent: Time and version of the CMS and of PHP. That's all. 
+     * Info sent: Time and version of the CMS and of PHP. That's all.
      * Check the code if you do not trust this statement.
      * 
      * @return void
