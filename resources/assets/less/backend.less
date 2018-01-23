@@ -2,11 +2,11 @@
  * Imports
  */
 
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import 'bootstrap/bootstrap';
 @import 'shared';
 
-/* 
+/*
  * Global Variables
  */
 
@@ -32,7 +32,7 @@
 }
 
 .btn { color: @textblack }
-.btn-default { 
+.btn-default {
     background: linear-gradient(to bottom,  #ffffff 0%,#e6e6e6 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=0 );
 }
@@ -44,7 +44,7 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 
 /* Form */
 .form-errors { }
-.form-group { 
+.form-group {
     label { .text-overflow(); }
     label:after { /* content: ':'; */ }
     input, select, textarea {
@@ -60,10 +60,10 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
     textarea { height: auto }
 }
 .form-actions {
-    padding-top: 20px; 
+    padding-top: 20px;
     input[type=submit], button { margin-right: 10px; margin-bottom: 10px; }
 }
-.form-editor { 
+.form-editor {
     margin-bottom: 20px;
     label.full-line { display: block; width: auto; height: 30px; line-height: 30px; margin: 0px; padding: 0px 10px; border: 1px solid #cccccc; border-bottom: none; }
 }
@@ -76,8 +76,8 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 
 /* File Upload */
 .input-group-addon.delete { cursor: pointer }
-.image-upload-prev { 
-    margin-bottom: 10px; 
+.image-upload-prev {
+    margin-bottom: 10px;
     img { max-width: 100%; max-height: 32px; transition: all 0.1s linear; }
     img:hover { max-height: 200px; }
 }
@@ -92,7 +92,7 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 
 /* Toolbar */
 .toolbar {
-    &.top { 
+    &.top {
         min-height: 26px; margin-bottom: 20px;
         button { margin-right: 10px }
     }
@@ -100,7 +100,7 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 }
 
 /* Search-Box */
-.model-search-box input[type=text] { 
+.model-search-box input[type=text] {
     .form-control(); display: inline-block; max-width: 170px; .background-image('img/default/searchbox_bg.png'); background-position: 10px center; background-repeat: no-repeat; text-indent: 20px;
     &:focus { .focus() }
 }
@@ -114,14 +114,14 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 }
 
 /* Sort-Switcher */
-.sort-switcher { 
+.sort-switcher {
     display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px; background-color: @bgblack; color: white !important;
     img { vertical-align: bottom; }
 }
 .toolbar .sort-switcher { margin: 0px }
 
 /* Recycle Bin Button */
-.recycle-bin-button { 
+.recycle-bin-button {
     display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px;
     &.enabled { background-color: @bgblack; color: white !important }
     &.disabled { background-color: #DDD; color: #999 !important }
@@ -171,11 +171,11 @@ ul.pagination {
         position: relative; float: left; width: 20%; padding-top: 20%; background-size: cover; background-position: center;
         box-shadow: inset 0px 0px 0px 1px white;
         .show { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; }
-        .info { 
+        .info {
             .text-overflow();
-            display: none; position: absolute; left: 0px; top: 0px; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center; font-weight: bold; 
+            display: none; position: absolute; left: 0px; top: 0px; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center; font-weight: bold;
         }
-        .actions { 
+        .actions {
             display: none; position: absolute; left: 0px; bottom: 0px; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center;
             a { .btn(); .btn-default(); }
         }
@@ -218,7 +218,7 @@ ul.pagination {
     }
 }
 
-.page-matches .scores { 
+.page-matches .scores {
     padding-top: 7px;
     .item { display: inline-block; margin: 0px 10px 10px 0px; padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; cursor: pointer; }
     .item .score { font-weight: bold }
@@ -234,7 +234,7 @@ ul.pagination {
         a:hover { background-color: lighten(@blue, 5%) }
         a:active { box-shadow: none; transform: translateY(7px); transition: all 0.08s linear; }
         i { display: block; padding: 10px; font-size: 40px }
-    } 
+    }
     .widgets-row {
         div { width: 50%; float: left }
         div:first-child { box-sizing: border-box; padding-right: 10px }
@@ -242,7 +242,7 @@ ul.pagination {
         td { .text-overflow(); }
         th:first-child { width: 70% }
     }
-    .feed-messages { 
+    .feed-messages {
         float: left; margin-top: 20px;
         table { width: 100%; table-layout: fixed; }
         th:nth-child(2) { width: 100px }
@@ -296,7 +296,7 @@ ul.pagination {
 }
 
 .editor-images {
-    .actions { 
+    .actions {
         padding-bottom: 20px;
         input { .form-control(); display: inline-block; width: 70%; box-sizing: border-box }
         button { width: 27%; box-sizing: border-box; }
@@ -354,7 +354,7 @@ img {
 header {
     position: fixed; z-index: 100; left: 0px; right: 0px; background-color: @blue; color: @white; font-size: 14px; line-height: @headerHeight; box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
     a { color: @white; }
-    a:focus { color: @white } 
+    a:focus { color: @white }
     a:hover { color: @white; }
     a:active { color: @white; }
     nav {
@@ -378,9 +378,9 @@ header {
 }
 @media (max-width: @screen-phone) {
     header {
-        position: relative; 
+        position: relative;
         .header-logo { width: auto; float: none; text-align: center; }
-        nav {  
+        nav {
             position: relative; right: auto; top: auto;
             li { width: 33%; padding: 0px !important; text-align: center; overflow: hidden; white-space: nowrap; }
             li a { padding: 0px 10px; }
@@ -394,7 +394,7 @@ header {
     position: fixed;
     height: 100%;
     width: @sidebarWidth;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     overflow: auto;
     margin-top: @headerHeight;
     .account {
@@ -448,8 +448,8 @@ header {
                     padding: 10px 20px;
                     color: lighten(@bgblack, 40%);
 
-                    i { 
-                        width: 30px; 
+                    i {
+                        width: 30px;
                         text-align: center;
                     }
                 }
@@ -472,7 +472,7 @@ header {
     .hamburger { display: none; padding: 10px 20px; }
 }
 @media (min-width: @screen-phone) and (max-width: @screen-tablet) {
-    #sidebar { 
+    #sidebar {
         width: @sidebarWidthSmall;
         .account { display: none; }
         .navigation {
@@ -487,7 +487,7 @@ header {
         .account { display: none; }
         .hamburger { display: block; text-align: right; }
         .navigation { display: none; }
-        &.max {  
+        &.max {
             .hamburger { display: block; position: absolute; right: 0px; top: 0px; }
             .navigation { display: block; }
         }
@@ -502,12 +502,12 @@ header {
     #content { margin-left: 0px; padding-top: 0px; }
 }
 
-.page { 
-    max-width: 900px; margin: 0px 40px; 
+.page {
+    max-width: 900px; margin: 0px 40px;
 }
 .page-head {
-    display: block; margin-bottom: 40px; padding: 20px 0px 20px 40px; border-bottom: 1px solid silver; font-weight: bold; 
-    i { display: inline-block; min-width: 16px; margin-right: 10px; padding: 2px 3px; border-radius: 3px; background-color: @blue; color: white; text-align: center; }  
+    display: block; margin-bottom: 40px; padding: 20px 0px 20px 40px; border-bottom: 1px solid silver; font-weight: bold;
+    i { display: inline-block; min-width: 16px; margin-right: 10px; padding: 2px 3px; border-radius: 3px; background-color: @blue; color: white; text-align: center; }
 }
 @media (max-width: @screen-phone) {
     .page { margin: 0px 20px; }
@@ -516,7 +516,7 @@ header {
 
 #footer {
     margin-left: @sidebarWidth; padding: 20px 40px; background-color: #eee; color: #999;
-    .top { 
+    .top {
         color: silver; float: right
     }
 }
