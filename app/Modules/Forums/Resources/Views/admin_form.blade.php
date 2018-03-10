@@ -11,7 +11,7 @@
 
     {!! Form::smartTextarea('description', trans('app.description'), false) !!}
 
-    {!! Form::smartNumeric('position', trans('app.position')) !!}
+    {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
 
     <hr>
 

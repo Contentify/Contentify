@@ -21,8 +21,8 @@ class Forum extends BaseModel {
         'title'     => 'required',
         'position'  => 'integer',
         'internal'  => 'boolean',
-        'team_id'   => 'sometimes|integer',
-        'forum_id'  => 'sometimes|integer',
+        'team_id'   => 'nullable|integer',
+        'forum_id'  => 'nullable|integer',
     ];
 
     public static $relationsData = [

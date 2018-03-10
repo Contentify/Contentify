@@ -755,7 +755,9 @@ class ModelHandler {
                             $attribute = snake_case($name).'_'.$key;
 
                             if ($model->isFillable($attribute)) {
-                                $model->$attribute = $value;
+                                if ($value !== null) {
+                                    $model->$attribute = $value;
+                                }
                             } else {
                                 Log::warning("Form tries to fill guarded attribute '$attribute'.");
                             }
@@ -782,7 +784,6 @@ class ModelHandler {
 
                             if ($model->isFillable('relation_'.$name)) {
                                 if (sizeof($insertion) > 0) {
-                                    
                                     DB::table($relation['table'])->insert($insertion);
                                 }
                             } else {

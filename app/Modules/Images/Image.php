@@ -10,7 +10,7 @@ class Image extends BaseModel {
 
     protected $rules = [
         'tags'          => 'required',
-        'gallery_id'    => 'sometimes|integer',
+        'gallery_id'    => 'nullable|integer',
         'width'         => 'sometimes|integer|min:0',
         'height'        => 'sometimes|integer|min:0',
     ];
