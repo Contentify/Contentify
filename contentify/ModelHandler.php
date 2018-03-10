@@ -755,9 +755,7 @@ class ModelHandler {
                             $attribute = snake_case($name).'_'.$key;
 
                             if ($model->isFillable($attribute)) {
-                                if ($value !== null) {
-                                    $model->$attribute = $value;
-                                }
+                                $model->$attribute = $value;
                             } else {
                                 Log::warning("Form tries to fill guarded attribute '$attribute'.");
                             }
