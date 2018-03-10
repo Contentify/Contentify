@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Roles;
+<?php 
+
+namespace App\Modules\Roles;
 
 /**
  * Super simple helper class that represents role permissions

@@ -1,4 +1,6 @@
-<?php namespace Contentify\Facades;
+<?php
+
+namespace Contentify\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

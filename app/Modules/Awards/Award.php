@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Awards;
+<?php
+
+namespace App\Modules\Awards;
 
 use HTML, SoftDeletingTrait, BaseModel;
 

@@ -1,4 +1,6 @@
-<?php namespace Contentify\Controllers;
+<?php
+
+namespace Contentify\Controllers;
 
 use Config, Request, Input, Validator, Redirect, DB;
 
@@ -9,6 +11,8 @@ abstract class ConfigController extends BackController {
     /*
      * Edit the config settings
      * $id is not used
+     *
+     * {@inheritdoc}
      */
     public function edit($id = null)
     {
@@ -39,10 +43,14 @@ abstract class ConfigController extends BackController {
     /*
      * Update the config settings
      * $id is not used
+     *
+     * {@inheritdoc}
      */
     public function update($id = null)
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return null;
+        }
         
         $model = new $this->modelClass();
         $fillable = $model->getFillable();

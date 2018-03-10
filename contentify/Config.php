@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
 
 use Illuminate\Support\Facades\Config as LaravelConfig;
 use Cache, DB, DateTime;

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Users;
+<?php 
+
+namespace App\Modules\Users;
 
 use User as BaseUser;
 use BaseModel;

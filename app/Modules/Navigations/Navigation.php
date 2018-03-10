@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Navigations;
+<?php
+
+namespace App\Modules\Navigations;
 
 use SoftDeletingTrait, BaseModel;
 

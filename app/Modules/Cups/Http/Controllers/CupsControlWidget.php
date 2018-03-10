@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Cups\Http\Controllers;
+<?php
+
+namespace App\Modules\Cups\Http\Controllers;
 
 use App\Modules\Cups\Cup;
 use View, Widget;

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Slides;
+<?php 
+
+namespace App\Modules\Slides;
 
 use SoftDeletingTrait, BaseModel;
 

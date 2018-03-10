@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Awards\Providers;
+<?php
+
+namespace App\Modules\Awards\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

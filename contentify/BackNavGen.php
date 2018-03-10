@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
 
 use Cache, View, RuntimeException;
 

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Pages\Http\Controllers;
+<?php
+
+namespace App\Modules\Pages\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Pages\Page;

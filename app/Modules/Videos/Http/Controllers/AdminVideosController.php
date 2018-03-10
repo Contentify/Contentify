@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Videos\Http\Controllers;
+<?php 
+
+namespace App\Modules\Videos\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Videos\Video;

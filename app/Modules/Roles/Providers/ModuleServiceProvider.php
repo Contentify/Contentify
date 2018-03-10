@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Roles\Providers;
+<?php 
+
+namespace App\Modules\Roles\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

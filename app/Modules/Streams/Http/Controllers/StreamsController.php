@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Streams\Http\Controllers;
+<?php 
+
+namespace App\Modules\Streams\Http\Controllers;
 
 use App\Modules\Streams\Stream;
 use Request, HTML, Config, URL, FrontController;

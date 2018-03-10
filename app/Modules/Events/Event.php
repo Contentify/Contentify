@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Events;
+<?php
+
+namespace App\Modules\Events;
 
 use DB, SoftDeletingTrait, BaseModel;
 

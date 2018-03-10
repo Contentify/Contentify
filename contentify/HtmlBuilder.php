@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
  
 use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
 use Contentify\Controllers\Widget;

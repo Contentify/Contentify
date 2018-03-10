@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Awards\Http\Controllers;
+<?php
+
+namespace App\Modules\Awards\Http\Controllers;
 
 use App\Modules\Awards\Award;
 use View, Widget;

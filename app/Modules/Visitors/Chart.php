@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Visitors;
+<?php 
+
+namespace App\Modules\Visitors;
 
 use Carbon, DB;
 

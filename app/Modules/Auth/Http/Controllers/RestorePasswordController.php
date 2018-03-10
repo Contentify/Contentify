@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Auth\Http\Controllers;
+<?php
+
+namespace App\Modules\Auth\Http\Controllers;
 
 use Str, Mail, Sentinel, Reminder, Redirect, Captcha, Input, FrontController;
 

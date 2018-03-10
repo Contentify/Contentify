@@ -1,4 +1,6 @@
-<?php namespace Contentify\Controllers;
+<?php
+
+namespace Contentify\Controllers;
 
 use Exception, URL, Input, View, Redirect, Config;
 

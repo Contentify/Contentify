@@ -1,4 +1,6 @@
-<?php namespace Contentify\Controllers;
+<?php
+
+namespace Contentify\Controllers;
 
 use ModelHandler, Str, Sentinel, OpenGraph, Request, Session, View, Controller, Exception;
 

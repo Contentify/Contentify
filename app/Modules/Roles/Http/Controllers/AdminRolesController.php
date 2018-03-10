@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Roles\Http\Controllers;
+<?php 
+
+namespace App\Modules\Roles\Http\Controllers;
 
 use App\Modules\Roles\Role;
 use ModelHandlerTrait;

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Example;
+<?php
+
+namespace App\Modules\Example;
 
 use ModuleInstaller;
 

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\PhobosTheme\Providers;
+<?php 
+
+namespace App\Modules\PhobosTheme\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

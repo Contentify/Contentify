@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Images\Http\Controllers;
+<?php
+
+namespace App\Modules\Images\Http\Controllers;
 
 use App\Modules\Images\Image;
 use Input, DB, View, BaseController;

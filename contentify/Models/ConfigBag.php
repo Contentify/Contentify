@@ -1,4 +1,6 @@
-<?php namespace Contentify\Models;
+<?php
+
+namespace Contentify\Models;
 
 class ConfigBag {
 

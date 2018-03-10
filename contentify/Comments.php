@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
 
 use View, Response, Comment, Input, Request;
 

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Teams\Providers;
+<?php 
+
+namespace App\Modules\Teams\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

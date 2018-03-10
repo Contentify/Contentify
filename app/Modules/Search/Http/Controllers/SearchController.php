@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Search\Http\Controllers;
+<?php 
+
+namespace App\Modules\Search\Http\Controllers;
 
 use Input, Redirect, Validator, FrontController;
 

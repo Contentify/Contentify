@@ -1,5 +1,8 @@
-<?php namespace App\Modules\Shouts;
-
+<?php 
+
+namespace App\Modules\Shouts;
+
+
 use File, BaseModel;
 
 class Shout extends BaseModel {

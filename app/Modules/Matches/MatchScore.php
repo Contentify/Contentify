@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Matches;
+<?php
+
+namespace App\Modules\Matches;
 
 use BaseModel;
 

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Diag\Providers;
+<?php
+
+namespace App\Modules\Diag\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;

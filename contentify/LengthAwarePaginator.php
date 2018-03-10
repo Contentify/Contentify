@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
 
 use Illuminate\Pagination\LengthAwarePaginator as OriginalPaginator;
 use Request;

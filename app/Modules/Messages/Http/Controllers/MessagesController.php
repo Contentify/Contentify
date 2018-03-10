@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Messages\Http\Controllers;
+<?php
+
+namespace App\Modules\Messages\Http\Controllers;
 
 use App\Modules\Messages\Message;
 use Cache, User, Input, Redirect, FrontController;

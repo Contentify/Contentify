@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Forums;
+<?php
+
+namespace App\Modules\Forums;
 
 use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumPost;

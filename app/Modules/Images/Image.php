@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Images;
+<?php
+
+namespace App\Modules\Images;
 
 use Str, BaseModel;
 

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Navigations\Http\Controllers;
+<?php
+
+namespace App\Modules\Navigations\Http\Controllers;
 
 use App\Modules\Navigations\Navigation;
 use ModelHandlerTrait;

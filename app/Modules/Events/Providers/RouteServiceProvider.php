@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Events\Providers;
+<?php
+
+namespace App\Modules\Events\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;

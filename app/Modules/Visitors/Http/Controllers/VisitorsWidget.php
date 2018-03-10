@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Visitors\Http\Controllers;
+<?php 
+
+namespace App\Modules\Visitors\Http\Controllers;
 
 use Cache, DB, View, Widget;
 

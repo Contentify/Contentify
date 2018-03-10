@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Teams\Http\Controllers;
+<?php 
+
+namespace App\Modules\Teams\Http\Controllers;
 
 use App\Modules\Teams\Team;
 use View, Widget;

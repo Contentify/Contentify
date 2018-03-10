@@ -1,4 +1,6 @@
-<?php namespace App\Modules\News\Providers;
+<?php
+
+namespace App\Modules\News\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

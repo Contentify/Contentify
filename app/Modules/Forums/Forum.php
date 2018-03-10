@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Forums;
+<?php
+
+namespace App\Modules\Forums;
 
 use DB, MsgException, SoftDeletingTrait, BaseModel;
 

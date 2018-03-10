@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Galleries\Http\Controllers;
+<?php
+
+namespace App\Modules\Galleries\Http\Controllers;
 
 use App\Modules\Images\Image;
 use App\Modules\Galleries\Gallery;

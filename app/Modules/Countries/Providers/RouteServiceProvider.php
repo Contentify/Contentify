@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Countries\Providers;
+<?php
+
+namespace App\Modules\Countries\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;

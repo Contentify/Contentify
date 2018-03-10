@@ -1,4 +1,6 @@
-<?php namespace Contentify\Controllers;
+<?php
+
+namespace Contentify\Controllers;
 
 use Str, File, Input, Validator, Sentinel, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
 

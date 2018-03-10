@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Friends;
+<?php
+
+namespace App\Modules\Friends;
 
 use BaseModel;
 

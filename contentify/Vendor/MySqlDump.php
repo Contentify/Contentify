@@ -1,4 +1,6 @@
-<?php namespace Contentify\Vendor;
+<?php
+
+namespace Contentify\Vendor;
 
 use PDO;
 

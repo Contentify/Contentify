@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Forums\Providers;
+<?php
+
+namespace App\Modules\Forums\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

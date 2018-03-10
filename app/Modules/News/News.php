@@ -1,4 +1,6 @@
-<?php namespace App\Modules\News;
+<?php
+
+namespace App\Modules\News;
 
 use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 

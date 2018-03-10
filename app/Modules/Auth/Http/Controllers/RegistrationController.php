@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Auth\Http\Controllers;
+<?php
+
+namespace App\Modules\Auth\Http\Controllers;
 
 use App\Modules\Languages\Language;
 use Response, User, App, Sentinel, Input, Redirect, Captcha, FrontController, Exception, Validator;

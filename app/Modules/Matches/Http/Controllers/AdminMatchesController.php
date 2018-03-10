@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Matches\Http\Controllers;
+<?php
+
+namespace App\Modules\Matches\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Matches\Match;

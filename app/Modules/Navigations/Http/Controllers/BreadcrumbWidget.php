@@ -1,5 +1,8 @@
-<?php namespace App\Modules\Navigations\Http\Controllers;
-
+<?php
+
+namespace App\Modules\Navigations\Http\Controllers;
+
+
 use Exception, View, Widget;
 
 class BreadcrumbWidget extends Widget {

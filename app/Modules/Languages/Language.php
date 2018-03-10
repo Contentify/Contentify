@@ -1,5 +1,8 @@
-<?php namespace App\Modules\Languages;
-
+<?php
+
+namespace App\Modules\Languages;
+
+
 use Exception, BaseModel;
 
 class Language extends BaseModel {

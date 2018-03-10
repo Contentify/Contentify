@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Modules\Http\Controllers;
+<?php
+
+namespace App\Modules\Modules\Http\Controllers;
 
 use App\Modules\Modules\Module;
 use Cache, HTML, BackController;

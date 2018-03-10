@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Slides\Http\Controllers;
+<?php 
+
+namespace App\Modules\Slides\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Slides\Slide;

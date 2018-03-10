@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Maps\Http\Controllers;
+<?php
+
+namespace App\Modules\Maps\Http\Controllers;
 
 use App\Modules\Maps\Map;
 use ModelHandlerTrait;

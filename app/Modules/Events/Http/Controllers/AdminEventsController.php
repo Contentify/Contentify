@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Events\Http\Controllers;
+<?php
+
+namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
 use ModelHandlerTrait;

@@ -1,5 +1,8 @@
-<?php namespace App\Modules\Comments\Http\Controllers;
-
+<?php
+
+namespace App\Modules\Comments\Http\Controllers;
+
+
 use Comment, View, Widget;
 
 class LatestCommentsWidget extends Widget {

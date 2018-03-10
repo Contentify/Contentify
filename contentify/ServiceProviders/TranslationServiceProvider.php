@@ -1,4 +1,6 @@
-<?php namespace Contentify\ServiceProviders;
+<?php
+
+namespace Contentify\ServiceProviders;
 
 use Illuminate\Translation\TranslationServiceProvider as OriginalTranslationServiceProvider;
 use Contentify\Translator;

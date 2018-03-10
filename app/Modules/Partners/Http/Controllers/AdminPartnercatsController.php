@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Partners\Http\Controllers;
+<?php 
+
+namespace App\Modules\Partners\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Partners\Partnercat;

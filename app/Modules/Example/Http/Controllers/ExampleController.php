@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Example\Http\Controllers;
+<?php
+
+namespace App\Modules\Example\Http\Controllers;
 
 use FrontController;
 

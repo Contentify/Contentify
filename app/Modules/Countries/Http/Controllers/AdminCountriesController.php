@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Countries\Http\Controllers;
+<?php
+
+namespace App\Modules\Countries\Http\Controllers;
 
 use App\Modules\Countries\Country;
 use ModelHandlerTrait;

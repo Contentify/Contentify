@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Maps;
+<?php
+
+namespace App\Modules\Maps;
 
 use SoftDeletingTrait, BaseModel;
 

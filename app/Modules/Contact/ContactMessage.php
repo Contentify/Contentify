@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Contact;
+<?php
+
+namespace App\Modules\Contact;
 
 use Mail, Sentinel, SoftDeletingTrait, BaseModel, User;
 

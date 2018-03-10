@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Modules;
+<?php
+
+namespace App\Modules\Modules;
 
 use File, BaseModel;
 

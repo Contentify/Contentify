@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Roles;
+<?php 
+
+namespace App\Modules\Roles;
 
 use App\Modules\Roles\Permission;
 use Hover, SoftDeletingTrait, Sentinel, BaseModel;

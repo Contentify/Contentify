@@ -1,5 +1,8 @@
-<?php namespace App\Modules\Search\Http\Controllers;
-
+<?php 
+
+namespace App\Modules\Search\Http\Controllers;
+
+
 use View, Widget;
 
 class SearchWidget extends Widget {

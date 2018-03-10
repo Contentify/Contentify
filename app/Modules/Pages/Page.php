@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Pages;
+<?php 
+
+namespace App\Modules\Pages;
 
 use SoftDeletingTrait, StiModel;
 

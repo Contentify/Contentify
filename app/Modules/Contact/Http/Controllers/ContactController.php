@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Contact\Http\Controllers;
+<?php
+
+namespace App\Modules\Contact\Http\Controllers;
 
 use App\Modules\Contact\ContactMessage;
 use Input, Redirect, FrontController;

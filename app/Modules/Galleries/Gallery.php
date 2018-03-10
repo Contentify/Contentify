@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Galleries;
+<?php
+
+namespace App\Modules\Galleries;
 
 use SoftDeletingTrait, BaseModel;
 

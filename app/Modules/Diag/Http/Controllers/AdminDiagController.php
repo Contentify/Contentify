@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Diag\Http\Controllers;
+<?php
+
+namespace App\Modules\Diag\Http\Controllers;
 
 use \Carbon\Carbon;
 use App, Config, View, BackController, File, DB, PDO;

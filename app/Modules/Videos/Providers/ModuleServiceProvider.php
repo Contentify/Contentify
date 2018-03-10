@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Videos\Providers;
+<?php 
+
+namespace App\Modules\Videos\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

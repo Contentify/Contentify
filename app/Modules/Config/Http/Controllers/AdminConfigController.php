@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Config\Http\Controllers;
+<?php
+
+namespace App\Modules\Config\Http\Controllers;
 
 use App\Modules\Config\SettingsBag;
 use Contentify\Vendor\MySqlDump;

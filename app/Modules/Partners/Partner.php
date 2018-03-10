@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Partners;
+<?php 
+
+namespace App\Modules\Partners;
 
 use SoftDeletingTrait, BaseModel;
 

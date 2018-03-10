@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
 
 use Contentify\Models\UserActivity;
 use Exception, DB;

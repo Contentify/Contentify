@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Slides\Providers;
+<?php 
+
+namespace App\Modules\Slides\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;

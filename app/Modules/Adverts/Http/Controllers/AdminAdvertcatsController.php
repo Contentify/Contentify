@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Adverts\Http\Controllers;
+<?php
+
+namespace App\Modules\Adverts\Http\Controllers;
 
 use App\Modules\Adverts\Advertcat;
 use ModelHandlerTrait;

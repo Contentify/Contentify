@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Friends\Http\Controllers;
+<?php
+
+namespace App\Modules\Friends\Http\Controllers;
 
 use App\Modules\Friends\Friendship;
 use App\Modules\Messages\Message;

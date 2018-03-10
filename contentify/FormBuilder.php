@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
  
 use Collective\Html\FormBuilder as OriginalFormBuilder;
 use App, Crypt, URL, HTML, DB, Exception, MsgException;

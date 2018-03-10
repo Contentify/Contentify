@@ -1,4 +1,6 @@
-<?php namespace Contentify\Commands;
+<?php
+
+namespace Contentify\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;

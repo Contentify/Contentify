@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Comments\Providers;
+<?php
+
+namespace App\Modules\Comments\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

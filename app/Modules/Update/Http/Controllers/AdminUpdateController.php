@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Update\Http\Controllers;
+<?php 
+
+namespace App\Modules\Update\Http\Controllers;
 
 use App\Modules\Update\UpdateThread;
 use Response, Config, Cache, Exception, BackController;

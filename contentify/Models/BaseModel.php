@@ -1,4 +1,6 @@
-<?php namespace Contentify\Models;
+<?php
+
+namespace Contentify\Models;
 
 use Contentify\Traits\SlugTrait;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

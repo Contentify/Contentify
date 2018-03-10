@@ -1,5 +1,8 @@
-<?php namespace App\Modules\Videos;
-
+<?php 
+
+namespace App\Modules\Videos;
+
+
 use OpenGraph, SoftDeletingTrait, BaseModel;
 
 class Video extends BaseModel {

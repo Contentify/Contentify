@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Opponents;
+<?php
+
+namespace App\Modules\Opponents;
 
 use SoftDeletingTrait, BaseModel;
 

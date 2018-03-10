@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Shouts\Http\Controllers;
+<?php 
+
+namespace App\Modules\Shouts\Http\Controllers;
 
 use App\Modules\Shouts\Shout;
 use View, Widget;

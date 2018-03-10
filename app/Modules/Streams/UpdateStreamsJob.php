@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Streams;
+<?php 
+
+namespace App\Modules\Streams;
 
 use Job;
 

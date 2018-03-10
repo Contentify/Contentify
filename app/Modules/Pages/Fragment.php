@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Pages;
+<?php
+
+namespace App\Modules\Pages;
 
 use App\Modules\Pages\Page;
 use DB;

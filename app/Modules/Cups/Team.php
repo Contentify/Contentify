@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Cups;
+<?php
+
+namespace App\Modules\Cups;
 
 use DB, BaseModel;
 

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Games\Http\Controllers;
+<?php
+
+namespace App\Modules\Games\Http\Controllers;
 
 use App\Modules\Games\Game;
 use ModelHandlerTrait;

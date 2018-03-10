@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Users\Http\Controllers;
+<?php 
+
+namespace App\Modules\Users\Http\Controllers;
 
 use ModelHandlerTrait;
 use Redirect, UserActivities, URL, HTML, Hover, BackController;

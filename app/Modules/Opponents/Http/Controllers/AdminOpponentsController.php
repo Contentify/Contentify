@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Opponents\Http\Controllers;
+<?php
+
+namespace App\Modules\Opponents\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Opponents\Opponent;

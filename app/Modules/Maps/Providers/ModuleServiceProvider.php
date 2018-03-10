@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Maps\Providers;
+<?php
+
+namespace App\Modules\Maps\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

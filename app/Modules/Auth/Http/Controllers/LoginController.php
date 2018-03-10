@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Auth\Http\Controllers;
+<?php
+
+namespace App\Modules\Auth\Http\Controllers;
 
 use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Modules\Languages\Language;

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Slides\Providers;
+<?php 
+
+namespace App\Modules\Slides\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

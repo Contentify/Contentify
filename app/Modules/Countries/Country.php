@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Countries;
+<?php
+
+namespace App\Modules\Countries;
 
 use SoftDeletingTrait, BaseModel;
 

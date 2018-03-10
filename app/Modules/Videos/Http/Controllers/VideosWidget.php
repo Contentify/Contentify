@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Videos\Http\Controllers;
+<?php 
+
+namespace App\Modules\Videos\Http\Controllers;
 
 use App\Modules\Videos\Video;
 use DB, View, Widget;

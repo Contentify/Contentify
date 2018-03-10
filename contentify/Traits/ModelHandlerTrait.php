@@ -1,4 +1,6 @@
-<?php namespace Contentify\Traits;
+<?php
+
+namespace Contentify\Traits;
 
 use ModelHandler;
 

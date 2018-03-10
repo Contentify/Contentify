@@ -1,4 +1,6 @@
-<?php namespace Contentify\ServiceProviders;
+<?php
+
+namespace Contentify\ServiceProviders;
 
 use Collective\Html\HtmlServiceProvider as OriginalHtmlServiceProvider;
 use Contentify\HtmlBuilder;

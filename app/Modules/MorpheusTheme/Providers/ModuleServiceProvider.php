@@ -1,4 +1,6 @@
-<?php namespace App\Modules\MorpheusTheme\Providers;
+<?php
+
+namespace App\Modules\MorpheusTheme\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

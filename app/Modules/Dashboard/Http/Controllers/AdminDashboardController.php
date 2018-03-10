@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Dashboard\Http\Controllers;
+<?php
+
+namespace App\Modules\Dashboard\Http\Controllers;
 
 use Log, View, Config, Cache, BackController;
 

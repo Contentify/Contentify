@@ -1,4 +1,6 @@
-<?php namespace Contentify;
+<?php
+
+namespace Contentify;
 
 use Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
 use Closure, Exception;

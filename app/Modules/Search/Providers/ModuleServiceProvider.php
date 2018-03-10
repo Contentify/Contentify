@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Search\Providers;
+<?php 
+
+namespace App\Modules\Search\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

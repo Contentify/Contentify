@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Friends\Providers;
+<?php
+
+namespace App\Modules\Friends\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

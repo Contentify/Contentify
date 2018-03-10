@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Games\Providers;
+<?php
+
+namespace App\Modules\Games\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

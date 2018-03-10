@@ -1,5 +1,8 @@
-<?php namespace App\Modules\Messages;
-
+<?php
+
+namespace App\Modules\Messages;
+
+
 use BBCode, Cache, User, BaseModel;
 
 class Message extends BaseModel {

@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Downloads\Http\Controllers;
+<?php
+
+namespace App\Modules\Downloads\Http\Controllers;
 
 use App\Modules\Downloads\Download;
 use View, Widget;

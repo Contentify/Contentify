@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Downloads\Providers;
+<?php
+
+namespace App\Modules\Downloads\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;

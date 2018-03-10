@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Games;
+<?php
+
+namespace App\Modules\Games;
 
 use SoftDeletingTrait, BaseModel;
 

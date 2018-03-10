@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Forums\Http\Controllers;
+<?php
+
+namespace App\Modules\Forums\Http\Controllers;
 
 use App\Modules\Forums\ForumThread;
 use View, Widget;

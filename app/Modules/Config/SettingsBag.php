@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Config;
+<?php
+
+namespace App\Modules\Config;
 
 use BaseModel;
 

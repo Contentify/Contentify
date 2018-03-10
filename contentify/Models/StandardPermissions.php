@@ -1,4 +1,6 @@
-<?php namespace Contentify\Models;
+<?php
+
+namespace Contentify\Models;
 
 use Cartalyst\Sentinel\Permissions\StandardPermissions as OriginalStandardPermissions;
 

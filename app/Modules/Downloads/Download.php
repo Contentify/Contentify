@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Downloads;
+<?php
+
+namespace App\Modules\Downloads;
 
 use Exception, InterImage, File, SoftDeletingTrait, BaseModel;
 

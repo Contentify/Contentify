@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Tournaments\Http\Controllers;
+<?php 
+
+namespace App\Modules\Tournaments\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Tournaments\Tournament;

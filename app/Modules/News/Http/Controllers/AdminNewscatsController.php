@@ -1,4 +1,6 @@
-<?php namespace App\Modules\News\Http\Controllers;
+<?php
+
+namespace App\Modules\News\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\News\Newscat;

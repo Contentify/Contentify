@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Adverts;
+<?php
+
+namespace App\Modules\Adverts;
 
 use SoftDeletingTrait, BaseModel;
 

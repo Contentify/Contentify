@@ -1,4 +1,6 @@
-<?php namespace Contentify\Middleware;
+<?php
+
+namespace Contentify\Middleware;
 
 use Config, Closure;
 
