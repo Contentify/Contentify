@@ -82,8 +82,8 @@ abstract class ModuleInstaller {
 
         // Add additional permissions
         if ($this->extraPermissions and is_array($this->extraPermissions)) {
-            foreach ($this->extraPermissions as $permisson => $level) {
-                $rolePermissions[$permisson] = $level;
+            foreach ($this->extraPermissions as $permission => $level) {
+                $rolePermissions[$permission] = $level;
             }
         }
 

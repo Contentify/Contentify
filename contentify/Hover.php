@@ -28,7 +28,7 @@ class Hover {
         }
     }
 
-    public function __tostring()
+    public function __toString()
     {
         return $this->render();
     }
@@ -72,7 +72,7 @@ class Hover {
     public function image($url, $alt = null, $attributes = array())
     {
         if ($url) {
-            $this->content .= HTML::image($url, $alt = null, $attributes);
+            $this->content .= HTML::image($url, $alt, $attributes);
         }
         return $this;
     }
