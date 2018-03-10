@@ -291,7 +291,7 @@ class TeamsController extends FrontController
         }
 
         if ($team->isOrganizer(user()) or user()->isSuperAdmin()) {
-            $team->hidden = true;
+            $team->invisible = true;
             $team->title = 'Deleted';
             $team->createSlug();
             $team->forceSave();

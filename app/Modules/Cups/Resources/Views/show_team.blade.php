@@ -65,7 +65,7 @@
     </table>
 @endif
 
-@if ($team->hidden)
+@if ($team->invisible)
     <div class="well">{{ trans('cups::team_deleted') }}</div>
 @else
     @if (user() and ! $team->isMember(user()))

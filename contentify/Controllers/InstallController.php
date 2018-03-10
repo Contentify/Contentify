@@ -628,7 +628,7 @@ class InstallController extends Controller
         {
             $table->string('image')->nullable();
             $table->string('password')->nullable();
-            $table->boolean('hidden')->default(false);
+            $table->boolean('invisible')->default(false);
             $table->integer('cup_points')->default(0);
         });
 

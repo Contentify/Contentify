@@ -2,6 +2,7 @@
 
 namespace App\Modules\Cups;
 
+use Illuminate\Database\Eloquent\Builder;
 use MsgException, User, DB, BaseModel;
 
 class Cup extends BaseModel

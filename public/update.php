@@ -198,7 +198,7 @@ EOD;
     {
         // HOW TO: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
-        $updateQueries = [/* "ALTER TABLE {$prefix}cups_teams ADD cup_points INT DEFAULT 0" */];
+        $updateQueries = ["ALTER TABLE {$prefix}cups_teams CHANGE `hidden` `invisible` TINYINT(1)"];
 
         return $updateQueries;
     }
