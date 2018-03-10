@@ -196,7 +196,7 @@ class ThreadsController extends FrontController
      */
     public function sticky($id)
     {
-        if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
+        if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
             return null;
         }
@@ -218,7 +218,7 @@ class ThreadsController extends FrontController
      */
     public function closed($id)
     {
-        if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
+        if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
             return null;
         }
@@ -240,7 +240,7 @@ class ThreadsController extends FrontController
      */
     public function getMove($id)
     {
-        if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
+        if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
             return null;
         }
@@ -261,7 +261,7 @@ class ThreadsController extends FrontController
      */
     public function postMove($id)
     {
-        if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
+        if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
             return null;
         }
