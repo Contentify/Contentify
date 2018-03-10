@@ -28,6 +28,7 @@ class AdminPartnercatsController extends BackController {
             ],
             'tableRow' => function($partnercat)
             {
+                /** @var Partnercat $partnercat */
                 Hover::modelAttributes($partnercat, ['creator']);
 
                 return [

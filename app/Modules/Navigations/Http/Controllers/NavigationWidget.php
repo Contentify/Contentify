@@ -3,11 +3,11 @@
 namespace App\Modules\Navigations\Http\Controllers;
 
 use App\Modules\Navigations\Navigation;
-use Exception, View, Widget;
+use View, Widget;
 
 class NavigationWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         $template = 'navigations::navigation_widget';
 

@@ -13,10 +13,12 @@
 /**
  * Shortcut. Returns the current user model or null.
  * 
- * @return \Cartalyst\Sentinel\Users\UserInterface|null
+ * @return \Contentify\Models\User|null
  */
 function user()
 {
+    // Note: The getUser() method returns a \Contentify\Models\User object
+    // which implements the \Cartalyst\Sentinel\Users\UserInterface
     return Sentinel::getUser();
 }
 
@@ -133,21 +135,6 @@ function recycle_bin_button()
 }
 
 /**
- * Helper that returns the name of a class representing the current page.
- * See for more: http://laravelsnippets.com/snippets/add-unique-body-id-helper
- * 
- * @return string
- *
- * @deprecated
- */
-function page_class()
-{ 
-    $pageClass = preg_replace('/\d-/', '', implode( '-', Request::segments() ) ); 
-    $pageClass = str_replace('admin-', '', $pageClass);
-    return ! empty( $pageClass ) && $pageClass != '-' ? $pageClass : 'homepage'; 
-}
-
-/**
  * Replaces ASCII-Codes with HTML-Codes for emoji icons.
  * We should cache the outcome.
  * 
@@ -164,7 +151,7 @@ function emojis($text)
         '=)'        => 'Big Smile',
         ':*('       => 'Cry',
         ':('        => 'Sad',
-        ':O'        => 'Suprise',
+        ':O'        => 'Surprise',
         ':p'        => 'Tongue',
         ';)'        => 'Wink',
         'xD'        => 'Hilarious',

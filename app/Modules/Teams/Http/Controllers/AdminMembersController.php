@@ -48,8 +48,8 @@ class AdminMembersController extends BackController {
     /**
      * Delete a team membership
      * 
-     * @param  int $userId
-     * @param  int $teamId
+     * @param int $userId The ID of the user
+     * @param int $teamId The ID of the team
      * @return Response
      */
     public function deleteDelete($userId, $teamId)
@@ -69,8 +69,8 @@ class AdminMembersController extends BackController {
     /**
      * Return form for joining a team
      * 
-     * @param  int $userId
-     * @return Response|View
+     * @param int $userId The ID of the user
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function getAdd($userId)
     {
@@ -91,9 +91,9 @@ class AdminMembersController extends BackController {
 
     /**
      * Create a team membership
-     * 
-     * @param  int $userId
-     * @param  int $teamId
+     *
+     * @param int $userId The ID of the user
+     * @param int $teamId The ID of the team
      * @return Response
      */
     public function postAdd($userId, $teamId)
@@ -116,9 +116,9 @@ class AdminMembersController extends BackController {
     /**
      * Return form for team membership details
      * 
-     * @param  int $userId
-     * @param  int $teamId
-     * @return Response
+     * @param int $userId The ID of the user
+     * @param int $teamId The ID of the team
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function getEdit($userId, $teamId)
     {
@@ -136,9 +136,9 @@ class AdminMembersController extends BackController {
     /**
      * Update team membership details
      * 
-     * @param  int $userId
-     * @param  int $teamId
-     * @return Response
+     * @param int $userId The ID of the user
+     * @param int $teamId The ID of the team
+     * @return \Illuminate\Http\Response
      */
     public function postUpdate($userId, $teamId)
     {

@@ -7,7 +7,7 @@ use View, Widget;
 
 class ShoutsWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         $shouts = Shout::orderBy('created_at', 'desc')->with('creator')->take(10)->get();
         

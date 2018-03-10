@@ -7,6 +7,11 @@ use Cache, User, Input, Redirect, FrontController;
 
 class MessagesController extends FrontController {
 
+    /**
+     * Show a message
+     *
+     * @param int $id The ID of the message
+     */
     public function show($id)
     {
         $message = Message::findOrFail($id);
@@ -31,11 +36,21 @@ class MessagesController extends FrontController {
         $this->pageView('messages::show', compact('message'));
     }
 
+    /**
+     * Show the page with the form to create a new message
+     *
+     * @param string|null $username Optional: Name of the receiver
+     */
     public function create($username = null)
     {
         $this->pageView('messages::form', ['username' => $username]);
     }
 
+    /**
+     * Store a new message
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store()
     {
         $message = new Message(Input::all());
@@ -58,6 +73,12 @@ class MessagesController extends FrontController {
         }
     }
 
+    /**
+     * Create a reply for a message
+     *
+     * @param int $id The ID of the message
+     * @return void
+     */
     public function reply($id)
     {
         $message = Message::findOrFail($id);
@@ -76,13 +97,19 @@ class MessagesController extends FrontController {
         $this->pageView('messages::form', $data);
     }
 
+    /**
+     * Destroy a message (if allowed to)
+     *
+     * @param int $id The ID of the message
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function destroy($id)
     {
         $message = Message::findOrFail($id);
 
         if ($message->receiver_id != user()->id and $message->creator_id != user()->id) {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
 
         if ($message->creator_id == user()->id) {

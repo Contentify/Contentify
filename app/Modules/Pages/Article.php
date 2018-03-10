@@ -2,8 +2,8 @@
 
 namespace App\Modules\Pages;
 
-use App\Modules\Pages\Page;
-use OpenGraph, DB;
+use Comment, OpenGraph, DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class Article extends Page {
 
@@ -35,7 +35,7 @@ class Article extends Page {
     /**
      * Create an instance of OpenGraph that represents Open Graph tags.
      * 
-     * @return array
+     * @return OpenGraph
      */
     public function openGraph()
     {    

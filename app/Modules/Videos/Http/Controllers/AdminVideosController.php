@@ -29,6 +29,7 @@ class AdminVideosController extends BackController {
             ],
             'tableRow' => function($video)
             {
+                /** @var Video $video */
                 Hover::modelAttributes($video, ['creator']);
 
                 return [

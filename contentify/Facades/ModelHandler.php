@@ -11,6 +11,8 @@ class ModelHandler extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'modelHandler'; }
+    protected static function getFacadeAccessor() {
+        return 'modelHandler';
+    }
 
 }

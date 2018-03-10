@@ -2,7 +2,7 @@
 
 namespace App\Modules\Downloads;
 
-use Exception, InterImage, File, SoftDeletingTrait, BaseModel;
+use Exception, InterImage, File, SoftDeletingTrait, Comment, BaseModel;
 
 class Download extends BaseModel {
 
@@ -32,6 +32,7 @@ class Download extends BaseModel {
 
         self::saving(function($download)
         {
+            /** @var self $download */
             $filename = $download->uploadPath(true).$download->file;
             if (File::isFile($filename)) {
                 $download->file_size = File::size($filename); // Save file size
@@ -50,6 +51,7 @@ class Download extends BaseModel {
                      */
                     $size = 50;
                     InterImage::make($filename)->resize($size, $size, function ($constraint) {
+                        /** @var \Intervention\Image\Constraint $constraint */
                         $constraint->aspectRatio();
                     })->save($download->uploadPath(true).$size.'/'.$download->file); 
                 }

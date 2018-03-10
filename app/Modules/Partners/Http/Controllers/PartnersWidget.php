@@ -4,11 +4,11 @@ namespace App\Modules\Partners\Http\Controllers;
 
 use App\Modules\Partners\Partner;
 use App\Modules\Partners\Partnercat;
-use DB, View, Widget;
+use View, Widget;
 
 class PartnersWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         if (isset($parameters['categoryId'])) {
             $categoryId = $parameters['categoryId'];

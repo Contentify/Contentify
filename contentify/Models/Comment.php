@@ -26,6 +26,7 @@ class Comment extends BaseModel {
 
         self::saved(function ($comment)
         {
+            /** @var self $comment */
             $comment->cache();
         });
     }
@@ -48,8 +49,8 @@ class Comment extends BaseModel {
      * Counts the comments that are related to a certain foreign type (model).
      * NOTE: The result of the database query is cached!
      * 
-     * @param  string   $foreignType Name of the foreign type (model)
-     * @param  int      $foreignId   ID of the foreign type or null
+     * @param  string $foreignType The name of the foreign type (model)
+     * @param  int    $foreignId   ID of the foreign type or null
      * @return int
      */
     public static function count($foreignType, $foreignId = null)

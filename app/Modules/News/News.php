@@ -2,6 +2,7 @@
 
 namespace App\Modules\News;
 
+use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
 class News extends BaseModel {
@@ -59,6 +60,8 @@ class News extends BaseModel {
             $id = (int) ContentFilter::get('newscat_id');
             return $query->whereNewscatId($id);
         }
+
+        return null;
     }
 
     /**
@@ -85,7 +88,7 @@ class News extends BaseModel {
     /**
      * Create an instance of OpenGraph that represents Open Graph tags.
      * 
-     * @return array
+     * @return OpenGraph
      */
     public function openGraph()
     {    

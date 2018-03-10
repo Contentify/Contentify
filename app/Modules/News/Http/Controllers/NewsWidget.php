@@ -7,9 +7,9 @@ use View, Widget;
 
 class NewsWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
-    	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
         // Internal news are protected and require the "internal" permission:
         $hasAccess = (user() and user()->hasAccess('internal')); 

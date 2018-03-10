@@ -2,8 +2,7 @@
 
 namespace App\Modules\Videos;
 
-
-use OpenGraph, SoftDeletingTrait, BaseModel;
+use Comment, OpenGraph, SoftDeletingTrait, BaseModel;
 
 class Video extends BaseModel {
 
@@ -29,7 +28,8 @@ class Video extends BaseModel {
      * Array with the names and titles of available video providers (platforms).
      * Be aware that if you add a provider you should also take a look at the template files
      * and add JS/HTML handling for the provider.
-     * @var array
+     *
+     * @var string[]
      */
     public static $providers = ['youtube' => 'YouTube', 'vimeo' => 'Vimeo'];
 
@@ -46,7 +46,7 @@ class Video extends BaseModel {
     /**
      * Create an instance of OpenGraph that represents Open Graph tags.
      * 
-     * @return array
+     * @return OpenGraph
      */
     public function openGraph()
     {    

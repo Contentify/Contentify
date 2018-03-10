@@ -12,19 +12,26 @@ class FormGenerator {
      */
     protected $fileHandling;
 
+    /**
+     * The name of the module
+     *
+     * @var string
+     */
     protected $moduleName;
 
     /**
      * Generates a simple but CMS compliant form template (Blade syntax).
      * Do not blindly trust the result - most likely refactoring is necessary.
      * 
-     * @param  string $tableName  The table (representing a model) to generate a form for
-     * @param  string $moduleName The module name - leave it empty if it's the table name
+     * @param  string      $tableName  The table (representing a model) to generate a form for
+     * @param  string|null $moduleName The module name - leave it empty if it's the table name
      * @return string
      */
     public function generate($tableName, $moduleName = null)
     {
-        if ($moduleName == null) $moduleName = $tableName;
+        if ($moduleName == null) {
+            $moduleName = $tableName;
+        }
 
         $this->moduleName = $moduleName;
 
@@ -53,8 +60,8 @@ class FormGenerator {
      * Creates a single form field.
      * Returns null if the field is ignored.
      *
-     * @param  stdClass $column The Column object
-     * @return null|string
+     * @param  \stdClass $column The Column object
+     * @return string
      */
     protected function buildField($column)
     {
@@ -159,7 +166,7 @@ class FormGenerator {
      * return code that calls the trans() function.
      * If not, make him readable at least.
      * 
-     * @param  string $name       The attribute name
+     * @param  string $name The attribute name
      * @return string
      */
     public function transformName($name)
@@ -183,7 +190,9 @@ class FormGenerator {
     {
         $words = explode('_', $snakeCase);
 
-        for ($i = 0; $i < sizeof($words); $i++) $words[$i] = ucfirst($words[$i]);
+        for ($i = 0; $i < sizeof($words); $i++) {
+            $words[$i] = ucfirst($words[$i]);
+        }
 
         return implode(' ', $words);
     }

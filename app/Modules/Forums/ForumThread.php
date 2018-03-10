@@ -2,8 +2,8 @@
 
 namespace App\Modules\Forums;
 
-use App\Modules\Forums\ForumPost;
-use DB, SoftDeletingTrait, BaseModel;
+use User, DB, SoftDeletingTrait, BaseModel;
+use Illuminate\Database\Eloquent\Builder;
 
 class ForumThread extends BaseModel {
 

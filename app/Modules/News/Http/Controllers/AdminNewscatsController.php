@@ -28,6 +28,7 @@ class AdminNewscatsController extends BackController {
             ],
             'tableRow' => function($newscat)
             {
+                /** @var Newscat $newscat */
                 Hover::modelAttributes($newscat, ['image', 'creator']);
 
                 return [

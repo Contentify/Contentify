@@ -4,7 +4,8 @@ namespace Contentify\Models;
 
 use Contentify\Traits\SlugTrait;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use File, Input, DateAccessorTrait, ValidatingTrait, Eloquent, InvalidArgumentException, Exception;
+use File, Input, DateAccessorTrait, ValidatingTrait, InterImage, Eloquent, InvalidArgumentException, Exception;
+use Illuminate\Database\Query\Builder;
 
 class BaseModel extends Eloquent {
 
@@ -131,6 +132,7 @@ class BaseModel extends Eloquent {
                     if ($file) {
                         InterImage::make($filePath.'/'.$filename)->resize($thumbnail, $thumbnail, function ($constraint) 
                         {
+                            /** @var \Intervention\Image\Constraint $constraint */
                             $constraint->aspectRatio(); // Keep the aspect ratio
                         })->save($filePath.$thumbnail.'/'.$filename);
                     }

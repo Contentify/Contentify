@@ -9,7 +9,7 @@ class ContentFilter {
     /**
      * True if the content filter exists
      * 
-     * @param  string  $name The name of the content filter
+     * @param string $name The name of the content filter
      * @return boolean
      */
     public function has($name)
@@ -39,7 +39,7 @@ class ContentFilter {
      * get() might return null even if a content filter exists.
      * (Null is a valid value.)
      * 
-     * @param  string       $name The name of the content filter
+     * @param string      $name The name of the content filter
      * @return string|null
      */
     public function get($name)

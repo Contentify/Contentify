@@ -82,6 +82,7 @@ class AdminCupsController extends BackController {
      */
     public function seed($cupId) 
     {
+        /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
         // Get all participants that are checked-in and randomize their order

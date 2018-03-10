@@ -2,6 +2,7 @@
 
 namespace App\Modules\Partners;
 
+use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
 class Partner extends BaseModel {

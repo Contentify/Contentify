@@ -39,7 +39,7 @@ class FormBuilder extends OriginalFormBuilder {
      * Open up a new HTML form. 
      * Sets "form-horizontal" as the default class for forms.
      *
-     * @param  array   $options
+     * @param  array  $options
      * @return string
      */
     public function open(array $options = array())
@@ -54,8 +54,8 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for form action buttons (e. g. submit)
      * 
-     * @param  array  $buttons Array of Buttons
-     * @param  bool   $showImages Show icons on the buttons?
+     * @param  array $buttons    Array of Buttons
+     * @param  bool  $showImages Show icons on the buttons?
      * @return string
      */
     public function actions($buttons = array('submit', 'apply', 'reset'), $showImages = true)
@@ -126,8 +126,8 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create a button element.
      *
-     * @param  string  $value   The value (= label) of the button
-     * @param  array   $options Array with attributes
+     * @param  string|null $value   The value (= label) of the button
+     * @param  array       $options Array with attributes
      * @return string
      */
     public function button($value = null, $options = array())
@@ -143,9 +143,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a number input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $value      The default value
-     * @param  array  $options    Array with attributes
+     * @param  string      $name    The name of the input element
+     * @param  string|null $value   The default value
+     * @param  array       $options Array with attributes
      * @return string
      */
     public function numeric($name, $value = null, $options = array())
@@ -164,9 +164,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a URL input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $value      The default value
-     * @param  array  $options    Array with attributes
+     * @param  string      $name    The name of the input element
+     * @param  string|null $value   The default value
+     * @param  array       $options Array with attributes
      * @return string
      */
     public function url($name, $value = null, $options = array())
@@ -190,9 +190,9 @@ class FormBuilder extends OriginalFormBuilder {
      * Create HTML code for a select element. It will take its values from a database table.
      * This is meant for models that do not extend the BaseModel class.
      *
-     * @param  string $name     The name of the attribute, e. g. "user_id"
-     * @param  mixed  $default  Null or an ID
-     * @param  bool   $nullable If true the result can be empty and a "none selected" option is added
+     * @param  string     $name     The name of the attribute, e. g. "user_id"
+     * @param  mixed|null $default  Null or an ID
+     * @param  bool       $nullable If true the result can be empty and a "none selected" option is added
      * @return string
      * @throws Exception
      */
@@ -222,7 +222,9 @@ class FormBuilder extends OriginalFormBuilder {
         }
 
         $options = [];
-        if ($nullable) $options[''] = '-';
+        if ($nullable) {
+            $options[''] = '-';
+        }
         foreach ($models as $model) {
             if (isset($model->title)) {
                 $modelTitle = 'title';
@@ -243,9 +245,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for the opening part of a custom form group.
      *
-     * @param  string $name         The name of the corresponding element (not the label itself!)
-     * @param  string $title        The title of the field
-     * @param  string $class        Additional class(es)
+     * @param  string|null $name  The name of the corresponding element (not the label itself!)
+     * @param  string|null $title The title of the field
+     * @param  string|null $class Additional class(es)
      * @return string
      */
     public function smartGroupOpen($name = null, $title = null, $class = null)
@@ -272,9 +274,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a checkbox element.
      * 
-     * @param  string   $name       The name of the checkbox element
-     * @param  string   $title      The title of the checkbox element
-     * @param  bool     $default    The default value
+     * @param  string    $name    The name of the checkbox element
+     * @param  string    $title   The title of the checkbox element
+     * @param  bool|null $default The default value
      * @return string
      */
     public function smartCheckbox($name, $title, $default = null)
@@ -295,9 +297,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a text input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $title      The title of the input element
-     * @param  string $default    The default value
+     * @param  string      $name    The name of the input element
+     * @param  string      $title   The title of the input element
+     * @param  string|null $default The default value
      * @return string
      */
     public function smartText($name, $title, $default = null)
@@ -312,9 +314,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a email input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $title      The title of the input element
-     * @param  string $default    The default value
+     * @param  string      $name    The name of the input element
+     * @param  string|null $title   The title of the input element
+     * @param  string|null $default The default value
      * @return string
      */
     public function smartEmail($name = 'email', $title = null, $default = null)
@@ -331,9 +333,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a URL input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $title      The title of the input element
-     * @param  string $default    The default value
+     * @param  string      $name    The name of the input element
+     * @param  string|null $title   The title of the input element
+     * @param  string|null $default The default value
      * @return string
      */
     public function smartUrl($name = 'url', $title = null, $default = null)
@@ -350,8 +352,8 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a password input element.
      * 
-     * @param  string $name  The name of the input element
-     * @param  string $title The title of the input element
+     * @param  string      $name  The name of the input element
+     * @param  string|null $title The title of the input element
      * @return string
      */
     public function smartPassword($name = 'password', $title = null)
@@ -367,21 +369,23 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a textarea input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $title      The title of the input element
-     * @param  bool   $editor     Add WYSIWYG editor?
-     * @param  string $default    The default value
+     * @param  string      $name    The name of the input element
+     * @param  string      $title   The title of the input element
+     * @param  bool        $editor  Add WYSIWYG editor?
+     * @param  string|null $default The default value
      * @return string
      */
     public function smartTextarea($name = 'text', $title = null, $editor = false, $default = null)
     {
         $value = self::getDefaultValue($name, $default);
 
-        if (! $title) $title = trans('app.text');
+        if (! $title) {
+            $title = trans('app.text');
+        }
 
         if ($editor) {
-            $label      = self::label($name, $title, ['class' => 'full-line']);
-            $textarea   = self::textarea($name, $value, ['class' => 'editor']);
+            $label    = self::label($name, $title, ['class' => 'full-line']);
+            $textarea = self::textarea($name, $value, ['class' => 'editor']);
 
             $code = "<script>var editorLocale = '".App::getLocale()."';
             var config = window.innerWidth > 768 ? 'custom_config.js' : 'custom_config_mobile.js';
@@ -389,13 +393,13 @@ class FormBuilder extends OriginalFormBuilder {
                 customConfig: config
             });</script>";
 
-            $partial    = '<div class="form-editor">'
+            $partial  = '<div class="form-editor">'
                 .$label
                 .$textarea
                 .$code
                 .'</div>';
         } else {
-            $partial    = self::smartGroupOpen($name, $title)
+            $partial  = self::smartGroupOpen($name, $title)
                 .self::textarea($name, $value)
                 .self::smartGroupClose();
         }
@@ -406,9 +410,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a numeric input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $title      The title of the input element
-     * @param  string $default    The default value
+     * @param  string      $name    The name of the input element
+     * @param  string      $title   The title of the input element
+     * @param  string|null $default The default value
      * @return string
      */
     public function smartNumeric($name, $title, $default = null)
@@ -423,11 +427,11 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a select element.
      * 
-     * @param  string       $name       The name of the select element
-     * @param  string       $title      The title of the select element
-     * @param  array        $options    Array of options (pairs of titles and values)
-     * @param  mixed        $default    Values of preselected options
-     * @param  array        $attributes Additional HTML attributes
+     * @param  string     $name       The name of the select element
+     * @param  string     $title      The title of the select element
+     * @param  array      $options    Array of options (pairs of titles and values)
+     * @param  mixed|null $default    Values of preselected options
+     * @param  array      $attributes Additional HTML attributes
      * @return string
      */
     public function smartSelect($name, $title, $options, $default = null, $attributes = array())
@@ -444,10 +448,10 @@ class FormBuilder extends OriginalFormBuilder {
      * Create HTML code for a select element. It will take its values from a database table.
      * This is meant for models that do not extend the BaseModel class.
      * 
-     * @param  string   $name     The name of the attribute, e. g. "user_id"
-     * @param  string   $title    The title of the select element
-     * @param  mixed    $default  Null or an ID
-     * @param  bool     $nullable If true the result can be empty and a "none selected" option is added
+     * @param  string     $name     The name of the attribute, e. g. "user_id"
+     * @param  string     $title    The title of the select element
+     * @param  mixed|null $default  Null or an ID
+     * @param  bool       $nullable If true the result can be empty and a "none selected" option is added
      * @return string
      */
     public function smartSelectForeign($name, $title, $default = null, $nullable = false)
@@ -569,8 +573,8 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a file upload input element.
      * 
-     * @param  string $name  The name of the input element
-     * @param  string $title The title of the input element
+     * @param  string      $name  The name of the input element
+     * @param  string|null $title The title of the input element
      * @return string
      */
     public function smartFile($name = 'file', $title = null)
@@ -590,8 +594,8 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for an image upload input element.
      * 
-     * @param  string $name  The name of the input element
-     * @param  string $title The title of the input element
+     * @param  string      $name  The name of the input element
+     * @param  string|null $title The title of the input element
      * @return string
      */
     public function smartImageFile($name = 'image', $title = null)
@@ -653,10 +657,10 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a date & time input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $title      The title of the input element
-     * @param  string $default    The default value
-     * @param  bool   $onlyDate   If true, do not display time
+     * @param  string      $name     The name of the input element
+     * @param  string|null $title    The title of the input element
+     * @param  string|null $default  The default value
+     * @param  bool        $onlyDate If true, do not display time
      * @return string
      */
     public function smartDateTime($name = 'datetime', $title = null, $default = null, $onlyDate = false)
@@ -694,9 +698,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a date input element.
      * 
-     * @param  string $name       The name of the input element
-     * @param  string $title      The title of the input element
-     * @param  string $default    The default value
+     * @param  string      $name    The name of the input element
+     * @param  string|null $title   The title of the input element
+     * @param  string|null $default The default value
      * @return string
      */
     public function smartDate($name = 'date', $title = null, $default = null)
@@ -707,9 +711,9 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Create HTML code for a tag element.
      * 
-     * @param  string $name       The name of the tag element
-     * @param  string $title      The title of the tag element
-     * @param  string $default    The default value
+     * @param  string      $name    The name of the tag element
+     * @param  string      $title   The title of the tag element
+     * @param  string|null $default The default value
      * @return string
      */
     public function smartTags($name, $title, $default = null)
@@ -725,15 +729,17 @@ class FormBuilder extends OriginalFormBuilder {
     /**
      * Adds a hidden field with a timestamp (of the current time)
      *
-     * @param string    $name       Name of the field
-     * @param bool      $encrypt    Encrypt the value?
+     * @param string $name    Name of the field
+     * @param bool   $encrypt Encrypt the value?
      * @return string
      */
     public function timestamp($name = '_created_at', $encrypt = true)
     {
         $time = time();
 
-        if ($encrypt) $time = Crypt::encrypt($time);
+        if ($encrypt) {
+            $time = Crypt::encrypt($time);
+        }
 
         return self::hidden($name, $time);
     }

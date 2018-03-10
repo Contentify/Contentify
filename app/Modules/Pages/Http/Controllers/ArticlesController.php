@@ -37,16 +37,18 @@ class ArticlesController extends FrontController {
     /**
      * Show an article
      * 
-     * @param  int $id The id of the article
+     * @param  int $id The ID of the article
      * @return void
      */
     public function show($id)
     {
+        /** @var Article $article */
         $article = Article::whereId($id)->published()->firstOrFail();
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($article->internal and ! $hasAccess) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return;
         }
 
         $article->access_counter++;

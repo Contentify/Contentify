@@ -18,14 +18,15 @@ class ConfigServiceProvider extends ServiceProvider {
     {
         $filename   = storage_path('app/database.ini');
         $key        = 'database.connections.mysql';
+
         if (File::exists($filename)) {
             $settings = parse_ini_file($filename);
 
             config([
-                $key.'.host'        => $settings['host'],
-                $key.'.database'    => $settings['database'],
-                $key.'.username'    => $settings['username'],
-                $key.'.password'    => $settings['password'],
+                $key.'.host'     => $settings['host'],
+                $key.'.database' => $settings['database'],
+                $key.'.username' => $settings['username'],
+                $key.'.password' => $settings['password'],
             ]);
         }
     }

@@ -38,8 +38,10 @@ class EventsController extends FrontController {
 
     /**
      * Show calendar with all events
-     * 
-     * @return void
+     *
+     * @param int $year  The year to show
+     * @param int $month The month of the year to show
+     * @return null|string
      */
     public function calendar($year = null, $month = null)
     {

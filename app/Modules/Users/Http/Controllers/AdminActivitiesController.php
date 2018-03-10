@@ -3,7 +3,7 @@
 namespace App\Modules\Users\Http\Controllers;
 
 use ModelHandlerTrait;
-use Redirect, UserActivities, URL, HTML, Hover, BackController;
+use Redirect, UserActivity, UserActivities, URL, HTML, BackController;
 
 class AdminActivitiesController extends BackController {
 
@@ -37,6 +37,7 @@ class AdminActivitiesController extends BackController {
             ],
             'tableRow'  => function($userActivity)
             {
+                /** @var UserActivity $userActivity */
                 if ($userActivity->frontend) {
                     $frontend = HTML::fontIcon('check');
                 } else {

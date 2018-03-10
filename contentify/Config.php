@@ -8,13 +8,13 @@ use Cache, DB, DateTime;
 class Config extends LaravelConfig {
 
     /**
-     * Cache key prefix: The corresponding values contain bools that are true if the
+     * Cache key prefix: The corresponding values contain booleans that are true if the
      * config key has been retrieved from the DB already
      */
     const CACHE_IN_DB_PREFIX = 'config::inDb.';
 
     /**
-     * Cache key prefix: The corresponding values were cached after they habe been
+     * Cache key prefix: The corresponding values were cached after they have been
      * retrieved from the DB
      */
     const CACHE_VALUES_PREFIX = 'config::values.';
@@ -27,8 +27,8 @@ class Config extends LaravelConfig {
     /**
      * Determine if the given configuration value exists.
      *
-     * @param  string $key      The key for the value
-     * @param  bool   $dbLookup If false, do not access the database table
+     * @param string $key      The key for the value
+     * @param bool   $dbLookup If false, do not access the database table
      * @return bool
      */
     public static function has($key, $dbLookup = true)
@@ -65,9 +65,9 @@ class Config extends LaravelConfig {
     /**
      * Get the specified configuration value.
      *
-     * @param  string  $key      Name of the key
-     * @param  mixed   $default  Default value
-     * @param  bool    $dbLookup If false, do not access the database table
+     * @param string $key      The name of the key
+     * @param mixed  $default  The default value
+     * @param bool   $dbLookup If false, do not access the database table
      * @return mixed
      */
     public static function get($key, $default = null, $dbLookup = true)
@@ -104,8 +104,8 @@ class Config extends LaravelConfig {
     /**
      * Store a given configuration value into DB.
      *
-     * @param  string  $key     The name of the key
-     * @param  mixed   $value   The value
+     * @param string $key     The name of the key
+     * @param mixed  $value   The value
      * @return void
      */
     public static function store($key, $value)
@@ -117,7 +117,7 @@ class Config extends LaravelConfig {
          * If the key does not exist we need to create it
          * $result contains the number of affected rows.
          * With using a timestamp we ensure that when updating a value
-         * the row is always affacted, eventhough if the value does not change.
+         * the row is always affected, even though if the value does not change.
          */
         if ($result == 0) {
             DB::table('config')->insert(array('name' => $key, 'value' => $value, 'updated_at' => new DateTime()));
@@ -130,12 +130,12 @@ class Config extends LaravelConfig {
     /**
      * Delete a given configuration value from DB.
      *
-     * @param  string  $key The name of the key
+     * @param string $key The name of the key
      * @return void
      */
     public static function delete($key)
     {
-        $result = DB::table('config')->whereName($key)->delete();
+        DB::table('config')->whereName($key)->delete();
 
         self::clearCache($key);
     }
@@ -143,7 +143,7 @@ class Config extends LaravelConfig {
     /**
      * Clear the cache for a given configuration key.
      *
-     * @param  string  $key The name of the key
+     * @param string $key The name of the key
      * @return void
      */
     public static function clearCache($key)

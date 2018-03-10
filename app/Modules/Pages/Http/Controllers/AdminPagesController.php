@@ -32,6 +32,7 @@ class AdminPagesController extends BackController {
             ],
             'tableRow'  => function($page)
             {
+                /** @var Page $page */
                 Hover::modelAttributes($page, ['access_counter']);
 
                 switch ($page->pagecat_id) {

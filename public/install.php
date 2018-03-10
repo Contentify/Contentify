@@ -158,7 +158,7 @@ class Tester {
     /**
      * Color the passed text for output
      *
-     * @param  string $text The text
+     * @param string $text The text
      * @return string
      */
     protected function red($text)
@@ -172,7 +172,7 @@ class Tester {
     /**
      * Color the passed text for output
      *
-     * @param  string $text The text
+     * @param string $text The text
      * @return string
      */
     protected function green($text)
@@ -186,7 +186,7 @@ class Tester {
     /**
      * Echo this line
      *
-     * @param  string $text The line of text
+     * @param string $text The line of text
      * @return void
      */
     protected function line($text = null)

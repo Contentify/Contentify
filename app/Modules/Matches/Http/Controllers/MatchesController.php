@@ -3,7 +3,7 @@
 namespace App\Modules\Matches\Http\Controllers;
 
 use App\Modules\Matches\Match;
-use URL, HTML, FrontController;
+use HTML, FrontController;
 
 class MatchesController extends FrontController {
 
@@ -31,6 +31,8 @@ class MatchesController extends FrontController {
             ],
             'tableRow'      => function($match)
             {
+                /** @var Match $match */
+
                 if ($match->game->icon) {
                     $game = HTML::image(
                         $match->game->uploadPath().$match->game->icon, 
@@ -56,7 +58,7 @@ class MatchesController extends FrontController {
     /**
      * Show a match
      * 
-     * @param  int $id The id of the match
+     * @param  int $id The ID of the match
      * @return void
      */
     public function show($id)

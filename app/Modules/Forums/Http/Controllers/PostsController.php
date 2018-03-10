@@ -5,14 +5,14 @@ namespace App\Modules\Forums\Http\Controllers;
 use App\Modules\Forums\ForumPost;
 use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumThread;
-use User, Request, Response, Input, Redirect, FrontController;
+use User, Response, Input, Redirect, FrontController;
 
 class PostsController extends FrontController {
 
     /**
      * Show a single post
      *
-     * @param int The id of the post
+     * @param int $id The id of the post
      */
     public function show($id)
     {
@@ -37,7 +37,8 @@ class PostsController extends FrontController {
     /**
      * Stores a post
      *
-     * @param int The id of the thread
+     * @param int $id The id of the thread
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function store($id)
     {
@@ -49,7 +50,7 @@ class PostsController extends FrontController {
 
         if ($forumThread->closed) {
             $this->alertError(trans('forums::closed_info'));
-            return;
+            return null;
         }
 
         $valid = $forumPost->save();
@@ -73,15 +74,17 @@ class PostsController extends FrontController {
 
     /**
      * Edits a post
-     * 
-     * @param int The id of the post
+     *
+     * @param int $id The id of the post
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function edit($id)
     {
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return null;
         }
 
         /*
@@ -96,15 +99,18 @@ class PostsController extends FrontController {
 
     /**
      * Updates a post
-     * 
-     * @param int The id of the post
+     *
+     * @param int $id The id of the post
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function update($id)
     {
+        /** @var ForumPost $forumPost */
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return null;
         }
 
         /*
@@ -130,12 +136,15 @@ class PostsController extends FrontController {
 
     /**
      * Deletes a post
-     * 
-     * @param int The id of the post
+     *
+     * @param int $id The id of the post
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function delete($id)
     {
-        if (! $this->checkAccessDelete()) return;
+        if (! $this->checkAccessDelete()) {
+            return null;
+        }
 
         $forumPost = ForumPost::isAccessible()->findOrFail($id);       
 
@@ -162,8 +171,9 @@ class PostsController extends FrontController {
 
     /**
      * Reports a post
-     * 
-     * @param int The id of the post
+     *
+     * @param int $id The id of the post
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function report($id)
     {
@@ -187,7 +197,7 @@ class PostsController extends FrontController {
     /**
      * Shows the latest posts of a user
      * 
-     * @param int The id of the user
+     * @param int $userId The id of the user
      */
     public function showUserPosts($userId)
     {

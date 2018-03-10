@@ -34,7 +34,7 @@ class BackNavGen {
     /**
      * Returns the navigation items
      * 
-     * @return array Array with arrays of navi items
+     * @return mixed[][] Array with arrays of navigation items
      */
     public function getItems()
     {
@@ -96,9 +96,9 @@ class BackNavGen {
     }
 
     /**
-     * Create the backend navigation, put it into a view,
-     * render it and cache it.
-     * @param  boolean $update Enforce cache update?
+     * Create the backend navigation, put it into a view, render it and cache it.
+     *
+     * @param bool $update Enforce cache update?
      * @return void
      */
     public function make($update = false)

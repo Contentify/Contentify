@@ -3,9 +3,10 @@
 namespace App\Modules\Friends;
 
 use BaseModel;
+use Illuminate\Database\Query\Builder;
 
 /**
- * The Friendship model is a helper model and a representaion of 
+ * The Friendship model is a helper model and a representation of
  * the many-to-many-relationship between users. It's not meant
  * for storing friendships!
  */
@@ -23,10 +24,10 @@ class Friendship extends BaseModel {
     /**
      * Query scope that returns only the (confirmed) friendships of two users
      * 
-     * @param  Builder      $query       The query builder object
-     * @param  int          $friendOneId The ID of the first user
-     * @param  int          $friendTwoId The ID of the second user
-     * @param  boolean      $confirmed   Only show confirmed friendships? Default = true
+     * @param  Builder $query       The query builder object
+     * @param  int     $friendOneId The ID of the first user
+     * @param  int     $friendTwoId The ID of the second user
+     * @param  bool    $confirmed   Only show confirmed friendships? Default = true
      * @return Builder
      */
     public function scopeAreFriends($query, $friendOneId, $friendTwoId, $confirmed = true)
@@ -49,9 +50,9 @@ class Friendship extends BaseModel {
     /**
      * Query scope that returns the friendships of a user
      * 
-     * @param  Builder  $query  The query builder object
-     * @param  int      $userId The ID of the user
-    * @param  boolean      $confirmed   Only show confirmed friendships? Default = true
+     * @param  Builder  $query     The query builder object
+     * @param  int      $userId    The ID of the user
+     * @param  bool     $confirmed Only show confirmed friendships? Default = true
      * @return Builder
      */
     public function scopeFriendsOf($query, $userId, $confirmed = true)

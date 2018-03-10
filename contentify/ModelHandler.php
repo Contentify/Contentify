@@ -2,7 +2,7 @@
 
 namespace Contentify;
 
-use Paginator, Session, HTML, URL, DB, Log, BaseController, UserActivities, Input, File, Redirect, InterImage;
+use Paginator, Session, HTML, URL, DB, Log, BaseModel, BaseController, UserActivities, Input, File, Redirect, InterImage;
 use Closure, Exception;
 
 class ModelHandler {
@@ -15,7 +15,7 @@ class ModelHandler {
     /**
      * Setter for $controller
      * 
-     * @param  BaseController $controller The controller object
+     * @param BaseController $controller The controller object
      * @return void
      */
     public function controller($controller)
@@ -26,11 +26,11 @@ class ModelHandler {
     /**
      * Generates an index page from a model and $data
      * 
-     * @param  array  $data             Array with information how to build the form. See $defaults for details.
-     * @param  string $userInterface    Frontend ("front") or backend ("admin")?
+     * @param array  $data    Array with information how to build the form. See $defaults for details.
+     * @param string $surface Frontend ("front") or backend ("admin")? Default: "admin"
      * @return void
      */
-    public function index(array $data, $userInterface = 'admin')
+    public function index(array $data, $surface = 'admin')
     {
         $controller = $this->getControllerOrFail();
 
@@ -38,7 +38,7 @@ class ModelHandler {
          * Access checking is only available for the backend.
          * Frontend controllers have to perform it on their own.
          */
-        if ($userInterface == 'admin') {
+        if ($surface == 'admin') {
             if (! $controller->checkAccessRead()) return;
         }
         
@@ -75,17 +75,17 @@ class ModelHandler {
                 $type = strtolower($button);
                 switch ($type) {
                     case 'new':
-                        $url = route($userInterface.'.'.strtolower($controller->getControllerName()).'.create');
+                        $url = route($surface.'.'.strtolower($controller->getControllerName()).'.create');
                         $buttons .= button(trans('app.create'), $url, 'plus-circle');
                         break;
                     case 'category':
                         $url = route(
-                            $userInterface.'.'.str_singular(strtolower($controller->getModuleName())).'cats.index'
+                            $surface.'.'.str_singular(strtolower($controller->getModuleName())).'cats.index'
                         );
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
                     case 'config':
-                        $url = url($userInterface.'/'.strtolower($controller->getModuleName()).'/config') ;
+                        $url = url($surface.'/'.strtolower($controller->getModuleName()).'/config') ;
                         $buttons .= button(trans('app.config'), $url, 'cog');
                         break;
                     default:
@@ -110,7 +110,9 @@ class ModelHandler {
         if (! is_array($data['dataSource'])) {
             if (Input::get('sortby')) {
                 $sortBy = strtolower(Input::get('sortby'));
-                if (in_array($sortBy, $data['tableHead'])) $data['sortby'] = $sortBy;
+                if (in_array($sortBy, $data['tableHead'])) {
+                    $data['sortby'] = $sortBy;
+                }
 
                 $order = strtolower(Input::get('order'));
                 if ($order === 'desc' or $order === 'asc') {
@@ -125,7 +127,7 @@ class ModelHandler {
         /*
          * Switch recycle bin mode: Show soft deleted models if recycle bin mode is enabled.
          */
-        if ($userInterface == 'admin' and (new $modelClass)->isSoftDeleting()) { // isSoftDeleting() is instance-tied
+        if ($surface == 'admin' and (new $modelClass)->isSoftDeleting()) { // isSoftDeleting() is instance-tied
             $recycleBinMode = Input::get('binmode');
             if ($recycleBinMode !== null) {
                 Session::put('recycleBinMode', (bool) $recycleBinMode);
@@ -138,7 +140,7 @@ class ModelHandler {
         /*
          * Retrieve models from DB (or array) and create paginator
          */
-        $perPage = Config::get('app.'.$userInterface.'ItemsPerPage');
+        $perPage = Config::get('app.'.$surface.'ItemsPerPage');
 
         if (is_array($data['dataSource'])) {
             $page = (int) Paginator::resolveCurrentPage();
@@ -157,7 +159,7 @@ class ModelHandler {
         } else {
             $models = $modelClass::orderBy($data['sortby'], $data['order']);
 
-            if ($userInterface == 'admin' and Session::get('recycleBinMode') and (new $modelClass)->isSoftDeleting()) {
+            if ($surface == 'admin' and Session::get('recycleBinMode') and (new $modelClass)->isSoftDeleting()) {
                 $models = $models->withTrashed(); // Show trashed
             }
 
@@ -187,7 +189,7 @@ class ModelHandler {
                     $search     = substr($data['search'], $pos + 1);
                     $models = $models->where($searchFor, 'LIKE', '%'.$search.'%');
                     // TODO: Check if attribute $searchFor exists?
-                    // Use fillables &/ tableHead attribute names
+                    // Use fillables and/or tableHead attribute names
                 }                 
             }
 
@@ -233,7 +235,7 @@ class ModelHandler {
                                     $actionsCode .= icon_link('edit', 
                                         trans('app.edit'), 
                                         route(
-                                            $userInterface.'.'.strtolower($controller->getControllerName()).'.edit', 
+                                            $surface.'.'.strtolower($controller->getControllerName()).'.edit',
                                             [$model->id])
                                         );
                                 }
@@ -244,7 +246,7 @@ class ModelHandler {
                                     $actionsCode .= icon_link('trash', 
                                         trans('app.delete'), 
                                         route(
-                                            $userInterface.'.'.strtolower($controller->getControllerName()).'.destroy', 
+                                            $surface.'.'.strtolower($controller->getControllerName()).'.destroy',
                                             [$model->id]
                                         ).$urlParams,
                                         false,
@@ -256,7 +258,7 @@ class ModelHandler {
                                     $actionsCode .= icon_link('undo', 
                                     trans('app.restore'), 
                                     route(
-                                        $userInterface.'.'.strtolower($controller->getControllerName()).'.restore', 
+                                        $surface.'.'.strtolower($controller->getControllerName()).'.restore',
                                         [$model->id])
                                     );
                                 }
@@ -303,7 +305,7 @@ class ModelHandler {
     /**
      * Shows a model
      * 
-     * @param  int  $id The ID of the model
+     * @param int $id The ID of the model
      * @return void
      */
     public function show($id)
@@ -314,7 +316,7 @@ class ModelHandler {
 
         $model = $modelClass::findOrFail($id);
 
-        $this->pageView(strtolower($controller->getModuleName()).'::show', compact('model'));
+        $controller->pageView(strtolower($controller->getModuleName()).'::show', compact('model'));
     }
 
     /**
@@ -343,9 +345,12 @@ class ModelHandler {
     {
         $controller = $this->getControllerOrFail();
 
-        if (! $controller->checkAccessCreate()) return;
+        if (! $controller->checkAccessCreate()) {
+            return null;
+        }
 
         $modelClass = $controller->getModelClass();
+        /** @var BaseModel $model */
         $model = new $modelClass();
         $model->creator_id = user()->id;
         $model->updater_id = user()->id;
@@ -403,7 +408,7 @@ class ModelHandler {
 
                     if ($error !== false) {
                         $model->delete(); // Delete the invalid model
-                        return Redirect::route('admin.'.strtolower($this->getControllerName()).'.create')
+                        return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.create')
                                 ->withInput()->withErrors([$error]);
                     }
                     
@@ -425,6 +430,7 @@ class ModelHandler {
                         foreach ($thumbnails as $thumbnail) {
                             InterImage::make($filePath.'/'.$filename)
                                 ->resize($thumbnail, $thumbnail, function ($constraint) {
+                                    /** @var \Intervention\Image\Constraint $constraint */
                                     $constraint->aspectRatio();
                                 })->save($filePath.$thumbnail.'/'.$filename); 
                         }
@@ -446,7 +452,7 @@ class ModelHandler {
     /**
      * CRUD: edit model
      *
-     * @param int $id The id of the model
+     * @param int $id The ID of the model
      * @return void
      * @throws Exception
      */
@@ -457,6 +463,7 @@ class ModelHandler {
         if (! $controller->checkAccessUpdate()) return;
 
         $modelClass = $controller->getModelClass();
+        /** @var BaseModel $model */
         $model      = $modelClass::findOrFail($id);
 
         if (! $model->modifiable()) {
@@ -473,16 +480,19 @@ class ModelHandler {
      * CRUD: update model
      *
      * @param int $id The id of the model
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|null
      * @throws Exception
      */
     public function update($id)
     {
         $controller = $controller = $this->getControllerOrFail();
 
-        if (! $controller->checkAccessUpdate()) return;
+        if (! $controller->checkAccessUpdate()) {
+            return null;
+        }
 
         $modelClass = $controller->getModelClass();
+        /** @var BaseModel $model */
         $model      = $modelClass::findOrFail($id);
 
         if (! $model->modifiable()) {
@@ -544,7 +554,7 @@ class ModelHandler {
 
                     if ($error !== false) {
                         return Redirect::route(
-                            'admin.'.strtolower($this->getControllerName()).'.edit', 
+                            'admin.'.strtolower($controller->getControllerName()).'.edit',
                             ['id' => $model->id]
                         )->withInput()->withErrors([$error]);
                     }
@@ -572,6 +582,7 @@ class ModelHandler {
                         foreach ($thumbnails as $thumbnail) {
                             InterImage::make($filePath.'/'.$filename)
                                 ->resize($thumbnail, $thumbnail, function ($constraint) {
+                                    /** @var \Intervention\Image\Constraint $constraint */
                                     $constraint->aspectRatio();
                                 })->save($filePath.$thumbnail.'/'.$filename); 
                         }
@@ -602,18 +613,21 @@ class ModelHandler {
     /**
      * CRUD: delete model
      *
-     * @param int $id The id of the model
-     * @return \Illuminate\Http\RedirectResponse
+     * @param int $id The ID of the model
+     * @return \Illuminate\Http\RedirectResponse|null
      * @throws Exception
      */
     public function destroy($id)
     {
         $controller = $this->getControllerOrFail();
 
-        if (! $controller->checkAccessDelete()) return;
+        if (! $controller->checkAccessDelete()) {
+            return null;
+        }
 
         $modelClass = $controller->getModelClass();
 
+        /** @var BaseModel $model */
         if (method_exists($modelClass, 'trashed')) {
             $model  = $modelClass::withTrashed()->find($id);
         } else {
@@ -696,6 +710,7 @@ class ModelHandler {
 
         $modelClass = $controller->getModelClass();
 
+        /** @var BaseModel $model */
         $model  = $modelClass::withTrashed()->find($id);
 
         $model->restore();
@@ -787,8 +802,8 @@ class ModelHandler {
                                     DB::table($relation['table'])->insert($insertion);
                                 }
                             } else {
-                                Log::warning("Form tries to fill guarded pivot table '$relation[table]' \
-                                    for relation '$name'.");
+                                Log::warning("Form tries to fill guarded pivot table '$relation[table]'".
+                                    " for relation '$name'.");
                             }
 
                             break;
@@ -813,7 +828,7 @@ class ModelHandler {
     protected function getControllerOrFail()
     {
         if (! $this->controller) {
-            throw new Exception('Modelhandler: No controller instance has been set.');
+            throw new Exception('Model handler: No controller instance has been set.');
         }
 
         return $this->controller;

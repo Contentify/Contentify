@@ -31,6 +31,7 @@ class AdminServersController extends BackController {
             ],
             'tableRow' => function($server)
             {
+                /** @var Server $server */
                 $gameIcon = ($server->game and $server->game->icon) ?
                     HTML::image($server->game->uploadPath().$server->game->icon, $server->game->title) :
                     null;

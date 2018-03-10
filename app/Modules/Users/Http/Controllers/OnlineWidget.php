@@ -6,9 +6,9 @@ use User, View, Widget;
 
 class OnlineWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
-    	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
         $users = User::online()->orderBy('last_active', 'DESC')->take($limit)->get();
 

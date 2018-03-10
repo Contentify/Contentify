@@ -3,7 +3,7 @@
 namespace App\Modules\Videos\Http\Controllers;
 
 use App\Modules\Videos\Video;
-use Request, Config, URL, FrontController;
+use Config, URL, FrontController;
 
 class VideosController extends FrontController {
 
@@ -26,11 +26,12 @@ class VideosController extends FrontController {
     /**
      * Show a video
      * 
-     * @param  int $id The id of the video
+     * @param int $id The ID of the video
      * @return void
      */
     public function show($id)
     {
+        /** @var Video $video */
         $video = Video::findOrFail($id);
 
         $video->access_counter++;
@@ -46,7 +47,7 @@ class VideosController extends FrontController {
      * This method is called by the global search (SearchController->postCreate()).
      * Its purpose is to return an array with results for a specific search query.
      * 
-     * @param  string $subject The search term
+     * @param string $subject The search term
      * @return string[]
      */
     public function globalSearch($subject)

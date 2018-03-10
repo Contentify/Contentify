@@ -3,12 +3,14 @@
 namespace Contentify\Models;
 
 use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
+use Cartalyst\Sentinel\Users\UserInterface;
 use Contentify\Traits\SlugTrait;
 use App\Modules\Messages\Message;
 use App\Modules\Friends\Friendship;
 use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Activation, Sentinel, Session, Str;
+use Illuminate\Database\Query\Builder;
 
-class User extends SentinelUser {
+class User extends SentinelUser implements UserInterface {
 
     use SlugTrait;
 
@@ -241,8 +243,8 @@ class User extends SentinelUser {
     /**
      * Creates a new system message that addresses this user
      * 
-     * @param  string   $title        The message title
-     * @param  string   $text         The message text
+     * @param  string   $title        The title of the message
+     * @param  string   $text         The text of the message
      * @param  int      $creatorId    The user ID of the creator
      * @return void
      */
@@ -310,7 +312,7 @@ class User extends SentinelUser {
         $extension  = $file->getClientOriginalExtension();
 
         try {
-            $imgData = getimagesize($file->getRealPath()); // Try to gather infos about the image
+            $imgData = getimagesize($file->getRealPath()); // Try to gather info about the image
         } catch (Exception $e) {
 
         }
@@ -351,7 +353,7 @@ class User extends SentinelUser {
     /**
      * Deletes a user image.
      * 
-     * @param  string $fieldName Name of the form field
+     * @param  string $fieldName The name of the form field
      * @return void
      */
     public function deleteImage($fieldName)
@@ -385,8 +387,8 @@ class User extends SentinelUser {
             return Cache::get($key);
         }
 
-        $result = DB::table('messages')->select(DB::raw('COUNT(*) AS count'))->whereReceiverId($this->id)->whereReceiverVisible(true)->
-            whereNew(true)->first();
+        $result = DB::table('messages')->select(DB::raw('COUNT(*) AS count'))->whereReceiverId($this->id)->
+            whereReceiverVisible(true)->whereNew(true)->first();
 
         Cache::forever($key, $result->count);
 

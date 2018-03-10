@@ -4,7 +4,8 @@ namespace App\Modules\Cups\Http\Controllers;
 
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
-use User, Redirect, View, Input, Request, DB, URL, HTML, FrontController;
+use Illuminate\Http\RedirectResponse;
+use User, Redirect, Input, DB, URL, HTML, FrontController;
 
 class CupsController extends FrontController {
 
@@ -49,16 +50,16 @@ class CupsController extends FrontController {
     /**
      * Show a cup
      * 
-     * @param  int      $id     The ID of the cup
-     * @param  string   $slug   The unique slug
+     * @param  int    $id   The ID of the cup
+     * @param  string $slug The unique slug
      * @return void
      */
     public function show($id, $slug = null)
     {
-        if ($id) {
-            $cup = Cup::whereId($id)->published()->firstOrFail();
-        } else {
+        if ($slug) {
             $cup = Cup::whereSlug($slug)->published()->firstOrFail();
+        } else {
+            $cup = Cup::whereId($id)->published()->firstOrFail();
         }
 
         $cup->access_counter++;
@@ -89,6 +90,7 @@ class CupsController extends FrontController {
      */
     public function join($cupId, $participantId)
     {
+        /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
         if ($cup->countParticipants() == $cup->slots) {
@@ -103,6 +105,7 @@ class CupsController extends FrontController {
         }
 
         if ($cup->forTeams()) {
+            /** @var Team $team */
             $team = Team::findOrFail($participantId);
 
             // Only members who are organizers are allowed to do this
@@ -156,27 +159,29 @@ class CupsController extends FrontController {
      * 
      * @param int   $cupId      The ID of the cup
      * @param bool  $checkOut   If true, check-out instead of check-in
-     * @return void
+     * @return RedirectResponse|null
      */
     public function checkIn($cupId, $checkOut = false)
     {
-        $cup = Cup::findOrFail($cupId);
+        /** @var Cup $cup */
+        $cup = Cup::
+        findOrFail($cupId);
 
         if (! user() or $cup->check_in_at->timestamp > time() or $cup->start_at->timestamp < time()) {
             $this->alertError(trans('app.not_possible'));
-            return;
+            return null;
         }
 
         $participant = $cup->getParticipantOfUser(user());
 
         if (! $participant) {
             $this->alertError(trans('app.not_possible'));
-            return;
+            return null;
         }
 
         if ($cup->forTeams() and ! $participant->isOrganizer(user())) {
             $this->alertError(trans('app.not_possible'));
-            return;
+            return null;
         }
         
         $state = $checkOut ? false : true;
@@ -190,8 +195,8 @@ class CupsController extends FrontController {
     /**
      * Tries to check-out the user or the team of the user to the current cup.
      * 
-     * @param int   $cupId
-     * @return void
+     * @param int $cupId
+     * @return RedirectResponse
      */
     public function checkOut($cupId)
     {
@@ -210,7 +215,7 @@ class CupsController extends FrontController {
 
         if (! user() or ! user()->isSuperAdmin()) {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
 
         $firstId = Input::get('first_id');
@@ -218,9 +223,11 @@ class CupsController extends FrontController {
 
         if ($firstId == $secondId) {
             $this->alertError(trans('app.not_possible'));
-            return;
+            return null;
         }
 
+        $firstMatch = null;
+        $secondMatch = null;
         $matches = $cup->matches; // They are ordered by round and round-row
         foreach ($matches as $match) {
             if ($match->left_participant_id == $firstId 
@@ -234,13 +241,13 @@ class CupsController extends FrontController {
 
             if ($match->round > 1) {
                 $this->alertError(trans('app.not_possible'));
-                return;
+                return null;
             }
         }
 
-        if (! $firstMatch or ! $secondMatch) {
+        if ((! $firstMatch) or (! $secondMatch)) {
             $this->alertError(trans('app.not_possible'));
-            return;
+            return null;
         }
 
         // Swap IDs
@@ -248,7 +255,7 @@ class CupsController extends FrontController {
             // If a match that is not a wildcard-match has a winner, seeding phase is over!
             if ($firstMatch->winner_id) {
                 $this->alertError(trans('app.not_possible'));
-                return;
+                return null;
             }
 
             $id = $firstMatch->left_participant_id;

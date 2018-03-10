@@ -2,8 +2,6 @@
 
 namespace Contentify;
 
-//use Illuminate\Foundation\Composer;
-use Contentify\BackNavGen;
 use Sentinel, Group;
 
 abstract class ModuleInstaller {
@@ -69,7 +67,7 @@ abstract class ModuleInstaller {
         /*
          * Update backend navigation
          */
-        (new BackNavGen())->update(true);
+        (new BackNavGen())->update();
 
         /*
          * Add permissions

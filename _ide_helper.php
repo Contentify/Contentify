@@ -13629,18 +13629,6 @@ namespace Collective\Html {
 
 namespace Contentify { 
 
-    class FormGenerator {
-         
-    }
-
-    class ModuleInstaller {
-         
-    }
-
-    class MsgException {
-         
-    }
-
     class Config {
         
         /**
@@ -13779,19 +13767,6 @@ namespace Contentify {
         }
          
     }
-
-    class LengthAwarePaginator {
-         
-    }
-
-    class Carbon {
-         
-    }
-
-    class Raw {
-         
-    }
- 
 }
 
 namespace Contentify\Facades { 
@@ -14410,7 +14385,7 @@ namespace Contentify\Facades {
         /**
          * Setter for $controller
          *
-         * @param \BaseController $controller The controller object
+         * @param \Contentify\Controllers\BaseController $controller The controller object
          * @return void 
          * @static 
          */ 
@@ -14423,13 +14398,13 @@ namespace Contentify\Facades {
          * Generates an index page from a model and $data
          *
          * @param array $data Array with information how to build the form. See $defaults for details.
-         * @param string $userInterface Frontend ("front") or backend ("admin")?
+         * @param string $surface Frontend ("front") or backend ("admin")?
          * @return void 
          * @static 
          */ 
-        public static function index($data, $userInterface = 'admin')
+        public static function index($data, $surface = 'admin')
         {
-            \Contentify\ModelHandler::index($data, $userInterface);
+            \Contentify\ModelHandler::index($data, $surface);
         }
         
         /**
@@ -14697,10 +14672,6 @@ namespace ChrisKonnertz\Jobs {
         {
             return \ChrisKonnertz\Jobs\Jobs::run();
         }
-         
-    }
-
-    class Job {
          
     }
  
@@ -17514,7 +17485,7 @@ namespace  {
 
     class FormGenerator extends \Contentify\FormGenerator {}
 
-    class ModuleInstaller extends \Contentify\ModuleInstaller {}
+    abstract class ModuleInstaller extends \Contentify\ModuleInstaller {}
 
     class MsgException extends \Contentify\MsgException {}
 
@@ -17558,7 +17529,7 @@ namespace  {
 
     class Jobs extends \ChrisKonnertz\Jobs\JobsFacade {}
 
-    class Job extends \ChrisKonnertz\Jobs\Job {}
+    abstract class Job extends \ChrisKonnertz\Jobs\Job {}
 
     class Sentinel extends \Cartalyst\Sentinel\Laravel\Facades\Sentinel {}
 

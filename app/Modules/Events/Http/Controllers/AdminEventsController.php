@@ -30,6 +30,7 @@ class AdminEventsController extends BackController {
             ],
             'tableRow' => function($event)
             {
+                /** @var Event $event */
                 return [
                     $event->id,
                     raw(Hover::modelAttributes($event, ['creator'])->pull()

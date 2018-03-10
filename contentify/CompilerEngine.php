@@ -8,10 +8,10 @@ class CompilerEngine extends OriginalCompilerEngine {
 
     /**
      * Handle a view exception.
-     * NOTICE: Overwrites the original method!
+     * NOTE: Overwrites the original method!
      *
-     * @param  \Exception $e
-     * @param  int        $obLevel
+     * @param \Exception $e
+     * @param int        $obLevel
      * @return void
      *
      * @throws $e

@@ -3,6 +3,7 @@
 namespace App\Modules\Partners\Http\Controllers;
 
 use App\Modules\Partners\Partner;
+use Illuminate\Http\RedirectResponse;
 use Redirect, FrontController;
 
 class PartnersController extends FrontController {
@@ -18,7 +19,7 @@ class PartnersController extends FrontController {
      * Navigate to the website of a partner
      * 
      * @param  int $id The id of the partner
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function url($id)
     {

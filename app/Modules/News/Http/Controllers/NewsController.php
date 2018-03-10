@@ -59,8 +59,8 @@ class NewsController extends FrontController {
     /**
      * Shows a "stream" of "news" (or in generally: generated content) with news and videos
      *
-     * @param int|string|null $offset
-     * @return void
+     * @param int|string|null $offset Null or a timestamp
+     * @return \Illuminate\Contracts\View\View|null
      */
     public function showStream($offset = null)
     {
@@ -114,28 +114,31 @@ class NewsController extends FrontController {
         if (Request::ajax()) {
             return View::make('news::show_stream_ajax', compact('streamItems', 'more'));
         } else {
-            $this->pageView('news::show_stream', compact('streamItems', 'more', 'limit'));    
+            $this->pageView('news::show_stream', compact('streamItems', 'more', 'limit'));
+            return null;
         }        
     }
 
     /**
      * Show a news
      * 
-     * @param  int      $id     The ID of the news
-     * @param  string   $slug   The unique slug
+     * @param  int    $id   The ID of the news
+     * @param  string $slug The unique slug (optional)
      * @return void
      */
     public function show($id, $slug = null)
     {
-        if ($id) {
-            $news = News::whereId($id)->published()->firstOrFail();
-        } else {
+        /** @var News $news */
+        if ($slug) {
             $news = News::whereSlug($slug)->published()->firstOrFail();
+        } else {
+            $news = News::whereId($id)->published()->firstOrFail();
         }
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($news->internal and ! $hasAccess) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return;
         }
 
         $news->access_counter++;

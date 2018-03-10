@@ -15,7 +15,7 @@ class JoinMessage extends BaseModel {
         'username'  => 'required',
         'email'     => 'required|email',
         'team_id'   => 'required|integer|min:1',
-        'role'   	=> 'required|min:3',
+        'role'      => 'required|min:3',
         'text'      => 'required|min:3',
     ];
 

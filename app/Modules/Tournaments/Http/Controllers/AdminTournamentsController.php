@@ -28,6 +28,7 @@ class AdminTournamentsController extends BackController {
             ],
             'tableRow' => function($tournament)
             {
+                /** @var Tournament $tournament */
                 Hover::modelAttributes($tournament, ['icon', 'creator']);
 
                 return [

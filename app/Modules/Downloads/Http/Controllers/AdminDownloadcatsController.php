@@ -28,6 +28,7 @@ class AdminDownloadcatsController extends BackController {
             ],
             'tableRow' => function($downloadcat)
             {
+                /** @var Downloadcat $downloadcat */
                 Hover::modelAttributes($downloadcat, ['creator']);
 
                 return [

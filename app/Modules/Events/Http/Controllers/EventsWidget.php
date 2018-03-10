@@ -7,9 +7,9 @@ use View, Widget;
 
 class EventsWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
-    	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
         $events = Event::orderBy('created_at', 'DESC')->take($limit)->get();
 

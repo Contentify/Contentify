@@ -6,7 +6,7 @@ use DB, Cache, User, View, Widget;
 
 class RandomUserWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         $minutes = isset($parameters['minutes']) ? (int) $parameters['minutes'] : 10;
 

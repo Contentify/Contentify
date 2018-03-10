@@ -36,6 +36,12 @@ abstract class BaseController extends Controller {
      */
     protected $formTemplate = '';
 
+    /**
+     * Array with "evil" file extensions
+     * @var string[]
+     */
+    protected $evilFileExtensions = ['php'];
+
     public function __construct()
     {
         /*
@@ -341,7 +347,7 @@ abstract class BaseController extends Controller {
      * Binds an OpenGraph instance to this layout. The instance is passed as a variable to the template.
      * Use HTML::openGraphTags() to render the tags.
      *
-     * @param OpenGraph $openGraph OpenGraph instance
+     * @param OpenGraph $openGraph An OpenGraph instance
      * @return void
      * @throws Exception
      */
@@ -374,15 +380,15 @@ abstract class BaseController extends Controller {
     /**
      * Generates an index page from a model and $data
      * 
-     * @param  array  $data             Array with information how to build the form. See $defaults for details.
-     * @param  string $userInterface    Frontend ("front") or backend ("admin")?
+     * @param  array  $data    Array with information how to build the form. See $defaults for details.
+     * @param  string $surface Frontend ("front") or backend ("admin")? Default: "admin"
      * @return void
      */
-    public function indexPage($data, $userInterface = 'admin')
+    public function indexPage($data, $surface = 'admin')
     {
         ModelHandler::controller($this);
 
-        ModelHandler::index($data, $userInterface);
+        ModelHandler::index($data, $surface);
     }
 
     /**
@@ -516,5 +522,16 @@ abstract class BaseController extends Controller {
             return false;
         }
     }
-    
+
+    /**
+     * Returns an array with "evil" file extensions.
+     * Getter for the evilFileExtensions property.
+     *
+     * @return string[]
+     */
+    public function getEvilFileExtensions()
+    {
+        return $this->evilFileExtensions;
+    }
+
 }

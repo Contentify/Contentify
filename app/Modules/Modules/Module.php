@@ -58,13 +58,14 @@ class Module extends BaseModel {
      */
     public function enabled()
     {
+        /** @var \Caffeinated\Modules\Modules $moduleBase */
         $moduleBase = app()['modules'];
 
-        // Get module infos by the basename property which we know,
+        // Get module info by the basename property which we know,
         // so we can get the slug for the isEnabled() method.
-        $moduleInfos = $moduleBase->where('basename', $this->title);
+        $moduleInfo = $moduleBase->where('basename', $this->title);
 
-        return $moduleBase->isEnabled($moduleInfos['slug']);
+        return $moduleBase->isEnabled($moduleInfo['slug']);
     }
 
 }

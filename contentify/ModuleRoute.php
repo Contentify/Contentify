@@ -5,7 +5,9 @@ namespace Contentify;
 use Config, Route;
 
 /**
- * This class decorates the Route class of Laravel
+ * This class decorates the Router class of Laravel
+ *
+ * @see \Illuminate\Routing\Router
  */
 class ModuleRoute {
 
@@ -174,27 +176,6 @@ class ModuleRoute {
     }
 
     /**
-     * Method stub for the old controller()-method.
-     * Controller routing (for RESTful controllers) is no longer supported,
-     * because Laravel does no longer support it.
-     * Please replace any calls of this method by explicit
-     * calls of methods such as get().
-     *
-     * @param  string $route
-     * @param  string $target
-     * @param  array  $parameters
-     * @return void
-     * @throws \Exception
-     */
-    public function controller($route, $target, $parameters = array())
-    {
-        // TODO Remove the whole method in the next version of the CMS
-        throw new \Exception(
-            'Error: Method ModuleRoute::controller() is no longer supported. Please replace any calls by explicit calls'
-        );
-    }
-
-    /**
      * Controller routing (for resource controllers).
      * 
      * @param  string $route
@@ -210,7 +191,7 @@ class ModuleRoute {
     /**
      * Register an array of resource controllers.
      *
-     * @param  array  $resources
+     * @param  array $resources
      * @return void
      */
     public function resources(array $resources)
@@ -223,8 +204,8 @@ class ModuleRoute {
     /**
      * Create a route group with shared attributes.
      *
-     * @param  array  $attributes
-     * @param  \Closure  $callback
+     * @param  array    $attributes
+     * @param  \Closure $callback
      * @return void
      */
     public function group(array $attributes, \Closure $callback)
@@ -235,9 +216,9 @@ class ModuleRoute {
     /**
      * Creates the route. Adds paths.
      * 
-     * @param  string|array             $methods
-     * @param  string                   $route
-     * @param  mixed                    $target
+     * @param  string|array $methods
+     * @param  string       $route
+     * @param  mixed        $target
      * @return \Illuminate\Routing\Route
      */
     protected function createRoute($methods, $route, $target)

@@ -61,6 +61,7 @@ class Role extends BaseModel {
          * Retrieve permission of the super admins role.
          * We assume this role has all available permissions on max level.
          */
+        /** @var \Cartalyst\Sentinel\Roles\EloquentRole $role */
         $role = Sentinel::findRoleBySlug('super-admins');
 
         $originalPermissions = $role->getPermissions();

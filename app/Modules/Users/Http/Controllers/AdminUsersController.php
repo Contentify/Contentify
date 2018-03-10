@@ -34,6 +34,7 @@ class AdminUsersController extends BackController {
             ],
             'tableRow'  => function($user)
             {
+                /** @var \App\Modules\Users\User $user */
                 if ($user->image) Hover::image(asset('uploads/users/'.$user->image));
 
                 if ($user->hasAccess('internal', PERM_READ)) {

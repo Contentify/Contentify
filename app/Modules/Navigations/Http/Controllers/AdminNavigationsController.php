@@ -4,7 +4,7 @@ namespace App\Modules\Navigations\Http\Controllers;
 
 use App\Modules\Navigations\Navigation;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
+use Hover, BackController;
 
 class AdminNavigationsController extends BackController {
 
@@ -28,6 +28,7 @@ class AdminNavigationsController extends BackController {
             ],
             'tableRow' => function($navigation)
             {
+                /** @var Navigation $navigation */
                 return [
                     $navigation->id,
                     raw(Hover::modelAttributes($navigation, ['creator'])->pull(), $navigation->title),

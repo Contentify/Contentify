@@ -7,7 +7,7 @@ use View, Widget;
 
 class ChartWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         $chart = new Chart();
 

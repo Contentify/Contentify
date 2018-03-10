@@ -6,7 +6,7 @@
     {!! Form::smartText('username', trans('app.username')) !!}
 
     <div id="username_info" class="help-block text-right hidden">
-    	{!! HTML::fontIcon('info-circle') !!} {{ trans('auth::username_taken') }}
+        {!! HTML::fontIcon('info-circle') !!} {{ trans('auth::username_taken') }}
     </div>
 
     {!! Form::smartEmail() !!}
@@ -23,17 +23,17 @@
 {!! Form::close() !!}
 
 <script>
-	$(document).ready(function()
-	{
-		$('#username').blur(function(event) {
-			$.get(contentify.baseUrl + 'auth/username/check/' + $(this).val(), function(data)
+    $(document).ready(function()
+    {
+        $('#username').blur(function(event) {
+            $.get(contentify.baseUrl + 'auth/username/check/' + $(this).val(), function(data)
             {
                 if (data == 1) {
-                	$('#username_info').removeClass('hidden');
+                    $('#username_info').removeClass('hidden');
                 } else {
-                	$('#username_info').addClass('hidden');
+                    $('#username_info').addClass('hidden');
                 }
             });
-		});
-	});
+        });
+    });
 </script>

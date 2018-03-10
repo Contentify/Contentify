@@ -5,9 +5,9 @@
 </div>
 
 @if (isset($isImpressum) and $isImpressum)
-	<hr>
+    <hr>
 
-	<h3>CMS</h3>
+    <h3>CMS</h3>
 
-	<p>Powered by <a href="http://www.contentify.org/">Contentify CMS</a>.</p>
+    <p>Powered by <a href="http://www.contentify.org/">Contentify CMS</a>.</p>
 @endif

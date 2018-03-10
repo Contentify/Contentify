@@ -9,8 +9,8 @@ class Comments {
     /**
      * Directly outputs comments and the comment form.
      * 
-     * @param  string $foreignType Identifier for the content the comments are related to (usually a model class)
-     * @param  int    $foreignId   ID, if the comments are related to a certain model instance
+     * @param string $foreignType Identifier for the content the comments are related to (usually a model class)
+     * @param int    $foreignId   ID, if the comments are related to a certain model instance
      * @return string
      */
     public function show($foreignType, $foreignId)
@@ -30,8 +30,8 @@ class Comments {
     /**
      * Returns comments and respects pagination
      * 
-     * @param  string $foreignType Identifier for the content the comments are related to (usually a model class)
-     * @param  int    $foreignId   ID, if the comments are related to a certain model instance
+     * @param string $foreignType Identifier for the content the comments are related to (usually a model class)
+     * @param int    $foreignId   ID, if the comments are related to a certain model instance
      * @return string
      */
     public function paginate($foreignType, $foreignId)
@@ -47,8 +47,8 @@ class Comments {
     /**
      * Stores a comment
      * 
-     * @param  string   $foreignType The foreign type identifier
-     * @param  int      $foreignId   The foreign id (can be 0)
+     * @param string $foreignType The foreign type identifier
+     * @param int    $foreignId   The foreign id (can be 0)
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function store($foreignType, $foreignId)
@@ -75,7 +75,7 @@ class Comments {
     /**
      * Returns a comment as JSON (as response to an AJAX call)
      * 
-     * @param  int $id The ID of the comment
+     * @param int $id The ID of the comment
      * @return \Illuminate\Http\JsonResponse
      */
     public function get($id)
@@ -88,7 +88,7 @@ class Comments {
     /**
      * Edits a comment
      * 
-     * @param  int $id The ID of the comment
+     * @param int $id The ID of the comment
      * @return \Illuminate\Http\Response|null
      */
     public function edit($id)
@@ -105,7 +105,7 @@ class Comments {
     /**
      * Updates a comment
      * 
-     * @param  int $id The ID of the comment
+     * @param int $id The ID of the comment
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function update($id)
@@ -131,7 +131,7 @@ class Comments {
     /**
      * Deletes a comment
      * 
-     * @param  int $id The ID of the comment
+     * @param int $id The ID of the comment
      * @return \Illuminate\Http\Response
      */
     public function delete($id)

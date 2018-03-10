@@ -2,9 +2,10 @@
 
 namespace App\Modules\Forums\Http\Controllers;
 
+use App\Modules\Forums\ForumPost;
 use App\Modules\Forums\ForumReportCase;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
+use HTML, BackController;
 
 class AdminReportsController extends BackController {
 
@@ -32,6 +33,7 @@ class AdminReportsController extends BackController {
             ],
             'tableRow' => function($forumReportCase)
             {
+                /** @var ForumPost $forumPost */
                 $forumPost = $forumReportCase->post;
 
                 $link = HTML::link($forumPost->paginatedPostUrl(), $forumPost->plainText(80));

@@ -2,7 +2,6 @@
 
 namespace App\Modules\Messages;
 
-
 use BBCode, Cache, User, BaseModel;
 
 class Message extends BaseModel {
@@ -34,7 +33,7 @@ class Message extends BaseModel {
      * and to set the receiver_id attribute to the user's id.
      *
      * @param string $username The name of the receiver (user)
-     * @return boolean
+     * @return bool
      */
     public function setReceiverByName($username)
     {
@@ -94,7 +93,7 @@ class Message extends BaseModel {
 
         if ($max) {
             if (strlen($text) > $max) {
-                $text = substr($text, 0, $max).'...';
+                $text = mb_substr($text, 0, $max).'...';
             }
         }
 

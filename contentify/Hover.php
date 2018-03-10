@@ -38,7 +38,7 @@ class Hover {
     /**
      * Adds text to the content.
      * 
-     * @param  string $text The text to add
+     * @param string $text The text to add
      * @return Hover
      */
     public function text($text)
@@ -52,7 +52,7 @@ class Hover {
     /**
      * Adds a text line to the content.
      * 
-     * @param  string $line The text line to add
+     * @param string $line The text line to add
      * @return Hover
      */
     public function line($line)
@@ -66,9 +66,9 @@ class Hover {
     /**
      * Adds an image to the content.
      * 
-     * @param  string $url        Image URL
-     * @param  string $alt        Image alt attribute
-     * @param  array  $attributes Image attributes
+     * @param string $url        Image URL
+     * @param string $alt        Image alt attribute
+     * @param array  $attributes Image attributes
      * @return Hover
      */
     public function image($url, $alt = null, $attributes = array())
@@ -96,8 +96,8 @@ class Hover {
     /**
      * Adds model attribute values to the content
      * 
-     * @param  object $model      A model
-     * @param  array  $attributes Array of model attribute names
+     * @param object $model      A model object
+     * @param array  $attributes Array of model attribute names
      * @return Hover
      */
     public function modelAttributes($model, $attributes = array())

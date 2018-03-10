@@ -17,7 +17,7 @@ class Slidecat extends BaseModel {
     ];
 
     public static $relationsData = [
-    	'slides'    => [self::HAS_MANY, 'App\Modules\Slides\Slide', 'dependency' => true],
+        'slides'    => [self::HAS_MANY, 'App\Modules\Slides\Slide', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
     

@@ -30,6 +30,7 @@ class AdminTeamsController extends BackController {
             ],
             'tableRow' => function($team)
             {
+                /** @var Team $team */
                 Hover::modelAttributes($team, ['image', 'access_counter', 'creator']);
 
                 return [

@@ -5,7 +5,7 @@
 @else
     {!! Form::open(['url' => 'admin/matches', 'files' => true]) !!}
 @endif
-    {!! Form::smartSelect('state', trans('app.state'), $modelClass::$states); !!}
+    {!! Form::smartSelect('state', trans('app.state'), $modelClass::$states) !!}
 
     {!! Form::smartSelectRelation('leftTeam', trans('matches::left_team'), $modelClass) !!}
 

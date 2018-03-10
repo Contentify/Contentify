@@ -6,7 +6,7 @@ interface UpdaterInterface
 {
 
     /**
-     * Performs the upate
+     * Performs the update
      * 
      * @return void
      */

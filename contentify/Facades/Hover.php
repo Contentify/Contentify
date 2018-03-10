@@ -11,6 +11,8 @@ class Hover extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'hover'; }
+    protected static function getFacadeAccessor() {
+        return 'hover';
+    }
 
 }

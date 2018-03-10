@@ -3,12 +3,11 @@
 namespace App\Modules\Galleries\Http\Controllers;
 
 use App\Modules\Images\Image;
-use App\Modules\Galleries\Gallery;
-use View, Widget;
+use DB, View, Widget;
 
 class GalleriesWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
         

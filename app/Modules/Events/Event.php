@@ -2,7 +2,8 @@
 
 namespace App\Modules\Events;
 
-use DB, SoftDeletingTrait, BaseModel;
+use Illuminate\Database\Query\Builder;
+use SoftDeletingTrait, BaseModel;
 
 class Event extends BaseModel {
 
@@ -27,10 +28,11 @@ class Event extends BaseModel {
 
     /**
      * Returns a query with events of a specific month (of a year).
-     * 
-     * @param  int $year  The year
-     * @param  int $month The month
-     * @return \Illuminate\Database\Eloquent\Builder
+     *
+     * @param  Builder $query
+     * @param  int     $year  The year
+     * @param  int     $month The month of the year
+     * @return Builder
      */
     public function scopeEventsOfMonth($query, $year, $month)
     {

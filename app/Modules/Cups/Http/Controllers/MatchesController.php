@@ -5,6 +5,7 @@ namespace App\Modules\Cups\Http\Controllers;
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
 use App\Modules\Cups\Match;
+use Illuminate\Http\RedirectResponse;
 use Input, Redirect, FrontController;
 
 class MatchesController extends FrontController {
@@ -24,6 +25,7 @@ class MatchesController extends FrontController {
      */
     public function show($id)
     {
+        /** @var Match $match */
         $match = Match::findOrFail($id);
 
         if ($match->with_teams) {
@@ -46,10 +48,11 @@ class MatchesController extends FrontController {
      * 
      * @param  int  $id The ID of the match
      * @param  bool $id If true, confirm the left result. If false, confirm the right.
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function confirm($id, $left = true)
     {
+        /** @var Match $match */
         $match = Match::findOrFail($id);
 
         $leftScore = (int) Input::get('left_score');
@@ -98,6 +101,7 @@ class MatchesController extends FrontController {
             $wildcards = Match::whereCupId($match->cup_id)->whereRightParticipantId(0)->whereNextMatchId(0)
                 ->orderBy('row')->get();
 
+            /** @var Match $wildcard */
             foreach ($wildcards as $wildcard) {
                 // It's enough to create  the next match of one of the pair matches
                 if ($wildcard->row % 2 == 1) { 
@@ -119,7 +123,7 @@ class MatchesController extends FrontController {
      * Confirms the result (score) of the left participant.
      * 
      * @param  int  $id The ID of the match
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function confirmLeft($id)
     {
@@ -130,7 +134,7 @@ class MatchesController extends FrontController {
      * Confirms the result (score) of the right participant.
      * 
      * @param  int  $id The ID of the match
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function confirmRight($id)
     {
@@ -140,22 +144,23 @@ class MatchesController extends FrontController {
     /**
      * Tries to change the winner of a match (not of a wildcard-match!)
      * 
-     * @return Redirect|void
+     * @return RedirectResponse|null
      */
     public function winner()
     {
+        /** @var Match $match */
         $match = Match::findOrFail(Input::get('match_id'));
 
         if (! user() or ! user()->isSuperAdmin()) {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
 
         $nextMatch = $match->nextMatch();
 
         if (! $match->right_participant_id or ! $match->winner_id or ! $nextMatch or $nextMatch->winner_id) {
             $this->alertError(trans('app.not_possible'));
-            return;
+            return null;
         }
 
         if ($match->left_participant_id == $match->winner_id) {

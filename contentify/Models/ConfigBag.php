@@ -4,26 +4,29 @@ namespace Contentify\Models;
 
 class ConfigBag {
 
+    /**
+     * @var string
+     */
     protected $namespace = '';
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var string[]
      */
-    protected $fillable = [ ];
+    protected $fillable = [];
     
     /**
      * The default rules that the model will validate against.
      *
      * @var array
      */
-    protected $rules = [ ];
+    protected $rules = [];
 
     /**
      * Get the config namespace.
      *
-     * @return array
+     * @return string
      */
     public function getNamespace()
     {
@@ -33,7 +36,7 @@ class ConfigBag {
     /**
      * Get the fillable attributes for the model.
      *
-     * @return array
+     * @return string
      */
     public function getFillable()
     {

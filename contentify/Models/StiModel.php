@@ -2,7 +2,7 @@
 
 namespace Contentify\Models;
 
-/*
+/**
  * Single Table Inheritance Model.
  * It differs from common implementations: It does not have to use the class name 
  * but may use a custom value to link a PHP class to an database record.

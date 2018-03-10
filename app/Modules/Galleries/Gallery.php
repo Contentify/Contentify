@@ -19,7 +19,7 @@ class Gallery extends BaseModel {
     ];
 
     public static $relationsData = [
-        'images'    => [self::HAS_MANY, 'App\Modules\Images\Image'], // Propably this is not a strong dependency.
+        'images'    => [self::HAS_MANY, 'App\Modules\Images\Image'], // Probably this is not a strong dependency.
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

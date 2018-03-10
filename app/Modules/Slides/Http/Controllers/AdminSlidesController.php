@@ -31,6 +31,7 @@ class AdminSlidesController extends BackController {
             ],
             'tableRow' => function($slide)
             {
+                /** @var Slide $slide */
                 Hover::modelAttributes($slide, ['image', 'creator']);
 
                 return [

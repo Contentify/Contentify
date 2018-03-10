@@ -97,7 +97,7 @@ class Cup extends BaseModel {
     /**
      * Relationship: Returns all participants of this cup
      * 
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function participants()
     {
@@ -190,7 +190,7 @@ class Cup extends BaseModel {
      * Returns true if the participants of the cup are teams. 
      * Returns false if they are users (for 1on1s).
      * 
-     * @return boolean
+     * @return bool
      */
     public function forTeams()
     {

@@ -4,6 +4,7 @@ namespace App\Modules\Friends\Http\Controllers;
 
 use App\Modules\Friends\Friendship;
 use App\Modules\Messages\Message;
+use Illuminate\Http\RedirectResponse;
 use User, DB, Redirect, FrontController;
 
 class FriendsController extends FrontController {
@@ -25,10 +26,11 @@ class FriendsController extends FrontController {
      * Tries to send a friendship request to a user
      * 
      * @param int $id The ID if the user
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function add($id)
     {
+        /** @var User $friend */
         $friend = User::findOrFail($id);
 
         $friendship = Friendship::areFriends(user()->id, $id, false)->first();
@@ -65,7 +67,7 @@ class FriendsController extends FrontController {
      * Confirms a friendship
      * 
      * @param  int $id The ID if the user
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function confirm($id)
     {
@@ -89,10 +91,11 @@ class FriendsController extends FrontController {
      * Destroys a friendship (= destroys the user-to-user-relationship)
      * 
      * @param  int $id The ID if the user (friend)
-     * @return Redirect
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
+        /** @var User $friend */
         $friend = User::findOrFail($id);
         
         // NOTE: Only receive confirmed friendships.

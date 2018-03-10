@@ -13,13 +13,13 @@ class Raw {
     /**
      * Constructor call
      * 
-     * @param mixed $value The value to print
-     * @param mixed $escape Another value that's going to be auto escaped
+     * @param mixed $value       The value to print
+     * @param mixed $escapeValue Another value that's going to be auto escaped
      */
-    public function __construct($value, $escape = null)
+    public function __construct($value, $escapeValue = null)
     {
-        if ($escape !== null) {
-            $this->value = (string) $value.e($escape);
+        if ($escapeValue !== null) {
+            $this->value = (string) $value.e($escapeValue);
         } else {
             $this->value = (string) $value;
         }

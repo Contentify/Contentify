@@ -32,7 +32,8 @@ class CustomPagesController extends FrontController {
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($customPage->internal and ! $hasAccess) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return;
         }
 
         $customPage->access_counter++;
@@ -54,15 +55,14 @@ class CustomPagesController extends FrontController {
     }
 
     /**
-     * Show the default impressum page that includes
-     * infos about the CMS.
-     * Note: Don't call it "imprint"!
+     * Show the default impressum page that include info about the CMS.
+     * Note: Don not call it "imprint"!
      * 
      * @return void
      */
     public function showImpressum()
     {
-        return $this->show(1, null, true);
+        $this->show(1, null, true);
     }
 
 }

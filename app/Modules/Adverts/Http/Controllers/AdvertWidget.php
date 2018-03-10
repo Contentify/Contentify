@@ -8,7 +8,7 @@ use Config, DB, View, Widget;
 
 class AdvertWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         if (isset($parameters['categoryId'])) {
             $categoryId = $parameters['categoryId'];

@@ -28,6 +28,7 @@ class AdminSlidecatsController extends BackController {
             ],
             'tableRow' => function($slidecat)
             {
+                /** @var Slidecat $slidecat */
                 Hover::modelAttributes($slidecat, ['creator']);
 
                 return [

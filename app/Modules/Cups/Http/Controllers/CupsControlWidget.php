@@ -7,7 +7,7 @@ use View, Widget;
 
 class CupsControlWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         $cup = new Cup;
         $cups = $cup->cupsByUser(user(), true);

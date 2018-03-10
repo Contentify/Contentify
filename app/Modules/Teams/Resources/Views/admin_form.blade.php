@@ -9,8 +9,6 @@
     
     {!! Form::smartSelectRelation('teamcat', trans('app.category'), $modelClass) !!}
 
-    <!--{!! Form::smartTextarea('text', trans('app.text')) !!}-->
-
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
 
     {!! Form::smartImageFile() !!}

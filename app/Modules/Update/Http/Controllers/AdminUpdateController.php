@@ -3,8 +3,14 @@
 namespace App\Modules\Update\Http\Controllers;
 
 use App\Modules\Update\UpdateThread;
+use Contentify\UpdaterInterface;
 use Response, Config, Cache, Exception, BackController;
 
+/**
+ * This class is now deprecated since we use <root>/public/Updater.php instead.
+ *
+ * @deprecated since 2.3
+ */
 class AdminUpdateController extends BackController {
 
     /**

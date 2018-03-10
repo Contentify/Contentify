@@ -11,6 +11,8 @@ class ModuleRoute extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'moduleRoute'; }
+    protected static function getFacadeAccessor() {
+        return 'moduleRoute';
+    }
 
 }

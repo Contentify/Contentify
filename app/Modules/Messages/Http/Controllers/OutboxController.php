@@ -28,6 +28,8 @@ class OutboxController extends FrontController {
             ],
             'tableRow'      => function($message)
             {
+                /** @var Message $message */
+
                 $icon = HTML::fontIcon('close');
                 if ($message->new) {
                     $icon = HTML::fontIcon('check');

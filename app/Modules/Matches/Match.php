@@ -2,7 +2,7 @@
 
 namespace App\Modules\Matches;
 
-use ContentFilter, SoftDeletingTrait, BaseModel;
+use Comment, ContentFilter, SoftDeletingTrait, BaseModel;
 
 class Match extends BaseModel {
 
@@ -64,7 +64,7 @@ class Match extends BaseModel {
     /**
      * Array with the names of available match states.
      *
-     * @var array
+     * @var string[]
      */
     public static $states = [
         self::STATE_OPEN      => 'Open', 
@@ -90,6 +90,10 @@ class Match extends BaseModel {
         });
     }
 
+    /**
+     * @param \Illuminate\Database\Query\Builder $query
+     * @return \Illuminate\Database\Query\Builder
+     */
     public function scopeFilter($query)
     {
         if (ContentFilter::has('team_id')) {
@@ -112,7 +116,7 @@ class Match extends BaseModel {
      * Returns the score of the match with HTML spans which 
      * indicate if the left or the right team is the winner.
      *
-     * @param int $minDigits Minimal number of digits - preprend 0 if result has not enough digits
+     * @param int $minDigits Minimal number of digits - prepend 0 if result has not enough digits
      * @return string The HTML code
      */
     public function scoreCode($minDigits = 2)

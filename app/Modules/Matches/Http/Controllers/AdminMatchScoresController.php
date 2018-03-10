@@ -2,12 +2,14 @@
 
 namespace App\Modules\Matches\Http\Controllers;
 
-use App\Modules\Matches\Match;
 use App\Modules\Matches\MatchScore;
 use Response, View, Input, BackController;
 
 class AdminMatchScoresController extends BackController {
 
+    /**
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     */
     public function store()
     {
         if (! $this->checkAccessCreate()) return Response::make(null, 403);
@@ -23,6 +25,10 @@ class AdminMatchScoresController extends BackController {
         }
     }
 
+    /**
+     * @param int $id The ID of the match score object
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     */
     public function update($id)
     {
         if (! $this->checkAccessUpdate()) return Response::make(null, 403);
@@ -39,13 +45,19 @@ class AdminMatchScoresController extends BackController {
         }
     }
 
+    /**
+     * @param int $id The ID of the match score object
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
-        if (! $this->checkAccessDelete()) return Response::make(null, 403);
+        if (! $this->checkAccessDelete()) {
+            return Response::make(null, 403);
+        }
 
         MatchScore::destroy($id);
 
-        Response::make(null, 200);
+        return Response::make(null, 200);
     }
 
 }

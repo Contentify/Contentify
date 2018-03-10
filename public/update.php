@@ -9,7 +9,7 @@ class Updater {
     /**
      * The number of the version this this updater can update
      */
-    const SUPPORTED_VERSIONS = ['2.1'];
+    const SUPPORTED_VERSIONS = ['2.2'];
 
     /**
      * Error code that will be returned if there was no error
@@ -110,7 +110,7 @@ EOD;
     }
 
     /**
-     * Show a page with infos and ask the user to confirm the update
+     * Show a page with info and ask the user to confirm the update
      * 
      * @return int Error code
      */
@@ -198,11 +198,7 @@ EOD;
     {
         // HOW TO: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
-        $updateQueries = ["ALTER TABLE {$prefix}cups_teams ADD cup_points INT DEFAULT 0",
-            "ALTER TABLE {$prefix}users ADD cup_points INT DEFAULT 0",
-            "INSERT INTO `{$prefix}config` (`name`, `value`, `updated_at`) VALUES
-            ('cups::cup_points', 10, null)",
-            "ALTER TABLE {$prefix}servers ADD description TEXT NULL"];
+        $updateQueries = [/* "ALTER TABLE {$prefix}cups_teams ADD cup_points INT DEFAULT 0" */];
 
         return $updateQueries;
     }

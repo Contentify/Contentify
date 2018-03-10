@@ -28,6 +28,7 @@ class AdminOpponentsController extends BackController {
             ],
             'tableRow' => function($opponent)
             {
+                /** @var Opponent $opponent */
                 Hover::modelAttributes($opponent, ['image', 'creator']);
 
                 $icon = $opponent->country->icon 

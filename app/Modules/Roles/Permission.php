@@ -8,13 +8,13 @@ namespace App\Modules\Roles;
 class Permission {
 
     /**
-     * Namer of the permisson
+     * Name of the permission
      * @var string
      */
     public $name;
 
     /**
-     * Array consiting of pairs (value ID and value)
+     * Array consisting of pairs (value ID and value)
      * @var array
      */
     public $values;

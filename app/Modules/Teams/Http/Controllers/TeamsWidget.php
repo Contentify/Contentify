@@ -7,10 +7,8 @@ use View, Widget;
 
 class TeamsWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
-    	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
-
         if (isset($parameters['categoryId'])) {
             $teams = Team::whereTeamcatId($parameters['categoryId'])->published()->orderBy('title', 'ASC')->get();
         } else {

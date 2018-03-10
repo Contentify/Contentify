@@ -2,7 +2,6 @@
 
 namespace App\Modules\Shouts;
 
-
 use File, BaseModel;
 
 class Shout extends BaseModel {
@@ -28,6 +27,7 @@ class Shout extends BaseModel {
 
         self::saved(function($shout)
         {
+            /** @var self $shout */
             $shout->updateFiles();
         });
     }

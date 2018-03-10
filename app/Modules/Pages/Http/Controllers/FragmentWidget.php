@@ -7,7 +7,7 @@ use Exception, Widget;
 
 class FragmentWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         if (isset($parameters['id'])) {
             $id = $parameters['id'];

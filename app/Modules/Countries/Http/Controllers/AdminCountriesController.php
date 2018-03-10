@@ -4,7 +4,7 @@ namespace App\Modules\Countries\Http\Controllers;
 
 use App\Modules\Countries\Country;
 use ModelHandlerTrait;
-use HTML, File, BackController;
+use HTML, BackController;
 
 class AdminCountriesController extends BackController {
 
@@ -29,6 +29,7 @@ class AdminCountriesController extends BackController {
             ],
             'tableRow' => function($country)
             {
+                /** @var Country $country */
                 if ($country->icon) {
                     $icon = HTML::image(asset($country->uploadPath().$country->icon), $country->title);
                 } else{

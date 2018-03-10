@@ -3,7 +3,7 @@
 namespace App\Modules\Diag\Http\Controllers;
 
 use \Carbon\Carbon;
-use App, Config, View, BackController, File, DB, PDO;
+use App, Config, BackController, File, DB, PDO;
 
 class AdminDiagController extends BackController {
 

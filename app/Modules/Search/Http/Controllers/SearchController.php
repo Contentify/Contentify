@@ -2,7 +2,7 @@
 
 namespace App\Modules\Search\Http\Controllers;
 
-use Input, Redirect, Validator, FrontController;
+use Exception, BadMethodCallException, Input, Redirect, Validator, FrontController;
 
 class SearchController extends FrontController {
 
@@ -37,7 +37,6 @@ class SearchController extends FrontController {
                         try {
                             $results = $instance->globalSearch($subject); // ...and call the search method.
                         } catch(BadMethodCallException $ex) {
-                            die(var_dump($ex));
                             throw new Exception(
                                 'Error: Controller "'.$classPath.'" does not implement the globalSearch() method. '.
                                 'You have to implement this method if you want this controller to be searchable.'

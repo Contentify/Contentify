@@ -65,10 +65,11 @@ class DownloadsController extends FrontController {
      * Perform a download
      * 
      * @param  int $id The id of the download
-     * @return void
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function perform($id)
     {
+        /** @var Download $download */
         $download = Download::findOrFail($id);
 
         $download->access_counter++;

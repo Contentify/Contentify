@@ -4,9 +4,8 @@ namespace App\Modules\Matches\Http\Controllers;
 
 use ModelHandlerTrait;
 use App\Modules\Matches\Match;
-use App\Modules\Matches\MatchScore;
 use App\Modules\Maps\Map;
-use Input, HTML, Hover, BackController;
+use HTML, Hover, BackController;
 
 class AdminMatchesController extends BackController {
 
@@ -37,6 +36,8 @@ class AdminMatchesController extends BackController {
             ],
             'tableRow' => function($match)
             {
+                /** @var Match $match */
+
                 Hover::modelAttributes($match, ['access_counter', 'creator']);
 
                 return [
@@ -57,7 +58,7 @@ class AdminMatchesController extends BackController {
 
         $maps = Map::all();
 
-        $this->layout->page->with('maps');
+        $this->layout->page->with('maps', $maps);
     }
 
 }

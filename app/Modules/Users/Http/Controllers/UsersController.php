@@ -26,6 +26,7 @@ class UsersController extends FrontController {
             ],
             'tableRow' => function($user)
             {
+                /** @var User $user */
                 return [
                     $user->id,
                     raw(link_to('users/'.$user->id.'/'.$user->slug, $user->username)),
@@ -43,6 +44,12 @@ class UsersController extends FrontController {
         ], 'front');
     }
 
+    /**
+     * Show a user
+     *
+     * @param int $id The ID of the user
+     * @return void
+     */
     public function show($id)
     {
         $user = User::whereId($id)->firstOrFail();
@@ -59,6 +66,12 @@ class UsersController extends FrontController {
         $this->pageView('users::show', compact('user'));
     }
 
+    /**
+     * Show a page with a form to edit the user
+     *
+     * @param int $id The ID of the user
+     * @return void
+     */
     public function edit($id)
     {
         if ((! user()) or (user()->id != $id and (! $this->hasAccessUpdate()))) {
@@ -72,13 +85,21 @@ class UsersController extends FrontController {
         $this->pageView('users::form', compact('user'));
     }
 
+
+    /**
+     * Update a user
+     *
+     * @param int $id The ID of the user
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function update($id)
     {
         if ((! user()) or (user()->id != $id and (! $this->hasAccessUpdate()))) {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
 
+        /** @var User $user */
         $user = User::findOrFail($id);
 
         $user->fill(Input::all());
@@ -109,6 +130,13 @@ class UsersController extends FrontController {
         return Redirect::route('users.edit', [$id]);
     }
 
+
+    /**
+     * Show a page with a form to change the user password
+     *
+     * @param int $id The ID of the user
+     * @return void
+     */
     public function editPassword($id)
     {
         if (! $this->checkAuth()) return;
@@ -118,11 +146,18 @@ class UsersController extends FrontController {
         $this->pageView('users::password', compact('user'));
     }
 
+
+    /**
+     * Change the password of a user (if possible)
+     *
+     * @param int $id The ID of the user
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function updatePassword($id)
     {
         if ((! user()) or (user()->id != $id)) {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
 
         /*

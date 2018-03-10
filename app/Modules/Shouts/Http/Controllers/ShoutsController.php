@@ -10,7 +10,7 @@ class ShoutsController extends FrontController {
     /**
      * Stores a shout
      * 
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function store()
     {

@@ -29,6 +29,7 @@ class AdminGamesController extends BackController {
             ],
             'tableRow' => function($game)
             {
+                /** @var Game $game */
                 return [
                     $game->id,
                     raw($game->icon 

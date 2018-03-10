@@ -2,6 +2,7 @@
 
 namespace App\Modules\Cups;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use User, Config, Carbon, BaseModel;
 
 class Match extends BaseModel {
@@ -48,7 +49,7 @@ class Match extends BaseModel {
     /**
      * Relationship: Returns the left participant of this match
      * 
-     * @return Collection
+     * @return BelongsTo
      */
     public function left_participant()
     {
@@ -63,7 +64,7 @@ class Match extends BaseModel {
      * Relationship: Returns the right participant of this match.
      * Be careful, can return null (= wildcard)!
      * 
-     * @return Collection
+     * @return BelongsTo
      */
     public function right_participant()
     {
@@ -140,7 +141,7 @@ class Match extends BaseModel {
      * Returns the match that is next / right to this match (in the bracket).
      * Returns null if the corresponding match is not yet generated (or if this match is the final match).
      * 
-     * @return Match|null
+     * @return self|null
      */
     public function nextMatch()
     {
@@ -151,7 +152,7 @@ class Match extends BaseModel {
      * Returns the "partner" match of this match. Boths matches share the same "next match".
      * Returns null if the corresponding match is not yet generated or not completed.
      * 
-     * * @return Match|null
+     * * @return self|null
      */
     public function partnerMatch()
     {
@@ -168,7 +169,7 @@ class Match extends BaseModel {
      * If this is possible, it returns the match. 
      * If not, it returns null.
      * 
-     * @return Match|null
+     * @return self|null
      */
     public function generateNext()
     {

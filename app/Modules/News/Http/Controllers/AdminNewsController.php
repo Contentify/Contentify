@@ -32,6 +32,7 @@ class AdminNewsController extends BackController {
             ],
             'tableRow'  => function($news)
             {
+                /** @var News $news */
                 Hover::modelAttributes($news, ['access_counter']);
 
                 return [

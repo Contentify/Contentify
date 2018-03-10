@@ -2,7 +2,8 @@
 
 namespace App\Modules\Forums;
 
-use DB, MsgException, SoftDeletingTrait, BaseModel;
+use User, DB, MsgException, SoftDeletingTrait, BaseModel;
+use Illuminate\Database\Query\Builder;
 
 class Forum extends BaseModel {
 
@@ -76,8 +77,9 @@ class Forum extends BaseModel {
 
         self::saved(function($forum)
         {
-            foreach ($forum->forums as $forum) {
-                $forum->refreshChildrensAccesRules(false);
+            /** @var Forum $subForum */
+            foreach ($forum->forums as $subForum) {
+                $subForum->refreshChildrenAccessRules();
             }
         });
     }
@@ -93,13 +95,13 @@ class Forum extends BaseModel {
     }
 
     /**
-     * Refreshes the access rules (internal, related to a team) of all childrens
-     * of a forum - and of their childrens and so on.
+     * Refreshes the access rules (internal, related to a team) of all children
+     * of a forum - and of their children and so on.
      * (Note: Sub forums have the same access rules as their parent forums.)
      * 
      * @return void
      */
-    public function refreshChildrensAccesRules()
+    public function refreshChildrenAccessRules()
     {
         /*
          * If the forum is not a root forum, copy access rules of
@@ -113,12 +115,13 @@ class Forum extends BaseModel {
          * Recursive call of this method for all child forums
          */
         foreach ($this->forums as $forum) {
-            $forum->refreshChildrensAccesRules();
+            /** @var Forum $forum */
+            $forum->refreshChildrenAccessRules();
         }
     }
 
     /**
-     * Refreshes the forum's meta infos
+     * Refreshes the forum's meta info
      *
      * @return void
      */
@@ -145,7 +148,7 @@ class Forum extends BaseModel {
 
         /*
          * Every forum has to call the refresh method of its parent forum,
-         * because their meta infos all depend on their child forums.
+         * because their meta info all depend on their child forums.
          * Therefore we do a cascading method call.
          */
         if ($this->forum_id) {
@@ -173,7 +176,7 @@ class Forum extends BaseModel {
      * Select only those forums the user has access to
      *
      * @param Builder   $query  The Eloquent Builder object
-     * @param User      $user   User model or null if it's the current client
+     * @param User|null $user   User model or null if it's the current client
      * @return Builder
      */
     public function scopeIsAccessible($query, $user = null)

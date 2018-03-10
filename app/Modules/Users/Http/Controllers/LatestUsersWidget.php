@@ -6,9 +6,9 @@ use User, View, Widget;
 
 class LatestUsersWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
-    	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
         $users = User::orderBy('created_at', 'DESC')->take($limit)->get();
 

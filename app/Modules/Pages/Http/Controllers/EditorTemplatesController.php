@@ -3,18 +3,20 @@
 namespace App\Modules\Pages\Http\Controllers;
 
 use App\Modules\Pages\Fragment;
-use View, BackController;
+use Response, View, BackController;
 
 class EditorTemplatesController extends BackController {
 
     /**
-     * Returns a template with a select with all editor templates
+     * Returns a template with a HTML select element that includes all editor templates
      * 
-     * @return View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
+        if (! $this->checkAccessUpdate()) {
+            return Response::make(null, 403);
+        }
 
         $templates = Fragment::all();
 
@@ -25,11 +27,13 @@ class EditorTemplatesController extends BackController {
      * Returns an editor template
      * 
      * @param  int  $id The ID of the template
-     * @return View
+     * @return string|\Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
+        if (! $this->checkAccessUpdate()) {
+            return Response::make(null, 403);
+        }
 
         $template = Fragment::findOrFail($id);
 

@@ -3,18 +3,20 @@
 namespace App\Modules\Images\Http\Controllers;
 
 use App\Modules\Images\Image;
-use Input, DB, View, BaseController;
+use Input, Response, View, BaseController;
 
 class EditorImagesController extends BaseController {
 
     /**
      * Returns the latest images
      * 
-     * @return View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
+        if (! $this->checkAccessUpdate()) {
+            return Response::make(null, 403);
+        }
 
         $images = Image::orderBy('created_at', 'desc')->take(9)->get();
 
@@ -25,11 +27,13 @@ class EditorImagesController extends BaseController {
     /**
      * Returns images by tags
      * 
-     * @return View
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function search()
     {
-        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
+        if (! $this->checkAccessUpdate()) {
+            return Response::make(null, 403);
+        }
         
         $tag = Input::get('tag');
 

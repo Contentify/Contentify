@@ -11,7 +11,7 @@
 
     {!! Form::smartText('permanent_id', trans('app.id')) !!}
 
-    {!! Form::smartSelect('provider', trans('app.provider'), $modelClass::$providers); !!}
+    {!! Form::smartSelect('provider', trans('app.provider'), $modelClass::$providers) !!}
 
     {!! Form::actions() !!}
 {!! Form::close() !!}

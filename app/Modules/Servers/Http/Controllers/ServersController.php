@@ -3,7 +3,7 @@
 namespace App\Modules\Servers\Http\Controllers;
 
 use App\Modules\Servers\Server;
-use Request, Config, URL, FrontController;
+use Config, FrontController;
 
 class ServersController extends FrontController {
 

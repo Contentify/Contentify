@@ -29,6 +29,8 @@ class AdminMapsController extends BackController {
             ],
             'tableRow' => function($map)
             {
+                /** @var Map $map */
+
                 $icon = null;
                 if ($map->image) {
                     Hover::image($map->uploadPath().$map->image);

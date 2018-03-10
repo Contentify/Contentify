@@ -11,6 +11,8 @@ class ContentFilter extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'contentFilter'; }
+    protected static function getFacadeAccessor() {
+        return 'contentFilter';
+    }
 
 }

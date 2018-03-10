@@ -27,7 +27,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
 
         $path = explode('::', $widgetName);
         if (sizeof($path) < 2) {
-            throw new Exception("Error: Invalid widget classname '{$widgetName}'. Module name missing?");
+            throw new Exception("Error: Invalid widget class name '{$widgetName}'. Module name missing?");
         }
 
         $className = 'App\Modules\\'.$path[0].'\Http\Controllers\\'.$path[1].'Widget';
@@ -41,9 +41,9 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Renders an image with a gravatar.
      *
-     * @param string    $email      The email of the gravatar user
-     * @param int       $size       The size of the image
-     * @param string    $default    Default picture (if no picture is found)
+     * @param string $email   The email of the gravatar user
+     * @param int    $size    The size of the image
+     * @param string $default Default picture (if no picture is found)
      * @return string
      */
     public function gravatar($email, $size = 32, $default = 'mm')
@@ -86,9 +86,9 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     }
 
     /**
-     * Renders Open Graph tags
+     * Renders open graph tags
      *
-     * @param  OpenGraph $openGraph The Open Graph instance
+     * @param OpenGraph $openGraph The OpenGraph instance
      * @return string
      */
     public function openGraphTags(OpenGraph $openGraph)
@@ -101,9 +101,9 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Returns HTML code for a table.
      * 
-     * @param array     $header          Array with the table header items (String-Array)
-     * @param array     $rows            Array with all the table rows items (Array containing String-Arrays)
-     * @param bool      $brightenFirst   Enable special look for the items in the first column? (true/false)
+     * @param array $header        Array with the table header items (String-Array)
+     * @param array $rows          Array with all the table rows items (Array containing String-Arrays)
+     * @param bool  $brightenFirst Enable special look for the items in the first column? (true/false)
      * @return string
      */
     public function table($header, $rows, $brightenFirst = true)
@@ -126,7 +126,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
             $code    .= '<tr>';
             $isFirst = true;
             foreach ($row as $value) {
-                if (! is_a($value, 'Raw')) {
+                if (! $value instanceof Raw) {
                     $value = e($value); // Always auto escape except value is marked as raw
                 }
 
@@ -153,11 +153,11 @@ class HtmlBuilder extends OriginalHtmlBuilder {
      * If $image does not contain a path, the path "icons" will be used.
      * If $image has does not start with "http://" an asset link will be created.
      * 
-     * @param  string  $image       The link image
-     * @param  string  $title       The link title
-     * @param  string  $url         The link URL
-     * @param  boolean $showTitle   Show the title text?
-     * @param  array   $attributes  Apply these HTML attributes to the link element
+     * @param  string  $image      The link image
+     * @param  string  $title      The link title
+     * @param  string  $url        The link URL
+     * @param  boolean $showTitle  Show the title text?
+     * @param  array   $attributes Apply these HTML attributes to the link element
      * @return string
      */
     public function imageLink($image, $title, $url, $showTitle = false, $attributes = array())
@@ -185,11 +185,11 @@ class HtmlBuilder extends OriginalHtmlBuilder {
      * Returns HTML code of an "icon link" - a link with an icon (and maybe a text).
      * An icon font will be used to render the icon.
      * 
-     * @param  string  $icon        The name of the icon
-     * @param  string  $url         The link URL
-     * @param  string  $title       The link title
-     * @param  boolean $showTitle   Show the title text?
-     * @param  array   $attributes  Apply these HTML attributes to the link element
+     * @param  string  $icon       The name of the icon
+     * @param  string  $url        The link URL
+     * @param  string  $title      The link title
+     * @param  boolean $showTitle  Show the title text?
+     * @param  array   $attributes Apply these HTML attributes to the link element
      * @return string
      */
     public function iconLink($icon, $title, $url, $showTitle = false, $attributes = array())
@@ -214,10 +214,10 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Returns HTML code for a button element. It may include an icon element and a title text.
      * 
-     * @param  string $title        The button title text
-     * @param  string $url          The URL the button is targeting at
-     * @param  string $icon         The name of the icon. It's rendered by an icon font.
-     * @param  array  $attributes   Apply these HTML attributes to the link element
+     * @param  string $title      The button title text
+     * @param  string $url        The URL the button is targeting at
+     * @param  string $icon       The name of the icon. It's rendered by an icon font.
+     * @param  array  $attributes Apply these HTML attributes to the link element
      * @return string
      */
     public function button($title, $url, $icon = '', $attributes = array())
@@ -293,6 +293,7 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     public function renderBackendNav()
     {
         $backNavGen = new BackNavGen();
+
         return $backNavGen->get();
     }
 
@@ -382,6 +383,8 @@ class HtmlBuilder extends OriginalHtmlBuilder {
     /**
      * Returns an array with the names of all FontAwesome icons
      * that are in the "brand" category.
+     *
+     * @return string[]
      */
     public function getBrandIconNames()
     {

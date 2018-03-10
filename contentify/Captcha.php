@@ -40,8 +40,8 @@ class Captcha {
     /**
      * Checks if the captcha code is valid
      * 
-     * @param   string $code The potential captcha code
-     * @return  bool
+     * @param string $code The potential captcha code
+     * @return bool
      */
     public function check($code) 
     {
@@ -50,11 +50,10 @@ class Captcha {
     }
     
     /**
-     * Checks if the captcha code is valid, 
-     * using Google ReCAPTCHA.
+     * Checks if the captcha code is valid, using Google ReCAPTCHA.
      * 
-     * @param   string $code The potential captcha code
-     * @return  bool
+     * @param string $code The potential captcha code
+     * @return bool
      */
     public function checkReCaptcha($code)
     {

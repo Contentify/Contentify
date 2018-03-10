@@ -3,7 +3,6 @@
 namespace Contentify\Commands;
 
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use FormGenerator;
 
@@ -34,7 +33,7 @@ class MakeFormCommand extends Command {
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return string
      */
     public function fire()
     {

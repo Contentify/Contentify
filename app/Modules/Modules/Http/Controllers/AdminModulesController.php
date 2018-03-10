@@ -4,6 +4,7 @@ namespace App\Modules\Modules\Http\Controllers;
 
 use App\Modules\Modules\Module;
 use Cache, HTML, BackController;
+use ModuleInstaller;
 
 class AdminModulesController extends BackController {
 
@@ -31,6 +32,7 @@ class AdminModulesController extends BackController {
             ],
             'tableRow'      => function($module)
             {
+                /** @var Module $module */
                 if ($module->enabled()) {
                     $enabled = HTML::fontIcon('check');
                 } else {
@@ -57,6 +59,7 @@ class AdminModulesController extends BackController {
             'actions'   => [
                 'install',
                 function($module) {
+                    /** @var Module $module */
                     if ($module->installer() !== false) {
                         return icon_link('plus-circle',
                             trans('app.install'), 
@@ -86,9 +89,10 @@ class AdminModulesController extends BackController {
 
         require_once $installerFile;
 
-        $class      = 'App\modules\\'.$name.'\Installer';
+        $class = 'App\modules\\'.$name.'\Installer';
+        /** @var ModuleInstaller $installer */
         $installer  = new $class($name, $step);
-        $result     = $installer->execute();
+        $result = $installer->execute();
 
         if ($result === false or $result === null) {
             Cache::forever(self::CACHE_KEY.$name, false);

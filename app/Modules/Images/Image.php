@@ -2,7 +2,7 @@
 
 namespace App\Modules\Images;
 
-use Str, BaseModel;
+use Exception, Str, BaseModel;
 
 class Image extends BaseModel {
 
@@ -28,16 +28,14 @@ class Image extends BaseModel {
 
         self::saving(function($image)
         {
+            /** @var self $image */
+
             /*
              * Retrieve the size of the image and save it.
              */
             if ($image->image) {
-                try {
-                    $imgData = getimagesize($image->uploadPath().$image->image);    
-                } catch (Exception $e) {
-                    
-                }
-                
+                $imgData = getimagesize($image->uploadPath().$image->image);
+
                 $image->width = $imgData[0];
                 $image->height = $imgData[1];
             }

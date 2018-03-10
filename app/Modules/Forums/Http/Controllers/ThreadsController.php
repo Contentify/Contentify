@@ -53,7 +53,7 @@ class ThreadsController extends FrontController {
      * Stores a thread
      *
      * @param int $forumId The ID of the forum
-     * @return $this|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store($forumId)
     {
@@ -101,6 +101,7 @@ class ThreadsController extends FrontController {
      * Edits a thread
      * 
      * @param int $id The id of the thread
+     * @return void
      */
     public function edit($id)
     {
@@ -108,7 +109,8 @@ class ThreadsController extends FrontController {
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return;
         }
 
         $this->pageView('forums::root_post_form', compact('forumThread', 'forumPost'));
@@ -118,7 +120,7 @@ class ThreadsController extends FrontController {
      * Updates a thread
      *
      * @param int $id The id of the thread
-     * @return $this|\Illuminate\Http\RedirectResponse|void
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function update($id)
     {
@@ -126,7 +128,8 @@ class ThreadsController extends FrontController {
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return null;
         }
 
         $forumPost->fill(Input::all());
@@ -188,12 +191,13 @@ class ThreadsController extends FrontController {
      * Makes a thread sticky or unsticky
      *
      * @param int $id The ID of the thread
-     * @return \Illuminate\Http\RedirectResponse|void
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function sticky($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return null;
         }
 
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
@@ -209,12 +213,13 @@ class ThreadsController extends FrontController {
      * Closes a thread or reopens it
      *
      * @param int $id The ID of the thread
-     * @return \Illuminate\Http\RedirectResponse|void
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function closed($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return null;
         }
 
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
@@ -230,11 +235,13 @@ class ThreadsController extends FrontController {
      * Shows a form where the user can choose another forum
      *
      * @param int $id The ID of the thread
+     * @return void
      */
     public function getMove($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return null;
         }
 
         $model = ForumThread::isAccessible()->findOrFail($id);
@@ -242,19 +249,20 @@ class ThreadsController extends FrontController {
 
         $forums = Forum::isRoot(false)->get(); 
 
-        return $this->pageView('forums::move_thread', compact('model', 'modelClass', 'forums'));
+        $this->pageView('forums::move_thread', compact('model', 'modelClass', 'forums'));
     }
 
     /**
      * Moves a thread
      *
      * @param int $id The ID of the thread
-     * @return \Illuminate\Http\RedirectResponse|void
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function postMove($id)
     {
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
-            return $this->alertError(trans('app.access_denied'));
+            $this->alertError(trans('app.access_denied'));
+            return null;
         }
         
         $forumThread = ForumThread::isAccessible()->findOrFail($id);

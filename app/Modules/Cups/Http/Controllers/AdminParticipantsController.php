@@ -2,10 +2,11 @@
 
 namespace App\Modules\Cups\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use ModelHandlerTrait;
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
-use Redirect, DB, Input, User, HTML, Hover, BackController;
+use Redirect, DB, Input, User, BackController;
 
 class AdminParticipantsController extends BackController {
 
@@ -13,6 +14,7 @@ class AdminParticipantsController extends BackController {
 
     public function index($cupId)
     {
+        /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
         if ($cup->forTeams()) {
@@ -50,10 +52,10 @@ class AdminParticipantsController extends BackController {
     }
 
     /**
-     * The admin page creates an invalid URL ('/admin/paritcipants') 
-     * so we catch it an redirect to the cups overview page.
+     * The admin page creates an invalid URL ('/admin/participants')
+     * so we catch it and redirect to the cups overview page.
      * 
-     * @return Response
+     * @return RedirectResponse
      */
     public function redirect()
     {

@@ -11,6 +11,8 @@ class Ratings extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'ratings'; }
+    protected static function getFacadeAccessor() {
+        return 'ratings';
+    }
 
 }

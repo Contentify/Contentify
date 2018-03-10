@@ -10,7 +10,7 @@ use DateTime;
  * The old Hitbox class is only in here for compatibility reasons
  * and will be removed in the future.
  *
- * @deprecated
+ * @deprecated since 2.3
  */
 class HitboxApi extends StreamApi
 {

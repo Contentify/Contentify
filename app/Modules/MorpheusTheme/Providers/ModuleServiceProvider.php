@@ -3,7 +3,7 @@
 namespace App\Modules\MorpheusTheme\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App, Lang, View;
+use View;
 
 class ModuleServiceProvider extends ServiceProvider {
 

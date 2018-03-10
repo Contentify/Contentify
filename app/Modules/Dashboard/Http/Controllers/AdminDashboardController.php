@@ -45,7 +45,7 @@ class AdminDashboardController extends BackController {
 
                 Log::warning("Failed to fetch dashboard message feed '".self::FEED_URL."'");
 
-                return;
+                return null;
             }
 
             $messages = json_decode($content);

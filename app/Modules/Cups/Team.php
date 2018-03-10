@@ -2,7 +2,8 @@
 
 namespace App\Modules\Cups;
 
-use DB, BaseModel;
+use User, DB, BaseModel;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Team extends BaseModel {
 
@@ -23,7 +24,7 @@ class Team extends BaseModel {
     /**
      * Relationship: Returns all cups of this team
      * 
-     * @return Collection
+     * @return BelongsToMany
      */
     public function cups() 
     {
@@ -34,7 +35,7 @@ class Team extends BaseModel {
     /**
      * Relationship: Returns all members of this team with their "organizer" attribute.
      * 
-     * @return Collection
+     * @return BelongsToMany
      */
     public function members() 
     {
@@ -44,7 +45,7 @@ class Team extends BaseModel {
     /**
      * Relationship: Returns all members which are organizers.
      * 
-     * @return Collection
+     * @return BelongsToMany
      */
     public function organizers() 
     {
@@ -80,7 +81,7 @@ class Team extends BaseModel {
      * Returns the teams of a given user. Also returns the membership attributes (e. g. "organizer").
      * 
      * @param  User $user
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function teamsOfUser($user)
     {
@@ -139,7 +140,7 @@ class Team extends BaseModel {
      * - If an array with member IDs is passed, remove these members.
      * - If no parameter is passed, remove all(!) members.
      *
-     * @param array $memberIds Array with IDs of them members
+     * @param array $memberIds Array with IDs of the members
      * @return void
      */
     public function removeMembers($memberIds = array())

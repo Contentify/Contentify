@@ -4,7 +4,7 @@ namespace App\Modules\Images\Http\Controllers;
 
 use App\Modules\Images\Image;
 use ModelHandlerTrait;
-use Input, Request, Config, HTML, BackController;
+use Input, BackController;
 
 class AdminImagesController extends BackController {
 

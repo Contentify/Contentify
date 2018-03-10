@@ -35,7 +35,8 @@ abstract class FrontController extends BaseController {
         parent::setupLayout($layoutName);
 
         View::composer($layoutName, function($view)
-        { 
+        {
+            /** @var \Illuminate\View\View $view */
             $view->with('moduleName',       $this->moduleName);
             $view->with('controllerName',   $this->controllerName);
         });

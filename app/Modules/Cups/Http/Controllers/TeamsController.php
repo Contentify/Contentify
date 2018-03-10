@@ -4,7 +4,8 @@ namespace App\Modules\Cups\Http\Controllers;
 
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
-use URL, Response, DB, Validator, Str, Redirect, Input, User, View, FrontController;
+use Illuminate\Http\RedirectResponse;
+use URL, Response, DB, Redirect, Input, User, FrontController;
 
 class TeamsController extends FrontController {
 
@@ -31,6 +32,7 @@ class TeamsController extends FrontController {
      */
     public function show($id)
     {
+        /** @var Team $team */
         $team = Team::findOrFail($id);
 
         $organizer = user() ? $team->isOrganizer(user()) : false;
@@ -45,10 +47,11 @@ class TeamsController extends FrontController {
      * 
      * @param  int $teamId
      * @param  int $userId
-     * @return Response|null
+     * @return \Illuminate\Http\Response|null
      */
     public function organizer($teamId, $userId)
     {
+        /** @var Team $team */
         $team = Team::findOrFail($teamId);
         $user = User::findOrFail($userId); // We do not use the $user var but we use findOrFail() for a check
         $isOrganizer = (bool) Input::get('organizer');
@@ -75,20 +78,21 @@ class TeamsController extends FrontController {
      * User wants to join a team.
      * 
      * @param  int $teamId The team ID
-     * @return Redirect
+     * @return RedirectResponse|null
      */
     public function join($teamId) 
     {
+        /** @var Team $team */
         $team = Team::findOrFail($teamId);
 
         if (! user() or $team->isMember(user())) {
             $this->alertError(trans('app.not_possible'));
-            return;
+            return null;
         }
 
         if ($team->isLocked()) {
             $this->alertError(trans('cups::team_locked'));
-            return;
+            return null;
         }
 
         if ($team->password) {
@@ -96,7 +100,7 @@ class TeamsController extends FrontController {
 
             if ($password === null) {
                 $this->pageView('cups::password_form', compact('team'));
-                return;
+                return null;
             }
 
             if ($password !== $team->password) {
@@ -115,16 +119,17 @@ class TeamsController extends FrontController {
      * 
      * @param  int  $teamId The ID of the team
      * @param  int  $userId The ID of the user
-     * @return void
+     * @return RedirectResponse|null
      */
     public function leave($teamId, $userId)
     {
+        /** @var Team $team */
         $team = Team::findOrFail($teamId);
         $user = User::findOrFail($userId);
 
         if (! user()) {
             $this->alertError(trans('app.no_auth'));
-            return;
+            return null;
         }
 
         $organizer = $team->isOrganizer(user());
@@ -132,14 +137,14 @@ class TeamsController extends FrontController {
         if (user()->id == $userId or $organizer or user()->isSuperAdmin()) {
             if ($team->isLocked()) {
                 $this->alertError(trans('cups::team_locked'));
-                return;
+                return null;
             }
 
             if (sizeof($team->organizers) == 1) {
                 foreach ($team->organizers as $organizer) {
                     if ($organizer->id == $userId) {
                         $this->alertError(trans('cups::min_organizers'));
-                        return;
+                        return null;
                     }
                 }
             }
@@ -150,7 +155,7 @@ class TeamsController extends FrontController {
             return Redirect::to('cups/teams/'.$team->id.'/'.$team->slug);
         } else {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
     }
 
@@ -172,13 +177,13 @@ class TeamsController extends FrontController {
     /**
      * Creates a new team.
      * 
-     * @return Redirect
+     * @return RedirectResponse|null
      */
     public function store()
     {
         if (! user()) {
             $this->alertError(trans('app.no_auth'));
-            return;
+            return null;
         }
 
         $team = new Team;
@@ -213,6 +218,7 @@ class TeamsController extends FrontController {
      */
     public function edit($id)
     {
+        /** @var Team $team */
         $team = Team::findOrFail($id);
         
         if (! user()) {
@@ -232,15 +238,16 @@ class TeamsController extends FrontController {
      * Updates the team
      *
      * @param  int $id The ID of the team
-     * @return Redirect
+     * @return RedirectResponse|null
      */
     public function update($id)
     {
         if (! user()) {
             $this->alertError(trans('app.no_auth'));
-            return;
+            return null;
         }
 
+        /** @var Team $team */
         $team = Team::findOrFail($id);
         $team->title = trim(Input::get('title'));
         $team->createSlug();
@@ -265,20 +272,21 @@ class TeamsController extends FrontController {
      * Deletes a team.
      * 
      * @param  int $id The ID of the team
-     * @return Redirect
+     * @return RedirectResponse|null
      */
     public function delete($id)
     {
         if (! user()) {
             $this->alertError(trans('app.no_auth'));
-            return;
+            return null;
         }
 
+        /** @var Team $team */
         $team = Team::findOrFail($id);
 
         if ($team->isLocked()) {
             $this->alertError(trans('app.team_locked')); 
-            return;
+            return null;
         }
 
         if ($team->isOrganizer(user()) or user()->isSuperAdmin()) {
@@ -287,11 +295,12 @@ class TeamsController extends FrontController {
             $team->createSlug();
             $team->forceSave();
             $team->removeMembers();
+
             $this->alertSuccess(trans('app.successful'));
             return Redirect::to('cups/teams/overview/'.user()->id);
         } else {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }       
     }
 

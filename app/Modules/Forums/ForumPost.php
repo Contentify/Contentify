@@ -2,7 +2,8 @@
 
 namespace App\Modules\Forums;
 
-use DB, BBCode, Cache, SoftDeletingTrait, BaseModel;
+use Illuminate\Database\Query\Builder;
+use User, DB, BBCode, Cache, SoftDeletingTrait, BaseModel;
 
 class ForumPost extends BaseModel {
 
@@ -45,6 +46,7 @@ class ForumPost extends BaseModel {
 
         self::saved(function ($forumPost)
         {
+            /** @var ForumPost $forumPost */
             $forumPost->cache();
         });
     }
@@ -58,8 +60,10 @@ class ForumPost extends BaseModel {
     public function cache()
     {
         $bbcode = new BBCode();
+
         $rendered = $bbcode->render($this->text);
         $rendered = emojis($rendered);
+
         Cache::put(self::CACHE_KEY.$this->id, $rendered, 60);
     }
 

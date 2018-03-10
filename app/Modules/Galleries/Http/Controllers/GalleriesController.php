@@ -27,7 +27,8 @@ class GalleriesController extends FrontController {
     /**
      * Show a gallery
      * 
-     * @param  int $id The id of the gallery
+     * @param  int      $galleryId The ID of the gallery
+     * @param  int|null $imageId   The ID of the image (optional)
      * @return void
      */
     public function show($galleryId, $imageId = null)

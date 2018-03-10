@@ -29,5 +29,5 @@
                 <td>{!! $day->visitors !!}</td>
             </tr>
         @endforeach
-    </tbod>
+    </tbody>
 </table>

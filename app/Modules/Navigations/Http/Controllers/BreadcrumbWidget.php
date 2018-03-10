@@ -2,12 +2,11 @@
 
 namespace App\Modules\Navigations\Http\Controllers;
 
-
 use Exception, View, Widget;
 
 class BreadcrumbWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
         if (isset($parameters['breadcrumb'])) {
             $links = $parameters['breadcrumb'];

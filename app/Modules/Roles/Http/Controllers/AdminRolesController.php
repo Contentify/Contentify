@@ -28,6 +28,7 @@ class AdminRolesController extends BackController {
             ],
             'tableRow' => function($role)
             {
+                /** @var Role $role */
                 return [
                     $role->id,
                     raw(Hover::modelAttributes($role, ['creator'])->pull(), $role->name),

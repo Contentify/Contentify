@@ -18,12 +18,6 @@ abstract class BackController extends BaseController {
      */
     protected $icon = 'file';
 
-    /**
-     * Array with "evil" file extensions
-     * @var string[]
-     */
-    protected $evilFileExtensions = ['php'];
-
     public function __construct()
     {
         parent::__construct();
@@ -42,23 +36,13 @@ abstract class BackController extends BaseController {
                     $contactMessages = link_to('admin/contact', Lang::choice('app.new_messages', $count));
                 }
             }
-            $view->with('contactMessages', $contactMessages);
 
+            /** @var \Illuminate\View\View $view */
+            $view->with('contactMessages', $contactMessages);
             $view->with('moduleName', $this->moduleName);
             $view->with('controllerName', $this->controllerName);
             $view->with('controllerIcon', $this->icon);
         });
-    }
-
-    /**
-     * Returns an array with "evil" file extensions.
-     * Getter for the evilFileExtensions property.
-     *
-     * @return string[]
-     */
-    public function getEvilFileExtensions()
-    {
-        return $this->evilFileExtensions;
     }
     
 }
