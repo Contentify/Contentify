@@ -7,9 +7,9 @@ use View, Widget;
 
 class StreamsWidget extends Widget {
 
-    public function render($parameters = array())
+    public function render(array $parameters = array())
     {
-    	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
         $streams = Stream::orderBy('online', 'DESC')->orderBy('viewers', 'DESC')->take($limit)->get();
 

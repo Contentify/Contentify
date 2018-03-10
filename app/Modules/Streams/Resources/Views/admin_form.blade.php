@@ -11,7 +11,7 @@
 
     {!! Form::smartText('permanent_id', trans('app.id')) !!}
 
-    {!! Form::smartSelect('provider', trans('app.provider'), $modelClass::$providers); !!}
+    {!! Form::smartSelect('provider', trans('app.provider'), $modelClass::$providers) !!}
 
     {!! Form::actions() !!}
 {!! Form::close() !!}
@@ -86,6 +86,15 @@
                     selectProvider(provider);
                 }
             }
+
+            if (providers.smashcast) {
+                var provider = 'smashcast';
+                var result = getStreamId(provider , $(this).val());
+                if (result !== false) {
+                    $('#permanent_id').val(result);
+                    selectProvider(provider);
+                }
+            }
         });
 
         $('#permanent_id').keyup(function()
@@ -96,6 +105,9 @@
                     break;
                 case 'hitbox':
                     $('#url').val('http://www.hitbox.tv/' + $(this).val());
+                    break;
+                case 'smashcast':
+                    $('#url').val('http://www.smashcast.tv/' + $(this).val());
                     break;
             }
         });

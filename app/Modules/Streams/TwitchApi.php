@@ -23,10 +23,10 @@ class TwitchApi extends StreamApi
     const API_KEY_QUERY = '&client_id=';
    
     /**
-     * Returns a JSON object that also includes an array of stream infos
+     * Returns a JSON object that also includes an array of stream info
      * 
-     * @param array $channel Array with objects of type Stream
-     * @return array 
+     * @param Stream[] $streams Array with objects of type Stream
+     * @return \stdClass
      */
     public function getStreams(array $streams)
     {
@@ -48,7 +48,7 @@ class TwitchApi extends StreamApi
     /**
      * Updates the passed streams
      * 
-     * @param  array $streams Array with objects of type Stream
+     * @param Stream[] $streams Array with objects of type Stream
      * @return void
      */
     public function updateStreams(array $streams)

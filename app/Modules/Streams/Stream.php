@@ -2,7 +2,7 @@
 
 namespace App\Modules\Streams;
 
-use SoftDeletingTrait, BaseModel;
+use SoftDeletingTrait, Comment, BaseModel;
 
 class Stream extends BaseModel {
 
@@ -30,7 +30,7 @@ class Stream extends BaseModel {
      * and add JS/HTML handling for the provider.
      * @var array
      */
-    public static $providers = ['twitch' => 'Twitch', 'hitbox' => 'Hitbox'];
+    public static $providers = ['twitch' => 'Twitch', 'hitbox' => 'Hitbox (Deprecated)', 'smashcast' => 'Smashcast'];
 
     /**
      * Count the comments that are related to this video.

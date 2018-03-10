@@ -38,7 +38,12 @@ class UpdateStreamsJob extends Job {
                     $hitboxApi  = new HitboxApi();
                     $hitboxApi->updateStreams($streams);
 
-                    break;                
+                    break;
+                case 'smashcast':
+                    $smashcastApi  = new SmashcastApi();
+                    $smashcastApi->updateStreams($streams);
+
+                    break;
             }
         }
     }

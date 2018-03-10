@@ -29,6 +29,7 @@ class AdminStreamsController extends BackController {
             ],
             'tableRow' => function($stream)
             {
+                /** @var Stream $stream */
                 Hover::modelAttributes($stream, ['creator']);
 
                 return [

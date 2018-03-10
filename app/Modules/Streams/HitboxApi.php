@@ -4,6 +4,14 @@ namespace App\Modules\Streams;
 
 use DateTime;
 
+/**
+ * Note: Hitbox was acquired in 2017 and then became Smashcast.
+ * Therefore a new class has been created: \App\Modules\Streams\SmashcastApi
+ * The old Hitbox class is only in here for compatibility reasons
+ * and will be removed in the future.
+ *
+ * @deprecated
+ */
 class HitboxApi extends StreamApi
 {
 
@@ -21,12 +29,12 @@ class HitboxApi extends StreamApi
      * Prefix URL of the media server (for thumbnails)
      */
     const MEDIA_URL = 'http://edge.vie.hitbox.tv';
-    
+
     /**
      * Returns a JSON object that also includes an array of stream infos
-     * 
-     * @param array $channel Array with objects of type Stream
-     * @return array 
+     *
+     * @param Stream[] $streams Array with objects of type Stream
+     * @return \stdClass
      */
     public function getStreams(array $streams)
     {
@@ -39,14 +47,14 @@ class HitboxApi extends StreamApi
         }
 
         $response = $this->apiCall(self::URL.self::MEDIA_LIST.$list);
-        
+
         return $response;
     }
 
     /**
      * Updates the passed streams
-     * 
-     * @param  array $streams Array with objects of type Stream
+     *
+     * @param Stream[] $streams Array with objects of type Stream
      * @return void
      */
     public function updateStreams(array $streams)
