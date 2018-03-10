@@ -4,7 +4,8 @@ namespace Contentify;
 
 use Sentinel, Group;
 
-abstract class ModuleInstaller {
+abstract class ModuleInstaller
+{
 
     /**
      * The name of the module

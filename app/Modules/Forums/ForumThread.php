@@ -5,7 +5,8 @@ namespace App\Modules\Forums;
 use User, DB, SoftDeletingTrait, BaseModel;
 use Illuminate\Database\Eloquent\Builder;
 
-class ForumThread extends BaseModel {
+class ForumThread extends BaseModel
+{
 
     use SoftDeletingTrait;
 

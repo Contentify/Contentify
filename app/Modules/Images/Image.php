@@ -4,7 +4,8 @@ namespace App\Modules\Images;
 
 use Exception, Str, BaseModel;
 
-class Image extends BaseModel {
+class Image extends BaseModel
+{
 
     protected $fillable = ['tags', 'gallery_id', 'title', 'width', 'height'];
 

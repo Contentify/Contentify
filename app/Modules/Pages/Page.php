@@ -4,7 +4,8 @@ namespace App\Modules\Pages;
 
 use SoftDeletingTrait, StiModel;
 
-class Page extends StiModel {
+class Page extends StiModel
+{
 
     use SoftDeletingTrait;
 

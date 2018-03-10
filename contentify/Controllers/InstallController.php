@@ -4,7 +4,8 @@ namespace Contentify\Controllers;
 
 use Str, File, Input, Validator, Sentinel, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
 
-class InstallController extends Controller {
+class InstallController extends Controller
+{
 
     /**
      * (Relative) path to the file that indicates if the app is installed or not

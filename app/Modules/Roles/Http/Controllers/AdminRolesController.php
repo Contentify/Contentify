@@ -6,7 +6,8 @@ use App\Modules\Roles\Role;
 use ModelHandlerTrait;
 use Hover, BackController;
 
-class AdminRolesController extends BackController {
+class AdminRolesController extends BackController
+{
 
     use ModelHandlerTrait;
 

@@ -4,7 +4,8 @@ namespace App\Modules\Modules;
 
 use File, BaseModel;
 
-class Module extends BaseModel {
+class Module extends BaseModel
+{
 
     protected $fillable = ['title'];
 

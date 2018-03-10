@@ -5,7 +5,8 @@ namespace App\Modules\Pages\Http\Controllers;
 use App\Modules\Pages\Fragment;
 use Response, View, BackController;
 
-class EditorTemplatesController extends BackController {
+class EditorTemplatesController extends BackController
+{
 
     /**
      * Returns a template with a HTML select element that includes all editor templates

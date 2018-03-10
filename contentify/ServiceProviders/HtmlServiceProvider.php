@@ -6,7 +6,8 @@ use Collective\Html\HtmlServiceProvider as OriginalHtmlServiceProvider;
 use Contentify\HtmlBuilder;
 use Contentify\FormBuilder;
 
-class HtmlServiceProvider extends OriginalHtmlServiceProvider {
+class HtmlServiceProvider extends OriginalHtmlServiceProvider
+{
     
     /**
      * Register the HTML builder instance.

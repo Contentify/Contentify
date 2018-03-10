@@ -4,7 +4,8 @@ namespace App\Modules\Adverts;
 
 use SoftDeletingTrait, BaseModel;
 
-class Advertcat extends BaseModel {
+class Advertcat extends BaseModel
+{
 
     use SoftDeletingTrait;
 

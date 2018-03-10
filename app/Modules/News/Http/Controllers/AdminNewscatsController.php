@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\News\Newscat;
 use Hover, BackController;
 
-class AdminNewscatsController extends BackController {
+class AdminNewscatsController extends BackController
+{
 
     use ModelHandlerTrait;
 

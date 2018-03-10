@@ -5,7 +5,8 @@ namespace Contentify;
 use Contentify\Models\UserActivity;
 use Exception, DB;
 
-class UserActivities {
+class UserActivities
+{
 
     /*
      * NOTE: User activities are not the same as permissions!

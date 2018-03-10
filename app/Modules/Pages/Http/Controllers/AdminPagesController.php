@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Pages\Page;
 use Hover, URL, HTML, BackController;
 
-class AdminPagesController extends BackController {
+class AdminPagesController extends BackController
+{
 
     use ModelHandlerTrait;
 

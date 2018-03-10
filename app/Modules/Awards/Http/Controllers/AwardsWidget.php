@@ -5,7 +5,8 @@ namespace App\Modules\Awards\Http\Controllers;
 use App\Modules\Awards\Award;
 use View, Widget;
 
-class AwardsWidget extends Widget {
+class AwardsWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

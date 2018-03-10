@@ -5,7 +5,8 @@ namespace App\Modules\Messages\Http\Controllers;
 use App\Modules\Messages\Message;
 use Cache, User, Input, Redirect, FrontController;
 
-class MessagesController extends FrontController {
+class MessagesController extends FrontController
+{
 
     /**
      * Show a message

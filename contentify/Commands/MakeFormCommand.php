@@ -6,7 +6,8 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use FormGenerator;
 
-class MakeFormCommand extends Command {
+class MakeFormCommand extends Command
+{
 
     /**
      * The console command name.

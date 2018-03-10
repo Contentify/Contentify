@@ -5,7 +5,8 @@ namespace App\Modules\Contact\Http\Controllers;
 use App\Modules\Contact\ContactMessage;
 use Input, Redirect, FrontController;
 
-class ContactController extends FrontController {
+class ContactController extends FrontController
+{
 
     public function index()
     {

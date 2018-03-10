@@ -5,7 +5,8 @@ namespace App\Modules\Streams\Http\Controllers;
 use App\Modules\Streams\Stream;
 use View, Widget;
 
-class StreamsWidget extends Widget {
+class StreamsWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

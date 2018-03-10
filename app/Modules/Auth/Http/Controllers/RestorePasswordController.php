@@ -5,7 +5,8 @@ namespace App\Modules\Auth\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Str, Mail, Sentinel, Reminder, Redirect, Captcha, Input, FrontController;
 
-class RestorePasswordController extends FrontController {
+class RestorePasswordController extends FrontController
+{
     
     public function getIndex()
     {

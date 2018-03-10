@@ -4,7 +4,8 @@ namespace Contentify;
 
 use Session, Str, Request;
 
-class Captcha {
+class Captcha
+{
 
     /**
      * Google ReCAPTCHA API URL

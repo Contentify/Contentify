@@ -5,7 +5,8 @@ namespace App\Modules\Teams\Http\Controllers;
 use App\Modules\Teams\Team;
 use View, Widget;
 
-class TeamsWidget extends Widget {
+class TeamsWidget extends Widget 
+{
 
     public function render(array $parameters = array())
     {

@@ -5,7 +5,8 @@ namespace App\Modules\Galleries\Http\Controllers;
 use App\Modules\Images\Image;
 use DB, View, Widget;
 
-class GalleriesWidget extends Widget {
+class GalleriesWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

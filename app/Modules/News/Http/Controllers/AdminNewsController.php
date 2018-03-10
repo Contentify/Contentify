@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\News\News;
 use Hover, HTML, URL, BackController;
 
-class AdminNewsController extends BackController {
+class AdminNewsController extends BackController
+{
 
     use ModelHandlerTrait;
 

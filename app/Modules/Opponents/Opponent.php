@@ -4,7 +4,8 @@ namespace App\Modules\Opponents;
 
 use SoftDeletingTrait, BaseModel;
 
-class Opponent extends BaseModel {
+class Opponent extends BaseModel
+{
 
     use SoftDeletingTrait;
 

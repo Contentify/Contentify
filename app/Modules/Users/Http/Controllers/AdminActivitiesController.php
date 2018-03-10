@@ -5,7 +5,8 @@ namespace App\Modules\Users\Http\Controllers;
 use ModelHandlerTrait;
 use Redirect, UserActivity, UserActivities, URL, HTML, BackController;
 
-class AdminActivitiesController extends BackController {
+class AdminActivitiesController extends BackController 
+{
 
     use ModelHandlerTrait {
         update as traitUpdate;

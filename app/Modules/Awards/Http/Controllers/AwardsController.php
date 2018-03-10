@@ -5,7 +5,8 @@ namespace App\Modules\Awards\Http\Controllers;
 use App\Modules\Awards\Award;
 use HTML, FrontController;
 
-class AwardsController extends FrontController {
+class AwardsController extends FrontController
+{
 
     public function __construct()
     {

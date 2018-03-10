@@ -4,7 +4,8 @@ namespace App\Modules\Matches;
 
 use BaseModel;
 
-class MatchScore extends BaseModel {
+class MatchScore extends BaseModel
+{
 
     protected $fillable = ['left_score', 'right_score', 'map_id', 'match_id'];
 

@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\Hover;
 
-class HoverServiceProvider extends ServiceProvider {
+class HoverServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

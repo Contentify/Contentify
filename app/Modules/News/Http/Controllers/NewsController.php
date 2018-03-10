@@ -6,7 +6,8 @@ use App\Modules\News\News;
 use App\Modules\Videos\Video;
 use View, Request, DB, URL, HTML, FrontController;
 
-class NewsController extends FrontController {
+class NewsController extends FrontController
+{
 
     public function __construct()
     {

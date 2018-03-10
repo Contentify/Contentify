@@ -8,7 +8,8 @@ use Exception, Str, DB;
  * Use this trait to "extend" Eloquent models so they can create "smart" slugs.
  * Classes that include this trait should (must) inherit from the \Contentify\Models\BaseModel class.
  */
-trait SlugTrait {
+trait SlugTrait
+{
 
     /**
      * Creates a simple slug or a unique slug

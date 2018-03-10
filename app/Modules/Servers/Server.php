@@ -5,7 +5,8 @@ namespace App\Modules\Servers;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
-class Server extends BaseModel {
+class Server extends BaseModel
+{
 
     use SoftDeletingTrait;
 

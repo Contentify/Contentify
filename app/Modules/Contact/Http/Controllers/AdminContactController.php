@@ -6,7 +6,8 @@ use App\Modules\Contact\ContactMessage;
 use ModelHandlerTrait;
 use HTML, BackController;
 
-class AdminContactController extends BackController {
+class AdminContactController extends BackController
+{
 
     use ModelHandlerTrait;
 

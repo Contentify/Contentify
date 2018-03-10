@@ -4,7 +4,8 @@ namespace App\Modules\Games;
 
 use SoftDeletingTrait, BaseModel;
 
-class Game extends BaseModel {
+class Game extends BaseModel
+{
 
     use SoftDeletingTrait;
 

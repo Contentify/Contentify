@@ -10,7 +10,8 @@ use PDO;
 * Modified by Contentify.org
 * GNU General Public License v3 http://www.gnu.org/licenses/gpl.html
 */
-class MySqlDump {
+class MySqlDump
+{
 
     /**
      * DB server

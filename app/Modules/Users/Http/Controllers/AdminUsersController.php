@@ -5,7 +5,8 @@ namespace App\Modules\Users\Http\Controllers;
 use ModelHandlerTrait;
 use Exception, Input, Response, Redirect, Str, Activation, Sentinel, HTML, User, Hover, BackController;
 
-class AdminUsersController extends BackController {
+class AdminUsersController extends BackController 
+{
 
     use ModelHandlerTrait {
         update as traitUpdate;

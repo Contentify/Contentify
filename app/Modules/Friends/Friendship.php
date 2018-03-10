@@ -10,7 +10,8 @@ use Illuminate\Database\Query\Builder;
  * the many-to-many-relationship between users. It's not meant
  * for storing friendships!
  */
-class Friendship extends BaseModel {
+class Friendship extends BaseModel
+{
     
     public $table = 'friends';
 

@@ -4,7 +4,8 @@ namespace App\Modules\Tournaments;
 
 use SoftDeletingTrait, BaseModel;
 
-class Tournament extends BaseModel {
+class Tournament extends BaseModel 
+{
 
     use SoftDeletingTrait;
 

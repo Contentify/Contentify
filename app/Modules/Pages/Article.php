@@ -5,7 +5,8 @@ namespace App\Modules\Pages;
 use Comment, OpenGraph, DB;
 use Illuminate\Database\Eloquent\Builder;
 
-class Article extends Page {
+class Article extends Page
+{
 
     protected $isSubclass = true;
 

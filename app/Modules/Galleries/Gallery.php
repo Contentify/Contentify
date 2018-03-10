@@ -4,7 +4,8 @@ namespace App\Modules\Galleries;
 
 use SoftDeletingTrait, BaseModel;
 
-class Gallery extends BaseModel {
+class Gallery extends BaseModel
+{
 
     use SoftDeletingTrait;
 

@@ -4,7 +4,8 @@ namespace App\Modules\Matches;
 
 use Comment, ContentFilter, SoftDeletingTrait, BaseModel;
 
-class Match extends BaseModel {
+class Match extends BaseModel
+{
 
     use SoftDeletingTrait;
 

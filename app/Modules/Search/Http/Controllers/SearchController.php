@@ -4,7 +4,8 @@ namespace App\Modules\Search\Http\Controllers;
 
 use Exception, BadMethodCallException, Input, Redirect, Validator, FrontController;
 
-class SearchController extends FrontController {
+class SearchController extends FrontController
+{
 
     public function getIndex()
     {

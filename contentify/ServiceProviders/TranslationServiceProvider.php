@@ -5,7 +5,8 @@ namespace Contentify\ServiceProviders;
 use Illuminate\Translation\TranslationServiceProvider as OriginalTranslationServiceProvider;
 use Contentify\Translator;
 
-class TranslationServiceProvider extends OriginalTranslationServiceProvider {
+class TranslationServiceProvider extends OriginalTranslationServiceProvider
+{
 
     public function register()
     {

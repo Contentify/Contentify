@@ -4,7 +4,8 @@ namespace App\Modules\Users\Http\Controllers;
 
 use Validator, Sentinel, Redirect, Input, User, FrontController;
 
-class UsersController extends FrontController {
+class UsersController extends FrontController 
+{
 
     public function __construct()
     {

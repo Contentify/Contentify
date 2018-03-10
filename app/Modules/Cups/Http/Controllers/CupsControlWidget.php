@@ -5,7 +5,8 @@ namespace App\Modules\Cups\Http\Controllers;
 use App\Modules\Cups\Cup;
 use View, Widget;
 
-class CupsControlWidget extends Widget {
+class CupsControlWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

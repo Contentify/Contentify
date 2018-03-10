@@ -4,7 +4,8 @@ namespace App\Modules\Countries;
 
 use SoftDeletingTrait, BaseModel;
 
-class Country extends BaseModel {
+class Country extends BaseModel
+{
 
     use SoftDeletingTrait;
 

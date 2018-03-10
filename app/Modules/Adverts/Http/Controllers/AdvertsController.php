@@ -6,7 +6,8 @@ use App\Modules\Adverts\Advert;
 use Illuminate\Http\RedirectResponse;
 use Redirect, FrontController;
 
-class AdvertsController extends FrontController {
+class AdvertsController extends FrontController
+{
 
     /**
      * Navigate to the URL of an advert

@@ -5,7 +5,8 @@ namespace App\Modules\Streams\Providers;
 use Illuminate\Support\ServiceProvider;
 use App, Lang, View;
 
-class ModuleServiceProvider extends ServiceProvider {
+class ModuleServiceProvider extends ServiceProvider
+{
 
     public function register()
     {

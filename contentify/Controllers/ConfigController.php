@@ -4,7 +4,8 @@ namespace Contentify\Controllers;
 
 use Config, Request, Input, Validator, Redirect, DB;
 
-abstract class ConfigController extends BackController {
+abstract class ConfigController extends BackController
+{
 
     protected $icon = 'cog';
 

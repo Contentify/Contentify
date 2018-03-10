@@ -5,7 +5,8 @@ namespace App\Modules\Cups\Http\Controllers;
 use App\Modules\Cups\Cup;
 use View, Widget;
 
-class FeaturedCupWidget extends Widget {
+class FeaturedCupWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

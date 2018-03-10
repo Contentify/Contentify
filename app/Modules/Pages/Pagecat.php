@@ -4,7 +4,8 @@ namespace App\Modules\Pages;
 
 use SoftDeletingTrait, BaseModel;
 
-class Pagecat extends BaseModel {
+class Pagecat extends BaseModel
+{
 
     use SoftDeletingTrait;
 

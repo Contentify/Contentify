@@ -2,7 +2,8 @@
 
 namespace Contentify\Models;
 
-class ConfigBag {
+class ConfigBag
+{
 
     /**
      * @var string

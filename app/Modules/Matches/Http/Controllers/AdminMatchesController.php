@@ -7,7 +7,8 @@ use App\Modules\Matches\Match;
 use App\Modules\Maps\Map;
 use HTML, Hover, BackController;
 
-class AdminMatchesController extends BackController {
+class AdminMatchesController extends BackController
+{
 
     use ModelHandlerTrait {
         create as traitCreate;

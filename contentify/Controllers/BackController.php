@@ -4,7 +4,8 @@ namespace Contentify\Controllers;
 
 use Lang, DB, View;
 
-abstract class BackController extends BaseController {
+abstract class BackController extends BaseController
+{
 
     /**
      * The layout that should be used for responses.

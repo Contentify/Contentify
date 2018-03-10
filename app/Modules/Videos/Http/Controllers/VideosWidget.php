@@ -5,7 +5,8 @@ namespace App\Modules\Videos\Http\Controllers;
 use App\Modules\Videos\Video;
 use DB, View, Widget;
 
-class VideosWidget extends Widget {
+class VideosWidget extends Widget 
+{
 
     public function render(array $parameters = array())
     {

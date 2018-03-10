@@ -7,7 +7,8 @@ use Cache, View, RuntimeException;
 /**
  * Backend Navigation Generator class
  */
-class BackNavGen {
+class BackNavGen
+{
 
     /**
      * How many navigation categories are there?

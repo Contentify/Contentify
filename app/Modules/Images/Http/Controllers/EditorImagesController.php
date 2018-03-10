@@ -5,7 +5,8 @@ namespace App\Modules\Images\Http\Controllers;
 use App\Modules\Images\Image;
 use Input, Response, View, BaseController;
 
-class EditorImagesController extends BaseController {
+class EditorImagesController extends BaseController
+{
 
     /**
      * Returns the latest images

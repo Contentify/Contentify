@@ -2,7 +2,8 @@
 
 use Session, Sentinel, Closure;
 
-class VerifyAdminAccess {
+class VerifyAdminAccess
+{
 
     /**
      * Handle an incoming request.

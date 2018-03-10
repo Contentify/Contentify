@@ -4,7 +4,8 @@ namespace App\Modules\Users\Http\Controllers;
 
 use DB, Cache, User, View, Widget;
 
-class RandomUserWidget extends Widget {
+class RandomUserWidget extends Widget 
+{
 
     public function render(array $parameters = array())
     {

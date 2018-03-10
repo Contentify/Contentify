@@ -4,7 +4,8 @@ namespace App\Modules\Config;
 
 use BaseModel;
 
-class SettingsBag extends BaseModel {
+class SettingsBag extends BaseModel
+{
 
     // NOTE: "app." is replaced with "app::"!
     protected $fillable = [

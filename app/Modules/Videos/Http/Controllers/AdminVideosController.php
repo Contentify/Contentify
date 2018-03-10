@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Videos\Video;
 use Hover, HTML, BackController;
 
-class AdminVideosController extends BackController {
+class AdminVideosController extends BackController 
+{
 
     use ModelHandlerTrait;
 

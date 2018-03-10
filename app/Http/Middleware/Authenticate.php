@@ -2,7 +2,8 @@
 
 use Session, Sentinel, Closure;
 
-class Authenticate {
+class Authenticate
+{
 
     /**
      * Handle an incoming request.

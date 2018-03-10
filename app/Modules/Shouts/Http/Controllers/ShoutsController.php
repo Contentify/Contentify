@@ -5,7 +5,8 @@ namespace App\Modules\Shouts\Http\Controllers;
 use App\Modules\Shouts\Shout;
 use Input, DB, Response, FrontController;
 
-class ShoutsController extends FrontController {
+class ShoutsController extends FrontController
+{
 
     /**
      * Stores a shout

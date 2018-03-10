@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\ModuleRoute;
 
-class ModuleRouteServiceProvider extends ServiceProvider {
+class ModuleRouteServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

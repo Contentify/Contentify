@@ -8,7 +8,8 @@ use App\Modules\Cups\Match;
 use Illuminate\Http\RedirectResponse;
 use Input, Redirect, FrontController;
 
-class MatchesController extends FrontController {
+class MatchesController extends FrontController
+{
 
     public function __construct()
     {

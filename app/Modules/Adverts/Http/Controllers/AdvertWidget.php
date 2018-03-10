@@ -6,7 +6,8 @@ use App\Modules\Adverts\Advert;
 use App\Modules\Adverts\Advertcat;
 use Config, DB, View, Widget;
 
-class AdvertWidget extends Widget {
+class AdvertWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

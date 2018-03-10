@@ -11,7 +11,8 @@ use Hover, SoftDeletingTrait, Sentinel, BaseModel;
  * This model is only a helper so we can CRUD roles.
  * (See also: Cartalyst\Sentinel\Roles\EloquentRole)
  */
-class Role extends BaseModel {
+class Role extends BaseModel
+{
 
     protected $dates = ['deleted_at'];
 

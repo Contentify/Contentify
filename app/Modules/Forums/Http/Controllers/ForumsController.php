@@ -5,7 +5,8 @@ namespace App\Modules\Forums\Http\Controllers;
 use App\Modules\Forums\Forum;
 use FrontController;
 
-class ForumsController extends FrontController {
+class ForumsController extends FrontController
+{
 
     public function index()
     {

@@ -4,7 +4,8 @@ namespace Contentify\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class ModuleRoute extends Facade {
+class ModuleRoute extends Facade
+{
 
     /**
      * Get the registered name of the component.

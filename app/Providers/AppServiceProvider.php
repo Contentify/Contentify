@@ -4,7 +4,8 @@ use Illuminate\Support\ServiceProvider;
 use Thujohn\Rss\Rss;
 use Jobs, Validator, Blade;
 
-class AppServiceProvider extends ServiceProvider {
+class AppServiceProvider extends ServiceProvider
+{
 
     /**
      * Bootstrap any application services.

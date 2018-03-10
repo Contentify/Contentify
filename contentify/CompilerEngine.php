@@ -4,7 +4,8 @@ namespace Contentify;
  
 use Illuminate\View\Engines\CompilerEngine as OriginalCompilerEngine;
 
-class CompilerEngine extends OriginalCompilerEngine {
+class CompilerEngine extends OriginalCompilerEngine
+{
 
     /**
      * Handle a view exception.

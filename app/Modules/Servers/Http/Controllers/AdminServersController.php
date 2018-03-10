@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Servers\Server;
 use Hover, HTML, BackController;
 
-class AdminServersController extends BackController {
+class AdminServersController extends BackController
+{
 
     use ModelHandlerTrait;
 

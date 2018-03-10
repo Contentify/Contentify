@@ -4,7 +4,8 @@ namespace App\Modules\Teams;
 
 use SoftDeletingTrait, BaseModel;
 
-class Teamcat extends BaseModel {
+class Teamcat extends BaseModel 
+{
 
     use SoftDeletingTrait;
 

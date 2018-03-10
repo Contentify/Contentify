@@ -4,7 +4,8 @@ namespace App\Modules\Streams;
 
 use SoftDeletingTrait, Comment, BaseModel;
 
-class Stream extends BaseModel {
+class Stream extends BaseModel 
+{
 
     use SoftDeletingTrait;
 

@@ -4,7 +4,8 @@ namespace App\Modules\Shouts;
 
 use File, BaseModel;
 
-class Shout extends BaseModel {
+class Shout extends BaseModel
+{
 
     /**
      * Path to the public sub directory

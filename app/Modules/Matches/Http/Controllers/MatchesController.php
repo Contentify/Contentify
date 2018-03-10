@@ -5,7 +5,8 @@ namespace App\Modules\Matches\Http\Controllers;
 use App\Modules\Matches\Match;
 use HTML, FrontController;
 
-class MatchesController extends FrontController {
+class MatchesController extends FrontController
+{
 
     public function __construct()
     {

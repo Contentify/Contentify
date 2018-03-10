@@ -5,7 +5,8 @@ namespace App\Modules\Pages\Http\Controllers;
 use App\Modules\Pages\CustomPage;
 use URL, HTML, FrontController;
 
-class CustomPagesController extends FrontController {
+class CustomPagesController extends FrontController
+{
 
     public function __construct()
     {

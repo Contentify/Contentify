@@ -4,7 +4,8 @@ namespace App\Modules\Comments\Http\Controllers;
 
 use Comment, View, Widget;
 
-class LatestCommentsWidget extends Widget {
+class LatestCommentsWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

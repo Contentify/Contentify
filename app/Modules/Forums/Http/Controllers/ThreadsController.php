@@ -7,7 +7,8 @@ use App\Modules\Forums\ForumThread;
 use App\Modules\Forums\ForumPost;
 use DB, Input, View, Redirect, Request, URL, FrontController;
 
-class ThreadsController extends FrontController {
+class ThreadsController extends FrontController
+{
 
     /**
      * Shows a forum thread

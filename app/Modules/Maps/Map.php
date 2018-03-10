@@ -4,7 +4,8 @@ namespace App\Modules\Maps;
 
 use SoftDeletingTrait, BaseModel;
 
-class Map extends BaseModel {
+class Map extends BaseModel
+{
 
     use SoftDeletingTrait;
 

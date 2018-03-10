@@ -5,7 +5,8 @@ namespace App\Modules\Slides;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
-class Slide extends BaseModel {
+class Slide extends BaseModel
+{
 
     use SoftDeletingTrait;    
 

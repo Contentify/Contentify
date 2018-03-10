@@ -6,7 +6,8 @@ use App\Modules\Config\SettingsBag;
 use Contentify\Vendor\MySqlDump;
 use Artisan, HTML, Str, Redirect, Input, File, DB, Config, BackController;
 
-class AdminConfigController extends BackController {
+class AdminConfigController extends BackController
+{
 
     /**
      * Path and file name of the log file.

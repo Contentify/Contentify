@@ -4,7 +4,8 @@ namespace App\Modules\Visitors\Http\Controllers;
 
 use Cache, DB, View, Widget;
 
-class VisitorsWidget extends Widget {
+class VisitorsWidget extends Widget 
+{
 
     public function render(array $parameters = array())
     {

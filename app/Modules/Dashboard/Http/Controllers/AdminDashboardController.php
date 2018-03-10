@@ -4,7 +4,8 @@ namespace App\Modules\Dashboard\Http\Controllers;
 
 use Log, View, Config, Cache, BackController;
 
-class AdminDashboardController extends BackController {
+class AdminDashboardController extends BackController
+{
 
     /**
      * Feed URL

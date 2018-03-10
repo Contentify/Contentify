@@ -7,7 +7,8 @@ use App\Modules\Cups\Cup;
 use App\Modules\Cups\Match;
 use DB, Carbon, Redirect, HTML, Hover, BackController;
 
-class AdminCupsController extends BackController {
+class AdminCupsController extends BackController
+{
 
     use ModelHandlerTrait;
 

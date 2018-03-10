@@ -6,7 +6,8 @@ use App\Modules\Downloads\Downloadcat;
 use ModelHandlerTrait;
 use Hover, BackController;
 
-class AdminDownloadcatsController extends BackController {
+class AdminDownloadcatsController extends BackController
+{
 
     use ModelHandlerTrait;
 

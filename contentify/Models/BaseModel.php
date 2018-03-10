@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use File, Input, DateAccessorTrait, ValidatingTrait, InterImage, Eloquent, InvalidArgumentException, Exception;
 use Illuminate\Database\Query\Builder;
 
-class BaseModel extends Eloquent {
+class BaseModel extends Eloquent
+{
 
     use ValidatingTrait;
 
@@ -193,7 +194,8 @@ class BaseModel extends Eloquent {
      *
      * Example:
      * <code>
-     * class Order extends BaseModel {
+     * class Order extends BaseModel
+{
      *     protected static $relations = array(
      *         'items'    => array(self::HAS_MANY, 'Item'),
      *         'owner'    => array(self::HAS_ONE, 'User', 'foreignKey' => 'user_id'),

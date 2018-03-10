@@ -5,7 +5,8 @@ namespace App\Modules\Events;
 use Illuminate\Database\Query\Builder;
 use SoftDeletingTrait, BaseModel;
 
-class Event extends BaseModel {
+class Event extends BaseModel
+{
 
     use SoftDeletingTrait;
 

@@ -5,7 +5,8 @@ namespace App\Modules\Teams;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
-class Team extends BaseModel {
+class Team extends BaseModel 
+{
 
     use SoftDeletingTrait;
 

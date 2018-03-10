@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Partners\Partnercat;
 use Hover, BackController;
 
-class AdminPartnercatsController extends BackController {
+class AdminPartnercatsController extends BackController
+{
 
     use ModelHandlerTrait;
 

@@ -5,7 +5,8 @@ namespace Contentify;
 use Illuminate\Support\Facades\Config as LaravelConfig;
 use Cache, DB, DateTime;
 
-class Config extends LaravelConfig {
+class Config extends LaravelConfig
+{
 
     /**
      * Cache key prefix: The corresponding values contain booleans that are true if the

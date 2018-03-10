@@ -6,7 +6,8 @@ use App\Modules\Partners\Partner;
 use Illuminate\Http\RedirectResponse;
 use Redirect, FrontController;
 
-class PartnersController extends FrontController {
+class PartnersController extends FrontController
+{
 
     public function index()
     {

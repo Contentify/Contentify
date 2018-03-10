@@ -3,7 +3,8 @@
 use Illuminate\Support\ServiceProvider;
 use File;
 
-class ConfigServiceProvider extends ServiceProvider {
+class ConfigServiceProvider extends ServiceProvider
+{
 
     /**
      * Overwrite any vendor / package configuration.

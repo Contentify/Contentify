@@ -5,7 +5,8 @@ namespace App\Modules\Adverts;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
-class Advert extends BaseModel {
+class Advert extends BaseModel
+{
 
     use SoftDeletingTrait;
 

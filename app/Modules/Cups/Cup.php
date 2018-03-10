@@ -4,7 +4,8 @@ namespace App\Modules\Cups;
 
 use MsgException, User, DB, BaseModel;
 
-class Cup extends BaseModel {
+class Cup extends BaseModel
+{
 
     /**
      * Array with all possible values of: How many players have to be in a team at least?

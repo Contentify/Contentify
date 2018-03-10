@@ -4,6 +4,7 @@ namespace App\Modules\Example\Http\Controllers;
 
 use BackController;
 
-class AdminExampleController extends BackController {
+class AdminExampleController extends BackController
+{
 
 }

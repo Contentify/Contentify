@@ -6,7 +6,8 @@ use App\Modules\Countries\Country;
 use ModelHandlerTrait;
 use HTML, BackController;
 
-class AdminCountriesController extends BackController {
+class AdminCountriesController extends BackController
+{
 
     use ModelHandlerTrait;
 

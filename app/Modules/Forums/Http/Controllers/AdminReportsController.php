@@ -7,7 +7,8 @@ use App\Modules\Forums\ForumReportCase;
 use ModelHandlerTrait;
 use HTML, BackController;
 
-class AdminReportsController extends BackController {
+class AdminReportsController extends BackController
+{
 
     use ModelHandlerTrait;
 

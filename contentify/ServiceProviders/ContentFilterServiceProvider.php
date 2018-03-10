@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\ContentFilter;
 
-class ContentFilterServiceProvider extends ServiceProvider {
+class ContentFilterServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

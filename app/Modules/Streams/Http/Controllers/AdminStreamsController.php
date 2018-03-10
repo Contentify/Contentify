@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Streams\Stream;
 use Hover, HTML, BackController;
 
-class AdminStreamsController extends BackController {
+class AdminStreamsController extends BackController
+{
 
     use ModelHandlerTrait;
 

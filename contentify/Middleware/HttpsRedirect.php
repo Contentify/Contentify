@@ -4,7 +4,8 @@ namespace Contentify\Middleware;
 
 use Config, Closure;
 
-class HttpsRedirect {
+class HttpsRedirect
+{
 
     /**
      * Handle an incoming request.

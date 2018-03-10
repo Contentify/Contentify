@@ -5,7 +5,8 @@ namespace App\Modules\News;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
-class News extends BaseModel {
+class News extends BaseModel
+{
 
     use SoftDeletingTrait;
 

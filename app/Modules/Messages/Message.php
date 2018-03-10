@@ -4,7 +4,8 @@ namespace App\Modules\Messages;
 
 use BBCode, Cache, User, BaseModel;
 
-class Message extends BaseModel {
+class Message extends BaseModel
+{
 
     const CACHE_KEY = 'messages::texts.';
 

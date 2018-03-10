@@ -7,7 +7,8 @@ use App\Modules\Cups\Team;
 use Illuminate\Http\RedirectResponse;
 use URL, Response, DB, Redirect, Input, User, FrontController;
 
-class TeamsController extends FrontController {
+class TeamsController extends FrontController
+{
 
     public function __construct()
     {

@@ -4,7 +4,8 @@ namespace App\Modules\Awards;
 
 use HTML, SoftDeletingTrait, BaseModel;
 
-class Award extends BaseModel {
+class Award extends BaseModel
+{
 
     use SoftDeletingTrait;
 

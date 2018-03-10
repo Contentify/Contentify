@@ -4,7 +4,8 @@ namespace Contentify;
 
 use HTML;
 
-class Hover {
+class Hover
+{
 
     /**
      * The content to display

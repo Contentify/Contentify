@@ -6,7 +6,8 @@ use App\Modules\Maps\Map;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
-class AdminMapsController extends BackController {
+class AdminMapsController extends BackController
+{
 
     use ModelHandlerTrait;
 

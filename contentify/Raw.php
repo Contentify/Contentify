@@ -2,7 +2,8 @@
 
 namespace Contentify;
 
-class Raw {
+class Raw
+{
 
     /**
      * The value to print

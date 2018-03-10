@@ -5,7 +5,8 @@ namespace Contentify;
 use Paginator, Session, HTML, URL, DB, Log, BaseModel, BaseController, UserActivities, Input, File, Redirect, InterImage;
 use Closure, Exception;
 
-class ModelHandler {
+class ModelHandler
+{
 
     /**
      * @var BaseController

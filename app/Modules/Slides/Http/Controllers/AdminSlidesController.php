@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Slides\Slide;
 use HTML, Hover, BackController;
 
-class AdminSlidesController extends BackController {
+class AdminSlidesController extends BackController
+{
 
     use ModelHandlerTrait;
 

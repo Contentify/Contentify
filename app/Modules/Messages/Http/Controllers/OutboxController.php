@@ -5,7 +5,8 @@ namespace App\Modules\Messages\Http\Controllers;
 use App\Modules\Messages\Message;
 use HTML, FrontController;
 
-class OutboxController extends FrontController {
+class OutboxController extends FrontController
+{
 
     public function __construct()
     {

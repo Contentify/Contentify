@@ -5,7 +5,8 @@ namespace App\Modules\Matches\Http\Controllers;
 use App\Modules\Matches\Match;
 use View, Widget, DB;
 
-class UpcomingMatchesWidget extends Widget {
+class UpcomingMatchesWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

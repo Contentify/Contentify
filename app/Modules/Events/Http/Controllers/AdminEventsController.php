@@ -6,7 +6,8 @@ use App\Modules\Events\Event;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
-class AdminEventsController extends BackController {
+class AdminEventsController extends BackController
+{
 
     use ModelHandlerTrait;
 

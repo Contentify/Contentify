@@ -5,7 +5,8 @@ namespace Contentify\Models;
 use Contentify\Vendor\MySqlDump;
 use Config, Job;
 
-class BackupDatabaseJob extends Job {
+class BackupDatabaseJob extends Job
+{
 
     protected $timeSpan = 1440; // 60 minutes * 24 = 24h (once per day)
 

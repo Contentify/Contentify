@@ -4,7 +4,8 @@ namespace App\Modules\Slides;
 
 use SoftDeletingTrait, BaseModel;
 
-class Slidecat extends BaseModel {
+class Slidecat extends BaseModel
+{
 
     use SoftDeletingTrait;
 

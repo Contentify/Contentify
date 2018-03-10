@@ -4,7 +4,8 @@ namespace Contentify;
 
 use Illuminate\Translation\Translator as OriginalTranslator;
 
-class Translator extends OriginalTranslator {
+class Translator extends OriginalTranslator
+{
 
     /**
      * {@inheritdoc}

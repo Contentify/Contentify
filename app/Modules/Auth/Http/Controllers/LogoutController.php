@@ -4,7 +4,8 @@ namespace App\Modules\Auth\Http\Controllers;
 
 use Sentinel, FrontController;
 
-class LogoutController extends FrontController {
+class LogoutController extends FrontController
+{
 
     public function getIndex()
     {

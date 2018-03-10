@@ -5,7 +5,8 @@ namespace App\Modules\Videos\Http\Controllers;
 use App\Modules\Videos\Video;
 use Config, URL, FrontController;
 
-class VideosController extends FrontController {
+class VideosController extends FrontController 
+{
 
     public function __construct()
     {

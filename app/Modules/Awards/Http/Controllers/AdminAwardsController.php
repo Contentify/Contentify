@@ -6,7 +6,8 @@ use App\Modules\Awards\Award;
 use ModelHandlerTrait;
 use BackController;
 
-class AdminAwardsController extends BackController {
+class AdminAwardsController extends BackController
+{
 
     use ModelHandlerTrait;
 

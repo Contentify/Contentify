@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Opponents\Opponent;
 use HTML, Hover, BackController;
 
-class AdminOpponentsController extends BackController {
+class AdminOpponentsController extends BackController
+{
 
     use ModelHandlerTrait;
 

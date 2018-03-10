@@ -11,7 +11,8 @@ use Response, Config, Cache, Exception, BackController;
  *
  * @deprecated since 2.3
  */
-class AdminUpdateController extends BackController {
+class AdminUpdateController extends BackController 
+{
 
     /**
      * Base of the URL to the updater file.

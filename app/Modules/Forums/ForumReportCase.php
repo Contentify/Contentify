@@ -6,7 +6,8 @@ use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumPost;
 use Carbon, DB, BaseModel;
 
-class ForumReportCase extends BaseModel {
+class ForumReportCase extends BaseModel
+{
 
     protected $fillable = ['index', 'post_id', 'report_counter'];
 

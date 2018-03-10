@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Teams\Team;
 use Hover, HTML, BackController;
 
-class AdminTeamsController extends BackController {
+class AdminTeamsController extends BackController 
+{
 
     use ModelHandlerTrait;
 

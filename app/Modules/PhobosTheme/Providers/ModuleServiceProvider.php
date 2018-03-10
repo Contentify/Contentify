@@ -5,7 +5,8 @@ namespace App\Modules\PhobosTheme\Providers;
 use Illuminate\Support\ServiceProvider;
 use View;
 
-class ModuleServiceProvider extends ServiceProvider {
+class ModuleServiceProvider extends ServiceProvider
+{
 
     protected $namespace = 'phobosTheme';
 

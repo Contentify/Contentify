@@ -10,7 +10,8 @@ use App\Modules\Friends\Friendship;
 use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Activation, Sentinel, Session, Str;
 use Illuminate\Database\Query\Builder;
 
-class User extends SentinelUser implements UserInterface {
+class User extends SentinelUser implements UserInterface
+{
 
     use SlugTrait;
 

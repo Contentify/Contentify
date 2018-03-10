@@ -5,7 +5,8 @@ namespace App\Modules\Streams\Http\Controllers;
 use App\Modules\Streams\Stream;
 use Request, HTML, Config, URL, FrontController;
 
-class StreamsController extends FrontController {
+class StreamsController extends FrontController
+{
 
     public function __construct()
     {

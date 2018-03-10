@@ -6,7 +6,8 @@ use App\Modules\Downloads\Downloadcat;
 use App\Modules\Downloads\Download;
 use File, Response, Redirect, Request, Config, URL, FrontController;
 
-class DownloadsController extends FrontController {
+class DownloadsController extends FrontController
+{
 
     public function __construct()
     {

@@ -5,7 +5,8 @@ namespace App\Modules\Navigations\Http\Controllers;
 use App\Modules\Navigations\Navigation;
 use View, Widget;
 
-class NavigationWidget extends Widget {
+class NavigationWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

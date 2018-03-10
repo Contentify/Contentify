@@ -6,7 +6,8 @@ use App\Modules\Navigations\Navigation;
 use ModelHandlerTrait;
 use Hover, BackController;
 
-class AdminNavigationsController extends BackController {
+class AdminNavigationsController extends BackController
+{
 
     use ModelHandlerTrait;
 

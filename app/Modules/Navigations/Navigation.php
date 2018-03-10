@@ -4,7 +4,8 @@ namespace App\Modules\Navigations;
 
 use SoftDeletingTrait, BaseModel;
 
-class Navigation extends BaseModel {
+class Navigation extends BaseModel
+{
 
     use SoftDeletingTrait;
 

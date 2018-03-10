@@ -4,7 +4,8 @@ namespace Contentify\Controllers;
 
 use Exception, URL, Input, View, Redirect, Config;
 
-abstract class FrontController extends BaseController {
+abstract class FrontController extends BaseController
+{
 
     /**
      * The layout that should be used for responses.

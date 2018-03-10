@@ -5,7 +5,8 @@ namespace App\Modules\Shouts\Http\Controllers;
 use App\Modules\Shouts\Shout;
 use View, Widget;
 
-class ShoutsWidget extends Widget {
+class ShoutsWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

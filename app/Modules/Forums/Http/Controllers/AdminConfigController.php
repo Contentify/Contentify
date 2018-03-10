@@ -4,7 +4,8 @@ namespace App\Modules\Forums\Http\Controllers;
 
 use ConfigController;
 
-class AdminConfigController extends ConfigController {
+class AdminConfigController extends ConfigController
+{
 
     public function __construct()
     {

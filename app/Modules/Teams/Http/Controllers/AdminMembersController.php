@@ -5,7 +5,8 @@ namespace App\Modules\Teams\Http\Controllers;
 use App\Modules\Teams\Team;
 use Redirect, Input, Response, View, HTML, DB, User, BackController;
 
-class AdminMembersController extends BackController {
+class AdminMembersController extends BackController 
+{
 
     protected $icon = 'users';
 

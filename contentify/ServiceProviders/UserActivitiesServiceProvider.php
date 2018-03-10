@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\UserActivities;
 
-class UserActivitiesServiceProvider extends ServiceProvider {
+class UserActivitiesServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

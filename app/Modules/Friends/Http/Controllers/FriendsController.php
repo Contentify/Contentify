@@ -7,7 +7,8 @@ use App\Modules\Messages\Message;
 use Illuminate\Http\RedirectResponse;
 use User, DB, Redirect, FrontController;
 
-class FriendsController extends FrontController {
+class FriendsController extends FrontController
+{
 
     /**
      * Shows the friends of a user

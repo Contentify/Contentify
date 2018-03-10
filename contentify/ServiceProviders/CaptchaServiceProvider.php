@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\Captcha;
 
-class CaptchaServiceProvider extends ServiceProvider {
+class CaptchaServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

@@ -8,7 +8,8 @@ use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
 use Redirect, DB, Input, User, BackController;
 
-class AdminParticipantsController extends BackController {
+class AdminParticipantsController extends BackController
+{
 
     protected $icon = 'users';
 

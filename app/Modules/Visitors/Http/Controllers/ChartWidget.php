@@ -5,7 +5,8 @@ namespace App\Modules\Visitors\Http\Controllers;
 use App\Modules\Visitors\Chart;
 use View, Widget;
 
-class ChartWidget extends Widget {
+class ChartWidget extends Widget 
+{
 
     public function render(array $parameters = array())
     {

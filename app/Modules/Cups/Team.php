@@ -5,7 +5,8 @@ namespace App\Modules\Cups;
 use User, DB, BaseModel;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Team extends BaseModel {
+class Team extends BaseModel
+{
 
     public $table = 'cups_teams';
 

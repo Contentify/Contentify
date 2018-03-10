@@ -5,7 +5,8 @@ namespace App\Modules\Downloads\Http\Controllers;
 use App\Modules\Downloads\Download;
 use View, Widget;
 
-class DownloadsWidget extends Widget {
+class DownloadsWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

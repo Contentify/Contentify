@@ -4,7 +4,8 @@ namespace App\Modules\Streams;
 
 use Log;
 
-class StreamApi {
+class StreamApi 
+{
 
     /**
      * Makes the API call

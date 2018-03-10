@@ -4,7 +4,8 @@ namespace App\Modules\Navigations\Http\Controllers;
 
 use Exception, View, Widget;
 
-class BreadcrumbWidget extends Widget {
+class BreadcrumbWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

@@ -2,7 +2,8 @@
 
 namespace Contentify\Controllers;
 
-abstract class Widget {
+abstract class Widget
+{
 
     /**
      * Default limit for DB queries

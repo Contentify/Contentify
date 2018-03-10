@@ -7,7 +7,8 @@ use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumThread;
 use User, Response, Input, Redirect, FrontController;
 
-class PostsController extends FrontController {
+class PostsController extends FrontController
+{
 
     /**
      * Show a single post

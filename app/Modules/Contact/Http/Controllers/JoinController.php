@@ -7,7 +7,8 @@ use App\Modules\Contact\JoinMessage;
 use App\Modules\Teams\Team;
 use Input, Redirect, FrontController;
 
-class JoinController extends FrontController {
+class JoinController extends FrontController
+{
 
     public function index()
     {

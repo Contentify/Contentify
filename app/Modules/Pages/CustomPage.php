@@ -5,7 +5,8 @@ namespace App\Modules\Pages;
 use DB;
 use Illuminate\Database\Eloquent\Builder;
 
-class CustomPage extends Page {
+class CustomPage extends Page
+{
 
     protected $isSubclass = true;
 

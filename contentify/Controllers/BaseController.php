@@ -4,7 +4,8 @@ namespace Contentify\Controllers;
 
 use ModelHandler, Str, Sentinel, OpenGraph, Request, Session, View, Controller, Exception;
 
-abstract class BaseController extends Controller {
+abstract class BaseController extends Controller
+{
 
     /**
      * The name of the module

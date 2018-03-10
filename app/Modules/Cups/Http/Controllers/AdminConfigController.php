@@ -4,7 +4,8 @@ namespace App\Modules\Cups\Http\Controllers;
 
 use ConfigController;
 
-class AdminConfigController extends ConfigController {
+class AdminConfigController extends ConfigController
+{
 
     public function __construct()
     {

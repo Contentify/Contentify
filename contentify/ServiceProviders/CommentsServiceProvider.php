@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\Comments;
 
-class CommentsServiceProvider extends ServiceProvider {
+class CommentsServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

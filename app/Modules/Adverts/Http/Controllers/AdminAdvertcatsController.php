@@ -6,7 +6,8 @@ use App\Modules\Adverts\Advertcat;
 use ModelHandlerTrait;
 use Hover, BackController;
 
-class AdminAdvertcatsController extends BackController {
+class AdminAdvertcatsController extends BackController
+{
 
     use ModelHandlerTrait;
 

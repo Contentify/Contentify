@@ -5,7 +5,8 @@ namespace App\Modules\Matches\Http\Controllers;
 use App\Modules\Matches\MatchScore;
 use Response, View, Input, BackController;
 
-class AdminMatchScoresController extends BackController {
+class AdminMatchScoresController extends BackController
+{
 
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response

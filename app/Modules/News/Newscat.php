@@ -4,7 +4,8 @@ namespace App\Modules\News;
 
 use SoftDeletingTrait, BaseModel;
 
-class Newscat extends BaseModel {
+class Newscat extends BaseModel
+{
 
     use SoftDeletingTrait;
 

@@ -5,7 +5,8 @@ namespace App\Modules\Pages\Http\Controllers;
 use App\Modules\Pages\Article;
 use URL, HTML, FrontController;
 
-class ArticlesController extends FrontController {
+class ArticlesController extends FrontController
+{
 
     public function __construct()
     {

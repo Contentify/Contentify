@@ -5,7 +5,8 @@ namespace Contentify;
 use Illuminate\Pagination\LengthAwarePaginator as OriginalPaginator;
 use Request;
 
-class LengthAwarePaginator extends OriginalPaginator {
+class LengthAwarePaginator extends OriginalPaginator
+{
 
     /**
      * Create a new paginator instance.

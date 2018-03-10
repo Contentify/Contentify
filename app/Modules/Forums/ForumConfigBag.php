@@ -4,7 +4,8 @@ namespace App\Modules\Forums;
 
 use ConfigBag;
 
-class ForumConfigBag extends ConfigBag {
+class ForumConfigBag extends ConfigBag
+{
 
     protected $namespace = 'forums::';
 

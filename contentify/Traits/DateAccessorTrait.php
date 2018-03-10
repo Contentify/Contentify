@@ -10,7 +10,8 @@ use InvalidArgumentException, Carbon, DateTime;
  * Eloquent model class if you are interested in
  * the original methods.
  */
-trait DateAccessorTrait {
+trait DateAccessorTrait
+{
 
     public function freshTimestamp()
     {

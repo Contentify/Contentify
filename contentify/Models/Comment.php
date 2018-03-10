@@ -4,7 +4,8 @@ namespace Contentify\Models;
 
 use Cache, SoftDeletingTrait, BBCode;
 
-class Comment extends BaseModel {
+class Comment extends BaseModel
+{
 
     use SoftDeletingTrait;
 

@@ -7,7 +7,8 @@ use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Modules\Languages\Language;
 use App, User, Str, Sentinel, Input, Session, Config, Redirect, Exception, FrontController;
 
-class LoginController extends FrontController {
+class LoginController extends FrontController
+{
     
     public function getLogin()
     {

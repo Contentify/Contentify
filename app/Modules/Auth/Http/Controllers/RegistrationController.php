@@ -5,7 +5,8 @@ namespace App\Modules\Auth\Http\Controllers;
 use App\Modules\Languages\Language;
 use Response, User, App, Sentinel, Input, Redirect, Captcha, FrontController, Exception, Validator;
 
-class RegistrationController extends FrontController {
+class RegistrationController extends FrontController
+{
 
     /**
      * If set to true, user that register will be

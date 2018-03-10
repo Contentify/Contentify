@@ -5,7 +5,8 @@ namespace App\Modules\Servers\Http\Controllers;
 use App\Modules\Servers\Server;
 use View, Widget;
 
-class ServersWidget extends Widget {
+class ServersWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

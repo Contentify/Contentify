@@ -4,7 +4,8 @@ namespace App\Modules\Streams;
 
 use Job;
 
-class UpdateStreamsJob extends Job {
+class UpdateStreamsJob extends Job 
+{
 
     protected $timeSpan = 5; // Minutes
 

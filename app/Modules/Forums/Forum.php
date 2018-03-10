@@ -5,7 +5,8 @@ namespace App\Modules\Forums;
 use User, DB, MsgException, SoftDeletingTrait, BaseModel;
 use Illuminate\Database\Query\Builder;
 
-class Forum extends BaseModel {
+class Forum extends BaseModel
+{
 
     use SoftDeletingTrait;
 

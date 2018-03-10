@@ -5,7 +5,8 @@ namespace App\Modules\Cups;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use User, Config, Carbon, BaseModel;
 
-class Match extends BaseModel {
+class Match extends BaseModel
+{
 
     public $table = 'cups_matches';
 

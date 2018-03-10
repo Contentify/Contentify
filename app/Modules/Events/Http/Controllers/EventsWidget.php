@@ -5,7 +5,8 @@ namespace App\Modules\Events\Http\Controllers;
 use App\Modules\Events\Event;
 use View, Widget;
 
-class EventsWidget extends Widget {
+class EventsWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

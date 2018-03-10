@@ -9,7 +9,8 @@ use Config, Route;
  *
  * @see \Illuminate\Routing\Router
  */
-class ModuleRoute {
+class ModuleRoute
+{
 
     /**
      * Since Laravel 5.3 we have to manually prefix the names

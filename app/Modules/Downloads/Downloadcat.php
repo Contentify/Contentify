@@ -4,7 +4,8 @@ namespace App\Modules\Downloads;
 
 use SoftDeletingTrait, BaseModel;
 
-class Downloadcat extends BaseModel {
+class Downloadcat extends BaseModel
+{
 
     use SoftDeletingTrait;
 

@@ -4,7 +4,8 @@ namespace App\Modules\Videos;
 
 use Comment, OpenGraph, SoftDeletingTrait, BaseModel;
 
-class Video extends BaseModel {
+class Video extends BaseModel 
+{
 
     use SoftDeletingTrait;
 

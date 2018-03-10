@@ -4,7 +4,8 @@ namespace App\Modules\Users\Http\Controllers;
 
 use User, View, Widget;
 
-class OnlineWidget extends Widget {
+class OnlineWidget extends Widget 
+{
 
     public function render(array $parameters = array())
     {

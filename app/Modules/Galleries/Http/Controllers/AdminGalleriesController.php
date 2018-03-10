@@ -6,7 +6,8 @@ use App\Modules\Galleries\Gallery;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
-class AdminGalleriesController extends BackController {
+class AdminGalleriesController extends BackController
+{
 
     use ModelHandlerTrait;
 

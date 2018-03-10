@@ -2,7 +2,8 @@
 
 namespace Contentify\Models;
 
-class UserActivity extends BaseModel {
+class UserActivity extends BaseModel
+{
 
     protected $fillable = [
         'activity_id', 

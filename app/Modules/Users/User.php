@@ -8,7 +8,8 @@ use BaseModel;
 /**
  * NOTE: This is a helper class that extends the actual user class.
  */
-class User extends BaseUser {
+class User extends BaseUser 
+{
 
     protected $fillable = ['banned', 'relation_roles', 'relation_teams'];
 

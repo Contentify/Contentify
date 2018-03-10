@@ -5,7 +5,8 @@ namespace App\Modules\Events\Http\Controllers;
 use App\Modules\Events\Event;
 use Carbon, View, Widget;
 
-class CalendarWidget extends Widget {
+class CalendarWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

@@ -4,7 +4,8 @@ namespace Contentify;
 
 use DB, View, Response, Input;
 
-class Ratings {
+class Ratings
+{
 
     /**
      * Minimum value for a valid rating (must be <= MAX_RATING)

@@ -5,7 +5,8 @@ namespace App\Modules\Roles;
 /**
  * Super simple helper class that represents role permissions
  */
-class Permission {
+class Permission
+{
 
     /**
      * Name of the permission

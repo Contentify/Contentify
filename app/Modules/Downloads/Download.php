@@ -4,7 +4,8 @@ namespace App\Modules\Downloads;
 
 use Exception, InterImage, File, SoftDeletingTrait, Comment, BaseModel;
 
-class Download extends BaseModel {
+class Download extends BaseModel
+{
 
     use SoftDeletingTrait;
 

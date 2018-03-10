@@ -5,7 +5,8 @@ namespace App\Modules\Events\Http\Controllers;
 use App\Modules\Events\Event;
 use URL, Request, FrontController;
 
-class EventsController extends FrontController {
+class EventsController extends FrontController
+{
 
     public function __construct()
     {

@@ -4,7 +4,8 @@ namespace App\Modules\Auth\Http\Controllers;
 
 use View, Widget;
 
-class LoginWidget extends Widget {
+class LoginWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

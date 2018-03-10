@@ -6,7 +6,8 @@ use App\Modules\Forums\Forum;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
-class AdminForumsController extends BackController {
+class AdminForumsController extends BackController
+{
 
     use ModelHandlerTrait { 
         create as traitCreate;

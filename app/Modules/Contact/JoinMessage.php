@@ -7,7 +7,8 @@ use BaseModel;
 /**
  * This is only a helper model for validation.
  */
-class JoinMessage extends BaseModel {
+class JoinMessage extends BaseModel
+{
 
     protected $fillable = ['username', 'email', 'team_id', 'role', 'text'];
 

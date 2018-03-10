@@ -2,7 +2,8 @@
 
 namespace App\Modules\Pages;
 
-class Fragment extends Page {
+class Fragment extends Page
+{
 
     protected $isSubclass = true;
 

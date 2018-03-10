@@ -4,7 +4,8 @@ namespace App\Modules\Cups;
 
 use ConfigBag;
 
-class CupConfigBag extends ConfigBag {
+class CupConfigBag extends ConfigBag
+{
 
     protected $namespace = 'cups::';
 

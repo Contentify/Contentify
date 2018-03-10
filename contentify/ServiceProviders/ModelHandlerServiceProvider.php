@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\ModelHandler;
 
-class ModelHandlerServiceProvider extends ServiceProvider {
+class ModelHandlerServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

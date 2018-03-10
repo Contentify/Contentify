@@ -4,7 +4,8 @@ namespace App\Modules\Forums;
 
 use BaseModel;
 
-class ForumReport extends BaseModel {
+class ForumReport extends BaseModel
+{
 
     protected $dates = ['deleted_at'];
 

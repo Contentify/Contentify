@@ -4,7 +4,8 @@ namespace Contentify\Middleware;
 
 use DB, Session, Carbon, App, File, Lang, Closure;
 
-class UpdateUser {
+class UpdateUser
+{
 
     /**
      * Handle an incoming request.

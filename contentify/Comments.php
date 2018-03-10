@@ -4,7 +4,8 @@ namespace Contentify;
 
 use View, Response, Comment, Input, Request;
 
-class Comments {
+class Comments
+{
 
     /**
      * Directly outputs comments and the comment form.

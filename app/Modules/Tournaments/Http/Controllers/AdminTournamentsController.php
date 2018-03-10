@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Tournaments\Tournament;
 use Hover, BackController;
 
-class AdminTournamentsController extends BackController {
+class AdminTournamentsController extends BackController 
+{
 
     use ModelHandlerTrait;
 

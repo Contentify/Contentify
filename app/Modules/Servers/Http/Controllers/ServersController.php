@@ -5,7 +5,8 @@ namespace App\Modules\Servers\Http\Controllers;
 use App\Modules\Servers\Server;
 use Config, FrontController;
 
-class ServersController extends FrontController {
+class ServersController extends FrontController
+{
 
     public function __construct()
     {

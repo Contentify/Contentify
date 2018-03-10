@@ -5,7 +5,8 @@ namespace App\Modules\News\Http\Controllers;
 use App\Modules\News\News;
 use View, Widget;
 
-class NewsWidget extends Widget {
+class NewsWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

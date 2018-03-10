@@ -4,7 +4,8 @@ namespace App\Modules\Languages;
 
 use Exception, BaseModel;
 
-class Language extends BaseModel {
+class Language extends BaseModel
+{
 
     protected $fillable = ['title', 'code'];
 

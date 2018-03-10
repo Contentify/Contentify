@@ -4,7 +4,8 @@ namespace Contentify;
 
 use Input;
 
-class ContentFilter {
+class ContentFilter
+{
 
     /**
      * True if the content filter exists

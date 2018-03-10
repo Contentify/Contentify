@@ -6,7 +6,8 @@ use App\Modules\Games\Game;
 use ModelHandlerTrait;
 use Hover, HTML, BackController;
 
-class AdminGamesController extends BackController {
+class AdminGamesController extends BackController
+{
 
     use ModelHandlerTrait;
 

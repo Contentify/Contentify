@@ -4,7 +4,8 @@ namespace Contentify;
 
 use Lang, DB, View;
 
-class FormGenerator {
+class FormGenerator
+{
 
     /**
      * True if form has to handle file uploads

@@ -6,7 +6,8 @@ use App\Modules\Images\Image;
 use ModelHandlerTrait;
 use Input, BackController;
 
-class AdminImagesController extends BackController {
+class AdminImagesController extends BackController
+{
 
     use ModelHandlerTrait;
 

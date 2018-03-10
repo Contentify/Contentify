@@ -6,7 +6,8 @@ use App\Modules\Slides\Slide;
 use App\Modules\Slides\Slidecat;
 use View, Widget;
 
-class SlidesWidget extends Widget {
+class SlidesWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

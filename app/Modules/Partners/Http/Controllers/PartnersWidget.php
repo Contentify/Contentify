@@ -6,7 +6,8 @@ use App\Modules\Partners\Partner;
 use App\Modules\Partners\Partnercat;
 use View, Widget;
 
-class PartnersWidget extends Widget {
+class PartnersWidget extends Widget
+{
 
     public function render(array $parameters = array())
     {

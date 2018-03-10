@@ -4,7 +4,8 @@ namespace Contentify\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class UserActivities extends Facade {
+class UserActivities extends Facade
+{
 
     /**
      * Get the registered name of the component.

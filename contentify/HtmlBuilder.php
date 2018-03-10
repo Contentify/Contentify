@@ -6,7 +6,8 @@ use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
 use Contentify\Controllers\Widget;
 use Exception, OpenGraph, Cache, Session, URL;
 
-class HtmlBuilder extends OriginalHtmlBuilder {
+class HtmlBuilder extends OriginalHtmlBuilder
+{
 
     /**
      * The cache key used in cachedAssetPath()

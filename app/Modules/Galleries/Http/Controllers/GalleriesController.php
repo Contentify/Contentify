@@ -6,7 +6,8 @@ use App\Modules\Images\Image;
 use App\Modules\Galleries\Gallery;
 use Request, Config, URL, FrontController;
 
-class GalleriesController extends FrontController {
+class GalleriesController extends FrontController
+{
 
     public function __construct()
     {

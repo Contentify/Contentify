@@ -6,7 +6,8 @@ use App\Modules\Modules\Module;
 use Cache, HTML, BackController;
 use ModuleInstaller;
 
-class AdminModulesController extends BackController {
+class AdminModulesController extends BackController
+{
 
     const CACHE_KEY = 'modules::installation.';
 

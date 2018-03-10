@@ -4,7 +4,8 @@ namespace App\Modules\Partners;
 
 use SoftDeletingTrait, BaseModel;
 
-class Partnercat extends BaseModel {
+class Partnercat extends BaseModel
+{
 
     use SoftDeletingTrait;
 

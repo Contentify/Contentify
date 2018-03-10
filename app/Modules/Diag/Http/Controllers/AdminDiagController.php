@@ -5,7 +5,8 @@ namespace App\Modules\Diag\Http\Controllers;
 use \Carbon\Carbon;
 use App, Config, BackController, File, DB, PDO;
 
-class AdminDiagController extends BackController {
+class AdminDiagController extends BackController
+{
 
     protected $icon = 'info-circle';
     

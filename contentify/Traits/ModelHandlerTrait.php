@@ -4,7 +4,8 @@ namespace Contentify\Traits;
 
 use ModelHandler;
 
-trait ModelHandlerTrait {
+trait ModelHandlerTrait
+{
 
     /**
      * CRUD: create model

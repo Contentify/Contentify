@@ -4,7 +4,8 @@ namespace App\Modules\Visitors;
 
 use Carbon, DB;
 
-class Chart {
+class Chart 
+{
 
     /**
      * @var string

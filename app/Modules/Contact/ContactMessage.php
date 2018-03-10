@@ -4,7 +4,8 @@ namespace App\Modules\Contact;
 
 use Mail, SoftDeletingTrait, BaseModel, User;
 
-class ContactMessage extends BaseModel {
+class ContactMessage extends BaseModel
+{
 
     use SoftDeletingTrait;
 

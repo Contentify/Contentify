@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Contentify\Ratings;
 
-class RatingsServiceProvider extends ServiceProvider {
+class RatingsServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.

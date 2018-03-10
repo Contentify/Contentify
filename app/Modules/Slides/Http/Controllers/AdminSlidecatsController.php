@@ -6,7 +6,8 @@ use ModelHandlerTrait;
 use App\Modules\Slides\Slidecat;
 use Hover, BackController;
 
-class AdminSlidecatsController extends BackController {
+class AdminSlidecatsController extends BackController
+{
 
     use ModelHandlerTrait;
 
