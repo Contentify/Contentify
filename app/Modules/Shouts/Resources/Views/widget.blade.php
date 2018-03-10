@@ -82,7 +82,7 @@
             if (text != '') {
                 @if (user())
                     var username = '{!! user()->username !!}';
-                    var id = {{user()->id !!};
+                    var id = {!! user()->id !!};
                 @endif
                 
                 var $message = $('<li class="temp"><a class="user" href="' + contentify.baseUrl + 'users/' + id + '">' + username + ':</a><span class="text">' + text + '</span></li>');
