@@ -3,7 +3,7 @@
 namespace App\Modules\Awards\Http\Controllers;
 
 use App\Modules\Awards\Award;
-use HTML, URL, FrontController;
+use HTML, FrontController;
 
 class AwardsController extends FrontController {
 
@@ -28,6 +28,7 @@ class AwardsController extends FrontController {
             ],
             'tableRow'      => function($award)
             {
+                /** @var Award $award */
                 $game = '';
                 if ($award->game->icon) {
                     $game = HTML::image(

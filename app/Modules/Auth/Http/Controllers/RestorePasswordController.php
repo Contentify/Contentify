@@ -2,6 +2,7 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Str, Mail, Sentinel, Reminder, Redirect, Captcha, Input, FrontController;
 
 class RestorePasswordController extends FrontController {
@@ -14,6 +15,8 @@ class RestorePasswordController extends FrontController {
     /**
      * This method will generate a reset password code, save it with the user model
      * and send it to the user's email address.
+     *
+     * @return RedirectResponse|null
      */
     public function postIndex()
     {
@@ -28,7 +31,7 @@ class RestorePasswordController extends FrontController {
 
         if (! $user) {
             $this->alertError(trans('auth::email_invalid'));
-            return;
+            return null;
         }
 
         $reminder = Reminder::create($user); // This will generate a new code
@@ -47,8 +50,8 @@ class RestorePasswordController extends FrontController {
      * This method will check the email and the submitted code (it is included into the URL)
      * and if they pass generate a new password and send it to the user.
      * 
-     * @param  string $email The user's email address
-     * @param  string $code  Reset password code
+     * @param string $email The user's email address
+     * @param string $code  Reset password code
      */
     public function getNew($email, $code)
     {

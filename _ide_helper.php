@@ -11955,22 +11955,6 @@ namespace Illuminate\Foundation {
  
 }
 
-namespace Illuminate\Support { 
-
-    class Str {
-         
-    }
- 
-}
-
-namespace App\Http\Controllers { 
-
-    class Controller {
-         
-    }
- 
-}
-
 namespace Collective\Html { 
 
     class FormFacade {
@@ -13781,6 +13765,17 @@ namespace Contentify {
         public static function offsetUnset($key)
         {
             \Illuminate\Config\Repository::offsetUnset($key);
+        }
+
+        /**
+         * Clear the cache for a given configuration key.
+         *
+         * @param  string  $key The name of the key
+         * @return void
+         */
+        public static function clearCache($key)
+        {
+
         }
          
     }

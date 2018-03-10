@@ -3,7 +3,7 @@
 namespace App\Modules\Comments\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App, Lang, View;
+use Lang, View;
 
 class ModuleServiceProvider extends ServiceProvider {
 

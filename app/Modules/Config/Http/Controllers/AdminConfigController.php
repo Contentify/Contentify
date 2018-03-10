@@ -59,7 +59,9 @@ class AdminConfigController extends BackController {
      */
     public function update($id = null)
     {
-        if (! $this->checkAccessUpdate()) return;
+        if (! $this->checkAccessUpdate()) {
+            return null;
+        }
 
         $settingsBag = new SettingsBag;
         $settingsBag->fill(Input::all());
@@ -116,7 +118,7 @@ class AdminConfigController extends BackController {
 
         ob_start();
 
-        // We tell phpinfo() what infos to show, so we avoid to show the PHP credits:
+        // We tell phpinfo() what info to show, so we avoid to show the PHP credits:
         phpinfo(INFO_GENERAL | INFO_CONFIGURATION | INFO_MODULES | INFO_ENVIRONMENT | INFO_VARIABLES); 
         
         preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);

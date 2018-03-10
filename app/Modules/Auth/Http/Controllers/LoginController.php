@@ -2,6 +2,7 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\Modules\Languages\Language;
 use App, User, Str, Sentinel, Input, Session, Config, Redirect, Exception, FrontController;
@@ -39,7 +40,7 @@ class LoginController extends FrontController {
      * Login with STEAM account
      *
      * @param SteamAuth $steam
-     * @return Redirect
+     * @return RedirectResponse
      * @throws Exception
      */
     public function getSteam(SteamAuth $steam)

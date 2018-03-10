@@ -2,7 +2,7 @@
 
 namespace App\Modules\Contact;
 
-use Mail, Sentinel, SoftDeletingTrait, BaseModel, User;
+use Mail, SoftDeletingTrait, BaseModel, User;
 
 class ContactMessage extends BaseModel {
 
@@ -35,6 +35,7 @@ class ContactMessage extends BaseModel {
         Mail::send('contact::emails.notify', ['msg' => $this], function ($mail) use ($users) {
             $user = $users->pop();
 
+            /** @var \Illuminate\Mail\Message $mail */
             $mail->to($user->email, $user->username);
 
             while ($user = $users->pop()) {

@@ -4,7 +4,7 @@ namespace App\Modules\Contact\Http\Controllers;
 
 use App\Modules\Contact\ContactMessage;
 use ModelHandlerTrait;
-use HTML, View, BackController;
+use HTML, BackController;
 
 class AdminContactController extends BackController {
 
@@ -57,7 +57,7 @@ class AdminContactController extends BackController {
         $msg->new = false;
         $msg->save();
 
-        return $this->pageView('contact::admin_show', compact('msg'));
+        $this->pageView('contact::admin_show', compact('msg'));
     }
 
 }

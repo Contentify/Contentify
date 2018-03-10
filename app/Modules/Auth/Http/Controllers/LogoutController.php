@@ -2,7 +2,7 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
-use View, Sentinel, Input, Session, Redirect, FrontController;
+use Sentinel, FrontController;
 
 class LogoutController extends FrontController {
 

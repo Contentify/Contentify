@@ -79,7 +79,7 @@ class BaseModel extends Eloquent {
         $file = Input::file($fieldName);
 
         if ($file == null and Input::get($fieldName) != '.') {
-            return;
+            return null;
         }
         
         if ($file) {

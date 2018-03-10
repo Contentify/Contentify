@@ -30,6 +30,7 @@ class AdminAwardsController extends BackController {
             ],
             'tableRow' => function($award)
             {
+                /** @var Award $award */
                 return [
                     $award->id,
                     raw($award->positionIcon()),

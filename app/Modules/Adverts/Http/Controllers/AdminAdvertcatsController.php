@@ -28,6 +28,7 @@ class AdminAdvertcatsController extends BackController {
             ],
             'tableRow' => function($advertcat)
             {
+                /** @var Advertcat $advertcat */
                 Hover::modelAttributes($advertcat, ['creator']);
 
                 return [
