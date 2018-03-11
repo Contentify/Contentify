@@ -11,15 +11,16 @@ Contentify is an esports CMS based on the popular Laravel 5.3 framework. Build y
 
 Website: [contentify.org](http://contentify.org/)
 
-### Clone Repository
-
-Clone this repository (`2.3` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
-
-### Download
+### Get the production version
 
 Download it here: [2.3](https://github.com/Contentify/Contentify/releases/tag/v2.3)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+
+### Get the developer version
+
+Clone this repository (`2.3` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
+Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Update
 
@@ -45,15 +46,18 @@ To update from v2.2 to 2.3:
 
 ### Support
 
-You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. Both Contentify 1.x and 2.x have long term support (LTS) that includes bug fixes. 
+You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. 
+Both Contentify 1.x and 2.x have long term support (LTS) that includes bug fixes. 
 
 ### Contribution
 
-Create an issue right here on GitHub whenever you spot a bug. If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
+Create an issue right here on GitHub whenever you spot a bug. 
+If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
 
 #### PHP Coding style
 
-Contentify follows the [PSR-2 Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) with these exceptions:
+Contentify follows the [PSR-2 Coding Style Guide](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) 
+with these exceptions:
 
 * All PHP files MUST NOT end with a single blank line.
 * There CAN be one `use` keyword per declaration. (But we often merge declarations, e. g. `use Crypt, URL, HTML, DB;`)
