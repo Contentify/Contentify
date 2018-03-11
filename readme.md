@@ -24,8 +24,6 @@ Then follow the instructions in the [wiki](https://github.com/Contentify/Content
 
 ### Update
 
-> Important: Contentify now requires at least PHP 5.6.4!
-
 To update from v2.2 to 2.3:
 * Make a backup of your files and your database!
 * Delete these folders in the current Contentify installation: `vendor`, `app`, `contentify`, `resources`
