@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "da8e64304bb741a56e7aaf0e06a7844e",
+    "content-hash": "14df05131ff3ad8aafb3f1702f123b78",
     "packages": [
         {
             "name": "caffeinated/modules",
@@ -274,12 +274,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/open-graph.git",
-                "reference": "c31a4a0abf6c627cf3b0c54d3800cfa710ffa1f8"
+                "reference": "8d07a2999acc6bf8e4c9358e0e5d2ec3bb0eef36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/c31a4a0abf6c627cf3b0c54d3800cfa710ffa1f8",
-                "reference": "c31a4a0abf6c627cf3b0c54d3800cfa710ffa1f8",
+                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/8d07a2999acc6bf8e4c9358e0e5d2ec3bb0eef36",
+                "reference": "8d07a2999acc6bf8e4c9358e0e5d2ec3bb0eef36",
                 "shasum": ""
             },
             "require": {
@@ -289,6 +289,16 @@
                 "nesbot/carbon": "~1.14"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ChrisKonnertz\\OpenGraph\\OpenGraphServiceProvider"
+                    ],
+                    "aliases": {
+                        "OpenGraph": "ChrisKonnertz\\OpenGraph\\OpenGraphFacade"
+                    }
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "ChrisKonnertz\\OpenGraph": "src/"
@@ -308,10 +318,11 @@
                 "laravel",
                 "laravel4",
                 "laravel5",
+                "ogp",
                 "open graph",
                 "opengraph"
             ],
-            "time": "2017-06-16T19:08:21+00:00"
+            "time": "2018-01-21T11:44:55+00:00"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2872,7 +2883,7 @@
             ],
             "authors": [
                 {
-                    "name": "Pádraic Brady",
+                    "name": "Padraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
