@@ -146,10 +146,10 @@ class ModelHandler
         if (is_array($data['dataSource'])) {
             $page = (int) Paginator::resolveCurrentPage();
 
-            if ($page) { // Ensure $page always starts at 0:
+            if ($page) {
                 $page--;
             } else {
-                $page = 0;
+                $page = 0; // Ensure $page always starts at 0
             }
 
             $offset = $page * $perPage;

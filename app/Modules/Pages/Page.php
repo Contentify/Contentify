@@ -13,7 +13,7 @@ class Page extends StiModel
 
     protected $subclassField = 'pagecat_id';
 
-    protected $dates = ['deleted_at, published_at'];
+    protected $dates = ['deleted_at', 'published_at'];
 
     protected $slugable = true;
 
