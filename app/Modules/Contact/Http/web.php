@@ -6,7 +6,7 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::resource('admin/contact', 'AdminContactController', ['only' => ['index', 'show', 'destroy']]);
     ModuleRoute::get(
         'admin/contact/{id}/restore',
-        ['as' => 'admin.contact.restore', 'uses' => 'AdminContactController@restore']
+        ['as' => 'contact.restore', 'uses' => 'AdminContactController@restore']
     );
 });
 

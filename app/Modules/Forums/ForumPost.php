@@ -147,7 +147,7 @@ class ForumPost extends BaseModel
     {
         // Counts the posts before the current post
         $count = DB::table('forum_posts')->whereThreadId($this->thread_id)->whereNull('deleted_at')
-            ->where('created_at', '<', $this->created_at)->orderBy('created_at', 'asc')->count();
+            ->where('created_at', '<', $this->created_at)->count();
 
         $extension = '';
         if ($count >= self::PER_PAGE) {

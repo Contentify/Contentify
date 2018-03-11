@@ -9,14 +9,14 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::resource('admin/forums', 'AdminForumsController');
     ModuleRoute::get(
         'admin/forums/{id}/restore',
-        ['as' => 'admin.forums.restore', 'uses' => 'AdminForumsController@restore']
+        ['as' => 'forums.restore', 'uses' => 'AdminForumsController@restore']
     );
     ModuleRoute::post('admin/forums/search', 'AdminForumsController@search');
 
     ModuleRoute::get('admin/forum-reports',
-        ['as' => 'admin.reports.index', 'uses' => 'AdminReportsController@index']);
+        ['as' => 'reports.index', 'uses' => 'AdminReportsController@index']);
     ModuleRoute::delete('admin/forum-reports/{id}',
-        ['as' => 'admin.reports.destroy', 'uses' => 'AdminReportsController@destroy']);
+        ['as' => 'reports.destroy', 'uses' => 'AdminReportsController@destroy']);
 });
 
 ModuleRoute::get('forums', 'ForumsController@index');

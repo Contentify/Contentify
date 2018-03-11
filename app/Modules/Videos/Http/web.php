@@ -6,7 +6,7 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::resource('admin/videos', 'AdminVideosController');
     ModuleRoute::get(
         'admin/videos/{id}/restore',
-        ['as' => 'admin.videos.restore', 'uses' => 'AdminVideosController@restore']
+        ['as' => 'videos.restore', 'uses' => 'AdminVideosController@restore']
     );
     ModuleRoute::post('admin/videos/search', 'AdminVideosController@search');
 });

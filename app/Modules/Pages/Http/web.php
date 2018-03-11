@@ -6,7 +6,7 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::resource('admin/pages', 'AdminPagesController');
     ModuleRoute::get(
         'admin/pages/{id}/restore',
-        ['as' => 'admin.pages.restore', 'uses' => 'AdminPagesController@restore']
+        ['as' => 'pages.restore', 'uses' => 'AdminPagesController@restore']
     );
     ModuleRoute::post('admin/pages/search', 'AdminPagesController@search');
 });

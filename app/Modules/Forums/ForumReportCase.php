@@ -2,9 +2,7 @@
 
 namespace App\Modules\Forums;
 
-use App\Modules\Forums\ForumReport;
-use App\Modules\Forums\ForumPost;
-use Carbon, DB, BaseModel;
+use DB, BaseModel;
 
 class ForumReportCase extends BaseModel
 {
@@ -12,13 +10,13 @@ class ForumReportCase extends BaseModel
     protected $fillable = ['index', 'post_id', 'report_counter'];
 
     /**
-     * Returns an array with models for all existing modules
+     * Returns an array with bag objects for all existing reports
      * 
-     * @return array
+     * @return ForumReportCase[]
      */
     public static function findAll()
     {
-        $results = DB::table('forum_reports')->select(DB::raw("*, COUNT('id') as report_counter"))
+        $results = DB::table('forum_reports')->select(DB::raw("post_id, COUNT(id) as report_counter, MAX(updated_at) AS updated_at"))
             ->orderBy('created_at', 'desc')->groupBy('post_id')->get();
 
         $forumReportCases = array();
@@ -39,7 +37,7 @@ class ForumReportCase extends BaseModel
 
     public function post()
     {
-        return $this->belongsTo('App\Modules\Forums\ForumPost');
+        return $this->belongsTo('App\Modules\Forums\ForumPost', 'post_id');
     }
 
 }

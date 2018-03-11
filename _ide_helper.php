@@ -11947,14 +11947,6 @@ namespace Illuminate\Support\Facades {
  
 }
 
-namespace Illuminate\Foundation { 
-
-    class Inspiring {
-         
-    }
- 
-}
-
 namespace Collective\Html { 
 
     class FormFacade {

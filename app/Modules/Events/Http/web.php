@@ -6,7 +6,7 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::resource('admin/events', 'AdminEventsController');
     ModuleRoute::get(
         'admin/events/{id}/restore',
-        ['as' => 'admin.events.restore', 'uses' => 'AdminEventsController@restore']
+        ['as' => 'events.restore', 'uses' => 'AdminEventsController@restore']
     );
     ModuleRoute::post('admin/events/search', 'AdminEventsController@search');
 });

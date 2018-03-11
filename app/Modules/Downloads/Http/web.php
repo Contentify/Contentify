@@ -6,14 +6,14 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     ModuleRoute::resource('admin/downloadcats', 'AdminDownloadcatsController');
     ModuleRoute::get(
         'admin/downloadcats/{id}/restore',
-        ['as' => 'admin.downloadcats.restore', 'uses' => 'AdminDownloadcatsController@restore']
+        ['as' => 'downloadcats.restore', 'uses' => 'AdminDownloadcatsController@restore']
     );
     ModuleRoute::post('admin/downloadcats/search', 'AdminDownloadcatsController@search');
 
     ModuleRoute::resource('admin/downloads', 'AdminDownloadsController');
     ModuleRoute::get(
         'admin/downloads/{id}/restore',
-        ['as' => 'admin.downloads.restore', 'uses' => 'AdminDownloadsController@restore']
+        ['as' => 'downloads.restore', 'uses' => 'AdminDownloadsController@restore']
     );
     ModuleRoute::post('admin/downloads/search', 'AdminDownloadsController@search');
 });
