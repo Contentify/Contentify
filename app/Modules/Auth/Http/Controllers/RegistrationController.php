@@ -59,8 +59,8 @@ class RegistrationController extends FrontController
                 'language_id'   => $language->id,
             ], self::AUTO_ACTIVATE);
 
-            $user->createSlug(true, 'username');
-            $user->save();
+            //$user->createSlug(true, 'username'); // TODO remove this - slug is now auto-generated
+            //$user->save();
 
             /*
              * Add user to role "Users"

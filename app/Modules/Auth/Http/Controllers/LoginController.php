@@ -93,7 +93,7 @@ class LoginController extends FrontController
                         'language_id'   => $language->id,
                     ], true); // Auto activate the user
 
-                    $user->createSlug(true, 'username');
+                    //$user->createSlug(true, 'username'); // TODO remove this - slug is now auto-generated
                     $user->email = $info->steamID64.'@nomail.contentify.org'; // Email has to be unique and != null
                     $user->steam_auth_id = $info->steamID64;
                     $user->save();

@@ -104,7 +104,7 @@ class UsersController extends FrontController
         $user = User::findOrFail($id);
 
         $user->fill(Input::all());
-        $user->createSlug(true, 'username');
+        //$user->createSlug(true, 'username'); // TODO remove this - slug is now auto-generated
 
         if (! $user->validate()) {
             return Redirect::route('users.edit', [$id])
