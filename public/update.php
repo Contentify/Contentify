@@ -7,7 +7,7 @@ require __DIR__.'/../AppBridge.php';
 class Updater {
 
     /**
-     * The number of the version this this updater can update
+     * The number of the version this updater can update
      */
     const SUPPORTED_VERSIONS = ['2.2'];
 
