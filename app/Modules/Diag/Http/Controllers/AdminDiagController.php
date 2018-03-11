@@ -8,7 +8,7 @@ use App, Config, BackController, File, DB, PDO;
 class AdminDiagController extends BackController
 {
 
-    protected $icon = 'info-circle';
+    protected $icon = 'heartbeat';
     
     public function getIndex()
     {

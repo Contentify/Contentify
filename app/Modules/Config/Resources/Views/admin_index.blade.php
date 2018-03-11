@@ -1,5 +1,5 @@
 <div class="actions">
-    {!! button(trans('app.object_diag'), url('admin/diag'), 'info-circle') !!}&nbsp;
+    {!! button(trans('app.object_diag'), url('admin/diag'), 'heartbeat') !!}&nbsp;
     {!! button(trans('config::button_info'), url('admin/config/info'), 'info-circle') !!}&nbsp;
     {!! button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') !!}&nbsp;
     {!! button(trans('config::button_dump'), url('admin/config/export'), 'database') !!}&nbsp;
