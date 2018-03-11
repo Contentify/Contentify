@@ -27,10 +27,8 @@ class Image extends BaseModel
     {
         parent::boot();
 
-        self::saving(function($image)
+        self::saving(function(Image $image)
         {
-            /** @var self $image */
-
             /*
              * Retrieve the size of the image and save it.
              */

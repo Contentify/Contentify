@@ -31,15 +31,14 @@ class Download extends BaseModel
     {
         parent::boot();
 
-        self::saving(function($download)
+        self::saving(function(Download $download)
         {
-            /** @var self $download */
             $filename = $download->uploadPath(true).$download->file;
             if (File::isFile($filename)) {
                 $download->file_size = File::size($filename); // Save file size
                 
                 try {
-                    $imgData = getimagesize($filename); // Try to gather infos about the image
+                    $imgData = getimagesize($filename); // Try to gather info about the image
                 } catch (Exception $e) {
 
                 }

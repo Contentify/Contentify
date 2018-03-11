@@ -26,9 +26,8 @@ class Shout extends BaseModel
     {
         parent::boot();
 
-        self::saved(function($shout)
+        self::saved(function(Shout $shout)
         {
-            /** @var self $shout */
             $shout->updateFiles();
         });
     }
