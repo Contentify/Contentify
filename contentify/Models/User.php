@@ -80,8 +80,15 @@ class User extends SentinelUser implements UserInterface
     public static function boot()
     {
         parent::boot();
+
+        self::saving(function(User $user)
+        {
+           if ($user->slug === null) {
+               $user->createSlug(true, 'username');
+           }
+        });
         
-        self::updated(function($user)
+        self::updated(function(User $user)
         {
             /*
              * Update the locale (since its stored in a session variable we need to update it)
