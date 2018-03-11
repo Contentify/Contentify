@@ -2,8 +2,8 @@
 
 namespace App\Modules\Forums;
 
+use Illuminate\Database\Eloquent\Builder;
 use User, DB, MsgException, SoftDeletingTrait, BaseModel;
-use Illuminate\Database\Query\Builder;
 
 class Forum extends BaseModel
 {

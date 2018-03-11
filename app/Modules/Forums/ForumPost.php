@@ -2,7 +2,7 @@
 
 namespace App\Modules\Forums;
 
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use User, DB, BBCode, Cache, SoftDeletingTrait, BaseModel;
 
 class ForumPost extends BaseModel

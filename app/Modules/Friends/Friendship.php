@@ -3,7 +3,7 @@
 namespace App\Modules\Friends;
 
 use BaseModel;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * The Friendship model is a helper model and a representation of

@@ -129,7 +129,7 @@
                         Cup Control
                         <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
                     </h3>
-                    @widget('Cups::CupsControl')
+                    @widget('Events::Calendar')
 
                     <br>
                     <div class="text-center">

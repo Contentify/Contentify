@@ -3,6 +3,7 @@
 namespace App\Modules\Matches;
 
 use Comment, ContentFilter, SoftDeletingTrait, BaseModel;
+use Illuminate\Database\Eloquent\Builder;
 
 class Match extends BaseModel
 {
@@ -92,8 +93,8 @@ class Match extends BaseModel
     }
 
     /**
-     * @param \Illuminate\Database\Query\Builder $query
-     * @return \Illuminate\Database\Query\Builder
+     * @param Builder $query
+     * @return Builder
      */
     public function scopeFilter($query)
     {
