@@ -13,8 +13,8 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
 
     ModuleRoute::get('admin/members', 'AdminMembersController@getIndex');
     ModuleRoute::delete('admin/members/delete/{userId}/{teamId}', 'AdminMembersController@deleteDelete');
-    ModuleRoute::get('admin/members/add/{id}', 'AdminMembersController@add');
-    ModuleRoute::post('admin/members/add/{userId}/{teamId}', 'AdminMembersController@getAdd');
+    ModuleRoute::get('admin/members/add/{id}', 'AdminMembersController@getAdd');
+    ModuleRoute::post('admin/members/add/{userId}/{teamId}', 'AdminMembersController@postAdd');
     ModuleRoute::get('admin/members/edit/{userId}/{teamId}', 'AdminMembersController@getEdit');
     ModuleRoute::post('admin/members/update/{userId}/{teamId}', 'AdminMembersController@postUpdate');
     ModuleRoute::post('admin/members/search', 'AdminMembersController@postSearch');
