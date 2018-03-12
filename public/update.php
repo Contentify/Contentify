@@ -30,7 +30,9 @@ class Updater {
     protected $welcomeText = <<<EOD
 <h1>Contentify Update</h1>
 <p>
-Welcome to the new version %version% of Contentify. <br>
+Welcome to the update to version %version% of Contentify.
+</p>
+<p>
 We recommend to make a database update before you continue.
 </p>
 <p>
@@ -47,9 +49,11 @@ EOD;
     protected $goodbyeText = <<<EOD
 <h1>Contentify updated</h1>
 <p>
-Done! Welcome to version %version% of Contentify! <br>
+Done! Welcome to version %version% of Contentify!
+</p>
+<p>
 For security reasons, delete this file: <br>
-%file%
+<code>%file%</code>
 </p>
 EOD;
 
