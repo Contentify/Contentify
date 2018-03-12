@@ -3,9 +3,10 @@
 namespace App\Modules\Forums\Http\Controllers;
 
 use App\Modules\Forums\ForumPost;
+use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumReportCase;
 use ModelHandlerTrait;
-use HTML, BackController;
+use Redirect, UserActivities, HTML, BackController;
 
 class AdminReportsController extends BackController
 {
@@ -27,10 +28,10 @@ class AdminReportsController extends BackController
             'buttons'       => null,
             'dataSource'    => ForumReportCase::findAll(),
             'tableHead'     => [
-                '#'                                                     => null,
-                trans('app.object_post').' ('.trans('app.text').')'     => null,
-                trans('app.object_reports')                             => null,
-                trans('app.date')                                       => null,
+                '#'                                                   => null,
+                trans('app.object_post').' ('.trans('app.text').')'   => null,
+                trans('app.object_reports')                           => null,
+                trans('app.date')                                     => null,
             ],
             'tableRow' => function($forumReportCase)
             {
@@ -50,6 +51,30 @@ class AdminReportsController extends BackController
             'sortBy'        => 'level',
             'order'         => 'asc'
         ]);
+    }
+
+    /**
+     * Delete all reports of the given post
+     *
+     * @param int $id The ID of the post
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
+    public function destroy($id)
+    {
+        if (! $this->checkAccessDelete()) {
+            return null;
+        }
+
+        $forumReports = ForumReport::wherePostId($id)->get();
+
+        foreach ($forumReports as $forumReport) {
+            $forumReport->forceDelete(); // Finally delete this model
+        }
+
+        UserActivities::addDelete(false, user()->id, ForumReport::class);
+
+        $this->alertFlash(trans('app.deleted', [trans_object('forum_report')]));
+        return Redirect::route('admin.'.strtolower($this->getControllerName()).'.index');
     }
 
 }

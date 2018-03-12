@@ -7,7 +7,7 @@ use DB, BaseModel;
 class ForumReportCase extends BaseModel
 {
 
-    protected $fillable = ['index', 'post_id', 'report_counter'];
+    protected $fillable = ['id', 'index', 'post_id', 'report_counter'];
 
     /**
      * Returns an array with bag objects for all existing reports
@@ -16,12 +16,15 @@ class ForumReportCase extends BaseModel
      */
     public static function findAll()
     {
-        $results = DB::table('forum_reports')->select(DB::raw("post_id, COUNT(id) as report_counter, MAX(updated_at) AS updated_at"))
-            ->orderBy('created_at', 'desc')->groupBy('post_id')->get();
+        $results = DB::table('forum_reports')
+            ->select(DB::raw("post_id, COUNT(id) as report_counter, MAX(updated_at) AS updated_at"))
+            ->orderBy('created_at', 'desc')
+            ->groupBy('post_id')->get();
 
         $forumReportCases = array();
         foreach ($results as $key => $result) {
             $data = [
+                'id'                => $result->post_id, // Use the ID of the post as as pseudo ID for the delete button
                 'index'             => $key + 1,
                 'post_id'           => $result->post_id,
                 'report_counter'    => $result->report_counter,

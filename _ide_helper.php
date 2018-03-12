@@ -14441,35 +14441,38 @@ namespace Contentify\Facades {
         {
             return \Contentify\ModelHandler::edit($id);
         }
-        
+
         /**
          * CRUD: update model
          *
          * @param int $id The id of the model
-         * @static 
-         */ 
+         * @static
+         * @return \Illuminate\Http\RedirectResponse|null
+         */
         public static function update($id)
         {
             return \Contentify\ModelHandler::update($id);
         }
-        
+
         /**
          * CRUD: delete model
          *
          * @param int $id The id of the model
-         * @static 
-         */ 
+         * @static
+         * @return \Illuminate\Http\RedirectResponse|null
+         */
         public static function destroy($id)
         {
             return \Contentify\ModelHandler::destroy($id);
         }
-        
+
         /**
          * CRUD-related: restore model after soft deletion
          *
          * @param int $id The id of the model
-         * @static 
-         */ 
+         * @static
+         * @return \Illuminate\Http\RedirectResponse|null
+         */
         public static function restore($id)
         {
             return \Contentify\ModelHandler::restore($id);

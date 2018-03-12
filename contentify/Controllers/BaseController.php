@@ -381,7 +381,7 @@ abstract class BaseController extends Controller
     /**
      * Generates an index page from a model and $data
      * 
-     * @param  array  $data    Array with information how to build the form. See $defaults for details.
+     * @param  array  $data    Array with information how to build the form. @see $defaults in ModelHandler::index()
      * @param  string $surface Frontend ("front") or backend ("admin")? Default: "admin"
      * @return void
      */

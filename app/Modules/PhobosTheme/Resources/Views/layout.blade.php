@@ -151,7 +151,7 @@
 
                     <br>
                     <div class="text-center">
-                        @widget('Adverts::Advert')
+                        @widget('Shouts::Shouts')
                     </div>
                 </div>
             </aside>

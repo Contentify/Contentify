@@ -648,7 +648,7 @@ class ModelHandler
                         $controller->alertFlash(trans('app.delete_error', [sizeof($dependencies), $name]));
                         return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
                     }
-                }                
+                }
             }
         }
 
