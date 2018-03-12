@@ -3,7 +3,7 @@
         <?php for($i = sizeof($shouts) - 1; $i >= 0; $i--) { 
             $shout = $shouts[$i]; ?>
             <li>
-                <a class="user" href="users/{!! $shout->creator->id !!}">{!! $shout->creator->username !!}:</a><span class="text">{!! $shout->text !!}</span>
+                <a class="user" href="{{ url('users/'.$shout->creator->id) }}">{!! $shout->creator->username !!}:</a><span class="text">{!! $shout->text !!}</span>
             </li>
         <?php } ?>
     </ul>
