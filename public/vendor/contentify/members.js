@@ -102,9 +102,9 @@ $(document).ready(function()
     }
 
     $('td div.data').each(function() {
-        var $td     = $(this).parent();
-        var userId  = $(this).attr('data-user-id');
-        var teams   = JSON.parse($(this).text());
+        var $td    = $(this).parent();
+        var userId = $(this).attr('data-user-id');
+        var teams  = JSON.parse($(this).text());
 
         render($td, userId, teams);
     });

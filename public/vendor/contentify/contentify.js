@@ -7,7 +7,7 @@ $(document).ready(function()
         var framework = this;
 
         /*
-         * Initizalize meta variables
+         * Initialize meta variables
          */
         this.baseUrl    = $('meta[name="base-url"]').attr('content') + '/';
         this.assetUrl   = $('meta[name="asset-url"]').attr('content') + '/';
@@ -29,7 +29,7 @@ $(document).ready(function()
         {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)')
                 .exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
-        }
+        };
 
         /*
          * Add CSRF token
@@ -130,7 +130,7 @@ $(document).ready(function()
          * Creates an HTML alert inside the alert area.
          *
          * @param {String}  type     The alert type e. g. sucess, alert
-         * @param {String}  text     The text that should be shown
+         * @param {String}  title    The text that should be shown
          * @param {Boolean} clearAll If true, this will hide all other alerts
          */
         this.alert = function (type, title, clearAll)
@@ -167,22 +167,22 @@ $(document).ready(function()
         this.alertSuccess = function (title, clearAll)
         {
             framework.alert('success', title, clearAll);
-        }
+        };
 
         this.alertWarning = function (title, clearAll)
         {
             framework.alert('warning', title, clearAll);
-        }
+        };
 
         this.alertError = function (title, clearAll)
         {
             framework.alert('danger', title, clearAll);
-        }        
+        };
 
         this.alertInfo= function (title, clearAll)
         {
             framework.alert('info', title, clearAll);
-        }
+        };
 
         this.alertRequestFailed = function (response)
         {
@@ -200,7 +200,7 @@ $(document).ready(function()
             }
 
             framework.alertError(text);
-        }
+        };
 
         /**
          * Adds a Bootstrap modal dialogue.
@@ -246,7 +246,7 @@ $(document).ready(function()
             $('body').append($modal);
 
             $modal.modal();
-        }
+        };
 
         /**
          * Hides and destroys the modal dialogue
@@ -256,10 +256,10 @@ $(document).ready(function()
         {
             $('.modal').modal('hide');
 
-            $('.modal').on('hidden.bs.modal', function (event) {
+            $('.modal').on('hidden.bs.modal', function(event) {
                 $(this).remove();
             });
-        }
+        };
 
         /*
          * Add delete confirm dialogue
@@ -322,7 +322,6 @@ $(document).ready(function()
             .click(function()
             {
                 var $wrapper = $(this).parent();
-                var $spoiler = $wrapper.find('.spoiler');
 
                 $wrapper.toggleClass('show');
             })
@@ -403,7 +402,7 @@ $(document).ready(function()
             window.location = filterUiUrl;
         });
 
-        /*
+        /**
          * Makes tables responsive: "No more tables"
          */
         this.responsiveTables = function() {
@@ -423,7 +422,7 @@ $(document).ready(function()
                 $ths.each(function()
                 {
                     titles.push($(this).text());
-                })
+                });
 
                 $(this).find('tbody tr').each(function()
                 {
@@ -431,10 +430,10 @@ $(document).ready(function()
                     {
                         var title = titles[index];
                         $(this).attr('data-td-title', title);
-                    });   
-                });            
+                    });
+                });
             });
-        }
+        };
 
         framework.responsiveTables();
 
@@ -524,7 +523,7 @@ $(document).ready(function()
             }
 
             return newDate;
-        }
+        };
 
         /**
          * Returns HTML code for a font icon in Font Awesome style.
@@ -535,12 +534,12 @@ $(document).ready(function()
         this.fontIcon = function (icon)
         {
             return '<i class="fa fa-' + icon + '"></i>';
-        }
+        };
 
         /**
          * Scrolls smooth to the top of the document
          * 
-         * @param  {String|Integer} speed The speed ('slow', 'normal', 'fast' or milliseconds)
+         * @param  {String|Number} speed The speed ('slow', 'normal', 'fast' or milliseconds)
          */
         this.scrollTop = function(speed) {
             if (! speed) {
@@ -548,7 +547,7 @@ $(document).ready(function()
             }
 
             $('html, body').animate({ scrollTop: 0 }, speed);
-        }
+        };
 
         /*
          * File upload: Delete button

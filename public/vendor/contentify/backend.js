@@ -118,7 +118,7 @@ $(document).ready(function()
     $(window).resize();
 
     /*
-     * Display hover UI via Boostrap tooltip
+     * Display hover UI via Bootstrap tooltip
      */
     $('.hover-ui').each(function()
     {

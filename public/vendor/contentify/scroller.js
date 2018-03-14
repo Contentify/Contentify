@@ -5,17 +5,17 @@
     'use strict';
 
     /**
-     *  This function is available and called via $('...'').contentifyScroller()
-     *  
-     *  @param {object} opts The options / parameters
+     * This function is available and called via $('...').contentifyScroller()
+     *
+     * @param {object} opts The options / parameters
      */
     $.fn.contentifyScroller = function(opts) 
     {
         // Go through all jQuery-objects the function might have received.
         this.each(function() {
-            new contentifyScroller(this, opts);
+            new ContentifyScroller(this, opts);
         });
-    }
+    };
 
     /**
      * Creates an actual scroller instance.
@@ -23,11 +23,11 @@
      * @param {object} el   The scroller DOM element
      * @param {object} opts The options object
      */
-    function contentifyScroller(el, opts) 
+    function ContentifyScroller(el, opts)
     {
         this.$el  = $(el);  // Save the DOM element that this plugin was initialized on for further use
         this.defaults = {   // These are the default options
-            transitionTime : 500, // 'slow' / 'normal / 'fast' / milliseconds. Used for the transition animation.
+            transitionTime : 500 // 'slow' / 'normal / 'fast' / milliseconds. Used for the transition animation.
         };
         this.opts       = $.extend(this.defaults, opts); // Override the default options (if possible)
         this.itemIndex  = 1; 
@@ -91,7 +91,7 @@
                         $ul.css('margin-left', -(self.itemIndex * self.$el.width()));
                     }
                 }}
-            );            
+            );
         });
     }
 })(jQuery);

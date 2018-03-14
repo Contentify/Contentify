@@ -15,7 +15,7 @@
         this.each(function() {
             new ContentifySlider(this, opts);
         });
-    }
+    };
 
     /**
      * Creates an actual slider instance.
@@ -36,7 +36,7 @@
         this.opts       = $.extend(this.defaults, opts);        // Override the default options (if possible)
         this.itemIndex  = this.opts.itemIndex;                  // Protect itemIndex by hiding it outside of opts
         this.itemCount  = this.$el.find('.slides li').length;   // Amount of items
-        this.interval   = null                                  // To keep the interval id
+        this.interval   = null;                                 // To keep the interval id
 
         var self = this; // Keep an instance of this widget for further use
         var $h2 = $('<h2>').addClass('slide-title');
@@ -45,11 +45,11 @@
             $(el).find('.container').append($h2); // Add h2 that displays the title of the active slide
         }
 
-        self.$el.find('.slides li').css('display','none');                                      // Hide all slides
+        self.$el.find('.slides li').css('display','none'); // Hide all slides
 
         var $li = self.$el.find('.slides li:nth(' + (self.itemIndex - 1) + ')');
         $li.css('display','block');     // Show a certain slide
-        self.$el.find('.buttons li:nth(' + (self.itemIndex-1) + ')').addClass('active');        // Set button as active
+        self.$el.find('.buttons li:nth(' + (self.itemIndex-1) + ')').addClass('active'); // Set button as active
         var text = $li.attr('data-title');
         var url = $li.find('a').attr('href');
 
@@ -76,7 +76,7 @@
         });
 
         if (self.itemCount > 0 && self.opts.autoplay === true) {
-            startAutoplay(); // Itemcount may be 0 if the wrong DOM element was selected as slider
+            startAutoplay(); // itemCount may be 0 if the wrong DOM element was selected as slider
         }
 
         /**
