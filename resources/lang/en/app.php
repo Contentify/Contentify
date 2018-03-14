@@ -176,7 +176,7 @@ return [
     'quick_access'      => 'Quick Access', // Admin dashboard quick access
     'setting'           => 'Setting',
     'value'             => 'Value',
-    'placeholder'       => 'Placeholder, please change!', // Diag module
+    'placeholder'       => 'Placeholder, please change!', // Diagnostics module
     'compiled'          => 'compiled',
     'website'           => 'Website',
     'calendar'          => 'Calendar',
@@ -306,7 +306,7 @@ return [
     'object_pagecat'            => 'Page-Category',
     'object_partner'            => 'Partner',
     'object_partnercat'         => 'Partner-Category',
-    'object_role'               => 'Rolle',
+    'object_role'               => 'Role',
     'object_server'             => 'Server',
     'object_slide'              => 'Slide',
     'object_slidecat'           => 'Slide-Category',
