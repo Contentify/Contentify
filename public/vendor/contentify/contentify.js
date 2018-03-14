@@ -37,7 +37,12 @@ $(document).ready(function()
         jQuery.ajaxPrefilter(function(options, request, xhr) 
         {
             if (! xhr.crossDomain) {
-                options.data += '&_token=' + framework.csrfToken;
+                if (typeof options.data === 'undefined' || options.data === '') {
+                    options.data = ''; // We do not have to add "?", this will happen automatically
+                } else {
+                    options.data = '&';
+                }
+                options.data += '_token=' + framework.csrfToken;
             }
         });
 

@@ -37,7 +37,7 @@ class AdminMembersController extends BackController
                     $user->id,
                     $user->username,
                     raw('<div class="data" data-user-id="'.$user->id.'">'.json_encode($data).'</div>'),
-                ];            
+                ];
             },
             'searchFor' => 'username',
             'actions'   => null
@@ -68,17 +68,17 @@ class AdminMembersController extends BackController
     }
 
     /**
-     * Return form for joining a team
+     * Return form for joining a team or an empty string if no team is available
      * 
      * @param int $userId The ID of the user
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function getAdd($userId)
     {
-        $ids = DB::table('team_user')->whereUserId($userId)->pluck('team_id')->toArray();
+        $teamIds = DB::table('team_user')->whereUserId($userId)->pluck('team_id')->toArray();
 
-        if (sizeof($ids) > 0) {
-            $teams = Team::whereNotIn('id', $ids)->get();
+        if (sizeof($teamIds) > 0) {
+            $teams = Team::whereNotIn('id', $teamIds)->get();
         } else {
             $teams = Team::all();
         }
@@ -87,7 +87,7 @@ class AdminMembersController extends BackController
             return View::make('teams::admin_members_team', compact('teams', 'user'));
         } else {
             return Response::make('');
-        }       
+        }
     }
 
     /**
@@ -102,8 +102,8 @@ class AdminMembersController extends BackController
         $user = User::findOrFail($userId);
 
         DB::table('team_user')->insert([
-            'team_id'       => $teamId, 
-            'user_id'       => $userId,
+            'team_id' => $teamId,
+            'user_id' => $userId,
         ]);
 
         $data = [];
