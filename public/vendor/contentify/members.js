@@ -43,7 +43,7 @@ $(document).ready(function()
                                             data: {
                                                 task:           $('#task').val(),
                                                 description:    $('#description').val(),
-                                                position:       $('#position').val(),
+                                                position:       $('#position').val()
                                             }
                                         }).fail(function(response)
                                         {
