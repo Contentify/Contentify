@@ -41,9 +41,9 @@ $(document).ready(function()
                                             url: contentify.baseUrl + 'admin/members/update/' + userId + '/' + id,
                                             type: 'POST',
                                             data: {
-                                                task:           $('#task').val(),
-                                                description:    $('#description').val(),
-                                                position:       $('#position').val()
+                                                task:        $('#task').val(),
+                                                description: $('#description').val(),
+                                                position:    $('#position').val()
                                             }
                                         }).fail(function(response)
                                         {
@@ -92,6 +92,9 @@ $(document).ready(function()
                             });
 
                             contentify.modal(contentify.translations.object_team, data, $footer);
+                        } else {
+                            contentify.alertInfo(contentify.translations.not_found + ' (' +
+                                contentify.translations.object_team + ')');
                         }
                     }).fail(function(response)
                     {
