@@ -36,7 +36,7 @@
         this.opts       = $.extend(this.defaults, opts);        // Override the default options (if possible)
         this.itemIndex  = this.opts.itemIndex;                  // Protect itemIndex by hiding it outside of opts
         this.itemCount  = this.$el.find('.slides li').length;   // Amount of items
-        this.interval   = null;                                 // To keep the interval id
+        this.interval   = null;                                 // To keep the interval ID
 
         var self = this; // Keep an instance of this widget for further use
         var $h2 = $('<h2>').addClass('slide-title');
@@ -48,7 +48,7 @@
         self.$el.find('.slides li').css('display','none'); // Hide all slides
 
         var $li = self.$el.find('.slides li:nth(' + (self.itemIndex - 1) + ')');
-        $li.css('display','block');     // Show a certain slide
+        $li.css('display','block'); // Show a certain slide
         self.$el.find('.buttons li:nth(' + (self.itemIndex-1) + ')').addClass('active'); // Set button as active
         var text = $li.attr('data-title');
         var url = $li.find('a').attr('href');
@@ -57,7 +57,7 @@
             $h2.html('');
         } else {
             $h2.html('<a href="' + url + '">' + text + '</a>');
-        }        
+        }
 
         self.$el.find('.to-left').click(function(event)
         {
