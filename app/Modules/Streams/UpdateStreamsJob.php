@@ -2,14 +2,14 @@
 
 namespace App\Modules\Streams;
 
-use Job;
+use AbstractJob;
 
-class UpdateStreamsJob extends Job 
+class UpdateStreamsJob extends AbstractJob
 {
 
-    protected $timeSpan = 5; // Minutes
+    protected $interval = 5; // Minutes
 
-    public function run($executed)
+    public function run($executedAt)
     {
         $streams = Stream::all();
 

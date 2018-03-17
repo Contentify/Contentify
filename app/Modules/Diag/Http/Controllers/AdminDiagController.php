@@ -16,6 +16,8 @@ class AdminDiagController extends BackController
 
         /*
          * Check if Laravel is compiled to one single file
+         *
+         * @deprecated in Laravel 5.6
          */
         $filename = app('path.base').'/bootstrap/cache/compiled.php';
         if (File::exists($filename)) {
@@ -54,6 +56,7 @@ class AdminDiagController extends BackController
             'Server.software'           => $_SERVER['SERVER_SOFTWARE'],
             'Laravel.version'           => $appClass::VERSION,
             'Artisan optimized'         => $optimized,
+            'CronJobs.last_execution'   => Cache::get(''),
             'App.environment'           => App::environment(),
             'App.url'                   => Config::get('app.url'),
             'App.debug'                 => (int) Config::get('app.debug'),

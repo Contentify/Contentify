@@ -3,14 +3,14 @@
 namespace Contentify\Models;
 
 use Contentify\Vendor\MySqlDump;
-use Config, Job;
+use Config, AbstractJob;
 
-class BackupDatabaseJob extends Job
+class BackupDatabaseJob extends AbstractJob
 {
 
-    protected $timeSpan = 1440; // 60 minutes * 24 = 24h (once per day)
+    protected $executedAt = 1440; // 60 minutes * 24 = 24h (once per day)
 
-    public function run($executed)
+    public function run($executedAt)
     {
         if (! Config::get('app.dbBackup')) {
             return;
@@ -18,9 +18,9 @@ class BackupDatabaseJob extends Job
 
         $dump = new MySqlDump();
 
-        $con        = Config::get('database.connections.mysql');
-        $dateTime   = date('M-d-Y_H-i');
-        $filename   = storage_path().'/database/'.$dateTime.'.sql';
+        $con      = Config::get('database.connections.mysql');
+        $dateTime = date('M-d-Y_H-i');
+        $filename = storage_path().'/database/'.$dateTime.'.sql';
 
         $dump->host     = $con['host'];
         $dump->user     = $con['username'];

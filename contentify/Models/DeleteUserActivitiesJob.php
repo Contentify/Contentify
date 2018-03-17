@@ -2,14 +2,14 @@
 
 namespace Contentify\Models;
 
-use UserActivities, Job;
+use UserActivities, AbstractJob;
 
-class DeleteUserActivitiesJob extends Job
+class DeleteUserActivitiesJob extends AbstractJob
 {
 
-    protected $timeSpan = 1440; // 60 minutes * 24 = 24h (once per day)
+    protected $interval  = 1440; // 60 minutes * 24 = 24h (once per day)
 
-    public function run($executed)
+    public function run($executedAt)
     {
         UserActivities::deleteOld();
     }

@@ -17524,7 +17524,7 @@ namespace  {
 
     class Jobs extends \ChrisKonnertz\Jobs\JobsFacade {}
 
-    abstract class Job extends \ChrisKonnertz\Jobs\Job {}
+    abstract class AbstractJob extends \ChrisKonnertz\Jobs\AbstractJob {}
 
     class Sentinel extends \Cartalyst\Sentinel\Laravel\Facades\Sentinel {}
 

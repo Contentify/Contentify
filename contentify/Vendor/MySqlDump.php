@@ -147,7 +147,7 @@ class MySqlDump
         // https://github.com/clouddueling/mysqldump-php/issues/9
         $this->db_handler->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_NATURAL);
 
-        // Formating dump file
+        // Formatting dump file
         $this->writeHeader();
 
         // Listing all tables from database

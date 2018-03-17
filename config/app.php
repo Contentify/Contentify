@@ -223,7 +223,7 @@ return [
         /*
          * Vendor service providers:
          */
-        'ChrisKonnertz\Jobs\JobsServiceProvider',
+        'ChrisKonnertz\Jobs\Integration\JobsServiceProvider',
         'Caffeinated\Modules\ModulesServiceProvider',
         'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
         'Intervention\Image\ImageServiceProvider',
@@ -317,8 +317,8 @@ return [
          */
         'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
         'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
-        'Jobs'                  => 'ChrisKonnertz\Jobs\JobsFacade',
-        'Job'                   => 'ChrisKonnertz\Jobs\Job',
+        'Jobs'                  => 'ChrisKonnertz\Jobs\Integration\JobsFacade',
+        'AbstractJob'           => 'ChrisKonnertz\Jobs\AbstractJob',
         'Sentinel'              => 'Cartalyst\Sentinel\Laravel\Facades\Sentinel',
         'Activation'            => 'Cartalyst\Sentinel\Laravel\Facades\Activation',
         'Reminder'              => 'Cartalyst\Sentinel\Laravel\Facades\Reminder',

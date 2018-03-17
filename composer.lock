@@ -235,12 +235,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/Jobs.git",
-                "reference": "32dced02a90349a165723bd847d4e441daf08467"
+                "reference": "f1be8e134076104afed9782db08b1b9668da26dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/32dced02a90349a165723bd847d4e441daf08467",
-                "reference": "32dced02a90349a165723bd847d4e441daf08467",
+                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/f1be8e134076104afed9782db08b1b9668da26dc",
+                "reference": "f1be8e134076104afed9782db08b1b9668da26dc",
                 "shasum": ""
             },
             "require": {
@@ -266,7 +266,7 @@
                 "cron jobs",
                 "laravel"
             ],
-            "time": "2017-06-16T19:07:33+00:00"
+            "time": "2018-03-17T13:20:25+00:00"
         },
         {
             "name": "chriskonnertz/open-graph",
