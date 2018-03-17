@@ -14517,9 +14517,9 @@ namespace ChrisKonnertz\Jobs {
          * @return string 
          * @static 
          */ 
-        public static function getChacheKey()
+        public static function getCacheKey()
         {
-            return \ChrisKonnertz\Jobs\Jobs::getChacheKey();
+            return \ChrisKonnertz\Jobs\Jobs::getCacheKey();
         }
         
         /**
@@ -14666,6 +14666,29 @@ namespace ChrisKonnertz\Jobs {
         public static function run()
         {
             return \ChrisKonnertz\Jobs\Jobs::run();
+        }
+
+        /**
+         * Returns the number of minutes the job executor still is in cool down mode.
+         * Minimum is 0.
+         *
+         * @return int
+         */
+        public static function remainingCoolDown()
+        {
+            return \ChrisKonnertz\Jobs\Jobs::remainingCoolDown();
+        }
+
+        /**
+         * Returns the timestamp (in seconds) of the last time the run() method has been called.
+         * Returns ull if this did not happen so far.
+         * Note: If the cache is rest, this timestamp will be rest as well!
+         *
+         * @return int|null
+         */
+        public static function lastRunAt()
+        {
+            return \ChrisKonnertz\Jobs\Jobs::lastRunAt();
         }
          
     }

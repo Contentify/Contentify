@@ -13,7 +13,7 @@
         "intervention/image": "dev-master",
         "chriskonnertz/open-graph": "dev-master",
         "chriskonnertz/bbcode": "dev-master",
-        "chriskonnertz/jobs": "dev-master",
+        "chriskonnertz/jobs": "3.*",
         "watson/validating": "3.*",
         "caffeinated/modules": "4.*",
         "invisnik/laravel-steam-auth": "2.*"

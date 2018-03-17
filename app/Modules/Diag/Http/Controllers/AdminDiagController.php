@@ -3,7 +3,7 @@
 namespace App\Modules\Diag\Http\Controllers;
 
 use \Carbon\Carbon;
-use App, Config, BackController, File, DB, PDO;
+use App, Config, BackController, File, Jobs, DB, PDO;
 
 class AdminDiagController extends BackController
 {
@@ -40,6 +40,9 @@ class AdminDiagController extends BackController
         $opcacheExists = (int) function_exists('opcache_get_status');
         $opcacheEnabled = $opcacheExists and opcache_get_status()['opcache_enabled'] ? 1 : 0;
         $diskFreeSpace = function_exists('disk_free_space') ?  round(disk_free_space('.') / 1024 / 1024).'M' : '?';
+        $cronJobInfo = Jobs::lastRunAt() ?
+            Carbon::createFromTimeStamp(Jobs::lastRunAt()) :
+            '<b>Never. No cron job created?</b>';
 
         $settings = [
             'PHP.version'               => phpversion(),
@@ -56,7 +59,7 @@ class AdminDiagController extends BackController
             'Server.software'           => $_SERVER['SERVER_SOFTWARE'],
             'Laravel.version'           => $appClass::VERSION,
             'Artisan optimized'         => $optimized,
-            'CronJobs.last_execution'   => Cache::get(''),
+            'Jobs.last_execution'       => $cronJobInfo,
             'App.environment'           => App::environment(),
             'App.url'                   => Config::get('app.url'),
             'App.debug'                 => (int) Config::get('app.debug'),

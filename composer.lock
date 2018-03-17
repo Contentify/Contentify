@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "14df05131ff3ad8aafb3f1702f123b78",
+    "content-hash": "d148c52a82f24487a0a661068e81dcc2",
     "packages": [
         {
             "name": "caffeinated/modules",
@@ -231,16 +231,16 @@
         },
         {
             "name": "chriskonnertz/jobs",
-            "version": "dev-master",
+            "version": "v3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/Jobs.git",
-                "reference": "f1be8e134076104afed9782db08b1b9668da26dc"
+                "reference": "086034a8b6785d4a11759b93fcd306dbd1298ccc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/f1be8e134076104afed9782db08b1b9668da26dc",
-                "reference": "f1be8e134076104afed9782db08b1b9668da26dc",
+                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/086034a8b6785d4a11759b93fcd306dbd1298ccc",
+                "reference": "086034a8b6785d4a11759b93fcd306dbd1298ccc",
                 "shasum": ""
             },
             "require": {
@@ -266,7 +266,7 @@
                 "cron jobs",
                 "laravel"
             ],
-            "time": "2018-03-17T13:20:25+00:00"
+            "time": "2018-03-17T14:13:29+00:00"
         },
         {
             "name": "chriskonnertz/open-graph",
@@ -4283,8 +4283,7 @@
     "stability-flags": {
         "intervention/image": 20,
         "chriskonnertz/open-graph": 20,
-        "chriskonnertz/bbcode": 20,
-        "chriskonnertz/jobs": 20
+        "chriskonnertz/bbcode": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
