@@ -2,7 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => url('auth/login', null, Config::get('app.https')))) !!}
+{!! Form::open(array('url' => url('auth/login', null, is_https()))) !!}
     {!! Form::smartEmail() !!}
     
     {!! Form::smartPassword() !!}

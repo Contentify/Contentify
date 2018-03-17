@@ -5,7 +5,7 @@
 | Helper Functions
 |--------------------------------------------------------------------------
 |
-| Beside Laravels very own helpers we may want to create our own.
+| Beside Laravel's very own helpers we may want to create our own.
 | This file is the location to store these helper functions.
 |
 */
@@ -20,6 +20,16 @@ function user()
     // Note: The getUser() method returns a \Contentify\Models\User object
     // which implements the \Cartalyst\Sentinel\Users\UserInterface
     return Sentinel::getUser();
+}
+
+/**
+ * Returns true, if HTTPS/SSL enforcement is active, false otherwise
+ *
+ * @return bool
+ */
+function is_https()
+{
+    return Config::get('app.https');
 }
 
 /**
@@ -42,11 +52,11 @@ function raw($value, $escape = null)
  * If $image does not contain a path, the path "icons" will be used.
  * If $image has does not start with "http://" an asset link will be created.
  * 
- * @param  string  $image       The link image
- * @param  string  $title       The link title
- * @param  string  $url         The link URL
- * @param  boolean $showTitle   Show the title text?
- * @param  array   $attributes  Apply these HTML attributes to the link element
+ * @param  string  $image      The link image
+ * @param  string  $title      The link title
+ * @param  string  $url        The link URL
+ * @param  boolean $showTitle  Show the title text?
+ * @param  array   $attributes Apply these HTML attributes to the link element
  * @return string
  */
 function image_link($image, $title, $url, $showTitle = false, $attributes = array())
@@ -58,11 +68,11 @@ function image_link($image, $title, $url, $showTitle = false, $attributes = arra
  * Returns HTML code of an "icon link" - a link with an icon (and maybe a text).
  * An icon font will be used to render the icon.
  * 
- * @param  string  $icon        The name of the icon
- * @param  string  $url         The link URL
- * @param  string  $title       The link title
- * @param  boolean $showTitle   Show the title text?
- * @param  array   $attributes  Apply these HTML attributes to the link element
+ * @param  string  $icon       The name of the icon
+ * @param  string  $url        The link URL
+ * @param  string  $title      The link title
+ * @param  boolean $showTitle  Show the title text?
+ * @param  array   $attributes Apply these HTML attributes to the link element
  * @return string
  */
 function icon_link($icon, $title, $url, $showTitle = false, $attributes = array())
@@ -172,8 +182,8 @@ function emojis($text)
 /**
  * Tries to translate a module/model/controller name.
  * 
- * @param  string $name     The name of the module/model/controller
- * @param  string $module   The name of the module
+ * @param  string $name   The name of the module/model/controller
+ * @param  string $module The name of the module
  * @return string 
  */
 function trans_object($name, $module = null)
