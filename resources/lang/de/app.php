@@ -14,8 +14,8 @@ return [
     /*
      * Date format pattern
      */
-    'date_format'        => 'd.m.Y',        // PHP default, for Carbon ( http://www.php.net/manual/en/function.date.php )
-    'date_format_alt'    => 'DD.MM.YYYY',   // for the date time picker UI widget
+    'date_format'     => 'd.m.Y',      // PHP default, for Carbon ( http://www.php.net/manual/en/function.date.php )
+    'date_format_alt' => 'DD.MM.YYYY', // for the date time picker UI widget
 
     /*
      * Security
@@ -79,7 +79,7 @@ return [
     'code'          => 'Code',
     'description'   => 'Beschreibung',
     'image'         => 'Bild',
-    'icon'          => 'Icon',
+    'icon'          => 'Symbol',
     'date'          => 'Datum',
     'published'     => 'Veröffentlicht',
     'starts_at'     => 'Beginnt Am',
@@ -101,7 +101,7 @@ return [
     'accessed'      => 'aufgerufen',
     'no_items'      => 'Es gibt noch keine Einträge.',
     'share_this'    => 'Teilen',
-    'save_to_del'   => 'Speichern Sie dieses Formular, um die Datei zu löschen.',
+    'save_to_del'   => 'Speichern Sie das Formular, um die Datei zu löschen.',
 
     /*
      * JS
@@ -113,7 +113,7 @@ return [
     /*
      * Backend template
      */
-    'no_js'             => 'JavaScript nicht aktiviert. Bitte aktivieren Sie JavaScript!',
+    'no_js'             => 'JavaScript ist nicht aktiviert. Bitte aktivieren Sie JavaScript!',
     'admin_dashboard'   => 'Admin-Dashboard',
     'new_messages'      => 'Eine neue Nachricht|:count neue Nachrichten',
     'top'               => 'Nach oben',
