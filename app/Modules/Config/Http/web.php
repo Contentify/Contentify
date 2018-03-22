@@ -8,4 +8,5 @@ ModuleRoute::get('admin/config/info', 'AdminConfigController@getInfo');
 ModuleRoute::get('admin/config/optimize', 'AdminConfigController@getOptimize');
 ModuleRoute::get('admin/config/export', 'AdminConfigController@getExport');
 ModuleRoute::get('admin/config/log', 'AdminConfigController@getLog');
+ModuleRoute::get('admin/config/clear-cache', 'AdminConfigController@getClearCache');
 ModuleRoute::put('admin/config', ['as' => 'admin.config.update', 'uses' => 'AdminConfigController@update']);
