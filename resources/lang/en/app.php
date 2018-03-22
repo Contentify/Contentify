@@ -121,6 +121,16 @@ return [
     'welcome'           => 'Welcome',
 
     /*
+     * Permissions
+     */
+    'permissions'       => 'Permissions',
+    'permission_none'   => 'None',
+    'permission_read'   => 'Read',
+    'permission_create' => 'Create',
+    'permission_update' => 'Update',
+    'permission_delete' => 'Delete',
+
+    /*
      * Comments
      */
     'comments'              => 'Comments',

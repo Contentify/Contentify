@@ -2,10 +2,9 @@
 
 namespace App\Modules\Roles;
 
-use App\Modules\Roles\Permission;
-use Hover, SoftDeletingTrait, Sentinel, BaseModel;
+use SoftDeletingTrait, Sentinel, BaseModel;
 
-/*
+/**
  * Important note:
  * This is not the same model that Sentinel uses.
  * This model is only a helper so we can CRUD roles.
@@ -49,12 +48,11 @@ class Role extends BaseModel
     }
 
     /**
-     * Creates an array of permissions 
-     * (Permission model with name, possible values and current value)
-     * for the given role
+     * Creates an array of permissions (Permission model with name,
+     * possible values and current value) for the given role
      * 
      * @param  int $roleId The ID of a role
-     * @return array
+     * @return Permission[]
      */
     static public function permissions($roleId = null)
     {
@@ -88,11 +86,11 @@ class Role extends BaseModel
                 ];
             } else { // Levels
                 $values = [
-                    0 => trans('roles::none'), 
-                    1 => trans('roles::read'),
-                    2 => trans('roles::create'),
-                    3 => trans('roles::update'),
-                    4 => trans('roles::delete'),
+                    0 => trans('app.permission_none'),
+                    1 => trans('app.permission_read'),
+                    2 => trans('app.permission_create'),
+                    3 => trans('app.permission_update'),
+                    4 => trans('app.permission_delete'),
                 ];
             }
 
