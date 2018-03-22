@@ -41,7 +41,7 @@ class AdminUsersController extends BackController
                 if ($user->hasAccess('internal', PERM_READ)) {
                     $membership = HTML::fontIcon('check');
                 } else {
-                    $membership = HTML::fontIcon('close');
+                    $membership = HTML::fontIcon('times');
                 }
 
                 if ($user->banned) {

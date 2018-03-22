@@ -2,6 +2,7 @@
 
 namespace App\Modules\Users\Http\Controllers;
 
+use App\Modules\Roles\Role;
 use ModelHandlerTrait;
 use Redirect, UserActivity, UserActivities, URL, HTML, BackController;
 
@@ -42,14 +43,16 @@ class AdminActivitiesController extends BackController
                 if ($userActivity->frontend) {
                     $frontend = HTML::fontIcon('check');
                 } else {
-                    $frontend = HTML::fontIcon('close');
+                    $frontend = HTML::fontIcon('times');
                 }
+
+                $translatedPermissions = Role::getPermissionTranslations();
 
                 return [
                     $userActivity->id,
                     raw($frontend),
                     $userActivity->model_class,
-                    $userActivity->activity_id,
+                    $translatedPermissions[$userActivity->activity_id],
                     raw(HTML::link(URL::route('users.show', [$userActivity->user->id]), $userActivity->user->username)),
                     $userActivity->created_at,
                 ];            

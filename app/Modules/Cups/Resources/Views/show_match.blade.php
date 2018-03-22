@@ -51,7 +51,7 @@
             </tr>
             <tr>
                 <th>{!! trans('app.closed') !!}</th>
-                <td>{!! $match->winner_id ? HTML::fontIcon('check') : HTML::fontIcon('close') !!}</td>
+                <td>{!! $match->winner_id ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}</td>
             </tr>
             @if ($match->next_match_id)
                 <tr>

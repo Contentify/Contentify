@@ -85,13 +85,7 @@ class Role extends BaseModel
                     1 => trans('app.yes')
                 ];
             } else { // Levels
-                $values = [
-                    0 => trans('app.permission_none'),
-                    1 => trans('app.permission_read'),
-                    2 => trans('app.permission_create'),
-                    3 => trans('app.permission_update'),
-                    4 => trans('app.permission_delete'),
-                ];
+                $values = self::getPermissionTranslations();
             }
 
             /*
@@ -107,6 +101,22 @@ class Role extends BaseModel
         }
 
         return $permissions;
+    }
+
+    /**
+     * Returns translations of the permission level names
+     *
+     * @return string[]
+     */
+    public static function getPermissionTranslations()
+    {
+        return [
+            0 => trans('app.permission_none'),
+            1 => trans('app.permission_read'),
+            2 => trans('app.permission_create'),
+            3 => trans('app.permission_update'),
+            4 => trans('app.permission_delete'),
+        ];
     }
 
 }

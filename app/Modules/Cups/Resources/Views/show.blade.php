@@ -151,7 +151,7 @@
                                 <a href="{{ url('users/'.$participant->id.'/'.$participant->slug) }}">{{ $participant->username }}</a>
                             @endif
                         </td>
-                        <td>{!! $participant->pivot->checked_in ? HTML::fontIcon('check') : HTML::fontIcon('close') !!}</td>
+                        <td>{!! $participant->pivot->checked_in ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}</td>
                     </tr>
                 @endforeach
             </table>

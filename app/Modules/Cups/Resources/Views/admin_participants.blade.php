@@ -27,7 +27,7 @@
                         <a href="{{ url('users/'.$participant->id.'/'.$participant->slug) }}">{{ $participant->username }}</a>
                     @endif
                 </td>
-                <td>{!! $participant->pivot->checked_in ? HTML::fontIcon('check') : HTML::fontIcon('close') !!}</td>
+                <td>{!! $participant->pivot->checked_in ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}</td>
                 <td>
                     @if ($cup->start_at->timestamp > time())
                         {!! icon_link('trash', trans('app.delete'), url('admin/cups/participants/delete/'.$cup->id.'/'.$participant->id), false, ['data-confirm-delete' => true]) !!}
