@@ -96,9 +96,9 @@ class AdminConfigController extends BackController
              */
             if ($result == 0) {
                 DB::table('config')->insert(array(
-                    'name'          => $settingRealName, 
-                    'value'         => $settingsBag->$settingName, 
-                    'updated_at'    => DB::raw('NOW()'))
+                    'name'       => $settingRealName,
+                    'value'      => $settingsBag->$settingName,
+                    'updated_at' => DB::raw('NOW()'))
                 );
             }
 

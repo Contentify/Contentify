@@ -23,9 +23,9 @@ class SettingsBag extends BaseModel
     ];
 
     protected $rules = [
-        'auth::registration'    => 'boolean',      
-        'app::https'            => 'boolean',
-        'app::dbBackup'         => 'boolean',
+        'auth::registration' => 'boolean',
+        'app::https'         => 'boolean',
+        'app::dbBackup'      => 'boolean',
     ];
 
 }
