@@ -9,12 +9,14 @@ abstract class BackController extends BaseController
 
     /**
      * The layout that should be used for responses.
+     *
      * @var string
      */
     protected $layout = 'backend.layout_main';
 
     /**
      * The name of the controller icon. It's rendered with FontAwesome.
+     *
      * @var string
      */
     protected $icon = 'file';

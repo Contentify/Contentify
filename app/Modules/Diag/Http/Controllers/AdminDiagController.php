@@ -35,7 +35,7 @@ class AdminDiagController extends BackController
         /*
          * Create array with names and values
          */
-        $placeholder = (Config::get('app.key') == '01234567890123456789012345678912');
+        $placeholder = (Config::get('app.key') == '12345678901234567890123456789012');
         $appClass = get_class(app());
         $opcacheExists = (int) function_exists('opcache_get_status');
         $opcacheEnabled = $opcacheExists and opcache_get_status()['opcache_enabled'] ? 1 : 0;

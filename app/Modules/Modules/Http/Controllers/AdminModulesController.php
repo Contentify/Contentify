@@ -37,7 +37,7 @@ class AdminModulesController extends BackController
                 if ($module->enabled()) {
                     $enabled = HTML::fontIcon('check');
                 } else {
-                    $enabled = HTML::fontIcon('close');
+                    $enabled = HTML::fontIcon('times');
                 }
 
                 /*

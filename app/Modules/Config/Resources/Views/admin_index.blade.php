@@ -3,7 +3,7 @@
     {!! button(trans('config::button_info'), url('admin/config/info'), 'info-circle') !!}&nbsp;
     {!! button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') !!}&nbsp;
     {!! button(trans('config::button_dump'), url('admin/config/export'), 'database') !!}&nbsp;
-    {!! button(trans('config::button_log'), url('admin/config/log'), 'file-alt') !!}&nbsp;
+    {!! button(trans('config::button_clear_cache'), url('admin/config/clear-cache'), 'trash') !!}&nbsp;
 </div>
 
 {!! Form::errors($errors) !!}

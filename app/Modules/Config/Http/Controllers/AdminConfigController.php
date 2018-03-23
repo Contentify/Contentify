@@ -20,7 +20,9 @@ class AdminConfigController extends BackController
     
     public function getIndex()
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
 
         $settings = DB::table('config')->get();
 
@@ -94,9 +96,9 @@ class AdminConfigController extends BackController
              */
             if ($result == 0) {
                 DB::table('config')->insert(array(
-                    'name'          => $settingRealName, 
-                    'value'         => $settingsBag->$settingName, 
-                    'updated_at'    => DB::raw('NOW()'))
+                    'name'       => $settingRealName,
+                    'value'      => $settingsBag->$settingName,
+                    'updated_at' => DB::raw('NOW()'))
                 );
             }
 
@@ -115,7 +117,9 @@ class AdminConfigController extends BackController
      */
     public function getInfo()
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
 
         ob_start();
 
@@ -151,7 +155,9 @@ class AdminConfigController extends BackController
      */
     public function getOptimize()
     {
-        if (! $this->checkAccessUpdate()) return;
+        if (! $this->checkAccessUpdate()) {
+            return;
+        }
 
         switch (Config::get('database.default')) { // Retrieve the default database type from the config
             case 'mysql':
@@ -165,7 +171,7 @@ class AdminConfigController extends BackController
                 return;
         }
 
-        $this->alertSuccess(trans('Database optimized.'));
+        $this->alertSuccess(trans('app.successful'));
     }
 
     /**
@@ -175,7 +181,9 @@ class AdminConfigController extends BackController
      */
     public function getExport()
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
 
         switch (Config::get('database.default')) { // retrieve the default database type from the config
             case 'mysql':
@@ -203,13 +211,32 @@ class AdminConfigController extends BackController
     }
 
     /**
+     * Clear the cache
+     *
+     * @return void
+     */
+    public function getClearCache()
+    {
+        if (! $this->checkAccessUpdate()) {
+            return;
+        }
+
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+
+        $this->alertSuccess(trans('app.successful'));
+    }
+
+    /**
      * Show the log file content
      * 
      * @return void
      */
     public function getLog()
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
 
         $filename = storage_path().self::LOG_FILE;
         if (File::exists($filename)) {

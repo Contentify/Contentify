@@ -46,7 +46,7 @@ class StreamsController extends FrontController
                     Stream::$providers[$stream->provider],
                     raw($stream->online ? 
                         HTML::fontIcon('check') :
-                        HTML::fontIcon('close')),
+                        HTML::fontIcon('times')),
                     $stream->viewers,
                 ];
             },

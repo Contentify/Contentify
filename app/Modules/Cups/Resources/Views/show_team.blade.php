@@ -32,7 +32,7 @@
                     @if (user() and ($organizer or user()->isSuperAdmin()))
                         <input type="checkbox" data-user-id="{{ $member->id }}" {{ $member->pivot->organizer ? 'checked="1"' : null }}>
                     @else
-                        {!! $member->pivot->organizer ? HTML::fontIcon('check') : HTML::fontIcon('close') !!}
+                        {!! $member->pivot->organizer ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}
                     @endif
                 </td>
                 @if (user() and ($organizer or user()->isSuperAdmin()))

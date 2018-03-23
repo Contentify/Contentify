@@ -31,7 +31,7 @@ class OutboxController extends FrontController
             {
                 /** @var Message $message */
 
-                $icon = HTML::fontIcon('close');
+                $icon = HTML::fontIcon('times');
                 if ($message->new) {
                     $icon = HTML::fontIcon('check');
                 }
