@@ -8,7 +8,7 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "laravelcollective/html": "5.3.*",
-        "cartalyst/sentinel": "2.0.*",
+        "cartalyst/sentinel": "2.*",
         "thujohn/rss": "1.*",
         "intervention/image": "dev-master",
         "chriskonnertz/open-graph": "dev-master",
@@ -16,7 +16,8 @@
         "chriskonnertz/jobs": "3.*",
         "watson/validating": "3.*",
         "caffeinated/modules": "4.*",
-        "invisnik/laravel-steam-auth": "2.*"
+        "invisnik/laravel-steam-auth": "3.*",
+        "oyejorge/less.php": "1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
