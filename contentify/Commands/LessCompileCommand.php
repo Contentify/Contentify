@@ -59,7 +59,7 @@ class LessCompileCommand extends Command
     protected function compileLessFile($sourcePath, $sourceFilename)
     {
         // Create a new instance for each file - or call the reset method
-        $parser = new Less_Parser();
+        $parser = new Less_Parser(['compress' => true]);
 
         $source = $sourcePath.$sourceFilename.'.less';
         $parser->parseFile($source);
