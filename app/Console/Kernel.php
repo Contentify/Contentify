@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'Contentify\Commands\MakeFormCommand',
+        'Contentify\Commands\LessCompileCommand',
         'ChrisKonnertz\Jobs\JobsCommand',
     ];
 

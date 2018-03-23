@@ -29,8 +29,9 @@ class AdminDiagController extends BackController
         /*
          * Count disabled modules
          */
-        $moduleBase = app()['modules'];
-        $disabled = sizeof($moduleBase->disabled());
+        /** @var \Caffeinated\Modules\Contracts\Repository $moduleRepo */
+        $moduleRepo = app()['modules'];
+        $disabled = sizeof($moduleRepo->disabled());
 
         /*
          * Create array with names and values

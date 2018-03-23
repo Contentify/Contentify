@@ -36,6 +36,7 @@ class AdminConfigController extends BackController
             }
         }
 
+        /** @var \Caffeinated\Modules\Contracts\Repository $moduleRepo */
         $moduleRepo = app()['modules'];
         $modules = $moduleRepo->all(); // Retrieve all module info objects
 

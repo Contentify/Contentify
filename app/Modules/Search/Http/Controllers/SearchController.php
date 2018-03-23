@@ -19,6 +19,7 @@ class SearchController extends FrontController
         $validator = Validator::make(['subject' => $subject], ['subject' => 'required|min:3']);
         
         if ($validator->passes()) {
+            /** @var \Caffeinated\Modules\Contracts\Repository $moduleRepo */
             $moduleRepo = app()['modules'];
             $modules = $moduleRepo->all(); // Retrieve all module info objects
 

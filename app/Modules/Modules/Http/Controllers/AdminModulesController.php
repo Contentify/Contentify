@@ -42,6 +42,7 @@ class AdminModulesController extends BackController
 
                 /*
                  * Display if the module is installed
+                 * @TODO Using the cache is not reliable - better store the state in the database
                  */
                 $state = Cache::get(self::CACHE_KEY.$module->title, null);
                 if ($state === true) {
@@ -76,13 +77,15 @@ class AdminModulesController extends BackController
     /**
      * Module install method
      * 
-     * @param  string  $name Name of the module
-     * @param  integer $step Current step, starting at 0
+     * @param  string $name The name of the module
+     * @param  int    $step The number of the current step, starting at 0
      * @return void
      */
     public function install($name, $step = 0)
     {
-        if (! $this->checkAccessCreate()) return;
+        if (! $this->checkAccessCreate()) {
+            return;
+        }
 
         $module = new Module(['title' => $name]);
 

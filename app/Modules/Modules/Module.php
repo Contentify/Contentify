@@ -12,7 +12,7 @@ class Module extends BaseModel
     /**
      * Returns an array with models for all existing modules
      * 
-     * @return array
+     * @return self[]
      */
     public static function findAll()
     {
@@ -39,7 +39,7 @@ class Module extends BaseModel
     /**
      * Check if a installer file exists. Returns filename or false.
      * 
-     * @return string|boolean
+     * @return string|bool
      */
     public function installer()
     {
@@ -55,18 +55,18 @@ class Module extends BaseModel
     /**
      * Check if the module is enabled. 
      * 
-     * @return boolean
+     * @return bool
      */
     public function enabled()
     {
-        /** @var \Caffeinated\Modules\Modules $moduleBase */
-        $moduleBase = app()['modules'];
+        /** @var \Caffeinated\Modules\Contracts\Repository $moduleBase */
+        $moduleRepo = app()['modules'];
 
         // Get module info by the basename property which we know,
         // so we can get the slug for the isEnabled() method.
-        $moduleInfo = $moduleBase->where('basename', $this->title);
+        $moduleInfo = $moduleRepo->where('basename', $this->title);
 
-        return $moduleBase->isEnabled($moduleInfo['slug']);
+        return $moduleRepo->isEnabled($moduleInfo['slug']);
     }
 
 }
