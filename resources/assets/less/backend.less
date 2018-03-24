@@ -288,6 +288,11 @@ ul.pagination {
     #item_add { margin-top: 20px; }
 }
 
+@media (max-width: @screen-tablet) {
+    .page-config .actions .btn {
+        width: 100%;
+    }
+}
 .page-config-show-log {
     .item { margin-bottom: 10px; cursor: pointer; }
     .date { color: @blue; }
@@ -367,7 +372,9 @@ header {
         li {
             float: left;
             .fadd { display: none !important; }
-            a { display: block; padding: 0 20px; height: @headerHeight; font-weight: bold; text-transform: uppercase; }
+            a {
+                display: block; padding: 0 20px; height: @headerHeight; font-weight: bold; text-transform: uppercase;
+            }
             &:hover { background-color: @hoverblue; }
         }
     }
@@ -507,7 +514,7 @@ header {
 }
 
 .page {
-    max-width: 900px; margin: 0 40px;
+    max-width: 1000px; margin: 0 40px;
 }
 .page-head {
     display: block; margin-bottom: 40px; padding: 20px 0 20px 40px; border-bottom: 1px solid silver; font-weight: bold;

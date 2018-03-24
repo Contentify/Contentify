@@ -7575,6 +7575,11 @@ fieldset[disabled] .page-images .image .actions a.active {
 .page-navigations #item_add {
   margin-top: 20px;
 }
+@media (max-width: 768px) {
+  .page-config .actions .btn {
+    width: 100%;
+  }
+}
 .page-config-show-log .item {
   margin-bottom: 10px;
   cursor: pointer;
@@ -7943,7 +7948,7 @@ header .header-logo {
   }
 }
 .page {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 40px;
 }
 .page-head {

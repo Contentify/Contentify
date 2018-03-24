@@ -1,11 +1,11 @@
 <div class="actions">
-    {!! button(trans('app.object_diag'), url('admin/diag'), 'heartbeat') !!}&nbsp;
-    {!! button(trans('config::button_info'), url('admin/config/info'), 'info-circle') !!}&nbsp;
-    {!! button(trans('config::button_log'), url('admin/config/log'), 'file-alt') !!}&nbsp;
-    {!! button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') !!}&nbsp;
-    {!! button(trans('config::button_dump'), url('admin/config/export'), 'database') !!}&nbsp;
-    {!! button(trans('config::button_compile_less'), url('admin/config/compile-less'), 'code') !!}&nbsp;
-    {!! button(trans('config::button_clear_cache'), url('admin/config/clear-cache'), 'trash') !!}&nbsp;
+    {!! button(trans('app.object_diag'), url('admin/diag'), 'heartbeat') !!}
+    {!! button(trans('config::button_info'), url('admin/config/info'), 'info-circle') !!}
+    {!! button(trans('config::button_log'), url('admin/config/log'), 'file-alt') !!}
+    {!! button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') !!}
+    {!! button(trans('config::button_dump'), url('admin/config/export'), 'database') !!}
+    {!! button(trans('config::button_compile_less'), url('admin/config/compile-less'), 'code') !!}
+    {!! button(trans('config::button_clear_cache'), url('admin/config/clear-cache'), 'trash') !!} 
 </div>
 
 {!! Form::errors($errors) !!}
