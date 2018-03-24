@@ -37,10 +37,10 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=0 );
 }
 
-.focus { box-shadow: 0px 0px 0px 2px #eee; border-color: silver }
+.focus { box-shadow: 0 0 0 2px #eee; border-color: silver }
 
 h1.page-title.model-index { display: none }
-h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
+h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
 
 /* Form */
 .form-errors { }
@@ -51,11 +51,11 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
         .form-control();
         &:focus { .focus() }
         border: 1px solid #f0f0f0;
-        border-radius: 0px;
+        border-radius: 0;
         background-color: #f5f5f5;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     }
-    input[type=checkbox] { width: auto; height: auto; margin-left: 0px }
+    input[type=checkbox] { width: auto; height: auto; margin-left: 0 }
     select[multiple] { height: auto; }
     textarea { height: auto }
 }
@@ -65,7 +65,7 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 }
 .form-editor {
     margin-bottom: 20px;
-    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; margin: 0px; padding: 0px 10px; border: 1px solid #cccccc; border-bottom: none; }
+    label.full-line { display: block; width: auto; height: 30px; line-height: 30px; margin: 0; padding: 0 10px; border: 1px solid #cccccc; border-bottom: none; }
 }
 .form-horizontal {
     .control-label {
@@ -96,7 +96,7 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
         min-height: 26px; margin-bottom: 20px;
         button { margin-right: 10px }
     }
-    &.bottom { min-height: 34px; margin: 10px 0px; padding: 5px 0px; }
+    &.bottom { min-height: 34px; margin: 10px 0; padding: 5px 0; }
 }
 
 /* Search-Box */
@@ -115,26 +115,26 @@ h2.section { margin: 0px 0px 20px 0px; font-size: 14px; font-weight: bold }
 
 /* Sort-Switcher */
 .sort-switcher {
-    display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px; background-color: @bgblack; color: white !important;
+    display: inline-block; margin: 10px 0; padding: 3px 7px; border-radius: 3px; background-color: @bgblack; color: white !important;
     img { vertical-align: bottom; }
 }
-.toolbar .sort-switcher { margin: 0px }
+.toolbar .sort-switcher { margin: 0 }
 
 /* Recycle Bin Button */
 .recycle-bin-button {
-    display: inline-block; margin: 10px 0px; padding: 3px 7px; border-radius: 3px;
+    display: inline-block; margin: 10px 0; padding: 3px 7px; border-radius: 3px;
     &.enabled { background-color: @bgblack; color: white !important }
     &.disabled { background-color: #DDD; color: #999 !important }
 }
-.toolbar .recycle-bin-button { margin: 0px }
+.toolbar .recycle-bin-button { margin: 0 }
 
 /* Pagination */
 ul.pagination {
     li.active, li.active span { background-color: @blue; border-color: @blue; }
 }
-.toolbar ul.pagination { float: right; margin: -4px 0px 0px 0px }
+.toolbar ul.pagination { float: right; margin: -4px 0 0 0 }
 @media (max-width: @screen-phone) {
-    .toolbar ul.pagination { display: block; float: none; margin: 20px 0px }
+    .toolbar ul.pagination { display: block; float: none; margin: 20px 0 }
 }
 
 /* Tooltip */
@@ -160,7 +160,7 @@ ul.pagination {
 .modal .modal-footer button { .btn(); .btn-default(); margin-left: 5px }
 
 /* Alert */
-.alert { border-radius: 0px; }
+.alert { border-radius: 0; }
 
 /*
  * Subpages
@@ -169,14 +169,14 @@ ul.pagination {
 .page-images {
     .image {
         position: relative; float: left; width: 20%; padding-top: 20%; background-size: cover; background-position: center;
-        box-shadow: inset 0px 0px 0px 1px white;
-        .show { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; }
+        box-shadow: inset 0 0 0 1px white;
+        .show { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
         .info {
             .text-overflow();
-            display: none; position: absolute; left: 0px; top: 0px; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center; font-weight: bold;
+            display: none; position: absolute; left: 0; top: 0; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center; font-weight: bold;
         }
         .actions {
-            display: none; position: absolute; left: 0px; bottom: 0px; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center;
+            display: none; position: absolute; left: 0; bottom: 0; width: 100%; padding: 10px; background-color: rgba(255, 255, 255, 0.8); text-align: center;
             a { .btn(); .btn-default(); }
         }
         &:hover .info, &:hover .actions {
@@ -184,7 +184,7 @@ ul.pagination {
         }
     }
     .image:nth-child(3n+3) {
-        margin-right: 0px;
+        margin-right: 0;
     }
 }
 @media (max-width: @screen-tablet) {
@@ -205,7 +205,7 @@ ul.pagination {
 }
 
 .page-visitors {
-    #chart { margin: 0px 0px 20px 5%; width: 90%; height: 200px }
+    #chart { margin: 0 0 20px 5%; width: 90%; height: 200px }
     table.days th { width: 50% }
     table.days tr.hover td { background-color: #DDD; background-image: none }
 }
@@ -220,7 +220,7 @@ ul.pagination {
 
 .page-matches .scores {
     padding-top: 7px;
-    .item { display: inline-block; margin: 0px 10px 10px 0px; padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; cursor: pointer; }
+    .item { display: inline-block; margin: 0 10px 10px 0; padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; cursor: pointer; }
     .item .score { font-weight: bold }
     .add-new { padding: 5px 10px; border: 1px solid #CCC; border-radius: 3px; font-weight: bold; cursor: pointer;}
 }
@@ -228,9 +228,9 @@ ul.pagination {
 .page-dashboard {
     #chart { margin-bottom: 20px; width: 100%; height: 250px }
     .quick-access {
-        margin: 20px 0px;
+        margin: 20px 0;
         div { width: 16.666%; min-width: 120px; box-sizing: border-box; float: left; padding: 10px; text-align: center; }
-        a { display: block; margin: 0px 10px; padding-bottom: 10px; box-shadow: 0px 7px 0px @hoverblue; border-radius: 5px; background-color: @blue; color: white; }
+        a { display: block; margin: 0 10px; padding-bottom: 10px; box-shadow: 0 7px 0 @hoverblue; border-radius: 5px; background-color: @blue; color: white; }
         a:hover { background-color: lighten(@blue, 5%) }
         a:active { box-shadow: none; transform: translateY(7px); transition: all 0.08s linear; }
         i { display: block; padding: 10px; font-size: 40px }
@@ -254,15 +254,15 @@ ul.pagination {
 @media (max-width: @screen-tablet) {
     .page-dashboard {
         .quick-access {
-            div { width: 25%; min-width: 100px; padding: 10px 0px }
+            div { width: 25%; min-width: 100px; padding: 10px 0 }
         }
     }
 }
 @media (max-width: @screen-phone) {
     .page-dashboard {
         .quick-access {
-            div { width: 33%; min-width: 33%; padding: 10px 0px }
-            a { margin: 0px 5px; }
+            div { width: 33%; min-width: 33%; padding: 10px 0 }
+            a { margin: 0 5px; }
             i { font-size: 30px; }
         }
         #chart .flot-text { display: none }
@@ -287,7 +287,7 @@ ul.pagination {
 .page-config-show-log {
     .item { margin-bottom: 10px; cursor: pointer; }
     .date { color: @blue; }
-    .stack { display: none; padding: 10px 0px 10px 20px; }
+    .stack { display: none; padding: 10px 0 10px 20px; }
     .line { margin-bottom: 5px; padding: 5px; border-bottom: 1px solid #ddd; }
 }
 
@@ -302,11 +302,11 @@ ul.pagination {
         button { width: 27%; box-sizing: border-box; }
     }
     .images { height: 330px; overflow-y: scroll; }
-    .image { float: left; width: 100px; height: 100px; margin: 0px 10px 10px 0px; background-position: center; background-size: cover; cursor: pointer }
+    .image { float: left; width: 100px; height: 100px; margin: 0 10px 10px 0; background-position: center; background-size: cover; cursor: pointer }
 }
 
 /*
- * Mainlayout
+ * Main layout
  */
 
 body {
@@ -334,8 +334,8 @@ a {
 }
 
 h1,h2,h3,h4,h5,h6 {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 img {
@@ -344,7 +344,7 @@ img {
 }
 
 .row {
-    margin: 0px;
+    margin: 0;
 }
 
 @headerHeight: 56px;
@@ -352,18 +352,18 @@ img {
 @sidebarWidthSmall: 70px;
 
 header {
-    position: fixed; z-index: 100; left: 0px; right: 0px; background-color: @blue; color: @white; font-size: 14px; line-height: @headerHeight; box-shadow: rgba(0, 0, 0, 0.33) 0px 1px 3px 0px;
+    position: fixed; z-index: 100; left: 0; right: 0; background-color: @blue; color: @white; font-size: 14px; line-height: @headerHeight; box-shadow: rgba(0, 0, 0, 0.33) 0 1px 3px 0;
     a { color: @white; }
     a:focus { color: @white }
     a:hover { color: @white; }
     a:active { color: @white; }
     nav {
-        position: absolute; right: 0px; top: 0px;
-        ul { margin: 0px; }
+        position: absolute; right: 0; top: 0;
+        ul { margin: 0; }
         li {
             float: left;
             .fadd { display: none !important; }
-            a { display: block; padding: 0px 20px; height: @headerHeight; font-weight: bold; text-transform: uppercase; }
+            a { display: block; padding: 0 20px; height: @headerHeight; font-weight: bold; text-transform: uppercase; }
             &:hover { background-color: @hoverblue; }
         }
     }
@@ -382,8 +382,8 @@ header {
         .header-logo { width: auto; float: none; text-align: center; }
         nav {
             position: relative; right: auto; top: auto;
-            li { width: 33%; padding: 0px !important; text-align: center; overflow: hidden; white-space: nowrap; }
-            li a { padding: 0px 10px; }
+            li { width: 33%; padding: 0 !important; text-align: center; overflow: hidden; white-space: nowrap; }
+            li a { padding: 0 10px; }
             .text { display: inline; }
         }
     }
@@ -399,7 +399,7 @@ header {
     margin-top: @headerHeight;
     .account {
         text-align: center;
-        margin: 40px 0px 40px 0px;
+        margin: 40px 0 40px 0;
         .avatar {
             font-weight: 300;
             color: @white;
@@ -440,7 +440,7 @@ header {
                 .text-overflow();
             }
             .items {
-                height: 0px;
+                height: 0;
                 overflow: hidden;
                 a {
                     .text-overflow();
@@ -483,12 +483,12 @@ header {
 }
 @media (max-width: @screen-phone) {
     #sidebar {
-        position: relative; width: 100%; height: auto !important; margin-top: 0px;
+        position: relative; width: 100%; height: auto !important; margin-top: 0;
         .account { display: none; }
         .hamburger { display: block; text-align: right; }
         .navigation { display: none; }
         &.max {
-            .hamburger { display: block; position: absolute; right: 0px; top: 0px; }
+            .hamburger { display: block; position: absolute; right: 0; top: 0; }
             .navigation { display: block; }
         }
     }
@@ -499,18 +499,18 @@ header {
     #content { margin-left: @sidebarWidthSmall; }
 }
 @media (max-width: @screen-phone) {
-    #content { margin-left: 0px; padding-top: 0px; }
+    #content { margin-left: 0; padding-top: 0; }
 }
 
 .page {
-    max-width: 900px; margin: 0px 40px;
+    max-width: 900px; margin: 0 40px;
 }
 .page-head {
-    display: block; margin-bottom: 40px; padding: 20px 0px 20px 40px; border-bottom: 1px solid silver; font-weight: bold;
+    display: block; margin-bottom: 40px; padding: 20px 0 20px 40px; border-bottom: 1px solid silver; font-weight: bold;
     i { display: inline-block; min-width: 16px; margin-right: 10px; padding: 2px 3px; border-radius: 3px; background-color: @blue; color: white; text-align: center; }
 }
 @media (max-width: @screen-phone) {
-    .page { margin: 0px 20px; }
+    .page { margin: 0 20px; }
     .page-head { padding-left: 20px; }
 }
 
@@ -524,5 +524,5 @@ header {
     #footer { margin-left: @sidebarWidthSmall };
 }
 @media (max-width: @screen-phone) {
-    #footer { margin-left: 0px }
+    #footer { margin-left: 0 }
 }

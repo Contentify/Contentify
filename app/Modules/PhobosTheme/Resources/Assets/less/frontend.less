@@ -57,12 +57,12 @@ a:hover { color: @primaryColor; text-decoration: none }
  */
 
 .page-title { 
-    margin: 0px 0px 20px 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: @textColor; font-size: 16px; font-weight: bold; text-transform: uppercase; 
+    margin: 0 0 20px 0; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: @textColor; font-size: 16px; font-weight: bold; text-transform: uppercase; 
     a { color: @textColor }
 }
 .page { margin-bottom: 20px; padding: 20px; background-color: @darker; }
 .alert { 
-    border-radius: 0px; 
+    border-radius: 0; 
     a { color: @textColor }
 }
 .alert-info { background-color: @primaryColor; color: @textColor; border: none; border-left: 4px solid darken(@primaryColor, 20%) }
@@ -75,7 +75,7 @@ a:hover { color: @primaryColor; text-decoration: none }
     .alert();
     background-color: #eee;
     border: 1px solid @primaryColor;
-    border-radius: 0px;
+    border-radius: 0;
     .title { font-weight: bold }
 }
 
@@ -114,9 +114,9 @@ ul.pagination {
     .disabled { opacity: 0.5 }
 }
 
-.toolbar ul.pagination { float: right; margin: -4px 0px 0px 0px }
+.toolbar ul.pagination { float: right; margin: -4px 0 0 0 }
 @media (max-width: @screen-phone) {
-    .toolbar ul.pagination { display: block; float: none; margin: 20px 0px }
+    .toolbar ul.pagination { display: block; float: none; margin: 20px 0 }
 }
 
 /* Modal */
@@ -156,7 +156,7 @@ ul.pagination {
 .rating {
     .stars { 
         margin-bottom: 10px;
-        i { float: left; padding: 0px 2px; }
+        i { float: left; padding: 0 2px; }
         &.enabled i { cursor: pointer; }
         .active { color: @primaryColor }
     }     
@@ -170,10 +170,10 @@ ul.pagination {
 .slider { 
     position: relative; width: 100%; height: 360px; /* Height of a single slide */
     .slides { 
-        position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;
-        ul { position: relative; width: 100%; height: 100%; overflow: hidden; margin-left: 0px; }
-        ul li { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; padding: 0px; }
-        a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0px }
+        position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+        ul { position: relative; width: 100%; height: 100%; overflow: hidden; margin-left: 0; }
+        ul li { position: absolute; left: 0; top: 0; width: 100%; height: 100%; padding: 0; }
+        a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0 }
         img { max-width: 100%;  }
     }
     .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
@@ -181,7 +181,7 @@ ul.pagination {
     .to-left:hover, .to-right:hover { opacity: 1 }
     .buttons { 
         position: absolute; right: 40px; bottom: 40px;
-        ul { margin-bottom: 0px; }
+        ul { margin-bottom: 0; }
         li { 
             width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: black; color: rgba(255, 255, 255, 0.5); opacity: 0.5; cursor: pointer; text-align: center;
             &.active{ outline: 1px solid @primaryColor; color: @textColor; }
@@ -190,7 +190,7 @@ ul.pagination {
     }
     .container { position: relative; height: 100%; z-index: 1; }
     .slide-title { 
-        position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0px; left: 40px; bottom: 40px; color: white; text-shadow: 0px 0px 3px black; background-color: rgba(0, 0, 0, 0.7);
+        position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0; left: 40px; bottom: 40px; color: white; text-shadow: 0 0 3px black; background-color: rgba(0, 0, 0, 0.7);
         a { display: inline-block; padding: 20px; color: @textColor; }
     }
 }
@@ -209,8 +209,8 @@ ul.pagination {
 
 .create-comment { 
     margin-top: 20px;
-    .textarea-wrapper { margin: 20px 0px; padding: 0px 20px }
-    p { margin: 0px }
+    .textarea-wrapper { margin: 20px 0; padding: 0 20px }
+    p { margin: 0 }
     textarea { width: 100%; height: 70px; margin-left: -20px; padding: 10px 20px; border: 2px solid silver; color: #666; }
     textarea:focus { border-color: #ff6100; }
 }
@@ -240,7 +240,7 @@ ul.pagination {
 .page-news-show-overview, .page-news-show {
     .news {
         margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid @dark;
-        h2 { text-transform: uppercase; font-weight: bold; margin-bottom: 0px; }
+        h2 { text-transform: uppercase; font-weight: bold; margin-bottom: 0; }
         header span { display: block; margin-bottom: 20px; color: @primaryColor; }
         .image img { max-width: 100% }
     }
@@ -291,7 +291,7 @@ ul.pagination {
     a:hover { 
         div { -webkit-filter: brightness(1.5); filter: brightness(1.5); transition: all 0.3s ease }
     }
-    .image { display: inline-block; height: 60px; width: 100px; float: left; margin: 10px 10px 0px 0px; background-size: cover; }
+    .image { display: inline-block; height: 60px; width: 100px; float: left; margin: 10px 10px 0 0; background-size: cover; }
     .title { clear: right; font-weight: bold; text-transform: uppercase; }
     .viewers { display: block; line-height: 20px;  }
 }
@@ -316,10 +316,10 @@ ul.pagination {
         .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
         .item.active {  }
     }
-    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0px; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: @textColor; text-align: center; }
+    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: @textColor; text-align: center; }
     .previews-wrapper:hover .link { opacity: 1 }
-    .previews-wrapper .to-left { left: 0px; }
-    .previews-wrapper .to-right { right: 0px; }
+    .previews-wrapper .to-left { left: 0; }
+    .previews-wrapper .to-right { right: 0; }
 }
 
 .widget-galleries {
@@ -332,9 +332,9 @@ ul.pagination {
 }
 
 .page-downloads {
-    .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; }
+    .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0 20px 20px 20px; text-align: center; }
     .downloads .download { 
-        display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; .background-image('img/default/file.png'); background-position: center top; background-repeat: no-repeat;
+        display: block; float: left; width: 100px; margin: 0 20px 20px 20px; text-align: center; .background-image('img/default/file.png'); background-position: center top; background-repeat: no-repeat;
         a { display: block; padding-top: 100px; background-position: center 20px; background-repeat: no-repeat; }
     }
 }
@@ -368,7 +368,7 @@ ul.pagination {
     li { position: relative; }
     li a { display: block; text-transform: uppercase; font-weight: bold; }
     li img { margin-right: 10px; vertical-align: -9px; }
-    li .scores { position: absolute; right: 10px; top: 0px; }
+    li .scores { position: absolute; right: 10px; top: 0; }
     li .scores .left-win { color: @green }
     li .scores .left-defeat { color: @red }
     li .scores .left-draw { color: @orange }
@@ -386,7 +386,7 @@ ul.pagination {
 .page-forums-index {
     .action { border-radius: 3px; background-color: @primaryColor; color: @textColor }
     .root-forum {
-        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
+        h2 { margin: 0; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
         margin-top: 20px;
     }
     .sub-forums { .clearfix(); }
@@ -449,7 +449,7 @@ ul.pagination {
         @minHeight: 135px;
         .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid @forumsBoxColor;
         .meta {
-            position: absolute; left: 0px; top: 0px; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: @dark; float: left;
+            position: absolute; left: 0; top: 0; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: @dark; float: left;
             .creator-name { .text-overflow(); display: block; }
             .avatar { display: block; max-width: 100px; max-height: 100px; }
             .counter { display: block; }
@@ -487,7 +487,7 @@ ul.pagination {
                 .avatar { float: right; max-width: 16px; max-height: 16px; }
             }
             .content { 
-                margin-left: 0px; min-height: 0; 
+                margin-left: 0; min-height: 0; 
                 .buttons { position: relative !important; right: auto !important; }
             }
         }
@@ -509,7 +509,7 @@ ul.pagination {
 
 .widget-latest-threads {
     li { position: relative; }
-    li .posts-count { position: absolute; right: 0px; top: 0px; }
+    li .posts-count { position: absolute; right: 0; top: 0; }
 }
 
 .page-users-show {
@@ -534,7 +534,7 @@ ul.pagination {
 .page-friends {
     .clearfix();
     .friend {
-        float: left; box-sizing: border-box; width: 20%; margin-bottom: 20px; padding: 0px 20px; text-align: center;
+        float: left; box-sizing: border-box; width: 20%; margin-bottom: 20px; padding: 0 20px; text-align: center;
         img { max-width: 100%; max-height: 240px; }
         .name { display: block; margin-top: 10px; }
         .actions { margin-top: 20px; }
@@ -577,16 +577,16 @@ ul.pagination {
 
 .page-cups-show {
     .image {
-        margin: 20px 0px; text-align: center;
+        margin: 20px 0; text-align: center;
         img { max-width: 100%; }
     }
-    .actions { margin: 20px 0px; padding: 20px; border: 2px solid @primaryColor; font-size: 1.5em; text-align: center; }
-    #description .text { margin: 20px 0px; }
+    .actions { margin: 20px 0; padding: 20px; border: 2px solid @primaryColor; font-size: 1.5em; text-align: center; }
+    #description .text { margin: 20px 0; }
     #bracket { overflow: auto }
     .bracket {
         @borderColor: @textColor;
         display: flex; flex-direction: row;
-        .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0px; }
+        .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0; }
         .round .spacer { flex-grow: 1; }
         .round .spacer:first-child, .round .spacer:last-child { flex-grow: .5; }
         .match { padding-left: 20px; }
@@ -600,7 +600,7 @@ ul.pagination {
 .page-cups-teams-overview, .page-cups-show-team {
     li { margin-bottom: 10px; }
     .image {
-        margin: 20px 0px;
+        margin: 20px 0;
         img { max-height: 200px; }
     }
 }
@@ -617,7 +617,7 @@ ul.pagination {
     .details {
         margin-bottom: 20px; padding-top: 20px;
         form { margin-bottom: 5px }
-        form:last-child { margin-bottom: 0px }
+        form:last-child { margin-bottom: 0 }
         input { width: 50px; text-align: center; }
     }
 }
@@ -630,7 +630,7 @@ ul.pagination {
 }
 
 .widget-featured-cup {
-    img { margin: 20px 0px; }
+    img { margin: 20px 0; }
 }
 
 .widget-navigation-default {
@@ -645,8 +645,8 @@ ul.pagination {
 
 .page-teams-show {
     .lineup {
-        li { margin: 20px 0px; padding: 20px 0px; background-color: @dark; }
-        h3 { margin-top: 0px; }
+        li { margin: 20px 0; padding: 20px 0; background-color: @dark; }
+        h3 { margin-top: 0; }
         img { max-width: 180px; max-height: 240px; }
     }
     .matches {
@@ -684,14 +684,14 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
             img { max-height: 40px; margin-top: 20px; margin-right: 100px; }
         }
         nav { 
-            float: left; margin: 20px 0px; font-size: 1rem; font-weight: bold; text-transform: uppercase;
+            float: left; margin: 20px 0; font-size: 1rem; font-weight: bold; text-transform: uppercase;
             ul { .list-inline(); }
             a { display: block; height: 40px; line-height: 40px; color: @textColor }
             a:hover { color: @primaryColor }
             .active { color: @primaryColor !important }
         }
         .user { 
-            position: absolute; right: 0px; margin: 20px 0px; height: 40px; line-height: 40px; font-size: 1rem;
+            position: absolute; right: 0; margin: 20px 0; height: 40px; line-height: 40px; font-size: 1rem;
             .image { display: inline-block; width: 40px; height: 40px; border-radius: 40px; border: 2px solid @primaryColor; background-position: center; background-size: cover; vertical-align: middle; }
             .dropdown { display: inline-block; margin-left: 20px; }
             .dropdown.open .btn { border-color: @primaryColor; background-color: @primaryColor  }
@@ -715,7 +715,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
         width: 100%; text-align: center; bottom: auto; top: 35%; background-color: transparent;
         a { font-size: 3rem; color: @primaryColor; text-transform: uppercase; font-weight: bold; }
     }
-    .text { top: 50%; left: 0px; right: 0px; max-width: 50%; margin-left: auto; margin-right: auto; font-size: 1.5rem; position: absolute; text-align: center; }
+    .text { top: 50%; left: 0; right: 0; max-width: 50%; margin-left: auto; margin-right: auto; font-size: 1.5rem; position: absolute; text-align: center; }
     .buttons { width: 100%; right: auto; text-align: center; }
 }
 @media (max-width: 990px) {
@@ -731,7 +731,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 .widget-partners {
     z-index: 1;
     position: relative;
-    padding: 20px 0px;
+    padding: 20px 0;
     ul { .list-inline(); }
     li { width: 24%; text-align: center; }
     img { max-width: 80%; opacity: 0.75 }
@@ -744,9 +744,9 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 }
 
 #sidebar h3 {
-    position: relative; height: 60px; line-height: 20px; margin: 0px; padding: 20px; background-color: @dark; font-weight: bold; font-size: 18px; text-transform: uppercase; z-index: 1;
+    position: relative; height: 60px; line-height: 20px; margin: 0; padding: 20px; background-color: @dark; font-weight: bold; font-size: 18px; text-transform: uppercase; z-index: 1;
     a {
-        position: absolute; display: block; right: 0px; top: 0px; width: 60px; height: 60px; line-height: 60px; background-color: lighten(@dark, 3%); text-align: center; transition: 0.1s all;
+        position: absolute; display: block; right: 0; top: 0; width: 60px; height: 60px; line-height: 60px; background-color: lighten(@dark, 3%); text-align: center; transition: 0.1s all;
         &:hover {
             color: white;
         }
@@ -755,32 +755,32 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 
 .widget-matches-latest {
     a { 
-        position: relative; height: 60px; line-height: 20px; margin: 0px; padding: 20px; background-color: @darker; 
+        position: relative; height: 60px; line-height: 20px; margin: 0; padding: 20px; background-color: @darker; 
         &:hover { background-color: lighten(@dark, 3%) }
     }
     .vs { color: darken(@primaryColor, 20%) !important; text-transform: lowercase; }
     .scores {
-        position: absolute; display: block; right: 0px !important; top: 0px; width: 60px; height: 60px; line-height: 60px; text-align: center; color: white !important;
+        position: absolute; display: block; right: 0 !important; top: 0; width: 60px; height: 60px; line-height: 60px; text-align: center; color: white !important;
     }    
 }
 
 .widget-galleries {
     text-align: center;
-    ul { margin: 0px }
-    li { width: 33%; padding: 0px; }
+    ul { margin: 0 }
+    li { width: 33%; padding: 0; }
     .image { outline: 1px solid fade(@primaryColor, 50%); outline-offset: -1px; }
     .image:hover { outline-color: @primaryColor; -webkit-filter: brightness(1.1); filter: brightness(1.1); transition: all 0.3s ease }
 }
 
 .widget-teams {
     a { 
-        display:block; margin: 0px 0px 2px 0px; outline: 1px solid fade(@primaryColor, 50%); outline-offset: -1px; 
+        display:block; margin: 0 0 2px 0; outline: 1px solid fade(@primaryColor, 50%); outline-offset: -1px; 
         &:hover { outline-color: @primaryColor; -webkit-filter: brightness(1.1); filter: brightness(1.1); transition: all 0.3s ease }
     }
 }
 
 #footer {
-    margin: 40px 0px;
+    margin: 40px 0;
     z-index: 1;
     position: relative;
     .links {
@@ -793,7 +793,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
         nav {
             font-weight: bold; text-transform: uppercase;
             li { margin-left: 20px; }
-            a { padding: 10px 0px; display: block; }
+            a { padding: 10px 0; display: block; }
         }
     }
     .more {
@@ -813,7 +813,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
         position: relative;
         text-align: center;
         .footer-logo { float: none !important; }
-        .info { display: block; margin-right: 0px !important; clear: both; }
+        .info { display: block; margin-right: 0 !important; clear: both; }
         .list-inline { padding-top: 20px; text-align: center; }
     }
 }

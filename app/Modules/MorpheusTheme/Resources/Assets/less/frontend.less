@@ -57,12 +57,12 @@ a:hover { color: @primaryColor; text-decoration: none }
  */
 
 .page-title { 
-    margin: 0px 0px 20px 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: @textColor; font-size: 16px; font-weight: bold; text-transform: uppercase; 
+    margin: 0 0 20px 0; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: @textColor; font-size: 16px; font-weight: bold; text-transform: uppercase; 
     a { color: @textColor }
 }
 .page { margin-bottom: 20px; padding: 20px; background-color: @darker; }
 .alert { 
-    border-radius: 0px; 
+    border-radius: 0; 
     a { color: @textColor }
 }
 .alert-info { background-color: @primaryColor; color: @textColor; border: none; border-left: 4px solid darken(@primaryColor, 20%) }
@@ -75,12 +75,12 @@ a:hover { color: @primaryColor; text-decoration: none }
     .alert();
     background-color: #eee;
     border: 1px solid @primaryColor;
-    border-radius: 0px;
+    border-radius: 0;
     .title { font-weight: bold }
 }
 
 /* Form */
-.btn, .input-group-addon { border-radius: 0px; border-color: @primaryColor; background-color: transparent; color: @primaryColor }
+.btn, .input-group-addon { border-radius: 0; border-color: @primaryColor; background-color: transparent; color: @primaryColor }
 .btn:focus, .btn:hover { border-color: @primaryColor; background-color: @primaryColor; color: @textColor; }
 .input-group-addon { border-left: 1px solid @primaryColor !important }
 
@@ -114,9 +114,9 @@ ul.pagination {
     .disabled { opacity: 0.5 }
 }
 
-.toolbar ul.pagination { float: right; margin: -4px 0px 0px 0px }
+.toolbar ul.pagination { float: right; margin: -4px 0 0 0 }
 @media (max-width: @screen-phone) {
-    .toolbar ul.pagination { display: block; float: none; margin: 20px 0px }
+    .toolbar ul.pagination { display: block; float: none; margin: 20px 0 }
 }
 
 /* Modal */
@@ -156,7 +156,7 @@ ul.pagination {
 .rating {
     .stars { 
         margin-bottom: 10px;
-        i { float: left; padding: 0px 2px; }
+        i { float: left; padding: 0 2px; }
         &.enabled i { cursor: pointer; }
         .active { color: @primaryColor }
     }     
@@ -170,10 +170,10 @@ ul.pagination {
 .slider { 
     position: relative; width: 100%; height: 360px; /* Height of a single slide */
     .slides { 
-        position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;
-        ul { position: relative; width: 100%; height: 100%; overflow: hidden; margin-left: 0px; }
-        ul li { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; padding: 0px; }
-        a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0px }
+        position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+        ul { position: relative; width: 100%; height: 100%; overflow: hidden; margin-left: 0; }
+        ul li { position: absolute; left: 0; top: 0; width: 100%; height: 100%; padding: 0; }
+        a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0 }
         img { max-width: 100%;  }
     }
     .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
@@ -181,7 +181,7 @@ ul.pagination {
     .to-left:hover, .to-right:hover { opacity: 1 }
     .buttons { 
         position: absolute; right: 40px; bottom: 40px; z-index: 1;
-        ul { margin-bottom: 0px; }
+        ul { margin-bottom: 0; }
         li { 
             width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: black; color: rgba(255, 255, 255, 0.5); opacity: 0.5; cursor: pointer; text-align: center;
             &.active{ outline: 1px solid @primaryColor; color: @textColor; }
@@ -190,7 +190,7 @@ ul.pagination {
     }
     .container { position: relative; height: 100%; }
     .slide-title { 
-        position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0px; left: 40px; bottom: 40px; color: white; text-shadow: 0px 0px 3px black; background-color: rgba(0, 0, 0, 0.7); z-index: 1;
+        position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0; left: 40px; bottom: 40px; color: white; text-shadow: 0 0 3px black; background-color: rgba(0, 0, 0, 0.7); z-index: 1;
         a { display: inline-block; padding: 20px; color: @textColor; }
     }
 }
@@ -209,8 +209,8 @@ ul.pagination {
 
 .create-comment { 
     margin-top: 20px;
-    .textarea-wrapper { margin: 20px 0px; padding: 0px 20px }
-    p { margin: 0px }
+    .textarea-wrapper { margin: 20px 0; padding: 0 20px }
+    p { margin: 0 }
     textarea { width: 100%; height: 70px; margin-left: -20px; padding: 10px 20px; border: 2px solid silver; color: #666; }
     textarea:focus { border-color: #ff6100; }
 }
@@ -240,7 +240,7 @@ ul.pagination {
 .page-news-show-overview, .page-news-show {
     .news {
         margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid @dark;
-        h2 { text-transform: uppercase; font-weight: bold; margin-bottom: 0px; }
+        h2 { text-transform: uppercase; font-weight: bold; margin-bottom: 0; }
         header span { display: block; margin-bottom: 20px; color: @primaryColor; }
         .image img { max-width: 100% }
     }
@@ -291,7 +291,7 @@ ul.pagination {
     a:hover { 
         div { -webkit-filter: brightness(1.5); filter: brightness(1.5); transition: all 0.3s ease }
     }
-    .image { display: inline-block; height: 60px; width: 100px; float: left; margin: 10px 10px 0px 0px; background-size: cover; }
+    .image { display: inline-block; height: 60px; width: 100px; float: left; margin: 10px 10px 0 0; background-size: cover; }
     .title { clear: right; font-weight: bold; text-transform: uppercase; }
     .viewers { display: block; line-height: 20px;  }
 }
@@ -316,10 +316,10 @@ ul.pagination {
         .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
         .item.active {  }
     }
-    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0px; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: @textColor; text-align: center; }
+    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: @textColor; text-align: center; }
     .previews-wrapper:hover .link { opacity: 1 }
-    .previews-wrapper .to-left { left: 0px; }
-    .previews-wrapper .to-right { right: 0px; }
+    .previews-wrapper .to-left { left: 0; }
+    .previews-wrapper .to-right { right: 0; }
 }
 
 .widget-galleries {
@@ -332,9 +332,9 @@ ul.pagination {
 }
 
 .page-downloads {
-    .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; }
+    .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0 20px 20px 20px; text-align: center; }
     .downloads .download { 
-        display: block; float: left; width: 100px; margin: 0px 20px 20px 20px; text-align: center; .background-image('theme/file.png'); background-position: center top; background-repeat: no-repeat;
+        display: block; float: left; width: 100px; margin: 0 20px 20px 20px; text-align: center; .background-image('theme/file.png'); background-position: center top; background-repeat: no-repeat;
         a { display: block; padding-top: 100px; background-position: center 20px; background-repeat: no-repeat; }
     }
 }
@@ -368,7 +368,7 @@ ul.pagination {
     li { position: relative; }
     li a { display: block; text-transform: uppercase; font-weight: bold; }
     li img { margin-right: 10px; vertical-align: -9px; }
-    li .scores { position: absolute; right: 10px; top: 0px; }
+    li .scores { position: absolute; right: 10px; top: 0; }
     li .scores .left-win { color: @green }
     li .scores .left-defeat { color: @red }
     li .scores .left-draw { color: @orange }
@@ -386,7 +386,7 @@ ul.pagination {
 .page-forums-index {
     .action { border-radius: 3px; background-color: @primaryColor; color: @textColor }
     .root-forum {
-        h2 { margin: 0px; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
+        h2 { margin: 0; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
         margin-top: 20px;
     }
     .sub-forums { .clearfix(); }
@@ -449,7 +449,7 @@ ul.pagination {
         @minHeight: 135px;
         .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid @forumsBoxColor;
         .meta {
-            position: absolute; left: 0px; top: 0px; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: @dark; float: left;
+            position: absolute; left: 0; top: 0; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: @dark; float: left;
             .creator-name { .text-overflow(); display: block; }
             .avatar { display: block; max-width: 100px; max-height: 100px; }
             .counter { display: block; }
@@ -487,7 +487,7 @@ ul.pagination {
                 .avatar { float: right; max-width: 16px; max-height: 16px; }
             }
             .content { 
-                margin-left: 0px; min-height: 0; 
+                margin-left: 0; min-height: 0; 
                 .buttons { position: relative !important; right: auto !important; }
             }
         }
@@ -509,7 +509,7 @@ ul.pagination {
 
 .widget-latest-threads {
     li { position: relative; }
-    li .posts-count { position: absolute; right: 0px; top: 0px; }
+    li .posts-count { position: absolute; right: 0; top: 0; }
 }
 
 .page-users-show {
@@ -534,7 +534,7 @@ ul.pagination {
 .page-friends {
     .clearfix();
     .friend {
-        float: left; box-sizing: border-box; width: 20%; margin-bottom: 20px; padding: 0px 20px; text-align: center;
+        float: left; box-sizing: border-box; width: 20%; margin-bottom: 20px; padding: 0 20px; text-align: center;
         img { max-width: 100%; max-height: 240px; }
         .name { display: block; margin-top: 10px; }
         .actions { margin-top: 20px; }
@@ -577,16 +577,16 @@ ul.pagination {
 
 .page-cups-show {
     .image { 
-        margin: 20px 0px; text-align: center;
+        margin: 20px 0; text-align: center;
         img { max-width: 100%; }
     }
-    .actions { margin: 20px 0px; padding: 20px; border: 2px solid @primaryColor; font-size: 1.5em; text-align: center; }
-    #description .text { margin: 20px 0px; }
+    .actions { margin: 20px 0; padding: 20px; border: 2px solid @primaryColor; font-size: 1.5em; text-align: center; }
+    #description .text { margin: 20px 0; }
     #bracket { overflow: auto }
     .bracket {
         @borderColor: @textColor;
         display: flex; flex-direction: row;
-        .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0px; }
+        .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0; }
         .round .spacer { flex-grow: 1; }
         .round .spacer:first-child, .round .spacer:last-child { flex-grow: .5; }
         .match { padding-left: 20px; }
@@ -600,7 +600,7 @@ ul.pagination {
 .page-cups-teams-overview, .page-cups-show-team {
     li { margin-bottom: 10px; }
     .image { 
-        margin: 20px 0px; 
+        margin: 20px 0; 
         img { max-height: 200px; }
     }
 }
@@ -617,7 +617,7 @@ ul.pagination {
     .details { 
         margin-bottom: 20px; padding-top: 20px; 
         form { margin-bottom: 5px }
-        form:last-child { margin-bottom: 0px }
+        form:last-child { margin-bottom: 0 }
         input { width: 50px; text-align: center; }
     }
 }
@@ -630,7 +630,7 @@ ul.pagination {
 }
 
 .widget-featured-cup {
-    img { margin: 20px 0px; }
+    img { margin: 20px 0; }
 }
 
 .widget-navigation-default {
@@ -645,8 +645,8 @@ ul.pagination {
 
 .page-teams-show {
     .lineup {
-        li { margin: 20px 0px; padding: 20px 0px; background-color: @dark; }
-        h3 { margin-top: 0px; }
+        li { margin: 20px 0; padding: 20px 0; background-color: @dark; }
+        h3 { margin-top: 0; }
         img { max-width: 180px; max-height: 240px; }
     }
     .matches {
@@ -681,24 +681,24 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 #header { 
 
     .top-bar { 
-        height: 80px; padding: 25px 0px;
+        height: 80px; padding: 25px 0;
         position: relative; z-index: 1;
-        .header-logo { margin: 0px 20px }
+        .header-logo { margin: 0 20px }
         img { max-height: 30px; }
         .right { 
-            float: right; padding-top: 0px;
+            float: right; padding-top: 0;
         }
     }
     nav {
         .container { position: relative; }
         background-color: @dark; border-top: 1px solid lighten(@dark, 10%); border-bottom: 4px solid darken(@dark, 4%);
-        ul { margin: 10px 0px; border-left: 1px solid lighten(@dark, 10%); z-index: 1; position: relative; }
-        a { display: inline-block; position: relative; height: 60px; line-height: 60px; padding: 0px 20px; font-weight: bold; text-decoration: none; text-transform: uppercase; }
-        li a:before { content: ' '; display: none; position: absolute; left: 20px; right: 20px; bottom: 0px; height: 2px; background-color: @primaryColor }
+        ul { margin: 10px 0; border-left: 1px solid lighten(@dark, 10%); z-index: 1; position: relative; }
+        a { display: inline-block; position: relative; height: 60px; line-height: 60px; padding: 0 20px; font-weight: bold; text-decoration: none; text-transform: uppercase; }
+        li a:before { content: ' '; display: none; position: absolute; left: 20px; right: 20px; bottom: 0; height: 2px; background-color: @primaryColor }
         li a.active:before, li:hover a:before { display: block; }
         li.icon { margin-left: 20px; color: lighten(@dark, 10%); }
         .right { 
-            position: absolute; right: 0px; top: 10px; z-index: 1;
+            position: absolute; right: 0; top: 10px; z-index: 1;
             a { color: lighten(@dark, 10%); }
             a:hover { transform: scale(1.5); transition: all 0.08s linear; }
         }
@@ -730,7 +730,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 @media (max-width: 600px) {
     #header {
         .right { 
-            padding-top: 0px; 
+            padding-top: 0; 
             a { margin-top: 20px; }
         }
 
@@ -742,12 +742,12 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 #sidebar {
     padding-left: 20px; border-left: 1px solid @darker;
     .border { padding: 20px; background-color: @darker; }
-    h3 { margin: 0px; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: black; font-size: 16px; font-weight: bold; text-transform: uppercase }
+    h3 { margin: 0; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: black; font-size: 16px; font-weight: bold; text-transform: uppercase }
     h3 a { float: right; color: darken(@primaryColor, 30%); }
     h3 a:hover { transform: scale(1.5); transition: all 0.08s linear; }
     .widget { 
         line-height: 40px; 
-        li { margin: 2px 0px; padding: 0px 10px; background-color: darken(@darker, 2%); }
+        li { margin: 2px 0; padding: 0 10px; background-color: darken(@darker, 2%); }
         li:hover { background-color: darken(@darker, 4%); }
     }
 
@@ -760,11 +760,11 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 
 #footer {
     .links {
-        margin-top: 40px; padding: 40px 0px; background-color: @darker; color: @primaryColor; font-weight: bold; text-transform: uppercase;
+        margin-top: 40px; padding: 40px 0; background-color: @darker; color: @primaryColor; font-weight: bold; text-transform: uppercase;
         a { padding: 10px; position: relative; z-index: 1; }
     }
     .more {
-        padding: 40px 0px; background-color: @dark;
+        padding: 40px 0; background-color: @dark;
         .info a { color: @textColor; position: relative; z-index: 1; }
         .visitors-label { 
             margin-left: 10px; color: lighten(@dark, 20%); font-weight: bold; position: relative; z-index: 1;
@@ -774,13 +774,13 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
             display: inline-block; position: relative; z-index: 1;
             ul { 
                 display: inline-block; color: lighten(@dark, 20%); font-weight: bold;
-                li { padding: 0px; }
+                li { padding: 0; }
                 span { font-weight: normal; }                
             }
         }
         .right { 
             position: relative; float: right; z-index: 1;
-            a { display: inline-block; padding: 0px 10px; color: lighten(@dark, 10%); }
+            a { display: inline-block; padding: 0 10px; color: lighten(@dark, 10%); }
             a:hover { transform: scale(1.5); transition: all 0.08s linear; }
         }
     }
@@ -789,7 +789,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
     #footer {
         text-align: center;
         .links {
-            padding: 40px 0px 0px 0px;
+            padding: 40px 0 0 0;
             li { margin-bottom: 20px; position: relative; z-index: 1; }
         }
         .more {

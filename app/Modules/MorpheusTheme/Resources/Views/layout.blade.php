@@ -172,7 +172,6 @@
                     <a href="https://www.youtube.com/channel/{{ Config::get('app.youtube') }}" target="_blank" title="YouTube">{!! HTML::fontIcon('youtube') !!}</a>
                 </div>
             </div>
-            </div>
         </div>
     </footer>
     
