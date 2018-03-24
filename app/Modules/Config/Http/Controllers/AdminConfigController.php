@@ -257,24 +257,33 @@ class AdminConfigController extends BackController
 
         $filename = storage_path().self::LOG_FILE;
         if (File::exists($filename)) {
-            $lines      = file($filename);
-            $content    = '';
+            $lines    = file($filename);
+            $content  = '';
 
             foreach ($lines as $line) {
+                // Escape the whole line, because it might contain HTML tags
+                $line = e($line);
+
                 // Wrap the environment + error info in a HTML element
                 $line = preg_replace('/\] (\w+)\.(\w+):/', '] <strong class="level-$2">$1.$2</strong>:', $line);
 
                 // Wrap stack counters in labels
                 $line = preg_replace('/^#\d+/', '<span class="label label-default">$0</span>', $line);
 
+                // Wrap stack beginning in a HTML tag
+                if ($line === "Stack trace:\n") {
+                    $line = '<em>'.$line.'</em>';
+                }
+
+                // New log entries start with a [...
                 if (Str::startsWith($line, '[')) {
                     if ($content) {
                         $content .= '</div></div>';
                     }
                     $line = substr($line, 0, 21).'</span>'.substr($line, 21);
                     $content .= '<div class="item"><span class="date">'.$line.'<div class="stack">';
-                } else {
-                    $content .= '<div class="line">'.$line.'</div>';
+                } else { //  ...the "Stack trace:" entry and the stack entries do not
+                    $content .= '<div class="stack-line">'.$line.'</div>';
                 }
             }
 

@@ -7602,7 +7602,7 @@ fieldset[disabled] .page-images .image .actions a.active {
   display: none;
   padding: 10px 0 10px 20px;
 }
-.page-config-show-log .line {
+.page-config-show-log .stack-line {
   margin-bottom: 5px;
   padding: 5px;
   border-bottom: 1px solid #ddd;

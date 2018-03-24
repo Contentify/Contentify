@@ -6,8 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "laravelcollective/html": "5.3.*",
+        "laravel/framework": "5.4.*",
+        "laravelcollective/html": "5.4.*",
         "cartalyst/sentinel": "2.*",
         "thujohn/rss": "1.*",
         "intervention/image": "dev-master",
