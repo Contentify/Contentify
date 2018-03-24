@@ -1,8 +1,10 @@
 <div class="actions">
     {!! button(trans('app.object_diag'), url('admin/diag'), 'heartbeat') !!}&nbsp;
     {!! button(trans('config::button_info'), url('admin/config/info'), 'info-circle') !!}&nbsp;
+    {!! button(trans('config::button_log'), url('admin/config/log'), 'file-alt') !!}&nbsp;
     {!! button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') !!}&nbsp;
     {!! button(trans('config::button_dump'), url('admin/config/export'), 'database') !!}&nbsp;
+    {!! button(trans('config::button_compile_less'), url('admin/config/compile-less'), 'code') !!}&nbsp;
     {!! button(trans('config::button_clear_cache'), url('admin/config/clear-cache'), 'trash') !!}&nbsp;
 </div>
 

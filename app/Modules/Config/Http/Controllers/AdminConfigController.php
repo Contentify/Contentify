@@ -212,6 +212,22 @@ class AdminConfigController extends BackController
     }
 
     /**
+     * Compiles the LESS files to CSS files
+     *
+     * @return void
+     */
+    public function getCompileLess()
+    {
+        if (! $this->checkAccessUpdate()) {
+            return;
+        }
+
+        Artisan::call('less:compile');
+
+        $this->alertSuccess(trans('app.successful'));
+    }
+
+    /**
      * Clear the cache
      *
      * @return void
@@ -275,6 +291,10 @@ class AdminConfigController extends BackController
      */
     public function clearLog()
     {
+        if (! $this->checkAccessUpdate()) {
+            return;
+        }
+
         $filename = storage_path().self::LOG_FILE;
 
         if (File::exists($filename)) {

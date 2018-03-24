@@ -58,8 +58,10 @@ class LessCompileCommand extends Command
      */
     protected function compileLessFile($sourcePath, $sourceFilename)
     {
+        $debug = Config::get('app.debug');
+
         // Create a new instance for each file - or call the reset method
-        $parser = new Less_Parser(['compress' => true]);
+        $parser = new Less_Parser(['compress' => ! $debug]);
 
         $source = $sourcePath.$sourceFilename.'.less';
         $parser->parseFile($source);
