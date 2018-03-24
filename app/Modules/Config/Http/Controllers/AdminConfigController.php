@@ -261,6 +261,12 @@ class AdminConfigController extends BackController
             $content    = '';
 
             foreach ($lines as $line) {
+                // Wrap the environment + error info in a HTML element
+                $line = preg_replace('/\] (\w+)\.(\w+):/', '] <strong class="level-$2">$1.$2</strong>:', $line);
+
+                // Wrap stack counters in labels
+                $line = preg_replace('/^#\d+/', '<span class="label label-default">$0</span>', $line);
+
                 if (Str::startsWith($line, '[')) {
                     if ($content) {
                         $content .= '</div></div>';

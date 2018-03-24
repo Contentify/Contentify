@@ -6816,6 +6816,123 @@ textarea.form-group textarea {
   background-color: #00afff;
   color: white;
 }
+.modal .form-group:before,
+.modal .form-group:after {
+  content: " ";
+  display: table;
+}
+.modal .form-group:after {
+  clear: both;
+}
+.modal .form-group:before,
+.modal .form-group:after {
+  content: " ";
+  display: table;
+}
+.modal .form-group:after {
+  clear: both;
+}
+.modal .modal-footer button {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none !important;
+  color: #555555;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+  background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  margin-left: 5px;
+}
+.modal .modal-footer button:focus,
+.modal .modal-footer button:active:focus,
+.modal .modal-footer button.active:focus,
+.modal .modal-footer button.focus,
+.modal .modal-footer button:active.focus,
+.modal .modal-footer button.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.modal .modal-footer button:hover,
+.modal .modal-footer button:focus,
+.modal .modal-footer button.focus {
+  color: #333333;
+  text-decoration: none;
+}
+.modal .modal-footer button:active,
+.modal .modal-footer button.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.modal .modal-footer button.disabled,
+.modal .modal-footer button[disabled],
+fieldset[disabled] .modal .modal-footer button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.modal .modal-footer button:hover,
+.modal .modal-footer button:focus,
+.modal .modal-footer button.focus,
+.modal .modal-footer button:active,
+.modal .modal-footer button.active,
+.open > .dropdown-toggle.modal .modal-footer button {
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.modal .modal-footer button:active,
+.modal .modal-footer button.active,
+.open > .dropdown-toggle.modal .modal-footer button {
+  background-image: none;
+}
+.modal .modal-footer button.disabled,
+.modal .modal-footer button[disabled],
+fieldset[disabled] .modal .modal-footer button,
+.modal .modal-footer button.disabled:hover,
+.modal .modal-footer button[disabled]:hover,
+fieldset[disabled] .modal .modal-footer button:hover,
+.modal .modal-footer button.disabled:focus,
+.modal .modal-footer button[disabled]:focus,
+fieldset[disabled] .modal .modal-footer button:focus,
+.modal .modal-footer button.disabled.focus,
+.modal .modal-footer button[disabled].focus,
+fieldset[disabled] .modal .modal-footer button.focus,
+.modal .modal-footer button.disabled:active,
+.modal .modal-footer button[disabled]:active,
+fieldset[disabled] .modal .modal-footer button:active,
+.modal .modal-footer button.disabled.active,
+.modal .modal-footer button[disabled].active,
+fieldset[disabled] .modal .modal-footer button.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.modal .modal-footer button .badge {
+  color: #ffffff;
+  background-color: #333333;
+}
 /* Toolbar */
 .toolbar.top {
   min-height: 26px;
@@ -7080,124 +7197,6 @@ fieldset[disabled] .page .table .icon-link.active {
 .info-text {
   color: #999;
 }
-/* Modale dialogue */
-.modal .form-group:before,
-.modal .form-group:after {
-  content: " ";
-  display: table;
-}
-.modal .form-group:after {
-  clear: both;
-}
-.modal .form-group:before,
-.modal .form-group:after {
-  content: " ";
-  display: table;
-}
-.modal .form-group:after {
-  clear: both;
-}
-.modal .modal-footer button {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none !important;
-  color: #555555;
-  color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
-  background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
-  margin-left: 5px;
-}
-.modal .modal-footer button:focus,
-.modal .modal-footer button:active:focus,
-.modal .modal-footer button.active:focus,
-.modal .modal-footer button.focus,
-.modal .modal-footer button:active.focus,
-.modal .modal-footer button.active.focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-.modal .modal-footer button:hover,
-.modal .modal-footer button:focus,
-.modal .modal-footer button.focus {
-  color: #333333;
-  text-decoration: none;
-}
-.modal .modal-footer button:active,
-.modal .modal-footer button.active {
-  outline: 0;
-  background-image: none;
-  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-.modal .modal-footer button.disabled,
-.modal .modal-footer button[disabled],
-fieldset[disabled] .modal .modal-footer button {
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.modal .modal-footer button:hover,
-.modal .modal-footer button:focus,
-.modal .modal-footer button.focus,
-.modal .modal-footer button:active,
-.modal .modal-footer button.active,
-.open > .dropdown-toggle.modal .modal-footer button {
-  color: #333333;
-  background-color: #e6e6e6;
-  border-color: #adadad;
-}
-.modal .modal-footer button:active,
-.modal .modal-footer button.active,
-.open > .dropdown-toggle.modal .modal-footer button {
-  background-image: none;
-}
-.modal .modal-footer button.disabled,
-.modal .modal-footer button[disabled],
-fieldset[disabled] .modal .modal-footer button,
-.modal .modal-footer button.disabled:hover,
-.modal .modal-footer button[disabled]:hover,
-fieldset[disabled] .modal .modal-footer button:hover,
-.modal .modal-footer button.disabled:focus,
-.modal .modal-footer button[disabled]:focus,
-fieldset[disabled] .modal .modal-footer button:focus,
-.modal .modal-footer button.disabled.focus,
-.modal .modal-footer button[disabled].focus,
-fieldset[disabled] .modal .modal-footer button.focus,
-.modal .modal-footer button.disabled:active,
-.modal .modal-footer button[disabled]:active,
-fieldset[disabled] .modal .modal-footer button:active,
-.modal .modal-footer button.disabled.active,
-.modal .modal-footer button[disabled].active,
-fieldset[disabled] .modal .modal-footer button.active {
-  background-color: #ffffff;
-  border-color: #cccccc;
-}
-.modal .modal-footer button .badge {
-  color: #ffffff;
-  background-color: #333333;
-}
 /* Alert */
 .alert {
   border-radius: 0;
@@ -7226,7 +7225,7 @@ fieldset[disabled] .modal .modal-footer button.active {
   background: rgba(75, 167, 226, 0.8);
 }
 /*
- * Subpages
+ * Sub pages
  */
 .page-images .image {
   position: relative;
@@ -7584,8 +7583,16 @@ fieldset[disabled] .page-images .image .actions a.active {
     width: 100%;
   }
 }
+.page-config-show-log pre {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
 .page-config-show-log .item {
   margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #E3E6E8;
+  white-space: normal;
   cursor: pointer;
 }
 .page-config-show-log .date {

@@ -2,7 +2,7 @@
 
 <p class="pull-right form-control-static">{{ trans('app.size') }}: {{ $size }} Bytes</p>
 
-<pre style="overflow: scroll; margin-top: 40px;">
+<pre class="space-top-huge">
     {!! $content !!}
 </pre>
 
