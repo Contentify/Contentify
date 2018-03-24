@@ -36,7 +36,7 @@ class AdminAdvertsController extends BackController
 
                 return [
                     $advert->id,
-                    raw($advert->published ? HTML::fontIcon('check') : null),
+                    raw($advert->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull(), $advert->title),
                     $advert->advertcat->title,
                 ];            

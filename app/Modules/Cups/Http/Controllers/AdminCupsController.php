@@ -41,8 +41,8 @@ class AdminCupsController extends BackController
 
                 return [
                     $cup->id,
-                    raw($cup->published ? HTML::fontIcon('check') : null),
-                    raw($cup->closed ? HTML::fontIcon('check') : null),
+                    raw($cup->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
+                    raw($cup->closed ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull().HTML::link('cups/'.$cup->id.'/'.$cup->slug, $cup->title)),
                     $cup->game->short,
                     $cup->start_at

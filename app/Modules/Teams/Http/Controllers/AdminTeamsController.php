@@ -36,7 +36,7 @@ class AdminTeamsController extends BackController
 
                 return [
                     $team->id,
-                    raw($team->published ? HTML::fontIcon('check') : null),
+                    raw($team->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull().HTML::link('teams/'.$team->id.'/'.$team->slug, $team->title)),
                     $team->teamcat->title,
                 ];            

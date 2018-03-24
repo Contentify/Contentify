@@ -43,7 +43,7 @@ class AdminMatchesController extends BackController
 
                 return [
                     $match->id,
-                    raw($match->state == 1 ? HTML::fontIcon('check') : null),
+                    raw($match->state == 1 ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull().HTML::link('matches/'.$match->id, $match->left_team->title)),
                     raw(HTML::link('matches/'.$match->id, $match->right_team->title)),
                     $match->tournament->short,

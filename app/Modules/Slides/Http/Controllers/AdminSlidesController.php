@@ -37,7 +37,7 @@ class AdminSlidesController extends BackController
 
                 return [
                     $slide->id,
-                    raw($slide->published ? HTML::fontIcon('check') : null),
+                    raw($slide->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull(), $slide->title),
                     $slide->slidecat->title,
                 ];            

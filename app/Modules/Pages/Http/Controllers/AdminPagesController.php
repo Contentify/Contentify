@@ -49,7 +49,7 @@ class AdminPagesController extends BackController
 
                 return [
                     $page->id,
-                    raw($page->published ? HTML::fontIcon('check') : null),
+                    raw($page->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull().$link),
                     $page->pagecat->title,
                     raw(HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username)),
