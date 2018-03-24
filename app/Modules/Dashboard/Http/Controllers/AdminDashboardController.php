@@ -2,7 +2,7 @@
 
 namespace App\Modules\Dashboard\Http\Controllers;
 
-use Log, View, Config, Cache, BackController;
+use HTML, Log, View, Config, Cache, BackController;
 
 class AdminDashboardController extends BackController
 {
@@ -19,7 +19,9 @@ class AdminDashboardController extends BackController
         $feed = $this->feed();
 
         if (Config::get('app.env') == 'production' and Config::get('app.debug') and $_SERVER['HTTP_HOST'] != 'localhost') {
-            $this->alertWarning(trans('app.debug_warning'));
+            $this->alertWarning(trans('app.debug_warning').' '.HTML::link(
+                'https://github.com/Contentify/Contentify/wiki/FAQ#how-can-i-disable-the-debug-mode',
+                trans('app.read_more')));
         }
 
         $this->pageView('dashboard::admin_index', compact('feed'));

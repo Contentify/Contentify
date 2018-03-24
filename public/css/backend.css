@@ -7204,6 +7204,10 @@ fieldset[disabled] .modal .modal-footer button.active {
   font-weight: bold;
   color: white;
 }
+.alert a {
+  color: white;
+  text-decoration: underline;
+}
 .alert-success {
   border-color: #69DD95;
   background: rgba(105, 221, 149, 0.8);

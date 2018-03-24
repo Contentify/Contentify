@@ -5,7 +5,7 @@
     {!! button(trans('config::button_optimize'), url('admin/config/optimize'), 'database') !!}
     {!! button(trans('config::button_dump'), url('admin/config/export'), 'database') !!}
     {!! button(trans('config::button_compile_less'), url('admin/config/compile-less'), 'code') !!}
-    {!! button(trans('config::button_clear_cache'), url('admin/config/clear-cache'), 'trash') !!} 
+    {!! button(trans('config::button_clear_cache'), url('admin/config/clear-cache'), 'trash') !!}
 </div>
 
 {!! Form::errors($errors) !!}
