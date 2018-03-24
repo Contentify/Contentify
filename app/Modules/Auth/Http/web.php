@@ -11,7 +11,7 @@ ModuleRoute::post('auth/login', 'LoginController@postLogin');
 
 ModuleRoute::get('auth/logout',  ['as' => 'logout', 'uses' => 'LogoutController@getIndex']);
 
-ModuleRoute::get('auth/restore', 'LogoutController@getIndex');
+ModuleRoute::get('auth/restore', 'RestorePasswordController@getIndex');
 ModuleRoute::post('auth/restore', 'LogoutController@postIndex');
 ModuleRoute::post('auth/restore/new/{email}/{code}', 'LogoutController@getNew');
 
