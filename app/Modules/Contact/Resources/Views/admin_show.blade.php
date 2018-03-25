@@ -2,7 +2,7 @@
 
 <hr>
 
-<blockquote>{!! $msg->text !!}</blockquote> 
+<blockquote>{{ $msg->text }}</blockquote>
 
 <hr>
 
