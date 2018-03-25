@@ -453,19 +453,6 @@
         "enabled": true,
         "order": 9001
     },
-    "Update": {
-        "basename": "Update",
-        "slug": "Update",
-        "admin-nav": [
-            {
-                "icon": "cloud-download-alt",
-                "category": 4,
-                "position": 10
-            }
-        ],
-        "enabled": true,
-        "order": 9001
-    },
     "Users": {
         "basename": "Users",
         "slug": "Users",
