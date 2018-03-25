@@ -10,6 +10,11 @@ use SoftDeletingTrait, BaseModel;
  * @property string $title
  * @property string $short
  * @property string $icon
+ * @property \App\Modules\Awards\Award[] $awards
+ * @property \App\Modules\Maps\Map[] $maps
+ * @property \App\Modules\Matches\Match[] $matches
+ * @property \App\Modules\Servers\Server[] $servers
+ * @property \User $creator
  */
 class Game extends BaseModel
 {

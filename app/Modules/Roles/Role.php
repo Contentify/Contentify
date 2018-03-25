@@ -15,6 +15,8 @@ use SoftDeletingTrait, Sentinel, BaseModel;
  * @property string $name
  * @property string $slug
  * @property string $permissions
+ * @property \User[] $uses
+ * @property \User $creator
  */
 class Role extends BaseModel
 {

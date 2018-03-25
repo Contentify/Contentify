@@ -10,6 +10,9 @@ use SoftDeletingTrait, BaseModel;
  * @property string $title
  * @property string $code
  * @property string $icon
+ * @property \User[] $users
+ * @property \App\Modules\Opponents\Opponent[] $opponents
+ * @property \User $creator
  */
 class Country extends BaseModel
 {

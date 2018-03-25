@@ -12,6 +12,9 @@ use User, DB, BBCode, Cache, SoftDeletingTrait, BaseModel;
  * @property int $thread_id
  * @property int $level
  * @property bool $root
+ * @property \User $creator
+ * @property \User $updater
+ * @property \App\Modules\Forums\ForumThread $thread
  */
 class ForumPost extends BaseModel
 {

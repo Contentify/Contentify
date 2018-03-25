@@ -13,6 +13,8 @@ use SoftDeletingTrait, BaseModel;
  * @property string $url
  * @property bool $published
  * @property int $advertcat_id
+ * @property \App\Modules\Adverts\Advertcat $advertcat
+ * @property \User $creator
  */
 class Advert extends BaseModel
 {

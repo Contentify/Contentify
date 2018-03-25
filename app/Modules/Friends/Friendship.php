@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Builder;
  *
  * @property bool $confirmed
  * @property \Carbon $messaged_at
+ * @property \User $sender
+ * @property \User $receiver
  */
 class Friendship extends BaseModel
 {

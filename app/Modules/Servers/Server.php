@@ -15,6 +15,8 @@ use SoftDeletingTrait, BaseModel;
  * @property string $description
  * @property bool $published
  * @property int $game_id
+ * @property \App\Modules\Games\Game $game
+ * @property \User $creator
  */
 class Server extends BaseModel
 {
@@ -34,8 +36,8 @@ class Server extends BaseModel
     ];
 
     public static $relationsData = [
-        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
         'game'      => [self::BELONGS_TO, 'App\Modules\Games\Game'],
+        'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
     /**

@@ -9,6 +9,8 @@ use SoftDeletingTrait, BaseModel;
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $slug
+ * @property \App\Modules\Images\Image[] $images
+ * @property \User $creator
  */
 class Gallery extends BaseModel
 {

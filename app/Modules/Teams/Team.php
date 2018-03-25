@@ -17,6 +17,12 @@ use SoftDeletingTrait, BaseModel;
  * @property int $teamcat_id
  * @property int $country_id
  * @property string $image
+ * @property \App\Modules\Matches\Match[] $matches
+ * @property \User[] $members
+ * @property \App\Modules\Teams\Teamcat $teamcat
+ * @property \App\Modules\Countries\Country $country
+ * @property \App\Modules\Awards\Award[] $awards
+ * @property \User $creator
  */
 class Team extends BaseModel 
 {

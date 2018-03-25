@@ -8,6 +8,8 @@ use SoftDeletingTrait, BaseModel;
  * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
+ * @property \App\Modules\Partners\Partner[] $partners
+ * @property \User $creator
  */
 class Partnercat extends BaseModel
 {

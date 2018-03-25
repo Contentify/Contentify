@@ -7,6 +7,7 @@ use File, BaseModel;
 /**
  * @property int $id
  * @property string $text
+ * @property \User $creator
  */
 class Shout extends BaseModel
 {

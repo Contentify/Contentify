@@ -15,6 +15,7 @@ use SoftDeletingTrait, BaseModel;
  * @property string $url
  * @property string $location
  * @property string $image
+ * @property \User $creator
  */
 class Event extends BaseModel
 {

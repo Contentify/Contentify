@@ -9,6 +9,8 @@ use SoftDeletingTrait, BaseModel;
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $image
+ * @property \App\Modules\News\News $news
+ * @property \User $creator
  */
 class Newscat extends BaseModel
 {

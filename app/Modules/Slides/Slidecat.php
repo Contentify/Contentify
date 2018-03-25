@@ -8,6 +8,8 @@ use SoftDeletingTrait, BaseModel;
  * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
+ * @property \App\Modules\Slides\Slide[] $slides
+ * @property \User $creator
  */
 class Slidecat extends BaseModel
 {

@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\Builder;
  * @property bool $closed
  * @property int $forum_id
  * @property int $posts_count
+ * @property \User $creator
+ * @property \App\Modules\Forums\Forum $forum
+ * @property \App\Modules\Forums\ForumPost[] $posts
  */
 class ForumThread extends BaseModel
 {

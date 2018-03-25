@@ -147,6 +147,7 @@ class PostsController extends FrontController
             return null;
         }
 
+        /** @var ForumPost $forumPost */
         $forumPost = ForumPost::isAccessible()->findOrFail($id);       
 
         /*

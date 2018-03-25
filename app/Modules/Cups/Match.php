@@ -22,6 +22,8 @@ use User, Config, Carbon, BaseModel;
  * @property bool $left_confirmed
  * @property bool $right_confirmed
  * @property int $next_match_id
+ * @property \App\Modules\Cups\Cup $cup
+ * @property \User $creator
  */
 class Match extends BaseModel
 {

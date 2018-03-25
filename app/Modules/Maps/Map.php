@@ -10,6 +10,8 @@ use SoftDeletingTrait, BaseModel;
  * @property string $title
  * @property int $game_id
  * @property string $image
+ * @property \App\Modules\Games\Game $game
+ * @property \User $creator
  */
 class Map extends BaseModel
 {

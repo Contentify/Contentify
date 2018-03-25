@@ -58,6 +58,7 @@ class ThreadsController extends FrontController
      */
     public function store($forumId)
     {
+        /** @var Forum $forum */
         $forum = Forum::isAccessible()->findOrFail($forumId);
 
         $forumPost = new ForumPost(Input::all());

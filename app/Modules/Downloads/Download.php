@@ -14,6 +14,8 @@ use Exception, InterImage, File, SoftDeletingTrait, Comment, BaseModel;
  * @property string $file
  * @property int $file_size
  * @property bool $is_image
+ * @property \App\Modules\Downloads\Downloadcat $downloadcat
+ * @property \User $creator
  */
 class Download extends BaseModel
 {

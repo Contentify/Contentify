@@ -14,6 +14,8 @@ use BBCode, Cache, User, BaseModel;
  * @property bool $creator_visible
  * @property bool $receiver_visible
  * @property bool $sent_by_system
+ * @property \User $creator
+ * @property \User $receiver
  */
 class Message extends BaseModel
 {

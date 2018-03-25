@@ -29,6 +29,7 @@ class CupsController extends FrontController
             ],
             'tableRow'      => function($cup)
             {
+                /** @var Cup $cup */
                 return [
                     raw(HTML::link(
                         url('cups/'.$cup->id.'/'.$cup->slug), 

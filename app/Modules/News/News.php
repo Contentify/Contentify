@@ -18,6 +18,8 @@ use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang,
  * @property bool $enable_comments
  * @property int $newscat_id
  * @property int $creator_id
+ * @property \App\Modules\News\Newscat $newscat
+ * @property \User $creator
  */
 class News extends BaseModel
 {

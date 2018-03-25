@@ -15,6 +15,8 @@ use SoftDeletingTrait, StiModel;
  * @property bool $internal
  * @property bool $enable_comments
  * @property int $pagecat_id
+ * @property \App\Modules\Pages\Pagecat $pagecat
+ * @property \User $creator
  */
 class Page extends StiModel
 {

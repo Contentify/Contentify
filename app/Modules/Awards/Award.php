@@ -14,6 +14,10 @@ use HTML, SoftDeletingTrait, BaseModel;
  * @property int $game_id
  * @property int|null $tournament_id
  * @property int|null $team_id
+ * @property \App\Modules\Games\Game $game
+ * @property \App\Modules\Tournaments\Tournament $tournament
+ * @property \App\Modules\Teams\Team $team
+ * @property \User $creator
  */
 class Award extends BaseModel
 {

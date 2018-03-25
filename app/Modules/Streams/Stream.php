@@ -15,6 +15,7 @@ use SoftDeletingTrait, Comment, BaseModel;
  * @property string $thumbnail
  * @property bool $online
  * @property int $viewers
+ * @property \User $creator
  */
 class Stream extends BaseModel 
 {

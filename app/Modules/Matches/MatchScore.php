@@ -10,6 +10,8 @@ use BaseModel;
  * @property int $right_score
  * @property int $map_id
  * @property int $match_id
+ * @property \App\Modules\Matches\Match $match,
+ * @property \App\Modules\Maps\Map $map
  */
 class MatchScore extends BaseModel
 {

@@ -10,6 +10,7 @@ use SoftDeletingTrait, BaseModel;
  * @property string $title
  * @property bool $translate
  * @property string $items
+ * @property \User $creator
  */
 class Navigation extends BaseModel
 {

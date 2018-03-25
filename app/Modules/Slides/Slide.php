@@ -15,6 +15,8 @@ use SoftDeletingTrait, BaseModel;
  * @property bool $published
  * @property int $slidecat_id
  * @property string $image
+ * @property \App\Modules\Slides\Slidecat $slidecat
+ * @property \User $creator
  */
 class Slide extends BaseModel
 {

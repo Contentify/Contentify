@@ -34,6 +34,7 @@ class GalleriesController extends FrontController
      */
     public function show($galleryId, $imageId = null)
     {
+        /** @var Gallery $gallery */
         $gallery = Gallery::findOrFail($galleryId);
 
         if ($imageId) {

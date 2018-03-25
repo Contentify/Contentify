@@ -12,6 +12,7 @@ use Comment, OpenGraph, SoftDeletingTrait, BaseModel;
  * @property string $url
  * @property string $permanent_id
  * @property string $provider
+ * @property \User $creator
  */
 class Video extends BaseModel 
 {

@@ -16,6 +16,8 @@ use SoftDeletingTrait, BaseModel;
  * @property bool $published
  * @property int $partnercat_id
  * @property string $image
+ * @property \App\Modules\Partners\Partnercat $partnercat
+ * @property \User $creator
  */
 class Partner extends BaseModel
 {

@@ -75,6 +75,7 @@ class AdminForumsController extends BackController
 
     public function update($id)
     {
+        /** @var Forum $forum */
         $forum = Forum::findOrFail($id);
 
         $oldParentId = $forum->forum_id;

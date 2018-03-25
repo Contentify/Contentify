@@ -16,6 +16,14 @@ use User, DB, MsgException, SoftDeletingTrait, BaseModel;
  * @property int $team_id
  * @property int $forum_id
  * @property int $level
+ * @property int $threads_count
+ * @property int $posts_count
+ * @property \User $creator
+ * @property \App\Modules\Forums\Forum $forum
+ * @property \App\Modules\Forums\ForumThread $latestThread
+ * @property \App\Modules\Forums\ForumThread[] $threads
+ * @property \App\Modules\Teams\Team $team
+ * @property \App\Modules\Forums\Forum[] $forums
  */
 class Forum extends BaseModel
 {

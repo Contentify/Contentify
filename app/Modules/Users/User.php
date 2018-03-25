@@ -9,6 +9,8 @@ use BaseModel;
  * NOTE: This is a helper class that extends the actual user class.
  *
  * @property bool $banned
+ * @property \App\Modules\Roles\Role[] $roles
+ * @property \App\Modules\Teams\Team[] $teams
  */
 class User extends BaseUser 
 {

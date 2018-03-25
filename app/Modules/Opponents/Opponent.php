@@ -14,6 +14,9 @@ use SoftDeletingTrait, BaseModel;
  * @property string $lineup
  * @property int $country_id
  * @property string $image
+ * @property \App\Modules\Matches\Match[] $matches
+ * @property \App\Modules\Countries\Country $country
+ * @property \User $creator
  */
 class Opponent extends BaseModel
 {

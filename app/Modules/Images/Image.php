@@ -11,6 +11,8 @@ use Str, BaseModel;
  * @property int $gallery_id
  * @property int $width
  * @property int $height
+ * @property \App\Modules\Galleries\Gallery $gallery
+ * @property \User $creator
  */
 class Image extends BaseModel
 {

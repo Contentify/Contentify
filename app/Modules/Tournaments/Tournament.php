@@ -11,6 +11,9 @@ use SoftDeletingTrait, BaseModel;
  * @property string $short
  * @property string $url
  * @property string $icon
+ * @property \App\Modules\Awards\Award[] $awards
+ * @property \App\Modules\Matches\Match[] $matches
+ * @property \User $creator
  */
 class Tournament extends BaseModel 
 {

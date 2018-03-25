@@ -5,7 +5,7 @@
             @if ($forumPost->creator->avatar)
                 <img class="avatar" src="{{ $forumPost->creator->uploadPath().$forumPost->creator->avatar }}" alt="{{ $forumPost->creator->username }}">
             @endif
-            @if (user()->hasAccess('forums', PERM_UPDATE))
+            @if ($forumPost->creator->hasAccess('forums', PERM_UPDATE))
                 <span class="label label-default">{{ trans('forums::moderator') }}</span>
             @endif
             <span class="counter">{{ $forumPost->creator->posts_count }} Posts</span>

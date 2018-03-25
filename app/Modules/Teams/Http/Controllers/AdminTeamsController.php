@@ -47,11 +47,12 @@ class AdminTeamsController extends BackController
     /**
      * Returns the lineup of a team
      * 
-     * @param  int      $id ID of the opponent
+     * @param  int $id The ID of the team
      * @return string
      */
     public function lineup($id)
     {
+        /** @var Team $team */
         $team = Team::findOrFail($id);
 
         $lineup = '';

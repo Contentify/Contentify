@@ -23,6 +23,9 @@ use MsgException, User, DB, BaseModel;
  * @property bool $published
  * @property bool $closed
  * @property string $image
+ * @property \App\Modules\Games\Game $game
+ * @property \User[] $referees
+ * @property \User $creator
  */
 class Cup extends BaseModel
 {
