@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class, // Class has been removed in Contentify
+        'model' => App\User::class,  // Class has been removed in Contentify
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

@@ -13,7 +13,9 @@ class AdminMatchScoresController extends BackController
      */
     public function store()
     {
-        if (! $this->checkAccessCreate()) return Response::make(null, 403);
+        if (! $this->checkAccessCreate()) {
+            return Response::make(null, 403);
+        }
         
         $matchScore = new MatchScore(Input::all());
         
@@ -32,7 +34,9 @@ class AdminMatchScoresController extends BackController
      */
     public function update($id)
     {
-        if (! $this->checkAccessUpdate()) return Response::make(null, 403);
+        if (! $this->checkAccessUpdate()) {
+            return Response::make(null, 403);
+        }
 
         $matchScore = MatchScore::findOrFail($id);
         $matchScore->fill(Input::all());

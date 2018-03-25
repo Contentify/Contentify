@@ -39,6 +39,7 @@ class RestorePasswordController extends FrontController
 
         Mail::send('auth::emails.restore_password', compact('user', 'reminder'), function($message) use ($email, $user)
         {
+            /** @var \Illuminate\Mail\Message $message */
             $message->to($email, $user->username)->subject(trans('auth::password_reset'));
         });
 
@@ -73,6 +74,7 @@ class RestorePasswordController extends FrontController
 
         Mail::send('auth::emails.send_password', compact('user', 'password'), function($message) use ($email, $user)
         {
+            /** @var \Illuminate\Mail\Message $message */
             $message->to($email, $user->username)->subject(trans('auth::new_pw'));
         });
 

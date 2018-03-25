@@ -329,7 +329,9 @@ class ModelHandler
     {
         $controller = $this->getControllerOrFail();
 
-        if (! $controller->checkAccessCreate()) return;
+        if (! $controller->checkAccessCreate()) {
+            return;
+        }
 
         $controller->pageView(
             strtolower($controller->getModuleName()).'::'.$controller->getFormTemplate(),
@@ -461,7 +463,9 @@ class ModelHandler
     {
         $controller = $this->getControllerOrFail();
 
-        if (! $controller->checkAccessUpdate()) return;
+        if (! $controller->checkAccessUpdate()) {
+            return;
+        }
 
         $modelClass = $controller->getModelClass();
         /** @var BaseModel $model */
@@ -707,7 +711,9 @@ class ModelHandler
     {
         $controller = $this->getControllerOrFail();
 
-        if (! $controller->checkAccessDelete()) return null;
+        if (! $controller->checkAccessDelete()) {
+            return null;
+        }
 
         $modelClass = $controller->getModelClass();
 

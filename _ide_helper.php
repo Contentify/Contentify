@@ -415,13 +415,12 @@ namespace Illuminate\Support\Facades {
          * (Overriding Container::make)
          *
          * @param string $abstract
-         * @param array $parameters
          * @return mixed 
          * @static 
          */ 
-        public static function make($abstract, $parameters = array())
+        public static function make($abstract)
         {
-            return \Illuminate\Foundation\Application::make($abstract, $parameters);
+            return \Illuminate\Foundation\Application::make($abstract);
         }
         
         /**
@@ -878,20 +877,7 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Illuminate\Container\Container            
             \Illuminate\Foundation\Application::singleton($abstract, $concrete);
         }
-        
-        /**
-         * Wrap a Closure such that it is shared.
-         *
-         * @param \Closure $closure
-         * @return \Closure 
-         * @static 
-         */ 
-        public static function share($closure)
-        {
-            //Method inherited from \Illuminate\Container\Container            
-            return \Illuminate\Foundation\Application::share($closure);
-        }
-        
+
         /**
          * "Extend" an abstract type in the container.
          *
@@ -6025,9 +6011,9 @@ namespace Illuminate\Support\Facades {
          *
          * @static 
          */ 
-        public static function trans($id, $parameters = array(), $domain = 'messages', $locale = null)
+        public static function trans($id, array $parameters = array(), $locale = null)
         {
-            return \Contentify\Translator::trans($id, $parameters, $domain, $locale);
+            return \Contentify\Translator::trans($id, $parameters, $locale);
         }
         
         /**
@@ -6540,17 +6526,17 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Mail\Mailer::plain($view, $data, $callback);
         }
-        
+
         /**
          * Send a new message using a view.
          *
          * @param string|array $view
          * @param array $data
          * @param \Closure|string $callback
-         * @return void 
-         * @static 
-         */ 
-        public static function send($view, $data, $callback)
+         * @return void
+         * @static
+         */
+        public static function send($view, array $data = [], $callback = null)
         {
             \Illuminate\Mail\Mailer::send($view, $data, $callback);
         }
@@ -9477,9 +9463,9 @@ namespace Illuminate\Support\Facades {
          * @return $this 
          * @static 
          */ 
-        public static function middleware($name, $class)
+        public static function aliasMiddleware($name, $class)
         {
-            return \Illuminate\Routing\Router::middleware($name, $class);
+            return \Illuminate\Routing\Router::aliasMiddleware($name, $class);
         }
         
         /**
@@ -10291,19 +10277,7 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Session\Store::getOldInput($key, $default);
         }
-        
-        /**
-         * Sets an attribute.
-         *
-         * @param string $name
-         * @param mixed $value
-         * @static 
-         */ 
-        public static function set($name, $value)
-        {
-            return \Illuminate\Session\Store::set($name, $value);
-        }
-        
+
         /**
          * Put a key / value pair or array of key / value pairs in the session.
          *
@@ -10552,18 +10526,7 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Session\Store::token();
         }
-        
-        /**
-         * Get the CSRF token value.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getToken()
-        {
-            return \Illuminate\Session\Store::getToken();
-        }
-        
+
         /**
          * Regenerate the CSRF token value.
          *
@@ -11138,9 +11101,9 @@ namespace Illuminate\Support\Facades {
          * @return void 
          * @static 
          */ 
-        public static function forceSchema($schema)
+        public static function forceScheme($schema)
         {
-            \Illuminate\Routing\UrlGenerator::forceSchema($schema);
+            \Illuminate\Routing\UrlGenerator::forceScheme($schema);
         }
         
         /**

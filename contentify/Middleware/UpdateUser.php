@@ -66,7 +66,7 @@ class UpdateUser
                 $user = user();
                 $user->last_active = new Carbon();
                 $user->save();
-                Session::set('lastActiveUpdate', time());
+                Session::put('lastActiveUpdate', time());
             }            
         }
 
@@ -81,7 +81,7 @@ class UpdateUser
 
         if (! Session::has('app.locale')) {
             if (user()) {
-                Session::set('app.locale', user()->language->code);
+                Session::put('app.locale', user()->language->code);
                 App::setLocale(Session::get('app.locale'));
             } else {
                 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
@@ -94,12 +94,12 @@ class UpdateUser
                     });
 
                     if (in_array($clientLanguage, $languages)) {
-                        Session::set('app.locale', $clientLanguage);
+                        Session::put('app.locale', $clientLanguage);
                     } else {
-                        Session::set('app.locale', Lang::getLocale());
+                        Session::put('app.locale', Lang::getLocale());
                     }
                 } else {
-                    Session::set('app.locale', Lang::getLocale());
+                    Session::put('app.locale', Lang::getLocale());
                 }
             }
         } else {

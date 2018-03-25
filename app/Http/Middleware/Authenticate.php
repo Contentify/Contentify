@@ -18,7 +18,7 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized', 401);
             } else {
-                Session::set('redirect', $request->path());
+                Session::put('redirect', $request->path());
                 return redirect('auth/login');
             }
         }

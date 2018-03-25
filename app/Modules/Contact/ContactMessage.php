@@ -33,17 +33,17 @@ class ContactMessage extends BaseModel
             return;
         }
 
-        Mail::send('contact::emails.notify', ['msg' => $this], function ($mail) use ($users) {
+        Mail::send('contact::emails.notify', ['msg' => $this], function ($message) use ($users) {
             $user = $users->pop();
 
-            /** @var \Illuminate\Mail\Message $mail */
-            $mail->to($user->email, $user->username);
+            /** @var \Illuminate\Mail\Message $message */
+            $message->to($user->email, $user->username);
 
             while ($user = $users->pop()) {
-                $mail->cc($user->email, $user->username);
+                $message->cc($user->email, $user->username);
             }
 
-            $mail->subject(trans('app.new').': '.trans('app.object_contact_message'));
+            $message->subject(trans('app.new').': '.trans('app.object_contact_message'));
         });
     }
 

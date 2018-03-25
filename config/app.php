@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'name' => 'Contentify',
+    'name' => env('APP_NAME', 'Contentify'),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,60 +174,66 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        'Illuminate\Auth\AuthServiceProvider',
-        'Illuminate\Broadcasting\BroadcastServiceProvider',
-        'Illuminate\Bus\BusServiceProvider',
-        'Illuminate\Cache\CacheServiceProvider',
-        'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
-        'Illuminate\Cookie\CookieServiceProvider',
-        'Illuminate\Database\DatabaseServiceProvider',
-        'Illuminate\Encryption\EncryptionServiceProvider',
-        'Illuminate\Filesystem\FilesystemServiceProvider',
-        'Illuminate\Foundation\Providers\FoundationServiceProvider',
-        'Illuminate\Hashing\HashServiceProvider',
-        'Illuminate\Mail\MailServiceProvider',
-        'Illuminate\Notifications\NotificationServiceProvider',
-        'Illuminate\Pagination\PaginationServiceProvider',
-        'Illuminate\Pipeline\PipelineServiceProvider',
-        'Illuminate\Queue\QueueServiceProvider',
-        'Illuminate\Redis\RedisServiceProvider',
-        'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
-        'Illuminate\Session\SessionServiceProvider',
-        //'Illuminate\Translation\TranslationServiceProvider', // Replaced by custom translation service provider
-        'Illuminate\Validation\ValidationServiceProvider',
-        'Illuminate\View\ViewServiceProvider',
+        Illuminate\Auth\AuthServiceProvider::class,
+        Illuminate\Broadcasting\BroadcastServiceProvider::class,
+        Illuminate\Bus\BusServiceProvider::class,
+        Illuminate\Cache\CacheServiceProvider::class,
+        Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+        Illuminate\Cookie\CookieServiceProvider::class,
+        Illuminate\Database\DatabaseServiceProvider::class,
+        Illuminate\Encryption\EncryptionServiceProvider::class,
+        Illuminate\Filesystem\FilesystemServiceProvider::class,
+        Illuminate\Foundation\Providers\FoundationServiceProvider::class,
+        Illuminate\Hashing\HashServiceProvider::class,
+        Illuminate\Mail\MailServiceProvider::class,
+        Illuminate\Notifications\NotificationServiceProvider::class,
+        Illuminate\Pagination\PaginationServiceProvider::class,
+        Illuminate\Pipeline\PipelineServiceProvider::class,
+        Illuminate\Queue\QueueServiceProvider::class,
+        Illuminate\Redis\RedisServiceProvider::class,
+        Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
+        Illuminate\Session\SessionServiceProvider::class,
+        //Illuminate\Translation\TranslationServiceProvider::class, // Replaced by custom translation service provider
+        Illuminate\Validation\ValidationServiceProvider::class,
+        Illuminate\View\ViewServiceProvider::class,
+
+        /*
+         * Package Service Providers...
+         */
+        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
-        'App\Providers\AppServiceProvider',
-        //'App\Providers\AuthServiceProvider' // We do not use Laravel's authentication
-        'App\Providers\ConfigServiceProvider', // Custom service provider
-        'App\Providers\EventServiceProvider',
-        'App\Providers\RouteServiceProvider',
+        App\Providers\AppServiceProvider::class,
+        //App\Providers\AuthServiceProvider::class // We do not use Laravel's authentication
+        //App\Providers\BroadcastServiceProvider::class, // Deactivated per Laravel's default
+        App\Providers\ConfigServiceProvider::class, // Custom service provider
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
         /*
-         * CMS service prodivers:
+         * CMS service providers...
          */
-        'Contentify\ServiceProviders\HtmlServiceProvider',
-        'Contentify\ServiceProviders\TranslationServiceProvider',
-        'Contentify\ServiceProviders\HoverServiceProvider',
-        'Contentify\ServiceProviders\ModuleRouteServiceProvider',
-        'Contentify\ServiceProviders\ContentFilterServiceProvider',
-        'Contentify\ServiceProviders\CaptchaServiceProvider',
-        'Contentify\ServiceProviders\CommentsServiceProvider',
-        'Contentify\ServiceProviders\RatingsServiceProvider',
-        'Contentify\ServiceProviders\UserActivitiesServiceProvider',
-        'Contentify\ServiceProviders\ModelHandlerServiceProvider',
+        Contentify\ServiceProviders\HtmlServiceProvider::class,
+        Contentify\ServiceProviders\TranslationServiceProvider::class,
+        Contentify\ServiceProviders\HoverServiceProvider::class,
+        Contentify\ServiceProviders\ModuleRouteServiceProvider::class,
+        Contentify\ServiceProviders\ContentFilterServiceProvider::class,
+        Contentify\ServiceProviders\CaptchaServiceProvider::class,
+        Contentify\ServiceProviders\CommentsServiceProvider::class,
+        Contentify\ServiceProviders\RatingsServiceProvider::class,
+        Contentify\ServiceProviders\UserActivitiesServiceProvider::class,
+        Contentify\ServiceProviders\ModelHandlerServiceProvider::class,
 
         /*
-         * Vendor service providers:
+         * Vendor service providers...
          */
-        'ChrisKonnertz\Jobs\Integration\JobsServiceProvider',
-        'Caffeinated\Modules\ModulesServiceProvider',
-        'Cartalyst\Sentinel\Laravel\SentinelServiceProvider',
-        'Intervention\Image\ImageServiceProvider',
-        'Invisnik\LaravelSteamAuth\SteamServiceProvider',
+        ChrisKonnertz\Jobs\Integration\JobsServiceProvider::class,
+        Caffeinated\Modules\ModulesServiceProvider::class,
+        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Invisnik\LaravelSteamAuth\SteamServiceProvider::class,
     ],
 
     /*
@@ -243,89 +249,90 @@ return [
 
     'aliases' => [
 
-        'App'                   => 'Illuminate\Support\Facades\App',
-        'Artisan'               => 'Illuminate\Support\Facades\Artisan',
-        'Auth'                  => 'Illuminate\Support\Facades\Auth',
-        'Blade'                 => 'Illuminate\Support\Facades\Blade',
-        'Bus'                   => 'Illuminate\Support\Facades\Bus',
-        'Cache'                 => 'Illuminate\Support\Facades\Cache',
-        //'Config'                => 'Illuminate\Support\Facades\Config', // Replaced by custom config facade
-        'Cookie'                => 'Illuminate\Support\Facades\Cookie',
-        'Crypt'                 => 'Illuminate\Support\Facades\Crypt',
-        'DB'                    => 'Illuminate\Support\Facades\DB',
-        'Eloquent'              => 'Illuminate\Database\Eloquent\Model',
-        'Event'                 => 'Illuminate\Support\Facades\Event',
-        'File'                  => 'Illuminate\Support\Facades\File',
-        'Gate'                  => 'Illuminate\Support\Facades\Gate',
-        'Hash'                  => 'Illuminate\Support\Facades\Hash',
-        'Input'                 => 'Illuminate\Support\Facades\Input', // "Unofficial" alias since Laravel 5.2
-        'Lang'                  => 'Illuminate\Support\Facades\Lang',
-        'Log'                   => 'Illuminate\Support\Facades\Log',
-        'Mail'                  => 'Illuminate\Support\Facades\Mail',
-        'Notification'          => 'Illuminate\Support\Facades\Notification',
-        'Password'              => 'Illuminate\Support\Facades\Password',
-        'Queue'                 => 'Illuminate\Support\Facades\Queue',
-        'Redirect'              => 'Illuminate\Support\Facades\Redirect',
-        'Redis'                 => 'Illuminate\Support\Facades\Redis',
-        'Request'               => 'Illuminate\Support\Facades\Request',
-        'Response'              => 'Illuminate\Support\Facades\Response',
-        'Route'                 => 'Illuminate\Support\Facades\Route',
-        'Schema'                => 'Illuminate\Support\Facades\Schema',
-        'Session'               => 'Illuminate\Support\Facades\Session',
-        'SoftDeletingTrait'     => 'Illuminate\Database\Eloquent\SoftDeletes',
-        'Storage'               => 'Illuminate\Support\Facades\Storage',
-        'Str'                   => 'Illuminate\Support\Str',
-        'URL'                   => 'Illuminate\Support\Facades\URL',
-        'Validator'             => 'Illuminate\Support\Facades\Validator',
-        'View'                  => 'Illuminate\Support\Facades\View',
+        'App'                   => Illuminate\Support\Facades\App::class,
+        'Artisan'               => Illuminate\Support\Facades\Artisan::class,
+        'Auth'                  => Illuminate\Support\Facades\Auth::class,
+        'Blade'                 => Illuminate\Support\Facades\Blade::class,
+        'Broadcast'             => Illuminate\Support\Facades\Broadcast::class,
+        'Bus'                   => Illuminate\Support\Facades\Bus::class,
+        'Cache'                 => Illuminate\Support\Facades\Cache::class,
+        //'Config                => Illuminate\Support\Facades\Config::class, // Replaced by custom config facade
+        'Cookie'                => Illuminate\Support\Facades\Cookie::class,
+        'Crypt'                 => Illuminate\Support\Facades\Crypt::class,
+        'DB'                    => Illuminate\Support\Facades\DB::class,
+        'Eloquent'              => Illuminate\Database\Eloquent\Model::class,
+        'Event'                 => Illuminate\Support\Facades\Event::class,
+        'File'                  => Illuminate\Support\Facades\File::class,
+        'Gate'                  => Illuminate\Support\Facades\Gate::class,
+        'Hash'                  => Illuminate\Support\Facades\Hash::class,
+        'Input'                 => Illuminate\Support\Facades\Input::class, // "Unofficial" alias since Laravel 5.2
+        'Lang'                  => Illuminate\Support\Facades\Lang::class,
+        'Log'                   => Illuminate\Support\Facades\Log::class,
+        'Mail'                  => Illuminate\Support\Facades\Mail::class,
+        'Notification'          => Illuminate\Support\Facades\Notification::class,
+        'Password'              => Illuminate\Support\Facades\Password::class,
+        'Queue'                 => Illuminate\Support\Facades\Queue::class,
+        'Redirect'              => Illuminate\Support\Facades\Redirect::class,
+        'Redis'                 => Illuminate\Support\Facades\Redis::class,
+        'Request'               => Illuminate\Support\Facades\Request::class,
+        'Response'              => Illuminate\Support\Facades\Response::class,
+        'Route'                 => Illuminate\Support\Facades\Route::class,
+        'Schema'                => Illuminate\Support\Facades\Schema::class,
+        'Session'               => Illuminate\Support\Facades\Session::class,
+        'SoftDeletingTrait'     => Illuminate\Database\Eloquent\SoftDeletes::class,
+        'Storage'               => Illuminate\Support\Facades\Storage::class,
+        'Str'                   => Illuminate\Support\Str::class, // "Unofficial" alias since Laravel 5.0
+        'URL'                   => Illuminate\Support\Facades\URL::class,
+        'Validator'             => Illuminate\Support\Facades\Validator::class,
+        'View'                  => Illuminate\Support\Facades\View::class,
 
-        'Controller'            => 'App\Http\Controllers\Controller',
-        'Form'                  => 'Collective\Html\FormFacade',
-        'HTML'                  => 'Collective\Html\HtmlFacade',
+        'Controller'            => App\Http\Controllers\Controller::class,
+        'Form'                  => Collective\Html\FormFacade::class,
+        'HTML'                  => Collective\Html\HtmlFacade::class,
 
         /*
          * CMS classes:
          */ 
-        'FormGenerator'         => 'Contentify\FormGenerator',
-        'ModuleInstaller'       => 'Contentify\ModuleInstaller',
-        'MsgException'          => 'Contentify\MsgException',
-        'Config'                => 'Contentify\Config',
-        'Paginator'             => 'Contentify\LengthAwarePaginator',
-        'ModuleRoute'           => 'Contentify\Facades\ModuleRoute',
-        'Carbon'                => 'Contentify\Carbon',
+        'FormGenerator'         => Contentify\FormGenerator::class,
+        'ModuleInstaller'       => Contentify\ModuleInstaller::class,
+        'MsgException'          => Contentify\MsgException::class,
+        'Config'                => Contentify\Config::class,
+        'Paginator'             => Contentify\LengthAwarePaginator::class,
+        'ModuleRoute'           => Contentify\Facades\ModuleRoute::class,
+        'Carbon'                => Contentify\Carbon::class,
 
-        'DateAccessorTrait'     => 'Contentify\Traits\DateAccessorTrait',
-        'ModelHandlerTrait'     => 'Contentify\Traits\ModelHandlerTrait',
+        'DateAccessorTrait'     => Contentify\Traits\DateAccessorTrait::class,
+        'ModelHandlerTrait'     => Contentify\Traits\ModelHandlerTrait::class,
 
-        'InstallController'     => 'Contentify\Controllers\InstallController',
-        'BaseController'        => 'Contentify\Controllers\BaseController',
-        'FrontController'       => 'Contentify\Controllers\FrontController',
-        'BackController'        => 'Contentify\Controllers\BackController',
-        'ConfigController'      => 'Contentify\Controllers\ConfigController',
-        'Widget'                => 'Contentify\Controllers\Widget',
+        'InstallController'     => Contentify\Controllers\InstallController::class,
+        'BaseController'        => Contentify\Controllers\BaseController::class,
+        'FrontController'       => Contentify\Controllers\FrontController::class,
+        'BackController'        => Contentify\Controllers\BackController::class,
+        'ConfigController'      => Contentify\Controllers\ConfigController::class,
+        'Widget'                => Contentify\Controllers\Widget::class,
 
-        'BaseModel'             => 'Contentify\Models\BaseModel',
-        'Comment'               => 'Contentify\Models\Comment',
-        'StiModel'              => 'Contentify\Models\StiModel',
-        'User'                  => 'Contentify\Models\User',
-        'UserActivity'          => 'Contentify\Models\UserActivity',
-        'ConfigBag'             => 'Contentify\Models\ConfigBag',
-        'Raw'                   => 'Contentify\Raw',
+        'BaseModel'             => Contentify\Models\BaseModel::class,
+        'Comment'               => Contentify\Models\Comment::class,
+        'StiModel'              => Contentify\Models\StiModel::class,
+        'User'                  => Contentify\Models\User::class,
+        'UserActivity'          => Contentify\Models\UserActivity::class,
+        'ConfigBag'             => Contentify\Models\ConfigBag::class,
+        'Raw'                   => Contentify\Raw::class,
 
         /*
          * Vendor classes:
          */
-        'OpenGraph'             => 'ChrisKonnertz\OpenGraph\OpenGraph',
-        'BBCode'                => 'ChrisKonnertz\BBCode\BBCode',
-        'Jobs'                  => 'ChrisKonnertz\Jobs\Integration\JobsFacade',
-        'AbstractJob'           => 'ChrisKonnertz\Jobs\AbstractJob',
-        'Sentinel'              => 'Cartalyst\Sentinel\Laravel\Facades\Sentinel',
-        'Activation'            => 'Cartalyst\Sentinel\Laravel\Facades\Activation',
-        'Reminder'              => 'Cartalyst\Sentinel\Laravel\Facades\Reminder',
-        'Rss'                   => 'Thujohn\Rss\RssFacade',
-        'InterImage'            => 'Intervention\Image\Facades\Image',
-        'ValidatingTrait'       => 'Watson\Validating\ValidatingTrait',
-        'Module'                => 'Caffeinated\Modules\Facades\Module'
+        'OpenGraph'             => ChrisKonnertz\OpenGraph\OpenGraph::class,
+        'BBCode'                => ChrisKonnertz\BBCode\BBCode::class,
+        'Jobs'                  => ChrisKonnertz\Jobs\Integration\JobsFacade::class,
+        'AbstractJob'           => ChrisKonnertz\Jobs\AbstractJob::class,
+        'Sentinel'              => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        'Activation'            => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
+        'Reminder'              => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+        'Rss'                   => Thujohn\Rss\RssFacade::class,
+        'InterImage'            => Intervention\Image\Facades\Image::class,
+        'ValidatingTrait'       => Watson\Validating\ValidatingTrait::class,
+        'Module'                => Caffeinated\Modules\Facades\Module::class,
     ],
 
 ];

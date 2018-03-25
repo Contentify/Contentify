@@ -190,7 +190,7 @@ class InstallController extends Controller
 
                 break;
             case 3:
-                $settings = ['host' => 'localhost', 'database' => 'contentify', 'username' => 'root', 'password' => ''];
+                $settings = ['host' => '127.0.0.1', 'database' => 'contentify', 'username' => 'root', 'password' => ''];
 
                 $filename = storage_path(self::INI_FILE);
                 if (File::exists($filename)) {

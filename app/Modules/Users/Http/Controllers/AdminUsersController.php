@@ -145,7 +145,7 @@ class AdminUsersController extends BackController
      *
      * @param  int  $id       The ID of the user
      * @param  bool $activate Activate (true) or deactivate (false)?
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function activate($id, $activate = true)
     {
@@ -160,7 +160,7 @@ class AdminUsersController extends BackController
                 $activation = Activation::exists($user);
 
                 if (! $activation) {
-                     $activation = Activation::create($user);
+                    $activation = Activation::create($user);
                 }
 
                 $completed = Activation::complete($user, $activation->code);
@@ -169,7 +169,7 @@ class AdminUsersController extends BackController
                 Activation::remove($user);
                 return Response::make('0', 200);
             }          
-        } catch (Exception $e) {
+        } catch (Exception $exception) {
             return Response::make(trans('app.not_found'), 500);
         }
     }

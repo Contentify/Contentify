@@ -11,6 +11,6 @@
 
         <hr>
         
-        <button onclick="javascript:window.location='{!! route('home') !!}'">Cancel</button>
+        <button onclick="window.location='{!! route('home') !!}'">Cancel</button>
     </div>
 @stop

@@ -31,22 +31,22 @@ return [
     'stores' => [
 
         'apc' => [
-            'driver' => 'apc'
+            'driver' => 'apc',
         ],
 
         'array' => [
-            'driver' => 'array'
+            'driver' => 'array',
         ],
 
         'database' => [
             'driver' => 'database',
-            'table'  => 'cache',
+            'table' => 'cache',
             'connection' => null,
         ],
 
         'file' => [
             'driver' => 'file',
-            'path'   => storage_path('framework/cache'),
+            'path' => storage_path('framework/cache'),
         ],
 
         'memcached' => [

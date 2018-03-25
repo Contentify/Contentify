@@ -322,7 +322,9 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartEmail($name = 'email', $title = null, $default = null)
     {
-        if (! $title) $title = trans('app.email');
+        if (! $title) {
+            $title = trans('app.email');
+        }
 
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
@@ -341,7 +343,9 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartUrl($name = 'url', $title = null, $default = null)
     {
-        if (! $title) $title = trans('app.url');
+        if (! $title) {
+            $title = trans('app.url');
+        }
 
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
@@ -359,7 +363,9 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartPassword($name = 'password', $title = null)
     {
-        if (! $title) $title = trans('app.password');
+        if (! $title) {
+            $title = trans('app.password');
+        }
 
         $partial = self::smartGroupOpen($name, $title)
             .self::password($name)
@@ -580,7 +586,9 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartFile($name = 'file', $title = null)
     {
-        if (! $title) $title = trans('app.file');
+        if (! $title) {
+            $title = trans('app.file');
+        }
 
         $partial = self::smartGroupOpen($name, $title)
             .'<div class="input-group">'
@@ -601,7 +609,9 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartImageFile($name = 'image', $title = null)
     {
-        if (! $title) $title = trans('app.image');
+        if (! $title) {
+            $title = trans('app.image');
+        }
 
         $prev = '';
         $value = $this->getDefaultValue($name, null);
@@ -632,7 +642,9 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartIconFile($name = 'icon', $title = null)
     {
-        if (! $title) $title = trans('app.icon');
+        if (! $title) {
+            $title = trans('app.icon');
+        }
 
         return self::smartImageFile($name, $title);
     }
@@ -666,7 +678,9 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function smartDateTime($name = 'datetime', $title = null, $default = null, $onlyDate = false)
     {
-        if (! $title) $title = trans('app.date_time');
+        if (! $title) {
+            $title = trans('app.date_time');
+        }
 
         $value = self::getDefaultValue($name, $default);
 

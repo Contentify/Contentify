@@ -95,6 +95,7 @@ return [
     | correspond with one of the application's configured cache stores.
     |
     */
+
     'store' => null,
 
     /*
@@ -149,7 +150,6 @@ return [
 
     'domain' => env('SESSION_DOMAIN', null),
 
-
     /*
     |--------------------------------------------------------------------------
     | HTTPS Only Cookies
@@ -161,7 +161,7 @@ return [
     |
     */
 
-    'secure' =>  env('SESSION_SECURE_COOKIE', false),
+    'secure' => env('SESSION_SECURE_COOKIE', false),
 
     /*
     |--------------------------------------------------------------------------

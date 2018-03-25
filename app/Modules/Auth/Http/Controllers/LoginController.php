@@ -121,13 +121,13 @@ class LoginController extends FrontController
     }
 
     /**
-     * Executes addinional actions after user login
-     * 
-     * @return Redirect
+     * Executes additional actions after user login
+     *
+     * @return RedirectResponse
      */
     public function afterLoginActions()
     {
-        Session::set('app.locale', user()->language->code); // Set session locale to account language
+        Session::put('app.locale', user()->language->code); // Set session locale to account language
 
         if (Session::get('redirect')) {
             $redirect = Redirect::to(Session::get('redirect'));

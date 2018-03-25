@@ -17,7 +17,7 @@ class CaptchaServiceProvider extends ServiceProvider
     public function register()
     {
         // Register instance container to the underlying class object
-        $this->app['captcha'] = $this->app->share(function($app)
+        $this->app->singleton('captcha', function()
         {
             return new Captcha;
         });

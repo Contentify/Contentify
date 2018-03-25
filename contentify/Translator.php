@@ -23,7 +23,7 @@ class Translator extends OriginalTranslator
     /**
      * {@inheritdoc}
      */
-    public function trans($id, array $parameters = array(), $domain = 'messages', $locale = null)
+    public function trans($id, array $parameters = array(), $locale = null)
     {
         if (strpos($id, '.') === false and ($pos = strpos($id, '::')) !== false) {
             $package  = substr($id, 0, $pos);

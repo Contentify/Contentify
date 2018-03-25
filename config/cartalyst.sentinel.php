@@ -53,7 +53,7 @@ return [
 
     'users' => [
 
-        'model' => 'User', // Original: 'Cartalyst\Sentinel\Users\EloquentUser',
+        'model' => User::class, // Original: Cartalyst\Sentinel\Users\EloquentUser::class,
 
     ],
 
@@ -68,7 +68,7 @@ return [
 
     'roles' => [
 
-        'model' => 'Cartalyst\Sentinel\Roles\EloquentRole',
+        'model' => Cartalyst\Sentinel\Roles\EloquentRole::class,
 
     ],
 
@@ -95,10 +95,10 @@ return [
 
     'permissions' => [
 
-        // Original: 'Cartalyst\Sentinel\Permissions\StandardPermissions',
+        // Original: Cartalyst\Sentinel\Permissions\StandardPermissions::class,
         // NOTE: If you want to create your own permission implementation
         // you should use Contentify\Models\StandardPermissions as a start.
-        'class' => 'Contentify\Models\StandardPermissions',
+        'class' => Contentify\Models\StandardPermissions::class,
 
     ],
 
@@ -114,7 +114,7 @@ return [
 
     'persistences' => [
 
-        'model' => 'Cartalyst\Sentinel\Persistences\EloquentPersistence',
+        'model' => Cartalyst\Sentinel\Persistences\EloquentPersistence::class,
 
         'single' => false,
 
@@ -155,7 +155,7 @@ return [
 
     'activations' => [
 
-        'model' => 'Cartalyst\Sentinel\Activations\EloquentActivation',
+        'model' => Cartalyst\Sentinel\Activations\EloquentActivation::class,
 
         'expires' => 259200,
 
@@ -177,7 +177,7 @@ return [
 
     'reminders' => [
 
-        'model' => 'Cartalyst\Sentinel\Reminders\EloquentReminder',
+        'model' => Cartalyst\Sentinel\Reminders\EloquentReminder::class,
 
         'expires' => 14400,
 
@@ -229,7 +229,7 @@ return [
 
     'throttling' => [
 
-        'model' => 'Cartalyst\Sentinel\Throttling\EloquentThrottle',
+        'model' => Cartalyst\Sentinel\Throttling\EloquentThrottle::class,
 
         'global' => [
 

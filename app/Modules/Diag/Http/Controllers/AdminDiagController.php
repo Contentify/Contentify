@@ -15,18 +15,6 @@ class AdminDiagController extends BackController
         if (! $this->checkAccessRead()) return;
 
         /*
-         * Check if Laravel is compiled to one single file
-         *
-         * @deprecated in Laravel 5.6
-         */
-        $filename = app('path.base').'/bootstrap/cache/compiled.php';
-        if (File::exists($filename)) {
-            $optimized = '1 - '.trans('app.compiled').': '.Carbon::createFromTimeStamp(filemtime($filename));
-        } else {
-            $optimized = 0;
-        }  
-
-        /*
          * Count disabled modules
          */
         /** @var \Caffeinated\Modules\Contracts\Repository $moduleRepo */
@@ -59,7 +47,6 @@ class AdminDiagController extends BackController
             'Server.name'               => $_SERVER['SERVER_NAME'],
             'Server.software'           => $_SERVER['SERVER_SOFTWARE'],
             'Laravel.version'           => $appClass::VERSION,
-            'Artisan optimized'         => $optimized,
             'Jobs.last_execution'       => $cronJobInfo,
             'App.environment'           => App::environment(),
             'App.url'                   => Config::get('app.url'),
