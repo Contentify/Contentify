@@ -37,6 +37,7 @@ return array(
     'quote'         => 'Quote',
     'report'        => 'Report',
     'updated_at'    => 'Latest update: :0',
+    'moderator'     => 'Moderator',
 
     /* Post Reports */
     'already_reported'  => 'You have already created a report for this post.',

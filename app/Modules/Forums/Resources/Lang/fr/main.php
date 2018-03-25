@@ -37,6 +37,7 @@ return array(
     'quote'         => 'Citer',
     'report'        => 'Signaler',
     'updated_at'    => 'Dernière modification: :0',
+    'moderator'     => 'Modérateur',
 
     /* Post Reports */
     'already_reported'  => 'Vous avez déjà signalé ce message.',

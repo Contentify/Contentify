@@ -5,6 +5,9 @@
             @if ($forumPost->creator->avatar)
                 <img class="avatar" src="{{ $forumPost->creator->uploadPath().$forumPost->creator->avatar }}" alt="{{ $forumPost->creator->username }}">
             @endif
+            @if (user()->hasAccess('forums', PERM_UPDATE))
+                <span class="label label-default">{{ trans('forums::moderator') }}</span>
+            @endif
             <span class="counter">{{ $forumPost->creator->posts_count }} Posts</span>
         </a>
     </div>
@@ -27,7 +30,7 @@
                         <a class="btn btn-default btn-xs report" href="{!! url('forums/posts/report/'.$forumPost->id) !!}">{!! trans('forums::report') !!}</a>
                     @endif
                 @endif
-                <a class="btn btn-default btn-xs" href="{!! url('forums/posts/perma/'.$forumPost->id) !!}"> 
+                <a class="btn btn-default btn-xs" href="{!! url('forums/posts/perma/'.$forumPost->id) !!}">
                     @if (isset($forumPostNumber))
                         #{!! $forumPostNumber !!}
                     @else
@@ -36,7 +39,7 @@
                 </a>
             </div>
         </div>
-        
+
         <div class="text">
             {!! $forumPost->renderText() !!}
 
