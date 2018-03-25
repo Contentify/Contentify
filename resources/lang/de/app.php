@@ -187,6 +187,7 @@ return [
     'setting'           => 'Einstellung',
     'value'             => 'Wert',
     'placeholder'       => 'Platzhalter, bitte ändern!', // Diag module
+    'no_cron_job'       => 'Niemals. Keinen Cron-Job erstellt?',
     'compiled'          => 'kompiliert',
     'website'           => 'Website',
     'calendar'          => 'Kalender',

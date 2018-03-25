@@ -187,6 +187,7 @@ return [
     'setting'           => 'Setting',
     'value'             => 'Value',
     'placeholder'       => 'Placeholder, please change!', // Diagnostics module
+    'no_cron_job'       => 'Never. No cron job created?',
     'compiled'          => 'compiled',
     'website'           => 'Website',
     'calendar'          => 'Calendar',

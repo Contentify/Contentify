@@ -185,6 +185,7 @@ return [
     'setting'           => 'Paramètre',
     'value'             => 'Valeur',
     'placeholder'       => 'Clé de développement par défaut, il faut la changer!', // Diag module
+    'no_cron_job'       => 'Jamais. Aucune cron job générée?',
     'compiled'          => 'compilé',
     'website'           => 'Site internet',
     'calendar'          => 'Calendrier',

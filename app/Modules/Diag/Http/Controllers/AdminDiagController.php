@@ -3,7 +3,7 @@
 namespace App\Modules\Diag\Http\Controllers;
 
 use \Carbon\Carbon;
-use App, Config, BackController, File, Jobs, DB, PDO;
+use App, Config, BackController, HTML, Jobs, DB;
 
 class AdminDiagController extends BackController
 {
@@ -12,7 +12,11 @@ class AdminDiagController extends BackController
     
     public function getIndex()
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
+
+        $alertIcon = HTML::fontIcon('exclamation-triangle').'&nbsp;';
 
         /*
          * Count disabled modules
@@ -31,7 +35,7 @@ class AdminDiagController extends BackController
         $diskFreeSpace = function_exists('disk_free_space') ?  round(disk_free_space('.') / 1024 / 1024).'M' : '?';
         $cronJobInfo = Jobs::lastRunAt() ?
             Carbon::createFromTimeStamp(Jobs::lastRunAt()) :
-            '<b>Never. No cron job created?</b>';
+            '<b>'.$alertIcon.trans('app.no_cron_job').'</b>';
 
         $settings = [
             'PHP.version'               => phpversion(),
@@ -51,7 +55,7 @@ class AdminDiagController extends BackController
             'App.environment'           => App::environment(),
             'App.url'                   => Config::get('app.url'),
             'App.debug'                 => (int) Config::get('app.debug'),
-            'App.key'                   => $placeholder ? '<b>'.trans('app.placeholder').'</b>' : trans('app.valid'),
+            'App.key'                   => $placeholder ? '<b>'.$alertIcon.trans('app.placeholder').'</b>' : trans('app.valid'),
             'App.timezone'              => Config::get('app.timezone'),
             'Cache.default'             => Config::get('cache.default'),
             'Modules.disabled'          => $disabled,
