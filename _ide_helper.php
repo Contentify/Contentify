@@ -3411,58 +3411,7 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Illuminate\Database\Connection            
             return \Illuminate\Database\MySqlConnection::pretending();
         }
-        
-        /**
-         * Get the default fetch mode for the connection.
-         *
-         * @return int 
-         * @static 
-         */ 
-        public static function getFetchMode()
-        {
-            //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getFetchMode();
-        }
-        
-        /**
-         * Get the fetch argument to be applied when selecting.
-         *
-         * @return mixed 
-         * @static 
-         */ 
-        public static function getFetchArgument()
-        {
-            //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getFetchArgument();
-        }
-        
-        /**
-         * Get custom constructor arguments for the PDO::FETCH_CLASS fetch mode.
-         *
-         * @return array 
-         * @static 
-         */ 
-        public static function getFetchConstructorArgument()
-        {
-            //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getFetchConstructorArgument();
-        }
-        
-        /**
-         * Set the default fetch mode for the connection, and optional arguments for the given fetch mode.
-         *
-         * @param int $fetchMode
-         * @param mixed $fetchArgument
-         * @param array $fetchConstructorArgument
-         * @return int 
-         * @static 
-         */ 
-        public static function setFetchMode($fetchMode, $fetchArgument = null, $fetchConstructorArgument = array())
-        {
-            //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::setFetchMode($fetchMode, $fetchArgument, $fetchConstructorArgument);
-        }
-        
+
         /**
          * Get the connection query log.
          *

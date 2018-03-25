@@ -65,10 +65,14 @@ class AdminDiagController extends BackController
          * If we use MySQL as database, add values of some MySQL variables.
          */
         if (Config::get('database.default') == 'mysql') {
-            $fetchMethod = Config::get('database.fetch');
-            DB::connection()->setFetchMode(PDO::FETCH_ASSOC); // We need to get the result as array of arrays 
-            $sqlVars = DB::select('SHOW VARIABLES');
-            DB::connection()->setFetchMode($fetchMethod);
+            $sqlVarObjects = DB::select('SHOW VARIABLES');
+
+            // Since Laravel 5.4 DB::connection()->setFetchMode(PDO::FETCH_ASSOC) does no longer work.
+            // This was useful to get the result as an array right away. Now we have to convert it manually.
+            $sqlVars = [];
+            foreach ($sqlVarObjects as $sqlVarObject) {
+                $sqlVars[] = (array) $sqlVarObject;
+            }
 
             $settings['MySQL.max_connections']      = $this->getSqlVar($sqlVars, 'max_connections');
             $settings['MySQL.max_user_connections'] = $this->getSqlVar($sqlVars, 'max_user_connections');
