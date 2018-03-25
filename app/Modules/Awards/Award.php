@@ -26,8 +26,8 @@ class Award extends BaseModel
         'url'           => 'sometimes|url',
         'position'      => 'integer',
         'game_id'       => 'integer',
-        'tournament_id' => 'integer',
-        'team_id'       => 'integer',
+        'tournament_id' => 'nullable|integer',
+        'team_id'       => 'nullable|integer',
     ];
 
     public static $relationsData = [

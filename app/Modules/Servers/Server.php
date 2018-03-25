@@ -19,7 +19,7 @@ class Server extends BaseModel
         'ip'        => 'required|min:7', // If we enforce it to be an IP adding a port is invalid!
         'slots'     => 'integer|min:0',
         'published' => 'boolean',
-        'game_id'   => 'integer',
+        'game_id'   => 'nullable|integer',
     ];
 
     public static $relationsData = [
