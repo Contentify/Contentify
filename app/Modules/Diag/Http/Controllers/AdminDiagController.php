@@ -65,14 +65,7 @@ class AdminDiagController extends BackController
          * If we use MySQL as database, add values of some MySQL variables.
          */
         if (Config::get('database.default') == 'mysql') {
-            $sqlVarObjects = DB::select('SHOW VARIABLES');
-
-            // Since Laravel 5.4 DB::connection()->setFetchMode(PDO::FETCH_ASSOC) does no longer work.
-            // This was useful to get the result as an array right away. Now we have to convert it manually.
-            $sqlVars = [];
-            foreach ($sqlVarObjects as $sqlVarObject) {
-                $sqlVars[] = (array) $sqlVarObject;
-            }
+            $sqlVars = DB::select('SHOW VARIABLES'); // Returns all MySQL variables as an array of objects
 
             $settings['MySQL.max_connections']      = $this->getSqlVar($sqlVars, 'max_connections');
             $settings['MySQL.max_user_connections'] = $this->getSqlVar($sqlVars, 'max_user_connections');
@@ -84,17 +77,17 @@ class AdminDiagController extends BackController
     /**
      * Helper function. Returns the value of a variable from a MySQl variables array retrieved from the database.
      * 
-     * @param  array    $vars    Array of variables
-     * @param  string   $varName Name of variable
+     * @param  \StdClass[] $sqlVars Array of objects with variables
+     * @param  string      $varName Name of a variable
      * @return mixed
      */
-    protected function getSqlVar($vars, $varName)
+    protected function getSqlVar($sqlVars, $varName)
     {
         $varName = strtolower($varName);
 
-        foreach ($vars as $var) {
-            if ($var['Variable_name'] == $varName) {
-                return $var['Value'];
+        foreach ($sqlVars as $sqlVar) {
+            if ($sqlVar->Variable_name == $varName) {
+                return $sqlVar->Value;
             }
         }
 
