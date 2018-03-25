@@ -423,7 +423,7 @@ class InstallController extends Controller
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
-        }, ['teamcat_id']);
+        }, ['teamcat_id', 'country_id']);
 
         $this->create('advertcats', function($table) { }, [], ['slug']); 
 

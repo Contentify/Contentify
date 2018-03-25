@@ -9,7 +9,7 @@ class Updater {
     /**
      * The number of the version this updater can update
      */
-    const SUPPORTED_VERSIONS = ['2.2'];
+    const SUPPORTED_VERSIONS = ['2.3'];
 
     /**
      * Error code that will be returned if there was no error
@@ -67,6 +67,21 @@ EOD;
     public function __construct()
     {
         $this->app = new AppBridge(); 
+    }
+
+    /**
+     * This function has to return a string array with queries that perform all the database changes
+     *
+     * @param string $prefix The database table prefix (can be an empty string)
+     * @return string[]
+     */
+    public function updateDatabase($prefix)
+    {
+        // HOW TO: Export the new database - for example via phpMyAdmin -
+        // and then copy the relevant statements from the .sql file to this place
+        $updateQueries = ["ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL"];
+
+        return $updateQueries;
     }
 
     /**
@@ -190,21 +205,6 @@ EOD;
         }
         
         return $this->goodbye();
-    }
-
-    /**
-     * This function has to return a string array with queries that perform all the database changes
-     * 
-     * @param string $prefix The database table prefix (can be an empty string)
-     * @return string[]
-     */
-    public function updateDatabase($prefix)
-    {
-        // HOW TO: Export the new database - for example via phpMyAdmin -
-        // and then copy the relevant statements from the .sql file to this place
-        $updateQueries = ["ALTER TABLE {$prefix}cups_teams CHANGE `hidden` `invisible` TINYINT(1)"];
-
-        return $updateQueries;
     }
 
     /**

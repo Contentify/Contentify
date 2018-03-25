@@ -1,6 +1,12 @@
 <article class="team">
     <header>
-        <h1 class="page-title inside"><a class="back" href="{!! url('teams') !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ $team->title }}</h1>
+        <h1 class="page-title inside">
+            <a class="back" href="{!! url('teams') !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a>
+            {{ $team->title }}
+            @if ($team->country and $team->country->icon)
+                <img src="{!! $team->country->uploadPath().$team->country->icon !!}" alt="{{ $team->country->title }}" style="vertical-align: baseline">
+            @endif
+        </h1>
 
         @if ($team->image)
             <div class="image">
@@ -33,7 +39,7 @@
                                 <a class="btn" href="http://www.facebook.com/{{ $user->facebook }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
                             @endif
 
-                             @if (filter_var($user->twitter, FILTER_VALIDATE_URL))
+                            @if (filter_var($user->twitter, FILTER_VALIDATE_URL))
                                 <a class="btn" href="{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
                             @else
                                 <a class="btn" href="http://www.twitter.com/{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>

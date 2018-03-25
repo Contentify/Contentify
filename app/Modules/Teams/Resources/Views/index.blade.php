@@ -16,15 +16,23 @@
         
         <div class="content">
             <ul class="list-inline">
-                <li>{{ trans('app.lineup') }}:</li>
-                @foreach ($team->users as $user)
+                @if ($team->users->isNotEmpty())
+                    <li>{{ trans('app.lineup') }}:</li>
+                    @foreach ($team->users as $user)
+                        <li>
+                            <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{{ $user->username }}</a>
+                            @if ($user->pivot->task)
+                                ({{ $user->pivot->task }})
+                            @endif
+                        </li>
+                    @endforeach
+                @endif
+                @if ($team->country and $team->country->icon)
                     <li>
-                        <a href="{!! url('users/'.$user->id.'/'.$user->slug) !!}">{{ $user->username }}</a>
-                        @if ($user->pivot->task)
-                            ({{ $user->pivot->task }})
-                        @endif
+                        {{ trans('app.object_country') }}:
+                        <img src="{!! $team->country->uploadPath().$team->country->icon !!}" alt="{{ $team->country->title }}" style="vertical-align: baseline">
                     </li>
-                @endforeach
+                @endif
             </ul>
         </div>
     </article>

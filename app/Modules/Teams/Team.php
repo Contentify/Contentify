@@ -14,7 +14,7 @@ class Team extends BaseModel
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'text', 'position', 'published', 'teamcat_id'];
+    protected $fillable = ['title', 'text', 'position', 'published', 'teamcat_id', 'country_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
@@ -23,6 +23,7 @@ class Team extends BaseModel
         'position'      => 'sometimes|integer',
         'published'     => 'boolean',
         'teamcat_id'    => 'required|integer',
+        'country_id'    => 'nullable|integer',
     ];
 
     public static $relationsData = [
@@ -31,6 +32,7 @@ class Team extends BaseModel
         ],
         'members'   => [self::BELONGS_TO_MANY, 'User'],
         'teamcat'   => [self::BELONGS_TO, 'App\Modules\Teams\Teamcat'],
+        'country'   => [self::BELONGS_TO, 'App\Modules\Countries\Country'],
         'awards'    => [self::HAS_MANY, 'App\Modules\Awards\Award', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
