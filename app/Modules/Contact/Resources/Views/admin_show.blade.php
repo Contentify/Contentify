@@ -2,7 +2,7 @@
 
 <hr>
 
-<blockquote>{{ $msg->text }}</blockquote>
+<blockquote>{!! nl2br(e($msg->text)) !!}</blockquote>
 
 <hr>
 

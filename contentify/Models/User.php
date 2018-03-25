@@ -27,6 +27,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * True if model is slugable. Usage in SlugTrait.
+     *
      * @var bool
      */
     protected $slugable = true;
@@ -73,6 +74,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Array containing validator messages after validate method was called.
+     *
      * @var \Illuminate\Support\MessageBag
      */
     private $validatorMessages = null;

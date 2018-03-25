@@ -22,7 +22,9 @@ class AdminContactController extends BackController
 
     public function index()
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
 
         $this->indexPage([
             'buttons' => null,
@@ -51,7 +53,9 @@ class AdminContactController extends BackController
 
     public function show($id)
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
         
         $msg = ContactMessage::findOrFail($id);
 
