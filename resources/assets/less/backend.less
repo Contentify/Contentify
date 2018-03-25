@@ -362,6 +362,15 @@ img {
 @sidebarWidth: 230px;
 @sidebarWidthSmall: 70px;
 
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 header {
     position: fixed; z-index: 100; left: 0; right: 0; background-color: @blue; color: @white; font-size: 14px; line-height: @headerHeight; box-shadow: rgba(0, 0, 0, 0.33) 0 1px 3px 0;
     a { color: @white; }
@@ -380,7 +389,7 @@ header {
             &:hover { background-color: @hoverblue; }
         }
     }
-    .msg { display: inline-block; margin-left: 40px; }
+    .msg { display: inline-block; margin-left: 40px; animation: 1s ease-out 0s 1 slideInFromTop; }
     .header-logo { display: block; width: @sidebarWidth; height: @headerHeight; float: left; }
 }
 @media (max-width: 790px) {

@@ -7718,6 +7718,14 @@ img {
 .row {
   margin: 0;
 }
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 header {
   position: fixed;
   z-index: 100;
@@ -7768,6 +7776,7 @@ header nav li:hover {
 header .msg {
   display: inline-block;
   margin-left: 40px;
+  animation: 1s ease-out 0s 1 slideInFromTop;
 }
 header .header-logo {
   display: block;
