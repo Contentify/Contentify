@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Builder;
  * The Friendship model is a helper model and a representation of
  * the many-to-many-relationship between users. It's not meant
  * for storing friendships!
+ *
+ * @property bool $confirmed
+ * @property \Carbon $messaged_at
  */
 class Friendship extends BaseModel
 {

@@ -4,6 +4,9 @@ namespace App\Modules\Modules;
 
 use File, BaseModel;
 
+/**
+ * @property string $title
+ */
 class Module extends BaseModel
 {
 

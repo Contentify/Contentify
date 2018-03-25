@@ -4,6 +4,11 @@ namespace App\Modules\Languages;
 
 use Exception, BaseModel;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string $code
+ */
 class Language extends BaseModel
 {
 

@@ -4,6 +4,13 @@ namespace App\Modules\Navigations;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property bool $translate
+ * @property string $items
+ */
 class Navigation extends BaseModel
 {
 

@@ -4,6 +4,17 @@ namespace App\Modules\Messages;
 
 use BBCode, Cache, User, BaseModel;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property string $text
+ * @property int $receiver_id
+ * @property bool $new
+ * @property bool $creator_visible
+ * @property bool $receiver_visible
+ * @property bool $sent_by_system
+ */
 class Message extends BaseModel
 {
 
@@ -93,7 +104,7 @@ class Message extends BaseModel
         $text = strip_tags($this->renderText());
 
         if ($max) {
-            if (strlen($text) > $max) {
+            if (mb_strlen($text) > $max) {
                 $text = mb_substr($text, 0, $max).'...';
             }
         }

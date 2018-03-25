@@ -4,6 +4,13 @@ namespace App\Modules\Maps;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property int $game_id
+ * @property string $image
+ */
 class Map extends BaseModel
 {
 

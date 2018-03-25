@@ -5,6 +5,24 @@ namespace App\Modules\Matches;
 use Comment, ContentFilter, SoftDeletingTrait, BaseModel;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property \Carbon $played_at
+ * @property int $state
+ * @property bool $featured
+ * @property string $url
+ * @property string $broadcast
+ * @property string $left_lineup
+ * @property string $right_lineup
+ * @property string $text
+ * @property int $game_id
+ * @property int $tournament_id
+ * @property int $left_team_id
+ * @property int $right_team_id
+ * @property int $left_score
+ * @property int $right_score
+ */
 class Match extends BaseModel
 {
 

@@ -4,6 +4,18 @@ namespace App\Modules\Pages;
 
 use SoftDeletingTrait, StiModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property \Carbon $published_at
+ * @property string $title
+ * @property string $slug
+ * @property string $text
+ * @property bool $published
+ * @property bool $internal
+ * @property bool $enable_comments
+ * @property int $pagecat_id
+ */
 class Page extends StiModel
 {
 

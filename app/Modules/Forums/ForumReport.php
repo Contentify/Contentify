@@ -4,6 +4,12 @@ namespace App\Modules\Forums;
 
 use BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $text
+ * @property int $post_id
+ */
 class ForumReport extends BaseModel
 {
 

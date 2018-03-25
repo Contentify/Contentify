@@ -5,6 +5,17 @@ namespace App\Modules\Events;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property \Carbon $starts_at
+ * @property string $title
+ * @property string $slug
+ * @property string $text
+ * @property string $url
+ * @property string $location
+ * @property string $image
+ */
 class Event extends BaseModel
 {
 

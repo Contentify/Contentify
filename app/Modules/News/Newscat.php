@@ -4,6 +4,12 @@ namespace App\Modules\News;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $image
+ */
 class Newscat extends BaseModel
 {
 

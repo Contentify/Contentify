@@ -5,6 +5,24 @@ namespace App\Modules\Cups;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use User, Config, Carbon, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property int $round
+ * @property int $row
+ * @property bool $with_teams
+ * @property int $left_participant_id
+ * @property int $right_participant_id
+ * @property int $winner_id
+ * @property int $left_score
+ * @property int $right_score
+ * @property int $cup_id
+ * @property int $creator_id
+ * @property int $created_at
+ * @property bool $left_confirmed
+ * @property bool $right_confirmed
+ * @property int $next_match_id
+ */
 class Match extends BaseModel
 {
 

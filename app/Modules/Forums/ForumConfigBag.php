@@ -4,6 +4,9 @@ namespace App\Modules\Forums;
 
 use ConfigBag;
 
+/**
+ * @property bool $reports
+ */
 class ForumConfigBag extends ConfigBag
 {
 

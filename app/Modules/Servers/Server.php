@@ -5,6 +5,17 @@ namespace App\Modules\Servers;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $ip
+ * @property string $hoster
+ * @property int $slots
+ * @property string $description
+ * @property bool $published
+ * @property int $game_id
+ */
 class Server extends BaseModel
 {
 

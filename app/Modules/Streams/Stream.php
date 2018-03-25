@@ -4,6 +4,18 @@ namespace App\Modules\Streams;
 
 use SoftDeletingTrait, Comment, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ * @property string $url
+ * @property string $permanent_id
+ * @property string $provider
+ * @property string $thumbnail
+ * @property bool $online
+ * @property int $viewers
+ */
 class Stream extends BaseModel 
 {
 

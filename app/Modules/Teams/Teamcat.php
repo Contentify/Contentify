@@ -4,7 +4,12 @@ namespace App\Modules\Teams;
 
 use SoftDeletingTrait, BaseModel;
 
-class Teamcat extends BaseModel 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ */
+class Teamcat extends BaseModel
 {
 
     use SoftDeletingTrait;

@@ -41,6 +41,7 @@ class StreamsController extends FrontController
             ],
             'tableRow'  => function($stream)
             {
+                /** @var Stream $stream */
                 return [
                     raw(HTML::link(url('streams/'.$stream->id.'/'.$stream->slug), $stream->title)),
                     Stream::$providers[$stream->provider],

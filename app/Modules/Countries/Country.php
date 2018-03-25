@@ -4,6 +4,13 @@ namespace App\Modules\Countries;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $code
+ * @property string $icon
+ */
 class Country extends BaseModel
 {
 

@@ -5,6 +5,19 @@ namespace App\Modules\Teams;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ * @property string $short
+ * @property string $text
+ * @property int $position
+ * @property bool $published
+ * @property int $teamcat_id
+ * @property int $country_id
+ * @property string $image
+ */
 class Team extends BaseModel 
 {
 

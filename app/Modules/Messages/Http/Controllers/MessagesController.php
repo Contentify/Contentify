@@ -15,6 +15,7 @@ class MessagesController extends FrontController
      */
     public function show($id)
     {
+        /** @var Message $message */
         $message = Message::findOrFail($id);
 
         if ($message->receiver_id != user()->id and $message->creator_id != user()->id) {
@@ -82,6 +83,7 @@ class MessagesController extends FrontController
      */
     public function reply($id)
     {
+        /** @var Message $message */
         $message = Message::findOrFail($id);
 
         if ($message->receiver_id != user()->id) {
@@ -106,6 +108,7 @@ class MessagesController extends FrontController
      */
     public function destroy($id)
     {
+        /** @var Message $message */
         $message = Message::findOrFail($id);
 
         if ($message->receiver_id != user()->id and $message->creator_id != user()->id) {

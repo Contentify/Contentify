@@ -4,6 +4,14 @@ namespace App\Modules\Tournaments;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $short
+ * @property string $url
+ * @property string $icon
+ */
 class Tournament extends BaseModel 
 {
 

@@ -4,6 +4,16 @@ namespace App\Modules\Contact;
 
 use Mail, SoftDeletingTrait, BaseModel, User;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $username
+ * @property string $email
+ * @property string $title
+ * @property string $text
+ * @property bool $new
+ * @property string $ip
+ */
 class ContactMessage extends BaseModel
 {
 

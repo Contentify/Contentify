@@ -4,6 +4,13 @@ namespace App\Modules\Games;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $short
+ * @property string $icon
+ */
 class Game extends BaseModel
 {
 

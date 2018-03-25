@@ -25,6 +25,7 @@ class ArticlesController extends FrontController
             ],
             'tableRow'  => function($article)
             {
+                /** @var Article $article */
                 return [
                     raw(HTML::link(URL::route('articles.show', [$article->id]), $article->title)),
                     $article->created_at

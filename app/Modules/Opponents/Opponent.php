@@ -4,6 +4,17 @@ namespace App\Modules\Opponents;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ * @property string $short
+ * @property string $url
+ * @property string $lineup
+ * @property int $country_id
+ * @property string $image
+ */
 class Opponent extends BaseModel
 {
 

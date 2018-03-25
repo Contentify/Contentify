@@ -4,6 +4,17 @@ namespace App\Modules\Downloads;
 
 use Exception, InterImage, File, SoftDeletingTrait, Comment, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ * @property string $description
+ * @property int $downloadcat_id
+ * @property string $file
+ * @property int $file_size
+ * @property bool $is_image
+ */
 class Download extends BaseModel
 {
 

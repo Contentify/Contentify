@@ -2,8 +2,16 @@
 
 namespace App\Modules\Images;
 
-use Exception, Str, BaseModel;
+use Str, BaseModel;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string $tags
+ * @property int $gallery_id
+ * @property int $width
+ * @property int $height
+ */
 class Image extends BaseModel
 {
 

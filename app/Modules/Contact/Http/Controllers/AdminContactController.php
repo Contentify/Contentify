@@ -37,6 +37,7 @@ class AdminContactController extends BackController
             ],
             'tableRow' => function($msg)
             {
+                /** @var ContactMessage $msg */
                 return [
                     $msg->id,
                     raw($msg->new ? 

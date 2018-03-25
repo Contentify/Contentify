@@ -4,6 +4,10 @@ namespace App\Modules\Shouts;
 
 use File, BaseModel;
 
+/**
+ * @property int $id
+ * @property string $text
+ */
 class Shout extends BaseModel
 {
 

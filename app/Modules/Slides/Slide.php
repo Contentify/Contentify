@@ -5,6 +5,17 @@ namespace App\Modules\Slides;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $text
+ * @property string $url
+ * @property int $position
+ * @property bool $published
+ * @property int $slidecat_id
+ * @property string $image
+ */
 class Slide extends BaseModel
 {
 

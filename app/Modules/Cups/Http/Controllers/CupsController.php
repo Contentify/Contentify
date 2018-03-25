@@ -119,6 +119,7 @@ class CupsController extends FrontController
             $memberIds = DB::table('cups_team_members')->whereTeamId($participantId)->pluck('user_id')->toArray();
 
             // Get the ID of all team members that are already in this cup (with another team)
+            /** @var \Illuminate\Database\Eloquent\Collection $cupUserIds */
             $cupUserIds = DB::table('cups_users')->whereCupId($cup->id)
                 ->whereIn('user_id', $memberIds)->pluck('user_id');
 

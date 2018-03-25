@@ -5,6 +5,15 @@ namespace App\Modules\Cups;
 use User, DB, BaseModel;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property string $password
+ * @property string $image
+ * @property bool $invisible
+ * @property int $cup_points
+ */
 class Team extends BaseModel
 {
 

@@ -4,6 +4,12 @@ namespace App\Modules\Galleries;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ */
 class Gallery extends BaseModel
 {
 

@@ -4,6 +4,11 @@ namespace App\Modules\Pages;
 
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ */
 class Pagecat extends BaseModel
 {
 

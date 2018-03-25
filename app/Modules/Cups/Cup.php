@@ -5,6 +5,25 @@ namespace App\Modules\Cups;
 use Illuminate\Database\Eloquent\Builder;
 use MsgException, User, DB, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ * @property int $game_id
+ * @property int $players_per_team
+ * @property int $slots
+ * @property string $prize
+ * @property string $description
+ * @property string $rulebook
+ * @property \Carbon $join_at
+ * @property \Carbon $check_in_at
+ * @property \Carbon $start_at
+ * @property bool $featured
+ * @property bool $published
+ * @property bool $closed
+ * @property string $image
+ */
 class Cup extends BaseModel
 {
 

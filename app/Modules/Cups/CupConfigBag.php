@@ -4,6 +4,9 @@ namespace App\Modules\Cups;
 
 use ConfigBag;
 
+/**
+ * @property int $cup_points
+ */
 class CupConfigBag extends ConfigBag
 {
 

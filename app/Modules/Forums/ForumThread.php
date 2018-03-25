@@ -5,6 +5,16 @@ namespace App\Modules\Forums;
 use User, DB, SoftDeletingTrait, BaseModel;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ * @property bool $sticky
+ * @property bool $closed
+ * @property int $forum_id
+ * @property int $posts_count
+ */
 class ForumThread extends BaseModel
 {
 

@@ -5,6 +5,15 @@ namespace App\Modules\Adverts;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $code
+ * @property string $url
+ * @property bool $published
+ * @property int $advertcat_id
+ */
 class Advert extends BaseModel
 {
 

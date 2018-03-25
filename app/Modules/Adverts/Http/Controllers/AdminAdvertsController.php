@@ -32,6 +32,7 @@ class AdminAdvertsController extends BackController
             ],
             'tableRow' => function($advert)
             {
+                /** @var Advert $advert */
                 Hover::modelAttributes($advert, ['image', 'access_counter', 'creator']);
 
                 return [

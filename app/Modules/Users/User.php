@@ -7,6 +7,8 @@ use BaseModel;
 
 /**
  * NOTE: This is a helper class that extends the actual user class.
+ *
+ * @property bool $banned
  */
 class User extends BaseUser 
 {

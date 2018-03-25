@@ -9,6 +9,12 @@ use SoftDeletingTrait, Sentinel, BaseModel;
  * This is not the same model that Sentinel uses.
  * This model is only a helper so we can CRUD roles.
  * (See also: Cartalyst\Sentinel\Roles\EloquentRole)
+ *
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $name
+ * @property string $slug
+ * @property string $permissions
  */
 class Role extends BaseModel
 {

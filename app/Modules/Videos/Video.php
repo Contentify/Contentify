@@ -4,6 +4,15 @@ namespace App\Modules\Videos;
 
 use Comment, OpenGraph, SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $slug
+ * @property string $url
+ * @property string $permanent_id
+ * @property string $provider
+ */
 class Video extends BaseModel 
 {
 

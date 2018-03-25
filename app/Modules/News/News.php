@@ -5,6 +5,20 @@ namespace App\Modules\News;
 use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property \Carbon $published_at
+ * @property string $title
+ * @property string $slug
+ * @property string $summary
+ * @property string $text
+ * @property bool $published
+ * @property bool $internal
+ * @property bool $enable_comments
+ * @property int $newscat_id
+ * @property int $creator_id
+ */
 class News extends BaseModel
 {
 

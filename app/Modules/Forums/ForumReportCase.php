@@ -4,6 +4,12 @@ namespace App\Modules\Forums;
 
 use DB, BaseModel;
 
+/**
+ * @property int $id
+ * @property int index
+ * @property int $post_id
+ * @property int $report_counter
+ */
 class ForumReportCase extends BaseModel
 {
 

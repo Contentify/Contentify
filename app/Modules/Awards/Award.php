@@ -4,6 +4,17 @@ namespace App\Modules\Awards;
 
 use HTML, SoftDeletingTrait, BaseModel;
 
+/**
+ * @property int $id
+ * @property \Carbon $deleted_at
+ * @property string $title
+ * @property string $url
+ * @property int $position
+ * @property \Carbon $achieved_at
+ * @property int $game_id
+ * @property int|null $tournament_id
+ * @property int|null $team_id
+ */
 class Award extends BaseModel
 {
 

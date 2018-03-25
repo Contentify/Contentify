@@ -6,6 +6,14 @@ use BaseModel;
 
 /**
  * This is only a helper model for validation.
+ *
+ * @property int $id
+ * @property string $username
+ * @property string $email
+ * @property string $title
+ * @property int $team_id
+ * @property string $role
+ * @property string $text
  */
 class JoinMessage extends BaseModel
 {
