@@ -4,7 +4,7 @@ namespace App\Modules\Forums\Http\Controllers;
 
 use App\Modules\Forums\Forum;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
+use Hover, BackController;
 
 class AdminForumsController extends BackController
 {
@@ -19,7 +19,7 @@ class AdminForumsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Forum';
+        $this->modelName = Forum::class;
 
         parent::__construct();
     }
@@ -34,6 +34,8 @@ class AdminForumsController extends BackController
             ],
             'tableRow' => function($forum)
             {
+                /** @var Forum $forum */
+
                 $title  = e($forum->title);
                 $url    = url('forums');
 

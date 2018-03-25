@@ -15,7 +15,7 @@ class AdminEventsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Event';
+        $this->modelName = Event::class;
 
         parent::__construct();
     }

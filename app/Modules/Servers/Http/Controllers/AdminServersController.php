@@ -15,7 +15,7 @@ class AdminServersController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Server';
+        $this->modelName = Server::class;
 
         parent::__construct();
     }

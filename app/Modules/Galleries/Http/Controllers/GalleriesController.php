@@ -11,7 +11,7 @@ class GalleriesController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = 'Gallery';
+        $this->modelName = Gallery::class;
 
         parent::__construct();
     }

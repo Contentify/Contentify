@@ -17,7 +17,7 @@ class AdminActivitiesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = '\UserActivity';
+        $this->modelName = UserActivity::class;
 
         parent::__construct();
     }
@@ -54,7 +54,7 @@ class AdminActivitiesController extends BackController
                     $userActivity->model_class,
                     $translatedPermissions[$userActivity->activity_id],
                     raw(HTML::link(URL::route('users.show', [$userActivity->user->id]), $userActivity->user->username)),
-                    $userActivity->created_at,
+                    $userActivity->created_at->dateTime(),
                 ];            
             },
             'searchFor' => 'model_class',

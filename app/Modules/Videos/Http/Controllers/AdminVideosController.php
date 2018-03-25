@@ -15,7 +15,7 @@ class AdminVideosController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Video';
+        $this->modelName = Video::class;
 
         parent::__construct();
     }

@@ -15,7 +15,7 @@ class AdminCountriesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Country';
+        $this->modelName = Country::class;
 
         parent::__construct();
     }

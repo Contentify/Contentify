@@ -17,7 +17,7 @@ class AdminReportsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'ForumReportCase';
+        $this->modelName = ForumReportCase::class;
 
         parent::__construct();
     }
@@ -35,7 +35,7 @@ class AdminReportsController extends BackController
             ],
             'tableRow' => function($forumReportCase)
             {
-                /** @var ForumPost $forumPost */
+                /** @var ForumReportCase $forumReportCase */
                 $forumPost = $forumReportCase->post;
 
                 $link = HTML::link($forumPost->paginatedPostUrl(), $forumPost->plainText(80));

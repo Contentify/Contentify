@@ -9,7 +9,7 @@ abstract class ConfigController extends BackController
 
     protected $icon = 'cog';
 
-    /*
+    /**
      * Edit the config settings
      * $id is not used
      *
@@ -41,7 +41,7 @@ abstract class ConfigController extends BackController
         $this->pageView($namespace.'admin_config_form', $settings);
     }
 
-    /*
+    /**
      * Update the config settings
      * $id is not used
      *

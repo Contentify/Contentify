@@ -11,7 +11,7 @@ class NewsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = 'News';
+        $this->modelName = News::class;
 
         parent::__construct();
     }

@@ -10,6 +10,49 @@ use App\Modules\Friends\Friendship;
 use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Activation, Sentinel, Session, Str;
 use Illuminate\Database\Query\Builder;
 
+/**
+ * @property int $id
+ * @property string $username
+ * @property string $slug
+ * @property string $email
+ * @property string $password
+ * @property string $first_name
+ * @property string $last_name
+ * @property int $gender
+ * @property int $country_id
+ * @property int $language_id
+ * @property string $birthdate
+ * @property string $occupation
+ * @property string $website
+ * @property string $about
+ * @property string $signature
+ * @property string $skype
+ * @property string $facebook
+ * @property string $twitter
+ * @property string $steam_id
+ * @property string $cpu
+ * @property string $graphics
+ * @property string $ram
+ * @property string $motherboard
+ * @property string $drives
+ * @property string $display
+ * @property string $mouse
+ * @property string $keyboard
+ * @property string $headset
+ * @property string $mousepad
+ * @property string $game
+ * @property string $food
+ * @property string $drink
+ * @property string $music
+ * @property string $film
+ * @property string $steam_auth_id
+ * @property int $cup_points
+ * @property int $posts_count
+ * @property \Carbon $created_at
+ * @property \Carbon $updated_at
+ * @property \Carbon $last_active
+ * @property \Carbon $last_login
+ */
 class User extends SentinelUser implements UserInterface
 {
 

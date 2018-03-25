@@ -15,7 +15,7 @@ class AdminDownloadsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Download';
+        $this->modelName = Download::class;
 
         parent::__construct();
     }

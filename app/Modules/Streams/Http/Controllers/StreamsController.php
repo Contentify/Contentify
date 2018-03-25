@@ -10,7 +10,7 @@ class StreamsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = 'Stream';
+        $this->modelName = Stream::class;
 
         parent::__construct();
     }

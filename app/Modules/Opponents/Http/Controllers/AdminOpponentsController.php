@@ -15,7 +15,7 @@ class AdminOpponentsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Opponent';
+        $this->modelName = Opponent::class;
 
         parent::__construct();
     }

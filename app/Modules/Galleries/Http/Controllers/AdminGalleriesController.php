@@ -15,7 +15,7 @@ class AdminGalleriesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Gallery';
+        $this->modelName = Gallery::class;
 
         parent::__construct();
     }

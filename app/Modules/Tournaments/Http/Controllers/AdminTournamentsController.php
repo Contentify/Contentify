@@ -15,7 +15,7 @@ class AdminTournamentsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Tournament';
+        $this->modelName = Tournament::class;
 
         parent::__construct();
     }

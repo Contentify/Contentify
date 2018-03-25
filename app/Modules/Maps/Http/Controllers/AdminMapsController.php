@@ -15,7 +15,7 @@ class AdminMapsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Map';
+        $this->modelName = Map::class;
 
         parent::__construct();
     }

@@ -15,7 +15,7 @@ class AdminNavigationsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Navigation';
+        $this->modelName = Navigation::class;
 
         parent::__construct();
     }

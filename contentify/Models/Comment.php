@@ -4,6 +4,13 @@ namespace Contentify\Models;
 
 use Cache, SoftDeletingTrait, BBCode;
 
+/**
+ * @property int $id
+ * @property string $text
+ * @property string $foreign_type
+ * @property int $foreign_id
+ * @property \User $creator
+ */
 class Comment extends BaseModel
 {
 

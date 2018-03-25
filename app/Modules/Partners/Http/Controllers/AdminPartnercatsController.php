@@ -15,7 +15,7 @@ class AdminPartnercatsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Partnercat';
+        $this->modelName = Partnercat::class;
 
         parent::__construct();
     }

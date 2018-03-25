@@ -15,7 +15,7 @@ class AdminSlidecatsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Slidecat';
+        $this->modelName = Slidecat::class;
 
         parent::__construct();
     }

@@ -58,7 +58,7 @@ abstract class StiModel extends BaseModel
     /**
      * Create instance
      *
-     * @return Model
+     * @return self
      */
     public function mapData(array $attributes)
     {
@@ -70,7 +70,7 @@ abstract class StiModel extends BaseModel
     public function newFromBuilder($attributes = array(), $connection = null)
     {
         if ($connection) {
-            throw new Exception('Error: STI model does not support the connection parameter.');            
+            throw new \Exception('Error: STI model does not support the connection parameter.');
         }
 
         /*
@@ -82,9 +82,9 @@ abstract class StiModel extends BaseModel
         return $instance;
     }
 
-    public function newQuery($excludeDeleted = true)
+    public function newQuery()
     {
-        $builder = parent::newQuery($excludeDeleted);
+        $builder = parent::newQuery();
 
         /*
          * If this is a subclass, add a condition to the query.

@@ -10,7 +10,7 @@ class InboxController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = 'Message';
+        $this->modelName = Message::class;
 
         parent::__construct();
     }

@@ -16,7 +16,7 @@ class AdminUsersController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'User';
+        $this->modelName = User::class;
 
         parent::__construct();
     }

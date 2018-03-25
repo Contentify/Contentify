@@ -12,7 +12,7 @@ class AdminMembersController extends BackController
 
     public function __construct()
     {
-        $this->modelName = '\User';
+        $this->modelName = \User::class;
 
         parent::__construct();
     }
@@ -28,6 +28,7 @@ class AdminMembersController extends BackController
             ],
             'tableRow' => function($user)
             {
+                /** @var \User $user */
                 $data = [];
                 foreach ($user->teams as $team) {
                     $data[$team->id] = e($team->title);
@@ -35,7 +36,7 @@ class AdminMembersController extends BackController
 
                 return [
                     $user->id,
-                    $user->username,
+                    HTML::link('users/'.$user->id.'/'.$user->slug, $user->username),
                     raw('<div class="data" data-user-id="'.$user->id.'">'.json_encode($data).'</div>'),
                 ];
             },

@@ -10,7 +10,7 @@ class EventsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = 'Event';
+        $this->modelName = Event::class;
 
         parent::__construct();
     }

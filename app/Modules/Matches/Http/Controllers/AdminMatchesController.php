@@ -18,7 +18,7 @@ class AdminMatchesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Match';
+        $this->modelName = Match::class;
 
         parent::__construct();
     }

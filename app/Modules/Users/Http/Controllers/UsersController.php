@@ -9,7 +9,7 @@ class UsersController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = '\User';
+        $this->modelName = \User::class;
 
         parent::__construct();
     }
@@ -33,7 +33,7 @@ class UsersController extends FrontController
                     raw(link_to('users/'.$user->id.'/'.$user->slug, $user->username)),
                     $user->first_name.' '.$user->last_name,
                     $user->created_at,
-                    $user->last_login ? $user->last_login->toDateString() : null
+                    $user->last_login ? $user->last_login->date() : null
                 ];            
             },
             'actions'   => null,

@@ -11,7 +11,7 @@ class DownloadsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = 'Download';
+        $this->modelName = Download::class;
 
         parent::__construct();
     }

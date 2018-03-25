@@ -15,7 +15,7 @@ class AdminPagesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = 'Page';
+        $this->modelName = Page::class;
 
         parent::__construct();
     }
