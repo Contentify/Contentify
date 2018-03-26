@@ -1,8 +1,9 @@
 <?php 
 
-namespace App\Modules\Streams;
+namespace App\Modules\Streams\Api;
 
 use AbstractJob;
+use App\Modules\Streams\Stream;
 
 class UpdateStreamsJob extends AbstractJob
 {
@@ -30,17 +31,12 @@ class UpdateStreamsJob extends AbstractJob
          */
         foreach ($streamsByProvider as $provider => $streams) {
             switch ($provider) {
-                case 'twitch':
+                case TwitchApi::PROVIDER:
                     $twitchApi  = new TwitchApi();
                     $twitchApi->updateStreams($streams);
 
                     break;
-                case 'hitbox':
-                    $hitboxApi  = new HitboxApi();
-                    $hitboxApi->updateStreams($streams);
-
-                    break;
-                case 'smashcast':
+                case SmashcastApi::PROVIDER:
                     $smashcastApi  = new SmashcastApi();
                     $smashcastApi->updateStreams($streams);
 

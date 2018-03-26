@@ -1,14 +1,23 @@
 <?php 
 
-namespace App\Modules\Streams;
+namespace App\Modules\Streams\Api;
 
+use App\Modules\Streams\Stream;
 use Config, Log, DateTime;
 
+/**
+ * @see https://dev.twitch.tv/docs/api
+ */
 class TwitchApi extends StreamApi
 {
 
     /**
-     * API URL
+     * Identifier of the provider
+     */
+    const PROVIDER = 'twitch';
+
+    /**
+     * API endpoint URL
      */
     const URL = 'https://api.twitch.tv/kraken/';
 
@@ -61,14 +70,14 @@ class TwitchApi extends StreamApi
         }
 
         foreach ($streams as $stream) {
-            $stream->online     = false;
-            $stream->viewers    = 0;
+            $stream->online  = false;
+            $stream->viewers = 0;
 
             foreach ($data->streams as $streamInfo) {
                 if ($streamInfo->channel->name == $stream->permanent_id) {
-                    $stream->online     = true;
-                    $stream->viewers    = $streamInfo->viewers;
-                    $stream->thumbnail  = $streamInfo->preview->medium;
+                    $stream->online    = true;
+                    $stream->viewers   = $streamInfo->viewers;
+                    $stream->thumbnail = $streamInfo->preview->medium;
                     break;
                 }
             }

@@ -44,7 +44,7 @@
         }
 
         /**
-         * Retrieve the stream ID from a URL such as "http://www.exmaple.com/<id>"
+         * Retrieve the stream ID from a URL such as "http://www.example.com/<id>"
          *
          * @param  {string}         provider    The provider's name
          * @param  {string}         url         The stream URL
@@ -78,15 +78,6 @@
                 }
             }
 
-            if (providers.hitbox) {
-                var provider = 'hitbox';
-                var result = getStreamId(provider , $(this).val());
-                if (result !== false) {
-                    $('#permanent_id').val(result);
-                    selectProvider(provider);
-                }
-            }
-
             if (providers.smashcast) {
                 var provider = 'smashcast';
                 var result = getStreamId(provider , $(this).val());
@@ -102,9 +93,6 @@
             switch (getProvider()) {
                 case 'twitch':
                     $('#url').val('http://www.twitch.tv/' + $(this).val());
-                    break;
-                case 'hitbox':
-                    $('#url').val('http://www.hitbox.tv/' + $(this).val());
                     break;
                 case 'smashcast':
                     $('#url').val('http://www.smashcast.tv/' + $(this).val());

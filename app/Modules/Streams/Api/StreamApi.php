@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Modules\Streams;
+namespace App\Modules\Streams\Api;
 
 use Log;
 
@@ -10,17 +10,18 @@ class StreamApi
     /**
      * Makes the API call
      * 
-     * @param  string   $url    The API URL
-     * @param  boolean  $parse  Parse the result?
+     * @param string  $url   The API URL
+     * @param boolean $parse Parse the result?
      * @return mixed
      */
     public function apiCall($url, $parse = true)
     {
         $curl = curl_init();
-        
+
+        // Do not try to verify the SSL certificate - it could fail
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
         curl_setopt($curl, CURLOPT_HEADER, 0);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // Do not try to verify the SSL certificate - it could fail
         curl_setopt($curl, CURLOPT_URL, $url);
 
         $result = curl_exec($curl);
@@ -31,9 +32,9 @@ class StreamApi
         }
 
         if ($parse) {
-            return $this->parseResponse($result);    
+            return $this->parseResponse($result);
         }
-        return $result;        
+        return $result;
     }
     
     /**

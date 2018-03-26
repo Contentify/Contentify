@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         */
 
         /*
-         * Helper. Renders a widget.
+         * Helper. Renders a widget. @see Widget
          */
         Blade::directive('widget', function($expression) {
             return '<?php echo HTML::widget('.$expression.'); ?>';
@@ -54,7 +54,7 @@ class AppServiceProvider extends ServiceProvider
         |
         */
 
-        Jobs::addLazy('updateStreams', \App\Modules\Streams\UpdateStreamsJob::class);
+        Jobs::addLazy('updateStreams', \App\Modules\Streams\Api\UpdateStreamsJob::class);
         Jobs::addLazy('deleteUserActivities', \Contentify\Models\DeleteUserActivitiesJob::class);
         Jobs::addLazy('backupDatabase', \Contentify\Models\BackupDatabaseJob::class);
 

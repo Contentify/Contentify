@@ -79,7 +79,10 @@ EOD;
     {
         // HOW TO: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
-        $updateQueries = ["ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL"];
+        $updateQueries = [
+            "ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL",
+            "UPDATE `{$prefix}streams` SET `provider` = 'smashcast', `thumbnail` = NULL, `url` = NULL WHERE `provider` = 'hitbox'"
+        ];
 
         return $updateQueries;
     }

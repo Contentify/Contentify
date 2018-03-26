@@ -1,24 +1,28 @@
 <?php 
 
-namespace App\Modules\Streams;
+namespace App\Modules\Streams\Api;
 
+use App\Modules\Streams\Stream;
 use DateTime;
 
 /**
  * Note: Hitbox was acquired in 2017 and then became Smashcast.
- * Therefore a new class has been created: \App\Modules\Streams\SmashcastApi
- * The old Hitbox class is only in here for compatibility reasons
- * and will be removed in the future.
+ * This SmashcastApi class replaces the old HitboxApi class.
  *
- * @deprecated since 2.3
+ * @see https://developers.smashcast.tv/
  */
-class HitboxApi extends StreamApi
+class SmashcastApi extends StreamApi
 {
 
     /**
-     * API URL - Docs: http://developers.hitbox.tv/start
+     * Identifier of the provider
      */
-    const URL = 'http://api.hitbox.tv/';
+    const PROVIDER = 'smashcast';
+
+    /**
+     * API endpoint URL - Docs: https://developers.smashcast.tv/
+     */
+    const URL = 'https://api.smashcast.tv/';
 
     /**
      * Stream (=media) info API call - Docs: http://developers.hitbox.tv/media
@@ -28,7 +32,7 @@ class HitboxApi extends StreamApi
     /**
      * Prefix URL of the media server (for thumbnails)
      */
-    const MEDIA_URL = 'http://edge.vie.hitbox.tv';
+    const MEDIA_URL = 'https://edge.sf.hitbox.tv';
 
     /**
      * Returns a JSON object that also includes an array of stream infos
@@ -62,14 +66,14 @@ class HitboxApi extends StreamApi
         $data = $this->getStreams($streams);
 
         foreach ($streams as $stream) {
-            $stream->online     = false;
-            $stream->viewers    = 0;
+            $stream->online  = false;
+            $stream->viewers = 0;
 
             foreach ($data->livestream as $streamInfo) {
                 if ($streamInfo->media_name == $stream->permanent_id) {
-                    $stream->online     = $streamInfo->media_is_live;
-                    $stream->viewers    = $streamInfo->media_views;
-                    $stream->thumbnail  = self::MEDIA_URL.$streamInfo->media_thumbnail;
+                    $stream->online    = $streamInfo->media_is_live;
+                    $stream->viewers   = $streamInfo->media_views;
+                    $stream->thumbnail = self::MEDIA_URL.$streamInfo->media_thumbnail;
                     break;
                 }
             }

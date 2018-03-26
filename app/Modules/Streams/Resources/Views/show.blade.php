@@ -14,19 +14,6 @@
             });
         </script>
     @endif
-    @if ($stream->provider == 'hitbox')
-        <iframe src="http://hitbox.tv/#!/embed/{{ $stream->permanent_id }}"></iframe>
-        
-        <a href="http://www.hitbox.tv/{{ $stream->permanent_id }}">Watch live video from {{ $stream->title }} on www.hitbox.tv</a>
-
-        <script>
-            $(document).ready(function()
-            {
-                var $iframe = $('.page iframe');
-                $iframe.height($iframe.width() * 0.5625); // Auto-set height of the iframe
-            });
-        </script>
-    @endif
     @if ($stream->provider == 'smashcast')
         <iframe src="https://www.smashcast.tv/#!/embed/{{ $stream->permanent_id }}" allowfullscreen></iframe>
 
