@@ -2,7 +2,7 @@
 
 namespace Contentify\Commands;
 
-use Config;
+use Config, Html;
 use Illuminate\Console\Command;
 use Less_Parser;
 
@@ -47,6 +47,8 @@ class LessCompileCommand extends Command
         foreach ($lessFiles as $sourcePath => $sourceFilename) {
             $this->compileLessFile($sourcePath, $sourceFilename);
         }
+
+        Html::refreshAssetPaths();
     }
 
     /**
