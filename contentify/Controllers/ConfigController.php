@@ -63,8 +63,7 @@ abstract class ConfigController extends BackController
         $validator = Validator::make($input, $model->getRules());
 
         if ($validator->fails()) {
-             return Redirect::to(Request::url())
-                ->withInput()->withErrors($validator->messages());
+             return Redirect::to(Request::url())->withInput()->withErrors($validator->messages());
         }
 
         DB::transaction(function() use ($input, $namespace)

@@ -7,7 +7,12 @@ use Str, Mail, Sentinel, Reminder, Redirect, Captcha, Input, FrontController;
 
 class RestorePasswordController extends FrontController
 {
-    
+
+    /**
+     * Show "restore password" page
+     *
+     * @return void
+     */
     public function getIndex()
     {
         $this->pageView('auth::restore_password');
@@ -54,6 +59,7 @@ class RestorePasswordController extends FrontController
      * 
      * @param string $email The user's email address
      * @param string $code  Reset password code
+     * @return void
      */
     public function getNew($email, $code)
     {

@@ -15,6 +15,11 @@ class RegistrationController extends FrontController
      */
     const AUTO_ACTIVATE = true;
 
+    /**
+     * Show registration page
+     *
+     * @return void
+     */
     public function getCreate()
     {
         if (user()) {
@@ -25,6 +30,11 @@ class RegistrationController extends FrontController
         $this->pageView('auth::register');
     }
 
+    /**
+     * Create new user account
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postCreate()
     {
         try {
@@ -58,9 +68,6 @@ class RegistrationController extends FrontController
                 'password'      => Input::get('password'),
                 'language_id'   => $language->id,
             ], self::AUTO_ACTIVATE);
-
-            //$user->createSlug(true, 'username'); // TODO remove this - slug is now auto-generated
-            //$user->save();
 
             /*
              * Add user to role "Users"

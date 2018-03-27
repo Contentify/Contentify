@@ -89,10 +89,6 @@ class InstallController extends Controller
                     'username'  => $username,
                 ), true);
 
-                // NOTE: It's not possible to integrate this into the register method
-                //$user->createSlug(true, 'username'); // TODO remove this - slug is now auto-generated
-                //$user->save();
-
                 /*
                  * Add user to role "Super-Admins"
                  */
@@ -178,10 +174,6 @@ class InstallController extends Controller
                     'password'  => Str::random(),
                     'activated' => false,
                 ));
-
-                // NOTE: It's not possible to integrate this into the register method
-                //$user->createSlug(true, 'username'); // TODO remove this - slug is now auto-generated
-                //$user->save();
 
                 $this->createSeed();
 
