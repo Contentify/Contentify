@@ -2,7 +2,9 @@
 
 namespace App\Modules\Roles;
 
-use SoftDeletingTrait, Sentinel, BaseModel;
+use BaseModel;
+use Sentinel;
+use SoftDeletingTrait;
 
 /**
  * Important note:

@@ -2,7 +2,8 @@
 
 namespace Contentify;
 
-use Sentinel, Group;
+use Group;
+use Sentinel;
 
 abstract class ModuleInstaller
 {

@@ -3,7 +3,8 @@
 namespace App\Modules\Shouts\Http\Controllers;
 
 use App\Modules\Shouts\Shout;
-use View, Widget;
+use View;
+use Widget;
 
 class ShoutsWidget extends Widget
 {

@@ -2,11 +2,11 @@
 
 namespace App\Modules\Cups\Http\Controllers;
 
-use App\Modules\Cups\Cup;
-use App\Modules\Cups\Team;
 use App\Modules\Cups\Match;
+use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Input, Redirect, FrontController;
+use Input;
+use Redirect;
 
 class MatchesController extends FrontController
 {

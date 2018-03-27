@@ -3,7 +3,9 @@
 namespace App\Modules\Modules\Http\Controllers;
 
 use App\Modules\Modules\Module;
-use Cache, HTML, BackController;
+use BackController;
+use Cache;
+use HTML;
 use ModuleInstaller;
 
 class AdminModulesController extends BackController

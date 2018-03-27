@@ -2,7 +2,8 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
-use View, Widget;
+use View;
+use Widget;
 
 class LoginWidget extends Widget
 {

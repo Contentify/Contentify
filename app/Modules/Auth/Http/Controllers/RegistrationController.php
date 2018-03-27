@@ -2,8 +2,17 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
+use App;
 use App\Modules\Languages\Language;
-use Response, User, App, Sentinel, Input, Redirect, Captcha, FrontController, Exception, Validator;
+use Captcha;
+use Exception;
+use FrontController;
+use Input;
+use Redirect;
+use Response;
+use Sentinel;
+use User;
+use Validator;
 
 class RegistrationController extends FrontController
 {

@@ -2,9 +2,10 @@
 
 namespace App\Modules\Tournaments\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Tournaments\Tournament;
-use Hover, BackController;
+use BackController;
+use Hover;
+use ModelHandlerTrait;
 
 class AdminTournamentsController extends BackController 
 {

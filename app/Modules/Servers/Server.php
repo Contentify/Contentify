@@ -2,8 +2,9 @@
 
 namespace App\Modules\Servers;
 
+use BaseModel;
 use Illuminate\Database\Eloquent\Builder;
-use SoftDeletingTrait, BaseModel;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

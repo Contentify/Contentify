@@ -2,8 +2,8 @@
 
 namespace App\Modules\Users;
 
-use User as BaseUser;
 use BaseModel;
+use User as BaseUser;
 
 /**
  * NOTE: This is a helper class that extends the actual user class.

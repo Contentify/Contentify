@@ -2,7 +2,10 @@
 
 namespace App\Modules\Visitors\Http\Controllers;
 
-use Cache, DB, View, Widget;
+use Cache;
+use DB;
+use View;
+use Widget;
 
 class VisitorsWidget extends Widget 
 {

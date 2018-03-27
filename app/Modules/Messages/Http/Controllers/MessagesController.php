@@ -3,7 +3,11 @@
 namespace App\Modules\Messages\Http\Controllers;
 
 use App\Modules\Messages\Message;
-use Cache, User, Input, Redirect, FrontController;
+use Cache;
+use FrontController;
+use Input;
+use Redirect;
+use User;
 
 class MessagesController extends FrontController
 {

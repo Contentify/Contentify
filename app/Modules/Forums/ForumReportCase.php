@@ -2,7 +2,8 @@
 
 namespace App\Modules\Forums;
 
-use DB, BaseModel;
+use BaseModel;
+use DB;
 
 /**
  * @property int $id

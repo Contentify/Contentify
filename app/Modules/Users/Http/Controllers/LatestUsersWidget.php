@@ -2,7 +2,9 @@
 
 namespace App\Modules\Users\Http\Controllers;
 
-use User, View, Widget;
+use User;
+use View;
+use Widget;
 
 class LatestUsersWidget extends Widget 
 {

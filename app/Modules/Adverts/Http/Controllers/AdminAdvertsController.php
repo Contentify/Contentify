@@ -3,8 +3,10 @@
 namespace App\Modules\Adverts\Http\Controllers;
 
 use App\Modules\Adverts\Advert;
+use BackController;
+use Hover;
+use HTML;
 use ModelHandlerTrait;
-use HTML, Hover, BackController;
 
 class AdminAdvertsController extends BackController
 {

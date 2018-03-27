@@ -3,8 +3,13 @@
 namespace App\Modules\Users\Http\Controllers;
 
 use App\Modules\Roles\Role;
+use BackController;
+use HTML;
 use ModelHandlerTrait;
-use Redirect, UserActivity, UserActivities, URL, HTML, BackController;
+use Redirect;
+use URL;
+use UserActivities;
+use UserActivity;
 
 class AdminActivitiesController extends BackController 
 {

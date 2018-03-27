@@ -3,7 +3,9 @@
 namespace App\Modules\Videos\Http\Controllers;
 
 use App\Modules\Videos\Video;
-use DB, View, Widget;
+use DB;
+use View;
+use Widget;
 
 class VideosWidget extends Widget 
 {

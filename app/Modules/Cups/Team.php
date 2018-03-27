@@ -2,8 +2,10 @@
 
 namespace App\Modules\Cups;
 
-use User, DB, BaseModel;
+use BaseModel;
+use DB;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use User;
 
 /**
  * @property int $id

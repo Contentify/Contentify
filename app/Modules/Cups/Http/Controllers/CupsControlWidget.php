@@ -3,7 +3,8 @@
 namespace App\Modules\Cups\Http\Controllers;
 
 use App\Modules\Cups\Cup;
-use View, Widget;
+use View;
+use Widget;
 
 class CupsControlWidget extends Widget
 {

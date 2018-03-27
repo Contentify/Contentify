@@ -2,7 +2,9 @@
 
 namespace App\Modules\Comments\Http\Controllers;
 
-use Comment, View, Widget;
+use Comment;
+use View;
+use Widget;
 
 class LatestCommentsWidget extends Widget
 {

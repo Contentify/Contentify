@@ -2,8 +2,13 @@
 
 namespace App\Modules\Diag\Http\Controllers;
 
-use \Carbon\Carbon;
-use App, Config, BackController, HTML, Jobs, DB;
+use App;
+use BackController;
+use Carbon\Carbon;
+use Config;
+use DB;
+use HTML;
+use Jobs;
 
 class AdminDiagController extends BackController
 {

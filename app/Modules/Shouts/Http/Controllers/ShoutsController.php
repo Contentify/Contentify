@@ -3,7 +3,10 @@
 namespace App\Modules\Shouts\Http\Controllers;
 
 use App\Modules\Shouts\Shout;
-use Input, DB, Response, FrontController;
+use DB;
+use FrontController;
+use Input;
+use Response;
 
 class ShoutsController extends FrontController
 {

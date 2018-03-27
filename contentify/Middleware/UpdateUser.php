@@ -2,7 +2,13 @@
 
 namespace Contentify\Middleware;
 
-use DB, Session, Carbon, App, File, Lang, Closure;
+use App;
+use Carbon;
+use Closure;
+use DB;
+use File;
+use Lang;
+use Session;
 
 class UpdateUser
 {

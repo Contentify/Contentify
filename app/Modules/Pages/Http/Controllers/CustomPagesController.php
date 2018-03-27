@@ -3,7 +3,7 @@
 namespace App\Modules\Pages\Http\Controllers;
 
 use App\Modules\Pages\CustomPage;
-use URL, HTML, FrontController;
+use FrontController;
 
 class CustomPagesController extends FrontController
 {

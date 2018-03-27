@@ -3,8 +3,9 @@
 namespace App\Modules\Adverts\Http\Controllers;
 
 use App\Modules\Adverts\Advertcat;
+use BackController;
+use Hover;
 use ModelHandlerTrait;
-use Hover, BackController;
 
 class AdminAdvertcatsController extends BackController
 {

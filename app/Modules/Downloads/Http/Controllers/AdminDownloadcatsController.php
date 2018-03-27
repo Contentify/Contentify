@@ -3,8 +3,9 @@
 namespace App\Modules\Downloads\Http\Controllers;
 
 use App\Modules\Downloads\Downloadcat;
+use BackController;
+use Hover;
 use ModelHandlerTrait;
-use Hover, BackController;
 
 class AdminDownloadcatsController extends BackController
 {

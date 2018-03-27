@@ -3,7 +3,8 @@
 namespace App\Modules\Messages\Http\Controllers;
 
 use App\Modules\Messages\Message;
-use HTML, FrontController;
+use FrontController;
+use HTML;
 
 class OutboxController extends FrontController
 {

@@ -2,7 +2,12 @@
 
 namespace App\Modules\Dashboard\Http\Controllers;
 
-use HTML, Log, View, Config, Cache, BackController;
+use BackController;
+use Cache;
+use Config;
+use HTML;
+use Log;
+use View;
 
 class AdminDashboardController extends BackController
 {

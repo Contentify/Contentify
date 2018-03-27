@@ -2,9 +2,11 @@
 
 namespace App\Modules\Slides\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Slides\Slide;
-use HTML, Hover, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminSlidesController extends BackController
 {

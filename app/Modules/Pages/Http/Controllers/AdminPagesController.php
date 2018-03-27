@@ -2,9 +2,12 @@
 
 namespace App\Modules\Pages\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Pages\Page;
-use Hover, URL, HTML, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
+use URL;
 
 class AdminPagesController extends BackController
 {

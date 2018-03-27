@@ -2,7 +2,15 @@
 
 namespace Contentify\Controllers;
 
-use ModelHandler, Str, Sentinel, OpenGraph, Request, Session, View, Controller, Exception;
+use Controller;
+use Exception;
+use ModelHandler;
+use OpenGraph;
+use Request;
+use Sentinel;
+use Session;
+use Str;
+use View;
 
 abstract class BaseController extends Controller
 {

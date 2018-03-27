@@ -2,9 +2,13 @@
 
 namespace App\Modules\Downloads\Http\Controllers;
 
-use App\Modules\Downloads\Downloadcat;
 use App\Modules\Downloads\Download;
-use File, Response, Redirect, Request, Config, URL, FrontController;
+use App\Modules\Downloads\Downloadcat;
+use Config;
+use File;
+use FrontController;
+use Response;
+use URL;
 
 class DownloadsController extends FrontController
 {

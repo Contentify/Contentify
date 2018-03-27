@@ -2,8 +2,9 @@
 
 namespace Contentify\Models;
 
+use AbstractJob;
+use Config;
 use Contentify\Vendor\MySqlDump;
-use Config, AbstractJob;
 
 class BackupDatabaseJob extends AbstractJob
 {

@@ -2,7 +2,9 @@
 
 namespace Contentify\Models;
 
-use Cache, SoftDeletingTrait, BBCode;
+use BBCode;
+use Cache;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

@@ -2,7 +2,10 @@
 
 namespace App\Modules\Videos;
 
-use Comment, OpenGraph, SoftDeletingTrait, BaseModel;
+use BaseModel;
+use Comment;
+use OpenGraph;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

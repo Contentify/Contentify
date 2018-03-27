@@ -3,7 +3,9 @@
 namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
-use URL, Request, FrontController;
+use FrontController;
+use Request;
+use URL;
 
 class EventsController extends FrontController
 {

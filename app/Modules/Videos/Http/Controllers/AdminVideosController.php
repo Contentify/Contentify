@@ -2,9 +2,11 @@
 
 namespace App\Modules\Videos\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Videos\Video;
-use Hover, HTML, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminVideosController extends BackController 
 {

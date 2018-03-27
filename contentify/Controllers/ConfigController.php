@@ -2,7 +2,12 @@
 
 namespace Contentify\Controllers;
 
-use Config, Request, Input, Validator, Redirect, DB;
+use Config;
+use DB;
+use Input;
+use Redirect;
+use Request;
+use Validator;
 
 abstract class ConfigController extends BackController
 {

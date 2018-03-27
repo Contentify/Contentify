@@ -3,9 +3,16 @@
 namespace Contentify\Models;
 
 use Contentify\Traits\SlugTrait;
+use DateAccessorTrait;
+use Eloquent;
+use Exception;
+use File;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use File, Input, DateAccessorTrait, ValidatingTrait, InterImage, Eloquent, InvalidArgumentException, Exception;
 use Illuminate\Database\Query\Builder;
+use Input;
+use InterImage;
+use InvalidArgumentException;
+use ValidatingTrait;
 
 class BaseModel extends Eloquent
 {

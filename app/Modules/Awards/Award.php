@@ -2,7 +2,9 @@
 
 namespace App\Modules\Awards;
 
-use HTML, SoftDeletingTrait, BaseModel;
+use BaseModel;
+use HTML;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

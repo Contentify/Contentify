@@ -3,8 +3,9 @@
 namespace App\Modules\Partners\Http\Controllers;
 
 use App\Modules\Partners\Partner;
+use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Redirect, FrontController;
+use Redirect;
 
 class PartnersController extends FrontController
 {

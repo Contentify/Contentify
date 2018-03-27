@@ -4,8 +4,14 @@ namespace App\Modules\Cups\Http\Controllers;
 
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
+use DB;
+use FrontController;
+use HTML;
 use Illuminate\Http\RedirectResponse;
-use User, Redirect, Input, DB, URL, HTML, FrontController;
+use Input;
+use Redirect;
+use URL;
+use User;
 
 class CupsController extends FrontController
 {

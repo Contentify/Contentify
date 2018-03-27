@@ -3,7 +3,8 @@
 namespace App\Modules\Visitors\Http\Controllers;
 
 use App\Modules\Visitors\Chart;
-use View, Widget;
+use View;
+use Widget;
 
 class ChartWidget extends Widget 
 {

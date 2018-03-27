@@ -5,7 +5,11 @@ namespace App\Modules\Forums\Http\Controllers;
 use App\Modules\Forums\ForumPost;
 use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumThread;
-use User, Response, Input, Redirect, FrontController;
+use FrontController;
+use Input;
+use Redirect;
+use Response;
+use User;
 
 class PostsController extends FrontController
 {

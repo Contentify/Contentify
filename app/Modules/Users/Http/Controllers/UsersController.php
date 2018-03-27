@@ -2,7 +2,12 @@
 
 namespace App\Modules\Users\Http\Controllers;
 
-use Validator, Sentinel, Redirect, Input, User, FrontController;
+use FrontController;
+use Input;
+use Redirect;
+use Sentinel;
+use User;
+use Validator;
 
 class UsersController extends FrontController 
 {

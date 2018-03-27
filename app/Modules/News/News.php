@@ -2,8 +2,17 @@
 
 namespace App\Modules\News;
 
+use BaseModel;
+use Comment;
+use Config;
+use ContentFilter;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
-use SoftDeletingTrait, ContentFilter, DB, OpenGraph, Comment, Rss, Config, Lang, URL, BaseModel;
+use Lang;
+use OpenGraph;
+use Rss;
+use SoftDeletingTrait;
+use URL;
 
 /**
  * @property int $id

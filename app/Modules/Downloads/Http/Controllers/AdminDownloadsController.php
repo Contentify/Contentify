@@ -3,8 +3,10 @@
 namespace App\Modules\Downloads\Http\Controllers;
 
 use App\Modules\Downloads\Download;
+use BackController;
+use Hover;
+use HTML;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
 
 class AdminDownloadsController extends BackController
 {

@@ -3,7 +3,8 @@
 namespace App\Modules\Forums\Http\Controllers;
 
 use App\Modules\Forums\ForumThread;
-use View, Widget;
+use View;
+use Widget;
 
 class LatestThreadsWidget extends Widget
 {

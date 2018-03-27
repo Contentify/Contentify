@@ -3,7 +3,9 @@
 namespace App\Modules\Contact\Http\Controllers;
 
 use App\Modules\Contact\ContactMessage;
-use Input, Redirect, FrontController;
+use FrontController;
+use Input;
+use Redirect;
 
 class ContactController extends FrontController
 {

@@ -4,7 +4,10 @@ namespace App\Modules\Adverts\Http\Controllers;
 
 use App\Modules\Adverts\Advert;
 use App\Modules\Adverts\Advertcat;
-use Config, DB, View, Widget;
+use Config;
+use DB;
+use View;
+use Widget;
 
 class AdvertWidget extends Widget
 {

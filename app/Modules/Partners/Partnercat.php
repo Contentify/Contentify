@@ -2,7 +2,8 @@
 
 namespace App\Modules\Partners;
 
-use SoftDeletingTrait, BaseModel;
+use BaseModel;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

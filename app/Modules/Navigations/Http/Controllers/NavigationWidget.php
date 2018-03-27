@@ -3,7 +3,8 @@
 namespace App\Modules\Navigations\Http\Controllers;
 
 use App\Modules\Navigations\Navigation;
-use View, Widget;
+use View;
+use Widget;
 
 class NavigationWidget extends Widget
 {

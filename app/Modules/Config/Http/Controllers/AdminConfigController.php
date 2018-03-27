@@ -3,8 +3,16 @@
 namespace App\Modules\Config\Http\Controllers;
 
 use App\Modules\Config\SettingsBag;
+use Artisan;
+use BackController;
+use Config;
 use Contentify\Vendor\MySqlDump;
-use Artisan, HTML, Str, Redirect, Input, File, DB, Config, BackController;
+use DB;
+use File;
+use HTML;
+use Input;
+use Redirect;
+use Str;
 
 class AdminConfigController extends BackController
 {

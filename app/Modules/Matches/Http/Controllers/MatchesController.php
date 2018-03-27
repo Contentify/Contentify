@@ -3,7 +3,8 @@
 namespace App\Modules\Matches\Http\Controllers;
 
 use App\Modules\Matches\Match;
-use HTML, FrontController;
+use FrontController;
+use HTML;
 
 class MatchesController extends FrontController
 {

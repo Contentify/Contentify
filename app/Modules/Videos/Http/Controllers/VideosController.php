@@ -3,7 +3,9 @@
 namespace App\Modules\Videos\Http\Controllers;
 
 use App\Modules\Videos\Video;
-use Config, URL, FrontController;
+use Config;
+use FrontController;
+use URL;
 
 class VideosController extends FrontController 
 {

@@ -2,7 +2,9 @@
 
 namespace Contentify\Controllers;
 
-use Lang, DB, View;
+use DB;
+use Lang;
+use View;
 
 abstract class BackController extends BaseController
 {

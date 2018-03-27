@@ -3,7 +3,8 @@
 namespace App\Modules\Pages\Http\Controllers;
 
 use App\Modules\Pages\Fragment;
-use Exception, Widget;
+use Exception;
+use Widget;
 
 class FragmentWidget extends Widget
 {

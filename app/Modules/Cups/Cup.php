@@ -2,8 +2,11 @@
 
 namespace App\Modules\Cups;
 
+use BaseModel;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
-use MsgException, User, DB, BaseModel;
+use MsgException;
+use User;
 
 /**
  * @property int $id

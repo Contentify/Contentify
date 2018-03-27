@@ -2,7 +2,8 @@
 
 namespace App\Modules\Search\Http\Controllers;
 
-use View, Widget;
+use View;
+use Widget;
 
 class SearchWidget extends Widget
 {

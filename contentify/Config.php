@@ -2,8 +2,10 @@
 
 namespace Contentify;
 
+use Cache;
+use DateTime;
+use DB;
 use Illuminate\Support\Facades\Config as LaravelConfig;
-use Cache, DB, DateTime;
 
 class Config extends LaravelConfig
 {

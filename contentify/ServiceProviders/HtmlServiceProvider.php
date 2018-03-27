@@ -3,8 +3,8 @@
 namespace Contentify\ServiceProviders;
 
 use Collective\Html\HtmlServiceProvider as OriginalHtmlServiceProvider;
-use Contentify\HtmlBuilder;
 use Contentify\FormBuilder;
+use Contentify\HtmlBuilder;
 
 class HtmlServiceProvider extends OriginalHtmlServiceProvider
 {

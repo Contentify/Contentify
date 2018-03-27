@@ -4,7 +4,8 @@ namespace App\Modules\Slides\Http\Controllers;
 
 use App\Modules\Slides\Slide;
 use App\Modules\Slides\Slidecat;
-use View, Widget;
+use View;
+use Widget;
 
 class SlidesWidget extends Widget
 {

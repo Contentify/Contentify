@@ -3,8 +3,10 @@
 namespace App\Modules\Galleries\Http\Controllers;
 
 use App\Modules\Galleries\Gallery;
+use BackController;
+use Hover;
+use HTML;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
 
 class AdminGalleriesController extends BackController
 {

@@ -2,9 +2,10 @@
 
 namespace App\Modules\Partners\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Partners\Partnercat;
-use Hover, BackController;
+use BackController;
+use Hover;
+use ModelHandlerTrait;
 
 class AdminPartnercatsController extends BackController
 {

@@ -2,8 +2,13 @@
 
 namespace App\Modules\Forums;
 
+use BaseModel;
+use BBCode;
+use Cache;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
-use User, DB, BBCode, Cache, SoftDeletingTrait, BaseModel;
+use SoftDeletingTrait;
+use User;
 
 /**
  * @property int $id

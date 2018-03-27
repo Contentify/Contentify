@@ -3,7 +3,8 @@
 namespace App\Modules\Languages\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Lang, View;
+use Lang;
+use View;
 
 class ModuleServiceProvider extends ServiceProvider
 {

@@ -2,7 +2,11 @@
 
 namespace App\Modules\Users\Http\Controllers;
 
-use DB, Cache, User, View, Widget;
+use Cache;
+use DB;
+use User;
+use View;
+use Widget;
 
 class RandomUserWidget extends Widget 
 {

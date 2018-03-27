@@ -2,7 +2,8 @@
 
 namespace Contentify\Middleware;
 
-use Config, Closure;
+use Closure;
+use Config;
 
 class HttpsRedirect
 {

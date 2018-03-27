@@ -2,10 +2,15 @@
 
 namespace App\Modules\Cups\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Match;
-use DB, Carbon, Redirect, HTML, Hover, BackController;
+use BackController;
+use Carbon;
+use DB;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
+use Redirect;
 
 class AdminCupsController extends BackController
 {

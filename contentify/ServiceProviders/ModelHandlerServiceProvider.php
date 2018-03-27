@@ -2,9 +2,9 @@
 
 namespace Contentify\ServiceProviders;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\AliasLoader;
 use Contentify\ModelHandler;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\ServiceProvider;
 
 class ModelHandlerServiceProvider extends ServiceProvider
 {

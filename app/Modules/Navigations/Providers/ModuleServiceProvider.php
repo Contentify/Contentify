@@ -2,8 +2,10 @@
 
 namespace App\Modules\Navigations\Providers;
 
+use App;
 use Illuminate\Support\ServiceProvider;
-use App, Lang, View;
+use Lang;
+use View;
 
 class ModuleServiceProvider extends ServiceProvider
 {

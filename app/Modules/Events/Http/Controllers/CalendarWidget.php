@@ -3,7 +3,9 @@
 namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
-use Carbon, View, Widget;
+use Carbon;
+use View;
+use Widget;
 
 class CalendarWidget extends Widget
 {

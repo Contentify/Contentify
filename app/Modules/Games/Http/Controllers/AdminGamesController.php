@@ -3,8 +3,10 @@
 namespace App\Modules\Games\Http\Controllers;
 
 use App\Modules\Games\Game;
+use BackController;
+use Hover;
+use HTML;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
 
 class AdminGamesController extends BackController
 {

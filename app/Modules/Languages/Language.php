@@ -2,7 +2,8 @@
 
 namespace App\Modules\Languages;
 
-use Exception, BaseModel;
+use BaseModel;
+use Exception;
 
 /**
  * @property int $id

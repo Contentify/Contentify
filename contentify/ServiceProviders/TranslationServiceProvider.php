@@ -2,8 +2,8 @@
 
 namespace Contentify\ServiceProviders;
 
-use Illuminate\Translation\TranslationServiceProvider as OriginalTranslationServiceProvider;
 use Contentify\Translator;
+use Illuminate\Translation\TranslationServiceProvider as OriginalTranslationServiceProvider;
 
 class TranslationServiceProvider extends OriginalTranslationServiceProvider
 {

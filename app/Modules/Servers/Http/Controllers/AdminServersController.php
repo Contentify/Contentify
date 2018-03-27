@@ -2,9 +2,11 @@
 
 namespace App\Modules\Servers\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Servers\Server;
-use Hover, HTML, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminServersController extends BackController
 {

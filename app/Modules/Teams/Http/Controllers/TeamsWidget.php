@@ -3,7 +3,8 @@
 namespace App\Modules\Teams\Http\Controllers;
 
 use App\Modules\Teams\Team;
-use View, Widget;
+use View;
+use Widget;
 
 class TeamsWidget extends Widget 
 {

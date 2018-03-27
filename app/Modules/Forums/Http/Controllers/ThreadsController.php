@@ -3,9 +3,13 @@
 namespace App\Modules\Forums\Http\Controllers;
 
 use App\Modules\Forums\Forum;
-use App\Modules\Forums\ForumThread;
 use App\Modules\Forums\ForumPost;
-use DB, Input, View, Redirect, Request, URL, FrontController;
+use App\Modules\Forums\ForumThread;
+use DB;
+use FrontController;
+use Input;
+use Redirect;
+use URL;
 
 class ThreadsController extends FrontController
 {

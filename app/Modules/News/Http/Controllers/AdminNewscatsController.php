@@ -2,9 +2,10 @@
 
 namespace App\Modules\News\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\News\Newscat;
-use Hover, BackController;
+use BackController;
+use Hover;
+use ModelHandlerTrait;
 
 class AdminNewscatsController extends BackController
 {

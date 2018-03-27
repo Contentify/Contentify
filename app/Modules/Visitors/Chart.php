@@ -2,7 +2,8 @@
 
 namespace App\Modules\Visitors;
 
-use Carbon, DB;
+use Carbon;
+use DB;
 
 class Chart 
 {

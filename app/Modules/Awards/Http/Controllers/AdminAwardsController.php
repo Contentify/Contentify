@@ -3,8 +3,8 @@
 namespace App\Modules\Awards\Http\Controllers;
 
 use App\Modules\Awards\Award;
-use ModelHandlerTrait;
 use BackController;
+use ModelHandlerTrait;
 
 class AdminAwardsController extends BackController
 {

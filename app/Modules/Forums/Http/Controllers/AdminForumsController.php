@@ -3,8 +3,9 @@
 namespace App\Modules\Forums\Http\Controllers;
 
 use App\Modules\Forums\Forum;
+use BackController;
+use Hover;
 use ModelHandlerTrait;
-use Hover, BackController;
 
 class AdminForumsController extends BackController
 {

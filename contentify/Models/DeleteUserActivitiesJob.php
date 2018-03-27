@@ -2,7 +2,8 @@
 
 namespace Contentify\Models;
 
-use UserActivities, AbstractJob;
+use AbstractJob;
+use UserActivities;
 
 class DeleteUserActivitiesJob extends AbstractJob
 {

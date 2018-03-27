@@ -3,9 +3,11 @@
 namespace App\Modules\Friends\Http\Controllers;
 
 use App\Modules\Friends\Friendship;
-use App\Modules\Messages\Message;
+use DB;
+use FrontController;
 use Illuminate\Http\RedirectResponse;
-use User, DB, Redirect, FrontController;
+use Redirect;
+use User;
 
 class FriendsController extends FrontController
 {

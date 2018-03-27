@@ -2,7 +2,8 @@
 
 namespace Contentify\Commands;
 
-use Config, Html;
+use Config;
+use Html;
 use Illuminate\Console\Command;
 use Less_Parser;
 

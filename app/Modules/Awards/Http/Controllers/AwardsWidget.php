@@ -3,7 +3,8 @@
 namespace App\Modules\Awards\Http\Controllers;
 
 use App\Modules\Awards\Award;
-use View, Widget;
+use View;
+use Widget;
 
 class AwardsWidget extends Widget
 {

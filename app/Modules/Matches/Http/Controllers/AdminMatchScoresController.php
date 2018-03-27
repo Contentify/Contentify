@@ -3,7 +3,10 @@
 namespace App\Modules\Matches\Http\Controllers;
 
 use App\Modules\Matches\MatchScore;
-use Response, View, Input, BackController;
+use BackController;
+use Input;
+use Response;
+use View;
 
 class AdminMatchScoresController extends BackController
 {

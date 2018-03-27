@@ -3,7 +3,9 @@
 namespace App\Modules\Matches\Http\Controllers;
 
 use App\Modules\Matches\Match;
-use View, Widget, DB;
+use DB;
+use View;
+use Widget;
 
 class UpcomingMatchesWidget extends Widget
 {

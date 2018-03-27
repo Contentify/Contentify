@@ -2,7 +2,8 @@
 
 namespace App\Modules\Pages;
 
-use SoftDeletingTrait, StiModel;
+use SoftDeletingTrait;
+use StiModel;
 
 /**
  * @property int $id

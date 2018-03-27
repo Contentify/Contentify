@@ -2,7 +2,8 @@
 
 namespace App\Modules\Images;
 
-use Str, BaseModel;
+use BaseModel;
+use Str;
 
 /**
  * @property int $id

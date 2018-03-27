@@ -3,7 +3,8 @@
 namespace Contentify;
 
 use Contentify\Models\UserActivity;
-use Exception, DB;
+use DB;
+use Exception;
 
 class UserActivities
 {

@@ -2,9 +2,10 @@
 
 namespace App\Modules\Galleries\Http\Controllers;
 
-use App\Modules\Images\Image;
 use App\Modules\Galleries\Gallery;
-use Request, Config, URL, FrontController;
+use App\Modules\Images\Image;
+use Config;
+use FrontController;
 
 class GalleriesController extends FrontController
 {

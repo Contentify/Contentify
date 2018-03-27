@@ -3,7 +3,8 @@
 namespace App\Modules\Awards\Http\Controllers;
 
 use App\Modules\Awards\Award;
-use HTML, FrontController;
+use FrontController;
+use HTML;
 
 class AwardsController extends FrontController
 {

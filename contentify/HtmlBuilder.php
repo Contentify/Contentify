@@ -2,9 +2,13 @@
 
 namespace Contentify;
  
+use Cache;
 use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
 use Contentify\Controllers\Widget;
-use Exception, OpenGraph, Cache, Session, URL;
+use Exception;
+use OpenGraph;
+use Session;
+use URL;
 
 class HtmlBuilder extends OriginalHtmlBuilder
 {

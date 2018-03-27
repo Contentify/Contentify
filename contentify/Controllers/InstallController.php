@@ -2,7 +2,19 @@
 
 namespace Contentify\Controllers;
 
-use Str, File, Input, Validator, Sentinel, Form, Config, View, Schema, Artisan, DB, Controller, Closure;
+use Artisan;
+use Closure;
+use Config;
+use Controller;
+use DB;
+use File;
+use Form;
+use Input;
+use Schema;
+use Sentinel;
+use Str;
+use Validator;
+use View;
 
 class InstallController extends Controller
 {

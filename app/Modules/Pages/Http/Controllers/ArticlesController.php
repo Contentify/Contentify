@@ -3,7 +3,9 @@
 namespace App\Modules\Pages\Http\Controllers;
 
 use App\Modules\Pages\Article;
-use URL, HTML, FrontController;
+use FrontController;
+use HTML;
+use URL;
 
 class ArticlesController extends FrontController
 {

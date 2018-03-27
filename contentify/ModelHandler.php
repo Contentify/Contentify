@@ -2,8 +2,21 @@
 
 namespace Contentify;
 
-use Paginator, Session, HTML, URL, DB, Log, BaseModel, BaseController, UserActivities, Input, File, Redirect, InterImage;
-use Closure, Exception;
+use BaseController;
+use BaseModel;
+use Closure;
+use DB;
+use Exception;
+use File;
+use HTML;
+use Input;
+use InterImage;
+use Log;
+use Paginator;
+use Redirect;
+use Session;
+use URL;
+use UserActivities;
 
 class ModelHandler
 {

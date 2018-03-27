@@ -3,7 +3,9 @@
 namespace App\Modules\Galleries\Http\Controllers;
 
 use App\Modules\Images\Image;
-use DB, View, Widget;
+use DB;
+use View;
+use Widget;
 
 class GalleriesWidget extends Widget
 {

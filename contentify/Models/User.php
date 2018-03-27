@@ -2,13 +2,24 @@
 
 namespace Contentify\Models;
 
+use Activation;
+use App\Modules\Friends\Friendship;
+use App\Modules\Messages\Message;
+use Cache;
+use Carbon;
 use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Contentify\Traits\SlugTrait;
-use App\Modules\Messages\Message;
-use App\Modules\Friends\Friendship;
-use Carbon, Cache, DB, Exception, File, InterImage, Redirect, Input, Validator, Activation, Sentinel, Session, Str;
+use DB;
+use Exception;
+use File;
 use Illuminate\Database\Query\Builder;
+use Input;
+use InterImage;
+use Redirect;
+use Sentinel;
+use Session;
+use Validator;
 
 /**
  * @property int $id

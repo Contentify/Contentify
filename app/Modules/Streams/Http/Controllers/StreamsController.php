@@ -3,7 +3,11 @@
 namespace App\Modules\Streams\Http\Controllers;
 
 use App\Modules\Streams\Stream;
-use Request, HTML, Config, URL, FrontController;
+use Config;
+use FrontController;
+use HTML;
+use Request;
+use URL;
 
 class StreamsController extends FrontController
 {

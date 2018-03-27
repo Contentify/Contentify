@@ -2,8 +2,10 @@
 
 namespace App\Modules\Pages;
 
-use Comment, OpenGraph, DB;
+use Comment;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
+use OpenGraph;
 
 class Article extends Page
 {

@@ -2,7 +2,8 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
-use Sentinel, FrontController;
+use FrontController;
+use Sentinel;
 
 class LogoutController extends FrontController
 {

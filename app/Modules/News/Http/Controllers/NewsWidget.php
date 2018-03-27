@@ -3,7 +3,8 @@
 namespace App\Modules\News\Http\Controllers;
 
 use App\Modules\News\News;
-use View, Widget;
+use View;
+use Widget;
 
 class NewsWidget extends Widget
 {

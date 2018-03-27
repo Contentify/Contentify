@@ -2,8 +2,11 @@
 
 namespace App\Modules\Cups;
 
+use BaseModel;
+use Carbon;
+use Config;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use User, Config, Carbon, BaseModel;
+use User;
 
 /**
  * @property int $id

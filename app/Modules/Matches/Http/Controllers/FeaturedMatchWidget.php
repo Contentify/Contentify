@@ -3,7 +3,8 @@
 namespace App\Modules\Matches\Http\Controllers;
 
 use App\Modules\Matches\Match;
-use View, Widget;
+use View;
+use Widget;
 
 class FeaturedMatchWidget extends Widget
 {

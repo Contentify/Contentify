@@ -3,8 +3,9 @@
 namespace App\Modules\Adverts\Http\Controllers;
 
 use App\Modules\Adverts\Advert;
+use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Redirect, FrontController;
+use Redirect;
 
 class AdvertsController extends FrontController
 {

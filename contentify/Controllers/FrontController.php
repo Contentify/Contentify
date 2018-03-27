@@ -2,7 +2,12 @@
 
 namespace Contentify\Controllers;
 
-use Exception, URL, Input, View, Redirect, Config;
+use Config;
+use Exception;
+use Input;
+use Redirect;
+use URL;
+use View;
 
 abstract class FrontController extends BaseController
 {

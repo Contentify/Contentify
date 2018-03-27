@@ -2,7 +2,9 @@
 
 namespace Contentify;
 
-use Session, Str, Request;
+use Request;
+use Session;
+use Str;
 
 class Captcha
 {

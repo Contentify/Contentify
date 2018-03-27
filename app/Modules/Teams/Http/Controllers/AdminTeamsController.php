@@ -2,9 +2,11 @@
 
 namespace App\Modules\Teams\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Teams\Team;
-use Hover, HTML, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminTeamsController extends BackController 
 {

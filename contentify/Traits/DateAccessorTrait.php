@@ -2,7 +2,9 @@
 
 namespace Contentify\Traits;
 
-use InvalidArgumentException, Carbon, DateTime;
+use Carbon;
+use DateTime;
+use InvalidArgumentException;
 
 /*
  * Use this trait to "extend" Eloquent models

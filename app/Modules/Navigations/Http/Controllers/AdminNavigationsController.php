@@ -3,8 +3,9 @@
 namespace App\Modules\Navigations\Http\Controllers;
 
 use App\Modules\Navigations\Navigation;
+use BackController;
+use Hover;
 use ModelHandlerTrait;
-use Hover, BackController;
 
 class AdminNavigationsController extends BackController
 {

@@ -2,7 +2,11 @@
 
 namespace Contentify;
 
-use View, Response, Comment, Input, Request;
+use Comment;
+use Input;
+use Request;
+use Response;
+use View;
 
 class Comments
 {

@@ -3,7 +3,8 @@
 namespace App\Modules\Servers\Http\Controllers;
 
 use App\Modules\Servers\Server;
-use View, Widget;
+use View;
+use Widget;
 
 class ServersWidget extends Widget
 {

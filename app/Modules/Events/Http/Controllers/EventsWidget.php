@@ -3,7 +3,8 @@
 namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
-use View, Widget;
+use View;
+use Widget;
 
 class EventsWidget extends Widget
 {

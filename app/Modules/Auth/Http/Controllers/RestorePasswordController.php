@@ -2,8 +2,15 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
+use Captcha;
+use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Str, Mail, Sentinel, Reminder, Redirect, Captcha, Input, FrontController;
+use Input;
+use Mail;
+use Redirect;
+use Reminder;
+use Sentinel;
+use Str;
 
 class RestorePasswordController extends FrontController
 {

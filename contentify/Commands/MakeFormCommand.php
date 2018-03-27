@@ -2,9 +2,9 @@
 
 namespace Contentify\Commands;
 
+use FormGenerator;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
-use FormGenerator;
 
 class MakeFormCommand extends Command
 {

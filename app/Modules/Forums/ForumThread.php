@@ -2,8 +2,11 @@
 
 namespace App\Modules\Forums;
 
-use User, DB, SoftDeletingTrait, BaseModel;
+use BaseModel;
+use DB;
 use Illuminate\Database\Eloquent\Builder;
+use SoftDeletingTrait;
+use User;
 
 /**
  * @property int $id

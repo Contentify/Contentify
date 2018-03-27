@@ -2,7 +2,8 @@
 
 namespace Contentify;
 
-use Config, Route;
+use Config;
+use Route;
 
 /**
  * This class decorates the Router class of Laravel

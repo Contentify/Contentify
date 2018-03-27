@@ -3,7 +3,10 @@
 namespace App\Modules\Images\Http\Controllers;
 
 use App\Modules\Images\Image;
-use Input, Response, View, BaseController;
+use BaseController;
+use Input;
+use Response;
+use View;
 
 class EditorImagesController extends BaseController
 {

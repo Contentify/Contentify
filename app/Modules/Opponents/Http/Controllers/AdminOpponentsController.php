@@ -2,9 +2,11 @@
 
 namespace App\Modules\Opponents\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Opponents\Opponent;
-use HTML, Hover, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminOpponentsController extends BackController
 {

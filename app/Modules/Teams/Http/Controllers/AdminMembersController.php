@@ -3,7 +3,14 @@
 namespace App\Modules\Teams\Http\Controllers;
 
 use App\Modules\Teams\Team;
-use Redirect, Input, Response, View, HTML, DB, User, BackController;
+use BackController;
+use DB;
+use HTML;
+use Input;
+use Redirect;
+use Response;
+use User;
+use View;
 
 class AdminMembersController extends BackController 
 {

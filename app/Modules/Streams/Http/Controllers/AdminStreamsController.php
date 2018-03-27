@@ -2,9 +2,11 @@
 
 namespace App\Modules\Streams\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Streams\Stream;
-use Hover, HTML, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminStreamsController extends BackController
 {

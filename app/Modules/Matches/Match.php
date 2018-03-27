@@ -2,8 +2,11 @@
 
 namespace App\Modules\Matches;
 
-use Comment, ContentFilter, SoftDeletingTrait, BaseModel;
+use BaseModel;
+use Comment;
+use ContentFilter;
 use Illuminate\Database\Eloquent\Builder;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

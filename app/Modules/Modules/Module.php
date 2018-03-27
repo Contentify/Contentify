@@ -2,7 +2,8 @@
 
 namespace App\Modules\Modules;
 
-use File, BaseModel;
+use BaseModel;
+use File;
 
 /**
  * @property string $title

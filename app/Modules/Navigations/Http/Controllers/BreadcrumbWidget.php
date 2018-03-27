@@ -2,7 +2,9 @@
 
 namespace App\Modules\Navigations\Http\Controllers;
 
-use Exception, View, Widget;
+use Exception;
+use View;
+use Widget;
 
 class BreadcrumbWidget extends Widget
 {

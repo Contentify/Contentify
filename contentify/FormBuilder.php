@@ -2,9 +2,15 @@
 
 namespace Contentify;
  
+use App;
+use Carbon as AliasedCarbon; // If we just use Carbon we would use Contentify\Carbon and ignoring the alias!
 use Collective\Html\FormBuilder as OriginalFormBuilder;
-use App, Crypt, URL, HTML, DB, Exception, MsgException;
-use \Carbon as AliasedCarbon; // If we just use Carbon we would use Contentify\Carbon and ignoring the alias!
+use Crypt;
+use DB;
+use Exception;
+use HTML;
+use MsgException;
+use URL;
 
 class FormBuilder extends OriginalFormBuilder
 {

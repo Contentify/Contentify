@@ -2,7 +2,12 @@
 
 namespace App\Modules\Downloads;
 
-use Exception, InterImage, File, SoftDeletingTrait, Comment, BaseModel;
+use BaseModel;
+use Comment;
+use Exception;
+use File;
+use InterImage;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

@@ -2,9 +2,11 @@
 
 namespace App\Modules\Partners\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\Partners\Partner;
-use HTML, Hover, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminPartnersController extends BackController
 {

@@ -2,7 +2,10 @@
 
 namespace App\Modules\Contact;
 
-use Mail, SoftDeletingTrait, BaseModel, User;
+use BaseModel;
+use Mail;
+use SoftDeletingTrait;
+use User;
 
 /**
  * @property int $id

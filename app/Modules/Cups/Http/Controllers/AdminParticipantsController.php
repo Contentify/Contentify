@@ -2,11 +2,15 @@
 
 namespace App\Modules\Cups\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-use ModelHandlerTrait;
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
-use Redirect, DB, Input, User, BackController;
+use BackController;
+use DB;
+use Illuminate\Http\RedirectResponse;
+use Input;
+use ModelHandlerTrait;
+use Redirect;
+use User;
 
 class AdminParticipantsController extends BackController
 {

@@ -2,7 +2,9 @@
 
 namespace Contentify;
 
-use Lang, DB, View;
+use DB;
+use Lang;
+use View;
 
 class FormGenerator
 {
@@ -61,18 +63,18 @@ class FormGenerator
      * Creates a single form field.
      * Returns null if the field is ignored.
      *
-     * @param  \stdClass $column The Column object
+     * @param  \stdClass $column The database column object
      * @return string
      */
     protected function buildField($column)
     {
         $ignoredFields = [
             'id', 
-            'access_counter', 
-            'creator_id', 
-            'updater_id',  
-            'created_at', 
-            'updated_at', 
+            'access_counter',
+            'creator_id',
+            'updater_id',
+            'created_at',
+            'updated_at',
             'deleted_at'
         ];
 

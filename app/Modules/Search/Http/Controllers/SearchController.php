@@ -2,7 +2,12 @@
 
 namespace App\Modules\Search\Http\Controllers;
 
-use Exception, BadMethodCallException, Input, Redirect, Validator, FrontController;
+use BadMethodCallException;
+use Exception;
+use FrontController;
+use Input;
+use Redirect;
+use Validator;
 
 class SearchController extends FrontController
 {

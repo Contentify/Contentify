@@ -3,8 +3,9 @@
 namespace App\Modules\Countries\Http\Controllers;
 
 use App\Modules\Countries\Country;
+use BackController;
+use HTML;
 use ModelHandlerTrait;
-use HTML, BackController;
 
 class AdminCountriesController extends BackController
 {

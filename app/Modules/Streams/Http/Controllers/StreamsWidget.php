@@ -3,7 +3,8 @@
 namespace App\Modules\Streams\Http\Controllers;
 
 use App\Modules\Streams\Stream;
-use View, Widget;
+use View;
+use Widget;
 
 class StreamsWidget extends Widget
 {

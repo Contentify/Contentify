@@ -4,7 +4,12 @@ namespace App\Modules\News\Http\Controllers;
 
 use App\Modules\News\News;
 use App\Modules\Videos\Video;
-use View, Request, DB, URL, HTML, FrontController;
+use DB;
+use FrontController;
+use HTML;
+use Request;
+use URL;
+use View;
 
 class NewsController extends FrontController
 {

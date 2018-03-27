@@ -2,7 +2,8 @@
 
 namespace App\Modules\Adverts;
 
-use SoftDeletingTrait, BaseModel;
+use BaseModel;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

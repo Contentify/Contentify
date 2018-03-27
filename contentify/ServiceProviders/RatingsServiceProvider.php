@@ -2,9 +2,9 @@
 
 namespace Contentify\ServiceProviders;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\AliasLoader;
 use Contentify\Ratings;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\ServiceProvider;
 
 class RatingsServiceProvider extends ServiceProvider
 {

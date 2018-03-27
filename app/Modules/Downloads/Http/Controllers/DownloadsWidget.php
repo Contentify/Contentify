@@ -3,7 +3,8 @@
 namespace App\Modules\Downloads\Http\Controllers;
 
 use App\Modules\Downloads\Download;
-use View, Widget;
+use View;
+use Widget;
 
 class DownloadsWidget extends Widget
 {

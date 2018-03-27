@@ -4,7 +4,9 @@ namespace App\Modules\Streams;
 
 use App\Modules\Streams\Api\SmashcastApi;
 use App\Modules\Streams\Api\TwitchApi;
-use SoftDeletingTrait, Comment, BaseModel;
+use BaseModel;
+use Comment;
+use SoftDeletingTrait;
 
 /**
  * @property int $id

@@ -2,10 +2,19 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-use Invisnik\LaravelSteamAuth\SteamAuth;
+use App;
 use App\Modules\Languages\Language;
-use App, User, Str, Sentinel, Input, Session, Config, Redirect, Exception, FrontController;
+use Config;
+use Exception;
+use FrontController;
+use Illuminate\Http\RedirectResponse;
+use Input;
+use Invisnik\LaravelSteamAuth\SteamAuth;
+use Redirect;
+use Sentinel;
+use Session;
+use Str;
+use User;
 
 class LoginController extends FrontController
 {

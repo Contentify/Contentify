@@ -2,8 +2,18 @@
 
 namespace App\Modules\Users\Http\Controllers;
 
+use Activation;
+use BackController;
+use Exception;
+use Hover;
+use HTML;
+use Input;
 use ModelHandlerTrait;
-use Exception, Input, Response, Redirect, Str, Activation, Sentinel, HTML, User, Hover, BackController;
+use Redirect;
+use Response;
+use Sentinel;
+use Str;
+use User;
 
 class AdminUsersController extends BackController 
 {

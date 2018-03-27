@@ -2,11 +2,13 @@
 
 namespace App\Modules\Forums\Http\Controllers;
 
-use App\Modules\Forums\ForumPost;
 use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumReportCase;
+use BackController;
+use HTML;
 use ModelHandlerTrait;
-use Redirect, UserActivities, HTML, BackController;
+use Redirect;
+use UserActivities;
 
 class AdminReportsController extends BackController
 {

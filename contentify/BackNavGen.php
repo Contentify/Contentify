@@ -2,7 +2,9 @@
 
 namespace Contentify;
 
-use Cache, View, RuntimeException;
+use Cache;
+use RuntimeException;
+use View;
 
 /**
  * Backend Navigation Generator class

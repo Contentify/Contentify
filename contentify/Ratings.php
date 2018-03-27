@@ -2,7 +2,10 @@
 
 namespace Contentify;
 
-use DB, View, Response, Input;
+use DB;
+use Input;
+use Response;
+use View;
 
 class Ratings
 {

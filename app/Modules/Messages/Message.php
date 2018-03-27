@@ -2,7 +2,10 @@
 
 namespace App\Modules\Messages;
 
-use BBCode, Cache, User, BaseModel;
+use BaseModel;
+use BBCode;
+use Cache;
+use User;
 
 /**
  * @property int $id

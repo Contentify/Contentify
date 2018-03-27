@@ -2,10 +2,12 @@
 
 namespace App\Modules\Matches\Http\Controllers;
 
-use ModelHandlerTrait;
-use App\Modules\Matches\Match;
 use App\Modules\Maps\Map;
-use HTML, Hover, BackController;
+use App\Modules\Matches\Match;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
 
 class AdminMatchesController extends BackController
 {

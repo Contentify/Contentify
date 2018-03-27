@@ -5,7 +5,9 @@ namespace App\Modules\Contact\Http\Controllers;
 use App\Modules\Contact\ContactMessage;
 use App\Modules\Contact\JoinMessage;
 use App\Modules\Teams\Team;
-use Input, Redirect, FrontController;
+use FrontController;
+use Input;
+use Redirect;
 
 class JoinController extends FrontController
 {

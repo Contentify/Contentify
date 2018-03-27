@@ -3,7 +3,9 @@
 namespace App\Modules\Streams\Api;
 
 use App\Modules\Streams\Stream;
-use Config, Log, DateTime;
+use Config;
+use DateTime;
+use Log;
 
 /**
  * @see https://dev.twitch.tv/docs/api

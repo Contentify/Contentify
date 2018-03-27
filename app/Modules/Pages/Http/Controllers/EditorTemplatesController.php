@@ -3,7 +3,9 @@
 namespace App\Modules\Pages\Http\Controllers;
 
 use App\Modules\Pages\Fragment;
-use Response, View, BackController;
+use BackController;
+use Response;
+use View;
 
 class EditorTemplatesController extends BackController
 {

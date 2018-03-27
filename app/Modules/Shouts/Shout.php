@@ -2,7 +2,8 @@
 
 namespace App\Modules\Shouts;
 
-use File, BaseModel;
+use BaseModel;
+use File;
 
 /**
  * @property int $id

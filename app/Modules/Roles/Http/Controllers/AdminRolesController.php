@@ -3,8 +3,9 @@
 namespace App\Modules\Roles\Http\Controllers;
 
 use App\Modules\Roles\Role;
+use BackController;
+use Hover;
 use ModelHandlerTrait;
-use Hover, BackController;
 
 class AdminRolesController extends BackController
 {

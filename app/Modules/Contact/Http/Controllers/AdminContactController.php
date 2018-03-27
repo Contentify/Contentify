@@ -3,8 +3,9 @@
 namespace App\Modules\Contact\Http\Controllers;
 
 use App\Modules\Contact\ContactMessage;
+use BackController;
+use HTML;
 use ModelHandlerTrait;
-use HTML, BackController;
 
 class AdminContactController extends BackController
 {

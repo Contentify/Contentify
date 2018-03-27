@@ -2,9 +2,12 @@
 
 namespace App\Modules\News\Http\Controllers;
 
-use ModelHandlerTrait;
 use App\Modules\News\News;
-use Hover, HTML, URL, BackController;
+use BackController;
+use Hover;
+use HTML;
+use ModelHandlerTrait;
+use URL;
 
 class AdminNewsController extends BackController
 {

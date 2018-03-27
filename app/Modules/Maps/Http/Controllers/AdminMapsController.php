@@ -3,8 +3,10 @@
 namespace App\Modules\Maps\Http\Controllers;
 
 use App\Modules\Maps\Map;
+use BackController;
+use Hover;
+use HTML;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
 
 class AdminMapsController extends BackController
 {

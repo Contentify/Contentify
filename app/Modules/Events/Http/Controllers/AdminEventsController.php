@@ -3,8 +3,10 @@
 namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
+use BackController;
+use Hover;
+use HTML;
 use ModelHandlerTrait;
-use Hover, HTML, BackController;
 
 class AdminEventsController extends BackController
 {

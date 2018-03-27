@@ -2,7 +2,9 @@
 
 namespace Contentify\Traits;
 
-use Exception, Str, DB;
+use DB;
+use Exception;
+use Str;
 
 /*
  * Use this trait to "extend" Eloquent models so they can create "smart" slugs.
