@@ -15,7 +15,9 @@ class ContentFilter
      */
     public function has($name)
     {
-        if (! Input::has('filter')) return null;
+        if (! Input::has('filter')) {
+            return false;
+        }
 
         $filters = Input::get('filter');
         $filters = explode(',', $filters);
@@ -45,7 +47,9 @@ class ContentFilter
      */
     public function get($name)
     {
-        if (! Input::has('filter')) return null;
+        if (! Input::has('filter')) {
+            return null;
+        }
 
         $filters = Input::get('filter');
         $filters = explode(',', $filters);

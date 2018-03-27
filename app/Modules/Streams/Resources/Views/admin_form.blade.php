@@ -57,7 +57,9 @@
             }
 
             var pos = url.lastIndexOf('/');
-            if (pos === -1) return false;
+            if (pos === -1) {
+                return false;
+            }
 
             var id = url.substr(pos + 1);
 

@@ -39,8 +39,8 @@ class ModelHandler
          * Access checking is only available for the backend.
          * Frontend controllers have to perform it on their own.
          */
-        if ($surface == 'admin') {
-            if (! $controller->checkAccessRead()) return;
+        if ($surface == 'admin' and ! $controller->checkAccessRead()) {
+            return;
         }
         
         /*

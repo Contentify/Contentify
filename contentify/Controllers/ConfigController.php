@@ -17,7 +17,9 @@ abstract class ConfigController extends BackController
      */
     public function edit($id = null)
     {
-        if (! $this->checkAccessRead()) return;
+        if (! $this->checkAccessRead()) {
+            return;
+        }
 
         $model = new $this->modelClass(); // This is a helper model to store settings
         $fillable = $model->getFillable();

@@ -113,14 +113,18 @@ class UsersController extends FrontController
 
         if (Input::hasFile('image')) {
             $result = $user->uploadImage('image');
-            if ($result) return $result;
+            if ($result) {
+                return $result;
+            }
         } elseif (Input::get('image') == '.') {
             $user->deleteImage('image');
         }
 
         if (Input::hasFile('avatar')) {
             $result = $user->uploadImage('avatar');
-            if ($result) return $result;
+            if ($result) {
+                return $result;
+            }
         } elseif (Input::get('avatar') == '.') {
             $user->deleteImage('avatar');
         }
@@ -140,7 +144,9 @@ class UsersController extends FrontController
      */
     public function editPassword($id)
     {
-        if (! $this->checkAuth()) return;
+        if (! $this->checkAuth()) {
+            return;
+        }
 
         $user = User::findOrFail($id);
 
