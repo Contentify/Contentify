@@ -9,12 +9,14 @@ class Hover
 
     /**
      * The content to display
-     * @var string
+     *
+     * @var string|null
      */
     private $content = null;
 
     /**
      * Code for an HTML element that contains the content
+     *
      * @var string
      */
     private $wrapperTag = '<div class="hover-ui">%%</div>';
