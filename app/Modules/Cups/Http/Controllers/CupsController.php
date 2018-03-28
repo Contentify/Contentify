@@ -220,6 +220,7 @@ class CupsController extends FrontController
      */
     public function swap($cupId)
     {
+        /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
         if (! user() or ! user()->isSuperAdmin()) {

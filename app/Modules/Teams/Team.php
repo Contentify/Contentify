@@ -24,6 +24,7 @@ use SoftDeletingTrait;
  * @property \App\Modules\Countries\Country $country
  * @property \App\Modules\Awards\Award[] $awards
  * @property \User $creator
+ * @property \User[] $users
  */
 class Team extends BaseModel 
 {

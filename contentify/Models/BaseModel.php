@@ -147,6 +147,8 @@ class BaseModel extends Eloquent
                 }
             }
         }
+
+        return null;
     }
 
     /**

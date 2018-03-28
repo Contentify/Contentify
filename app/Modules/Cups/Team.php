@@ -15,6 +15,9 @@ use User;
  * @property string $image
  * @property bool $invisible
  * @property int $cup_points
+ * @property \App\Modules\Cups\Cup[] $cups
+ * @property \User[] $members
+ * @property \User[] $organizers
  */
 class Team extends BaseModel
 {

@@ -18,7 +18,7 @@ class FormBuilder extends OriginalFormBuilder
     /**
      * Form groups: Number of grid columns of the label column
      * 
-     * @var string    
+     * @var string
      */
     protected $labelGridCols = 3;
 
@@ -65,7 +65,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  bool  $showImages Show icons on the buttons?
      * @return string
      */
-    public function actions($buttons = array('submit', 'apply', 'reset'), $showImages = true)
+    public function actions(array $buttons = array('submit', 'apply', 'reset'), $showImages = true)
     {
         $partial = '<div class="form-actions">';
 
@@ -383,7 +383,7 @@ class FormBuilder extends OriginalFormBuilder
      * Create HTML code for a textarea input element.
      * 
      * @param  string      $name    The name of the input element
-     * @param  string      $title   The title of the input element
+     * @param  string|null $title   The title of the input element
      * @param  bool        $editor  Add WYSIWYG editor?
      * @param  string|null $default The default value
      * @return string
@@ -479,12 +479,12 @@ class FormBuilder extends OriginalFormBuilder
      * Create HTML code for a select element. It will take its values from a database table.
      * It's smart and able to understand relationships of a model.
      *
-     * @param  string $relationName     The name of the relation as defined in $model::relations
-     * @param  string $title            The caption of the select element
-     * @param  string $sourceModelClass Full name of the source model class
-     * @param  mixed  $default          Null, an ID or an an array of IDs (if multiple selected items are possible)
-     * @param  bool   $nullable         If true the select element can be empty
-     * @param  bool   $nullOption       If true an extra element that has a null value is added
+     * @param  string     $relationName     The name of the relation as defined in $model::relations
+     * @param  string     $title            The caption of the select element
+     * @param  string     $sourceModelClass Full name of the source model class
+     * @param  mixed|null $default          Null, an ID or an an array of IDs (if multiple selected items are possible)
+     * @param  bool       $nullable         If true the select element can be empty
+     * @param  bool       $nullOption       If true an extra element that has a null value is added
      * @return string
      * @throws Exception
      */
@@ -506,6 +506,7 @@ class FormBuilder extends OriginalFormBuilder
         $key        = (new $modelClass)->getKeyName(); // Primary key of the model
         if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
 
+        /** @var \Illuminate\Database\Eloquent\Model[] $models */
         $models = $modelClass::all();
 
         if (! $nullable and sizeof($models) == 0) {
@@ -549,6 +550,7 @@ class FormBuilder extends OriginalFormBuilder
 
                 break;
             case 'belongsToMany':
+                /** @var \Illuminate\Database\Eloquent\Model $sourceModel */
                 $sourceModel    = new $sourceModelClass;
                 $sourceKey      = class_basename(strtolower($sourceModelClass)).'_'.$sourceModel->getKeyName();
                 $sourceKeyValue = self::getValueAttribute($sourceModel->getKeyName());
@@ -572,7 +574,7 @@ class FormBuilder extends OriginalFormBuilder
 
                 break;
             default:
-                throw new Exception("Error: Unkown relation type '{$relation[0]}' for model of type '{$modelName}'.");
+                throw new Exception("Error: Unknown relation type '{$relation[0]}' for model of type '{$modelName}'.");
         }
         
         $name       = '_relation_'.$relationName;

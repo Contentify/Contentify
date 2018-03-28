@@ -10,11 +10,17 @@ use DB;
  * @property int index
  * @property int $post_id
  * @property int $report_counter
+ * @property \App\Modules\Forums\ForumPost $post
  */
 class ForumReportCase extends BaseModel
 {
 
     protected $fillable = ['id', 'index', 'post_id', 'report_counter'];
+
+    public function post()
+    {
+        return $this->belongsTo('App\Modules\Forums\ForumPost', 'post_id');
+    }
 
     /**
      * Returns an array with bag objects for all existing reports
@@ -43,11 +49,6 @@ class ForumReportCase extends BaseModel
         }
 
         return $forumReportCases;
-    }
-
-    public function post()
-    {
-        return $this->belongsTo('App\Modules\Forums\ForumPost', 'post_id');
     }
 
 }

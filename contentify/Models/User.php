@@ -63,6 +63,9 @@ use Validator;
  * @property \Carbon $updated_at
  * @property \Carbon $last_active
  * @property \Carbon $last_login
+ * @property \App\Modules\Teams\Team[] $teams
+ * @property \App\Modules\Countries\Country $country
+ * @property \App\Modules\Languages\Language $language
  */
 class User extends SentinelUser implements UserInterface
 {
@@ -173,7 +176,6 @@ class User extends SentinelUser implements UserInterface
      */
     public function validate()
     {
-
         /*
          * Welcome to the dark side of Laravel.
          * We cannot let the User class inherit from BaseModel so we have to use 
@@ -251,8 +253,8 @@ class User extends SentinelUser implements UserInterface
     /**
      * Checks if the user is friend with another user or not.
      * 
-     * @param  int      $friendId The user ID of the friend (=other user)
-     * @return boolean
+     * @param  int $friendId The user ID of the friend (=other user)
+     * @return bool
      */
     public function isFriendWith($friendId)
     {

@@ -27,6 +27,8 @@ use User;
  * @property int $next_match_id
  * @property \App\Modules\Cups\Cup $cup
  * @property \User $creator
+ * @property \User|\App\Modules\Cups\Team $left_participant
+ * @property \User|\App\Modules\Cups\Team $right_participant
  */
 class Match extends BaseModel
 {

@@ -26,7 +26,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @return string
      * @throws Exception
      */
-    public function widget($widgetName, $parameters = null)
+    public function widget($widgetName, array $parameters = null)
     { 
         if (! is_array($parameters)) $parameters = (array) $parameters;
 
@@ -63,7 +63,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param array $metaTags
      * @return string
      */
-    public function metaTags($metaTags = array())
+    public function metaTags(array $metaTags = array())
     { 
         $output = '';
         foreach ($metaTags as $name => $content) {
@@ -76,7 +76,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Renders the title tag.
      *
-     * @param string $title
+     * @param string|null $title
      * @return string
      */
     public function title($title = null)
@@ -248,7 +248,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * Returns HTML code for a sort switcher (asc / desc).
      *
      * @param string      $sortBy Attribute of the model, e.g. "id"
-     * @param string      $order  Current sorting order, "asc" or "desc"
+     * @param string|null $order  Current sorting order, "asc" or "desc"
      * @param string|null $search Current search term
      * @return string
      */
@@ -290,8 +290,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     }
 
     /**
-     * Helper method. Just passes through the HTML code
-     * BackNavGen::get() returns.
+     * Helper method. Just passes through the HTML code BackNavGen::get() returns.
      * 
      * @return string
      */

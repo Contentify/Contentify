@@ -52,8 +52,8 @@ class AdminCupsController extends BackController
                     raw(Hover::pull().HTML::link('cups/'.$cup->id.'/'.$cup->slug, $cup->title)),
                     $cup->game->short,
                     $cup->start_at
-                ];            
-            },           
+                ];
+            },
             'actions'   => [
                 function($cup) {
                     return icon_link(

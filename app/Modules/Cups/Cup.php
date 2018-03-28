@@ -29,6 +29,8 @@ use User;
  * @property \App\Modules\Games\Game $game
  * @property \User[] $referees
  * @property \User $creator
+ * @property \App\Modules\Cups\Match[] $matches
+ * @property \User[]|\App\Modules\Cups\Team[] $participants
  */
 class Cup extends BaseModel
 {
@@ -102,7 +104,7 @@ class Cup extends BaseModel
 
             DB::table('cups_participants')->whereCupId($cup->id)->delete();
 
-            DB::table('cups_referees')->whereCupId($cup->id)->delete();            
+            DB::table('cups_referees')->whereCupId($cup->id)->delete();
         });
 
         self::saving(function($cup)
@@ -335,8 +337,8 @@ class Cup extends BaseModel
     /**
      * Returns all cups of a given user.
      * 
-     * @param User $user     The user object
-     * @param bool $onlyOpen If true return only cups that still are open
+     * @param User|null $user     The user object
+     * @param bool      $onlyOpen If true return only cups that still are open
      * @return \Illuminate\Database\Eloquent\Collection|null
      */
     public function cupsByUser($user, $onlyOpen = false)
