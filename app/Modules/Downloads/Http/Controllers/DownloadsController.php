@@ -82,7 +82,9 @@ class DownloadsController extends FrontController
 
         $extension = File::extension($download->file);
         $shortName = $download->slug;
-        if ($extension) $shortName .= '.'.$extension;
+        if ($extension) {
+            $shortName .= '.'.$extension;
+        }
         return Response::download($download->uploadPath(true).$download->file, $shortName);
     }
     

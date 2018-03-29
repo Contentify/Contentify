@@ -17484,7 +17484,25 @@ namespace  {
     class UserActivities extends \Contentify\Facades\UserActivities {}
 
     class ModelHandler extends \Contentify\Facades\ModelHandler {}
- 
+
+    trait SoftDeletingTrait {
+        use \Illuminate\Database\Eloquent\SoftDeletes;
+    }
+
+    trait DateAccessorTrait
+    {
+        use \Contentify\Traits\DateAccessorTrait;
+    }
+
+    trait ModelHandlerTrait
+    {
+        use \Contentify\Traits\ModelHandlerTrait;
+    }
+
+    trait ValidatingTrait
+    {
+        use \Watson\Validating\ValidatingTrait;
+    }
 }
 
 

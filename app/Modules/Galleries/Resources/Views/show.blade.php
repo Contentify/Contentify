@@ -47,7 +47,9 @@
             event.preventDefault();
 
             index--;
-            if (index < 0) index = 0;
+            if (index < 0) {
+                index = 0;
+            }
 
             $previews.animate(
                 {marginLeft: $container.width() / 2 - index * $curImg.width() - $curImg.width() / 2}, 
@@ -61,7 +63,9 @@
             event.preventDefault();
 
             index++;
-            if (index >= itemLength) index = itemLength - 1;
+            if (index >= itemLength) {
+                index = itemLength - 1;
+            }
 
             $previews.animate(
                 {marginLeft: $container.width() / 2 - index * $curImg.width() - $curImg.width() / 2}, 

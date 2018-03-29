@@ -57,8 +57,11 @@ use Validator;
  * @property string $music
  * @property string $film
  * @property string $steam_auth_id
+ * @property string $image
+ * @property string $avatar
  * @property int $cup_points
  * @property int $posts_count
+ * @property bool $banned
  * @property \Carbon $created_at
  * @property \Carbon $updated_at
  * @property \Carbon $last_active
@@ -66,6 +69,9 @@ use Validator;
  * @property \App\Modules\Teams\Team[] $teams
  * @property \App\Modules\Countries\Country $country
  * @property \App\Modules\Languages\Language $language
+ *
+ * @method bool hasAccess($permissions, $level = 1)
+ * @method bool hasAnyAccess($permissions, $level = 1)
  */
 class User extends SentinelUser implements UserInterface
 {

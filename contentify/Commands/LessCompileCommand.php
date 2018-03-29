@@ -3,7 +3,7 @@
 namespace Contentify\Commands;
 
 use Config;
-use Html;
+use HTML;
 use Illuminate\Console\Command;
 use Less_Parser;
 
@@ -49,7 +49,7 @@ class LessCompileCommand extends Command
             $this->compileLessFile($sourcePath, $sourceFilename);
         }
 
-        Html::refreshAssetPaths();
+        HTML::refreshAssetPaths();
     }
 
     /**

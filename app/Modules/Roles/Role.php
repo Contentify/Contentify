@@ -4,7 +4,6 @@ namespace App\Modules\Roles;
 
 use BaseModel;
 use Sentinel;
-use SoftDeletingTrait;
 
 /**
  * Important note:

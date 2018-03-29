@@ -70,7 +70,9 @@
             var id          = $post.attr('data-id');
             var creator     = $post.find('.creator-name').text();
 
-            if (creator) creator = '=' + creator;
+            if (creator) {
+                creator = '=' + creator;
+            }
 
             $.ajax({
                 url: contentify.baseUrl + 'forums/posts/' + id,

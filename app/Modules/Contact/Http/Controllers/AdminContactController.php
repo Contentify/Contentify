@@ -58,7 +58,8 @@ class AdminContactController extends BackController
         if (! $this->checkAccessRead()) {
             return;
         }
-        
+
+        /** @var ContactMessage $msg */
         $msg = ContactMessage::findOrFail($id);
 
         $msg->new = false;

@@ -9,7 +9,7 @@
 | it needs a little help. We use the GET-parameter 'method' to 
 | pretend a DELETE request method.
 | This has to be done before the App starts.
-| (Ofcourse, with JS and AJAX / hidden form sending DELETE is possible.)
+| (Of course, with JS and AJAX / hidden form sending DELETE is possible.)
 | 
 */
 

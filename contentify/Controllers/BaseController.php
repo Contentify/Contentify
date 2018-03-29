@@ -14,6 +14,13 @@ use View;
 
 abstract class BaseController extends Controller
 {
+    /**
+     * The layout that should be used for responses.
+     * The concrete controller has to set this value by overwriting it.
+     *
+     * @var string
+     */
+    protected $layout = '';
 
     /**
      * The name of the module
@@ -76,7 +83,7 @@ abstract class BaseController extends Controller
          * Set CRUD form template name
          */
         if (! $this->formTemplate) {
-            if ($this->moduleName === str_plural($this->modelName)) {
+            if ($this->moduleName === str_plural(basename($this->modelName))) {
                 $this->formTemplate = 'form';
             } else {
                 // If model name & module name differ, the form name should be e. g. "users_form":

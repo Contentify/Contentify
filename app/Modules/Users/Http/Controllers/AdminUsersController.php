@@ -46,7 +46,9 @@ class AdminUsersController extends BackController
             'tableRow'  => function($user)
             {
                 /** @var \App\Modules\Users\User $user */
-                if ($user->image) Hover::image(asset('uploads/users/'.$user->image));
+                if ($user->image) {
+                    Hover::image(asset('uploads/users/'.$user->image));
+                }
 
                 if ($user->hasAccess('internal', PERM_READ)) {
                     $membership = HTML::fontIcon('check');
@@ -122,6 +124,7 @@ class AdminUsersController extends BackController
         // This call also checks for permissions
         $this->activate($id, false);
 
+        /** @var User $user */
         $user = User::findOrFail($id);
 
         // Do not allow to disable your own account
@@ -135,8 +138,9 @@ class AdminUsersController extends BackController
         $ignoreFillables = ['email', 'username', 'country_id', 'language_id'];
         $fillables = $user->getFillable();
         foreach ($fillables as $fillable) {
-            if (! in_array($fillable, $ignoreFillables))
+            if (! in_array($fillable, $ignoreFillables)) {
                 $user->{$fillable} = null;
+            }
         }
 
         $user->banned = true;

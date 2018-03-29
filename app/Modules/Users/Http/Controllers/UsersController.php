@@ -58,6 +58,7 @@ class UsersController extends FrontController
      */
     public function show($id)
     {
+        /** @var User $user */
         $user = User::whereId($id)->firstOrFail();
 
         if (! $user->isActivated()) {
