@@ -7212,9 +7212,9 @@ fieldset[disabled] .page .table .icon-link.active {
   background: rgba(105, 221, 149, 0.8);
 }
 /* Colors from framycss.org */
-.alert-error {
+.alert-danger {
   border-color: #F26175;
-  background: rgba(242, 97, 117, 0.8);
+  background: #F26175;
 }
 .alert-warning {
   border-color: #F8C93F;
