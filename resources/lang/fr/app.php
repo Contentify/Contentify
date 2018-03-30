@@ -176,6 +176,7 @@ return [
     'item'              => 'Article',
     'home'              => 'Accueil',
     'remove'            => 'Supprimer',
+    'cancel'            => 'Annuler',
     'of'                => 'de',
     'role'              => 'Rôle',
     'message'           => 'Message',

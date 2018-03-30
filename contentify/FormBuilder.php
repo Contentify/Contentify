@@ -59,13 +59,22 @@ class FormBuilder extends OriginalFormBuilder
     }
 
     /**
-     * Create HTML code for form action buttons (e. g. submit)
+     * Create HTML code for form action buttons (e. g. submit).
+     * Available string values for the $buttons array are: "submit", "apply", "reset"
+     * If you want to add options, use these values as a key and its options as the value.
+     *
+     * Examples:
+     *
+     * Form::actions(); // Create all default buttons
+     * Form::actions(['submit', 'apply']); // Create only two buttons
+     * Form::actions(['submit' => trans('app.send')]); // Create a submit button with a particular title
+     * Form::actions(['submit' =>['title' => 'Create', 'data-id' => 123]); // Create a button with an extra attribute
      * 
-     * @param  array $buttons    Array of Buttons
+     * @param  array $buttons    Array of button configurations
      * @param  bool  $showImages Show icons on the buttons?
      * @return string
      */
-    public function actions(array $buttons = array('submit', 'apply', 'reset'), $showImages = true)
+    public function actions(array $buttons = array('submit', 'apply', 'cancel'), $showImages = true)
     {
         $partial = '<div class="form-actions">';
 
@@ -94,7 +103,10 @@ class FormBuilder extends OriginalFormBuilder
                     }
 
                     $value = $title;
-                    if ($showImages) $value = HTML::fontIcon('save').' '.$value;
+                    if ($showImages) {
+                        $value = HTML::fontIcon('save').' '.$value;
+                    }
+
                     $partial .= self::button($value, $options);
 
                     break; 
@@ -107,7 +119,10 @@ class FormBuilder extends OriginalFormBuilder
                     }
 
                     $value = $title;
-                    if ($showImages) $value = HTML::fontIcon('save').' '.$value;
+                    if ($showImages) {
+                        $value = HTML::fontIcon('save').' '.$value;
+                    }
+
                     $partial .= self::button($value, $options);
 
                     break; 
@@ -119,10 +134,33 @@ class FormBuilder extends OriginalFormBuilder
                     }
 
                     $value = $title;
-                    if ($showImages) $value = HTML::fontIcon('undo').' '.$value;
+                    if ($showImages) {
+                        $value = HTML::fontIcon('undo').' '.$value;
+                    }
+
                     $partial .= self::button($value, $options);
                 
-                    break; 
+                    break;
+                case 'cancel':
+                    if ($title == 'Cancel') {
+                        $title = trans('app.cancel');
+                    }
+
+                    if (isset($options['url'])) {
+                        $url = $options['url'];
+                    } else {
+                        // Remove the last part of the URL.
+                        // That - of course - will not work always.
+                        $url = URL::current();
+                        $pos = strrpos($url, '/');
+                        if ($pos !== false) {
+                            $url = substr($url, 0, $pos);
+                        }
+                    }
+
+                    $partial .= HTML::button($title, $url, $showImages ? 'times' : '', $options);
+
+                    break;
             }
             
         }
@@ -488,8 +526,14 @@ class FormBuilder extends OriginalFormBuilder
      * @return string
      * @throws Exception
      */
-    public function smartSelectRelation($relationName, $title, $sourceModelClass, $default = null, 
-        $nullable = false, $nullOption = false)
+    public function smartSelectRelation(
+        $relationName,
+        $title,
+        $sourceModelClass,
+        $default = null,
+        $nullable = false,
+        $nullOption = false
+    )
     {
         $relations = $sourceModelClass::relations();
         

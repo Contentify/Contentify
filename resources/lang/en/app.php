@@ -178,6 +178,7 @@ return [
     'item'              => 'Item',
     'home'              => 'Home',
     'remove'            => 'Remove',
+    'cancel'            => 'Cancel',
     'of'                => 'of',
     'role'              => 'Role',
     'message'           => 'Message',

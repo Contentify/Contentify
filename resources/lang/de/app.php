@@ -178,6 +178,7 @@ return [
     'item'              => 'Objekt',
     'home'              => 'Start',
     'remove'            => 'Entfernen',
+    'cancel'            => 'Abbrechen',
     'of'                => 'von',
     'role'              => 'Rolle',
     'message'           => 'Nachricht',
