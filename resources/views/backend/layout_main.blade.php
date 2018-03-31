@@ -93,7 +93,7 @@
             <div class="alert-area"></div>
 
             @if (isset($page))
-                <a class="page-head" href="{!! url('admin/'.strtolower($controllerName)) !!}">
+                <a class="page-head" href="{!! url('admin/'.kebab_case($controllerName)) !!}">
                     {!! HTML::fontIcon($controllerIcon) !!}
                     {!! trans_object($moduleName, $moduleName) !!}
                     @if ($controllerName != $moduleName)
