@@ -230,7 +230,12 @@ class AdminConfigController extends BackController
             return;
         }
 
-        Artisan::call('less:compile');
+        try {
+            Artisan::call('less:compile');
+        } catch (\Exception $exception) {
+            $this->alertError($exception->getMessage());
+            return;
+        }
 
         $this->alertSuccess(trans('app.successful'));
     }
