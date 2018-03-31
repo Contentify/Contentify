@@ -294,7 +294,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * 
      * @return string
      */
-    public function renderBackendNav()
+    public function renderBackendNavigation()
     {
         $backendNavGenerator = new BackendNavGenerator();
 

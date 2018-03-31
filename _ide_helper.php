@@ -13058,9 +13058,9 @@ namespace Collective\Html {
          * @return string 
          * @static 
          */ 
-        public static function renderBackendNav()
+        public static function renderBackendNavigation()
         {
-            return \Contentify\HtmlBuilder::renderBackendNav();
+            return \Contentify\HtmlBuilder::renderBackendNavigation();
         }
 
 

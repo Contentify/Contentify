@@ -81,7 +81,7 @@
                 </a>                
             </div>
             
-            {!! HTML::renderBackendNav() !!}
+            {!! HTML::renderBackendNavigation() !!}
         </aside>
 
         <section id="content" class="clearfix">
@@ -101,7 +101,7 @@
                     @endif
                 </a>
 
-                <div class="page page-{!! strtolower($controllerName) !!} {!! $templateClass !!}">
+                <div class="page page-{!! kebab_case($controllerName) !!} {!! $templateClass !!}">
                     {!! $page !!}
                 </div>
             @endif

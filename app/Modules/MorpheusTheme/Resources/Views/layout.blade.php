@@ -88,7 +88,7 @@
                 <!-- Render JavaScript alerts here -->
                 <div class="alert-area"></div>                
 
-                <section class="page page-{!! strtolower($controllerName) !!} {!! $templateClass !!}">
+                <section class="page page-{!! kebab_case($controllerName) !!} {!! $templateClass !!}">
                     @if (isset($page))
                         {!! $page !!}
                     @endif
