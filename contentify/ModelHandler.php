@@ -72,13 +72,15 @@ class ModelHandler
             'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
             'permaFilter'   => null,                            // Null / Closure: Add a permanent filter to the query?
             'dataSource'    => null,                            // Null (means: take from database) or array
-            'infoText'      => '',                              // String (may include HTML tags) with extra infos
+            'infoText'      => '',                              // String (may include HTML tags) with extra info
             'pageTitle'     => true,                            // False: no, true: auto, string: defines a custom title
         ];
 
         $data = array_merge($defaults, $data);
 
         $modelClass = $controller->getModelClass();
+
+        $controllerRouteName = kebab_case($controller->getControllerName());
 
         /*
          * Generate Buttons
@@ -89,7 +91,7 @@ class ModelHandler
                 $type = strtolower($button);
                 switch ($type) {
                     case 'new':
-                        $url = route($surface.'.'.strtolower($controller->getControllerName()).'.create');
+                        $url = route($surface.'.'.$controllerRouteName.'.create');
                         $buttons .= button(trans('app.create'), $url, 'plus-circle');
                         break;
                     case 'category':
@@ -249,7 +251,7 @@ class ModelHandler
                                     $actionsCode .= icon_link('edit', 
                                         trans('app.edit'), 
                                         route(
-                                            $surface.'.'.strtolower($controller->getControllerName()).'.edit',
+                                            $surface.'.'.$controllerRouteName.'.edit',
                                             [$model->id])
                                         );
                                 }
@@ -260,7 +262,7 @@ class ModelHandler
                                     $actionsCode .= icon_link('trash', 
                                         trans('app.delete'), 
                                         route(
-                                            $surface.'.'.strtolower($controller->getControllerName()).'.destroy',
+                                            $surface.'.'.$controllerRouteName.'.destroy',
                                             [$model->id]
                                         ).$urlParams,
                                         false,
@@ -272,7 +274,7 @@ class ModelHandler
                                     $actionsCode .= icon_link('undo', 
                                     trans('app.restore'), 
                                     route(
-                                        $surface.'.'.strtolower($controller->getControllerName()).'.restore',
+                                        $surface.'.'.$controllerRouteName.'.restore',
                                         [$model->id])
                                     );
                                 }
@@ -353,7 +355,7 @@ class ModelHandler
     }
 
     /**
-     * CRUD: store model
+     * CRUD: store a model that extends from the BaseModel class
      *
      * @return \Illuminate\Http\RedirectResponse|null
      */
@@ -466,7 +468,7 @@ class ModelHandler
     }
 
     /**
-     * CRUD: edit model
+     * CRUD: edit a model that extends from the BaseModel class
      *
      * @param int $id The ID of the model
      * @return void
@@ -495,7 +497,7 @@ class ModelHandler
     }
 
     /**
-     * CRUD: update model
+     * CRUD: update a model that extends from the BaseModel class
      *
      * @param int $id The id of the model
      * @return \Illuminate\Http\RedirectResponse|null
@@ -629,7 +631,7 @@ class ModelHandler
     }
 
     /**
-     * CRUD: delete model
+     * CRUD: delete a model that extends from the BaseModel class
      *
      * @param int $id The ID of the model
      * @return \Illuminate\Http\RedirectResponse|null
@@ -715,7 +717,7 @@ class ModelHandler
     }
 
     /**
-     * CRUD-related: restore model after soft deletion
+     * CRUD-related: restore a model that extends from the BaseModel class after soft deletion
      *
      * @param int $id The ID of the model
      * @return \Illuminate\Http\RedirectResponse|null
