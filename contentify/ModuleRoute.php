@@ -54,7 +54,7 @@ class ModuleRoute
     public function context($moduleName)
     {
         $moduleName = class_basename($moduleName);
-        $moduleName = ucfirst(strtolower($moduleName));
+        $moduleName = ucfirst($moduleName);
 
         $this->moduleName       = $moduleName;
 
