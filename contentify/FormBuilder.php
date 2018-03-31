@@ -33,13 +33,15 @@ class FormBuilder extends OriginalFormBuilder
      * Create HTML code for displaying errors
      * 
      * @param  \Illuminate\Support\MessageBag $errors The errors to display
-     * @return string
+     * @return string|null
      */
     public function errors($errors)
     {
         if (is_a($errors, 'Illuminate\Support\MessageBag') or is_a($errors, 'Illuminate\Support\ViewErrorBag')) {
             return HTML::ul($errors->all(), ['class' => 'form-errors' ]);
         }
+
+        return null;
     }
 
     /**
@@ -152,9 +154,10 @@ class FormBuilder extends OriginalFormBuilder
                         // Remove the last part of the URL.
                         // That - of course - will not work always.
                         $url = URL::current();
-                        $pos = strrpos($url, '/');
+                        $baseUrl = url('admin/');
+                        $pos = strpos($url, '/', strlen($baseUrl) + 1);
                         if ($pos !== false) {
-                            $url = substr($url, 0, $pos);
+                            $url = substr(URL::current(), 0, $pos);
                         }
                     }
 
