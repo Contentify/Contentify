@@ -18,7 +18,7 @@ class AdminNewsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = News::class;
+        $this->modelClass = News::class;
 
         parent::__construct();
     }

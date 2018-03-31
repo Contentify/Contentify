@@ -9,6 +9,7 @@
                 "position": 6
             }
         ],
+        "id": 1127603947,
         "enabled": true,
         "order": 9001
     },
@@ -16,6 +17,7 @@
         "basename": "Auth",
         "slug": "Auth",
         "enabled": true,
+        "id": 1491869543,
         "order": 9001
     },
     "Awards": {
@@ -28,6 +30,22 @@
                 "position": 3
             }
         ],
+        "id": 575071944,
+        "enabled": true,
+        "order": 9001
+    },
+    "CashFlows": {
+        "basename": "CashFlows",
+        "slug": "Cash Flows",
+        "admin-nav": [
+            {
+                "url": "admin\/cash-flows",
+                "icon": "chart-line",
+                "category": 1,
+                "position": 8
+            }
+        ],
+        "id": 210728461,
         "enabled": true,
         "order": 9001
     },
@@ -35,6 +53,7 @@
         "basename": "Comments",
         "slug": "Comments",
         "enabled": true,
+        "id": -1494682500,
         "order": 9001
     },
     "Config": {
@@ -47,6 +66,7 @@
                 "position": 5
             }
         ],
+        "id": -752473526,
         "enabled": true,
         "order": 9001
     },
@@ -60,6 +80,7 @@
                 "position": 6
             }
         ],
+        "id": -2082480220,
         "enabled": true,
         "order": 9001
     },
@@ -72,6 +93,7 @@
                 "category": 2
             }
         ],
+        "id": -543725298,
         "enabled": true,
         "order": 9001
     },
@@ -89,6 +111,7 @@
                 "category": 3
             }
         ],
+        "id": 485284612,
         "enabled": true,
         "order": 9001
     },
@@ -102,6 +125,7 @@
                 "position": 1
             }
         ],
+        "id": -563774117,
         "enabled": true,
         "order": 9001
     },
@@ -109,6 +133,7 @@
         "basename": "Diag",
         "slug": "Diag",
         "enabled": true,
+        "id": -586920252,
         "order": 9001
     },
     "Downloads": {
@@ -124,6 +149,7 @@
                 "position": 7
             }
         ],
+        "id": -914217450,
         "enabled": true,
         "order": 9001
     },
@@ -140,6 +166,7 @@
                 "position": 4
             }
         ],
+        "id": 1412125308,
         "enabled": true,
         "order": 9001
     },
@@ -147,6 +174,7 @@
         "basename": "Example",
         "slug": "Example",
         "enabled": true,
+        "id": -1588485629,
         "order": 9001
     },
     "Forums": {
@@ -169,6 +197,7 @@
                 "position": 8
             }
         ],
+        "id": -101556338,
         "enabled": true,
         "order": 9001
     },
@@ -176,6 +205,7 @@
         "basename": "Friends",
         "slug": "Friends",
         "enabled": true,
+        "id": -296531467,
         "order": 9001
     },
     "Galleries": {
@@ -188,6 +218,7 @@
                 "position": 6
             }
         ],
+        "id": 1979706388,
         "enabled": true,
         "order": 9001
     },
@@ -201,6 +232,7 @@
                 "position": 2
             }
         ],
+        "id": 1054999605,
         "enabled": true,
         "order": 9001
     },
@@ -214,6 +246,7 @@
                 "position": 5
             }
         ],
+        "id": -407651492,
         "enabled": true,
         "order": 9001
     },
@@ -221,6 +254,7 @@
         "basename": "Languages",
         "slug": "Languages",
         "enabled": true,
+        "id": 572576218,
         "order": 9001
     },
     "Maps": {
@@ -233,6 +267,7 @@
                 "position": 6
             }
         ],
+        "id": -417552485,
         "enabled": true,
         "order": 9001
     },
@@ -246,6 +281,7 @@
                 "position": 1
             }
         ],
+        "id": -912577498,
         "enabled": true,
         "order": 9001
     },
@@ -253,6 +289,7 @@
         "basename": "Messages",
         "slug": "Messages",
         "enabled": true,
+        "id": 578059456,
         "order": 9001
     },
     "Modules": {
@@ -265,6 +302,7 @@
                 "position": 9
             }
         ],
+        "id": -519407029,
         "enabled": true,
         "order": 9001
     },
@@ -272,6 +310,7 @@
         "basename": "MorpheusTheme",
         "slug": "Morpheus Theme",
         "theme": true,
+        "id": 1122390932,
         "enabled": true,
         "order": 9001
     },
@@ -285,6 +324,7 @@
                 "position": 4
             }
         ],
+        "id": 733828900,
         "enabled": true,
         "order": 9001
     },
@@ -301,6 +341,7 @@
                 "position": 2
             }
         ],
+        "id": -1109313938,
         "enabled": true,
         "order": 9001
     },
@@ -314,6 +355,7 @@
                 "position": 4
             }
         ],
+        "id": -1269526513,
         "enabled": true,
         "order": 9001
     },
@@ -330,6 +372,7 @@
                 "position": 3
             }
         ],
+        "id": -508179855,
         "enabled": true,
         "order": 9001
     },
@@ -343,6 +386,7 @@
                 "position": 5
             }
         ],
+        "id": 379401010,
         "enabled": true,
         "order": 9001
     },
@@ -350,6 +394,7 @@
         "basename": "PhobosTheme",
         "slug": "Phobos Theme",
         "theme": true,
+        "id": -1129226425,
         "enabled": true,
         "order": 9001
     },
@@ -363,6 +408,7 @@
                 "position": 8
             }
         ],
+        "id": 2013200835,
         "enabled": true,
         "order": 9001
     },
@@ -370,6 +416,7 @@
         "basename": "Search",
         "slug": "Search",
         "enabled": true,
+        "id": -1285759343,
         "order": 9001
     },
     "Servers": {
@@ -382,6 +429,7 @@
                 "position": 7
             }
         ],
+        "id": -2143826837,
         "enabled": true,
         "order": 9001
     },
@@ -389,6 +437,7 @@
         "basename": "Shouts",
         "slug": "Shouts",
         "enabled": true,
+        "id": 565851884,
         "order": 9001
     },
     "Slides": {
@@ -401,6 +450,7 @@
                 "position": 2
             }
         ],
+        "id": -1083431513,
         "enabled": true,
         "order": 9001
     },
@@ -417,6 +467,7 @@
                 "position": 4
             }
         ],
+        "id": -1069399194,
         "enabled": true,
         "order": 9001
     },
@@ -437,6 +488,7 @@
                 "url": "admin\/members"
             }
         ],
+        "id": 1459817820,
         "enabled": true,
         "order": 9001
     },
@@ -450,6 +502,7 @@
                 "position": 5
             }
         ],
+        "id": 1646294292,
         "enabled": true,
         "order": 9001
     },
@@ -466,6 +519,7 @@
                 "position": 1
             }
         ],
+        "id": -717059347,
         "enabled": true,
         "order": 9001
     },
@@ -482,6 +536,7 @@
                 "position": 3
             }
         ],
+        "id": 772169988,
         "enabled": true,
         "order": 9001
     },
@@ -495,6 +550,7 @@
                 "position": 7
             }
         ],
+        "id": -2113747351,
         "enabled": true,
         "order": 9001
     }

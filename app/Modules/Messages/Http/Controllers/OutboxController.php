@@ -11,7 +11,7 @@ class OutboxController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Message::class;
+        $this->modelClass = Message::class;
 
         parent::__construct();
     }

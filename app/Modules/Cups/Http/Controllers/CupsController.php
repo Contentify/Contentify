@@ -18,7 +18,7 @@ class CupsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Cup::class;
+        $this->modelClass = Cup::class;
 
         parent::__construct();
     }

@@ -11,7 +11,7 @@ class ServersController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Server::class;
+        $this->modelClass = Server::class;
 
         parent::__construct();
     }

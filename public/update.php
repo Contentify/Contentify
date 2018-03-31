@@ -70,7 +70,7 @@ EOD;
     }
 
     /**
-     * This function has to return a string array with queries that perform all the database changes
+     * This method has to return a string array with queries that perform all the database changes
      *
      * @param string $prefix The database table prefix (can be an empty string)
      * @return string[]
@@ -81,10 +81,39 @@ EOD;
         // and then copy the relevant statements from the .sql file to this place
         $updateQueries = [
             "ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL",
-            "UPDATE `{$prefix}streams` SET `provider` = 'smashcast', `thumbnail` = NULL, `url` = NULL WHERE `provider` = 'hitbox'"
+            "UPDATE `{$prefix}streams` SET `provider` = 'smashcast', `thumbnail` = NULL, `url` = NULL WHERE `provider` = 'hitbox'",
+            "CREATE TABLE `cash_flows` (
+                `id` int(10) UNSIGNED NOT NULL,
+                `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
+                `description` text COLLATE utf8_unicode_ci,
+                `revenues` int(11) NOT NULL DEFAULT '0',
+                `expenses` int(11) NOT NULL DEFAULT '0',
+                `paid_at` timestamp NULL DEFAULT NULL,
+                `paid` tinyint(1) NOT NULL DEFAULT '0',
+                `user_id` int(10) UNSIGNED DEFAULT NULL,
+                `creator_id` int(10) UNSIGNED DEFAULT NULL,
+                `updater_id` int(10) UNSIGNED DEFAULT NULL,
+                `access_counter` int(11) NOT NULL DEFAULT '0',
+                `created_at` timestamp NULL DEFAULT NULL,
+                `updated_at` timestamp NULL DEFAULT NULL,
+                `deleted_at` timestamp NULL DEFAULT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;"
         ];
 
         return $updateQueries;
+    }
+
+    /**
+     * This method may update (module) permissions. It gets an array with the current permissions
+     * as a reference so it may change it. The modified permissions will be written into the database.
+     *
+     * @param stdClass[] $permissions Array key = ID of the permissions record set, array value = permissions object
+     * @return void
+     */
+    public function updatePermissions(array &$permissions)
+    {
+        $permissions[4]->cashflows = 4;
+        $permissions[5]->cashflows = 4;
     }
 
     /**
@@ -155,6 +184,9 @@ EOD;
      */
     public function perform()
     {
+        /*
+         * Initialize
+         */
         $this->printText('Updating the database...');
 
         $appConfig = $this->app->getConfig('app');
@@ -165,13 +197,15 @@ EOD;
 
         $pdo = $this->app->createDatabaseConnection();
 
+        /*
+         * Version check
+         */
         $pdoStatement = $pdo->query('SELECT `value` FROM `'.$prefix.'config` WHERE `name` = "app.version"');
 
         if ($pdoStatement === false) {
             $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
-
         $currentVersion = $pdoStatement->fetchColumn();
 
         $versionsText = implode(', ', self::SUPPORTED_VERSIONS) ;
@@ -188,6 +222,9 @@ EOD;
             return self::CODE_ABORTED;
         }
 
+        /*
+         * Database updates
+         */
         $queries = $this->updateDatabase($prefix);
 
         foreach ($queries as $query) {
@@ -206,7 +243,43 @@ EOD;
             $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
             return $pdo->errorInfo()[0];
         }
-        
+
+        /*
+         * Permissions
+         */
+        $results = $pdo->query('SELECT `id`, `permissions` FROM `'.$prefix.'roles` WHERE `id` <= 5');
+
+        if ($results === false) {
+            $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
+            return $pdo->errorInfo()[0];
+        }
+
+        $permissionObjects = [];
+        foreach ($results as $result) {
+            $permissionObject = json_decode($result['permissions']);
+            if (! is_object($permissionObject)) {
+                $permissionObject = new stdClass();
+            }
+            $permissionObjects[(int) $result['id']] = $permissionObject;
+        }
+
+        $this->updatePermissions($permissionObjects);
+
+        foreach ($permissionObjects as $id => $permissionObject) {
+            $stringifiedPermissions = $pdo->quote(json_encode($permissionObject));
+            $result = $pdo->query(
+                'UPDATE `'.$prefix.'roles` SET `permissions` = '.$stringifiedPermissions.' WHERE `id` = '.$id
+            );
+
+            if ($result === false) {
+                $this->printText('Could not execute the database query: '.$pdo->errorInfo()[2]);
+                return $pdo->errorInfo()[0];
+            }
+        }
+
+        /*
+         * Say goodbye
+         */
         return $this->goodbye();
     }
 

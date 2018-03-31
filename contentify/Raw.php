@@ -7,6 +7,7 @@ class Raw
 
     /**
      * The value to print
+     *
      * @var mixed
      */
     protected $value;

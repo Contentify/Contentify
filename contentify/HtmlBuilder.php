@@ -282,11 +282,13 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
         if ($enabled) {
             $class = 'enabled';
+            $icon = self::fontIcon('check').'&nbsp;';
         } else {
             $class = 'disabled';
+            $icon = '';
         }
 
-        return '<a class="recycle-bin-button '.$class.'" href="'.$url.'">'.trans('app.recycle_bin').'</a>';
+        return '<a class="recycle-bin-button '.$class.'" href="'.$url.'">'.$icon.trans('app.recycle_bin').'</a>';
     }
 
     /**

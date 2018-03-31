@@ -37,6 +37,8 @@ class LessCompileCommand extends Command
      */
     public function fire()
     {
+        $this->info('Compiling LESS files...');
+
         $theme = Config::get('app.theme');
 
         // Key = path, value = filename

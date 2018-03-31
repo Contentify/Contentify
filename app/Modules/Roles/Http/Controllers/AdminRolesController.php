@@ -16,7 +16,7 @@ class AdminRolesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Role::class;
+        $this->modelClass = Role::class;
 
         parent::__construct();
     }

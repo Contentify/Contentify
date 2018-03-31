@@ -22,7 +22,7 @@ class AdminActivitiesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = UserActivity::class;
+        $this->modelClass = UserActivity::class;
 
         parent::__construct();
     }

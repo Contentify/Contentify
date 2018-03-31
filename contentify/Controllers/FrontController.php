@@ -15,6 +15,7 @@ abstract class FrontController extends BaseController
     /**
      * The layout that should be used for responses.
      * If null the layout of the chosen theme will be loaded.
+     *
      * @var string
      */
     protected $layout = null;

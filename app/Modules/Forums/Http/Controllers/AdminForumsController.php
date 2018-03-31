@@ -20,7 +20,7 @@ class AdminForumsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Forum::class;
+        $this->modelClass = Forum::class;
 
         parent::__construct();
     }

@@ -23,7 +23,7 @@ class AdminCupsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Cup::class;
+        $this->modelClass = Cup::class;
 
         parent::__construct();
     }

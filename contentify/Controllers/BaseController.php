@@ -2,6 +2,7 @@
 
 namespace Contentify\Controllers;
 
+use Contentify\Traits\ModelHandlerTrait;
 use Controller;
 use Exception;
 use ModelHandler;
@@ -24,30 +25,39 @@ abstract class BaseController extends Controller
 
     /**
      * The name of the module
+     *
      * @var string
      */
     protected $moduleName = '';
 
     /**
      * The name of the controller (without class path)
+     *
      * @var string
      */
     protected $controllerName = '';
 
     /**
      * The name of the model (without class path)
+     *
+     * @see ModelHandlerTrait
+     *
      * @var string
      */
     protected $modelName = '';
 
     /**
      * The name of the model (with class path)
+     *
+     * @see ModelHandlerTrait
+     *
      * @var string
      */
     protected $modelClass = '';
 
     /**
      * The name of the form template (for CRUD auto handling)
+     *
      * @var string
      */
     protected $formTemplate = '';
@@ -69,15 +79,9 @@ abstract class BaseController extends Controller
         $this->controllerName   = str_replace(['Admin', 'Controller'], '', $className);
 
         /*
-         * Set model full name
+         * Set short model name (without path)
          */
-        if (! $this->modelClass) {
-            if (str_contains($this->modelName, '\\')) {
-                $this->modelClass = $this->modelName;
-            } else {
-                $this->modelClass = 'App\Modules\\'.$this->moduleName.'\\'.$this->modelName;
-            }
-        }
+        $this->modelName = basename($this->modelClass);
 
         /*
          * Set CRUD form template name

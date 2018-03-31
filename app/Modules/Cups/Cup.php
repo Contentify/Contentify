@@ -49,6 +49,7 @@ class Cup extends BaseModel
 
     /**
      * Temporary stores a collection of matches to avoid unnecessary database queries
+     *
      * @var \Illuminate\Database\Eloquent\Collection|null A collection of matches
      */
     protected $matchesStored = null;

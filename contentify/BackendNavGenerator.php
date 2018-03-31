@@ -24,6 +24,7 @@ class BackendNavGenerator
 
     /**
      * The current locale, for example 'en'
+     *
      * @var string
      */
     protected $locale = null;

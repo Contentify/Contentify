@@ -16,7 +16,7 @@ class AdminDownloadcatsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Downloadcat::class;
+        $this->modelClass = Downloadcat::class;
 
         parent::__construct();
     }

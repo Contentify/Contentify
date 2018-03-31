@@ -23,24 +23,28 @@ class ModuleRoute
   
     /**
      * The namespace for all modules
+     *
      * @var  string
      */
     protected $namespace;
 
     /**
      * The name of the module set by context()
+     *
      * @var string
      */
     protected $moduleName;
 
     /**
      * The path to the models of the module
+     *
      * @var string
      */
     protected $modelPath;
 
     /**
      * The path to the controllers of the module
+     *
      * @var string
      */
     protected $controllerPath;

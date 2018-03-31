@@ -11,6 +11,9 @@ class BackupDatabaseJob extends AbstractJob
 
     protected $executedAt = 1440; // 60 minutes * 24 = 24h (once per day)
 
+    /**
+     * {@inheritdoc}
+     */
     public function run($executedAt)
     {
         if (! Config::get('app.dbBackup')) {

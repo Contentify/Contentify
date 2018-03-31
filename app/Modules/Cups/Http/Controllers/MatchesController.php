@@ -13,7 +13,7 @@ class MatchesController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Match::class;
+        $this->modelClass = Match::class;
 
         parent::__construct();
     }

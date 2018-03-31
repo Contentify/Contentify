@@ -12,7 +12,7 @@ class VideosController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Video::class;
+        $this->modelClass = Video::class;
 
         parent::__construct();
     }

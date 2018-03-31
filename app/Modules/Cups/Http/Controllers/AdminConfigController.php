@@ -10,7 +10,7 @@ class AdminConfigController extends ConfigController
 
     public function __construct()
     {
-        $this->modelName = CupConfigBag::class;
+        $this->modelClass = CupConfigBag::class;
 
         parent::__construct();
     }

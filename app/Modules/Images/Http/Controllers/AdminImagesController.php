@@ -16,7 +16,7 @@ class AdminImagesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Image::class;
+        $this->modelClass = Image::class;
 
         parent::__construct();
     }

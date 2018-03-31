@@ -17,7 +17,7 @@ class AdminStreamsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Stream::class;
+        $this->modelClass = Stream::class;
 
         parent::__construct();
     }

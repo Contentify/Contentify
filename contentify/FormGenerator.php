@@ -11,6 +11,7 @@ class FormGenerator
 
     /**
      * True if form has to handle file uploads
+     *
      * @var boolean
      */
     protected $fileHandling;

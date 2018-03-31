@@ -19,7 +19,7 @@ class AdminReportsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = ForumReportCase::class;
+        $this->modelClass = ForumReportCase::class;
 
         parent::__construct();
     }

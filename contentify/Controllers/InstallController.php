@@ -9,6 +9,7 @@ use Controller;
 use DB;
 use File;
 use Form;
+use Illuminate\Database\Schema\Blueprint;
 use Input;
 use Schema;
 use Sentinel;
@@ -328,40 +329,40 @@ class InstallController extends Controller
         DB::statement('SET foreign_key_checks = 0');
 
         Schema::dropIfExists('config');
-        Schema::create('config', function($table)
+        Schema::create('config', function(Blueprint $table)
         {
             $table->string('name')->primary(); // We can't name it "key" - that's a keyword in SQL - Eloquent bug?
             $table->text('value')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
        
-        $this->create('visits', function($table)
+        $this->create('visits', function(Blueprint $table)
         {
             $table->string('ip');
             $table->integer('user_agents');
             $table->date('visited_at');
         }, [], false);
 
-        $this->create('languages', function($table) 
+        $this->create('languages', function(Blueprint $table)
         { 
             $table->string('title');
             $table->string('code', 2);
         }, [], false);
 
-        $this->create('countries', function($table) 
+        $this->create('countries', function(Blueprint $table)
         { 
             $table->string('code', 3);
             $table->string('icon')->nullable();
         }, [], ['slug']);
        
-        $this->create('comments', function($table)
+        $this->create('comments', function(Blueprint $table)
         {
             $table->text('text')->nullable();
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true)->nullable();
         }, [], ['title', 'slug', 'access_counter']);  
 
-        $this->create('contact_messages', function($table)
+        $this->create('contact_messages', function(Blueprint $table)
         {
             $table->string('username', 30);
             $table->string('email');
@@ -370,15 +371,15 @@ class InstallController extends Controller
             $table->boolean('new')->default(true);
         }, [], ['slug', 'creator_id', 'updater_id']);
 
-        $this->create('games', function($table)
+        $this->create('games', function(Blueprint $table)
         {
             $table->string('short', 6)->nullable();
             $table->string('icon')->nullable();
         }, [], ['slug']);
 
-        $this->create('pagecats', function($table) { }, [], ['slug']); 
+        $this->create('pagecats', function(Blueprint $table) { }, [], ['slug']);
 
-        $this->create('pages', function($table)
+        $this->create('pages', function(Blueprint $table)
         {
             $table->text('text')->nullable();
             $table->boolean('published')->default(false);
@@ -387,12 +388,12 @@ class InstallController extends Controller
             $table->boolean('enable_comments')->default(false);
         }, ['pagecat_id']);
 
-        $this->create('newscats', function($table)
+        $this->create('newscats', function(Blueprint $table)
         {
             $table->string('image')->nullable();
         }, [], ['slug']);
 
-        $this->create('news', function($table)
+        $this->create('news', function(Blueprint $table)
         {
             $table->text('summary')->nullable();
             $table->text('text')->nullable();
@@ -402,9 +403,9 @@ class InstallController extends Controller
             $table->boolean('enable_comments')->default(false);
         }, ['newscat_id']);
 
-        $this->create('galleries', function($table) { }); 
+        $this->create('galleries', function(Blueprint $table) { });
         
-        $this->create('images', function($table)
+        $this->create('images', function(Blueprint $table)
         {
             $table->string('tags')->nullable();
             $table->string('image')->nullable();
@@ -412,16 +413,16 @@ class InstallController extends Controller
             $table->integer('height')->default(0);
         }, ['gallery_id'], ['slug']);
 
-        $this->createPivot('team_user', function($table)
+        $this->createPivot('team_user', function(Blueprint $table)
         {
             $table->string('task')->nullable();
             $table->text('description')->nullable();
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);
 
-        $this->create('teamcats', function($table) { }, [], ['slug']);
+        $this->create('teamcats', function(Blueprint $table) { }, [], ['slug']);
 
-        $this->create('teams', function($table) 
+        $this->create('teams', function(Blueprint $table)
         { 
             $table->text('text')->nullable();
             $table->string('image')->nullable();
@@ -429,9 +430,9 @@ class InstallController extends Controller
             $table->boolean('published')->default(false);
         }, ['teamcat_id', 'country_id']);
 
-        $this->create('advertcats', function($table) { }, [], ['slug']); 
+        $this->create('advertcats', function(Blueprint $table) { }, [], ['slug']);
 
-        $this->create('adverts', function($table)
+        $this->create('adverts', function(Blueprint $table)
         {
             $table->text('code')->nullable();
             $table->string('url')->nullable();
@@ -439,9 +440,9 @@ class InstallController extends Controller
             $table->string('image')->nullable();
         }, ['advertcat_id'], ['slug']);
 
-        $this->create('partnercats', function($table) { }, [], ['slug']);
+        $this->create('partnercats', function(Blueprint $table) { }, [], ['slug']);
 
-        $this->create('partners', function($table)
+        $this->create('partners', function(Blueprint $table)
         {
             $table->text('text')->nullable();
             $table->string('url')->nullable();
@@ -450,16 +451,16 @@ class InstallController extends Controller
             $table->string('image')->nullable();
         }, ['partnercat_id']);
 
-        $this->create('videos', function($table)
+        $this->create('videos', function(Blueprint $table)
         {
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
             $table->string('provider');
         });
 
-        $this->create('downloadcats', function($table) { }); // Supports slugs
+        $this->create('downloadcats', function(Blueprint $table) { }); // Supports slugs
 
-        $this->create('downloads', function($table) 
+        $this->create('downloads', function(Blueprint $table)
         { 
             $table->text('description')->nullable();
             $table->string('file')->nullable();
@@ -467,9 +468,9 @@ class InstallController extends Controller
             $table->boolean('is_image')->default(false);
         }, ['downloadcat_id']);        
         
-        $this->create('slidecats', function($table) { }, [], ['slug']); 
+        $this->create('slidecats', function(Blueprint $table) { }, [], ['slug']);
 
-        $this->create('slides', function($table)
+        $this->create('slides', function(Blueprint $table)
         {
             $table->text('text')->nullable();
             $table->string('url')->nullable();
@@ -478,21 +479,21 @@ class InstallController extends Controller
             $table->boolean('published')->default(false);
         }, ['slidecat_id'], ['slug']);
                
-        $this->create('tournaments', function($table)
+        $this->create('tournaments', function(Blueprint $table)
         {
             $table->string('short', 6)->nullable();
             $table->string('url')->nullable();
             $table->string('icon')->nullable();
         },  [], ['slug']);
         
-        $this->create('awards', function($table)
+        $this->create('awards', function(Blueprint $table)
         {
             $table->string('url')->nullable();
             $table->integer('position')->default(0);
             $table->timestamp('achieved_at')->nullable();
         }, ['game_id', 'tournament_id', 'team_id'], ['slug']);
 
-        $this->create('opponents', function($table)
+        $this->create('opponents', function(Blueprint $table)
         {
             $table->string('short', 6)->nullable();
             $table->string('url')->nullable();
@@ -500,19 +501,19 @@ class InstallController extends Controller
             $table->string('image')->nullable();
         }, ['country_id']);
         
-        $this->create('maps', function($table)
+        $this->create('maps', function(Blueprint $table)
         {
             $table->string('image')->nullable();
         }, ['game_id'], ['slug']);
 
-        $this->create('match_scores', function($table)
+        $this->create('match_scores', function(Blueprint $table)
         {
             $table->integer('left_score')->default(0);
             $table->integer('right_score')->default(0);
             $table->nullableTimestamps();
         }, ['match_id', 'map_id'], false);
  
-        $this->create('matches', function($table)
+        $this->create('matches', function(Blueprint $table)
         {
             $table->integer('state')->default(0);
             $table->boolean('featured')->default(false);
@@ -528,7 +529,7 @@ class InstallController extends Controller
         ['left_team_id' => 'team_id', 'right_team_id' => 'opponent_id', 'game_id', 'tournament_id'], 
         ['title', 'slug']);
 
-        $this->create('streams', function($table)
+        $this->create('streams', function(Blueprint $table)
         {
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
@@ -539,7 +540,7 @@ class InstallController extends Controller
             $table->timestamp('renewed_at')->nullable();
         });
 
-        $this->create('servers', function($table)
+        $this->create('servers', function(Blueprint $table)
         {
             $table->string('ip');
             $table->string('hoster')->nullable();
@@ -548,7 +549,7 @@ class InstallController extends Controller
             $table->text('description')->nullable();
         }, ['game_id'], ['slug']);
 
-        $this->create('forums', function($table) 
+        $this->create('forums', function(Blueprint $table)
         { 
             $table->text('description')->nullable();
             $table->integer('position')->default(0);
@@ -558,25 +559,25 @@ class InstallController extends Controller
             $table->integer('posts_count')->default(0);
         }, ['forum_id', 'latest_thread_id' => 'forum_thread_id', 'team_id']);
 
-        $this->create('forum_threads', function($table) 
+        $this->create('forum_threads', function(Blueprint $table)
         { 
             $table->integer('posts_count')->default(1);
             $table->boolean('sticky')->default(false);
             $table->boolean('closed')->default(false);
         }, ['forum_id']);
 
-        $this->create('forum_posts', function($table) 
+        $this->create('forum_posts', function(Blueprint $table)
         { 
             $table->text('text')->nullable();
             $table->boolean('root')->default(0);
         }, ['thread_id' => 'forum_threads_id'], ['slug', 'title']);
 
-        $this->create('forum_reports', function($table) 
+        $this->create('forum_reports', function(Blueprint $table)
         { 
             $table->text('text')->nullable();
         }, ['post_id' => 'forum_posts_id'], ['title', 'slug']);
 
-        $this->create('messages', function($table)
+        $this->create('messages', function(Blueprint $table)
         {
             $table->text('text');
             $table->boolean('new')->default(true);
@@ -585,13 +586,13 @@ class InstallController extends Controller
             $table->boolean('sent_by_system')->default(false);
         }, ['receiver_id' => 'users_id']);
 
-        $this->create('navigations', function($table)
+        $this->create('navigations', function(Blueprint $table)
         {
             $table->text('items')->nullable();
             $table->boolean('translate')->default(false);
         }, [], ['slug']);
 
-        $this->create('user_activities', function($table)
+        $this->create('user_activities', function(Blueprint $table)
         {
             $table->boolean('frontend');
             $table->string('model_class')->nullable();
@@ -601,18 +602,18 @@ class InstallController extends Controller
             $table->integer('activity_id');
         }, ['user_id'], false);
 
-        $this->create('shouts', function($table) 
+        $this->create('shouts', function(Blueprint $table)
         { 
             $table->text('text')->nullable();
         }, [], ['title', 'slug', 'access_counter', 'updater_id']);
 
-        $this->createPivot('friends', function($table)
+        $this->createPivot('friends', function(Blueprint $table)
         {
             $table->boolean('confirmed')->default(false);
             $table->timestamp('messaged_at')->nullable();
         }, ['sender_id', 'receiver_id']);
 
-        $this->create('events', function($table)
+        $this->create('events', function(Blueprint $table)
         {
             $table->text('text')->nullable();
             $table->string('url')->nullable();
@@ -621,14 +622,14 @@ class InstallController extends Controller
             $table->timestamp('starts_at')->nullable();
         });
 
-        $this->create('ratings', function($table)
+        $this->create('ratings', function(Blueprint $table)
         {
             $table->integer('rating');
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true)->nullable();
         }, ['user_id'], false);
 
-        $this->create('cups_teams', function($table)
+        $this->create('cups_teams', function(Blueprint $table)
         {
             $table->string('image')->nullable();
             $table->string('password')->nullable();
@@ -637,7 +638,7 @@ class InstallController extends Controller
         });
 
         Schema::dropIfExists('cups_team_members');
-        Schema::create('cups_team_members', function($table)
+        Schema::create('cups_team_members', function(Blueprint $table)
         {
             $table->integer('team_id');
             $table->integer('user_id');
@@ -645,7 +646,7 @@ class InstallController extends Controller
             $table->primary(['team_id', 'user_id']);
         });
 
-        $this->create('cups', function($table)
+        $this->create('cups', function(Blueprint $table)
         {
             $table->text('description')->nullable();
             $table->text('rulebook')->nullable(); // Note: We cannot name this attribute "rules"
@@ -662,7 +663,7 @@ class InstallController extends Controller
         },  ['game_id']);
 
         Schema::dropIfExists('cups_participants');
-        Schema::create('cups_participants', function($table)
+        Schema::create('cups_participants', function(Blueprint $table)
         {
             $table->integer('cup_id');
             $table->integer('participant_id');
@@ -670,7 +671,7 @@ class InstallController extends Controller
             $table->primary(['cup_id', 'participant_id']);
         });
 
-        $this->create('cups_matches', function($table)
+        $this->create('cups_matches', function(Blueprint $table)
         {
             $table->integer('round');
             $table->integer('row');
@@ -687,7 +688,7 @@ class InstallController extends Controller
         ['cup_id'], ['title', 'slug']);
         
         Schema::dropIfExists('cups_users');
-        Schema::create('cups_users', function($table)
+        Schema::create('cups_users', function(Blueprint $table)
         {
             $table->integer('cup_id');
             $table->integer('user_id');
@@ -696,12 +697,21 @@ class InstallController extends Controller
         });
 
         Schema::dropIfExists('cups_referees');
-        Schema::create('cups_referees', function($table)
+        Schema::create('cups_referees', function(Blueprint $table)
         {
             $table->integer('cup_id');
             $table->integer('user_id');
             $table->primary(['cup_id', 'user_id']);
         });
+
+        $this->create('cash_flows', function(Blueprint $table)
+        {
+            $table->text('description')->nullable();
+            $table->integer('revenues')->default(0);
+            $table->integer('expenses')->default(0);
+            $table->timestamp('paid_at')->nullable();
+            $table->boolean('paid')->default(false);
+        }, ['user_id'], ['slug']);
 
         /*
          * (Re)activate foreign key checks
@@ -899,7 +909,8 @@ information about your stored data, and possibly entitlement to correction, bloc
     }
 
     /**
-     * Create user permission roles
+     * Create user permission roles.
+     * The convention is that the name of permissions are in lowercase and only use the letter a-z.
      * 
      * @return void
      */
@@ -944,6 +955,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'adverts'       => PERM_DELETE,
                 'auth'          => PERM_DELETE,
                 'awards'        => PERM_DELETE,
+                'cashflows'     => PERM_DELETE,
                 'comments'      => PERM_DELETE,
                 'config'        => PERM_DELETE,
                 'contact'       => PERM_DELETE,
@@ -960,7 +972,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'images'        => PERM_DELETE,
                 'maps'          => PERM_DELETE,
                 'matches'       => PERM_DELETE,
-                'modules'       => PERM_READ, // So admins can't add modules that make them super admins
+                'modules'       => PERM_READ, // So ordinary admins can't add modules that make them super admins
                 'navigations'   => PERM_DELETE,
                 'news'          => PERM_DELETE,
                 'opponents'     => PERM_DELETE,
@@ -988,6 +1000,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'adverts'       => PERM_DELETE,
                 'auth'          => PERM_DELETE,
                 'awards'        => PERM_DELETE,
+                'cashflows'     => PERM_DELETE,
                 'comments'      => PERM_DELETE,
                 'config'        => PERM_DELETE,
                 'contact'       => PERM_DELETE,
@@ -1041,7 +1054,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         /*
          * Add ID:
          */
-        Schema::create($tableName, function($table) use ($tableRows, $foreignKeys, $contentObject)
+        Schema::create($tableName, function(Blueprint $table) use ($tableRows, $foreignKeys, $contentObject)
         {
             $table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is used as storage engine
 
@@ -1124,7 +1137,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         /*
          * Add primary keys:
          */
-        Schema::create($tableName, function($table) use ($primaryKeys)
+        Schema::create($tableName, function(Blueprint $table) use ($primaryKeys)
         {
             $table->engine = 'InnoDB'; // Since we create the table here we ensure InnoDB is the storage engine
 
@@ -1141,7 +1154,9 @@ information about your stored data, and possibly entitlement to correction, bloc
         /*
          * Add the table rows:
          */
-        if ($tableRows) Schema::table($tableName, $tableRows);
+        if ($tableRows) {
+            Schema::table($tableName, $tableRows);
+        }
     }
 
     /**

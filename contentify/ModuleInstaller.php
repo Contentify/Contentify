@@ -10,12 +10,14 @@ abstract class ModuleInstaller
 
     /**
      * The name of the module
+     *
      * @var string
      */
     protected $module;
 
     /**
      * The number of the current step (starting at 0)
+     *
      * @var int
      */
     protected $step;
@@ -23,6 +25,7 @@ abstract class ModuleInstaller
     /**
      * If true, the permission [<moduleName> => PERM_DELETE]
      * is added automatically.
+     *
      * @var boolean
      */
     protected $addDefaultPermission = true;
@@ -33,6 +36,7 @@ abstract class ModuleInstaller
      * Example: array('permissionName' => 4)
      * Note that per default a basic module permission is added,
      * so you only need to use this array to provide extra perms.
+     *
      * @var array
      */
     protected $extraPermissions = array();

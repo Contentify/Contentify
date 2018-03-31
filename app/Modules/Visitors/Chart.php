@@ -9,6 +9,7 @@ class Chart
 {
 
     /**
+     * The data set in JS array notation
      * @var string
      */
     protected $dataSet;
@@ -19,6 +20,8 @@ class Chart
     protected $days;
 
     /**
+     * The last day of the month that has data
+     *
      * @var int
      */
     protected $maxDay;

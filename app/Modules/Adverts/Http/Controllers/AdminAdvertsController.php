@@ -17,7 +17,7 @@ class AdminAdvertsController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Advert::class;
+        $this->modelClass = Advert::class;
 
         parent::__construct();
     }

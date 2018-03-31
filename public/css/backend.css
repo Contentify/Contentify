@@ -6626,6 +6626,9 @@ button.close {
 /*
  * Global Variables
  */
+/* Color from framycss.org */
+/* Color from framycss.org */
+/* Color from framycss.org */
 ::selection {
   background: #00afff;
   color: white;
@@ -7209,16 +7212,15 @@ fieldset[disabled] .page .table .icon-link.active {
 }
 .alert-success {
   border-color: #69DD95;
-  background: rgba(105, 221, 149, 0.8);
+  background: #69dd95;
 }
-/* Colors from framycss.org */
 .alert-danger {
   border-color: #F26175;
-  background: #F26175;
+  background: #f26175;
 }
 .alert-warning {
   border-color: #F8C93F;
-  background: rgba(248, 201, 63, 0.8);
+  background: #f8c93f;
 }
 .alert-info {
   border-color: #4ba7e2;
@@ -7607,6 +7609,18 @@ fieldset[disabled] .page-images .image .actions a.active {
   padding: 5px;
   border-bottom: 1px solid #ddd;
 }
+.page-cash-flows.page-model-index .revenues {
+  padding: 2px 5px;
+  background-color: #69dd95;
+  color: white;
+  font-weight: bold;
+}
+.page-cash-flows.page-model-index .expenses {
+  padding: 2px 5px;
+  background-color: #f26175;
+  color: white;
+  font-weight: bold;
+}
 .editor-flags img {
   cursor: pointer;
 }
@@ -7968,7 +7982,7 @@ header .header-logo {
   }
 }
 .page {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 40px;
 }
 .page-head {

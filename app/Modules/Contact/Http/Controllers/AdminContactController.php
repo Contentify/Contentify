@@ -16,7 +16,7 @@ class AdminContactController extends BackController
 
     public function __construct()
     {
-        $this->modelName = ContactMessage::class;
+        $this->modelClass = ContactMessage::class;
 
         parent::__construct();
     }

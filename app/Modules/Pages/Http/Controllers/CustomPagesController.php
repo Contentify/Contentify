@@ -10,7 +10,7 @@ class CustomPagesController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = CustomPage::class;
+        $this->modelClass = CustomPage::class;
 
         parent::__construct();
     }

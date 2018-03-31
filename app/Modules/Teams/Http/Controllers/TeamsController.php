@@ -10,7 +10,7 @@ class TeamsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Team::class;
+        $this->modelClass = Team::class;
 
         parent::__construct();
     }

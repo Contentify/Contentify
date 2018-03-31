@@ -1,0 +1,11 @@
+{
+    "slug": "Cash Flows",
+    "admin-nav": [
+        {
+            "url": "admin/cash-flows",
+            "icon": "chart-line",
+            "category": 1,
+            "position": 8
+        }
+    ]
+}

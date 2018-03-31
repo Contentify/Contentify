@@ -11,7 +11,7 @@ class AwardsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Award::class;
+        $this->modelClass = Award::class;
 
         parent::__construct();
     }

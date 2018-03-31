@@ -19,7 +19,7 @@ class AdminMembersController extends BackController
 
     public function __construct()
     {
-        $this->modelName = \User::class;
+        $this->modelClass = \User::class;
 
         parent::__construct();
     }

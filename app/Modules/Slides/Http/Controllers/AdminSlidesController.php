@@ -17,7 +17,7 @@ class AdminSlidesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Slide::class;
+        $this->modelClass = Slide::class;
 
         parent::__construct();
     }

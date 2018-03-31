@@ -12,7 +12,7 @@ class ArticlesController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Article::class;
+        $this->modelClass = Article::class;
 
         parent::__construct();
     }

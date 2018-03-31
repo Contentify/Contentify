@@ -14,7 +14,7 @@ class StreamsController extends FrontController
 
     public function __construct()
     {
-        $this->modelName = Stream::class;
+        $this->modelClass = Stream::class;
 
         parent::__construct();
     }

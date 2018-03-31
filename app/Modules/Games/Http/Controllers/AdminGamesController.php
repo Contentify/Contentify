@@ -17,7 +17,7 @@ class AdminGamesController extends BackController
 
     public function __construct()
     {
-        $this->modelName = Game::class;
+        $this->modelClass = Game::class;
 
         parent::__construct();
     }

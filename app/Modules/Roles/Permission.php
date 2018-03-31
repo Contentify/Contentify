@@ -9,23 +9,33 @@ class Permission
 {
 
     /**
-     * Name of the permission
+     * The name of the permission
+     *
      * @var string
      */
     public $name;
 
     /**
      * Array consisting of pairs (value ID and value)
-     * @var array
+     *
+     * @var string[]
      */
     public $values;
 
     /**
      * The ID of the current value
-     * @var mixed
+     *
+     * @var int|null
      */
     public $current;
 
+    /**
+     * Permission constructor.
+     *
+     * @param string   $name
+     * @param string[] $values
+     * @param int|null $current
+     */
     public function __construct($name, $values, $current) {
         $this->name     = $name;
         $this->values   = $values;

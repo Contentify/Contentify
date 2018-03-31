@@ -12,6 +12,7 @@ namespace Contentify\Models;
 abstract class StiModel extends BaseModel
 {
     /**
+     *
      * The name of the field that stores the subclass
      * @var string
      */
@@ -19,6 +20,7 @@ abstract class StiModel extends BaseModel
 
     /**
      * Indicates if the inheriting class is a subclass
+     *
      * @var boolean
      */
     protected $isSubclass = false;
@@ -26,6 +28,7 @@ abstract class StiModel extends BaseModel
     /**
      * ID value of the subclass.
      * If null, use the name of the class.
+     *
      * @var string|int|null
      */
     protected $subclassId = null;
@@ -56,17 +59,20 @@ abstract class StiModel extends BaseModel
     }
 
     /**
-     * Create instance
+     * Returns an instance of the concrete (extending) model class
      *
      * @return self
      */
-    public function mapData(array $attributes)
+    public function getStiClassInstance()
     {
-        $className = get_class($this);
+        $className = get_class($this); // The name of the concrete (extending) model class
 
         return new $className;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function newFromBuilder($attributes = array(), $connection = null)
     {
         if ($connection) {
@@ -77,11 +83,14 @@ abstract class StiModel extends BaseModel
          * Instead of using $this->newInstance(), call
          * newInstance() on the object from mapData
          */
-        $instance = $this->mapData((array) $attributes)->newInstance(array(), true);
+        $instance = $this->getStiClassInstance()->newInstance(array(), true);
         $instance->setRawAttributes((array) $attributes, true);
         return $instance;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function newQuery()
     {
         $builder = parent::newQuery();

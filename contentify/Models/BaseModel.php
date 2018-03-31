@@ -25,12 +25,14 @@ class BaseModel extends Eloquent
 
     /**
      * True if model is slugable
+     *
      * @var bool
      */
     protected $slugable = false;
 
     /**
      * Name of the upload directory (null = name of class)
+     *
      * @var string|null
      */
     protected $uploadDir = null;
