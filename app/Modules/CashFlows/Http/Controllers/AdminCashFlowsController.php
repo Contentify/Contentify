@@ -68,15 +68,16 @@ class AdminCashFlowsController extends BackController
         $layoutData = $this->layout->getData();
         /** @var \Illuminate\View\View $page */
         $page = $layoutData['page'];
-        $pageData = $page->getData();
-        $modelTable = $pageData['modelTable'];
+        $modelTable = $page->getData()['modelTable'];
 
         $currency = Config::get('app.currency');
         $totalClass = $revenues >= $expenses ? 'revenues' : 'expenses';
         $modelTable.=
+            '<div class="summary">'.
             '<span class="revenues"><strong>'.$revenues.'</strong> '.$currency.' '.trans('app.revenues').'</span> - '
             .'<span class="expenses"><strong>'.$expenses.'</strong> '.$currency.' '.trans('app.expenses').'</span> = '
-            .'<span class="'.$totalClass.'"<strong>'.$total.'</strong> '.$currency.' '.trans('app.total').'</span>';
+            .'<span class="'.$totalClass.'"<strong>'.$total.'</strong> '.$currency.' '.trans('app.total').'</span>'
+            .'</div>';
         $page->with('modelTable', $modelTable);
     }
 

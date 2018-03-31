@@ -7621,6 +7621,10 @@ fieldset[disabled] .page-images .image .actions a.active {
   color: white;
   font-weight: bold;
 }
+.page-cash-flows.page-model-index .summary {
+  padding: 10px;
+  border: 1px solid #dddddd;
+}
 .editor-flags img {
   cursor: pointer;
 }
