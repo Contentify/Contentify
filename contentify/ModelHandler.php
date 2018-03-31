@@ -349,7 +349,7 @@ class ModelHandler
         }
 
         $controller->pageView(
-            strtolower($controller->getModuleName()).'::'.$controller->getFormTemplate(),
+            snake_case($controller->getModuleName()).'::'.$controller->getFormTemplate(),
             ['modelClass' => $controller->getModelClass()]
         );
     }
@@ -382,7 +382,7 @@ class ModelHandler
         $okay = $model->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.create')
+            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.create')
                 ->withInput()->withErrors($model->getErrors());
         }
 
@@ -426,7 +426,7 @@ class ModelHandler
 
                     if ($error !== false) {
                         $model->delete(); // Delete the invalid model
-                        return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.create')
+                        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.create')
                                 ->withInput()->withErrors([$error]);
                     }
                     
@@ -459,11 +459,11 @@ class ModelHandler
             }
         }
 
-        $controller->alertFlash(trans('app.created', [trans_object($controller->getModelName())]));
+        $controller->alertFlash(trans('app.created', [trans_object(basename($controller->getModelName()))]));
         if (Input::get('_form_apply') !== null) {
-            return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.edit', array($model->id));
+            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', array($model->id));
         } else {
-            return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
+            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
         }
     }
 
@@ -491,7 +491,7 @@ class ModelHandler
         }
 
         $controller->pageView(
-            strtolower($controller->getModuleName()).'::'.$controller->getFormTemplate(), 
+            snake_case($controller->getModuleName()).'::'.$controller->getFormTemplate(),
             ['model' => $model, 'modelClass' => $modelClass]
         );
     }
@@ -530,7 +530,7 @@ class ModelHandler
         $okay = $model->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.edit', ['id' => $model->id])
+            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', ['id' => $model->id])
                 ->withInput()->withErrors($model->getErrors());
         }
 
@@ -574,7 +574,7 @@ class ModelHandler
 
                     if ($error !== false) {
                         return Redirect::route(
-                            'admin.'.strtolower($controller->getControllerName()).'.edit',
+                            'admin.'.kebab_case($controller->getControllerName()).'.edit',
                             ['id' => $model->id]
                         )->withInput()->withErrors([$error]);
                     }
@@ -624,9 +624,9 @@ class ModelHandler
 
         $controller->alertFlash(trans('app.updated', [trans_object($controller->getModelName())]));
         if (Input::get('_form_apply') !== null) {
-            return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.edit', [$id]);
+            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$id]);
         } else {
-            return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
+            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
         }
     }
 
@@ -665,7 +665,7 @@ class ModelHandler
                     $dependencies = $model->$name;
                     if (sizeof($dependencies) > 0) {
                         $controller->alertFlash(trans('app.delete_error', [sizeof($dependencies), $name]));
-                        return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
+                        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
                     }
                 }
             }
@@ -713,7 +713,7 @@ class ModelHandler
         UserActivities::addDelete(false, user()->id, $controller->getModelClass());
 
         $controller->alertFlash(trans('app.deleted', [trans_object($controller->getModelName())]));
-        return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
+        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
     }
 
     /**
@@ -738,7 +738,7 @@ class ModelHandler
         $model->restore();
 
         $controller->alertFlash(trans('app.restored', [trans_object($controller->getModelName())]));
-        return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index');
+        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
     }
 
     /**
@@ -750,7 +750,7 @@ class ModelHandler
     {
         $controller = $this->getControllerOrFail();
 
-        return Redirect::route('admin.'.strtolower($controller->getControllerName()).'.index')
+        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index')
             ->withInput(Input::only('search'));
     }
 
