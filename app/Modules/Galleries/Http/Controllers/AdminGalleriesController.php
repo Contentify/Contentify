@@ -29,9 +29,8 @@ class AdminGalleriesController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($gallery)
+            'tableRow' => function(Gallery $gallery)
             {
-                /** @var Gallery $gallery */
                 Hover::modelAttributes($gallery, ['access_counter', 'creator']);
 
                 return [

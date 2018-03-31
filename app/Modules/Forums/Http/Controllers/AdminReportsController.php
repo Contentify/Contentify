@@ -35,9 +35,8 @@ class AdminReportsController extends BackController
                 trans('app.object_reports')                           => null,
                 trans('app.date')                                     => null,
             ],
-            'tableRow' => function($forumReportCase)
+            'tableRow' => function(ForumReportCase $forumReportCase)
             {
-                /** @var ForumReportCase $forumReportCase */
                 $forumPost = $forumReportCase->post;
 
                 $link = HTML::link($forumPost->paginatedPostUrl(), $forumPost->plainText(80));

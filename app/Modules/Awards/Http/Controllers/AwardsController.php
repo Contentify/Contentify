@@ -28,9 +28,8 @@ class AwardsController extends FrontController
                 trans('app.object_game')        => 'game_id',
                 trans('app.date')               => 'achieved_at',
             ],
-            'tableRow'      => function($award)
+            'tableRow'      => function(Award $award)
             {
-                /** @var Award $award */
                 $game = '';
                 if ($award->game->icon) {
                     $game = HTML::image(

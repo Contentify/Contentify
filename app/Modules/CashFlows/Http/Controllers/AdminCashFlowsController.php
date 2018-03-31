@@ -74,8 +74,8 @@ class AdminCashFlowsController extends BackController
         $totalClass = $revenues >= $expenses ? 'revenues' : 'expenses';
         $modelTable.=
             '<div class="summary">'.
-            '<span class="revenues"><strong>'.$revenues.'</strong> '.$currency.' '.trans('app.revenues').'</span> - '
-            .'<span class="expenses"><strong>'.$expenses.'</strong> '.$currency.' '.trans('app.expenses').'</span> = '
+            '<strong>'.$revenues.'</strong> '.$currency.' '.trans('app.revenues').' - '
+            .'<strong>'.$expenses.'</strong> '.$currency.' '.trans('app.expenses').' = '
             .'<span class="'.$totalClass.'"<strong>'.$total.'</strong> '.$currency.' '.trans('app.total').'</span>'
             .'</div>';
         $page->with('modelTable', $modelTable);

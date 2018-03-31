@@ -36,17 +36,16 @@ class AdminContactController extends BackController
                 trans('app.creator')    => 'username', 
                 trans('app.created_at') => 'created_at'
             ],
-            'tableRow' => function($msg)
+            'tableRow' => function(ContactMessage $message)
             {
-                /** @var ContactMessage $msg */
                 return [
-                    $msg->id,
-                    raw($msg->new ? 
+                    $message->id,
+                    raw($message->new ?
                         HTML::fontIcon('envelope') : 
                         null),
-                    raw(link_to_route('admin.contact.show', $msg->title, [$msg->id])),
-                    $msg->username,
-                    $msg->created_at,
+                    raw(link_to_route('admin.contact.show', $message->title, [$message->id])),
+                    $message->username,
+                    $message->created_at,
                 ];
             },
             'actions' => ['delete', 'restore']

@@ -7623,7 +7623,8 @@ fieldset[disabled] .page-images .image .actions a.active {
 }
 .page-cash-flows.page-model-index .summary {
   padding: 10px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
+  text-align: right;
 }
 .editor-flags img {
   cursor: pointer;

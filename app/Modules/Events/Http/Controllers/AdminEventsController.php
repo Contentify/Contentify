@@ -31,9 +31,8 @@ class AdminEventsController extends BackController
                 trans('app.title')      => 'title',
                 trans('app.starts_at')  => 'starts_at',
             ],
-            'tableRow' => function($event)
+            'tableRow' => function(Event $event)
             {
-                /** @var Event $event */
                 return [
                     $event->id,
                     raw(Hover::modelAttributes($event, ['creator'])->pull()

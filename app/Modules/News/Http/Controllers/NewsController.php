@@ -30,7 +30,7 @@ class NewsController extends FrontController
                 trans('app.category')   => 'newscat_id', 
                 trans('app.date')       => 'created_at'
             ],
-            'tableRow'      => function($news)
+            'tableRow'      => function(News $news)
             {
                 return [
                     raw(HTML::link(url('news/'.$news->id.'/'.$news->slug), $news->title)),

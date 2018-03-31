@@ -29,9 +29,8 @@ class AdminAwardsController extends BackController
                 trans('app.title')      => 'title', 
                 trans('app.date')       => 'achieved_at'
             ],
-            'tableRow' => function($award)
+            'tableRow' => function(Award $award)
             {
-                /** @var Award $award */
                 return [
                     $award->id,
                     raw($award->positionIcon()),

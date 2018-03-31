@@ -42,9 +42,8 @@ class AdminActivitiesController extends BackController
                 trans('app.username')       => 'user_id',
                 trans('app.date')           => 'created_at',
             ],
-            'tableRow'  => function($userActivity)
+            'tableRow'  => function(UserActivity $userActivity)
             {
-                /** @var UserActivity $userActivity */
                 if ($userActivity->frontend) {
                     $frontend = HTML::fontIcon('check');
                 } else {

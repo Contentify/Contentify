@@ -40,9 +40,8 @@ class AdminCupsController extends BackController
                 trans('app.object_game')   => 'game_id',
                 trans('cups::start_at')    => 'start_at'
             ],
-            'tableRow' => function($cup)
+            'tableRow' => function(Cup $cup)
             {
-                /** @var Cup $cup */
                 Hover::modelAttributes($cup, ['icon', 'creator']);
 
                 return [

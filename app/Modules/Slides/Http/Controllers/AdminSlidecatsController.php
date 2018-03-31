@@ -28,9 +28,8 @@ class AdminSlidecatsController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($slidecat)
+            'tableRow' => function(Slidecat $slidecat)
             {
-                /** @var Slidecat $slidecat */
                 Hover::modelAttributes($slidecat, ['creator']);
 
                 return [

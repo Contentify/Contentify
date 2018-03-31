@@ -37,9 +37,8 @@ class AdminMatchesController extends BackController
                 trans('app.object_tournament')  => 'tournament_id',
                 trans('matches::played_at')     => 'played_at'
             ],
-            'tableRow' => function($match)
+            'tableRow' => function(Match $match)
             {
-                /** @var Match $match */
                 Hover::modelAttributes($match, ['access_counter', 'creator']);
 
                 return [

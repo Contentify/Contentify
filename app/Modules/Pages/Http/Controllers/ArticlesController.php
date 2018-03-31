@@ -25,9 +25,8 @@ class ArticlesController extends FrontController
                 trans('app.title')      => 'title',
                 trans('app.date')       => 'created_at'
             ],
-            'tableRow'  => function($article)
+            'tableRow'  => function(Article $article)
             {
-                /** @var Article $article */
                 return [
                     raw(HTML::link(URL::route('articles.show', [$article->id]), $article->title)),
                     $article->created_at

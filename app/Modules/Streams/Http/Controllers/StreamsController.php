@@ -43,15 +43,12 @@ class StreamsController extends FrontController
                 trans('app.online')     => 'online',
                 trans('app.viewers')    => 'viewers',
             ],
-            'tableRow'  => function($stream)
+            'tableRow'  => function(Stream $stream)
             {
-                /** @var Stream $stream */
                 return [
                     raw(HTML::link(url('streams/'.$stream->id.'/'.$stream->slug), $stream->title)),
                     Stream::$providers[$stream->provider],
-                    raw($stream->online ? 
-                        HTML::fontIcon('check') :
-                        HTML::fontIcon('times')),
+                    raw($stream->online ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     $stream->viewers,
                 ];
             },

@@ -28,9 +28,8 @@ class AdminPartnercatsController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($partnercat)
+            'tableRow' => function(Partnercat $partnercat)
             {
-                /** @var Partnercat $partnercat */
                 Hover::modelAttributes($partnercat, ['creator']);
 
                 return [

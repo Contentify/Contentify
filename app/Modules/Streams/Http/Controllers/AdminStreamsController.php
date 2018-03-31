@@ -30,9 +30,8 @@ class AdminStreamsController extends BackController
                 trans('app.title')      => 'title',
                 trans('app.provider')   => 'provider',
             ],
-            'tableRow' => function($stream)
+            'tableRow' => function(Stream $stream)
             {
-                /** @var Stream $stream */
                 Hover::modelAttributes($stream, ['creator']);
 
                 return [

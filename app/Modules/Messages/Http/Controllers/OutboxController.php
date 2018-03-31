@@ -28,10 +28,8 @@ class OutboxController extends FrontController
                 trans('messages::receiver') => 'receiver_id',
                 trans('app.date')           => 'created_at',
             ],
-            'tableRow'      => function($message)
+            'tableRow'      => function(Message $message)
             {
-                /** @var Message $message */
-
                 $icon = HTML::fontIcon('times');
                 if ($message->new) {
                     $icon = HTML::fontIcon('check');

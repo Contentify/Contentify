@@ -33,9 +33,8 @@ class AdminModulesController extends BackController
                 trans('app.enabled')   => null,
                 trans('app.state')     => null,
             ],
-            'tableRow'      => function($module)
+            'tableRow'      => function(Module $module)
             {
-                /** @var Module $module */
                 if ($module->enabled()) {
                     $enabled = HTML::fontIcon('check');
                 } else {

@@ -33,9 +33,8 @@ class CupsController extends FrontController
                 trans('app.object_game')    => 'game_id',
                 trans('app.date')           => 'starts_at'
             ],
-            'tableRow'      => function($cup)
+            'tableRow'      => function(Cup $cup)
             {
-                /** @var Cup $cup */
                 return [
                     raw(HTML::link(
                         url('cups/'.$cup->id.'/'.$cup->slug), 

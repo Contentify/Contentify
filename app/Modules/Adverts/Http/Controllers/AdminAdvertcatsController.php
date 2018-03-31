@@ -28,9 +28,8 @@ class AdminAdvertcatsController extends BackController
                 trans('app.id') => 'id', 
                 trans('app.title') => 'title'
             ],
-            'tableRow' => function($advertcat)
+            'tableRow' => function(Advertcat $advertcat)
             {
-                /** @var Advertcat $advertcat */
                 Hover::modelAttributes($advertcat, ['creator']);
 
                 return [

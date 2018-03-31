@@ -32,9 +32,8 @@ class AdminAdvertsController extends BackController
                 trans('app.title')          => 'title',
                 trans('app.category')       => 'advertcat_id', 
             ],
-            'tableRow' => function($advert)
+            'tableRow' => function(Advert $advert)
             {
-                /** @var Advert $advert */
                 Hover::modelAttributes($advert, ['image', 'access_counter', 'creator']);
 
                 return [

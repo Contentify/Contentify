@@ -30,9 +30,8 @@ class UsersController extends FrontController
                 trans('app.object_registration')    => 'created_at',
                 trans('users::last_login')          => 'last_login',
             ],
-            'tableRow' => function($user)
+            'tableRow' => function(User $user)
             {
-                /** @var User $user */
                 return [
                     $user->id,
                     raw(link_to('users/'.$user->id.'/'.$user->slug, $user->username)),

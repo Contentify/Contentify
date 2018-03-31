@@ -31,9 +31,8 @@ class AdminTeamsController extends BackController
                 trans('app.title')      => 'title',
                 trans('app.category')   => 'teamcat_id'
             ],
-            'tableRow' => function($team)
+            'tableRow' => function(Team $team)
             {
-                /** @var Team $team */
                 Hover::modelAttributes($team, ['image', 'access_counter', 'creator']);
 
                 return [

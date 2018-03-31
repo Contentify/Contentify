@@ -33,12 +33,10 @@ class AdminForumsController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($forum)
+            'tableRow' => function(Forum $forum)
             {
-                /** @var Forum $forum */
-
-                $title  = e($forum->title);
-                $url    = url('forums');
+                $title = e($forum->title);
+                $url   = url('forums');
 
                 if ($forum->level == 0) {
                     $title = '<strong>'.$title.'</strong>';

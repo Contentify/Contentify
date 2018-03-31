@@ -32,9 +32,8 @@ class AdminPartnersController extends BackController
                 trans('app.title')          => 'title',
                 trans('app.category')       => 'partnercat_id', 
             ],
-            'tableRow' => function($partner)
+            'tableRow' => function(Partner $partner)
             {
-                /** @var Partner $partner */
                 Hover::modelAttributes($partner, ['image', 'access_counter', 'creator']);
 
                 return [

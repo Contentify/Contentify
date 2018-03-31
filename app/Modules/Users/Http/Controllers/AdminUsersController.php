@@ -26,7 +26,7 @@ class AdminUsersController extends BackController
 
     public function __construct()
     {
-        $this->modelClass = User::class;
+        $this->modelClass = \App\Modules\Users\User::class;
 
         parent::__construct();
     }
@@ -43,9 +43,8 @@ class AdminUsersController extends BackController
                 trans('users::membership')  => null,
                 trans('users::banned')      => 'banned',
             ],
-            'tableRow'  => function($user)
+            'tableRow'  => function(\App\Modules\Users\User $user)
             {
-                /** @var \App\Modules\Users\User $user */
                 if ($user->image) {
                     Hover::image(asset('uploads/users/'.$user->image));
                 }

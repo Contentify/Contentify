@@ -28,9 +28,8 @@ class AdminTournamentsController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($tournament)
+            'tableRow' => function(Tournament $tournament)
             {
-                /** @var Tournament $tournament */
                 Hover::modelAttributes($tournament, ['icon', 'creator']);
 
                 return [

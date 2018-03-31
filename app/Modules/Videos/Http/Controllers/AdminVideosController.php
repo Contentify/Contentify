@@ -30,9 +30,8 @@ class AdminVideosController extends BackController
                 trans('app.title')      => 'title',
                 trans('app.provider')   => 'provider',
             ],
-            'tableRow' => function($video)
+            'tableRow' => function(Video $video)
             {
-                /** @var Video $video */
                 Hover::modelAttributes($video, ['creator']);
 
                 return [

@@ -33,9 +33,8 @@ class AdminMembersController extends BackController
                 trans('app.username')       => 'username',
                 trans('app.object_teams')   => null,
             ],
-            'tableRow' => function($user)
+            'tableRow' => function(User $user)
             {
-                /** @var \User $user */
                 $data = [];
                 foreach ($user->teams as $team) {
                     $data[$team->id] = e($team->title);

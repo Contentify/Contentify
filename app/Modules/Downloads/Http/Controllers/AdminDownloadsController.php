@@ -31,9 +31,8 @@ class AdminDownloadsController extends BackController
                 trans('app.title')      => 'title',
                 trans('app.category')   => 'downloadcat_id'
             ],
-            'tableRow' => function($download)
+            'tableRow' => function(Download $download)
             {
-                /** @var Download $download */
                 Hover::modelAttributes($download, ['access_counter', 'creator']);
 
                 return [

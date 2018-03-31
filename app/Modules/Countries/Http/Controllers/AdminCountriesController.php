@@ -29,9 +29,8 @@ class AdminCountriesController extends BackController
                 trans('app.icon')   => null,
                 trans('app.title')  => 'title',
             ],
-            'tableRow' => function($country)
+            'tableRow' => function(Country $country)
             {
-                /** @var Country $country */
                 if ($country->icon) {
                     $icon = HTML::image(asset($country->uploadPath().$country->icon), $country->title);
                 } else{

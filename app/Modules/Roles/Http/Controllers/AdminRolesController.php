@@ -28,9 +28,8 @@ class AdminRolesController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'name'
             ],
-            'tableRow' => function($role)
+            'tableRow' => function(Role $role)
             {
-                /** @var Role $role */
                 return [
                     $role->id,
                     raw(Hover::modelAttributes($role, ['creator'])->pull(), $role->name),

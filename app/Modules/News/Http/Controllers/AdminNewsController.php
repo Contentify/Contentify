@@ -34,9 +34,8 @@ class AdminNewsController extends BackController
                 trans('app.author')     => 'creator_id', 
                 trans('app.created_at') => 'created_at'
             ],
-            'tableRow'  => function($news)
+            'tableRow'  => function(News $news)
             {
-                /** @var News $news */
                 Hover::modelAttributes($news, ['access_counter']);
 
                 return [

@@ -30,9 +30,8 @@ class AdminGamesController extends BackController
                 trans('app.icon')   => NULL,
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($game)
+            'tableRow' => function(Game $game)
             {
-                /** @var Game $game */
                 return [
                     $game->id,
                     raw($game->icon 

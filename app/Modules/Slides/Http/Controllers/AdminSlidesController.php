@@ -32,9 +32,8 @@ class AdminSlidesController extends BackController
                 trans('app.title')          => 'title',
                 trans('app.category')       => 'slidecat_id', 
             ],
-            'tableRow' => function($slide)
+            'tableRow' => function(Slide $slide)
             {
-                /** @var Slide $slide */
                 Hover::modelAttributes($slide, ['image', 'creator']);
 
                 return [

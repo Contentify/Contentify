@@ -31,10 +31,8 @@ class MatchesController extends FrontController
                 trans('matches::right_team')    => 'right_team_id',
                 trans('matches::score')         => 'left_score'
             ],
-            'tableRow'      => function($match)
+            'tableRow'      => function(Match $match)
             {
-                /** @var Match $match */
-
                 if ($match->game->icon) {
                     $game = HTML::image(
                         $match->game->uploadPath().$match->game->icon, 

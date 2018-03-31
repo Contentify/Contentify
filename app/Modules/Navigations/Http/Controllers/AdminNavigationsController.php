@@ -28,9 +28,8 @@ class AdminNavigationsController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function($navigation)
+            'tableRow' => function(Navigation $navigation)
             {
-                /** @var Navigation $navigation */
                 return [
                     $navigation->id,
                     raw(Hover::modelAttributes($navigation, ['creator'])->pull(), $navigation->title),

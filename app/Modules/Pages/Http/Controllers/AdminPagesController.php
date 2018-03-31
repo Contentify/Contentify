@@ -34,9 +34,8 @@ class AdminPagesController extends BackController
                 trans('app.author')     => 'creator_id', 
                 trans('app.created_at') => 'created_at'
             ],
-            'tableRow'  => function($page)
+            'tableRow'  => function(Page $page)
             {
-                /** @var Page $page */
                 Hover::modelAttributes($page, ['access_counter']);
 
                 switch ($page->pagecat_id) {

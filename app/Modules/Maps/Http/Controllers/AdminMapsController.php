@@ -30,10 +30,8 @@ class AdminMapsController extends BackController
                 trans('app.title')          => 'title',
                 trans('app.object_game')    => 'game_id'
             ],
-            'tableRow' => function($map)
+            'tableRow' => function(Map $map)
             {
-                /** @var Map $map */
-
                 $icon = null;
                 if ($map->image) {
                     Hover::image($map->uploadPath().$map->image);
