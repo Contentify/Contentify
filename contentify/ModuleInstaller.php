@@ -69,7 +69,7 @@ abstract class ModuleInstaller
         /*
          * Update backend navigation
          */
-        (new BackNavGen())->update();
+        (new BackendNavGenerator())->update();
 
         /*
          * Add permissions

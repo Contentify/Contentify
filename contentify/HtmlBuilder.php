@@ -290,15 +290,15 @@ class HtmlBuilder extends OriginalHtmlBuilder
     }
 
     /**
-     * Helper method. Just passes through the HTML code BackNavGen::get() returns.
+     * Helper method. Just passes through the HTML code BackendNavGenerator::get() returns.
      * 
      * @return string
      */
     public function renderBackendNav()
     {
-        $backNavGen = new BackNavGen();
+        $backendNavGenerator = new BackendNavGenerator();
 
-        return $backNavGen->get();
+        return $backendNavGenerator->get();
     }
 
     /**

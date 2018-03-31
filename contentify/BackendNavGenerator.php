@@ -7,9 +7,9 @@ use RuntimeException;
 use View;
 
 /**
- * Backend Navigation Generator class
+ * Backend navigation generator class - generates the navigation of the backend and caches it
  */
-class BackNavGen
+class BackendNavGenerator
 {
 
     /**
@@ -80,7 +80,7 @@ class BackNavGen
                     }
 
                     if (! isset($moduleNavItem['translate']) or $moduleNavItem['translate'] === false) {
-                        $key = 'app.object_'.strtolower($moduleNavItem['title']);
+                        $key = 'app.object_'.snake_case($moduleNavItem['title']);
                         if ($translator->has($key)) {
                             $moduleNavItem['title'] = $translator->get($key);
                         }

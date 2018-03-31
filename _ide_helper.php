@@ -13053,7 +13053,7 @@ namespace Collective\Html {
         
         /**
          * Helper method. Just passes through the HTML code
-         * BackNavGen::get() returns.
+         * BackendNavGenerator::get() returns.
          *
          * @return string 
          * @static 
