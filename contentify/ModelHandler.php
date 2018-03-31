@@ -622,7 +622,7 @@ class ModelHandler
             }
         }
 
-        $controller->alertFlash(trans('app.updated', [trans_object($controller->getModelName())]));
+        $controller->alertFlash(trans('app.updated', [trans_object(basename($controller->getModelName()))]));
         if (Input::get('_form_apply') !== null) {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$id]);
         } else {
@@ -712,7 +712,7 @@ class ModelHandler
 
         UserActivities::addDelete(false, user()->id, $controller->getModelClass());
 
-        $controller->alertFlash(trans('app.deleted', [trans_object($controller->getModelName())]));
+        $controller->alertFlash(trans('app.deleted', [trans_object(basename($controller->getModelName()))]));
         return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
     }
 
@@ -737,7 +737,7 @@ class ModelHandler
 
         $model->restore();
 
-        $controller->alertFlash(trans('app.restored', [trans_object($controller->getModelName())]));
+        $controller->alertFlash(trans('app.restored', [trans_object(basename($controller->getModelName()))]));
         return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
     }
 
