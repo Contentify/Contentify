@@ -9,9 +9,9 @@
 
     {!! Form::smartTextarea('description', trans('app.note'), false) !!}
 
-    {!! Form::smartNumeric('revenues', trans('app.revenues'). ' ('.Config::get('app.currency').')', '0,00') !!}
+    {!! Form::smartNumeric('revenues', trans('app.revenues'). ' ('.Config::get('app.currency').')', '0.00', ['min' => 0, 'step' => '0.1']) !!}
 
-    {!! Form::smartNumeric('expenses', trans('app.expenses'). ' ('.Config::get('app.currency').')', '0,00') !!}
+    {!! Form::smartNumeric('expenses', trans('app.expenses'). ' ('.Config::get('app.currency').')', '0.00', ['min' => 0, 'step' => '0.1']) !!}
 
     {!! Form::smartSelectRelation('user', trans('app.person'), $modelClass, null, true, true) !!}
 

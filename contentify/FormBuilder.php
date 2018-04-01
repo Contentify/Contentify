@@ -174,6 +174,8 @@ class FormBuilder extends OriginalFormBuilder
     /**
      * Create a button element.
      *
+     * @see HTML::button()
+     *
      * @param  string|null $value   The value (= label) of the button
      * @param  array       $options Array with attributes
      * @return string
@@ -183,6 +185,9 @@ class FormBuilder extends OriginalFormBuilder
         if (! array_key_exists('class', $options))
         {
             $options['class'] = 'btn btn-default';
+        }
+        if (! array_key_exists('value', $options)) {
+            $options['value'] = '1'; // Set a value, or the value will be an empty string which evaluates to null
         }
 
         return parent::button($value, $options);
@@ -205,7 +210,9 @@ class FormBuilder extends OriginalFormBuilder
         }
         $options['class'] .= 'numeric-input';
         
-        $partial = self::input('text', $name, $value, $options);
+        #$partial = self::input('text', $name, $value, $options);
+        $partial = self::number($name, $value, $options);
+
         return $partial;
     }
 
@@ -464,16 +471,17 @@ class FormBuilder extends OriginalFormBuilder
     /**
      * Create HTML code for a numeric input element.
      * 
-     * @param  string      $name    The name of the input element
-     * @param  string      $title   The title of the input element
-     * @param  string|null $default The default value
+     * @param  string      $name       The name of the input element
+     * @param  string      $title      The title of the input element
+     * @param  string|null $default    The default value
+     * @param  array       $attributes Additional HTML attributes
      * @return string
      */
-    public function smartNumeric($name, $title, $default = null)
+    public function smartNumeric($name, $title, $default = null, $attributes = array())
     {
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
-            .self::numeric($name, $value)
+            .self::numeric($name, $value, $attributes)
             .self::smartGroupClose();
         return $partial;
     }

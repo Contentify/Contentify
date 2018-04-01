@@ -91,25 +91,26 @@ $(document).ready(function()
         };
 
         /*
-         * Numeric inputs
+         * Numeric inputs - no longer used.
+         * TODO remove when we are sure we really do not need this code
          */
-        $('.numeric-input').keypress(function()
-        {
-            if (! isNaN($(this).val())) {
-                $(this).attr('valid-value', $(this).val());
-            }
-        }).focusout(function()
-        {
-            if (isNaN($(this).val())) {
-                var valid = $(this).attr('valid-value');
-
-                if (valid) {
-                    $(this).val(valid);
-                } else {
-                    $(this).val(0);
-                }
-            }
-        });
+        //$('.numeric-input').keypress(function()
+        //{
+        //    if (! isNaN($(this).val())) {
+        //        $(this).attr('valid-value', $(this).val());
+        //    }
+        //}).focusout(function()
+        //{
+        //    if (isNaN($(this).val())) {
+        //        var valid = $(this).attr('valid-value');
+        //
+        //        if (valid) {
+        //            $(this).val(valid);
+        //        } else {
+        //            $(this).val(0);
+        //        }
+        //    }
+        //});
 
         /*
          * Add datetime picker
@@ -127,7 +128,7 @@ $(document).ready(function()
                     next:       'fa fa-chevron-right',
                     today:      'fa fa-screenshot',
                     clear:      'fa fa-trash'
-                },
+                }
             });
         });
 

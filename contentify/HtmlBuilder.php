@@ -217,7 +217,10 @@ class HtmlBuilder extends OriginalHtmlBuilder
     }
 
     /**
-     * Returns HTML code for a button element. It may include an icon element and a title text.
+     * Returns HTML code for a button element that does not need a form but works via JavaScript.
+     * It may include an icon element and a title text.
+     *
+     * @see Form::button()
      * 
      * @param  string $title      The button title text
      * @param  string $url        The URL the button is targeting at

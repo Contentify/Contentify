@@ -32,8 +32,6 @@ class CashFlow extends BaseModel
 
     protected $rules = [
         'title'     => 'required|min:3',
-        'revenues'  => 'float|min:0',
-        'expenses'  => 'float|min:0',
         'paid'      => 'boolean'
     ];
 

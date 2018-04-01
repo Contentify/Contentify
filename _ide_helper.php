@@ -12075,12 +12075,13 @@ namespace Collective\Html {
          * @param string $name The name of the input element
          * @param string $title The title of the input element
          * @param string $default The default value
+         * @param array $attributes Additional HTML attributes
          * @return string 
          * @static 
          */ 
-        public static function smartNumeric($name, $title, $default = null)
+        public static function smartNumeric($name, $title, $default = null, $attributes = array())
         {
-            return \Contentify\FormBuilder::smartNumeric($name, $title, $default);
+            return \Contentify\FormBuilder::smartNumeric($name, $title, $default, $attributes);
         }
         
         /**
@@ -13011,7 +13012,10 @@ namespace Collective\Html {
         }
         
         /**
-         * Returns HTML code for a button element. It may include an icon element and a title text.
+         * Returns HTML code for a button element that does not need a form but works via JavaScript.
+         * It may include an icon element and a title text.
+         *
+         * @see Form::button()
          *
          * @param string $title The button title text
          * @param string $url The URL the button is targeting at
