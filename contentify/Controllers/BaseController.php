@@ -19,9 +19,9 @@ abstract class BaseController extends Controller
      * The layout that should be used for responses.
      * The concrete controller has to set this value by overwriting it.
      *
-     * @var string
+     * @var string|null
      */
-    protected $layout = '';
+    protected $layout = null;
 
     /**
      * The name of the module
@@ -193,7 +193,7 @@ abstract class BaseController extends Controller
             $this->layout = $layoutName;
         }
 
-        if ( ! is_null($this->layout))
+        if (! is_null($this->layout))
         {
             $this->layout                   = View::make($this->layout);
             $this->layout->page             = null;
