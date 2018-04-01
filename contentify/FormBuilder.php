@@ -432,7 +432,7 @@ class FormBuilder extends OriginalFormBuilder
      * 
      * @param  string      $name    The name of the input element
      * @param  string|null $title   The title of the input element
-     * @param  bool        $editor  Add WYSIWYG editor?
+     * @param  bool        $editor  Add WYSIWYG editor? The editor will create HTML code.
      * @param  string|null $default The default value
      * @return string
      */

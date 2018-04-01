@@ -12059,7 +12059,7 @@ namespace Collective\Html {
          *
          * @param string $name The name of the input element
          * @param string $title The title of the input element
-         * @param bool $editor Add WYSIWYG editor?
+         * @param bool $editor Add WYSIWYG editor? The editor will create HTML code.
          * @param string $default The default value
          * @return string 
          * @static 

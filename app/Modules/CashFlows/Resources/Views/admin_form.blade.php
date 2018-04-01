@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
-    {!! Form::smartTextarea('description', trans('app.note'), false) !!}
+    {!! Form::smartTextarea('description', trans('app.note')) !!}
 
     {!! Form::smartNumeric('revenues', trans('app.revenues'). ' ('.Config::get('app.currency').')', '0.00', ['min' => 0, 'step' => '0.1']) !!}
 
