@@ -106,7 +106,7 @@ class Match extends BaseModel
     {
         parent::boot();
 
-        self::saved(function($match)
+        self::saved(function(self $match)
         {
             /*
              * Apply the right lineup to its team. This makes

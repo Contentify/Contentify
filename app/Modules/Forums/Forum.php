@@ -22,6 +22,7 @@ use User;
  * @property int $level
  * @property int $threads_count
  * @property int $posts_count
+ * @property int|null $latest_thread_id
  * @property \User $creator
  * @property \App\Modules\Forums\Forum $forum
  * @property \App\Modules\Forums\ForumThread $latestThread
@@ -66,7 +67,7 @@ class Forum extends BaseModel
     {
         parent::boot();
 
-        self::saving(function($forum)
+        self::saving(function(self $forum)
         {
             $forums         = [$forum->id];
             $forum->level   = 0;
@@ -95,14 +96,13 @@ class Forum extends BaseModel
              * its parent forum.
              */
             if ($forum->level > 0) {
-                $forum->internal    = $forum->forum->internal;
-                $forum->team_id     = $forum->forum->team_id;
+                $forum->internal = $forum->forum->internal;
+                $forum->team_id  = $forum->forum->team_id;
             }
         });
 
-        self::saved(function($forum)
+        self::saved(function(self $forum)
         {
-            /** @var Forum $subForum */
             foreach ($forum->forums as $subForum) {
                 $subForum->refreshChildrenAccessRules();
             }
@@ -140,7 +140,6 @@ class Forum extends BaseModel
          * Recursive call of this method for all child forums
          */
         foreach ($this->forums as $forum) {
-            /** @var Forum $forum */
             $forum->refreshChildrenAccessRules();
         }
     }

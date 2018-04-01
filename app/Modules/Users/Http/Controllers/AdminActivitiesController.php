@@ -38,7 +38,7 @@ class AdminActivitiesController extends BackController
                 trans('app.id')             => 'id',
                 trans('users::frontend')    => 'frontend', 
                 trans('users::model_class') => 'model_class',
-                trans('users::activity')    => 'activity',
+                trans('users::activity')    => 'activity_id',
                 trans('app.username')       => 'user_id',
                 trans('app.date')           => 'created_at',
             ],

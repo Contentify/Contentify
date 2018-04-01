@@ -41,7 +41,7 @@ class Role extends BaseModel
     {
         parent::boot();
 
-        self::saving(function(Role $role)
+        self::saving(function(self $role)
         {
            if (! $role->slug) {
                $role->createSlug(true, 'name');

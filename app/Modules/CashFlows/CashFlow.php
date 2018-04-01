@@ -11,8 +11,10 @@ use SoftDeletingTrait;
  * @property \Carbon $paid_at
  * @property string $title
  * @property string $description
- * @property int $revenues Incoming cash flow * 1/100
- * @property int $expenses Outgoing cash flow * 1/100
+ * @property float $revenues Incoming cash flow - do not use this value for calculation to avoid problems with floats!
+ * @property float $expenses Outgoing cash flow - do not use this value for calculation to avoid problems with floats!
+ * @property int $integer_revenues Incoming cash flow * 100 - use this value for calculation!
+ * @property int $integer_expenses Outgoing cash flow * 100 - use this value for calculation!
  * @property bool $paid Payment of this cash flow done?
  * @property \User|null $user
  * @property \User $creator
@@ -30,8 +32,8 @@ class CashFlow extends BaseModel
 
     protected $rules = [
         'title'     => 'required|min:3',
-        'revenues'  => 'integer|min:0',
-        'expenses'  => 'integer|min:0',
+        'revenues'  => 'float|min:0',
+        'expenses'  => 'float|min:0',
         'paid'      => 'boolean'
     ];
 
@@ -39,5 +41,49 @@ class CashFlow extends BaseModel
         'user'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
         'creator'  => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    /**
+     * Get the revenues as float. Internally they are stored as integer.
+     *
+     * @param  float|null  $value
+     * @return float
+     */
+    public function getRevenuesAttribute($value)
+    {
+        return $this->integer_revenues / 100;
+    }
+
+    /**
+     * Set the revenues name as float. Internally they are stored as integer.
+     *
+     * @param  float  $value
+     * @return void
+     */
+    public function setRevenuesAttribute($value)
+    {
+        $this->integer_revenues = (int) round($value * 100);;
+    }
+
+    /**
+     * Get the expenses as float. Internally they are stored as integer.
+     *
+     * @param  float|null  $value
+     * @return float
+     */
+    public function getExpensesAttribute($value)
+    {
+        return $this->integer_expenses / 100;
+    }
+
+    /**
+     * Set the expenses name as float. Internally they are stored as integer.
+     *
+     * @param  float  $value
+     * @return void
+     */
+    public function setExpensesAttribute($value)
+    {
+        $this->integer_expenses = (int) round($value * 100);;
+    }
 
 }

@@ -414,7 +414,7 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has read access to the module.
      * 
-     * @return boolean
+     * @return bool
      */
     public function hasAccessRead() 
     {
@@ -424,7 +424,7 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has create access to the module.
      * 
-     * @return boolean
+     * @return bool
      */
     public function hasAccessCreate() 
     {
@@ -434,7 +434,7 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has update access to the module.
      * 
-     * @return boolean
+     * @return bool
      */
     public function hasAccessUpdate() 
     {
@@ -444,7 +444,7 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has delete access to the module.
      * 
-     * @return boolean
+     * @return bool
      */
     public function hasAccessDelete() 
     {

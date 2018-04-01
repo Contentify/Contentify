@@ -28,8 +28,8 @@ class AdminCashFlowsController extends BackController
     {
         $currency = ' ('.Config::get('app.currency_symbol').')';
 
-        $revenues = (int) CashFlow::sum('revenues');
-        $expenses = (int) CashFlow::sum('expenses');
+        $revenues = (int) CashFlow::sum('integer_revenues');
+        $expenses = (int) CashFlow::sum('integer_expenses');
         $total = $revenues - $expenses;
 
         $this->indexPage([
@@ -74,9 +74,9 @@ class AdminCashFlowsController extends BackController
         $totalClass = $revenues >= $expenses ? 'revenues' : 'expenses';
         $modelTable.=
             '<div class="summary">'.
-            '<strong>'.$revenues.'</strong> '.$currency.' '.trans('app.revenues').' - '
-            .'<strong>'.$expenses.'</strong> '.$currency.' '.trans('app.expenses').' = '
-            .'<span class="'.$totalClass.'"<strong>'.$total.'</strong> '.$currency.' '.trans('app.total').'</span>'
+            '<strong>'.($revenues / 100).'</strong> '.$currency.' '.trans('app.revenues').' - '
+            .'<strong>'.($expenses / 100).'</strong> '.$currency.' '.trans('app.expenses').' = '
+            .'<span class="'.$totalClass.'"<strong>'.($total / 100).'</strong> '.$currency.' '.trans('app.total').'</span>'
             .'</div>';
         $page->with('modelTable', $modelTable);
     }

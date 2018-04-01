@@ -32,12 +32,12 @@ class MatchScore extends BaseModel
 
     public static function boot()
     {
-        self::saved(function($matchScore)
+        self::saved(function(self $matchScore)
         {
             $matchScore->match->updateScore();
         });
 
-        self::deleted(function($matchScore)
+        self::deleted(function(self $matchScore)
         {
             $matchScore->match->updateScore();
         });

@@ -9,7 +9,8 @@ use Str;
  * @property int $id
  * @property string $title
  * @property string $tags
- * @property int $gallery_id
+ * @property string $image
+ * @property int|null $gallery_id
  * @property int $width
  * @property int $height
  * @property \App\Modules\Galleries\Gallery $gallery
@@ -38,7 +39,7 @@ class Image extends BaseModel
     {
         parent::boot();
 
-        self::saving(function(Image $image)
+        self::saving(function(self $image)
         {
             /*
              * Retrieve the size of the image and save it.

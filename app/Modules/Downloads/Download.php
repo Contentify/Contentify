@@ -49,7 +49,7 @@ class Download extends BaseModel
     {
         parent::boot();
 
-        self::saving(function(Download $download)
+        self::saving(function(self $download)
         {
             $filename = $download->uploadPath(true).$download->file;
             if (File::isFile($filename)) {

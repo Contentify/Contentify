@@ -97,7 +97,7 @@ class Cup extends BaseModel
     {
         parent::boot();
 
-        self::deleting(function($cup)
+        self::deleting(function(self $cup)
         {
             DB::table('cups_matches')->whereCupId($cup->id)->delete();
 
@@ -108,14 +108,14 @@ class Cup extends BaseModel
             DB::table('cups_referees')->whereCupId($cup->id)->delete();
         });
 
-        self::saving(function($cup)
+        self::saving(function(self $cup)
         {
             if ($cup->isDirty('players_per_team') and $cup->countParticipants()) {
                 throw new MsgException('You cannot change the "players per team" value when a cup has participants!');
             }
         });
 
-        self::saved(function($cup)
+        self::saved(function(self $cup)
         {
             if ($cup->isDirty('closed')) {
                 // cup_users is a helper table that needs manual updates.
