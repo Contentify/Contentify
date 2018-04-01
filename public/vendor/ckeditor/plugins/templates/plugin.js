@@ -12,8 +12,11 @@ CKEDITOR.plugins.add('templates', {
                 {
                     var $data = $(data);
 
+
                     $data.find('option').click(function()
                     {
+                        $(this).off('click');
+
                         $.ajax({
                             url: contentify.baseUrl + 'editor-templates/' + this.value,
                             type: 'GET'

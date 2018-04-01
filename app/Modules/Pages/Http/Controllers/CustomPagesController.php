@@ -57,7 +57,7 @@ class CustomPagesController extends FrontController
 
     /**
      * Show the default impressum page that include info about the CMS.
-     * Note: Don not call it "imprint"!
+     * Note: Do not call it "imprint"!
      * 
      * @return void
      */

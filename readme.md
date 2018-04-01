@@ -19,7 +19,7 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Get the developer version
 
-Clone this repository (`2.3` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
+Clone this repository (`2.4-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
 Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Update
