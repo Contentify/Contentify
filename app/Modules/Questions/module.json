@@ -1,0 +1,12 @@
+{
+    "slug": "Questions",
+    "search": ["questions"],
+    "admin-nav": [
+        {
+            "icon": "tasks",
+            "url": "admin/questions",
+            "category": 2,
+            "position": 10
+        }
+    ]
+}

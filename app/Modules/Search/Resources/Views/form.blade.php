@@ -12,7 +12,7 @@
 
 @if (isset($resultBags))
     @foreach ($resultBags as $resultBag)
-        <h2>{{ trans('search::results_type') }} {{ trans('app.object_'.$resultBag['title']) }}:</h2>
+        <h2>{{ trans('search::results_type') }} "{{ trans('app.object_'.$resultBag['title']) }}":</h2>
         
         <ul>
             @foreach ($resultBag['results'] as $title => $url)
