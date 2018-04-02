@@ -8278,6 +8278,14 @@ textarea.model-search-box input {
   bottom: 40px;
   right: 40px;
 }
+.page-questions-index h3 {
+  padding-left: 10px;
+  border-left: 4px solid #00afff;
+}
+.page-questions-index .text {
+  padding: 20px;
+  background-color: #292929;
+}
 /*
  * Main layout
  */

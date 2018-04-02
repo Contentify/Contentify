@@ -224,6 +224,7 @@ return [
     'paid'              => 'Payment made',
     'note'              => 'Note',
     'person'            => 'Person',
+    'answer'            => 'Answer',
 
     /*
      * Days
@@ -273,6 +274,7 @@ return [
     'object_opponents'      => 'Opponents',
     'object_pages'          => 'Pages',
     'object_partners'       => 'Partners',
+    'object_questions'      => 'Frequently Asked Questions',
     'object_roles'          => 'Roles',
     'object_search'         => 'Search',
     'object_servers'        => 'Servers',
@@ -324,6 +326,7 @@ return [
     'object_partner'            => 'Partner',
     'object_partnercat'         => 'Partner-Category',
     'object_post'               => 'Post',
+    'object_question'           => 'Question',
     'object_role'               => 'Role',
     'object_server'             => 'Server',
     'object_slide'              => 'Slide',

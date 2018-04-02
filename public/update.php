@@ -89,7 +89,7 @@ EOD;
                 `integer_revenues` int(11) NOT NULL DEFAULT '0',
                 `integer_expenses` int(11) NOT NULL DEFAULT '0',
                 `paid_at` timestamp NULL DEFAULT NULL,
-                `paid` tinyint(1) NOT NULL DEFAULT '0',
+                `paid` tinyint(1) NOT NULL DEFAULT '1',
                 `user_id` int(10) UNSIGNED DEFAULT NULL,
                 `creator_id` int(10) UNSIGNED DEFAULT NULL,
                 `updater_id` int(10) UNSIGNED DEFAULT NULL,
@@ -97,7 +97,20 @@ EOD;
                 `created_at` timestamp NULL DEFAULT NULL,
                 `updated_at` timestamp NULL DEFAULT NULL,
                 `deleted_at` timestamp NULL DEFAULT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;"
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
+            "CREATE TABLE `questions` (
+                `id` int(10) UNSIGNED NOT NULL,
+                `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
+                `answer` text COLLATE utf8_unicode_ci,
+                `published` tinyint(1) NOT NULL DEFAULT '0',
+                `position` int(11) NOT NULL DEFAULT '0',
+                `creator_id` int(10) UNSIGNED DEFAULT NULL,
+                `updater_id` int(10) UNSIGNED DEFAULT NULL,
+                `access_counter` int(11) NOT NULL DEFAULT '0',
+                `created_at` timestamp NULL DEFAULT NULL,
+                `updated_at` timestamp NULL DEFAULT NULL,
+                `deleted_at` timestamp NULL DEFAULT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
         ];
 
         return $updateQueries;
@@ -114,6 +127,9 @@ EOD;
     {
         $permissions[4]->cashflows = 4;
         $permissions[5]->cashflows = 4;
+
+        $permissions[4]->questions = 4;
+        $permissions[5]->questions = 4;
     }
 
     /**

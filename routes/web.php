@@ -111,14 +111,12 @@ Route::get('jobs', function()
 /*
  * Testing
  */
-Route::get('test', function() {
+Route::get('dev', function() {
 
-    $controller = new InstallController();
-    $controller->create('cash_flows', function ($table) {
-        $table->text('description')->nullable();
-        $table->integer('revenue')->default(0);
-        $table->integer('expense')->default(0);
-        $table->timestamp('paid_at')->nullable();
-        $table->boolean('paid')->default(false);
-    }, ['user_id'], ['slug']);
+    #$controller = new InstallController();
+    #$controller->create('questions', function($table)
+    #{
+    #    $table->text('answer')->nullable();
+    #    $table->boolean('published')->default(false);
+    #}, [], ['slug']);
 });

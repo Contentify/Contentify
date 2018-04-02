@@ -710,8 +710,15 @@ class InstallController extends Controller
             $table->integer('revenues')->default(0);
             $table->integer('expenses')->default(0);
             $table->timestamp('paid_at')->nullable();
-            $table->boolean('paid')->default(false);
+            $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
+
+        $this->create('questions', function(Blueprint $table)
+        {
+            $table->text('answer')->nullable();
+            $table->boolean('published')->default(true);
+            $table->integer('position')->default(0);
+        }, [], ['slug']);
 
         /*
          * (Re)activate foreign key checks
@@ -978,6 +985,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
                 'partners'      => PERM_DELETE,
+                'questions'     => PERM_DELETE,
                 'ratings'       => PERM_DELETE,
                 'servers'       => PERM_DELETE,
                 'slides'        => PERM_DELETE,
@@ -1023,6 +1031,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'opponents'     => PERM_DELETE,
                 'pages'         => PERM_DELETE,
                 'partners'      => PERM_DELETE,
+                'questions'     => PERM_DELETE,
                 'ratings'       => PERM_DELETE,
                 'servers'       => PERM_DELETE,
                 'slides'        => PERM_DELETE,

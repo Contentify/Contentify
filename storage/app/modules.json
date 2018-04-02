@@ -90,7 +90,8 @@
         "admin-nav": [
             {
                 "icon": "flag",
-                "category": 2
+                "category": 2,
+                "position": 9
             }
         ],
         "id": -543725298,
@@ -395,6 +396,24 @@
         "slug": "Phobos Theme",
         "theme": true,
         "id": -1129226425,
+        "enabled": true,
+        "order": 9001
+    },
+    "Questions": {
+        "basename": "Questions",
+        "slug": "FAQ",
+        "search": [
+            "questions"
+        ],
+        "admin-nav": [
+            {
+                "icon": "tasks",
+                "url": "admin\/questions",
+                "category": 2,
+                "position": 10
+            }
+        ],
+        "id": 2119710534,
         "enabled": true,
         "order": 9001
     },

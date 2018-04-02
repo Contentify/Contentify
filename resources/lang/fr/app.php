@@ -222,6 +222,7 @@ return [
     'paid'              => 'Paiement effectué',
     'note'              => 'Note',
     'person'            => 'Personne',
+    'answer'            => 'Réponse',
 
     /*
      * Days
@@ -272,6 +273,7 @@ return [
     'object_opponents'      => 'Adversaires',
     'object_pages'          => 'Pages',
     'object_partners'       => 'Partenaires',
+    'object_questions'      => 'Foire Aux Questions',
     'object_search'         => 'Rechercher',
     'object_servers'        => 'Serveurs',
     'object_shouts'         => 'Annonce',
@@ -323,6 +325,8 @@ return [
     'object_partner'            => 'Partneraire',
     'object_partnercat'         => 'Type de partenaire',
     'object_post'               => 'Message',
+    'object_question'           => 'Question',
+    'object_role'               => 'Rôle',
     'object_server'             => 'Serveur',
     'object_slide'              => 'Slide',
     'object_slidecat'           => 'Catégorie de slide',
