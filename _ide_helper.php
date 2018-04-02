@@ -13915,7 +13915,7 @@ namespace Contentify\Facades {
          * Adds model attribute values to the content
          *
          * @param object $model A model
-         * @param array $attributes Array of model attribute names
+         * @param string[] $attributes Array of model attribute names
          * @return \Hover 
          * @static 
          */ 

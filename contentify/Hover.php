@@ -2,6 +2,7 @@
 
 namespace Contentify;
 
+use BaseModel;
 use HTML;
 
 class Hover
@@ -42,13 +43,14 @@ class Hover
      * Adds text to the content.
      * 
      * @param string $text The text to add
-     * @return Hover
+     * @return self
      */
     public function text($text)
     {
         if ($text) {
             $this->content .= $text;
         }
+
         return $this;
     }
 
@@ -56,13 +58,14 @@ class Hover
      * Adds a text line to the content.
      * 
      * @param string $line The text line to add
-     * @return Hover
+     * @return self
      */
     public function line($line)
     {
         if ($line) {
             $this->content .= '<p>'.$line.'</p>';
         }
+
         return $this;
     }
 
@@ -72,13 +75,14 @@ class Hover
      * @param string $url        Image URL
      * @param string $alt        Image alt attribute
      * @param array  $attributes Image attributes
-     * @return Hover
+     * @return self
      */
     public function image($url, $alt = null, $attributes = array())
     {
         if ($url) {
             $this->content .= HTML::image($url, $alt, $attributes);
         }
+
         return $this;
     }
 
@@ -86,22 +90,23 @@ class Hover
      * Adds a heading to the content
      * 
      * @param  string $heading The heading to add
-     * @return Hover
+     * @return self
      */
     public function heading($heading)
     {
         if ($heading) {
             $this->content .= '<h3>'.$heading.'</h3>';
         }
+
         return $this;
     }
 
     /**
      * Adds model attribute values to the content
      * 
-     * @param object $model      A model object
-     * @param array  $attributes Array of model attribute names
-     * @return Hover
+     * @param BaseModel $model      A model object
+     * @param string[]  $attributes Array of model attribute names
+     * @return self
      */
     public function modelAttributes($model, $attributes = array())
     {
@@ -126,20 +131,22 @@ class Hover
                     }
                     break;
                 default:
-
+                    // Do nothing
             }
         }
+
         return $this;
     }
 
     /**
      * Clear the content
      * 
-     * @return Hover
+     * @return self
      */
     public function clear()
     {
         $this->content = null;
+
         return $this;
     }
 

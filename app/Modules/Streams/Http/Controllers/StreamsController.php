@@ -23,7 +23,7 @@ class StreamsController extends FrontController
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $streams = Stream::orderBy('online', 'desc')->paginate($perPage)->setPath(Request::url());
+        $streams = Stream::orderBy('online', 'desc')->paginate($perPage);
 
         $this->pageView('streams::index', compact('streams'));
     }

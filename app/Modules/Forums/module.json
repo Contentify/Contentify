@@ -5,14 +5,14 @@
         {
             "icon": "comment",
             "category": 2,
-            "position": 7            
+            "position": 7
         },
         {
             "url": "admin/forum-reports",
             "icon": "exclamation-triangle",
             "translate": "app.object_forum_reports",
             "category": 2,
-            "position": 8        
+            "position": 8
         }
     ]
 }
