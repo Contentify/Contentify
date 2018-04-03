@@ -7,7 +7,12 @@
     
     {!! Form::smartPassword() !!}
 
-    {!! Form::actions(['submit' => trans('auth::login')], false) !!}
+    <div class="form-actions">
+        {!! Form::button(trans('auth::login'), ['type' => 'submit'] ) !!}
+        @if (Config::get('steam-auth.api_key'))
+            <a class="btn btn-default text-right" href="{{ url('auth/steam') }}" title="STEAM {{ trans('auth::login') }}">{!! HTML::fontIcon('steam') !!}</a>
+        @endif
+    </div>
 {!! Form::close() !!}
 
 {!! link_to('auth/restore', trans('auth::password_reset'), ['class' => 'btn btn-default btn-restore']) !!}

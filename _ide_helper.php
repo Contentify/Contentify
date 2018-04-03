@@ -11905,7 +11905,9 @@ namespace Collective\Html {
         /**
          * Create a button element.
          *
-         * @param string $value The value (= label) of the button
+         * @see HTML::button()
+         *
+         * @param string|null $value The value (= label) of the button
          * @param array $options Array with attributes
          * @return string 
          * @static 
