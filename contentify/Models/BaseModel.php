@@ -253,7 +253,7 @@ class BaseModel extends Eloquent
     /**
      * Array of relations used to verify arguments used in the {@link $relationsData}
      *
-     * @var array
+     * @var string[]
      */
     protected static $relationTypes = array(
         self::HAS_ONE, self::HAS_MANY, self::HAS_MANY_THROUGH,
@@ -288,11 +288,11 @@ class BaseModel extends Eloquent
         $relationType = $relation[0];
         $errorHeader  = "Relation '$relationName' on model '".get_called_class();
 
-        if (!in_array($relationType, static::$relationTypes)) {
+        if (! in_array($relationType, static::$relationTypes)) {
             throw new InvalidArgumentException($errorHeader.
             ' should have as first param one of the relation constants of the BaseModel class.');
         }
-        if (!isset($relation[1]) && $relationType != self::MORPH_TO) {
+        if (! isset($relation[1]) && $relationType != self::MORPH_TO) {
             throw new InvalidArgumentException($errorHeader.
             ' should have at least two params: relation type and classname.');
         }
@@ -337,10 +337,10 @@ class BaseModel extends Eloquent
             case self::BELONGS_TO_MANY:
                 $verifyArgs(['table', 'foreignKey', 'otherKey', 'relation']);
                 $relationship = $this->$relationType($relation[1], $relation['table'], $relation['foreignKey'], $relation['otherKey'], $relation['relation']);
-                if(isset($relation['pivotKeys']) && is_array($relation['pivotKeys'])) {
+                if (isset($relation['pivotKeys']) && is_array($relation['pivotKeys'])) {
                     $relationship->withPivot($relation['pivotKeys']);
                 }
-                if(isset($relation['timestamps']) && $relation['timestamps']) {
+                if (isset($relation['timestamps']) && $relation['timestamps']) {
                     $relationship->withTimestamps();
                 }
                 return $relationship;

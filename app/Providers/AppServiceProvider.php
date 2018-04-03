@@ -1,8 +1,10 @@
 <?php namespace App\Providers;
 
+use Blade;
 use Illuminate\Support\ServiceProvider;
+use Jobs;
 use Thujohn\Rss\Rss;
-use Jobs, Validator, Blade;
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -55,8 +57,8 @@ class AppServiceProvider extends ServiceProvider
         */
 
         Jobs::addLazy('updateStreams', \App\Modules\Streams\Api\UpdateStreamsJob::class);
-        Jobs::addLazy('deleteUserActivities', \Contentify\Models\DeleteUserActivitiesJob::class);
-        Jobs::addLazy('backupDatabase', \Contentify\Models\BackupDatabaseJob::class);
+        Jobs::addLazy('deleteUserActivities', \Contentify\Jobs\DeleteUserActivitiesJob::class);
+        Jobs::addLazy('backupDatabase', \Contentify\Jobs\BackupDatabaseJob::class);
 
     }
 

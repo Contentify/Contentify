@@ -1,8 +1,10 @@
 <?php namespace App\Http\Middleware;
 
+use Closure;
+use Crypt;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 use Illuminate\Session\TokenMismatchException;
-use Closure, Crypt, MsgException;
+use MsgException;
 
 class VerifyCsrfToken extends BaseVerifier
 {

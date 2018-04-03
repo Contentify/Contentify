@@ -80,6 +80,12 @@ class News extends BaseModel
         });
     }
 
+    /**
+     * Select only news that match filter criteria such as the category ID
+     *
+     * @param Builder $query
+     * @return Builder|null
+     */
     public function scopeFilter($query)
     {
         if (ContentFilter::has('newscat_id')) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Contentify\Models;
+namespace Contentify\Jobs;
 
 use AbstractJob;
 use UserActivities;
@@ -8,6 +8,9 @@ use UserActivities;
 class DeleteUserActivitiesJob extends AbstractJob
 {
 
+    /**
+     * {@inheritdoc}
+     */
     protected $interval  = 1440; // 60 minutes * 24 = 24h (once per day)
 
     /**

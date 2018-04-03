@@ -120,6 +120,8 @@ class Match extends BaseModel
     }
 
     /**
+     * Select only matches that match filter criteria such as the team ID
+     *
      * @param Builder $query
      * @return Builder
      */

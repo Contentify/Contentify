@@ -1,6 +1,8 @@
 <?php namespace App\Http\Middleware;
 
-use Session, Sentinel, Closure;
+use Closure;
+use Sentinel;
+use Session;
 
 class Authenticate
 {

@@ -1,7 +1,8 @@
 <?php
 
 namespace Contentify;
- 
+
+use Exception;
 use Illuminate\View\Engines\CompilerEngine as OriginalCompilerEngine;
 
 class CompilerEngine extends OriginalCompilerEngine
@@ -15,9 +16,9 @@ class CompilerEngine extends OriginalCompilerEngine
      * @param int        $obLevel
      * @return void
      *
-     * @throws $e
+     * @throws \Exception
      */
-    protected function handleViewException($e, $obLevel)
+    protected function handleViewException(Exception $e, $obLevel)
     {
         parent::handleViewException($e, $obLevel);
     }

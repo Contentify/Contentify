@@ -16,7 +16,7 @@ class Comments
      * 
      * @param string $foreignType Identifier for the content the comments are related to (usually a model class)
      * @param int    $foreignId   ID, if the comments are related to a certain model instance
-     * @return string
+     * @return void
      */
     public function show($foreignType, $foreignId)
     {
@@ -105,6 +105,8 @@ class Comments
         }
 
         echo View::make('comments.form', compact('comment'))->render();
+
+        return null;
     }
 
     /**

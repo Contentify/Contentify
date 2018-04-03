@@ -69,6 +69,7 @@ use Validator;
  * @property \App\Modules\Teams\Team[] $teams
  * @property \App\Modules\Countries\Country $country
  * @property \App\Modules\Languages\Language $language
+ * @property \User[] $friends
  *
  * @method bool hasAccess($permissions, $level = 1)
  * @method bool hasAnyAccess($permissions, $level = 1)
@@ -417,6 +418,7 @@ class User extends SentinelUser implements UserInterface
             }
 
             InterImage::make($filePath.'/'.$filename)->resize(80, 80, function ($constraint) {
+                /** @var \Intervention\Image\Constraint $constraint */
                 $constraint->aspectRatio();
             })->save($filePath.'80/'.$filename);
         }
@@ -484,6 +486,7 @@ class User extends SentinelUser implements UserInterface
     /**
      * Scope a query to only include users who are online.
      *
+     * @param Builder $query The Eloquent Builder object
      * @return Builder
      */
     public function scopeOnline($query)
@@ -505,7 +508,7 @@ class User extends SentinelUser implements UserInterface
             $permissions = (array) $permissions;
         }
 
-        $users = Sentinel::getUserRepository()->get()->filter(function ($user) use ($permissions, $level) {
+        $users = Sentinel::getUserRepository()->get()->filter(function (self $user) use ($permissions, $level) {
             return $user->hasAccess($permissions, $level);
         });
 
