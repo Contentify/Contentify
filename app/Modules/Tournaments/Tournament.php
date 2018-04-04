@@ -31,7 +31,7 @@ class Tournament extends BaseModel
     protected $rules = [
         'title'     => 'required|min:3',
         'short'     => 'required|max:6',
-        'url'       => 'sometimes|url',
+        'url'       => 'nullable||url',
     ];
 
     public static $relationsData = [

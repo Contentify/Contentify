@@ -34,7 +34,7 @@ class Slide extends BaseModel
     protected $rules = [
         'title'         => 'required|min:3',
         'url'           => 'required|url',
-        'position'      => 'sometimes|integer',
+        'position'      => 'nullable||integer',
         'published'     => 'boolean',
         'slidecat_id'   => 'required|integer'
     ];

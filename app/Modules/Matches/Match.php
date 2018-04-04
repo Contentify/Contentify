@@ -79,8 +79,8 @@ class Match extends BaseModel
     protected $rules = [
         'state'     => 'integer|min:0',
         'featured'  => 'boolean',
-        'url'       => 'sometimes|url',
-        'broadcast' => 'sometimes|url',
+        'url'       => 'nullable||url',
+        'broadcast' => 'nullable||url',
     ];
 
     public static $relationsData = [

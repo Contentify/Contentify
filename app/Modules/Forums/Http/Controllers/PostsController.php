@@ -42,7 +42,7 @@ class PostsController extends FrontController
     /**
      * Stores a post
      *
-     * @param int $id The id of the thread
+     * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null
      */
     public function store($id)
@@ -81,7 +81,7 @@ class PostsController extends FrontController
     /**
      * Edits a post
      *
-     * @param int $id The id of the post
+     * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse
      */
     public function edit($id)
@@ -107,7 +107,7 @@ class PostsController extends FrontController
     /**
      * Updates a post
      *
-     * @param int $id The id of the post
+     * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse|null
      */
     public function update($id)
@@ -144,7 +144,7 @@ class PostsController extends FrontController
     /**
      * Deletes a post
      *
-     * @param int $id The id of the post
+     * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse|null
      */
     public function delete($id)
@@ -180,7 +180,7 @@ class PostsController extends FrontController
     /**
      * Reports a post
      *
-     * @param int $id The id of the post
+     * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse
      */
     public function report($id)
@@ -205,7 +205,7 @@ class PostsController extends FrontController
     /**
      * Shows the latest posts of a user
      * 
-     * @param int $userId The id of the user
+     * @param int $userId The ID of the user
      */
     public function showUserPosts($userId)
     {

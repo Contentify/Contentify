@@ -41,7 +41,7 @@ class Award extends BaseModel
 
     protected $rules = [
         'title'         => 'required|min:3',
-        'url'           => 'sometimes|url',
+        'url'           => 'nullable||url',
         'position'      => 'integer',
         'game_id'       => 'integer',
         'tournament_id' => 'nullable|integer',

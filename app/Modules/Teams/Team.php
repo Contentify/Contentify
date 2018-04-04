@@ -43,7 +43,7 @@ class Team extends BaseModel
 
     protected $rules = [
         'title'         => 'required|min:3',
-        'position'      => 'sometimes|integer',
+        'position'      => 'nullable||integer',
         'published'     => 'boolean',
         'teamcat_id'    => 'required|integer',
         'country_id'    => 'nullable|integer',
