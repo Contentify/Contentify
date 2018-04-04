@@ -6,7 +6,6 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $slug
@@ -15,6 +14,8 @@ use SoftDeletingTrait;
  * @property string $lineup
  * @property int $country_id
  * @property string $image
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Matches\Match[] $matches
  * @property \App\Modules\Countries\Country $country
  * @property \User $creator

@@ -9,7 +9,6 @@ use Comment;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $slug
@@ -19,6 +18,9 @@ use SoftDeletingTrait;
  * @property string $thumbnail
  * @property bool $online
  * @property int $viewers
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \User $creator
  */
 class Stream extends BaseModel 

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use User;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property int $round
  * @property int $row
@@ -20,11 +19,13 @@ use User;
  * @property int $left_score
  * @property int $right_score
  * @property int $cup_id
- * @property int $creator_id
  * @property int $created_at
  * @property bool $left_confirmed
  * @property bool $right_confirmed
  * @property int $next_match_id
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Cups\Cup $cup
  * @property \User $creator
  * @property \User|\App\Modules\Cups\Team $left_participant

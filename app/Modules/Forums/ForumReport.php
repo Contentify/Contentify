@@ -5,10 +5,11 @@ namespace App\Modules\Forums;
 use BaseModel;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $text
  * @property int $post_id
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \User $creator
  * @property \User $updater
  * @property \App\Modules\Forums\ForumPost $post

@@ -106,12 +106,14 @@ class ThreadsController extends FrontController
     /**
      * Edits a thread
      * 
-     * @param int $id The id of the thread
+     * @param int $id The ID of the thread
      * @return void
      */
     public function edit($id)
     {
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
+        /** @var ForumPost $forumPost */
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
@@ -125,12 +127,14 @@ class ThreadsController extends FrontController
     /**
      * Updates a thread
      *
-     * @param int $id The id of the thread
+     * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null
      */
     public function update($id)
     {
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
+        /** @var ForumPost $forumPost */
         $forumPost = ForumPost::whereThreadId($forumThread->id)->firstOrFail();
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {
@@ -164,12 +168,13 @@ class ThreadsController extends FrontController
     /**
      * Deletes a thread
      * 
-     * @param int $id The id of the thread
+     * @param int $id The ID of the thread
      */
     public function delete($id)
     {
-        $forumPost = ForumPost::isAccessible()->findOrFail($id);   
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::findOrFail($id);
         $forum = $forumThread->forum;
 
@@ -206,6 +211,7 @@ class ThreadsController extends FrontController
             return null;
         }
 
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $forumThread->sticky = 1 - $forumThread->sticky;
@@ -228,6 +234,7 @@ class ThreadsController extends FrontController
             return null;
         }
 
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $forumThread->closed = 1 - $forumThread->closed;
@@ -270,7 +277,8 @@ class ThreadsController extends FrontController
             $this->alertError(trans('app.access_denied'));
             return null;
         }
-        
+
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         $oldForum = $forumThread->forum;
@@ -295,6 +303,7 @@ class ThreadsController extends FrontController
      */
     public function globalSearch($subject)
     {
+        /** @var ForumThread[] $forumThreads */
         $forumThreads = ForumThread::isAccessible()->where('forum_threads.title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = array();

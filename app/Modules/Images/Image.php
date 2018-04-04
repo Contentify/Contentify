@@ -6,13 +6,15 @@ use BaseModel;
 use Str;
 
 /**
- * @property int $id
  * @property string $title
  * @property string $tags
  * @property string $image
  * @property int|null $gallery_id
  * @property int $width
  * @property int $height
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Galleries\Gallery $gallery
  * @property \User $creator
  */
@@ -58,7 +60,7 @@ class Image extends BaseModel
      * is displayed as a part of a gallery. Images do not always 
      * have a slug, because they do not always have a title.
      *
-     * @return int
+     * @return string|null
      */
     public function gallerySlug()
     {

@@ -7,7 +7,6 @@ use HTML;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $url
@@ -16,6 +15,8 @@ use SoftDeletingTrait;
  * @property int $game_id
  * @property int|null $tournament_id
  * @property int|null $team_id
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Games\Game $game
  * @property \App\Modules\Tournaments\Tournament $tournament
  * @property \App\Modules\Teams\Team $team

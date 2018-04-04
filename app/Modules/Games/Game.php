@@ -6,11 +6,12 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $short
  * @property string $icon
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Awards\Award[] $awards
  * @property \App\Modules\Maps\Map[] $maps
  * @property \App\Modules\Matches\Match[] $matches

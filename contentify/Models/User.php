@@ -62,6 +62,7 @@ use Validator;
  * @property int $cup_points
  * @property int $posts_count
  * @property bool $banned
+ * @property int $access_counter
  * @property \Carbon $created_at
  * @property \Carbon $updated_at
  * @property \Carbon $last_active

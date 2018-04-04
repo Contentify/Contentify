@@ -10,7 +10,6 @@ use InterImage;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $slug
@@ -19,6 +18,9 @@ use SoftDeletingTrait;
  * @property string $file
  * @property int $file_size
  * @property bool $is_image
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Downloads\Downloadcat $downloadcat
  * @property \User $creator
  */

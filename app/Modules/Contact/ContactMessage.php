@@ -8,7 +8,6 @@ use SoftDeletingTrait;
 use User;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $username
  * @property string $email

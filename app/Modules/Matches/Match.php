@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property \Carbon $played_at
  * @property int $state
@@ -25,6 +24,9 @@ use SoftDeletingTrait;
  * @property int $right_team_id
  * @property int $left_score
  * @property int $right_score
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Matches\MatchScore[] $match_scores
  * @property \App\Modules\Games\Game $game
  * @property \App\Modules\Tournaments\Tournament $tournament

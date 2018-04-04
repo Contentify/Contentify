@@ -27,12 +27,16 @@ class EventsController extends FrontController
     /**
      * Show an event
      * 
-     * @param  int $id The id of the event
+     * @param  int $id The ID of the event
      * @return void
      */
     public function show($id)
     {
+        /** @var Event $event */
         $event = Event::findOrFail($id);
+
+        $event->access_counter++;
+        $event->save();
 
         $this->title($event->title);
 

@@ -6,7 +6,6 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property \Carbon $paid_at
  * @property string $title

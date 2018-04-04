@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $ip
@@ -16,6 +15,8 @@ use SoftDeletingTrait;
  * @property string $description
  * @property bool $published
  * @property int $game_id
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Games\Game $game
  * @property \User $creator
  */

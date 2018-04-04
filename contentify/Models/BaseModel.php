@@ -14,6 +14,9 @@ use InterImage;
 use InvalidArgumentException;
 use ValidatingTrait;
 
+/**
+ * @property int $id
+ */
 class BaseModel extends Eloquent
 {
 
@@ -44,7 +47,9 @@ class BaseModel extends Eloquent
      * @param  Builder $query Apply filters to this query
      * @return Builder
      */
-    public function scopeFilter($query) { }
+    public function scopeFilter($query) {
+
+    }
 
     /**
      * Path to uploaded files.

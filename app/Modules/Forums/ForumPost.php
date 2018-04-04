@@ -11,12 +11,13 @@ use SoftDeletingTrait;
 use User;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $text
  * @property int $thread_id
  * @property int $level
  * @property bool $root
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \User $creator
  * @property \User $updater
  * @property \App\Modules\Forums\ForumThread $thread

@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $code
  * @property string $url
  * @property bool $published
  * @property int $advertcat_id
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Adverts\Advertcat $advertcat
  * @property \User $creator
  */

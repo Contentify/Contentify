@@ -5,7 +5,6 @@ namespace App\Modules\Matches;
 use BaseModel;
 
 /**
- * @property int $id
  * @property int $left_score
  * @property int $right_score
  * @property int $map_id

@@ -6,7 +6,6 @@ use BaseModel;
 use File;
 
 /**
- * @property int $id
  * @property string $text
  * @property \User $creator
  */

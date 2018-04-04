@@ -6,7 +6,6 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property \App\Modules\Pages\Page[] $pages

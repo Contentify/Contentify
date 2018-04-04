@@ -6,11 +6,12 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property int $game_id
  * @property string $image
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Games\Game $game
  * @property \User $creator
  */

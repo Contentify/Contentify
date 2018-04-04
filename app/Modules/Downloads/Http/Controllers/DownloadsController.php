@@ -38,6 +38,7 @@ class DownloadsController extends FrontController
      */
     public function showCategory($id)
     {
+        /** @var Downloadcat $downloadcat */
         $downloadcat = Downloadcat::findOrFail($id);
 
         $downloadcat->access_counter++;

@@ -9,7 +9,6 @@ use MsgException;
 use User;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $slug
@@ -26,6 +25,9 @@ use User;
  * @property bool $published
  * @property bool $closed
  * @property string $image
+ * @property int $creator_id
+ * @property int $updater_id
+ * @property int $access_counter
  * @property \App\Modules\Games\Game $game
  * @property \User[] $referees
  * @property \User $creator

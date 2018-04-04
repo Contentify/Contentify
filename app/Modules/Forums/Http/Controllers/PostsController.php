@@ -51,6 +51,7 @@ class PostsController extends FrontController
         $forumPost->creator_id = user()->id;
         $forumPost->thread_id = $id;
 
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
         if ($forumThread->closed) {
@@ -85,6 +86,7 @@ class PostsController extends FrontController
      */
     public function edit($id)
     {
+        /** @var ForumPost $forumPost */
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         if (! ($this->hasAccessUpdate() or $forumPost->creator_id == user()->id)) {

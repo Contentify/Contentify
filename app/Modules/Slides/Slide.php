@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $text
@@ -16,13 +15,15 @@ use SoftDeletingTrait;
  * @property bool $published
  * @property int $slidecat_id
  * @property string $image
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Slides\Slidecat $slidecat
  * @property \User $creator
  */
 class Slide extends BaseModel
 {
 
-    use SoftDeletingTrait;    
+    use SoftDeletingTrait;
 
     protected $dates = ['deleted_at'];
 

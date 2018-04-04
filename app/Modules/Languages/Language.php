@@ -6,7 +6,6 @@ use BaseModel;
 use Exception;
 
 /**
- * @property int $id
  * @property string $title
  * @property string $code
  */

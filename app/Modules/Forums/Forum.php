@@ -10,7 +10,6 @@ use SoftDeletingTrait;
 use User;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $slug
@@ -23,6 +22,8 @@ use User;
  * @property int $threads_count
  * @property int $posts_count
  * @property int|null $latest_thread_id
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \User $creator
  * @property \App\Modules\Forums\Forum $forum
  * @property \App\Modules\Forums\ForumThread $latestThread

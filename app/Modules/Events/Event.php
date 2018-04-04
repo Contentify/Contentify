@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property \Carbon $starts_at
  * @property string $title
@@ -16,6 +15,9 @@ use SoftDeletingTrait;
  * @property string $url
  * @property string $location
  * @property string $image
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \User $creator
  */
 class Event extends BaseModel

@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use User;
 
 /**
- * @property int $id
  * @property string $title
  * @property string $slug
  * @property string $password
  * @property string $image
  * @property bool $invisible
  * @property int $cup_points
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Cups\Cup[] $cups
  * @property \User[] $members
  * @property \User[] $organizers
@@ -155,7 +157,7 @@ class Team extends BaseModel
      * - If an array with member IDs is passed, remove these members.
      * - If no parameter is passed, remove all(!) members.
      *
-     * @param array $memberIds Array with IDs of the members
+     * @param int[] $memberIds Array with IDs of the members
      * @return void
      */
     public function removeMembers($memberIds = array())

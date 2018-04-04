@@ -6,7 +6,6 @@ use SoftDeletingTrait;
 use StiModel;
 
 /**
- * @property int $id
  * @property \Carbon $deleted_at
  * @property \Carbon $published_at
  * @property string $title
@@ -16,6 +15,9 @@ use StiModel;
  * @property bool $internal
  * @property bool $enable_comments
  * @property int $pagecat_id
+ * @property int $access_counter
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \App\Modules\Pages\Pagecat $pagecat
  * @property \User $creator
  */
