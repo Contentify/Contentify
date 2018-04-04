@@ -5,16 +5,15 @@ namespace App\Modules\Contact;
 use BaseModel;
 
 /**
- * This is only a helper model for validation.
+ * NOTE: This is only a helper model for validation!
  *
  * @property string $username
  * @property string $email
- * @property string $title
  * @property int $team_id
  * @property string $role
  * @property string $text
  */
-class JoinMessage extends BaseModel
+class ApplicationMessage extends BaseModel
 {
 
     protected $fillable = ['username', 'email', 'team_id', 'role', 'text'];

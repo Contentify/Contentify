@@ -13,5 +13,5 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
 ModuleRoute::get('contact', 'ContactController@index');
 ModuleRoute::post('contact/store', 'ContactController@store');
 
-ModuleRoute::get('join-us', 'JoinController@index');
-ModuleRoute::post('join-us/store', 'JoinController@store');
+ModuleRoute::get('application', 'ApplicationController@index');
+ModuleRoute::post('application/store', 'ApplicationController@store');

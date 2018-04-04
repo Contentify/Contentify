@@ -12,7 +12,7 @@ return array(
     */
 
     'message_sent'  => 'Merci! Votre message a été envoyé.',
-    'application'   => 'Motivation', // If the user applies for a role in one of the teams
+    'application'   => 'Candidature', // If the user applies for a role in one of the teams
 
     /*
      * Email
