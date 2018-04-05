@@ -31,11 +31,11 @@ abstract class BackController extends BaseController
         View::composer('backend.layout_main', function($view) use ($self)
         { 
             /*
-             * Contact messages
+             * Count contact messages
              */
             $contactMessages = null;
             if (user()->hasAccess('contact', PERM_READ)) {
-                $count = DB::table('contact_messages')->where('new', true)->count();
+                $count = DB::table('contact_messages')->whereNull('deleted_at')->where('new', true)->count();
                 
                 if ($count > 0) {
                     $contactMessages = link_to('admin/contact', Lang::choice('app.new_messages', $count));
