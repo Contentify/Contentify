@@ -31,7 +31,7 @@ abstract class BackController extends BaseController
         View::composer('backend.layout_main', function($view) use ($self)
         { 
             /*
-             * Count contact messages
+             * Count contact messages and if more than zero create link
              */
             $contactMessages = null;
             if (user()->hasAccess('contact', PERM_READ)) {

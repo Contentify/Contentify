@@ -10,6 +10,7 @@ $(document).ready(function()
     if (! category) {
         category = 0;
     }
+    $('#sidebar .category:eq(' + category + ')').addClass('initial-active');
     $('#sidebar .category:eq(' + category + ') .items').css('height', 'auto');
 
     var module = sessionStorage.getItem(moduleSessionKey);
@@ -31,6 +32,7 @@ $(document).ready(function()
             var height = $items.height();
 
             if ($(this).index() == index) {
+                $(this).addClass('active');
                 if (height == 0) {
                     $items.css('height', 'auto');
                     height = $items.height();
@@ -39,12 +41,13 @@ $(document).ready(function()
                     $items.animate({height: height}, {duration: duration, queue: false});
                 }
             } else {
+                $(this).removeClass('active');
                 if (height > 0) {
                     $items.animate({height: 0}, {duration: duration, queue: false});
                 }
             }
 
-            $('#sidebar .category').removeClass('active');
+            $('#sidebar .category').removeClass('initial-active');
         });
     }
 

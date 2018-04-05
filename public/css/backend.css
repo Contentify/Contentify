@@ -7085,6 +7085,16 @@ ul.pagination li.active span {
 .bootstrap-datetimepicker-widget td.active:hover {
   background-color: #00afff !important;
 }
+.bootstrap-datetimepicker-widget td.today:before {
+  border-bottom: 7px solid #00afff !important;
+}
+.bootstrap-datetimepicker-widget td.active,
+.bootstrap-datetimepicker-widget td.active:hover {
+  background-color: #00afff !important;
+}
+.bootstrap-datetimepicker-widget td span.active {
+  background-color: #00afff !important;
+}
 /* Tags */
 .bootstrap-tagsinput input {
   display: inline-block;
@@ -7196,7 +7206,7 @@ fieldset[disabled] .page .table .icon-link.active {
   color: #ffffff;
   background-color: #333333;
 }
-/* Infotext */
+/* Info text */
 .info-text {
   color: #999;
 }
@@ -7887,11 +7897,19 @@ header .header-logo {
   padding: 10px 20px;
   margin-bottom: 1px;
   background-color: #26333e;
-  color: #82a4c0;
+  color: rgba(130, 165, 192, 0.5);
+  font-weight: bold;
   text-transform: uppercase;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+#sidebar .navigation .category .head .fas {
+  position: absolute;
+  right: 20px;
+  line-height: 1.42857143;
+  opacity: 0.33;
+  transition: all 0.1s linear;
 }
 #sidebar .navigation .category .items {
   height: 0;
@@ -7920,7 +7938,14 @@ header .header-logo {
   border-left: 5px #00afff solid;
   background-color: #1e2932;
 }
-#sidebar .navigation .category.active .items {
+#sidebar .navigation .category.active .head .fas {
+  transform: rotate(90deg);
+}
+#sidebar .navigation .category.initial-active .head .fas {
+  transform: rotate(90deg);
+  transition: none;
+}
+#sidebar .navigation .category.initial-active .items {
   height: auto;
 }
 #sidebar .hamburger {
@@ -7938,8 +7963,9 @@ header .header-logo {
     padding: 10px !important;
     font-size: 11px;
   }
-  #sidebar .navigation .head span,
-  #sidebar .navigation .item span {
+  #sidebar .navigation .head .full,
+  #sidebar .navigation .item span,
+  #sidebar .navigation .fas {
     display: none;
   }
 }

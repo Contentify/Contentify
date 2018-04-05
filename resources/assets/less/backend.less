@@ -148,6 +148,9 @@ ul.pagination {
 /* Datetime Picker */
 .date-time-picker .input-group-addon { cursor: pointer; }
 .bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover { background-color: @blue !important }
+.bootstrap-datetimepicker-widget td.today:before { border-bottom: 7px solid @blue !important; }
+.bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover { background-color: @blue !important; }
+.bootstrap-datetimepicker-widget td span.active { background-color: @blue !important; }
 
 /* Tags */
 .bootstrap-tagsinput {
@@ -157,7 +160,7 @@ ul.pagination {
 /* Icon links */
 .page .table .icon-link { .btn(); .btn-default(); .btn-xs(); font-size: 13px }
 
-/* Infotext */
+/* Info text */
 .info-text { color: #999 }
 
 /* Alert */
@@ -466,9 +469,11 @@ header {
                 padding: 10px 20px;
                 margin-bottom: 1px;
                 background-color: lighten(@bgblack, 2%);
-                color: #82a4c0;
+                color: rgba(130, 165, 192, 0.5);
+                font-weight: bold;
                 text-transform: uppercase;
                 .text-overflow();
+                .fas { position: absolute; right: 20px; line-height: @line-height-base; opacity: 0.33; transition: all 0.1s linear; }
             }
             .items {
                 height: 0;
@@ -495,8 +500,10 @@ header {
                     background-color: darken(@bgblack, 2%);
                 }
             }
+            &.active .head .fas { transform: rotate(90deg); }
+            &.initial-active .head .fas { transform: rotate(90deg); transition: none }
         }
-        .category.active .items {
+        .category.initial-active .items {
             height: auto;
         }
     }
@@ -508,7 +515,7 @@ header {
         .account { display: none; }
         .navigation {
             .head { padding: 10px !important; font-size: 11px }
-            .head span, .item span { display: none }
+            .head .full, .item span, .fas { display: none }
         }
     }
 }

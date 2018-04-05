@@ -3,7 +3,8 @@
     <!-- Category 1 -->
     <div class="category"> 
         <a href="#" class="head">
-            Daily<span> Content</span>
+            <span>Daily<span class="full"> Content</span></span>
+            {!! HTML::fontIcon('angle-right') !!}
         </a>
         <div class="items">
             @foreach ($navCategories[1] as $navItem)
@@ -17,7 +18,8 @@
     <!-- Category 2 -->
     <div class="category"> 
         <a href="#" class="head">
-            Perma<span>nent Content</span>
+            <span>Perma<span class="full">nent Content</span></span>
+            {!! HTML::fontIcon('angle-right') !!}
         </a>
         <div class="items">
             @foreach ($navCategories[2] as $navItem)
@@ -31,7 +33,8 @@
     <!-- Category 3 -->
     <div class="category">   
         <a href="#" class="head">
-            Esports<span> Content</span>
+            <span>Esports<span class="full"> Content</span></span>
+            {!! HTML::fontIcon('angle-right') !!}
         </a>
         <div class="items">        
             @foreach ($navCategories[3] as $navItem)
@@ -45,7 +48,8 @@
     <!-- Category 4 -->
     <div class="category"> 
         <a href="#" class="head">
-            Website
+            <span>Website</span>
+            {!! HTML::fontIcon('angle-right') !!}
         </a>
         <div class="items">
             @foreach ($navCategories[4] as $navItem)
