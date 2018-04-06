@@ -223,6 +223,7 @@ return [
     'note'              => 'Note',
     'person'            => 'Personne',
     'answer'            => 'Réponse',
+    'export'            => 'Export',
 
     /*
      * Days

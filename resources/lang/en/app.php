@@ -225,6 +225,7 @@ return [
     'note'              => 'Note',
     'person'            => 'Person',
     'answer'            => 'Answer',
+    'export'            => 'Export',
 
     /*
      * Days

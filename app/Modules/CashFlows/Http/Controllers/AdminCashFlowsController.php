@@ -5,6 +5,7 @@ namespace App\Modules\CashFlows\Http\Controllers;
 use App\Modules\CashFlows\CashFlow;
 use BackController;
 use Config;
+use Contentify\CsvWriter;
 use Hover;
 use HTML;
 use ModelHandlerTrait;
@@ -33,6 +34,7 @@ class AdminCashFlowsController extends BackController
         $total = $revenues - $expenses;
 
         $this->indexPage([
+            'buttons'   => ['new', HTML::button('CSV '.trans('app.export'), url('admin/cash-flows/export'))],
             'tableHead' => [
                 trans('app.id')                 => 'id',
                 trans('app.paid')               => 'paid',
@@ -79,6 +81,49 @@ class AdminCashFlowsController extends BackController
             .'<span class="'.$totalClass.'"<strong>'.($total / 100).'</strong> '.$currency.' '.trans('app.total').'</span>'
             .'</div>';
         $page->with('modelTable', $modelTable);
+    }
+
+    /**
+     * Export all cash flows as a .CSV file
+     */
+    public function export()
+    {
+        $cashFlows = CashFlow::all();
+
+        $csvWriter = new CsvWriter();
+
+        $csvWriter->insertOne([
+            trans('app.id'),
+            trans('app.title'),
+            trans('app.description'),
+            trans('app.revenues'),
+            trans('app.expenses'),
+            trans('app.paid'),
+            trans('app.date'),
+            trans('app.person'),
+        ]);
+
+        foreach ($cashFlows as $cashFlow) {
+            $record = [
+                $cashFlow->id,
+                $cashFlow->title,
+                $cashFlow->description,
+                $cashFlow->revenues,
+                $cashFlow->expenses,
+                $cashFlow->paid,
+                $cashFlow->paid_at->dateTime(),
+                $cashFlow->user_id,
+            ];
+
+            $csvWriter->insertOne($record);
+        }
+
+        $headers = [
+            'Content-type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="download.csv"',
+        ];
+
+        return \Response::make($csvWriter->getContent(), 200, $headers);
     }
 
 }

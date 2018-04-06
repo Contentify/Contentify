@@ -60,6 +60,7 @@ class DownloadsController extends FrontController
      */
     public function show($id)
     {
+        /** @var Download $download */
         $download = Download::findOrFail($id);
 
         $this->title($download->title);
