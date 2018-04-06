@@ -105,7 +105,7 @@ class ModelHandler
                         $buttons .= button(trans('app.config'), $url, 'cog');
                         break;
                     default:
-                        $buttons = $button;
+                        $buttons .= $button;
                 }
             }
         }
