@@ -248,7 +248,7 @@ ul.pagination {
         margin: 20px 0; text-align: center;
         a { box-sizing: border-box; display: inline-block; padding: 10px; }
         a span { display: block; width: 60px; height: 60px; margin: 0 10px; background-color: @blue; }
-        a:hover span { background-color: lighten(@blue, 20%) }
+        a:hover span { background-color: lighten(@blue, 10%) }
         a:active { box-shadow: none; transform: translateY(5px); transition: all 0.08s linear; }
         i { display: block; font-size: 20px; color: white; line-height: 60px }
     }
@@ -521,7 +521,7 @@ header {
         .account { display: none; }
         .navigation {
             .head { padding: 10px !important; font-size: 11px }
-            .head .full, .item span, .fas { display: none }
+            .head .full, .item span, .fa-angle-right { display: none }
         }
     }
 }
