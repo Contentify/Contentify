@@ -7492,7 +7492,7 @@ fieldset[disabled] .page-images .image .actions a.active {
   background-color: #00afff;
 }
 .page-dashboard .quick-access a:hover span {
-  background-color: #66cfff;
+  background-color: #33bfff;
 }
 .page-dashboard .quick-access a:active {
   box-shadow: none;
@@ -7978,7 +7978,7 @@ header .header-logo {
   }
   #sidebar .navigation .head .full,
   #sidebar .navigation .item span,
-  #sidebar .navigation .fas {
+  #sidebar .navigation .fa-angle-right {
     display: none;
   }
 }
@@ -8034,14 +8034,15 @@ header .header-logo {
   margin-bottom: 40px;
   padding: 20px 0 20px 40px;
   border-bottom: 1px solid silver;
+  font-size: 18px;
   font-weight: bold;
 }
 .page-head i {
   display: inline-block;
-  min-width: 16px;
+  width: 30px;
   margin-right: 10px;
-  padding: 2px 3px;
   border-radius: 3px;
+  line-height: 30px;
   background-color: #00afff;
   color: white;
   text-align: center;

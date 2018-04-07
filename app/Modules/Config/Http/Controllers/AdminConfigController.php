@@ -152,7 +152,8 @@ class AdminConfigController extends BackController
              .phpinfodisplay td,.phpinfodisplay  th { border: 1px solid silver; overflow-wrap: break-word; }\n
              .phpinfodisplay .h { background-color: #DDD }\n
              .phpinfodisplay .e { background-color: #EEE }\n
-             .phpinfodisplay .v { background-color: white }</style>\n". // Override the classes
+             .phpinfodisplay .v { background-color: white }\n
+             .phpinfodisplay table { width: 100%; box-shadow: none; }</style>\n". // Override the classes
              $matches[2]. // $matches[2] = body information
              "\n</div>\n");
     }
