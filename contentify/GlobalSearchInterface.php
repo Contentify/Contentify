@@ -2,6 +2,9 @@
 
 namespace Contentify;
 
+/**
+ * Interface for controllers that provide results for the global search in the frontend.
+ */
 interface GlobalSearchInterface {
 
 

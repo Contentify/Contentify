@@ -37,5 +37,5 @@
 
     {!! Form::smartTextarea('app::analytics', trans('config::analytics'), false) !!} 
 
-    {!! Form::actions(['submit' => trans('app.update')], false) !!}
+    {!! Form::actions(['submit' => trans('app.update')]) !!}
 {!! Form::close() !!}

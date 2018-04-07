@@ -11,6 +11,7 @@
  */
 
 @textblack: rgb(85, 85, 85);
+@textdarkgray: #7f8891;
 @bgblack: #222e38;
 @blue: #00afff;
 @hoverblue: darken(@blue, 5%);
@@ -46,9 +47,12 @@ h1.page-title.model-index { display: none }
 h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
 
 /* Form */
-.form-errors { }
+.form-errors {
+    margin: 20px 0; padding: 20px; border: 1px solid #e7ecf0; font-weight: bold; color: @red;
+    li { margin-left: 20px;}
+}
 .form-group {
-    label { .text-overflow(); }
+    label { .text-overflow(); color: @textdarkgray }
     label:after { /* content: ':'; */ }
     input, select, textarea {
         .form-control();
@@ -57,6 +61,7 @@ h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
         border-radius: 0;
         background-color: #f5f5f5;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        color: @textdarkgray;
     }
     input[type=checkbox] { width: auto; height: auto; margin-left: 0 }
     select[multiple] { height: auto; }
@@ -106,10 +111,11 @@ h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
 
 /* Search-Box */
 .model-search-box input[type=text] {
-    .form-control(); display: inline-block; max-width: 170px; .background-image('img/default/searchbox_bg.png'); background-position: 10px center; background-repeat: no-repeat; text-indent: 20px;
-    &:focus { .focus() }
+    .form-control(); display: inline-block; width: 150px; .background-image('img/default/searchbox_bg.png'); background-position: 10px center; background-repeat: no-repeat; text-indent: 20px; transition: width .3s ease-in-out;
+    &:focus { .focus(); width: 170px }
 }
 .model-search-box input[type=submit] { vertical-align: inherit; }
+
 .toolbar .model-search-box { display: inline; float: right; }
 @media (max-width: 805px) {
     .toolbar button { margin-bottom: 10px; }
@@ -334,24 +340,24 @@ ul.pagination {
 
 body {
     font-size: 13px;
-    color: @textblack;
+    color: @textdarkgray;
     font-family: @font-family;
     background-color: @white;
 }
 
 a {
-    color: @textblack;
+    color: @textdarkgray;
     text-decoration: none;
     &:focus {
-        color: @textblack;
+        color: @textdarkgray;
         text-decoration: none;
     }
     &:hover {
-        color: @textblack;
+        color: @textdarkgray;
         text-decoration: none;
     }
     &:active {
-        color: @textblack;
+        color: @textdarkgray;
         text-decoration: none;
     }
 }
@@ -500,8 +506,8 @@ header {
                     background-color: darken(@bgblack, 2%);
                 }
             }
-            &.active .head .fas { transform: rotate(90deg); }
-            &.initial-active .head .fas { transform: rotate(90deg); transition: none }
+            &.active .head .fas { transform: rotate(90deg); opacity: 0.66; }
+            &.initial-active .head .fas { transform: rotate(90deg);  opacity: 0.66; transition: none }
         }
         .category.initial-active .items {
             height: auto;

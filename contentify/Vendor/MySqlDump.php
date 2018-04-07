@@ -246,12 +246,12 @@ class MySqlDump
 
         foreach ($this->db_handler->query("SELECT * FROM `$tableName`", PDO::FETCH_NUM) as $row)
         {
-            $vals = array();
-            foreach ($row as $val)
+            $values = array();
+            foreach ($row as $value)
             {
-                $vals[] = is_null($val) ? "NULL" : $this->db_handler->quote($val);
+                $values[] = is_null($value) ? "NULL" : $this->db_handler->quote($value);
             }
-            $this->write("INSERT INTO `$tableName` VALUES(" . implode(", ", $vals) . ");\n");
+            $this->write("INSERT INTO `$tableName` VALUES(" . implode(", ", $values) . ");\n");
         }
 
         $this->write("\n");

@@ -25,6 +25,7 @@ class AdminTeamsController extends BackController
     public function index()
     {
         $this->indexPage([
+            'buttons'   => ['new', HTML::button(trans('app.object_members'), url('admin/members'), 'users')],
             'tableHead' => [
                 trans('app.id')         => 'id',
                 trans('app.published')  => 'published', 

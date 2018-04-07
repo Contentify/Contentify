@@ -58,6 +58,7 @@ class AdminDiagController extends BackController
             'Server.software'           => $_SERVER['SERVER_SOFTWARE'],
             'Laravel.version'           => $appClass::VERSION,
             'Jobs.last_execution'       => $cronJobInfo,
+            'App.version'               => Config::get('app.version'),
             'App.environment'           => App::environment(),
             'App.url'                   => Config::get('app.url'),
             'App.debug'                 => (int) Config::get('app.debug'),

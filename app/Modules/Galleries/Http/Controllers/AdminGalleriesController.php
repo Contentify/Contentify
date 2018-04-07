@@ -25,6 +25,7 @@ class AdminGalleriesController extends BackController
     public function index()
     {
         $this->indexPage([
+            'buttons'   => ['new', HTML::button(trans('app.object_images'), url('admin/images'), 'image')],
             'tableHead' => [
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'

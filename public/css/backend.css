@@ -6680,10 +6680,21 @@ h2.section {
   font-weight: bold;
 }
 /* Form */
+.form-errors {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #e7ecf0;
+  font-weight: bold;
+  color: #f26175;
+}
+.form-errors li {
+  margin-left: 20px;
+}
 .form-group label {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #7f8891;
 }
 .form-group label:after {
   /* content: ':'; */
@@ -6710,6 +6721,7 @@ h2.section {
   border-radius: 0;
   background-color: #f5f5f5;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  color: #7f8891;
 }
 .form-group input:focus,
 .form-group select:focus,
@@ -6968,11 +6980,12 @@ fieldset[disabled] .modal .modal-footer button.active {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   display: inline-block;
-  max-width: 170px;
+  width: 150px;
   background: url('../img/default/searchbox_bg.png');
   background-position: 10px center;
   background-repeat: no-repeat;
   text-indent: 20px;
+  transition: width 0.3s ease-in-out;
 }
 .model-search-box input[type=text]:focus {
   border-color: #66afe9;
@@ -7003,6 +7016,7 @@ textarea.model-search-box input[type=text] {
 .model-search-box input[type=text]:focus {
   box-shadow: 0 0 0 2px #eee;
   border-color: silver;
+  width: 170px;
 }
 .model-search-box input[type=submit] {
   vertical-align: inherit;
@@ -7711,24 +7725,24 @@ textarea.editor-images .actions input {
  */
 body {
   font-size: 13px;
-  color: #555555;
+  color: #7f8891;
   font-family: 'Open Sans', sans-serif;
   background-color: #ffffff;
 }
 a {
-  color: #555555;
+  color: #7f8891;
   text-decoration: none;
 }
 a:focus {
-  color: #555555;
+  color: #7f8891;
   text-decoration: none;
 }
 a:hover {
-  color: #555555;
+  color: #7f8891;
   text-decoration: none;
 }
 a:active {
-  color: #555555;
+  color: #7f8891;
   text-decoration: none;
 }
 h1,
@@ -7940,9 +7954,11 @@ header .header-logo {
 }
 #sidebar .navigation .category.active .head .fas {
   transform: rotate(90deg);
+  opacity: 0.66;
 }
 #sidebar .navigation .category.initial-active .head .fas {
   transform: rotate(90deg);
+  opacity: 0.66;
   transition: none;
 }
 #sidebar .navigation .category.initial-active .items {

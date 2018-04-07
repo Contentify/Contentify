@@ -34,12 +34,12 @@ class AdminUsersController extends BackController
     public function index()
     {
         $this->indexPage([
-            'buttons'   => ['<a href="'.url('admin/activities').'" class="btn btn-default">'.HTML::fontIcon('history')
-                .' Activities</a>'],
+            'buttons'   => [HTML::button(trans('app.object_activities'), url('admin/activities'), 'history')],
             'tableHead' => [
                 trans('app.id')             => 'id',
                 trans('app.username')       => 'username',
                 trans('app.email')          => 'email',
+                trans('app.online')         => 'last_active',
                 trans('users::membership')  => null,
                 trans('users::banned')      => 'banned',
             ],
@@ -65,6 +65,7 @@ class AdminUsersController extends BackController
                     $user->id,
                     raw(Hover::pull().HTML::link('users/'.$user->id.'/'.$user->slug, $user->username)),
                     $user->email,
+                    raw($user->isOnline() ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw($membership),
                     raw($banned),
                 ];
