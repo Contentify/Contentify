@@ -28,7 +28,9 @@ class HtmlBuilder extends OriginalHtmlBuilder
      */
     public function widget($widgetName, array $parameters = null)
     { 
-        if (! is_array($parameters)) $parameters = (array) $parameters;
+        if (! is_array($parameters)) {
+            $parameters = (array) $parameters;
+        }
 
         $path = explode('::', $widgetName);
         if (sizeof($path) < 2) {
@@ -266,7 +268,9 @@ class HtmlBuilder extends OriginalHtmlBuilder
         }
 
         $url = URL::current().'?sortby='.$sortBy.'&order='.$order;
-        if ($search) $url .= '&search='.urlencode($search);
+        if ($search) {
+            $url .= '&search='.urlencode($search);
+        }
 
         $caption = trans('app.sorting').': '.self::fontIcon($icon);
         return '<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>';

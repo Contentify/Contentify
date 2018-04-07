@@ -4,10 +4,11 @@ namespace App\Modules\Questions\Http\Controllers;
 
 use App\Modules\Questions\Question;
 use Config;
+use Contentify\GlobalSearchInterface;
 use FrontController;
 use URL;
 
-class QuestionsController extends FrontController
+class QuestionsController extends FrontController implements GlobalSearchInterface
 {
 
     public function index()

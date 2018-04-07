@@ -5,6 +5,7 @@ namespace App\Modules\Forums;
 use BaseModel;
 
 /**
+ * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $text
  * @property int $post_id

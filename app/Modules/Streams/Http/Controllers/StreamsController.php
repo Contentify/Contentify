@@ -4,12 +4,12 @@ namespace App\Modules\Streams\Http\Controllers;
 
 use App\Modules\Streams\Stream;
 use Config;
+use Contentify\GlobalSearchInterface;
 use FrontController;
 use HTML;
-use Request;
 use URL;
 
-class StreamsController extends FrontController
+class StreamsController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()
@@ -65,6 +65,7 @@ class StreamsController extends FrontController
      */
     public function show($id)
     {
+        /** @var Stream $stream */
         $stream = Stream::findOrFail($id);
 
         $stream->access_counter++;

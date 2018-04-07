@@ -7,6 +7,7 @@ use HTML;
 use SoftDeletingTrait;
 
 /**
+ * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $url
@@ -65,10 +66,20 @@ class Award extends BaseModel
         $pos = $this->position;
 
         $icon = 'trophy';
-        $color = null;
-        if ($pos == 1) $color = 'gold';
-        if ($pos == 2) $color = 'silver';
-        if ($pos == 3) $color = '#CD7F32';
+
+        switch ($pos) {
+            case 1:
+                $color = 'gold';
+                break;
+            case 2:
+                $color = 'silver';
+                break;
+            case 3:
+                $color = '#CD7F32';
+                break;
+            default:
+                $color = null;
+        }
 
         $icon = HTML::fontIcon($icon, $color).'&nbsp;'.$pos.'.';
 

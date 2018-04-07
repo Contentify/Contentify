@@ -5,12 +5,13 @@ namespace App\Modules\Downloads\Http\Controllers;
 use App\Modules\Downloads\Download;
 use App\Modules\Downloads\Downloadcat;
 use Config;
+use Contentify\GlobalSearchInterface;
 use File;
 use FrontController;
 use Response;
 use URL;
 
-class DownloadsController extends FrontController
+class DownloadsController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()

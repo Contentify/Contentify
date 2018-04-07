@@ -5,13 +5,14 @@ namespace App\Modules\Forums\Http\Controllers;
 use App\Modules\Forums\Forum;
 use App\Modules\Forums\ForumPost;
 use App\Modules\Forums\ForumThread;
+use Contentify\GlobalSearchInterface;
 use DB;
 use FrontController;
 use Input;
 use Redirect;
 use URL;
 
-class ThreadsController extends FrontController
+class ThreadsController extends FrontController implements GlobalSearchInterface
 {
 
     /**

@@ -58,7 +58,9 @@ class AdminTeamsController extends BackController
 
         $lineup = '';
         foreach ($team->members as $user) {
-            if ($lineup) $lineup .= ', ';
+            if ($lineup) {
+                $lineup .= ', ';
+            }
             $lineup .= $user->username;
         }
 

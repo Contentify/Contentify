@@ -11,6 +11,7 @@ use Sentinel;
  * This model is only a helper so we can CRUD roles.
  * (See also: Cartalyst\Sentinel\Roles\EloquentRole)
  *
+ * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $name
  * @property string $slug

@@ -3,6 +3,7 @@
 namespace App\Modules\Search\Http\Controllers;
 
 use BadMethodCallException;
+use Contentify\GlobalSearchInterface;
 use Exception;
 use FrontController;
 use Input;
@@ -32,26 +33,26 @@ class SearchController extends FrontController
             foreach ($modules as $module) {
                 if (! $module['enabled']) continue;
                 
-                $controllers = isset($module['search']) ? $module['search'] : null;
-                if ($controllers) { 
+                $controllerNames = isset($module['search']) ? $module['search'] : null;
+                if ($controllerNames) {
                     // A module might have more than one controller that supports the search:
-                    foreach ($controllers as $controller) { 
+                    foreach ($controllerNames as $controllerName) {
                         $classPath = 'App\Modules\\'.ucfirst($module['slug'])
-                            .'\Http\Controllers\\'.ucfirst($controller).'Controller';
+                            .'\Http\Controllers\\'.ucfirst($controllerName).'Controller';
 
-                        $instance = new $classPath; // Create instance of the controller...
+                        $controller = new $classPath; // Create an instance of the controller...
 
-                        try {
-                            $results = $instance->globalSearch($subject); // ...and call the search method.
-                        } catch(BadMethodCallException $ex) {
+                        if (! $controller instanceof GlobalSearchInterface) {
                             throw new Exception(
-                                'Error: Controller "'.$classPath.'" does not implement the globalSearch() method. '.
-                                'You have to implement this method if you want this controller to be searchable.'
+                                'Error: Controller "'.$classPath.'" does not implement the GlobalSearchInterface. '.
+                                'You have to implement this interface if you want this controller to be searchable.'
                             );
                         }
+
+                        $results = $controller->globalSearch($subject); // ...and call the search method.
                         
                         if (sizeof($results) > 0) {
-                            $resultBags[] = ['title' => $controller, 'results' => $results];
+                            $resultBags[] = ['title' => $controllerName, 'results' => $results];
                         }
                     }
                 }

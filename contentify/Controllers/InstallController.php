@@ -1084,7 +1084,9 @@ information about your stored data, and possibly entitlement to correction, bloc
             /*
              * Add the table rows:
              */
-            if ($tableRows) $tableRows($table);
+            if ($tableRows) {
+                $tableRows($table);
+            }
 
             /*
              * Generate foreign keys

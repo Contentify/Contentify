@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
+ * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property \Carbon $played_at
  * @property int $state

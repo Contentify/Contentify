@@ -46,7 +46,9 @@ class FormGenerator
         $fields = array();
         foreach ($columns as $columnIndex => $column) {
             $field = $this->buildField($column);
-            if ($field) $fields[] = $field;
+            if ($field) {
+                $fields[] = $field;
+            }
         }
 
         if ($this->fileHandling) {
@@ -115,8 +117,12 @@ class FormGenerator
             if (ends_with($name, '_id'))                $type = 'foreign';
 
             $attributes = [];
-            if ($size > 0) $attributes['maxlength']     = $size;
-            if ($required) $attributes['required']      = 'required';
+            if ($size > 0) {
+                $attributes['maxlength'] = $size;
+            }
+            if ($required) {
+                $attributes['required'] = 'required';
+            }
 
             switch ($type) {
                 case 'tinyint':

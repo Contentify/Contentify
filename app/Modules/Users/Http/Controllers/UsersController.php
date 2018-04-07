@@ -2,6 +2,7 @@
 
 namespace App\Modules\Users\Http\Controllers;
 
+use Contentify\GlobalSearchInterface;
 use FrontController;
 use Input;
 use Redirect;
@@ -9,7 +10,7 @@ use Sentinel;
 use User;
 use Validator;
 
-class UsersController extends FrontController 
+class UsersController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()

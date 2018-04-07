@@ -5,6 +5,7 @@ namespace Contentify\Models;
 /**
  * @property int $id
  * @property \Carbon $created_at
+ * @property \Carbon $updated_at
  * @property int $activity_id
  * @property bool $frontend
  * @property int $user_id

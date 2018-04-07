@@ -4,10 +4,11 @@ namespace App\Modules\Videos\Http\Controllers;
 
 use App\Modules\Videos\Video;
 use Config;
+use Contentify\GlobalSearchInterface;
 use FrontController;
 use URL;
 
-class VideosController extends FrontController 
+class VideosController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()

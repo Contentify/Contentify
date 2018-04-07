@@ -3,11 +3,12 @@
 namespace App\Modules\Events\Http\Controllers;
 
 use App\Modules\Events\Event;
+use Contentify\GlobalSearchInterface;
 use FrontController;
 use Request;
 use URL;
 
-class EventsController extends FrontController
+class EventsController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()

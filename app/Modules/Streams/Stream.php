@@ -9,6 +9,7 @@ use Comment;
 use SoftDeletingTrait;
 
 /**
+ * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $title
  * @property string $slug

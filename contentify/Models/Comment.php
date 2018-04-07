@@ -70,7 +70,9 @@ class Comment extends BaseModel
         return Cache::remember($key, 5, function() use ($foreignType, $foreignId)
         {
             $query = self::whereForeignType($foreignType);
-            if ($foreignId) $query->whereForeignId($foreignId);
+            if ($foreignId) {
+                $query->whereForeignId($foreignId);
+            }
 
             return $query->count();
         });

@@ -3,11 +3,12 @@
 namespace App\Modules\Pages\Http\Controllers;
 
 use App\Modules\Pages\Article;
+use Contentify\GlobalSearchInterface;
 use FrontController;
 use HTML;
 use URL;
 
-class ArticlesController extends FrontController
+class ArticlesController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()

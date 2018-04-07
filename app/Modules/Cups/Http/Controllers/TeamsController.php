@@ -4,6 +4,7 @@ namespace App\Modules\Cups\Http\Controllers;
 
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
+use Contentify\GlobalSearchInterface;
 use DB;
 use FrontController;
 use Illuminate\Http\RedirectResponse;
@@ -13,7 +14,7 @@ use Response;
 use URL;
 use User;
 
-class TeamsController extends FrontController
+class TeamsController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()

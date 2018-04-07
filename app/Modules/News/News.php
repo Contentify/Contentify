@@ -15,6 +15,7 @@ use SoftDeletingTrait;
 use URL;
 
 /**
+ * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property \Carbon $published_at
  * @property string $title
