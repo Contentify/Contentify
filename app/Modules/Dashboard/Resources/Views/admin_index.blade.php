@@ -1,46 +1,31 @@
 
 <h2 class="section">{{ trans('app.quick_access') }}</h2>
 <div class="quick-access clearfix">     
-    <div>
-        <a href="{!! url('admin/news') !!}">{!! HTML::fontIcon('newspaper') !!} {{ trans('app.object_news') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/pages') !!}">{!! HTML::fontIcon('file') !!} {{ trans('app.object_pages') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/matches') !!}">{!! HTML::fontIcon('crosshairs') !!} {{ trans('app.object_matches') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/images') !!}">{!! HTML::fontIcon('image') !!} {{ trans('app.object_images') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/videos') !!}">{!! HTML::fontIcon('youtube') !!} {{ trans('app.object_videos') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/downloads') !!}">{!! HTML::fontIcon('folder') !!} {{ trans('app.object_downloads') }}</a>
-    </div>
+    <a href="{!! url('admin/news') !!}"><span>{!! HTML::fontIcon('newspaper') !!}</span> {{ trans('app.object_news') }}</a>
+
+    <a href="{!! url('admin/pages') !!}"><span>{!! HTML::fontIcon('file') !!}</span> {{ trans('app.object_pages') }}</a>
+
+    <a href="{!! url('admin/matches') !!}"><span>{!! HTML::fontIcon('crosshairs') !!}</span> {{ trans('app.object_matches') }}</a>
+
+    <a href="{!! url('admin/images') !!}"><span>{!! HTML::fontIcon('image') !!}</span> {{ trans('app.object_images') }}</a>
+
+    <a href="{!! url('admin/videos') !!}"><span>{!! HTML::fontIcon('youtube') !!}</span> {{ trans('app.object_videos') }}</a>
+
+    <a href="{!! url('admin/downloads') !!}"><span>{!! HTML::fontIcon('folder') !!}</span> {{ trans('app.object_downloads') }}</a>
 
     <!-- Second row  -->
 
-    <div>
-        <a href="{!! url('admin/users') !!}">{!! HTML::fontIcon('user') !!} {{ trans('app.object_users') }}</a>
-    </div>
+    <a href="{!! url('admin/users') !!}"><span>{!! HTML::fontIcon('user') !!}</span> {{ trans('app.object_users') }}</a>
 
-    <div>
-        <a href="{!! url('admin/members') !!}">{!! HTML::fontIcon('users') !!} {{ trans('app.object_members') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/teams') !!}">{!! HTML::fontIcon('flag') !!} {{ trans('app.object_teams') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/contact') !!}">{!! HTML::fontIcon('envelope') !!} {{ trans('app.object_messages') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/visitors') !!}">{!! HTML::fontIcon('chart-pie') !!} {{ trans('app.object_visitors') }}</a>
-    </div>
-    <div>
-        <a href="{!! url('admin/config') !!}">{!! HTML::fontIcon('cog') !!} {{ trans('app.object_config') }}</a>
-    </div>
+    <a href="{!! url('admin/members') !!}"><span>{!! HTML::fontIcon('users') !!}</span> {{ trans('app.object_members') }}</a>
+
+    <a href="{!! url('admin/teams') !!}"><span>{!! HTML::fontIcon('flag') !!}</span> {{ trans('app.object_teams') }}</a>
+
+    <a href="{!! url('admin/contact') !!}"><span>{!! HTML::fontIcon('envelope') !!}</span> {{ trans('app.object_messages') }}</a>
+
+    <a href="{!! url('admin/visitors') !!}"><span>{!! HTML::fontIcon('chart-pie') !!}</span> {{ trans('app.object_visitors') }}</a>
+
+    <a href="{!! url('admin/config') !!}"><span>{!! HTML::fontIcon('cog') !!}</span> {{ trans('app.object_config') }}</a>
 </div>
 
 @if (user()->hasAccess('users'))

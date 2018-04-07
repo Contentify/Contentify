@@ -7477,36 +7477,33 @@ fieldset[disabled] .page-images .image .actions a.active {
 }
 .page-dashboard .quick-access {
   margin: 20px 0;
-}
-.page-dashboard .quick-access div {
-  width: 16.666%;
-  min-width: 120px;
-  box-sizing: border-box;
-  float: left;
-  padding: 10px;
   text-align: center;
 }
 .page-dashboard .quick-access a {
-  display: block;
-  margin: 0 10px;
-  padding-bottom: 10px;
-  box-shadow: 0 7px 0 #009ee6;
-  border-radius: 5px;
-  background-color: #00afff;
-  color: white;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 10px;
 }
-.page-dashboard .quick-access a:hover {
-  background-color: #1ab7ff;
+.page-dashboard .quick-access a span {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 0 10px;
+  background-color: #00afff;
+}
+.page-dashboard .quick-access a:hover span {
+  background-color: #66cfff;
 }
 .page-dashboard .quick-access a:active {
   box-shadow: none;
-  transform: translateY(7px);
+  transform: translateY(5px);
   transition: all 0.08s linear;
 }
 .page-dashboard .quick-access i {
   display: block;
-  padding: 10px;
-  font-size: 40px;
+  font-size: 20px;
+  color: white;
+  line-height: 60px;
 }
 .page-dashboard .widgets-row div {
   width: 50%;
