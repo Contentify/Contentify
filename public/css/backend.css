@@ -6992,6 +6992,7 @@ fieldset[disabled] .modal .modal-footer button.active {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   display: inline-block;
   width: 150px;
+  height: auto /* fix for a display bug in the blink engine */;
   background: url('../img/default/searchbox_bg.png');
   background-position: 10px center;
   background-repeat: no-repeat;

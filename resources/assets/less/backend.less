@@ -73,6 +73,12 @@ h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         color: @textdarkgray;
     }
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: transparent url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E") no-repeat right .35rem center/.4rem .5rem;
+    }
     input[type=checkbox] { width: auto; height: auto; margin-left: 0 }
     select[multiple] { height: auto; }
     textarea { height: auto }
@@ -121,7 +127,7 @@ h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
 
 /* Search-Box */
 .model-search-box input[type=text] {
-    .form-control(); display: inline-block; width: 150px; .background-image('img/default/searchbox_bg.png'); background-position: 10px center; background-repeat: no-repeat; text-indent: 20px; transition: width .3s ease-in-out;
+    .form-control(); display: inline-block; width: 150px; height: auto /* fix for a display bug in the blink engine */; .background-image('img/default/searchbox_bg.png'); background-position: 10px center; background-repeat: no-repeat; text-indent: 20px; transition: width .3s ease-in-out;
     &:focus { .focus(); width: 170px }
 }
 .model-search-box input[type=submit] { vertical-align: inherit; }
