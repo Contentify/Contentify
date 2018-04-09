@@ -9,6 +9,7 @@ class SettingsBag extends BaseModel
 
     // NOTE: "app." is replaced with "app::"!
     protected $fillable = [
+        'app::name',
         'app::theme',
         'app::theme_christmas',
         'app::theme_snow_color',
@@ -23,6 +24,7 @@ class SettingsBag extends BaseModel
     ];
 
     protected $rules = [
+        'app::name'          => 'min:3',
         'auth::registration' => 'boolean',
         'app::https'         => 'boolean',
         'app::dbBackup'      => 'boolean',

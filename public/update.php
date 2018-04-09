@@ -77,6 +77,8 @@ EOD;
      */
     public function updateDatabase($prefix)
     {
+        $appName = $this->app->getConfig('app')['name'];
+
         // HOW TO: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
         $updateQueries = [
@@ -111,6 +113,7 @@ EOD;
                 `updated_at` timestamp NULL DEFAULT NULL,
                 `deleted_at` timestamp NULL DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
+            "INSERT INTO {$prefix}config (name, value) ('app.name', '{$appName}')",
         ];
 
         return $updateQueries;

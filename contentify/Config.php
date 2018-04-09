@@ -65,7 +65,7 @@ class Config extends LaravelConfig
                     // Cache the config value
                     Cache::put(self::CACHE_VALUES_PREFIX.$key, $result->value, self::CACHE_TIME);
 
-                    return true;                    
+                    return true;
                 }
             }
         }
@@ -110,7 +110,7 @@ class Config extends LaravelConfig
                     // Cache the config value
                     Cache::put(self::CACHE_VALUES_PREFIX.$key, $result->value, self::CACHE_TIME);
 
-                    return $result->value;                    
+                    return $result->value;
                 }
             }
         }

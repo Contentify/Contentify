@@ -742,6 +742,7 @@ class InstallController extends Controller
         $this->createDefaultCategories(['downloadcats'], true);
         
         DB::table('config')->insert([
+            ['name' => 'app.name',              'value' => Config::get('app.name', null, false)],
             ['name' => 'app.theme',             'value' => 'MorpheusTheme'],
             ['name' => 'app.theme_christmas',   'value' => 0],
             ['name' => 'app.theme_snow_color',  'value' => '#ffffff'],

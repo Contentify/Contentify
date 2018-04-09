@@ -9,6 +9,8 @@ return [
     |
     | The name (title) of this web application.
     |
+    | @deprecated Will be stored in the database, not here in this file
+    |
     */
 
     'name' => env('APP_NAME', 'Contentify'),

@@ -50,7 +50,9 @@ class AdminConfigController extends BackController
 
         $themes = [];
         foreach ($modules as $name => $module) {
-            if (! $module['enabled']) continue;
+            if (! $module['enabled']) {
+                continue;
+            }
 
             if (isset($module['theme']) and $module['theme']) {
                 $themes[$name] = $module['slug'];

@@ -17,7 +17,7 @@ require __DIR__.'/vendor/laravel/framework/src/Illuminate/Support/helpers.php';
 
 /**
  * This class tries to give the (attempt of an) answer to the question:
- * How can we use parts of Contentify *oustide* of the actual Contentify
+ * How can we use parts of Contentify *outside* of the actual Contentify
  * application, especially when it is not yet installed?
  * This script & class allows us to access some(!) parts of Contentify
  * from outside. 
@@ -86,9 +86,9 @@ class AppBridge
     /**
      * Loads and returns the values of a config file. 
      * Does not check if the file is a valid config file!
-     * Use getConfig() if you do not want to enforece reloading.
+     * Use getConfig() if you do not want to enforce reloading.
      *
-     * @param string $name The (file) name of the config; without path
+     * @param string $name The (file) name of the config; without path and extension
      * @return array[]
      */
     public function loadConfig($name)
@@ -103,7 +103,7 @@ class AppBridge
      * Uses caching so it does not read the file
      * for each request.
      * 
-     * @param string $name The (file) name of the config; without path
+     * @param string $name The (file) name of the config; without path and extension
      * @return array[]
      */
     public function getConfig($name)
@@ -161,11 +161,12 @@ class AppBridge
     /**
      * Returns true if the application is installed
      * 
-     * @return booln
+     * @return bool
      */
     public function isAppInstalled()
     {
         $filename = $this->storageDir.'app/.installed';
+
         return file_exists(__DIR__.'/../'.$filename);
     }
 
