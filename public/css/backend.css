@@ -6681,6 +6681,7 @@ h2.section {
 }
 /* Form */
 .form-errors {
+  position: relative;
   margin: 20px 0;
   padding: 20px;
   border: 1px solid #e7ecf0;
@@ -6689,6 +6690,16 @@ h2.section {
 }
 .form-errors li {
   margin-left: 20px;
+}
+.form-errors::before {
+  content: "\f071";
+  position: absolute;
+  top: 0;
+  transform: translate(0, -50%);
+  padding: 0 3px;
+  border: 1px solid #e7ecf0;
+  background-color: white;
+  font-family: Font Awesome\ 5 Free;
 }
 .form-group label {
   overflow: hidden;
