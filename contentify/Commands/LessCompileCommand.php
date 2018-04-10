@@ -4,6 +4,7 @@ namespace Contentify\Commands;
 
 use Config;
 use HTML;
+use File;
 use Illuminate\Console\Command;
 use Less_Parser;
 
@@ -41,14 +42,14 @@ class LessCompileCommand extends Command
 
         $theme = Config::get('app.theme');
 
-        // Key = path, value = filename
+        // Filenames of the source files (with path and with ".less" as extension!)
         $lessFiles = [
-            Config::get('modules.path').'/'.$theme.'/Resources/Assets/less/' => 'frontend',
-            resource_path('assets/less/') => 'backend',
+            Config::get('modules.path').'/'.$theme.'/Resources/Assets/less/frontend.less',
+            resource_path('assets/less/backend.less'),
         ];
 
-        foreach ($lessFiles as $sourcePath => $sourceFilename) {
-            $this->compileLessFile($sourcePath, $sourceFilename);
+        foreach ($lessFiles as $sourceFilename) {
+            $this->compileLessFile($sourceFilename);
         }
 
         HTML::refreshAssetPaths();
@@ -57,24 +58,28 @@ class LessCompileCommand extends Command
     /**
      * Compiles a LESS file to a CSS file
      *
-     * @param string $sourcePath
      * @param string $sourceFilename
      * @return void
      */
-    protected function compileLessFile($sourcePath, $sourceFilename)
+    protected function compileLessFile($sourceFilename)
     {
-        $debug = Config::get('app.debug');
+        $sourceFileTitle = basename($sourceFilename, '.less');
+        $target = public_path('css/'.$sourceFileTitle.'.css');
 
-        // Create a new instance for each file - or call the reset method
-        $parser = new Less_Parser(['compress' => ! $debug]);
+        // Only compile the file if it has changed
+        if (! File::exists($target) or File::lastModified($sourceFilename) > File::lastModified($target))
+        {
+            $debug = Config::get('app.debug');
 
-        $source = $sourcePath.$sourceFilename.'.less';
-        $parser->parseFile($source);
+            // Create a new instance for each file - or call the reset method
+            $parser = new Less_Parser(['compress' => ! $debug]);
 
-        $target = public_path('css/'.$sourceFilename.'.css');
-        file_put_contents($target, $parser->getCss());
+            $parser->parseFile($sourceFilename);
 
-        $this->info('CSS files has been compiled: '.$source.' -> '.$target."\n");
+            file_put_contents($target, $parser->getCss());
+
+            $this->info('CSS files has been compiled: ' . $sourceFilename . ' -> ' . $target . "\n");
+        }
     }
 
 }
