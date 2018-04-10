@@ -58,6 +58,8 @@ class RestorePasswordController extends FrontController
         $this->alertSuccess(
             trans('auth::email_gen_pw')
         );
+
+        return null;
     }
 
     /**

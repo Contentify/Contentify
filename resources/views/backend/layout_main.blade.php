@@ -109,7 +109,7 @@
 
         <footer id="footer">
             <span class="version">Version {!! Config::get('app.version') !!}</span>
-            <a class="top" href="#">{!! trans('app.top') !!}</a>
+            <a class="top" href="#" title="{!! trans('app.top') !!}">{!! HTML::fontIcon('angle-up') !!}</a>
         </footer>
     </div>
 </body>

@@ -108,14 +108,15 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Returns HTML code for a table.
      * 
-     * @param array $header        Array with the table header items (String-Array)
-     * @param array $rows          Array with all the table rows items (Array containing String-Arrays)
-     * @param bool  $brightenFirst Enable special look for the items in the first column? (true/false)
+     * @param array $header     Array with the table header items (String-Array)
+     * @param array $rows       Array with all the table rows items (Array containing String-Arrays)
+     * @param array $attributes Apply these HTML attributes to the table element
      * @return string
      */
-    public function table($header, $rows, $brightenFirst = true)
+    public function table($header, $rows, $attributes)
     {
-        $code = '<table class="table table-hover">';
+        $attrs = self::attributes($attributes);
+        $code = '<table class="table table-hover" '.$attrs.'>';
 
         /*
          * Table head
@@ -131,21 +132,15 @@ class HtmlBuilder extends OriginalHtmlBuilder
          */
         foreach ($rows as $row) {
             $code    .= '<tr>';
-            $isFirst = true;
+
             foreach ($row as $value) {
                 if (! $value instanceof Raw) {
                     $value = e($value); // Always auto escape except value is marked as raw
                 }
 
-                if ($isFirst and $brightenFirst) {
-                    $code    .= '<td style="color: silver">';
-                    $isFirst = false;
-                } else {
-                    $code .= '<td>';
-                }
-                $code .= $value;
-                $code .= '</td>';
+                $code .= '<td>'.$value.'</td>';
             }
+
             $code .= '</tr>';
         }
 
@@ -196,7 +191,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  string  $url        The link URL
      * @param  string  $title      The link title
      * @param  boolean $showTitle  Show the title text?
-     * @param  array   $attributes Apply these HTML attributes to the link element
+     * @param  array   $attributes Apply these HTML attributes to the table element
      * @return string
      */
     public function iconLink($icon, $title, $url, $showTitle = false, $attributes = array())
@@ -227,7 +222,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  string $title      The button title text
      * @param  string $url        The URL the button is targeting at
      * @param  string $icon       The name of the icon. It's rendered by an icon font.
-     * @param  array  $attributes Apply these HTML attributes to the link element
+     * @param  array  $attributes Apply these HTML attributes to the button element
      * @return string
      */
     public function button($title, $url, $icon = '', $attributes = array())

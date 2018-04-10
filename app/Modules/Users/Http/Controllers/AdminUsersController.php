@@ -80,7 +80,9 @@ class AdminUsersController extends BackController
                     return icon_link(
                         'trash',
                         trans('app.delete'),
-                        url('admin/users/'.$user->id).'?method=DELETE&_token='.csrf_token()
+                        url('admin/users/'.$user->id).'?method=DELETE&_token='.csrf_token(),
+                        false,
+                        ['data-confirm-delete' => true, 'data-color' => 'red']
                     );
                 },
             ]
@@ -116,7 +118,7 @@ class AdminUsersController extends BackController
     /**
      * This method does not delete a user but deactivates the account and removes profile information
      *
-     * @param int $id
+     * @param int $id The ID of the user
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function destroy($id)

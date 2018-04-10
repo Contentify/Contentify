@@ -206,7 +206,7 @@ class ModelHandler
                     $models = $models->where($searchFor, 'LIKE', '%'.$search.'%');
                     // TODO: Check if attribute $searchFor exists?
                     // Use fillables and/or tableHead attribute names
-                }                 
+                }
             }
 
             $models = $models->paginate($perPage);
@@ -250,10 +250,10 @@ class ModelHandler
                                 if ($model->modifiable()) {
                                     $actionsCode .= icon_link('edit', 
                                         trans('app.edit'), 
-                                        route(
-                                            $surface.'.'.$controllerRouteName.'.edit',
-                                            [$model->id])
-                                        );
+                                        route($surface.'.'.$controllerRouteName.'.edit', [$model->id]),
+                                        false,
+                                        ['data-color' => 'blue']
+                                    );
                                 }
                                 break;
                             case 'delete':
@@ -261,21 +261,20 @@ class ModelHandler
                                 if ($model->modifiable()) {
                                     $actionsCode .= icon_link('trash', 
                                         trans('app.delete'), 
-                                        route(
-                                            $surface.'.'.$controllerRouteName.'.destroy',
-                                            [$model->id]
-                                        ).$urlParams,
+                                        route($surface.'.'.$controllerRouteName.'.destroy', [$model->id])
+                                            .$urlParams,
                                         false,
-                                        ['data-confirm-delete' => true]);
+                                        ['data-confirm-delete' => true, 'data-color' => 'red']
+                                    );
                                 }
                                 break;
                             case 'restore':
                                 if ($model->isSoftDeleting() and $model->trashed()) {
                                     $actionsCode .= icon_link('undo', 
-                                    trans('app.restore'), 
-                                    route(
-                                        $surface.'.'.$controllerRouteName.'.restore',
-                                        [$model->id])
+                                        trans('app.restore'),
+                                        route($surface.'.'.$controllerRouteName.'.restore', [$model->id]),
+                                    false,
+                                        ['data-color' => 'yellow']
                                     );
                                 }
                                 break;
@@ -299,7 +298,11 @@ class ModelHandler
         /*
          * Generate the table
          */
-        $modelTable = HTML::table($tableHead, $tableRows, $data['brightenFirst']);
+        $modelTable = HTML::table(
+            $tableHead,
+            $tableRows,
+            ['data-model-table' => 1, 'data-brighten-first' => (int) $data['brightenFirst']]
+        );
         
         /*
          * Generate the view

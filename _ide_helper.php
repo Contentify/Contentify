@@ -12966,13 +12966,13 @@ namespace Collective\Html {
          *
          * @param array $header Array with the table header items (String-Array)
          * @param array $rows Array with all the table rows items (Array containing String-Arrays)
-         * @param bool $brightenFirst Enable special look for the items in the first column? (true/false)
+         * @param array $attributes Apply these HTML attributes to the table element
          * @return string 
          * @static 
          */ 
-        public static function table($header, $rows, $brightenFirst = true)
+        public static function table($header, $rows, $attributes = array())
         {
-            return \Contentify\HtmlBuilder::table($header, $rows, $brightenFirst);
+            return \Contentify\HtmlBuilder::table($header, $rows, $attributes);
         }
         
         /**
@@ -12987,7 +12987,7 @@ namespace Collective\Html {
          * @param string $url The link URL
          * @param boolean $showTitle Show the title text?
          * @param array $attributes Apply these HTML attributes to the link element
-         * @return string 
+         * @return string
          * @static 
          */ 
         public static function imageLink($image, $title, $url, $showTitle = false, $attributes = array())
@@ -13022,7 +13022,7 @@ namespace Collective\Html {
          * @param string $title The button title text
          * @param string $url The URL the button is targeting at
          * @param string $icon The name of the icon. It's rendered by an icon font.
-         * @param array $attributes Apply these HTML attributes to the link element
+         * @param array $attributes Apply these HTML attributes to the button element
          * @return string 
          * @static 
          */ 
