@@ -15,6 +15,7 @@ use Sentinel;
 use Session;
 use Str;
 use User;
+use Validator;
 
 class LoginController extends FrontController
 {
@@ -31,6 +32,7 @@ class LoginController extends FrontController
             'password'  => Input::get('password')
         ];
 
+        /** @var User $user */
         $user = Sentinel::authenticate($credentials, false); // Login the user (if possible)
 
         if ($user and $user->banned) {
@@ -50,7 +52,7 @@ class LoginController extends FrontController
      * Login with STEAM account
      *
      * @param SteamAuth $steam
-     * @return RedirectResponse
+     * @return RedirectResponse|null
      * @throws Exception
      */
     public function getSteam(SteamAuth $steam)
@@ -70,7 +72,7 @@ class LoginController extends FrontController
                 /** @var User $user */
                 $user = User::where('steam_auth_id', $info->steamID64)->first();
 
-                if ($user !== null) {
+                if ($user !== null) { // Login into existing user account
                     if ($user->banned) {
                         $this->alertFlash(trans('app.access_denied'));
                         return Redirect::to('auth/login');
@@ -79,7 +81,7 @@ class LoginController extends FrontController
                     Sentinel::loginAndRemember($user);
 
                     return $this->afterLoginActions();
-                } else {
+                } else { // Display a form where the user has to set his username and email address
                     $username = $info->personaname;
 
                     /*
@@ -90,42 +92,82 @@ class LoginController extends FrontController
                         $username = $info->personaname.($i++);
                     }
 
-                    $language = Language::whereCode(App::getLocale())->first();
+                    // Store the ID in the (server side) session so it cannot be manipulated by the client
+                    Session::put('steamId', $info->steamID64);
 
-                    /*
-                     * Register user.
-                     */
-                    $user = Sentinel::register([
-                        'username'      => $username,
-                        'email'         => 'contentify.org',
-                        'password'      => Str::random(), // So no one can login without Steam auth
-                        'language_id'   => $language->id,
-                    ], true); // Auto activate the user
-
-                    $user->email = $info->steamID64.'@nomail.contentify.org'; // Email has to be unique and != null
-                    $user->steam_auth_id = $info->steamID64;
-                    $user->save();
-
-                    /*
-                     * Add user to role "Users"
-                     * This role is a basic role that isn't deletable so we do know it exists.
-                     * (If it doesn't exist, we have a serious problem.)
-                     */
-                    $userRole = Sentinel::findRoleBySlug('users');
-                    $userRole->users()->attach($user);
-
-                    /*
-                     * Login user
-                     */
-                    Sentinel::loginAndRemember($user);
-                    
-                    $this->alertFlash(trans('auth::steam_registered'));
-                    return Redirect::to('/users/'.$user->id.'/edit');
+                    $this->pageView('auth::register_steam', compact('username', 'steamId'));
+                    return null;
                 }
             }
         } else {
             return $steam->redirect(); // Redirect to Steam login page
         }
+    }
+
+    /**
+     * Actually create the user account with a STEAM ID
+     *
+     * @return RedirectResponse
+     */
+    public function postSteam()
+    {
+        $steamId = Session::get('steamId');
+
+        /*
+         * Validation
+         */
+        $rules = array(
+            'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password|unique:users,username',
+            'email'     => 'email|unique:users,email'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            $username = Input::get('username');
+            $errors = $validator->errors();
+
+            $this->pageView('auth::register_steam', compact('username', 'steamId', 'errors'));
+            return null;
+        }
+
+        // Not sure if this can happen but better safe than sorry
+        if ($steamId === null) {
+            $this->alertFlash(trans('app.access_denied'));
+            return Redirect::to('auth/login');
+        }
+
+        $language = Language::whereCode(App::getLocale())->first();
+
+        /*
+         * Register user.
+         */
+        $user = Sentinel::register([
+            'username'      => Input::get('username'),
+            'email'         => Input::get('email'),
+            'password'      => Str::random(), // So no one can login without Steam auth
+            'language_id'   => $language->id,
+        ], true); // Auto activate the user
+
+        $user->steam_auth_id = $steamId;
+        $user->save();
+
+        /*
+         * Add user to role "Users"
+         * This role is a basic role that isn't deletable so we do know it exists.
+         * (If it doesn't exist, we have a serious problem.)
+         */
+        $userRole = Sentinel::findRoleBySlug('users');
+        $userRole->users()->attach($user);
+
+        /*
+         * Login user
+         */
+        Sentinel::loginAndRemember($user);
+
+        Session::forget('steamId');
+
+        $this->alertFlash(trans('auth::steam_registered'));
+        return Redirect::to('/');
     }
 
     /**

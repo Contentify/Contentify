@@ -6,6 +6,7 @@ ModuleRoute::get('auth/registration/create', 'RegistrationController@getCreate')
 ModuleRoute::post('auth/registration/create', 'RegistrationController@postCreate');
 
 ModuleRoute::get('auth/steam', 'LoginController@getSteam');
+ModuleRoute::post('auth/steam', 'LoginController@postSteam');
 ModuleRoute::get('auth/login', ['as' => 'login', 'uses' => 'LoginController@getLogin']);
 ModuleRoute::post('auth/login', 'LoginController@postLogin');
 
