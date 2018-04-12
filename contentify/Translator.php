@@ -2,6 +2,8 @@
 
 namespace Contentify;
 
+use Cache;
+use File;
 use Illuminate\Translation\Translator as OriginalTranslator;
 
 class Translator extends OriginalTranslator
@@ -52,6 +54,33 @@ class Translator extends OriginalTranslator
         }
 
         return $line;
+    }
+
+    /**
+     * Returns the codes of all available languages.
+     * ATTENTION: Caches the languages for some time, so if you add a new language
+     * you have to wait a little bit of clear the cache!
+     *
+     * @return string[]
+     */
+    public function languageCodes()
+    {
+        $languageCodes = Cache::get('app.locales');
+
+        if ($languageCodes === null) {
+            // Use the names of the language directories to identify the supported languages
+            $languageCodes = File::directories( base_path().'/resources/lang');
+
+            // Only keep the name of the directory instead of the whole path
+            array_walk($languageCodes, function(&$value, $key)
+            {
+                $value = basename($value);
+            });
+
+            Cache::put('app.locales', $languageCodes,10);
+        }
+
+        return $languageCodes;
     }
 
 }

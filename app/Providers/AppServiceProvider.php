@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
         */
 
         /*
-         * Helper. Renders a widget. @see Widget
+         * Helper. Renders a widget. @see \Contentify\Controllers\Widget
          */
         Blade::directive('widget', function($expression) {
             return '<?php echo HTML::widget('.$expression.'); ?>';

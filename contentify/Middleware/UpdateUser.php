@@ -6,10 +6,12 @@ use App;
 use Carbon;
 use Closure;
 use DB;
-use File;
 use Lang;
 use Session;
 
+/**
+ * This middleware class deals with user related data
+ */
 class UpdateUser
 {
 
@@ -91,16 +93,11 @@ class UpdateUser
                 App::setLocale(Session::get('app.locale'));
             } else {
                 if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-                    $clientLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-                    $languages = File::directories(base_path().'/resources/lang');
+                    $clientLanguageCode = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+                    $languageCodes = Lang::languageCodes();
 
-                    array_walk($languages, function(&$value, $key)
-                    {
-                        $value = basename($value);
-                    });
-
-                    if (in_array($clientLanguage, $languages)) {
-                        Session::put('app.locale', $clientLanguage);
+                    if (in_array($clientLanguageCode, $languageCodes)) {
+                        Session::put('app.locale', $clientLanguageCode);
                     } else {
                         Session::put('app.locale', Lang::getLocale());
                     }
@@ -114,7 +111,7 @@ class UpdateUser
 
         Carbon::setToStringFormat(trans('app.date_format'));
 
-        return $next($request);     
+        return $next($request);
     }
 
 }

@@ -38,7 +38,7 @@ class AdminStreamsController extends BackController
                     $stream->id,
                     raw(Hover::pull().HTML::link('streams/'.$stream->id.'/'.$stream->slug, $stream->title)),
                     Stream::$providers[$stream->provider],
-                ];             
+                ];
             }
         ]);
     }

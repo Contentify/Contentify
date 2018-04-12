@@ -25,7 +25,7 @@ class Authenticate
             }
         }
 
-        return $next($request);     
+        return $next($request);
     }
 
 }

@@ -60,7 +60,7 @@ class StreamsController extends FrontController implements GlobalSearchInterface
     /**
      * Show a stream
      * 
-     * @param  int $id The id of the stream
+     * @param  int $id The ID of the stream
      * @return void
      */
     public function show($id)

@@ -6182,6 +6182,16 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Illuminate\Support\NamespacedItemResolver            
             \Contentify\Translator::setParsedKey($key, $parsed);
         }
+
+        /**
+         * Returns the codes of all available languages
+         *
+         * @return string[]
+         */
+        public static function languageCodes()
+        {
+            return \Contentify\Translator::languageCodes();
+        }
          
     }
 
@@ -11298,6 +11308,12 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Validation\Factory::setPresenceVerifier($presenceVerifier);
         }
+
+
+        public static function errors()
+        {
+            return new \Illuminate\Support\MessageBag();
+        }
          
     }
 
@@ -12982,17 +12998,17 @@ namespace Collective\Html {
          * If $image does not contain a path, the path "icons" will be used.
          * If $image has does not start with "http://" an asset link will be created.
          *
-         * @param string $image The link image
+         * @param string $image The name of the link image
          * @param string $title The link title
          * @param string $url The link URL
-         * @param boolean $showTitle Show the title text?
+         * @param bool $printTitle Print the title text after the image?
          * @param array $attributes Apply these HTML attributes to the link element
          * @return string
          * @static 
          */ 
-        public static function imageLink($image, $title, $url, $showTitle = false, $attributes = array())
+        public static function imageLink($image, $title, $url, $printTitle = false, $attributes = array())
         {
-            return \Contentify\HtmlBuilder::imageLink($image, $title, $url, $showTitle, $attributes);
+            return \Contentify\HtmlBuilder::imageLink($image, $title, $url, $printTitle, $attributes);
         }
         
         /**

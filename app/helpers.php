@@ -95,19 +95,19 @@ function button($title, $url, $icon = '')
 
 /**
  * Pass in an image name, with or without extension, with or without path. Returns the URL.
+ *
+ * @deprecated This function is deprecated and will be removed in the future
  * 
  * @param  string $image The image
  * @return string        The URL
  */
 function get_image_url($image)
 {
-    if (! $image) return '';
+    if (! $image) {
+        return '';
+    }
 
     $imageUrl = $image;
-
-    if (! str_contains($imageUrl, '/')) {
-        $imageUrl = 'icons/'.$imageUrl;
-    }
 
     if (! str_contains($imageUrl, '.')) {
         $imageUrl .= '.png';
@@ -145,7 +145,7 @@ function recycle_bin_button()
 }
 
 /**
- * Replaces ASCII-Codes with HTML-Codes for emoji icons.
+ * Replaces ASCII-Codes in a text with HTML-Codes for emoji icons.
  * We should cache the outcome.
  * 
  * @param  string $text

@@ -152,22 +152,21 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Returns HTML code of a "image link" - a link with an image (and maybe a text).
      * If $image has no extension, the extension will be ".png".
-     * If $image does not contain a path, the path "icons" will be used.
      * If $image has does not start with "http://" an asset link will be created.
      * 
-     * @param  string  $image      The link image
+     * @param  string  $image      The name of the link image
      * @param  string  $title      The link title
      * @param  string  $url        The link URL
-     * @param  boolean $showTitle  Show the title text?
+     * @param  bool    $printTitle Print the title text after the image?
      * @param  array   $attributes Apply these HTML attributes to the link element
      * @return string
      */
-    public function imageLink($image, $title, $url, $showTitle = false, $attributes = array())
+    public function imageLink($image, $title, $url, $printTitle = false, $attributes = array())
     {
         $imageUrl = get_image_url($image);
         $image = self::image($imageUrl, $title);
 
-        if ($showTitle) {
+        if ($printTitle) {
             $titleText = ' '.$title;
         } else {
             $titleText = '';
