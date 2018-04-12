@@ -28,11 +28,7 @@
     {!! HTML::style('vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') !!}
     
     {!! HTML::jsTranslations() !!}
-    <!--[if lt IE 9]>
-        {!! HTML::script('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') !!}
-        {!! HTML::script('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') !!}
-    <![endif]-->
-    {!! HTML::script('vendor/jquery/jquery-1.12.4.min.js') !!}
+    {!! HTML::script('vendor/jquery/jquery-2.2.4.min.js') !!}
     {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') !!}
     {!! HTML::script('vendor/moment/moment.js') !!}
     {!! HTML::script('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.js') !!}
