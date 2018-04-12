@@ -73,8 +73,8 @@ return [
     |
     */
 
-    'frontItemsPerPage' => 10,
-    'adminItemsPerPage' => 10,
+    'frontItemsPerPage' => 15,
+    'adminItemsPerPage' => 15,
 
     /*
     |--------------------------------------------------------------------------
