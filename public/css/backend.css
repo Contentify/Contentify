@@ -8096,11 +8096,17 @@ header .header-logo {
 }
 #footer {
   margin-left: 250px;
-  padding: 20px 40px;
+  padding: 0 40px;
   background-color: #eee;
   color: #999;
 }
+#footer .version {
+  display: inline-block;
+  padding: 20px;
+}
 #footer .top {
+  display: inline-block;
+  padding: 20px;
   color: silver;
   float: right;
 }

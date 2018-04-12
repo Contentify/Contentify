@@ -578,10 +578,9 @@ header {
 }
 
 #footer {
-    margin-left: @sidebarWidth; padding: 20px 40px; background-color: #eee; color: #999;
-    .top {
-        color: silver; float: right
-    }
+    margin-left: @sidebarWidth; padding: 0 40px; background-color: #eee; color: #999;
+    .version { display: inline-block; padding: 20px }
+    .top { display: inline-block; padding: 20px; color: silver; float: right }
 }
 @media (min-width: @screen-phone) and (max-width: @screen-tablet) {
     #footer { margin-left: @sidebarWidthSmall };

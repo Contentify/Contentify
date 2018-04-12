@@ -26,11 +26,11 @@ class Language extends BaseModel
      * {@inheritdoc}
      */
     public static function destroy($ids) {
-        throw new Exception('Model deletion restricted');
+        throw new Exception('Model deletion forbidden');
     }
 
     public function delete() {
-        throw new Exception('Model deletion restricted');
+        throw new Exception('Model deletion forbidden');
     }
 
 }
