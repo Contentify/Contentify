@@ -19,4 +19,5 @@ The update script is able to migrate your old Hitbox streams to Smashcast. Howev
 
 - Lots of bug fixes
 - Backend styling improvements
+- Now users can click on table headers to sort table columns
 - Want more? Take a look: https://github.com/Contentify/Contentify/issues/264

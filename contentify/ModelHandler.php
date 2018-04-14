@@ -135,9 +135,6 @@ class ModelHandler
                     $data['order'] = $order;
                 }
             }
-            $sortSwitcher = sort_switcher($data['sortby'], $data['order'], $data['search']);
-        } else {
-            $sortSwitcher = null;
         }
 
         /*
@@ -224,7 +221,7 @@ class ModelHandler
         $tableHead = array();
         foreach ($data['tableHead'] as $title => $sortBy) {
             if ($sortBy != null) {
-                $tableHead[] = HTML::link(URL::current().'?sortby='.urlencode($sortBy), $title);
+                $tableHead[] = HTML::sortSwitcher(URL::current(), $title, $sortBy, $data['order'], $data['search']);
             } else {
                 $tableHead[] = $title;
             }
@@ -312,7 +309,6 @@ class ModelHandler
             'buttons'       => $buttons,
             'infoText'      => $data['infoText'],
             'modelTable'    => $modelTable,
-            'sortSwitcher'  => $sortSwitcher,
             'recycleBin'    => $recycleBin,
             'paginator'     => $paginator,
             'searchString'  => $data['search'],

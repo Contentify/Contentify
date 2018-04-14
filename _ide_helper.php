@@ -13050,15 +13050,18 @@ namespace Collective\Html {
         /**
          * Returns HTML code for a sort switcher (asc / desc).
          *
-         * @param string $sortBy Attribute of the model, e.g. "id"
+         * @param string $url he URL to call - usually URL::current()
+         * @param string $title The text/ title of the link
+         * @param string $sortBy Name of the sort switch, usually the name of a model attribute
          * @param string $order Current sorting order, "asc" or "desc"
          * @param string|null $search Current search term
+         * @param bool|null $active Is this switcher active? Null = auto decide
          * @return string 
          * @static 
          */ 
-        public static function sortSwitcher($sortBy, $order = null, $search = null)
+        public static function sortSwitcher($url, $title, $sortBy, $order = null, $search = null, $active = null)
         {
-            return \Contentify\HtmlBuilder::sortSwitcher($sortBy, $order, $search);
+            return \Contentify\HtmlBuilder::sortSwitcher($url, $title, $sortBy, $order, $search, $active);
         }
         
         /**

@@ -6,6 +6,7 @@ use Cache;
 use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
 use Contentify\Controllers\Widget;
 use Exception;
+use Input;
 use OpenGraph;
 use Session;
 use URL;
@@ -246,28 +247,34 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Returns HTML code for a sort switcher (asc / desc).
      *
-     * @param string      $sortBy Attribute of the model, e.g. "id"
+     * @param string      $url    The URL to call - usually URL::current()
+     * @param string      $title  The text/ title of the link
+     * @param string      $sortBy Name of the sort switch, usually the name of a model attribute
      * @param string|null $order  Current sorting order, "asc" or "desc"
      * @param string|null $search Current search term
+     * @param bool|null   $active Is this switcher active? Null = auto decide
      * @return string
      */
-    public function sortSwitcher($sortBy, $order = null, $search = null)
+    public function sortSwitcher($url, $title, $sortBy, $order = null, $search = null, $active = null)
     {
-        if ($order == 'asc') {
+        if ($order === 'asc') {
             $order  = 'desc';
-            $icon   = 'caret-up';
+            $class  = 'sorting-asc';
         } else {
             $order  = 'asc';
-            $icon   = 'caret-down';
+            $class  = 'sorting-desc';
         }
 
-        $url = URL::current().'?sortby='.$sortBy.'&order='.$order;
+        if ($active === false or (Input::get('sortby') !== $sortBy)) {
+            $class = '';
+        }
+
+        $url = $url.'?sortby='.$sortBy.'&order='.$order;
         if ($search) {
             $url .= '&search='.urlencode($search);
         }
 
-        $caption = trans('app.sorting').': '.self::fontIcon($icon);
-        return '<a class="sort-switcher" href="'.$url.'">'.$caption.'</a>';
+        return '<a class="sort-switcher '.$class.'" href="'.$url.'">'.$title.'</a>';
     }
 
     /**
@@ -283,13 +290,13 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
         if ($enabled) {
             $class = 'enabled';
-            $icon = self::fontIcon('check').'&nbsp;';
+            $icon = self::fontIcon('check');
         } else {
             $class = 'disabled';
-            $icon = '';
+            $icon = self::fontIcon('times');
         }
 
-        return '<a class="recycle-bin-button '.$class.'" href="'.$url.'">'.$icon.trans('app.recycle_bin').'</a>';
+        return '<a class="recycle-bin-button '.$class.'" href="'.$url.'">'.trans('app.recycle_bin').':&nbsp'.$icon.'</a>';
     }
 
     /**

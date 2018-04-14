@@ -9,7 +9,14 @@
  * Classes
  */
 
-.btn { outline: none !important }
+/* Utilities */
+.space-top-small { margin-top: 10px }
+.space-top { margin-top: 20px }
+.space-top-huge { margin-top: 40px }
+
+.space-bottom-small { margin-bottom: 10px }
+.space-bottom { margin-bottom: 20px }
+.space-bottom-huge { margin-bottom: 40px }
 
 /* Responsive tables: No more tables. Needs JS to work! */
 .no-more-tables {
@@ -20,20 +27,14 @@
     td::before { content: attr(data-td-title) + ': '; width: 50%; font-weight: bold; }
 }
 
-.space-top-small { margin-top: 10px }
-.space-top { margin-top: 20px }
-.space-top-huge { margin-top: 40px }
+/* Bootstrap fixes */
+.btn { outline: none !important }
 
-.space-bottom-small { margin-bottom: 10px }
-.space-bottom { margin-bottom: 20px }
-.space-bottom-huge { margin-bottom: 40px }
+.form-group label[for] { cursor: pointer }
 
-.form-group {
-    label { 
-        &[for] { cursor: pointer }
-    }
-}
+.numeric-input { text-align: right }
 
+/* Modal */
 .modal {
     .modal-content {
         border: none;
@@ -45,16 +46,23 @@
     }
 }
 
-.numeric-input { text-align: right }
-
+/* Spoiler */
 .spoiler-wrapper { 
-    margin: 20px 0px; padding: 0px 10px; background-color: #EEE;
+    margin: 20px 0; padding: 0 10px; background-color: #EEE;
     &.show { padding-bottom: 10px; }
-    .spoiler-toggle { padding: 10px 0px; cursor: pointer }
+    .spoiler-toggle { padding: 10px 0; cursor: pointer }
     .spoiler-toggle::before { content: "\f0da"; font-family: 'Font Awesome\ 5 Free;' }
     &.show {
         .spoiler { height: auto; overflow: visible; }
         .spoiler-toggle::before { content: "\f0d7"; }
     }
 }
-.spoiler { height: 0px; overflow: hidden; }
+.spoiler { height: 0; overflow: hidden; }
+
+/* Model table */
+.table[data-model-table="1"][data-brighten-first="1"] tr td:first-child { color: silver }
+.table[data-model-table="1"] tr td:last-child { width: 1%; white-space: nowrap; }
+.table[data-model-table="1"] th a::after { content: "\f0dc"; padding-left: 10px; font-family: Font Awesome\ 5 Free; visibility: hidden }
+.table[data-model-table="1"] th a:hover::after { visibility: visible }
+.table[data-model-table="1"] th a.sorting-asc::after { content: "\f0d8"; visibility: visible; padding-left: 10px; font-family: Font Awesome\ 5 Free; }
+.table[data-model-table="1"] th a.sorting-desc::after { content: "\f0d7"; visibility: visible; padding-left: 10px; font-family: Font Awesome\ 5 Free; }

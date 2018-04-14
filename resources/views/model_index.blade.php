@@ -23,7 +23,6 @@
 {!! $modelTable !!}
 
 <div class="toolbar bottom">
-    {!! $sortSwitcher !!}
     {!! $recycleBin !!}
     {!! $paginator !!}
 </div>
