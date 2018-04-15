@@ -29,8 +29,9 @@ return array(
     /*
      * Config 
      */
+    'website_name'        => 'Name of the website',
     'analytics'           => 'Analytics Code',
-    'registration'        => 'Registrierung',
+    'registration'        => 'Registration unlocked',
     'db_backup'           => 'Automatic DB Backup',
 
 );

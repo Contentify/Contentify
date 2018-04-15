@@ -11,7 +11,7 @@
 {!! Form::errors($errors) !!}
 
 {!! Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) !!}
-    {!! Form::smartText('app::name', 'Name') !!}
+    {!! Form::smartText('app::name', trans('config::website_name')) !!}
 
     {!! Form::smartSelect('app::theme', trans('app.theme'), $themes) !!}
 

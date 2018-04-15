@@ -100,7 +100,7 @@ class AdminConfigController extends BackController
                 ->update(['value' => $settingsBag->$settingName, 'updated_at' => DB::raw('NOW()')]);
 
             /*
-             * If the key does not exist we need to create it
+             * If the key does not exist we need to create it.
              * $result contains the number of affected rows.
              * With using a timestamp we ensure that when updating a value
              * the row is always affected, even though if the value does not change.
