@@ -11,35 +11,53 @@
 {!! Form::errors($errors) !!}
 
 {!! Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) !!}
-    {!! Form::smartText('app::name', trans('config::website_name')) !!}
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#tab_general" aria-controls="tab_general" role="tab" data-toggle="tab">General</a></li>
+        <li role="presentation"><a href="#tab_services" aria-controls="tab_services" role="tab" data-toggle="tab">Services</a></li>
+        <li role="presentation"><a href="#tab_theme" aria-controls="tab_theme" role="tab" data-toggle="tab">Theme</a></li>
+    </ul>
 
-    {!! Form::smartSelect('app::theme', trans('app.theme'), $themes) !!}
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab_general">
+            {!! Form::smartText('app::name', trans('config::website_name')) !!}
 
-    {!! Form::smartCheckbox('app::theme_christmas', trans('app.theme_christmas')) !!}
+            <hr>
 
-    {!! Form::smartText('app::theme_snow_color', trans('app.theme_snow_color')) !!} 
+            {!! Form::smartCheckbox('auth::registration', trans('config::registration')) !!}
 
-    <hr>
+            {!! Form::smartCheckbox('app::https', 'HTTPS') !!}
 
-    {!! Form::smartText('app::facebook', 'Facebook') !!} 
+            {!! Form::smartCheckbox('app::dbBackup', trans('config::db_backup')) !!}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab_services">
+            {!! Form::smartText('app::facebook', 'Facebook') !!}
 
-    {!! Form::smartText('app::twitter', 'Twitter') !!} 
+            {!! Form::smartText('app::twitter', 'Twitter') !!}
 
-    {!! Form::smartText('app::youtube', 'YouTube') !!} 
+            {!! Form::smartText('app::youtube', 'YouTube') !!}
 
-    {!! Form::smartText('app::twitchKey', 'Twitch API Key') !!} 
+            {!! Form::smartText('app::instagram', 'Instagram') !!}
 
-    <hr>
-       
-    {!! Form::smartCheckbox('auth::registration', trans('config::registration')) !!} 
+            {!! Form::smartText('app::twitch', 'Twitch') !!}
 
-    {!! Form::smartCheckbox('app::https', 'HTTPS') !!} 
+            {!! Form::smartText('app::twitchKey', 'Twitch API Key') !!}
 
-    {!! Form::smartCheckbox('app::dbBackup', trans('config::db_backup')) !!} 
+            {!! Form::smartText('app::discord', 'Discord') !!}
 
-    <hr>   
+            <hr>
 
-    {!! Form::smartTextarea('app::analytics', trans('config::analytics'), false) !!} 
+            {!! Form::smartTextarea('app::analytics', trans('config::analytics'), false) !!}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab_theme">
+            {!! Form::smartSelect('app::theme', trans('app.theme'), $themes) !!}
+
+            {!! Form::smartCheckbox('app::theme_christmas', trans('app.theme_christmas')) !!}
+
+            {!! Form::smartText('app::theme_snow_color', trans('app.theme_snow_color')) !!}
+        </div>
+    </div>
 
     {!! Form::actions(['submit' => trans('app.update')]) !!}
 {!! Form::close() !!}

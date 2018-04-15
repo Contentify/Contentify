@@ -2,9 +2,9 @@
 
 <div class="stream-player">
     @if ($stream->provider == 'twitch')
-        <iframe src="http://www.twitch.tv/{{ $stream->permanent_id }}/embed" allowfullscreen></iframe>
+        <iframe src="https://www.twitch.tv/{{ $stream->permanent_id }}/embed" allowfullscreen></iframe>
         
-        <a href="http://www.twitch.tv/{{ $stream->permanent_id }}?tt_medium=live_embed&amp;tt_content=text_link">Watch live video from {{ $stream->title }} on www.twitch.tv</a>
+        <a href="https://www.twitch.tv/{{ $stream->permanent_id }}?tt_medium=live_embed&amp;tt_content=text_link">Watch live video from {{ $stream->title }} on www.twitch.tv</a>
 
         <script>
             $(document).ready(function()
@@ -17,7 +17,7 @@
     @if ($stream->provider == 'smashcast')
         <iframe src="https://www.smashcast.tv/#!/embed/{{ $stream->permanent_id }}" allowfullscreen></iframe>
 
-        <a href="http://www.smashcast.tv/{{ $stream->permanent_id }}">Watch live video from {{ $stream->title }} on www.smashcast.tv</a>
+        <a href="https://www.smashcast.tv/{{ $stream->permanent_id }}">Watch live video from {{ $stream->title }} on www.smashcast.tv</a>
 
         <script>
             $(document).ready(function()

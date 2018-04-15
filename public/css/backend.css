@@ -7469,7 +7469,10 @@ fieldset[disabled] .page-images .image .actions a.active {
   }
 }
 .page-config form {
-  margin-top: 40px;
+  margin-top: 20px;
+}
+.page-config .tab-pane {
+  padding: 20px 0;
 }
 .page-config .actions button {
   margin-bottom: 10px;

@@ -89,6 +89,12 @@ class AdminUsersController extends BackController
         ]);
     }
 
+    /**
+     * Update a user
+     *
+     * @param int $id The ID of the user
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function update($id)
     {
         $user = User::findOrFail($id);
