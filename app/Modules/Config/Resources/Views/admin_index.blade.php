@@ -13,9 +13,9 @@
 {!! Form::model($settingsBag, ['route' => 'admin.config.update', 'method' => 'PUT']) !!}
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#tab_general" aria-controls="tab_general" role="tab" data-toggle="tab">General</a></li>
-        <li role="presentation"><a href="#tab_services" aria-controls="tab_services" role="tab" data-toggle="tab">Services</a></li>
-        <li role="presentation"><a href="#tab_theme" aria-controls="tab_theme" role="tab" data-toggle="tab">Theme</a></li>
+        <li role="presentation" class="active"><a href="#tab_general" aria-controls="tab_general" role="tab" data-toggle="tab">{{ trans('app.general') }}</a></li>
+        <li role="presentation"><a href="#tab_services" aria-controls="tab_services" role="tab" data-toggle="tab">{{ trans('app.services') }}</a></li>
+        <li role="presentation"><a href="#tab_theme" aria-controls="tab_theme" role="tab" data-toggle="tab">{{ trans('app.theme') }}</a></li>
     </ul>
 
     <!-- Tab panes -->

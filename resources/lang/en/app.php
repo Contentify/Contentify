@@ -202,6 +202,8 @@ return [
     'total'             => 'Total',
     'nothing_new'       => 'Sorry, nothing new. Please return later.',
     'back'              => 'Back',
+    'general'           => 'General',
+    'services'          => 'Services',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Christmas Mode (Snow)',
     'theme_snow_color'  => 'Flakes color',
