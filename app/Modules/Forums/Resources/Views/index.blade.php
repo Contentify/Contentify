@@ -21,7 +21,7 @@
         </div>
 
         <div class="sub-forums">
-            @foreach($forum->forums as $subForum)
+            @forelse ($forum->forums as $subForum)
                 <div class="sub-forum">
                     <div class="info">
                         <a href="{!! url('forums/'.$subForum->id.'/'.$subForum->slug) !!}">
@@ -48,7 +48,9 @@
                         @endif
                     </div>
                 </div>
-            @endforeach
+            @empty
+                {{ trans('forums::no_child_forums') }}
+            @endforelse
         </div>
     </div>
 @endforeach

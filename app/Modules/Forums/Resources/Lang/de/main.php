@@ -15,6 +15,7 @@ return array(
      * Forums
      */
     'parent'            => 'Eltern-Forum',
+    'no_child_forums'   => 'Dieses Forum hat noch keine Unterforen.',
     'create_thread'     => 'Thread erstellen',
     'create_post'       => 'Beitrag erstellen',
     'forum_circle'      => 'Ungültiges Eltern-Forum. Zyklen sind nicht erlaubt.',

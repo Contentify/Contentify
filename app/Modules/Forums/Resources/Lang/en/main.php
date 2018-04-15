@@ -15,6 +15,7 @@ return array(
      * Forums
      */
     'parent'            => 'Parent Forum',
+    'no_child_forums'   => 'This forum has no sub forums yet.',
     'create_thread'     => 'Create Thread',
     'create_post'       => 'Create Post',
     'forum_circle'      => 'Invalid parent forum. You cannot create a cycle.',
