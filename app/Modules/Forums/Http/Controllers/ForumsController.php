@@ -4,6 +4,7 @@ namespace App\Modules\Forums\Http\Controllers;
 
 use App\Modules\Forums\Forum;
 use FrontController;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class ForumsController extends FrontController
 {
@@ -23,10 +24,10 @@ class ForumsController extends FrontController
      */
     public function show($id)
     {
-        $forum = Forum::with(array('threads' => function($query)
+        /** @var Forum $forum */
+        $forum = Forum::with(array('threads' => function(Relation $query)
         {
             $query->orderBy('sticky', 'desc')->orderBy('updated_at', 'desc');
-
         }))->isAccessible()->findOrFail($id);
 
         $this->title($forum->title);

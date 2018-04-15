@@ -61,14 +61,14 @@ class AdminModulesController extends BackController
             },
             'actions'   => [
                 'install',
-                function($module) {
-                    /** @var Module $module */
+                function(Module $module) {
                     if ($module->installer() !== false) {
                         return icon_link('plus-circle',
                             trans('app.install'), 
                             url('admin/modules/'.$module->title.'/install/0'),
                             false,
-                            ['data-confirm' => trans('modules::installation')]);
+                            ['data-confirm' => trans('modules::installation')]
+                        );
                     }
                 }
             ]

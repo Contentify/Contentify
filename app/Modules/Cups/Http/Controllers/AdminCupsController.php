@@ -54,21 +54,21 @@ class AdminCupsController extends BackController
                 ];
             },
             'actions'   => [
-                function($cup) {
+                function(Cup $cup) {
                     return icon_link(
                         'edit', 
                         trans('app.edit'), 
                         url('admin/cups/edit/'.$cup->id)
                     );
                 },
-                function($cup) {
+                function(Cup $cup) {
                     return icon_link(
                         'users',
                         trans('app.object_participants'), 
                         url('admin/cups/participants/'.$cup->id)
                     );
                 },
-                function($cup) {
+                function(Cup $cup) {
                     return icon_link(
                         'share-alt', 
                         trans('cups::seeding'), 

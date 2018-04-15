@@ -217,7 +217,7 @@ class Forum extends BaseModel
             $teamIds = DB::table('team_user')->whereUserId($user->id)->pluck('team_id')->toArray();
             $teamIds[] = -1; // Add -1 as team ID so the SQL statements (`team_id` in (...)) always has valid syntax
 
-            return $query->where('internal', '<=', $internal)->where(function($query) use ($teamIds)
+            return $query->where('internal', '<=', $internal)->where(function(Builder $query) use ($teamIds)
             {
                 $query->whereNull('team_id')
                       ->orWhereIn('team_id', $teamIds);
