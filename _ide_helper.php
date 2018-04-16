@@ -12996,7 +12996,7 @@ namespace Collective\Html {
          * 
          * If $image has no extension, the extension will be ".png".
          * If $image does not contain a path, the path "icons" will be used.
-         * If $image has does not start with "http://" an asset link will be created.
+         * If $image has does not start with "http(s)://" an asset link will be created.
          *
          * @param string $image The name of the link image
          * @param string $title The link title

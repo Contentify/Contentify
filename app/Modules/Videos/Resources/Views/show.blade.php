@@ -13,7 +13,7 @@
     @endif
 
     @if ($video->provider == 'vimeo')
-        <iframe src="//player.vimeo.com/video/{{ $video->permanent_id }}" allowfullscreen></iframe> <p><a href="http://vimeo.com/{{ $video->permanent_id }}">
+        <iframe src="//player.vimeo.com/video/{{ $video->permanent_id }}" allowfullscreen></iframe> <p><a href="https://vimeo.com/{{ $video->permanent_id }}">
         <script>
             $(document).ready(function()
             {

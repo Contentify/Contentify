@@ -25,12 +25,13 @@ class SmashcastApi extends StreamApi
     const URL = 'https://api.smashcast.tv/';
 
     /**
-     * Stream (=media) info API call - Docs: http://developers.hitbox.tv/media
+     * Stream (=media) info API call - Docs: https://developers.smashcast.tv/#live
      */
     const MEDIA_LIST = 'media/live/';
 
     /**
      * Prefix URL of the media server (for thumbnails)
+     * Note: Yep, this still is a Hitbox URL.
      */
     const MEDIA_URL = 'https://edge.sf.hitbox.tv';
 

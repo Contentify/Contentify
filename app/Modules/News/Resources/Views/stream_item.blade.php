@@ -33,7 +33,7 @@
         </div>
 
         @if ($item->provider == 'youtube')
-            <a class="image text-hide" href="{!! 'videos/'.$item->id.'/'.$item->slug !!}" style="background-image: url(http://img.youtube.com/vi/{{ $item->permanent_id }}/mqdefault.jpg)">{{ $item->title }}
+            <a class="image text-hide" href="{!! 'videos/'.$item->id.'/'.$item->slug !!}" style="background-image: url(https://img.youtube.com/vi/{{ $item->permanent_id }}/mqdefault.jpg)">{{ $item->title }}
             </a>
         @endif
 

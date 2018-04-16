@@ -234,7 +234,7 @@ class FormBuilder extends OriginalFormBuilder
         $options['class'] .= 'url';
 
         if (! isset($options['placeholder'])) {
-            $options['placeholder'] = 'http://www.example.com';
+            $options['placeholder'] = 'https://www.example.com';
         }
         
         $partial = self::input('url', $name, $value, $options);

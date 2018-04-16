@@ -12,7 +12,7 @@
     {!! HTML::script('vendor/jquery/jquery-2.2.4.min.js') !!}
     
     <style type="text/css">
-        @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
         body { margin: 0px; padding: 0px; background-color: white; font-family: 'Open Sans', Arial; font-size: 16px; color: #444 }
         a { color: #00afff; text-decoration: none; }
