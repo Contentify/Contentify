@@ -786,7 +786,7 @@ this contract. After completion of the contract, your data are blocked against f
 as per tax-related and commercial regulations, these data are deleted unless you have expressly consented to their 
 further use.<br><h3>Disclosure</h3>According to the Federal Data Protection Act, you have a right to free-of-charge 
 information about your stored data, and possibly entitlement to correction, blocking or deletion of such data. 
-<br><br><i>From: </i><a href="http://www.twigg.de/" target="_blank">http://www.twigg.de/</a>',
+<br><br><i>From: </i><a href="https://www.twigg.de/" target="_blank">http://www.twigg.de/</a>',
             'published'     => true,
             'creator_id'    => 1,
             'updater_id'    => 1,

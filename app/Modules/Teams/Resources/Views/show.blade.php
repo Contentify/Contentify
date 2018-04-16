@@ -36,13 +36,13 @@
                             @if (filter_var($user->facebook, FILTER_VALIDATE_URL))
                                 <a class="btn" href="{{ $user->facebook }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
                             @else
-                                <a class="btn" href="http://www.facebook.com/{{ $user->facebook }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
+                                <a class="btn" href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
                             @endif
 
                             @if (filter_var($user->twitter, FILTER_VALIDATE_URL))
                                 <a class="btn" href="{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
                             @else
-                                <a class="btn" href="http://www.twitter.com/{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
+                                <a class="btn" href="https://www.twitter.com/{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
                             @endif
                         </div>
                     </div>                    

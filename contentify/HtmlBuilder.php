@@ -56,7 +56,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      */
     public function gravatar($email, $size = 32, $default = 'mm')
     { 
-        return '<img src="http://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).
+        return '<img src="https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).
             '?s='.$size.'&d='.$default.'" alt="Avatar">';
     }
 

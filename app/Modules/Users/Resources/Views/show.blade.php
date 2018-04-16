@@ -43,7 +43,7 @@
                                 @if (filter_var($user->website, FILTER_VALIDATE_URL))
                                     {!! HTML::link(e($user->website)) !!}
                                 @else
-                                    {!! HTML::link('http://www.'.e($user->website), e($user->website)) !!}
+                                    {!! HTML::link('//www.'.e($user->website), e($user->website)) !!}
                                 @endif
                             @endif
                         @endif
@@ -90,7 +90,7 @@
                             @if (filter_var($user->facebook, FILTER_VALIDATE_URL))
                                 <a href="{{ $user->facebook }}" target="_blank">{{ trans('app.link') }}</a>
                             @else
-                                <a href="http://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a>
+                                <a href="https://www.facebook.com/{{ $user->facebook }}" target="_blank">{{ $user->facebook }}</a>
                             @endif
                         </td>
                     </tr>
@@ -100,7 +100,7 @@
                             @if (filter_var($user->twitter, FILTER_VALIDATE_URL))
                                 <a href="{{ $user->twitter }}" target="_blank">{{ trans('app.link') }}</a>
                             @else
-                                <a href="http://www.twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a>
+                                <a href="https://www.twitter.com/{{ $user->twitter }}" target="_blank">{{ $user->twitter }}</a>
                             @endif
                         </td>
                     </tr>
@@ -114,7 +114,7 @@
                             @if (filter_var($user->steam_id, FILTER_VALIDATE_URL))
                                 <a href="{{ $user->steam_id }}" target="_blank">{{ trans('app.link') }}</a>
                             @else
-                                <a href="http://steamcommunity.com/id/{{ $user->steam_id }}" target="_blank">{{ $user->steam_id }}</a>
+                                <a href="https://steamcommunity.com/id/{{ $user->steam_id }}" target="_blank">{{ $user->steam_id }}</a>
                             @endif
                         </td>
                     </tr>

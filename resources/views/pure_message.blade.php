@@ -14,12 +14,12 @@
     {!! HTML::script('vendor/jquery/jquery-2.2.4.min.js') !!}
 
     <style>
-        @import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
         @font-face {
             font-family: 'Lato';
             font-style: normal;
             font-weight: 300;
-            src: local('Lato Light'), local('Lato-Light'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
+            src: local('Lato Light'), local('Lato-Light'), url(https://themes.googleusercontent.com/static/fonts/lato/v6/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
         }
 
         body { margin: 0; font-family: Verdana; font-size: 12px; color: silver; background-color: white }
