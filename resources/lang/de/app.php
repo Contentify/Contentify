@@ -202,6 +202,8 @@ return [
     'total'             => 'Gesamt',
     'nothing_new'       => 'Entschuldigung, es gibt noch nichts Neues. Bitte versuchen Sie es später erneut.',
     'back'              => 'Zurück',
+    'general'           => 'Allgemein',
+    'services'          => 'Services',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Weihnachtsmodus (Schnee)',
     'theme_snow_color'  => 'Flockenfarbe',

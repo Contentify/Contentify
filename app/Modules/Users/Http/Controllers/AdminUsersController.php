@@ -73,10 +73,10 @@ class AdminUsersController extends BackController
             'searchFor' => 'username',
             'actions'   => [
                 'edit',
-                function($user) {
+                function(\App\Modules\Users\User $user) {
                     return icon_link('edit', trans('app.edit_profile'), url('users/'.$user->id.'/edit')).' ';
                 },
-                function($user) {
+                function(\App\Modules\Users\User $user) {
                     return icon_link(
                         'trash',
                         trans('app.delete'),
@@ -89,6 +89,12 @@ class AdminUsersController extends BackController
         ]);
     }
 
+    /**
+     * Update a user
+     *
+     * @param int $id The ID of the user
+     * @return \Illuminate\Http\RedirectResponse|null
+     */
     public function update($id)
     {
         $user = User::findOrFail($id);

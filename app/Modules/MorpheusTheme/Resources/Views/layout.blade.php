@@ -36,7 +36,7 @@
     {!! HTML::script('vendor/contentify/frontend.js') !!}    
 </head>
 <body>
-    @if(Config::get('app.theme_christmas'))
+    @if (Config::get('app.theme_christmas'))
         @include('snow')
     @endif
     <header id="header">
@@ -63,9 +63,7 @@
                     <li>{!! link_to('forums', trans('app.object_forums')) !!}</li>
                 </ul>
                 <div class="right">
-                    <a href="https://www.facebook.com/{{ Config::get('app.facebook') }}" target="_blank">{!! HTML::fontIcon('facebook') !!}</a>
-                    <a href="https://twitter.com/{{ Config::get('app.twitter') }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
-                    <a href="https://www.youtube.com/channel/{{ Config::get('app.youtube') }}" target="_blank">{!! HTML::fontIcon('youtube') !!}</a>
+                    @include('social_links')
                 </div>
             </div>
         </nav>
@@ -163,9 +161,7 @@
                 @widget('Visitors::Visitors')
 
                 <div class="right">
-                    <a href="https://www.facebook.com/{{ Config::get('app.facebook') }}" target="_blank" title="Facebook">{!! HTML::fontIcon('facebook') !!}</a>
-                    <a href="https://twitter.com/{{ Config::get('app.twitter') }}" target="_blank" title="Twitter">{!! HTML::fontIcon('twitter') !!}</a>
-                    <a href="https://www.youtube.com/channel/{{ Config::get('app.youtube') }}" target="_blank" title="YouTube">{!! HTML::fontIcon('youtube') !!}</a>
+                    @include('social_links')
                 </div>
             </div>
         </div>

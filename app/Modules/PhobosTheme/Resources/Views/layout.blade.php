@@ -185,9 +185,7 @@
 
                 <div class="col-md-8">
                     <ul class="list-inline">
-                        <li><a class="social-link" href="https://www.facebook.com/{{ Config::get('app.facebook') }}" target="_blank" title="Facebook">{!! HTML::fontIcon('facebook') !!}</a></li>
-                        <li><a class="social-link" href="https://twitter.com/{{ Config::get('app.twitter') }}" target="_blank" title="Twitter">{!! HTML::fontIcon('twitter') !!}</a></li>
-                        <li><a class="social-link" href="https://www.youtube.com/channel/{{ Config::get('app.youtube') }}" target="_blank" title="YouTube">{!! HTML::fontIcon('youtube') !!}</a></li>
+                        @include('social_links', ['wrapperTag' => 'li'])
                         <li>&nbsp;</li>
                         <li>{!! link_to('contact', trans('app.object_contact')) !!}</li>
                         <li>{!! link_to('impressum', 'Impressum') !!}</li>

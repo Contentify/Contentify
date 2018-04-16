@@ -107,7 +107,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
 
         /*
          * Sort the stream.
-         * NOTE: All items need to have the updated_at timestamp attribute!
+         * ATTENTION: All items need to have the updated_at timestamp attribute!
          */
         usort($streamItems, function($itemOne, $itemTwo) 
         {

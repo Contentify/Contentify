@@ -44,7 +44,7 @@
         }
 
         /**
-         * Retrieve the stream ID from a URL such as "http://www.example.com/<id>"
+         * Retrieve the stream ID from a URL such as "https://www.example.com/<id>"
          *
          * @param  {string}         provider    The provider's name
          * @param  {string}         url         The stream URL
@@ -94,10 +94,10 @@
         {
             switch (getProvider()) {
                 case 'twitch':
-                    $('#url').val('http://www.twitch.tv/' + $(this).val());
+                    $('#url').val('https://www.twitch.tv/' + $(this).val());
                     break;
                 case 'smashcast':
-                    $('#url').val('http://www.smashcast.tv/' + $(this).val());
+                    $('#url').val('https://www.smashcast.tv/' + $(this).val());
                     break;
             }
         });

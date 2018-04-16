@@ -98,6 +98,7 @@ class Comments
      */
     public function edit($id)
     {
+        /** @var Comment $comment */
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
@@ -117,6 +118,7 @@ class Comments
      */
     public function update($id)
     {
+        /** @var Comment $comment */
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_UPDATE) and $comment->creator->id != user()->id)) {
@@ -143,6 +145,7 @@ class Comments
      */
     public function delete($id)
     {
+        /** @var Comment $comment */
         $comment = Comment::findOrFail($id);
 
         if (! user() or (! user()->hasAccess('comments', PERM_DELETE) and $comment->creator->id != user()->id)) {

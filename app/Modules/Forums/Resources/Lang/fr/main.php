@@ -15,6 +15,7 @@ return array(
      * Forums
      */
     'parent'            => 'Index du forum',
+    'no_child_forums'   => 'Ce forum n\'a pas encore de sous-forums.',
     'create_thread'     => 'Créer un sujet',
     'create_post'       => 'Répondre',
     'forum_circle'      => 'Catégorie parente invalide. Vous ne pouvez pas créer un cycle.',

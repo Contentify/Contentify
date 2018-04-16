@@ -200,6 +200,8 @@ return [
     'total'             => 'Total',
     'nothing_new'       => 'Désoler, rien de nouveau. Revenez plus tard.',
     'back'              => 'Retour',
+    'general'           => 'Généralement',
+    'services'          => 'Services',
     'theme'             => 'Thème',
     'theme_christmas'   => 'Mode Nöel (Flocon)',
     'theme_snow_color'  => 'Couleur des flocons',
