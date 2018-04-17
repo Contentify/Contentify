@@ -159,7 +159,7 @@ class User extends SentinelUser implements UserInterface
         {
             /*
              * Update the locale (since its stored in a session variable we need to update it)
-             * when changed in profile or use just logged in.
+             * when changed in profile or user just logged in.
              */
             if (user() and user()->id == $user->id) {
                 Session::forget('app.locale');
