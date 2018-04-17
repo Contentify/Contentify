@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  contentify:
+    build: .
+    image: contentify:latest
+    ports:
+      - 80:80
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: develop
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+      MYSQL_DATABASE: devdatabase
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
