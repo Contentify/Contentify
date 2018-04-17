@@ -63,7 +63,7 @@ class Team extends BaseModel
 
     /**
      * The BaseModel's handleRelationalArray() method does not support 
-     * orderBy() for pivot attributes so we have to use oldschool Eloquent instead.
+     * orderBy() for pivot attributes so we have to use old-school Eloquent instead.
      */
     public function users()
     {

@@ -1,39 +1,36 @@
 <?php 
 
-namespace App\Modules\Streams\Http\Controllers;
+namespace App\Modules\Languages\Http\Controllers;
 
-use App\Modules\Streams\Stream;
+use App\Modules\Languages\Language;
 use FrontController;
+use Redirect;
+use Session;
 
 class LanguagesController extends FrontController
 {
 
-    /*
-    public function __construct()
-    {
-        $this->modelClass = Stream::class;
-
-        parent::__construct();
-    }
-    */
-
     /**
-     * Show a stream
-     * 
-     * @param  string $code The code of the language
-     * @return void
+     * Change the language of the current user / client
+     *
+     * @param string $code The code of the language
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function set($code)
     {
-        /** @var Stream $stream */
-        $stream = Stream::findOrFail($id);
+        /** @var Language $language */
+        $language = Language::whereCode($code)->firstOrFail();
 
-        $stream->access_counter++;
-        $stream->save();
+        if (user()) {
+            $user = user();
+            $user->language_id = $language->id;
+            $user->save(); // This will trigger an event listener in the user model
+        } else {
+            Session::put('app.locale', $code);
+        }
 
-        $this->title($stream->title);
-
-        $this->pageView('streams::show', compact('stream'));
+        $this->alertFlash(trans('app.updated', [trans('app.object_language')]));
+        return Redirect::route('home');
     }
 
 }

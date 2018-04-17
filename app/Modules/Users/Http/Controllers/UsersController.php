@@ -86,6 +86,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
             return;
         }
 
+        /** @var User $user */
         $user = User::findOrFail($id);
 
         $this->title($user->username);
@@ -182,6 +183,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
             return Redirect::to("users/{$id}/password")->withErrors($validator);
         }
 
+        /** @var User $user */
         $user = User::findOrFail($id);
 
         $credentials = array(

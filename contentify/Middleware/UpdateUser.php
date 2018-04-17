@@ -61,7 +61,7 @@ class UpdateUser
         | Update User's Last Active Time
         |--------------------------------------------------------------------------
         |
-        | To decide if a user is only or not we use an attribute in the 
+        | To decide if a user is online or not we use an attribute in the
         | users table/model called last_active. We update it to 
         | the current time in a specific interval.
         |

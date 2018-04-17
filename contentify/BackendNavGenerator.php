@@ -114,8 +114,8 @@ class BackendNavGenerator
             for ($i = 1; $i <= self::MAX_NAVCATS; $i++) { 
                 foreach ($navItems as $navItem) {
                     if ($navItem['category'] == $i) {
-                        $navCategories[$i][$navItem['position']] = $navItem;    
-                    }               
+                        $navCategories[$i][$navItem['position']] = $navItem;
+                    }
                 }
 
                 ksort($navCategories[$i]); // Sort category array to bring positions in the right order
