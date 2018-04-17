@@ -146,8 +146,8 @@
                     @widget('Teams::Teams')
 
                     <br>
-                    <div class="">
-                        @widget('Languages::Languages')
+                    <div class="text-center">
+                        @widget('Adverts::Advert')
                     </div>
                 </div>
             </aside>
