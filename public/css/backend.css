@@ -6659,9 +6659,14 @@ button.close {
 /*
  * Global Variables
  */
-/* Color from framycss.org */
-/* Color from framycss.org */
-/* Color from framycss.org */
+/* Default text */
+/* Dark background */
+/* Primary color */
+/* Primary color (hover) */
+/* Background color */
+/* Error, alert - color from framycss.org */
+/* Success - Color from framycss.org */
+/* Danger - Color from framycss.org */
 ::selection {
   background: #00afff;
   color: white;
@@ -7295,6 +7300,25 @@ fieldset[disabled] .page .table .icon-link.active {
   border-color: #4ba7e2;
   background: rgba(75, 167, 226, 0.8);
 }
+/* Tabs */
+.nav-tabs li a {
+  background-color: #eeeeee;
+}
+.nav-tabs li a:hover {
+  background-color: #ffffff;
+}
+.nav-tabs li.active a {
+  background-color: #ffffff;
+}
+.tab-content {
+  padding: 0 20px;
+  border-left: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+}
+.tab-content .tab-pane {
+  padding: 20px 0 0 0;
+}
 /*
  * Sub pages
  */
@@ -7468,15 +7492,6 @@ fieldset[disabled] .page-images .image .actions a.active {
     padding-top: 50%;
   }
 }
-.page-config form {
-  margin-top: 20px;
-}
-.page-config .tab-pane {
-  padding: 20px 0;
-}
-.page-config .actions button {
-  margin-bottom: 10px;
-}
 .page-visitors #chart {
   margin: 0 0 20px 5%;
   width: 90%;
@@ -7649,6 +7664,37 @@ fieldset[disabled] .page-images .image .actions a.active {
 }
 .page-navigations #item_add {
   margin-top: 20px;
+}
+.page-config form {
+  margin-top: 20px;
+}
+.page-config .actions button {
+  margin-bottom: 10px;
+}
+.page-config .theme-tile {
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+.page-config .theme-tile label {
+  width: 90%;
+  cursor: pointer;
+}
+.page-config .theme-tile input[type=radio] {
+  display: none;
+}
+.page-config .theme-tile .preview-img {
+  opacity: 0.5;
+  width: 100%;
+  padding-top: 75%;
+  border: 3px solid transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.page-config .theme-tile input[type=radio]:checked + .preview-img {
+  opacity: 1;
+  border-color: #00afff;
 }
 @media (max-width: 768px) {
   .page-config .actions .btn {

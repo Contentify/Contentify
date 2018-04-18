@@ -51,7 +51,18 @@
             {!! Form::smartTextarea('app::analytics', trans('config::analytics'), false) !!}
         </div>
         <div role="tabpanel" class="tab-pane" id="tab_theme">
-            {!! Form::smartSelect('app::theme', trans('app.theme'), $themes) !!}
+            {!! Form::smartGroupOpen('app::theme', trans('app.theme')) !!}
+            @foreach($themes as $themeName => $theme)
+                <div class="theme-tile">
+                    <label>
+                        {!! Form::radio('app::theme', $themeName, $theme['activeTheme']) !!}
+                        <div class="preview-img" style="background-image: url({!! $theme['preview'] !!})"></div>
+                        <span>{{ $theme['slug'] }}</span>
+                    </label>
+                </div>
+            @endforeach
+
+            {!! Form::smartGroupClose() !!}
 
             {!! Form::smartCheckbox('app::theme_christmas', trans('app.theme_christmas')) !!}
 

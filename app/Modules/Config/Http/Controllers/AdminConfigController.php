@@ -55,7 +55,9 @@ class AdminConfigController extends BackController
             }
 
             if (isset($module['theme']) and $module['theme']) {
-                $themes[$name] = $module['slug'];
+                $module['activeTheme'] = (Config::get('app.theme') === $name);
+                $module['preview'] = load_image_encoded(Config::get('modules.path').'/'.$name.'/preview.png');
+                $themes[$name] = $module;
             }
         }
 
