@@ -124,7 +124,7 @@ class PostsController extends FrontController
          * If the post is a root post, delete the thread instead of the post.
          */
         if ($forumPost->root) {
-            return Redirect::action('forums/thread/update/'.$forumPost->forum_thread_id);
+            return Redirect::action('forums/thread/update/'.$forumPost->thread_id);
         }
 
         $forumPost->fill(Input::all());
