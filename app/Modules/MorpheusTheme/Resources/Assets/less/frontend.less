@@ -11,10 +11,10 @@
  * Global Variables
  */
 
-@customFont: 'Titillium Web';
-@primaryColor: #00afff;
-@secondaryColor: #FF6100; // orange: FF6100; green: 00ffb3
-@textColor: white;
+@primary-font: 'Titillium Web';
+@primary-color: #00afff;
+@secondary-color: #FF6100; // orange: FF6100; green: 00ffb3
+@text-color: white;
 @red: #ff4000;
 @green: #00ff4e;
 @orange: #ffa800;
@@ -23,8 +23,8 @@
 @darkest: #090a0c;
 
 /* Text selection */
-::-moz-selection { color: white; background: @primaryColor; }
-::selection { color: white; background-color: @primaryColor; } 
+::-moz-selection { color: white; background: @primary-color; }
+::selection { color: white; background-color: @primary-color; } 
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -32,15 +32,15 @@
 }
 
 ::-webkit-scrollbar-track {
-    background-color: darken(@primaryColor, 40%);
+    background-color: darken(@primary-color, 40%);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: darken(@primaryColor, 20%); 
+    background-color: darken(@primary-color, 20%); 
 
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: @primaryColor;
+    background-color: @primary-color;
 }
 
 /*
@@ -48,41 +48,41 @@
  */
 
 /* URLs */
-a, a:visited { color: @primaryColor; }
-a:active, a:focus { color: @primaryColor; text-decoration: none }
-a:hover { color: @primaryColor; text-decoration: none }
+a, a:visited { color: @primary-color; }
+a:active, a:focus { color: @primary-color; text-decoration: none }
+a:hover { color: @primary-color; text-decoration: none }
 
 /*
  * Classes
  */
 
 .page-title { 
-    margin: 0 0 20px 0; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: @textColor; font-size: 16px; font-weight: bold; text-transform: uppercase; 
-    a { color: @textColor }
+    margin: 0 0 20px 0; padding: 10px 20px; border-bottom: 4px solid darken(@primary-color, 30%); background-color: @primary-color; color: @text-color; font-size: 16px; font-weight: bold; text-transform: uppercase; 
+    a { color: @text-color }
 }
 .page { margin-bottom: 20px; padding: 20px; background-color: @darker; }
 .alert { 
     border-radius: 0; 
-    a { color: @textColor }
+    a { color: @text-color }
 }
-.alert-info { background-color: @primaryColor; color: @textColor; border: none; border-left: 4px solid darken(@primaryColor, 20%) }
-.alert-success { background-color: @green; color: @textColor; border: none; border-left: 4px solid darken(@green, 20%) }
-.alert-error { background-color: @red; color: @textColor; border: none; border-left: 4px solid darken(@red, 20%) }
+.alert-info { background-color: @primary-color; color: @text-color; border: none; border-left: 4px solid darken(@primary-color, 20%) }
+.alert-success { background-color: @green; color: @text-color; border: none; border-left: 4px solid darken(@green, 20%) }
+.alert-error { background-color: @red; color: @text-color; border: none; border-left: 4px solid darken(@red, 20%) }
 .well { background-color: black; border-color: @dark; }
 
 /* Messages */
 .ui-message { 
     .alert();
     background-color: #eee;
-    border: 1px solid @primaryColor;
+    border: 1px solid @primary-color;
     border-radius: 0;
     .title { font-weight: bold }
 }
 
 /* Form */
-.btn, .input-group-addon { border-radius: 0; border-color: @primaryColor; background-color: transparent; color: @primaryColor }
-.btn:focus, .btn:hover { border-color: @primaryColor; background-color: @primaryColor; color: @textColor; }
-.input-group-addon { border-left: 1px solid @primaryColor !important }
+.btn, .input-group-addon { border-radius: 0; border-color: @primary-color; background-color: transparent; color: @primary-color }
+.btn:focus, .btn:hover { border-color: @primary-color; background-color: @primary-color; color: @text-color; }
+.input-group-addon { border-left: 1px solid @primary-color !important }
 
 .form-errors { }
 .form-group { 
@@ -92,10 +92,10 @@ a:hover { color: @primaryColor; text-decoration: none }
         .form-control();
         background-color: @darker;
         border: none;
-        border-bottom: 2px solid @primaryColor;
+        border-bottom: 2px solid @primary-color;
         border-radius: 1px;
-        color: @textColor;
-        &:focus { border-color: lighten(@primaryColor, 10%); box-shadow: none !important; }
+        color: @text-color;
+        &:focus { border-color: lighten(@primary-color, 10%); box-shadow: none !important; }
     }
     textarea { height: auto }
 }
@@ -109,8 +109,8 @@ a:hover { color: @primaryColor; text-decoration: none }
 
 /* Pagination */
 ul.pagination {
-    span, a, .disabled span { background-color: @dark; border-color: @primaryColor; color: white }
-    li.active, li.active span { background-color: @primaryColor; border-color: @primaryColor; }
+    span, a, .disabled span { background-color: @dark; border-color: @primary-color; color: white }
+    li.active, li.active span { background-color: @primary-color; border-color: @primary-color; }
     .disabled { opacity: 0.5 }
 }
 
@@ -123,8 +123,8 @@ ul.pagination {
 .modal .modal-header {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    background-color: @primaryColor;
-    color: @textColor;
+    background-color: @primary-color;
+    color: @text-color;
 }
 
 /* Content filter UI */
@@ -158,13 +158,13 @@ ul.pagination {
         margin-bottom: 10px;
         i { float: left; padding: 0 2px; }
         &.enabled i { cursor: pointer; }
-        .active { color: @primaryColor }
+        .active { color: @primary-color }
     }     
 }
 
 /* Datetime Picker */
 .date-time-picker .input-group-addon { cursor: pointer; }
-.bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover { background-color: @primaryColor !important }
+.bootstrap-datetimepicker-widget td.active, .bootstrap-datetimepicker-widget td.active:hover { background-color: @primary-color !important }
 
 /* Slider Default Styling - Feel free to overwrite */
 .slider { 
@@ -176,22 +176,22 @@ ul.pagination {
         a { display: block; width: 100%; height: 361px; background-position: center; background-size: cover; color: transparent; font-size: 0 }
         img { max-width: 100%;  }
     }
-    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
-    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: @textColor; opacity: 0.2; text-align: center; z-index: 1; }
+    .to-left { position: absolute; left: 20px; top: 35%; padding: 20px; line-height: 35px; color: @text-color; opacity: 0.2; text-align: center; z-index: 1; }
+    .to-right { position: absolute; right: 20px; top: 35%; padding: 20px; line-height: 35px; color: @text-color; opacity: 0.2; text-align: center; z-index: 1; }
     .to-left:hover, .to-right:hover { opacity: 1 }
     .buttons { 
         position: absolute; right: 40px; bottom: 40px; z-index: 1;
         ul { margin-bottom: 0; }
         li { 
             width: 30px; height: 30px; line-height: 30px; margin-left: 3px; background-color: black; color: rgba(255, 255, 255, 0.5); opacity: 0.5; cursor: pointer; text-align: center;
-            &.active{ outline: 1px solid @primaryColor; color: @textColor; }
+            &.active{ outline: 1px solid @primary-color; color: @text-color; }
         }
-        li:hover { opacity: 1; color: @textColor; }
+        li:hover { opacity: 1; color: @text-color; }
     }
     .container { position: relative; height: 100%; }
     .slide-title { 
         position: absolute; max-width: ~"calc(100% - 80px)" /* 80 = left * 2 */; margin: 0; left: 40px; bottom: 40px; color: white; text-shadow: 0 0 3px black; background-color: rgba(0, 0, 0, 0.7); z-index: 1;
-        a { display: inline-block; padding: 20px; color: @textColor; }
+        a { display: inline-block; padding: 20px; color: @text-color; }
     }
 }
 @media (max-width: 990px) {
@@ -241,7 +241,7 @@ ul.pagination {
     .news {
         margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid @dark;
         h2 { text-transform: uppercase; font-weight: bold; margin-bottom: 0; }
-        header span { display: block; margin-bottom: 20px; color: @primaryColor; }
+        header span { display: block; margin-bottom: 20px; color: @primary-color; }
         .image img { max-width: 100% }
     }
 }
@@ -252,7 +252,7 @@ ul.pagination {
     .item.new {  transform: scale(0.9); }
     .image { display: block; height: 200px; background-size: cover; background-position: center; }
     h2 { width: 100%; .text-overflow(); }
-    a { color: @textColor; }
+    a { color: @text-color; }
 }
 @media (max-width: 600px) {
     .page-news-show-stream {
@@ -316,7 +316,7 @@ ul.pagination {
         .image:hover { transform: scale(1.1, 1.1); transition: all 0.3s ease; }
         .item.active {  }
     }
-    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: @textColor; text-align: center; }
+    .previews-wrapper .link { opacity: 0.5; position: absolute; top: 0; height: 100%; width: 50px; line-height: 100px; background-color: rgba(0, 0, 0, 0.5); color: @text-color; text-align: center; }
     .previews-wrapper:hover .link { opacity: 1 }
     .previews-wrapper .to-left { left: 0; }
     .previews-wrapper .to-right { right: 0; }
@@ -378,24 +378,24 @@ ul.pagination {
 
 .page-servers .server { margin-bottom: 20px }
 
-@forumsBoxColor: @primaryColor;
+@forums-box-color: @primary-color;
 
 .page-forums, .page-threads {
-    h1 a { color: @textColor; }
+    h1 a { color: @text-color; }
 }
 
 /* Forums index page */
 .page-forums-index {
-    .action { border-radius: 3px; background-color: @primaryColor; color: @textColor }
+    .action { border-radius: 3px; background-color: @primary-color; color: @text-color }
     .root-forum {
-        h2 { margin: 0; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
+        h2 { margin: 0; padding: 10px; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primary-color; font-size: 18px; font-weight: normal; color: @text-color; }
         margin-top: 20px;
     }
     .sub-forums { .clearfix(); }
     .sub-forum {
-        padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
+        padding: 10px; border: 2px solid @forums-box-color; border-top: none; overflow: hidden;
         &.head { 
-            padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; 
+            padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primary-color; font-size: 18px; font-weight: normal; color: @text-color; 
         }
         .info { 
             width: 55%; float: left;
@@ -420,11 +420,11 @@ ul.pagination {
     .threads, .sub-forums {
         .clearfix(); 
         .thread, .sub-forum {
-            padding: 10px; border: 2px solid @forumsBoxColor; border-top: none; overflow: hidden;
-            &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primaryColor; font-size: 18px; font-weight: normal; color: @textColor; }
+            padding: 10px; border: 2px solid @forums-box-color; border-top: none; overflow: hidden;
+            &.head { padding: 10px; border: none; border-top-left-radius: 3px; border-top-right-radius: 3px; background-color: @primary-color; font-size: 18px; font-weight: normal; color: @text-color; }
             .info { 
                 width: 60%; float: left;
-                .sticky, .closed { padding: 2px; border-radius: 3px; background-color: @primaryColor; font-size: 10px; color: @textColor; }
+                .sticky, .closed { padding: 2px; border-radius: 3px; background-color: @primary-color; font-size: 10px; color: @text-color; }
                 .meta { display: block; font-size: 10px }
             }
             .counter { width: 15%; float: left }
@@ -447,18 +447,18 @@ ul.pagination {
 .page-threads, .page-posts {
     .buttons { margin-bottom: 20px }
     .post { 
-        @metaWidth: 100px;
-        @minHeight: 135px;
-        .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid @forumsBoxColor;
+        @meta-width: 100px;
+        @min-height: 135px;
+        .clearfix(); position: relative; margin-bottom: 10px; border: 2px solid @forums-box-color;
         .meta {
-            position: absolute; left: 0; top: 0; width: @metaWidth + 20px; height: 100%; min-height: @minHeight; box-sizing: border-box; padding: 10px; background-color: @dark; float: left;
+            position: absolute; left: 0; top: 0; width: @meta-width + 20px; height: 100%; min-height: @min-height; box-sizing: border-box; padding: 10px; background-color: @dark; float: left;
             .creator-name { .text-overflow(); display: block; }
             .avatar { display: block; max-width: 100px; max-height: 100px; }
             .counter { display: block; }
         }
         .content { 
             @padding: 10px;
-            margin-left: @metaWidth + 20px; min-height: @minHeight + 20px;
+            margin-left: @meta-width + 20px; min-height: @min-height + 20px;
             .top-bar { 
                 position: relative; padding: @padding; 
                 .buttons { position: absolute; right: @padding; top: @padding; }
@@ -466,7 +466,7 @@ ul.pagination {
             .text { 
                 padding: @padding; word-wrap: break-word; overflow-x: hidden;
                 img { max-width: 100% } 
-                hr { border-color: @forumsBoxColor }
+                hr { border-color: @forums-box-color }
                 .signature { padding-top: @padding }
             }
             .updated { padding: @padding; font-size: 10px; text-align: right; }
@@ -498,10 +498,10 @@ ul.pagination {
 
 @keyframes posthighlight {
   0% {
-    border-color: @primaryColor;
+    border-color: @primary-color;
   }
   100% {
-    border-color: @forumsBoxColor;
+    border-color: @forums-box-color;
   }
 }
 
@@ -572,7 +572,7 @@ ul.pagination {
             cursor: pointer;
         }
         &.today {
-            border: 1px solid @primaryColor;
+            border: 1px solid @primary-color;
         }
     }
 }
@@ -582,11 +582,11 @@ ul.pagination {
         margin: 20px 0; text-align: center;
         img { max-width: 100%; }
     }
-    .actions { margin: 20px 0; padding: 20px; border: 2px solid @primaryColor; font-size: 1.5em; text-align: center; }
+    .actions { margin: 20px 0; padding: 20px; border: 2px solid @primary-color; font-size: 1.5em; text-align: center; }
     #description .text { margin: 20px 0; }
     #bracket { overflow: auto }
     .bracket {
-        @borderColor: @textColor;
+        @border-color: @text-color;
         display: flex; flex-direction: row;
         .round { display: flex; flex-direction: column; justify-content:center; width: 200px; list-style: none; padding: 0; }
         .round .spacer { flex-grow: 1; }
@@ -594,9 +594,9 @@ ul.pagination {
         .match { padding-left: 20px; }
         .match.winner { font-weight: bold; }
         .match .score { float: right; margin-right: 5px; }
-        .match-top { border-bottom: 1px solid @borderColor;  }
-        .match-spacer { border-right: 1px solid @borderColor; min-height: 40px; display: flex; justify-content: center; flex-direction: column; text-align: right; padding-right: 5px; flex-grow: 1; }
-        .match-bottom { border-top: 1px solid @borderColor; }
+        .match-top { border-bottom: 1px solid @border-color;  }
+        .match-spacer { border-right: 1px solid @border-color; min-height: 40px; display: flex; justify-content: center; flex-direction: column; text-align: right; padding-right: 5px; flex-grow: 1; }
+        .match-bottom { border-top: 1px solid @border-color; }
     }
 }
 .page-cups-teams-overview, .page-cups-show-team {
@@ -668,7 +668,7 @@ ul.pagination {
 }
 
 .page-questions-index {
-    h3 { padding-left: 10px; border-left: 4px solid @primaryColor }
+    h3 { padding-left: 10px; border-left: 4px solid @primary-color }
     .text { padding: 20px; background-color: @dark }
 }
 
@@ -676,9 +676,9 @@ ul.pagination {
  * Main layout
  */
 
-body { background-color: @darkest; font-family: @customFont; color: @textColor; }
+body { background-color: @darkest; font-family: @primary-font; color: @text-color; }
 th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !important }
-.nav-tabs li.active a { border-left: @dark !important; border-top: @dark !important; border-right: @dark !important; background-color: @dark !important; color: @textColor !important }
+.nav-tabs li.active a { border-left: @dark !important; border-top: @dark !important; border-right: @dark !important; background-color: @dark !important; color: @text-color !important }
 .nav-tabs a:hover { background-color: @dark !important }
 
 .widget-auth-logged-in a {
@@ -700,7 +700,7 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
         background-color: @dark; border-top: 1px solid lighten(@dark, 10%); border-bottom: 4px solid darken(@dark, 4%);
         ul { margin: 10px 0; border-left: 1px solid lighten(@dark, 10%); z-index: 1; position: relative; }
         a { display: inline-block; position: relative; height: 60px; line-height: 60px; padding: 0 20px; font-weight: bold; text-decoration: none; text-transform: uppercase; }
-        li a:before { content: ' '; display: none; position: absolute; left: 20px; right: 20px; bottom: 0; height: 2px; background-color: @primaryColor }
+        li a:before { content: ' '; display: none; position: absolute; left: 20px; right: 20px; bottom: 0; height: 2px; background-color: @primary-color }
         li a.active:before, li:hover a:before { display: block; }
         li.icon { margin-left: 20px; color: lighten(@dark, 10%); }
         .right { 
@@ -743,13 +743,13 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
     }  
 }
 
-.divider { height: 4px; margin-bottom: 20px; background-color: @primaryColor; }
+.divider { height: 4px; margin-bottom: 20px; background-color: @primary-color; }
 
 #sidebar {
     padding-left: 20px; border-left: 1px solid @darker;
     .border { padding: 20px; background-color: @darker; }
-    h3 { margin: 0; padding: 10px 20px; border-bottom: 4px solid darken(@primaryColor, 30%); background-color: @primaryColor; color: black; font-size: 16px; font-weight: bold; text-transform: uppercase }
-    h3 a { float: right; color: darken(@primaryColor, 30%); }
+    h3 { margin: 0; padding: 10px 20px; border-bottom: 4px solid darken(@primary-color, 30%); background-color: @primary-color; color: black; font-size: 16px; font-weight: bold; text-transform: uppercase }
+    h3 a { float: right; color: darken(@primary-color, 30%); }
     h3 a:hover { transform: scale(1.5); transition: all 0.08s linear; }
     .widget { 
         line-height: 40px; 
@@ -766,12 +766,12 @@ th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !import
 
 #footer {
     .links {
-        margin-top: 40px; padding: 40px 0; background-color: @darker; color: @primaryColor; font-weight: bold; text-transform: uppercase;
+        margin-top: 40px; padding: 40px 0; background-color: @darker; color: @primary-color; font-weight: bold; text-transform: uppercase;
         a { padding: 10px; position: relative; z-index: 1; }
     }
     .more {
         padding: 40px 0; background-color: @dark;
-        .info a { color: @textColor; position: relative; z-index: 1; }
+        .info a { color: @text-color; position: relative; z-index: 1; }
         .visitors-label { 
             margin-left: 10px; color: lighten(@dark, 20%); font-weight: bold; position: relative; z-index: 1;
             &:before { content: '-'; margin-right: 10px; } 

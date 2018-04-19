@@ -7675,6 +7675,7 @@ fieldset[disabled] .page-images .image .actions a.active {
   width: 33%;
   float: left;
   text-align: center;
+  /* Select .prev-img after checked radio button */
 }
 .page-config .theme-tile label {
   width: 90%;
@@ -7695,6 +7696,9 @@ fieldset[disabled] .page-images .image .actions a.active {
 .page-config .theme-tile input[type=radio]:checked + .preview-img {
   opacity: 1;
   border-color: #00afff;
+}
+.page-config .theme-tile .preview-img:hover {
+  opacity: 1;
 }
 @media (max-width: 768px) {
   .page-config .actions .btn {
