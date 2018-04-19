@@ -80,7 +80,7 @@
                 @endif
 
                 <!-- Render JavaScript alerts here -->
-                <div class="alert-area"></div>                
+                <div class="alert-area"></div>
 
                 <section class="page page-{!! kebab_case($controllerName) !!} {!! $templateClass !!}">
                     @if (isset($page))
@@ -97,7 +97,7 @@
                     </h3>
                     @widget('Partners::Partners')
 
-                    <br>    
+                    <br>
                     <h3>
                         {{ trans('app.latest') }} {{ trans('app.object_matches') }}
                         <a href="{{ url('matches') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
@@ -126,11 +126,9 @@
                     @widget('Cups::CupsControl')
 
                     <br>
-                    <h3>
-                        Cup Control
-                        <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
-                    </h3>
-                    @widget('Users::Online')
+                    <div class="text-center">
+                        @widget('Adverts::Advert')
+                    </div>
                 </div>
             </aside>
         </div>

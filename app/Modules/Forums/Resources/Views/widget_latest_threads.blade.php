@@ -10,7 +10,7 @@
                 <span class="title">{{ $forumThread->title }}</span>
                 <span class="posts-count">{{ $forumThread->posts_count }}</span>
             </a>
-        </li>   
+        </li>
     @endforeach
     </ul>
 </div>

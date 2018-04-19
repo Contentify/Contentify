@@ -114,7 +114,7 @@
                 @endif
 
                 <!-- Render JavaScript alerts here -->
-                <div class="alert-area"></div>                
+                <div class="alert-area"></div>
 
                 <section class="page page-{!! kebab_case($controllerName) !!} {!! $templateClass !!}">
                     @if (isset($page))
@@ -164,7 +164,7 @@
 
                 <div class="col-md-8">
                     <nav class="pull-right">
-                        <ul class="list-inline">        
+                        <ul class="list-inline">
                             <li>{!! link_to('search', trans('app.object_search')) !!}</li>
                             <li>{!! link_to('servers', trans('app.object_servers')) !!}</li>
                             <li>{!! link_to('galleries', trans('app.object_galleries')) !!}</li>

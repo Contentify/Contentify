@@ -74,7 +74,7 @@
                         @endif
                         <div class="welcome">{{ trans('app.welcome') }}, <span>{!! user()->username !!}</span></div>
                     </div>
-                </a>                
+                </a>
             </div>
             
             {!! HTML::renderBackendNavigation() !!}

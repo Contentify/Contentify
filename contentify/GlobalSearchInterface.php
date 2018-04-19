@@ -7,7 +7,6 @@ namespace Contentify;
  */
 interface GlobalSearchInterface {
 
-
     /**
      * This method is called by the global search (SearchController->postCreate()).
      * Its purpose is to return an array with results for a specific search query.

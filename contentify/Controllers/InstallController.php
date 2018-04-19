@@ -795,7 +795,6 @@ information about your stored data, and possibly entitlement to correction, bloc
             'updated_at'    => DB::raw('NOW()'),
         ]);
 
-
         DB::table('languages')->insert([
             ['id' => '1', 'title' => 'English', 'code' => 'en'],
             ['id' => '2', 'title' => 'Deutsch', 'code' => 'de'],
@@ -1007,7 +1006,6 @@ information about your stored data, and possibly entitlement to correction, bloc
         ("de_mirage", "cs_mirage.jpg", 1, 1, 1),
         ("de_season", "cs_season.jpg", 1, 1, 1),
         ("de_overpass", "cs_overpass.jpg", 1, 1, 1)');
-
 
         DB::insert('INSERT INTO tournaments(title, short, creator_id, updater_id) VALUES
         ("Electronic Sports League", "ESL", 1, 1),
@@ -1241,7 +1239,6 @@ information about your stored data, and possibly entitlement to correction, bloc
             }
         });
     }
-
 
     /**
      * Helper functions. Creates a database pivot table.

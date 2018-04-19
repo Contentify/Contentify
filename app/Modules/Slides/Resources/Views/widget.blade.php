@@ -15,7 +15,7 @@
             </ul>
         </div>
 
-        <div class="container">            
+        <div class="container">
             <ul class="buttons list-inline" title="Switch to">
                 @foreach ($slides as $index => $slide)
                     <li>

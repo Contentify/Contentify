@@ -7,7 +7,7 @@
                     <span class="title">{{ $stream->title }}</span>
                     <span class="viewers">{!! HTML::fontIcon('eye').' '.$stream->viewers !!}</span>
                 </a>
-            </li>   
+            </li>
         @endforeach
     </ul>
 </div>

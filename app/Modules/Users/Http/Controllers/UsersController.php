@@ -93,7 +93,6 @@ class UsersController extends FrontController implements GlobalSearchInterface
         $this->pageView('users::form', compact('user'));
     }
 
-
     /**
      * Update a user
      *
@@ -141,7 +140,6 @@ class UsersController extends FrontController implements GlobalSearchInterface
         return Redirect::route('users.edit', [$id]);
     }
 
-
     /**
      * Show a page with a form to change the user password
      *
@@ -158,7 +156,6 @@ class UsersController extends FrontController implements GlobalSearchInterface
 
         $this->pageView('users::password', compact('user'));
     }
-
 
     /**
      * Change the password of a user (if possible)

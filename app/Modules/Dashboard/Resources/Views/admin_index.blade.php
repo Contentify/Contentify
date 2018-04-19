@@ -1,6 +1,6 @@
 
 <h2 class="section">{{ trans('app.quick_access') }}</h2>
-<div class="quick-access clearfix">     
+<div class="quick-access clearfix">
     <a href="{!! url('admin/news') !!}"><span>{!! HTML::fontIcon('newspaper') !!}</span> {{ trans('app.object_news') }}</a>
 
     <a href="{!! url('admin/pages') !!}"><span>{!! HTML::fontIcon('file') !!}</span> {{ trans('app.object_pages') }}</a>

@@ -45,7 +45,7 @@
                                 <a class="btn" href="https://www.twitter.com/{{ $user->twitter }}" target="_blank">{!! HTML::fontIcon('twitter') !!}</a>
                             @endif
                         </div>
-                    </div>                    
+                    </div>
                 </li>
             @endforeach
         </ul>

@@ -82,7 +82,7 @@ class PostsController extends FrontController
      * Edits a post
      *
      * @param int $id The ID of the post
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function edit($id)
     {

@@ -36,6 +36,7 @@ class FriendsController extends FrontController
         /** @var User $friend */
         $friend = User::findOrFail($id);
 
+        /** @var Friendship $friendship */
         $friendship = Friendship::areFriends(user()->id, $id, false)->first();
 
         $friendshipImpossible = ($friendship and 
@@ -74,8 +75,10 @@ class FriendsController extends FrontController
      */
     public function confirm($id)
     {
+        /** @var User $friend */
         $friend = User::findOrFail($id);
 
+        /** @var Friendship $friendship */
         $friendship = Friendship::areFriends(user()->id, $id, false)->first();
 
         if (! $friendship or $friendship->confirmed) {
