@@ -21,7 +21,7 @@ class RandomUserWidget extends Widget
         if ($view === null) {
             $user = User::whereBanned(false)->whereNotNull('last_active')->orderBy(DB::raw('RAND()'))->first();
 
-            // If there is not user matching the criteria, show nothing at all
+            // If there is no user matching the criteria, show nothing at all
             if (! $user) {
                 return '';
             }
