@@ -38,7 +38,7 @@ class AdminQuestionsController extends BackController
                     $question->id,
                     raw($question->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::modelAttributes($question, ['creator'])->text($question->answer)->pull().$link),
-                ];            
+                ];
             }
         ]);
     }

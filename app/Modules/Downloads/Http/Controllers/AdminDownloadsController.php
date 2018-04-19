@@ -39,7 +39,7 @@ class AdminDownloadsController extends BackController
                     $download->id,
                     raw(Hover::pull().HTML::link('downloads/'.$download->id.'/'.$download->slug, $download->title)),
                     $download->downloadcat->title,
-                ];            
+                ];
             }
         ]);
     }

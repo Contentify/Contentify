@@ -24,7 +24,7 @@
                             {!! HTML::fontIcon('mars') !!} {{ trans('users::male') }}
                         @elseif ($user->gender == 3)
                             {!! HTML::fontIcon('genderless') !!} {{ trans('users::other') }}
-                        @endif                        
+                        @endif
                     </td>
                 </tr>
                 <tr>

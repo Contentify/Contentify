@@ -28,7 +28,7 @@ class RandomUserWidget extends Widget
             return $view;
         }
 
-        return $view;        
+        return $view;
     }
 
 }

@@ -360,7 +360,7 @@ class InstallController extends Controller
             $table->text('text')->nullable();
             $table->string('foreign_type', 30);
             $table->integer('foreign_id', false, true)->nullable();
-        }, [], ['title', 'slug', 'access_counter']);  
+        }, [], ['title', 'slug', 'access_counter']);
 
         $this->create('contact_messages', function(Blueprint $table)
         {
@@ -466,7 +466,7 @@ class InstallController extends Controller
             $table->string('file')->nullable();
             $table->integer('file_size')->default(0);
             $table->boolean('is_image')->default(false);
-        }, ['downloadcat_id']);        
+        }, ['downloadcat_id']);
         
         $this->create('slidecats', function(Blueprint $table) { }, [], ['slug']);
 
@@ -737,7 +737,7 @@ class InstallController extends Controller
      * @return void
      */
     protected function createSeed() 
-    {      
+    {
         $this->createDefaultCategories(['newscats', 'partnercats', 'advertcats', 'slidecats']);
         $this->createDefaultCategories(['downloadcats'], true);
         

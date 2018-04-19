@@ -39,7 +39,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
                     $user->first_name.' '.$user->last_name,
                     $user->created_at,
                     $user->last_login ? $user->last_login->date() : null
-                ];            
+                ];
             },
             'actions'   => null,
             'searchFor' => 'username',

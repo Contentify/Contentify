@@ -7,5 +7,5 @@
 @endif
     {!! Form::smartTextarea('text', trans('app.text'), false) !!}
 
-    {!! Form::actions(['submit'], false) !!}    
+    {!! Form::actions(['submit'], false) !!}
 {!! Form::close() !!}

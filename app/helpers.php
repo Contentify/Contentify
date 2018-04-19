@@ -174,7 +174,7 @@ function emojis($text)
         $image  = strtolower(str_replace(' ', '_', $long));
         $path   = asset('img/default/emojis/'.$image.'.png');
         $text   = str_replace($short, '<img class="emoji" src="'.$path.'" title="'.$long.'" alt="'.$long.'">', $text);
-    }    
+    }
 
     return $text;
 }

@@ -26,10 +26,10 @@ class CustomPagesController extends FrontController
     public function show($id, $slug = null, $isImpressum = false)
     {
         if ($id) {
-            $customPage = CustomPage::whereId($id)->published()->firstOrFail();    
+            $customPage = CustomPage::whereId($id)->published()->firstOrFail();
         } else {
-            $customPage = CustomPage::whereSlug($slug)->published()->firstOrFail();    
-        }        
+            $customPage = CustomPage::whereSlug($slug)->published()->firstOrFail();
+        }
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($customPage->internal and ! $hasAccess) {

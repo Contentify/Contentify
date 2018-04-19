@@ -68,7 +68,7 @@ class BaseModel extends Eloquent
         }
 
         if ($fileSystem) {
-            $base = public_path();            
+            $base = public_path();
         } else {
             $base = asset('');
             
@@ -133,7 +133,7 @@ class BaseModel extends Eloquent
         } else {
             $this->$fieldName   = '';
             $this->save();
-        }   
+        }
 
         if ($isImage) {
             foreach ($thumbnails as $thumbnail) {

@@ -117,7 +117,7 @@
                 }
 
                 renderAll();
-                store();             
+                store();
             });
 
             return $tr;

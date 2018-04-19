@@ -33,6 +33,6 @@
             }
    
             $('#tags').tagsinput('add', name);
-        });        
+        });
     });
 </script>

@@ -41,7 +41,7 @@ class AdminCountriesController extends BackController
                     $country->id,
                     raw($icon),
                     $country->title,
-                ];            
+                ];
             }
         ]);
     }

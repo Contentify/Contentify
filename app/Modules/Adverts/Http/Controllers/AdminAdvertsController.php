@@ -41,7 +41,7 @@ class AdminAdvertsController extends BackController
                     raw($advert->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull(), $advert->title),
                     $advert->advertcat->title,
-                ];            
+                ];
             }
         ]);
     }

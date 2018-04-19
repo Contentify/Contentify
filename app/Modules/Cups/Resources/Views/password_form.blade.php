@@ -5,5 +5,5 @@
 {!! Form::open(['url' => 'cups/teams/join/'.$team->id]) !!}
     {!! Form::smartPassword() !!}
 
-    {!! Form::actions(['submit'], false) !!}    
+    {!! Form::actions(['submit'], false) !!}
 {!! Form::close() !!}

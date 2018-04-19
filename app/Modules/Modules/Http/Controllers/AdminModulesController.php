@@ -57,7 +57,7 @@ class AdminModulesController extends BackController
                     $module->title,
                     raw($enabled),
                     $state,
-                ];            
+                ];
             },
             'actions'   => [
                 'install',
@@ -101,7 +101,7 @@ class AdminModulesController extends BackController
 
         if ($result === false or $result === null) {
             Cache::forever(self::CACHE_KEY.$name, false);
-            $this->alertError(trans('modules::fail'));            
+            $this->alertError(trans('modules::fail'));
         } elseif ($result === true) {
             $installer->after();
             Cache::forever(self::CACHE_KEY.$name, true);

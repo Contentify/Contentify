@@ -21,7 +21,7 @@
 
     {!! Form::smartSelectRelation('team', trans('app.object_team'), $modelClass, null, true, true) !!}
 
-    {!! Form::smartCheckbox('internal', trans('app.internal')) !!}   
+    {!! Form::smartCheckbox('internal', trans('app.internal')) !!}
 
     {!! Form::actions() !!}
 {!! Form::close() !!}

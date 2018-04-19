@@ -239,7 +239,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         } else {
             $this->alertError(trans('app.access_denied'));
             return;
-        }        
+        }
     }
 
     /**
@@ -309,7 +309,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         } else {
             $this->alertError(trans('app.access_denied'));
             return null;
-        }       
+        }
     }
 
     /**

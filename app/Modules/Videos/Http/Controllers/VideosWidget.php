@@ -16,7 +16,7 @@ class VideosWidget extends Widget
             $video = Video::orderBy('created_at', 'DESC')->first();
         } else {
             $video = Video::orderBy(DB::raw('RAND()'))->first();
-        }        
+        }
 
         if ($video) {
             return View::make('videos::widget', compact('video'))->render();

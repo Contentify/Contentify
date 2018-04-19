@@ -40,7 +40,7 @@ class AdminOpponentsController extends BackController
                 return [
                     $opponent->id,
                     raw(Hover::pull().$icon, ' '.$opponent->title),
-                ];            
+                ];
             }
         ]);
     }

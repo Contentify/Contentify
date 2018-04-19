@@ -59,7 +59,7 @@ class AdminActivitiesController extends BackController
                     $translatedPermissions[$userActivity->activity_id],
                     raw(HTML::link(URL::route('users.show', [$userActivity->user->id]), $userActivity->user->username)),
                     $userActivity->created_at->dateTime(),
-                ];            
+                ];
             },
             'searchFor' => 'model_class',
             'actions'   => []

@@ -27,7 +27,7 @@
         {!! Form::select('gender', array('0' => trans('users::unknown'), '1' => trans('users::female'), '2' => trans('users::male'), '3' => trans('users::other'))) !!}
     {!! Form::smartGroupClose() !!}
 
-    {!! Form::smartSelectForeign('country_id', trans('app.object_country')) !!}    
+    {!! Form::smartSelectForeign('country_id', trans('app.object_country')) !!}
 
     {!! Form::smartText('birthdate', trans('users::birthdate')) !!}
 

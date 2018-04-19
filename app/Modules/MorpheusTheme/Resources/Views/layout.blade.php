@@ -33,7 +33,7 @@
     {!! HTML::script('vendor/jquery/jquery-2.2.4.min.js') !!}
     {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') !!}
     {!! HTML::script('vendor/contentify/contentify.js') !!}
-    {!! HTML::script('vendor/contentify/frontend.js') !!}    
+    {!! HTML::script('vendor/contentify/frontend.js') !!}
 </head>
 <body>
     @if (Config::get('app.theme_christmas'))
@@ -126,9 +126,11 @@
                     @widget('Cups::CupsControl')
 
                     <br>
-                    <div class="text-center">
-                        @widget('Adverts::Advert')
-                    </div>
+                    <h3>
+                        Cup Control
+                        <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
+                    </h3>
+                    @widget('Users::Online')
                 </div>
             </aside>
         </div>

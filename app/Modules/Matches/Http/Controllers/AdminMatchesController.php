@@ -48,7 +48,7 @@ class AdminMatchesController extends BackController
                     raw(HTML::link('matches/'.$match->id, $match->right_team->title)),
                     $match->tournament->short,
                     $match->played_at
-                ];            
+                ];
             }
         ]);
     }

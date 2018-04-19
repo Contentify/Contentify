@@ -67,7 +67,7 @@
                             @endif
                         @else
                             {{ trans('cups::not_participating') }}
-                        @endif                        
+                        @endif
                     @elseif (! $cup->closed)
                         <!-- After start_at and cup is opened -->
                         {{ trans('cups::cup_running') }}

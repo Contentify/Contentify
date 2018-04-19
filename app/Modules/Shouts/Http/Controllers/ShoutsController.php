@@ -31,7 +31,7 @@ class ShoutsController extends FrontController
 
         if (! $okay) {
             return Response::make(null, 500);
-        } else {       
+        } else {
             return Response::make(null, 200);
         }
     }

@@ -192,7 +192,7 @@ class Forum extends BaseModel
     public function scopeIsRoot($query, $isRoot = true)
     {
         if ($isRoot) {
-            return $query->whereLevel(0);    
+            return $query->whereLevel(0);
         } else {
             return $query->where('level', '>', 0);
         }
@@ -224,7 +224,7 @@ class Forum extends BaseModel
             });
         } else {
             return $query->whereInternal(0)->whereNull('team_id');
-        }        
+        }
     }
 
 }

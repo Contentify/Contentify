@@ -38,7 +38,7 @@ class AdminVideosController extends BackController
                     $video->id,
                     raw(Hover::pull().HTML::link('videos/'.$video->id.'/'.$video->slug, $video->title)),
                     Video::$providers[$video->provider],
-                ];            
+                ];
             }
         ]);
     }

@@ -41,7 +41,7 @@ class VisitorsWidget extends Widget
         {
             return DB::table('visits')->select(DB::raw('SUM(user_agents) AS user_agents'))
             ->get()[0]->user_agents;
-        });       
+        });
 
         return View::make('visitors::widget', compact('today', 'yesterday', 'month', 'total'))->render();
     }

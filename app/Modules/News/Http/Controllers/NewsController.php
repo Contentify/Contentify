@@ -123,7 +123,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
         } else {
             $this->pageView('news::show_stream', compact('streamItems', 'more', 'limit'));
             return null;
-        }        
+        }
     }
 
     /**

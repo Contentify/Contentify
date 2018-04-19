@@ -49,7 +49,7 @@ class AdminMapsController extends BackController
                     $map->id,
                     raw(Hover::pull().$icon, ' '.$map->title),
                     $gameTitle,
-                ];            
+                ];
             }
         ]);
     }

@@ -41,7 +41,7 @@ class AdminSlidesController extends BackController
                     raw($slide->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull(), $slide->title),
                     $slide->slidecat->title,
-                ];            
+                ];
             }
         ]);
     }

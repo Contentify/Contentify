@@ -8,7 +8,7 @@
             @else
                 {!! HTML::fontIcon('star', null, null, 'far') !!}
             @endif
-        @endfor            
+        @endfor
     </div>
 
     <div class="infotext">

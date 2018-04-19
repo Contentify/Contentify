@@ -9,5 +9,5 @@
 
     {!! Form::smartTextarea('text', trans('app.text'), false, isset($forumPost) ? $forumPost->text : null) !!}
 
-    {!! Form::actions(['submit'], false) !!}    
+    {!! Form::actions(['submit'], false) !!}
 {!! Form::close() !!}

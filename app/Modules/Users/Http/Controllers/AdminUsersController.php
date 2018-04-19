@@ -177,7 +177,7 @@ class AdminUsersController extends BackController
             return Response::make(trans('app.access_denied'), 403);
         }
 
-        try {           
+        try {
             if ($activate) {
                 $activation = Activation::exists($user);
 
@@ -190,7 +190,7 @@ class AdminUsersController extends BackController
             } else {
                 Activation::remove($user);
                 return Response::make('0', 200);
-            }          
+            }
         } catch (Exception $exception) {
             return Response::make(trans('app.not_found'), 500);
         }

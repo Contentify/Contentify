@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Builder;
  *
  * @property bool $confirmed
  * @property \Carbon $messaged_at
+ * @property int $sender_id
+ * @property int $receiver_id
  * @property \User $sender
  * @property \User $receiver
  */

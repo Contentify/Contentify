@@ -404,9 +404,9 @@ class ModelHandler
 
                     if (strtolower($fieldInfo['type']) == 'image') {
                         try {
-                            $imgData = getimagesize($file->getRealPath());     
+                            $imgData = getimagesize($file->getRealPath());
                         } catch (Exception $e) {
-                            
+                            // Do nothing
                         }
 
                         if (! isset($imgData[2]) or ! $imgData[2]) {
@@ -552,9 +552,9 @@ class ModelHandler
 
                     if (strtolower($fieldInfo['type']) == 'image') {
                         try {
-                            $imgData = getimagesize($file->getRealPath());     
+                            $imgData = getimagesize($file->getRealPath());
                         } catch (Exception $e) {
-
+                            // Do nothing
                         }
 
                         if (! isset($imgData[2]) or ! $imgData[2]) {
@@ -802,7 +802,7 @@ class ModelHandler
                             if ($model->id === null) {
                                 throw new Exception(
                                     "Error: Relation '$name' tries to retrieve the model ID, but the ID is null."
-                                );  
+                                );
                             }
 
                             $sourceKey = class_basename(strtolower($modelClass)).'_'.$model->getKeyName();

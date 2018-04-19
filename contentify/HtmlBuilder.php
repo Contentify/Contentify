@@ -349,7 +349,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
         } else {
             $version = time();
             Cache::forever($key, $version);
-        }      
+        }
 
         return $assetPath.$queryChar.'v='.$version;
     }

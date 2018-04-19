@@ -22,7 +22,7 @@ class AdminImagesController extends BackController
     }
 
     public function index()
-    {            
+    {
         $perPage = 15;
 
         if (Input::old('search')) {

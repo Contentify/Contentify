@@ -45,7 +45,7 @@ trait DateAccessorTrait
                 $value = Carbon::createFromFormat(trans('app.date_format').' H:i:s', $value);
             } catch (InvalidArgumentException $e) {
                 $value = Carbon::createFromFormat($format, $value);
-            }            
+            }
         }
 
         return $value->format($format);

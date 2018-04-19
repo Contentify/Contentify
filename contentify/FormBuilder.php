@@ -206,7 +206,7 @@ class FormBuilder extends OriginalFormBuilder
         if (isset($options['class'])) {
             $options['class'] = ' ';
         } else {
-            $options['class'] = '';  
+            $options['class'] = '';
         }
         $options['class'] .= 'numeric-input';
         
@@ -229,7 +229,7 @@ class FormBuilder extends OriginalFormBuilder
         if (isset($options['class'])) {
             $options['class'] = ' ';
         } else {
-            $options['class'] = '';  
+            $options['class'] = '';
         }
         $options['class'] .= 'url';
 
@@ -270,7 +270,7 @@ class FormBuilder extends OriginalFormBuilder
             $models = DB::table(str_plural($modelName))->whereDeletedAt(null)->get();
         } catch (Exception $e) {
             $models = DB::table(str_plural($modelName))->get();
-        }        
+        }
 
         if (! $nullable and sizeof($models) == 0) {
             throw new MsgException(trans('app.list_empty', [$modelName]));
@@ -589,7 +589,7 @@ class FormBuilder extends OriginalFormBuilder
                 } else {
                     $modelTitle = $model->getKeyName();
                 }
-            }                    
+            }
 
             $options[$model->$key] = $model->$modelTitle;
         }

@@ -9,7 +9,7 @@
 
     @if ($cup->forTeams())
         <a href="{{ url('cups/teams/'.$participant->id.'/'.$participant->slug) }}">{{ $participant->title }}</a>
-    @else  
+    @else
         <a href="{{ url('users/'.$participant->id.'/'.$participant->slug) }}">{{ $participant->username }}</a>
     @endif
 @else

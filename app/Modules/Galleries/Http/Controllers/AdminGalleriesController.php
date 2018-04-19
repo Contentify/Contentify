@@ -37,7 +37,7 @@ class AdminGalleriesController extends BackController
                 return [
                     $gallery->id,
                     raw(Hover::pull().HTML::link('galleries/'.$gallery->id, $gallery->title)),
-                ];            
+                ];
             }
         ]);
     }

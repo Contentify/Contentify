@@ -64,7 +64,7 @@ class PostsController extends FrontController
         if (! $valid) {
             return Redirect::to('forums/threads/create')
                 ->withInput()->withErrors($forumPost->getErrors());
-        }  
+        }
 
         $forumThread->posts_count++;
         $forumThread->forceSave();
@@ -154,7 +154,7 @@ class PostsController extends FrontController
         }
 
         /** @var ForumPost $forumPost */
-        $forumPost = ForumPost::isAccessible()->findOrFail($id);       
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         /*
          * If the post is a root post, delete the thread instead of the post.
@@ -185,9 +185,10 @@ class PostsController extends FrontController
      */
     public function report($id)
     {
+        /** @var ForumPost $forumPost */
         $forumPost = ForumPost::isAccessible()->findOrFail($id); 
 
-        $forumReport = ForumReport::whereCreatorId(user()->id)->wherePostId($id)->first();   
+        $forumReport = ForumReport::whereCreatorId(user()->id)->wherePostId($id)->first();
 
         if ($forumReport) {
             $this->alertFlash(trans('forums::already_reported'));

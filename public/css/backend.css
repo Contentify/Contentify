@@ -7284,6 +7284,9 @@ fieldset[disabled] .page .table .icon-link.active {
   color: white;
   text-decoration: underline;
 }
+#content > .alert {
+  margin-bottom: 0 /* remove bottom margin of a "global" alert so it does not break the page head */;
+}
 .alert-success {
   border-color: #69DD95;
   background: #69dd95;

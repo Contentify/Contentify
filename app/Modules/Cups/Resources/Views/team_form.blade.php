@@ -15,5 +15,5 @@
 
     {!! Form::smartImageFile('image', trans('app.image')) !!}
 
-    {!! Form::actions(['submit'], false) !!}    
+    {!! Form::actions(['submit'], false) !!}
 {!! Form::close() !!}

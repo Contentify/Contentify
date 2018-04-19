@@ -46,7 +46,7 @@ class AdminReportsController extends BackController
                     raw($link),
                     $forumReportCase->report_counter,
                     $forumReportCase->updated_at,
-                ];            
+                ];
             },
             'actions'       => ['delete'],
             'sortBy'        => 'level',

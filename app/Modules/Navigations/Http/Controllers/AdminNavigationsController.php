@@ -33,7 +33,7 @@ class AdminNavigationsController extends BackController
                 return [
                     $navigation->id,
                     raw(Hover::modelAttributes($navigation, ['creator'])->pull(), $navigation->title),
-                ];            
+                ];
             }
         ]);
     }

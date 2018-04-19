@@ -29,7 +29,7 @@ class ContentFilter
 
             if ($parts[0] == $name) {
                 return true;
-            }  
+            }
         }
 
         return false;
@@ -61,7 +61,7 @@ class ContentFilter
 
             if ($parts[0] == $name) {
                 return (isset($parts[1]) ? $parts[1] : null);
-            }  
+            }
         }
 
         return null;

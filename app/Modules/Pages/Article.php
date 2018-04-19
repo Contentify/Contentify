@@ -41,7 +41,7 @@ class Article extends Page
      * @return OpenGraph
      */
     public function openGraph()
-    {    
+    {
         $og = new OpenGraph();
 
         $og->title($this->title)

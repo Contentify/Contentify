@@ -125,7 +125,7 @@ class News extends BaseModel
      * @return OpenGraph
      */
     public function openGraph()
-    {    
+    {
         $og = new OpenGraph(true);
 
         $og->title($this->title)

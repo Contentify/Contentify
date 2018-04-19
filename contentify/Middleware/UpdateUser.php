@@ -41,7 +41,7 @@ class UpdateUser
                 $isNewVisitor = true; // Change of day makes every user a new visitor
             }
 
-            if ($isNewVisitor) {   
+            if ($isNewVisitor) {
                 $ip = getenv('REMOTE_ADDR'); // Get the client agent's IP
 
                 $rowsAffected = DB::table('visits')->whereIp($ip)->whereVisitedAt(date('Y-m-d', $today))
@@ -75,7 +75,7 @@ class UpdateUser
                 $user->last_active = new Carbon();
                 $user->save();
                 Session::put('lastActiveUpdate', time());
-            }            
+            }
         }
 
         /*

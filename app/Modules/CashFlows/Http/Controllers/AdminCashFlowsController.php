@@ -62,7 +62,7 @@ class AdminCashFlowsController extends BackController
                     $cashFlow->expenses > 0 ? raw('<span class="expenses">'.e($cashFlow->expenses).'</span>') : '',
                     $user,
                     $cashFlow->paid_at,
-                ];            
+                ];
             }
         ]);
 

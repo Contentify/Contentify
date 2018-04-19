@@ -36,7 +36,7 @@ class AdminAwardsController extends BackController
                     raw($award->positionIcon()),
                     $award->title,
                     $award->achieved_at
-                ];            
+                ];
             }
         ]);
     }

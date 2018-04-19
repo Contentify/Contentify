@@ -92,7 +92,7 @@ class ForumThread extends BaseModel
             });
         } else {
             return $query->whereInternal(0)->whereNull('team_id');
-        }  
+        }
     }
 
 }

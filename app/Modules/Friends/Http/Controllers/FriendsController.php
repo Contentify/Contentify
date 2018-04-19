@@ -54,7 +54,7 @@ class FriendsController extends FrontController
                 'sender_id'     => user()->id, 
                 'receiver_id'   => $friend->id,
                 'messaged_at'   => DB::raw('NOW()'),
-            ]);            
+            ]);
         }
 
         $friend->sendSystemMessage(
@@ -103,6 +103,7 @@ class FriendsController extends FrontController
         
         // NOTE: Only receive confirmed friendships.
         // It's important that users can only delete confirmed friendship to avoid abuse for friendship request spamming
+        /** @var Friendship $friendship */
         $friendship = Friendship::areFriends(user()->id, $id)->firstOrFail();
 
         if ($friendship) {
@@ -113,7 +114,7 @@ class FriendsController extends FrontController
                 trans('friends::deletion_title'),
                 trans('friends::deletion_text', [user()->username])
             );
-        }        
+        }
 
         $this->alertFlash(trans('app.deleted', ['Friendship'])); // Friendship terminated. Take this, diction!
         return Redirect::to('friends/'.user()->id);

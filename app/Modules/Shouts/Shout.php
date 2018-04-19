@@ -7,6 +7,7 @@ use File;
 
 /**
  * @property string $text
+ * @property int $creator_id
  * @property \User $creator
  */
 class Shout extends BaseModel
@@ -46,7 +47,7 @@ class Shout extends BaseModel
      */
     public function updateFiles()
     {
-        $path = public_path().self::PUBLIC_DIRECTORY;    
+        $path = public_path().self::PUBLIC_DIRECTORY;
 
         $shouts = self::orderBy('created_at', 'desc')->with('creator')->take(10)->get();
 

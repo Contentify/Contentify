@@ -157,7 +157,7 @@
 
                 contentify.modal('{{ trans('app.object_map') }}', $compiled, $footer);
             });
-        @endif        
+        @endif
 
     });
 </script>

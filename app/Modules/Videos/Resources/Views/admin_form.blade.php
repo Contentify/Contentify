@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
-    {!! Form::smartUrl() !!}  
+    {!! Form::smartUrl() !!}
 
     {!! Form::smartText('permanent_id', trans('app.id')) !!}
 
@@ -18,7 +18,7 @@
 
 <script>
     $(document).ready(function()
-        {   
+        {
             // Object with the names of all available providers:
             var providers = {!! json_encode($modelClass::$providers) !!}; 
 

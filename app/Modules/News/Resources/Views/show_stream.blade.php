@@ -46,13 +46,13 @@
                         }).always(function()
                         {
                             if ($('.page .items .item').last().attr('data-more') == 1) {
-                                loading = false;                                
+                                loading = false;
                             }
-                            $('.page .loading').addClass('hidden');                        
+                            $('.page .loading').addClass('hidden');
                         });
                     }
                 }
-            }            
+            }
 
         });
     });

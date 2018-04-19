@@ -163,7 +163,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->forceSave();
 
         $this->alertFlash(trans('app.updated', ['Thread']));
-        return Redirect::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);     
+        return Redirect::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);
     }
 
     /**
