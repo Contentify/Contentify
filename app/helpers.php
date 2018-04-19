@@ -179,6 +179,24 @@ function emojis($text)
     return $text;
 }
 
+
+/**
+ * Loads an image file and encodes it with base 64.
+ * Returns the result as a string with meta information.
+ * Use this function to load images that are not stored in the "public" folder.
+ *
+ * @param string $filename The file name, including path and extension
+ * @return string
+ */
+function load_image_encoded($filename)
+{
+    $type = pathinfo($filename, PATHINFO_EXTENSION);
+    $data = file_get_contents($filename);
+    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+    return $base64;
+}
+
 /**
  * Tries to translate a module/model/controller name.
  * 

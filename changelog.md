@@ -14,6 +14,8 @@ but we want a smooth shift to jQuery 3 instead of causing too much trouble in v2
 We also dropped HTML5 shiv for good.
 - Hitbox has been deprecated since version 2.3. With 2.4 support has been removed at all. 
 The update script is able to migrate your old Hitbox streams to Smashcast. However, please check them!
+- The names of several variables in the LESS files have been renamed. 
+They use [kebap case](http://wiki.c2.com/?KebabCase) instead now.
 
 ## Other changes
 

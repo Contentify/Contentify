@@ -10,17 +10,16 @@
  * Global Variables
  */
 
-@textblack: rgb(85, 85, 85);
-@textdarkgray: #7f8891;
-@bgblack: #222e38;
-@blue: #00afff;
-@hoverblue: darken(@blue, 5%);
-@white: #fff;
-@red: #F26175; /* Color from framycss.org */
-@green: #69DD95; /* Color from framycss.org */
-@yellow: #F8C93F; /* Color from framycss.org */
-
-@font-family: 'Open Sans', sans-serif;
+@primary-font: 'Open Sans', sans-serif;
+@text-black: rgb(85, 85, 85); /* Default text */
+@text-dark-gray: #7f8891;
+@bg-black: #222e38; /* Dark background */
+@blue: #00afff; /* Primary color */
+@hover-blue: darken(@blue, 5%); /* Primary color (hover) */
+@white: #fff; /* Background color */
+@red: #F26175; /* Error, alert - color from framycss.org */
+@green: #69DD95; /* Success - Color from framycss.org */
+@yellow: #F8C93F; /* Danger - Color from framycss.org */
 
 ::selection { background: @blue; color: white; }
 
@@ -35,7 +34,7 @@
     }
 }
 
-.btn { border-radius: 3px; color: @textblack }
+.btn { border-radius: 3px; color: @text-black }
 .btn-default {
     background: linear-gradient(to bottom, #ffffff 0%, #ededed 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=0 );
@@ -62,7 +61,7 @@ h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
     font-family: Font Awesome\ 5 Free;
 }
 .form-group {
-    label { .text-overflow(); color: @textdarkgray }
+    label { .text-overflow(); color: @text-dark-gray }
     label:after { /* content: ':'; */ }
     input, select, textarea {
         .form-control();
@@ -71,7 +70,7 @@ h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
         border-radius: 0;
         background-color: #f5f5f5;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        color: @textdarkgray;
+        color: @text-dark-gray;
     }
     input[type=checkbox] { width: auto; height: auto; margin-left: 0 }
     select[multiple] { height: auto; }
@@ -137,7 +136,7 @@ h2.section { margin: 0 0 20px 0; font-size: 14px; font-weight: bold }
 /* Recycle Bin Button */
 .recycle-bin-button {
     display: inline-block; margin: 10px 0; padding: 3px 7px; border-radius: 3px;
-    &.enabled { background-color: @bgblack; color: white !important }
+    &.enabled { background-color: @bg-black; color: white !important }
     &.disabled { background-color: #DDD; color: #999 !important }
 }
 .toolbar .recycle-bin-button { margin: 0 }
@@ -186,6 +185,17 @@ ul.pagination {
 .alert-warning { border-color: #F8C93F; background: @yellow; }
 .alert-info { border-color: #4ba7e2; background: rgba(75,167,226,0.8); }
 
+/* Tabs */
+.nav-tabs li {
+    a { background-color: #eeeeee };
+    a:hover { background-color: @white }
+    &.active a { background-color: @white; }
+}
+.tab-content {
+    padding: 0 20px; border-left: 1px solid #dddddd; border-bottom: 1px solid #dddddd; border-right: 1px solid #dddddd;
+    .tab-pane { padding: 20px 0 0 0 }
+}
+
 /*
  * Sub pages
  */
@@ -221,12 +231,6 @@ ul.pagination {
 }
 @media (max-width: 400px) {
     .page-images .image { width: 50%; padding-top: 50%; }
-}
-
-.page-config {
-    form { margin-top: 20px }
-    .tab-pane { padding: 20px 0 }
-    .actions button { margin-bottom: 10px; }
 }
 
 .page-visitors {
@@ -309,6 +313,18 @@ ul.pagination {
     #item_add { margin-top: 20px; }
 }
 
+.page-config {
+    form { margin-top: 20px }
+    .actions button { margin-bottom: 10px; }
+    .theme-tile {
+        width: 33%; float: left; text-align: center;
+        label { width: 90%; cursor: pointer; }
+        input[type=radio] { display: none }
+        .preview-img { opacity: 0.5; width: 100%; padding-top: 75%; border: 3px solid transparent; background-repeat: no-repeat; background-position: center; background-size: cover; }
+        input[type=radio]:checked + .preview-img { opacity: 1; border-color: @blue; } /* Select .prev-img after checked radio button */
+        .preview-img:hover { opacity: 1 }
+    }
+}
 @media (max-width: @screen-tablet) {
     .page-config .actions .btn {
         width: 100%;
@@ -348,24 +364,24 @@ ul.pagination {
 
 body {
     font-size: 13px;
-    color: @textdarkgray;
-    font-family: @font-family;
+    color: @text-dark-gray;
+    font-family: @primary-font;
     background-color: @white;
 }
 
 a {
-    color: @textdarkgray;
+    color: @text-dark-gray;
     text-decoration: none;
     &:focus {
-        color: @textdarkgray;
+        color: @text-dark-gray;
         text-decoration: none;
     }
     &:hover {
-        color: @textdarkgray;
+        color: @text-dark-gray;
         text-decoration: none;
     }
     &:active {
-        color: @textdarkgray;
+        color: @text-dark-gray;
         text-decoration: none;
     }
 }
@@ -384,9 +400,9 @@ img {
     margin: 0;
 }
 
-@headerHeight: 56px;
-@sidebarWidth: 250px;
-@sidebarWidthSmall: 70px;
+@header-height: 56px;
+@sidebar-width: 250px;
+@sidebar-width-small: 70px;
 
 @keyframes slideInFromTop {
     0% {
@@ -398,7 +414,7 @@ img {
 }
 
 header {
-    position: fixed; z-index: 100; left: 0; right: 0; background-color: @blue; color: @white; font-size: 14px; line-height: @headerHeight; box-shadow: rgba(0, 0, 0, 0.33) 0 1px 3px 0;
+    position: fixed; z-index: 100; left: 0; right: 0; background-color: @blue; color: @white; font-size: 14px; line-height: @header-height; box-shadow: rgba(0, 0, 0, 0.33) 0 1px 3px 0;
     a { color: @white; }
     a:focus { color: @white }
     a:hover { color: @white; }
@@ -410,13 +426,13 @@ header {
             float: left;
             .fadd { display: none !important; }
             a {
-                display: block; padding: 0 20px; height: @headerHeight; font-weight: bold; text-transform: uppercase;
+                display: block; padding: 0 20px; height: @header-height; font-weight: bold; text-transform: uppercase;
             }
-            &:hover { background-color: @hoverblue; }
+            &:hover { background-color: @hover-blue; }
         }
     }
     .msg { display: inline-block; margin-left: 40px; animation: 1s ease-out 0s 1 slideInFromTop; }
-    .header-logo { display: block; width: @sidebarWidth; height: @headerHeight; float: left; }
+    .header-logo { display: block; width: @sidebar-width; height: @header-height; float: left; }
 }
 @media (max-width: 790px) {
     header .msg { display: none; }
@@ -438,13 +454,13 @@ header {
 }
 
 #sidebar {
-    background-color: @bgblack;
+    background-color: @bg-black;
     position: fixed;
     height: 100%;
-    width: @sidebarWidth;
+    width: @sidebar-width;
     box-sizing: border-box;
     overflow: auto;
-    margin-top: @headerHeight;
+    margin-top: @header-height;
     .account {
         text-align: center;
         margin: 40px 0 40px 0;
@@ -482,7 +498,7 @@ header {
                 display: block;
                 padding: 10px 20px;
                 margin-bottom: 1px;
-                background-color: lighten(@bgblack, 2%);
+                background-color: lighten(@bg-black, 2%);
                 color: rgba(130, 165, 192, 0.5);
                 font-weight: bold;
                 text-transform: uppercase;
@@ -496,7 +512,7 @@ header {
                     .text-overflow();
                     display: block;
                     padding: 10px 20px;
-                    color: lighten(@bgblack, 40%);
+                    color: lighten(@bg-black, 40%);
 
                     i {
                         width: 30px;
@@ -506,12 +522,12 @@ header {
                 a:active, .item.active {
                     padding-left:  15px;
                     border-left: 5px @blue solid;
-                    background-color: darken(@bgblack, 2%);
+                    background-color: darken(@bg-black, 2%);
                 }
                 a:hover {
                     padding-left:  15px;
                     border-left: 5px @blue solid;
-                    background-color: darken(@bgblack, 2%);
+                    background-color: darken(@bg-black, 2%);
                 }
             }
             &.active .head .fas { transform: rotate(90deg); opacity: 0.66; }
@@ -525,7 +541,7 @@ header {
 }
 @media (min-width: @screen-phone) and (max-width: @screen-tablet) {
     #sidebar {
-        width: @sidebarWidthSmall;
+        width: @sidebar-width-small;
         .account { display: none; }
         .navigation {
             .head { padding: 10px !important; font-size: 11px }
@@ -546,9 +562,9 @@ header {
     }
 }
 
-#content { margin-left: @sidebarWidth; padding-top: @headerHeight; padding-bottom: 40px; }
+#content { margin-left: @sidebar-width; padding-top: @header-height; padding-bottom: 40px; }
 @media (min-width: @screen-phone) and (max-width: @screen-tablet) {
-    #content { margin-left: @sidebarWidthSmall; }
+    #content { margin-left: @sidebar-width-small; }
 }
 @media (max-width: @screen-phone) {
     #content { margin-left: 0; padding-top: 0; }
@@ -568,12 +584,12 @@ header {
 }
 
 #footer {
-    margin-left: @sidebarWidth; padding: 0 40px; background-color: #eee; color: #999;
+    margin-left: @sidebar-width; padding: 0 40px; background-color: #eee; color: #999;
     .version { display: inline-block; padding: 20px }
     .top { display: inline-block; padding: 20px; color: silver; float: right }
 }
 @media (min-width: @screen-phone) and (max-width: @screen-tablet) {
-    #footer { margin-left: @sidebarWidthSmall };
+    #footer { margin-left: @sidebar-width-small };
 }
 @media (max-width: @screen-phone) {
     #footer { margin-left: 0 }
