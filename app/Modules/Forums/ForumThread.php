@@ -11,6 +11,7 @@ use User;
 /**
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
+ * @property \Carbon $updated_at
  * @property string $title
  * @property string $slug
  * @property bool $sticky
@@ -48,7 +49,7 @@ class ForumThread extends BaseModel
     ];
 
     /**
-     * Refreshes the thread's meta infos
+     * Refreshes the thread's meta info
      * 
      * @return void
      */
@@ -57,8 +58,8 @@ class ForumThread extends BaseModel
         $forumPost  = ForumPost::whereThreadId($this->id)->orderBy('created_at', 'desc')->firstOrFail();
         $postsCount = ForumPost::whereThreadId($this->id)->count();
 
-        $this->posts_count  = $postsCount;
-        $this->updated_at   = $forumPost->updated_at;
+        $this->posts_count = $postsCount;
+        $this->updated_at  = $forumPost->updated_at;
         $this->forceSave();
     }
 
@@ -66,8 +67,8 @@ class ForumThread extends BaseModel
      * Select only those forum threads the user has access to.
      * WARNING: Creates a JOIN with the forum_threads table.
      *
-     * @param Builder   $query  The Eloquent Builder object
-     * @param User      $user   User model or null if it's the current client
+     * @param Builder $query The Eloquent Builder object
+     * @param User    $user  User model or null if it's the current client
      * @return Builder
      */
     public function scopeIsAccessible($query, $user = null)
@@ -83,9 +84,9 @@ class ForumThread extends BaseModel
             $internal = $user->hasAccess('internal');
 
             $teamIds = DB::table('team_user')->whereUserId($user->id)->pluck('team_id')->toArray();
-            $teamIds[] = -1; // Add -1 as team ID so the SQL statements (`team_id` in (...)) always has valid syntax
+            $teamIds[] = -1; // Add -1 as team ID so the SQL statement (`team_id` in (...)) always has valid syntax
 
-            return $query->where('internal', '<=', $internal)->where(function($query) use ($teamIds)
+            return $query->where('internal', '<=', $internal)->where(function(Builder $query) use ($teamIds)
             {
                 $query->whereNull('team_id')
                       ->orWhereIn('team_id', $teamIds);

@@ -713,12 +713,14 @@ class InstallController extends Controller
             $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
 
+        $this->create('question_cats', function(Blueprint $table) { }, [], ['slug']);
+
         $this->create('questions', function(Blueprint $table)
         {
             $table->text('answer')->nullable();
             $table->boolean('published')->default(true);
             $table->integer('position')->default(0);
-        }, [], ['slug']);
+        }, ['question_cat_id'], ['slug']);
 
         /*
          * (Re)activate foreign key checks
@@ -738,7 +740,7 @@ class InstallController extends Controller
      */
     protected function createSeed() 
     {
-        $this->createDefaultCategories(['newscats', 'partnercats', 'advertcats', 'slidecats']);
+        $this->createDefaultCategories(['newscats', 'partnercats', 'advertcats', 'slidecats', 'question_cats']);
         $this->createDefaultCategories(['downloadcats'], true);
         
         DB::table('config')->insert([

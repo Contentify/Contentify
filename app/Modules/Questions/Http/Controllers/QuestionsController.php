@@ -15,7 +15,7 @@ class QuestionsController extends FrontController implements GlobalSearchInterfa
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $questions = Question::wherePublished(true)->orderBy('position', 'asc')->orderBy('title', 'asc')
+        $questions = Question::wherePublished(true)->orderBy('question_cat_id', 'asc')->orderBy('position', 'asc')->orderBy('title', 'asc')
             ->paginate($perPage);
 
         $this->pageView('questions::index', compact('questions'));

@@ -559,7 +559,9 @@ class FormBuilder extends OriginalFormBuilder
         $modelClass = $relation[1]; // Fully classified name of the foreign model
         $modelName  = class_basename($modelClass);
         $key        = (new $modelClass)->getKeyName(); // Primary key of the model
-        if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
+        if (isset($relation['foreignKey'])) {
+            $key = $relation['foreignKey'];
+        }
 
         /** @var \Illuminate\Database\Eloquent\Model[] $models */
         $models = $modelClass::all();
@@ -841,7 +843,8 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Laravel prioritises model values lower than the value passed to form elements.
-     * This method is an alternative to getValueAttribute() that prioritises model values higher.
+     * This method prioritises model values higher an therefore is an alternative
+     * to getValueAttribute().
      * 
      * @param string $name
      * @param mixed  $default

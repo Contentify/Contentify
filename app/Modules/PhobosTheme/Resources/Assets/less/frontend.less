@@ -496,12 +496,12 @@ ul.pagination {
 }
 
 @keyframes posthighlight {
-  0% {
-    border-color: @primary-color;
-  }
-  100% {
-    border-color: @forums-box-color;
-  }
+    0% {
+        border-color: @primary-color;
+    }
+    100% {
+        border-color: @forums-box-color;
+    }
 }
 
 .page-threads.page-forums-threads-new {
@@ -526,7 +526,7 @@ ul.pagination {
 .widget-random-user {
     padding: 10px;
     a { display: block; text-align: center; }
-    .image { 
+    .image {
         text-align: center;
         img { max-width: 90%; max-height: 240px; }
     }
@@ -664,6 +664,12 @@ ul.pagination {
 .page-auth-login {
     form { position: relative; }
     .btn-restore { position: absolute; bottom: 40px; right: 40px; }
+}
+
+.page-questions-index {
+    h2 { padding-left: 10px; border-left: 4px solid @primary-color }
+    h2:nth-child(2n) { margin-top: 40px }
+    .text { padding: 20px; background-color: @dark }
 }
 
 /*

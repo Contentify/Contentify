@@ -496,12 +496,12 @@ ul.pagination {
 }
 
 @keyframes posthighlight {
-  0% {
-    border-color: @primary-color;
-  }
-  100% {
-    border-color: @forums-box-color;
-  }
+    0% {
+        border-color: @primary-color;
+    }
+    100% {
+        border-color: @forums-box-color;
+    }
 }
 
 .page-threads.page-forums-threads-new {
@@ -667,7 +667,8 @@ ul.pagination {
 }
 
 .page-questions-index {
-    h3 { padding-left: 10px; border-left: 4px solid @primary-color }
+    h2 { padding-left: 10px; border-left: 4px solid @primary-color }
+    h2:nth-child(2n) { margin-top: 40px }
     .text { padding: 20px; background-color: @dark }
 }
 

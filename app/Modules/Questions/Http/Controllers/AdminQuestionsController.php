@@ -25,10 +25,12 @@ class AdminQuestionsController extends BackController
     public function index()
     {
         $this->indexPage([
+            'buttons'   => ['new', 'category'],
             'tableHead' => [
                 trans('app.id')              => 'id',
                 trans('app.published')       => 'published',
-                trans('app.object_question') => 'title'
+                trans('app.object_question') => 'title',
+                trans('app.category')        => 'question_cat_id',
             ],
             'tableRow' => function(Question $question)
             {
@@ -37,7 +39,8 @@ class AdminQuestionsController extends BackController
                 return [
                     $question->id,
                     raw($question->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
-                    raw(Hover::modelAttributes($question, ['creator'])->text($question->answer)->pull().$link),
+                    raw(Hover::modelAttributes($question, ['creator'])->text($question->answer, true)->pull().$link),
+                    $question->questionCat->title,
                 ];
             }
         ]);

@@ -75,16 +75,17 @@ EOD;
      * @param string $prefix The database table prefix (can be an empty string)
      * @return string[]
      */
-    public function updateDatabase($prefix)
+    public function updateDatabase($prefix = '')
     {
         $appName = $this->app->getConfig('app')['name'];
 
-        // HOW TO: Export the new database - for example via phpMyAdmin -
+        // How to create these statements: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
         $updateQueries = [
             "ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL",
-            "UPDATE `{$prefix}streams` SET `provider` = 'smashcast', `thumbnail` = NULL, `url` = NULL WHERE `provider` = 'hitbox'",
-            "CREATE TABLE `cash_flows` (
+            "UPDATE `{$prefix}streams` 
+                SET `provider` = 'smashcast', `thumbnail` = NULL, `url` = NULL WHERE `provider` = 'hitbox'",
+            "CREATE TABLE `{$prefix}cash_flows` (
                 `id` int(10) UNSIGNED NOT NULL,
                 `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
                 `description` text COLLATE utf8_unicode_ci,
@@ -100,12 +101,10 @@ EOD;
                 `updated_at` timestamp NULL DEFAULT NULL,
                 `deleted_at` timestamp NULL DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-            "CREATE TABLE `questions` (
+            "ALTER TABLE `{$prefix}cash_flows` ADD PRIMARY KEY (`id`);",
+            "CREATE TABLE `{$prefix}question_cats` (
                 `id` int(10) UNSIGNED NOT NULL,
                 `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-                `answer` text COLLATE utf8_unicode_ci,
-                `published` tinyint(1) NOT NULL DEFAULT '0',
-                `position` int(11) NOT NULL DEFAULT '0',
                 `creator_id` int(10) UNSIGNED DEFAULT NULL,
                 `updater_id` int(10) UNSIGNED DEFAULT NULL,
                 `access_counter` int(11) NOT NULL DEFAULT '0',
@@ -113,6 +112,25 @@ EOD;
                 `updated_at` timestamp NULL DEFAULT NULL,
                 `deleted_at` timestamp NULL DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
+            "INSERT INTO `{$prefix}question_cats` 
+                (`id`, `title`, `creator_id`, `updater_id`, `access_counter`, `created_at`, `updated_at`, `deleted_at`) 
+                VALUES (1, 'Default', 1, 1, 0, '2018-04-21 10:37:13', '2018-04-21 10:37:13', NULL);",
+            "ALTER TABLE `{$prefix}question_cats` ADD PRIMARY KEY (`id`);",
+            "CREATE TABLE `{$prefix}questions` (
+                `id` int(10) UNSIGNED NOT NULL,
+                `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
+                `answer` text COLLATE utf8_unicode_ci,
+                `published` tinyint(1) NOT NULL DEFAULT '0',
+                `position` int(11) NOT NULL DEFAULT '0',
+                `question_cat_id` int(10) UNSIGNED DEFAULT NULL,
+                `creator_id` int(10) UNSIGNED DEFAULT NULL,
+                `updater_id` int(10) UNSIGNED DEFAULT NULL,
+                `access_counter` int(11) NOT NULL DEFAULT '0',
+                `created_at` timestamp NULL DEFAULT NULL,
+                `updated_at` timestamp NULL DEFAULT NULL,
+                `deleted_at` timestamp NULL DEFAULT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
+            "ALTER TABLE `{$prefix}questions` ADD PRIMARY KEY (`id`);",
             "INSERT INTO {$prefix}config (name, value) ('app.name', '{$appName}')",
         ];
 
