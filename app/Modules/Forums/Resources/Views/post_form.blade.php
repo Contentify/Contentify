@@ -1,4 +1,6 @@
-<h1 class="page-title">{{ trans('forums::create_post') }}</h1>
+<h1 id="create-forum-post" class="page-title">{{ trans('forums::create_post') }}</h1>
+
+{!! Form::errors($errors) !!}
 
 @if (! isset($forumThread))
     {!! Form::model($forumPost, ['url' => ['forums/posts/'.$forumPost->id], 'method' => 'PUT']) !!}

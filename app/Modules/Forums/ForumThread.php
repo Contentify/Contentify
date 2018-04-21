@@ -96,4 +96,16 @@ class ForumThread extends BaseModel
         }
     }
 
+    /**
+     * Counts and returns the pages that the thread has.
+     * Assumes that a thread always has at least one post
+     * (=the root post).
+     *
+     * @return int
+     */
+    public function countPages()
+    {
+        return ceil($this->posts_count / ForumPost::PER_PAGE);
+    }
+
 }
