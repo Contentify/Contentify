@@ -8108,6 +8108,9 @@ textarea.model-search-box input {
     width: 33%;
   }
 }
+.page-contact textarea {
+  resize: vertical;
+}
 .page-messages .message-text {
   word-wrap: break-word;
   overflow-x: hidden;
