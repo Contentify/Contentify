@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Downloads;
+namespace App\Modules\News;
 
 use BaseModel;
 use SoftDeletingTrait;
@@ -9,30 +9,28 @@ use SoftDeletingTrait;
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $title
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\Downloads\Download[] $downloads
+ * @property string $image
+ * @property \App\Modules\News\News[] $news
  * @property \User $creator
  */
-class Downloadcat extends BaseModel
+class NewsCat extends BaseModel
 {
 
     use SoftDeletingTrait;
 
     protected $dates = ['deleted_at'];
 
-    protected $slugable = true;
-
     protected $fillable = ['title'];
+
+    public static $fileHandling = ['image' => ['type' => 'image']];
     
     protected $rules = [
         'title'     => 'required|min:3',
     ];
 
     public static $relationsData = [
-        'downloads' => [self::HAS_MANY, 'App\Modules\Downloads\Download', 'dependency' => true],
+        'news'      => [self::HAS_MANY, 'App\Modules\News\News', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
+    
 }

@@ -30,7 +30,7 @@ class AdminPartnersController extends BackController
                 trans('app.id')             => 'id', 
                 trans('app.published')      => 'published', 
                 trans('app.title')          => 'title',
-                trans('app.category')       => 'partnercat_id', 
+                trans('app.category')       => 'partner_cat_id',
             ],
             'tableRow' => function(Partner $partner)
             {
@@ -40,7 +40,7 @@ class AdminPartnersController extends BackController
                     $partner->id,
                     raw($partner->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull(), $partner->title),
-                    $partner->partnercat->title,
+                    $partner->partnerCat->title,
                 ];
             }
         ]);

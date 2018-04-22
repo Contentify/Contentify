@@ -3,12 +3,12 @@
 ModuleRoute::context('Slides');
 
 ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
-    ModuleRoute::resource('admin/slidecats', 'AdminSlidecatsController');
+    ModuleRoute::resource('admin/slide-cats', 'AdminSlideCatsController');
     ModuleRoute::get(
-        'admin/slidecats/{id}/restore',
-        ['as' => 'slidecats.restore', 'uses' => 'AdminSlidecatsController@restore']
+        'admin/slide-cats/{id}/restore',
+        ['as' => 'slide-cats.restore', 'uses' => 'AdminSlideCatsController@restore']
     );
-    ModuleRoute::post('admin/slidecats/search', 'AdminSlidecatsController@search');
+    ModuleRoute::post('admin/slide-cats/search', 'AdminSlideCatsController@search');
 
     ModuleRoute::resource('admin/slides', 'AdminSlidesController');
     ModuleRoute::get(

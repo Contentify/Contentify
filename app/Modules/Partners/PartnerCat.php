@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Modules\Slides;
+namespace App\Modules\Partners;
 
 use BaseModel;
 use SoftDeletingTrait;
@@ -11,10 +11,10 @@ use SoftDeletingTrait;
  * @property string $title
  * @property int $creator_id
  * @property int $updater_id
- * @property \App\Modules\Slides\Slide[] $slides
+ * @property \App\Modules\Partners\Partner[] $partners
  * @property \User $creator
  */
-class Slidecat extends BaseModel
+class PartnerCat extends BaseModel
 {
 
     use SoftDeletingTrait;
@@ -28,8 +28,8 @@ class Slidecat extends BaseModel
     ];
 
     public static $relationsData = [
-        'slides'    => [self::HAS_MANY, 'App\Modules\Slides\Slide', 'dependency' => true],
+        'partners'  => [self::HAS_MANY, 'App\Modules\Partners\Partner', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-    
+
 }

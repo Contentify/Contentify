@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Modules\News\Http\Controllers;
+namespace App\Modules\Adverts\Http\Controllers;
 
-use App\Modules\News\Newscat;
+use App\Modules\Adverts\AdvertCat;
 use BackController;
 use Hover;
 use ModelHandlerTrait;
 
-class AdminNewscatsController extends BackController
+class AdminAdvertCatsController extends BackController
 {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'newspaper';
+    protected $icon = 'bullhorn';
 
     public function __construct()
     {
-        $this->modelClass = Newscat::class;
+        $this->modelClass = AdvertCat::class;
 
         parent::__construct();
     }
@@ -28,13 +28,13 @@ class AdminNewscatsController extends BackController
                 trans('app.id') => 'id', 
                 trans('app.title') => 'title'
             ],
-            'tableRow' => function(Newscat $newscat)
+            'tableRow' => function(AdvertCat $advertCat)
             {
-                Hover::modelAttributes($newscat, ['image', 'creator']);
+                Hover::modelAttributes($advertCat, ['creator']);
 
                 return [
-                    $newscat->id,
-                    raw(Hover::pull(), $newscat->title)
+                    $advertCat->id,
+                    raw(Hover::pull(), $advertCat->title),
                 ];
             }
         ]);

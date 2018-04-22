@@ -9,8 +9,8 @@
             </div>
         </div>
 
-        @if ($item->newscat->image)
-            <a class="image text-hide" href="{!! 'news/'.$item->id.'/'.$item->slug !!}" style="background-image: url({!! $item->newscat->uploadPath().$item->newscat->image !!}">{{ $item->title }}
+        @if ($item->newsCat->image)
+            <a class="image text-hide" href="{!! 'news/'.$item->id.'/'.$item->slug !!}" style="background-image: url({!! $item->newsCat->uploadPath().$item->newsCat->image !!}">{{ $item->title }}
             </a>
         @endif
 

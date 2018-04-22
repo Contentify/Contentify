@@ -28,14 +28,14 @@ class NewsController extends FrontController implements GlobalSearchInterface
             'buttons'       => null,
             'tableHead'     => [
                 trans('app.title')      => 'title', 
-                trans('app.category')   => 'newscat_id', 
+                trans('app.category')   => 'news_cat_id',
                 trans('app.date')       => 'created_at'
             ],
             'tableRow'      => function(News $news)
             {
                 return [
                     raw(HTML::link(url('news/'.$news->id.'/'.$news->slug), $news->title)),
-                    $news->newscat->title,
+                    $news->newsCat->title,
                     $news->created_at
                 ];
             },

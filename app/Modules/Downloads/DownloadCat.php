@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Adverts;
+namespace App\Modules\Downloads;
 
 use BaseModel;
 use SoftDeletingTrait;
@@ -9,17 +9,20 @@ use SoftDeletingTrait;
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $title
+ * @property int $access_counter
  * @property int $creator_id
  * @property int $updater_id
- * @property \App\Modules\Adverts\Advert[] $adverts
+ * @property \App\Modules\Downloads\Download[] $downloads
  * @property \User $creator
  */
-class Advertcat extends BaseModel
+class DownloadCat extends BaseModel
 {
 
     use SoftDeletingTrait;
 
     protected $dates = ['deleted_at'];
+
+    protected $slugable = true;
 
     protected $fillable = ['title'];
     
@@ -28,7 +31,7 @@ class Advertcat extends BaseModel
     ];
 
     public static $relationsData = [
-        'adverts'   => [self::HAS_MANY, 'App\Modules\Adverts\Advert', 'dependency' => true],
+        'downloads' => [self::HAS_MANY, 'App\Modules\Downloads\Download', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

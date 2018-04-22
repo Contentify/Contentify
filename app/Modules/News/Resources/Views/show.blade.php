@@ -1,13 +1,13 @@
 <article class="news">
     <header>
         <h1 class="page-title inside">{{ $news->title }}</h1>
-        <span><time>{{ $news->updated_at }}</time> {{ trans('news::written_by') }} {!! link_to('users/'.$news->creator->id.'/'.$news->creator->slug, $news->creator->slug) !!} {{ trans('news::in') }} {{ $news->newscat->title }}</span>
+        <span><time>{{ $news->updated_at }}</time> {{ trans('news::written_by') }} {!! link_to('users/'.$news->creator->id.'/'.$news->creator->slug, $news->creator->slug) !!} {{ trans('news::in') }} {{ $news->newsCat->title }}</span>
     </header>
     
     <div class="content">
-        @if ($news->newscat->image)
+        @if ($news->newsCat->image)
             <div class="image">
-                <img src="{!! $news->newscat->uploadPath().$news->newscat->image !!}" alt="{{ $news->newscat->title }}">
+                <img src="{!! $news->newsCat->uploadPath().$news->newsCat->image !!}" alt="{{ $news->newsCat->title }}">
             </div>
         @endif
         <div class="summary">

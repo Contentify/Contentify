@@ -1,22 +1,22 @@
 <?php 
 
-namespace App\Modules\Partners\Http\Controllers;
+namespace App\Modules\Slides\Http\Controllers;
 
-use App\Modules\Partners\Partnercat;
+use App\Modules\Slides\SlideCat;
 use BackController;
 use Hover;
 use ModelHandlerTrait;
 
-class AdminPartnercatsController extends BackController
+class AdminSlideCatsController extends BackController
 {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'money-bill-alt';
+    protected $icon = 'play';
 
     public function __construct()
     {
-        $this->modelClass = Partnercat::class;
+        $this->modelClass = SlideCat::class;
 
         parent::__construct();
     }
@@ -28,13 +28,13 @@ class AdminPartnercatsController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function(Partnercat $partnercat)
+            'tableRow' => function(SlideCat $slideCat)
             {
-                Hover::modelAttributes($partnercat, ['creator']);
+                Hover::modelAttributes($slideCat, ['creator']);
 
                 return [
-                    $partnercat->id,
-                    raw(Hover::pull(), $partnercat->title),
+                    $slideCat->id,
+                    raw(Hover::pull(), $slideCat->title),
                 ];
             }
         ]);

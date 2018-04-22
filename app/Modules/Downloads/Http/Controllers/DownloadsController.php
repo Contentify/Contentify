@@ -3,7 +3,7 @@
 namespace App\Modules\Downloads\Http\Controllers;
 
 use App\Modules\Downloads\Download;
-use App\Modules\Downloads\Downloadcat;
+use App\Modules\Downloads\DownloadCat;
 use Config;
 use Contentify\GlobalSearchInterface;
 use File;
@@ -26,9 +26,9 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
         $perPage = Config::get('app.frontItemsPerPage');
 
         // NOTE: Add has('downloads') to show only categories that have downloads
-        $downloadcats = Downloadcat::paginate($perPage); 
+        $downloadCats = DownloadCat::paginate($perPage);
 
-        $this->pageView('downloads::index', compact('downloadcats'));
+        $this->pageView('downloads::index', compact('downloadCats'));
     }
 
     /**
@@ -39,18 +39,18 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
      */
     public function showCategory($id)
     {
-        /** @var Downloadcat $downloadcat */
-        $downloadcat = Downloadcat::findOrFail($id);
+        /** @var DownloadCat $downloadCat */
+        $downloadCat = DownloadCat::findOrFail($id);
 
-        $downloadcat->access_counter++;
-        $downloadcat->save();
+        $downloadCat->access_counter++;
+        $downloadCat->save();
 
         $perPage = Config::get('app.frontItemsPerPage');
-        $downloads = Download::whereDownloadcatId($id)->paginate($perPage); 
+        $downloads = Download::whereDownloadCatId($id)->paginate($perPage);
 
-        $this->title($downloadcat->title);
+        $this->title($downloadCat->title);
 
-        $this->pageView('downloads::category', compact('downloadcat', 'downloads'));
+        $this->pageView('downloads::category', compact('downloadCat', 'downloads'));
     }
 
     /**

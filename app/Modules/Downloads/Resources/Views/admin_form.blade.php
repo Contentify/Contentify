@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
     
-    {!! Form::smartSelectRelation('downloadcat', trans('app.category'), $modelClass) !!}
+    {!! Form::smartSelectRelation('downloadCat', trans('app.category'), $modelClass) !!}
 
     {!! Form::smartTextarea('description', trans('app.description'), true) !!}
 

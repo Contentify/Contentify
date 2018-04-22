@@ -14,7 +14,7 @@ use SoftDeletingTrait;
  * @property \App\Modules\Teams\Team[] $teams
  * @property \User $creator
  */
-class Teamcat extends BaseModel
+class TeamCat extends BaseModel
 {
 
     use SoftDeletingTrait;

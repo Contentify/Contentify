@@ -12,7 +12,7 @@ class TeamsWidget extends Widget
     public function render(array $parameters = array())
     {
         if (isset($parameters['categoryId'])) {
-            $teams = Team::whereTeamcatId($parameters['categoryId'])->published()->orderBy('title', 'ASC')->get();
+            $teams = Team::whereTeamCatId($parameters['categoryId'])->published()->orderBy('title', 'ASC')->get();
         } else {
             $teams = Team::published()->orderBy('title', 'ASC')->get();
         }

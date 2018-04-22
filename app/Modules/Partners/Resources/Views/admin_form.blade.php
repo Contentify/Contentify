@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
     
-    {!! Form::smartSelectRelation('partnercat', trans('app.category'), $modelClass, null) !!}
+    {!! Form::smartSelectRelation('partnerCat', trans('app.category'), $modelClass, null) !!}
 
     {!! Form::smartTextarea('text', trans('app.text'), true) !!}
 

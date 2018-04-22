@@ -131,7 +131,21 @@ EOD;
                 `deleted_at` timestamp NULL DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
             "ALTER TABLE `{$prefix}questions` ADD PRIMARY KEY (`id`);",
-            "INSERT INTO {$prefix}config (name, value) ('app.name', '{$appName}')",
+            "INSERT INTO {$prefix}config (name, value) ('app.name', '{$appName}');",
+            "RENAME TABLE {$prefix}newscats TO {$prefix}news_cats;",
+            "RENAME TABLE {$prefix}partnercats TO {$prefix}partner_cats;",
+            "RENAME TABLE {$prefix}advertcats TO {$prefix}advert_cats;",
+            "RENAME TABLE {$prefix}slidecats TO {$prefix}slide_cats;",
+            "RENAME TABLE {$prefix}downloadcats TO {$prefix}download_cats;",
+            "RENAME TABLE {$prefix}pagecats TO {$prefix}page_cats;",
+            "RENAME TABLE {$prefix}teamcats TO {$prefix}team_cats;",
+            "ALTER TABLE {$prefix}news CHANGE newscat_id news_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
+            "ALTER TABLE {$prefix}partners CHANGE partnercat_id partner_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
+            "ALTER TABLE {$prefix}adverts CHANGE advertcat_id advert_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
+            "ALTER TABLE {$prefix}slides CHANGE slidecat_id slide_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
+            "ALTER TABLE {$prefix}downloads CHANGE downloadcat_id download_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
+            "ALTER TABLE {$prefix}pages CHANGE pagecat_id page_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
+            "ALTER TABLE {$prefix}teams CHANGE teamcat_id team_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
         ];
 
         return $updateQueries;

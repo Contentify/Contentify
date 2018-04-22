@@ -3,7 +3,7 @@
 namespace App\Modules\Adverts\Http\Controllers;
 
 use App\Modules\Adverts\Advert;
-use App\Modules\Adverts\Advertcat;
+use App\Modules\Adverts\AdvertCat;
 use Config;
 use DB;
 use View;
@@ -17,9 +17,9 @@ class AdvertWidget extends Widget
         if (isset($parameters['categoryId'])) {
             $categoryId = $parameters['categoryId'];
         } else {
-            $advertcat = Advertcat::first();
-            if ($advertcat) {
-                $categoryId = $advertcat->id;
+            $advertCat = AdvertCat::first();
+            if ($advertCat) {
+                $categoryId = $advertCat->id;
             } else {
                 $categoryId = 0;
             }
@@ -42,7 +42,7 @@ class AdvertWidget extends Widget
             $containerId = (chr(ord(substr($containerId, 0, 1)) % 26 + 97)).$containerId;
         }
 
-        $advert = Advert::orderBy(DB::raw('RAND()'))->published()->whereAdvertcatId($categoryId)->first();
+        $advert = Advert::orderBy(DB::raw('RAND()'))->published()->whereAdvertCatId($categoryId)->first();
 
         if ($advert) {
             return View::make('adverts::widget', compact('advert', 'containerId'))->render();

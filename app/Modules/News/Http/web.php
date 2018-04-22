@@ -3,12 +3,12 @@
 ModuleRoute::context('News');
 
 ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
-    ModuleRoute::resource('admin/newscats', 'AdminNewscatsController');
+    ModuleRoute::resource('admin/news-cats', 'AdminNewsCatsController');
     ModuleRoute::get(
-        'admin/newscats/{id}/restore',
-        ['as' => 'newscats.restore', 'uses' => 'AdminNewscatsController@restore']
+        'admin/news-cats/{id}/restore',
+        ['as' => 'news-cats.restore', 'uses' => 'AdminNewsCatsController@restore']
     );
-    ModuleRoute::post('admin/newscats/search', 'AdminNewscatsController@search');
+    ModuleRoute::post('admin/news-cats/search', 'AdminNewsCatsController@search');
 
     ModuleRoute::resource('admin/news', 'AdminNewsController');
     ModuleRoute::get(
