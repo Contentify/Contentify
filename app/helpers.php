@@ -25,9 +25,11 @@ function user()
 /**
  * Returns true, if HTTPS/SSL enforcement is active, false otherwise
  *
+ * @deprecated This function is no longer used by Contentify. It's likely to be removed.
+ *
  * @return bool
  */
-function is_https()
+function enforce_https()
 {
     return Config::get('app.https');
 }
