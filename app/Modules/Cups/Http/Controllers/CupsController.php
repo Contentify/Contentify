@@ -8,6 +8,7 @@ use Contentify\GlobalSearchInterface;
 use DB;
 use FrontController;
 use HTML;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Input;
 use Redirect;
@@ -48,7 +49,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
             },
             'actions'       => null,
             'filter'        => true,
-            'permaFilter'   => function($query)
+            'permaFilter'   => function(Builder $query)
             {
                 return $query->published();
             }
@@ -64,6 +65,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
      */
     public function show($id, $slug = null)
     {
+        /** @var Cup $cup */
         if ($slug) {
             $cup = Cup::whereSlug($slug)->published()->firstOrFail();
         } else {
@@ -204,7 +206,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
     /**
      * Tries to check-out the user or the team of the user to the current cup.
      * 
-     * @param int $cupId
+     * @param int $cupId The cup ID
      * @return RedirectResponse
      */
     public function checkOut($cupId)
