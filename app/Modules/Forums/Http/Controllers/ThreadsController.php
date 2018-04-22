@@ -78,12 +78,12 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->createSlug();
 
         if (! $forumPost->isValid()) {
-            return Redirect::to('forums/threads/create')
+            return Redirect::to('forums/threads/create/'.$forum->id)
                 ->withInput()->withErrors($forumPost->getErrors());
         }
 
         if (! $forumThread->isValid()) {
-            return Redirect::to('forums/threads/create')
+            return Redirect::to('forums/threads/create/'.$forum->id)
                 ->withInput()->withErrors($forumThread->getErrors());
         }
 
@@ -150,12 +150,12 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->createSlug();
 
         if (! $forumPost->isValid()) {
-            return Redirect::to('forums/threads/create')
+            return Redirect::to('forums/threads/edit/'.$forumThread->forum_id)
                 ->withInput()->withErrors($forumPost->getErrors());
         }
 
         if (! $forumThread->isValid()) {
-            return Redirect::to('forums/threads/create')
+            return Redirect::to('forums/threads/edit/'.$forumThread->forum_id)
                 ->withInput()->withErrors($forumThread->getErrors());
         }
 

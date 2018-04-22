@@ -331,12 +331,13 @@ ul.pagination {
 }
 
 .page-downloads {
-    .downloadcats .downloadcat { display: block; float: left; width: 100px; margin: 0 20px 20px 20px; text-align: center; }
+    .download-cats .download-cat { display: block; float: left; width: 100px; margin: 0 20px 20px 20px; text-align: center; }
     .downloads .download { 
         display: block; float: left; width: 100px; margin: 0 20px 20px 20px; text-align: center; .background-image('img/default/file.png'); background-position: center top; background-repeat: no-repeat;
         a { display: block; padding-top: 100px; background-position: center 20px; background-repeat: no-repeat; }
     }
 }
+.page-downloads-show .download-detail button[type=submit] i:before { content: "\f019" }
 
 .page-matches {
     .overview {
@@ -496,12 +497,12 @@ ul.pagination {
 }
 
 @keyframes posthighlight {
-  0% {
-    border-color: @primary-color;
-  }
-  100% {
-    border-color: @forums-box-color;
-  }
+    0% {
+        border-color: @primary-color;
+    }
+    100% {
+        border-color: @forums-box-color;
+    }
 }
 
 .page-threads.page-forums-threads-new {
@@ -526,7 +527,7 @@ ul.pagination {
 .widget-random-user {
     padding: 10px;
     a { display: block; text-align: center; }
-    .image { 
+    .image {
         text-align: center;
         img { max-width: 90%; max-height: 240px; }
     }
@@ -544,6 +545,8 @@ ul.pagination {
 @media (max-width: @screen-phone) {
     .page-friends .friend { width: 33% }
 }
+
+.page-contact textarea { resize: vertical }
 
 .page-messages {
     .message-text {
@@ -664,6 +667,12 @@ ul.pagination {
 .page-auth-login {
     form { position: relative; }
     .btn-restore { position: absolute; bottom: 40px; right: 40px; }
+}
+
+.page-questions-index {
+    h2 { padding-left: 10px; border-left: 4px solid @primary-color }
+    h2:nth-child(2n) { margin-top: 40px }
+    .text { padding: 20px; background-color: @dark }
 }
 
 /*

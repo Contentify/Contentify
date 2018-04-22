@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Modules\Downloads\Http\Controllers;
+namespace App\Modules\News\Http\Controllers;
 
-use App\Modules\Downloads\Downloadcat;
+use App\Modules\News\NewsCat;
 use BackController;
 use Hover;
 use ModelHandlerTrait;
 
-class AdminDownloadcatsController extends BackController
+class AdminNewsCatsController extends BackController
 {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'folder';
+    protected $icon = 'newspaper';
 
     public function __construct()
     {
-        $this->modelClass = Downloadcat::class;
+        $this->modelClass = NewsCat::class;
 
         parent::__construct();
     }
@@ -28,13 +28,13 @@ class AdminDownloadcatsController extends BackController
                 trans('app.id') => 'id', 
                 trans('app.title') => 'title'
             ],
-            'tableRow' => function(Downloadcat $downloadcat)
+            'tableRow' => function(NewsCat $newsCat)
             {
-                Hover::modelAttributes($downloadcat, ['creator']);
+                Hover::modelAttributes($newsCat, ['image', 'creator']);
 
                 return [
-                    $downloadcat->id,
-                    raw(Hover::pull(), $downloadcat->title)
+                    $newsCat->id,
+                    raw(Hover::pull(), $newsCat->title)
                 ];
             }
         ]);

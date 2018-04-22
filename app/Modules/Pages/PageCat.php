@@ -11,7 +11,7 @@ use SoftDeletingTrait;
  * @property string $title
  * @property \App\Modules\Pages\Page[] $pages
  */
-class Pagecat extends BaseModel
+class PageCat extends BaseModel
 {
 
     use SoftDeletingTrait;

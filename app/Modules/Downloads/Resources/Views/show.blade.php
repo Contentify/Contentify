@@ -1,4 +1,4 @@
-<h1 class="page-title"><a class="back" href="{!! url('downloads/category/'.$download->downloadcat->id.'/'.$download->downloadcat->slug) !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ trans_object('downloads') }} - {{ $download->downloadcat->title }}</h1>
+<h1 class="page-title"><a class="back" href="{!! url('downloads/category/'.$download->downloadCat->id.'/'.$download->downloadCat->slug) !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ trans_object('downloads') }} - {{ $download->downloadCat->title }}</h1>
 
 <div class="download-detail">
     {!! Form::open(array('url' => 'downloads/perform/'.$download->id)) !!}
@@ -13,7 +13,7 @@
         @endif
 
         {!! Form::smartGroupOpen(null, trans('app.category')) !!}
-            <p class="form-control-static">{{ $download->downloadcat->title }}</p>
+            <p class="form-control-static">{{ $download->downloadCat->title }}</p>
         {!! Form::smartGroupClose() !!}
 
         {!! Form::smartGroupOpen(null, trans('app.size')) !!}

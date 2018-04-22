@@ -3,12 +3,12 @@
 ModuleRoute::context('Adverts');
 
 ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
-    ModuleRoute::resource('admin/advertcats', 'AdminAdvertcatsController');
+    ModuleRoute::resource('admin/advert-cats', 'AdminAdvertCatsController');
     ModuleRoute::get(
-        'admin/advertcats/{id}/restore',
-        ['as' => 'advertcats.restore', 'uses' => 'AdminAdvertcatsController@restore']
+        'admin/advert-cats/{id}/restore',
+        ['as' => 'advert-cats.restore', 'uses' => 'AdminAdvertCatsController@restore']
     );
-    ModuleRoute::post('admin/advertcats/search', 'AdminAdvertcatsController@search');
+    ModuleRoute::post('admin/advert-cats/search', 'AdminAdvertCatsController@search');
 
     ModuleRoute::resource('admin/adverts', 'AdminAdvertsController');
     ModuleRoute::get(

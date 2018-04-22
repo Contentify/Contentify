@@ -1,14 +1,14 @@
 <h1 class="page-title">{{ trans_object('downloads') }}</h1>
 
-<div class="downloadcats clearfix">
-    @foreach ($downloadcats as $downloadcat)
-        <div class="downloadcat">
-            <a href="{{ url('downloads/category/'.$downloadcat->id.'/'.$downloadcat->slug) }}">
+<div class="download-cats clearfix">
+    @foreach ($downloadCats as $downloadCat)
+        <div class="download-cat">
+            <a href="{{ url('downloads/category/'.$downloadCat->id.'/'.$downloadCat->slug) }}">
                 <img src="{!! asset('img/default/folder.png') !!}">
-                {{ $downloadcat->title }}
+                {{ $downloadCat->title }}
             </a>
         </div>
     @endforeach
 </div>
 
-{!! $downloadcats->render() !!}
+{!! $downloadCats->render() !!}

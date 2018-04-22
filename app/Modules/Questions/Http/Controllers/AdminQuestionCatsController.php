@@ -1,22 +1,22 @@
 <?php 
 
-namespace App\Modules\Partners\Http\Controllers;
+namespace App\Modules\Questions\Http\Controllers;
 
-use App\Modules\Partners\Partnercat;
+use App\Modules\Questions\QuestionCat;
 use BackController;
 use Hover;
 use ModelHandlerTrait;
 
-class AdminPartnercatsController extends BackController
+class AdminQuestionCatsController extends BackController
 {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'money-bill-alt';
+    protected $icon = 'tasks';
 
     public function __construct()
     {
-        $this->modelClass = Partnercat::class;
+        $this->modelClass = QuestionCat::class;
 
         parent::__construct();
     }
@@ -28,13 +28,13 @@ class AdminPartnercatsController extends BackController
                 trans('app.id')     => 'id', 
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function(Partnercat $partnercat)
+            'tableRow' => function(QuestionCat $questionCat)
             {
-                Hover::modelAttributes($partnercat, ['creator']);
+                Hover::modelAttributes($questionCat, ['creator']);
 
                 return [
-                    $partnercat->id,
-                    raw(Hover::pull(), $partnercat->title),
+                    $questionCat->id,
+                    raw(Hover::pull(), $questionCat->title),
                 ];
             }
         ]);

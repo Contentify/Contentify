@@ -3,12 +3,12 @@
 ModuleRoute::context('Partners');
 
 ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
-    ModuleRoute::resource('admin/partnercats', 'AdminPartnercatsController');
+    ModuleRoute::resource('admin/partner-cats', 'AdminPartnerCatsController');
     ModuleRoute::get(
-        'admin/partnercats/{id}/restore',
-        ['as' => 'partnercats.restore', 'uses' => 'AdminPartnercatsController@restore']
+        'admin/partner-cats/{id}/restore',
+        ['as' => 'partner-cats.restore', 'uses' => 'AdminPartnerCatsController@restore']
     );
-    ModuleRoute::post('admin/partnercats/search', 'AdminPartnercatsController@search');
+    ModuleRoute::post('admin/partner-cats/search', 'AdminPartnerCatsController@search');
 
     ModuleRoute::resource('admin/partners', 'AdminPartnersController');
     ModuleRoute::get(

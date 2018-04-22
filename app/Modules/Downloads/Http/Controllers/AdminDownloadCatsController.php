@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Modules\Adverts\Http\Controllers;
+namespace App\Modules\Downloads\Http\Controllers;
 
-use App\Modules\Adverts\Advertcat;
+use App\Modules\Downloads\DownloadCat;
 use BackController;
 use Hover;
 use ModelHandlerTrait;
 
-class AdminAdvertcatsController extends BackController
+class AdminDownloadCatsController extends BackController
 {
 
     use ModelHandlerTrait;
 
-    protected $icon = 'bullhorn';
+    protected $icon = 'folder';
 
     public function __construct()
     {
-        $this->modelClass = Advertcat::class;
+        $this->modelClass = DownloadCat::class;
 
         parent::__construct();
     }
@@ -28,13 +28,13 @@ class AdminAdvertcatsController extends BackController
                 trans('app.id') => 'id', 
                 trans('app.title') => 'title'
             ],
-            'tableRow' => function(Advertcat $advertcat)
+            'tableRow' => function(DownloadCat $downloadCat)
             {
-                Hover::modelAttributes($advertcat, ['creator']);
+                Hover::modelAttributes($downloadCat, ['creator']);
 
                 return [
-                    $advertcat->id,
-                    raw(Hover::pull(), $advertcat->title),
+                    $downloadCat->id,
+                    raw(Hover::pull(), $downloadCat->title)
                 ];
             }
         ]);

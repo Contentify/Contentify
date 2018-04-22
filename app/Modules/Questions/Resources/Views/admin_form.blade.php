@@ -7,6 +7,8 @@
 @endif
     {!! Form::smartText('title', trans('app.object_question')) !!}
 
+    {!! Form::smartSelectRelation('questionCat', trans('app.object_question').' '.trans('app.category'), $modelClass, null) !!}
+
     {!! Form::smartTextarea('answer', trans('app.answer'), true) !!}
 
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}

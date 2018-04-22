@@ -10,20 +10,20 @@ use InterImage;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $slug
- * @property string $description
- * @property int $downloadcat_id
- * @property string $file
- * @property int $file_size
- * @property bool $is_image
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\Downloads\Downloadcat $downloadcat
- * @property \User $creator
+ * @property \Carbon                            $created_at
+ * @property \Carbon                            $deleted_at
+ * @property string                             $title
+ * @property string                             $slug
+ * @property string                             $description
+ * @property int                                $download_cat_id
+ * @property string                             $file
+ * @property int                                $file_size
+ * @property bool                               $is_image
+ * @property int                                $access_counter
+ * @property int                                $creator_id
+ * @property int                                $updater_id
+ * @property \App\Modules\Downloads\DownloadCat $downloadCat
+ * @property \User                              $creator
  */
 class Download extends BaseModel
 {
@@ -34,17 +34,17 @@ class Download extends BaseModel
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'description', 'downloadcat_id'];
+    protected $fillable = ['title', 'description', 'download_cat_id'];
 
     public static $fileHandling = ['file'];
 
     protected $rules = [
         'title'             => 'required|min:3',
-        'downloadcat_id'    => 'required|integer'
+        'download_cat_id'   => 'required|integer'
     ];
 
     public static $relationsData = [
-        'downloadcat'   => [self::BELONGS_TO, 'App\Modules\Downloads\Downloadcat'],
+        'downloadCat'   => [self::BELONGS_TO, 'App\Modules\Downloads\DownloadCat'],
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

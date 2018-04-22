@@ -30,7 +30,7 @@ class AdminAdvertsController extends BackController
                 trans('app.id')             => 'id',
                 trans('app.published')      => 'published', 
                 trans('app.title')          => 'title',
-                trans('app.category')       => 'advertcat_id', 
+                trans('app.category')       => 'advert_cat_id',
             ],
             'tableRow' => function(Advert $advert)
             {
@@ -40,7 +40,7 @@ class AdminAdvertsController extends BackController
                     $advert->id,
                     raw($advert->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull(), $advert->title),
-                    $advert->advertcat->title,
+                    $advert->advertCat->title,
                 ];
             }
         ]);

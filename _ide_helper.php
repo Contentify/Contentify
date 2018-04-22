@@ -13888,12 +13888,13 @@ namespace Contentify\Facades {
          * Adds text to the content.
          *
          * @param string $text The text to add
+         * @param bool $stripTags Strip THML tags from the text?
          * @return \Hover 
          * @static 
          */ 
-        public static function text($text)
+        public static function text($text, $stripTags = false)
         {
-            return \Contentify\Hover::text($text);
+            return \Contentify\Hover::text($text, $stripTags);
         }
         
         /**

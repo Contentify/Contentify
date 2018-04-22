@@ -62,8 +62,9 @@ class PostsController extends FrontController
         $valid = $forumPost->save();
 
         if (! $valid) {
-            return Redirect::to('forums/threads/create')
-                ->withInput()->withErrors($forumPost->getErrors());
+            return Redirect::to(
+                'forums/threads/'.$id.'/'.$forumThread->slug.'?page='.$forumThread->countPages().'#create-forum-post'
+            )->withInput()->withErrors($forumPost->getErrors());
         }
 
         $forumThread->posts_count++;
@@ -132,7 +133,7 @@ class PostsController extends FrontController
         $valid = $forumPost->save();
         
         if (! $valid) {
-            return Redirect::to('forums/threads/edit/'.$forumPost->id)
+            return Redirect::to('forums/posts/edit/'.$forumPost->id)
                 ->withInput()->withErrors($forumPost->getErrors());
         }
 

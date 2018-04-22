@@ -15,22 +15,22 @@ use SoftDeletingTrait;
 use URL;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property \Carbon $published_at
- * @property string $title
- * @property string $slug
- * @property string $summary
- * @property string $text
- * @property bool $published
- * @property bool $internal
- * @property bool $enable_comments
- * @property int $newscat_id
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\News\Newscat $newscat
- * @property \User $creator
+ * @property \Carbon                   $created_at
+ * @property \Carbon                   $deleted_at
+ * @property \Carbon                   $published_at
+ * @property string                    $title
+ * @property string                    $slug
+ * @property string                    $summary
+ * @property string                    $text
+ * @property bool                      $published
+ * @property bool                      $internal
+ * @property bool                      $enable_comments
+ * @property int                       $news_cat_id
+ * @property int                       $access_counter
+ * @property int                       $creator_id
+ * @property int                       $updater_id
+ * @property \App\Modules\News\NewsCat $newsCat
+ * @property \User                     $creator
  */
 class News extends BaseModel
 {
@@ -49,7 +49,7 @@ class News extends BaseModel
         'published_at',
         'internal', 
         'enable_comments', 
-        'newscat_id', 
+        'news_cat_id',
         'creator_id'
     ];
 
@@ -58,12 +58,12 @@ class News extends BaseModel
         'published'         => 'boolean',
         'internal'          => 'boolean',
         'enable_comments'   => 'boolean',
-        'newscat_id'        => 'required|integer',
+        'news_cat_id'       => 'required|integer',
         'creator_id'        => 'required|integer',
     ];
 
     public static $relationsData = [
-        'newscat' => [self::BELONGS_TO, 'App\Modules\News\Newscat'],
+        'newsCat' => [self::BELONGS_TO, 'App\Modules\News\NewsCat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 
@@ -90,9 +90,9 @@ class News extends BaseModel
      */
     public function scopeFilter($query)
     {
-        if (ContentFilter::has('newscat_id')) {
-            $id = (int) ContentFilter::get('newscat_id');
-            return $query->whereNewscatId($id);
+        if (ContentFilter::has('news_cat_id')) {
+            $id = (int) ContentFilter::get('news_cat_id');
+            return $query->whereNewsCatId($id);
         }
 
         return null;
@@ -104,7 +104,7 @@ class News extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished($query)
+    public function scopePublished(Builder $query)
     {
         return $query->wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'));
     }
@@ -130,7 +130,7 @@ class News extends BaseModel
 
         $og->title($this->title)
             ->type('article')
-            ->image($this->newscat->uploadPath().$this->newscat->image)
+            ->image($this->newsCat->uploadPath().$this->newsCat->image)
             ->description($this->summary)
             ->url();
 

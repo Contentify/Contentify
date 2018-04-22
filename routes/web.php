@@ -111,7 +111,7 @@ Route::get('jobs', function()
 /*
  * Testing
  */
-Route::get('test', function()
+Route::get('dev', function()
 {
     #$controller = new InstallController();
     #$controller->create('questions', function($table)

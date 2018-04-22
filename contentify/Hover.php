@@ -42,11 +42,16 @@ class Hover
     /**
      * Adds text to the content.
      * 
-     * @param string $text The text to add
+     * @param string $text      The text to add
+     * @param bool   $stripTags Strip HTML tags from the text?
      * @return self
      */
-    public function text($text)
+    public function text($text, $stripTags = false)
     {
+        if ($stripTags) {
+            $text = strip_tags($text);
+        }
+
         if ($text) {
             $this->content .= $text;
         }

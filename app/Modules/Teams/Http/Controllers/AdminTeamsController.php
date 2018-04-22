@@ -30,7 +30,7 @@ class AdminTeamsController extends BackController
                 trans('app.id')         => 'id',
                 trans('app.published')  => 'published', 
                 trans('app.title')      => 'title',
-                trans('app.category')   => 'teamcat_id'
+                trans('app.category')   => 'team_cat_id'
             ],
             'tableRow' => function(Team $team)
             {
@@ -40,7 +40,7 @@ class AdminTeamsController extends BackController
                     $team->id,
                     raw($team->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull().HTML::link('teams/'.$team->id.'/'.$team->slug, $team->title)),
-                    $team->teamcat->title,
+                    $team->teamCat->title,
                 ];
             }
         ]);

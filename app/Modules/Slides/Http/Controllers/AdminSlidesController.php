@@ -30,7 +30,7 @@ class AdminSlidesController extends BackController
                 trans('app.id')             => 'id', 
                 trans('app.published')      => 'published', 
                 trans('app.title')          => 'title',
-                trans('app.category')       => 'slidecat_id', 
+                trans('app.category')       => 'slide_cat_id',
             ],
             'tableRow' => function(Slide $slide)
             {
@@ -40,7 +40,7 @@ class AdminSlidesController extends BackController
                     $slide->id,
                     raw($slide->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull(), $slide->title),
-                    $slide->slidecat->title,
+                    $slide->slideCat->title,
                 ];
             }
         ]);

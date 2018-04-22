@@ -377,7 +377,7 @@ class InstallController extends Controller
             $table->string('icon')->nullable();
         }, [], ['slug']);
 
-        $this->create('pagecats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('page_cats', function(Blueprint $table) { }, [], ['slug']);
 
         $this->create('pages', function(Blueprint $table)
         {
@@ -386,9 +386,9 @@ class InstallController extends Controller
             $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
             $table->boolean('enable_comments')->default(false);
-        }, ['pagecat_id']);
+        }, ['page_cat_id']);
 
-        $this->create('newscats', function(Blueprint $table)
+        $this->create('news_cats', function(Blueprint $table)
         {
             $table->string('image')->nullable();
         }, [], ['slug']);
@@ -401,7 +401,7 @@ class InstallController extends Controller
             $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
             $table->boolean('enable_comments')->default(false);
-        }, ['newscat_id']);
+        }, ['news_cat_id']);
 
         $this->create('galleries', function(Blueprint $table) { });
         
@@ -420,7 +420,7 @@ class InstallController extends Controller
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);
 
-        $this->create('teamcats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('team_cats', function(Blueprint $table) { }, [], ['slug']);
 
         $this->create('teams', function(Blueprint $table)
         { 
@@ -428,9 +428,9 @@ class InstallController extends Controller
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
-        }, ['teamcat_id', 'country_id']);
+        }, ['team_cat_id', 'country_id']);
 
-        $this->create('advertcats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('advert_cats', function(Blueprint $table) { }, [], ['slug']);
 
         $this->create('adverts', function(Blueprint $table)
         {
@@ -438,9 +438,9 @@ class InstallController extends Controller
             $table->string('url')->nullable();
             $table->boolean('published')->default(false);
             $table->string('image')->nullable();
-        }, ['advertcat_id'], ['slug']);
+        }, ['advert_cat_id'], ['slug']);
 
-        $this->create('partnercats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('partner_cats', function(Blueprint $table) { }, [], ['slug']);
 
         $this->create('partners', function(Blueprint $table)
         {
@@ -449,7 +449,7 @@ class InstallController extends Controller
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
             $table->string('image')->nullable();
-        }, ['partnercat_id']);
+        }, ['partner_cat_id']);
 
         $this->create('videos', function(Blueprint $table)
         {
@@ -458,7 +458,7 @@ class InstallController extends Controller
             $table->string('provider');
         });
 
-        $this->create('downloadcats', function(Blueprint $table) { }); // Supports slugs
+        $this->create('download_cats', function(Blueprint $table) { }); // Supports slugs
 
         $this->create('downloads', function(Blueprint $table)
         { 
@@ -466,9 +466,9 @@ class InstallController extends Controller
             $table->string('file')->nullable();
             $table->integer('file_size')->default(0);
             $table->boolean('is_image')->default(false);
-        }, ['downloadcat_id']);
+        }, ['download_cat_id']);
         
-        $this->create('slidecats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('slide_cats', function(Blueprint $table) { }, [], ['slug']);
 
         $this->create('slides', function(Blueprint $table)
         {
@@ -477,7 +477,7 @@ class InstallController extends Controller
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
-        }, ['slidecat_id'], ['slug']);
+        }, ['slide_cat_id'], ['slug']);
                
         $this->create('tournaments', function(Blueprint $table)
         {
@@ -713,12 +713,14 @@ class InstallController extends Controller
             $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
 
+        $this->create('question_cats', function(Blueprint $table) { }, [], ['slug']);
+
         $this->create('questions', function(Blueprint $table)
         {
             $table->text('answer')->nullable();
             $table->boolean('published')->default(true);
             $table->integer('position')->default(0);
-        }, [], ['slug']);
+        }, ['question_cat_id'], ['slug']);
 
         /*
          * (Re)activate foreign key checks
@@ -738,8 +740,8 @@ class InstallController extends Controller
      */
     protected function createSeed() 
     {
-        $this->createDefaultCategories(['newscats', 'partnercats', 'advertcats', 'slidecats']);
-        $this->createDefaultCategories(['downloadcats'], true);
+        $this->createDefaultCategories(['news_cats', 'partner_cats', 'advert_cats', 'slide_cats', 'question_cats']);
+        $this->createDefaultCategories(['download_cats'], true);
         
         DB::table('config')->insert([
             ['name' => 'app.name',              'value' => Config::get('app.name', null, false)],
@@ -758,12 +760,12 @@ class InstallController extends Controller
             ['name' => 'app.twitchKey',         'value' => ''],
         ]);
 
-        DB::table('teamcats')->insert([
+        DB::table('team_cats')->insert([
             ['id' => '1', 'title' => 'Staff', 'creator_id' => 1, 'updater_id' => 1],
             ['id' => '2', 'title' => 'Gaming', 'creator_id' => 1, 'updater_id' => 1],
         ]);
 
-        DB::table('pagecats')->insert([
+        DB::table('page_cats')->insert([
             ['id' => '1', 'title' => 'Blog Post', 'creator_id' => 1, 'updater_id' => 1],
             ['id' => '2', 'title' => 'Custom Page', 'creator_id' => 1, 'updater_id' => 1],
             ['id' => '3', 'title' => 'Custom Content', 'creator_id' => 1, 'updater_id' => 1],
@@ -788,9 +790,10 @@ further use.<br><h3>Disclosure</h3>According to the Federal Data Protection Act,
 information about your stored data, and possibly entitlement to correction, blocking or deletion of such data. 
 <br><br><i>From: </i><a href="https://www.twigg.de/" target="_blank">http://www.twigg.de/</a>',
             'published'     => true,
+            'published_at'  => DB::raw('NOW()'),
             'creator_id'    => 1,
             'updater_id'    => 1,
-            'pagecat_id'    => 2,
+            'page_cat_id'   => 2,
             'created_at'    => DB::raw('NOW()'),
             'updated_at'    => DB::raw('NOW()'),
         ]);

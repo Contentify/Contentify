@@ -126,7 +126,9 @@ class FormGenerator
 
             switch ($type) {
                 case 'tinyint':
-                    if ($default === '0') $defParam = ''; // "Not checked" is the default value of checkboxes
+                    if ($default === '0') { // "Not checked" is the default value of checkboxes
+                        $defParam = '';
+                    }
                     $html = "{!! Form::smartCheckbox('{$name}', {$title}{$defParam}) !!}";
                     break;
                 case 'int':

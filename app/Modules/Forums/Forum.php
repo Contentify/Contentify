@@ -157,6 +157,7 @@ class Forum extends BaseModel
             return; // Root forums (level = 0) do not need refreshes
         }
 
+        /** @var ForumThread $forumThread */
         $forumThread = ForumThread::whereForumId($this->id)->orderBy('created_at', 'desc')->first();
         $threadsCount = ForumThread::whereForumId($this->id)->count();
 

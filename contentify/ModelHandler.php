@@ -20,6 +20,10 @@ use UserActivities;
 
 class ModelHandler
 {
+    /**
+     * Form fields of auto generated relationship fields use this as a prefix for their names
+     */
+    const RELATION_FIELD_PREFIX = '_relation_';
 
     /**
      * @var BaseController
@@ -96,7 +100,7 @@ class ModelHandler
                         break;
                     case 'category':
                         $url = route(
-                            $surface.'.'.str_singular(strtolower($controller->getModuleName())).'cats.index'
+                            $surface.'.'.str_singular(strtolower($controller->getModuleName())).'-cats.index'
                         );
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
@@ -442,7 +446,9 @@ class ModelHandler
                         $thumbnails = $fieldInfo['thumbnails'];
                         
                         // Ensure $thumbnails is an array:
-                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); 
+                        if (! is_array($thumbnails)) {
+                            $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+                        }
 
                         foreach ($thumbnails as $thumbnail) {
                             InterImage::make($filePath.'/'.$filename)
@@ -498,7 +504,7 @@ class ModelHandler
     /**
      * CRUD: update a model that extends from the BaseModel class
      *
-     * @param int $id The id of the model
+     * @param int $id The ID of the model
      * @return \Illuminate\Http\RedirectResponse|null
      * @throws Exception
      */
@@ -596,7 +602,9 @@ class ModelHandler
                         $thumbnails = $fieldInfo['thumbnails'];
 
                         // Ensure $thumbnails is an array:
-                        if (! is_array($thumbnails)) $thumbnails = compact('thumbnails');
+                        if (! is_array($thumbnails)) {
+                            $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+                        }
 
                         foreach ($thumbnails as $thumbnail) {
                             InterImage::make($filePath.'/'.$filename)
@@ -691,7 +699,9 @@ class ModelHandler
                  */
                 if (strtolower($fieldInfo['type']) == 'image' and isset($fieldInfo['thumbnails'])) {
                     $thumbnails = $fieldInfo['thumbnails'];
-                    if (! is_array($thumbnails)) $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+                    if (! is_array($thumbnails)) {
+                        $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
+                    }
 
                     foreach ($thumbnails as $thumbnail) {
                         $filename = $filePath.$thumbnail.'/'.$model->$fieldName;
@@ -766,8 +776,8 @@ class ModelHandler
         $relations = $modelClass::relations();
 
         foreach (Input::all() as $name => $value) {
-            if (starts_with($name, '_relation_')) {
-                $name = substr($name, 10); // Remove the prefix to get the name of the relation
+            if (starts_with($name, self::RELATION_FIELD_PREFIX)) {
+                $name = substr($name, strlen(self::RELATION_FIELD_PREFIX)); // Remove the prefix to get the relation name
 
                 if ($value === '') {
                     /*
@@ -783,7 +793,9 @@ class ModelHandler
                     $foreignModelFull   = $relation[1]; // Fully classified foreign model name
                     $foreignModel       = class_basename($foreignModelFull);
                     $key                = (new $foreignModelFull)->getKeyName(); // Primary key of the model
-                    if (isset($relation['foreignKey'])) $key = $relation['foreignKey'];
+                    if (isset($relation['foreignKey'])) {
+                        $key = $relation['foreignKey'];
+                    }
 
                     /*
                      * Handle the different types of relations

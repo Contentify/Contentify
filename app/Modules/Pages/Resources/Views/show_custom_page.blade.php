@@ -9,5 +9,5 @@
 
     <h3>CMS</h3>
 
-    <p>Powered by <a href="http://www.contentify.org/">Contentify CMS</a>.</p>
+    <p>Powered by <a href="http://www.contentify.org/" target="_blank">Contentify CMS</a>.</p>
 @endif

@@ -29,7 +29,7 @@ class AdminDownloadsController extends BackController
             'tableHead' => [
                 trans('app.id')         => 'id', 
                 trans('app.title')      => 'title',
-                trans('app.category')   => 'downloadcat_id'
+                trans('app.category')   => 'download_cat_id'
             ],
             'tableRow' => function(Download $download)
             {
@@ -38,7 +38,7 @@ class AdminDownloadsController extends BackController
                 return [
                     $download->id,
                     raw(Hover::pull().HTML::link('downloads/'.$download->id.'/'.$download->slug, $download->title)),
-                    $download->downloadcat->title,
+                    $download->downloadCat->title,
                 ];
             }
         ]);

@@ -7,7 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
     
-    {!! Form::smartSelectForeign('pagecat_id', trans('app.type')) !!}
+    {!! Form::smartSelectForeign('page_cat_id', trans('app.type')) !!}
 
     {!! Form::smartTextarea('text', trans('app.text'), true) !!}
 

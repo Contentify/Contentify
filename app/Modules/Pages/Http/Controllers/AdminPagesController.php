@@ -30,7 +30,7 @@ class AdminPagesController extends BackController
                 trans('app.id')         => 'id', 
                 trans('app.published')  => 'published', 
                 trans('app.title')      => 'title', 
-                trans('app.category')   => 'pagecat_id',
+                trans('app.category')   => 'page_cat_id',
                 trans('app.author')     => 'creator_id', 
                 trans('app.created_at') => 'created_at'
             ],
@@ -38,7 +38,7 @@ class AdminPagesController extends BackController
             {
                 Hover::modelAttributes($page, ['access_counter']);
 
-                switch ($page->pagecat_id) {
+                switch ($page->page_cat_id) {
                     case '1':
                         $link = HTML::link(URL::route('articles.show', [$page->id]), $page->title);
                         break;
@@ -53,7 +53,7 @@ class AdminPagesController extends BackController
                     $page->id,
                     raw($page->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull().$link),
-                    $page->pagecat->title,
+                    $page->pageCat->title,
                     raw(HTML::link(URL::route('users.show', [$page->creator->id]), $page->creator->username)),
                     $page->created_at
                 ];

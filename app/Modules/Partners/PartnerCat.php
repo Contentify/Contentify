@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-namespace App\Modules\Adverts;
+namespace App\Modules\Partners;
 
 use BaseModel;
 use SoftDeletingTrait;
@@ -11,10 +11,10 @@ use SoftDeletingTrait;
  * @property string $title
  * @property int $creator_id
  * @property int $updater_id
- * @property \App\Modules\Adverts\Advert[] $adverts
+ * @property \App\Modules\Partners\Partner[] $partners
  * @property \User $creator
  */
-class Advertcat extends BaseModel
+class PartnerCat extends BaseModel
 {
 
     use SoftDeletingTrait;
@@ -28,7 +28,7 @@ class Advertcat extends BaseModel
     ];
 
     public static $relationsData = [
-        'adverts'   => [self::HAS_MANY, 'App\Modules\Adverts\Advert', 'dependency' => true],
+        'partners'  => [self::HAS_MANY, 'App\Modules\Partners\Partner', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

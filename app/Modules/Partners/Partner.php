@@ -7,21 +7,21 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $slug
- * @property string $text
- * @property string $url
- * @property int $position
- * @property bool $published
- * @property int $partnercat_id
- * @property string $image
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\Partners\Partnercat $partnercat
- * @property \User $creator
+ * @property \Carbon                          $created_at
+ * @property \Carbon                          $deleted_at
+ * @property string                           $title
+ * @property string                           $slug
+ * @property string                           $text
+ * @property string                           $url
+ * @property int                              $position
+ * @property bool                             $published
+ * @property int                              $partner_cat_id
+ * @property string                           $image
+ * @property int                              $access_counter
+ * @property int                              $creator_id
+ * @property int                              $updater_id
+ * @property \App\Modules\Partners\PartnerCat $partnerCat
+ * @property \User                            $creator
  */
 class Partner extends BaseModel
 {
@@ -32,19 +32,20 @@ class Partner extends BaseModel
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'text', 'url', 'position', 'published', 'partnercat_id'];
+    protected $fillable = ['title', 'text', 'url', 'position', 'published', 'partner_cat_id'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
-        'title'         => 'required|min:3',
-        'url'           => 'required|url',
-        'published'     => 'boolean',
-        'position'      => 'required|integer',
+        'title'          => 'required|min:3',
+        'url'            => 'required|url',
+        'published'      => 'boolean',
+        'position'       => 'required|integer',
+        'partner_cat_id' => 'required|integer',
     ];
 
     public static $relationsData = [
-        'partnercat'    => [self::BELONGS_TO, 'App\Modules\Partners\Partnercat'],
+        'partnerCat'    => [self::BELONGS_TO, 'App\Modules\Partners\PartnerCat'],
         'creator'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
 

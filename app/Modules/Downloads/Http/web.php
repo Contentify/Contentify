@@ -3,12 +3,12 @@
 ModuleRoute::context('Downloads');
 
 ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
-    ModuleRoute::resource('admin/downloadcats', 'AdminDownloadcatsController');
+    ModuleRoute::resource('admin/download-cats', 'AdminDownloadCatsController');
     ModuleRoute::get(
-        'admin/downloadcats/{id}/restore',
-        ['as' => 'downloadcats.restore', 'uses' => 'AdminDownloadcatsController@restore']
+        'admin/download-cats/{id}/restore',
+        ['as' => 'download-cats.restore', 'uses' => 'AdminDownloadCatsController@restore']
     );
-    ModuleRoute::post('admin/downloadcats/search', 'AdminDownloadcatsController@search');
+    ModuleRoute::post('admin/download-cats/search', 'AdminDownloadCatsController@search');
 
     ModuleRoute::resource('admin/downloads', 'AdminDownloadsController');
     ModuleRoute::get(
