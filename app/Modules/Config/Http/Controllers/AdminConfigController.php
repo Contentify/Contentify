@@ -318,6 +318,25 @@ class AdminConfigController extends BackController
     }
 
     /**
+     * Show the log file content
+     *
+     * @return void
+     */
+    public function getPlainLog()
+    {
+        if (! $this->checkAccessRead()) {
+            return;
+        }
+
+        $filename = storage_path().self::LOG_FILE;
+        if (File::exists($filename)) {
+            return response()->file($filename);
+        } else {
+            $this->alertInfo(trans('config::log_empty'));
+        }
+    }
+
+    /**
      * Delete the log file
      * 
      * @return void
