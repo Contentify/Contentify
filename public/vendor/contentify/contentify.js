@@ -577,5 +577,15 @@ $(document).ready(function()
                 $p.text($fileInput.attr('data-info'));
             });
         });
+
+        /*
+         * Form validation errors
+         */
+        $('.form-errors li').click(function()
+        {
+            var fieldId = $(this).attr('data-field');
+
+            $('#' + fieldId).focus();
+        });
     };    
 });

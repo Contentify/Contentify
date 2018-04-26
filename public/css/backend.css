@@ -6603,7 +6603,6 @@ button.close {
 .spoiler-wrapper {
   margin: 20px 0;
   padding: 0 10px;
-  background-color: #EEE;
 }
 .spoiler-wrapper.show {
   padding-bottom: 10px;
@@ -6613,19 +6612,23 @@ button.close {
   cursor: pointer;
 }
 .spoiler-wrapper .spoiler-toggle::before {
-  content: "\f0da";
-  font-family: 'Font Awesome\ 5 Free;';
+  content: "\f0fe";
+  font-family: Font Awesome\ 5 Free;
 }
 .spoiler-wrapper.show .spoiler {
   height: auto;
   overflow: visible;
 }
 .spoiler-wrapper.show .spoiler-toggle::before {
-  content: "\f0d7";
+  content: "\f146";
 }
 .spoiler {
   height: 0;
   overflow: hidden;
+}
+/* Form validation errors */
+.form-errors li[data-field] {
+  cursor: pointer;
 }
 /* Model table */
 .table[data-model-table="1"][data-brighten-first="1"] tr td:first-child {
