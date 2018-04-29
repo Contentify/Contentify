@@ -37,8 +37,16 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function errors($errors)
     {
+
         if (is_a($errors, 'Illuminate\Support\MessageBag') or is_a($errors, 'Illuminate\Support\ViewErrorBag')) {
-            return HTML::ul($errors->all(), ['class' => 'form-errors' ]);
+            $list = '';
+            foreach ($errors->getMessages() as $fieldName => $fieldMessages) {
+                foreach ($fieldMessages as $fieldMessage) {
+                    $list .= '<li data-field="'.e($fieldName).'">'.$fieldMessage.'</li>';
+                }
+            }
+
+            return  $list ? '<ul class="form-errors">'.$list.'</ul>' : '';
         }
 
         return null;

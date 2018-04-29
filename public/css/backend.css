@@ -6626,6 +6626,10 @@ button.close {
   height: 0;
   overflow: hidden;
 }
+/* Form validation errors */
+.form-errors li[data-field] {
+  cursor: pointer;
+}
 /* Model table */
 .table[data-model-table="1"][data-brighten-first="1"] tr td:first-child {
   color: silver;

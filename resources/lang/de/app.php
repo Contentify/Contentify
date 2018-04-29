@@ -228,6 +228,7 @@ return [
     'person'            => 'Person',
     'answer'            => 'Antwort',
     'export'            => 'Export',
+    'download'          => 'Herunterladen', // Verb - do not confuse with object_download!
 
     /*
      * Days
