@@ -17,6 +17,11 @@ class AdminCupsController extends BackController
 
     use ModelHandlerTrait;
 
+    /**
+     * URL to the README.md file on GitHub
+     */
+    const README_URL = 'https://github.com/Contentify/Contentify/blob/v2.4/app/Modules/Cups/Readme.md';
+
     protected $icon = 'share-alt';
 
     protected $formTemplate = 'admin_form';
@@ -31,7 +36,11 @@ class AdminCupsController extends BackController
     public function index()
     {
         $this->indexPage([
-            'buttons' => [button(trans('app.create'), url('admin/cups/create'), 'plus-circle'), 'config'],
+            'buttons' => [
+                button(trans('app.create'), url('admin/cups/create'), 'plus-circle'),
+                'config',
+                button(trans('app.description'), self::README_URL, 'list')
+            ],
             'tableHead' => [
                 trans('app.id')            => 'id', 
                 trans('app.published')     => 'published', 
