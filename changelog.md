@@ -19,8 +19,20 @@ They use [kebap case](http://wiki.c2.com/?KebabCase) instead now.
 
 ## Other changes
 
-- Lots of bug fixes
-- Backend styling improvements
+- New FAQ module
+- New cash flows module
+- Lots of Backend UI and UX improvements
 - Now users can click on table headers to sort table columns
 - Added support for these social links: Twitch, Instagram, Discord
-- Want more? Take a look: https://github.com/Contentify/Contentify/issues/264
+- Theme (CSS) compiling now works without a JS task runner
+- Made website title editable in the admin backend
+- If a user accounts is created via Steam, username and email now have to be set
+- Forum moderators now have a badge
+- Added Steam login button to login page
+- Added language switcher widget (with flags to click)
+- Improved visuals and UX of form error messages
+- Added missing model type annotations (e.g. created_at)
+- Fixed color in date time picker (in the backend) for years & months
+- Added preview images for themes
+- Refactoring
+- Lots of bug fixes

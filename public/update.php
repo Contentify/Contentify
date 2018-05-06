@@ -131,7 +131,7 @@ EOD;
                 `deleted_at` timestamp NULL DEFAULT NULL
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
             "ALTER TABLE `{$prefix}questions` ADD PRIMARY KEY (`id`);",
-            "INSERT INTO {$prefix}config (name, value) ('app.name', '{$appName}');",
+            "INSERT INTO {$prefix}config (name, value) VALUES ('app.name', '{$appName}');",
             "RENAME TABLE {$prefix}newscats TO {$prefix}news_cats;",
             "RENAME TABLE {$prefix}partnercats TO {$prefix}partner_cats;",
             "RENAME TABLE {$prefix}advertcats TO {$prefix}advert_cats;",

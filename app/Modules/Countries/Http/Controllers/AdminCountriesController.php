@@ -24,6 +24,7 @@ class AdminCountriesController extends BackController
     public function index()
     {
         $this->indexPage([
+            'order' => 'asc',
             'tableHead' => [
                 trans('app.id')     => 'id',
                 trans('app.icon')   => null,
