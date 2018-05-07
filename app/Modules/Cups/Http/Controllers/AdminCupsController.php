@@ -104,6 +104,11 @@ class AdminCupsController extends BackController
         $participants = $cup->participants()->where(DB::raw('`cups_participants`.`checked_in`'), true)
             ->get()->shuffle();
 
+        if ($participants->isEmpty()) {
+            $this->alertFlash(trans('app.not_possible'));
+            return Redirect::to('admin/cups');
+        }
+
         // Set the amount of slots to the lowest possible value
         // (not less than the number of participants, of course)
         $slotValues = Cup::$slotValues;
