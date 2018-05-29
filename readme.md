@@ -26,9 +26,9 @@ Then follow the instructions in the [wiki](https://github.com/Contentify/Content
 
 To update from v2.3 to 2.4:
 * Make a backup of your files and your database!
-* Delete these folders in the current Contentify installation: `vendor`, `app`, `contentify`, `resources`
 * Clear the cache by running `php artisan cache:clear` via console or deleting all files and folders in 
 `storage/framework/cache` and `storage/framework/views`
+* Delete these folders in the current Contentify installation: `vendor`, `app`, `contentify`, `resources`
 * Download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
 * If you made changes to the config files in the `config` folder, you have to re-apply them
 * Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
