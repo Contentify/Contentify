@@ -81,13 +81,13 @@ abstract class BaseController extends Controller
         /*
          * Set short model name (without path)
          */
-        $this->modelName = basename($this->modelClass);
+        $this->modelName = class_basename($this->modelClass);
 
         /*
          * Set CRUD form template name
          */
         if (! $this->formTemplate) {
-            if ($this->moduleName === str_plural(basename($this->modelName))) {
+            if ($this->moduleName === str_plural(class_basename($this->modelName))) {
                 $this->formTemplate = 'form';
             } else {
                 // If model name & module name differ, the form name should be e. g. "users_form":
