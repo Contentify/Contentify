@@ -37,10 +37,11 @@ $(document).ready(function()
         jQuery.ajaxPrefilter(function(options, request, xhr) 
         {
             if (! xhr.crossDomain) {
-                if (typeof options.data === 'undefined' || options.data === '') {
-                    options.data = ''; // We do not have to add "?", this will happen automatically
-                } else {
-                    options.data = '&';
+                if (typeof options.data === 'undefined') {
+                    options.data = ''; // We do not have to add "?", this will happen automatically - we just initialize
+                }
+                if (options.data !== '') {
+                    options.data += '&';
                 }
                 options.data += '_token=' + framework.csrfToken;
             }
