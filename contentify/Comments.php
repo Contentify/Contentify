@@ -71,7 +71,7 @@ class Comments
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make(trans('app.comment_create_fail', $comment->getErrors()->all()), 500);
+            return Response::make(trans('app.comment_create_fail', $comment->getErrors()->all()), 400);
         } else {
             return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
         }
@@ -131,7 +131,7 @@ class Comments
         $okay = $comment->save();
 
         if (! $okay) {
-            return Response::make(trans('app.comment_create_fail', $comment->getErrors()->all()), 500);
+            return Response::make(trans('app.comment_create_fail', $comment->getErrors()->all()), 400);
         } else {
             return View::make('comments.comment', compact('comment', 'foreignType', 'foreignId'));
         }

@@ -25,7 +25,7 @@ class AdminMatchScoresController extends BackController
         $okay = $matchScore->save();
 
         if (! $okay) {
-            return Response::make(null, 500);
+            return Response::make(null, 400);
         } else {
             return View::make('matches::admin_map', compact('matchScore'));
         }
@@ -47,7 +47,7 @@ class AdminMatchScoresController extends BackController
         $okay = $matchScore->save();
 
         if (! $okay) {
-            return Response::make(null, 500);
+            return Response::make(null, 400);
         } else {
             return View::make('matches::admin_map', compact('matchScore'));
         }

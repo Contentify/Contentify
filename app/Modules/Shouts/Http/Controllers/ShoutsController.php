@@ -30,7 +30,7 @@ class ShoutsController extends FrontController
         $okay = $shout->save();
 
         if (! $okay) {
-            return Response::make(null, 500);
+            return Response::make(null, 400);
         } else {
             return Response::make(null, 200);
         }

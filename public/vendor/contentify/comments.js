@@ -15,9 +15,9 @@ $(document).ready(function()
         $.ajax({
             url: contentify.baseUrl + 'comments/store',
             type: 'POST',
-            data: { 
-                text: text, 
-                foreigntype: foreignType, 
+            data: {
+                text: text,
+                foreigntype: foreignType,
                 foreignid: foreignId
             }
         }).success(function(data)

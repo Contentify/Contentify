@@ -11,6 +11,8 @@ use SoftDeletingTrait;
  * @property string $text
  * @property string $foreign_type
  * @property int $foreign_id
+ * @property int $creator_id
+ * @property int $updater_id
  * @property \User $creator
  */
 class Comment extends BaseModel
