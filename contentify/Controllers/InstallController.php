@@ -707,8 +707,8 @@ class InstallController extends Controller
         $this->create('cash_flows', function(Blueprint $table)
         {
             $table->text('description')->nullable();
-            $table->integer('revenues')->default(0);
-            $table->integer('expenses')->default(0);
+            $table->integer('integer_revenues')->default(0);
+            $table->integer('integer_expenses')->default(0);
             $table->timestamp('paid_at')->nullable();
             $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
