@@ -128,6 +128,21 @@ class InstallController extends Controller
 
                 break;
             case 5:
+                $this->createDatabase();
+                $this->createUserRoles();
+
+                /*
+                 * Create the daemon user (with ID = 1)
+                 */
+                $user = Sentinel::register(array(
+                    'email'     => 'daemon@contentify.org',
+                    'username'  => 'Daemon',
+                    'password'  => Str::random(),
+                    'activated' => false,
+                ));
+
+                $this->createSeed();
+                
                 $title      = 'Create super-admin user';
                 $content    = '<p>Please fill in the details of your user account.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
@@ -174,21 +189,6 @@ class InstallController extends Controller
                     "username = $username".PHP_EOL.
                     "password = $password"
                 );
-
-                $this->createDatabase();
-                $this->createUserRoles();
-
-                /*
-                 * Create the daemon user (with ID = 1)
-                 */
-                $user = Sentinel::register(array(
-                    'email'     => 'daemon@contentify.org',
-                    'username'  => 'Daemon',
-                    'password'  => Str::random(),
-                    'activated' => false,
-                ));
-
-                $this->createSeed();
 
                 $title      = 'Database setup complete';
                 $content    = '<p>Database filled with initial seed.</p>';
