@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v2.4
+## Contentify CMS - v2.5-dev
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.4-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
@@ -19,12 +19,12 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Get the developer version
 
-Clone this repository (`2.4` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
+Clone this repository (`2.5-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
 Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Update
 
-To update from v2.3 to 2.4:
+To update from v2.4 to 2.5:
 * Make a backup of your files and your database!
 * Clear the cache by running `php artisan cache:clear` via console or deleting all files and folders in 
 `storage/framework/cache` and `storage/framework/views`
