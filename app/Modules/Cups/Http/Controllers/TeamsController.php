@@ -38,7 +38,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
             $this->pageView('cups::teams_overview_user', compact('user', 'teams'));
         } else { // Show all Teams
-            $perPage = 1; Config::get('app.frontItemsPerPage');
+            $perPage = Config::get('app.frontItemsPerPage');
             $teams = Team::orderBy('title', 'asc')->paginate($perPage);
 
             $this->pageView('cups::teams_overview', compact('teams'));
