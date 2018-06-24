@@ -28,7 +28,7 @@ ModuleRoute::get('admin/cups/participants/{cupId}', 'AdminParticipantsController
 ModuleRoute::post('admin/cups/participants/{cupId}', 'AdminParticipantsController@add');
 ModuleRoute::get('admin/cups/participants/delete/{cupId}/{participantId}', 'AdminParticipantsController@delete');
 
-ModuleRoute::get('cups/teams/overview/{userId}', 'TeamsController@overview');
+ModuleRoute::get('cups/teams/overview/{userId?}', 'TeamsController@overview');
 ModuleRoute::get('cups/teams/{teamId}/{slug?}', 'TeamsController@show')->where('teamId', '[0-9]+');
 ModuleRoute::post('cups/teams/organizer/{teamId}/{userId}', 'TeamsController@organizer');
 ModuleRoute::get('cups/teams/join/{teamId}', 'TeamsController@join');

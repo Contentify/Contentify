@@ -17,6 +17,7 @@ Cups
 - Between the official start of the cup and the revealing of the bracket admins will have two minutes to correct the seeding. During this time span the matches and the bracket are only visible for them.
 - Sometimes both participants of a match will accidentally confirm an invalid result. Sometimes participants will leave the cup after they have lost a match without confirm the result. These things happen - maybe not very often, but they do. Therefore we strongly recommend that every cup is accompanied by at least one refugee (who should be an admin). The task of the refugee is to confirm results if one participant of a match does not and to correct the winner of a match if the wrong participant was recorded as the winner.
 - After the last match has been completed, the cup will be closed automatically. The winner of the cup (user or team) will receive "cup points" for winning a cup. You can change the amount of points in the admin backend in the cups settings.
+- You can see all cup teams in the frontend with this URL: example.org/cups/teams/overview
 - We recommend that before you run your first serious cup, you run a test cup to familiarise with the procedures.
 
 **NOTE:**

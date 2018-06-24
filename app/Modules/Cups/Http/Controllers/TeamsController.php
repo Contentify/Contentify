@@ -4,6 +4,7 @@ namespace App\Modules\Cups\Http\Controllers;
 
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
+use Config;
 use Contentify\GlobalSearchInterface;
 use DB;
 use FrontController;
@@ -24,12 +25,24 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         parent::__construct();
     }
 
-    public function overview($userId)
+    /**
+     * Show all cup teams if $userId is null or show only the cup teams of a specific user
+     *
+     * @param null $userId
+     */
+    public function overview($userId = null)
     {
-        $user = User::findOrFail($userId);
-        $teams = (new Team())->teamsOfUser($user);
+        if ($userId) {
+            $user = User::findOrFail($userId);
+            $teams = (new Team())->teamsOfUser($user);
 
-        $this->pageView('cups::teams_overview', compact('user', 'teams'));
+            $this->pageView('cups::teams_overview_user', compact('user', 'teams'));
+        } else { // Show all Teams
+            $perPage = 1; Config::get('app.frontItemsPerPage');
+            $teams = Team::orderBy('title', 'asc')->paginate($perPage);
+
+            $this->pageView('cups::teams_overview', compact('teams'));
+        }
     }
 
     /**
