@@ -2,7 +2,7 @@
 
 <div class="stream-player">
     @if ($stream->provider == 'twitch')
-        <iframe src="https://www.twitch.tv/{{ $stream->permanent_id }}/embed" allowfullscreen></iframe>
+        <iframe src="https://player.twitch.tv/?channel={{ $stream->permanent_id }}" frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
         
         <a href="https://www.twitch.tv/{{ $stream->permanent_id }}?tt_medium=live_embed&amp;tt_content=text_link">Watch live video from {{ $stream->title }} on www.twitch.tv</a>
 
