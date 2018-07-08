@@ -521,7 +521,7 @@ class InstallController extends Controller
             $table->string('broadcast')->nullable();
             $table->string('left_lineup')->nullable();
             $table->string('right_lineup')->nullable();
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->timestamp('played_at')->nullable();
             $table->integer('left_score')->default(0); // Total score
             $table->integer('right_score')->default(0);
