@@ -169,10 +169,10 @@ class InstallController extends Controller
                 File::put(storage_path(self::INI_FILE), 
                     '; Auto-generated file with database connection settings.'.PHP_EOL.
                     '; See config/database.php for more settings.'.PHP_EOL.PHP_EOL.
-                    "host = $host".PHP_EOL.
-                    "database = $database".PHP_EOL.
-                    "username = $username".PHP_EOL.
-                    "password = $password"
+                    "host = "."\"$host\"".PHP_EOL.
+                    "database = "."\"$database\"".PHP_EOL.
+                    "username = "."\"$username\"".PHP_EOL.
+                    "password = "."\"$password\"";
                 );
 
                 $this->createDatabase();
