@@ -100,7 +100,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $user->posts_count++;
         $user->save();
 
-        $this->alertFlash(trans('app.created', ['Thread']));
+        $this->alertFlash(trans('app.created', [trans('app.object_thread')]));
         return Redirect::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);
     }
 
@@ -162,19 +162,18 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumPost->forceSave();
         $forumThread->forceSave();
 
-        $this->alertFlash(trans('app.updated', ['Thread']));
+        $this->alertFlash(trans('app.updated',  [trans('app.object_thread')]));
         return Redirect::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);
     }
 
     /**
      * Deletes a thread
-     * 
+     *
      * @param int $id The ID of the thread
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($id)
     {
-        $forumPost = ForumPost::isAccessible()->findOrFail($id);
-
         /** @var ForumThread $forumThread */
         $forumThread = ForumThread::findOrFail($id);
         $forum = $forumThread->forum;
@@ -197,6 +196,9 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->delete();
 
         $forum->refresh();
+
+        $this->alertFlash(trans('app.deleted', [trans('app.object_thread')]));
+        return Redirect::to('forums/'.$forumThread->forum->id);
     }
 
     /**
@@ -218,7 +220,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->sticky = 1 - $forumThread->sticky;
         $forumThread->forceSave();
 
-        $this->alertFlash(trans('app.updated', ['Thread']));
+        $this->alertFlash(trans('app.updated', [trans('app.object_thread')]));
         return Redirect::to('forums/'.$forumThread->forum->id);
     }
 
@@ -241,7 +243,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->closed = 1 - $forumThread->closed;
         $forumThread->forceSave();
 
-        $this->alertFlash(trans('app.updated', ['Thread']));
+        $this->alertFlash(trans('app.updated', [trans('app.object_thread')]));
         return Redirect::to('forums/'.$forumThread->forum->id);
     }
 
