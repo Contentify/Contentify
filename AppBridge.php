@@ -20,7 +20,7 @@ require __DIR__.'/vendor/laravel/framework/src/Illuminate/Support/helpers.php';
  * How can we use parts of Contentify *outside* of the actual Contentify
  * application, especially when it is not yet installed?
  * This script & class allows us to access some(!) parts of Contentify
- * from outside. 
+ * from the outside. 
  * ATTENTION: There is no "safe sandbox" - there is no protection against
  * use/calls of classses and functions that do not work outside Contentify.
  * So if you use this class, better know what you are doing.
