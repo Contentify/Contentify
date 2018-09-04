@@ -51,7 +51,7 @@ class SearchController extends FrontController
 
                         $results = $controller->globalSearch($subject); // ...and call the search method.
                         
-                        if (sizeof($results) > 0) {
+                        if (is_array($results) and sizeof($results) > 0) {
                             $resultBags[] = ['title' => $controllerName, 'results' => $results];
                         }
                     }
