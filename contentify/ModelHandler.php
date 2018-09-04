@@ -230,7 +230,7 @@ class ModelHandler
                 $tableHead[] = $title;
             }
         }
-        if (sizeof($data['actions']) > 0) {
+        if (is_array($data['actions']) && sizeof($data['actions']) > 0) {
             $tableHead[] = trans('app.actions');
         }
 
