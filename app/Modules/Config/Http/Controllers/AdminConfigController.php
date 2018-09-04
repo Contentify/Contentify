@@ -144,13 +144,12 @@ class AdminConfigController extends BackController
         $this->pageOutput('<div class="phpinfodisplay"><style type="text/css">'."\n".
              implode("\n",
                  array_map(
-                     create_function(
-                         '$i',
-                         'return ".phpinfodisplay " . preg_replace( "/,/", ",.phpinfodisplay ", $i );'
-                         ),
+                     function($i) {
+                         return ".phpinfodisplay " . preg_replace( "/,/", ",.phpinfodisplay ", $i );
+                     },
                      preg_split('/\n/', $matches[1]) // $matches[1] = style information
-                     )
-                 ).
+                 )
+             ).
              "{}\n
              .phpinfodisplay { overflow-x: scroll }\n
              .phpinfodisplay td,.phpinfodisplay  th { border: 1px solid silver; overflow-wrap: break-word; }\n
