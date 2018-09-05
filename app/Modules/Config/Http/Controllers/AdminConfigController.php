@@ -144,10 +144,9 @@ class AdminConfigController extends BackController
         $this->pageOutput('<div class="phpinfodisplay"><style type="text/css">'."\n".
              implode("\n",
                  array_map(
-                     create_function(
-                         '$i',
-                         'return ".phpinfodisplay " . preg_replace( "/,/", ",.phpinfodisplay ", $i );'
-                         ),
+                     function($item) {
+                         return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
+                     },
                      preg_split('/\n/', $matches[1]) // $matches[1] = style information
                      )
                  ).
