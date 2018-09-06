@@ -222,30 +222,30 @@ return [
     'round'             => 'Ronda',
     'cup_points'        => 'Puntos de copa',
     'revenues'          => 'Ingresos',
-    'expenses'          => 'Expenses',
-    'paid'              => 'Payment made',
-    'note'              => 'Note',
-    'person'            => 'Person',
-    'answer'            => 'Answer',
-    'export'            => 'Export',
-    'download'          => 'Download', // Verb - do not confuse with object_download!
+    'expenses'          => 'Gastos',
+    'paid'              => 'Pago realizado',
+    'note'              => 'Nota',
+    'person'            => 'Persona',
+    'answer'            => 'Respuesta',
+    'export'            => 'Exportar',
+    'download'          => 'Descargar', // Verb - do not confuse with object_download!
 
     /*
      * Days
      */
-    'yeah'          => 'Year',
-    'month'         => 'Month',
-    'day'           => 'Day',
-    'today'         => 'Today',
-    'yesterday'     => 'Yesterday',
-    'tomorrow'      => 'Tomorrow',
-    'monday'        => 'Monday',
-    'tuesday'       => 'Tuesday',
-    'wednesday'     => 'Wednesday',
-    'thursday'      => 'Thursday',
-    'friday'        => 'Friday',
-    'saturday'      => 'Saturday',
-    'sunday'        => 'Sunday', 
+    'yeah'          => 'Año',
+    'month'         => 'Mes',
+    'day'           => 'Día',
+    'today'         => 'Hoy',
+    'yesterday'     => 'Ayer',
+    'tomorrow'      => 'Mañana',
+    'monday'        => 'Lunes',
+    'tuesday'       => 'Martes',
+    'wednesday'     => 'Miércoles',
+    'thursday'      => 'Jueves',
+    'friday'        => 'Viernes',
+    'saturday'      => 'Sábado',
+    'sunday'        => 'Domingo', 
 
     /*
      * Module names
