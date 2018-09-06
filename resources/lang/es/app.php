@@ -20,120 +20,120 @@ return [
     /*
      * Security
      */
-    'spam_protection' => 'For spam protection, you have to wait a few seconds until you can submit this form.',
-    'debug_warning'   => 'Warning: Debug mode is enabled but this does not seem to be a development server!',
+    'spam_protection' => 'Por protección anti SPAM, tienes que esperar unos segundos antes de enviar el formulario.',
+    'debug_warning'   => 'Aviso: El modo Debug está habilitado y esto no parece ser un servidor de desarrollo!',
 
     /*
      * Errors
      */
-    'not_found'     => 'Resource not found.',
-    'not_possible'  => 'Sorry, but this action is not available right now.',
+    'not_found'     => 'Recurso no encontrado.',
+    'not_possible'  => 'Lo sentimos, esta acción no está permitida ahora mismo.',
 
     /*
      * User permissions
      */ 
-    'no_auth'       => 'Access denied. Please log in.',
-    'access_denied' => 'Access denied. You need permissions.',
+    'no_auth'       => 'Acceso denegado. Por favor identifíquese.',
+    'access_denied' => 'Acceso denegado. Necesitas permisos.',
     
     /*
      * Forms
      */
-    'save'      => 'Save',
-    'apply'     => 'Apply',
-    'reset'     => 'Reset',
-    'update'    => 'Update',
+    'save'      => 'Guardar',
+    'apply'     => 'Aplicar',
+    'reset'     => 'Reiniciar',
+    'update'    => 'Actualizar',
 
     /*
      * Auto CRUD handling (and related stuff)
      */
-    'created'       => ':0 created.',
-    'updated'       => ':0 updated.',
-    'deleted'       => ':0 deleted.',
-    'restored'      => ':0 restored.',
-    'list_empty'    => 'Please create at least one ":0" before you continue.',
-    'invalid_image' => 'Invalid image file',
-    'bad_extension' => "Uploading of files with ':0' extension is restricted.",
-    'delete_error'  => "Error: This object has :0 dependencies (Type: ':1')! Please remove them first.",
+    'created'       => ':0 creados.',
+    'updated'       => ':0 actualizados.',
+    'deleted'       => ':0 eliminados.',
+    'restored'      => ':0 restaurados.',
+    'list_empty'    => 'Por favor crea al menos un ":0" antes de continuar.',
+    'invalid_image' => 'Archivo de imagen inválido',
+    'bad_extension' => "La carga de archivos con la extensión ':0' no está permitida.",
+    'delete_error'  => "Error: El objeto tiene :0 dependencias (Tipo: ':1')! Por favor elimínalas primero.",
 
     /*
      * Model index building
      */
     'create'        => 'Create new',
-    'categories'    => 'Categories',
-    'config'        => 'Config',
-    'actions'       => 'Actions',
-    'edit'          => 'Edit',
-    'delete'        => 'Delete',
-    'restore'       => 'Restore',
+    'categories'    => 'Categorías',
+    'config'        => 'Configuración',
+    'actions'       => 'Acciones',
+    'edit'          => 'Editar',
+    'delete'        => 'Borrar',
+    'restore'       => 'Restaurar',
     
     'id'            => 'ID',
-    'index'         => 'Index',
-    'title'         => 'Title',
-    'short_title'   => 'Short Title',
-    'author'        => 'Author',
-    'creator'       => 'Creator',
-    'category'      => 'Category',
-    'type'          => 'Type',
-    'provider'      => 'Provider',
-    'text'          => 'Text',
-    'code'          => 'Code',
-    'description'   => 'Description',
-    'image'         => 'Image',
-    'icon'          => 'Icon',
-    'date'          => 'Date',
-    'published'     => 'Published',
-    'starts_at'     => 'Starts At',
-    'created_at'    => 'Created At',
-    'updated_at'    => 'Updated At',
-    'achieved_at'   => 'Achieved At',
-    'internal'      => 'Internal',
-    'featured'      => 'Featured',
-    'state'         => 'State',
-    'new'           => 'New',
+    'index'         => 'Índice',
+    'title'         => 'Título',
+    'short_title'   => 'Título abreviado',
+    'author'        => 'Autor',
+    'creator'       => 'Creador',
+    'category'      => 'Categoría',
+    'type'          => 'Tipo',
+    'provider'      => 'Proveedor',
+    'text'          => 'Texto',
+    'code'          => 'Código',
+    'description'   => 'Descripción',
+    'image'         => 'Imagen',
+    'icon'          => 'Icono',
+    'date'          => 'Fecha',
+    'published'     => 'Publicado',
+    'starts_at'     => 'Empieza el',
+    'created_at'    => 'Creado el',
+    'updated_at'    => 'Actualizado el',
+    'achieved_at'   => 'Terminado el',
+    'internal'      => 'Interno',
+    'featured'      => 'Destacado',
+    'state'         => 'Estado',
+    'new'           => 'Nuevo',
 
     /*
      * Misc
      */
-    'sorting'       => 'Sorting',
-    'search'        => 'Search',
-    'recycle_bin'   => 'Recycle Bin',
-    'max_size'      => 'Max. Size: :0Bytes',
-    'accessed'      => 'accessed',
-    'no_items'      => 'There are no items.',
-    'share_this'    => 'Share this',
-    'save_to_del'   => 'Save this form to delete this file.',
+    'sorting'       => 'Ordenando',
+    'search'        => 'Buscar',
+    'recycle_bin'   => 'Papelera de reciclaje',
+    'max_size'      => 'Tamaño máx.: :0Bytes',
+    'accessed'      => 'acceso',
+    'no_items'      => 'No hay elementos.',
+    'share_this'    => 'Compartir',
+    'save_to_del'   => 'Guarda este formulario para borrar este archivo.',
 
     /*
      * JS
      */
-    'request_failed'    => 'Error: Request failed.',
-    'delete_item'       => 'Delete this item?',
-    'perform_action'    => 'Execute this action?',
+    'request_failed'    => 'Error: Solicitud fallida.',
+    'delete_item'       => 'Eliminar este elemento?',
+    'perform_action'    => 'Ejecutar esta acción?',
 
     /*
      * Backend template
      */
-    'no_js'             => 'JavaScript not enabled. Please enable JavaScript!',
-    'admin_dashboard'   => 'Admin-Dashboard',
-    'new_messages'      => 'One new message|:count new messages',
-    'top'               => 'Go to top',
-    'help'              => 'Help',
-    'welcome'           => 'Welcome',
+    'no_js'             => 'JavaScript no está habilitado. Por favor, habilita JavaScript!',
+    'admin_dashboard'   => 'Panel de Administración',
+    'new_messages'      => 'Un nuevo mensaje|:count nuevos mensajes',
+    'top'               => 'Arriba',
+    'help'              => 'Ayuda',
+    'welcome'           => 'Bienvenido',
 
     /*
      * Permissions
      */
-    'permissions'       => 'Permissions',
-    'permission_none'   => 'None',
-    'permission_read'   => 'Read',
-    'permission_create' => 'Create',
-    'permission_update' => 'Update',
-    'permission_delete' => 'Delete',
+    'permissions'       => 'Permisos',
+    'permission_none'   => 'Nada',
+    'permission_read'   => 'Leer',
+    'permission_create' => 'Crear',
+    'permission_update' => 'Editar',
+    'permission_delete' => 'Borrar',
 
     /*
      * Comments
      */
-    'comments'              => 'Comments',
+    'comments'              => 'Comentarios',
     'comment_create_fail'   => 'Cannot create comment. :0',
     'comment_update_fail'   => 'Cannot update comment. :0',
     'enable_comments'       => 'Enable comments',
