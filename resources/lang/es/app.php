@@ -134,9 +134,9 @@ return [
      * Comments
      */
     'comments'              => 'Comentarios',
-    'comment_create_fail'   => 'Cannot create comment. :0',
-    'comment_update_fail'   => 'Cannot update comment. :0',
-    'enable_comments'       => 'Enable comments',
+    'comment_create_fail'   => 'No se ha podido crear el comentario. :0',
+    'comment_update_fail'   => 'No se ha podido actualizar el comentario. :0',
+    'enable_comments'       => 'Habilitar comentarios',
 
     /*
      * Captcha
