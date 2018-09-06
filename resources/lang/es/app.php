@@ -141,15 +141,15 @@ return [
     /*
      * Captcha
      */
-    'captcha_invalid'   => 'The captcha code is invalid!',
+    'captcha_invalid'   => 'Captcha inválido!',
 
     /*
      * General terms
      */
-    'date_time'         => 'Date & Time',
-    'yes'               => 'Yes',
+    'date_time'         => 'Fecha y Hora',
+    'yes'               => 'Si',
     'no'                => 'No',
-    'valid'             => 'valid',
+    'valid'             => 'válido',
     'invalid'           => 'invalid',
     'enabled'           => 'Enabled',
     'disabled'          => 'Disabled',
