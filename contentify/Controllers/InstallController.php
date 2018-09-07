@@ -801,7 +801,8 @@ information about your stored data, and possibly entitlement to correction, bloc
         DB::table('languages')->insert([
             ['id' => '1', 'title' => 'English', 'code' => 'en'],
             ['id' => '2', 'title' => 'Deutsch', 'code' => 'de'],
-            ['id' => '3', 'title' => 'Francais', 'code' => 'fr']
+            ['id' => '3', 'title' => 'Francais', 'code' => 'fr'],
+            ['id' => '4', 'title' => 'Spanish', 'code' => 'es']
         ]);
 
         DB::insert('INSERT INTO countries(title, code, icon, creator_id, updater_id) VALUES
