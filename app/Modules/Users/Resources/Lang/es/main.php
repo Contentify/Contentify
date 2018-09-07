@@ -31,7 +31,7 @@ return array(
     'graphics'      => 'Tarjeta gráfica',
     'ram'           => 'RAM',
     'motherboard'   => 'Placa base',
-    'drives'        => 'Drives',
+    'drives'        => 'HDD',
     'display'       => 'Pantalla',
     'mouse'         => 'Ratón',
     'keyboard'      => 'Teclado',
