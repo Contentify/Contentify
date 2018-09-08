@@ -42,7 +42,7 @@ return array(
     /* 
      * Login 
      */
-    'login'             => 'Login',
+    'login'             => 'Iniciar sesión',
 
     /*
      * Widget
