@@ -113,7 +113,7 @@
 
                     <br>
                     <h3>
-                        Cups
+                        {{ trans('app.object_cups') }}
                         <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
                     </h3>
                     @widget('Cups::FeaturedCup')
