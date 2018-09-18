@@ -9,4 +9,3 @@ Homestead.json
 Homestead.yaml
 .env
 *.iml
-storage/app/database\.ini
