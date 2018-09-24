@@ -20,7 +20,7 @@
         p { margin: 15px 0px }
         label { display: inline-block; width: 100px; cursor: pointer; }
         label:after { content: ':'; }
-        input[type=text], input[type=email], input[type=password] { padding: 5px 10px; background-color: white; border: 1px solid silver; border-radius: 3px; font-family: 'Open Sans'; color: #00afff }
+        input[type=text], input[type=email], input[type=password] { padding: 5px 10px; background-color: white; border: 1px solid silver; border-radius: 3px; font-family: 'Open Sans', Arial; color: #00afff }
         input[type=text]:focus, input[type=email]:focus, input[type=password]:focus { border-color: #FF6100 }
         .form-group { margin-bottom: 20px }
         .col-sm-10 { display: inline-block; }
@@ -31,7 +31,7 @@
         #content h1 { margin: 0px 0px 30px 0px; font-family: Arial; color: #444 }
         #content .warning { color: #FF6100 }
         .buttons { position: relative; margin-top: 100px }
-        .navbut { position: absolute; top: 150%; font-family: 'Open Sans'; width: 100px; height: 24px; padding: 5px 20px; border: 2px solid #FF6100; border-radius: 5px; background-color: #FF6100; color: white; box-sizing: content-box; -moz-box-sizing: content-box; font-family: 'Open Sans'; font-size: 18px; box-shadow: 0px 4px 0px #d45100; vertical-align: top; text-align: center; }
+        .navbut { position: absolute; top: 150%; font-family: 'Open Sans', Arial; width: 100px; height: 24px; padding: 5px 20px; border: 2px solid #FF6100; border-radius: 5px; background-color: #FF6100; color: white; box-sizing: content-box; -moz-box-sizing: content-box; font-family: 'Open Sans', Arial; font-size: 18px; box-shadow: 0px 4px 0px #d45100; vertical-align: top; text-align: center; }
         .navbut:hover { opacity: 0.9; filter: alpha(opacity = 0.9); }
         .navbut.left:hover { content: '<' }
         .navbut.right:hover { content: '>' }
