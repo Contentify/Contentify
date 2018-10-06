@@ -159,10 +159,12 @@ function emojis($text)
         '&lt;/3'    => 'Heart', // </3
         '&lt;3'     => 'Heart Broken', // <3
         ':)'        => 'Smile',
+        ':-)'       => 'Smile',
         ':D'        => 'Yell',
         '=)'        => 'Big Smile',
         ':*('       => 'Cry',
         ':('        => 'Sad',
+        ':-('       => 'Sad',
         ':O'        => 'Surprise',
         ':p'        => 'Tongue',
         ';)'        => 'Wink',
