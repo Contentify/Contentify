@@ -10,11 +10,11 @@
     ]
 ?>
 @foreach($socialLinks as $title => $url)
-    @if (Config::get('app.facebook'))
+    <?php $name = strtolower($title) ?>
+    @if (Config::get('app.'.$name))
         @if (isset($wrapperTag))
             {!! '<'.$wrapperTag.'>' !!}
         @endif
-        <?php $name = strtolower($title) ?>
         <a class="social-link" href="{{ $url }}{{ Config::get('app.'.$name) }}" target="_blank" title="{{ $title }}">{!! HTML::fontIcon($name) !!}</a>
         @if (isset($wrapperTag))
             {!! '</'.$wrapperTag.'>' !!}
