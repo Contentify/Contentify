@@ -14,10 +14,10 @@
     <style type="text/css">
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-        body { margin: 0px; padding: 0px; background-color: white; font-family: 'Open Sans', Arial; font-size: 16px; color: #444 }
+        body { margin: 0; padding: 0; background-color: white; font-family: 'Open Sans', Arial; font-size: 16px; color: #444 }
         a { color: #00afff; text-decoration: none; }
         code { color: #666 }
-        p { margin: 15px 0px }
+        p { margin: 15px 0 }
         label { display: inline-block; width: 100px; cursor: pointer; }
         label:after { content: ':'; }
         input[type=text], input[type=email], input[type=password] { padding: 5px 10px; background-color: white; border: 1px solid silver; border-radius: 3px; font-family: 'Open Sans', Arial; color: #00afff }
@@ -28,16 +28,16 @@
         #page-container { width: 650px; min-height: 100px; margin-left: auto; margin-right: auto; }
         #logo { width: 100px; height: 100px; float: left }
         #content { margin-left: 200px; text-align: justify; }
-        #content h1 { margin: 0px 0px 30px 0px; font-family: Arial; color: #444 }
+        #content h1 { margin: 0 0 30px 0; font-family: Arial; color: #444 }
         #content .warning { color: #FF6100 }
         .buttons { position: relative; margin-top: 100px }
-        .navbut { position: absolute; top: 150%; font-family: 'Open Sans', Arial; width: 100px; height: 24px; padding: 5px 20px; border: 2px solid #FF6100; border-radius: 5px; background-color: #FF6100; color: white; box-sizing: content-box; -moz-box-sizing: content-box; font-family: 'Open Sans', Arial; font-size: 18px; box-shadow: 0px 4px 0px #d45100; vertical-align: top; text-align: center; }
+        .navbut { position: absolute; top: 150%; font-family: 'Open Sans', Arial; width: 100px; height: 24px; padding: 5px 20px; border: 2px solid #FF6100; border-radius: 5px; background-color: #FF6100; color: white; box-sizing: content-box; -moz-box-sizing: content-box; font-family: 'Open Sans', Arial; font-size: 18px; box-shadow: 0 4px 0 #d45100; vertical-align: top; text-align: center; }
         .navbut:hover { opacity: 0.9; filter: alpha(opacity = 0.9); }
         .navbut.left:hover { content: '<' }
         .navbut.right:hover { content: '>' }
         .navbut:active { margin-top: 4px; box-shadow: none; transition: all 0.08s linear; }
         .navbut.left { right: 154px; }
-        .navbut.right { right: 0px; }
+        .navbut.right { right: 0; }
         .state::before { content: ' - ' }
         .state.yes { color: green }
         .state.no { color: red }
