@@ -9,7 +9,7 @@ class Updater {
     /**
      * The number of the version this updater can update
      */
-    const SUPPORTED_VERSIONS = ['2.3'];
+    const SUPPORTED_VERSIONS = ['2.4'];
 
     /**
      * Error code that will be returned if there was no error
@@ -82,71 +82,8 @@ EOD;
         // How to create these statements: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
         $updateQueries = [
-            "ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL",
-            "UPDATE `{$prefix}streams` 
-                SET `provider` = 'smashcast', `thumbnail` = NULL, `url` = NULL WHERE `provider` = 'hitbox'",
-            "CREATE TABLE `{$prefix}cash_flows` (
-                `id` int(10) UNSIGNED NOT NULL,
-                `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-                `description` text COLLATE utf8_unicode_ci,
-                `integer_revenues` int(11) NOT NULL DEFAULT '0',
-                `integer_expenses` int(11) NOT NULL DEFAULT '0',
-                `paid_at` timestamp NULL DEFAULT NULL,
-                `paid` tinyint(1) NOT NULL DEFAULT '1',
-                `user_id` int(10) UNSIGNED DEFAULT NULL,
-                `creator_id` int(10) UNSIGNED DEFAULT NULL,
-                `updater_id` int(10) UNSIGNED DEFAULT NULL,
-                `access_counter` int(11) NOT NULL DEFAULT '0',
-                `created_at` timestamp NULL DEFAULT NULL,
-                `updated_at` timestamp NULL DEFAULT NULL,
-                `deleted_at` timestamp NULL DEFAULT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-            "ALTER TABLE `{$prefix}cash_flows` ADD PRIMARY KEY (`id`);",
-            "CREATE TABLE `{$prefix}question_cats` (
-                `id` int(10) UNSIGNED NOT NULL,
-                `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-                `creator_id` int(10) UNSIGNED DEFAULT NULL,
-                `updater_id` int(10) UNSIGNED DEFAULT NULL,
-                `access_counter` int(11) NOT NULL DEFAULT '0',
-                `created_at` timestamp NULL DEFAULT NULL,
-                `updated_at` timestamp NULL DEFAULT NULL,
-                `deleted_at` timestamp NULL DEFAULT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-            "INSERT INTO `{$prefix}question_cats` 
-                (`id`, `title`, `creator_id`, `updater_id`, `access_counter`, `created_at`, `updated_at`, `deleted_at`) 
-                VALUES (1, 'Default', 1, 1, 0, '2018-04-21 10:37:13', '2018-04-21 10:37:13', NULL);",
-            "ALTER TABLE `{$prefix}question_cats` ADD PRIMARY KEY (`id`);",
-            "CREATE TABLE `{$prefix}questions` (
-                `id` int(10) UNSIGNED NOT NULL,
-                `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
-                `answer` text COLLATE utf8_unicode_ci,
-                `published` tinyint(1) NOT NULL DEFAULT '0',
-                `position` int(11) NOT NULL DEFAULT '0',
-                `question_cat_id` int(10) UNSIGNED DEFAULT NULL,
-                `creator_id` int(10) UNSIGNED DEFAULT NULL,
-                `updater_id` int(10) UNSIGNED DEFAULT NULL,
-                `access_counter` int(11) NOT NULL DEFAULT '0',
-                `created_at` timestamp NULL DEFAULT NULL,
-                `updated_at` timestamp NULL DEFAULT NULL,
-                `deleted_at` timestamp NULL DEFAULT NULL
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-            "ALTER TABLE `{$prefix}questions` ADD PRIMARY KEY (`id`);",
-            "INSERT INTO {$prefix}config (name, value) VALUES ('app.name', '{$appName}');",
-            "RENAME TABLE {$prefix}newscats TO {$prefix}news_cats;",
-            "RENAME TABLE {$prefix}partnercats TO {$prefix}partner_cats;",
-            "RENAME TABLE {$prefix}advertcats TO {$prefix}advert_cats;",
-            "RENAME TABLE {$prefix}slidecats TO {$prefix}slide_cats;",
-            "RENAME TABLE {$prefix}downloadcats TO {$prefix}download_cats;",
-            "RENAME TABLE {$prefix}pagecats TO {$prefix}page_cats;",
-            "RENAME TABLE {$prefix}teamcats TO {$prefix}team_cats;",
-            "ALTER TABLE {$prefix}news CHANGE newscat_id news_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
-            "ALTER TABLE {$prefix}partners CHANGE partnercat_id partner_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
-            "ALTER TABLE {$prefix}adverts CHANGE advertcat_id advert_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
-            "ALTER TABLE {$prefix}slides CHANGE slidecat_id slide_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
-            "ALTER TABLE {$prefix}downloads CHANGE downloadcat_id download_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
-            "ALTER TABLE {$prefix}pages CHANGE pagecat_id page_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
-            "ALTER TABLE {$prefix}teams CHANGE teamcat_id team_cat_id INT(10) UNSIGNED NULL DEFAULT NULL;",
-        ];
+           // "ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL",
+         ];
 
         return $updateQueries;
     }
@@ -160,11 +97,8 @@ EOD;
      */
     public function updatePermissions(array &$permissions)
     {
-        $permissions[4]->cashflows = 4;
-        $permissions[5]->cashflows = 4;
-
-        $permissions[4]->questions = 4;
-        $permissions[5]->questions = 4;
+        //$permissions[4]->cashflows = 4;
+        //$permissions[5]->cashflows = 4;
     }
 
     /**

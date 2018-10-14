@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v2.5-beta
+## Contentify CMS - v2.5
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.4-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
@@ -13,7 +13,7 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Get the production version
 
-Download it here: [2.4](https://github.com/Contentify/Contentify/releases/tag/v2.4)
+Download it here: [2.5](https://github.com/Contentify/Contentify/releases/tag/v2.5)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 

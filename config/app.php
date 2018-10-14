@@ -49,7 +49,7 @@ return [
     |
     */
 
-    'version' => '2.5-beta',
+    'version' => '2.5',
 
     /*
     |--------------------------------------------------------------------------
@@ -121,7 +121,7 @@ return [
     | Application Currency
     |--------------------------------------------------------------------------
     |
-    | Define the currency of this website.
+    | Define the default currency of this website.
     |
     */
 
