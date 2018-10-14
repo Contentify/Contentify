@@ -1,6 +1,6 @@
 ## Changelog - v2.5
 
-- New complete Spanish translation
+- New complete Spanish translation (thanks to the contributor!)
 - Added cup teams complete overview page
 - PHP 7.2 supported
 - Deleting forum threads works again
