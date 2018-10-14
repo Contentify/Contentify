@@ -101,7 +101,8 @@ class Tester {
             'tokenizer',
             'openssl',
             'json',
-            'curl'
+            'curl',
+            'xml'
         );
 
         $results = array();
