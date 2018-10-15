@@ -9,6 +9,7 @@ use Contentify\CsvWriter;
 use Hover;
 use HTML;
 use ModelHandlerTrait;
+use Response;
 use URL;
 
 class AdminCashFlowsController extends BackController
@@ -123,7 +124,7 @@ class AdminCashFlowsController extends BackController
             'Content-Disposition' => 'attachment; filename="download.csv"',
         ];
 
-        return \Response::make($csvWriter->getContent(), 200, $headers);
+        return Response::make($csvWriter->getContent(), 200, $headers);
     }
 
 }
