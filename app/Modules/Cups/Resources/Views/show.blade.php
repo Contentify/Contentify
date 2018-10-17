@@ -41,6 +41,8 @@
                                             @foreach ($cup->teamsOfUser(user(), true) as $team)
                                                 @if ($team->countMembers() >= $cup->players_per_team)
                                                     <li><a href="{!! url('cups/join/'.$cup->id.'/'.$team->id) !!}">{{ $team->title }}</a></li>
+                                                @else
+                                                    <li><a href="{!! url('cups/teams/'.$team->id.'/'.$team->slug) !!}"><del>{{ $team->title }}</del> <em>({{ trans('cups::not_enough_players') }})</em></a></li>
                                                 @endif
                                             @endforeach
                                             <li><a href="{{ url('cups/teams/overview/'.user()->id) }}"><em>{{ trans('cups::my_teams') }}</em></a></li>
