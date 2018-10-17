@@ -40,7 +40,7 @@ return array(
     // Team
     'not_organizer'      => 'C\'est uniquement le capitaine qui peut faire cette action.',
     'organizer'          => 'Capitaine',
-    'user_conflict'      => 'A user cannot be in more than one team per cup.',
+    'user_conflict'      => 'Un utilisateur ne peut pas être dans plus d\'une équipe par coupe.',
     'team_locked'        => 'L\'équipe est verrouillée car elle participe à un tournoi. Aucun changement n\'est accepté.',
     'edit_team'          => 'Modifier l\'équipe',
     'team_deleted'       => 'L\'équipe a été supprimée.',
