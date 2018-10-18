@@ -7,5 +7,5 @@
 - Team widget now respects position values
 - Fixed bug in social media link template 
 - Fixed a permission bug in the cup teams area
-- Fixed a bug so that user are now able to restore there password
+- Fixed a bug so that users are now able to restore their password
 - Fixed a small bug in model handler class
