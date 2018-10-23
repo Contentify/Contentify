@@ -2,9 +2,10 @@ Cups
 ----
 
 - Single-Elimination
-- The maximum of participants per cup is 1024 (let us know if this value is does not meet yor requirements)
+- The maximum of participants per cup is 1024 (let us know if this value does not meet yor requirements)
 - 1on1 and team matches are possible
 - Wildcards: There will never be wildcard-matches in other rounds than the first one.
+- To join a team cup, a team needs enough players
 - Teams are locked while they participate in a cup. No one can leave or join them.
 - A player can only participate once per cup. This is true for 1on1 and for team cups. Therefore a user cannot be in two teams that both participate in the same cup.
 - Cup teams and cup matches differ from regular teams and matches
