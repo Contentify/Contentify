@@ -50,8 +50,9 @@ Both Contentify 1.x and 2.x have long term support (LTS) that includes bug fixes
 
 ### Contribution
 
-Create an issue right here on GitHub whenever you spot a bug. 
+Contributions welcome! Create an issue right here on GitHub whenever you spot a bug. 
 If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
+Do not hesitate to create pull request for bug fixes or new features.
 
 #### PHP Coding style
 
