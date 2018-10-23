@@ -13,7 +13,7 @@ class MatchesWidget extends Widget
     {
     	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
-        $matches = Match::orderBy('played_at', 'DESC')->whereState(Match::STATE_CLOSED)->take($limit)->get();
+        $matches = Match::whereState(Match::STATE_CLOSED)->whereFeatured()->orderBy('played_at', 'DESC')->take($limit)->get();
 
         if ($matches) {
             return View::make('matches::widget', compact('matches'))->render();
