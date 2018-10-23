@@ -11,7 +11,7 @@ if (file_exists($autoloaderFile)) {
     );
 }
 
-// Require Laravels helpers file with useful helper functions
+// Require Laravel's helpers file with useful helper functions
 require __DIR__.'/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php';
 require __DIR__.'/vendor/laravel/framework/src/Illuminate/Support/helpers.php';
 

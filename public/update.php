@@ -9,7 +9,7 @@ class Updater {
     /**
      * The number of the version this updater can update
      */
-    const SUPPORTED_VERSIONS = ['2.4'];
+    const SUPPORTED_VERSIONS = ['2.5'];
 
     /**
      * Error code that will be returned if there was no error
