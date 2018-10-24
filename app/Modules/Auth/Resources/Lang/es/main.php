@@ -20,7 +20,7 @@ return array(
      * Registration
      */
     'register'          => 'Registro',
-    'registered'        => '¡Registrado correctamente!',
+    'registered'        => 'Registrado correctamente. ¡Bienvenido!',
     'steam_registered'  => '¡Tu registro via Steam ha sido correcto! Si también quieres habilitar tu inicio de sesión via email, por favor, solicita una contraseña.',
     'username_taken'    => 'Este nombre de usuario ya existe.',
     'password_length'   => 'Tu contraseña debe tener al menos 6 caracteres de longitud.',

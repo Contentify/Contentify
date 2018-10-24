@@ -20,7 +20,7 @@ return array(
      * Registration
      */
     'register'          => 'Inscription',
-    'registered'        => 'Inscrit avec succès!',
+    'registered'        => 'Inscrit avec succès. Bienvenue!',
     'steam_registered'  => 'Enregistrement via Steam réussi! Si vous souhaitez également utiliser le login par e-mail, veuillez demander un mot de passe.',
     'username_taken'    => 'Nom d\'utilisateur déjà pris.',
     'password_length'   => 'Votre mot de passe doit faire 6 caractères minimum.',
