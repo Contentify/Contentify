@@ -30,6 +30,10 @@
             {!! Form::smartCheckbox('app::https', 'HTTPS') !!}
 
             {!! Form::smartCheckbox('app::dbBackup', trans('config::db_backup')) !!}
+
+            <hr>
+
+            {!! Form::smartTextarea('app::forbidden_email_domains', trans('config::forbidden_email_domains')) !!}
         </div>
         <div role="tabpanel" class="tab-pane" id="tab_services">
             {!! Form::smartText('app::facebook', 'Facebook') !!}

@@ -114,65 +114,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
-
-    'custom' => [
-        'password' => [
-            'min' => 'La :attribute debe contener más de :min caracteres',
-        ],
-        'email'    => [
-            'unique' => 'El :attribute ya ha sido registrado.',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | The following language lines are used for custom validators.
     |
     */
 
-    'attributes' => [
-        'name'                  => 'nombre',
-        'username'              => 'usuario',
-        'email'                 => 'correo electrónico',
-        'first_name'            => 'nombre',
-        'last_name'             => 'apellido',
-        'password'              => 'contraseña',
-        'password_confirmation' => 'confirmación de la contraseña',
-        'city'                  => 'ciudad',
-        'country'               => 'país',
-        'address'               => 'dirección',
-        'phone'                 => 'teléfono',
-        'mobile'                => 'móvil',
-        'age'                   => 'edad',
-        'sex'                   => 'sexo',
-        'gender'                => 'género',
-        'year'                  => 'año',
-        'month'                 => 'mes',
-        'day'                   => 'día',
-        'hour'                  => 'hora',
-        'minute'                => 'minuto',
-        'second'                => 'segundo',
-        'title'                 => 'título',
-        'content'               => 'contenido',
-        'body'                  => 'contenido',
-        'description'           => 'descripción',
-        'excerpt'               => 'extracto',
-        'date'                  => 'fecha',
-        'time'                  => 'hora',
-        'subject'               => 'asunto',
-        'message'               => 'mensaje',
-    ],
+    'alpha_numeric_spaces' => 'El campo :attribute sólo puede contener letras, dígitos y espacios.',
+    'email_domain_allowed' => 'El campo :attribute utiliza un dominio bloqueado.',
 ];

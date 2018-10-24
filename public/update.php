@@ -79,10 +79,14 @@ EOD;
     {
         $appName = $this->app->getConfig('app')['name'];
 
+        $forbiddenEmailDomains = 'example.com,example.org';
+
         // How to create these statements: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
         $updateQueries = [
-           // "ALTER TABLE {$prefix}teams ADD `country_id` int(10) UNSIGNED DEFAULT NULL",
+            "INSERT INTO `{$prefix}config` 
+                (`name`, `value`) 
+                VALUES ('app.forbidden_email_domains', '$forbiddenEmailDomains');",
          ];
 
         return $updateQueries;

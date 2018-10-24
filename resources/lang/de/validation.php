@@ -90,36 +90,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
-
-    'custom'               => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | The following language lines are used for custom validators.
     |
     */
 
-    'attributes' => [
-        'username' => 'Benutzername',
-        'password' => 'Passwort',
-        'email'    => 'E-Mail-Adresse',
-    ],
+    'alpha_numeric_spaces' => ':attribute darf nur aus Buchstaben und Ziffern sowie Leerzeichen bestehen.',
+    'email_domain_allowed' => ':attribute verwendet eine gesperrte Domain.',
 
 ];

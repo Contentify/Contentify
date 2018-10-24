@@ -764,20 +764,21 @@ class InstallController extends Controller
         $this->createDefaultCategories(['download_cats'], true);
         
         DB::table('config')->insert([
-            ['name' => 'app.name',              'value' => Config::get('app.name', null, false)],
-            ['name' => 'app.theme',             'value' => 'MorpheusTheme'],
-            ['name' => 'app.theme_christmas',   'value' => 0],
-            ['name' => 'app.theme_snow_color',  'value' => '#ffffff'],
-            ['name' => 'app.analytics',         'value' => ''],
-            ['name' => 'app.https',             'value' => 0],
-            ['name' => 'app.dbBackup',          'value' => 0],
-            ['name' => 'auth::registration',    'value' => 1],
-            ['name' => 'forums::reports',       'value' => 1],
-            ['name' => 'cups::cup_points',      'value' => 10],
-            ['name' => 'app.twitter',           'value' => 'ContentifyCMS'],
-            ['name' => 'app.facebook',          'value' => 'contentifycms'], 
-            ['name' => 'app.youtube',           'value' => 'UC2gIIZzySdgxrQ3jM4jmoqQ'],
-            ['name' => 'app.twitchKey',         'value' => ''],
+            ['name' => 'app.name',                      'value' => Config::get('app.name', null, false)],
+            ['name' => 'app.theme',                     'value' => 'MorpheusTheme'],
+            ['name' => 'app.theme_christmas',           'value' => 0],
+            ['name' => 'app.theme_snow_color',          'value' => '#ffffff'],
+            ['name' => 'app.analytics',                 'value' => ''],
+            ['name' => 'app.https',                     'value' => 0],
+            ['name' => 'app.dbBackup',                  'value' => 0],
+            ['name' => 'auth::registration',            'value' => 1],
+            ['name' => 'forums::reports',               'value' => 1],
+            ['name' => 'cups::cup_points',              'value' => 10],
+            ['name' => 'app.twitter',                   'value' => 'ContentifyCMS'],
+            ['name' => 'app.facebook',                  'value' => 'contentifycms'],
+            ['name' => 'app.youtube',                   'value' => 'UC2gIIZzySdgxrQ3jM4jmoqQ'],
+            ['name' => 'app.twitchKey',                 'value' => ''],
+            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
         ]);
 
         DB::table('team_cats')->insert([

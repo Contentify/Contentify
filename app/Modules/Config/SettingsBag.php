@@ -24,6 +24,7 @@ class SettingsBag extends BaseModel
         'auth::registration',
         'app::https',
         'app::dbBackup',
+        'app::forbidden_email_domains'
     ];
 
     protected $rules = [

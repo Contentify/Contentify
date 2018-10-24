@@ -11,27 +11,28 @@ return array(
     |
     */
    
-    'permissions'         => 'Berechtigungen',
+    'permissions'               => 'Berechtigungen',
 
-    'button_info'         => 'PHP-Info',
-    'button_optimize'     => 'DB optimieren',
-    'button_dump'         => 'DB exportieren',
-    'button_log'          => 'Log',
-    'button_compile_less' => 'LESS kompilieren',
-    'button_clear_cache'  => 'Cache leeren',
+    'button_info'               => 'PHP-Info',
+    'button_optimize'           => 'DB optimieren',
+    'button_dump'               => 'DB exportieren',
+    'button_log'                => 'Log',
+    'button_compile_less'       => 'LESS kompilieren',
+    'button_clear_cache'        => 'Cache leeren',
 
-    'db_export'           => 'Die Datenbank wurde exportiert.',
-    'db_file'             => 'Eine .sql-Datei wurde auf dem Webspace erstellt:<br>:0',
-    'not_supported'       => 'Entschuldigung, :0 unterstützt dieses Feature nicht.',
+    'db_export'                 => 'Die Datenbank wurde exportiert.',
+    'db_file'                   => 'Eine .sql-Datei wurde auf dem Webspace erstellt:<br>:0',
+    'not_supported'             => 'Entschuldigung, :0 unterstützt dieses Feature nicht.',
 
-    'log_empty'           => 'Die Log-Datei ist leer.',
+    'log_empty'                 => 'Die Log-Datei ist leer.',
 
     /*
      * Config 
      */
-    'website_name'        => 'Name der Website',
-    'analytics'           => 'Analytics Code',
-    'registration'        => 'Registrierung freigeschaltet',
-    'db_backup'           => 'Automatisches DB Backup',
+    'website_name'              => 'Name der Website',
+    'analytics'                 => 'Analytics Code',
+    'registration'              => 'Registrierung freigeschaltet',
+    'db_backup'                 => 'Automatisches DB Backup',
+    'forbidden_email_domains'   => 'Gesperrte Email-Domains'
 
 );

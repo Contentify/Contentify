@@ -18,7 +18,7 @@ class RegistrationController extends FrontController
 {
 
     /**
-     * If set to true, user that register will be
+     * If set to true, users who register will be
      * activated automatically. If set to false,
      * an admin has to activate them manually.
      */
@@ -52,7 +52,7 @@ class RegistrationController extends FrontController
              */
             $rules = array(
                 'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password|unique:users,username', 
-                'email'     => 'email|unique:users,email', 
+                'email'     => 'email|unique:users,email|email_domain_allowed',
                 'password'  => 'required|min:6|confirmed'
             );
 

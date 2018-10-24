@@ -1,5 +1,6 @@
 <?php namespace App\Providers;
 
+use Config;
 use Blade;
 use Illuminate\Support\ServiceProvider;
 use Jobs;
@@ -25,9 +26,20 @@ class AppServiceProvider extends ServiceProvider
         |
         */
 
+        /*
+         * Only allows alpha numeric characters and spaces
+         */
         Validator::extend('alpha_numeric_spaces', function($attribute, $value)
         {
             return preg_match('/^[\pL\pM\pN\s_-]+$/u', $value);
+        });
+
+        /*
+         * Ensures a valid(!) email does not use a restricted domain (=domain blacklist)
+         */
+        \Validator::extend('email_domain_allowed', function($attribute, $value, $parameters, $validator) {
+            $forbiddenDomains = explode(',', Config::get('app.forbidden_email_domains'));
+            return ! in_array( explode('@', $value)[1], $forbiddenDomains);
         });
 
         /*
