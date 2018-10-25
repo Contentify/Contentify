@@ -45,8 +45,8 @@ To update from v2.5 to 2.6:
 
 ### Support
 
-You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. 
-Contentify 2.6 has long-term support (LTS). 
+- You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. 
+- Contentify 2.6 has long-term support (LTS). 
 
 ### Contribution
 
