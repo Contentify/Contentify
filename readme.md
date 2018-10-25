@@ -46,13 +46,13 @@ To update from v2.5 to 2.6:
 ### Support
 
 You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. 
-Both Contentify 1.x and 2.x have long term support (LTS) that includes bug fixes. 
+Contentify 2.6 has long-term support (LTS). 
 
 ### Contribution
 
 Contributions welcome! Create an issue right here on GitHub whenever you spot a bug. 
 If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
-Do not hesitate to create pull request for bug fixes or new features.
+Do not hesitate to create a pull request for bug fixes or new features.
 
 #### PHP Coding style
 
@@ -60,5 +60,5 @@ Contentify follows the [PSR-2 Coding Style Guide](https://github.com/php-fig/fig
 with these exceptions:
 
 * All PHP files MUST NOT end with a single blank line.
-* The last case segment of a `switch` structure CAN have a `break` keyword. (But usually we omit it.)
+* The last case segment of a `switch` structure CAN have a `break` keyword. (But usually, we omit it.)
 * Closures MUST NOT be declared with a space after the `function` keyword.
