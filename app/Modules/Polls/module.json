@@ -1,0 +1,10 @@
+{
+    "slug": "Polls",
+    "admin-nav": [
+        {
+            "icon": "poll",
+            "category": 2,
+            "position": 11
+        }
+    ]
+}
