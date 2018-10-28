@@ -3,20 +3,32 @@
 namespace App\Modules\Polls;
 
 use BaseModel;
+use Comment;
 use SoftDeletingTrait;
 
 /**
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $title
- * @property string $short
- * @property string $icon
+ * @property bool $open
+ * @property bool $internal
+ * @property string $option1
+ * @property string $option2
+ * @property string $option3
+ * @property string $option4
+ * @property string $option5
+ * @property string $option6
+ * @property string $option7
+ * @property string $option8
+ * @property string $option9
+ * @property string $option10
+ * @property string $option11
+ * @property string $option12
+ * @property string $option13
+ * @property string $option14
+ * @property string $option15
  * @property int $creator_id
  * @property int $updater_id
- * @property \App\Modules\Awards\Award[] $awards
- * @property \App\Modules\Maps\Map[] $maps
- * @property \App\Modules\Matches\Match[] $matches
- * @property \App\Modules\Servers\Server[] $servers
  * @property \User $creator
  */
 class Poll extends BaseModel
@@ -26,21 +38,47 @@ class Poll extends BaseModel
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'short'];
-
-    public static $fileHandling = ['icon' => ['type' => 'image']];
+    protected $fillable = [
+        'title',
+        'open',
+        'internal',
+        'max_votes',
+        'option1',
+        'option2',
+        'option3',
+        'option4',
+        'option5',
+        'option6',
+        'option7',
+        'option8',
+        'option9',
+        'option10',
+        'option11',
+        'option12',
+        'option13',
+        'option14',
+        'option15',
+    ];
 
     protected $rules = [
         'title'     => 'required|min:3',
-        'short'     => 'required|max:6',
+        'open'      => 'boolean',
+        'internal'  => 'boolean',
+        'max_votes' => 'required|integer|min:1|max:15'
     ];
 
     public static $relationsData = [
-        'awards'    => [self::HAS_MANY, 'App\Modules\Awards\Award', 'dependency' => true],
-        'maps'      => [self::HAS_MANY, 'App\Modules\Maps\Map', 'dependency' => true],
-        'matches'   => [self::HAS_MANY, 'App\Modules\Matches\Match', 'dependency' => true],
-        'servers'   => [self::HAS_MANY, 'App\Modules\Servers\Server', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    /**
+     * Count the comments that are related to this poll.
+     *
+     * @return int
+     */
+    public function countComments()
+    {
+        return Comment::count('polls', $this->id);
+    }
 
 }

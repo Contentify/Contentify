@@ -84,6 +84,9 @@ EOD;
         // How to create these statements: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place
         $updateQueries = [
+
+            // TODO: Add polls database table query and do not forget to also add new permissions!
+
             "INSERT INTO `{$prefix}config` 
                 (`name`, `value`) 
                 VALUES ('app.forbidden_email_domains', '$forbiddenEmailDomains');",
