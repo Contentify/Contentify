@@ -38,7 +38,8 @@ class AppServiceProvider extends ServiceProvider
          * Ensures a valid(!) email does not use a restricted domain (=domain blacklist)
          */
         \Validator::extend('email_domain_allowed', function($attribute, $value, $parameters, $validator) {
-            $forbiddenDomains = explode(',', Config::get('app.forbidden_email_domains'));
+            $forbiddenDomainsString = str_replace(' ', '', Config::get('app.forbidden_email_domains'));
+            $forbiddenDomains = explode(',', $forbiddenDomainsString);
             return ! in_array(explode('@', $value)[1], $forbiddenDomains);
         });
 
