@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Modules\Games\Http\Controllers;
+namespace App\Modules\Polls\Http\Controllers;
 
 use App\Modules\Polls\Poll;
 use BackController;
 use Hover;
-use HTML;
 use ModelHandlerTrait;
 
 class AdminPollsController extends BackController
@@ -26,18 +25,14 @@ class AdminPollsController extends BackController
     {
         $this->indexPage([
             'tableHead' => [
-                trans('app.id')     => 'id', 
-                trans('app.icon')   => NULL,
+                trans('app.id')     => 'id',
                 trans('app.title')  => 'title'
             ],
-            'tableRow' => function(Poll $game)
+            'tableRow' => function(Poll $poll)
             {
                 return [
-                    $game->id,
-                    raw($game->icon 
-                        ? HTML::image($game->uploadPath().$game->icon, $game->title, ['width' => 16, 'height' => 16]) 
-                        : NULL),
-                    raw(Hover::modelAttributes($game, ['creator'])->pull(), $game->title),
+                    $poll->id,
+                    raw(Hover::modelAttributes($poll, ['creator'])->pull(), $poll->title),
                 ];
             }
         ]);

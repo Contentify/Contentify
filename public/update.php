@@ -104,8 +104,8 @@ EOD;
      */
     public function updatePermissions(array &$permissions)
     {
-        //$permissions[4]->cashflows = 4;
-        //$permissions[5]->cashflows = 4;
+        $permissions[4]->polls = 4;
+        $permissions[5]->polls = 4;
     }
 
     /**
@@ -268,6 +268,11 @@ EOD;
                 return $pdo->errorInfo()[0];
             }
         }
+
+        /*
+         * Delete modules.json to enforce its automatically recreation so new modules will be detected
+         */
+        unlink($this->app->getStorageDir().'app/modules.json');
 
         /*
          * Say goodbye

@@ -84,6 +84,16 @@ class AppBridge
     }
 
     /**
+     * Returns the path to the storage directory
+     *
+     * @return string
+     */
+    public function getStorageDir()
+    {
+        return  $this->storageDir;
+    }
+
+    /**
      * Loads and returns the values of a config file. 
      * Does not check if the file is a valid config file!
      * Use getConfig() if you do not want to enforce reloading.

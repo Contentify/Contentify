@@ -399,6 +399,20 @@
         "enabled": true,
         "order": 9001
     },
+    "Polls": {
+        "basename": "Polls",
+        "slug": "Polls",
+        "admin-nav": [
+            {
+                "icon": "poll",
+                "category": 2,
+                "position": 11
+            }
+        ],
+        "id": -587339286,
+        "enabled": true,
+        "order": 9001
+    },
     "Questions": {
         "basename": "Questions",
         "slug": "Questions",
