@@ -7,7 +7,7 @@
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 [![Gitter](https://img.shields.io/gitter/room/badges/shields.svg?style=flat-square)](https://gitter.im/Contentify)
 
-Contentify is an esports CMS based on the popular Laravel 5.4 framework. Build your team website with a modern CMS.
+Contentify is an esports CMS based on the PHP framework Laravel 5.4. Build your gaming website with a modern CMS.
 
 Website: [contentify.org](http://contentify.org/)
 
