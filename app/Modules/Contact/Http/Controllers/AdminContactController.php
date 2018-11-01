@@ -5,6 +5,8 @@ namespace App\Modules\Contact\Http\Controllers;
 use App\Modules\Contact\ContactMessage;
 use BackController;
 use HTML;
+use Input;
+use Mail;
 use ModelHandlerTrait;
 
 class AdminContactController extends BackController
@@ -52,6 +54,12 @@ class AdminContactController extends BackController
         ]);
     }
 
+    /**
+     * Shows a contact message
+     *
+     * @param int $id
+     * @throws \Exception
+     */
     public function show($id)
     {
         if (! $this->checkAccessRead()) {
@@ -65,6 +73,28 @@ class AdminContactController extends BackController
         $msg->save();
 
         $this->pageView('contact::admin_show', compact('msg'));
+    }
+
+    /**
+     * Sends a reply to a given contact message
+     *
+     * @param int $id
+     * @throws \Exception
+     */
+    public function reply($id)
+    {
+        /** @var ContactMessage $incomingMessage */
+        $incomingMessage = ContactMessage::findOrFail($id);
+
+        $replyText = Input::get('reply');
+
+        Mail::raw($replyText, function(\Illuminate\Mail\Message $message) use ($incomingMessage)
+        {
+            $message->to($incomingMessage->email, $incomingMessage->username)->subject('RE: '.$incomingMessage->title);
+        });
+
+        $this->alertSuccess(trans('app.successful'));
+        $this->show($id);
     }
 
 }
