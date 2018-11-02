@@ -1,5 +1,6 @@
 {
     "slug": "Polls",
+    "search": ["polls"],
     "admin-nav": [
         {
             "icon": "poll",
