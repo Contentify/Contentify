@@ -10,3 +10,7 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
     );
     ModuleRoute::post('admin/polls/search', 'AdminPollsController@search');
 });
+
+ModuleRoute::get('polls', 'PollsController@index');
+ModuleRoute::get('polls/{id}/{slug?}', 'PollsController@show')->where('id', '[0-9]+');
+ModuleRoute::post('polls/search', 'PollsController@search');

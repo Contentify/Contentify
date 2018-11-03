@@ -90,6 +90,7 @@ return [
     'featured'      => 'Destacado',
     'state'         => 'Estado',
     'new'           => 'Nuevo',
+    'open'          => 'Abierto',
 
     /*
      * Misc
@@ -104,7 +105,7 @@ return [
     'save_to_del'   => 'Guarda este formulario para borrar este archivo.',
 
     /*
-     * JS
+     * JavaScript
      */
     'request_failed'    => 'Error: Solicitud fallida.',
     'delete_item'       => 'Eliminar este elemento?',
@@ -229,6 +230,9 @@ return [
     'answer'            => 'Respuesta',
     'export'            => 'Exportar',
     'download'          => 'Descargar', // Verb - do not confuse with object_download!
+    'option'            => 'Opción',
+    'max_votes'         => 'Votos máximos por persona',
+    'vote'              => 'Votar',
 
     /*
      * Days
@@ -278,6 +282,7 @@ return [
     'object_opponents'      => 'Oponentes',
     'object_pages'          => 'Páginas',
     'object_partners'       => 'Patrocinadores',
+    'object_polls'          => 'Encuestas',
     'object_questions'      => 'FAQ',
     'object_roles'          => 'Roles',
     'object_search'         => 'Buscar',
@@ -329,6 +334,7 @@ return [
     'object_page_cat'           => 'Página-Categoría',
     'object_partner'            => 'Patrocinador',
     'object_partner_cat'        => 'Patrocinador-Categoría',
+    'object_poll'               => 'Encuesta',
     'object_post'               => 'Publicación',
     'object_question'           => 'Pregunta',
     'object_question_cat'       => 'Pregunta-Categoría',

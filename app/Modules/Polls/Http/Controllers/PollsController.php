@@ -8,7 +8,7 @@ use FrontController;
 use HTML;
 use URL;
 
-class StreamsController extends FrontController implements GlobalSearchInterface
+class PollsController extends FrontController implements GlobalSearchInterface
 {
 
     public function __construct()
@@ -33,7 +33,7 @@ class StreamsController extends FrontController implements GlobalSearchInterface
                 return [
                     $poll->id,
                     raw(link_to('polls/'.$poll->id.'/'.$poll->slug, $poll->title)),
-                    raw($poll->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
+                    raw($poll->open ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     $poll->created_at,
                 ];
             },

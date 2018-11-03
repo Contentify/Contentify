@@ -90,6 +90,7 @@ return [
     'featured'      => 'Featured',
     'state'         => 'Status',
     'new'           => 'Neu',
+    'open'          => 'Offen',
 
     /*
      * Misc
@@ -104,7 +105,7 @@ return [
     'save_to_del'   => 'Speichern Sie das Formular, um die Datei zu löschen.',
 
     /*
-     * JS
+     * JavaScript
      */
     'request_failed'    => 'Fehler: Anfrage fehlgeschlagen.',
     'delete_item'       => 'Soll dieses Objekt wirklich gelöscht werden?',
@@ -229,6 +230,9 @@ return [
     'answer'            => 'Antwort',
     'export'            => 'Export',
     'download'          => 'Herunterladen', // Verb - do not confuse with object_download!
+    'option'            => 'Option',
+    'max_votes'         => 'Maximale Stimmen pro Person',
+    'vote'              => 'Abstimmen',
 
     /*
      * Days
@@ -278,6 +282,7 @@ return [
     'object_opponents'      => 'Herausforderer',
     'object_pages'          => 'Seiten',
     'object_partners'       => 'Partner',
+    'object_polls'          => 'Umfragen',
     'object_questions'      => 'Häufig gestellte Fragen',
     'object_roles'          => 'Rollen',
     'object_search'         => 'Suche',
@@ -329,6 +334,7 @@ return [
     'object_page_cat'           => 'Seiten-Kategorie',
     'object_partner'            => 'Partner',
     'object_partner_cat'        => 'Partner-Kategorie',
+    'object_poll'               => 'Umfrage',
     'object_post'               => 'Beitrag',
     'object_question'           => 'Frage',
     'object_question_cat'       => 'Fragen-Kategorie',

@@ -11,37 +11,50 @@
 
 {!! Form::smartCheckbox('internal', trans('app.internal')) !!}
 
-{!! Form::smartNumeric('max_votes', trans('app.max_votes'), 1) !!}
+<?php
+    // Create range including 0, so the array keys start with 0 and the key of the option with value 1 is 1 instead of 0
+    $options = range(0, \App\Modules\Polls\Poll::MAX_OPTIONS);
 
-{!! Form::smartText('option1', trans('app.option').' #1') !!}
+    // Remove the 0-element
+    unset($options[0]);
+?>
+{!! Form::smartSelect('max_votes', trans('app.max_votes'), $options, 1) !!}
 
-{!! Form::smartText('option2', trans('app.option').' #2') !!}
-
-{!! Form::smartText('option3', trans('app.option').' #3') !!}
-
-{!! Form::smartText('option4', trans('app.option').' #4') !!}
-
-{!! Form::smartText('option5', trans('app.option').' #5') !!}
-
-{!! Form::smartText('option6', trans('app.option').' #6') !!}
-
-{!! Form::smartText('option7', trans('app.option').' #7') !!}
-
-{!! Form::smartText('option8', trans('app.option').' #8') !!}
-
-{!! Form::smartText('option9', trans('app.option').' #9') !!}
-
-{!! Form::smartText('option10', trans('app.option').' #10') !!}
-
-{!! Form::smartText('option11', trans('app.option').' #11') !!}
-
-{!! Form::smartText('option12', trans('app.option').' #12') !!}
-
-{!! Form::smartText('option13', trans('app.option').' #13') !!}
-
-{!! Form::smartText('option14', trans('app.option').' #14') !!}
-
-{!! Form::smartText('option15', trans('app.option').' #15') !!}
+@for ($counter = 1; $counter <= \App\Modules\Polls\Poll::MAX_OPTIONS; $counter++)
+    {!! Form::smartText('option'.$counter, trans('app.option').' #'.$counter) !!}
+@endfor
 
 {!! Form::actions() !!}
 {!! Form::close() !!}
+
+<script>
+    (function () {
+        var maxOptions = {{ \App\Modules\Polls\Poll::MAX_OPTIONS }};
+        var element;
+
+        for (var counter = 1; counter <= maxOptions; counter++) {
+            element = document.querySelector('#option' + counter);
+
+            // Initially hide extra options
+            if (element.value === '' && counter > 1) {
+                element.parentElement.parentElement.classList.add('hidden');
+            }
+
+            // Ensure max one empty extra option is visible
+            element.addEventListener('keyup', function() {
+                for (var counter = maxOptions; counter > 1; counter--) {
+                    var elementCurrent = document.querySelector('#option' + counter);
+                    var elementAbove = document.querySelector('#option' + (counter - 1));
+
+                    if (elementCurrent.value === '') {
+                        elementCurrent.parentElement.parentElement.classList.add('hidden');
+                    }
+                    if (elementAbove.value !== '') {
+                        elementCurrent.parentElement.parentElement.classList.remove('hidden');
+                        break;
+                    }
+                }
+            });
+        }
+    })();
+</script>

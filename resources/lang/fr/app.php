@@ -90,6 +90,7 @@ return [
     'featured'      => 'En avant',
     'state'         => 'Etat',
     'new'           => 'Nouveau',
+    'open'          => 'Ouvert',
 
     /*
      * Misc
@@ -104,7 +105,7 @@ return [
     'save_to_del'   => 'Valider le formulaire pour supprimer l\'image.',
 
     /*
-     * JS
+     * JavaScript
      */
     'request_failed'    => 'Erreur: Requête invalide.',
     'delete_item'       => 'Supprimer cet item?',
@@ -229,6 +230,9 @@ return [
     'answer'            => 'Réponse',
     'export'            => 'Export',
     'download'          => 'Télécharger', // Verb - do not confuse with object_download!
+    'option'            => 'Option',
+    'max_votes'         => 'Votes maximum par personne',
+    'vote'              => 'Voter',
 
     /*
      * Days
@@ -279,6 +283,7 @@ return [
     'object_opponents'      => 'Adversaires',
     'object_pages'          => 'Pages',
     'object_partners'       => 'Partenaires',
+    'object_polls'          => 'Enquêtes',
     'object_questions'      => 'Foire Aux Questions',
     'object_search'         => 'Rechercher',
     'object_servers'        => 'Serveurs',
@@ -329,6 +334,7 @@ return [
     'object_page_cat'           => 'Catégorie de page',
     'object_partner'            => 'Partneraire',
     'object_partner_cat'        => 'Type de partenaire',
+    'object_poll'               => 'Enquête',
     'object_post'               => 'Message',
     'object_question'           => 'Question',
     'object_question_cat'       => 'Catégorie de question',

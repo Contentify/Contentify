@@ -4,7 +4,9 @@ namespace App\Modules\Polls;
 
 use BaseModel;
 use Comment;
+use DB;
 use SoftDeletingTrait;
+use User;
 
 /**
  * @property \Carbon $created_at
@@ -36,7 +38,15 @@ class Poll extends BaseModel
 
     use SoftDeletingTrait;
 
+    /**
+     * Maximum number of possible options per poll. Changing this values will have limited effect,
+     * since for example the database columns of the options are hardcoded
+     */
+    const MAX_OPTIONS = 15;
+
     protected $dates = ['deleted_at'];
+
+    protected $slugable = true;
 
     protected $fillable = [
         'title',
@@ -70,6 +80,18 @@ class Poll extends BaseModel
     public static $relationsData = [
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
+    /**
+     * Returns true if a given user already participated in the current poll
+     *
+     * @param User $user
+     */
+    public function userVoted($user)
+    {
+        $counter = DB::table('polls_votes')->wherePollId($this->id)->whereUserId($user->id)->count();
+
+        return ($counter > 0);
+    }
 
     /**
      * Count the comments that are related to this poll.
