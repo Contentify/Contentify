@@ -33,6 +33,6 @@ return array(
     'analytics'                 => 'Analytics Code',
     'registration'              => 'Registration unlocked',
     'db_backup'                 => 'Automatic DB Backup',
-    'forbidden_email_domains'   => 'Forbidden Email Domains'
+    'forbidden_email_domains'   => 'Blocked Email Domains'
 
 );

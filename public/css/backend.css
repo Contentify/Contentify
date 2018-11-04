@@ -7735,6 +7735,18 @@ fieldset[disabled] .page-images .image .actions a.active {
   padding: 5px;
   border-bottom: 1px solid #ddd;
 }
+.page-contact-admin-show .reply-area #show-reply-form {
+  display: none;
+}
+.page-contact-admin-show .reply-area form {
+  display: block;
+}
+.page-contact-admin-show .reply-area.reply-form-hidden #show-reply-form {
+  display: inline-block;
+}
+.page-contact-admin-show .reply-area.reply-form-hidden form {
+  display: none;
+}
 .page-cash-flows.page-model-index .revenues {
   padding: 2px 5px;
   background-color: #69dd95;

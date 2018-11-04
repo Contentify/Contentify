@@ -8,6 +8,7 @@ ModuleRoute::group(['as' => ModuleRoute::getAdminNamePrefix()], function () {
         'admin/contact/{id}/restore',
         ['as' => 'contact.restore', 'uses' => 'AdminContactController@restore']
     );
+    ModuleRoute::post('admin/contact/{id}/', 'AdminContactController@reply');
 });
 
 ModuleRoute::get('contact', 'ContactController@index');
