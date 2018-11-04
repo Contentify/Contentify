@@ -5,6 +5,7 @@ namespace App\Modules\Messages\Http\Controllers;
 use App\Modules\Messages\Message;
 use FrontController;
 use HTML;
+use Illuminate\Database\Eloquent\Builder;
 
 class OutboxController extends FrontController
 {
@@ -45,7 +46,7 @@ class OutboxController extends FrontController
                 ];
             },
             'actions'       => null,
-            'permaFilter'   => function($query)
+            'permaFilter'   => function(Builder $query)
             {
                  return $query->whereCreatorId(user()->id)->whereCreatorVisible(true);
             },
