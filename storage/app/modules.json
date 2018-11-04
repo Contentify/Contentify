@@ -402,6 +402,9 @@
     "Polls": {
         "basename": "Polls",
         "slug": "Polls",
+        "search": [
+            "polls"
+        ],
         "admin-nav": [
             {
                 "icon": "poll",

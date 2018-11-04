@@ -4,8 +4,12 @@ namespace App\Modules\Polls\Http\Controllers;
 
 use App\Modules\Polls\Poll;
 use Contentify\GlobalSearchInterface;
+use DB;
 use FrontController;
 use HTML;
+use Illuminate\Database\Eloquent\Builder;
+use Input;
+use Redirect;
 use URL;
 
 class PollsController extends FrontController implements GlobalSearchInterface
@@ -38,11 +42,16 @@ class PollsController extends FrontController implements GlobalSearchInterface
                 ];
             },
             'actions'   => null,
-            # TODO filter internal?
-#            'permaFilter' => function($users)
-#            {
-#                return $users->where('id', '!=', 1); // Do not keep the daemon user
-#            }
+            'permaFilter' => function(Builder $users)
+            {
+                $hasAccess = (user() and user()->hasAccess('internal'));
+
+                if ($hasAccess) {
+                    return $users; // Do not restrict
+                } else {
+                    return $users->whereInternal(false); // Only return non-internal polls
+                }
+            }
         ], 'front');
     }
 
@@ -57,6 +66,12 @@ class PollsController extends FrontController implements GlobalSearchInterface
         /** @var Poll $poll */
         $poll = Poll::findOrFail($id);
 
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        if ($poll->internal and ! $hasAccess) {
+            $this->alertError(trans('app.access_denied'));
+            return;
+        }
+
         $poll->access_counter++;
         $poll->save();
 
@@ -69,13 +84,41 @@ class PollsController extends FrontController implements GlobalSearchInterface
      * Store the vote for an option of a poll
      *
      * @param int $id The ID of the poll
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function vote($id)
     {
         /** @var Poll $poll */
         $poll = Poll::findOrFail($id);
 
-        dd('tba');
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        if ($poll->internal and ! $hasAccess) {
+            $this->alertError(trans('app.access_denied'));
+            return;
+        }
+
+        if ($poll->userVoted(user()) or ! $poll->open) {
+            $this->alertError(trans('app.access_denied'));
+            return;
+        }
+
+        $votes = [];
+        if ($poll->max_votes == 1) {
+            $votes[] = ['poll_id' => $poll->id, 'user_id' => user()->id, 'option_id' => Input::get('option')];
+        } else {
+            for ($counter = 1; $counter <= Poll::MAX_OPTIONS; $counter++) {
+                $value = Input::get('option'.$counter);
+
+                if ($value !== null) {
+                    $votes[] = ['poll_id' => $poll->id, 'user_id' => user()->id, 'option_id' => $counter];
+                }
+            }
+        }
+
+        DB::table('polls_votes')->insert($votes);
+
+        $this->alertFlash(trans('app.successful'));
+        return Redirect::to('polls/'.$poll->id.'/'.$poll->slug);
     }
     
     /**
@@ -87,7 +130,13 @@ class PollsController extends FrontController implements GlobalSearchInterface
      */
     public function globalSearch($subject)
     {
-        $polls = Poll::where('title', 'LIKE', '%'.$subject.'%')->get();
+        $hasAccess = (user() and user()->hasAccess('internal'));
+
+        $query = Poll::where('title', 'LIKE', '%'.$subject.'%');
+        if (! $hasAccess) {
+            $query->whereInternal(false); // Only return non-internal polls
+        }
+        $polls = $query->get();
 
         $results = array();
         foreach ($polls as $poll) {

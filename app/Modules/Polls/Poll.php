@@ -12,8 +12,10 @@ use User;
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property string $title
+ * @property string $slug
  * @property bool $open
  * @property bool $internal
+ * @property int max_votes
  * @property string $option1
  * @property string $option2
  * @property string $option3
@@ -86,7 +88,7 @@ class Poll extends BaseModel
      *
      * @param User $user
      */
-    public function userVoted($user)
+    public function userVoted(User $user)
     {
         $counter = DB::table('polls_votes')->wherePollId($this->id)->whereUserId($user->id)->count();
 

@@ -3,17 +3,23 @@
 @if ($poll->open and user() and ! $poll->userVoted(user()))
     {!! Form::open(['url' => 'polls/'.$poll->id.'/confirm', 'class' => 'form-inline']) !!}
 
-        @for ($counter = 1; $counter <= \App\Modules\Polls\Poll::MAX_OPTIONS; $counter++)
-            @if ($poll['option'.$counter])
-                <div class="poll-option">
-                    @if ($poll->max_votes == 1)
-                        {!! Form::radio('option'.$counter) !!} {{ $poll['option'.$counter] }}
-                    @else
-                        {!! Form::checkbox('option'.$counter) !!} {{ $poll['option'.$counter] }}
-                    @endif
-                </div>
-            @endif
-        @endfor
+        <ul class="list-unstyled">
+            @for ($counter = 1; $counter <= \App\Modules\Polls\Poll::MAX_OPTIONS; $counter++)
+                @if ($poll['option'.$counter])
+                    <li>
+                        <label>
+                            @if ($poll->max_votes == 1)
+                                {!! Form::radio('option', $counter) !!}
+                            @else
+                                {!! Form::checkbox('option'.$counter, $counter) !!}
+                            @endif
+
+                            {{ $poll['option'.$counter] }}
+                        </label>
+                    </li>
+                @endif
+            @endfor
+        </ul>
 
         {!! Form::actions(['submit' => trans('app.vote')], false) !!}
     {!! Form::close() !!}
