@@ -2,6 +2,11 @@
 
 {!! Form::errors($errors) !!}
 
+@if (isset($resultBags) and count($resultBags) == 0)
+    <p>{{ trans('search::no_results') }}</p>
+@endif
+
+
 {!! Form::open(array('url' => 'search/create')) !!}
     <input name="_createdat" type="hidden" value="{!! time() !!}">
 

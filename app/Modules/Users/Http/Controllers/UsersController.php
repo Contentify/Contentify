@@ -4,6 +4,7 @@ namespace App\Modules\Users\Http\Controllers;
 
 use Contentify\GlobalSearchInterface;
 use FrontController;
+use Illuminate\Database\Eloquent\Builder;
 use Input;
 use Redirect;
 use Sentinel;
@@ -38,12 +39,12 @@ class UsersController extends FrontController implements GlobalSearchInterface
                     raw(link_to('users/'.$user->id.'/'.$user->slug, $user->username)),
                     $user->first_name.' '.$user->last_name,
                     $user->created_at,
-                    $user->last_login ? $user->last_login->date() : null
+                    $user->last_login ? $user->last_login : null
                 ];
             },
             'actions'   => null,
             'searchFor' => 'username',
-            'permaFilter' => function($users)
+            'permaFilter' => function(Builder $users)
             {
                 return $users->where('id', '!=', 1); // Do not keep the daemon user
             }

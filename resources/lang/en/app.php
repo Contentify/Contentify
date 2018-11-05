@@ -90,6 +90,7 @@ return [
     'featured'      => 'Featured',
     'state'         => 'State',
     'new'           => 'New',
+    'open'          => 'Open',
 
     /*
      * Misc
@@ -104,7 +105,7 @@ return [
     'save_to_del'   => 'Save this form to delete this file.',
 
     /*
-     * JS
+     * JavaScript
      */
     'request_failed'    => 'Error: Request failed.',
     'delete_item'       => 'Delete this item?',
@@ -229,7 +230,7 @@ return [
     'answer'            => 'Answer',
     'export'            => 'Export',
     'download'          => 'Download', // Verb - do not confuse with object_download!
-
+    'option'            => 'Option',
     /*
      * Days
      */
@@ -278,6 +279,7 @@ return [
     'object_opponents'      => 'Opponents',
     'object_pages'          => 'Pages',
     'object_partners'       => 'Partners',
+    'object_polls'          => 'Polls',
     'object_questions'      => 'Frequently Asked Questions',
     'object_roles'          => 'Roles',
     'object_search'         => 'Search',
@@ -329,6 +331,7 @@ return [
     'object_page_cat'           => 'Page-Category',
     'object_partner'            => 'Partner',
     'object_partner_cat'        => 'Partner-Category',
+    'object_poll'               => 'Poll',
     'object_post'               => 'Post',
     'object_question'           => 'Question',
     'object_question_cat'       => 'Question-Category',

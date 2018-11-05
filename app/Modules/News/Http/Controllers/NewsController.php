@@ -8,6 +8,7 @@ use Contentify\GlobalSearchInterface;
 use DB;
 use FrontController;
 use HTML;
+use Illuminate\Database\Eloquent\Builder;
 use Request;
 use URL;
 use View;
@@ -41,7 +42,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
             },
             'actions'       => null,
             'filter'        => true,
-            'permaFilter'   => function($query)
+            'permaFilter'   => function(Builder $query)
             {
                 return $query->published();
             }

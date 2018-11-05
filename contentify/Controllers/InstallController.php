@@ -742,6 +742,37 @@ class InstallController extends Controller
             $table->integer('position')->default(0);
         }, ['question_cat_id'], ['slug']);
 
+        $this->create('polls', function(Blueprint $table)
+        {
+            $table->boolean('open')->default(true);
+            $table->boolean('internal')->default(false);
+            $table->integer('max_votes');
+            $table->string('option1')->nullable();
+            $table->string('option2')->nullable();
+            $table->string('option3')->nullable();
+            $table->string('option4')->nullable();
+            $table->string('option5')->nullable();
+            $table->string('option6')->nullable();
+            $table->string('option7')->nullable();
+            $table->string('option8')->nullable();
+            $table->string('option9')->nullable();
+            $table->string('option10')->nullable();
+            $table->string('option11')->nullable();
+            $table->string('option12')->nullable();
+            $table->string('option13')->nullable();
+            $table->string('option14')->nullable();
+            $table->string('option15')->nullable();
+        });
+
+        Schema::dropIfExists('polls_votes');
+        Schema::create('polls_votes', function(Blueprint $table)
+        {
+            $table->integer('poll_id');
+            $table->integer('user_id');
+            $table->integer('option_id');
+            $table->primary(['poll_id', 'user_id', 'option_id']);
+        });
+
         /*
          * (Re)activate foreign key checks
          */

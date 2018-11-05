@@ -11,6 +11,6 @@ return array(
     |
     */
    
-    'results_type'  => 'Ergebnisse vom Typ', // "results of type x"
-
+    'results_type'  => 'Ergebnisse vom Typ',
+    'no_results'    => 'Keine Ergebnisse gefunden. Bitte auf Tippfehler prüfen oder einen anderen Begriff versuchen.',
 );

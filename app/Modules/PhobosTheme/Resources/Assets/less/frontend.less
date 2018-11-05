@@ -675,6 +675,34 @@ ul.pagination {
     .text { padding: 20px; background-color: @dark }
 }
 
+.page-polls-show {
+    .poll-form {
+        label { padding: 10px; cursor: pointer }
+        input { display: none }
+        .styled-radio, .styled-checkbox { display: inline-block; width: 20px; height: 20px; margin-right: 10px; border: 1px solid @primary-color; vertical-align: bottom; }
+        .styled-radio { border-radius: 10px; }
+        input[type="radio"]:checked + .styled-radio { background-color: @primary-color; }
+        input[type="checkbox"]:checked + .styled-checkbox::before { background-color: @primary-color; }
+        input[type="checkbox"]:checked + .styled-checkbox::before { display: inline-block; width: 20px; content: '✓'; text-align: center }
+    }
+    .poll-results li { padding: 10px; }
+    .poll-result { height: 10px; background-color: #02C39A }
+    .poll-result.result-number-2 { background-color: #EDAE49 }
+    .poll-result.result-number-3 { background-color: #00798C }
+    .poll-result.result-number-4 { background-color: #f032e6 }
+    .poll-result.result-number-5 { background-color: #fabebe }
+    .poll-result.result-number-6 { background-color: #DDF9C1 }
+    .poll-result.result-number-7 { background-color: #8A2BE2 }
+    .poll-result.result-number-8 { background-color: #9A6324 }
+    .poll-result.result-number-9 { background-color: #F9A03F }
+    .poll-result.result-number-10 { background-color: #4363d8 }
+    .poll-result.result-number-11 { background-color: #bfef45 }
+    .poll-result.result-number-12 { background-color: #e6beff }
+    .poll-result.result-number-13 { background-color: #D1495B }
+    .poll-result.result-number-14 { background-color: #ffe119 }
+    .poll-result.result-number-15 { background-color: #30638E }
+}
+
 /*
  * Main layout
  */

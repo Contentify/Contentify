@@ -87,6 +87,51 @@ EOD;
             "INSERT INTO `{$prefix}config` 
                 (`name`, `value`) 
                 VALUES ('app.forbidden_email_domains', '$forbiddenEmailDomains');",
+
+            "CREATE TABLE `polls` (
+                `id` int(10) UNSIGNED NOT NULL,
+                `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
+                `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+                `open` tinyint(1) NOT NULL DEFAULT '1',
+                `internal` tinyint(1) NOT NULL DEFAULT '0',
+                `max_votes` int(11) NOT NULL,
+                `option1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option4` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option5` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option6` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option7` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option8` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option9` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option10` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option11` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option12` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option13` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option14` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `option15` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+                `creator_id` int(10) UNSIGNED DEFAULT NULL,
+                `updater_id` int(10) UNSIGNED DEFAULT NULL,
+                `access_counter` int(11) NOT NULL DEFAULT '0',
+                `created_at` timestamp NULL DEFAULT NULL,
+                `updated_at` timestamp NULL DEFAULT NULL,
+                `deleted_at` timestamp NULL DEFAULT NULL
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
+              "CREATE TABLE `polls_votes` (
+                  `poll_id` int(11) NOT NULL,
+                `user_id` int(11) NOT NULL,
+                `option_id` int(11) NOT NULL
+              ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
+              "ALTER TABLE `polls`
+                ADD PRIMARY KEY (`id`),
+                ADD UNIQUE KEY `polls_slug_unique` (`slug`),
+                ADD KEY `polls_creator_id_foreign` (`creator_id`),
+                ADD KEY `polls_updater_id_foreign` (`updater_id`);",
+              "ALTER TABLE `polls_votes`
+                ADD PRIMARY KEY (`poll_id`,`user_id`,`option_id`);",
+              "ALTER TABLE `polls`
+                MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;"
+
          ];
 
         return $updateQueries;
@@ -101,8 +146,8 @@ EOD;
      */
     public function updatePermissions(array &$permissions)
     {
-        //$permissions[4]->cashflows = 4;
-        //$permissions[5]->cashflows = 4;
+        $permissions[4]->polls = 4;
+        $permissions[5]->polls = 4;
     }
 
     /**
@@ -265,6 +310,11 @@ EOD;
                 return $pdo->errorInfo()[0];
             }
         }
+
+        /*
+         * Delete modules.json to enforce its automatically recreation so new modules will be detected
+         */
+        unlink($this->app->getStorageDir().'app/modules.json');
 
         /*
          * Say goodbye

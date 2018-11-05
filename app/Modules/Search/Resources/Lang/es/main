@@ -11,6 +11,7 @@ return array(
     |
     */
    
-    'results_type'  => 'Resultados del tipo', // "results of type x"
+    'results_type'  => 'Resultados del tipo',
+    'no_results'    => 'No se han encontrado resultados. Por favor, compruebe si hay errores tipográficos o pruebe con otro término.',
 
 );

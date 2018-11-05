@@ -113,10 +113,42 @@ Route::get('jobs', function()
  */
 Route::get('dev', function()
 {
-    #$controller = new InstallController();
+    $controller = new InstallController();
     #$controller->create('questions', function($table)
     #{
     #    $table->text('answer')->nullable();
     #    $table->boolean('published')->default(false);
     #}, [], ['slug']);
+
+    $controller->create('polls', function($table)
+    {
+        $table->boolean('open')->default(true);
+        $table->boolean('internal')->default(false);
+        $table->integer('max_votes');
+        $table->string('option1');
+        $table->string('option2');
+        $table->string('option3');
+        $table->string('option4');
+        $table->string('option5');
+        $table->string('option6');
+        $table->string('option7');
+        $table->string('option8');
+        $table->string('option9');
+        $table->string('option10');
+        $table->string('option11');
+        $table->string('option12');
+        $table->string('option13');
+        $table->string('option14');
+        $table->string('option15');
+    });
+
+    \Schema::dropIfExists('polls_votes');
+    \Schema::create('polls_votes', function($table)
+    {
+        $table->integer('poll_id');
+        $table->integer('user_id');
+        $table->integer('option_id');
+        $table->primary(['poll_id', 'user_id', 'option_id']);
+    });
+
 });
