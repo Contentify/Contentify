@@ -82,13 +82,16 @@ EOD;
         $forbiddenEmailDomains = 'example.com,example.org';
 
         // How to create these statements: Export the new database - for example via phpMyAdmin -
-        // and then copy the relevant statements from the .sql file to this place
+        // and then copy the relevant statements from the .sql file to this place.
+        // ATTENTION: Afterwards add {$prefix} before all table names!!
         $updateQueries = [
+            "INSERT INTO `{$prefix}languages`(`title`, `code`) VALUES ('Spanish','es');",
+
             "INSERT INTO `{$prefix}config` 
                 (`name`, `value`) 
                 VALUES ('app.forbidden_email_domains', '$forbiddenEmailDomains');",
 
-            "CREATE TABLE `polls` (
+            "CREATE TABLE `{$prefix}polls` (
                 `id` int(10) UNSIGNED NOT NULL,
                 `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
                 `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -117,19 +120,19 @@ EOD;
                 `updated_at` timestamp NULL DEFAULT NULL,
                 `deleted_at` timestamp NULL DEFAULT NULL
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-              "CREATE TABLE `polls_votes` (
+              "CREATE TABLE `{$prefix}polls_votes` (
                   `poll_id` int(11) NOT NULL,
                 `user_id` int(11) NOT NULL,
                 `option_id` int(11) NOT NULL
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-              "ALTER TABLE `polls`
+              "ALTER TABLE `{$prefix}polls`
                 ADD PRIMARY KEY (`id`),
                 ADD UNIQUE KEY `polls_slug_unique` (`slug`),
                 ADD KEY `polls_creator_id_foreign` (`creator_id`),
                 ADD KEY `polls_updater_id_foreign` (`updater_id`);",
-              "ALTER TABLE `polls_votes`
+              "ALTER TABLE `{$prefix}polls_votes`
                 ADD PRIMARY KEY (`poll_id`,`user_id`,`option_id`);",
-              "ALTER TABLE `polls`
+              "ALTER TABLE `{$prefix}polls`
                 MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;"
 
          ];
