@@ -3,6 +3,7 @@
 namespace App\Modules\Polls;
 
 use BaseModel;
+use Cache;
 use Comment;
 use DB;
 use SoftDeletingTrait;
@@ -46,6 +47,8 @@ class Poll extends BaseModel
      */
     const MAX_OPTIONS = 15;
 
+    const RESULTS_CACHE_KEY = 'polls::results.';
+
     protected $dates = ['deleted_at'];
 
     protected $slugable = true;
@@ -87,12 +90,63 @@ class Poll extends BaseModel
      * Returns true if a given user already participated in the current poll
      *
      * @param User $user
+     * @return bool
      */
     public function userVoted(User $user)
     {
         $counter = DB::table('polls_votes')->wherePollId($this->id)->whereUserId($user->id)->count();
 
         return ($counter > 0);
+    }
+
+    /**
+     * Counts the votes of the current polls and stores the result in the cache.
+     * We do this for performance reasons.
+     *
+     * @param User  $user  The voting user
+     * @param int[] $votes The votes of the user (=the IDs of the options)
+     */
+    public function vote(User $user, array $votes)
+    {
+        $records = [];
+        foreach ($votes as $vote) {
+            $records[] = ['poll_id' => $this->id, 'user_id' => $user->id, 'option_id' => $vote];
+        }
+
+        DB::table('polls_votes')->insert($records);
+        $this->updateResults();
+    }
+
+    /**
+     * Counts the votes of the current polls and stores the result in the cache.
+     * We do this for performance reasons. The method also returns the results.
+     *
+     * @return int[]
+     */
+    public function updateResults()
+    {
+        $results = [];
+        for ($counter = 1; $counter <= Poll::MAX_OPTIONS; $counter++) {
+            $results[$counter] = DB::table('polls_votes')->wherePollId($this->id)->whereOptionId($counter)->count();
+        }
+
+        Cache::forever(self::RESULTS_CACHE_KEY.$this->id, $results);
+
+        return $results;
+    }
+
+    /**
+     * Returns the results of the current poll.
+     *
+     * @return int[]
+     */
+    public function getResults()
+    {
+        if (! Cache::has(self::RESULTS_CACHE_KEY.$this->id)) {
+            return $this->updateResults();
+        } else {
+            return Cache::get(self::RESULTS_CACHE_KEY.$this->id);
+        }
     }
 
     /**

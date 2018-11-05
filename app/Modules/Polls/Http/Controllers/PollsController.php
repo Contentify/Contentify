@@ -47,9 +47,9 @@ class PollsController extends FrontController implements GlobalSearchInterface
                 $hasAccess = (user() and user()->hasAccess('internal'));
 
                 if ($hasAccess) {
-                    return $users; // Do not restrict
+                    return $users; // Do not restrict => do show all polls
                 } else {
-                    return $users->whereInternal(false); // Only return non-internal polls
+                    return $users->whereInternal(false); // Only show non-internal polls
                 }
             }
         ], 'front');
@@ -77,7 +77,9 @@ class PollsController extends FrontController implements GlobalSearchInterface
 
         $this->title($poll->title);
 
-        $this->pageView('polls::show', compact('poll'));
+        $userVoted = user() ? $poll->userVoted(user()) : false;
+
+        $this->pageView('polls::show', compact('poll', 'userVoted'));
     }
 
     /**
@@ -97,6 +99,7 @@ class PollsController extends FrontController implements GlobalSearchInterface
             return;
         }
 
+        // Do not allow to vote twice or to vote in closed polls
         if ($poll->userVoted(user()) or ! $poll->open) {
             $this->alertError(trans('app.access_denied'));
             return;
@@ -104,18 +107,26 @@ class PollsController extends FrontController implements GlobalSearchInterface
 
         $votes = [];
         if ($poll->max_votes == 1) {
-            $votes[] = ['poll_id' => $poll->id, 'user_id' => user()->id, 'option_id' => Input::get('option')];
+            $votes[] = Input::get('option');
         } else {
             for ($counter = 1; $counter <= Poll::MAX_OPTIONS; $counter++) {
                 $value = Input::get('option'.$counter);
 
-                if ($value !== null) {
-                    $votes[] = ['poll_id' => $poll->id, 'user_id' => user()->id, 'option_id' => $counter];
+                // Note: If someone manipulates the sent form data and adds votes for
+                // options that are not enabled, we simply ignore these votes.
+                if ($value !== null and $poll['option'.$counter]) {
+                    $votes[] = $counter;
                 }
+            }
+
+            // Do not allow the user to send more votes than the maximum allowed votes
+            if (count($votes) > $poll->max_votes) {
+                $this->alertFlash(trans('polls::too_many_votes'));
+                return Redirect::to('polls/'.$poll->id.'/'.$poll->slug)->withInput();
             }
         }
 
-        DB::table('polls_votes')->insert($votes);
+        $poll->vote(user(), $votes);
 
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('polls/'.$poll->id.'/'.$poll->slug);

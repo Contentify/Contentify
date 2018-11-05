@@ -231,9 +231,6 @@ return [
     'export'            => 'Export',
     'download'          => 'Download', // Verb - do not confuse with object_download!
     'option'            => 'Option',
-    'max_votes'         => 'Maximum Votes per Person',
-    'vote'              => 'Vote',
-
     /*
      * Days
      */
