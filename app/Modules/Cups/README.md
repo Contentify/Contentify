@@ -1,5 +1,5 @@
 Cups
-----
+===
 
 - Single-Elimination
 - The maximum of participants per cup is 1024 (let us know if this value does not meet your requirements)
