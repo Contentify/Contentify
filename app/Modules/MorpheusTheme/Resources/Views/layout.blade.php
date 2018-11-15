@@ -129,6 +129,13 @@
                     <div class="text-center">
                         @widget('Adverts::Advert')
                     </div>
+
+                    <br>
+                    <h3>
+                        Polls
+                        <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
+                    </h3>
+                    @widget('Polls::Polls')
                 </div>
             </aside>
         </div>

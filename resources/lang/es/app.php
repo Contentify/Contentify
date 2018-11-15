@@ -28,10 +28,6 @@ return [
      */
     'not_found'     => 'Recurso no encontrado.',
     'not_possible'  => 'Lo sentimos, esta acción no está permitida ahora mismo.',
-
-    /*
-     * User permissions
-     */ 
     'no_auth'       => 'Acceso denegado. Por favor identifíquese.',
     'access_denied' => 'Acceso denegado. Necesitas permisos.',
     

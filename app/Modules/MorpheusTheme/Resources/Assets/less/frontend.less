@@ -674,12 +674,15 @@ ul.pagination {
     .text { padding: 20px; background-color: @dark }
 }
 
-.page-polls-show {
+.page-polls-show, .widget-polls {
+    line-height: normal !important;
+    p { margin-top: 10px; }
     .poll-form {
         label { padding: 10px; cursor: pointer }
         input { display: none }
-        .styled-radio, .styled-checkbox { display: inline-block; width: 20px; height: 20px; margin-right: 10px; border: 1px solid @primary-color; vertical-align: bottom; }
-        .styled-radio { border-radius: 10px; }
+        .styled-radio, .styled-checkbox { display: inline-block; width: 20px; height: 20px; margin-right: 10px;  vertical-align: bottom; }
+        .styled-radio { border: 1px solid @primary-color; border-radius: 10px; }
+        .styled-checkbox { outline: 1px solid @primary-color /* Use outline instead of border to avoid problems with the height of the ::before part */; }
         input[type="radio"]:checked + .styled-radio { background-color: @primary-color; }
         input[type="checkbox"]:checked + .styled-checkbox::before { background-color: @primary-color; }
         input[type="checkbox"]:checked + .styled-checkbox::before { display: inline-block; width: 20px; content: '✓'; text-align: center }

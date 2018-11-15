@@ -28,10 +28,6 @@ return [
      */
     'not_found'     => 'Ressource konnte nicht gefunden werden.',
     'not_possible'  => 'Entschuldigung, diese Aktion ist derzeit nicht verfügbar.',
-
-    /*
-     * User permissions
-     */ 
     'no_auth'       => 'Zugriff verweigert. Bitte melden Sie sich an.',
     'access_denied' => 'Zugriff verweigert. Sie verfügen nicht über die benötigten Berechtigungen.',
     

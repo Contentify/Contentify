@@ -11,9 +11,11 @@ class PollsWidget extends Widget
 
     public function render(array $parameters = array())
     {
-        $poll = Poll::orderBy('open', 'desc')->orderBy('created_at', 'desc')->get();
+        $poll = Poll::orderBy('open', 'desc')->orderBy('created_at', 'desc')->first();
 
-        return View::make('polls::widget', compact('poll'))->render();
+        $userVoted = (user() and $poll) ? $poll->userVoted(user()) : false;
+
+        return View::make('polls::widget', compact('poll', 'userVoted'))->render();
     }
 
 }
