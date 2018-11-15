@@ -8,4 +8,4 @@ Polls Module
 If you limit it to a number greater than one, check boxes will be displayed and multiple selections can be made.
 - You may add up to 15 voting options to each poll
 - Results of the polls will be cached to increase performance
-- _ATTENTION_: We have not been very caution about validation in the backend. So when administrators create new polls it is possible to create absurd polls, for example with options that only consist of spaces. It is up to you to only create reasonable polls.
+- _ATTENTION_: We have not been very cautious about validation in the backend. So when administrators create new polls it is possible to create absurd polls, for example with options that only consist of spaces. It is up to you to only create reasonable polls.
