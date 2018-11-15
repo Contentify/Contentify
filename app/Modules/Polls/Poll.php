@@ -100,8 +100,8 @@ class Poll extends BaseModel
     }
 
     /**
-     * Counts the votes of the current polls and stores the result in the cache.
-     * We do this for performance reasons.
+     * Stores the votes of a user for the current poll in the database. The votes will not be validated 
+     * so you should validate them before calling this method.
      *
      * @param User  $user  The voting user
      * @param int[] $votes The votes of the user (=the IDs of the options)
@@ -136,7 +136,7 @@ class Poll extends BaseModel
     }
 
     /**
-     * Returns the results of the current poll.
+     * Returns the (cached) results of the current poll.
      *
      * @return int[]
      */
