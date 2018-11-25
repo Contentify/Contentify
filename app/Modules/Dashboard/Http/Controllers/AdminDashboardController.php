@@ -17,6 +17,11 @@ class AdminDashboardController extends BackController
      */
     const FEED_URL = 'http://www.contentify.org/share/feeds/cms.json';
 
+    /**
+     * Show a warning when there is less free disk space that defined inm this constant
+     */
+    const MIN_FREE_DISK_SPACE = 100 /* MB */ * 1024 /* KB */ * 1024 /* B */;
+
     protected $icon = 'home';
 
     public function getIndex()
@@ -27,6 +32,11 @@ class AdminDashboardController extends BackController
             $this->alertWarning(trans('app.debug_warning').' '.HTML::link(
                 'https://github.com/Contentify/Contentify/wiki/FAQ#how-can-i-disable-the-debug-mode',
                 trans('app.read_more')));
+        }
+
+        if (function_exists('disk_free_space') and disk_free_space('.') < self::MIN_FREE_DISK_SPACE) {
+            $freeSpace = round(disk_free_space('.') / 1024 / 1024).'M';
+            $this->alertWarning(trans('app.space_warning', [$freeSpace]));
         }
 
         $this->pageView('dashboard::admin_index', compact('feed'));

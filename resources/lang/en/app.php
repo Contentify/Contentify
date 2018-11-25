@@ -22,8 +22,9 @@ return [
      */
     'spam_protection' => 'For spam protection, you have to wait a few seconds until you can submit this form.',
     'debug_warning'   => 'Warning: Debug mode is enabled but this does not seem to be a development server!',
-    'not_found'     => 'Resource not found.',
-    'not_possible'  => 'Sorry, but this action is not available right now.',
+    'not_found'       => 'Resource not found.',
+    'not_possible'    => 'Sorry, but this action is not available right now.',
+    'space_warning'   => 'There is little free disk space left (:0). Please clear the cache, increase the space or contact our support team.',
 
     /*
      * User permissions

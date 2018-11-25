@@ -22,6 +22,7 @@ return [
      */
     'spam_protection' => 'Por protección anti SPAM, tienes que esperar unos segundos antes de enviar el formulario.',
     'debug_warning'   => 'Aviso: El modo Debug está habilitado y esto no parece ser un servidor de desarrollo!',
+    'space_warning'   => 'Apenas queda espacio libre en el disco duro (:0). Por favor, borre la caché, aumente la memoria o póngase en contacto con nuestro soporte.',
 
     /*
      * Errors

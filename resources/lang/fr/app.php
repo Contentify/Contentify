@@ -22,6 +22,7 @@ return [
      */
     'spam_protection' => 'Spam Protection, merci d\'attendre quelques secondes avant de valider le formulaire.',
     'debug_warning'   => 'Avertissement: Le mode debug est activé, alors que le site est en production!',
+    'space_warning'   => 'Il ne reste pratiquement plus d\'espace libre sur le disque dur (:0). Veuillez vider le cache, augmenter la mémoire ou contacter notre support.',
 
     /*
      * Errors

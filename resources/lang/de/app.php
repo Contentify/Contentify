@@ -22,6 +22,7 @@ return [
      */
     'spam_protection' => 'Um Spam vorzubeugen, müssen Sie einige Sekunden warten, ehe Sie dieses Formular absenden können.',
     'debug_warning'   => 'Warnung: Der Debug-Modus ist aktiviert, obwohl dies ein Produktivserver zu sein scheint!',
+    'space_warning'   => 'Es ist kaum noch freier Festplattenspeicher vorhanden (:0). Bitte den Cache leeren, den Speicher vergrößern oder unseren Support kontaktieren.',
 
     /*
      * Errors
