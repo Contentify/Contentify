@@ -18,7 +18,7 @@ class AdminDashboardController extends BackController
     const FEED_URL = 'http://www.contentify.org/share/feeds/cms.json';
 
     /**
-     * Show a warning when there is less free disk space that defined inm this constant
+     * Show a warning when there is less free disk space than defined in this constant
      */
     const MIN_FREE_DISK_SPACE = 100 /* MB */ * 1024 /* KB */ * 1024 /* B */;
 
