@@ -66,18 +66,19 @@
 
                 var action = $(this).attr('data-action');
                 var index = parseInt($(this).parent().parent().attr('data-index'));
+                var tempItem;
 
                 switch (action) {
                     case 'up':
                         if (index > 0) {
-                            var tempItem = items[index - 1];
+                            tempItem = items[index - 1];
                             items[index - 1] = items[index];
                             items[index] = tempItem;
                         }
                         break;
                     case 'down':
                         if (index < items.length - 1) {
-                            var tempItem = items[index + 1];
+                            tempItem = items[index + 1];
                             items[index + 1] = items[index];
                             items[index] = tempItem;
                         }

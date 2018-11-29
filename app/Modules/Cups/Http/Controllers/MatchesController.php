@@ -47,8 +47,8 @@ class MatchesController extends FrontController
     /**
      * Confirms the result (score) of a participant.
      * 
-     * @param  int  $id The ID of the match
-     * @param  bool $id If true, confirm the left result. If false, confirm the right.
+     * @param  int  $id   The ID of the match
+     * @param  bool $left If true, confirm the left result. If false, confirm the right.
      * @return RedirectResponse
      */
     public function confirm($id, $left = true)

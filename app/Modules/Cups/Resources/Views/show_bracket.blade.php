@@ -1,5 +1,5 @@
 <div class="bracket" style="min-width: {{ $cup->rounds() * 200 }}px">
-    <?php $rows = $cup->slots // Inital value - not correct! ?>
+    <?php $rows = $cup->slots // Initial value - not correct! ?>
     <?php $matches = $cup->matchesDetailed() ?>
     <?php $lastRound = '' ?>
 

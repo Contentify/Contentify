@@ -202,7 +202,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
     }
 
     /**
-     * Makes a thread sticky or unsticky
+     * Makes a thread sticky or not sticky
      *
      * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null

@@ -66,8 +66,10 @@
 
             $('#url').keyup(function()
             {
+                var result;
+
                 if (providers.vimeo) {
-                    var result = getVimeoId($(this).val());
+                    result = getVimeoId($(this).val());
                     if (result !== false) {
                         $('#permanent_id').val(result);
                         selectProvider('vimeo');
@@ -75,7 +77,7 @@
                 }
 
                 if (providers.youtube) {
-                    var result = getYoutubeId($(this).val());
+                    result = getYoutubeId($(this).val());
                     if (result !== false) {
                         $('#permanent_id').val(result);
                         selectProvider('youtube');

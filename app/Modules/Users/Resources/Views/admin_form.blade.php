@@ -28,11 +28,14 @@
         }).success(function(data)
         {
             $self.get(0).checked = !!(+data);
+
+            var text;
             if (data == 1) {
-                var text = '{!! trans('users::action_activated') !!}';
+                text = '{!! trans('users::action_activated') !!}';
             } else {
-                var text = '{!! trans('users::action_deactivated') !!}';
+                text = '{!! trans('users::action_deactivated') !!}';
             }
+
             contentify.modal('{!! trans('app.object_user') !!}', text);
         }).fail(function(response)
         {

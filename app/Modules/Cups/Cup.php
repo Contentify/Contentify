@@ -142,11 +142,11 @@ class Cup extends BaseModel
                 ->withPivot('checked_in');
         }
     }
-   
+
     /**
      * Relationship: Returns all matches of this cup (ordered by round and round-row)
-     * 
-     * @return \Illuminate\Database\Eloquent\Collection
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function matches()
     {
@@ -203,7 +203,7 @@ class Cup extends BaseModel
     /**
      * Returns an array that uses the values of another array as values and keys.
      * 
-     * @param  string $attribute The name of thea ttribute that contains the source array
+     * @param  string $attribute The name of the attribute that contains the source array
      * @return array
      */
     public static function makeOptionArray($attribute) 

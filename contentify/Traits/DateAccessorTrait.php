@@ -61,7 +61,7 @@ trait DateAccessorTrait
         {
             return Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
         }
-        elseif ( ! $value instanceof DateTime)
+        elseif (! $value instanceof DateTime)
         {
             $format = $this->getDateFormat();
 

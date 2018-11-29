@@ -299,7 +299,7 @@ class AdminConfigController extends BackController
                     }
                     $line = substr($line, 0, 21).'</span>'.substr($line, 21);
                     $content .= '<div class="item"><span class="date">'.$line.'<div class="stack">';
-                } else { //  ...the "Stack trace:" entry and the stack entries do not
+                } else { // ...the "Stack trace:" entry and the stack entries do not
                     $content .= '<div class="stack-line">'.$line.'</div>';
                 }
             }
@@ -319,7 +319,7 @@ class AdminConfigController extends BackController
     /**
      * Show the log file content
      *
-     * @return void
+     * @return null|string
      */
     public function getPlainLog()
     {

@@ -14,7 +14,7 @@
 
 <script>
     // Prevent users from losing their unsent message
-    // when clicking on another tab (inob / outbox)
+    // when clicking on another tab (inbox / outbox)
     $(window).on('beforeunload', function()
     {
         if ($('#receiver_name').val() || $('#title').val() || $('#text').val()) {

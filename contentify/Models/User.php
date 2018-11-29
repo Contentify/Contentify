@@ -389,7 +389,7 @@ class User extends SentinelUser implements UserInterface
         try {
             $imgData = getimagesize($file->getRealPath()); // Try to gather info about the image
         } catch (Exception $e) {
-
+            // Do nothing
         }
 
         if (! in_array(strtolower($extension), ModelHandler::ALLOWED_IMG_EXTENSIONS)) {
@@ -506,7 +506,7 @@ class User extends SentinelUser implements UserInterface
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public static function findAllUsersWithAccess($permissions, $level = 1) {
-        if ( ! is_array($permissions)) {
+        if (! is_array($permissions)) {
             $permissions = (array) $permissions;
         }
 

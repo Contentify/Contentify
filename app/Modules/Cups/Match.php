@@ -168,7 +168,7 @@ class Match extends BaseModel
      * Returns the match that is next / right to this match (in the bracket).
      * Returns null if the corresponding match is not yet generated (or if this match is the final match).
      * 
-     * @return self|null
+     * @return self
      */
     public function nextMatch()
     {
@@ -176,7 +176,7 @@ class Match extends BaseModel
     }
 
     /**
-     * Returns the "partner" match of this match. Boths matches share the same "next match".
+     * Returns the "partner" match of this match. Both matches share the same "next match".
      * Returns null if the corresponding match is not yet generated or not completed.
      * 
      * * @return self|null

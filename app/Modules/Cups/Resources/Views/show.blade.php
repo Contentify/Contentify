@@ -3,7 +3,7 @@
 <div class="content">
     <ul class="nav nav-tabs nav-justified">
         <li role="presentation" class="active"><a href="#home" data-toggle="tab">{!! trans('app.home') !!}</a></li>
-        <li role="presentation"><a href="#particpants" data-toggle="tab">{{ trans_object('participants') }}</a></li>
+        <li role="presentation"><a href="#participants" data-toggle="tab">{{ trans_object('participants') }}</a></li>
         @if ($cup->start_at->timestamp < time() + (user() and user()->isSuperAdmin() ? 0 : 120))
             <li role="presentation"><a href="#matches" data-toggle="tab">{{ trans('app.object_matches') }}</a></li>
             <li role="presentation"><a href="#bracket" data-toggle="tab">{{ trans('cups::bracket') }}</a></li>
@@ -138,7 +138,7 @@
             {!! Comments::show('cups', $cup->id) !!}
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="particpants">
+        <div role="tabpanel" class="tab-pane" id="participants">
             <table class="table">
                 <tr>
                     <th>{{ trans('app.name') }}</th>

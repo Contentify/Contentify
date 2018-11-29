@@ -71,9 +71,11 @@
 
         $('#url').keyup(function()
         {
+            var provider, result;
+
             if (providers.twitch) {
-                var provider = 'twitch';
-                var result = getStreamId(provider , $(this).val());
+                provider = 'twitch';
+                result = getStreamId(provider , $(this).val());
                 if (result !== false) {
                     $('#permanent_id').val(result);
                     selectProvider(provider);
@@ -81,8 +83,8 @@
             }
 
             if (providers.smashcast) {
-                var provider = 'smashcast';
-                var result = getStreamId(provider , $(this).val());
+                provider = 'smashcast';
+                result = getStreamId(provider , $(this).val());
                 if (result !== false) {
                     $('#permanent_id').val(result);
                     selectProvider(provider);
