@@ -2,6 +2,7 @@
 
 namespace Contentify\Models;
 
+use Contentify\ModelHandler;
 use Contentify\Traits\SlugTrait;
 use DateAccessorTrait;
 use Eloquent;
@@ -108,12 +109,12 @@ class BaseModel extends Eloquent
                     // Do nothing.
                 }
 
-                if (! isset($imgData[2]) or ! $imgData[2]) { // Check if image has a size. If not, it's not an image.
+                if (! in_array(strtolower($extension), ModelHandler::ALLOWED_IMG_EXTENSIONS)) {
                     return trans('app.invalid_image');
                 }
 
-                $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
-                if (! in_array(strtolower($extension), $allowedExtensions)) {
+                // Check if image has a size. If not, it's not an image. Does not work for SVGs.
+                if (strtolower($extension) !== 'svg' and (! isset($imgData[2]) or ! $imgData[2])) {
                     return trans('app.invalid_image');
                 }
             }

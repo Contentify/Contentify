@@ -9,6 +9,7 @@ use Cache;
 use Carbon;
 use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
 use Cartalyst\Sentinel\Users\UserInterface;
+use Contentify\ModelHandler;
 use Contentify\Traits\SlugTrait;
 use DB;
 use Exception;
@@ -391,15 +392,15 @@ class User extends SentinelUser implements UserInterface
 
         }
 
-        if (! isset($imgData[2]) or ! $imgData[2]) {
+        if (! in_array(strtolower($extension), ModelHandler::ALLOWED_IMG_EXTENSIONS)) {
             return Redirect::route('users.edit', [$this->id])
             ->withInput()->withErrors([trans('app.invalid_image')]);
         }
 
-        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
-        if (! in_array(strtolower($extension), $allowedExtensions)) {
+        // Check if image has a size. If not, it's not an image. Does not work for SVGs.
+        if (strtolower($extension) !== 'svg' and (! isset($imgData[2]) or ! $imgData[2])) {
             return Redirect::route('users.edit', [$this->id])
-            ->withInput()->withErrors([trans('app.invalid_image')]);
+                ->withInput()->withErrors([trans('app.invalid_image')]);
         }
 
         $filePath = public_path().'/uploads/users/';

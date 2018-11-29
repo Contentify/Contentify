@@ -21,6 +21,11 @@ use UserActivities;
 class ModelHandler
 {
     /**
+     * Array that contains all allowed file extensions for image files
+     */
+    const ALLOWED_IMG_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
+
+    /**
      * Form fields of auto generated relationship fields use this as a prefix for their names
      */
     const RELATION_FIELD_PREFIX = '_relation_';
@@ -413,12 +418,12 @@ class ModelHandler
                             // Do nothing
                         }
 
-                        if (! isset($imgData[2]) or ! $imgData[2]) {
+                        if (! in_array(strtolower($extension), self::ALLOWED_IMG_EXTENSIONS)) {
                             $error = trans('app.invalid_image');
                         }
 
-                        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
-                        if (! in_array(strtolower($extension), $allowedExtensions)) {
+                        // Check if image has a size. If not, it's not an image. Does not work for SVGs.
+                        if (strtolower($extension) !== 'svg' and (! isset($imgData[2]) or ! $imgData[2])) {
                             $error = trans('app.invalid_image');
                         }
                     }
@@ -563,12 +568,12 @@ class ModelHandler
                             // Do nothing
                         }
 
-                        if (! isset($imgData[2]) or ! $imgData[2]) {
+                        if (! in_array(strtolower($extension), self::ALLOWED_IMG_EXTENSIONS)) {
                             $error = trans('app.invalid_image');
                         }
 
-                        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp'];
-                        if (! in_array(strtolower($extension), $allowedExtensions)) {
+                        // Check if image has a size. If not, it's not an image. Does not work for SVGs.
+                        if (strtolower($extension) !== 'svg' and (! isset($imgData[2]) or ! $imgData[2])) {
                             $error = trans('app.invalid_image');
                         }
                     }
