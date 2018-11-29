@@ -18,7 +18,10 @@
         "watson/validating": "3.*",
         "caffeinated/modules": "4.*",
         "invisnik/laravel-steam-auth": "3.*",
-        "oyejorge/less.php": "1.*"
+        "oyejorge/less.php": "1.*",
+        "ext-json": "*",
+        "ext-ctype": "*",
+        "ext-curl": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
