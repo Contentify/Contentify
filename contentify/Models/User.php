@@ -164,12 +164,19 @@ class User extends SentinelUser implements UserInterface
         
         self::updated(function(User $user)
         {
-            /*
-             * Update the locale (since its stored in a session variable we need to update it)
-             * when changed in profile or user just logged in.
-             */
             if (user() and user()->id == $user->id) {
+                /*
+                 * Update the locale (since its stored in a session variable we need to update it)
+                 * when changed in profile or user just logged in.
+                 */
                 Session::forget('app.locale');
+
+                /*
+                 * Forget the cached (forum) signature so it has to be rebuilt with the new signature
+                 */
+                if ($user->isDirty('signature')) {
+                    Cache::forget(self::CACHE_KEY_SIGNATURE.$user->id);
+                }
             }
         });
     }
@@ -541,7 +548,7 @@ class User extends SentinelUser implements UserInterface
             $rendered = $bbcode->render($this->signature);
             $rendered = emojis($rendered);
 
-            Cache::put($cacheKey, $rendered, 60);
+            Cache::forever($cacheKey, $rendered);
 
             return $rendered;
         }
