@@ -46,7 +46,7 @@
             @if ($forumPost->creator->signature)
                 <div class="signature">
                     <hr>
-                    {{ $forumPost->creator->signature }}
+                    {!! $forumPost->creator->renderSignature() !!}
                 </div>
             @endif
         </div>

@@ -5,6 +5,7 @@ namespace Contentify\Models;
 use Activation;
 use App\Modules\Friends\Friendship;
 use App\Modules\Messages\Message;
+use BBCode;
 use Cache;
 use Carbon;
 use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
@@ -90,6 +91,11 @@ class User extends SentinelUser implements UserInterface
      * Name of the cache key for the user message counter
      */
     const CACHE_KEY_MESSAGES = 'users::messageCounter.';
+
+    /**
+     * Name of the cache key for the user (forum) signature
+     */
+    const CACHE_KEY_SIGNATURE = 'users::signature.';
 
     /**
      * True if model is slugable. Usage in SlugTrait.
@@ -515,6 +521,30 @@ class User extends SentinelUser implements UserInterface
         });
 
         return $users;
+    }
+
+    /**
+     * If called the first time for the current user,
+     * renders and returns the (forum) signature of the current user.
+     * if called again, takes the rendered signature from the cache.
+     *
+     * @return string
+     */
+    public function renderSignature()
+    {
+        $cacheKey = self::CACHE_KEY_SIGNATURE.$this->id;
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        } else {
+            $bbcode = new BBCode();
+
+            $rendered = $bbcode->render($this->signature);
+            $rendered = emojis($rendered);
+
+            Cache::put($cacheKey, $rendered, 60);
+
+            return $rendered;
+        }
     }
 
 }
