@@ -174,6 +174,10 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      */
     public function delete($id)
     {
+        if (! $this->checkAccessDelete()) {
+            return null;
+        }
+
         /** @var ForumThread $forumThread */
         $forumThread = ForumThread::findOrFail($id);
         $forum = $forumThread->forum;
