@@ -21,8 +21,8 @@ return array(
     'forum_circle'      => 'Ungültiges Eltern-Forum. Zyklen sind nicht erlaubt.',
     'max_level'         => 'Das maximale Verschachtelungslevel wurd erreicht.',
     'access_info'       => 'Wenn das Forum ein Unterforum ist, wird das Ändern der Zugriffsberechtigungen keinen Effekt haben.',
-    'show_new'          => 'Zeige Neue Beiträge',
-    'show_user_posts'   => 'Zeige Neueste Forum-Beiträge',
+    'show_new'          => 'Zeige neue Beiträge',
+    'show_user_posts'   => 'Zeige neueste Forum-Beiträge',
 
     /*
      * Threads

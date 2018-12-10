@@ -7,16 +7,10 @@
 @if (user())
     @if (user()->hasAccess('forums', PERM_UPDATE))
         <a class="btn btn-default" href="{!! url('forums/threads/sticky/'.$forumThread->id) !!}">
-            @if ($forumThread->sticky)
-                {!! HTML::fontIcon('check') !!}
-            @endif
-            {!! trans('forums::sticky') !!}
+            {{ trans('forums::sticky') }}: {!! HTML::fontIcon($forumThread->sticky ? 'check' : 'times') !!}
         </a>
         <a class="btn btn-default" href="{!! url('forums/threads/closed/'.$forumThread->id) !!}">
-            @if ($forumThread->closed)
-                {!! HTML::fontIcon('check') !!}
-            @endif
-            {!! trans('forums::closed') !!}
+            {{ trans('forums::closed') }}: {!! HTML::fontIcon($forumThread->closed ? 'check' : 'times') !!}
             </a>
         <a class="btn btn-default" href="{!! url('forums/threads/move/'.$forumThread->id) !!}">{!!  trans('forums::move') !!}</a>
     @endif
