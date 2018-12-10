@@ -126,13 +126,6 @@
                     @widget('Cups::CupsControl')
 
                     <br>
-                    <h3>
-                        Polls
-                        <a href="{{ url('cups') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus') !!}</a>
-                    </h3>
-                    @widget('Downloads::Downloads')
-
-                    <br>
                     <div class="text-center">
                         @widget('Adverts::Advert')
                     </div>
