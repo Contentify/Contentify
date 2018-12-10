@@ -12,8 +12,10 @@ class DownloadsWidget extends Widget
     public function render(array $parameters = array())
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        $orderByRank= isset($parameters['orderByRank']) and $parameters['orderByRank'] == true;
 
-        $downloads = Download::orderBy('created_at', 'DESC')->take($limit)->get();
+        $orderColumn = $orderByRank ? 'access_counter' : 'created_at';
+        $downloads = Download::orderBy($orderColumn, 'DESC')->take($limit)->get();
 
         return View::make('downloads::widget', compact('downloads'))->render();
     }
