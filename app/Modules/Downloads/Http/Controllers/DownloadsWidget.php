@@ -13,9 +13,14 @@ class DownloadsWidget extends Widget
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
         $orderByRank= isset($parameters['orderByRank']) and $parameters['orderByRank'] == true;
-
         $orderColumn = $orderByRank ? 'access_counter' : 'created_at';
-        $downloads = Download::orderBy($orderColumn, 'DESC')->take($limit)->get();
+        $hasAccess = (user() and user()->hasAccess('internal'));
+
+        $query = Download::orderBy($orderColumn, 'DESC');
+        if (! $hasAccess) {
+            $query->whereInternal(false);
+        }
+        $downloads = $query->take($limit)->get();
 
         return View::make('downloads::widget', compact('downloads'))->render();
     }

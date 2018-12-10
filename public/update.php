@@ -77,8 +77,6 @@ EOD;
      */
     public function updateDatabase($prefix = '')
     {
-        $appName = $this->app->getConfig('app')['name'];
-
         $forbiddenEmailDomains = 'example.com,example.org';
 
         // How to create these statements: Export the new database - for example via phpMyAdmin -
@@ -120,21 +118,22 @@ EOD;
                 `updated_at` timestamp NULL DEFAULT NULL,
                 `deleted_at` timestamp NULL DEFAULT NULL
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-              "CREATE TABLE `{$prefix}polls_votes` (
+            "CREATE TABLE `{$prefix}polls_votes` (
                   `poll_id` int(11) NOT NULL,
                 `user_id` int(11) NOT NULL,
                 `option_id` int(11) NOT NULL
               ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;",
-              "ALTER TABLE `{$prefix}polls`
+            "ALTER TABLE `{$prefix}polls`
                 ADD PRIMARY KEY (`id`),
                 ADD UNIQUE KEY `polls_slug_unique` (`slug`),
                 ADD KEY `polls_creator_id_foreign` (`creator_id`),
                 ADD KEY `polls_updater_id_foreign` (`updater_id`);",
-              "ALTER TABLE `{$prefix}polls_votes`
+            "ALTER TABLE `{$prefix}polls_votes`
                 ADD PRIMARY KEY (`poll_id`,`user_id`,`option_id`);",
-              "ALTER TABLE `{$prefix}polls`
-                MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;"
-
+            "ALTER TABLE `{$prefix}polls`
+                MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;",
+            "ALTER TABLE {$prefix}events ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
+            "ALTER TABLE {$prefix}downloads ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
          ];
 
         return $updateQueries;

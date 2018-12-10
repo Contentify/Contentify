@@ -24,7 +24,13 @@ class CalendarWidget extends Widget
             $month = date('n');
         }
 
-        $events = Event::eventsOfMonth($year, $month)->get();
+        $hasAccess = (user() and user()->hasAccess('internal'));
+
+        $query = Event::eventsOfMonth($year, $month);
+        if (! $hasAccess) {
+            $query->whereInternal(false);
+        }
+        $events = $query->get();
 
         $firstOfMonth = new Carbon;
         $firstOfMonth->setDate($year, $month, 1)->setTime(0, 0, 0);

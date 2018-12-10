@@ -15,6 +15,7 @@ use SoftDeletingTrait;
  * @property string $text
  * @property string $url
  * @property string $location
+ * @property bool $internal
  * @property string $image
  * @property int $access_counter
  * @property int $creator_id
@@ -30,13 +31,14 @@ class Event extends BaseModel
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'text', 'url', 'location', 'starts_at'];
+    protected $fillable = ['title', 'text', 'url', 'location', 'internal', 'starts_at'];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
         'title'     => 'required|min:3',
         'url'       => 'nullable|url',
+        'internal'  => 'boolean',
     ];
 
     public static $relationsData = [

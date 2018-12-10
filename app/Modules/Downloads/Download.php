@@ -19,6 +19,7 @@ use SoftDeletingTrait;
  * @property string                             $file
  * @property int                                $file_size
  * @property bool                               $is_image
+ * @property bool                               $internal
  * @property int                                $access_counter
  * @property int                                $creator_id
  * @property int                                $updater_id
@@ -34,12 +35,13 @@ class Download extends BaseModel
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'description', 'download_cat_id'];
+    protected $fillable = ['title', 'description', 'internal', 'download_cat_id'];
 
     public static $fileHandling = ['file'];
 
     protected $rules = [
         'title'             => 'required|min:3',
+        'internal'          => 'boolean',
         'download_cat_id'   => 'required|integer'
     ];
 

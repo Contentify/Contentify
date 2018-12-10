@@ -17,5 +17,7 @@
 
     {!! Form::smartImageFile('image', trans('app.image')) !!}
 
+    {!! Form::smartCheckbox('internal', trans('app.internal')) !!}
+
     {!! Form::actions() !!}
 {!! Form::close() !!}

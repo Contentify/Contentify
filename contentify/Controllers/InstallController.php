@@ -486,6 +486,7 @@ class InstallController extends Controller
             $table->string('file')->nullable();
             $table->integer('file_size')->default(0);
             $table->boolean('is_image')->default(false);
+            $table->boolean('internal')->default(false);
         }, ['download_cat_id']);
         
         $this->create('slide_cats', function(Blueprint $table) { }, [], ['slug']);
@@ -639,6 +640,7 @@ class InstallController extends Controller
             $table->string('url')->nullable();
             $table->string('location')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('internal')->default(false);
             $table->timestamp('starts_at')->nullable();
         });
 

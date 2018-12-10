@@ -11,6 +11,8 @@
 
     {!! Form::smartTextarea('description', trans('app.description'), true) !!}
 
+    {!! Form::smartCheckbox('internal', trans('app.internal')) !!}
+
     {!! Form::smartFile() !!}
 
     {!! Form::actions() !!}

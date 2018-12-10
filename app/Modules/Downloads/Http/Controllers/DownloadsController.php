@@ -25,7 +25,7 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        // NOTE: Add has('downloads') to show only categories that have downloads
+        // NOTE: Add ->has('downloads') if you want to only show categories that have downloads
         $downloadCats = DownloadCat::paginate($perPage);
 
         $this->pageView('downloads::index', compact('downloadCats'));
@@ -34,7 +34,7 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
     /**
      * Show a category
      * 
-     * @param  int $id The id of the category
+     * @param  int $id The ID of the category
      * @return void
      */
     public function showCategory($id)
@@ -46,7 +46,13 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
         $downloadCat->save();
 
         $perPage = Config::get('app.frontItemsPerPage');
-        $downloads = Download::whereDownloadCatId($id)->paginate($perPage);
+        $hasAccess = (user() and user()->hasAccess('internal'));
+
+        $query = Download::whereDownloadCatId($id);
+        if (! $hasAccess) {
+            $query->whereInternal(false);
+        }
+        $downloads = $query->paginate($perPage);
 
         $this->title($downloadCat->title);
 
@@ -56,13 +62,19 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
     /**
      * Show a download detail page
      * 
-     * @param  int $id The id of the download
+     * @param  int $id The ID of the download
      * @return void
      */
     public function show($id)
     {
         /** @var Download $download */
         $download = Download::findOrFail($id);
+
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        if ($download->internal and ! $hasAccess) {
+            $this->alertError(trans('app.access_denied'));
+            return;
+        }
 
         $this->title($download->title);
 
@@ -72,13 +84,18 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
     /**
      * Perform a download
      * 
-     * @param  int $id The id of the download
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @param  int $id The ID of the download
+     * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function perform($id)
     {
         /** @var Download $download */
         $download = Download::findOrFail($id);
+
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        if ($download->internal and ! $hasAccess) {
+            return Response::make(trans('app.access_denied'), 403); // 403: Not allowed
+        }
 
         $download->access_counter++;
         $download->save();

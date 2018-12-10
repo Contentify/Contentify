@@ -20,7 +20,13 @@ class EventsController extends FrontController implements GlobalSearchInterface
 
     public function index()
     {
-        $events = Event::orderBy('starts_at', 'DESC')->get();
+        $hasAccess = (user() and user()->hasAccess('internal'));
+
+        $query = Event::orderBy('starts_at', 'DESC');
+        if (! $hasAccess) {
+            $query->whereInternal(false);
+        }
+        $events = $query->get();
 
         $this->pageView('events::index', compact('events'));
     }
@@ -35,6 +41,12 @@ class EventsController extends FrontController implements GlobalSearchInterface
     {
         /** @var Event $event */
         $event = Event::findOrFail($id);
+
+        $hasAccess = (user() and user()->hasAccess('internal'));
+        if ($event->internal and ! $hasAccess) {
+            $this->alertError(trans('app.access_denied'));
+            return;
+        }
 
         $event->access_counter++;
         $event->save();
