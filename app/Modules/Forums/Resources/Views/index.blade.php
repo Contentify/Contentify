@@ -6,7 +6,7 @@
     @endif
 </div>
 
-@foreach($forums as $forum)
+@forelse($forums as $forum)
     <div class="root-forum">
         <div class="sub-forum head">
             <div class="info">
@@ -53,4 +53,6 @@
             @endforelse
         </div>
     </div>
-@endforeach
+@empty
+    <p>{{ trans('app.nothing_here') }}</p>
+@endforelse

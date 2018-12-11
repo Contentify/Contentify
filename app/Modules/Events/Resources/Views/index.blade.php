@@ -1,6 +1,6 @@
 <h1 class="page-title">{{ trans('app.object_events') }}</h1>
 
-@foreach ($events as $event)
+@forelse ($events as $event)
     <article class="event">
         <header>
             <a href="{!! url('events/'.$event->id.'/'.$event->slug) !!}">
@@ -41,4 +41,6 @@
             </tbody>
         </table>
     </article>
-@endforeach
+@empty
+    <p>{{ trans('app.nothing_here') }}</p>
+@endforelse

@@ -1,6 +1,6 @@
 <h1 class="page-title">{{ trans_object('teams') }}</h1>
 
-@foreach ($teams as $team)
+@forelse ($teams as $team)
     <article class="team">
         <header>
             <a href="{!! url('teams/'.$team->id.'/'.$team->slug) !!}">
@@ -36,4 +36,6 @@
             </ul>
         </div>
     </article>
-@endforeach
+@empty
+    <p>{{ trans('app.nothing_here') }}</p>
+@endforelse

@@ -199,6 +199,7 @@ return [
     'preview'           => 'Vorschau',
     'total'             => 'Gesamt',
     'nothing_new'       => 'Entschuldigung, es gibt noch nichts Neues. Bitte versuchen Sie es später erneut.',
+    'nothing_here'      => 'Entschuldigung, es gibt hier noch keinen Inhalt. Bitte versuchen Sie es später erneut.',
     'back'              => 'Zurück',
     'general'           => 'Allgemein',
     'services'          => 'Services',

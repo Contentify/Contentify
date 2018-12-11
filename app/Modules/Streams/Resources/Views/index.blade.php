@@ -1,7 +1,7 @@
 <h1 class="page-title">{{ trans_object('streams') }}</h1>
 
 <div class="streams clearfix">
-    @foreach ($streams as $stream)
+    @forelse ($streams as $stream)
         <div class="stream">
             <a href="{{ url('streams/'.$stream->id.'/'.$stream->slug) }}">
                 @if ($stream->thumbnail)
@@ -13,7 +13,9 @@
                 {{ $stream->title }}
             </a>
         </div>
-    @endforeach
+    @empty
+        <p>{{ trans('app.nothing_here') }}</p>
+    @endforelse
 </div>
 
 {!! $streams->render() !!}

@@ -1,7 +1,7 @@
 <h1 class="page-title">{{ trans_object('videos') }}</h1>
 
 <div class="videos clearfix">
-    @foreach ($videos as $video)
+    @forelse  ($videos as $video)
         <div class="video">
             <a href="{{ url('videos/'.$video->id.'/'.$video->slug) }}" data-id="{{ $video->id }}">
                 @if ($video->provider == 'youtube')
@@ -24,7 +24,9 @@
                 {{ $video->title }}
             </a>
         </div>
-    @endforeach
+    @empty
+        <p>{{ trans('app.nothing_here') }}</p>
+    @endforelse
 </div>
 
 {!! $videos->render() !!}

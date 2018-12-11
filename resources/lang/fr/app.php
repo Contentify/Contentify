@@ -199,6 +199,7 @@ return [
     'preview'           => 'Previsualiser',
     'total'             => 'Total',
     'nothing_new'       => 'Désoler, rien de nouveau. Revenez plus tard.',
+    'nothing_here'      => 'Désoler, il n\'y a pas encore de contenu. Veuillez réessayer plus tard.',
     'back'              => 'Retour',
     'general'           => 'Généralement',
     'services'          => 'Services',

@@ -2,7 +2,7 @@
 
 <div class="questions clearfix">
     <?php $category = null ?>
-    @foreach ($questions as $question)
+    @forelse ($questions as $question)
         @if ($question->questionCat != $category)
             <?php $category = $question->questionCat ?>
             <h2 class="category-title">{{ $category->title }}</h2>
@@ -12,7 +12,9 @@
 
             <div class="text">{!! $question->answer !!}</div>
         </div>
-    @endforeach
+    @empty
+        <p>{{ trans('app.nothing_here') }}</p>
+    @endforelse
 </div>
 
 {!! $questions->render() !!}

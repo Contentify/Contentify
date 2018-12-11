@@ -1,7 +1,7 @@
 <h1 class="page-title">{{ trans_object('galleries') }}</h1>
 
 <div class="galleries">
-    @foreach ($galleries as $gallery)
+    @forelse ($galleries as $gallery)
         <h2>{{ $gallery->title }}</h2>
         
         <div class="gallery clearfix">
@@ -11,7 +11,9 @@
                 </a>
             @endforeach
         </div>
-    @endforeach
+    @empty
+        <p>{{ trans('app.nothing_here') }}</p>
+    @endforelse
 </div>
 
 {!! $galleries->render() !!}

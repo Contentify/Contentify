@@ -1,6 +1,6 @@
 <h1 class="page-title model-index">{{ trans_object('partners') }}</h1>
 
-@foreach ($partners as $partner)
+@forelse ($partners as $partner)
     <article class="partner">
         <header>
             <h2>{{ $partner->title }}</h2>
@@ -21,4 +21,6 @@
             @endif
         </div>
     </article>
-@endforeach
+@empty
+    <p>{{ trans('app.nothing_here') }}</p>
+@endforelse

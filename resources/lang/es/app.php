@@ -199,6 +199,7 @@ return [
     'preview'           => 'Vista previa',
     'total'             => 'Total',
     'nothing_new'       => 'Lo sentimos, no hay novedades. Por favor, vuelve luego.',
+    'nothing_here'      => 'Lo siento, aún no hay contenido aquí. Por favor, inténtelo de nuevo más tarde.',
     'back'              => 'Atrás',
     'general'           => 'General',
     'services'          => 'Servicios',
