@@ -203,6 +203,7 @@ return [
     'back'              => 'Zurück',
     'general'           => 'Allgemein',
     'services'          => 'Services',
+    'metainfo'			=> 'Metainformationen',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Weihnachtsmodus (Schnee)',
     'theme_snow_color'  => 'Flockenfarbe',

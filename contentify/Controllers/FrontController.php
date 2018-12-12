@@ -33,7 +33,7 @@ abstract class FrontController extends BaseController
             $theme = Config::get('app.theme');
 
             if (! $theme) {
-                throw new Exception('Error: Could not determine the theme name from the config!');
+                throw new Exception('Error: Could not retrieve the theme name from the config!');
             }
 
             $layoutName = $this->layout? $this->layout : lcfirst($theme).'::layout';

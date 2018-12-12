@@ -4,6 +4,7 @@ namespace Contentify;
 
 use Contentify\Models\UserActivity;
 use DB;
+use InvalidArgumentException;
 use Exception;
 
 class UserActivities
@@ -133,7 +134,7 @@ class UserActivities
         $weeks = (int) $weeks;
 
         if ($weeks < 1) {
-            throw new Exception('UserActivities: $weeks is smaller than 1!');
+            throw new InvalidArgumentException('UserActivities: $weeks is smaller than 1!');
         }
 
         UserActivity::where('created_at', '<', DB::raw('NOW() - INTERVAL '.$weeks.' WEEK'))->delete();

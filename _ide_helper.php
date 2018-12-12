@@ -3063,7 +3063,7 @@ namespace Illuminate\Support\Facades {
          * Start a new database transaction.
          *
          * @return void 
-         * @throws Exception
+         * @throws \Exception
          * @static 
          */ 
         public static function beginTransaction()
@@ -11970,7 +11970,7 @@ namespace Collective\Html {
          * @param mixed $default Null or an ID
          * @param bool $nullable If true the result can be empty and a "none selected" option is added
          * @return string 
-         * @throws Exception
+         * @throws \Exception
          * @static 
          */ 
         public static function selectForeign($name, $default = null, $nullable = false)
@@ -12147,7 +12147,7 @@ namespace Collective\Html {
          * @param bool $nullable If true the select element can be empty
          * @param bool $nullOption If true an extra element that has a null value is added
          * @return string 
-         * @throws Exception
+         * @throws \Exception
          * @static 
          */ 
         public static function smartSelectRelation($relationName, $title, $sourceModelClass, $default = null, $nullable = false, $nullOption = false)
@@ -12919,7 +12919,7 @@ namespace Collective\Html {
          * @param string $widgetName The class name of the widget. For module widgets it's <Module>::<Widget>
          * @param array $parameters Array with parameters (name-value-pairs)
          * @return string 
-         * @throws Exception
+         * @throws \Exception
          * @static 
          */ 
         public static function widget($widgetName, $parameters = null)
@@ -14189,7 +14189,7 @@ namespace Contentify\Facades {
          * @param string $info Additional information
          * @param int $createdAt Date and time when the activity was created. Null = now.
          * @return void 
-         * @throws Exception
+         * @throws \Exception
          * @static 
          */ 
         public static function add($activityId, $frontend, $userId, $modelClass = null, $info = null, $createdAt = null)
@@ -14286,12 +14286,11 @@ namespace Contentify\Facades {
         }
         
         /**
-         * Deletes old user activities so that the database table can't
-         * get fat.
+         * Deletes old user activities so that the database table can't get fat.
          *
          * @param int $weeks Delete activities older than x weeks (1 at least)
          * @return void 
-         * @throws Exception
+         * @throws \Exception
          * @static 
          */ 
         public static function deleteOld($weeks = 1)

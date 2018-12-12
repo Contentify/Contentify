@@ -795,13 +795,13 @@ class InstallController extends Controller
     {
         $this->createDefaultCategories(['news_cats', 'partner_cats', 'advert_cats', 'slide_cats', 'question_cats']);
         $this->createDefaultCategories(['download_cats'], true);
-        
+
+        // Note: We make insertions for default values, we do not have to create empty records
         DB::table('config')->insert([
             ['name' => 'app.name',                      'value' => Config::get('app.name', null, false)],
             ['name' => 'app.theme',                     'value' => 'MorpheusTheme'],
             ['name' => 'app.theme_christmas',           'value' => 0],
             ['name' => 'app.theme_snow_color',          'value' => '#ffffff'],
-            ['name' => 'app.analytics',                 'value' => ''],
             ['name' => 'app.https',                     'value' => 0],
             ['name' => 'app.dbBackup',                  'value' => 0],
             ['name' => 'auth::registration',            'value' => 1],
@@ -810,7 +810,9 @@ class InstallController extends Controller
             ['name' => 'app.twitter',                   'value' => 'ContentifyCMS'],
             ['name' => 'app.facebook',                  'value' => 'contentifycms'],
             ['name' => 'app.youtube',                   'value' => 'UC2gIIZzySdgxrQ3jM4jmoqQ'],
-            ['name' => 'app.twitchKey',                 'value' => ''],
+            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
+            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
+            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
             ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
         ]);
 

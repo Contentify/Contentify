@@ -18,6 +18,9 @@ class SearchController extends FrontController
         $this->pageView('search::form');
     }
 
+    /**
+     * @throws Exception
+     */
     public function postCreate()
     {
         $subject = Input::get('subject');

@@ -2,7 +2,7 @@
 
 namespace App\Modules\Navigations\Http\Controllers;
 
-use Exception;
+use InvalidArgumentException;
 use View;
 use Widget;
 
@@ -16,7 +16,7 @@ class BreadcrumbWidget extends Widget
             
             return View::make('navigations::breadcrumb_widget', compact('links'))->render();
         } else {
-            throw new Exception('Breadcrumb Widget: Missing array with breadcrumb links!');
+            throw new InvalidArgumentException('Breadcrumb Widget: Missing array with breadcrumb links!');
         }
     }
 

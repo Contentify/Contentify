@@ -35,4 +35,14 @@ return array(
     'db_backup'                 => 'Backup BDD automatique',
     'forbidden_email_domains'   => 'Domaines d\'email bloqués',
 
+    /*
+     * Meta information
+     */
+    'meta_author'	            => 'Auteur',
+    'meta_author_info'          => 'A qui est ce site ?',
+    'meta_keywords'	            => 'Mots-Clés',
+    'meta_keywords_info'	    => 'Optimisation du site pour moteur de recherche. (Mots-Clés)',
+    'meta_description'	        => 'Description',
+    'meta_description_info'     => 'Optimisation du site pour moteur de recherche. (Description)',
+
 );

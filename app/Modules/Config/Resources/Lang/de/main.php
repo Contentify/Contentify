@@ -33,6 +33,16 @@ return array(
     'analytics'                 => 'Analytics Code',
     'registration'              => 'Registrierung freigeschaltet',
     'db_backup'                 => 'Automatisches DB Backup',
-    'forbidden_email_domains'   => 'Gesperrte Email-Domains'
+    'forbidden_email_domains'   => 'Gesperrte Email-Domains',
+
+    /*
+     * Meta information
+     */
+	'meta_author'	            => 'Author',
+	'meta_author_info'	        => 'Wem gehört die Website?',
+    'meta_keywords'	            => 'Schlagworte',
+    'meta_keywords_info'        => 'Optimierung der Website für Suchmaschinen (Schlagworte)',
+    'meta_description'	        => 'Beschreibung',
+	'meta_description_info'     => 'Optimierung der Website für Suchmaschinen (Beschreibung)',
 
 );

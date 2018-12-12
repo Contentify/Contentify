@@ -33,6 +33,16 @@ return array(
     'analytics'                 => 'Analytics Code',
     'registration'              => 'Registration unlocked',
     'db_backup'                 => 'Automatic DB Backup',
-    'forbidden_email_domains'   => 'Blocked Email Domains'
+    'forbidden_email_domains'   => 'Blocked Email Domains',
+
+    /*
+     * Meta information
+     */
+    'meta_author'	            => 'Author',
+    'meta_author_info'	        => 'Whose website is this?',
+    'meta_keywords'	            => 'Keywords',
+    'meta_keywords_info'        => 'Optimization of the website for search engine. (Keywords)',
+    'meta_description'	        => 'Description',
+    'meta_description_info'     => 'Optimization of the website for search engine. (Description)',
 
 );

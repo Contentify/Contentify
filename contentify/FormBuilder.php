@@ -9,6 +9,7 @@ use Crypt;
 use DB;
 use Exception;
 use HTML;
+use InvalidArgumentException;
 use MsgException;
 use URL;
 
@@ -263,7 +264,7 @@ class FormBuilder extends OriginalFormBuilder
     {
         $pos = strrpos($name, '_');
         if ($pos === false) {
-            throw new Exception("Invalid foreign key: {$name}", 1);
+            throw new InvalidArgumentException("Invalid foreign key: {$name}", 1);
         }
         $modelName = str_plural(substr($name, 0, $pos));
         $attribute = substr($name, $pos + 1);

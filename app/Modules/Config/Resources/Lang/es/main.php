@@ -33,6 +33,15 @@ return array(
     'analytics'                 => 'Código de Analytics',
     'registration'              => 'Registro desbloqueado',
     'db_backup'                 => 'Cópia de la Base de Datos automática',
-    'forbidden_email_domains'   => 'Dominios de email bloqueados'
+    'forbidden_email_domains'   => 'Dominios de email bloqueados',
 
+    /*
+     * Meta information
+     */
+	'meta_author'	            => 'Escritora',
+	'meta_author_info'	        => '¿De quién es este sitio web?',
+    'meta_keywords'	            => 'Eslóganes',
+    'meta_keywords_info'        => 'Optimización del sitio web para los motores de búsqueda (Eslóganes)',
+    'meta_description'	        => 'Descripción',
+	'meta_description_info'     => 'Optimización del sitio web para los motores de búsqueda (Descripción)',
 );
