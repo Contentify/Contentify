@@ -30,7 +30,7 @@ return array(
      * Config 
      */
     'website_name'              => 'Nom du site Web',
-    'analytics'                 => 'Code Analytiques',
+    'analytics'                 => 'Code HTML Analytiques',
     'registration'              => 'Inscription débloquée',
     'db_backup'                 => 'Backup BDD automatique',
     'forbidden_email_domains'   => 'Domaines d\'email bloqués',

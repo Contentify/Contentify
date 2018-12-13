@@ -30,7 +30,7 @@ return array(
      * Config 
      */
     'website_name'              => 'Name der Website',
-    'analytics'                 => 'Analytics Code',
+    'analytics'                 => 'Analytics HTML-Code',
     'registration'              => 'Registrierung freigeschaltet',
     'db_backup'                 => 'Automatisches DB Backup',
     'forbidden_email_domains'   => 'Gesperrte Email-Domains',
@@ -44,5 +44,13 @@ return array(
     'meta_keywords_info'        => 'Optimierung der Website für Suchmaschinen (Schlagworte)',
     'meta_description'	        => 'Beschreibung',
 	'meta_description_info'     => 'Optimierung der Website für Suchmaschinen (Beschreibung)',
+
+    /*
+     * Code
+     */
+    'frontend_css_code'         => 'Frontend LESS-Code',
+    'frontend_js_code'          => 'Frontend JavaScript-Code',
+    'backend_css_code'          => 'Backend LESS-Code',
+    'backend_js_code'           => 'Backend JavaScript-Code',
 
 );

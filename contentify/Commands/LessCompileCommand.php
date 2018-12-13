@@ -60,6 +60,7 @@ class LessCompileCommand extends Command
      *
      * @param string $sourceFilename
      * @return void
+     * @throws \Exception
      */
     protected function compileLessFile($sourceFilename)
     {

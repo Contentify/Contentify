@@ -36,6 +36,7 @@
     {!! HTML::script('vendor/ckeditor/ckeditor.js') !!}
     {!! HTML::script('vendor/contentify/contentify.js') !!}
     {!! HTML::script('vendor/contentify/backend.js') !!}
+    {!! HTML::tag('script', Config::get('app.backend_js_code')) !!}
 </head>
 <body>
     <div id="page-container">

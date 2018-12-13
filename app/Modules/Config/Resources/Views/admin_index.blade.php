@@ -16,6 +16,7 @@
         <li role="presentation" class="active"><a href="#tab_general" aria-controls="tab_general" role="tab" data-toggle="tab">{{ trans('app.general') }}</a></li>
         <li role="presentation"><a href="#tab_services" aria-controls="tab_services" role="tab" data-toggle="tab">{{ trans('app.services') }}</a></li>
         <li role="presentation"><a href="#tab_meta" aria-controls="tab_meta" role="tab" data-toggle="tab">{{ trans('app.metainfo') }}</a></li>
+        <li role="presentation"><a href="#tab_code" aria-controls="tab_meta" role="tab" data-toggle="tab">{{ trans('app.code') }}</a></li>
         <li role="presentation"><a href="#tab_theme" aria-controls="tab_theme" role="tab" data-toggle="tab">{{ trans('app.theme') }}</a></li>
     </ul>
 
@@ -68,6 +69,17 @@
 
             {!! Form::smartTextarea('app::description', trans('config::meta_description'), false) !!}
             <p class="help-block  text-right">{!! trans('config::meta_description_info') !!}</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab_code">
+            {!! Form::smartTextarea('app::frontend_css_code', trans('config::frontend_css_code'), false) !!}
+
+            {!! Form::smartTextarea('app::frontend_js_code', trans('config::frontend_js_code'), false) !!}
+
+            <hr>
+
+            {!! Form::smartTextarea('app::backend_css_code', trans('config::backend_css_code'), false) !!}
+
+            {!! Form::smartTextarea('app::backend_js_code', trans('config::backend_js_code'), false) !!}
         </div>
         <div role="tabpanel" class="tab-pane" id="tab_theme">
             {!! Form::smartGroupOpen('app::theme', trans('app.theme')) !!}
