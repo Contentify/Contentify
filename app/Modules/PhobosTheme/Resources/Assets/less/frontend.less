@@ -4,6 +4,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,300,700);
 
+@import (optional) '/../../../../../../storage/app/frontend_less_code';
 @import '/../../../../../../resources/assets/less/bootstrap/bootstrap';
 @import '/../../../../../../resources/assets/less/shared';
 
@@ -340,6 +341,7 @@ ul.pagination {
 .page-downloads-show .download-detail button[type=submit] i:before { content: "\f019" }
 
 .page-matches {
+    .content-filter-ui { float: left }
     .overview {
         & > div { width: 33%; text-align: center; float: left }
         img { max-width: 120px; max-height: 120px }
@@ -713,6 +715,7 @@ ul.pagination {
 html { font-size: 16px; }
 body { background-color: @darkest; font-family: @primary-font; color: @text-color; }
 th, td { border-color: lighten(@dark, 10%) !important; border-width: 2px !important }
+.table-hover > tbody > tr:hover { background-color: @dark; }
 .nav-tabs li.active a { border-left: @dark !important; border-top: @dark !important; border-right: @dark !important; background-color: @dark !important; color: @text-color !important }
 .nav-tabs a:hover { background-color: @dark !important }
 

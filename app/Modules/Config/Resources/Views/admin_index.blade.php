@@ -71,13 +71,13 @@
             <p class="help-block  text-right">{!! trans('config::meta_description_info') !!}</p>
         </div>
         <div role="tabpanel" class="tab-pane" id="tab_code">
-            {!! Form::smartTextarea('app::frontend_css_code', trans('config::frontend_css_code'), false) !!}
+            {!! Form::smartTextarea('app::frontend_less_code', trans('config::frontend_less_code'), false) !!}
 
             {!! Form::smartTextarea('app::frontend_js_code', trans('config::frontend_js_code'), false) !!}
 
             <hr>
 
-            {!! Form::smartTextarea('app::backend_css_code', trans('config::backend_css_code'), false) !!}
+            {!! Form::smartTextarea('app::backend_less_code', trans('config::backend_less_code'), false) !!}
 
             {!! Form::smartTextarea('app::backend_js_code', trans('config::backend_js_code'), false) !!}
         </div>

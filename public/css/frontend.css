@@ -2,6 +2,9 @@
 /*
  * Imports
  */
+.page-matches .content-filter-ui {
+  display: none !important;
+}
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -7495,6 +7498,9 @@ textarea.model-search-box input {
 .page-downloads-show .download-detail button[type=submit] i:before {
   content: "\f019";
 }
+.page-matches .content-filter-ui {
+  float: left;
+}
 .page-matches .overview > div {
   width: 33%;
   text-align: center;
@@ -8462,6 +8468,9 @@ th,
 td {
   border-color: #434343 !important;
   border-width: 2px !important;
+}
+.table-hover > tbody > tr:hover {
+  background-color: #292929;
 }
 .nav-tabs li.active a {
   border-left: #292929 !important;

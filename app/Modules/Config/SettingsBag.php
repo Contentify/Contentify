@@ -30,9 +30,9 @@ class SettingsBag extends BaseModel
         'app::https',
         'app::dbBackup',
         'app::forbidden_email_domains',
-        'app::frontend_css_code',
+        'app::frontend_less_code',
         'app::frontend_js_code',
-        'app::backend_css_code',
+        'app::backend_less_code',
         'app::backend_js_code',
     ];
 

@@ -48,9 +48,9 @@ return array(
     /*
      * Code
      */
-    'frontend_css_code'         => 'Frontend LESS-Code',
+    'frontend_less_code'         => 'Frontend LESS-Code',
     'frontend_js_code'          => 'Frontend JavaScript-Code',
-    'backend_css_code'          => 'Backend LESS-Code',
+    'backend_less_code'          => 'Backend LESS-Code',
     'backend_js_code'           => 'Backend JavaScript-Code',
 
 );
