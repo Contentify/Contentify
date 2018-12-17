@@ -184,7 +184,7 @@
         <div class="more container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="info">{{ date('Y') }} by <a class="cms" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
+                    <span class="info">{{ date('Y') }} by <a class="home-link" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
                 </div>
 
                 <div class="col-md-8">
