@@ -30,7 +30,7 @@ class AdminQuestionCatsController extends BackController
             ],
             'tableRow' => function(QuestionCat $questionCat)
             {
-                Hover::modelAttributes($questionCat, ['creator']);
+                Hover::modelAttributes($questionCat, ['creator', 'updated_at']);
 
                 return [
                     $questionCat->id,

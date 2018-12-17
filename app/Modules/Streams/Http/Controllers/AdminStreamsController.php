@@ -32,7 +32,7 @@ class AdminStreamsController extends BackController
             ],
             'tableRow' => function(Stream $stream)
             {
-                Hover::modelAttributes($stream, ['creator']);
+                Hover::modelAttributes($stream, ['creator', 'updated_at']);
 
                 return [
                     $stream->id,

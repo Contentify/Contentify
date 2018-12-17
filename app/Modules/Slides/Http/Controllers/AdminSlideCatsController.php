@@ -30,7 +30,7 @@ class AdminSlideCatsController extends BackController
             ],
             'tableRow' => function(SlideCat $slideCat)
             {
-                Hover::modelAttributes($slideCat, ['creator']);
+                Hover::modelAttributes($slideCat, ['creator', 'updated_at']);
 
                 return [
                     $slideCat->id,

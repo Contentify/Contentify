@@ -30,7 +30,7 @@ class AdminNewsCatsController extends BackController
             ],
             'tableRow' => function(NewsCat $newsCat)
             {
-                Hover::modelAttributes($newsCat, ['image', 'creator']);
+                Hover::modelAttributes($newsCat, ['image', 'creator', 'updated_at']);
 
                 return [
                     $newsCat->id,

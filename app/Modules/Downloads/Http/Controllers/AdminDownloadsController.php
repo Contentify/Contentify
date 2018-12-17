@@ -33,7 +33,7 @@ class AdminDownloadsController extends BackController
             ],
             'tableRow' => function(Download $download)
             {
-                Hover::modelAttributes($download, ['access_counter', 'creator']);
+                Hover::modelAttributes($download, ['access_counter', 'creator', 'updated_at']);
 
                 return [
                     $download->id,

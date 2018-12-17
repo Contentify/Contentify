@@ -48,7 +48,7 @@ class AdminForumsController extends BackController
 
                 return [
                     $forum->id,
-                    raw(Hover::modelAttributes($forum, ['creator'])->pull().$link),
+                    raw(Hover::modelAttributes($forum, ['creator', 'updated_at'])->pull().$link),
                 ];
             },
             'sortBy' => 'level',

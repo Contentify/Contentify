@@ -47,7 +47,7 @@ class AdminCashFlowsController extends BackController
             ],
             'tableRow' => function(CashFlow $cashFlow)
             {
-                $titleColumn = Hover::modelAttributes($cashFlow, ['creator'])->pull().
+                $titleColumn = Hover::modelAttributes($cashFlow, ['creator', 'updated_at'])->pull().
                     $cashFlow->title.
                     '<div class="info-text">'.$cashFlow->description.'</div>';
 

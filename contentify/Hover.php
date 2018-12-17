@@ -135,6 +135,10 @@ class Hover
                         $this->line(trans('app.creator').': '.$model->creator->username);
                     }
                     break;
+                case 'updated_at':
+                    if ($model->updated_at and $model->updated_at != $model->created_at) {
+                        $this->line(trans('app.updated_at').': '.$model->updated_at->dateTime());
+                    }
                 default:
                     // Do nothing
             }

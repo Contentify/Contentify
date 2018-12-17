@@ -30,7 +30,7 @@ class AdminAdvertCatsController extends BackController
             ],
             'tableRow' => function(AdvertCat $advertCat)
             {
-                Hover::modelAttributes($advertCat, ['creator']);
+                Hover::modelAttributes($advertCat, ['creator', 'updated_at']);
 
                 return [
                     $advertCat->id,

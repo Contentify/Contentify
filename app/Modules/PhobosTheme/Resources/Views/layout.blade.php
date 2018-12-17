@@ -37,7 +37,7 @@
     {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') !!}
     {!! HTML::script('vendor/contentify/contentify.js') !!}
     {!! HTML::script('vendor/contentify/frontend.js') !!}
-    {!! HTML::tag('script', Config::get('app.frontend_js_code')) !!}
+    <script>{!! Config::get('app.frontend_js_code') !!}</script>
 </head>
 <body>
     @if(Config::get('app.theme_christmas'))

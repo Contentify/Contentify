@@ -43,7 +43,7 @@ class AdminMapsController extends BackController
                     $gameTitle = $map->game->title;
                 }
 
-                Hover::modelAttributes($map, ['creator']);
+                Hover::modelAttributes($map, ['creator', 'updated_at']);
 
                 return [
                     $map->id,

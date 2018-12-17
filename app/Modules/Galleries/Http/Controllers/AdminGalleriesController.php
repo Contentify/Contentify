@@ -32,7 +32,7 @@ class AdminGalleriesController extends BackController
             ],
             'tableRow' => function(Gallery $gallery)
             {
-                Hover::modelAttributes($gallery, ['access_counter', 'creator']);
+                Hover::modelAttributes($gallery, ['access_counter', 'creator', 'updated_at']);
 
                 return [
                     $gallery->id,

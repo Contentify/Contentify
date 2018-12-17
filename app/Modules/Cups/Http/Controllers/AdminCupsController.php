@@ -51,7 +51,7 @@ class AdminCupsController extends BackController
             ],
             'tableRow' => function(Cup $cup)
             {
-                Hover::modelAttributes($cup, ['icon', 'creator']);
+                Hover::modelAttributes($cup, ['image', 'creator', 'updated_at']);
 
                 return [
                     $cup->id,

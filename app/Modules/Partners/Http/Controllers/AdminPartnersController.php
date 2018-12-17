@@ -34,7 +34,7 @@ class AdminPartnersController extends BackController
             ],
             'tableRow' => function(Partner $partner)
             {
-                Hover::modelAttributes($partner, ['image', 'access_counter', 'creator']);
+                Hover::modelAttributes($partner, ['image', 'access_counter', 'creator', 'updated_at']);
 
                 return [
                     $partner->id,

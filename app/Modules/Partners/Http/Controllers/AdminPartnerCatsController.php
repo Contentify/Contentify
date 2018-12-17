@@ -30,7 +30,7 @@ class AdminPartnerCatsController extends BackController
             ],
             'tableRow' => function(PartnerCat $partnerCat)
             {
-                Hover::modelAttributes($partnerCat, ['creator']);
+                Hover::modelAttributes($partnerCat, ['creator', 'updated_at']);
 
                 return [
                     $partnerCat->id,

@@ -39,7 +39,7 @@ class AdminMatchesController extends BackController
             ],
             'tableRow' => function(Match $match)
             {
-                Hover::modelAttributes($match, ['access_counter', 'creator']);
+                Hover::modelAttributes($match, ['access_counter', 'creator', 'updated_at']);
 
                 return [
                     $match->id,
