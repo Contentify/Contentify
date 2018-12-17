@@ -159,7 +159,7 @@
         </div>
         <div class="more">
             <div class="container">
-                <span class="info">&copy; {{ date('Y') }} by <a class="cms" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
+                <span class="info">&copy; {{ date('Y') }} by <a class="home-link" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
 
                 <span class="visitors-label">{{ trans('app.object_visitors') }}:&nbsp;&nbsp;</span>
                 @widget('Visitors::Visitors')
