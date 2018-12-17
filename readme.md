@@ -51,7 +51,7 @@ You can get free support via GitHub's [issue](https://github.com/Contentify/Cont
 
 Contributions welcome! Create an issue right here on GitHub whenever you spot a bug. 
 If you have a solution that fixes the bug, create a fork, commit your changes and then create a pull request.
-Do not hesitate to create a pull request for bug fixes or new features.
+Especially do not hesitate to create a pull request for new features.
 
 #### PHP Coding style
 
