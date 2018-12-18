@@ -39,6 +39,7 @@ use Validator;
  * @property string $website
  * @property string $about
  * @property string $signature
+ * @property string $discord
  * @property string $skype
  * @property string $facebook
  * @property string $twitter
@@ -52,7 +53,7 @@ use Validator;
  * @property string $mouse
  * @property string $keyboard
  * @property string $headset
- * @property string $mousepad
+ * @property string $mouse_pad
  * @property string $game
  * @property string $food
  * @property string $drink
@@ -121,6 +122,7 @@ class User extends SentinelUser implements UserInterface
         'about',
         'signature',
 
+        'discord',
         'skype',
         'facebook',
         'twitter',
@@ -135,7 +137,7 @@ class User extends SentinelUser implements UserInterface
         'mouse',
         'keyboard',
         'headset',
-        'mousepad',
+        'mouse_pad',
 
         'game',
         'food',

@@ -132,8 +132,13 @@ EOD;
                 ADD PRIMARY KEY (`poll_id`,`user_id`,`option_id`);",
             "ALTER TABLE `{$prefix}polls`
                 MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;",
+
             "ALTER TABLE {$prefix}events ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
+
             "ALTER TABLE {$prefix}downloads ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
+
+            "ALTER TABLE `{$prefix}users` ADD `discord` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}users` CHANGE `mousepad` `mouse_pad` VARCHAR(255);",
          ];
 
         return $updateQueries;

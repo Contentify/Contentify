@@ -105,6 +105,10 @@
                         </td>
                     </tr>
                     <tr>
+                        <th class="title">{!! HTML::fontIcon('discord') !!}&nbsp; Discord:</th>
+                        <td>{{ $user->discord }}</td>
+                    </tr>
+                    <tr>
                         <th class="title">{!! HTML::fontIcon('skype') !!}&nbsp; Skype:</th>
                         <td><a href="skype:35?{{ $user->skype }}" target="_blank">{{ $user->skype }}</a></td>
                     </tr>
@@ -190,8 +194,8 @@
                         <td>{{ $user->headset }}</td>
                     </tr>
                     <tr>
-                        <th class="title">{!! trans('users::mousepad') !!}:</th>
-                        <td>{{ $user->mousepad }}</td>
+                        <th class="title">{!! trans('users::mouse_pad') !!}:</th>
+                        <td>{{ $user->mouse_pad }}</td>
                     </tr>
                 </tbody>
             </table>

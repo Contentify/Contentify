@@ -24,6 +24,7 @@ class CreateUserProfile extends Migration {
             $table->text('website')->nullable();
             $table->text('about')->nullable();
 
+            $table->string('discord')->nullable();
             $table->string('skype')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
@@ -38,7 +39,7 @@ class CreateUserProfile extends Migration {
             $table->string('mouse')->nullable();
             $table->string('keyboard')->nullable();
             $table->string('headset')->nullable();
-            $table->string('mousepad')->nullable();
+            $table->string('mouse_pad')->nullable();
 
             $table->string('game')->nullable();
             $table->string('food')->nullable();

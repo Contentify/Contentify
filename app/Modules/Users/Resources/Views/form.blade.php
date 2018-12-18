@@ -41,6 +41,8 @@
 
     {!! Form::smartText('twitter', 'Twitter') !!}
 
+    {!! Form::smartText('discord', 'Discord') !!}
+
     {!! Form::smartText('skype', 'Skype') !!}
 
     {!! Form::smartText('steam_id', trans('users::steam_id')) !!}
@@ -65,7 +67,7 @@
 
     {!! Form::smartText('headset', trans('users::headset')) !!}
 
-    {!! Form::smartText('mousepad', trans('users::mousepad')) !!}
+    {!! Form::smartText('mouse_pad', trans('users::mouse_pad')) !!}
 
     <br><br>
 
