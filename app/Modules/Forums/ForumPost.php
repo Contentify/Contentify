@@ -114,7 +114,7 @@ class ForumPost extends BaseModel
 
         if ($max) {
             if (strlen($text) > $max) {
-                $text = substr($text, 0, $max).'...';
+                $text = substr($text, 0, $max).'…';
             }
         }
 

@@ -10,6 +10,8 @@ use SoftDeletingTrait;
  * @property int $id
  * @property string $text
  * @property string $foreign_type
+ * @property \Carbon $created_at
+ * @property \Carbon $deleted_at
  * @property int $foreign_id
  * @property int $creator_id
  * @property int $updater_id
@@ -97,8 +99,8 @@ class Comment extends BaseModel
     }
 
     /**
-     * Return just the plain comment text (WITHOUT BBCode).
-     * (Similar to render BBCode without the tags but it uses caching.)
+     * Returns just the plain comment text (without BBCode).
+     * (Similar to render BBCode without the tags but that uses caching.)
      *
      * @param int $max Limits the number of characters. 0/null = no limit
      * @return string
@@ -109,7 +111,7 @@ class Comment extends BaseModel
 
         if ($max) {
             if (strlen($text) > $max) {
-                $text = substr($text, 0, $max).'...';
+                $text = substr($text, 0, $max).'…';
             }
         }
 

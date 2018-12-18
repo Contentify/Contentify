@@ -114,7 +114,7 @@ class Message extends BaseModel
 
         if ($max) {
             if (mb_strlen($text) > $max) {
-                $text = mb_substr($text, 0, $max).'...';
+                $text = mb_substr($text, 0, $max).'…';
             }
         }
 

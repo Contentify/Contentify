@@ -48,10 +48,11 @@ class ModelHandler
 
     /**
      * Generates an index page from a model and $data
-     * 
-     * @param array  $data    Array with information how to build the form. See $defaults for details.
+     *
+     * @param array $data Array with information how to build the form. See $defaults for details.
      * @param string $surface Frontend ("front") or backend ("admin")? Default: "admin"
      * @return void
+     * @throws Exception
      */
     public function index(array $data, $surface = 'admin')
     {
@@ -83,6 +84,7 @@ class ModelHandler
             'dataSource'    => null,                            // Null (means: take from database) or array
             'infoText'      => '',                              // String (may include HTML tags) with extra info
             'pageTitle'     => true,                            // False: no, true: auto, string: defines a custom title
+            'limit'         => null,                            // Integer: Limit number of models per page. Null = auto
         ];
 
         $data = array_merge($defaults, $data);
@@ -162,7 +164,7 @@ class ModelHandler
         /*
          * Retrieve models from DB (or array) and create paginator
          */
-        $perPage = Config::get('app.'.$surface.'ItemsPerPage');
+        $perPage = $data['limit'] ?: Config::get('app.'.$surface.'ItemsPerPage');
 
         if (is_array($data['dataSource'])) {
             $page = (int) Paginator::resolveCurrentPage();
@@ -328,9 +330,10 @@ class ModelHandler
 
     /**
      * Shows a model
-     * 
+     *
      * @param int $id The ID of the model
      * @return void
+     * @throws Exception
      */
     public function show($id)
     {
@@ -347,6 +350,7 @@ class ModelHandler
      * CRUD: create model
      *
      * @return void
+     * @throws Exception
      */
     public function create()
     {
@@ -366,6 +370,7 @@ class ModelHandler
      * CRUD: store a model that extends from the BaseModel class
      *
      * @return \Illuminate\Http\RedirectResponse|null
+     * @throws Exception
      */
     public function store()
     {
@@ -735,6 +740,7 @@ class ModelHandler
      *
      * @param int $id The ID of the model
      * @return \Illuminate\Http\RedirectResponse|null
+     * @throws Exception
      */
     public function restore($id)
     {
@@ -759,6 +765,7 @@ class ModelHandler
      * Helper action method for searching. All we do here is to redirect with the input.
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws Exception
      */
     public function search()
     {
