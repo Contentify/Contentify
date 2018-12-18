@@ -6,6 +6,7 @@ use BaseModel;
 use Comment;
 use Exception;
 use File;
+use Illuminate\Database\Eloquent\Builder;
 use InterImage;
 use SoftDeletingTrait;
 
@@ -20,6 +21,7 @@ use SoftDeletingTrait;
  * @property int                                $file_size
  * @property bool                               $is_image
  * @property bool                               $internal
+ * @property bool                               $published
  * @property int                                $access_counter
  * @property int                                $creator_id
  * @property int                                $updater_id
@@ -35,13 +37,14 @@ class Download extends BaseModel
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'description', 'internal', 'download_cat_id'];
+    protected $fillable = ['title', 'description', 'internal', 'published', 'download_cat_id'];
 
     public static $fileHandling = ['file'];
 
     protected $rules = [
         'title'             => 'required|min:3',
         'internal'          => 'boolean',
+        'published'         => 'boolean',
         'download_cat_id'   => 'required|integer'
     ];
 
@@ -90,6 +93,17 @@ class Download extends BaseModel
     public function countComments()
     {
         return Comment::count('downloads', $this->id);
+    }
+
+    /**
+     * Select only those that have been published
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopePublished($query)
+    {
+        return $query->wherePublished(true);
     }
 
 }

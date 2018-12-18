@@ -9,31 +9,31 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property \Carbon $played_at
- * @property int $state
- * @property bool $featured
- * @property string $url
- * @property string $broadcast
- * @property string $left_lineup
- * @property string $right_lineup
- * @property string $text
- * @property int $game_id
- * @property int $tournament_id
- * @property int $left_team_id
- * @property int $right_team_id
- * @property int $left_score
- * @property int $right_score
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\Matches\MatchScore[] $match_scores
- * @property \App\Modules\Games\Game $game
+ * @property \Carbon                             $created_at
+ * @property \Carbon                             $deleted_at
+ * @property \Carbon                             $played_at
+ * @property int                                 $state
+ * @property bool                                $featured
+ * @property string                              $url
+ * @property string                              $broadcast
+ * @property string                              $left_lineup
+ * @property string                              $right_lineup
+ * @property string                              $text
+ * @property int                                 $game_id
+ * @property int                                 $tournament_id
+ * @property int                                 $left_team_id
+ * @property int                                 $right_team_id
+ * @property int                                 $left_score
+ * @property int                                 $right_score
+ * @property int                                 $access_counter
+ * @property int                                 $creator_id
+ * @property int                                 $updater_id
+ * @property \App\Modules\Matches\MatchScore[]   $match_scores
+ * @property \App\Modules\Games\Game             $game
  * @property \App\Modules\Tournaments\Tournament $tournament
- * @property \App\Modules\Teams\Team $left_team
- * @property \App\Modules\Opponents\Opponent $right_team
- * @property \User $creator
+ * @property \App\Modules\Teams\Team             $left_team
+ * @property \App\Modules\Opponents\Opponent     $right_team
+ * @property \User                               $creator
  */
 class Match extends BaseModel
 {

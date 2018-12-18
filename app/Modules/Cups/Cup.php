@@ -9,30 +9,30 @@ use MsgException;
 use User;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $slug
- * @property int $game_id
- * @property int $players_per_team
- * @property int $slots
- * @property string $prize
- * @property string $description
- * @property string $rulebook
- * @property \Carbon $join_at
- * @property \Carbon $check_in_at
- * @property \Carbon $start_at
- * @property bool $featured
- * @property bool $published
- * @property bool $closed
- * @property string $image
- * @property int $creator_id
- * @property int $updater_id
- * @property int $access_counter
- * @property \App\Modules\Games\Game $game
- * @property \User[] $referees
- * @property \User $creator
- * @property \App\Modules\Cups\Match[] $matches
+ * @property \Carbon                          $created_at
+ * @property \Carbon                          $deleted_at
+ * @property string                           $title
+ * @property string                           $slug
+ * @property int                              $game_id
+ * @property int                              $players_per_team
+ * @property int                              $slots
+ * @property string                           $prize
+ * @property string                           $description
+ * @property string                           $rulebook
+ * @property \Carbon                          $join_at
+ * @property \Carbon                          $check_in_at
+ * @property \Carbon                          $start_at
+ * @property bool                             $featured
+ * @property bool                             $published
+ * @property bool                             $closed
+ * @property string                           $image
+ * @property int                              $creator_id
+ * @property int                              $updater_id
+ * @property int                              $access_counter
+ * @property \App\Modules\Games\Game          $game
+ * @property \User[]                          $referees
+ * @property \User                            $creator
+ * @property \App\Modules\Cups\Match[]        $matches
  * @property \User[]|\App\Modules\Cups\Team[] $participants
  */
 class Cup extends BaseModel

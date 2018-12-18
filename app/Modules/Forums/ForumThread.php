@@ -9,19 +9,19 @@ use SoftDeletingTrait;
 use User;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property \Carbon $updated_at
- * @property string $title
- * @property string $slug
- * @property bool $sticky
- * @property bool $closed
- * @property int $forum_id
- * @property int $posts_count
- * @property int $creator_id
- * @property int $updater_id
- * @property \User $creator
- * @property \App\Modules\Forums\Forum $forum
+ * @property \Carbon                         $created_at
+ * @property \Carbon                         $deleted_at
+ * @property \Carbon                         $updated_at
+ * @property string                          $title
+ * @property string                          $slug
+ * @property bool                            $sticky
+ * @property bool                            $closed
+ * @property int                             $forum_id
+ * @property int                             $posts_count
+ * @property int                             $creator_id
+ * @property int                             $updater_id
+ * @property \User                           $creator
+ * @property \App\Modules\Forums\Forum       $forum
  * @property \App\Modules\Forums\ForumPost[] $posts
  */
 class ForumThread extends BaseModel

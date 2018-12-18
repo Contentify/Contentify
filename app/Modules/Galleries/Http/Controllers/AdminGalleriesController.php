@@ -27,8 +27,9 @@ class AdminGalleriesController extends BackController
         $this->indexPage([
             'buttons'   => ['new', HTML::button(trans('app.object_images'), url('admin/images'), 'image')],
             'tableHead' => [
-                trans('app.id')     => 'id', 
-                trans('app.title')  => 'title'
+                trans('app.id')         => 'id',
+                trans('app.published')  => 'published',
+                trans('app.title')      => 'title'
             ],
             'tableRow' => function(Gallery $gallery)
             {
@@ -36,6 +37,7 @@ class AdminGalleriesController extends BackController
 
                 return [
                     $gallery->id,
+                    raw($gallery->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw(Hover::pull().HTML::link('galleries/'.$gallery->id, $gallery->title)),
                 ];
             }

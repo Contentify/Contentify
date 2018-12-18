@@ -8,18 +8,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use User;
 
 /**
- * @property string $title
- * @property string $slug
- * @property string $password
- * @property string $image
- * @property bool $invisible
- * @property int $cup_points
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
+ * @property string                  $title
+ * @property string                  $slug
+ * @property string                  $password
+ * @property string                  $image
+ * @property bool                    $invisible
+ * @property int                     $cup_points
+ * @property int                     $access_counter
+ * @property int                     $creator_id
+ * @property int                     $updater_id
  * @property \App\Modules\Cups\Cup[] $cups
- * @property \User[] $members
- * @property \User[] $organizers
+ * @property \User[]                 $members
+ * @property \User[]                 $organizers
  */
 class Team extends BaseModel
 {

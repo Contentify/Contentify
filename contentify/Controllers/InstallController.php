@@ -423,7 +423,10 @@ class InstallController extends Controller
             $table->boolean('enable_comments')->default(false);
         }, ['news_cat_id']);
 
-        $this->create('galleries', function(Blueprint $table) { });
+        $this->create('galleries', function(Blueprint $table)
+        {
+            $table->boolean('published')->default(false);
+        });
         
         $this->create('images', function(Blueprint $table)
         {
@@ -491,6 +494,7 @@ class InstallController extends Controller
             $table->integer('file_size')->default(0);
             $table->boolean('is_image')->default(false);
             $table->boolean('internal')->default(false);
+            $table->boolean('published')->default(false);
         }, ['download_cat_id']);
         
         $this->create('slide_cats', function(Blueprint $table) { }, [], ['slug']);

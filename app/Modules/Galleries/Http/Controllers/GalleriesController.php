@@ -21,7 +21,7 @@ class GalleriesController extends FrontController
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
-        $galleries = Gallery::paginate($perPage);
+        $galleries = Gallery::published()->paginate($perPage);
 
         $this->pageView('galleries::index', compact('galleries'));
     }
@@ -36,7 +36,7 @@ class GalleriesController extends FrontController
     public function show($galleryId, $imageId = null)
     {
         /** @var Gallery $gallery */
-        $gallery = Gallery::findOrFail($galleryId);
+        $gallery = Gallery::published()->findOrFail($galleryId);
 
         if ($imageId) {
             $image = Image::findOrFail($imageId);

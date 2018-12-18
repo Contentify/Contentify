@@ -136,6 +136,9 @@ EOD;
             "ALTER TABLE {$prefix}events ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
 
             "ALTER TABLE {$prefix}downloads ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
+            "ALTER TABLE {$prefix}downloads ADD `published` TINYINT UNSIGNED DEFAULT 1;",
+
+            "ALTER TABLE {$prefix}galleries ADD `published` TINYINT UNSIGNED DEFAULT 1;",
 
             "ALTER TABLE `{$prefix}users` ADD `discord` VARCHAR(255) DEFAULT NULL;",
             "ALTER TABLE `{$prefix}users` CHANGE `mousepad` `mouse_pad` VARCHAR(255);",

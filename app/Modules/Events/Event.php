@@ -10,17 +10,17 @@ use SoftDeletingTrait;
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
  * @property \Carbon $starts_at
- * @property string $title
- * @property string $slug
- * @property string $text
- * @property string $url
- * @property string $location
- * @property bool $internal
- * @property string $image
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
- * @property \User $creator
+ * @property string  $title
+ * @property string  $slug
+ * @property string  $text
+ * @property string  $url
+ * @property string  $location
+ * @property bool    $internal
+ * @property string  $image
+ * @property int     $access_counter
+ * @property int     $creator_id
+ * @property int     $updater_id
+ * @property \User   $creator
  */
 class Event extends BaseModel
 {

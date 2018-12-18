@@ -13,6 +13,8 @@
 
     {!! Form::smartCheckbox('internal', trans('app.internal')) !!}
 
+    {!! Form::smartCheckbox('published', trans('app.published'), true) !!}
+
     {!! Form::smartFile() !!}
 
     {!! Form::actions() !!}

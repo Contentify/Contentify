@@ -6,20 +6,20 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $slug
- * @property string $short
- * @property string $url
- * @property string $lineup
- * @property int $country_id
- * @property string $image
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\Matches\Match[] $matches
+ * @property \Carbon                        $created_at
+ * @property \Carbon                        $deleted_at
+ * @property string                         $title
+ * @property string                         $slug
+ * @property string                         $short
+ * @property string                         $url
+ * @property string                         $lineup
+ * @property int                            $country_id
+ * @property string                         $image
+ * @property int                            $creator_id
+ * @property int                            $updater_id
+ * @property \App\Modules\Matches\Match[]   $matches
  * @property \App\Modules\Countries\Country $country
- * @property \User $creator
+ * @property \User                          $creator
  */
 class Opponent extends BaseModel
 {

@@ -48,7 +48,7 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
         $perPage = Config::get('app.frontItemsPerPage');
         $hasAccess = (user() and user()->hasAccess('internal'));
 
-        $query = Download::whereDownloadCatId($id);
+        $query = Download::published()->whereDownloadCatId($id);
         if (! $hasAccess) {
             $query->whereInternal(false);
         }
@@ -68,7 +68,7 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
     public function show($id)
     {
         /** @var Download $download */
-        $download = Download::findOrFail($id);
+        $download = Download::published()->findOrFail($id);
 
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($download->internal and ! $hasAccess) {

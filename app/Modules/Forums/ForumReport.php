@@ -5,14 +5,14 @@ namespace App\Modules\Forums;
 use BaseModel;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $text
- * @property int $post_id
- * @property int $creator_id
- * @property int $updater_id
- * @property \User $creator
- * @property \User $updater
+ * @property \Carbon                       $created_at
+ * @property \Carbon                       $deleted_at
+ * @property string                        $text
+ * @property int                           $post_id
+ * @property int                           $creator_id
+ * @property int                           $updater_id
+ * @property \User                         $creator
+ * @property \User                         $updater
  * @property \App\Modules\Forums\ForumPost $post
  */
 class ForumReport extends BaseModel

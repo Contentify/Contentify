@@ -10,19 +10,19 @@ use User;
 /**
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
- * @property string $title
- * @property string $slug
- * @property string $text
- * @property int $receiver_id
- * @property bool $new
- * @property bool $creator_visible
- * @property bool $receiver_visible
- * @property bool $sent_by_system
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
- * @property \User $creator
- * @property \User $receiver
+ * @property string  $title
+ * @property string  $slug
+ * @property string  $text
+ * @property int     $receiver_id
+ * @property bool    $new
+ * @property bool    $creator_visible
+ * @property bool    $receiver_visible
+ * @property bool    $sent_by_system
+ * @property int     $access_counter
+ * @property int     $creator_id
+ * @property int     $updater_id
+ * @property \User   $creator
+ * @property \User   $receiver
  */
 class Message extends BaseModel
 {

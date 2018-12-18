@@ -6,15 +6,15 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property int $game_id
- * @property string $image
- * @property int $creator_id
- * @property int $updater_id
+ * @property \Carbon                 $created_at
+ * @property \Carbon                 $deleted_at
+ * @property string                  $title
+ * @property int                     $game_id
+ * @property string                  $image
+ * @property int                     $creator_id
+ * @property int                     $updater_id
  * @property \App\Modules\Games\Game $game
- * @property \User $creator
+ * @property \User                   $creator
  */
 class Map extends BaseModel
 {
