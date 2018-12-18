@@ -13,6 +13,10 @@ use SoftDeletingTrait;
  * @property string                           $slug
  * @property string                           $text
  * @property string                           $url
+ * @property string                           $facebook
+ * @property string                           $twitter
+ * @property string                           $youtube
+ * @property string                           $discord
  * @property int                              $position
  * @property bool                             $published
  * @property int                              $partner_cat_id
@@ -32,7 +36,18 @@ class Partner extends BaseModel
 
     protected $slugable = true;
 
-    protected $fillable = ['title', 'text', 'url', 'position', 'published', 'partner_cat_id'];
+    protected $fillable = [
+        'title',
+        'text',
+        'url',
+        'facebook',
+        'twitter',
+        'youtube',
+        'discord',
+        'position',
+        'published',
+        'partner_cat_id'
+    ];
 
     public static $fileHandling = ['image' => ['type' => 'image']];
 

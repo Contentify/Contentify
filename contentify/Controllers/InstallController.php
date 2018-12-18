@@ -466,6 +466,10 @@ class InstallController extends Controller
         {
             $table->text('text')->nullable();
             $table->string('url')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('twitter')->nullable();
+            $table->text('youtube')->nullable();
+            $table->text('discord')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
             $table->string('image')->nullable();

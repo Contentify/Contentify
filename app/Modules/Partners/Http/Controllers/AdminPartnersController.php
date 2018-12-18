@@ -39,7 +39,7 @@ class AdminPartnersController extends BackController
                 return [
                     $partner->id,
                     raw($partner->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
-                    raw(Hover::pull(), $partner->title),
+                    raw(Hover::pull().HTML::link('partners#partner-section-'.$partner->slug, $partner->title)),
                     $partner->partnerCat->title,
                 ];
             }

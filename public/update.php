@@ -139,6 +139,11 @@ EOD;
 
             "ALTER TABLE `{$prefix}users` ADD `discord` VARCHAR(255) DEFAULT NULL;",
             "ALTER TABLE `{$prefix}users` CHANGE `mousepad` `mouse_pad` VARCHAR(255);",
+
+            "ALTER TABLE `{$prefix}partners` ADD `facebook` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}partners` ADD `twitter` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}partners` ADD `youtube` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}partners` ADD `discord` VARCHAR(255) DEFAULT NULL;",
          ];
 
         return $updateQueries;
