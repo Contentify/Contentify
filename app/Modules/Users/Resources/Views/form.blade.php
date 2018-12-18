@@ -35,6 +35,8 @@
 
     {!! Form::smartText('website', trans('app.website')) !!}
 
+    <br><br>
+
     {!! Form::smartText('facebook', 'Facebook') !!}
 
     {!! Form::smartText('twitter', 'Twitter') !!}
@@ -42,6 +44,8 @@
     {!! Form::smartText('skype', 'Skype') !!}
 
     {!! Form::smartText('steam_id', trans('users::steam_id')) !!}
+
+    <br><br>
 
     {!! Form::smartText('cpu', trans('users::cpu')) !!}
 
@@ -63,6 +67,8 @@
 
     {!! Form::smartText('mousepad', trans('users::mousepad')) !!}
 
+    <br><br>
+
     {!! Form::smartText('game', trans('app.object_game')) !!}
 
     {!! Form::smartText('food', trans('users::food')) !!}
@@ -76,6 +82,8 @@
     {!! Form::smartTextarea('about', trans('users::about')) !!}
 
     {!! Form::smartText('signature', trans('users::signature')) !!}
+
+    <br><br>
 
     {!! Form::smartImageFile('image', trans('users::image')) !!}
     

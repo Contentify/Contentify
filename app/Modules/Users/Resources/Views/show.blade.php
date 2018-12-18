@@ -85,7 +85,7 @@
             <table class="table horizontal">
                 <tbody>
                     <tr>
-                        <th class="title">Facebook:</th>
+                        <th class="title">{!! HTML::fontIcon('facebook') !!}&nbsp; Facebook:</th>
                         <td>
                             @if (filter_var($user->facebook, FILTER_VALIDATE_URL))
                                 <a href="{{ $user->facebook }}" target="_blank">{{ trans('app.link') }}</a>
@@ -95,7 +95,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="title">Twitter:</th>
+                        <th class="title">{!! HTML::fontIcon('twitter') !!}&nbsp; Twitter:</th>
                         <td>
                             @if (filter_var($user->twitter, FILTER_VALIDATE_URL))
                                 <a href="{{ $user->twitter }}" target="_blank">{{ trans('app.link') }}</a>
@@ -105,11 +105,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="title">Skype:</th>
+                        <th class="title">{!! HTML::fontIcon('skype') !!}&nbsp; Skype:</th>
                         <td><a href="skype:35?{{ $user->skype }}" target="_blank">{{ $user->skype }}</a></td>
                     </tr>
                     <tr>
-                        <th class="title">{!! trans('users::steam_id') !!}:</th>
+                        <th class="title">{!! HTML::fontIcon('steam') !!}&nbsp; {!! trans('users::steam_id') !!}:</th>
                         <td>
                             @if (filter_var($user->steam_id, FILTER_VALIDATE_URL))
                                 <a href="{{ $user->steam_id }}" target="_blank">{{ trans('app.link') }}</a>
