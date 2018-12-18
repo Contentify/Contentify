@@ -34,6 +34,7 @@ return array(
     'registration'              => 'Registration unlocked',
     'db_backup'                 => 'Automatic DB Backup',
     'forbidden_email_domains'   => 'Blocked Email Domains',
+    'short_biography'           => 'Short Biography',
 
     /*
      * Meta information

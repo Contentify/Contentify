@@ -32,8 +32,9 @@ return array(
     'website_name'              => 'Name der Website',
     'analytics'                 => 'Analytics HTML-Code',
     'registration'              => 'Registrierung freigeschaltet',
-    'db_backup'                 => 'Automatisches DB Backup',
+    'db_backup'                 => 'Automatisches DB-Backup',
     'forbidden_email_domains'   => 'Gesperrte Email-Domains',
+    'short_biography'           => 'Kurzbiographie',
 
     /*
      * Meta information

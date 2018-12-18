@@ -36,6 +36,10 @@
             <hr>
 
             {!! Form::smartTextarea('app::forbidden_email_domains', trans('config::forbidden_email_domains')) !!}
+
+            <hr>
+
+            {!! Form::smartTextarea('app::short_biography', trans('config::short_biography')) !!}
         </div>
         <div role="tabpanel" class="tab-pane" id="tab_services">
             {!! Form::smartText('app::facebook', 'Facebook') !!}
