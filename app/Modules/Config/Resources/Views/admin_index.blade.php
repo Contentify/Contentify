@@ -15,9 +15,10 @@
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#tab_general" aria-controls="tab_general" role="tab" data-toggle="tab">{{ trans('app.general') }}</a></li>
         <li role="presentation"><a href="#tab_services" aria-controls="tab_services" role="tab" data-toggle="tab">{{ trans('app.services') }}</a></li>
-        <li role="presentation"><a href="#tab_meta" aria-controls="tab_meta" role="tab" data-toggle="tab">{{ trans('app.metainfo') }}</a></li>
         <li role="presentation"><a href="#tab_code" aria-controls="tab_meta" role="tab" data-toggle="tab">{{ trans('app.code') }}</a></li>
         <li role="presentation"><a href="#tab_theme" aria-controls="tab_theme" role="tab" data-toggle="tab">{{ trans('app.theme') }}</a></li>
+        <li role="presentation"><a href="#tab_meta" aria-controls="tab_meta" role="tab" data-toggle="tab">{{ trans('app.metainfo') }}</a></li>
+        <li role="presentation"><a href="#tab_gdpr" aria-controls="tab_gdpr" role="tab" data-toggle="tab">{{ trans('app.gdpr') }}</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -60,20 +61,6 @@
 
             {!! Form::smartTextarea('app::analytics', trans('config::analytics'), false) !!}
         </div>
-		<div role="tabpanel" class="tab-pane" id="tab_meta">
-            {!! Form::smartText('app::author', trans('config::meta_author'), false) !!}
-            <p class="help-block  text-right">{!! trans('config::meta_author_info') !!}</p>
-
-            <hr>
-
-            {!! Form::smartText('app::keywords', trans('config::meta_keywords'), false) !!}
-            <p class="help-block  text-right">{!! trans('config::meta_keywords_info') !!}</p>
-
-            <hr>
-
-            {!! Form::smartTextarea('app::description', trans('config::meta_description'), false) !!}
-            <p class="help-block  text-right">{!! trans('config::meta_description_info') !!}</p>
-        </div>
         <div role="tabpanel" class="tab-pane" id="tab_code">
             {!! Form::smartTextarea('app::frontend_less_code', trans('config::frontend_less_code'), false) !!}
 
@@ -102,6 +89,25 @@
             {!! Form::smartCheckbox('app::theme_christmas', trans('app.theme_christmas')) !!}
 
             {!! Form::smartText('app::theme_snow_color', trans('app.theme_snow_color')) !!}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab_meta">
+            {!! Form::smartText('app::author', trans('config::meta_author'), false) !!}
+            <p class="help-block  text-right">{!! trans('config::meta_author_info') !!}</p>
+
+            <hr>
+
+            {!! Form::smartText('app::keywords', trans('config::meta_keywords'), false) !!}
+            <p class="help-block  text-right">{!! trans('config::meta_keywords_info') !!}</p>
+
+            <hr>
+
+            {!! Form::smartTextarea('app::description', trans('config::meta_description'), false) !!}
+            <p class="help-block  text-right">{!! trans('config::meta_description_info') !!}</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tab_gdpr">
+            {!! Form::smartCheckbox('app::gdpr', trans('app.enabled')) !!}
+
+            {{-- Form::smartTextarea('app::privacy_policy', trans('config::privacy_policy'), true) --}}
         </div>
     </div>
 

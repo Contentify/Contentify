@@ -198,6 +198,13 @@
             </div>
         </div>
     </footer>
+
+    @if (Config::get('app.gdpr'))
+        <div id="gdpr-alert" class="hidden alert alert-info alert-dismissible">
+            <strong>{{ trans('app.gdpr_alert') }}</strong>
+            <a href="#" class="btn btn-default" data-dismiss="alert" aria-label="close">Okay</a>
+        </div>
+    @endif
     
     {!! Config::get('app.analytics') !!}
 </body>

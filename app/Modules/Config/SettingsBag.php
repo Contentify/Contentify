@@ -31,6 +31,8 @@ class SettingsBag extends BaseModel
         'app::dbBackup',
         'app::forbidden_email_domains',
         'app::short_biography',
+        'app::gdpr',
+        'app::privacy_policy',
         'app::frontend_less_code',
         'app::frontend_js_code',
         'app::backend_less_code',
@@ -42,6 +44,7 @@ class SettingsBag extends BaseModel
         'auth::registration' => 'boolean',
         'app::https'         => 'boolean',
         'app::dbBackup'      => 'boolean',
+        'app::gdpr'          => 'boolean',
     ];
 
 }

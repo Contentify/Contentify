@@ -7212,6 +7212,21 @@ textarea.model-search-box input {
 #comments .comment .text {
   word-wrap: break-word;
 }
+#gdpr-alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  z-index: 999;
+}
+#gdpr-alert .btn {
+  border: 1px solid #ffffff;
+  float: right;
+}
 /*
  * Modules
  */

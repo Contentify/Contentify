@@ -202,7 +202,7 @@ return [
     'nothing_here'      => 'Désoler, il n\'y a pas encore de contenu. Veuillez réessayer plus tard.',
     'back'              => 'Retour',
     'general'           => 'Généralement',
-	'metainfo'			=> 'Méta-Information',
+	'metainfo'			=> 'Méta-Info',
     'services'          => 'Services',
     'theme'             => 'Thème',
     'theme_christmas'   => 'Mode Nöel (Flocon)',
@@ -230,6 +230,8 @@ return [
     'export'            => 'Export',
     'download'          => 'Télécharger', // Verb - do not confuse with object_download!
     'option'            => 'Option',
+    'gdpr'              => 'RGPD', // General Data Protection Regulation
+    'gdpr_alert'        => 'Ce site Web utilise des cookies pour offrir la meilleure expérience utilisateur possible.',
 
     /*
      * Days

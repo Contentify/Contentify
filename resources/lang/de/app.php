@@ -203,7 +203,7 @@ return [
     'back'              => 'Zurück',
     'general'           => 'Allgemein',
     'services'          => 'Services',
-    'metainfo'			=> 'Metainformationen',
+    'metainfo'			=> 'Metainfos',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Weihnachtsmodus (Schnee)',
     'theme_snow_color'  => 'Flockenfarbe',
@@ -230,6 +230,8 @@ return [
     'export'            => 'Export',
     'download'          => 'Herunterladen', // Verb - do not confuse with object_download!
     'option'            => 'Option',
+    'gdpr'              => 'DSVGO', // General Data Protection Regulation
+    'gdpr_alert'        => 'Diese Website nutzt Cookies, um die bestmögliche Nutzung zu bieten.',
 
     /*
      * Days

@@ -92,28 +92,6 @@ $(document).ready(function()
         };
 
         /*
-         * Numeric inputs - no longer used.
-         * TODO remove when we are sure we really do not need this code
-         */
-        //$('.numeric-input').keypress(function()
-        //{
-        //    if (! isNaN($(this).val())) {
-        //        $(this).attr('valid-value', $(this).val());
-        //    }
-        //}).focusout(function()
-        //{
-        //    if (isNaN($(this).val())) {
-        //        var valid = $(this).attr('valid-value');
-        //
-        //        if (valid) {
-        //            $(this).val(valid);
-        //        } else {
-        //            $(this).val(0);
-        //        }
-        //    }
-        //});
-
-        /*
          * Add datetime picker
          */
         $('.date-time-picker').each(function() 
@@ -136,7 +114,7 @@ $(document).ready(function()
         /**
          * Creates an HTML alert inside the alert area.
          *
-         * @param {String}  type     The alert type e. g. sucess, alert
+         * @param {String}  type     The alert type e. g. success, alert
          * @param {String}  title    The text that should be shown
          * @param {Boolean} clearAll If true, this will hide all other alerts
          */
@@ -295,7 +273,7 @@ $(document).ready(function()
         });
 
         /*
-         * Add confirm dialogue
+         * Add general confirm dialogue
          */
         $('*[data-confirm]').click(function(event)
         {       

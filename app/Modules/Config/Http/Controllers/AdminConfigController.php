@@ -235,7 +235,7 @@ class AdminConfigController extends BackController
     /**
      * Compiles the LESS files to CSS files
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function getCompileLess()
     {
@@ -250,7 +250,8 @@ class AdminConfigController extends BackController
             return;
         }
 
-        $this->alertSuccess(trans('app.successful'));
+        $this->alertFlash(trans('app.successful'));
+        return Redirect::to('admin/config');
     }
 
     /**

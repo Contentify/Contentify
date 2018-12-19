@@ -14,7 +14,7 @@
         <div class="image" style="background-image: url('{{ $image->uploadPath().'200/'.$image->image }}')">
             <a class="show" href="{{ $image->uploadPath().$image->image }}" target="_blank"></a>
             <div class="info">
-                {{ $image->tags }}
+                <span title="Tags">{{ $image->tags }}</span>
                 @if ($image->gallery)
                     <div class="gallery">{!! link_to('galleries/'.$image->gallery->id, 'Gallery: '.e($image->gallery->title)) !!}</div>
                 @endif
