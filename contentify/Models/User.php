@@ -24,56 +24,56 @@ use Session;
 use Validator;
 
 /**
- * @property int $id
- * @property string $username
- * @property string $slug
- * @property string $email
- * @property string $password
- * @property string $first_name
- * @property string $last_name
- * @property int $gender
- * @property int $country_id
- * @property int $language_id
- * @property string $birthdate
- * @property string $occupation
- * @property string $website
- * @property string $about
- * @property string $signature
- * @property string $discord
- * @property string $skype
- * @property string $facebook
- * @property string $twitter
- * @property string $steam_id
- * @property string $cpu
- * @property string $graphics
- * @property string $ram
- * @property string $motherboard
- * @property string $drives
- * @property string $display
- * @property string $mouse
- * @property string $keyboard
- * @property string $headset
- * @property string $mouse_pad
- * @property string $game
- * @property string $food
- * @property string $drink
- * @property string $music
- * @property string $film
- * @property string $steam_auth_id
- * @property string $image
- * @property string $avatar
- * @property int $cup_points
- * @property int $posts_count
- * @property bool $banned
- * @property int $access_counter
- * @property \Carbon $created_at
- * @property \Carbon $updated_at
- * @property \Carbon $last_active
- * @property \Carbon $last_login
- * @property \App\Modules\Teams\Team[] $teams
- * @property \App\Modules\Countries\Country $country
+ * @property int                             $id
+ * @property string                          $username
+ * @property string                          $slug
+ * @property string                          $email
+ * @property string                          $password
+ * @property string                          $first_name
+ * @property string                          $last_name
+ * @property int                             $gender
+ * @property int                             $country_id
+ * @property int                             $language_id
+ * @property string                          $birthdate
+ * @property string                          $occupation
+ * @property string                          $website
+ * @property string                          $about
+ * @property string                          $signature
+ * @property string                          $discord
+ * @property string                          $skype
+ * @property string                          $facebook
+ * @property string                          $twitter
+ * @property string                          $steam_id
+ * @property string                          $cpu
+ * @property string                          $graphics
+ * @property string                          $ram
+ * @property string                          $motherboard
+ * @property string                          $drives
+ * @property string                          $display
+ * @property string                          $mouse
+ * @property string                          $keyboard
+ * @property string                          $headset
+ * @property string                          $mouse_pad
+ * @property string                          $game
+ * @property string                          $food
+ * @property string                          $drink
+ * @property string                          $music
+ * @property string                          $film
+ * @property string                          $steam_auth_id
+ * @property string                          $image
+ * @property string                          $avatar
+ * @property int                             $cup_points
+ * @property int                             $posts_count
+ * @property bool                            $banned
+ * @property int                             $access_counter
+ * @property \Carbon                         $created_at
+ * @property \Carbon                         $updated_at
+ * @property \Carbon                         $last_active
+ * @property \Carbon                         $last_login
+ * @property \App\Modules\Teams\Team[]       $teams
+ * @property \App\Modules\Countries\Country  $country
  * @property \App\Modules\Languages\Language $language
- * @property \User[] $friends
+ * @property \User[]                         $friends
  *
  * @method bool hasAccess($permissions, $level = 1)
  * @method bool hasAnyAccess($permissions, $level = 1)
@@ -84,7 +84,7 @@ class User extends SentinelUser implements UserInterface
     use SlugTrait;
 
     /**
-     * Decides how long a user is considered being online. Unit: Seconds (= 5 Minutes)
+     * Decides how long a user is considered being online. Unit: seconds (= 5 minutes)
      */
     const ONLINE_TIME = 300;
 
@@ -168,7 +168,7 @@ class User extends SentinelUser implements UserInterface
         {
             if (user() and user()->id == $user->id) {
                 /*
-                 * Update the locale (since its stored in a session variable we need to update it)
+                 * Update the locale (since it is stored in a session variable we need to update it)
                  * when changed in profile or user just logged in.
                  */
                 Session::forget('app.locale');
@@ -341,6 +341,16 @@ class User extends SentinelUser implements UserInterface
     public function sendSystemMessage($title, $text, $creatorId = null)
     {
         $this->sendMessage($title, $text, $creatorId, true);
+    }
+    
+    /**
+     * Returns the formatted real name of the current user
+     *
+     * @return string
+     */
+    public function getRealName()
+    {
+        return trim($this->first_name.' '.$user->last_name),
     }
 
     /**
@@ -535,13 +545,14 @@ class User extends SentinelUser implements UserInterface
     /**
      * If called the first time for the current user,
      * renders and returns the (forum) signature of the current user.
-     * if called again, takes the rendered signature from the cache.
+     * If called again, takes the rendered signature from the cache.
      *
      * @return string
      */
     public function renderSignature()
     {
         $cacheKey = self::CACHE_KEY_SIGNATURE.$this->id;
+        
         if (Cache::has($cacheKey)) {
             return Cache::get($cacheKey);
         } else {
