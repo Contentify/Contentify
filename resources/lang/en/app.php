@@ -232,6 +232,7 @@ return [
     'option'            => 'Option',
     'gdpr'              => 'GDPR', // General Data Protection Regulation
     'gdpr_alert'        => 'This website uses cookies to provide the best possible user experience.',
+    'privacy_policy'    => 'Privacy Policy',
 
     /*
      * Days

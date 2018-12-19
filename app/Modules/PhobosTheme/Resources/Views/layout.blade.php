@@ -201,8 +201,8 @@
 
     @if (Config::get('app.gdpr'))
         <div id="gdpr-alert" class="hidden alert alert-info alert-dismissible">
-            <strong>{{ trans('app.gdpr_alert') }}</strong>
-            <a href="#" class="btn btn-default" data-dismiss="alert" aria-label="close">Okay</a>
+            <strong>{{ trans('app.gdpr_alert') }} <em>{{ link_to('privacy-policy', trans('app.read_more')) }}</em></strong>
+            <a href="#" class="btn btn-default" data-dismiss="alert" aria-label="close">{{ trans('app.confirm') }}</a>
         </div>
     @endif
     

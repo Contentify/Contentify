@@ -35,7 +35,6 @@ return array(
     'db_backup'                 => 'Cópia de la Base de Datos automática',
     'forbidden_email_domains'   => 'Dominios de email bloqueados',
     'short_biography'           => 'Biografía corta',
-    'privacy_policy'            => 'Declaración de privacidad',
 
     /*
      * Meta information

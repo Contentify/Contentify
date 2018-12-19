@@ -231,7 +231,8 @@ return [
     'download'          => 'Descargar', // Verb - do not confuse with object_download!
     'option'            => 'Opción',
     'gdpr'              => 'RGPD', // General Data Protection Regulation
-    'gdpr_alert'        => 'Este sitio web utiliza cookies para proporcionar la mejor experiencia posible al usuario..',
+    'gdpr_alert'        => 'Este sitio web utiliza cookies para proporcionar la mejor experiencia posible al usuario.',
+    'privacy_policy'    => 'Declaración de privacidad',
 
     /*
      * Days

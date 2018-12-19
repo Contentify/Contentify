@@ -232,6 +232,7 @@ return [
     'option'            => 'Option',
     'gdpr'              => 'DSVGO', // General Data Protection Regulation
     'gdpr_alert'        => 'Diese Website nutzt Cookies, um die bestmögliche Nutzung zu bieten.',
+    'privacy_policy'    => 'Datenschutzerklärung',
 
     /*
      * Days

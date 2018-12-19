@@ -10,7 +10,7 @@
                         @if ($user->country->icon)
                             {!! HTML::image($user->country->uploadPath().$user->country->icon, $user->country->title) !!}
                         @endif
-                        {{ trim($user->first_name.' '.$user->last_name) }}
+                        {{ $user->getRealName() }}
                     </td>
                 </tr>
                 <tr>

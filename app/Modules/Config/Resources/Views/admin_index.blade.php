@@ -107,7 +107,7 @@
         <div role="tabpanel" class="tab-pane" id="tab_gdpr">
             {!! Form::smartCheckbox('app::gdpr', trans('app.enabled')) !!}
 
-            {{-- Form::smartTextarea('app::privacy_policy', trans('config::privacy_policy'), true) --}}
+            {!! Form::smartTextarea('app::privacy_policy', trans('app.privacy_policy'), true)  !!}
         </div>
     </div>
 
