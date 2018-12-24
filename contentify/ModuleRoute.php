@@ -15,7 +15,7 @@ class ModuleRoute
 
     /**
      * Since Laravel 5.3 we have to manually prefix the names
-     * of backend (admin) routes. We use this const as the prefix.
+     * of backend (admin) routes. We use this constant as the prefix.
      * Note that it is not possible to directly access this constant
      * if the facade of this class is used. Use the getter instead!
      */

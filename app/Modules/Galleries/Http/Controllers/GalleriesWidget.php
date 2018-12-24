@@ -2,6 +2,7 @@
 
 namespace App\Modules\Galleries\Http\Controllers;
 
+use App\Modules\Galleries\Gallery;
 use App\Modules\Images\Image;
 use DB;
 use View;
@@ -21,7 +22,7 @@ class GalleriesWidget extends Widget
         }
 
         if (isset($parameters['random'])) {
-            $random = (bool) $parameters['random'];;
+            $random = (bool) $parameters['random'];
         } else {
             $random = false;
         }
@@ -30,9 +31,12 @@ class GalleriesWidget extends Widget
             $images = Image::whereNotNull('gallery_id')->orderBy(DB::raw('RAND()'))->take($limit)->get();
         } else {
             if ($categoryId !== null) {
+                $gallery = Gallery::published()->findOrFail($categoryId); // Only check if gallery is accessible
                 $images = Image::whereGalleryId($categoryId)->orderBy('created_at', 'DESC')->take($limit)->get();
             } else {
-                $images = Image::whereNotNull('gallery_id')->orderBy('created_at', 'DESC')->take($limit)->get();
+                $images = Image::whereHas('gallery', function ($query) {
+                    $query->published(true);
+                })->orderBy('created_at', 'DESC')->take($limit)->get();
             }
         }
 

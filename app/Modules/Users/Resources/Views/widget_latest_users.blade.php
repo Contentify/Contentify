@@ -2,7 +2,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>{!! trans('users::latest_users') !!}</th>
+                <th>{!! trans('users::latest_users') !!} <a href="{{ url('users') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('external-link-alt') !!}</a></th>
                 <th>{!! trans('app.date') !!}</th>
             </tr>
         </thead>

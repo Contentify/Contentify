@@ -202,7 +202,7 @@ return [
     'nothing_here'      => 'Sorry, there is no content here yet. Please try again later.',
     'back'              => 'Back',
     'general'           => 'General',
-    'metainfo'			=> 'Meta Information',
+    'metainfo'			=> 'Meta Info',
     'services'          => 'Services',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Christmas Mode (Snow)',
@@ -230,6 +230,10 @@ return [
     'export'            => 'Export',
     'download'          => 'Download', // Verb - do not confuse with object_download!
     'option'            => 'Option',
+    'gdpr'              => 'GDPR', // General Data Protection Regulation
+    'gdpr_alert'        => 'This website uses cookies to provide the best possible user experience.',
+    'privacy_policy'    => 'Privacy Policy',
+
     /*
      * Days
      */

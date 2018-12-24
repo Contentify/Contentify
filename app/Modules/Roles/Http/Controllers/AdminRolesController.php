@@ -32,7 +32,7 @@ class AdminRolesController extends BackController
             {
                 return [
                     $role->id,
-                    raw(Hover::modelAttributes($role, ['creator'])->pull(), $role->name),
+                    raw(Hover::modelAttributes($role, ['creator', 'updated_at'])->pull(), $role->name),
                 ];
             },
             'searchFor' => 'name'

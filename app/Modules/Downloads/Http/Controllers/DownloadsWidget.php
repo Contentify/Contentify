@@ -16,7 +16,7 @@ class DownloadsWidget extends Widget
         $orderColumn = $orderByRank ? 'access_counter' : 'created_at';
         $hasAccess = (user() and user()->hasAccess('internal'));
 
-        $query = Download::orderBy($orderColumn, 'DESC');
+        $query = Download::published()->orderBy($orderColumn, 'DESC');
         if (! $hasAccess) {
             $query->whereInternal(false);
         }

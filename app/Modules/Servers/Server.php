@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Builder;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $ip
- * @property string $hoster
- * @property int $slots
- * @property string $description
- * @property bool $published
- * @property int $game_id
- * @property int $creator_id
- * @property int $updater_id
+ * @property \Carbon                 $created_at
+ * @property \Carbon                 $deleted_at
+ * @property string                  $title
+ * @property string                  $ip
+ * @property string                  $hoster
+ * @property int                     $slots
+ * @property string                  $description
+ * @property bool                    $published
+ * @property int                     $game_id
+ * @property int                     $creator_id
+ * @property int                     $updater_id
  * @property \App\Modules\Games\Game $game
- * @property \User $creator
+ * @property \User                   $creator
  */
 class Server extends BaseModel
 {

@@ -36,7 +36,7 @@ class AdminPollsController extends BackController
                 return [
                     $poll->id,
                     raw($poll->open ? HTML::fontIcon('check') : HTML::fontIcon('times')),
-                    raw(Hover::modelAttributes($poll, ['creator'])->pull(), $poll->title),
+                    raw(Hover::modelAttributes($poll, ['creator', 'updated_at'])->pull(), $poll->title),
                     $poll->created_at
                 ];
             }

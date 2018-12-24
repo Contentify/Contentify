@@ -19,7 +19,7 @@
         {!! HTML::title(trans_object($controllerName, $moduleName)) !!}
     @endif
 
-    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Big icon -->
+    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}">
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('img/default/favicon.png') !!}">
 
     {!! HTML::style('vendor/font-awesome/css/all.min.css') !!}
@@ -36,7 +36,7 @@
     {!! HTML::script('vendor/ckeditor/ckeditor.js') !!}
     {!! HTML::script('vendor/contentify/contentify.js') !!}
     {!! HTML::script('vendor/contentify/backend.js') !!}
-    {!! HTML::tag('script', Config::get('app.backend_js_code')) !!}
+    <script>{!! Config::get('app.backend_js_code') !!}</script>
 </head>
 <body>
     <div id="page-container">

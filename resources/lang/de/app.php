@@ -79,10 +79,10 @@ return [
     'icon'          => 'Symbol',
     'date'          => 'Datum',
     'published'     => 'Veröffentlicht',
-    'starts_at'     => 'Beginnt Am',
-    'created_at'    => 'Erstellt Am',
-    'updated_at'    => 'Editiert Am',
-    'achieved_at'   => 'Erreicht Am',
+    'starts_at'     => 'Beginnt am',
+    'created_at'    => 'Erstellt am',
+    'updated_at'    => 'Editiert am',
+    'achieved_at'   => 'Erreicht am',
     'internal'      => 'Intern',
     'featured'      => 'Featured',
     'state'         => 'Status',
@@ -203,7 +203,7 @@ return [
     'back'              => 'Zurück',
     'general'           => 'Allgemein',
     'services'          => 'Services',
-    'metainfo'			=> 'Metainformationen',
+    'metainfo'			=> 'Metainfos',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Weihnachtsmodus (Schnee)',
     'theme_snow_color'  => 'Flockenfarbe',
@@ -230,6 +230,9 @@ return [
     'export'            => 'Export',
     'download'          => 'Herunterladen', // Verb - do not confuse with object_download!
     'option'            => 'Option',
+    'gdpr'              => 'DSVGO', // General Data Protection Regulation
+    'gdpr_alert'        => 'Diese Website nutzt Cookies, um die bestmögliche Nutzung zu bieten.',
+    'privacy_policy'    => 'Datenschutzerklärung',
 
     /*
      * Days

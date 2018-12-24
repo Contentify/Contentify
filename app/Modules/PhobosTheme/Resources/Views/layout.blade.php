@@ -25,9 +25,9 @@
         {!! HTML::title(trans_object($controllerName, $moduleName)) !!}
     @endif
 
-    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Opera Speed Dial Icon -->
+    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}">
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('favicon.png') !!}">
-    <link rel="alternate" type="application/rss+xml" title="RSS News" href="{!! asset('rss/news.xml') !!}">
+        <link rel="alternate" type="application/rss+xml" title="RSS News" href="{!! asset('rss/news.xml') !!}">
 
     {!! HTML::style('vendor/font-awesome/css/all.min.css') !!}
     {!! HTML::style(HTML::versionedAssetPath('css/frontend.css')) !!}
@@ -37,7 +37,7 @@
     {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') !!}
     {!! HTML::script('vendor/contentify/contentify.js') !!}
     {!! HTML::script('vendor/contentify/frontend.js') !!}
-    {!! HTML::tag('script', Config::get('app.frontend_js_code')) !!}
+    <script>{!! Config::get('app.frontend_js_code') !!}</script>
 </head>
 <body>
     @if(Config::get('app.theme_christmas'))
@@ -184,7 +184,7 @@
         <div class="more container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="info">{{ date('Y') }} by <a class="cms" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
+                    <span class="info">{{ date('Y') }} by <a class="home-link" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
                 </div>
 
                 <div class="col-md-8">
@@ -198,6 +198,13 @@
             </div>
         </div>
     </footer>
+
+    @if (Config::get('app.gdpr'))
+        <div id="gdpr-alert" class="hidden alert alert-info alert-dismissible">
+            <strong>{{ trans('app.gdpr_alert') }} <em>{{ link_to('privacy-policy', trans('app.read_more')) }}</em></strong>
+            <a href="#" class="btn btn-default" data-dismiss="alert" aria-label="close">{{ trans('app.confirm') }}</a>
+        </div>
+    @endif
     
     {!! Config::get('app.analytics') !!}
 </body>

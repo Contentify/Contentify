@@ -13,6 +13,14 @@
 
     {!! Form::smartUrl() !!}
 
+    {!! Form::smartText('facebook', 'Facebook') !!}
+
+    {!! Form::smartText('twitter', 'Twitter') !!}
+
+    {!! Form::smartText('youtube', 'YouTube') !!}
+
+    {!! Form::smartText('discord', 'Discord') !!}
+
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
 
     {!! Form::smartImageFile('image', trans('app.image')) !!}

@@ -88,10 +88,19 @@ class AdminConfigController extends BackController
         }
 
         $oldTheme = Config::get('app.theme');
-
-        if ($oldTheme != $settingsBag['app::theme']) {
+        if ($oldTheme !== $settingsBag['app::theme']) {
             Artisan::call('vendor:publish', ['--tag' => [lcfirst($settingsBag['app::theme'])], '--force' => true]);
             HTML::refreshAssetPaths();
+        }
+
+        $oldFrontendCssCode = Config::get('app.frontend_less_code');
+        if ($oldFrontendCssCode !== $settingsBag['app::frontend_less_code']) {
+            File::put(storage_path('app/frontend_less_code.less'), $settingsBag['app::frontend_less_code']);
+        }
+
+        $oldBackendLessCode = Config::get('app.backend_less_code');
+        if ($oldBackendLessCode !== $settingsBag['app::backend_less_code']) {
+            File::put(storage_path('app/backend_less_code.less'), $settingsBag['app::backend_less_code']);
         }
 
         // Save the settings one by one:
@@ -226,7 +235,7 @@ class AdminConfigController extends BackController
     /**
      * Compiles the LESS files to CSS files
      *
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function getCompileLess()
     {
@@ -241,7 +250,8 @@ class AdminConfigController extends BackController
             return;
         }
 
-        $this->alertSuccess(trans('app.successful'));
+        $this->alertFlash(trans('app.successful'));
+        return Redirect::to('admin/config');
     }
 
     /**

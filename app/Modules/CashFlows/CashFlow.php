@@ -6,18 +6,18 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property \Carbon $paid_at
- * @property string $title
- * @property string $description
- * @property float $revenues Incoming cash flow - do not use this value for calculation to avoid problems with floats!
- * @property float $expenses Outgoing cash flow - do not use this value for calculation to avoid problems with floats!
- * @property int $integer_revenues Incoming cash flow * 100 - use this value for calculation!
- * @property int $integer_expenses Outgoing cash flow * 100 - use this value for calculation!
- * @property bool $paid Payment of this cash flow done?
+ * @property \Carbon    $created_at
+ * @property \Carbon    $deleted_at
+ * @property \Carbon    $paid_at
+ * @property string     $title
+ * @property string     $description
+ * @property float      $revenues Incoming cash flow - do not use this value to calc, to avoid problems with floats!
+ * @property float      $expenses Outgoing cash flow - do not use this value to calc, to avoid problems with floats!
+ * @property int        $integer_revenues Incoming cash flow * 100 - use this value for calculation!
+ * @property int        $integer_expenses Outgoing cash flow * 100 - use this value for calculation!
+ * @property bool       $paid Payment of this cash flow done?
  * @property \User|null $user
- * @property \User $creator
+ * @property \User      $creator
  */
 class CashFlow extends BaseModel
 {

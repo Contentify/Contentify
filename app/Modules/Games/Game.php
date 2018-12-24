@@ -6,18 +6,18 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $short
- * @property string $icon
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\Awards\Award[] $awards
- * @property \App\Modules\Maps\Map[] $maps
- * @property \App\Modules\Matches\Match[] $matches
+ * @property \Carbon                       $created_at
+ * @property \Carbon                       $deleted_at
+ * @property string                        $title
+ * @property string                        $short
+ * @property string                        $icon
+ * @property int                           $creator_id
+ * @property int                           $updater_id
+ * @property \App\Modules\Awards\Award[]   $awards
+ * @property \App\Modules\Maps\Map[]       $maps
+ * @property \App\Modules\Matches\Match[]  $matches
  * @property \App\Modules\Servers\Server[] $servers
- * @property \User $creator
+ * @property \User                         $creator
  */
 class Game extends BaseModel
 {

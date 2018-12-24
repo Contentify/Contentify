@@ -10,7 +10,7 @@
     <div class="form-actions">
         {!! Form::button(trans('auth::login'), ['type' => 'submit'] ) !!}
         @if (Config::get('steam-auth.api_key'))
-            <a class="btn btn-default text-right" href="{{ url('auth/steam') }}" title="STEAM {{ trans('auth::login') }}">{!! HTML::fontIcon('steam') !!}</a>
+            <a class="btn btn-default text-right" href="{{ url('auth/steam') }}" title="{{ trans('auth::login') }} (STEAM)">{!! HTML::fontIcon('steam') !!}</a>
         @endif
     </div>
 {!! Form::close() !!}

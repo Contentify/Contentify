@@ -31,7 +31,7 @@ class AdminOpponentsController extends BackController
             ],
             'tableRow' => function(Opponent $opponent)
             {
-                Hover::modelAttributes($opponent, ['image', 'creator']);
+                Hover::modelAttributes($opponent, ['image', 'creator', 'updated_at']);
 
                 $icon = $opponent->country->icon 
                     ? HTML::image($opponent->country->uploadPath().$opponent->country->icon, $opponent->country->title)

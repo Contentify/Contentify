@@ -32,8 +32,9 @@ return array(
     'website_name'              => 'Name der Website',
     'analytics'                 => 'Analytics HTML-Code',
     'registration'              => 'Registrierung freigeschaltet',
-    'db_backup'                 => 'Automatisches DB Backup',
+    'db_backup'                 => 'Automatisches DB-Backup',
     'forbidden_email_domains'   => 'Gesperrte Email-Domains',
+    'short_biography'           => 'Kurzbiographie',
 
     /*
      * Meta information
@@ -48,9 +49,9 @@ return array(
     /*
      * Code
      */
-    'frontend_css_code'         => 'Frontend LESS-Code',
+    'frontend_less_code'         => 'Frontend LESS-Code',
     'frontend_js_code'          => 'Frontend JavaScript-Code',
-    'backend_css_code'          => 'Backend LESS-Code',
+    'backend_less_code'          => 'Backend LESS-Code',
     'backend_js_code'           => 'Backend JavaScript-Code',
 
 );

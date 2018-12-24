@@ -42,7 +42,7 @@ class AdminServersController extends BackController
                     $server->id,
                     raw($server->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
                     raw($gameIcon),
-                    raw(Hover::modelAttributes($server, ['creator'])->pull().HTML::link('servers', $server->title)),
+                    raw(Hover::modelAttributes($server, ['creator', 'updated_at'])->pull().HTML::link('servers', $server->title)),
                     $server->ip,
                 ];
             }

@@ -2,7 +2,7 @@
 $(document).ready(function()
 {
     var navKey = 'navIndex';
-    var navIndex= sessionStorage.getItem(navKey);
+    var navIndex = sessionStorage.getItem(navKey);
     var $nav = $('#header nav');
 
     if (typeof navIndex === 'undefined') {
@@ -23,5 +23,16 @@ $(document).ready(function()
     $('#header nav .icon').click(function(event)
     {
         $nav.toggleClass('max');
-    })
+    });
+
+    var gdprKey = 'gdprAlertAccepted';
+    var gdprAlertAccepted = localStorage.getItem(gdprKey);
+    if (! gdprAlertAccepted) {
+        var $gdprAlert = $('#gdpr-alert');
+        $gdprAlert.removeClass('hidden');
+        $gdprAlert.find('.btn').click(function(event)
+        {
+            localStorage.setItem(gdprKey, "1");
+        });
+    }
 });

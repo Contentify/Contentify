@@ -7,21 +7,21 @@ use HTML;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $url
- * @property int $position
- * @property \Carbon $achieved_at
- * @property int $game_id
- * @property int|null $tournament_id
- * @property int|null $team_id
- * @property int $creator_id
- * @property int $updater_id
- * @property \App\Modules\Games\Game $game
- * @property \App\Modules\Tournaments\Tournament $tournament
- * @property \App\Modules\Teams\Team $team
- * @property \User $creator
+ * @property \Carbon                                $created_at
+ * @property \Carbon                                $deleted_at
+ * @property string                                 $title
+ * @property string                                 $url
+ * @property int                                    $position
+ * @property \Carbon                                $achieved_at
+ * @property int                                    $game_id
+ * @property int|null                               $tournament_id
+ * @property int|null                               $team_id
+ * @property int                                    $creator_id
+ * @property int                                    $updater_id
+ * @property \App\Modules\Games\Game                $game
+ * @property \App\Modules\Tournaments\Tournament    $tournament
+ * @property \App\Modules\Teams\Team                $team
+ * @property \User                                  $creator
  */
 class Award extends BaseModel
 {

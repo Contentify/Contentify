@@ -6,7 +6,7 @@
 
 <div class="clearfix"></div>
 
-<div class="loading hidden text-center">{!! HTML::fontIcon('spinner', null, 'fa-spin') !!} {{ trans('app.loading') }}...</div>
+<div class="loading hidden text-center">{!! HTML::fontIcon('spinner', null, 'fa-spin') !!} {{ trans('app.loading') }}…</div>
 
 <script>
     $(document).ready(function()

@@ -35,7 +35,7 @@ class AdminEventsController extends BackController
             {
                 return [
                     $event->id,
-                    raw(Hover::modelAttributes($event, ['creator'])->pull()
+                    raw(Hover::modelAttributes($event, ['creator', 'updated_at'])->pull()
                         .HTML::link('events/'.$event->id.'/'.$event->slug,$event->title)),
                     $event->starts_at,
                 ];

@@ -34,12 +34,12 @@ class AdminPartnersController extends BackController
             ],
             'tableRow' => function(Partner $partner)
             {
-                Hover::modelAttributes($partner, ['image', 'access_counter', 'creator']);
+                Hover::modelAttributes($partner, ['image', 'access_counter', 'creator', 'updated_at']);
 
                 return [
                     $partner->id,
                     raw($partner->published ? HTML::fontIcon('check') : HTML::fontIcon('times')),
-                    raw(Hover::pull(), $partner->title),
+                    raw(Hover::pull().HTML::link('partners#partner-section-'.$partner->slug, $partner->title)),
                     $partner->partnerCat->title,
                 ];
             }

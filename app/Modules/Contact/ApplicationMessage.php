@@ -9,7 +9,7 @@ use BaseModel;
  *
  * @property string $username
  * @property string $email
- * @property int $team_id
+ * @property int    $team_id
  * @property string $role
  * @property string $text
  */

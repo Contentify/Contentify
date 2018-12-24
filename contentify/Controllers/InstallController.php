@@ -423,7 +423,10 @@ class InstallController extends Controller
             $table->boolean('enable_comments')->default(false);
         }, ['news_cat_id']);
 
-        $this->create('galleries', function(Blueprint $table) { });
+        $this->create('galleries', function(Blueprint $table)
+        {
+            $table->boolean('published')->default(false);
+        });
         
         $this->create('images', function(Blueprint $table)
         {
@@ -466,6 +469,10 @@ class InstallController extends Controller
         {
             $table->text('text')->nullable();
             $table->string('url')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('twitter')->nullable();
+            $table->text('youtube')->nullable();
+            $table->text('discord')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
             $table->string('image')->nullable();
@@ -487,6 +494,7 @@ class InstallController extends Controller
             $table->integer('file_size')->default(0);
             $table->boolean('is_image')->default(false);
             $table->boolean('internal')->default(false);
+            $table->boolean('published')->default(false);
         }, ['download_cat_id']);
         
         $this->create('slide_cats', function(Blueprint $table) { }, [], ['slug']);
@@ -1049,7 +1057,10 @@ information about your stored data, and possibly entitlement to correction, bloc
         ("World of Tanks", "WoT", "default/wot.png", 1, 1),
         ("Trackmania", "TM", "default/tm.gif", 1, 1),
         ("FIFA", "FIFA", "default/fifa.gif", 1, 1),
-        ("Minecraft", "MS", "default/mc.png", 1, 1)');
+        ("Fortnite", "FN", "default/fn.png", 1, 1),
+        ("PUBG", "PUBG", "default/pubg.png", 1, 1),
+        ("Overwatch", "OW", "default/ow.png", 1, 1),
+        ("Minecraft", "MC", "default/mc.png", 1, 1)');
 
         DB::insert('INSERT INTO maps(title, image, game_id, creator_id, updater_id) VALUES
         ("Unknown", "unknown.jpg", NULL, 1, 1),

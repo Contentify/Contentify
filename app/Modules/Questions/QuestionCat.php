@@ -6,12 +6,12 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $image
+ * @property \Carbon                  $created_at
+ * @property \Carbon                  $deleted_at
+ * @property string                   $title
+ * @property string                   $image
  * @property \App\Modules\News\News[] $news
- * @property \User $creator
+ * @property \User                    $creator
  */
 class QuestionCat extends BaseModel
 {

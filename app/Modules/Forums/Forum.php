@@ -10,27 +10,27 @@ use SoftDeletingTrait;
 use User;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property string $slug
- * @property string $description
- * @property int $position
- * @property bool $internal
- * @property int $team_id
- * @property int $forum_id
- * @property int $level
- * @property int $threads_count
- * @property int $posts_count
- * @property int|null $latest_thread_id
- * @property int $creator_id
- * @property int $updater_id
- * @property \User $creator
- * @property \App\Modules\Forums\Forum $forum
- * @property \App\Modules\Forums\ForumThread $latestThread
+ * @property \Carbon                           $created_at
+ * @property \Carbon                           $deleted_at
+ * @property string                            $title
+ * @property string                            $slug
+ * @property string                            $description
+ * @property int                               $position
+ * @property bool                              $internal
+ * @property int                               $team_id
+ * @property int                               $forum_id
+ * @property int                               $level
+ * @property int                               $threads_count
+ * @property int                               $posts_count
+ * @property int|null                          $latest_thread_id
+ * @property int                               $creator_id
+ * @property int                               $updater_id
+ * @property \User                             $creator
+ * @property \App\Modules\Forums\Forum         $forum
+ * @property \App\Modules\Forums\ForumThread   $latestThread
  * @property \App\Modules\Forums\ForumThread[] $threads
- * @property \App\Modules\Teams\Team $team
- * @property \App\Modules\Forums\Forum[] $forums
+ * @property \App\Modules\Teams\Team           $team
+ * @property \App\Modules\Forums\Forum[]       $forums
  */
 class Forum extends BaseModel
 {

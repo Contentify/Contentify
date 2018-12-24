@@ -5,7 +5,7 @@
         <img src="{!! asset('img/logo_180.png') !!}" alt="{{ $match->left_team->title }}">
         <div class="team-name">
             <img src="{{ asset('uploads/countries/eu.png') }}"> 
-            {{ $match->left_team->title }}
+            <a href="{{ url('/teams/'.$match->left_team->id.'/'.$match->left_team->slug) }}">{{ $match->left_team->title }}</a>
         </div>
     </div>
     <div class="mid">
@@ -21,7 +21,11 @@
             @if ($match->right_team->country->icon)
                 <img src="{{ $match->right_team->country->uploadPath().$match->right_team->country->icon }}">
             @endif
-            {{ $match->right_team->title }}
+            @if ($match->right_team->url)
+                 <a href="{{ url($match->right_team->url) }}" target="_blank">{{ $match->right_team->title }}</a>
+            @else
+                {{ $match->right_team->title }}
+            @endif
         </div> 
     </div>
 </div>
@@ -82,7 +86,7 @@
                 <span>{{ $matchScore->map->title }}: {{ $matchScore->left_score }}:{{ $matchScore->right_score }}</span>
             </div>
         @endforeach
-</div>
+    </div>
 @endif
 
 @if ($match->text)

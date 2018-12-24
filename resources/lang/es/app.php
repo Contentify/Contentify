@@ -202,7 +202,7 @@ return [
     'nothing_here'      => 'Lo siento, aún no hay contenido aquí. Por favor, inténtelo de nuevo más tarde.',
     'back'              => 'Atrás',
     'general'           => 'General',
-    'metainfo'			=> 'Meta Información',
+    'metainfo'			=> 'Meta info',
     'services'          => 'Servicios',
     'theme'             => 'Tema',
     'theme_christmas'   => 'Modo navidad (Nieve)',
@@ -230,6 +230,9 @@ return [
     'export'            => 'Exportar',
     'download'          => 'Descargar', // Verb - do not confuse with object_download!
     'option'            => 'Opción',
+    'gdpr'              => 'RGPD', // General Data Protection Regulation
+    'gdpr_alert'        => 'Este sitio web utiliza cookies para proporcionar la mejor experiencia posible al usuario.',
+    'privacy_policy'    => 'Declaración de privacidad',
 
     /*
      * Days

@@ -8,12 +8,12 @@ use SoftDeletingTrait;
 /**
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
- * @property string $title
- * @property bool $translate
- * @property string $items
- * @property int $creator_id
- * @property int $updater_id
- * @property \User $creator
+ * @property string  $title
+ * @property bool    $translate
+ * @property string  $items
+ * @property int     $creator_id
+ * @property int     $updater_id
+ * @property \User   $creator
  */
 class Navigation extends BaseModel
 {

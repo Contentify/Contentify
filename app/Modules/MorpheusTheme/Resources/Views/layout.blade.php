@@ -25,7 +25,7 @@
         {!! HTML::title(trans_object($controllerName, $moduleName)) !!}
     @endif
 
-    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}"><!-- Opera Speed Dial Icon -->
+    <link rel="icon" type="image/png" href="{!! asset('img/favicon_180.png') !!}">
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('favicon.png') !!}">
     <link rel="alternate" type="application/rss+xml" title="RSS News" href="{!! asset('rss/news.xml') !!}">
 
@@ -37,7 +37,7 @@
     {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') !!}
     {!! HTML::script('vendor/contentify/contentify.js') !!}
     {!! HTML::script('vendor/contentify/frontend.js') !!}
-    {!! HTML::tag('script', Config::get('app.frontend_js_code')) !!}
+    <script>{!! Config::get('app.frontend_js_code') !!}</script>
 </head>
 <body>
     @if (Config::get('app.theme_christmas'))
@@ -159,7 +159,7 @@
         </div>
         <div class="more">
             <div class="container">
-                <span class="info">&copy; {{ date('Y') }} by <a class="cms" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
+                <span class="info">&copy; {{ date('Y') }} by <a class="home-link" href="{!! route('home') !!}">{!! Config::get('app.name') !!}</a></span>
 
                 <span class="visitors-label">{{ trans('app.object_visitors') }}:&nbsp;&nbsp;</span>
                 @widget('Visitors::Visitors')
@@ -170,7 +170,14 @@
             </div>
         </div>
     </footer>
-    
+
+    @if (Config::get('app.gdpr'))
+        <div id="gdpr-alert" class="hidden alert alert-info alert-dismissible">
+            <strong>{{ trans('app.gdpr_alert') }} <em>{{ link_to('privacy-policy', trans('app.read_more')) }}</em></strong>
+            <a href="#" class="btn btn-default" data-dismiss="alert" aria-label="close">{{ trans('app.confirm') }}</a>
+        </div>
+    @endif
+
     {!! Config::get('app.analytics') !!}
 </body>
 </html>

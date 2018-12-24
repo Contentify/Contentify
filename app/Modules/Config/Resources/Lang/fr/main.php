@@ -34,6 +34,7 @@ return array(
     'registration'              => 'Inscription débloquée',
     'db_backup'                 => 'Backup BDD automatique',
     'forbidden_email_domains'   => 'Domaines d\'email bloqués',
+    'short_biography'           => 'Courte biographie',
 
     /*
      * Meta information

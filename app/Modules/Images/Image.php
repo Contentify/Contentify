@@ -6,17 +6,19 @@ use BaseModel;
 use Str;
 
 /**
- * @property string $title
- * @property string $tags
- * @property string $image
- * @property int|null $gallery_id
- * @property int $width
- * @property int $height
- * @property int $access_counter
- * @property int $creator_id
- * @property int $updater_id
+ * @property \Carbon                        $created_at
+ * @property \Carbon                        $deleted_at
+ * @property string                         $title
+ * @property string                         $tags
+ * @property string                         $image
+ * @property int|null                       $gallery_id
+ * @property int                            $width
+ * @property int                            $height
+ * @property int                            $access_counter
+ * @property int                            $creator_id
+ * @property int                            $updater_id
  * @property \App\Modules\Galleries\Gallery $gallery
- * @property \User $creator
+ * @property \User                          $creator
  */
 class Image extends BaseModel
 {

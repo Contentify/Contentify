@@ -6,13 +6,13 @@ use BaseModel;
 use SoftDeletingTrait;
 
 /**
- * @property \Carbon $created_at
- * @property \Carbon $deleted_at
- * @property string $title
- * @property int $creator_id
- * @property int $updater_id
+ * @property \Carbon                       $created_at
+ * @property \Carbon                       $deleted_at
+ * @property string                        $title
+ * @property int                           $creator_id
+ * @property int                           $updater_id
  * @property \App\Modules\Adverts\Advert[] $adverts
- * @property \User $creator
+ * @property \User                         $creator
  */
 class AdvertCat extends BaseModel
 {

@@ -22,3 +22,5 @@ ModuleRoute::get('articles/{id}/{slug}', 'ArticlesController@show');
 
 ModuleRoute::get('editor-templates/{id}', 'EditorTemplatesController@show');
 ModuleRoute::get('editor-templates', 'EditorTemplatesController@index');
+
+ModuleRoute::get('privacy-policy', 'PrivacyPolicyController@index');

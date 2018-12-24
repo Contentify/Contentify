@@ -30,7 +30,7 @@ class AdminDownloadCatsController extends BackController
             ],
             'tableRow' => function(DownloadCat $downloadCat)
             {
-                Hover::modelAttributes($downloadCat, ['creator']);
+                Hover::modelAttributes($downloadCat, ['creator', 'updated_at']);
 
                 return [
                     $downloadCat->id,

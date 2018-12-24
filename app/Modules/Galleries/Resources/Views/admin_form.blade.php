@@ -7,5 +7,7 @@
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
+    {!! Form::smartCheckbox('published', trans('app.published'), true) !!}
+
     {!! Form::actions() !!}
 {!! Form::close() !!}

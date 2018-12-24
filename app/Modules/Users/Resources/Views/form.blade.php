@@ -35,13 +35,19 @@
 
     {!! Form::smartText('website', trans('app.website')) !!}
 
+    <br><br>
+
     {!! Form::smartText('facebook', 'Facebook') !!}
 
     {!! Form::smartText('twitter', 'Twitter') !!}
 
+    {!! Form::smartText('discord', 'Discord') !!}
+
     {!! Form::smartText('skype', 'Skype') !!}
 
     {!! Form::smartText('steam_id', trans('users::steam_id')) !!}
+
+    <br><br>
 
     {!! Form::smartText('cpu', trans('users::cpu')) !!}
 
@@ -61,7 +67,9 @@
 
     {!! Form::smartText('headset', trans('users::headset')) !!}
 
-    {!! Form::smartText('mousepad', trans('users::mousepad')) !!}
+    {!! Form::smartText('mouse_pad', trans('users::mouse_pad')) !!}
+
+    <br><br>
 
     {!! Form::smartText('game', trans('app.object_game')) !!}
 
@@ -76,6 +84,8 @@
     {!! Form::smartTextarea('about', trans('users::about')) !!}
 
     {!! Form::smartText('signature', trans('users::signature')) !!}
+
+    <br><br>
 
     {!! Form::smartImageFile('image', trans('users::image')) !!}
     

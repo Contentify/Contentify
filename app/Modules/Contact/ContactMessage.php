@@ -10,12 +10,12 @@ use User;
 /**
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
- * @property string $username
- * @property string $email
- * @property string $title
- * @property string $text
- * @property bool $new
- * @property string $ip
+ * @property string  $username
+ * @property string  $email
+ * @property string  $title
+ * @property string  $text
+ * @property bool    $new
+ * @property string  $ip
  */
 class ContactMessage extends BaseModel
 {

@@ -13,11 +13,11 @@ use Sentinel;
  *
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
- * @property string $name
- * @property string $slug
- * @property string $permissions
+ * @property string  $name
+ * @property string  $slug
+ * @property string  $permissions
  * @property \User[] $uses
- * @property \User $creator
+ * @property \User   $creator
  */
 class Role extends BaseModel
 {

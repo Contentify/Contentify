@@ -36,7 +36,7 @@ return array(
     'mouse'         => 'Ratón',
     'keyboard'      => 'Teclado',
     'headset'       => 'Auriculares',
-    'mousepad'      => 'Alfombrilla',
+    'mouse_pad'     => 'Alfombrilla',
 
     'food'          => 'Comida',
     'drink'         => 'Bebida',

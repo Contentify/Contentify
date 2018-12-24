@@ -77,7 +77,7 @@ EOD;
      */
     public function updateDatabase($prefix = '')
     {
-        $forbiddenEmailDomains = 'example.com,example.org';
+        $forbiddenEmailDomains = 'example.com, example.org';
 
         // How to create these statements: Export the new database - for example via phpMyAdmin -
         // and then copy the relevant statements from the .sql file to this place.
@@ -132,8 +132,21 @@ EOD;
                 ADD PRIMARY KEY (`poll_id`,`user_id`,`option_id`);",
             "ALTER TABLE `{$prefix}polls`
                 MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;",
+
             "ALTER TABLE {$prefix}events ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
+
             "ALTER TABLE {$prefix}downloads ADD `internal` TINYINT UNSIGNED DEFAULT 0;",
+            "ALTER TABLE {$prefix}downloads ADD `published` TINYINT UNSIGNED DEFAULT 1;",
+
+            "ALTER TABLE {$prefix}galleries ADD `published` TINYINT UNSIGNED DEFAULT 1;",
+
+            "ALTER TABLE `{$prefix}users` ADD `discord` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}users` CHANGE `mousepad` `mouse_pad` VARCHAR(255);",
+
+            "ALTER TABLE `{$prefix}partners` ADD `facebook` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}partners` ADD `twitter` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}partners` ADD `youtube` VARCHAR(255) DEFAULT NULL;",
+            "ALTER TABLE `{$prefix}partners` ADD `discord` VARCHAR(255) DEFAULT NULL;",
          ];
 
         return $updateQueries;
