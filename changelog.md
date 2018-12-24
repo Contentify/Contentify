@@ -5,7 +5,7 @@
 - Added meta information (author, description and keywords) to the website settings (thanks to kamohy!)
 - Added config fields for custom LESS and JavaScript code
 - Display info text if a website is empty, because it does not have any content yet
-- Added short biography config value and widget `@widget('Pages::ShortBiography)`
+- Added short biography config value and widget `@widget('Pages::ShortBiography')`
 - Downloads & galleries now have a "published" attribute
 - Events and downloads can be internal
 - Created comments admin backend page (`www.your-domain.com/admin/comments`)
