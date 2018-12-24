@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v2.6-dev
+## Contentify CMS - v2.6
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.4-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
@@ -13,13 +13,13 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Get the production version
 
-Download it here: [2.5](https://github.com/Contentify/Contentify/releases/tag/v2.5)
+Download it here: [2.6](https://github.com/Contentify/Contentify/releases/tag/v2.6)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Get the developer version
 
-Clone this repository (`2.6-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
+Clone this repository (`2.6` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
 Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Update
