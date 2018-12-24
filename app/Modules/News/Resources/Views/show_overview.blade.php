@@ -2,7 +2,7 @@
     {!! Form::label('news_cat_id', trans('app.category')) !!}: {!! Form::selectForeign('news_cat_id', null, true) !!}
 </div>
 
-@foreach ($newsCollection as $news)
+@forelse ($newsCollection as $news)
     <article class="news">
         <header>
             <h2>{{ $news->title }}</h2>
@@ -25,6 +25,8 @@
             {{ $news->countComments() }} {!! trans('app.comments') !!} - {!! link_to('news/'.$news->id.'/'.$news->slug, trans('app.read_more')) !!}
         </div>
     </article>
-@endforeach
+@empty
+    <p class="space-top">{{ trans('app.nothing_here') }}</p>
+@endforelse
 
 {{ $newsCollection->links() }}

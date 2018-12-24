@@ -1,7 +1,9 @@
 <div class="items">
-    @foreach ($streamItems as $item)
+    @forelse ($streamItems as $item)
         @include('news::stream_item', compact('item', 'more'))
-    @endforeach
+    @empty
+        <p>{{ trans('app.nothing_here') }}</p>
+    @endforelse
 </div>
 
 <div class="clearfix"></div>

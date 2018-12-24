@@ -51,8 +51,9 @@ class NewsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show the preview of multiple news
-     * 
+     *
      * @return void
+     * @throws \Exception
      */
     public function showOverview()
     {
@@ -69,6 +70,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
      *
      * @param int|string|null $offset Null or a timestamp
      * @return \Illuminate\Contracts\View\View|null
+     * @throws \Exception
      */
     public function showStream($offset = null)
     {
@@ -129,10 +131,11 @@ class NewsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show a news
-     * 
+     *
      * @param  int    $id   The ID of the news
      * @param  string $slug The unique slug (optional)
      * @return void
+     * @throws \Exception
      */
     public function show($id, $slug = null)
     {
@@ -160,9 +163,10 @@ class NewsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show a news by slug instead of ID
-     * 
+     *
      * @param  string $slug The unique slug
      * @return void
+     * @throws \Exception
      */
     public function showBySlug($slug)
     {
