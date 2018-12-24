@@ -9,6 +9,8 @@
 
     <link rel="shortcut icon" type="picture/x-icon" href="{!! asset('favicon.png') !!}">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     {!! HTML::script('vendor/jquery/jquery-2.2.4.min.js') !!}
     
     <style type="text/css">
@@ -31,7 +33,7 @@
         #content h1 { margin: 0 0 30px 0; font-family: Arial; color: #444 }
         #content .warning { color: #FF6100 }
         .buttons { position: relative; margin-top: 100px }
-        .navbut { position: absolute; top: 150%; font-family: 'Open Sans', Arial; width: 100px; height: 24px; padding: 5px 20px; border: 2px solid #FF6100; border-radius: 5px; background-color: #FF6100; color: white; box-sizing: content-box; -moz-box-sizing: content-box; font-family: 'Open Sans', Arial; font-size: 18px; box-shadow: 0 4px 0 #d45100; vertical-align: top; text-align: center; }
+        .navbut { position: absolute; top: 150%; font-family: 'Open Sans', Arial; width: 130px; height: 24px; padding: 5px; border: 2px solid #FF6100; border-radius: 5px; background-color: #FF6100; color: white; box-sizing: content-box; -moz-box-sizing: content-box; font-family: 'Open Sans', Arial; font-size: 18px; box-shadow: 0 4px 0 #d45100; vertical-align: top; text-align: center; }
         .navbut:hover { opacity: 0.9; filter: alpha(opacity = 0.9); }
         .navbut.left:hover { content: '<' }
         .navbut.right:hover { content: '>' }
@@ -99,7 +101,7 @@
         $('.navbut.right').click(function(event)
         {
             if ({!! $step !!} == 3) {
-                $(this).text('Working...');
+                $(this).html('Working... <i class="fas fa-cog fa-spin"></i>');
                 $(this).attr('disabled', true);
             }
         })
