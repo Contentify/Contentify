@@ -810,10 +810,7 @@ class InstallController extends Controller
             ['name' => 'app.twitter',                   'value' => 'ContentifyCMS'],
             ['name' => 'app.facebook',                  'value' => 'contentifycms'],
             ['name' => 'app.youtube',                   'value' => 'UC2gIIZzySdgxrQ3jM4jmoqQ'],
-            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
-            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
-            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
-            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com,example.org'],
+            ['name' => 'app.forbidden_email_domains',   'value' => 'example.com, example.org'],
         ]);
 
         DB::table('team_cats')->insert([
