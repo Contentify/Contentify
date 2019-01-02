@@ -33,6 +33,8 @@ To update from v2.5 to 2.6:
 * If you made changes to the config files in the `config` folder, you have to re-apply them
 * Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
 
+Changes: [Changelog.md](changelog.md)
+
 ### Demo
 
 * URL: [demo.contentify.org](http://demo.contentify.org/)
