@@ -47,7 +47,7 @@ Changes: [Changelog.md](changelog.md)
 
 ### Support
 
-You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via e-mail. 
+You can get free support via GitHub's [issue](https://github.com/Contentify/Contentify/issues) section or via [e-mail](mailto:contact@contentify.org). 
 
 ### Contribution
 
