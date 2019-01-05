@@ -1,8 +1,8 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v2.6
+## Contentify CMS - v3.0-dev
 
-[![Laravel](https://img.shields.io/badge/Laravel-5.4-orange.svg?style=flat-square)](http://laravel.com)
+[![Laravel](https://img.shields.io/badge/Laravel-5.5-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 [![Gitter](https://img.shields.io/gitter/room/badges/shields.svg?style=flat-square)](https://gitter.im/Contentify)
@@ -13,18 +13,18 @@ Website: [contentify.org](http://contentify.org/)
 
 ### Get the production version
 
-Download it here: [2.6](https://github.com/Contentify/Contentify/releases/tag/v2.6)
+Download it here: [3.0](https://github.com/Contentify/Contentify/releases/tag/v3.0)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Get the developer version
 
-Clone this repository (`2.6` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
+Clone this repository (`3.0-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
 Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Update
 
-To update from v2.5 to 2.6:
+To update from v2.6 to 3.0:
 * Make a backup of your files and your database!
 * Clear the cache by running `php artisan cache:clear` via console or deleting all files and folders in 
 `storage/framework/cache` and `storage/framework/views`
@@ -43,7 +43,7 @@ Changes: [Changelog.md](changelog.md)
 
 > The server resets (database, uploaded files and cache) twice per hour.
 
-> NOTE: The demo website is running with Contentify 2.0 Beta.
+> NOTE: The demo website is running with Contentify 2.6.
 
 ### Support
 
