@@ -189,7 +189,7 @@ class ModuleRoute
      * @param  array  $parameters
      * @return void
      */
-    public function resource($route, $target, $parameters = array())
+    public function resource($route, $target, $parameters = [])
     {
         Route::resource($route, $this->controllerPath.$target, $parameters);
     }

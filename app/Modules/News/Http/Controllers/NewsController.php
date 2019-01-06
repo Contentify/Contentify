@@ -184,7 +184,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
     {
         $newsCollection = News::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($newsCollection as $news) {
             $results[$news->title] = URL::to('news/'.$news->id.'/show');
         }

@@ -85,7 +85,7 @@ class EventsController extends FrontController implements GlobalSearchInterface
     {
         $events = Event::where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($events as $event) {
             $results[$event->title] = URL::to('events/'.$event->id.'/'.$event->slug);
         }

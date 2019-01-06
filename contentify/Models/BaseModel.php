@@ -91,7 +91,7 @@ class BaseModel extends Eloquent
      * @param  array  $thumbnails For images only: Array with closures or sizes of thumbnails
      * @return string|null
      */
-    public function uploadFile($fieldName, $isImage = false, $thumbnails = array())
+    public function uploadFile($fieldName, $isImage = false, $thumbnails = [])
     {
         $file = Input::file($fieldName);
 
@@ -212,12 +212,12 @@ class BaseModel extends Eloquent
      * Example:
      * <code>
      * class Order extends BaseModel
-{
-     *     protected static $relations = array(
-     *         'items'    => array(self::HAS_MANY, 'Item'),
-     *         'owner'    => array(self::HAS_ONE, 'User', 'foreignKey' => 'user_id'),
-     *         'pictures' => array(self::MORPH_MANY, 'Picture', 'name' => 'imageable')
-     *     );
+     * {
+     *     protected static $relations = [
+     *         'items'    => [(self::HAS_MANY, 'Item'],
+     *         'owner'    => [(self::HAS_ONE, 'User', 'foreignKey' => 'user_id'],
+     *         'pictures' => [(self::MORPH_MANY, 'Picture', 'name' => 'imageable']
+     *     ];
      * }
      * </code>
      *
@@ -231,7 +231,7 @@ class BaseModel extends Eloquent
      *
      * @var array
      */
-    protected static $relationsData = array();
+    protected static $relationsData = [];
 
     /** This class "has one model" if its ID is an FK in that model */
     const HAS_ONE = 'hasOne';
@@ -261,12 +261,12 @@ class BaseModel extends Eloquent
      *
      * @var string[]
      */
-    protected static $relationTypes = array(
+    protected static $relationTypes = [
         self::HAS_ONE, self::HAS_MANY, self::HAS_MANY_THROUGH,
         self::BELONGS_TO, self::BELONGS_TO_MANY,
         self::MORPH_TO, self::MORPH_ONE, self::MORPH_MANY,
         self::MORPH_TO_MANY, self::MORPHED_BY_MANY
-    );
+    ];
 
     /**
      * Getter for $relationsData
@@ -307,10 +307,10 @@ class BaseModel extends Eloquent
             ' is a morphTo relation and should not contain additional arguments.');
         }
 
-        $verifyArgs = function (array $opt, array $req = array()) use ($relationName, &$relation, $errorHeader) {
-            $missing = array('req' => array(), 'opt' => array());
+        $verifyArgs = function (array $opt, array $req = []) use ($relationName, &$relation, $errorHeader) {
+            $missing = ['req' => [], 'opt' => []];
 
-            foreach (array('req', 'opt') as $keyType) {
+            foreach (['req', 'opt'] as $keyType) {
                 foreach ($$keyType as $key) {
                     if (!array_key_exists($key, $relation)) {
                         $missing[$keyType][] = $key;

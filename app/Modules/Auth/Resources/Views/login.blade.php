@@ -2,7 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => url('auth/login'))) !!}
+{!! Form::open(['url' => url('auth/login')]) !!}
     {!! Form::smartEmail() !!}
     
     {!! Form::smartPassword() !!}

@@ -117,10 +117,10 @@ class AdminConfigController extends BackController
              * the row is always affected, even though if the value does not change.
              */
             if ($result == 0) {
-                DB::table('config')->insert(array(
+                DB::table('config')->insert([
                     'name'       => $settingRealName,
                     'value'      => $settingsBag->$settingName,
-                    'updated_at' => DB::raw('NOW()'))
+                    'updated_at' => DB::raw('NOW()')]
                 );
             }
 

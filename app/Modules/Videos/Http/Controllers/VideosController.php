@@ -58,7 +58,7 @@ class VideosController extends FrontController implements GlobalSearchInterface
     {
         $videos = Video::where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($videos as $video) {
             $results[$video->title] = URL::to('videos/'.$video->id.'/'.$video->slug);
         }

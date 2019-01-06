@@ -24,15 +24,15 @@ class Comment extends BaseModel
 
     const CACHE_KEY = 'comments::comment.';
 
-    protected $fillable = array('text');
+    protected $fillable = ['text'];
 
-    public $rules = array(
+    public $rules = [
         'text'  => 'required|min:3',
-    );
+    ];
 
-    public static $relationsData = array(
-        'creator' => array(self::BELONGS_TO, 'User'),
-    );
+    public static $relationsData = [
+        'creator' => [self::BELONGS_TO, 'User'],
+    ];
 
     public static function boot()
     {

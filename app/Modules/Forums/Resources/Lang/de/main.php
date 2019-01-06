@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -44,4 +44,4 @@ return array(
     'already_reported'  => 'Sie haben diesen Beitrag bereits gemeldet.',
     'reported'          => 'Der Beitrag wurde gemeldet.',
 
-);
+];

@@ -9,7 +9,7 @@ use Widget;
 class TeamsWidget extends Widget 
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         if (isset($parameters['categoryId'])) {
             $teams = Team::whereTeamCatId($parameters['categoryId'])->published()->orderBy('position', 'ASC')->get();

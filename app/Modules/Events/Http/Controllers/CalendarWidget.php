@@ -10,7 +10,7 @@ use Widget;
 class CalendarWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         if (isset($parameters['year'])) {
             $year = $parameters['year'];

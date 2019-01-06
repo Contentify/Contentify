@@ -2,7 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => 'auth/steam')) !!}
+{!! Form::open(['url' => 'auth/steam']) !!}
     {!! Form::smartText('username', trans('app.username'), $username) !!}
 
     <div id="username_info" class="help-block text-right hidden">

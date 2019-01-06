@@ -315,7 +315,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
     {
         $cups = Cup::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($cups as $cup) {
             $results[$cup->title] = URL::to('cups/'.$cup->id.'/'.$cup->slug);
         }

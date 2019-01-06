@@ -7,7 +7,7 @@
 @endif
 
 
-{!! Form::open(array('url' => 'search/create')) !!}
+{!! Form::open(['url' => 'search/create']) !!}
     <input name="_createdat" type="hidden" value="{!! time() !!}">
 
     {!! Form::smartText('subject', trans('app.subject')) !!}

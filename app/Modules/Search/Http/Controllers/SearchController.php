@@ -32,7 +32,7 @@ class SearchController extends FrontController
             $moduleRepo = app()['modules'];
             $modules = $moduleRepo->all(); // Retrieve all module info objects
 
-            $resultBags = array();
+            $resultBags = [];
             foreach ($modules as $module) {
                 if (! $module['enabled']) continue;
                 

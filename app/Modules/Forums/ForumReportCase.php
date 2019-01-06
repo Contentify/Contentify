@@ -35,7 +35,7 @@ class ForumReportCase extends BaseModel
             ->orderBy('created_at', 'desc')
             ->groupBy('post_id')->get();
 
-        $forumReportCases = array();
+        $forumReportCases = [];
         foreach ($results as $key => $result) {
             $data = [
                 'id'                => $result->post_id, // Use the ID of the post as as pseudo ID for the delete button

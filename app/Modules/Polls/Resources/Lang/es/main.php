@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -21,4 +21,4 @@ return array(
     'votes_number'      => ':0 votos a favor:',
     'votes_total'       => 'Se emitieron :0 votos en total.'
 
-);
+];

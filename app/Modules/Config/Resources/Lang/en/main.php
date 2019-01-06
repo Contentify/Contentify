@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -46,4 +46,4 @@ return array(
     'meta_description'	        => 'Description',
     'meta_description_info'     => 'Optimization of the website for search engine. (Description)',
 
-);
+];

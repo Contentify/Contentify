@@ -2,7 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => 'auth/registration/create')) !!}
+{!! Form::open(['url' => 'auth/registration/create']) !!}
     {!! Form::smartText('username', trans('app.username')) !!}
 
     <div id="username_info" class="help-block text-right hidden">

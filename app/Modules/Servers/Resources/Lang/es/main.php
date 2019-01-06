@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@ return array(
     |
     */
    
-    'hoster'      => 'Servidor',
+    'host'        => 'Servidor',
     'slots'       => 'Espacios',
 
-);
+];

@@ -43,7 +43,7 @@ class FormGenerator
 
         $columns = DB::select('SHOW COLUMNS FROM '.$tableName);
 
-        $fields = array();
+        $fields = [];
         foreach ($columns as $columnIndex => $column) {
             $field = $this->buildField($column);
             if ($field) {

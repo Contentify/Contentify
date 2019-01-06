@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -55,4 +55,4 @@ return array(
     'change_winner'      => 'Gewinner ändern',
     'next_match'         => 'Nächstes Match',
 
-);
+];

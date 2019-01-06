@@ -119,7 +119,7 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
     {
         $downloads = Download::where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($downloads as $download) {
             $results[$download->title] = URL::to('downloads/'.$download->id.'/'.$download->slug);
         }

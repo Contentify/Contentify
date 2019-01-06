@@ -174,7 +174,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
         /*
          * Validation
          */
-        $rules = array('password'  => 'required|min:6|confirmed');
+        $rules = ['password' => 'required|min:6|confirmed'];
 
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -184,10 +184,10 @@ class UsersController extends FrontController implements GlobalSearchInterface
         /** @var User $user */
         $user = User::findOrFail($id);
 
-        $credentials = array(
+        $credentials = [
             'email'    => $user->email,
             'password' => Input::get('password_current'),
-        );
+        ];
 
         /*
          * Try to authenticate the user. If it succeeds the
@@ -222,7 +222,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
     {
         $users = User::where('username', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($users as $user) {
             $results[$user->username] = url('users/'.$user->id.'/'.$user->slug);
         }

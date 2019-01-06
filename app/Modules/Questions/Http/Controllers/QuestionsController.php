@@ -32,7 +32,7 @@ class QuestionsController extends FrontController implements GlobalSearchInterfa
     {
         $questions = Question::wherePublished(true)->where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($questions as $question) {
             $results[$question->title] = URL::to('questions#question_'.$question->id);
         }

@@ -8,7 +8,7 @@ use Widget;
 class SearchWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         return View::make('search::widget')->render();
     }

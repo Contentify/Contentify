@@ -190,7 +190,7 @@ class User extends SentinelUser implements UserInterface
      */
     public function getDates()
     {
-        return array_merge(parent::getDates(), array('activated_at', 'last_login', 'last_active'));
+        return array_merge(parent::getDates(), ['activated_at', 'last_login', 'last_active']);
     }
 
     /**

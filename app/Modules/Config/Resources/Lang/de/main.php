@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return array(
     /*
      * Meta information
      */
-	'meta_author'	            => 'Author',
+	'meta_author'	            => 'Autor',
 	'meta_author_info'	        => 'Wem gehört die Website?',
     'meta_keywords'	            => 'Schlagworte',
     'meta_keywords_info'        => 'Optimierung der Website für Suchmaschinen (Schlagworte)',
@@ -54,4 +54,4 @@ return array(
     'backend_less_code'          => 'Backend LESS-Code',
     'backend_js_code'           => 'Backend JavaScript-Code',
 
-);
+];

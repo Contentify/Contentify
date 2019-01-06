@@ -10,7 +10,7 @@ use Widget;
 class VisitorsWidget extends Widget 
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         // Use SUM() so we will always get a result, even if there aren't any rows for today.
         $today = Cache::remember('visitors.widget.today', 5, function()

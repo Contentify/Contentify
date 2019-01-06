@@ -67,7 +67,7 @@ class MySqlDump
      *
      * @var string[]
      */
-    private $tables = array();
+    private $tables = [];
 
     /**
      * @var PDO
@@ -151,7 +151,7 @@ class MySqlDump
         $this->writeHeader();
 
         // Listing all tables from database
-        $this->tables = array();
+        $this->tables = [];
         foreach ($this->db_handler->query("SHOW TABLES") as $row) {
             array_push($this->tables, current($row));
         }
@@ -246,7 +246,7 @@ class MySqlDump
 
         foreach ($this->db_handler->query("SELECT * FROM `$tableName`", PDO::FETCH_NUM) as $row)
         {
-            $values = array();
+            $values = [];
             foreach ($row as $value)
             {
                 $values[] = is_null($value) ? "NULL" : $this->db_handler->quote($value);

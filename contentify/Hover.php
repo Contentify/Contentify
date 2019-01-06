@@ -82,7 +82,7 @@ class Hover
      * @param array  $attributes Image attributes
      * @return self
      */
-    public function image($url, $alt = null, $attributes = array())
+    public function image($url, $alt = null, $attributes = [])
     {
         if ($url) {
             $this->content .= HTML::image($url, $alt, $attributes);
@@ -113,7 +113,7 @@ class Hover
      * @param string[]  $attributes Array of model attribute names
      * @return self
      */
-    public function modelAttributes($model, $attributes = array())
+    public function modelAttributes($model, $attributes = [])
     {
         foreach ($attributes as $attribute) {
             switch ($attribute) {

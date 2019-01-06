@@ -66,7 +66,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param array $metaTags
      * @return string
      */
-    public function metaTags(array $metaTags = array())
+    public function metaTags(array $metaTags = [])
     { 
         $output = '';
         foreach ($metaTags as $name => $content) {
@@ -162,7 +162,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  array   $attributes Apply these HTML attributes to the link element
      * @return string
      */
-    public function imageLink($image, $title, $url, $printTitle = false, $attributes = array())
+    public function imageLink($image, $title, $url, $printTitle = false, $attributes = [])
     {
         $imageUrl = get_image_url($image);
         $image = self::image($imageUrl, $title);
@@ -194,7 +194,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  array   $attributes Apply these HTML attributes to the table element
      * @return string
      */
-    public function iconLink($icon, $title, $url, $showTitle = false, $attributes = array())
+    public function iconLink($icon, $title, $url, $showTitle = false, $attributes = [])
     {
         $icon = self::fontIcon($icon);
 
@@ -225,7 +225,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  array  $attributes Apply these HTML attributes to the button element
      * @return string
      */
-    public function button($title, $url, $icon = '', $attributes = array())
+    public function button($title, $url, $icon = '', $attributes = [])
     {
         $action = 'onclick="document.location.href=\''.$url.'\'"';
 

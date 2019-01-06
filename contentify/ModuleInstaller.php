@@ -33,13 +33,13 @@ abstract class ModuleInstaller
     /**
      * Array consisting of pairs of permission names and levels.
      * These permission are added to the super admin role.
-     * Example: array('permissionName' => 4)
+     * Example: ['permissionName' => 4]
      * Note that per default a basic module permission is added,
      * so you only need to use this array to provide extra perms.
      *
      * @var array
      */
-    protected $extraPermissions = array();
+    protected $extraPermissions = [];
 
     /**
      * Constructor call

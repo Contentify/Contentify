@@ -31,8 +31,8 @@
                         <td>{{ $server->slots }}</td>
                     </tr>
                     <tr>
-                        <th>{!! trans('servers::hoster') !!}</th>
-                        <td>{{ $server->hoster }}</td>
+                        <th>{!! trans('servers::host') !!}</th>
+                        <td>{{ $server->host }}</td>
                     </tr>
                     <tr>
                         <th>{!! trans('app.ip') !!}</th>

@@ -79,10 +79,10 @@ abstract class ConfigController extends BackController
                     ->update(['value' => $value, 'updated_at' => DB::raw('NOW()')]);
 
                 if ($result == 0) {
-                    DB::table('config')->insert(array(
+                    DB::table('config')->insert([
                         'name'          => $namespace.$name,
                         'value'         => $value, 
-                        'updated_at'    => DB::raw('NOW()'))
+                        'updated_at'    => DB::raw('NOW()')]
                     );
                 }
 

@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -93,4 +93,4 @@ return array(
     'model_class'   => 'Model',
     'activity'      => 'Aktivität',
 
-);
+];

@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -15,4 +15,4 @@ return array(
     'fail'          => 'Erreur: Impossible d\'installer le module.',
     'success'       => 'Installation du module terminé.'
 
-);
+];

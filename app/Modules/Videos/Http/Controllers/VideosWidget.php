@@ -10,7 +10,7 @@ use Widget;
 class VideosWidget extends Widget 
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         if (isset($parameters['latest']) and $parameters['latest']) {
             $video = Video::orderBy('created_at', 'DESC')->first();

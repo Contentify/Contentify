@@ -2,7 +2,7 @@
 
 ModuleRoute::context('Friends');
 
-ModuleRoute::group(array('middleware' => 'auth'), function()
+ModuleRoute::group(['middleware' => 'auth'], function()
 {
     ModuleRoute::get('friends/{id}', 'FriendsController@show');
     ModuleRoute::get('friends/add/{id}', 'FriendsController@add');

@@ -313,7 +313,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         /** @var ForumThread[] $forumThreads */
         $forumThreads = ForumThread::isAccessible()->where('forum_threads.title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($forumThreads as $forumThread) {
             $results[$forumThread->title] = URL::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);
         }

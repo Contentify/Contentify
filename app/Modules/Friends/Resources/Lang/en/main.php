@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -20,4 +20,4 @@ return array(
     'deletion_title'    => 'Friendship Update',
     'deletion_text'     => '<p>You are no longer friends with :0.</p>',
 
-);
+];

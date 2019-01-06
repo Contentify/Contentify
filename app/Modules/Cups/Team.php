@@ -160,7 +160,7 @@ class Team extends BaseModel
      * @param int[] $memberIds Array with IDs of the members
      * @return void
      */
-    public function removeMembers(array $memberIds = array())
+    public function removeMembers(array $memberIds = [])
     {
         if (sizeof($memberIds) == 0) {
             // Get all members

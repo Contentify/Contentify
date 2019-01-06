@@ -76,7 +76,7 @@ class ArticlesController extends FrontController implements GlobalSearchInterfac
     {
         $articles = Article::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($articles as $article) {
             $results[$article->title] = URL::to('articles/'.$article->id.'/show');
         }

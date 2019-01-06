@@ -87,7 +87,7 @@ class StreamsController extends FrontController implements GlobalSearchInterface
     {
         $streams = Stream::where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($streams as $stream) {
             $results[$stream->title] = URL::to('streams/'.$stream->id.'/'.$stream->slug);
         }

@@ -19,16 +19,17 @@ class ForumsController extends FrontController
     /**
      * Shows a forum
      *
-     * @param  int  $id The ID of the forum
+     * @param  int $id The ID of the forum
      * @return void
+     * @throws \Exception
      */
     public function show($id)
     {
         /** @var Forum $forum */
-        $forum = Forum::with(array('threads' => function(Relation $query)
+        $forum = Forum::with(['threads' => function(Relation $query)
         {
             $query->orderBy('sticky', 'desc')->orderBy('updated_at', 'desc');
-        }))->isAccessible()->findOrFail($id);
+        }])->isAccessible()->findOrFail($id);
 
         $this->title($forum->title);
 

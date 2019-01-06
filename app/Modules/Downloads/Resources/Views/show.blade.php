@@ -1,7 +1,7 @@
 <h1 class="page-title"><a class="back" href="{!! url('downloads/category/'.$download->downloadCat->id.'/'.$download->downloadCat->slug) !!}" title="{{ trans('app.back') }}">{!! HTML::fontIcon('chevron-left') !!}</a> {{ trans_object('downloads') }} - {{ $download->downloadCat->title }}</h1>
 
 <div class="download-detail">
-    {!! Form::open(array('url' => 'downloads/perform/'.$download->id)) !!}
+    {!! Form::open(['url' => 'downloads/perform/'.$download->id]) !!}
         {!! Form::smartGroupOpen(null, trans('app.file')) !!}
             <p class="form-control-static">{{ $download->title }}</p>
         {!! Form::smartGroupClose() !!}

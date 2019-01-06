@@ -9,7 +9,7 @@ use Widget;
 class LatestCommentsWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         $comments = Comment::orderBy('created_at', 'DESC')->take(5)->get();
 

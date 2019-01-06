@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -44,4 +44,4 @@ return array(
     'already_reported'  => 'Ya has creado un informe para esta publicación.',
     'reported'          => 'Esta publicación ha sido reportada.',
 
-);
+];

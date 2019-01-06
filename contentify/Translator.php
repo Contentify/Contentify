@@ -19,13 +19,13 @@ class Translator extends OriginalTranslator
             $key      = $package.'::main.'.substr($key, $pos + 2);
         }
 
-        return $this->get($key, array(), $locale, $fallback) !== $key;
+        return $this->get($key, [], $locale, $fallback) !== $key;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function trans($id, array $parameters = array(), $locale = null)
+    public function trans($id, array $parameters = [], $locale = null)
     {
         if (strpos($id, '.') === false and ($pos = strpos($id, '::')) !== false) {
             $package  = substr($id, 0, $pos);

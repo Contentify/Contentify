@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -16,4 +16,4 @@ return array(
     're'            => 'Re: ',
     'system_info'   => 'Ce message a été créé automatiquement.',
 
-);
+];

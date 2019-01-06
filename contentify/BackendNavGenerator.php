@@ -46,7 +46,7 @@ class BackendNavGenerator
         $moduleBase = app()['modules'];
         $modules = $moduleBase->all(); // Retrieve all module info objects
 
-        $navItems = array();
+        $navItems = [];
         foreach ($modules as $module) {
             if (! $module['enabled']) continue;
 
@@ -109,7 +109,7 @@ class BackendNavGenerator
     {
         if (! Cache::has(self::CACHE_KEY.'_'.$this->locale) or $update) {
             $navItems = $this->getItems();
-            $navCategories = array();
+            $navCategories = [];
 
             for ($i = 1; $i <= self::MAX_NAVCATS; $i++) { 
                 foreach ($navItems as $navItem) {

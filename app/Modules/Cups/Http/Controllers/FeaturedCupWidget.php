@@ -9,7 +9,7 @@ use Widget;
 class FeaturedCupWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         $cup = Cup::orderBy('start_at', 'DESC')->whereFeatured(true)->wherePublished(true)->first();
 

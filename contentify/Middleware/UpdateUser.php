@@ -49,7 +49,7 @@ class UpdateUser
 
                 if (! $rowsAffected) {
                     DB::table('visits')
-                        ->insert(array('ip' => $ip, 'user_agents' => 1, 'visited_at' => date('Y-m-d', $today)));
+                        ->insert(['ip' => $ip, 'user_agents' => 1, 'visited_at' => date('Y-m-d', $today)]);
                 }
                 
                 Session::put('ipLogged', date('d', $today)); // Keep in our session-mind the day we logged this IP

@@ -9,7 +9,7 @@ use Widget;
 class EventsWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
         $hasAccess = (user() and user()->hasAccess('internal'));

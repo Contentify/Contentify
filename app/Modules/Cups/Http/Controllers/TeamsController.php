@@ -336,7 +336,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
     {
         $teams = Team::where('title', 'LIKE', '%'.$subject.'%')->get();
 
-        $results = array();
+        $results = [];
         foreach ($teams as $team) {
             $results[$team->title] = URL::to('cups/teams/'.$team->id.'/'.$team->slug);
         }

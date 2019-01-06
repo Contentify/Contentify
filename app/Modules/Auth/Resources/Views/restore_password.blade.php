@@ -2,7 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => 'auth/restore')) !!}
+{!! Form::open(['url' => 'auth/restore']) !!}
     {!! Form::smartEmail() !!}
     
     {!! Form::smartCaptcha() !!}

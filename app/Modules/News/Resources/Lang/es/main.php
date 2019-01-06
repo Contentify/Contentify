@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -17,4 +17,4 @@ return array(
     'publish_at'    => 'Publicado en', // in category
     'rss_last'      => 'Últimas 20 notícias',
 
-);
+];

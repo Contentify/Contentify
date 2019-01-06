@@ -96,11 +96,11 @@ class InstallController extends Controller
                 /*
                  * Create the admin user (with ID = 2)
                  */
-                $user = Sentinel::register(array(
+                $user = Sentinel::register([
                     'email'     => $email,
                     'password'  => $password,
                     'username'  => $username,
-                ), true);
+                ], true);
 
                 /*
                  * Add user to role "Super-Admins"
@@ -146,12 +146,12 @@ class InstallController extends Controller
                 /*
                  * Create the daemon user (with ID = 1)
                  */
-                $user = Sentinel::register(array(
+                $user = Sentinel::register([
                     'email'     => 'daemon@contentify.org',
                     'username'  => 'Daemon',
                     'password'  => Str::random(),
                     'activated' => false,
-                ));
+                ]);
 
                 $this->createSeed();
 
@@ -572,7 +572,7 @@ class InstallController extends Controller
         $this->create('servers', function(Blueprint $table)
         {
             $table->string('ip');
-            $table->string('hoster')->nullable();
+            $table->string('host')->nullable();
             $table->integer('slots')->default(0);
             $table->boolean('published')->default(false);
             $table->text('description')->nullable();
@@ -1232,7 +1232,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param boolean|array $contentObject Bool/array of attributes that won't be added (the array indicates true)
      * @return void
      */
-    public function create($tableName, Closure $tableRows, $foreignKeys = array(), $contentObject = true)
+    public function create($tableName, Closure $tableRows, $foreignKeys = [], $contentObject = true)
     {
         /*
          * Delete existing table:
@@ -1316,7 +1316,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param string[] $primaryKeys An array with the names of both primary keys
      * @return void
      */
-    protected function createPivot($tableName, Closure $tableRows, $primaryKeys = array())
+    protected function createPivot($tableName, Closure $tableRows, $primaryKeys = [])
     {
         /*
          * Delete existing table:

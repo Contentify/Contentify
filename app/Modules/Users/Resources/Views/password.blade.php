@@ -2,7 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => 'users/'.$user->id.'/password', 'method' => 'PUT')) !!}
+{!! Form::open(['url' => 'users/'.$user->id.'/password', 'method' => 'PUT']) !!}
     {!! Form::smartPassword('password_current', trans('users::current_pw')) !!}
 
     {!! Form::smartPassword('password', trans('users::new_pw')) !!}

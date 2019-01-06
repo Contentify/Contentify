@@ -9,7 +9,7 @@ use Widget;
 class FragmentWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         if (isset($parameters['id'])) {
             $id = $parameters['id'];

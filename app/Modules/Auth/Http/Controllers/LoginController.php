@@ -116,10 +116,10 @@ class LoginController extends FrontController
         /*
          * Validation
          */
-        $rules = array(
+        $rules = [
             'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password|unique:users,username',
             'email'     => 'email|unique:users,email'
-        );
+        ];
 
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {

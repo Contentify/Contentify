@@ -9,7 +9,7 @@ use Widget;
 class DownloadsWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
         $orderByRank= isset($parameters['orderByRank']) and $parameters['orderByRank'] == true;

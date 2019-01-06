@@ -111,7 +111,7 @@ abstract class BaseController extends Controller
     {
         $this->setupLayout();
 
-        $response = call_user_func_array(array($this, $method), $parameters);
+        $response = call_user_func_array([$this, $method], $parameters);
 
         // If no response is returned from the controller action and a layout is being
         // used we will assume we want to just return the layout view as any nested
@@ -216,7 +216,7 @@ abstract class BaseController extends Controller
      * @return void
      * @throws Exception
      */
-    public function pageView($template = '', $data = array(), $replace = false)
+    public function pageView($template = '', $data = [], $replace = false)
     {
         if ($this->layout != null) {
             if ($replace or $this->layout->page == null) {
@@ -390,7 +390,7 @@ abstract class BaseController extends Controller
      * @return void
      * @throws Exception
      */
-    public function breadcrumb($links = array())
+    public function breadcrumb($links = [])
     {
         if ($this->layout != null) {
             $this->layout->breadcrumb = $links;

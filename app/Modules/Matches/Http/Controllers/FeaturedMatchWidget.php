@@ -9,7 +9,7 @@ use Widget;
 class FeaturedMatchWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         $match = Match::orderBy('played_at', 'DESC')->whereFeatured(true)->where('state', '!=', Match::STATE_HIDDEN)->first();
 

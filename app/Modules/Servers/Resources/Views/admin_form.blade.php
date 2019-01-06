@@ -11,7 +11,7 @@
 
     {!! Form::smartText('ip', trans('app.ip')) !!}
 
-    {!! Form::smartText('hoster', trans('servers::hoster')) !!}
+    {!! Form::smartText('host', trans('servers::host')) !!}
 
     {!! Form::smartTextarea('description', trans('app.description')) !!}
 

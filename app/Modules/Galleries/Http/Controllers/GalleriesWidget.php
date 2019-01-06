@@ -11,7 +11,7 @@ use Widget;
 class GalleriesWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
         

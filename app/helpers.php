@@ -61,7 +61,7 @@ function raw($value, $escape = null)
  * @param  array   $attributes Apply these HTML attributes to the link element
  * @return string
  */
-function image_link($image, $title, $url, $showTitle = false, $attributes = array())
+function image_link($image, $title, $url, $showTitle = false, $attributes = [])
 {
     return HTML::imageLink($image, $title, $url, $showTitle, $attributes);
 }
@@ -77,7 +77,7 @@ function image_link($image, $title, $url, $showTitle = false, $attributes = arra
  * @param  array   $attributes Apply these HTML attributes to the link element
  * @return string
  */
-function icon_link($icon, $title, $url, $showTitle = false, $attributes = array())
+function icon_link($icon, $title, $url, $showTitle = false, $attributes = [])
 {
     return HTML::iconLink($icon, $title, $url, $showTitle, $attributes);
 }

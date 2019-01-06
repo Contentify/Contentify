@@ -149,7 +149,7 @@ class PollsController extends FrontController implements GlobalSearchInterface
         }
         $polls = $query->get();
 
-        $results = array();
+        $results = [];
         foreach ($polls as $poll) {
             $results[$poll->title] = URL::to('polls/'.$poll->id.'/'.$poll->slug);
         }

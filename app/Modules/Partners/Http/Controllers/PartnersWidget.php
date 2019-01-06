@@ -10,7 +10,7 @@ use Widget;
 class PartnersWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         if (isset($parameters['categoryId'])) {
             $categoryId = $parameters['categoryId'];

@@ -60,7 +60,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array  $options
      * @return string
      */
-    public function open(array $options = array())
+    public function open(array $options = [])
     {
         if (! isset($options['class'])) {
             $options['class'] = 'form-horizontal';
@@ -85,7 +85,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  bool  $showImages Show icons on the buttons?
      * @return string
      */
-    public function actions(array $buttons = array('submit', 'apply', 'cancel'), $showImages = true)
+    public function actions(array $buttons = ['submit', 'apply', 'cancel'], $showImages = true)
     {
         $partial = '<div class="form-actions">';
 
@@ -93,7 +93,7 @@ class FormBuilder extends OriginalFormBuilder
             if (is_string($type)) {
                 if (is_string($options)) {
                     $title = $options;
-                    $options = array();
+                    $options = [];
                 } else {
                     $title = $options['title'];
                     unset($options['title']);
@@ -101,7 +101,7 @@ class FormBuilder extends OriginalFormBuilder
             } else {
                 $type = $options;
                 $title = ucfirst($type);
-                $options = array();
+                $options = [];
             }
 
             switch (strtolower($type)) {
@@ -189,7 +189,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array       $options Array with attributes
      * @return string
      */
-    public function button($value = null, $options = array())
+    public function button($value = null, $options = [])
     {
         if (! array_key_exists('class', $options))
         {
@@ -210,7 +210,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array       $options Array with attributes
      * @return string
      */
-    public function numeric($name, $value = null, $options = array())
+    public function numeric($name, $value = null, $options = [])
     {
         if (isset($options['class'])) {
             $options['class'] = ' ';
@@ -233,7 +233,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array       $options Array with attributes
      * @return string
      */
-    public function url($name, $value = null, $options = array())
+    public function url($name, $value = null, $options = [])
     {
         if (isset($options['class'])) {
             $options['class'] = ' ';
@@ -486,7 +486,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array       $attributes Additional HTML attributes
      * @return string
      */
-    public function smartNumeric($name, $title, $default = null, $attributes = array())
+    public function smartNumeric($name, $title, $default = null, $attributes = [])
     {
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
@@ -505,7 +505,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array      $attributes Additional HTML attributes
      * @return string
      */
-    public function smartSelect($name, $title, $options, $default = null, $attributes = array())
+    public function smartSelect($name, $title, $options, $default = null, $attributes = [])
     {
         $value = self::getDefaultValue($name, $default);
 

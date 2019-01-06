@@ -229,7 +229,7 @@ class ModelHandler
         /*
          * Prepare the table head
          */
-        $tableHead = array();
+        $tableHead = [];
         foreach ($data['tableHead'] as $title => $sortBy) {
             if ($sortBy != null) {
                 $tableHead[] = HTML::sortSwitcher(URL::current(), $title, $sortBy, $data['order'], $data['search']);
@@ -244,7 +244,7 @@ class ModelHandler
         /*
          * Prepare the rows
          */
-        $tableRows = array();
+        $tableRows = [];
         foreach ($models as $model) {
             $row = $data['tableRow']($model);
 
@@ -476,7 +476,7 @@ class ModelHandler
 
         $controller->alertFlash(trans('app.created', [trans_object(basename($controller->getModelName()))]));
         if (Input::get('_form_apply') !== null) {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', array($model->id));
+            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$model->id]);
         } else {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
         }

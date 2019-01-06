@@ -2,7 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
-{!! Form::open(array('url' => 'application/store')) !!}
+{!! Form::open(['url' => 'application/store']) !!}
     {!! Form::timestamp() !!}
 
     {!! Form::smartText('username', trans('app.name'), user() ? user()->username : null) !!}

@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -21,4 +21,4 @@ return array(
     'mail_created'  => 'created a new contact message.',
     'mail_link'     => 'Click here to view the message.',
 
-);
+];

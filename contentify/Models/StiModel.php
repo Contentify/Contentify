@@ -43,7 +43,7 @@ abstract class StiModel extends BaseModel
         return $this->isSubclass;
     }
 
-    public function __construct($attributes = array())
+    public function __construct($attributes = [])
     {
         parent::__construct($attributes);
 
@@ -72,18 +72,19 @@ abstract class StiModel extends BaseModel
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
-    public function newFromBuilder($attributes = array(), $connection = null)
+    public function newFromBuilder($attributes = [], $connection = null)
     {
         if ($connection) {
-            throw new \Exception('Error: STI model does not support the connection parameter.');
+            throw new \Exception('Error: STI model does not support any connection parameter.');
         }
 
         /*
          * Instead of using $this->newInstance(), call
          * newInstance() on the object from mapData
          */
-        $instance = $this->getStiClassInstance()->newInstance(array(), true);
+        $instance = $this->getStiClassInstance()->newInstance([], true);
         $instance->setRawAttributes((array) $attributes, true);
         return $instance;
     }

@@ -11,7 +11,7 @@ use SoftDeletingTrait;
  * @property \Carbon                 $deleted_at
  * @property string                  $title
  * @property string                  $ip
- * @property string                  $hoster
+ * @property string                  $host
  * @property int                     $slots
  * @property string                  $description
  * @property bool                    $published
@@ -28,7 +28,7 @@ class Server extends BaseModel
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'ip', 'hoster', 'slots', 'description', 'published', 'game_id'];
+    protected $fillable = ['title', 'ip', 'host', 'slots', 'description', 'published', 'game_id'];
 
     protected $rules = [
         'title'     => 'required|min:3',

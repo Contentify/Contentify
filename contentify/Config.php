@@ -134,7 +134,7 @@ class Config extends LaravelConfig
     {
         $result = DB::table('config')
             ->whereName($key)
-            ->update(array('value' => $value, 'updated_at' => new DateTime()));
+            ->update(['value' => $value, 'updated_at' => new DateTime()]);
 
         /*
          * If the key does not exist we need to create it
@@ -143,7 +143,7 @@ class Config extends LaravelConfig
          * the row is always affected, even though if the value does not change.
          */
         if ($result == 0) {
-            DB::table('config')->insert(array('name' => $key, 'value' => $value, 'updated_at' => new DateTime()));
+            DB::table('config')->insert(['name' => $key, 'value' => $value, 'updated_at' => new DateTime()]);
         }
 
         Cache::put(self::CACHE_IN_DB_PREFIX.$key, true, self::CACHE_TIME);

@@ -1,6 +1,6 @@
 <?php 
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -14,4 +14,4 @@ return array(
     'results_type'  => 'Résultats de type',
     'no_results'    => 'Aucun résultat trouvé. Veuillez vérifier s\'il y a des fautes de frappe ou essayer un autre terme.',
 
-);
+];

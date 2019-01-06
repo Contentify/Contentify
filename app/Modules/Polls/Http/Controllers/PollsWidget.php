@@ -9,7 +9,7 @@ use Widget;
 class PollsWidget extends Widget
 {
 
-    public function render(array $parameters = array())
+    public function render(array $parameters = [])
     {
         $hasAccess = (user() and user()->hasAccess('internal'));
 

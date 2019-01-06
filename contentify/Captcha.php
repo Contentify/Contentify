@@ -60,11 +60,11 @@ class Captcha
      */
     public function checkReCaptcha($code)
     {
-        $data = array(
+        $data = [
             'secret'    => Config::get('app.recaptcha_secret'),
             'response'  => $code,
             'remoteip'  => Request::getClientIp()
-        );
+        ];
 
         $curl = curl_init();
         
