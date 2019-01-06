@@ -1,8 +1,9 @@
 <?php namespace App\Exceptions;
 
+use ErrorException;
 use Exception, Config, Response, View;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use MsgException;
 
 class Handler extends ExceptionHandler
 {
@@ -48,16 +49,18 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (is_a($exception, 'MsgException')) {
-            return Response::make(View::make('error_message', compact('exception')), 500);
-        }
-        // Laravel wraps any MsgException in an error exception so we have to unwrap it:
-        if ($exception->getPrevious() and is_a($exception->getPrevious(), 'MsgException')) {
-            return Response::make(View::make('error_message', ['exception' => $exception->getPrevious()]), 500);
+        // Laravel wraps any exceptions thrown in views in an error exception so we have to unwrap it
+        // @see https://github.com/laravel/ideas/issues/956
+        if ($exception instanceof ErrorException and
+            $exception->getPrevious() and $exception->getPrevious() instanceof MsgException)
+        {
+            /* @var $innerException MsgException */
+            $innerException = $exception->getPrevious();
+            return $innerException->render($request);
         }
 
         if (! Config::get('app.debug')) { // If we are in debug mode we do not want to override Laravel's error output
-            if (is_a($exception, \Illuminate\Database\Eloquent\ModelNotFoundException::class)) {
+            if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
                 return Response::make(View::make('error_not_found'), 404);
             }
 

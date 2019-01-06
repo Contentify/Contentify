@@ -305,7 +305,7 @@ return [
          */ 
         'FormGenerator'         => Contentify\FormGenerator::class,
         'ModuleInstaller'       => Contentify\ModuleInstaller::class,
-        'MsgException'          => Contentify\MsgException::class,
+        'MsgException'          => Contentify\Exceptions\MsgException::class,
         'Config'                => Contentify\Config::class,
         'Paginator'             => Contentify\LengthAwarePaginator::class,
         'ModuleRoute'           => Contentify\Facades\ModuleRoute::class,

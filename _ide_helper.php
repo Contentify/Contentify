@@ -17444,7 +17444,7 @@ namespace  {
 
     abstract class ModuleInstaller extends \Contentify\ModuleInstaller {}
 
-    class MsgException extends \Contentify\MsgException {}
+    class MsgException extends \Contentify\Exceptions\MsgException {}
 
     class Config extends \Contentify\Config {}
 
