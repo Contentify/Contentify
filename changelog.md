@@ -1,6 +1,7 @@
 ## Changelog - v3
 
 **Important Notes**: 
+- PHP >= 7.0 is required!
 - We recommend to manually delete all client sessions. Do so by deleting all files in the directory
 `storage/famework/sessions`.
 - If you use AWS S3 and set the configuration via environment keys, note that their names have been changed 
