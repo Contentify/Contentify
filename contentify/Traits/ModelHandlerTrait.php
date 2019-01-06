@@ -4,6 +4,10 @@ namespace Contentify\Traits;
 
 use ModelHandler;
 
+/**
+ * This trait is meant to be integrated into controllers that inherit from
+ * the \Contentify\Controllers\BaseController controller and implement CRUD.
+ */
 trait ModelHandlerTrait
 {
 

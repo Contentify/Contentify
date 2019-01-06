@@ -7,7 +7,7 @@ return [
     | Application Name
     |--------------------------------------------------------------------------
     |
-    | The name (title) of this web application.
+    | This value is the name of your web application.
     |
     | @deprecated Will be stored in the database, not here in this file
     |
@@ -211,11 +211,6 @@ return [
         //Illuminate\Translation\TranslationServiceProvider::class, // Replaced by custom translation service provider
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-        /*
-         * Package Service Providers...
-         */
-        Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...

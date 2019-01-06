@@ -12,9 +12,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'Contentify\Commands\MakeFormCommand',
-        'Contentify\Commands\LessCompileCommand',
-        'ChrisKonnertz\Jobs\JobsCommand',
+        \Contentify\Commands\MakeFormCommand::class,
+        \Contentify\Commands\LessCompileCommand::class,
+        \ChrisKonnertz\Jobs\Integration\JobsCommand::class,
     ];
 
     /**
@@ -30,12 +30,14 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * Register the Closure based commands for the application.
+     * Register the Closure based and auto-loaded commands for the application.
      *
      * @return void
      */
     protected function commands()
     {
+        $this->load(__DIR__.'/Commands');
+
         require base_path('routes/console.php');
     }
 

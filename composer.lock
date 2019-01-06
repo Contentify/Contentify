@@ -245,22 +245,32 @@
         },
         {
             "name": "chriskonnertz/jobs",
-            "version": "v3.0",
+            "version": "v3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/Jobs.git",
-                "reference": "086034a8b6785d4a11759b93fcd306dbd1298ccc"
+                "reference": "6e88aae7f331b457c6fa5d5347e506cc1937d8be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/086034a8b6785d4a11759b93fcd306dbd1298ccc",
-                "reference": "086034a8b6785d4a11759b93fcd306dbd1298ccc",
+                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/6e88aae7f331b457c6fa5d5347e506cc1937d8be",
+                "reference": "6e88aae7f331b457c6fa5d5347e506cc1937d8be",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.7"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ChrisKonnertz\\Jobs\\Integration\\JobsServiceProvider"
+                    ],
+                    "aliases": {
+                        "OpenGraph": "ChrisKonnertz\\Jobs\\Integration\\JobsFacade"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "ChrisKonnertz\\Jobs\\": "src/ChrisKonnertz/Jobs"
@@ -277,10 +287,12 @@
             ],
             "description": "Simple cron job manager",
             "keywords": [
+                "cron job",
                 "cron jobs",
+                "job",
                 "laravel"
             ],
-            "time": "2018-03-17T14:13:29+00:00"
+            "time": "2019-01-06T10:39:04+00:00"
         },
         {
             "name": "chriskonnertz/open-graph",

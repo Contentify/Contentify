@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'lifetime' => 1440, // 1440 minutes = 24 * 60 minutes = 24 hours
+    'lifetime' => env('SESSION_LIFETIME', 2880), // 2880 minutes = 2 * 24 * 60 minutes = 2 days
 
     'expire_on_close' => false,
 
@@ -175,5 +175,19 @@ return [
     */
 
     'http_only' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Same-Site Cookies
+    |--------------------------------------------------------------------------
+    |
+    | This option determines how your cookies behave when cross-site requests
+    | take place, and can be used to mitigate CSRF attacks. By default, we
+    | do not enable this as other CSRF protection services are in place.
+    |
+    | Supported: "lax", "strict"
+    |
+    */
+    'same_site' => null,
 
 ];

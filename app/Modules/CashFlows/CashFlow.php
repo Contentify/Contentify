@@ -59,7 +59,7 @@ class CashFlow extends BaseModel
      */
     public function setRevenuesAttribute($value)
     {
-        $this->integer_revenues = (int) round($value * 100);;
+        $this->integer_revenues = (int) round($value * 100);
     }
 
     /**

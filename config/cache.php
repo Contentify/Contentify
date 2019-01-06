@@ -86,6 +86,9 @@ return [
     |
     */
 
-    'prefix' => 'contentify',
+    'prefix' => env(
+        'CACHE_PREFIX',
+        'contentify_cache'
+    ),
 
 ];

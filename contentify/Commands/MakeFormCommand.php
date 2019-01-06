@@ -36,7 +36,7 @@ class MakeFormCommand extends Command
      *
      * @return string
      */
-    public function fire()
+    public function handle()
     {
         $formGenerator = new FormGenerator;
 

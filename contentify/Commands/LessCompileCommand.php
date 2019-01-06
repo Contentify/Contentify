@@ -36,7 +36,7 @@ class LessCompileCommand extends Command
     /**
      * Execute the console command.
      */
-    public function fire()
+    public function handle()
     {
         $this->info('Compiling LESS files...');
 
