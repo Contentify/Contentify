@@ -77,6 +77,7 @@ class CsvWriter
      *
      * @param \Traversable|array $records
      * @return int
+     * @throws \Exception
      */
     public function insertAll($records)
     {
@@ -98,6 +99,7 @@ class CsvWriter
      *
      * @param mixed[] $record
      * @return int
+     * @throws \Exception
      */
     public function insertOne(array $record)
     {
@@ -174,7 +176,7 @@ class CsvWriter
      */
     public function setEnclosure($enclosure)
     {
-        if (mb_strlen($enclosure)  !== 1) {
+        if (mb_strlen($enclosure) !== 1) {
             throw new \InvalidArgumentException('The length of the enclosure string has to be one');
         }
         $this->enclosure = $enclosure;

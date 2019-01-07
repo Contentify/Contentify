@@ -108,6 +108,7 @@ class LoginController extends FrontController
      * Actually create the user account with a STEAM ID
      *
      * @return RedirectResponse
+     * @throws Exception
      */
     public function postSteam()
     {
@@ -141,6 +142,7 @@ class LoginController extends FrontController
         /*
          * Register user.
          */
+        /** @var User $user */
         $user = Sentinel::register([
             'username'      => Input::get('username'),
             'email'         => Input::get('email'),

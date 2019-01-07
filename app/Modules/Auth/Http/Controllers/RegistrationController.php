@@ -98,7 +98,7 @@ class RegistrationController extends FrontController
     }
 
     /**
-     * Check if a username is already taken
+     * Check (typically via AJAX call) if a username is already taken
      *
      * @param string $username
      * @return Response

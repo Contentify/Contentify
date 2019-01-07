@@ -105,7 +105,7 @@ class Message extends BaseModel
      * Return just the plain message's text (WITHOUT BBCode).
      * (Similar to render BBCode without the tags but it uses caching.)
      *
-     * @param int $max Limits the number of characters. 0/null = no limit
+     * @param int|null $max Limits the number of characters. 0/null = no limit
      * @return string
      */
     public function plainText($max = null)

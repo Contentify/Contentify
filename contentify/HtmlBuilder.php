@@ -174,7 +174,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
         }
 
         /* 
-         * We have to create our Link without self::link(), because
+         * We have to create our link without self::link(), because
          * that method will not allow to use HTML code.
          */ 
         $attrs = self::attributes($attributes);
@@ -332,7 +332,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * If the cache key self::ASSET_PATH_CACHE_KEY is cleared it will create 
      * a new version number and thus browsers are forced to reload the asset.
      * 
-     * @param  string $assetPath Unversioned asset path
+     * @param  string $assetPath Pure asset path without version information
      * @return string
      */
     public function versionedAssetPath($assetPath)
@@ -383,7 +383,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
         if (! $category) {
             $category = 'fas';
 
-            // Brand icons have there own category class. They only way to find out which class
+            // Brand icons have their own category class. The only way to find out which class
             // we have to use is to maintain a list with the names of all brand icons and then
             // to check if the current icon name is in this list.
             if (in_array($icon, $this->getBrandIconNames())) {
