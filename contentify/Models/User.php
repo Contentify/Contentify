@@ -84,6 +84,11 @@ class User extends SentinelUser implements UserInterface
     use SlugTrait;
 
     /**
+     * ID of the daemon user which represents the system for example as sender of system messages
+     */
+    const DAEMON_USER_ID = 1;
+
+    /**
      * Decides how long a user is considered being online. Unit: seconds (= 5 minutes)
      */
     const ONLINE_TIME = 300;
@@ -311,7 +316,7 @@ class User extends SentinelUser implements UserInterface
             if (user()) {
                 $creatorId = user()->id;
             } else {
-                $creatorId = 1; // This is the daemon user
+                $creatorId = self::DAEMON_USER_ID; // This is the daemon user
                 $sentBySystem = true;
             }
         }

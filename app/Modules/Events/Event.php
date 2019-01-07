@@ -27,6 +27,11 @@ class Event extends BaseModel
 
     use SoftDeletingTrait;
 
+    /**
+     * Name of an event that other modules can fire to let the event module create a new event
+     */
+    const EVENT_NAME_REQUEST_EVENT_CREATION = 'events::requestEventCreation';
+
     protected $dates = ['deleted_at', 'starts_at'];
 
     protected $slugable = true;
@@ -37,8 +42,10 @@ class Event extends BaseModel
 
     protected $rules = [
         'title'     => 'required|min:3',
+        'slug'      => 'required|min:2',
         'url'       => 'nullable|url',
         'internal'  => 'boolean',
+        'starts_at' => 'required',
     ];
 
     public static $relationsData = [

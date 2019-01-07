@@ -46,7 +46,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
             'searchFor' => 'username',
             'permaFilter' => function(Builder $users)
             {
-                return $users->where('id', '!=', 1); // Do not keep the daemon user
+                return $users->where('id', '!=', User::DAEMON_USER_ID); // Do not keep the daemon user
             }
         ], 'front');
     }

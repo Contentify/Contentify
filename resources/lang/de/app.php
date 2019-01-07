@@ -88,6 +88,7 @@ return [
     'state'         => 'Status',
     'new'           => 'Neu',
     'open'          => 'Offen',
+    'term'          => 'Begriff',
 
     /*
      * Misc
@@ -180,7 +181,7 @@ return [
     'of'                => 'von',
     'role'              => 'Rolle',
     'message'           => 'Nachricht',
-    'subject'           => 'Titel', // Vague translation
+    'subject'           => 'Betreff',
     'latest_msgs'       => 'Neueste Feed-Nachrichten', // Admin dashboard feed messages
     'quick_access'      => 'Schnellzugriff', // Admin dashboard quick access
     'setting'           => 'Einstellung',

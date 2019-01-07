@@ -109,6 +109,20 @@ class Match extends BaseModel
     {
         parent::boot();
 
+        self::created(function(self $match)
+        {
+            // @see \App\Modules\Events\Event
+            $eventData = [
+                'title' => trans('app.object_match').': '.$match->right_team->title,
+                'url' => url('matches/'.$match->id),
+                'internal' => false,
+                'starts_at' => $match->played_at
+            ];
+
+            // Request creation of an event for the new match
+            event('events::requestEventCreation', [$eventData]);
+        });
+
         self::saved(function(self $match)
         {
             /*
@@ -215,6 +229,16 @@ class Match extends BaseModel
         }
         
         $this->forceSave();
+    }
+
+    /**
+     * Creates and returns a title for the current match
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->leftTeam->title.' '.trans('matches::vs').' '.$this->rightTeam->title;
     }
 
 }

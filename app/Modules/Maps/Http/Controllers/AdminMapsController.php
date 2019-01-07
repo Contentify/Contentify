@@ -35,7 +35,7 @@ class AdminMapsController extends BackController
                 $icon = null;
                 if ($map->image) {
                     Hover::image($map->uploadPath().$map->image);
-                    $icon = HTML::image($map->uploadPath().'16/'.$map->image, $map->title) ;
+                    $icon = HTML::image($map->uploadPath().'16/'.$map->image, $map->title);
                 }
 
                 $gameTitle = null;

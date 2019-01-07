@@ -88,6 +88,7 @@ return [
     'state'         => 'Estado',
     'new'           => 'Nuevo',
     'open'          => 'Abierto',
+    'term'          => 'Término',
 
     /*
      * Misc

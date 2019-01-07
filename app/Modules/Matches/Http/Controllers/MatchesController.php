@@ -63,12 +63,13 @@ class MatchesController extends FrontController
      */
     public function show($id)
     {
+        /** @var Match $match */
         $match = Match::findOrFail($id);
 
         $match->access_counter++;
         $match->save();
 
-        $this->title($match->leftTeam->title.' '.trans('matches::vs').' '.$match->rightTeam->title);
+        $this->title($match->getTitle());
 
         $this->pageView('matches::show', compact('match'));
     }
