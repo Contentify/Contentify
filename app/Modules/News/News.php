@@ -88,7 +88,7 @@ class News extends BaseModel
      * @param Builder $query
      * @return Builder|null
      */
-    public function scopeFilter($query)
+    public function scopeFilter(Builder $query)
     {
         if (ContentFilter::has('news_cat_id')) {
             $id = (int) ContentFilter::get('news_cat_id');
@@ -114,17 +114,18 @@ class News extends BaseModel
      * 
      * @return int
      */
-    public function countComments()
+    public function countComments() : int
     {
         return Comment::count('news', $this->id);
     }
 
     /**
      * Create an instance of OpenGraph that represents Open Graph tags.
-     * 
+     *
      * @return OpenGraph
+     * @throws \Exception
      */
-    public function openGraph()
+    public function openGraph() : OpenGraph
     {
         $og = new OpenGraph(true);
 
@@ -139,8 +140,9 @@ class News extends BaseModel
 
     /**
      * Create/update RSS file
-     * 
+     *
      * @return void
+     * @throws \Exception
      */
     public static function updateRSS() 
     {

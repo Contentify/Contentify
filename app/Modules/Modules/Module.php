@@ -18,7 +18,7 @@ class Module extends BaseModel
      * 
      * @return self[]
      */
-    public static function findAll()
+    public static function findAll() : array
     {
         $dirs = File::directories(app_path().'/Modules');
 
@@ -33,7 +33,7 @@ class Module extends BaseModel
      * @param  string $item The module name (path included)
      * @return Module
      */
-    protected static function createInstance(&$item)
+    protected static function createInstance(string &$item) : Module
     {
         $item = new Module(['title' => class_basename($item)]);
 

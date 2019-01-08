@@ -7,9 +7,6 @@
             </tr>
         </thead>
         <tbody>
-            @if (! is_array($settingsGroup))
-                dd($settingsGroup);
-            @endif
             @foreach ($settingsGroup as $key => $value)
                 <tr>
                     <td>

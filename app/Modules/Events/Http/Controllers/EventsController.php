@@ -33,11 +33,12 @@ class EventsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show an event
-     * 
+     *
      * @param  int $id The ID of the event
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Event $event */
         $event = Event::findOrFail($id);
@@ -59,11 +60,12 @@ class EventsController extends FrontController implements GlobalSearchInterface
     /**
      * Show calendar with all events
      *
-     * @param int $year  The year to show
-     * @param int $month The month of the year to show
+     * @param int|null $year The year to show
+     * @param int|null $month The month of the year to show
      * @return null|string
+     * @throws \Exception
      */
-    public function calendar($year = null, $month = null)
+    public function calendar(int $year = null, int $month = null)
     {
         if (Request::ajax()) {
             $widget = new CalendarWidget;
@@ -81,7 +83,7 @@ class EventsController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         $events = Event::where('title', 'LIKE', '%'.$subject.'%')->get();
 

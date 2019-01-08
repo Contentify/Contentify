@@ -19,6 +19,12 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Friendship extends BaseModel
 {
+
+    /**
+     * To avoid friendship request spamming, the user has to wait this number of seconds (= 10 minutes)
+     * until he/she can send another friendship request to the same other user
+     */
+    const FRIENDSHIP_REQUEST_LIFESPAN = 60 * 10;
     
     public $table = 'friends';
 
@@ -38,7 +44,7 @@ class Friendship extends BaseModel
      * @param  bool    $confirmed   Only show confirmed friendships? Default = true
      * @return Builder
      */
-    public function scopeAreFriends($query, $friendOneId, $friendTwoId, $confirmed = true)
+    public function scopeAreFriends(Builder $query, int $friendOneId, int $friendTwoId, bool $confirmed = true)
     {
         if ($confirmed) {
             $query->whereConfirmed(1);
@@ -63,7 +69,7 @@ class Friendship extends BaseModel
      * @param  bool     $confirmed Only show confirmed friendships? Default = true
      * @return Builder
      */
-    public function scopeFriendsOf($query, $userId, $confirmed = true)
+    public function scopeFriendsOf(Builder $query, int $userId, bool $confirmed = true)
     {
         if ($confirmed) {
             $query->whereConfirmed(1);

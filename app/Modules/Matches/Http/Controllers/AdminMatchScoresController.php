@@ -35,7 +35,7 @@ class AdminMatchScoresController extends BackController
      * @param int $id The ID of the match score object
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(int $id)
     {
         if (! $this->checkAccessUpdate()) {
             return Response::make(null, 403);
@@ -57,7 +57,7 @@ class AdminMatchScoresController extends BackController
      * @param int $id The ID of the match score object
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         if (! $this->checkAccessDelete()) {
             return Response::make(null, 403);

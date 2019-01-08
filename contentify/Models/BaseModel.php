@@ -8,17 +8,20 @@ use DateAccessorTrait;
 use Eloquent;
 use Exception;
 use File;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Query\Builder;
 use Input;
 use InterImage;
 use InvalidArgumentException;
 use ValidatingTrait;
 
 /**
+ * This is an abstract base model class that almost all of Contentify's model use.
+ * It offers a lot of useful methods.
+ *
  * @property int $id
  */
-class BaseModel extends Eloquent
+abstract class BaseModel extends Eloquent
 {
 
     use ValidatingTrait;
@@ -46,10 +49,10 @@ class BaseModel extends Eloquent
      * The Filter class provides methods to get values of filters.
      * 
      * @param  Builder $query Apply filters to this query
-     * @return Builder
+     * @return Builder|null
      */
-    public function scopeFilter($query) {
-
+    public function scopeFilter(Builder $query) {
+        return null;
     }
 
     /**

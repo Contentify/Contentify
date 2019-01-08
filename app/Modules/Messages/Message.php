@@ -56,7 +56,7 @@ class Message extends BaseModel
      * @param string $username The name of the receiver (user)
      * @return bool
      */
-    public function setReceiverByName($username)
+    public function setReceiverByName(string $username) : bool
     {
         $user = User::whereUsername($username)->first();
 
@@ -90,7 +90,7 @@ class Message extends BaseModel
      * 
      * @return string
      */
-    public function renderText()
+    public function renderText() : string
     {
         $key = self::CACHE_KEY.$this->id;
 
@@ -108,7 +108,7 @@ class Message extends BaseModel
      * @param int|null $max Limits the number of characters. 0/null = no limit
      * @return string
      */
-    public function plainText($max = null)
+    public function plainText(int $max = null) : string
     {
         $text = strip_tags($this->renderText());
 

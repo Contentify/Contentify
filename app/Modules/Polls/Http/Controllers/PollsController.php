@@ -139,7 +139,7 @@ class PollsController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         $hasAccess = (user() and user()->hasAccess('internal'));
 

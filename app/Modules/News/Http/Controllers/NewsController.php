@@ -68,11 +68,11 @@ class NewsController extends FrontController implements GlobalSearchInterface
     /**
      * Shows a "stream" of "news" (or in generally: generated content) with news and videos
      *
-     * @param int|string|null $offset Null or a timestamp
+     * @param int|null $offset Null or a timestamp
      * @return \Illuminate\Contracts\View\View|null
      * @throws \Exception
      */
-    public function showStream($offset = null)
+    public function showStream(int $offset = null)
     {
         if ($offset) {
             $offset = (int) $offset;
@@ -132,12 +132,12 @@ class NewsController extends FrontController implements GlobalSearchInterface
     /**
      * Show a news
      *
-     * @param  int    $id   The ID of the news
-     * @param  string $slug The unique slug (optional)
+     * @param  int         $id   The ID of the news
+     * @param  string|null $slug The unique slug (optional)
      * @return void
      * @throws \Exception
      */
-    public function show($id, $slug = null)
+    public function show(int $id, string $slug = null)
     {
         /** @var News $news */
         if ($slug) {
@@ -168,7 +168,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
      * @return void
      * @throws \Exception
      */
-    public function showBySlug($slug)
+    public function showBySlug(string $slug)
     {
         $this->show(null, $slug);
     }
@@ -180,7 +180,7 @@ class NewsController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         $newsCollection = News::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 

@@ -20,11 +20,12 @@ class MatchesController extends FrontController
 
     /**
      * Shows a cup match
-     * 
-     * @param  int  $id The ID of the match
+     *
+     * @param  int $id The ID of the match
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Match $match */
         $match = Match::findOrFail($id);
@@ -51,7 +52,7 @@ class MatchesController extends FrontController
      * @param  bool $left If true, confirm the left result. If false, confirm the right.
      * @return RedirectResponse
      */
-    public function confirm($id, $left = true)
+    public function confirm(int $id, bool $left = true)
     {
         /** @var Match $match */
         $match = Match::findOrFail($id);
@@ -126,7 +127,7 @@ class MatchesController extends FrontController
      * @param  int  $id The ID of the match
      * @return RedirectResponse
      */
-    public function confirmLeft($id)
+    public function confirmLeft(int $id)
     {
         return $this->confirm($id, true);
     }
@@ -137,7 +138,7 @@ class MatchesController extends FrontController
      * @param  int  $id The ID of the match
      * @return RedirectResponse
      */
-    public function confirmRight($id)
+    public function confirmRight(int $id)
     {
         return $this->confirm($id, false);
     }

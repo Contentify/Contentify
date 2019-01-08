@@ -2,6 +2,7 @@
 
 namespace Contentify;
 
+use Cartalyst\Sentinel\Roles\EloquentRole;
 use Group;
 use Sentinel;
 
@@ -70,14 +71,11 @@ abstract class ModuleInstaller
      */
     public final function after()
     {
-        /*
-         * Update backend navigation
-         */
+        // Update backend navigation
         (new BackendNavGenerator())->update();
 
-        /*
-         * Add permissions
-         */
+        // Add permissions
+        /** @var EloquentRole $role */
         $role = Sentinel::findRoleBySlug('super-admins');
         $rolePermissions = $role->permissions;
 
@@ -100,10 +98,10 @@ abstract class ModuleInstaller
     /**
      * Helper function. Returns the URL of the installer for the next (or a given) step.
      * 
-     * @param  int $step The step (null = auto)
+     * @param  int|null $step The step (null = auto)
      * @return string
      */
-    protected final function nextStep($step = null)
+    protected final function nextStep(int $step = null) : string
     {
         if ($step === null) {
             $step = $this->step;

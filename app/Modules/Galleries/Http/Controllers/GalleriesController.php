@@ -28,12 +28,13 @@ class GalleriesController extends FrontController
 
     /**
      * Show a gallery
-     * 
+     *
      * @param  int      $galleryId The ID of the gallery
      * @param  int|null $imageId   The ID of the image (optional)
      * @return void
+     * @throws \Exception
      */
-    public function show($galleryId, $imageId = null)
+    public function show(int $galleryId, int$imageId = null)
     {
         /** @var Gallery $gallery */
         $gallery = Gallery::published()->findOrFail($galleryId);

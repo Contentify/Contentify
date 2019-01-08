@@ -160,7 +160,7 @@ class Cup extends BaseModel
      * @param bool $refresh If true, force database query
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function matchesDetailed($refresh = false)
+    public function matchesDetailed(bool $refresh = false)
     {
         if ($this->matchesStored and ! $refresh) {
             return $this->matchesStored;
@@ -195,7 +195,7 @@ class Cup extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished($query)
+    public function scopePublished(Builder $query)
     {
         return $query->wherePublished(true);
     }
@@ -206,7 +206,7 @@ class Cup extends BaseModel
      * @param  string $attribute The name of the attribute that contains the source array
      * @return array
      */
-    public static function makeOptionArray($attribute) 
+    public static function makeOptionArray(string $attribute)
     {
         $originalArray = self::$$attribute;
 
@@ -256,10 +256,10 @@ class Cup extends BaseModel
      * - Returns the user object if it is a 1on1.
      * - Returns the team of the user if it is a team cup.
      * 
-     * @param  User $user
+     * @param  User|null $user
      * @return Team|User|null
      */
-    public function getParticipantOfUser($user)
+    public function getParticipantOfUser(User $user = null)
     {
         if (! $user) {
             return null;
@@ -298,7 +298,7 @@ class Cup extends BaseModel
      * @param User $user
      * @return boolean
      */
-    public function isUserInCup($user) 
+    public function isUserInCup(User $user)
     {
         return ($this->getParticipantOfUser($user) !== null);
     }
@@ -325,7 +325,7 @@ class Cup extends BaseModel
      * @param  boolean  $isOrganizer If true, return only those teams where the user is organizer
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function teamsOfUser($user, $isOrganizer = false)
+    public function teamsOfUser(User $user, bool $isOrganizer = false)
     {
         $query = DB::table('cups_team_members')->whereUserId($user->id);
 
@@ -345,7 +345,7 @@ class Cup extends BaseModel
      * @param bool      $onlyOpen If true return only cups that still are open
      * @return \Illuminate\Database\Eloquent\Collection|null
      */
-    public function cupsByUser($user, $onlyOpen = false)
+    public function cupsByUser(User $user = null, $onlyOpen = false)
     {
         if (! $user) {
             return null;
@@ -368,10 +368,10 @@ class Cup extends BaseModel
      * Returns the number of rounds a bracket (cup) will have with a given number of participants.
      * For example it will return 3 for 4 participants.
      * 
-     * @param  int $participants Number of participants
+     * @param  int|null $participants Number of participants
      * @return int
      */
-    public function rounds($participants = null)
+    public function rounds(int $participants = null)
     {
         if ($participants === null) {
             $participants = $this->countParticipants();

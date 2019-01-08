@@ -77,12 +77,13 @@ class AdminModulesController extends BackController
 
     /**
      * Module install method
-     * 
+     *
      * @param  string $name The name of the module
      * @param  int    $step The number of the current step, starting at 0
      * @return void
+     * @throws \Exception
      */
-    public function install($name, $step = 0)
+    public function install(string $name, int $step = 0)
     {
         if (! $this->checkAccessCreate()) {
             return;

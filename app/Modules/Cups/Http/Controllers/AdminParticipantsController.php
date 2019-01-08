@@ -17,7 +17,13 @@ class AdminParticipantsController extends BackController
 
     protected $icon = 'users';
 
-    public function index($cupId)
+    /**
+     * Show an overview over the participants of the chosen cup
+     *
+     * @param int $cupId
+     * @throws \Exception
+     */
+    public function index(int $cupId)
     {
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
@@ -31,8 +37,15 @@ class AdminParticipantsController extends BackController
         $this->pageView('cups::admin_participants', compact('cup', 'newParticipants'));
     }
 
-    public function add($cupId)
+    /**
+     * Add a participant to a cup
+     *
+     * @param int $cupId
+     * @return RedirectResponse
+     */
+    public function add(int $cupId)
     {
+        /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
         $participantId = (int) Input::get('participant_id');
@@ -46,8 +59,16 @@ class AdminParticipantsController extends BackController
         return Redirect::to('admin/cups/participants/'.$cupId);
     }
 
-    public function delete($cupId, $participantId)
+    /**
+     * Delete a participant from a cup
+     *
+     * @param int $cupId
+     * @param int $participantId
+     * @return RedirectResponse
+     */
+    public function delete(int $cupId, int $participantId)
     {
+        /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
         DB::table('cups_participants')->whereCupId($cup->id)->whereParticipantId($participantId)->delete();

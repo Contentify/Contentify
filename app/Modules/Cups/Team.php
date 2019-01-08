@@ -86,7 +86,7 @@ class Team extends BaseModel
      * @param  User $user
      * @return bool
      */
-    public function isOrganizer($user)
+    public function isOrganizer(User $user)
     {
         $membership = DB::table('cups_team_members')->whereTeamId($this->id)->whereUserId($user->id)
             ->whereOrganizer(true)->first();
@@ -100,7 +100,7 @@ class Team extends BaseModel
      * @param  User $user
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function teamsOfUser($user)
+    public function teamsOfUser(User $user)
     {
         return self::join('cups_team_members', 'cups_team_members.team_id', '=', 'cups_teams.id')->
             where('cups_team_members.user_id', '=', $user->id)->get();
@@ -112,7 +112,7 @@ class Team extends BaseModel
      * @param  User  $user
      * @return boolean
      */
-    public function isMember($user)
+    public function isMember(User $user)
     {
         foreach ($this->members as $member) {
             if ($member->id == $user->id) {
@@ -143,7 +143,7 @@ class Team extends BaseModel
      * @param User    $user      The user object
      * @param boolean $organizer Is the user an organizer?
      */
-    public function addMember($user, $organizer = false)
+    public function addMember(User $user, bool $organizer = false)
     {
         DB::table('cups_team_members')->insert([
             'team_id'   => $this->id, 

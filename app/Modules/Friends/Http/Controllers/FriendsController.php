@@ -14,11 +14,12 @@ class FriendsController extends FrontController
 
     /**
      * Shows the friends of a user
-     * 
+     *
      * @param  int $id The ID of the user
      * @return mixed
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         $user = User::findOrFail($id);
 
@@ -31,7 +32,7 @@ class FriendsController extends FrontController
      * @param int $id The ID if the user
      * @return RedirectResponse
      */
-    public function add($id)
+    public function add(int $id)
     {
         /** @var User $friend */
         $friend = User::findOrFail($id);
@@ -40,7 +41,8 @@ class FriendsController extends FrontController
         $friendship = Friendship::areFriends(user()->id, $id, false)->first();
 
         $friendshipImpossible = ($friendship and 
-            ($friendship->confirmed or $friendship->messaged_at->timestamp > time() - 60 * 10)); // 10 Minutes
+            ($friendship->confirmed or
+             $friendship->messaged_at->timestamp > time() - Friendship::FRIENDSHIP_REQUEST_LIFESPAN));
 
         if ($friendshipImpossible or user()->id == $friend->id) {
             $this->alertFlash(trans('friends::request_error'));
@@ -70,10 +72,10 @@ class FriendsController extends FrontController
     /**
      * Confirms a friendship
      * 
-     * @param  int $id The ID if the user
+     * @param  int $id The ID of the user
      * @return RedirectResponse
      */
-    public function confirm($id)
+    public function confirm(int $id)
     {
         /** @var User $friend */
         $friend = User::findOrFail($id);
@@ -99,7 +101,7 @@ class FriendsController extends FrontController
      * @param  int $id The ID if the user (friend)
      * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         /** @var User $friend */
         $friend = User::findOrFail($id);

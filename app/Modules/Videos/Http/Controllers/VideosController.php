@@ -54,7 +54,7 @@ class VideosController extends FrontController implements GlobalSearchInterface
      * @param string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         $videos = Video::where('title', 'LIKE', '%'.$subject.'%')->get();
 

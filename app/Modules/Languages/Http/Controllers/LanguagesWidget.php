@@ -11,7 +11,8 @@ class LanguagesWidget extends Widget
 {
 
     /**
-     * For the language 'en' we use the flag of United Kingdom
+     * Array with special replacements. Usually we use the code of the country as name of the image,
+     * but for the language 'en' we use the flag of United Kingdom.
      */
     const REPLACEMENTS = ['uk' => 'en'];
 

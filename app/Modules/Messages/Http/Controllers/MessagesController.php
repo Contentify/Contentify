@@ -16,8 +16,9 @@ class MessagesController extends FrontController
      * Show a message
      *
      * @param int $id The ID of the message
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Message $message */
         $message = Message::findOrFail($id);
@@ -46,8 +47,9 @@ class MessagesController extends FrontController
      * Show the page with the form to create a new message
      *
      * @param string|null $username Optional: Name of the receiver
+     * @throws \Exception
      */
-    public function create($username = null)
+    public function create(string $username = null)
     {
         $this->pageView('messages::form', ['username' => $username]);
     }
@@ -56,6 +58,7 @@ class MessagesController extends FrontController
      * Store a new message
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store()
     {
@@ -84,8 +87,9 @@ class MessagesController extends FrontController
      *
      * @param int $id The ID of the message
      * @return void
+     * @throws \Exception
      */
-    public function reply($id)
+    public function reply(int $id)
     {
         /** @var Message $message */
         $message = Message::findOrFail($id);
@@ -110,7 +114,7 @@ class MessagesController extends FrontController
      * @param int $id The ID of the message
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         /** @var Message $message */
         $message = Message::findOrFail($id);

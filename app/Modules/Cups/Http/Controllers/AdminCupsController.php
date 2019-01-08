@@ -20,7 +20,7 @@ class AdminCupsController extends BackController
     /**
      * URL to the README.md file on GitHub
      */
-    const README_URL = 'https://github.com/Contentify/Contentify/blob/v2.4/app/Modules/Cups/Readme.md';
+    const README_URL = 'https://github.com/Contentify/Contentify/blob/v3.0/app/Modules/Cups/Readme.md';
 
     protected $icon = 'share-alt';
 

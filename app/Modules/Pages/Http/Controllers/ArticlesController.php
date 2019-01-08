@@ -72,8 +72,9 @@ class ArticlesController extends FrontController implements GlobalSearchInterfac
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
+        /** @var Article[] $articles */
         $articles = Article::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = [];

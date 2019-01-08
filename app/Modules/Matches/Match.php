@@ -142,7 +142,7 @@ class Match extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopeFilter($query)
+    public function scopeFilter(Builder $query)
     {
         if (ContentFilter::has('team_id')) {
             $id = (int) ContentFilter::get('team_id');
@@ -155,7 +155,7 @@ class Match extends BaseModel
      * 
      * @return int
      */
-    public function countComments()
+    public function countComments() : int
     {
         return Comment::count('match', $this->id);
     }
@@ -167,7 +167,7 @@ class Match extends BaseModel
      * @param int $minDigits Minimal number of digits - prepend 0 if result has not enough digits
      * @return string The HTML code
      */
-    public function scoreCode($minDigits = 2)
+    public function scoreCode(int $minDigits = 2) : string
     {
         $leftScore  = $this->left_score;
         $rightScore = $this->right_score;
@@ -236,9 +236,9 @@ class Match extends BaseModel
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
-        return $this->leftTeam->title.' '.trans('matches::vs').' '.$this->rightTeam->title;
+        return $this->left_team->title.' '.trans('matches::vs').' '.$this->right_team->title;
     }
 
 }

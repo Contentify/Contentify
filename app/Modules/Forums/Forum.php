@@ -75,7 +75,7 @@ class Forum extends BaseModel
             $forum->level   = 0;
 
             /*
-             * Circle- (a forum cannot be its own child) and level-checker
+             * Circle (a forum cannot be its own child) and level-checker
              */
             $foreignForum = $forum->forum;
             while ($foreignForum) {
@@ -190,7 +190,7 @@ class Forum extends BaseModel
      * @param bool      $isRoot If set to false the method behaves like "isNotRoot()"
      * @return Builder
      */
-    public function scopeIsRoot($query, $isRoot = true)
+    public function scopeIsRoot(Builder $query, bool $isRoot = true)
     {
         if ($isRoot) {
             return $query->whereLevel(0);
@@ -206,7 +206,7 @@ class Forum extends BaseModel
      * @param User|null $user   User model or null if it's the current client
      * @return Builder
      */
-    public function scopeIsAccessible($query, $user = null)
+    public function scopeIsAccessible(Builder $query, User $user = null)
     {
         if (! $user) {
             $user = user();

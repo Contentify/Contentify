@@ -33,11 +33,12 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
 
     /**
      * Show a category
-     * 
+     *
      * @param  int $id The ID of the category
      * @return void
+     * @throws \Exception
      */
-    public function showCategory($id)
+    public function showCategory(int $id)
     {
         /** @var DownloadCat $downloadCat */
         $downloadCat = DownloadCat::findOrFail($id);
@@ -61,11 +62,12 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
 
     /**
      * Show a download detail page
-     * 
+     *
      * @param  int $id The ID of the download
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Download $download */
         $download = Download::published()->findOrFail($id);
@@ -87,7 +89,7 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
      * @param  int $id The ID of the download
      * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse
      */
-    public function perform($id)
+    public function perform(int $id)
     {
         /** @var Download $download */
         $download = Download::findOrFail($id);
@@ -115,7 +117,7 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         $downloads = Download::where('title', 'LIKE', '%'.$subject.'%')->get();
 

@@ -6,11 +6,14 @@ use BaseModel;
 use DB;
 
 /**
- * @property int index
- * @property int $post_id
- * @property int $report_counter
- * @property int $creator_id
- * @property int $updater_id
+ * @property \Carbon                         $created_at
+ * @property \Carbon                         $updated_at
+ * @property \Carbon                         $deleted_at
+ * @property int                             $index
+ * @property int                             $post_id
+ * @property int                             $report_counter
+ * @property int                             $creator_id
+ * @property int                             $updater_id
  * @property \App\Modules\Forums\ForumPost $post
  */
 class ForumReportCase extends BaseModel

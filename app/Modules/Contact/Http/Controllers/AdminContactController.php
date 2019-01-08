@@ -60,7 +60,7 @@ class AdminContactController extends BackController
      * @param int $id
      * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         if (! $this->checkAccessRead()) {
             return;
@@ -69,7 +69,7 @@ class AdminContactController extends BackController
         /** @var ContactMessage $msg */
         $msg = ContactMessage::findOrFail($id);
 
-        $msg->new = false;
+        $msg->new = false; // Someone has read the message so it is no longer considered being new
         $msg->save();
 
         $this->pageView('contact::admin_show', compact('msg'));
@@ -81,7 +81,7 @@ class AdminContactController extends BackController
      * @param int $id
      * @throws \Exception
      */
-    public function reply($id)
+    public function reply(int $id)
     {
         /** @var ContactMessage $incomingMessage */
         $incomingMessage = ContactMessage::findOrFail($id);

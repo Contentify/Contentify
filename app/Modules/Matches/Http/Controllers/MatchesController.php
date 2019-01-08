@@ -57,11 +57,12 @@ class MatchesController extends FrontController
 
     /**
      * Show a match
-     * 
+     *
      * @param  int $id The ID of the match
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Match $match */
         $match = Match::findOrFail($id);

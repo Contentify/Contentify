@@ -67,11 +67,11 @@ class ForumThread extends BaseModel
      * Select only those forum threads the user has access to.
      * WARNING: Creates a JOIN with the forum_threads table.
      *
-     * @param Builder $query The Eloquent Builder object
-     * @param User    $user  User model or null if it's the current client
+     * @param Builder   $query The Eloquent Builder object
+     * @param User|null $user  User model or null if it's the current client
      * @return Builder
      */
-    public function scopeIsAccessible($query, $user = null)
+    public function scopeIsAccessible(Builder $query, User $user = null)
     {
         $query->select('forum_threads.*')
             ->join('forums', 'forum_threads.forum_id', '=', 'forums.id');
@@ -103,7 +103,7 @@ class ForumThread extends BaseModel
      *
      * @return int
      */
-    public function countPages()
+    public function countPages() : int
     {
         return ceil($this->posts_count / ForumPost::PER_PAGE);
     }

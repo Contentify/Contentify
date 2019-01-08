@@ -25,7 +25,13 @@ class AdminConfigController extends BackController
     const LOG_FILE = '/logs/laravel.log';
 
     protected $icon = 'cog';
-    
+
+    /**
+     * Show the index page with a line of buttons for different actions at the top
+     * and the general configuration settings
+     *
+     * @throws \Exception
+     */
     public function getIndex()
     {
         if (! $this->checkAccessRead()) {
@@ -136,6 +142,7 @@ class AdminConfigController extends BackController
      * It uses a dirty hack to override the CSS classes phpinfo() uses.
      *
      * @return void
+     * @throws \Exception
      */
     public function getInfo()
     {
@@ -198,8 +205,9 @@ class AdminConfigController extends BackController
 
     /**
      * Create MySQL dump
-     * 
+     *
      * @return void
+     * @throws \Exception
      */
     public function getExport()
     {
@@ -235,19 +243,19 @@ class AdminConfigController extends BackController
     /**
      * Compiles the LESS files to CSS files
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function getCompileLess()
     {
         if (! $this->checkAccessUpdate()) {
-            return;
+            return null;
         }
 
         try {
             Artisan::call('less:compile');
         } catch (\Exception $exception) {
             $this->alertError($exception->getMessage());
-            return;
+            return null;
         }
 
         $this->alertFlash(trans('app.successful'));
@@ -273,8 +281,9 @@ class AdminConfigController extends BackController
 
     /**
      * Show the log file content
-     * 
+     *
      * @return void
+     * @throws \Exception
      */
     public function getLog()
     {
@@ -334,7 +343,7 @@ class AdminConfigController extends BackController
     public function getPlainLog()
     {
         if (! $this->checkAccessRead()) {
-            return;
+            return null;
         }
 
         $filename = storage_path().self::LOG_FILE;

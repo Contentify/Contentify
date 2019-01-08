@@ -18,10 +18,11 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
     /**
      * Shows a forum thread
      *
-     * @param  int  $id The ID of the thread
+     * @param  int $id The ID of the thread
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
 
@@ -37,6 +38,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      * Shows all forum threads with new posts
      *
      * @return void
+     * @throws \Exception
      */
     public function showNew()
     {
@@ -48,9 +50,10 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
     /**
      * Creates a thread (= create a root post)
      *
-     * @param int  $forumId The ID of the forum
+     * @param int $forumId The ID of the forum
+     * @throws \Exception
      */
-    public function create($forumId)
+    public function create(int $forumId)
     {
         $this->pageView('forums::root_post_form', compact('forumId'));
     }
@@ -60,8 +63,9 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      *
      * @param int $forumId The ID of the forum
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function store($forumId)
+    public function store(int $forumId)
     {
         /** @var Forum $forum */
         $forum = Forum::isAccessible()->findOrFail($forumId);
@@ -106,11 +110,12 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Edits a thread
-     * 
+     *
      * @param int $id The ID of the thread
      * @return void
+     * @throws \Exception
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
@@ -130,8 +135,9 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      *
      * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null
+     * @throws \Exception
      */
-    public function update($id)
+    public function update(int $id)
     {
         /** @var ForumThread $forumThread */
         $forumThread = ForumThread::isAccessible()->findOrFail($id);
@@ -171,8 +177,9 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      *
      * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         if (! $this->checkAccessDelete()) {
             return null;
@@ -211,7 +218,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function sticky($id)
+    public function sticky(int $id)
     {
         if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
@@ -234,7 +241,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function closed($id)
+    public function closed(int $id)
     {
         if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
@@ -256,8 +263,9 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      *
      * @param int $id The ID of the thread
      * @return void
+     * @throws \Exception
      */
-    public function getMove($id)
+    public function getMove(int $id)
     {
         if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
@@ -278,7 +286,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function postMove($id)
+    public function postMove(int $id)
     {
         if (! ($this->hasAccessUpdate())) {
             $this->alertError(trans('app.access_denied'));
@@ -293,6 +301,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->fill(Input::all());
         $forumThread->save(); // save() not forceSave() so it checks if the parent forum is valid
 
+        /** @var Forum $newForum */
         $newForum = Forum::whereId($forumThread->forum_id)->firstOrFail(); // We cant simply access $forumThread->forum!
         $newForum->refresh();
         $oldForum->refresh();
@@ -308,7 +317,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         /** @var ForumThread[] $forumThreads */
         $forumThreads = ForumThread::isAccessible()->where('forum_threads.title', 'LIKE', '%'.$subject.'%')->get();

@@ -16,7 +16,7 @@ class LanguagesController extends FrontController
      * @param string $code The code of the language
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function set($code)
+    public function set(string $code)
     {
         /** @var Language $language */
         $language = Language::whereCode($code)->firstOrFail();

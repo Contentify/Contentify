@@ -29,7 +29,7 @@ class ForumPost extends BaseModel
     use SoftDeletingTrait;
 
     /**
-     * Pagination: Show how many posts per page?
+     * Pagination: How many posts to show per page?
      */
     const PER_PAGE = 20;
 
@@ -90,7 +90,7 @@ class ForumPost extends BaseModel
      * 
      * @return string
      */
-    public function renderText()
+    public function renderText() : string
     {
         $key = self::CACHE_KEY.$this->id;
 
@@ -105,10 +105,10 @@ class ForumPost extends BaseModel
      * Return just the plain forum post's text (WITHOUT BBCode).
      * (Similar to render BBCode without the tags but it uses caching.)
      *
-     * @param int $max Limits the number of characters. 0/null = no limit
+     * @param int|null $max Limits the number of characters. 0/null = no limit
      * @return string
      */
-    public function plainText($max = null)
+    public function plainText(int $max = null) : string
     {
         $text = strip_tags($this->renderText());
 
@@ -126,10 +126,10 @@ class ForumPost extends BaseModel
      * WARNING: Creates JOINs with the forum_threads and the forums tables.
      *
      * @param Builder   $query  The Eloquent Builder object
-     * @param User      $user   User model or null if it's the current client
+     * @param User|null $user   User model or null if it's the current client
      * @return Builder
      */
-    public function scopeIsAccessible($query, $user = null)
+    public function scopeIsAccessible(Builder $query, User $user = null)
     {
         $query->select('forum_posts.*')
             ->join('forum_threads', 'forum_posts.thread_id', '=', 'forum_threads.id')
@@ -160,7 +160,7 @@ class ForumPost extends BaseModel
      * 
      * @return string
      */
-    public function paginatedPostUrl()
+    public function paginatedPostUrl() : string
     {
         // Counts the posts before the current post
         $count = DB::table('forum_posts')->whereThreadId($this->thread_id)->whereNull('deleted_at')

@@ -25,6 +25,9 @@ class CupsController extends FrontController implements GlobalSearchInterface
         parent::__construct();
     }
 
+    /**
+     * Show a table with all published cups
+     */
     public function index()
     {
         $this->indexPage([
@@ -57,13 +60,14 @@ class CupsController extends FrontController implements GlobalSearchInterface
     }
 
     /**
-     * Show a cup
-     * 
-     * @param  int    $id   The ID of the cup
-     * @param  string $slug The unique slug
+     * Show a specific cup
+     *
+     * @param  int $id The ID of the cup
+     * @param  string|null $slug The unique slug
      * @return void
+     * @throws \Exception
      */
-    public function show($id, $slug = null)
+    public function show(int $id, string $slug = null)
     {
         /** @var Cup $cup */
         if ($slug) {
@@ -82,11 +86,12 @@ class CupsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show a cup by slug instead of ID
-     * 
+     *
      * @param  string $slug The unique slug
      * @return void
+     * @throws \Exception
      */
-    public function showBySlug($slug)
+    public function showBySlug(string $slug)
     {
         $this->show(null, $slug);
     }
@@ -98,7 +103,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
      * @param  int $participantId
      * @return RedirectResponse|null
      */
-    public function join($cupId, $participantId)
+    public function join(int $cupId, int $participantId)
     {
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
@@ -142,6 +147,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
                     }
                     $users .= '<a href="'.url('users/'.$cupUser->id.'/'.$cupUser->slug).'">'.$cupUser->username.'</a>';
                 }
+
                 $this->alertFlash(trans('cups::user_conflict').' '.trans('app.object_users').': '.$users);
                 return Redirect::to('cups/'.$cup->id.'/'.$cup->slug);
             }
@@ -172,7 +178,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
      * @param bool  $checkOut   If true, check-out instead of check-in
      * @return RedirectResponse|null
      */
-    public function checkIn($cupId, $checkOut = false)
+    public function checkIn(int $cupId, bool $checkOut = false)
     {
         /** @var Cup $cup */
         $cup = Cup::
@@ -209,7 +215,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
      * @param int $cupId The cup ID
      * @return RedirectResponse
      */
-    public function checkOut($cupId)
+    public function checkOut(int $cupId)
     {
         return $this->checkIn($cupId, true);
     }
@@ -220,7 +226,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
      * @param  int $cupId The cup ID
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function swap($cupId)
+    public function swap(int $cupId)
     {
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
@@ -311,8 +317,9 @@ class CupsController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
+        /** @var Cup[] $cups */
         $cups = Cup::published()->where('title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = [];

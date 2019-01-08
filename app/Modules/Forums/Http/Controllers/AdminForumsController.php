@@ -87,7 +87,7 @@ class AdminForumsController extends BackController
 
         /*
          * If the forum's parent forum changed we have to refresh
-         * the old and the new parent forum's meta infos
+         * the old and the new parent forum's meta info
          */
         if ($forum->forum_id != $oldParentId) {
             $oldParentForum = Forum::find($oldParentId);

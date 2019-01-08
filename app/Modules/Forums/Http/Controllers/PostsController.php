@@ -19,7 +19,7 @@ class PostsController extends FrontController
      *
      * @param int $id The id of the post
      */
-    public function show($id)
+    public function show(int $id)
     {
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
@@ -30,9 +30,9 @@ class PostsController extends FrontController
      * Returns a forum post as JSON (as response to an AJAX call)
      * 
      * @param  int $id The ID of the post
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function get($id)
+    public function get(int $id)
     {
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
@@ -45,7 +45,7 @@ class PostsController extends FrontController
      * @param int $id The ID of the thread
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function store($id)
+    public function store(int $id)
     {
         $forumPost = new ForumPost(Input::all());
         $forumPost->creator_id = user()->id;
@@ -84,8 +84,9 @@ class PostsController extends FrontController
      *
      * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse|null
+     * @throws \Exception
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         /** @var ForumPost $forumPost */
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
@@ -111,7 +112,7 @@ class PostsController extends FrontController
      * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function update($id)
+    public function update(int $id)
     {
         /** @var ForumPost $forumPost */
         $forumPost = ForumPost::isAccessible()->findOrFail($id);
@@ -147,8 +148,9 @@ class PostsController extends FrontController
      *
      * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse|null
+     * @throws \Exception
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         if (! $this->checkAccessDelete()) {
             return null;
@@ -184,7 +186,7 @@ class PostsController extends FrontController
      * @param int $id The ID of the post
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function report($id)
+    public function report(int $id)
     {
         /** @var ForumPost $forumPost */
         $forumPost = ForumPost::isAccessible()->findOrFail($id); 
@@ -206,10 +208,11 @@ class PostsController extends FrontController
 
     /**
      * Shows the latest posts of a user
-     * 
+     *
      * @param int $userId The ID of the user
+     * @throws \Exception
      */
-    public function showUserPosts($userId)
+    public function showUserPosts(int $userId)
     {
         $user = User::findOrFail($userId);
 

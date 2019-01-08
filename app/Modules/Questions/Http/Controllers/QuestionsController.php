@@ -28,8 +28,9 @@ class QuestionsController extends FrontController implements GlobalSearchInterfa
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
+        /** @var Question[] $questions */
         $questions = Question::wherePublished(true)->where('title', 'LIKE', '%'.$subject.'%')->get();
 
         $results = [];

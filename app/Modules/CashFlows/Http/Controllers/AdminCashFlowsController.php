@@ -32,7 +32,7 @@ class AdminCashFlowsController extends BackController
 
         $revenues = (int) CashFlow::sum('integer_revenues');
         $expenses = (int) CashFlow::sum('integer_expenses');
-        $total = $revenues - $expenses;
+        $total = $revenues - $expenses; // Note: There is a method to calc the total sum but we need the summands later
 
         $this->indexPage([
             'buttons'   => ['new', HTML::button('CSV '.trans('app.export'), url('admin/cash-flows/export'))],

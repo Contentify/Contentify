@@ -218,8 +218,9 @@ class UsersController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
+        /** @var User[] $users */
         $users = User::where('username', 'LIKE', '%'.$subject.'%')->get();
 
         $results = [];

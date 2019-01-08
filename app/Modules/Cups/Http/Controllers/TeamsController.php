@@ -332,7 +332,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         $teams = Team::where('title', 'LIKE', '%'.$subject.'%')->get();
 

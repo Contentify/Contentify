@@ -84,4 +84,18 @@ class CashFlow extends BaseModel
         $this->integer_expenses = (int) round($value * 100);;
     }
 
+    /**
+     * Calculates and returns the total sum of all revenues and expenses (= balance)
+     * as an integer. Divide the result by 100 to get the float value.
+     *
+     * @return int
+     */
+    public static function getTotalSum()
+    {
+        $revenues = (int) self::sum('integer_revenues');
+        $expenses = (int) self::sum('integer_expenses');
+
+        return ($revenues - $expenses);
+    }
+
 }

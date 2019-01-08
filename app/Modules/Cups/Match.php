@@ -106,10 +106,10 @@ class Match extends BaseModel
      * Returns true if the given user is allowed to confirm 
      * the result (score) of the left participant
      * 
-     * @param  User $user
+     * @param  User|null $user
      * @return bool
      */
-    public function canConfirmLeft($user)
+    public function canConfirmLeft(User $user = null)
     {
         if ($user == null or $this->left_confirmed) {
             return false;
@@ -137,10 +137,10 @@ class Match extends BaseModel
      * Returns true if the given user is allowed to confirm 
      * the result (score) of the right participant
      * 
-     * @param  User $user
+     * @param  User|null $user
      * @return bool
      */
-    public function canConfirmRight($user)
+    public function canConfirmRight($user = null)
     {
         if ($user == null or $this->right_confirmed) {
             return false;

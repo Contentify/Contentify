@@ -83,7 +83,7 @@ class StreamsController extends FrontController implements GlobalSearchInterface
      * @param  string $subject The search term
      * @return string[]
      */
-    public function globalSearch($subject)
+    public function globalSearch(string $subject) : array
     {
         $streams = Stream::where('title', 'LIKE', '%'.$subject.'%')->get();
 

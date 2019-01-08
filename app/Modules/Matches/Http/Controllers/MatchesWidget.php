@@ -18,6 +18,8 @@ class MatchesWidget extends Widget
         if ($matches) {
             return View::make('matches::widget', compact('matches'))->render();
         }
+
+        return '';
     }
 
 }

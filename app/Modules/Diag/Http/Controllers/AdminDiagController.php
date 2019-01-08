@@ -104,7 +104,7 @@ class AdminDiagController extends BackController
      * @param  string      $varName Name of a variable
      * @return mixed
      */
-    protected function getSqlVar($sqlVars, $varName)
+    protected function getSqlVar(array $sqlVars, string $varName)
     {
         $varName = strtolower($varName);
 

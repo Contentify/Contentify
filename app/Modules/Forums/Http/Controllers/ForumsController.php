@@ -23,7 +23,7 @@ class ForumsController extends FrontController
      * @return void
      * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Forum $forum */
         $forum = Forum::with(['threads' => function(Relation $query)

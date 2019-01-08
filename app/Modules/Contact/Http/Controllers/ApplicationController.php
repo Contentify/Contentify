@@ -26,6 +26,7 @@ class ApplicationController extends FrontController
         if ($okay) {
             /** @var Team $team */
             $team = Team::findOrFail(Input::get('team_id'));
+
             $msg = new ContactMessage(Input::all());
             $msg->ip = $msg->ip = getenv('REMOTE_ADDR');
             $msg->title = 'Application of '.$msg->username;
@@ -33,6 +34,7 @@ class ApplicationController extends FrontController
                 trans('app.role').': '.Input::get('role').PHP_EOL.PHP_EOL.PHP_EOL.
                 trans('contact::application').': '.PHP_EOL.PHP_EOL.
                 $msg->text;
+            
             $msg->forceSave();
             $msg->notify();
 

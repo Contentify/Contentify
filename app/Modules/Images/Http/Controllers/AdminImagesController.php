@@ -12,6 +12,11 @@ class AdminImagesController extends BackController
 
     use ModelHandlerTrait;
 
+    /**
+     * Number of items per page on the admin index page
+     */
+    const ITEMS_PER_PAGE = 15;
+
     protected $icon = 'image';
 
     public function __construct()
@@ -23,15 +28,14 @@ class AdminImagesController extends BackController
 
     public function index()
     {
-        $perPage = 15;
 
         if (Input::old('search')) {
             $searchString = Input::old('search');
             $images = Image::where('tags', 'LIKE', '%'.$searchString.'%')
-                ->orderBy('created_at', 'desc')->paginate($perPage);
+                ->orderBy('created_at', 'desc')->paginate(self::ITEMS_PER_PAGE);
         } else {
             $searchString = null;
-            $images = Image::orderBy('created_at', 'desc')->paginate($perPage);
+            $images = Image::orderBy('created_at', 'desc')->paginate(self::ITEMS_PER_PAGE);
         }
 
         $this->pageView('images::admin_index', compact('images', 'searchString'));
