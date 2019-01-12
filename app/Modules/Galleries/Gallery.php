@@ -45,7 +45,7 @@ class Gallery extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished($query)
+    public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true);
     }

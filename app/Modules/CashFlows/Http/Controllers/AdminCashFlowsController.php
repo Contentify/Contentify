@@ -86,6 +86,9 @@ class AdminCashFlowsController extends BackController
 
     /**
      * Export all cash flows as a .CSV file
+     *
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function export()
     {

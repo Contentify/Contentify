@@ -59,11 +59,12 @@ class StreamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show a stream
-     * 
+     *
      * @param  int $id The ID of the stream
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Stream $stream */
         $stream = Stream::findOrFail($id);

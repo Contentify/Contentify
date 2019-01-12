@@ -23,8 +23,9 @@ class PartnersController extends FrontController
      * @param  int $id The id of the partner
      * @return RedirectResponse
      */
-    public function url($id)
+    public function url(int $id)
     {
+        /** @var Partner $partner */
         $partner = Partner::published()->findOrFail($id);
 
         $partner->access_counter++;

@@ -109,7 +109,7 @@ class Match extends BaseModel
      * @param  User|null $user
      * @return bool
      */
-    public function canConfirmLeft(User $user = null)
+    public function canConfirmLeft(User $user = null) : bool
     {
         if ($user == null or $this->left_confirmed) {
             return false;
@@ -140,7 +140,7 @@ class Match extends BaseModel
      * @param  User|null $user
      * @return bool
      */
-    public function canConfirmRight($user = null)
+    public function canConfirmRight($user = null) : bool
     {
         if ($user == null or $this->right_confirmed) {
             return false;
@@ -170,7 +170,7 @@ class Match extends BaseModel
      * 
      * @return self
      */
-    public function nextMatch()
+    public function nextMatch() : self
     {
         return self::findOrFail($this->next_match_id);
     }

@@ -39,10 +39,10 @@ class AdminPagesController extends BackController
                 Hover::modelAttributes($page, ['access_counter', 'updated_at']);
 
                 switch ($page->page_cat_id) {
-                    case '1':
+                    case Page::ID_BLOG_POSTS:
                         $link = HTML::link(URL::route('articles.show', [$page->id]), $page->title);
                         break;
-                    case '2':
+                    case Page::ID_CUSTOM_PAGES:
                         $link = HTML::link(URL::route('pages.showSlug', [$page->slug]), $page->title);
                         break;
                     default:

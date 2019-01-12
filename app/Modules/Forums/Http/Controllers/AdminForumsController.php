@@ -56,6 +56,9 @@ class AdminForumsController extends BackController
         ]);
     }
 
+    /**
+     * Create a new forum (show the form)
+     */
     public function create()
     {
         $this->traitCreate();
@@ -65,7 +68,12 @@ class AdminForumsController extends BackController
         $this->layout->page->with('forums', $forums);
     }
 
-    public function edit($id)
+    /**
+     * Edit an existing forum (show the form)
+     *
+     * @param int $id The ID of the forum
+     */
+    public function edit(int $id)
     {
         $this->traitEdit($id);
 
@@ -74,7 +82,13 @@ class AdminForumsController extends BackController
         $this->layout->page->with('forums', $forums);
     }
 
-    public function update($id)
+    /**
+     * Update an existing forum (update the database record)
+     *
+     * @param int $id The ID of the forum
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(int $id)
     {
         /** @var Forum $forum */
         $forum = Forum::findOrFail($id);

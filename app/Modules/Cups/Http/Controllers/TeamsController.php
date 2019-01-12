@@ -28,9 +28,10 @@ class TeamsController extends FrontController implements GlobalSearchInterface
     /**
      * Show all cup teams if $userId is null or show only the cup teams of a specific user
      *
-     * @param null $userId
+     * @param int|null $userId
+     * @throws \Exception
      */
-    public function overview($userId = null)
+    public function overview(int $userId = null)
     {
         if ($userId) {
             $user = User::findOrFail($userId);
@@ -47,11 +48,12 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Shows a cup team
-     * 
-     * @param  int  $id The ID of the team
+     *
+     * @param  int $id The ID of the team
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Team $team */
         $team = Team::findOrFail($id);
@@ -70,7 +72,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
      * @param  int $userId
      * @return \Illuminate\Http\Response|null
      */
-    public function organizer($teamId, $userId)
+    public function organizer(int $teamId, int $userId)
     {
         /** @var Team $team */
         $team = Team::findOrFail($teamId);
@@ -97,11 +99,12 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * User wants to join a team.
-     * 
+     *
      * @param  int $teamId The team ID
      * @return RedirectResponse|null
+     * @throws \Exception
      */
-    public function join($teamId) 
+    public function join(int $teamId)
     {
         /** @var Team $team */
         $team = Team::findOrFail($teamId);
@@ -142,7 +145,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
      * @param  int  $userId The ID of the user
      * @return RedirectResponse|null
      */
-    public function leave($teamId, $userId)
+    public function leave(int $teamId, int $userId)
     {
         /** @var Team $team */
         $team = Team::findOrFail($teamId);
@@ -182,8 +185,9 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Shows a form that allows the user to create a team.
-     * 
+     *
      * @return void
+     * @throws \Exception
      */
     public function create()
     {
@@ -197,8 +201,9 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Creates a new team.
-     * 
+     *
      * @return RedirectResponse|null
+     * @throws \Exception
      */
     public function store()
     {
@@ -233,11 +238,12 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Shows a form that allows the user to edit a team.
-     * 
+     *
      * @param  int $id The ID of the team
      * @return void
+     * @throws \Exception
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         /** @var Team $team */
         $team = Team::findOrFail($id);
@@ -260,8 +266,9 @@ class TeamsController extends FrontController implements GlobalSearchInterface
      *
      * @param  int $id The ID of the team
      * @return RedirectResponse|null
+     * @throws \Exception
      */
-    public function update($id)
+    public function update(int $id)
     {
         if (! user()) {
             $this->alertError(trans('app.no_auth'));
@@ -291,11 +298,12 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Deletes a team.
-     * 
+     *
      * @param  int $id The ID of the team
      * @return RedirectResponse|null
+     * @throws \Exception
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         if (! user()) {
             $this->alertError(trans('app.no_auth'));

@@ -56,8 +56,9 @@ class UsersController extends FrontController implements GlobalSearchInterface
      *
      * @param int $id The ID of the user
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var User $user */
         $user = User::whereId($id)->firstOrFail();
@@ -79,8 +80,9 @@ class UsersController extends FrontController implements GlobalSearchInterface
      *
      * @param int $id The ID of the user
      * @return void
+     * @throws \Exception
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         if ((! user()) or (user()->id != $id and (! $this->hasAccessUpdate()))) {
             $this->alertError(trans('app.access_denied'));
@@ -100,7 +102,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
      * @param int $id The ID of the user
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function update($id)
+    public function update(int $id)
     {
         if ((! user()) or (user()->id != $id and (! $this->hasAccessUpdate()))) {
             $this->alertError(trans('app.access_denied'));
@@ -146,8 +148,9 @@ class UsersController extends FrontController implements GlobalSearchInterface
      *
      * @param int $id The ID of the user
      * @return void
+     * @throws \Exception
      */
-    public function editPassword($id)
+    public function editPassword(int $id)
     {
         if (! $this->checkAuth()) {
             return;
@@ -164,7 +167,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
      * @param int $id The ID of the user
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function updatePassword($id)
+    public function updatePassword(int $id)
     {
         if ((! user()) or (user()->id != $id)) {
             $this->alertError(trans('app.access_denied'));

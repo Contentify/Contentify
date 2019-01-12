@@ -14,7 +14,7 @@ class StreamApi
      * @param boolean $parse Parse the result?
      * @return mixed
      */
-    public function apiCall($url, $parse = true)
+    public function apiCall(string $url, bool $parse = true)
     {
         $curl = curl_init();
 
@@ -43,7 +43,7 @@ class StreamApi
      * @param  string $response
      * @return mixed
      */
-    public function parseResponse($response)
+    public function parseResponse(string $response)
     {
         return json_decode($response);
     }

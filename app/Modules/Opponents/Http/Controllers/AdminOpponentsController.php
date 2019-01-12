@@ -46,13 +46,14 @@ class AdminOpponentsController extends BackController
     }
 
     /**
-     * Returns the lineup of an opponent team
+     * Returns the lineup of an opponent team (for example an AJAX call)
      * 
      * @param  int      $id ID of the opponent
      * @return string
      */
-    public function lineup($id)
+    public function lineup(int $id) : string
     {
+        /** @var Opponent $opponent */
         $opponent = Opponent::findOrFail($id);
 
         return $opponent->lineup;

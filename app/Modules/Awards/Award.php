@@ -61,7 +61,7 @@ class Award extends BaseModel
      * 
      * @return string HTML code of the icon
      */
-    public function positionIcon()
+    public function positionIcon() : string
     {
         $pos = $this->position;
 

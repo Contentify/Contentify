@@ -142,7 +142,7 @@ class Match extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopeFilter(Builder $query)
+    public function scopeFilter(Builder $query) : Builder
     {
         if (ContentFilter::has('team_id')) {
             $id = (int) ContentFilter::get('team_id');

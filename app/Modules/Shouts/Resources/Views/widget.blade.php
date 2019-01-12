@@ -81,7 +81,7 @@
 
             if (text != '') {
                 @if (user())
-                    var username = '{!! user()->username !!}';
+                    var username = '{{ user()->username }}';
                     var id = {!! user()->id !!};
                 @endif
                 

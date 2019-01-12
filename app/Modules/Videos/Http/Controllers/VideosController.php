@@ -29,11 +29,12 @@ class VideosController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show a video
-     * 
+     *
      * @param int $id The ID of the video
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Video $video */
         $video = Video::findOrFail($id);

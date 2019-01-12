@@ -40,11 +40,12 @@ class ArticlesController extends FrontController implements GlobalSearchInterfac
 
     /**
      * Show an article
-     * 
+     *
      * @param  int $id The ID of the article
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Article $article */
         $article = Article::whereId($id)->published()->firstOrFail();

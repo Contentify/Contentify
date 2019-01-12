@@ -190,7 +190,7 @@ class Forum extends BaseModel
      * @param bool      $isRoot If set to false the method behaves like "isNotRoot()"
      * @return Builder
      */
-    public function scopeIsRoot(Builder $query, bool $isRoot = true)
+    public function scopeIsRoot(Builder $query, bool $isRoot = true) : Builder
     {
         if ($isRoot) {
             return $query->whereLevel(0);
@@ -206,7 +206,7 @@ class Forum extends BaseModel
      * @param User|null $user   User model or null if it's the current client
      * @return Builder
      */
-    public function scopeIsAccessible(Builder $query, User $user = null)
+    public function scopeIsAccessible(Builder $query, User $user = null) : Builder
     {
         if (! $user) {
             $user = user();

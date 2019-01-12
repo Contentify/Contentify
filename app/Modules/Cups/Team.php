@@ -4,6 +4,7 @@ namespace App\Modules\Cups;
 
 use BaseModel;
 use DB;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use User;
 
@@ -75,7 +76,7 @@ class Team extends BaseModel
      * 
      * @return int
      */
-    public function countMembers()
+    public function countMembers() : int
     {
         return DB::table('cups_team_members')->whereTeamId($this->id)->count();
     }
@@ -86,7 +87,7 @@ class Team extends BaseModel
      * @param  User $user
      * @return bool
      */
-    public function isOrganizer(User $user)
+    public function isOrganizer(User $user) : bool
     {
         $membership = DB::table('cups_team_members')->whereTeamId($this->id)->whereUserId($user->id)
             ->whereOrganizer(true)->first();
@@ -98,9 +99,9 @@ class Team extends BaseModel
      * Returns the teams of a given user. Also returns the membership attributes (e. g. "organizer").
      * 
      * @param  User $user
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function teamsOfUser(User $user)
+    public function teamsOfUser(User $user) : Collection
     {
         return self::join('cups_team_members', 'cups_team_members.team_id', '=', 'cups_teams.id')->
             where('cups_team_members.user_id', '=', $user->id)->get();
@@ -112,7 +113,7 @@ class Team extends BaseModel
      * @param  User  $user
      * @return boolean
      */
-    public function isMember(User $user)
+    public function isMember(User $user) : bool
     {
         foreach ($this->members as $member) {
             if ($member->id == $user->id) {
@@ -130,7 +131,7 @@ class Team extends BaseModel
      * 
      * @return boolean
      */
-    public function isLocked()
+    public function isLocked() : bool
     {
         $result = DB::table('cups')->where('players_per_team', '>', 1)->whereClosed(false)
             ->join('cups_participants', 'cups.id', '=', 'cups_participants.cup_id')->whereParticipantId($this->id)->first();
@@ -142,6 +143,7 @@ class Team extends BaseModel
      * 
      * @param User    $user      The user object
      * @param boolean $organizer Is the user an organizer?
+     * @return void
      */
     public function addMember(User $user, bool $organizer = false)
     {

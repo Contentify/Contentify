@@ -302,7 +302,7 @@ return [
 
         /*
          * CMS classes:
-         */ 
+         */
         'FormGenerator'         => Contentify\FormGenerator::class,
         'ModuleInstaller'       => Contentify\ModuleInstaller::class,
         'MsgException'          => Contentify\Exceptions\MsgException::class,
@@ -321,20 +321,20 @@ return [
         'ConfigController'      => Contentify\Controllers\ConfigController::class,
         'Widget'                => Contentify\Controllers\Widget::class,
 
-        'BaseModel'             => Contentify\Models\BaseModel::class,
-        'Comment'               => Contentify\Models\Comment::class,
-        'StiModel'              => Contentify\Models\StiModel::class,
-        'User'                  => Contentify\Models\User::class,
-        'UserActivity'          => Contentify\Models\UserActivity::class,
-        'ConfigBag'             => Contentify\Models\ConfigBag::class,
-        'Raw'                   => Contentify\Raw::class,
+        'BaseModel'        => Contentify\Models\BaseModel::class,
+        'Comment'          => Contentify\Models\Comment::class,
+        'AbstractStiModel' => Contentify\Models\AbstractStiModel::class,
+        'User'             => Contentify\Models\User::class,
+        'UserActivity'     => Contentify\Models\UserActivity::class,
+        'ConfigBag'        => Contentify\Models\ConfigBag::class,
+        'Raw'              => Contentify\Raw::class,
 
         /*
          * Vendor classes:
          */
-        'OpenGraph'             => ChrisKonnertz\OpenGraph\OpenGraph::class,
-        'BBCode'                => ChrisKonnertz\BBCode\BBCode::class,
-        'Jobs'                  => ChrisKonnertz\Jobs\Integration\JobsFacade::class,
+        'OpenGraph'        => ChrisKonnertz\OpenGraph\OpenGraph::class,
+        'BBCode'           => ChrisKonnertz\BBCode\BBCode::class,
+        'Jobs'             => ChrisKonnertz\Jobs\Integration\JobsFacade::class,
         'AbstractJob'           => ChrisKonnertz\Jobs\AbstractJob::class,
         'Sentinel'              => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         'Activation'            => Cartalyst\Sentinel\Laravel\Facades\Activation::class,

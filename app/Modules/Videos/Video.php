@@ -55,17 +55,18 @@ class Video extends BaseModel
      * 
      * @return int
      */
-    public function countComments()
+    public function countComments() : int
     {
         return Comment::count('videos', $this->id);
     }
 
     /**
      * Create an instance of OpenGraph that represents Open Graph tags.
-     * 
+     *
      * @return OpenGraph
+     * @throws \Exception
      */
-    public function openGraph()
+    public function openGraph() : OpenGraph
     {
         $og = new OpenGraph(true);
 

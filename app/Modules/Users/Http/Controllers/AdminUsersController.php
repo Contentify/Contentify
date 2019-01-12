@@ -95,7 +95,7 @@ class AdminUsersController extends BackController
      * @param int $id The ID of the user
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function update($id)
+    public function update(int $id)
     {
         $user = User::findOrFail($id);
         
@@ -127,7 +127,7 @@ class AdminUsersController extends BackController
      * @param int $id The ID of the user
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         // This call also checks for permissions
         $this->activate($id, false);
@@ -169,7 +169,7 @@ class AdminUsersController extends BackController
      * @param  bool $activate Activate (true) or deactivate (false)?
      * @return \Illuminate\Http\Response
      */
-    public function activate($id, $activate = true)
+    public function activate(int $id, bool $activate = true)
     {
         $user = User::findOrFail($id);
 

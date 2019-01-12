@@ -24,11 +24,12 @@ class TeamsController extends FrontController
 
     /**
      * Show a team
-     * 
+     *
      * @param  int $id The id of the team
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         $team = Team::published()->findOrFail($id);
 

@@ -17,13 +17,14 @@ class CustomPagesController extends FrontController
 
     /**
      * Show a custom page
-     * 
-     * @param int      $id          The ID of the custom page
-     * @param string   $slug        The unique slug
-     * @param boolean  $isImpressum If true, render some special information
+     *
+     * @param int         $id          The ID of the custom page
+     * @param string|null $slug        The unique slug
+     * @param bool        $isImpressum If true, render impressum information
      * @return void
+     * @throws \Exception
      */
-    public function show($id, $slug = null, $isImpressum = false)
+    public function show(int $id, string $slug = null, $isImpressum = false)
     {
         if ($id) {
             $customPage = CustomPage::whereId($id)->published()->firstOrFail();
@@ -46,11 +47,12 @@ class CustomPagesController extends FrontController
 
     /**
      * Show a custom page by slug instead of ID
-     * 
+     *
      * @param  string $slug The unique slug
      * @return void
+     * @throws \Exception
      */
-    public function showBySlug($slug)
+    public function showBySlug(string $slug)
     {
         $this->show(null, $slug);
     }
@@ -58,8 +60,9 @@ class CustomPagesController extends FrontController
     /**
      * Show the default impressum page that includes info about the CMS.
      * Note: Do not call it "imprint"!
-     * 
+     *
      * @return void
+     * @throws \Exception
      */
     public function showImpressum()
     {

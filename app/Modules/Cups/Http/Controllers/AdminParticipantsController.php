@@ -66,7 +66,7 @@ class AdminParticipantsController extends BackController
      * @param int $participantId
      * @return RedirectResponse
      */
-    public function delete(int $cupId, int $participantId)
+    public function delete(int $cupId, int $participantId) : RedirectResponse
     {
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
@@ -83,7 +83,7 @@ class AdminParticipantsController extends BackController
      * 
      * @return RedirectResponse
      */
-    public function redirect()
+    public function redirect() : RedirectResponse
     {
         return Redirect::to('admin/cups');
     }

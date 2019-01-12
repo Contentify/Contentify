@@ -66,6 +66,11 @@ class AdminActivitiesController extends BackController
         ]);
     }
 
+    /**
+     * Deletes all user activities from the database
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteAll()
     {
         UserActivities::deleteAll();

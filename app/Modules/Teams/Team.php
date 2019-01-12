@@ -4,6 +4,7 @@ namespace App\Modules\Teams;
 
 use BaseModel;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use SoftDeletingTrait;
 
 /**
@@ -64,6 +65,8 @@ class Team extends BaseModel
     /**
      * The BaseModel's handleRelationalArray() method does not support 
      * orderBy() for pivot attributes so we have to use old-school Eloquent instead.
+     *
+     * @return BelongsToMany
      */
     public function users()
     {
@@ -77,7 +80,7 @@ class Team extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished($query)
+    public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true);
     }

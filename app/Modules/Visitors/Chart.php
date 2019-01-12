@@ -10,6 +10,7 @@ class Chart
 
     /**
      * The data set in JS array notation
+     *
      * @var string
      */
     protected $dataSet;

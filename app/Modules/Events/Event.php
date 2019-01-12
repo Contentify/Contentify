@@ -60,7 +60,7 @@ class Event extends BaseModel
      * @param int     $month The month of the year
      * @return Builder
      */
-    public function scopeEventsOfMonth(Builder $query, int $year, int $month)
+    public function scopeEventsOfMonth(Builder $query, int $year, int $month) : Builder
     {
         return $query->whereMonth('starts_at', '=', $month)
             ->whereYear('starts_at', '=', $year)

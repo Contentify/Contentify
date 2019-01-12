@@ -32,6 +32,7 @@ use User;
  * @property string  $option13
  * @property string  $option14
  * @property string  $option15
+ * @property int     $access_counter
  * @property int     $creator_id
  * @property int     $updater_id
  * @property \User   $creator
@@ -92,7 +93,7 @@ class Poll extends BaseModel
      * @param User $user
      * @return bool
      */
-    public function userVoted(User $user)
+    public function userVoted(User $user) : bool
     {
         $counter = DB::table('polls_votes')->wherePollId($this->id)->whereUserId($user->id)->count();
 
@@ -105,6 +106,7 @@ class Poll extends BaseModel
      *
      * @param User  $user  The voting user
      * @param int[] $votes The votes of the user (=the IDs of the options)
+     * @return void
      */
     public function vote(User $user, array $votes)
     {
@@ -123,7 +125,7 @@ class Poll extends BaseModel
      *
      * @return int[]
      */
-    public function updateResults()
+    public function updateResults() : array
     {
         $results = [];
         for ($counter = 1; $counter <= Poll::MAX_OPTIONS; $counter++) {
@@ -140,7 +142,7 @@ class Poll extends BaseModel
      *
      * @return int[]
      */
-    public function getResults()
+    public function getResults() : array
     {
         if (! Cache::has(self::RESULTS_CACHE_KEY.$this->id)) {
             return $this->updateResults();
@@ -154,7 +156,7 @@ class Poll extends BaseModel
      *
      * @return int
      */
-    public function countComments()
+    public function countComments() : int
     {
         return Comment::count('polls', $this->id);
     }

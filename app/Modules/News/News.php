@@ -86,16 +86,16 @@ class News extends BaseModel
      * Select only news that match filter criteria such as the category ID
      *
      * @param Builder $query
-     * @return Builder|null
+     * @return Builder
      */
-    public function scopeFilter(Builder $query)
+    public function scopeFilter(Builder $query) : Builder
     {
         if (ContentFilter::has('news_cat_id')) {
             $id = (int) ContentFilter::get('news_cat_id');
             return $query->whereNewsCatId($id);
         }
 
-        return null;
+        return $query;
     }
 
     /**
@@ -104,7 +104,7 @@ class News extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished(Builder $query)
+    public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'));
     }

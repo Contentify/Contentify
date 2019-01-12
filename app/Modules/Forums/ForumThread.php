@@ -71,7 +71,7 @@ class ForumThread extends BaseModel
      * @param User|null $user  User model or null if it's the current client
      * @return Builder
      */
-    public function scopeIsAccessible(Builder $query, User $user = null)
+    public function scopeIsAccessible(Builder $query, User $user = null) : Builder
     {
         $query->select('forum_threads.*')
             ->join('forums', 'forum_threads.forum_id', '=', 'forums.id');

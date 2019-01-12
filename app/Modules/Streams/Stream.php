@@ -62,7 +62,7 @@ class Stream extends BaseModel
      * 
      * @return int
      */
-    public function countComments()
+    public function countComments() : int
     {
         return Comment::count('streams', $this->id);
     }

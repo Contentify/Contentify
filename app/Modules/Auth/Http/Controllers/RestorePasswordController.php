@@ -19,6 +19,7 @@ class RestorePasswordController extends FrontController
      * Show "restore password" page
      *
      * @return void
+     * @throws \Exception
      */
     public function getIndex()
     {
@@ -69,7 +70,7 @@ class RestorePasswordController extends FrontController
      * @param string $code  Reset password code
      * @return void
      */
-    public function getNew($email, $code)
+    public function getNew(string $email, string $code)
     {
         $user = Sentinel::findByCredentials(['login' => $email]);
 

@@ -13,12 +13,12 @@ class ServersWidget extends Widget
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
-        $onlyGameservers = false;
-        if (isset($parameters['onlyGameservers'])) {
-            $onlyGameservers = (bool) $parameters['onlyGameservers'];
+        $onlyGameServers = false;
+        if (isset($parameters['onlyGameServers'])) {
+            $onlyGameServers = (bool) $parameters['onlyGameServers'];
         }
 
-        if ($onlyGameservers) {
+        if ($onlyGameServers) {
             $servers = Server::whereNotNull('game_id')->orderBy('created_at', 'DESC')->published()->take($limit)->get();
         } else {
             $servers = Server::orderBy('created_at', 'DESC')->published()->take($limit)->get();

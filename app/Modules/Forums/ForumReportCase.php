@@ -31,7 +31,7 @@ class ForumReportCase extends BaseModel
      * 
      * @return ForumReportCase[]
      */
-    public static function findAll()
+    public static function findAll() : array
     {
         $results = DB::table('forum_reports')
             ->select(DB::raw("post_id, COUNT(id) as report_counter, MAX(updated_at) AS updated_at"))

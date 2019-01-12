@@ -11,7 +11,7 @@ class MatchesWidget extends Widget
 
     public function render(array $parameters = [])
     {
-    	$limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
+        $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 
         $matches = Match::whereState(Match::STATE_CLOSED)->orderBy('played_at', 'DESC')->take($limit)->get();
 

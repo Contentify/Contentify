@@ -58,9 +58,9 @@ class AdminMembersController extends BackController
      * 
      * @param int $userId The ID of the user
      * @param int $teamId The ID of the team
-     * @return Response
+     * @return string
      */
-    public function deleteDelete($userId, $teamId)
+    public function deleteDelete(int $userId, int $teamId) : string
     {
         $user = User::findOrFail($userId);
 
@@ -80,7 +80,7 @@ class AdminMembersController extends BackController
      * @param int $userId The ID of the user
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function getAdd($userId)
+    public function getAdd(int $userId)
     {
         $teamIds = DB::table('team_user')->whereUserId($userId)->pluck('team_id')->toArray();
 
@@ -102,9 +102,9 @@ class AdminMembersController extends BackController
      *
      * @param int $userId The ID of the user
      * @param int $teamId The ID of the team
-     * @return Response
+     * @return string
      */
-    public function postAdd($userId, $teamId)
+    public function postAdd(int $userId, int $teamId) : string
     {
         $user = User::findOrFail($userId);
 
@@ -128,7 +128,7 @@ class AdminMembersController extends BackController
      * @param int $teamId The ID of the team
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function getEdit($userId, $teamId)
+    public function getEdit(int $userId, int $teamId)
     {
         $user = User::findOrFail($userId);
 
@@ -148,7 +148,7 @@ class AdminMembersController extends BackController
      * @param int $teamId The ID of the team
      * @return \Illuminate\Http\Response
      */
-    public function postUpdate($userId, $teamId)
+    public function postUpdate(int $userId, int $teamId)
     {
         $task           = Input::get('task');
         $description    = Input::get('description');

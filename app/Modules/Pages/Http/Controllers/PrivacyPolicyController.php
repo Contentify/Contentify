@@ -11,8 +11,9 @@ class PrivacyPolicyController extends FrontController
 
     /**
      * Displays a page with the privacy policy
-     * 
+     *
      * @return void
+     * @throws \Exception
      */
     public function index()
     {

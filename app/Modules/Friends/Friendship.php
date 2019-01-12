@@ -44,7 +44,7 @@ class Friendship extends BaseModel
      * @param  bool    $confirmed   Only show confirmed friendships? Default = true
      * @return Builder
      */
-    public function scopeAreFriends(Builder $query, int $friendOneId, int $friendTwoId, bool $confirmed = true)
+    public function scopeAreFriends(Builder $query, int $friendOneId, int $friendTwoId, bool $confirmed = true) : Builder
     {
         if ($confirmed) {
             $query->whereConfirmed(1);
@@ -69,7 +69,7 @@ class Friendship extends BaseModel
      * @param  bool     $confirmed Only show confirmed friendships? Default = true
      * @return Builder
      */
-    public function scopeFriendsOf(Builder $query, int $userId, bool $confirmed = true)
+    public function scopeFriendsOf(Builder $query, int $userId, bool $confirmed = true) : Builder
     {
         if ($confirmed) {
             $query->whereConfirmed(1);

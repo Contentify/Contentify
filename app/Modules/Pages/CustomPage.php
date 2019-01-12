@@ -18,7 +18,7 @@ class CustomPage extends Page
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished($query)
+    public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'));
     }

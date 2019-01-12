@@ -46,7 +46,7 @@ class CashFlow extends BaseModel
      * @param  float|null  $value
      * @return float
      */
-    public function getRevenuesAttribute($value)
+    public function getRevenuesAttribute($value) : float
     {
         return $this->integer_revenues / 100;
     }
@@ -68,7 +68,7 @@ class CashFlow extends BaseModel
      * @param  float|null  $value
      * @return float
      */
-    public function getExpensesAttribute($value)
+    public function getExpensesAttribute($value) : float
     {
         return $this->integer_expenses / 100;
     }
@@ -81,7 +81,7 @@ class CashFlow extends BaseModel
      */
     public function setExpensesAttribute($value)
     {
-        $this->integer_expenses = (int) round($value * 100);;
+        $this->integer_expenses = (int) round($value * 100);
     }
 
     /**
@@ -90,7 +90,7 @@ class CashFlow extends BaseModel
      *
      * @return int
      */
-    public static function getTotalSum()
+    public static function getTotalSum() : int
     {
         $revenues = (int) self::sum('integer_revenues');
         $expenses = (int) self::sum('integer_expenses');

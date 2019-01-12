@@ -5,6 +5,7 @@ namespace App\Modules\Cups;
 use BaseModel;
 use DB;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 use MsgException;
 use User;
 
@@ -195,7 +196,7 @@ class Cup extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished(Builder $query)
+    public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true);
     }
@@ -206,7 +207,7 @@ class Cup extends BaseModel
      * @param  string $attribute The name of the attribute that contains the source array
      * @return array
      */
-    public static function makeOptionArray(string $attribute)
+    public static function makeOptionArray(string $attribute) : array
     {
         $originalArray = self::$$attribute;
 
@@ -225,7 +226,7 @@ class Cup extends BaseModel
      * 
      * @return bool
      */
-    public function forTeams()
+    public function forTeams() : bool
     {
         return ($this->players_per_team > 1);
     }
@@ -233,9 +234,9 @@ class Cup extends BaseModel
     /**
      * Returns an array with the IDs of the participants of this cup
      * 
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
-    public function participantIds()
+    public function participantIds() : Collection
     {
         return DB::table('cups_participants')->whereCupId($this->id)->pluck('participant_id');
     }
@@ -245,7 +246,7 @@ class Cup extends BaseModel
      * 
      * @return int
      */
-    public function countParticipants()
+    public function countParticipants() : int
     {
         return DB::table('cups_participants')->whereCupId($this->id)->count();
     }
@@ -296,9 +297,9 @@ class Cup extends BaseModel
      * Works for 1on1 & team cups.
      * 
      * @param User $user
-     * @return boolean
+     * @return bool
      */
-    public function isUserInCup(User $user)
+    public function isUserInCup(User $user) : bool
     {
         return ($this->getParticipantOfUser($user) !== null);
     }
@@ -307,9 +308,9 @@ class Cup extends BaseModel
      * Returns true if a participant has checked-in to this cup.
      * 
      * @param  Team|User $participant
-     * @return boolean
+     * @return bool
      */
-    public function hasParticipantCheckedIn($participant)
+    public function hasParticipantCheckedIn($participant) : bool
     {
         if (! $participant) {
             return false;
@@ -323,9 +324,9 @@ class Cup extends BaseModel
      * 
      * @param  User     $user        The user object
      * @param  boolean  $isOrganizer If true, return only those teams where the user is organizer
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function teamsOfUser(User $user, bool $isOrganizer = false)
+    public function teamsOfUser(User $user, bool $isOrganizer = false) : Collection
     {
         $query = DB::table('cups_team_members')->whereUserId($user->id);
 
@@ -345,7 +346,7 @@ class Cup extends BaseModel
      * @param bool      $onlyOpen If true return only cups that still are open
      * @return \Illuminate\Database\Eloquent\Collection|null
      */
-    public function cupsByUser(User $user = null, $onlyOpen = false)
+    public function cupsByUser(User $user = null, bool $onlyOpen = false)
     {
         if (! $user) {
             return null;
@@ -371,7 +372,7 @@ class Cup extends BaseModel
      * @param  int|null $participants Number of participants
      * @return int
      */
-    public function rounds(int $participants = null)
+    public function rounds(int $participants = null) : int
     {
         if ($participants === null) {
             $participants = $this->countParticipants();

@@ -17470,7 +17470,7 @@ namespace  {
 
     class Comment extends \Contentify\Models\Comment {}
 
-    class StiModel extends \Contentify\Models\StiModel {}
+    class AbstractStiModel extends \Contentify\Models\AbstractStiModel {}
 
     class User extends \Contentify\Models\User {}
 

@@ -129,7 +129,7 @@ class ForumPost extends BaseModel
      * @param User|null $user   User model or null if it's the current client
      * @return Builder
      */
-    public function scopeIsAccessible(Builder $query, User $user = null)
+    public function scopeIsAccessible(Builder $query, User $user = null) : Builder
     {
         $query->select('forum_posts.*')
             ->join('forum_threads', 'forum_posts.thread_id', '=', 'forum_threads.id')

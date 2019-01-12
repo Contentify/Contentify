@@ -3,6 +3,7 @@
 namespace App\Modules\Pages\Http\Controllers;
 
 use Config;
+use View;
 use Widget;
 
 class ShortBiographyWidget extends Widget
@@ -16,7 +17,7 @@ class ShortBiographyWidget extends Widget
             $shortBiography = trans('app.nothing_here');
         }
 
-        return $shortBiography;
+        return View::make('news::widget', compact('shortBiography'))->render();
     }
 
 }

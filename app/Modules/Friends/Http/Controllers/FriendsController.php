@@ -75,7 +75,7 @@ class FriendsController extends FrontController
      * @param  int $id The ID of the user
      * @return RedirectResponse
      */
-    public function confirm(int $id)
+    public function confirm(int $id) : RedirectResponse
     {
         /** @var User $friend */
         $friend = User::findOrFail($id);
@@ -101,7 +101,7 @@ class FriendsController extends FrontController
      * @param  int $id The ID if the user (friend)
      * @return RedirectResponse
      */
-    public function destroy(int $id)
+    public function destroy(int $id) : RedirectResponse
     {
         /** @var User $friend */
         $friend = User::findOrFail($id);

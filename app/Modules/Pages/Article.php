@@ -20,7 +20,7 @@ class Article extends Page
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished($query)
+    public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'));
     }
@@ -30,17 +30,18 @@ class Article extends Page
      * 
      * @return int
      */
-    public function countComments()
+    public function countComments() : int
     {
         return Comment::count('pages', $this->id);
     }
 
     /**
      * Create an instance of OpenGraph that represents Open Graph tags.
-     * 
+     *
      * @return OpenGraph
+     * @throws \Exception
      */
-    public function openGraph()
+    public function openGraph() : OpenGraph
     {
         $og = new OpenGraph();
 

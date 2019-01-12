@@ -3,7 +3,7 @@
 namespace App\Modules\Pages;
 
 use SoftDeletingTrait;
-use StiModel;
+use AbstractStiModel;
 
 /**
  * @property \Carbon                    $created_at
@@ -22,10 +22,28 @@ use StiModel;
  * @property \App\Modules\Pages\PageCat $pageCat
  * @property \User                      $creator
  */
-class Page extends StiModel
+class Page extends AbstractStiModel
 {
 
     use SoftDeletingTrait;
+
+    /**
+     * All categories are pre-defined, because they have a semantic meaning.
+     * This is the ID of the blog posts category.
+     */
+    const ID_BLOG_POSTS = 1;
+
+    /**
+     * All categories are pre-defined, because they have a semantic meaning.
+     * This is the ID of the custom pages category.
+     */
+    const ID_CUSTOM_PAGES = 2;
+
+    /**
+     * All categories are pre-defined, because they have a semantic meaning.
+     * This is the ID of the custom content category.
+     */
+    const ID_CUSTOM_CONTENT = 3;
 
     protected $table = 'pages';
 

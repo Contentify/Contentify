@@ -3,17 +3,18 @@
 namespace Contentify\Models;
 
 /**
- * Single Table Inheritance Model.
+ * Single Table Inheritance Model. @see https://en.wikipedia.org/wiki/Single_Table_Inheritance
  * It differs from common implementations: It does not have to use the class name 
  * but may use a custom value to link a PHP class to an database record.
  * The subclass models may set their $subclassId value to link themselves to a superclass
  * if they don't want to use their class names.
  */
-abstract class StiModel extends BaseModel
+abstract class AbstractStiModel extends BaseModel
 {
     /**
      *
      * The name of the field that stores the subclass
+     *
      * @var string
      */
     protected $subclassField = null;
@@ -21,7 +22,7 @@ abstract class StiModel extends BaseModel
     /**
      * Indicates if the inheriting class is a subclass
      *
-     * @var boolean
+     * @var bool
      */
     protected $isSubclass = false;
 
@@ -36,14 +37,19 @@ abstract class StiModel extends BaseModel
     /**
      * Returns true if class is subclass
      * 
-     * @return boolean
+     * @return bool
      */
     public function isSubclass()
     {
         return $this->isSubclass;
     }
 
-    public function __construct($attributes = [])
+    /**
+     * AbstractStiModel constructor.
+     *
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
 

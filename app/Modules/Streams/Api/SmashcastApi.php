@@ -41,7 +41,7 @@ class SmashcastApi extends StreamApi
      * @param Stream[] $streams Array with objects of type Stream
      * @return \stdClass
      */
-    public function getStreams(array $streams)
+    public function getStreams(array $streams) : \stdClass
     {
         $list = '';
         foreach ($streams as $stream) {

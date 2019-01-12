@@ -24,6 +24,7 @@ class SearchController extends FrontController
     }
 
     /**
+     * @return \Illuminate\Http\RedirectResponse|null
      * @throws Exception
      */
     public function postCreate()
@@ -49,7 +50,7 @@ class SearchController extends FrontController
      * @return array
      * @throws Exception
      */
-    public function performSearch(string $subject)
+    public function performSearch(string $subject) : array
     {
         /** @var \Caffeinated\Modules\Contracts\Repository $moduleRepo */
         $moduleRepo = app()['modules'];

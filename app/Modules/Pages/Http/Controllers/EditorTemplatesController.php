@@ -32,12 +32,13 @@ class EditorTemplatesController extends BackController
      * @param  int  $id The ID of the template
      * @return string|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
         if (! $this->checkAccessUpdate()) {
             return Response::make(null, 403);
         }
 
+        /** @var Fragment $template */
         $template = Fragment::findOrFail($id);
 
         return $template->text;

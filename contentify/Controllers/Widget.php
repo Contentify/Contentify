@@ -6,7 +6,7 @@ abstract class Widget
 {
 
     /**
-     * Default limit for DB queries
+     * Default limit of entries (database records) to show
      */
     const LIMIT = 5;
 

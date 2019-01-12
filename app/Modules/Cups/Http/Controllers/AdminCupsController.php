@@ -95,7 +95,7 @@ class AdminCupsController extends BackController
      * @param  int $cupId The ID of the cup
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function seed($cupId) 
+    public function seed(int $cupId)
     {
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);

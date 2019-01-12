@@ -57,11 +57,12 @@ class PollsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Show a poll
-     * 
+     *
      * @param  int $id The ID of the poll
      * @return void
+     * @throws \Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         /** @var Poll $poll */
         $poll = Poll::findOrFail($id);
@@ -88,7 +89,7 @@ class PollsController extends FrontController implements GlobalSearchInterface
      * @param int $id The ID of the poll
      * @return \Illuminate\Http\RedirectResponse|null
      */
-    public function vote($id)
+    public function vote(int $id)
     {
         /** @var Poll $poll */
         $poll = Poll::findOrFail($id);
@@ -96,13 +97,13 @@ class PollsController extends FrontController implements GlobalSearchInterface
         $hasAccess = (user() and user()->hasAccess('internal'));
         if ($poll->internal and ! $hasAccess) {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
 
         // Do not allow to vote twice or to vote in closed polls
         if ($poll->userVoted(user()) or ! $poll->open) {
             $this->alertError(trans('app.access_denied'));
-            return;
+            return null;
         }
 
         $votes = [];

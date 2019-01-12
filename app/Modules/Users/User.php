@@ -31,7 +31,7 @@ class User extends BaseUser
      * 
      * @return array
      */
-    public static function relations()
+    public static function relations() : array
     {
         return static::$relationsData;
     }
@@ -41,7 +41,7 @@ class User extends BaseUser
      * 
      * @return bool
      */
-    public function modifiable()
+    public function modifiable() : bool
     {
         return true;
     }

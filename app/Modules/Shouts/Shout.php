@@ -75,7 +75,6 @@ class Shout extends BaseModel
         $json = json_encode($jsonShouts);
 
         File::put($path.'shouts.json', $json);
-
         File::put($path.'shouts.beacon', $maxId);
     }
 

@@ -110,7 +110,7 @@ class LoginController extends FrontController
      * @return RedirectResponse
      * @throws Exception
      */
-    public function postSteam()
+    public function postSteam() : RedirectResponse
     {
         $steamId = Session::get('steamId');
 
@@ -177,7 +177,7 @@ class LoginController extends FrontController
      *
      * @return RedirectResponse
      */
-    public function afterLoginActions()
+    public function afterLoginActions() : RedirectResponse
     {
         Session::put('app.locale', user()->language->code); // Set session locale to account language
 

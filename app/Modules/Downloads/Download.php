@@ -90,7 +90,7 @@ class Download extends BaseModel
      * 
      * @return int
      */
-    public function countComments()
+    public function countComments() : int
     {
         return Comment::count('downloads', $this->id);
     }
@@ -101,7 +101,7 @@ class Download extends BaseModel
      * @param Builder $query
      * @return Builder
      */
-    public function scopePublished($query)
+    public function scopePublished(Builder $query) : Builder
     {
         return $query->wherePublished(true);
     }

@@ -47,7 +47,7 @@ class AdminTeamsController extends BackController
     }
 
     /**
-     * Returns the lineup of a team
+     * Returns the lineup of a team (for example an AJAX call)
      * 
      * @param  int $id The ID of the team
      * @return string

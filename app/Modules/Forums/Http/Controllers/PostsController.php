@@ -18,6 +18,7 @@ class PostsController extends FrontController
      * Show a single post
      *
      * @param int $id The id of the post
+     * @throws \Exception
      */
     public function show(int $id)
     {
@@ -211,6 +212,7 @@ class PostsController extends FrontController
      *
      * @param int $userId The ID of the user
      * @throws \Exception
+     * @return void
      */
     public function showUserPosts(int $userId)
     {

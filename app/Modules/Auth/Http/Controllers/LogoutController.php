@@ -8,6 +8,9 @@ use Sentinel;
 class LogoutController extends FrontController
 {
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function getIndex()
     {
         Sentinel::logout();

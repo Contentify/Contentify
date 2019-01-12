@@ -28,6 +28,7 @@ class RegistrationController extends FrontController
      * Show registration page
      *
      * @return void
+     * @throws Exception
      */
     public function getCreate()
     {
@@ -42,7 +43,7 @@ class RegistrationController extends FrontController
     /**
      * Create new user account
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|null
      */
     public function postCreate()
     {
@@ -101,7 +102,7 @@ class RegistrationController extends FrontController
      * Check (typically via AJAX call) if a username is already taken
      *
      * @param string $username
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function checkUsername($username)
     {

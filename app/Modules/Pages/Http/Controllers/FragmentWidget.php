@@ -17,6 +17,7 @@ class FragmentWidget extends Widget
             throw new InvalidArgumentException('Fragment Widget: ID parameter missing.');
         }
 
+        /** @var Fragment $fragment */
         $fragment = Fragment::findOrFail($id);
 
         return $fragment->text;
