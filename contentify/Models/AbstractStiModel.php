@@ -39,7 +39,7 @@ abstract class AbstractStiModel extends BaseModel
      * 
      * @return bool
      */
-    public function isSubclass()
+    public function isSubclass() : bool
     {
         return $this->isSubclass;
     }
@@ -69,7 +69,7 @@ abstract class AbstractStiModel extends BaseModel
      *
      * @return self
      */
-    public function getStiClassInstance()
+    public function getStiClassInstance() : self
     {
         $className = get_class($this); // The name of the concrete (extending) model class
 

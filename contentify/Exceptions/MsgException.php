@@ -2,6 +2,7 @@
 
 namespace Contentify\Exceptions;
 
+use Illuminate\Http\Request;
 use View;
 use Response;
 use RuntimeException;
@@ -17,10 +18,10 @@ class MsgException extends RuntimeException
     /**
      * Report the exception.
      *
-     * @param \Illuminate\Http\Request
+     * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function render($request)
+    public function render(Request $request)
     {
         return Response::make(View::make('error_message', ['exception' => $this]), 500);
     }

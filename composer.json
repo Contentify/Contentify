@@ -23,7 +23,8 @@
         "fideloper/proxy": "~3.3",
         "ext-json": "*",
         "ext-ctype": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

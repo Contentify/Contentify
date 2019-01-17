@@ -27,7 +27,7 @@ abstract class FrontController extends BaseController
      * @return void
      * @throws Exception
      */
-    protected function setupLayout($layoutName = null)
+    protected function setupLayout(string $layoutName = null)
     {
         if (! $layoutName) {
             $theme = Config::get('app.theme');
@@ -36,7 +36,7 @@ abstract class FrontController extends BaseController
                 throw new Exception('Error: Could not retrieve the theme name from the config!');
             }
 
-            $layoutName = $this->layout? $this->layout : lcfirst($theme).'::layout';
+            $layoutName = $this->layout ? $this->layout : lcfirst($theme).'::layout';
         }
 
         parent::setupLayout($layoutName);

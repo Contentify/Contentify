@@ -16,7 +16,7 @@ class StandardPermissions extends OriginalStandardPermissions
      * @param  int           $level         Desired level
      * @return bool
      */
-    public function hasAccess($permissions, $level = 1)
+    public function hasAccess($permissions, int $level = 1)
     {
         if (! is_array($permissions)) {
             $permissions = (array) $permissions; // Ensure $permissions is an array
@@ -42,7 +42,7 @@ class StandardPermissions extends OriginalStandardPermissions
      * @param  int           $level         Desired level
      * @return bool
      */
-    public function hasAnyAccess($permissions, $level = 1)
+    public function hasAnyAccess($permissions, int $level = 1)
     {
         if (! is_array($permissions)) {
             $permissions = (array) $permissions; // Ensure $permissions is an array
@@ -68,7 +68,7 @@ class StandardPermissions extends OriginalStandardPermissions
      * @param  int      $level
      * @return bool
      */
-    protected function checkPermission(array $prepared, $permission, $level = 1)
+    protected function checkPermission(array $prepared, $permission, int $level = 1)
     {
         if (array_key_exists($permission, $prepared) && $prepared[$permission] >= $level) {
             return true;

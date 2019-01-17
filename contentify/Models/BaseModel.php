@@ -62,7 +62,7 @@ abstract class BaseModel extends Eloquent
      * @param  bool $fileSystem If true, return a path of the file system (e. g. "C:\Contentify\public/uploads/games/")
      * @return string
      */
-    public function uploadPath($fileSystem = false)
+    public function uploadPath(bool $fileSystem = false) : string
     {
         $class = class_basename(get_class($this));
 
@@ -94,7 +94,7 @@ abstract class BaseModel extends Eloquent
      * @param  array  $thumbnails For images only: Array with closures or sizes of thumbnails
      * @return string|null
      */
-    public function uploadFile($fieldName, $isImage = false, $thumbnails = [])
+    public function uploadFile(string $fieldName, bool $isImage = false, array $thumbnails = [])
     {
         $file = Input::file($fieldName);
 
@@ -169,7 +169,7 @@ abstract class BaseModel extends Eloquent
      * 
      * @return bool
      */
-    public function modifiable()
+    public function modifiable() : bool
     {
         // One cannot edit or delete a deleted model
         return (! $this->isSoftDeleting() or ! $this->trashed());
@@ -180,7 +180,7 @@ abstract class BaseModel extends Eloquent
      * 
      * @return bool
      */
-    public function slugable()
+    public function slugable() : bool
     {
         return $this->slugable;
     }
@@ -193,7 +193,7 @@ abstract class BaseModel extends Eloquent
      *
      * @return bool
      */
-    public function isSoftDeleting()
+    public function isSoftDeleting() : bool
     {
         return property_exists($this, 'forceDeleting');
     }
@@ -276,7 +276,7 @@ abstract class BaseModel extends Eloquent
      * 
      * @return array
      */
-    public static function relations()
+    public static function relations() : array
     {
         return static::$relationsData;
     }
@@ -292,7 +292,8 @@ abstract class BaseModel extends Eloquent
      *      or there's one or more arguments missing
      * @see BaseModel::relationsData
      */
-    protected function handleRelationalArray($relationName) {
+    protected function handleRelationalArray(string $relationName) : \Illuminate\Database\Eloquent\Relations\Relation
+    {
         $relation     = static::$relationsData[$relationName];
         $relationType = $relation[0];
         $errorHeader  = "Relation '$relationName' on model '".get_called_class();
@@ -398,7 +399,7 @@ abstract class BaseModel extends Eloquent
      * @param  string  $relation
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function belongsTo($related, $foreignKey = NULL, $otherKey = NULL, $relation = NULL) {
+    public function belongsTo($related, $foreignKey = null, $otherKey = null, $relation = null) {
         // If no foreign key was supplied, we can use a backtrace to guess the proper
         // foreign key name by using the name of the relationship function, which
         // when combined with an "_id" should conventionally match the columns.

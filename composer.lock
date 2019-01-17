@@ -245,16 +245,16 @@
         },
         {
             "name": "chriskonnertz/jobs",
-            "version": "v3.1",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/Jobs.git",
-                "reference": "6e88aae7f331b457c6fa5d5347e506cc1937d8be"
+                "reference": "3c0e290c1226c5c364e52b8927cb0e17f6c97641"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/6e88aae7f331b457c6fa5d5347e506cc1937d8be",
-                "reference": "6e88aae7f331b457c6fa5d5347e506cc1937d8be",
+                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/3c0e290c1226c5c364e52b8927cb0e17f6c97641",
+                "reference": "3c0e290c1226c5c364e52b8927cb0e17f6c97641",
                 "shasum": ""
             },
             "require": {
@@ -292,7 +292,7 @@
                 "job",
                 "laravel"
             ],
-            "time": "2019-01-06T10:39:04+00:00"
+            "time": "2019-01-17T19:16:03+00:00"
         },
         {
             "name": "chriskonnertz/open-graph",

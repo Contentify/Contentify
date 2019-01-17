@@ -15,7 +15,9 @@ use Contentify\Traits\SlugTrait;
 use DB;
 use Exception;
 use File;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\MessageBag;
 use Input;
 use InterImage;
 use Redirect;
@@ -154,7 +156,7 @@ class User extends SentinelUser implements UserInterface
     /**
      * Array containing validator messages after validate method was called.
      *
-     * @var \Illuminate\Support\MessageBag
+     * @var MessageBag
      */
     private $validatorMessages = null;
 
@@ -203,7 +205,7 @@ class User extends SentinelUser implements UserInterface
      * 
      * @return bool
      */
-    public function validate()
+    public function validate() : bool
     {
         /*
          * Welcome to the dark side of Laravel.
@@ -234,21 +236,33 @@ class User extends SentinelUser implements UserInterface
         return $validator->passes();
     }
 
-    public function validatorMessages()
+    /**
+     * @return MessageBag
+     */
+    public function validatorMessages() : MessageBag
     {
         return $this->validatorMessages;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function country()
     {
         return $this->belongsTo('App\Modules\Countries\Country');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function language()
     {
         return $this->belongsTo('App\Modules\Languages\Language');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function teams()
     {
         return $this->belongsToMany('App\Modules\Teams\Team')->withPivot('task', 'description', 'position');
@@ -258,9 +272,9 @@ class User extends SentinelUser implements UserInterface
      * Returns all friends of this user.
      * ATTENTION: This is not a relationship. Eloquent does not support this kind of relationship.
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public function friends()
+    public function friends() : Collection
     {
         // Step 1: Receive all friendships of this user.
         $friendships = Friendship::friendsOf($this->id)->get();
@@ -285,7 +299,7 @@ class User extends SentinelUser implements UserInterface
      * @param  int $friendId The user ID of the friend (=other user)
      * @return bool
      */
-    public function isFriendWith($friendId)
+    public function isFriendWith(int $friendId) : bool
     {
         if (array_key_exists('friends', $this->getRelations())) {
             foreach ($this->friends as $friend) {
@@ -303,14 +317,15 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Creates a new message that addresses this user
-     * 
+     *
      * @param  string   $title        The message title
      * @param  string   $text         The message text
-     * @param  int      $creatorId    The user ID of the creator
-     * @param  boolean  $sentBySystem [description]
+     * @param  int|null $creatorId    The user ID of the creator
+     * @param  boolean  $sentBySystem Mark message as sent by the system?
      * @return void
+     * @throws Exception
      */
-    public function sendMessage($title, $text, $creatorId = null, $sentBySystem = false)
+    public function sendMessage(string $title, string $text, int $creatorId = null, bool $sentBySystem = false)
     {
         if (! $creatorId) {
             if (user()) {
@@ -337,13 +352,14 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Creates a new system message that addresses this user
-     * 
-     * @param  string   $title        The title of the message
-     * @param  string   $text         The text of the message
-     * @param  int      $creatorId    The user ID of the creator
+     *
+     * @param  string   $title     The title of the message
+     * @param  string   $text      The text of the message
+     * @param  int|null $creatorId The user ID of the creator
      * @return void
+     * @throws Exception
      */
-    public function sendSystemMessage($title, $text, $creatorId = null)
+    public function sendSystemMessage(string $title, string $text, int $creatorId = null)
     {
         $this->sendMessage($title, $text, $creatorId, true);
     }
@@ -353,7 +369,7 @@ class User extends SentinelUser implements UserInterface
      *
      * @return string
      */
-    public function getRealName()
+    public function getRealName() : string
     {
         return trim($this->first_name.' '.$this->last_name);
     }
@@ -363,7 +379,7 @@ class User extends SentinelUser implements UserInterface
      * 
      * @return boolean
      */
-    public function isSuperAdmin()
+    public function isSuperAdmin() : bool
     {
         return $this->hasAccess('superadmin');
     }
@@ -374,7 +390,7 @@ class User extends SentinelUser implements UserInterface
      *
      * @return boolean
      */
-    public function isActivated()
+    public function isActivated() : bool
     {
         return Activation::completed($this);
     }
@@ -384,7 +400,7 @@ class User extends SentinelUser implements UserInterface
      * 
      * @return boolean
      */
-    public function isSoftDeleting()
+    public function isSoftDeleting() : bool
     {
         return property_exists($this, 'forceDeleting');
     }
@@ -395,7 +411,7 @@ class User extends SentinelUser implements UserInterface
      * @param  bool $local If true, return a local path (e. g. "C:\Contentify\public/uploads/games/")
      * @return string
      */
-    public function uploadPath($local = false)
+    public function uploadPath(bool $local = false) : string
     {
         $path = '/uploads/users/';
 
@@ -411,7 +427,7 @@ class User extends SentinelUser implements UserInterface
      * @param  string $fieldName The name of the form field
      * @return null|\Illuminate\Http\RedirectResponse
      */
-    public function uploadImage($fieldName)
+    public function uploadImage(string $fieldName)
     {
         $file       = Input::file($fieldName);
         $extension  = $file->getClientOriginalExtension();
@@ -462,7 +478,7 @@ class User extends SentinelUser implements UserInterface
      * @param  string $fieldName The name of the form field
      * @return void
      */
-    public function deleteImage($fieldName)
+    public function deleteImage(string $fieldName)
     {
         $filePath = public_path().'/uploads/users/';
 
@@ -484,7 +500,7 @@ class User extends SentinelUser implements UserInterface
      * 
      * @return int
      */
-    public function countMessages()
+    public function countMessages() : int
     {
         $key = self::CACHE_KEY_MESSAGES.$this->id;
 
@@ -506,7 +522,7 @@ class User extends SentinelUser implements UserInterface
      * 
      * @return boolean
      */
-    public function isOnline()
+    public function isOnline() : bool
     {
         if ($this->last_active == null) {
             return false;
@@ -521,7 +537,7 @@ class User extends SentinelUser implements UserInterface
      * @param Builder $query The Eloquent Builder object
      * @return Builder
      */
-    public function scopeOnline($query)
+    public function scopeOnline(Builder $query) : Builder
     {
         $dateTime = new Carbon();
         $dateTime->subSeconds(self::ONLINE_TIME);
@@ -533,9 +549,9 @@ class User extends SentinelUser implements UserInterface
      * 
      * @param  string|array $permissions The permission(s)
      * @param  int          $level       The level of the permission(s)
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return Collection
      */
-    public static function findAllUsersWithAccess($permissions, $level = 1) {
+    public static function findAllUsersWithAccess($permissions, int $level = 1) : Collection {
         if (! is_array($permissions)) {
             $permissions = (array) $permissions;
         }
@@ -554,7 +570,7 @@ class User extends SentinelUser implements UserInterface
      *
      * @return string
      */
-    public function renderSignature()
+    public function renderSignature() : string
     {
         $cacheKey = self::CACHE_KEY_SIGNATURE.$this->id;
         

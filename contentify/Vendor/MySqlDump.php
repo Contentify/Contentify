@@ -87,7 +87,7 @@ class MySqlDump
      * @param string $pass MySQL account password
      * @param string $host MySQL server to connect to
      */
-    public function __construct($db = '', $user = '', $pass = '', $host = 'localhost')
+    public function __construct(string $db = '', string $user = '', string $pass = '', string $host = 'localhost')
     {
         $this->db   = $db;
         $this->user = $user;
@@ -102,7 +102,7 @@ class MySqlDump
      * @return bool
      * @throws \Exception
      */
-    public function start($filename = '')
+    public function start(string $filename = '') : bool
     {
         // Output file can be redefined here
         if (!empty($filename))
@@ -177,9 +177,10 @@ class MySqlDump
      * Output routine
      *
      * @param string $string SQL to write to dump file
+     * @return void
      * @throws \Exception
      */
-    private function write($string)
+    private function write(string $string)
     {
         if (true === $this->compress)
         {
@@ -199,6 +200,7 @@ class MySqlDump
      * Writing header for dump file
      *
      * @return void
+     * @throws \Exception
      */
     private function writeHeader()
     {
@@ -218,8 +220,9 @@ class MySqlDump
      *
      * @param string $tableName Name of the table to export
      * @return void
+     * @throws \Exception
      */
-    private function getTableStructure($tableName)
+    private function getTableStructure(string $tableName)
     {
         $this->write("--\n-- Table structure for table `$tableName`\n--\n\n");
 
@@ -239,8 +242,9 @@ class MySqlDump
      *
      * @param string $tableName Name of the table to export
      * @return void
+     * @throws \Exception
      */
-    private function listValues($tableName)
+    private function listValues(string $tableName)
     {
         $this->write("--\n-- Dumping data for table `$tableName`\n--\n\n");
 

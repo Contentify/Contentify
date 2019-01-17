@@ -56,13 +56,14 @@ class LessCompileCommand extends Command
     }
 
     /**
-     * Compiles a LESS file to a CSS file
+     * Compiles a LESS file to a CSS file.
+     * If debug mode is NOT active, also compresses the output CSS file.
      *
      * @param string $sourceFilename
      * @return void
      * @throws \Exception
      */
-    protected function compileLessFile($sourceFilename)
+    protected function compileLessFile(string $sourceFilename)
     {
         $sourceFileTitle = basename($sourceFilename, '.less');
         $target = public_path('css/'.$sourceFileTitle.'.css');

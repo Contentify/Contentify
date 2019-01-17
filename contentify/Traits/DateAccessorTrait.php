@@ -6,7 +6,7 @@ use Carbon;
 use DateTime;
 use InvalidArgumentException;
 
-/*
+/**
  * Use this trait to "extend" Eloquent models
  * so they use Contentify\Carbon. Take a look at the
  * Eloquent model class if you are interested in
@@ -15,12 +15,12 @@ use InvalidArgumentException;
 trait DateAccessorTrait
 {
 
-    public function freshTimestamp()
+    public function freshTimestamp() : Carbon
     {
         return new Carbon;
     }
 
-    public function fromDateTime($value)
+    public function fromDateTime($value) : string
     {
         $format = $this->getDateFormat(); // This is an Eloquent method
 
@@ -51,7 +51,7 @@ trait DateAccessorTrait
         return $value->format($format);
     }
 
-    protected function asDateTime($value)
+    protected function asDateTime($value) : \DateTimeInterface
     {
         if (is_numeric($value))
         {

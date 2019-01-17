@@ -9,6 +9,7 @@ use Controller;
 use DB;
 use File;
 use Form;
+use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Database\Schema\Blueprint;
 use Input;
 use Schema;
@@ -43,11 +44,11 @@ class InstallController extends Controller
     /**
      * Index action method
      * 
-     * @param  int                                 $step   Step number
-     * @param  null|\Illuminate\Support\MessageBag $errors Validation errors
+     * @param  int             $step   Step number
+     * @param  null|MessageBag $errors Validation errors
      * @return \Illuminate\Contracts\View\View
      */
-    public function index($step = -1, $errors = null) 
+    public function index(int $step = -1, MessageBag $errors = null)
     {
         if (! Config::get('app.debug')) {
             die('Please enable the debug mode to start the installer.');
@@ -1232,7 +1233,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param boolean|array $contentObject Bool/array of attributes that won't be added (the array indicates true)
      * @return void
      */
-    public function create($tableName, Closure $tableRows, $foreignKeys = [], $contentObject = true)
+    public function create(string $tableName, Closure $tableRows, array $foreignKeys = [], $contentObject = true)
     {
         /*
          * Delete existing table:
@@ -1316,7 +1317,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param string[] $primaryKeys An array with the names of both primary keys
      * @return void
      */
-    protected function createPivot($tableName, Closure $tableRows, $primaryKeys = [])
+    protected function createPivot(string $tableName, Closure $tableRows, array $primaryKeys = [])
     {
         /*
          * Delete existing table:
@@ -1355,7 +1356,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param bool     $withSlug If true, also fill the slug attribute
      * @return void
      */
-    protected function createDefaultCategories($tables, $withSlug = false)
+    protected function createDefaultCategories(array $tables, bool $withSlug = false)
     {
         foreach ($tables as $table) {
             $values = [

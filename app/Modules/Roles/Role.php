@@ -49,7 +49,7 @@ class Role extends BaseModel
         });
     }
 
-    public function modifiable()
+    public function modifiable() : bool
     {
         $adminRole = Sentinel::findRoleBySlug('super-admins');
 

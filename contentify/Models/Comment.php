@@ -67,7 +67,7 @@ class Comment extends BaseModel
      * @param  int    $foreignId   ID of the foreign type or null
      * @return int
      */
-    public static function count($foreignType, $foreignId = null)
+    public static function count(string $foreignType, int $foreignId = null) : int
     {
         $key = 'comments.countByModel.'.$foreignType.'.'.$foreignId;
 
@@ -87,7 +87,7 @@ class Comment extends BaseModel
      * 
      * @return string
      */
-    public function renderText()
+    public function renderText() : string
     {
         $key = self::CACHE_KEY.$this->id;
 
@@ -102,10 +102,10 @@ class Comment extends BaseModel
      * Returns just the plain comment text (without BBCode).
      * (Similar to render BBCode without the tags but that uses caching.)
      *
-     * @param int $max Limits the number of characters. 0/null = no limit
+     * @param int|null $max Limits the number of characters. 0/null = no limit
      * @return string
      */
-    public function plainText($max = null)
+    public function plainText(int $max = null) : string
     {
         $text = strip_tags($this->renderText());
 

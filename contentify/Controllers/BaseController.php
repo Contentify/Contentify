@@ -19,7 +19,7 @@ abstract class BaseController extends Controller
      * The layout that should be used for responses.
      * The concrete controller has to set this value by overwriting it.
      *
-     * @var string|null
+     * @var \Illuminate\View\View|string|null
      */
     protected $layout = null;
 
@@ -64,6 +64,7 @@ abstract class BaseController extends Controller
 
     /**
      * Array with "evil" file extensions
+     *
      * @var string[]
      */
     protected $evilFileExtensions = ['php'];
@@ -129,7 +130,7 @@ abstract class BaseController extends Controller
      * 
      * @return string
      */
-    public function getModuleName()
+    public function getModuleName() : string
     {
         return $this->moduleName;
     }
@@ -139,7 +140,7 @@ abstract class BaseController extends Controller
      * 
      * @return string
      */
-    public function getControllerName()
+    public function getControllerName() : string
     {
         return $this->controllerName;
     }
@@ -149,7 +150,7 @@ abstract class BaseController extends Controller
      * 
      * @return string
      */
-    public function getModelName()
+    public function getModelName() : string
     {
         return $this->modelName;
     }
@@ -159,7 +160,7 @@ abstract class BaseController extends Controller
      * 
      * @return string
      */
-    public function getModelClass()
+    public function getModelClass() : string
     {
         return $this->modelClass;
     }
@@ -169,7 +170,7 @@ abstract class BaseController extends Controller
      * 
      * @return string
      */
-    public function getFormTemplate()
+    public function getFormTemplate() : string
     {
         return $this->formTemplate;
     }
@@ -180,7 +181,7 @@ abstract class BaseController extends Controller
      * @param string $layoutName The name of the layout template file
      * @return void
      */
-    protected function setupLayout($layoutName = null)
+    protected function setupLayout(string $layoutName = null)
     {
         /*
          * Controllers that directly extend the BaseController class might not have
@@ -216,7 +217,7 @@ abstract class BaseController extends Controller
      * @return void
      * @throws Exception
      */
-    public function pageView($template = '', $data = [], $replace = false)
+    public function pageView(string $template = '', array $data = [], bool $replace = false)
     {
         if ($this->layout != null) {
             if ($replace or $this->layout->page == null) {
@@ -276,8 +277,9 @@ abstract class BaseController extends Controller
      * @param string $title The title
      * @param string $text  Optional text
      * @return void
+     * @throws Exception
      */
-    public function alertSuccess($title, $text = '')
+    public function alertSuccess(string $title, string $text = '')
     {
         $this->alert('success', $title, $text);
     }
@@ -288,8 +290,9 @@ abstract class BaseController extends Controller
      * @param string $title The title
      * @param string $text  Optional text
      * @return void
+     * @throws Exception
      */
-    public function alertWarning($title, $text = '')
+    public function alertWarning(string $title, string $text = '')
     {
         $this->alert('warning', $title, $text);
     }
@@ -300,8 +303,9 @@ abstract class BaseController extends Controller
      * @param string $title The title
      * @param string $text  Optional text
      * @return void
+     * @throws Exception
      */
-    public function alertError($title, $text = '')
+    public function alertError(string $title, string $text = '')
     {
         $this->alert('danger', $title, $text);
     }
@@ -312,8 +316,9 @@ abstract class BaseController extends Controller
      * @param string $title The title
      * @param string $text  Optional text
      * @return void
+     * @throws Exception
      */
-    public function alertInfo($title, $text = '')
+    public function alertInfo(string $title, string $text = '')
     {
         $this->alert('info', $title, $text);
     }
@@ -325,7 +330,7 @@ abstract class BaseController extends Controller
      * @param string $title
      * @return void
      */
-    public function alertFlash($title)
+    public function alertFlash(string $title)
     {
         Session::flash('_alert', $title);
     }
@@ -339,7 +344,7 @@ abstract class BaseController extends Controller
      * @return void
      * @throws Exception
      */
-    public function metaTag($name, $content)
+    public function metaTag(string $name, string $content)
     {
         if ($this->layout != null) {
             $this->layout->metaTags[$name] = $content;
@@ -356,7 +361,7 @@ abstract class BaseController extends Controller
      * @return void
      * @throws Exception
      */
-    public function title($title)
+    public function title(string $title)
     {
         if ($this->layout != null) {
             $this->layout->title = $title;
@@ -406,7 +411,7 @@ abstract class BaseController extends Controller
      * @param  string $surface Frontend ("front") or backend ("admin")? Default: "admin"
      * @return void
      */
-    public function indexPage($data, $surface = 'admin')
+    public function indexPage(array $data, string $surface = 'admin')
     {
         ModelHandler::controller($this);
 
@@ -418,7 +423,7 @@ abstract class BaseController extends Controller
      * 
      * @return bool
      */
-    public function hasAccessRead() 
+    public function hasAccessRead() : bool
     {
         return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_READ));
     }
@@ -428,7 +433,7 @@ abstract class BaseController extends Controller
      * 
      * @return bool
      */
-    public function hasAccessCreate() 
+    public function hasAccessCreate() : bool
     {
         return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_CREATE));
     }
@@ -438,7 +443,7 @@ abstract class BaseController extends Controller
      * 
      * @return bool
      */
-    public function hasAccessUpdate() 
+    public function hasAccessUpdate() : bool
     {
         return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_UPDATE));
     }
@@ -448,7 +453,7 @@ abstract class BaseController extends Controller
      * 
      * @return bool
      */
-    public function hasAccessDelete() 
+    public function hasAccessDelete() : bool
     {
         return (user() and user()->hasAccess(strtolower($this->moduleName), PERM_DELETE));
     }
@@ -456,10 +461,11 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has read access to the module.
      * If not an alert will be set.
-     * 
+     *
      * @return bool
+     * @throws Exception
      */
-    public function checkAccessRead()
+    public function checkAccessRead() : bool
     {
         if ($this->hasAccessRead()) {
             return true;
@@ -475,10 +481,11 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has create access to the module.
      * If not an alert will be set.
-     * 
+     *
      * @return bool
+     * @throws Exception
      */
-    public function checkAccessCreate()
+    public function checkAccessCreate() : bool
     {
         if ($this->hasAccessCreate()) {
             return true;
@@ -494,10 +501,11 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has update access to the module.
      * If not an alert will be set.
-     * 
+     *
      * @return bool
+     * @throws Exception
      */
-    public function checkAccessUpdate()
+    public function checkAccessUpdate() : bool
     {
         if ($this->hasAccessUpdate()) {
             return true;
@@ -513,10 +521,11 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user has delete access to the module.
      * If not an alert will be set.
-     * 
+     *
      * @return bool
+     * @throws Exception
      */
-    public function checkAccessDelete()
+    public function checkAccessDelete() : bool
     {
         if ($this->hasAccessDelete()) {
             return true;
@@ -532,10 +541,11 @@ abstract class BaseController extends Controller
     /**
      * Returns true if the current user is authenticated.
      * If not an alert will be set.
-     * 
+     *
      * @return bool
+     * @throws Exception
      */
-    public function checkAuth()
+    public function checkAuth() : bool
     {
         if (Sentinel::check()) {
             return true;
@@ -551,7 +561,7 @@ abstract class BaseController extends Controller
      *
      * @return string[]
      */
-    public function getEvilFileExtensions()
+    public function getEvilFileExtensions() : array
     {
         return $this->evilFileExtensions;
     }

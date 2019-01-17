@@ -21,7 +21,7 @@ trait SlugTrait
      * @return void
      * @throws Exception
      */
-    public function createSlug($unique = true, $titleAttribute = 'title')
+    public function createSlug(bool $unique = true, string $titleAttribute = 'title')
     {
         if (! $this->slugable) {
             throw new Exception('This model does not support slugs.');

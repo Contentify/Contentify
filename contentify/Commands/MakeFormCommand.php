@@ -21,7 +21,7 @@ class MakeFormCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Generate a form from a database table';
+    protected $description = 'Generate a form from a database table and save it to a file';
 
     /**
      * Create a new command instance.
@@ -33,8 +33,6 @@ class MakeFormCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return string
      */
     public function handle()
     {
@@ -63,8 +61,8 @@ class MakeFormCommand extends Command
     {
         return [
             ['filename', InputArgument::REQUIRED, 'The file name (without extension) of the generated template.'],
-            ['table', InputArgument::REQUIRED, 'The name of the desired table.'],
-            ['module', InputArgument::OPTIONAL, 'The name of the desired module.']
+            ['table', InputArgument::REQUIRED, 'The name of the source table.'],
+            ['module', InputArgument::OPTIONAL, 'The name of the source module.']
         ];
     }
 

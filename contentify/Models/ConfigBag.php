@@ -29,7 +29,7 @@ class ConfigBag
      *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace() : string
     {
         return $this->namespace;
     }
@@ -39,7 +39,7 @@ class ConfigBag
      *
      * @return string
      */
-    public function getFillable()
+    public function getFillable() : string
     {
         return $this->fillable;
     }
@@ -49,7 +49,7 @@ class ConfigBag
      *
      * @return array
      */
-    public function getRules()
+    public function getRules() : array
     {
         return $this->rules ?: [];
     }
