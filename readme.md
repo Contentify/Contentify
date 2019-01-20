@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v3.0-dev
+## Contentify CMS - v3.0-alpha
 
 [![Laravel](https://img.shields.io/badge/Laravel-5.5-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
