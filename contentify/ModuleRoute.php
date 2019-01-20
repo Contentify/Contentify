@@ -55,7 +55,7 @@ class ModuleRoute
      * @param string $moduleName Name or path of the module.
      * @return void
      */
-    public function context($moduleName)
+    public function context(string $moduleName)
     {
         $moduleName = class_basename($moduleName);
         $moduleName = ucfirst($moduleName);
@@ -79,7 +79,7 @@ class ModuleRoute
      * @param string $modelName The name of the model (without namespace)
      * @return void
      */
-    public function model($modelName)
+    public function model(string $modelName)
     {
         Route::model($this->moduleName, $this->modelPath.$modelName);
     }
@@ -91,7 +91,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function get($route, $target)
+    public function get(string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute('get', $route, $target);
     }
@@ -103,7 +103,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function post($route, $target)
+    public function post(string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute('post', $route, $target);
     }
@@ -115,7 +115,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function put($route, $target)
+    public function put(string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute('put', $route, $target);
     }
@@ -127,7 +127,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function patch($route, $target)
+    public function patch(string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute('patch', $route, $target);
     }
@@ -139,7 +139,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function delete($route, $target)
+    public function delete(string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute('delete', $route, $target);
     }
@@ -151,7 +151,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function options($route, $target)
+    public function options(string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute('options', $route, $target);
     }
@@ -163,7 +163,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function any($route, $target)
+    public function any(string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute('any', $route, $target);
     }
@@ -176,7 +176,7 @@ class ModuleRoute
      * @param  mixed  $target
      * @return \Illuminate\Routing\Route
      */
-    public function match($methods, $route, $target)
+    public function match(array $methods, string $route, $target) : \Illuminate\Routing\Route
     {
         return $this->createRoute($methods, $route, $target);
     }
@@ -184,14 +184,14 @@ class ModuleRoute
     /**
      * Controller routing (for resource controllers).
      * 
-     * @param  string $route
-     * @param  string $target
-     * @param  array  $parameters
+     * @param  string $name
+     * @param  string $controller
+     * @param  array  $options
      * @return void
      */
-    public function resource($route, $target, $parameters = [])
+    public function resource(string $name, string $controller, array $options = [])
     {
-        Route::resource($route, $this->controllerPath.$target, $parameters);
+        Route::resource($name, $this->controllerPath.$controller, $options);
     }
 
     /**
@@ -227,7 +227,7 @@ class ModuleRoute
      * @param  mixed        $target
      * @return \Illuminate\Routing\Route
      */
-    protected function createRoute($methods, $route, $target)
+    protected function createRoute($methods, string $route, $target) : \Illuminate\Routing\Route
     {
         /*
          * Ignore closures:
@@ -265,7 +265,7 @@ class ModuleRoute
      *
      * @return string
      */
-    public function getAdminNamePrefix()
+    public function getAdminNamePrefix() : string
     {
         return self::ADMIN_NAME_PREFIX;
     }

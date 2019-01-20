@@ -5,6 +5,7 @@ namespace App\Modules\Modules\Http\Controllers;
 use App\Modules\Modules\Module;
 use BackController;
 use Cache;
+use Exception;
 use HTML;
 use ModuleInstaller;
 
@@ -98,17 +99,20 @@ class AdminModulesController extends BackController
         $class = 'App\modules\\'.$name.'\Installer';
         /** @var ModuleInstaller $installer */
         $installer  = new $class($name, $step);
-        $result = $installer->execute();
 
-        if ($result === false or $result === null) {
+        try {
+            $result = $installer->execute();
+
+            if ($result !== null) {
+                $this->pageOutput($result);
+            } else {
+                $installer->after();
+                Cache::forever(self::CACHE_KEY.$name, true);
+                $this->alertSuccess(trans('modules::success'));
+            }
+        } catch (Exception $exception) {
             Cache::forever(self::CACHE_KEY.$name, false);
             $this->alertError(trans('modules::fail'));
-        } elseif ($result === true) {
-            $installer->after();
-            Cache::forever(self::CACHE_KEY.$name, true);
-            $this->alertSuccess(trans('modules::success'));
-        } else {
-            $this->pageOutput($result);
         }
     }
 

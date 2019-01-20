@@ -9,7 +9,7 @@ use Widget;
 class BreadcrumbWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         if (isset($parameters['breadcrumb'])) {
             $links = $parameters['breadcrumb'];

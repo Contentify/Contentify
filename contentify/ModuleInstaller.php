@@ -3,6 +3,7 @@
 namespace Contentify;
 
 use Cartalyst\Sentinel\Roles\EloquentRole;
+use Exception;
 use Group;
 use Sentinel;
 
@@ -48,7 +49,7 @@ abstract class ModuleInstaller
      * @param string    $module The module name
      * @param int       $step   The number of the current step
      */
-    public function __construct($module, $step)
+    public function __construct(string $module, int $step)
     {
         $this->module   = $module;
         $this->step     = $step;
@@ -57,10 +58,11 @@ abstract class ModuleInstaller
     /**
      * This is the core method and will perform the installation.
      * $step starts counting at 0.
-     * Return false to terminate with error, true to finish 
-     * or a string (or View) to pass visual output.
+     * Throws an exception if an error occurred.
+     * May return a string (or View) to pass visual output.
      * 
-     * @return string|bool
+     * @return string|null
+     * @throws Exception
      */
     abstract public function execute();
 

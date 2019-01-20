@@ -3,6 +3,7 @@
 namespace Contentify;
 
 use Comment;
+use Illuminate\Http\JsonResponse;
 use Input;
 use Request;
 use Response;
@@ -18,7 +19,7 @@ class Comments
      * @param int    $foreignId   ID, if the comments are related to a certain model instance
      * @return void
      */
-    public function show($foreignType, $foreignId)
+    public function show(string $foreignType, int $foreignId)
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
@@ -39,7 +40,7 @@ class Comments
      * @param int    $foreignId   ID, if the comments are related to a certain model instance
      * @return string
      */
-    public function paginate($foreignType, $foreignId)
+    public function paginate(string $foreignType, int $foreignId) : string
     {
         $perPage = Config::get('app.frontItemsPerPage');
 
@@ -51,12 +52,12 @@ class Comments
 
     /**
      * Stores a comment
-     * 
+     *
      * @param string $foreignType The foreign type identifier
      * @param int    $foreignId   The foreign id (can be 0)
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function store($foreignType, $foreignId)
+    public function store(string $foreignType, int $foreignId)
     {
         if (! user() or ! user()->hasAccess('comments', PERM_CREATE)) {
             return Response::make(trans('app.access_denied'), 403);
@@ -81,9 +82,9 @@ class Comments
      * Returns a comment as JSON (as response to an AJAX call)
      * 
      * @param int $id The ID of the comment
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function get($id)
+    public function get(int $id) : JsonResponse
     {
         $comment = Comment::findOrFail($id);
 
@@ -92,11 +93,11 @@ class Comments
 
     /**
      * Edits a comment
-     * 
+     *
      * @param int $id The ID of the comment
      * @return \Illuminate\Http\Response|null
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         /** @var Comment $comment */
         $comment = Comment::findOrFail($id);
@@ -116,7 +117,7 @@ class Comments
      * @param int $id The ID of the comment
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(int $id)
     {
         /** @var Comment $comment */
         $comment = Comment::findOrFail($id);
@@ -139,11 +140,12 @@ class Comments
 
     /**
      * Deletes a comment
-     * 
+     *
      * @param int $id The ID of the comment
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function delete($id)
+    public function delete(int $id) : \Illuminate\Http\Response
     {
         /** @var Comment $comment */
         $comment = Comment::findOrFail($id);

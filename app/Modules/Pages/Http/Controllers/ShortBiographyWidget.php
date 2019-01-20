@@ -9,7 +9,7 @@ use Widget;
 class ShortBiographyWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $shortBiography = Config::get('app.short_biography');
 

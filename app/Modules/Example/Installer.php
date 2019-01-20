@@ -7,9 +7,12 @@ use ModuleInstaller;
 class Installer extends ModuleInstaller
 {
 
+    /**
+     * {@inheritDoc}
+     */
     public function execute()
     {
-        return true;
+
     }
 
 }

@@ -27,7 +27,7 @@ class Ratings
      * @param  int    $foreignId   ID, if the rating is related to a certain model instance
      * @return string
      */
-    public function show($foreignType, $foreignId)
+    public function show(string $foreignType, int $foreignId) : string
     {
         $rating = DB::table('ratings')->where('foreign_type', '=', $foreignType)->
             where('foreign_id', '=', $foreignId)->avg('rating');
@@ -58,7 +58,7 @@ class Ratings
      * @param  int      $foreignId   The foreign id (can be 0)
      * @return \Illuminate\Http\Response
      */
-    public function store($foreignType, $foreignId)
+    public function store(string $foreignType, int $foreignId) : \Illuminate\Http\Response
     {
         if (! user() or ! user()->hasAccess('ratings', PERM_CREATE)) {
             return Response::make(trans('app.access_denied'), 403);

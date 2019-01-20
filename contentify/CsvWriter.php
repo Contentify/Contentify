@@ -56,6 +56,7 @@ class CsvWriter
      * Class constructor.
      *
      * @param mixed[][] $records The records - may include a header row
+     * @throws \Exception
      */
     public function __construct(array $records = [])
     {
@@ -66,6 +67,7 @@ class CsvWriter
 
     /**
      * @param mixed[][] $records
+     * @return void
      */
     public function setAll(array $records)
     {
@@ -79,7 +81,7 @@ class CsvWriter
      * @return int
      * @throws \Exception
      */
-    public function insertAll($records)
+    public function insertAll($records) : int
     {
         if (! is_iterable($records)) {
             throw new \InvalidArgumentException('The $records argument has to be iterable (for example, arrays are)');
@@ -101,7 +103,7 @@ class CsvWriter
      * @return int
      * @throws \Exception
      */
-    public function insertOne(array $record)
+    public function insertOne(array $record) : int
     {
         $bytes = $this->validateRecord($record);
         $this->records[] = $record;
@@ -117,7 +119,7 @@ class CsvWriter
      * @return int
      * @throws \Exception
      */
-    public function validateRecord(array $record)
+    public function validateRecord(array $record) : int
     {
         if (sizeof($this->records) > 0 and sizeof($record) != sizeof(current($this->records))) {
             throw new \InvalidArgumentException('The number of the column values of the record has to be the same as'
@@ -143,7 +145,7 @@ class CsvWriter
     /**
      * @return string
      */
-    public function getDelimiter()
+    public function getDelimiter() : string
     {
         return $this->delimiter;
     }
@@ -152,7 +154,7 @@ class CsvWriter
      * @param string $delimiter
      * @return $this
      */
-    public function setDelimiter($delimiter)
+    public function setDelimiter(string $delimiter) : self
     {
         if (mb_strlen($delimiter) !== 1) {
             throw new \InvalidArgumentException('The length of the delimiter string has to be one');
@@ -165,16 +167,16 @@ class CsvWriter
     /**
      * @return string
      */
-    public function getEnclosure()
+    public function getEnclosure() : string
     {
         return $this->enclosure;
     }
 
     /**
      * @param string $enclosure
-     * @return $this
+     * @return self
      */
-    public function setEnclosure($enclosure)
+    public function setEnclosure(string $enclosure) : self
     {
         if (mb_strlen($enclosure) !== 1) {
             throw new \InvalidArgumentException('The length of the enclosure string has to be one');
@@ -187,16 +189,16 @@ class CsvWriter
     /**
      * @return string
      */
-    public function getNewline()
+    public function getNewline() : string
     {
         return $this->newline;
     }
 
     /**
      * @param string $newline
-     * @return $this
+     * @return self
      */
-    public function setNewline($newline)
+    public function setNewline(string $newline) : self
     {
         if (mb_strlen($newline) < 1) {
             throw new \InvalidArgumentException('The length of the newline string has to be greater 0');
@@ -209,9 +211,9 @@ class CsvWriter
     /**
      * Deletes all records (including the header)
      *
-     * @return $this
+     * @return self
      */
-    public function clearAll()
+    public function clearAll() : self
     {
         $this->records = [];
 
@@ -224,7 +226,7 @@ class CsvWriter
      *
      * @return int
      */
-    public function countAll()
+    public function countAll() : int
     {
         return sizeof($this->records);
     }
@@ -234,7 +236,7 @@ class CsvWriter
      *
      * @return string
      */
-    public function getContent()
+    public function getContent() : string
     {
         $content = '';
 
@@ -251,7 +253,7 @@ class CsvWriter
      * @param mixed[] $record
      * @return string
      */
-    protected function recordToString(array $record)
+    protected function recordToString(array $record) : string
     {
         $content = '';
 

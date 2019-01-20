@@ -63,7 +63,7 @@ class Translator extends OriginalTranslator
      *
      * @return string[]
      */
-    public function languageCodes()
+    public function languageCodes() : array
     {
         $languageCodes = Cache::get('app.locales');
 

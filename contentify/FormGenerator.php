@@ -31,7 +31,7 @@ class FormGenerator
      * @param  string|null $moduleName The module name - leave it empty if it's the table name
      * @return string
      */
-    public function generate($tableName, $moduleName = null)
+    public function generate(string $tableName, string $moduleName = null) : string
     {
         if ($moduleName == null) {
             $moduleName = $tableName;
@@ -69,7 +69,7 @@ class FormGenerator
      * @param  \stdClass $column The database column object
      * @return string
      */
-    protected function buildField($column)
+    protected function buildField(\stdClass $column)
     {
         $ignoredFields = [
             'id', 
@@ -181,7 +181,7 @@ class FormGenerator
      * @param  string $name The attribute name
      * @return string
      */
-    public function transformName($name)
+    public function transformName(string $name) : string
     {
         if (Lang::has($this->moduleName.'::'.$name)) {
             return "trans('".$this->moduleName."::$name')";
@@ -198,7 +198,7 @@ class FormGenerator
      * @param  string $snakeCase The snake cased string
      * @return string
      */
-    protected function makeTitle($snakeCase)
+    protected function makeTitle(string $snakeCase) : string
     {
         $words = explode('_', $snakeCase);
 

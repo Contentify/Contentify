@@ -27,7 +27,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @return string
      * @throws Exception
      */
-    public function widget($widgetName, array $parameters = null)
+    public function widget(string $widgetName, array $parameters = null) : string
     { 
         if (! is_array($parameters)) {
             $parameters = (array) $parameters;
@@ -48,13 +48,14 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
     /**
      * Renders an image with a gravatar.
+     * @see https://github.com/sindresorhus/gravatar-url/blob/v2.0.0/readme.md#default
      *
      * @param string $email   The email of the gravatar user
      * @param int    $size    The size of the image
      * @param string $default Default picture (if no picture is found)
      * @return string
      */
-    public function gravatar($email, $size = 32, $default = 'mm')
+    public function gravatar(string $email, int $size = 32, string $default = 'mm') : string
     { 
         return '<img src="https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).
             '?s='.$size.'&d='.$default.'" alt="Avatar">';
@@ -66,7 +67,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param array $metaTags
      * @return string
      */
-    public function metaTags(array $metaTags = [])
+    public function metaTags(array $metaTags = []) : string
     { 
         $output = '';
         foreach ($metaTags as $name => $content) {
@@ -82,7 +83,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param string|null $title
      * @return string
      */
-    public function title($title = null)
+    public function title(string $title = null) : string
     { 
         if ($title) {
             $title .= ' - '.Config::get('app.name');
@@ -99,7 +100,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param OpenGraph $openGraph The OpenGraph instance
      * @return string
      */
-    public function openGraphTags(OpenGraph $openGraph)
+    public function openGraphTags(OpenGraph $openGraph) : string
     { 
         $output = $openGraph->renderTags();
 
@@ -107,14 +108,15 @@ class HtmlBuilder extends OriginalHtmlBuilder
     }
 
     /**
-     * Returns HTML code for a table.
+     * Returns HTML code for a table. Auto escapes the content of the td cells,
+     * except the content is wrapped in a Contentify\Raw class.
      * 
-     * @param array $header     Array with the table header items (String-Array)
-     * @param array $rows       Array with all the table rows items (Array containing String-Arrays)
-     * @param array $attributes Apply these HTML attributes to the table element
+     * @param string[]   $header     Array with the table header items
+     * @param string[][] $rows       Array with all the table rows items (array containing string arrays)
+     * @param array      $attributes Apply these HTML attributes to the table element
      * @return string
      */
-    public function table($header, $rows, $attributes)
+    public function table(array $header, array $rows, array $attributes) : string
     {
         $attrs = self::attributes($attributes);
         $code = '<table class="table table-hover" '.$attrs.'>';
@@ -162,7 +164,13 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  array   $attributes Apply these HTML attributes to the link element
      * @return string
      */
-    public function imageLink($image, $title, $url, $printTitle = false, $attributes = [])
+    public function imageLink(
+        string $image,
+        string $title,
+        string $url,
+        bool $printTitle = false,
+        array $attributes = []
+    ) : string
     {
         $imageUrl = get_image_url($image);
         $image = self::image($imageUrl, $title);
@@ -194,7 +202,13 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  array   $attributes Apply these HTML attributes to the table element
      * @return string
      */
-    public function iconLink($icon, $title, $url, $showTitle = false, $attributes = [])
+    public function iconLink(
+        string $icon,
+        string $title,
+        string $url,
+        bool $showTitle = false,
+        array $attributes = []
+    ) : string
     {
         $icon = self::fontIcon($icon);
 
@@ -225,7 +239,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  array  $attributes Apply these HTML attributes to the button element
      * @return string
      */
-    public function button($title, $url, $icon = '', $attributes = [])
+    public function button(string $title, string $url, string $icon = '', array $attributes = []) : string
     {
         $action = 'onclick="document.location.href=\''.$url.'\'"';
 
@@ -252,10 +266,17 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param string      $sortBy Name of the sort switch, usually the name of a model attribute
      * @param string|null $order  Current sorting order, "asc" or "desc"
      * @param string|null $search Current search term
-     * @param bool|null   $active Is this switcher active? Null = auto decide
+     * @param bool        $active Is this switcher active?
      * @return string
      */
-    public function sortSwitcher($url, $title, $sortBy, $order = null, $search = null, $active = null)
+    public function sortSwitcher(
+        string $url,
+        string $title,
+        string $sortBy,
+        string $order = null,
+        string $search = null,
+        bool $active = false
+    ) : string
     {
         if ($order === 'asc') {
             $order  = 'desc';
@@ -283,7 +304,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * 
      * @return string
      */
-    public function recycleBinButton()
+    public function recycleBinButton() : string
     {
         $enabled    = (bool) Session::get('recycleBinMode');
         $url        = URL::current().'?binmode='.(1 - $enabled);
@@ -304,7 +325,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * 
      * @return string
      */
-    public function renderBackendNavigation()
+    public function renderBackendNavigation() : string
     {
         $backendNavGenerator = new BackendNavGenerator();
 
@@ -318,7 +339,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * 
      * @return string
      */
-    public function jsTranslations()
+    public function jsTranslations() : string
     {
         $translator = app('translator');
         $items = $translator->get('app');
@@ -335,7 +356,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param  string $assetPath Pure asset path without version information
      * @return string
      */
-    public function versionedAssetPath($assetPath)
+    public function versionedAssetPath(string $assetPath) : string
     {
         if (strpos($assetPath, '?') === false) {
             $queryChar = '?';
@@ -374,7 +395,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @param string|null $category The name of the category (solid: fas, regular: far/fa, light: fal, brands: fab)
      * @return string
      */
-    public function fontIcon($icon, $color = null, $class = null, $category = null)
+    public function fontIcon(string $icon, string $color = null, string $class = null, string $category = null) : string
     {
         if ($color) {
             $color = ' style="color: '.$color.'"';
@@ -400,7 +421,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      *
      * @return string[]
      */
-    public function getBrandIconNames()
+    public function getBrandIconNames() : array
     {
         $iconNames = [
             'accessible-icon',

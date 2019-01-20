@@ -10,7 +10,7 @@ use Widget;
 class SlidesWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         if (isset($parameters['categoryId'])) {
             $categoryId = $parameters['categoryId'];

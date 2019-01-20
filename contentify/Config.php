@@ -41,7 +41,7 @@ class Config extends LaravelConfig
      * @param bool   $dbLookup If false, do not access the database table
      * @return bool
      */
-    public static function has($key, $dbLookup = true)
+    public static function has($key, bool $dbLookup = true)
     {
         if (installed() and $dbLookup) {
             $dbChecked = Cache::has(self::CACHE_IN_DB_PREFIX.$key);
@@ -85,7 +85,7 @@ class Config extends LaravelConfig
      * @param bool   $dbLookup If false, do not access the database table
      * @return mixed
      */
-    public static function get($key, $default = null, $dbLookup = true)
+    public static function get($key, $default = null, bool $dbLookup = true)
     {
         if (installed() and $dbLookup) {
             $dbChecked = Cache::has(self::CACHE_IN_DB_PREFIX.$key);
@@ -170,7 +170,7 @@ class Config extends LaravelConfig
      * @param string $key The name of the key
      * @return void
      */
-    public static function clearCache($key)
+    public static function clearCache(string $key)
     {
         Cache::forget(self::CACHE_VALUES_PREFIX.$key);
         Cache::forget(self::CACHE_IN_DB_PREFIX.$key);

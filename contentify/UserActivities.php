@@ -4,8 +4,8 @@ namespace Contentify;
 
 use Contentify\Models\UserActivity;
 use DB;
+use Illuminate\Database\Eloquent\Collection;
 use InvalidArgumentException;
-use Exception;
 
 class UserActivities
 {
@@ -24,7 +24,7 @@ class UserActivities
     const ACTIVITY_DELETE = PERM_DELETE;
 
     /**
-     * Add an activity
+     * Add a new activity
      *
      * @param int         $activityId The ID of the activity - use one of the provided constants!
      * @param bool        $frontend   The surface  - true = frontend, false = backend
@@ -33,9 +33,16 @@ class UserActivities
      * @param string|null $info       Additional information
      * @param int|null    $createdAt  Date and time when the activity was created. Null = now.
      * @return void
-     * @throws Exception
+     * @throws InvalidArgumentException
      */
-    public function add($activityId, $frontend, $userId, $modelClass = null, $info = null, $createdAt = null)
+    public function add(
+        int $activityId,
+        bool $frontend,
+        int $userId, string
+        $modelClass = null,
+        string $info = null,
+        int $createdAt = null
+    )
     {
         if (! $createdAt) {
             $createdAt = time();
@@ -54,26 +61,86 @@ class UserActivities
         $okay = $userActivity->save();
 
         if (! $okay) {
-            throw new Exception('UserActivities: Cannot create UserActivity model - validation failed.');
+            throw new InvalidArgumentException('UserActivities: Cannot create UserActivity model - validation failed.');
         }
     }
 
-    public function addCreate($frontend, $userId, $modelClass = null, $info = null, $createdAt = null)
+    /**
+     * Add an user activity of type "create"
+     *
+     * @param bool        $frontend
+     * @param int         $userId
+     * @param string|null $modelClass
+     * @param string|null $info
+     * @param int|null    $createdAt
+     */
+    public function addCreate(
+        bool $frontend,
+        int $userId,
+        string $modelClass = null,
+        string $info = null,
+        int $createdAt = null
+    )
     {
         $this->add(self::ACTIVITY_CREATE, $frontend, $userId, $modelClass, $info, $createdAt);
     }
 
-    public function addRead($frontend, $userId, $modelClass = null, $info = null, $createdAt = null)
+    /**
+     * Add an user activity of type "read"
+     *
+     * @param bool        $frontend
+     * @param int         $userId
+     * @param string|null $modelClass
+     * @param string|null $info
+     * @param int|null    $createdAt
+     */
+    public function addRead(
+        bool $frontend,
+        int $userId,
+        string $modelClass = null,
+        string $info = null,
+        int $createdAt = null
+    )
     {
         $this->add(self::ACTIVITY_READ, $frontend, $userId, $modelClass, $info, $createdAt);
     }
 
-    public function addUpdate($frontend, $userId, $modelClass = null, $info = null, $createdAt = null)
+    /**
+     * Add an user activity of type "update"
+     *
+     * @param bool        $frontend
+     * @param int         $userId
+     * @param string|null $modelClass
+     * @param string|null $info
+     * @param int|null    $createdAt
+     */
+    public function addUpdate(
+        bool $frontend,
+        int $userId,
+        string $modelClass = null,
+        string $info = null,
+        int $createdAt = null
+    )
     {
         $this->add(self::ACTIVITY_UPDATE, $frontend, $userId, $modelClass, $info, $createdAt);
     }
 
-    public function addDelete($frontend, $userId, $modelClass = null, $info = null, $createdAt = null)
+    /**
+     * Add an user activity of type "delete"
+     *
+     * @param bool        $frontend
+     * @param int         $userId
+     * @param string|null $modelClass
+     * @param string|null $info
+     * @param int|null    $createdAt
+     */
+    public function addDelete(
+        bool $frontend,
+        int $userId,
+        string $modelClass = null,
+        string $info = null,
+        int $createdAt = null
+    )
     {
         $this->add(self::ACTIVITY_DELETE, $frontend, $userId, $modelClass, $info, $createdAt);
     }
@@ -82,9 +149,9 @@ class UserActivities
      * Receives all activities with a given activity ID
      * 
      * @param int $activityId The ID of the activity - use one of the provided constants!
-     * @return UserActivity[]
+     * @return UserActivity[]|Collection
      */
-    public function getByActivity($activityId)
+    public function getByActivity(int $activityId) : Collection
     {
         return UserActivity::whereActivityId($activityId)->get();
     }
@@ -93,9 +160,9 @@ class UserActivities
      * Receives all activities with a given interface (frontend / backend)
      * 
      * @param bool $frontend True = frontend, false = backend
-     * @return UserActivity[]
+     * @return UserActivity[]|Collection
      */
-    public function getByInterface($frontend)
+    public function getByInterface(bool $frontend) : Collection
     {
         return UserActivity::whereFrontend($frontend)->get();
     }
@@ -104,9 +171,9 @@ class UserActivities
      * Receives all activities performed by a given user
      * 
      * @param int $userId The ID of the related user
-     * @return UserActivity[]
+     * @return UserActivity[]|Collection
      */
-    public function getByUser($userId)
+    public function getByUser(int $userId) : Collection
     {
         return UserActivity::whereUserId($userId)->get();
     }
@@ -115,9 +182,9 @@ class UserActivities
      * Receives all activities related to a given model class
      * 
      * @param string $modelClass Name of the model class (with namespace!)
-     * @return UserActivity[]
+     * @return UserActivity[]|Collection
      */    
-    public function getByModelClass($modelClass)
+    public function getByModelClass(string $modelClass) : Collection
     {
         return UserActivity::whereModelClass($modelClass)->get();
     }
@@ -127,9 +194,9 @@ class UserActivities
      *
      * @param int $weeks Delete activities older than x weeks (1 at least)
      * @return void
-     * @throws Exception
+     * @throws InvalidArgumentException|\Exception
      */
-    public function deleteOld($weeks = 1)
+    public function deleteOld(int $weeks = 1)
     {
         $weeks = (int) $weeks;
 

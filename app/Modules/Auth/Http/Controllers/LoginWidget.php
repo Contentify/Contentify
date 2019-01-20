@@ -8,7 +8,7 @@ use Widget;
 class LoginWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         if (user()) {
             return View::make('auth::widget_logged_in');

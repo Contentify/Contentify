@@ -2,6 +2,7 @@
 
 namespace Contentify;
 
+use App\Http\Controllers\Controller;
 use BaseController;
 use BaseModel;
 use Closure;
@@ -37,11 +38,13 @@ class ModelHandler
 
     /**
      * Setter for $controller
+     *
+     * NOTE: For an unknown reason we have to specify the full path of the base controller here
      * 
-     * @param BaseController $controller The controller object
+     * @param \Contentify\Controllers\BaseController $controller The controller object
      * @return void
      */
-    public function controller($controller)
+    public function controller(\Contentify\Controllers\BaseController $controller)
     {
         $this->controller = $controller;
     }
@@ -54,7 +57,7 @@ class ModelHandler
      * @return void
      * @throws Exception
      */
-    public function index(array $data, $surface = 'admin')
+    public function index(array $data, string $surface = 'admin')
     {
         $controller = $this->getControllerOrFail();
 
@@ -335,7 +338,7 @@ class ModelHandler
      * @return void
      * @throws Exception
      */
-    public function show($id)
+    public function show(int $id)
     {
         $controller = $this->getControllerOrFail();
 
@@ -489,7 +492,7 @@ class ModelHandler
      * @return void
      * @throws Exception
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         $controller = $this->getControllerOrFail();
 
@@ -518,7 +521,7 @@ class ModelHandler
      * @return \Illuminate\Http\RedirectResponse|null
      * @throws Exception
      */
-    public function update($id)
+    public function update(int $id)
     {
         $controller = $controller = $this->getControllerOrFail();
 
@@ -654,7 +657,7 @@ class ModelHandler
      * @return \Illuminate\Http\RedirectResponse|null
      * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $controller = $this->getControllerOrFail();
 
@@ -742,7 +745,7 @@ class ModelHandler
      * @return \Illuminate\Http\RedirectResponse|null
      * @throws Exception
      */
-    public function restore($id)
+    public function restore(int $id)
     {
         $controller = $this->getControllerOrFail();
 
@@ -779,11 +782,11 @@ class ModelHandler
      * Retrieve values from inputs (usually select elements) that deal with foreign models
      *
      * @param  string    $modelClass Full name of the model class
-     * @param  BaseModel $model      Object with this model type (by reference)
+     * @param  BaseModel $model      Object with this model type
      * @return void
      * @throws Exception
      */
-    public function fillRelations($modelClass, &$model)
+    public function fillRelations(string $modelClass, BaseModel $model)
     {
         $relations = $modelClass::relations();
 
@@ -867,10 +870,12 @@ class ModelHandler
     /**
      * Returns the controller object or throws an exception if it's null
      *
-     * @return BaseController The controller object
+     * NOTE: For an unknown reason we have to specify the full path of the base controller here
+     *
+     * @return \Contentify\Controllers\BaseController The controller object
      * @throws Exception
      */
-    protected function getControllerOrFail()
+    protected function getControllerOrFail() : \Contentify\Controllers\BaseController
     {
         if (! $this->controller) {
             throw new Exception('Model handler: No controller instance has been set.');

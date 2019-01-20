@@ -12,7 +12,7 @@ use Widget;
 class AdvertWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         if (isset($parameters['categoryId'])) {
             $categoryId = $parameters['categoryId'];
@@ -47,6 +47,8 @@ class AdvertWidget extends Widget
         if ($advert) {
             return View::make('adverts::widget', compact('advert', 'containerId'))->render();
         }
+
+        return '';
     }
 
 }

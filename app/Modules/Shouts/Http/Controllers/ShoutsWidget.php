@@ -14,7 +14,7 @@ class ShoutsWidget extends Widget
      */
     const SHOUT_LIMIT = 10;
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $shouts = Shout::orderBy('created_at', 'desc')->with('creator')->take(self::SHOUT_LIMIT)->get();
         

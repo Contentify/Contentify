@@ -9,7 +9,7 @@ use Widget;
 class ChartWidget extends Widget 
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $chart = new Chart();
 

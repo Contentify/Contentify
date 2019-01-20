@@ -9,13 +9,15 @@ use Widget;
 class FeaturedMatchWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $match = Match::orderBy('played_at', 'DESC')->whereFeatured(true)->where('state', '!=', Match::STATE_HIDDEN)->first();
 
         if ($match) {
             return View::make('matches::featured_widget', compact('match'))->render();
         }
+
+        return '';
     }
 
 }

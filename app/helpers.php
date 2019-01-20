@@ -29,7 +29,7 @@ function user()
  *
  * @return bool
  */
-function enforce_https()
+function enforce_https() : bool
 {
     return Config::get('app.https');
 }
@@ -39,11 +39,11 @@ function enforce_https()
  * Methods may use the Raw class to prevent (HTML etc.) code
  * from auto escaping.
  * 
- * @param  string $value The string value
- * @param  string $escape Another value that's going to get auto escaped
+ * @param  mixed $value The string value
+ * @param  mixed $escape Another value that's going to get auto escaped
  * @return Raw
  */
-function raw($value, $escape = null)
+function raw($value, $escape = null) : Raw
 {
     return new Raw($value, $escape);
 }
@@ -61,7 +61,7 @@ function raw($value, $escape = null)
  * @param  array   $attributes Apply these HTML attributes to the link element
  * @return string
  */
-function image_link($image, $title, $url, $showTitle = false, $attributes = [])
+function image_link(string $image, string $title, string $url, bool $showTitle = false, array $attributes = []) : string
 {
     return HTML::imageLink($image, $title, $url, $showTitle, $attributes);
 }
@@ -77,7 +77,7 @@ function image_link($image, $title, $url, $showTitle = false, $attributes = [])
  * @param  array   $attributes Apply these HTML attributes to the link element
  * @return string
  */
-function icon_link($icon, $title, $url, $showTitle = false, $attributes = [])
+function icon_link(string $icon, string $title, string $url, bool $showTitle = false, array $attributes = []) : string
 {
     return HTML::iconLink($icon, $title, $url, $showTitle, $attributes);
 }
@@ -90,7 +90,7 @@ function icon_link($icon, $title, $url, $showTitle = false, $attributes = [])
  * @param  string $icon  The name of the icon. It's rendered by an icon font.
  * @return string
  */
-function button($title, $url, $icon = '')
+function button(string $title, string $url, string $icon = '') : string
 {
     return HTML::button($title, $url, $icon);
 }
@@ -100,16 +100,16 @@ function button($title, $url, $icon = '')
  *
  * @deprecated This function is deprecated and will be removed in the future
  * 
- * @param  string $image The image
- * @return string        The URL
+ * @param  string $imageName The name of the image
+ * @return string            The URL of the image
  */
-function get_image_url($image)
+function get_image_url(string $imageName) : string
 {
-    if (! $image) {
+    if (! $imageName) {
         return '';
     }
 
-    $imageUrl = $image;
+    $imageUrl = $imageName;
 
     if (! str_contains($imageUrl, '.')) {
         $imageUrl .= '.png';
@@ -123,25 +123,12 @@ function get_image_url($image)
 }
 
 /**
- * Returns HTML code for a sort switcher (asc / desc).
- *
- * @param string $sortBy Attribute of the entity, e.g. "id"
- * @param string $order  Current sorting order, "asc" or "desc"
- * @param null   $search
- * @return string
- */
-function sort_switcher($sortBy, $order = null, $search = null)
-{
-    return HTML::sortSwitcher($sortBy, $order, $search);
-}
-
-/**
  * Returns HTML code for a button enabling/disabling recycle bin mode
  * (to restore soft deleted entities).
  * 
  * @return string
  */
-function recycle_bin_button()
+function recycle_bin_button() : string
 {
     return HTML::recycleBinButton();
 }
@@ -153,7 +140,7 @@ function recycle_bin_button()
  * @param  string $text
  * @return string
  */
-function emojis($text)
+function emojis(string $text) : string
 {
     $emojis = [
         '&lt;/3'    => 'Heart', // </3
@@ -175,7 +162,7 @@ function emojis($text)
     ];
 
     foreach ($emojis as $short => $long) {
-        $image  = strtolower(str_replace(' ', '_', $long));
+        $image  = mb_strtolower(str_replace(' ', '_', $long));
         $path   = asset('img/default/emojis/'.$image.'.png');
         $text   = str_replace($short, '<img class="emoji" src="'.$path.'" title="'.$long.'" alt="'.$long.'">', $text);
     }
@@ -192,7 +179,7 @@ function emojis($text)
  * @param string $filename The file name, including path and extension
  * @return string
  */
-function load_image_encoded($filename)
+function load_image_encoded(string $filename) : string
 {
     $type = pathinfo($filename, PATHINFO_EXTENSION);
     $data = file_get_contents($filename);
@@ -208,7 +195,7 @@ function load_image_encoded($filename)
  * @param  string $module The name of the module
  * @return string 
  */
-function trans_object($name, $module = null)
+function trans_object(string $name, string $module = null) : string
 {
     $translator = app('translator');
 
@@ -232,7 +219,7 @@ function trans_object($name, $module = null)
  * 
  * @return bool
  */
-function installed()
+function installed() : bool
 {
     $path = storage_path('app/.installed');
 

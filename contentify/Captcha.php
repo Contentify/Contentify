@@ -46,7 +46,7 @@ class Captcha
      * @param string $code The potential captcha code
      * @return bool
      */
-    public function check($code) 
+    public function check(string $code) : bool
     {
         // Note: We do not need (want?) a strict string comparison here.
         return ($code == Session::get('captchaCode'));
@@ -58,7 +58,7 @@ class Captcha
      * @param string $code The potential captcha code
      * @return bool
      */
-    public function checkReCaptcha($code)
+    public function checkReCaptcha(string $code) : bool
     {
         $data = [
             'secret'    => Config::get('app.recaptcha_secret'),

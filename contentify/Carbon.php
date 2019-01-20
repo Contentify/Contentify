@@ -12,7 +12,7 @@ class Carbon extends OriginalCarbon
      *
      * @return string
      */
-    public function date()
+    public function date() : string
     {
         return $this->format(self::$toStringFormat);
     }
@@ -22,7 +22,7 @@ class Carbon extends OriginalCarbon
      *
      * @return string
      */
-    public function dateTime()
+    public function dateTime() : string
     {
         return $this->format(self::$toStringFormat).' '.$this->format('H:i:s');
     }

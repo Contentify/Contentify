@@ -40,7 +40,7 @@ class BackendNavGenerator
      * 
      * @return mixed[][] Array with arrays of navigation items
      */
-    public function getItems()
+    public function getItems() : array
     {
         $translator = app('translator');
         $moduleBase = app()['modules'];
@@ -105,7 +105,7 @@ class BackendNavGenerator
      * @param bool $update Enforce cache update?
      * @return void
      */
-    public function make($update = false)
+    public function make(bool $update = false)
     {
         if (! Cache::has(self::CACHE_KEY.'_'.$this->locale) or $update) {
             $navItems = $this->getItems();
@@ -141,7 +141,7 @@ class BackendNavGenerator
      * 
      * @return string The code
      */
-    public function get()
+    public function get() : string
     {
         $this->make();
 

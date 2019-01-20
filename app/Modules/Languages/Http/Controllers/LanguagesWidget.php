@@ -16,7 +16,7 @@ class LanguagesWidget extends Widget
      */
     const REPLACEMENTS = ['uk' => 'en'];
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $languageCodes = Lang::languageCodes();
 

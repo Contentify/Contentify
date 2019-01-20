@@ -8,4 +8,5 @@
 ( [see diff](https://github.com/laravel/laravel/commit/f1253690c5374c42fe54b7336063605380c39d56#diff-7b9241412b3dab19230761bbdde0b3c8) ).
 
 **Changes**
+- The global `sort_switcher` helper function has been removed. You may use the `HTML::sortSwitcher()` method instead.
 - TBA...

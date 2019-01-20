@@ -16,6 +16,6 @@ abstract class Widget
      * @param array $parameters Parameters passed to the widget. Keys should be strings
      * @return string
      */
-    abstract public function render(array $parameters = []);
+    abstract public function render(array $parameters = []) : string;
     
 }

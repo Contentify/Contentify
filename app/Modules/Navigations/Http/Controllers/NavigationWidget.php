@@ -9,7 +9,7 @@ use Widget;
 class NavigationWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $template = 'navigations::navigation_widget';
 

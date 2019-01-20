@@ -10,7 +10,7 @@ use Widget;
 class UpcomingMatchesWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $limit = isset($parameters['limit']) ? (int) $parameters['limit'] : self::LIMIT;
 

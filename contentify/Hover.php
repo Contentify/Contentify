@@ -27,7 +27,7 @@ class Hover
      * 
      * @param string $text Text to add
      */
-    public function __construct($text = '')
+    public function __construct(string $text = '')
     {
         if ($text) {
             $this->text($text);
@@ -46,7 +46,7 @@ class Hover
      * @param bool   $stripTags Strip HTML tags from the text?
      * @return self
      */
-    public function text($text, $stripTags = false)
+    public function text(string $text, bool $stripTags = false) : self
     {
         if ($stripTags) {
             $text = strip_tags($text);
@@ -65,7 +65,7 @@ class Hover
      * @param string $line The text line to add
      * @return self
      */
-    public function line($line)
+    public function line(string $line) : self
     {
         if ($line) {
             $this->content .= '<p>'.$line.'</p>';
@@ -77,12 +77,12 @@ class Hover
     /**
      * Adds an image to the content.
      * 
-     * @param string $url        Image URL
-     * @param string $alt        Image alt attribute
-     * @param array  $attributes Image attributes
+     * @param string      $url        Image URL
+     * @param string|null $alt        Image alt attribute
+     * @param array       $attributes Image attributes
      * @return self
      */
-    public function image($url, $alt = null, $attributes = [])
+    public function image(string $url, string $alt = null, array $attributes = []) : self
     {
         if ($url) {
             $this->content .= HTML::image($url, $alt, $attributes);
@@ -97,7 +97,7 @@ class Hover
      * @param  string $heading The heading to add
      * @return self
      */
-    public function heading($heading)
+    public function heading(string $heading) : self
     {
         if ($heading) {
             $this->content .= '<h3>'.$heading.'</h3>';
@@ -113,7 +113,7 @@ class Hover
      * @param string[]  $attributes Array of model attribute names
      * @return self
      */
-    public function modelAttributes($model, $attributes = [])
+    public function modelAttributes(BaseModel $model, array $attributes = []) : self
     {
         foreach ($attributes as $attribute) {
             switch ($attribute) {
@@ -152,7 +152,7 @@ class Hover
      * 
      * @return self
      */
-    public function clear()
+    public function clear() : self
     {
         $this->content = null;
 
@@ -164,7 +164,7 @@ class Hover
      * 
      * @return string
      */
-    public function render()
+    public function render() : string
     {
         if ($this->content) {
             return str_replace('%%', $this->content, $this->wrapperTag);
@@ -178,7 +178,7 @@ class Hover
      * 
      * @return string
      */
-    public function pull()
+    public function pull() : string
     {
         $output = $this->render();
 

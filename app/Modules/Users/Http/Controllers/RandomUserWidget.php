@@ -11,7 +11,7 @@ use Widget;
 class RandomUserWidget extends Widget 
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $minutes = isset($parameters['minutes']) ? (int) $parameters['minutes'] : 10;
 

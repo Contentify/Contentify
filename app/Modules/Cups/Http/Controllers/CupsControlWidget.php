@@ -9,7 +9,7 @@ use Widget;
 class CupsControlWidget extends Widget
 {
 
-    public function render(array $parameters = [])
+    public function render(array $parameters = []) : string
     {
         $cup = new Cup;
         $cups = $cup->cupsByUser(user(), true);

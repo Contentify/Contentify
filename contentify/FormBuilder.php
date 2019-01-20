@@ -9,6 +9,8 @@ use Crypt;
 use DB;
 use Exception;
 use HTML;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 use InvalidArgumentException;
 use MsgException;
 use URL;
@@ -33,13 +35,12 @@ class FormBuilder extends OriginalFormBuilder
     /**
      * Create HTML code for displaying errors
      * 
-     * @param  \Illuminate\Support\MessageBag $errors The errors to display
+     * @param  MessageBag|ViewErrorBag $errors The errors to display
      * @return string|null
      */
     public function errors($errors)
     {
-
-        if (is_a($errors, 'Illuminate\Support\MessageBag') or is_a($errors, 'Illuminate\Support\ViewErrorBag')) {
+        if (is_a($errors, MessageBag::class) or is_a($errors, ViewErrorBag::class)) {
             $list = '';
             foreach ($errors->getMessages() as $fieldName => $fieldMessages) {
                 foreach ($fieldMessages as $fieldMessage) {
@@ -85,7 +86,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  bool  $showImages Show icons on the buttons?
      * @return string
      */
-    public function actions(array $buttons = ['submit', 'apply', 'cancel'], $showImages = true)
+    public function actions(array $buttons = ['submit', 'apply', 'cancel'], bool $showImages = true) : string
     {
         $partial = '<div class="form-actions">';
 
@@ -210,7 +211,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array       $options Array with attributes
      * @return string
      */
-    public function numeric($name, $value = null, $options = [])
+    public function numeric(string $name, string $value = null, array $options = []) : string
     {
         if (isset($options['class'])) {
             $options['class'] = ' ';
@@ -255,12 +256,12 @@ class FormBuilder extends OriginalFormBuilder
      * This is meant for models that do not extend the BaseModel class.
      *
      * @param  string     $name     The name of the attribute, e. g. "user_id"
-     * @param  mixed|null $default  Null or an ID
+     * @param  mixed|null $default  Null or an identifier
      * @param  bool       $nullable If true the result can be empty and a "none selected" option is added
      * @return string
      * @throws Exception
      */
-    public function selectForeign($name, $default = null, $nullable = false)
+    public function selectForeign(string $name, $default = null, bool $nullable = false) : string
     {
         $pos = strrpos($name, '_');
         if ($pos === false) {
@@ -314,7 +315,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $class Additional class(es)
      * @return string
      */
-    public function smartGroupOpen($name = null, $title = null, $class = null)
+    public function smartGroupOpen(string $name = null, string $title = null, string $class = null) : string
     {
         $partial = '<div class="form-group '.$class.'">';
 
@@ -330,7 +331,7 @@ class FormBuilder extends OriginalFormBuilder
      * 
      * @return string
      */
-    public function smartGroupClose()
+    public function smartGroupClose() : string
     {
         return '</div></div>';
     }
@@ -340,10 +341,10 @@ class FormBuilder extends OriginalFormBuilder
      * 
      * @param  string    $name    The name of the checkbox element
      * @param  string    $title   The title of the checkbox element
-     * @param  bool|null $default The default value
+     * @param  bool|null $default The default value (checked/not checked)
      * @return string
      */
-    public function smartCheckbox($name, $title, $default = null)
+    public function smartCheckbox(string $name, string $title, bool $default = null) : string
     {
         $value = self::getDefaultValue($name, $default);
 
@@ -366,7 +367,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartText($name, $title, $default = null)
+    public function smartText(string $name, string $title, string $default = null) : string
     {
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
@@ -383,7 +384,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartEmail($name = 'email', $title = null, $default = null)
+    public function smartEmail(string $name = 'email', string $title = null, string $default = null) : string
     {
         if (! $title) {
             $title = trans('app.email');
@@ -404,7 +405,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartUrl($name = 'url', $title = null, $default = null)
+    public function smartUrl(string $name = 'url', string $title = null, string $default = null) : string
     {
         if (! $title) {
             $title = trans('app.url');
@@ -424,7 +425,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $title The title of the input element
      * @return string
      */
-    public function smartPassword($name = 'password', $title = null)
+    public function smartPassword(string $name = 'password', string $title = null) : string
     {
         if (! $title) {
             $title = trans('app.password');
@@ -445,7 +446,12 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartTextarea($name = 'text', $title = null, $editor = false, $default = null)
+    public function smartTextarea(
+        string $name = 'text',
+        string  $title = null,
+        bool $editor = false,
+        string $default = null
+    ) : string
     {
         $value = self::getDefaultValue($name, $default);
 
@@ -486,7 +492,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array       $attributes Additional HTML attributes
      * @return string
      */
-    public function smartNumeric($name, $title, $default = null, $attributes = [])
+    public function smartNumeric(string $name, string $title, string $default = null, array $attributes = []) : string
     {
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
@@ -505,7 +511,13 @@ class FormBuilder extends OriginalFormBuilder
      * @param  array      $attributes Additional HTML attributes
      * @return string
      */
-    public function smartSelect($name, $title, $options, $default = null, $attributes = [])
+    public function smartSelect(
+        string $name,
+        string $title,
+        array $options,
+        $default = null,
+        array $attributes = []
+    ) : string
     {
         $value = self::getDefaultValue($name, $default);
 
@@ -518,14 +530,15 @@ class FormBuilder extends OriginalFormBuilder
     /**
      * Create HTML code for a select element. It will take its values from a database table.
      * This is meant for models that do not extend the BaseModel class.
-     * 
+     *
      * @param  string     $name     The name of the attribute, e. g. "user_id"
      * @param  string     $title    The title of the select element
      * @param  mixed|null $default  Null or an ID
      * @param  bool       $nullable If true the result can be empty and a "none selected" option is added
      * @return string
+     * @throws Exception
      */
-    public function smartSelectForeign($name, $title, $default = null, $nullable = false)
+    public function smartSelectForeign(string $name, string $title, $default = null, bool $nullable = false) : string
     {
         $partial = self::smartGroupOpen($name, $title)
             .self::selectForeign($name, $default, $nullable)
@@ -547,13 +560,13 @@ class FormBuilder extends OriginalFormBuilder
      * @throws Exception
      */
     public function smartSelectRelation(
-        $relationName,
-        $title,
-        $sourceModelClass,
+        string $relationName,
+        string $title,
+        string  $sourceModelClass,
         $default = null,
-        $nullable = false,
-        $nullOption = false
-    )
+        bool $nullable = false,
+        bool $nullOption = false
+    ) : string
     {
         $relations = $sourceModelClass::relations();
         
@@ -658,7 +671,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $title The title of the input element
      * @return string
      */
-    public function smartFile($name = 'file', $title = null)
+    public function smartFile(string $name = 'file', string $title = null) : string
     {
         if (! $title) {
             $title = trans('app.file');
@@ -681,7 +694,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $title The title of the input element
      * @return string
      */
-    public function smartImageFile($name = 'image', $title = null)
+    public function smartImageFile(string $name = 'image', string $title = null) : string
     {
         if (! $title) {
             $title = trans('app.image');
@@ -714,7 +727,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string $title The title of the input element
      * @return string
      */
-    public function smartIconFile($name = 'icon', $title = null)
+    public function smartIconFile(string $name = 'icon', string $title = null) : string
     {
         if (! $title) {
             $title = trans('app.icon');
@@ -730,7 +743,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string $title The title of the input element
      * @return string
      */
-    public function smartCaptcha($name = 'captcha', $title = 'Captcha')
+    public function smartCaptcha(string $name = 'captcha', string $title = 'Captcha') : string
     {
         $image      = HTML::image(URL::route('captcha'), 'Captcha');
         $partial    = self::smartGroupOpen($name, $title)
@@ -750,7 +763,12 @@ class FormBuilder extends OriginalFormBuilder
      * @param  bool        $onlyDate If true, do not display time
      * @return string
      */
-    public function smartDateTime($name = 'datetime', $title = null, $default = null, $onlyDate = false)
+    public function smartDateTime(
+        string $name = 'datetime',
+        string $title = null,
+        string $default = null,
+        bool $onlyDate = false
+    ) : string
     {
         if (! $title) {
             $title = trans('app.date_time');
@@ -792,7 +810,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartDate($name = 'date', $title = null, $default = null)
+    public function smartDate(string $name = 'date', string $title = null, string $default = null) : string
     {
         return self::smartDateTime($name, $title, $default, true);
     }
@@ -805,7 +823,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string|null $default The default value
      * @return string
      */
-    public function smartTags($name, $title, $default = null)
+    public function smartTags(string $name, string $title, string $default = null) : string
     {
         $value = self::getDefaultValue($name, $default);
 
@@ -822,7 +840,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param bool   $encrypt Encrypt the value?
      * @return string
      */
-    public function timestamp($name = '_created_at', $encrypt = true)
+    public function timestamp(string $name = '_created_at', bool $encrypt = true) : string
     {
         $time = time();
 
@@ -839,7 +857,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string $text The text inside the block.
      * @return string
      */
-    public function helpBlock($text) 
+    public function helpBlock(string $text) : string
     {
         $partial = '<div class="form-group">'
             .'<div class="col-sm-'.$this->labelGridCols.' "></div>'
@@ -859,7 +877,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param mixed  $default
      * @return mixed
      */
-    public function getDefaultValue($name, $default)
+    public function getDefaultValue(string $name, $default)
     {
         $value = self::getValueAttribute($name);
 
@@ -874,7 +892,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param int $number
      * @return void
      */
-    public function labelGridCols($number)
+    public function labelGridCols(int $number)
     {
         $this->labelGridCols = $number;
     }
@@ -885,7 +903,7 @@ class FormBuilder extends OriginalFormBuilder
      * @param int $number
      * @return void
      */
-    public function controlGridCols($number)
+    public function controlGridCols(int $number)
     {
         $this->controlGridCols = $number;
     }
