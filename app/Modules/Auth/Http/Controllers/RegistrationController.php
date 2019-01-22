@@ -3,6 +3,7 @@
 namespace App\Modules\Auth\Http\Controllers;
 
 use App;
+use App\Modules\Auth\AuthManager;
 use App\Modules\Languages\Language;
 use Captcha;
 use Exception;
@@ -87,10 +88,13 @@ class RegistrationController extends FrontController
             $userRole = Sentinel::findRoleBySlug('users');
             $userRole->users()->attach($user);
 
+            event(AuthManager::EVENT_NAME_USER_REGISTERED, [$user]);
+
             /*
              * Login user
              */
             Sentinel::login($user, false);
+            event(AuthManager::EVENT_NAME_USER_LOGGED_IN, [$user]);
 
             $this->alertSuccess(trans('auth::registered'));
         } catch(Exception $e) {

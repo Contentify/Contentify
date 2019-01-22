@@ -2,6 +2,7 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
+use App\Modules\Auth\AuthManager;
 use Captcha;
 use FrontController;
 use Illuminate\Http\RedirectResponse;
@@ -31,6 +32,7 @@ class RestorePasswordController extends FrontController
      * and send it to the user's email address.
      *
      * @return RedirectResponse|null
+     * @throws \Exception
      */
     public function postIndex()
     {
@@ -65,10 +67,11 @@ class RestorePasswordController extends FrontController
     /**
      * This method will check the email and the submitted code (it is included into the URL)
      * and if they pass generate a new password and send it to the user.
-     * 
+     *
      * @param string $email The user's email address
      * @param string $code  Reset password code
      * @return void
+     * @throws \Exception
      */
     public function getNew(string $email, string $code)
     {

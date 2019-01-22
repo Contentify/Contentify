@@ -2,8 +2,8 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
+use App\Modules\Auth\AuthManager;
 use FrontController;
-use Sentinel;
 
 class LogoutController extends FrontController
 {
@@ -13,7 +13,8 @@ class LogoutController extends FrontController
      */
     public function getIndex()
     {
-        Sentinel::logout();
+        $authManager = new AuthManager();
+        $authManager->logoutUser();
 
         $this->alertFlash(trans('auth::logged_out'));
 

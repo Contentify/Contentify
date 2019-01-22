@@ -3,6 +3,7 @@
 namespace App\Modules\Auth\Http\Controllers;
 
 use App;
+use App\Modules\Auth\AuthManager;
 use App\Modules\Languages\Language;
 use Config;
 use Exception;
@@ -25,6 +26,11 @@ class LoginController extends FrontController
         $this->pageView('auth::login');
     }
 
+    /**
+     * Login with email and password
+     *
+     * @return RedirectResponse
+     */
     public function postLogin()
     {
         $credentials = [
@@ -32,13 +38,8 @@ class LoginController extends FrontController
             'password'  => Input::get('password')
         ];
 
-        /** @var User $user */
-        $user = Sentinel::authenticate($credentials, false); // Login the user (if possible)
-
-        if ($user and $user->banned) {
-            Sentinel::logout();
-            $user = null;
-        }
+        $authManager = new AuthManager();
+        $user = $authManager->loginUserByEmail($credentials);
 
         if ($user) {
             return $this->afterLoginActions();
@@ -79,6 +80,7 @@ class LoginController extends FrontController
                     }
 
                     Sentinel::loginAndRemember($user);
+                    event(AuthManager::EVENT_NAME_USER_LOGGED_IN, [$user]);
 
                     return $this->afterLoginActions();
                 } else { // Display a form where the user has to set his username and email address
@@ -161,10 +163,13 @@ class LoginController extends FrontController
         $userRole = Sentinel::findRoleBySlug('users');
         $userRole->users()->attach($user);
 
+        event(AuthManager::EVENT_NAME_USER_REGISTERED, [$user]);
+
         /*
          * Login user
          */
         Sentinel::loginAndRemember($user);
+        event(AuthManager::EVENT_NAME_USER_LOGGED_IN, [$user]);
 
         Session::forget('steamId');
 
