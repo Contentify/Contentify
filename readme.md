@@ -43,7 +43,7 @@ Changes: [Changelog.md](changelog.md)
 
 > The server resets (database, uploaded files and cache) twice per hour.
 
-> NOTE: The demo website is running with Contentify 2.6.
+> NOTE: The demo website is running with Contentify 3.0-alpha.
 
 ### Support
 
