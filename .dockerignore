@@ -2,3 +2,5 @@ Dockerfile
 .git
 .gitignore
 .gitattributes
+docker-compose.yml
+*.md
