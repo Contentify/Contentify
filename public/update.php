@@ -88,7 +88,8 @@ EOD;
             "INSERT INTO `{$prefix}config` 
                 (`name`, `value`) 
                 VALUES ('app.forbidden_email_domains', '$forbiddenEmailDomains');",
-
+                       
+            
             "CREATE TABLE `{$prefix}polls` (
                 `id` int(10) UNSIGNED NOT NULL,
                 `title` varchar(70) COLLATE utf8_unicode_ci NOT NULL,
@@ -147,6 +148,12 @@ EOD;
             "ALTER TABLE `{$prefix}partners` ADD `twitter` VARCHAR(255) DEFAULT NULL;",
             "ALTER TABLE `{$prefix}partners` ADD `youtube` VARCHAR(255) DEFAULT NULL;",
             "ALTER TABLE `{$prefix}partners` ADD `discord` VARCHAR(255) DEFAULT NULL;",
+            
+            "ALTER TABLE `{$prefix}videos` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
+            
+            "ALTER TABLE `{$prefix}streams` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
+            
+            "ALTER TABLE `{$prefix}polls` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
          ];
 
         return $updateQueries;
