@@ -6,7 +6,8 @@ use Config;
 use Route;
 
 /**
- * This class decorates the Router class of Laravel
+ * This class decorates the original Router class of Laravel.
+ * It adds support for module routes so that defining module routes becomes easier.
  *
  * @see \Illuminate\Routing\Router
  */
