@@ -22,7 +22,8 @@ class AwardsController extends FrontController
             'buttons'       => null,
             'brightenFirst' => false,
             'tableHead'     => [
-                trans('app.position')           => 'position', 
+                trans('app.position')           => 'position',
+                trans('app.object_team')        => 'team',                
                 trans('app.title')              => 'title', 
                 trans('app.object_tournament')  => 'tournament_id',
                 trans('app.object_game')        => 'game_id',
@@ -35,11 +36,12 @@ class AwardsController extends FrontController
                     $game = HTML::image(
                         $award->game->uploadPath().$award->game->icon, 
                         e($award->game->title), // "alt" attribute
-                        ['title' => e($award->game->title)]); // "title" attribute
+                        ['title' => e($award->game->title), 'width' => 16, 'height' => 16]); // "title" and "size" attributes
                 }
 
                 return [
                     raw($award->positionIcon()),
+                    raw($award->team->title),
                     raw($award->url ? HTML::link($award->url, e($award->title)) : e($award->title)),
                     $award->tournament ? $award->tournament->short : null,
                     raw($game),
