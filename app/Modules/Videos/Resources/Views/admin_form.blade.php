@@ -13,6 +13,8 @@
 
     {!! Form::smartSelect('provider', trans('app.provider'), $modelClass::$providers) !!}
 
+    {!! Form::smartCheckbox('enable_comments', trans('app.enable_comments'), true) !!}
+
     {!! Form::actions() !!}
 {!! Form::close() !!}
 
