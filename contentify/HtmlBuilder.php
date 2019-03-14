@@ -11,6 +11,10 @@ use OpenGraph;
 use Session;
 use URL;
 
+/**
+ * This class enhances the HtmlBuilder class from LaravelCollective.
+ * It adds more useful HTML builder methods.
+ */
 class HtmlBuilder extends OriginalHtmlBuilder
 {
 
