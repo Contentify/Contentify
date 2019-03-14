@@ -26,7 +26,7 @@
                 @endif
 
             @if ($partner->twitter)
-                <?php $url = filter_var($partner->twitter, FILTER_VALIDATE_URL) ? $partner->twitter : 'https://www.twitter.com/'.$partner->facebook ?>
+                <?php $url = filter_var($partner->twitter, FILTER_VALIDATE_URL) ? $partner->twitter : 'https://www.twitter.com/'.$partner->twitter ?>
                 <a class="btn btn-default" href="{{ $url }}" target="_blank" title="Twitter">{!! HTML::fontIcon('twitter') !!}</a>
             @endif
 
