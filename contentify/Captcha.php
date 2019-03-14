@@ -6,6 +6,10 @@ use Request;
 use Session;
 use Str;
 
+/**
+ * This class creates a CAPTCHA ( https://en.wikipedia.org/wiki/CAPTCHA ) image and also
+ * can check if the user entered it correctly. It also supports ReCAPTCHA.
+ */
 class Captcha
 {
 
