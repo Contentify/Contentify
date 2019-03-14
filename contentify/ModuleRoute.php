@@ -9,6 +9,7 @@ use Route;
  * This class decorates the original Router class of Laravel.
  * It adds support for module routes so that defining module routes becomes easier.
  *
+ * @see https://github.com/Contentify/Contentify/wiki/Module-Routing
  * @see \Illuminate\Routing\Router
  */
 class ModuleRoute
