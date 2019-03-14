@@ -41,7 +41,7 @@ class AwardsController extends FrontController
 
                 return [
                     raw($award->positionIcon()),
-                    raw($award->team->title),
+                    $award->team ? $award->team->title : '',            
                     raw($award->url ? HTML::link($award->url, e($award->title)) : e($award->title)),
                     $award->tournament ? $award->tournament->short : null,
                     raw($game),
