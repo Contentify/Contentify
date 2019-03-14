@@ -131,7 +131,8 @@ return [
     /*
      * Comments
      */
-    'comments'              => 'Comentarios',
+    'comments'              => 'Comentarios', 
+    'comments_disabled'     => 'Comentarios Deshabilitado',
     'comment_create_fail'   => 'No se ha podido crear el comentario. :0',
     'comment_update_fail'   => 'No se ha podido actualizar el comentario. :0',
     'enable_comments'       => 'Habilitar comentarios',
