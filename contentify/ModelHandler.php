@@ -19,6 +19,13 @@ use Session;
 use URL;
 use UserActivities;
 
+/**
+ * The model handler is a class that takes care of frequently occurring tasks related to models. 
+ * It's a very important and powerful part of Contentify. It helps to avoid writing a lot of code 
+ * when dealing with models.
+ *
+ * @see https://github.com/Contentify/Contentify/wiki/Model-Handler
+ */
 class ModelHandler
 {
     /**
