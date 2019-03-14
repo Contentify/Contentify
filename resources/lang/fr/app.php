@@ -132,6 +132,7 @@ return [
      * Comments
      */
     'comments'              => 'Commentaires',
+    'comments_disabled'     => 'Commentaires Désactivé',
     'comment_create_fail'   => 'Impossible de créer le commentaire. :0',
     'comment_update_fail'   => 'Impossible de modifier le commentaire. :0',
     'enable_comments'       => 'Activer les commentaires',
