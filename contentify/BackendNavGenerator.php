@@ -7,7 +7,9 @@ use RuntimeException;
 use View;
 
 /**
- * Backend navigation generator class - generates the navigation of the backend and caches it
+ * Backend navigation generator class - generates the navigation of the backend 
+ * automatically based upon the settings of the available modules. Caches the result
+ * to increase the performance.
  */
 class BackendNavGenerator
 {
