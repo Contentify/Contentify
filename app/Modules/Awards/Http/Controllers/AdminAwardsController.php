@@ -4,6 +4,7 @@ namespace App\Modules\Awards\Http\Controllers;
 
 use App\Modules\Awards\Award;
 use BackController;
+use HTML;
 use ModelHandlerTrait;
 
 class AdminAwardsController extends BackController
@@ -24,9 +25,10 @@ class AdminAwardsController extends BackController
     {
         $this->indexPage([
             'tableHead' => [
-                trans('app.id')         => 'id', 
-                trans('app.position')   => 'position', 
-                trans('app.title')      => 'title', 
+                trans('app.id')         => 'id',
+                trans('app.position')   => 'position',
+                trans('app.title')      => 'title',
+                trans('app.object_team')        => 'team',
                 trans('app.date')       => 'achieved_at'
             ],
             'tableRow' => function(Award $award)
@@ -35,6 +37,7 @@ class AdminAwardsController extends BackController
                     $award->id,
                     raw($award->positionIcon()),
                     $award->title,
+                    $award->team ? HTML::link('teams/'.$award->team->id.'/'.$award->team->slug, e($award->team->title)) : '',
                     $award->achieved_at
                 ];
             }

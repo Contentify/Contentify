@@ -68,7 +68,7 @@ class Team extends BaseModel
      *
      * @return BelongsToMany
      */
-    public function users()
+    public function users() : BelongsToMany
     {
         return $this->belongsToMany('User')->withPivot('task', 'description', 'position')
             ->orderBy('pivot_position', 'asc');
