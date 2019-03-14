@@ -97,6 +97,7 @@ EOD;
                 `open` tinyint(1) NOT NULL DEFAULT '1',
                 `internal` tinyint(1) NOT NULL DEFAULT '0',
                 `max_votes` int(11) NOT NULL,
+                `enable_comments` TINYINT(1) DEFAULT 1,
                 `option1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
                 `option2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
                 `option3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -149,11 +150,8 @@ EOD;
             "ALTER TABLE `{$prefix}partners` ADD `youtube` VARCHAR(255) DEFAULT NULL;",
             "ALTER TABLE `{$prefix}partners` ADD `discord` VARCHAR(255) DEFAULT NULL;",
             
-            "ALTER TABLE `{$prefix}videos` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
-            
-            "ALTER TABLE `{$prefix}streams` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
-            
-            "ALTER TABLE `{$prefix}polls` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
+            "ALTER TABLE `{$prefix}videos` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
+            "ALTER TABLE `{$prefix}streams` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
          ];
 
         return $updateQueries;
