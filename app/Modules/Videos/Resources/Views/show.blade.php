@@ -23,5 +23,11 @@
         </script>
     @endif
 </div>
-
-{!! Comments::show('videos', $video->id) !!}
+<p>
+@if ($video->enable_comments)
+<h3>Comments</h3>
+    {!! Comments::show('videos', $video->id) !!}
+@else
+{!! trans('app.comments') !!} {!! trans('app.disabled') !!}
+@endif
+</p>
