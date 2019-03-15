@@ -134,9 +134,14 @@ class News extends BaseModel
 
         $og->title($this->title)
             ->type('article')
-            ->image($this->newsCat->uploadPath().$this->newsCat->image)
             ->description($this->summary)
             ->url();
+        
+        if ($this->image) {
+            $og->image($this->uploadPath().$this->image)
+        } elseif ($this->newsCat->image) {
+            $og->image($this->newsCat->uploadPath().$this->newsCat->image)
+        }
 
         return $og;
     }
