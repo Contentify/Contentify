@@ -421,7 +421,7 @@ class InstallController extends Controller
             $table->boolean('published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
-            $table->boolean('enable_comments')->default(false);
+            $table->boolean('enable_comments')->default(true);
         }, ['news_cat_id']);
 
         $this->create('galleries', function(Blueprint $table)
@@ -759,7 +759,7 @@ class InstallController extends Controller
         {
             $table->boolean('open')->default(true);
             $table->boolean('internal')->default(false);
-            $table->boolean('enable_comments')->default(false);
+            $table->boolean('enable_comments')->default(true);
             $table->integer('max_votes');
             $table->string('option1')->nullable();
             $table->string('option2')->nullable();
