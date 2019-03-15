@@ -58,6 +58,7 @@ class Poll extends BaseModel
         'title',
         'open',
         'internal',
+        'enable_comments',
         'max_votes',
         'option1',
         'option2',
@@ -77,10 +78,11 @@ class Poll extends BaseModel
     ];
 
     protected $rules = [
-        'title'     => 'required|min:3',
-        'open'      => 'boolean',
-        'internal'  => 'boolean',
-        'max_votes' => 'required|integer|min:1|max:15'
+        'title'             => 'required|min:3',
+        'open'              => 'boolean',
+        'internal'          => 'boolean',
+        'enable_comments'   => 'boolean',
+        'max_votes'         => 'required|integer|min:1|max:15'
     ];
 
     public static $relationsData = [
