@@ -133,6 +133,7 @@ return [
      * Comments
      */
     'comments'              => 'Kommentare',
+    'comments_disabled'     => 'Kommentare Deaktiviert', // Added for simplicity's sake (probably need proper translation)
     'comment_create_fail'   => 'Kann Kommentar nicht erstellen. :0',
     'comment_update_fail'   => 'Kann Kommentar nicht editieren. :0',
     'enable_comments'       => 'Kommentare aktivieren',
