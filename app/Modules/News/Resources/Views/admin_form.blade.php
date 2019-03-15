@@ -15,6 +15,8 @@
 
     {!! Form::smartTextarea('text', trans('app.text'), true) !!}
 
+    {!! Form::smartImageFile() !!}
+
     {!! Form::smartDateTime('published_at', trans('news::publish_at')) !!}
 
     {!! Form::smartCheckbox('published', trans('app.published'), true) !!}
