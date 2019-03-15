@@ -418,6 +418,7 @@ class InstallController extends Controller
         {
             $table->text('summary')->nullable();
             $table->text('text')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
