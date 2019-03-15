@@ -484,6 +484,7 @@ class InstallController extends Controller
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
             $table->string('provider');
+            $table->boolean('enable_comments')->default(true);
         });
 
         $this->create('download_cats', function(Blueprint $table) { }); // Supports slugs
@@ -567,6 +568,7 @@ class InstallController extends Controller
             $table->string('thumbnail')->nullable();
             $table->boolean('online')->default(false);
             $table->integer('viewers')->default(0);
+            $table->boolean('enable_comments')->default(true);
             $table->timestamp('renewed_at')->nullable();
         });
 
@@ -757,6 +759,7 @@ class InstallController extends Controller
         {
             $table->boolean('open')->default(true);
             $table->boolean('internal')->default(false);
+            $table->boolean('enable_comments')->default(false);
             $table->integer('max_votes');
             $table->string('option1')->nullable();
             $table->string('option2')->nullable();
