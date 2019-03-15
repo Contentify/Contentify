@@ -28,7 +28,7 @@ class InstallController extends Controller
     /**
      * (Relative) path to the database ini file
      */
-    const INI_FILE = 'app/database.ini';
+    const DB_INI_FILE = 'app/database.ini';
 
     /**
      * URL of the Contentify.org API call after a successful installation.
@@ -192,7 +192,7 @@ class InstallController extends Controller
                     return $this->index($step - 1, $validator->messages());
                 }
 
-                File::put(storage_path(self::INI_FILE), 
+                File::put(storage_path(self::DB_INI_FILE), 
                     '; Auto-generated file with database connection settings.'.PHP_EOL.
                     '; See config/database.php for more settings.'.PHP_EOL.PHP_EOL.
                     "host = "."\"$host\"".PHP_EOL.
@@ -210,7 +210,7 @@ class InstallController extends Controller
                 // Define default settings:
                 $settings = ['host' => '127.0.0.1', 'database' => 'contentify', 'username' => 'root', 'password' => ''];
 
-                $filename = storage_path(self::INI_FILE);
+                $filename = storage_path(self::DB_INI_FILE);
                 if (File::exists($filename)) {
                     $settings = parse_ini_file($filename);
                 }
