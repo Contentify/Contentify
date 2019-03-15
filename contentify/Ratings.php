@@ -7,6 +7,10 @@ use Input;
 use Response;
 use View;
 
+/**
+ * This is a class for rating generic content. Users can rate content with 1-n stars.
+ * This class can store a new rating and show the average rating of a specific content item.
+ */
 class Ratings
 {
 

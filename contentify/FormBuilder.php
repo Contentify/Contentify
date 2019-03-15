@@ -15,6 +15,10 @@ use InvalidArgumentException;
 use MsgException;
 use URL;
 
+/**
+ * This class enhances the FormBuilder class from LaravelCollective.
+ * It adds more useful form builder methods.
+ */
 class FormBuilder extends OriginalFormBuilder
 {
 

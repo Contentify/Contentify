@@ -4,6 +4,9 @@ namespace Contentify;
  
 use Carbon\Carbon as OriginalCarbon;
 
+/**
+ * This class extends the original Carbon class. It adds localised date / time methods.
+ */
 class Carbon extends OriginalCarbon
 {
 

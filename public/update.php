@@ -82,6 +82,9 @@ EOD;
         // ATTENTION: Afterwards add {$prefix} before all table names!!
         $updateQueries = [
             "ALTER TABLE `{$prefix}servers` CHANGE `hoster` `host` VARCHAR(255);",
+            "ALTER TABLE `{$prefix}videos` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
+            "ALTER TABLE `{$prefix}streams` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
+            "ALTER TABLE `{$prefix}polls` ADD `comment_enabled` TINYINT(1) DEFAULT 1;",
          ];
 
         return $updateQueries;

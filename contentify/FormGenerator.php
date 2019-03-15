@@ -6,11 +6,17 @@ use DB;
 use Lang;
 use View;
 
+/**
+ * This class automatically generates a form template (Blade syntax)
+ * based upon an existing table of the database. This is useful when you
+ * want to create CRUD for an entity. The result will not be perfect but
+ * it can save you a lot of work.
+ */
 class FormGenerator
 {
 
     /**
-     * True if form has to handle file uploads
+     * True if the form has to handle file uploads
      *
      * @var boolean
      */
@@ -167,6 +173,7 @@ class FormGenerator
                     $html = "<!-- Unknown type: {$type} -->";
                     break;
             }
+            
             $html .= "\n";
         }
 
