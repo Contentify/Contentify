@@ -17,7 +17,7 @@
 
     {!! Form::smartCheckbox('internal', trans('app.internal')) !!}
 
-    {!! Form::smartCheckbox('enable_comments', trans('app.enable_comments'), true) !!}
+    {!! Form::smartCheckbox('enable_comments', trans('app.enable_comments'), false) !!}
 
     {!! Form::actions() !!}
 {!! Form::close() !!}
