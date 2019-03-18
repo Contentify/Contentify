@@ -7,10 +7,8 @@ use DateTime;
 use InvalidArgumentException;
 
 /**
- * Use this trait to "extend" Eloquent models
- * so they use Contentify\Carbon. Take a look at the
- * Eloquent model class if you are interested in
- * the original methods.
+ * Use this trait to "extend" Eloquent models so they use Contentify\Carbon. 
+ * Take a look at the Eloquent model class if you are interested in the original methods.
  */
 trait DateAccessorTrait
 {
