@@ -5,6 +5,9 @@ namespace Contentify;
 use BaseModel;
 use HTML;
 
+/**
+ * The hover class is a helper class used in the backend to display tool tips in tables.
+ */
 class Hover
 {
 
