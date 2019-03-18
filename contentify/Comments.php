@@ -9,6 +9,10 @@ use Request;
 use Response;
 use View;
 
+/**
+ * Comments manager class, the place for methods that deal with comments, 
+ * especially the CRUD methods.
+ */
 class Comments
 {
 
