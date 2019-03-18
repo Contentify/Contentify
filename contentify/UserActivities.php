@@ -7,13 +7,17 @@ use DB;
 use Illuminate\Database\Eloquent\Collection;
 use InvalidArgumentException;
 
+/**
+ * This class is the user activities manager. This is a logger for user activities, especially for administrators.
+ * The class offers methods to create new log entries, retrive log entries and delete log entries.
+ */
 class UserActivities
 {
 
     /*
      * NOTE: User activities are not the same as permissions!
      * It's possible to create activity constants that are not equal to a permission constant.
-     * Nevertheless it makes sense to use the permission constants here.
+     * Nevertheless it makes sense to mirror the permission constants here.
      */
     const ACTIVITY_CREATE = PERM_CREATE;
 
