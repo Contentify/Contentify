@@ -6,6 +6,10 @@ use Cache;
 use File;
 use Illuminate\Translation\Translator as OriginalTranslator;
 
+/**
+ * This class extends Laravel's original translator. It allows to use a short syntax
+ * to reference keys that are stored in modules by using "::" instead of ".".
+ */
 class Translator extends OriginalTranslator
 {
 
