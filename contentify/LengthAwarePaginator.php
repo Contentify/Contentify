@@ -5,6 +5,11 @@ namespace Contentify;
 use Illuminate\Pagination\LengthAwarePaginator as OriginalPaginator;
 use Request;
 
+/**
+ * This class provides a work-around for a change in the way paginators work.
+ * This change has been made by Laravel, so we have to overwrite Laravel's
+ * original paginator with our own.
+ */
 class LengthAwarePaginator extends OriginalPaginator
 {
 
