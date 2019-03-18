@@ -14,6 +14,10 @@ use View;
  */
 class FormGenerator
 {
+    /**
+     * Name of the event that is fired when the fields have been built
+     */
+    const EVENT_NAME_FIELDS_BUILT = 'contentify.formGenerator.fieldsBuilt';
 
     /**
      * True if the form has to handle file uploads
@@ -56,6 +60,8 @@ class FormGenerator
                 $fields[] = $field;
             }
         }
+        
+        event(self::EVENT_NAME_FIELDS_BUILT, [$fields]);
 
         if ($this->fileHandling) {
             $fileHandling = ", 'files' => true";
