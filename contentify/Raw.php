@@ -2,6 +2,12 @@
 
 namespace Contentify;
 
+/**
+ * Simple helper class that allows to declare text content as raw content,
+ * which means it should not be escaped with htmlentities() to allow use of HTML code.
+ *
+ * ATTENTION: Use with care, as this might allow XSS attacks!
+ */
 class Raw
 {
 
