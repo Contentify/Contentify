@@ -13,6 +13,10 @@ use View;
  */
 class BackendNavGenerator
 {
+    /**
+     * Name of the event when the items for the navigation are collected
+     */
+    const EVENT_NAME_GET_ITEMS = 'contentify.backendNavGenerator.getItems';
 
     /**
      * How many navigation categories are there?
@@ -98,6 +102,9 @@ class BackendNavGenerator
                 }
             }
         }
+        
+        event(self::EVENT_NAME_GET_ITEMS, [$navItems]);
+        
         return $navItems;
     }
 
