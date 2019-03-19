@@ -1,9 +1,9 @@
 {!! Form::errors($errors) !!}
 
 @if (isset($model))
-    {!! Form::model($model, ['route' => ['admin.news.update', $model->id], 'method' => 'PUT']) !!}
+    {!! Form::model($model, ['route' => ['admin.news.update', $model->id], 'files' => true, 'method' => 'PUT']) !!}
 @else
-    {!! Form::open(['url' => 'admin/news']) !!}
+    {!! Form::open(['url' => 'admin/news', 'files' => true]) !!}
 @endif
     {!! Form::smartText('title', trans('app.title')) !!}
 
@@ -14,6 +14,8 @@
     {!! Form::smartTextarea('summary', trans('news::summary'), true) !!}
 
     {!! Form::smartTextarea('text', trans('app.text'), true) !!}
+
+    {!! Form::smartImageFile() !!}
 
     {!! Form::smartDateTime('published_at', trans('news::publish_at')) !!}
 

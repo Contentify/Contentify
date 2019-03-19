@@ -22,6 +22,7 @@ use URL;
  * @property string                    $slug
  * @property string                    $summary
  * @property string                    $text
+ * @property string                    $image
  * @property bool                      $published
  * @property bool                      $internal
  * @property bool                      $enable_comments
@@ -52,6 +53,8 @@ class News extends BaseModel
         'news_cat_id',
         'creator_id'
     ];
+
+    public static $fileHandling = ['image' => ['type' => 'image']];
 
     protected $rules = [
         'title'             => 'required|min:3',
@@ -131,9 +134,14 @@ class News extends BaseModel
 
         $og->title($this->title)
             ->type('article')
-            ->image($this->newsCat->uploadPath().$this->newsCat->image)
             ->description($this->summary)
             ->url();
+        
+        if ($this->image) {
+            $og->image($this->uploadPath().$this->image);
+        } elseif ($this->newsCat->image) {
+            $og->image($this->newsCat->uploadPath().$this->newsCat->image);
+        }
 
         return $og;
     }

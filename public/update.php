@@ -82,6 +82,7 @@ EOD;
         // ATTENTION: Afterwards add {$prefix} before all table names!!
         $updateQueries = [
             "ALTER TABLE `{$prefix}servers` CHANGE `hoster` `host` VARCHAR(255);",
+            "ALTER TABLE `{$prefix}news` ADD `image` VARCHAR(255) DEFAULT NULL;",
          ];
 
         return $updateQueries;

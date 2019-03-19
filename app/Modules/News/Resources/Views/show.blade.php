@@ -5,7 +5,11 @@
     </header>
     
     <div class="content">
-        @if ($news->newsCat->image)
+        @if ($news->image)
+            <div class="image">
+                <img src="{!! $news->uploadPath().$news->image !!}" alt="{{ $news->title }}">
+            </div>
+        @elseif ($news->newsCat->image)
             <div class="image">
                 <img src="{!! $news->newsCat->uploadPath().$news->newsCat->image !!}" alt="{{ $news->newsCat->title }}">
             </div>
