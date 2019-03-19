@@ -9,4 +9,8 @@
 
 **Changes**
 - The global `sort_switcher` helper function has been removed. You may use the `HTML::sortSwitcher()` method instead.
+- News entries are now allowed to have an individual image. If no image has been set, the image of the news category will be displayed instead.
+- Laravel has been updated from v5.4 to 5.5
+- Some events have been added
+- A lot of refactoring have been done
 - TBA...
