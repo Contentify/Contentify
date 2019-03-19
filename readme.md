@@ -30,7 +30,7 @@ To update from v2.6 to 3.0:
 `storage/framework/cache` and `storage/framework/views`
 * Delete these folders in the current Contentify installation: `vendor`, `app`, `contentify`, `resources`
 * Download the files for the update and copy & paste them into the Contentify folder. Replace existing files.
-* Please ensure that the `public/uploads/news`folder exists. If it does not, please create it.
+* Please ensure that the `public/uploads/news` folder exists. If it does not, please create it.
 * If you made changes to the config files in the `config` folder, you have to re-apply them
 * Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
 
