@@ -73,42 +73,12 @@ class InstallController extends Controller
                 $email                  = Input::get('email');
                 $password               = Input::get('password');
                 $password_confirmation  = Input::get('password_confirmation');
-
-                /*
-                 * Validation
-                 */
-                $validator = Validator::make(
-                    [
-                        'username'              => $username,
-                        'email'                 => $email,
-                        'password'              => $password,
-                        'password_confirmation' => $password_confirmation,
-                    ],
-                    [
-                        'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password,daemon',
-                        'email'     => 'email|required|unique:users,email',
-                        'password'  => 'required|min:6|confirmed',
-                    ]
-                );
-
-                if ($validator->fails()) {
-                    return $this->index($step - 1, $validator->messages());
+                
+                $errors = $this->installer->createAdminuser();
+                
+                if (count($errors) > 0) {
+                    return $this->index($step - 1, $errors);
                 }
-
-                /*
-                 * Create the admin user (with ID = 2)
-                 */
-                $user = Sentinel::register([
-                    'email'     => $email,
-                    'password'  => $password,
-                    'username'  => $username,
-                ], true);
-
-                /*
-                 * Add user to role "Super-Admins"
-                 */
-                $adminRole = Sentinel::findRoleBySlug('super-admins'); 
-                $adminRole->users()->attach($user);
 
                 /*
                  * Delete the file that indicates if the app is installed or not
