@@ -19,6 +19,11 @@ class CsvWriter
 {
 
     /**
+     * Name of the event that is fired when the records were written
+     */
+    const EVENT_NAME_GET_CONTENT = 'contentify.csvWriter.getContent';
+    
+    /**
      * Array (that represents rows) of arrays (that represent the column values of a row)
      * @var mixed[][]
      */
@@ -243,6 +248,8 @@ class CsvWriter
         foreach ($this->records as $record) {
             $content .= $this->recordToString($record);
         }
+        
+        event(self::EVENT_NAME_GET_CONTENT, [$fields]);
 
         return $content;
     }
