@@ -1167,7 +1167,7 @@ information about your stored data, and possibly entitlement to correction, bloc
     }
     
     /**
-     * Create the daemon user (with ID = 1)
+     * Create the daemon user account (with ID = 1)
      */
     public function createDaemonUser()
     {        
@@ -1178,6 +1178,56 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'password'  => Str::random(),
                 'activated' => false,
             ]);
+    }
+    
+    /**
+     * Create the super admin user account
+     *
+     * @param string $username
+     * @param string $email
+     * @param string $password
+     * @param string $password_confirmation
+     * @return array
+     */
+    public function createAdminUser(string $username, string $email, string $password, string $password_confirmation)
+    {
+        /*
+         * Validation
+         */
+        $validator = Validator::make(
+            [
+                'username'              => $username,
+                'email'                 => $email,
+                'password'              => $password,
+                'password_confirmation' => $password_confirmation,
+            ],
+            [
+                'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password,daemon',
+                'email'     => 'email|required|unique:users,email',
+                'password'  => 'required|min:6|confirmed',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return $validator->messages();
+        }
+
+        /*
+         * Create the admin user (with ID = 2)
+         */
+        $user = Sentinel::register([
+            'email'     => $email,
+            'password'  => $password,
+            'username'  => $username,
+        ], true);
+
+        /*
+         * Add user to role "Super-Admins"
+         */
+        $adminRole = Sentinel::findRoleBySlug('super-admins'); 
+        $adminRole->users()->attach($user);
+        
+        return [];
     }
 
     /**
