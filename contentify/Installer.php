@@ -8,12 +8,12 @@ class Installer
     /**
      * Name of the event that is fired when the database tables have been created
      */
-    const EVENT_NAME_DATABASE_CREATED = 'contentify.formGenerator.databaseCreated';
+    const EVENT_NAME_DATABASE_CREATED = 'contentify.installer.databaseCreated';
     
     /**
      * Name of the event that is fired when the database tables have been seeded
      */
-    const EVENT_NAME_DATABASE_SEEDED = 'contentify.formGenerator.databaseSeeded';
+    const EVENT_NAME_DATABASE_SEEDED = 'contentify.installer.databaseSeeded';
     
     /**
      * URL of the Contentify.org API call after a successful installation.
