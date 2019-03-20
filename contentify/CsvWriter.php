@@ -19,7 +19,7 @@ class CsvWriter
 {
 
     /**
-     * Name of the event that is fired when the records were written
+     * Name of the event that is fired before the records are written
      */
     const EVENT_NAME_GET_CONTENT = 'contentify.csvWriter.getContent';
     
@@ -244,12 +244,12 @@ class CsvWriter
     public function getContent() : string
     {
         $content = '';
+        
+        event(self::EVENT_NAME_GET_CONTENT, [$this->records]);
 
         foreach ($this->records as $record) {
             $content .= $this->recordToString($record);
         }
-        
-        event(self::EVENT_NAME_GET_CONTENT, [$fields]);
 
         return $content;
     }
