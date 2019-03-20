@@ -1247,7 +1247,9 @@ information about your stored data, and possibly entitlement to correction, bloc
 
         // Use file_get_contents() to make the request,
         // so it will also work if CURL is not installed.
-        file_get_contents($url);
+        if (ini_get('allow_url_fopen')) {
+            file_get_contents($url);
+        }
     }
     
 }
