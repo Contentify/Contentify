@@ -144,17 +144,7 @@ class InstallController extends Controller
             case 4:
                 $this->installer->createDatabase();
                 $this->installer->createUserRoles();
-
-                /*
-                 * Create the daemon user (with ID = 1)
-                 */
-                $user = Sentinel::register([
-                    'email'     => 'daemon@contentify.org',
-                    'username'  => 'Daemon',
-                    'password'  => Str::random(),
-                    'activated' => false,
-                ]);
-
+                $this->installer->createDaemonUser();
                 $this->installer->createSeed();
 
                 $title      = 'Database setup complete';
@@ -173,35 +163,11 @@ class InstallController extends Controller
                     return $this->index($step - 1);
                 }
 
-                /*
-                 * Validation
-                 */
-                $validator = Validator::make(
-                    [
-                        'host'      => $host,
-                        'database'  => $database,
-                        'username'  => $username,
-                        'password'  => $password,
-                    ],
-                    [
-                        'host'      => 'required', // We can't use the IP filter since it does not support ports
-                        'database'  => 'alpha_dash|required',
-                        'username'  => 'alpha_dash|required',
-                    ]
-                );
+                $errors = $this->installer->createDatabaseIni();
 
-                if ($validator->fails()) {
-                    return $this->index($step - 1, $validator->messages());
+                if (count($errors) > 0) {
+                    return $this->index($step - 1, $errors);
                 }
-
-                File::put(storage_path(self::DB_INI_FILE), 
-                    '; Auto-generated file with database connection settings.'.PHP_EOL.
-                    '; See config/database.php for more settings.'.PHP_EOL.PHP_EOL.
-                    "host = "."\"$host\"".PHP_EOL.
-                    "database = "."\"$database\"".PHP_EOL.
-                    "username = "."\"$username\"".PHP_EOL.
-                    "password = "."\"$password\""
-                );
 
                 $title      = 'Storing Database Credentials';
                 $content    = '<p>Stored the database credentials.</p>
