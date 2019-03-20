@@ -2,6 +2,15 @@
 
 namespace Contentify;
 
+use Artisan;
+use Config;
+use DB;
+use File;
+use Schema;
+use Sentinel;
+use Str;
+use Validator;
+
 class Installer
 {
         
@@ -16,6 +25,11 @@ class Installer
     const EVENT_NAME_DATABASE_SEEDED = 'contentify.installer.databaseSeeded';
     
     /**
+     * (Relative) path to the database ini file
+     */
+    const DB_INI_FILE = 'app/database.ini';
+    
+    /**
      * URL of the Contentify.org API call after a successful installation.
      */
     const API_URL = 'http://www.contentify.org/api.php?action=send-statistics';
@@ -24,6 +38,50 @@ class Installer
      * The installer will try to increase the time limit to this value (in minutes) if possible
      */
     const MAX_TIME_LIMIT = 5 * 60;
+    
+    /**
+     * Creates the .ini file with the database credentials
+     *
+     * @param $host
+     * @param $database
+     * @param string $username
+     * @param string $password
+     * @return array
+     */
+    public function createDatabaseIni(string $host, string $database, string $username, string $password)
+    {
+        /*
+         * Validation
+         */
+        $validator = Validator::make(
+            [
+                'host'      => $host,
+                'database'  => $database,
+                'username'  => $username,
+                'password'  => $password,
+            ],
+            [
+                'host'      => 'required', // We can't use the IP filter since it does not support ports
+                'database'  => 'alpha_dash|required',
+                'username'  => 'alpha_dash|required',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return $validator->messages();
+        }
+
+        File::put(storage_path(self::DB_INI_FILE), 
+            '; Auto-generated file with database connection settings.'.PHP_EOL.
+            '; See config/database.php for more settings.'.PHP_EOL.PHP_EOL.
+            "host = "."\"$host\"".PHP_EOL.
+            "database = "."\"$database\"".PHP_EOL.
+            "username = "."\"$username\"".PHP_EOL.
+            "password = "."\"$password\""
+        );
+        
+        return [];
+    }
     
     /**
      * Creates the database tables
@@ -1105,6 +1163,21 @@ information about your stored data, and possibly entitlement to correction, bloc
                 $values
             ]);
         }
+                
+    }
+    
+    /**
+     * Create the daemon user (with ID = 1)
+     */
+    public function createDaemonUser()
+    {        
+
+            $user = Sentinel::register([
+                'email'     => 'daemon@contentify.org',
+                'username'  => 'Daemon',
+                'password'  => Str::random(),
+                'activated' => false,
+            ]);
     }
 
     /**
