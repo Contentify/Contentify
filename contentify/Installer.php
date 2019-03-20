@@ -4,6 +4,16 @@ namespace Contentify;
 
 class Installer
 {
+        
+    /**
+     * Name of the event that is fired when the database tables have been created
+     */
+    const EVENT_NAME_DATABASE_CREATED = 'contentify.formGenerator.databaseCreated';
+    
+    /**
+     * Name of the event that is fired when the database tables have been seeded
+     */
+    const EVENT_NAME_DATABASE_SEEDED = 'contentify.formGenerator.databaseSeeded';
     
     /**
      * URL of the Contentify.org API call after a successful installation.
@@ -504,6 +514,8 @@ class Installer
          * Run remaining (general) migrations trough Artisan.
          */
         Artisan::call('migrate', ['--quiet' => true, '--force' => true]);
+        
+        event(self::EVENT_NAME_DATABASE_CREATED);
     }
 
     /**
@@ -804,6 +816,8 @@ information about your stored data, and possibly entitlement to correction, bloc
             'created_at'    => DB::raw('NOW()'),
             'updated_at'    => DB::raw('NOW()'),
         ]);
+                
+        event(self::EVENT_NAME_DATABASE_SEEDED);
     }
     
 
