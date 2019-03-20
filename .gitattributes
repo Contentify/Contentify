@@ -3,3 +3,4 @@
 *.less linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
+dev/** export-ignore
