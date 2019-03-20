@@ -5,6 +5,7 @@ namespace Contentify\Controllers;
 use Artisan;
 use Closure;
 use Config;
+use Contentify\Installer;
 use Controller;
 use DB;
 use File;
@@ -40,6 +41,16 @@ class InstallController extends Controller
      * The installer will try to increase the time limit to this value (in minutes) if possible
      */
     const MAX_TIME_LIMIT = 5 * 60;
+    
+    /**
+     * @var Installer
+     */
+    protected $installer;
+    
+    public function __construct()
+    {
+        $this->installer = new Installer();
+    }
 
     /**
      * Index action method
