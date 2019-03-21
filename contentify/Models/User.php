@@ -271,6 +271,7 @@ class User extends SentinelUser implements UserInterface
     /**
      * Returns all friends of this user.
      * ATTENTION: This is not a relationship. Eloquent does not support this kind of relationship.
+     * @TODO: Check if this statement is still true!
      *
      * @return Collection
      */
