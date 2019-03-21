@@ -12,6 +12,6 @@
 - News entries are now allowed to have an individual image. If no image has been set, the image of the news category will be displayed instead.
 - Laravel has been updated from v5.4 to 5.5
 - Some events have been added
-- There is a new `isntall` console command to install Contentify without using the web interface (which is still possible though)
+- There is a new `install` console command to install Contentify without using the web interface (which is still possible though)
 - A lot of refactoring has been done
 - TBA...
