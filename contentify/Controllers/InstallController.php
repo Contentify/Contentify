@@ -80,14 +80,13 @@ class InstallController extends Controller
                     return $this->index($step - 1, $errors);
                 }
 
-                /*
-                 * Delete the file that indicates if the app is installed or not
-                 */
-                $filename = storage_path(self::INSTALL_FILE);
-
                 $title      = 'Installation complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
 
+                /*
+                 * Create the file that indicates if the app is installed or not
+                 */
+                $filename = storage_path(self::INSTALL_FILE);
                 if (File::isWritable(File::dirname($filename))) {
                   if (! File::exists($filename)) {
                     File::put($filename, time());
