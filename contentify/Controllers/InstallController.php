@@ -23,11 +23,6 @@ class InstallController extends Controller
 {
 
     /**
-     * (Relative) path to the file that indicates if the app is installed or not
-     */
-    const INSTALL_FILE = 'app/.installed';
-
-    /**
      * (Relative) path to the database ini file
      */
     const DB_INI_FILE = 'app/database.ini';
@@ -55,11 +50,7 @@ class InstallController extends Controller
             die('Please enable the debug mode to start the installer.');
         }
 
-        $filename = storage_path(self::INSTALL_FILE);
-        $filename = str_replace(base_path(), '', $filename); // Make the path relative
-        if (file_exists($filename)) {
-            die('Contentify has been installed already. Remove this file if you want to reinstall it: ...'.$filename);
-        }
+        $this->installer->ensureNotInstalled();
 
         if ($step < 0) {
             $step = (int) Input::get('step', 0);
@@ -83,16 +74,10 @@ class InstallController extends Controller
                 $title      = 'Installation complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
 
-                /*
-                 * Create the file that indicates if the app is installed or not
-                 */
-                $filename = storage_path(self::INSTALL_FILE);
-                if (File::isWritable(File::dirname($filename))) {
-                  if (! File::exists($filename)) {
-                    File::put($filename, time());
-                  }
-                } else {
-                  $content .= '<p><b>Error:</b> Cannot create '.$filename.'! Please create it manually.';
+                try {
+                    $this->installer->markAsInstalled();
+                } catch (\Exception $exception) {
+                    $content .= '<p>'.$exception->getMessage().'</p>';
                 }
 
                 $this->installer->sendStatistics();
