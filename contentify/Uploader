@@ -1,0 +1,13 @@
+<?php
+
+namespace Contentify;
+
+/**
+ * This class is the centralized place to handle file uploads
+ */
+class Uploader
+{
+
+    // TODO implement
+    
+}
