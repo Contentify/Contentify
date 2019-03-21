@@ -43,7 +43,7 @@ class UserActivities
         int $activityId,
         bool $frontend,
         int $userId, string
-        $modelClass = null,
+        string $modelClass = null,
         string $info = null,
         int $createdAt = null
     )
