@@ -7,15 +7,15 @@ use Cache;
 use SoftDeletingTrait;
 
 /**
- * @property int $id
- * @property string $text
- * @property string $foreign_type
+ * @property int     $id
+ * @property string  $text
+ * @property string  $foreign_type
  * @property \Carbon $created_at
  * @property \Carbon $deleted_at
- * @property int $foreign_id
- * @property int $creator_id
- * @property int $updater_id
- * @property \User $creator
+ * @property int     $foreign_id
+ * @property int     $creator_id
+ * @property int     $updater_id
+ * @property \User   $creator
  */
 class Comment extends BaseModel
 {
