@@ -16,6 +16,7 @@ use User;
  * @property string  $slug
  * @property bool    $open
  * @property bool    $internal
+ * @property bool    $enable_comments
  * @property int     $max_votes
  * @property string  $option1
  * @property string  $option2

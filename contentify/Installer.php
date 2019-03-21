@@ -3,9 +3,12 @@
 namespace Contentify;
 
 use Artisan;
+use Closure;
 use Config;
 use DB;
 use File;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\MessageBag;
 use Schema;
 use Sentinel;
 use Str;
@@ -55,7 +58,7 @@ class Installer
      * @param $database
      * @param string $username
      * @param string $password
-     * @return array
+     * @return MessageBag
      */
     public function createDatabaseIni(string $host, string $database, string $username, string $password)
     {
@@ -89,7 +92,7 @@ class Installer
             "password = "."\"$password\""
         );
         
-        return [];
+        return new MessageBag();
     }
     
     /**
@@ -209,7 +212,7 @@ class Installer
             $table->boolean('published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
-            $table->boolean('enable_comments')->default(false);
+            $table->boolean('enable_comments')->default(true);
         }, ['news_cat_id']);
 
         $this->create('galleries', function(Blueprint $table)
@@ -272,6 +275,7 @@ class Installer
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
             $table->string('provider');
+            $table->boolean('enable_comments')->default(true);
         });
 
         $this->create('download_cats', function(Blueprint $table) { }); // Supports slugs
@@ -356,6 +360,7 @@ class Installer
             $table->boolean('online')->default(false);
             $table->integer('viewers')->default(0);
             $table->timestamp('renewed_at')->nullable();
+            $table->boolean('enable_comments')->default(true);
         });
 
         $this->create('servers', function(Blueprint $table)
@@ -545,6 +550,7 @@ class Installer
         {
             $table->boolean('open')->default(true);
             $table->boolean('internal')->default(false);
+            $table->boolean('enable_comments')->default(true);
             $table->integer('max_votes');
             $table->string('option1')->nullable();
             $table->string('option2')->nullable();
@@ -1196,7 +1202,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param string $email
      * @param string $password
      * @param string $passwordConfirmation
-     * @return array
+     * @return MessageBag
      */
     public function createAdminUser(string $username, string $email, string $password, string $passwordConfirmation)
     {
@@ -1236,7 +1242,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         $adminRole = Sentinel::findRoleBySlug('super-admins'); 
         $adminRole->users()->attach($user);
         
-        return [];
+        return new MessageBag();
     }
     
     /**

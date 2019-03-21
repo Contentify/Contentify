@@ -133,7 +133,7 @@ return [
      * Comments
      */
     'comments'              => 'Comentarios',
-    'comments_disabled'     => 'Comentarios Deshabilitado', // Added for simplicity's sake (probably need proper translation)
+    'comments_disabled'     => 'La función de comentarios ha sido desactivada para este contenido.',
     'comment_create_fail'   => 'No se ha podido crear el comentario. :0',
     'comment_update_fail'   => 'No se ha podido actualizar el comentario. :0',
     'enable_comments'       => 'Habilitar comentarios',

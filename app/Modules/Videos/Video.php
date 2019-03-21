@@ -15,6 +15,7 @@ use SoftDeletingTrait;
  * @property string  $url
  * @property string  $permanent_id
  * @property string  $provider
+ * @property bool    $enable_comments
  * @property int     $access_counter
  * @property int     $creator_id
  * @property int     $updater_id

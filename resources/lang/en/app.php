@@ -133,7 +133,7 @@ return [
      * Comments
      */
     'comments'              => 'Comments',
-    'comments_disabled'     => 'Comments disabled', // Added for simplicity's sake
+    'comments_disabled'     => 'The comment function has been disabled for this content.',
     'comment_create_fail'   => 'Cannot create comment. :0',
     'comment_update_fail'   => 'Cannot update comment. :0',
     'enable_comments'       => 'Enable comments',
