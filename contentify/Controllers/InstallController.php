@@ -63,9 +63,9 @@ class InstallController extends Controller
                 $username               = Input::get('username');
                 $email                  = Input::get('email');
                 $password               = Input::get('password');
-                $password_confirmation  = Input::get('password_confirmation');
+                $passwordConfirmation  = Input::get('password_confirmation');
                 
-                $errors = $this->installer->createAdminuser();
+                $errors = $this->installer->createAdminuser($username, $email, $password, $passwordConfirmation);
                 
                 if (count($errors) > 0) {
                     return $this->index($step - 1, $errors);
