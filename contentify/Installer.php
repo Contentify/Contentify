@@ -25,6 +25,11 @@ class Installer
     const EVENT_NAME_DATABASE_SEEDED = 'contentify.installer.databaseSeeded';
     
     /**
+     * (Relative) path to the file that indicates if the app is installed or not
+     */
+    const INSTALL_FILE = 'app/.installed';
+    
+    /**
      * (Relative) path to the database ini file
      */
     const DB_INI_FILE = 'app/database.ini';
@@ -1228,6 +1233,38 @@ information about your stored data, and possibly entitlement to correction, bloc
         $adminRole->users()->attach($user);
         
         return [];
+    }
+    
+    /**
+     * Ensures that the CMS is not installed.
+     * Terminates execution if it is installed.
+     */
+    public function ensureNotInstalled()
+    {
+        $filename = storage_path(self::INSTALL_FILE);
+        $filename = str_replace(base_path(), '', $filename); // Make the path relative
+        
+        if (file_exists($filename)) {
+            die('Contentify has been installed already. Remove this file if you want to reinstall it: ...'.$filename);
+        }
+    }
+    
+    /**
+     * Create the file that indicates that the CMS is installed.
+     *
+     * @throws \Exception Throws an exception if the file cannot be created
+     */
+    public function markAsInstalled()
+    {
+        $filename = storage_path(self::INSTALL_FILE);
+        
+        if (File::isWritable(File::dirname($filename))) {
+          if (! File::exists($filename)) {
+            File::put($filename, time());
+          }
+        } else {
+          throw new \Exception('Error: Cannot create '.$filename.'! Please create it manually.');
+        }
     }
 
     /**
