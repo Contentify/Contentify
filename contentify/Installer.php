@@ -1195,10 +1195,10 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param string $username
      * @param string $email
      * @param string $password
-     * @param string $password_confirmation
+     * @param string $passwordConfirmation
      * @return array
      */
-    public function createAdminUser(string $username, string $email, string $password, string $password_confirmation)
+    public function createAdminUser(string $username, string $email, string $password, string $passwordConfirmation)
     {
         /*
          * Validation
@@ -1208,7 +1208,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'username'              => $username,
                 'email'                 => $email,
                 'password'              => $password,
-                'password_confirmation' => $password_confirmation,
+                'password_confirmation' => $passwordConfirmation,
             ],
             [
                 'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password,daemon',
