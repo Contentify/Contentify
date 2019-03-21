@@ -11,6 +11,10 @@ use Sentinel;
 use Str;
 use Validator;
 
+/**
+ * Class that performs the initial installation of the CMS.
+ * @See Contentify/Controllers/InstallController
+ */
 class Installer
 {
         
