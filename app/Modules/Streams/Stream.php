@@ -31,14 +31,15 @@ class Stream extends BaseModel
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'url', 'permanent_id', 'provider', 'thumbnail'];
+    protected $fillable = ['title', 'url', 'permanent_id', 'provider', 'thumbnail', 'enable_comments'];
 
     protected $slugable = true;
 
     protected $rules = [
-        'title'         => 'required|min:3',
-        'url'           => 'required|url',
-        'provider'      => 'required',
+        'title'             => 'required|min:3',
+        'url'               => 'required|url',
+        'provider'          => 'required',
+        'enable_comments'   => 'boolean',
     ];
 
     public static $relationsData = [
