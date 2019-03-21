@@ -3,15 +3,15 @@
 namespace Contentify\Models;
 
 /**
- * @property int $id
+ * @property int     $id
  * @property \Carbon $created_at
  * @property \Carbon $updated_at
- * @property int $activity_id
- * @property bool $frontend
- * @property int $user_id
- * @property string $model_class
- * @property string $info
- * @property \User $user
+ * @property int     $activity_id
+ * @property bool    $frontend
+ * @property int     $user_id
+ * @property string  $model_class
+ * @property string  $info
+ * @property \User   $user
  */
 class UserActivity extends BaseModel
 {
