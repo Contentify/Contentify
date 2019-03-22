@@ -18,6 +18,11 @@ class Uploader
     const ALLOWED_IMG_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
     
     /**
+     * Array with "evil" file extensions - files with this extensions are not allowed to be uploaded
+     */
+    const FORBIDDEN_FILE_EXTENSIONS = ['php'];
+    
+    /**
      * Upload files (and images) for a given model.
      * The model must support this.
      * Returns an array with errors.
@@ -59,7 +64,7 @@ class Uploader
                         }
                     }
 
-                    if (in_array(strtolower($extension), $controller->getEvilFileExtensions())) {
+                    if (in_array(strtolower($extension), self::FORBIDDEN_FILE_EXTENSIONS)) {
                         $error = trans('app.bad_extension', [$extension]);
                     }
 
