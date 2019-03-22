@@ -182,7 +182,6 @@ class Uploader
      */
     public function generateFilename(string $filePath, string $fileExtension = '') : string
     {
-        // See: stackoverflow.com/questions/4371941/best-method-to-generate-unique-filenames-when-uploading-files-php
         do {
             $date = DateTime::createFromFormat('U.u', microtime(true));
             $filename = md5($date->format('Y-m-d H:i:s.u'))); 
