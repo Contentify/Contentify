@@ -2,6 +2,7 @@
 
 namespace Contentify;
 
+use DateTime;
 use Exception;
 use File;
 use Input;
@@ -81,7 +82,7 @@ class Uploader
                     }
                     
                     $filePath           = $model->uploadPath(true);
-                    $filename           = $model->id.'_'.$fieldName.'.'.$extension;
+                    $filename           = $this->generateFilename($filePath, $extension);
                     $uploadedFile       = $file->move($filePath, $filename);
                     $model->$fieldName  = $filename;
                     $model->forceSave(); // Save model again, without validation
@@ -168,5 +169,25 @@ class Uploader
                 }
             }
         }
+    }
+    
+    /**
+     * Generates a filename for the new uploaded file.
+     * The filename will be randomized (via hashing) and unique.
+     * To verify its uniqueness the path and extension have to be passed.
+     *
+     * @param string $filePath      Directory where the file will be moved to
+     * @param string $fileExtension Desired extension of the file
+     * @return string
+     */
+    public function generateFilename(string $filePath, string $fileExtension = '') : string
+    {
+        // See: stackoverflow.com/questions/4371941/best-method-to-generate-unique-filenames-when-uploading-files-php
+        do {
+            $date = DateTime::createFromFormat('U.u', microtime(true));
+            $filename = md5($date->format('Y-m-d H:i:s.u'))); 
+        } while (file_exists($filename))
+            
+        return $filename;
     }
 }
