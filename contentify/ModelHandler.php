@@ -420,7 +420,7 @@ class ModelHandler
         $errors = $this->uploader->uploadModelFiles($model);
         if (count($errors) > 0) {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.create')
-               ->withInput()->withErrors([$error]);
+               ->withInput()->withErrors($errors);
         }
 
         $controller->alertFlash(trans('app.created', [trans_object(basename($controller->getModelName()))]));
@@ -499,95 +499,15 @@ class ModelHandler
         }
 
         UserActivities::addUpdate(false, user()->id, $controller->getModelClass());
-
-        /*
-         * File (and image) handling
-         */
-        if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
-            foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
-                if (! is_array($fieldInfo)) {
-                    $fieldName = $fieldInfo;
-                    $fieldInfo = ['type' => 'file'];
-                }
-
-                if (Input::hasFile($fieldName)) {
-                    $file       = Input::file($fieldName);
-                    $extension  = $file->getClientOriginalExtension();
-                    $error      = false;
-
-                    if (strtolower($fieldInfo['type']) == 'image') {
-                        try {
-                            $imgData = getimagesize($file->getRealPath());
-                        } catch (Exception $e) {
-                            // Do nothing
-                        }
-
-                        if (! in_array(strtolower($extension), self::ALLOWED_IMG_EXTENSIONS)) {
-                            $error = trans('app.invalid_image');
-                        }
-
-                        // Check if image has a size. If not, it's not an image. Does not work for SVGs.
-                        if (strtolower($extension) !== 'svg' and (! isset($imgData[2]) or ! $imgData[2])) {
-                            $error = trans('app.invalid_image');
-                        }
-                    }
-
-                    if (in_array(strtolower($extension), $controller->getEvilFileExtensions())) {
-                        $error = trans('app.bad_extension', [$extension]);
-                    }
-
-                    if ($error !== false) {
-                        return Redirect::route(
-                            'admin.'.kebab_case($controller->getControllerName()).'.edit',
-                            ['id' => $model->id]
-                        )->withInput()->withErrors([$error]);
-                    }
-
-                    $oldFile = $model->uploadPath(true).$model->$fieldName;
-                    if (File::isFile($oldFile)) {
-                        File::delete($oldFile); // Delete the old file so we never have "123.jpg" AND "123.png"
-                    }
-
-                    $filePath           = $model->uploadPath(true);
-                    $filename           = $model->id.'_'.$fieldName.'.'.$extension;
-                    $uploadedFile       = $file->move($filePath, $filename);
-                    $model->$fieldName  = $filename;
-                    $model->forceSave(); // Save model again, without validation
-
-                    /*
-                     * Create thumbnails for images
-                     */
-                    if (isset($fieldInfo['thumbnails'])) {
-                        $thumbnails = $fieldInfo['thumbnails'];
-
-                        // Ensure $thumbnails is an array:
-                        if (! is_array($thumbnails)) {
-                            $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
-                        }
-
-                        foreach ($thumbnails as $thumbnail) {
-                            InterImage::make($filePath.'/'.$filename)
-                                ->resize($thumbnail, $thumbnail, function ($constraint) {
-                                    /** @var \Intervention\Image\Constraint $constraint */
-                                    $constraint->aspectRatio();
-                                })->save($filePath.$thumbnail.'/'.$filename); 
-                        }
-                    }
-                } else {
-                    // We use the filename '.' to signalize we want to delete the file.
-                    if (Input::get($fieldName) == '.') {
-                        $oldFile = $model->uploadPath(true).$model->$fieldName;
-                        if (File::isFile($oldFile)) {
-                            File::delete($oldFile);
-                        }
-
-                        $model->$fieldName  = '';
-                        $model->forceSave(); // Save model again, without validation
-                    }
-                }
-            }
+        
+        $errors = $this->uploader->uploadModelFiles($model);
+        if (count($errors) > 0) {
+            return Redirect::route(
+                'admin.'.kebab_case($controller->getControllerName()).'.edit',
+                ['id' => $model->id]
+            )->withInput()->withErrors($errors);
         }
-
+        
         $controller->alertFlash(trans('app.updated', [trans_object(basename($controller->getModelName()))]));
         if (Input::get('_form_apply') !== null) {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$id]);
