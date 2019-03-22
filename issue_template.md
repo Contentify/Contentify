@@ -5,5 +5,5 @@ Tips to create a new issue
 - Please mention any special environment characteristics. For example: 
     - using Windows instead of Linux,
     - using Nginx instead of Apache,
-    - using MariaDB instead of MySQL+
+    - using MariaDB instead of MySQL
 - Please mention the type of hosting (shared hosting, virtual server, etc.)
