@@ -2,6 +2,11 @@
 
 namespace Contentify;
 
+use Exception;
+use File;
+use Input;
+use InterImage;
+
 /**
  * This class is the centralized place to handle file uploads
  */
