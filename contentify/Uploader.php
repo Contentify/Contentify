@@ -13,9 +13,15 @@ class Uploader
     const ALLOWED_IMG_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
     
     /**
-     * File (and image) handling
+     * Upload files (and images) for a given model.
+     * The model must support this.
+     * Returns an array with errors.
+     *
+     * @param object $model The instance of the model the client wants to upload files for
+     * @param bool $modelIsNew True if an existing model is being edited
+     * @return array
      */
-    public function uploadModelFiles($model)
+    public function uploadModelFiles($model, $modelIsNew = true) : array
     {
         $modelClass = getclass($model);
     
@@ -57,6 +63,13 @@ class Uploader
                         return [$error];
                     }
                     
+                    if (! $modelIsNew) {
+                        $oldFile = $model->uploadPath(true).$model->$fieldName;
+                        if (File::isFile($oldFile)) {
+                            File::delete($oldFile); // Delete the old file so we never have "123.jpg" AND "123.png"
+                        }
+                    }
+                    
                     $filePath           = $model->uploadPath(true);
                     $filename           = $model->id.'_'.$fieldName.'.'.$extension;
                     $uploadedFile       = $file->move($filePath, $filename);
@@ -83,8 +96,23 @@ class Uploader
                         }
                     }
                 } else {
-                    // Ignore missing files
+                    if ($modelIsNew) {
+                        // Ignore missing files
+                    } else {
+                         // We use the filename '.' to signalize we want to delete the file.
+                        // (A file cannot be named "." in Linux.)
+                        if (Input::get($fieldName) == '.') {
+                            $oldFile = $model->uploadPath(true).$model->$fieldName;
+                            if (File::isFile($oldFile)) {
+                                File::delete($oldFile);
+                            }
+                            $model->$fieldName  = '';
+                            $model->forceSave(); // Save model again, without validation
+                        }
+                    }
                 }
+                
+                return [];
             }
         }
     }
