@@ -1,0 +1,16 @@
+dist: xenial
+language: php
+php:
+  - '7.1'
+  - '7.2'
+  - '7.3'
+  
+install:
+  - php composer.phar update --no-suggest
+  - php composer.phar install --no-suggest
+  
+before_script:
+  - if find . -name "*.php" ! -path "./vendor/*" -print0 | xargs -0 -n 1 -P 8 php -l | grep -v "No syntax errors detected"; then exit 1; fi
+
+script:
+  - ./vendor/squizlabs/php_codesniffer/bin/phpcs --ignore=/vendor/* --standard=PSR2 --exclude=PSR2.Files.EndFileNewline,Squiz.Functions.MultiLineFunctionDeclaration,Squiz.WhiteSpace.SuperfluousWhitespace -n --encoding=utf-8 --extensions=php ./*
