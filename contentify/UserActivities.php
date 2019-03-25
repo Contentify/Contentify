@@ -42,7 +42,7 @@ class UserActivities
     public function add(
         int $activityId,
         bool $frontend,
-        int $userId, string
+        int $userId,
         string $modelClass = null,
         string $info = null,
         int $createdAt = null
