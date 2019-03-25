@@ -19,7 +19,7 @@ class ContentFilter
      * @param string $name The name of the content filter
      * @return boolean
      */
-    public function has(string $name) : true
+    public function has(string $name) : boolean
     {
         if (! Input::has('filter')) {
             return false;
