@@ -117,7 +117,7 @@ class InstallController extends Controller
                     return $this->index($step - 1);
                 }
 
-                $errors = $this->installer->createDatabaseIni();
+                $errors = $this->installer->createDatabaseIni($host, $database, $username, $password);
 
                 if (count($errors) > 0) {
                     return $this->index($step - 1, $errors);
