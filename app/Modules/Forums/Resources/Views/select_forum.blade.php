@@ -6,11 +6,11 @@
         
         @foreach ($forums as $forum)
             <?php 
-            if (isset($model) and $forum->id == $model->forum_id) {
-                $selected = 'selected="selected"';
-            } else {
-                $selected = '';
-            }
+                if (isset($model) and $forum->id == $model->forum_id) {
+                    $selected = 'selected="selected"';
+                } else {
+                    $selected = '';
+                }
             ?>
 
             <option value="{{ $forum->id }}" {!! $selected !!}>{{ $forum->title }}</option>
