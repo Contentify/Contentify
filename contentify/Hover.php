@@ -142,6 +142,7 @@ class Hover
                     if ($model->updated_at and $model->updated_at != $model->created_at) {
                         $this->line(trans('app.updated_at').': '.$model->updated_at->dateTime());
                     }
+                    break;
                 default:
                     // Do nothing
             }
