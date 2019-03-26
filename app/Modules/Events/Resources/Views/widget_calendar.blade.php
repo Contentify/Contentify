@@ -5,18 +5,18 @@
             $prevYear = $year;
             $prevMonth = $month - 1;
 
-        if ($prevMonth == 0) {
-            $prevYear = $year - 1;
-            $prevMonth = 12;
-        }
+            if ($prevMonth == 0) {
+                $prevYear = $year - 1;
+                $prevMonth = 12;
+            }
 
             $nextYear = $year;
             $nextMonth = $month + 1;
 
-        if ($nextMonth == 13) {
-            $nextYear = $year + 1;
-            $nextMonth = 1;
-        }
+            if ($nextMonth == 13) {
+                $nextYear = $year + 1;
+                $nextMonth = 1;
+            }
         ?>
         <a class="prev" href="{{ url('calendar/'.$prevYear.'/'.$prevMonth) }}">&lt;</a>
         <a class="next" href="{{ url('calendar/'.$nextYear.'/'.$nextMonth) }}">&gt;</a>
@@ -43,9 +43,9 @@
                         $today      = '';
                         $content    = '';
 
-                    if ($day->isToday()) {
-                        $today = 'today';
-                    }
+                        if ($day->isToday()) {
+                            $today = 'today';
+                        }
                     ?>
                     @while (sizeof($events) > 0 and $day->isSameDay($events->last()->starts_at))
                         <?php 
