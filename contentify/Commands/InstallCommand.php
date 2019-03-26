@@ -46,8 +46,9 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $email = $this->argument('email') ?? time().'@contentify.org';
+        $useremail = $this->argument('useremail') ?? time().'@contentify.org';
         $username = $this->argument('username') ?? 'superadmin';
+        $userpassword = $this->argument('userpassword') ?? Str::random(10); // TODO Use better way to generate password
 
         // Check preconditions
         require public_path('install.php');
@@ -69,9 +70,11 @@ class InstallCommand extends Command
         
         // Create super admin account
         $this->info('Creating super admin user...');
-        $password = Str::random(10); // TODO Use better way to generate password
-        $this->installer->createAdminuser($username, $email, $password, $password);
-        $this->info("Username: $username, email: $email, password: $password");
+        $this->installer->createAdminuser($username, $email, $userpassword, $userpassword);
+        $userpassword = $this->argument('userpassword') ? str_repeat('*', mb_strlen($userpassword)) : $userpassword;
+        $this->info("Username: $username");
+        $this->info("Email: $email");
+        $this->info("Password: $userpassword");
         
         // Say goodbye
         $this->info('Installation complete!');
@@ -87,7 +90,9 @@ class InstallCommand extends Command
     protected function getArguments()
     {
         return [
-            ['email', InputArgument::OPTIONAL, 'The email of the super admin account.']
+            ['useremail', InputArgument::OPTIONAL, 'The email of the super admin account.'],
+            ['username', InputArgument::OPTIONAL, 'The username of the super admin account.'],
+            ['userpassword', InputArgument::OPTIONAL, 'The password of the super admin account.'],
         ];
     }
 }
