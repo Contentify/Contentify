@@ -160,7 +160,7 @@ class AdminConfigController extends BackController
              implode(
                  "\n",
                  array_map(
-                        function($item) {
+                        function($item) { // phpcs:ignore -- phpcs will complain that it is not indented 24 spaces when it is 21, and complain that it is not 21 spaces when it is 24
                             return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
                         },
                      preg_split('/\n/', $matches[1]) // $matches[1] = style information
