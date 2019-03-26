@@ -33,6 +33,10 @@ use User;
  */
 class Match extends BaseModel
 {
+    /**
+     * Name of the event that is fired when a new match has been generated
+     */
+    const EVENT_NAME_MATCH_GENERATED = 'contentify.cups.matchGenerated';
 
     public $table = 'cups_matches';
 
@@ -266,6 +270,8 @@ class Match extends BaseModel
 
         $partnerMatch->next_match_id = $newMatch->id;
         $this->save();
+        
+        event(self::EVENT_NAME_MATCH_GENERATED, [$newMatch]);
 
         return $newMatch;
     }
