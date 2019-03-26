@@ -9,6 +9,7 @@ use Carbon;
 use DB;
 use Hover;
 use HTML;
+use MsgException;
 use ModelHandlerTrait;
 use Redirect;
 
@@ -100,7 +101,12 @@ class AdminCupsController extends BackController
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
-        $cup->seed();
+        try {
+            $cup->seed();
+        } catch (MsgException $exception) {
+            $this->alertFlash($exception->getMessage());
+            return Redirect::to('admin/cups');
+        }
 
         $this->alertFlash(trans('app.created', [trans('app.object_matches')]));
         return Redirect::to('admin/cups');
