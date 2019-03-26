@@ -103,12 +103,11 @@ class AdminCupsController extends BackController
 
         try {
             $cup->seed();
+            $this->alertFlash(trans('app.created', [trans('app.object_matches')]));
         } catch (MsgException $exception) {
             $this->alertFlash($exception->getMessage());
-            return Redirect::to('admin/cups');
         }
-
-        $this->alertFlash(trans('app.created', [trans('app.object_matches')]));
+        
         return Redirect::to('admin/cups');
     }
 }
