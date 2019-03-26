@@ -17,9 +17,9 @@ class ContentFilter
      * True if a given content filter is set in the current request
      * 
      * @param string $name The name of the content filter
-     * @return boolean
+     * @return bool
      */
-    public function has(string $name) : boolean
+    public function has(string $name) : bool
     {
         if (! Input::has('filter')) {
             return false;
