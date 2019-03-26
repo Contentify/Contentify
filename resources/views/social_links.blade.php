@@ -8,7 +8,7 @@
         'Instagram' => 'https://www.instagram.com/',
         'Discord' => 'https://www.discord.gg/',
     ]
-    ?>
+?>
 @foreach($socialLinks as $title => $url)
     <?php $name = strtolower($title) ?>
     @if (Config::get('app.'.$name))
