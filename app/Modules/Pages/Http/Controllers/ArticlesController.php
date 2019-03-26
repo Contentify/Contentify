@@ -85,5 +85,4 @@ class ArticlesController extends FrontController implements GlobalSearchInterfac
 
         return $results;
     }
-
 }

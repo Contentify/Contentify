@@ -14,5 +14,4 @@ class AdminConfigController extends ConfigController
 
         parent::__construct();
     }
-
 }

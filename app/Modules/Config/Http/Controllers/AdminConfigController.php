@@ -126,8 +126,7 @@ class AdminConfigController extends BackController
                 DB::table('config')->insert([
                     'name'       => $settingRealName,
                     'value'      => $settingsBag->$settingName,
-                    'updated_at' => DB::raw('NOW()')]
-                );
+                    'updated_at' => DB::raw('NOW()')]);
             }
 
             Config::clearCache($settingRealName);
@@ -158,14 +157,15 @@ class AdminConfigController extends BackController
         preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
         
         $this->pageOutput('<div class="phpinfodisplay"><style type="text/css">'."\n".
-             implode("\n",
+             implode(
+                 "\n",
                  array_map(
-                     function($item) {
-                         return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
-                     },
+                        function($item) { // phpcs:ignore -- phpcs will complain that it is not indented 24 spaces when it is 21, and complain that it is not 21 spaces when it is 24
+                            return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
+                        },
                      preg_split('/\n/', $matches[1]) // $matches[1] = style information
-                     )
-                 ).
+                 )
+             ).
              "{}\n
              .phpinfodisplay { overflow-x: scroll }\n
              .phpinfodisplay td,.phpinfodisplay  th { border: 1px solid silver; overflow-wrap: break-word; }\n
@@ -232,7 +232,8 @@ class AdminConfigController extends BackController
 
                 $this->alertSuccess(
                     trans('config::db_export'), 
-                    trans('config::db_file', [$filename]));
+                    trans('config::db_file', [$filename])
+                );
                 break;
             default:
                 $this->alertError(trans('config::not_supported', [Config::get('database.default')]));
@@ -373,5 +374,4 @@ class AdminConfigController extends BackController
 
         $this->alertSuccess(trans('app.deleted', [$filename]));
     }
-
 }

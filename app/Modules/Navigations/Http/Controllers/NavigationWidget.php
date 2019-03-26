@@ -29,5 +29,4 @@ class NavigationWidget extends Widget
 
         return View::make($template, compact('items', 'translate'))->render();
     }
-
 }

@@ -443,8 +443,7 @@ abstract class BaseModel extends Eloquent
         // If no name is provided, we will use the backtrace to get the function name
         // since that is most likely the name of the polymorphic interface. We can
         // use that to get both the class and foreign key that will be utilized.
-        if (is_null($name))
-        {
+        if (is_null($name)) {
             $backtrace = debug_backtrace(false);
             $caller = ($backtrace[1]['function'] == 'handleRelationalArray')? $backtrace[3] : $backtrace[1];
             $name = snake_case($caller['function']);
@@ -481,5 +480,4 @@ abstract class BaseModel extends Eloquent
 
         return $attr;
     }
-
 }

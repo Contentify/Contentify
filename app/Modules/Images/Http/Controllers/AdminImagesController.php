@@ -40,5 +40,4 @@ class AdminImagesController extends BackController
 
         $this->pageView('images::admin_index', compact('images', 'searchString'));
     }
-
 }

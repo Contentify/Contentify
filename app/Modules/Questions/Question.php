@@ -37,5 +37,4 @@ class Question extends BaseModel
         'questionCat' => [self::BELONGS_TO, 'App\Modules\Questions\QuestionCat'],
         'creator'     => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

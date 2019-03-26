@@ -37,5 +37,4 @@ class Raw
     {
         return (string) $this->value;
     }
-
 }

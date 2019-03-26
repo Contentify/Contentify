@@ -16,5 +16,4 @@ class CupsControlWidget extends Widget
 
         return View::make('cups::widget_cups_control', compact('cups'))->render();
     }
-
 }

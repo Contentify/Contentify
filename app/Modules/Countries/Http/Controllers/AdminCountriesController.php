@@ -34,7 +34,7 @@ class AdminCountriesController extends BackController
             {
                 if ($country->icon) {
                     $icon = HTML::image(asset($country->uploadPath().$country->icon), $country->title);
-                } else{
+                } else {
                     $icon = null;
                 }
 
@@ -46,5 +46,4 @@ class AdminCountriesController extends BackController
             }
         ]);
     }
-
 }

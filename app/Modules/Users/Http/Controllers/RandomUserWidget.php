@@ -8,7 +8,7 @@ use User;
 use View;
 use Widget;
 
-class RandomUserWidget extends Widget 
+class RandomUserWidget extends Widget
 {
 
     public function render(array $parameters = []) : string
@@ -35,5 +35,4 @@ class RandomUserWidget extends Widget
 
         return $view;
     }
-
 }

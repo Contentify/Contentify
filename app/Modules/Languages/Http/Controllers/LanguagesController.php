@@ -32,5 +32,4 @@ class LanguagesController extends FrontController
         $this->alertFlash(trans('app.updated', [trans('app.object_language')]));
         return Redirect::route('home');
     }
-
 }

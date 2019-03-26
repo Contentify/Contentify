@@ -38,5 +38,4 @@ class Country extends BaseModel
         'opponents' => [self::HAS_MANY, 'App\Modules\Opponents\Opponent', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-    
 }

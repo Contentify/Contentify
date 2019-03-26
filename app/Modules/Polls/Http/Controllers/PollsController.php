@@ -157,5 +157,4 @@ class PollsController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }

@@ -25,7 +25,7 @@ use SoftDeletingTrait;
  * @property int     $updater_id
  * @property \User   $creator
  */
-class Stream extends BaseModel 
+class Stream extends BaseModel
 {
 
     use SoftDeletingTrait;
@@ -68,5 +68,4 @@ class Stream extends BaseModel
     {
         return Comment::count('streams', $this->id);
     }
-
 }

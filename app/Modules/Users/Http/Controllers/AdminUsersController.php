@@ -15,7 +15,7 @@ use Sentinel;
 use Str;
 use User;
 
-class AdminUsersController extends BackController 
+class AdminUsersController extends BackController
 {
 
     use ModelHandlerTrait {

@@ -12,8 +12,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $router->group(['middleware' => 'web', 'namespace' => $this->namespace], function($router)
         {
-            require (config('modules.path').'/Navigations/Http/web.php');
+            require(config('modules.path').'/Navigations/Http/web.php');
         });
     }
-
 }

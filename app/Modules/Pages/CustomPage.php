@@ -22,5 +22,4 @@ class CustomPage extends Page
     {
         return $query->wherePublished(true)->where('published_at', '<=', DB::raw('CURRENT_TIMESTAMP'));
     }
-
 }

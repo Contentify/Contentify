@@ -82,5 +82,4 @@ class StandardPermissions extends OriginalStandardPermissions
 
         return false;
     }
-
 }

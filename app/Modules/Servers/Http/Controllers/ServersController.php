@@ -24,5 +24,4 @@ class ServersController extends FrontController
 
         $this->pageView('servers::index', compact('servers'));
     }
-
 }

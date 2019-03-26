@@ -77,5 +77,4 @@ class Shout extends BaseModel
         File::put($path.'shouts.json', $json);
         File::put($path.'shouts.beacon', $maxId);
     }
-
 }

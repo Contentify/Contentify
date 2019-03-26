@@ -205,7 +205,7 @@ return [
     'back'              => 'Zurück',
     'general'           => 'Allgemein',
     'services'          => 'Services',
-    'metainfo'			=> 'Metainfos',
+    'metainfo'          => 'Metainfos',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Weihnachtsmodus (Schnee)',
     'theme_snow_color'  => 'Flockenfarbe',

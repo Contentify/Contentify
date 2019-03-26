@@ -54,5 +54,4 @@ class ForumReportCase extends BaseModel
 
         return $forumReportCases;
     }
-
 }

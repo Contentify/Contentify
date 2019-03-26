@@ -28,5 +28,4 @@ class TranslationServiceProvider extends OriginalTranslationServiceProvider
             return $trans;
         });
     }
-
 }

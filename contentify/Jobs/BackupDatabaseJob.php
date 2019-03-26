@@ -36,5 +36,4 @@ class BackupDatabaseJob extends AbstractJob
         $dump->filename = $filename;
         $dump->start();
     }
-
 }

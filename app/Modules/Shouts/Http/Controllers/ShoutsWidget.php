@@ -20,5 +20,4 @@ class ShoutsWidget extends Widget
         
         return View::make('shouts::widget', compact('shouts'))->render();
     }
-
 }

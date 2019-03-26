@@ -88,5 +88,4 @@ class TwitchApi extends StreamApi
             $stream->forceSave();
         }
     }
-
 }

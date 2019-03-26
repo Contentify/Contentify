@@ -25,7 +25,7 @@ require __DIR__.'/vendor/laravel/framework/src/Illuminate/Support/helpers.php';
  * use/calls of classses and functions that do not work outside Contentify.
  * So if you use this class, better know what you are doing.
  */
-class AppBridge 
+class AppBridge
 {
 
     /**
@@ -189,5 +189,4 @@ class AppBridge
     {
         return (php_sapi_name() === 'cli');
     }
-
 }

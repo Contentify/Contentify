@@ -204,7 +204,7 @@ return [
     'nothing_here'      => 'Lo siento, aún no hay contenido aquí. Por favor, inténtelo de nuevo más tarde.',
     'back'              => 'Atrás',
     'general'           => 'General',
-    'metainfo'			=> 'Meta info',
+    'metainfo'          => 'Meta info',
     'services'          => 'Servicios',
     'theme'             => 'Tema',
     'theme_christmas'   => 'Modo navidad (Nieve)',

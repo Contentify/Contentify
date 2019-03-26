@@ -181,5 +181,4 @@ class Team extends BaseModel
         // Remove members from the team
         DB::table('cups_team_members')->whereTeamId($this->id)->whereIn('user_id', $memberIds)->delete();
     }
-
 }

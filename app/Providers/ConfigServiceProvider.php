@@ -31,5 +31,4 @@ class ConfigServiceProvider extends ServiceProvider
             ]);
         }
     }
-
 }

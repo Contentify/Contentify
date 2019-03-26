@@ -163,5 +163,4 @@ class Poll extends BaseModel
     {
         return Comment::count('polls', $this->id);
     }
-
 }

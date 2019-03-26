@@ -21,7 +21,7 @@ use SoftDeletingTrait;
  * @property int     $updater_id
  * @property \User  $creator
  */
-class Video extends BaseModel 
+class Video extends BaseModel
 {
 
     use SoftDeletingTrait;
@@ -78,5 +78,4 @@ class Video extends BaseModel
 
         return $og;
     }
-
 }

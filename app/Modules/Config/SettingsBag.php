@@ -23,9 +23,9 @@ class SettingsBag extends BaseModel
         'app::twitchKey',
         'app::discord',
         'app::analytics',
-		'app::author',
-		'app::keywords',
-		'app::description',
+        'app::author',
+        'app::keywords',
+        'app::description',
         'auth::registration',
         'app::https',
         'app::dbBackup',
@@ -46,5 +46,4 @@ class SettingsBag extends BaseModel
         'app::dbBackup'      => 'boolean',
         'app::gdpr'          => 'boolean',
     ];
-
 }

@@ -181,8 +181,8 @@ class Cup extends BaseModel
         }
 
         foreach ($matches as $match) {
-            $match->left_participant = $leftParticipants->where('id',  $match->left_participant_id)->pop();
-            $match->right_participant = $rightParticipants->where('id',  $match->right_participant_id)->pop();
+            $match->left_participant = $leftParticipants->where('id', $match->left_participant_id)->pop();
+            $match->right_participant = $rightParticipants->where('id', $match->right_participant_id)->pop();
         }
 
         $this->matchesStored = $matches;
@@ -384,5 +384,4 @@ class Cup extends BaseModel
 
         return (int) ceil(log($participants) / log(2) + 1);
     }
-
 }

@@ -48,5 +48,4 @@ class AdminCommentsController extends BackController
             'actions' => ['delete']
         ]);
     }
-
 }

@@ -7,7 +7,7 @@ use DB;
 use View;
 use Widget;
 
-class VideosWidget extends Widget 
+class VideosWidget extends Widget
 {
 
     public function render(array $parameters = []) : string
@@ -24,5 +24,4 @@ class VideosWidget extends Widget
 
         return '';
     }
-
 }

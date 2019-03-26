@@ -95,5 +95,4 @@ class StreamsController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }

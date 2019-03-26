@@ -7,7 +7,7 @@ use BackController;
 use Hover;
 use ModelHandlerTrait;
 
-class AdminTournamentsController extends BackController 
+class AdminTournamentsController extends BackController
 {
 
     use ModelHandlerTrait;
@@ -39,5 +39,4 @@ class AdminTournamentsController extends BackController
             }
         ]);
     }
-
 }

@@ -49,5 +49,4 @@ abstract class BackController extends BaseController
             $view->with('controllerIcon', $this->icon);
         });
     }
-    
 }

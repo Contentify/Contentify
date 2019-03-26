@@ -19,5 +19,4 @@ class BreadcrumbWidget extends Widget
             throw new InvalidArgumentException('Breadcrumb Widget: Missing array with breadcrumb links!');
         }
     }
-
 }

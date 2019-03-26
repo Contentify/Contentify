@@ -55,5 +55,4 @@ class Slide extends BaseModel
     {
         return $query->wherePublished(true);
     }
-    
 }

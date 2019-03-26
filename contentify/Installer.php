@@ -83,7 +83,8 @@ class Installer
             return $validator->messages();
         }
 
-        File::put(storage_path(self::DB_INI_FILE), 
+        File::put(
+            storage_path(self::DB_INI_FILE), 
             '; Auto-generated file with database connection settings.'.PHP_EOL.
             '; See config/database.php for more settings.'.PHP_EOL.PHP_EOL.
             "host = "."\"$host\"".PHP_EOL.
@@ -127,7 +128,8 @@ class Installer
         if (sizeof($result) > 0) { // Check if migrations table exists
             Artisan::call('migrate:reset', ['--quiet' => true, '--force' => true]); // Delete old tables
         }
-        Artisan::call('migrate', 
+        Artisan::call(
+            'migrate', 
             ['--path' => 'vendor/cartalyst/sentinel/src/migrations', '--quiet' => true, '--force' => true]
         );
 
@@ -188,7 +190,8 @@ class Installer
             $table->string('icon')->nullable();
         }, [], ['slug']);
 
-        $this->create('page_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('page_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('pages', function(Blueprint $table)
         {
@@ -235,7 +238,8 @@ class Installer
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);
 
-        $this->create('team_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('team_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('teams', function(Blueprint $table)
         { 
@@ -245,7 +249,8 @@ class Installer
             $table->boolean('published')->default(false);
         }, ['team_cat_id', 'country_id']);
 
-        $this->create('advert_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('advert_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('adverts', function(Blueprint $table)
         {
@@ -255,7 +260,8 @@ class Installer
             $table->string('image')->nullable();
         }, ['advert_cat_id'], ['slug']);
 
-        $this->create('partner_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('partner_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('partners', function(Blueprint $table)
         {
@@ -278,7 +284,8 @@ class Installer
             $table->boolean('enable_comments')->default(true);
         });
 
-        $this->create('download_cats', function(Blueprint $table) { }); // Supports slugs
+        $this->create('download_cats', function(Blueprint $table) { 
+        }); // Supports slugs
 
         $this->create('downloads', function(Blueprint $table)
         { 
@@ -290,7 +297,8 @@ class Installer
             $table->boolean('published')->default(false);
         }, ['download_cat_id']);
         
-        $this->create('slide_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('slide_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('slides', function(Blueprint $table)
         {
@@ -306,7 +314,7 @@ class Installer
             $table->string('short', 6)->nullable();
             $table->string('url')->nullable();
             $table->string('icon')->nullable();
-        },  [], ['slug']);
+        }, [], ['slug']);
         
         $this->create('awards', function(Blueprint $table)
         {
@@ -484,7 +492,7 @@ class Installer
             $table->boolean('featured')->default(false);
             $table->boolean('published')->default(false);
             $table->boolean('closed')->default(false);
-        },  ['game_id']);
+        }, ['game_id']);
 
         Schema::dropIfExists('cups_participants');
         Schema::create('cups_participants', function(Blueprint $table)
@@ -537,7 +545,8 @@ class Installer
             $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
 
-        $this->create('question_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('question_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('questions', function(Blueprint $table)
         {
@@ -633,7 +642,7 @@ class Installer
             'title'         => 'Impressum', 
             'slug'          => 'impressum',
             'text'          => 
-'<h2>Privacy Statement</h2><h3>General</h3>Your personal data (e.g. title, name, house address, e-mail address, phone 
+        '<h2>Privacy Statement</h2><h3>General</h3>Your personal data (e.g. title, name, house address, e-mail address, phone 
     number, bank details, credit card number) are processed by us only in accordance with the provisions of German data 
 privacy laws. The following provisions describe the type, scope and purpose of collecting, processing and utilizing 
 personal data. This data privacy policy applies only to our web pages. If links on our pages route you to other pages, 
@@ -1269,11 +1278,11 @@ information about your stored data, and possibly entitlement to correction, bloc
         $filename = storage_path(self::INSTALL_FILE);
         
         if (File::isWritable(File::dirname($filename))) {
-          if (! File::exists($filename)) {
-            File::put($filename, time());
-          }
+            if (! File::exists($filename)) {
+                File::put($filename, time());
+            }
         } else {
-          throw new \Exception('Error: Cannot create '.$filename.'! Please create it manually.');
+            throw new \Exception('Error: Cannot create '.$filename.'! Please create it manually.');
         }
     }
 
@@ -1298,5 +1307,4 @@ information about your stored data, and possibly entitlement to correction, bloc
             file_get_contents($url);
         }
     }
-    
 }

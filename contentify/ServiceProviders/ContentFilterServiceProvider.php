@@ -28,5 +28,4 @@ class ContentFilterServiceProvider extends ServiceProvider
             $loader->alias('ContentFilter', 'Contentify\Facades\ContentFilter');
         });
     }
-    
 }

@@ -266,7 +266,8 @@ class ModelHandler
                         switch ($action) {
                             case 'edit':
                                 if ($model->modifiable()) {
-                                    $actionsCode .= icon_link('edit', 
+                                    $actionsCode .= icon_link(
+                                        'edit', 
                                         trans('app.edit'), 
                                         route($surface.'.'.$controllerRouteName.'.edit', [$model->id]),
                                         false,
@@ -277,7 +278,8 @@ class ModelHandler
                             case 'delete':
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
                                 if ($model->modifiable()) {
-                                    $actionsCode .= icon_link('trash', 
+                                    $actionsCode .= icon_link(
+                                        'trash', 
                                         trans('app.delete'), 
                                         route($surface.'.'.$controllerRouteName.'.destroy', [$model->id])
                                             .$urlParams,
@@ -288,10 +290,11 @@ class ModelHandler
                                 break;
                             case 'restore':
                                 if ($model->isSoftDeleting() and $model->trashed()) {
-                                    $actionsCode .= icon_link('undo', 
+                                    $actionsCode .= icon_link(
+                                        'undo', 
                                         trans('app.restore'),
                                         route($surface.'.'.$controllerRouteName.'.restore', [$model->id]),
-                                    false,
+                                        false,
                                         ['data-color' => 'yellow']
                                     );
                                 }
@@ -703,7 +706,6 @@ class ModelHandler
          */
         if ((! method_exists($modelClass, 'trashed') or ! $model->trashed()) 
             and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
-            
             $filePath = $model->uploadPath(true);
 
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
@@ -890,5 +892,4 @@ class ModelHandler
 
         return $this->controller;
     }
-    
 }

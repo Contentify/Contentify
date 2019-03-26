@@ -49,5 +49,4 @@ class Gallery extends BaseModel
     {
         return $query->wherePublished(true);
     }
-
 }

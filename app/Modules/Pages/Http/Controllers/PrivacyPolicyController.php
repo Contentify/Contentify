@@ -24,5 +24,4 @@ class PrivacyPolicyController extends FrontController
         $this->title($customPage->title);
         $this->pageView('pages::show_custom_page', compact('customPage'));
     }
-
 }

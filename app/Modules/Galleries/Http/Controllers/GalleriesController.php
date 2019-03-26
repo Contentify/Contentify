@@ -60,5 +60,4 @@ class GalleriesController extends FrontController
 
         $this->pageView('galleries::show', compact('gallery', 'image'));
     }
-
 }

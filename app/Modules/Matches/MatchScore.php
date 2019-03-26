@@ -41,5 +41,4 @@ class MatchScore extends BaseModel
             $matchScore->match->updateScore();
         });
     }
-
 }

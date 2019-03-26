@@ -15,5 +15,4 @@ class Hover extends Facade
     protected static function getFacadeAccessor() {
         return 'hover';
     }
-
 }

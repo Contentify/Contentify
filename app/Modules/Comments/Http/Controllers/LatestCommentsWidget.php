@@ -15,5 +15,4 @@ class LatestCommentsWidget extends Widget
 
         return View::make('comments::widget_latest_comments', compact('comments'))->render();
     }
-
 }

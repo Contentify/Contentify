@@ -4,7 +4,8 @@
 // Note that this means that we have access to Laravel and Symfony components.
 require __DIR__.'/../AppBridge.php';
 
-class Updater {
+class Updater
+{
 
     /**
      * The number of the version this updater can update
@@ -199,14 +200,14 @@ EOD;
         $versionsText = implode(', ', self::SUPPORTED_VERSIONS) ;
         if (! ($currentVersion === false or (version_compare($currentVersion, $newVersion) < 0))) {
             $this->printText($this->createErrorText(
-                'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText)
-            );
+                'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText
+            ));
             return self::CODE_ABORTED;
         }
         if ($currentVersion !== false and ! in_array($currentVersion, self::SUPPORTED_VERSIONS)) {
             $this->printText($this->createErrorText(
-                'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText)
-            );
+                'Error: Cannot update from version '.$currentVersion.', only from one of these: '.$versionsText
+            ));
             return self::CODE_ABORTED;
         }
 
@@ -342,7 +343,8 @@ EOD;
 
             $questionHelper = new \Symfony\Component\Console\Helper\QuestionHelper();
             $question = new \Symfony\Component\Console\Question\ConfirmationQuestion(
-                'Please confirm: '.$title.' [y/n]', true
+                'Please confirm: '.$title.' [y/n]',
+                true
             );
 
             $confirmed = true;
@@ -397,7 +399,6 @@ EOD;
             echo '</body></html>';
         }
     }
-
 }
 
 /*

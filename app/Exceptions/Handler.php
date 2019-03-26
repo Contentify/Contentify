@@ -1,7 +1,10 @@
 <?php namespace App\Exceptions;
 
 use ErrorException;
-use Exception, Config, Response, View;
+use Exception;
+use Config;
+use Response;
+use View;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use MsgException;
 
@@ -52,8 +55,7 @@ class Handler extends ExceptionHandler
         // Laravel wraps any exceptions thrown in views in an error exception so we have to unwrap it
         // @see https://github.com/laravel/ideas/issues/956
         if ($exception instanceof ErrorException and
-            $exception->getPrevious() and $exception->getPrevious() instanceof MsgException)
-        {
+            $exception->getPrevious() and $exception->getPrevious() instanceof MsgException) {
             /* @var $innerException MsgException */
             $innerException = $exception->getPrevious();
             return $innerException->render($request);
@@ -69,5 +71,4 @@ class Handler extends ExceptionHandler
         
         return parent::render($request, $exception);
     }
-
 }

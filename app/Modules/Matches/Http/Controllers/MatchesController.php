@@ -74,5 +74,4 @@ class MatchesController extends FrontController
 
         $this->pageView('matches::show', compact('match'));
     }
-    
 }

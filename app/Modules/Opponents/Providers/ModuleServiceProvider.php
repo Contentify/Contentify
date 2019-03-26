@@ -18,5 +18,4 @@ class ModuleServiceProvider extends ServiceProvider
 
         View::addNamespace('opponents', realpath(__DIR__.'/../Resources/Views'));
     }
-
 }

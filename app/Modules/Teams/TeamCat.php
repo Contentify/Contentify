@@ -31,5 +31,4 @@ class TeamCat extends BaseModel
         'teams'     => [self::HAS_MANY, 'App\Modules\Teams\Team', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-       
 }

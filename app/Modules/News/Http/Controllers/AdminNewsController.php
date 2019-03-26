@@ -48,5 +48,4 @@ class AdminNewsController extends BackController
             }
         ]);
     }
-
 }

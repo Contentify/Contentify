@@ -62,5 +62,4 @@ trait SlugTrait
 
         $this->slug = $slug;
     }
-
 }

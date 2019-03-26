@@ -227,5 +227,4 @@ class Forum extends BaseModel
             return $query->whereInternal(0)->whereNull('team_id');
         }
     }
-
 }

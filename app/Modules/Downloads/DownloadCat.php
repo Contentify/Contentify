@@ -34,5 +34,4 @@ class DownloadCat extends BaseModel
         'downloads' => [self::HAS_MANY, 'App\Modules\Downloads\Download', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

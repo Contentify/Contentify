@@ -44,5 +44,4 @@ class UpdateStreamsJob extends AbstractJob
             }
         }
     }
-
 }

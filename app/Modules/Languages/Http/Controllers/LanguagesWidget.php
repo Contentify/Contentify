@@ -38,5 +38,4 @@ class LanguagesWidget extends Widget
 
         return View::make('languages::widget', compact('languageCodes', 'countries'))->render();
     }
-
 }
