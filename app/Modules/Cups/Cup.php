@@ -39,7 +39,11 @@ use User;
  */
 class Cup extends BaseModel
 {
-
+    /**
+     * Name of the event that is fired when the fields have been built
+     */
+    const EVENT_NAME_CUP_SEEDED = 'contentify.cups.cupSeeded';
+    
     /**
      * Array with all possible values of: How many players have to be in a team at least?
      * @var int[]
@@ -455,5 +459,7 @@ class Cup extends BaseModel
         }
 
         Match::insert($matches);
+        
+        event(self::EVENT_NAME_CUP_SEEDED, [$cup]);
     }
 }
