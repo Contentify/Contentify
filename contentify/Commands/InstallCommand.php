@@ -55,8 +55,8 @@ class InstallCommand extends Command
         
         // Say hello
         $this->info('Welcome to Contentify '.Config::get('app.version'). ' installer!');
-        $this->info('This command installs Contentify without asking for user input.');
-        $this->info('Therefore it does not change the database credentials.');
+        $this->comment('This command installs Contentify without asking for user input.');
+        $this->comment('Therefore it does not change the database credentials.');
         
         // Create database and seed it
         $this->info('Creating database...');
@@ -72,9 +72,9 @@ class InstallCommand extends Command
         $this->info('Creating super admin user...');
         $this->installer->createAdminuser($username, $email, $userpassword, $userpassword);
         $userpassword = $this->argument('userpassword') ? str_repeat('*', mb_strlen($userpassword)) : $userpassword;
-        $this->info("Username: $username");
-        $this->info("Email: $email");
-        $this->info("Password: $userpassword");
+        $this->line("Username: $username");
+        $this->line("Email: $email");
+        $this->line("Password: $userpassword");
         
         // Say goodbye
         $this->info('Installation complete!');
