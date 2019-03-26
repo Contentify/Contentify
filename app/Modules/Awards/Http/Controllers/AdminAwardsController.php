@@ -43,5 +43,4 @@ class AdminAwardsController extends BackController
             }
         ]);
     }
-
 }

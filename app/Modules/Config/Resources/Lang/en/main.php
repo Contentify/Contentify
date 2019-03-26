@@ -39,11 +39,11 @@ return [
     /*
      * Meta information
      */
-    'meta_author'	            => 'Author',
-    'meta_author_info'	        => 'Whose website is this?',
-    'meta_keywords'	            => 'Keywords',
+    'meta_author'               => 'Author',
+    'meta_author_info'          => 'Whose website is this?',
+    'meta_keywords'             => 'Keywords',
     'meta_keywords_info'        => 'Optimization of the website for search engine. (Keywords)',
-    'meta_description'	        => 'Description',
+    'meta_description'          => 'Description',
     'meta_description_info'     => 'Optimization of the website for search engine. (Description)',
 
 ];

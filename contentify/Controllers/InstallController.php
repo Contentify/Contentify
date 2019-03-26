@@ -225,5 +225,4 @@ class InstallController extends Controller
         
         return View::make('installer', compact('title', 'content', 'step'));
     }
-       
 }

@@ -269,5 +269,4 @@ class Match extends BaseModel
 
         return $newMatch;
     }
-
 }

@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddUsername extends Migration {
+class AddUsername extends Migration
+{
 
     /**
      * Run the migrations.
@@ -28,5 +29,4 @@ class AddUsername extends Migration {
     {
         //
     }
-
 }

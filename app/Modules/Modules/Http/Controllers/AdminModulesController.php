@@ -64,7 +64,8 @@ class AdminModulesController extends BackController
                 'install',
                 function(Module $module) {
                     if ($module->installer() !== false) {
-                        return icon_link('plus-circle',
+                        return icon_link(
+                            'plus-circle',
                             trans('app.install'), 
                             url('admin/modules/'.$module->title.'/install/0'),
                             false,
@@ -115,5 +116,4 @@ class AdminModulesController extends BackController
             $this->alertError(trans('modules::fail'));
         }
     }
-
 }

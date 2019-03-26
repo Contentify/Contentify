@@ -28,5 +28,4 @@ class UserActivitiesServiceProvider extends ServiceProvider
             $loader->alias('UserActivities', 'Contentify\Facades\UserActivities');
         });
     }
-    
 }

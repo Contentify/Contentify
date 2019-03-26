@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserProfile extends Migration {
+class CreateUserProfile extends Migration
+{
 
     /**
      * Run the migrations.
@@ -65,5 +66,4 @@ class CreateUserProfile extends Migration {
     {
         //
     }
-
 }

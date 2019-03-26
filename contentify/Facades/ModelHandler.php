@@ -15,5 +15,4 @@ class ModelHandler extends Facade
     protected static function getFacadeAccessor() {
         return 'modelHandler';
     }
-
 }

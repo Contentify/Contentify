@@ -16,5 +16,4 @@ class ModuleServiceProvider extends ServiceProvider
 
         View::addNamespace('cash_flows', realpath(__DIR__ . '/../Resources/Views'));
     }
-
 }

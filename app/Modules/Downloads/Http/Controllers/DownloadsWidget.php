@@ -24,5 +24,4 @@ class DownloadsWidget extends Widget
 
         return View::make('downloads::widget', compact('downloads'))->render();
     }
-
 }

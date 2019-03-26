@@ -6,7 +6,7 @@ use App\Modules\Teams\Team;
 use View;
 use Widget;
 
-class TeamsWidget extends Widget 
+class TeamsWidget extends Widget
 {
 
     public function render(array $parameters = []) : string
@@ -19,5 +19,4 @@ class TeamsWidget extends Widget
 
         return View::make('teams::widget', compact('teams'))->render();
     }
-
 }

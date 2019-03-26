@@ -72,5 +72,4 @@ class Module extends BaseModel
 
         return $moduleRepo->isEnabled($moduleInfo['slug']);
     }
-
 }

@@ -39,5 +39,4 @@ class AdminPartnerCatsController extends BackController
             }
         ]);
     }
-
 }

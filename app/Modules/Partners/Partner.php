@@ -74,5 +74,4 @@ class Partner extends BaseModel
     {
         return $query->wherePublished(true);
     }
-    
 }

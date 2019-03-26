@@ -23,5 +23,4 @@ class AwardsWidget extends Widget
 
         return View::make('awards::widget', compact('awards'))->render();
     }
-
 }

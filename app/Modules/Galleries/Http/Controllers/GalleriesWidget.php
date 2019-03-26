@@ -42,5 +42,4 @@ class GalleriesWidget extends Widget
 
         return View::make('galleries::widget', compact('images'))->render();
     }
-
 }

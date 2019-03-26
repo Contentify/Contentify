@@ -20,5 +20,4 @@ class DeleteUserActivitiesJob extends AbstractJob
     {
         UserActivities::deleteOld();
     }
-
 }

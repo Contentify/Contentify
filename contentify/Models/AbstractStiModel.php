@@ -118,5 +118,4 @@ abstract class AbstractStiModel extends BaseModel
 
         return $builder;
     }
-
 }

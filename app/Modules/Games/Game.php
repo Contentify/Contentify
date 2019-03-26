@@ -42,5 +42,4 @@ class Game extends BaseModel
         'servers'   => [self::HAS_MANY, 'App\Modules\Servers\Server', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

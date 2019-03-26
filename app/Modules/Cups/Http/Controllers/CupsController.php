@@ -43,8 +43,8 @@ class CupsController extends FrontController implements GlobalSearchInterface
                 return [
                     raw(HTML::link(
                         url('cups/'.$cup->id.'/'.$cup->slug), 
-                        $cup->title)
-                    ),
+                        $cup->title
+                    )),
                     $cup->slots,
                     $cup->game->short,
                     $cup->start_at
@@ -329,5 +329,4 @@ class CupsController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }

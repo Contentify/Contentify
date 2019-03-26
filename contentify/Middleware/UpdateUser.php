@@ -113,5 +113,4 @@ class UpdateUser
 
         return $next($request);
     }
-
 }

@@ -83,5 +83,4 @@ class SmashcastApi extends StreamApi
             $stream->forceSave();
         }
     }
-
 }

@@ -87,5 +87,4 @@ class AdminParticipantsController extends BackController
     {
         return Redirect::to('admin/cups');
     }
-
 }

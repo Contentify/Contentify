@@ -29,5 +29,4 @@ class CaptchaServiceProvider extends ServiceProvider
             $loader->alias('Captcha', 'Contentify\Facades\Captcha');
         });
     }
-    
 }

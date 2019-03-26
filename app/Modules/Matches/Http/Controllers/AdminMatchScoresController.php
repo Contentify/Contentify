@@ -67,5 +67,4 @@ class AdminMatchScoresController extends BackController
 
         return Response::make(null, 200);
     }
-
 }

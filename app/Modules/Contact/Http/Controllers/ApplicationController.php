@@ -43,5 +43,4 @@ class ApplicationController extends FrontController
             return Redirect::to('application')->withInput()->withErrors($msg->getErrors());
         }
     }
-    
 }

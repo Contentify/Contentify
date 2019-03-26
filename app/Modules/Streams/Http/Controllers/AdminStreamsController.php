@@ -42,5 +42,4 @@ class AdminStreamsController extends BackController
             }
         ]);
     }
-
 }

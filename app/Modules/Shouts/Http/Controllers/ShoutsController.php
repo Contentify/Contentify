@@ -49,5 +49,4 @@ class ShoutsController extends FrontController
 
         DB::table('shouts')->whereNotIn('id', $ids)->delete();
     }
-
 }

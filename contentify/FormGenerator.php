@@ -122,11 +122,21 @@ class FormGenerator
 
         $html = null;
         if (! in_array($column->Field, $ignoredFields)) {
-            if ($name == 'image' || $name == 'icon')    $type = 'image';
-            if ($name == 'email')                       $type = 'email';
-            if ($name == 'password')                    $type = 'password';
-            if ($name == 'url')                         $type = 'url';
-            if (ends_with($name, '_id'))                $type = 'foreign';
+            if ($name == 'image' || $name == 'icon') {
+                $type = 'image';
+            }
+            if ($name == 'email') {
+                $type = 'email';
+            }
+            if ($name == 'password') {
+                $type = 'password';
+            }
+            if ($name == 'url') {
+                $type = 'url';
+            }
+            if (ends_with($name, '_id')) {
+                $type = 'foreign';
+            }
 
             $attributes = [];
             if ($size > 0) {
@@ -221,5 +231,4 @@ class FormGenerator
 
         return implode(' ', $words);
     }
-    
 }

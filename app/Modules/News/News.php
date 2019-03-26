@@ -76,12 +76,12 @@ class News extends BaseModel
 
         self::saved(function(self $news)
         {
-           self::updateRSS();
+            self::updateRSS();
         });
 
         self::deleted(function(self $news)
         {
-           self::updateRSS();
+            self::updateRSS();
         });
     }
 

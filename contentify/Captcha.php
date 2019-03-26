@@ -84,5 +84,4 @@ class Captcha
 
         return (isset($resultArray['success']) and $resultArray['success']);
     }
-
 }

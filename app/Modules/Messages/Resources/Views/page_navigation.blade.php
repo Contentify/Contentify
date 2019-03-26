@@ -4,13 +4,13 @@
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" <?php if ($active == 'inbox') echo 'class="active"' ?>>
+        <li role="presentation" <?php if ($active == 'inbox') { echo 'class="active"'; } ?>>
             <a href="{!! url('messages/inbox') !!}" role="tab">{!! trans('app.object_inbox') !!}</a>
         </li>
-        <li role="presentation" <?php if ($active == 'outbox') echo 'class="active"' ?>>
+        <li role="presentation" <?php if ($active == 'outbox') { echo 'class="active"'; } ?>>
             <a href="{!! url('messages/outbox') !!}" role="tab">{!! trans('app.object_outbox') !!}</a>
         </li>
-        <li role="presentation" <?php if ($active == 'create') echo 'class="active"' ?>>
+        <li role="presentation" <?php if ($active == 'create') { echo 'class="active"'; } ?>>
             <a href="{!! url('messages/create') !!}" role="tab">{!! trans('app.send') !!}</a>
         </li>
     </ul>

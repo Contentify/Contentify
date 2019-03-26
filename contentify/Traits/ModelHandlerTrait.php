@@ -98,5 +98,4 @@ trait ModelHandlerTrait
         
         return ModelHandler::search();
     }
-    
 }

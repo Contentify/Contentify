@@ -30,7 +30,7 @@ use SoftDeletingTrait;
  * @property \User                          $creator
  * @property \User[]                        $users
  */
-class Team extends BaseModel 
+class Team extends BaseModel
 {
 
     use SoftDeletingTrait;
@@ -84,5 +84,4 @@ class Team extends BaseModel
     {
         return $query->wherePublished(true);
     }
-    
 }

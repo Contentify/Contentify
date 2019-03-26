@@ -35,5 +35,4 @@ class UserActivity extends BaseModel
     public static $relationsData = [
         'user'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

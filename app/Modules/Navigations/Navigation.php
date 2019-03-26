@@ -32,5 +32,4 @@ class Navigation extends BaseModel
     public static $relationsData = [
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

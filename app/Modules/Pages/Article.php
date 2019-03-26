@@ -52,5 +52,4 @@ class Article extends Page
 
         return $og;
     }
-
 }

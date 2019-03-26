@@ -15,5 +15,4 @@ class ModuleRoute extends Facade
     protected static function getFacadeAccessor() {
         return 'moduleRoute';
     }
-
 }

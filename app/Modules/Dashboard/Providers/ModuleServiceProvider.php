@@ -18,5 +18,4 @@ class ModuleServiceProvider extends ServiceProvider
 
         View::addNamespace('dashboard', realpath(__DIR__.'/../Resources/Views'));
     }
-
 }

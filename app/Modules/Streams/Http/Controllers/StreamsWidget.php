@@ -17,5 +17,4 @@ class StreamsWidget extends Widget
 
         return View::make('streams::widget', compact('streams'))->render();
     }
-
 }

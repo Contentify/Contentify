@@ -66,5 +66,4 @@ class VideosController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }

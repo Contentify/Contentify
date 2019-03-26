@@ -69,8 +69,7 @@ class LessCompileCommand extends Command
         $target = public_path('css/'.$sourceFileTitle.'.css');
 
         // Only compile the file if it has changed
-        if (! File::exists($target) or File::lastModified($sourceFilename) > File::lastModified($target))
-        {
+        if (! File::exists($target) or File::lastModified($sourceFilename) > File::lastModified($target)) {
             $debug = Config::get('app.debug');
 
             // Create a new instance for each file - or call the reset method
@@ -83,5 +82,4 @@ class LessCompileCommand extends Command
             $this->info('CSS files has been compiled: ' . $sourceFilename . ' -> ' . $target . "\n");
         }
     }
-
 }

@@ -18,5 +18,4 @@ class ModuleServiceProvider extends ServiceProvider
 
         View::addNamespace('adverts', realpath(__DIR__.'/../Resources/Views'));
     }
-
 }

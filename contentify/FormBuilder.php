@@ -179,7 +179,6 @@ class FormBuilder extends OriginalFormBuilder
 
                     break;
             }
-            
         }
 
         return $partial.'</div>';
@@ -196,8 +195,7 @@ class FormBuilder extends OriginalFormBuilder
      */
     public function button($value = null, $options = [])
     {
-        if (! array_key_exists('class', $options))
-        {
+        if (! array_key_exists('class', $options)) {
             $options['class'] = 'btn btn-default';
         }
         if (! array_key_exists('value', $options)) {
@@ -911,5 +909,4 @@ class FormBuilder extends OriginalFormBuilder
     {
         $this->controlGridCols = $number;
     }
-
 }

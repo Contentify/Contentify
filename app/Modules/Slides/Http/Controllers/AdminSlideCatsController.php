@@ -39,5 +39,4 @@ class AdminSlideCatsController extends BackController
             }
         ]);
     }
-
 }

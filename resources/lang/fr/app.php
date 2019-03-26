@@ -204,7 +204,7 @@ return [
     'nothing_here'      => 'Désoler, il n\'y a pas encore de contenu. Veuillez réessayer plus tard.',
     'back'              => 'Retour',
     'general'           => 'Généralement',
-	'metainfo'			=> 'Méta-Info',
+    'metainfo'          => 'Méta-Info',
     'services'          => 'Services',
     'theme'             => 'Thème',
     'theme_christmas'   => 'Mode Nöel (Flocon)',

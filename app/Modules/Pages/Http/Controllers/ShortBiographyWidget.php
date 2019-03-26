@@ -19,5 +19,4 @@ class ShortBiographyWidget extends Widget
 
         return View::make('news::widget', compact('shortBiography'))->render();
     }
-
 }

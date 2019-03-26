@@ -117,5 +117,4 @@ class Comment extends BaseModel
 
         return $text;
     }
-
 }

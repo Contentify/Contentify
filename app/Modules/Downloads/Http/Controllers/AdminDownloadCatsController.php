@@ -39,5 +39,4 @@ class AdminDownloadCatsController extends BackController
             }
         ]);
     }
-
 }

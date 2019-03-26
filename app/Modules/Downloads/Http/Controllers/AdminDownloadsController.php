@@ -45,5 +45,4 @@ class AdminDownloadsController extends BackController
             }
         ]);
     }
-
 }

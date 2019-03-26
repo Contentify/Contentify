@@ -187,5 +187,4 @@ class MatchesController extends FrontController
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('cups/matches/'.$match->id);
     }
-
 }

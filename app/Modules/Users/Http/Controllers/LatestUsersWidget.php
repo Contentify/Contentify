@@ -6,7 +6,7 @@ use User;
 use View;
 use Widget;
 
-class LatestUsersWidget extends Widget 
+class LatestUsersWidget extends Widget
 {
 
     public function render(array $parameters = []) : string
@@ -17,5 +17,4 @@ class LatestUsersWidget extends Widget
 
         return View::make('users::widget_latest_users', compact('users'))->render();
     }
-
 }

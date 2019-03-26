@@ -15,5 +15,4 @@ class ContentFilter extends Facade
     protected static function getFacadeAccessor() {
         return 'contentFilter';
     }
-
 }

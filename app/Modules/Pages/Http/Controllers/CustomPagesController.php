@@ -68,5 +68,4 @@ class CustomPagesController extends FrontController
     {
         $this->show(1, null, true);
     }
-
 }

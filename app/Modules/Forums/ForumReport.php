@@ -29,5 +29,4 @@ class ForumReport extends BaseModel
         'updater'       => [self::BELONGS_TO, 'User', 'title' => 'username'],
         'post'          => [self::BELONGS_TO, 'App\Modules\Forums\ForumPost'],
     ];
-
 }

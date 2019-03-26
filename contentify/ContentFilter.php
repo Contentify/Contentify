@@ -29,7 +29,9 @@ class ContentFilter
         $filters = explode(',', $filters);
 
         foreach ($filters as $filter) {
-            if (! $filter) continue;
+            if (! $filter) {
+                continue;
+            }
 
             $parts = explode('-', $filter);
 
@@ -61,7 +63,9 @@ class ContentFilter
         $filters = explode(',', $filters);
 
         foreach ($filters as $filter) {
-            if (! $filter) continue;
+            if (! $filter) {
+                continue;
+            }
 
             $parts = explode('-', $filter);
 
@@ -72,5 +76,4 @@ class ContentFilter
 
         return null;
     }
-
 }

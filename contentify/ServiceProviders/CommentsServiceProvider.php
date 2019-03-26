@@ -28,5 +28,4 @@ class CommentsServiceProvider extends ServiceProvider
             $loader->alias('Comments', 'Contentify\Facades\Comments');
         });
     }
-    
 }

@@ -12,5 +12,4 @@ class SearchWidget extends Widget
     {
         return View::make('search::widget')->render();
     }
-
 }

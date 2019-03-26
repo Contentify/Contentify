@@ -45,5 +45,4 @@ class AdminPartnersController extends BackController
             }
         ]);
     }
-
 }

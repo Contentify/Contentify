@@ -14,5 +14,4 @@ class Installer extends ModuleInstaller
     {
 
     }
-
 }

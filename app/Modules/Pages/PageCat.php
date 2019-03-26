@@ -27,5 +27,4 @@ class PageCat extends BaseModel
     public static $relationsData = [
         'pages' => [self::HAS_MANY, 'App\Modules\Pages\Page', 'dependency' => true],
     ];
-
 }

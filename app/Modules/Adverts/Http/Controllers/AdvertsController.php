@@ -25,5 +25,4 @@ class AdvertsController extends FrontController
 
         return Redirect::to($advert->url); // Go to advert website
     }
-
 }

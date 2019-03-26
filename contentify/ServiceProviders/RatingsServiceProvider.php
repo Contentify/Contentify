@@ -28,5 +28,4 @@ class RatingsServiceProvider extends ServiceProvider
             $loader->alias('Ratings', 'Contentify\Facades\Ratings');
         });
     }
-    
 }

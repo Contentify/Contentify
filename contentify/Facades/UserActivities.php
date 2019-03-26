@@ -15,5 +15,4 @@ class UserActivities extends Facade
     protected static function getFacadeAccessor() {
         return 'userActivities';
     }
-
 }

@@ -17,5 +17,4 @@ abstract class Widget
      * @return string
      */
     abstract public function render(array $parameters = []) : string;
-    
 }

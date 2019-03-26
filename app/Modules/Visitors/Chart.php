@@ -5,7 +5,7 @@ namespace App\Modules\Visitors;
 use Carbon;
 use DB;
 
-class Chart 
+class Chart
 {
 
     /**
@@ -65,5 +65,4 @@ class Chart
     {
         return $this->$attribute;
     }
-
 }

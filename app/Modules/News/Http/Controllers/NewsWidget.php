@@ -20,5 +20,4 @@ class NewsWidget extends Widget
 
         return View::make('news::widget', compact('newsCollection'))->render();
     }
-
 }
