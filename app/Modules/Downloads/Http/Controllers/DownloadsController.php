@@ -128,5 +128,4 @@ class DownloadsController extends FrontController implements GlobalSearchInterfa
 
         return $results;
     }
-
 }

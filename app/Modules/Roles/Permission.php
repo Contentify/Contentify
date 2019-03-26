@@ -41,5 +41,4 @@ class Permission
         $this->values   = $values;
         $this->current  = $current;
     }
-
 }

@@ -29,5 +29,4 @@ class Carbon extends OriginalCarbon
     {
         return $this->format(self::$toStringFormat).' '.$this->format('H:i:s');
     }
-
 }

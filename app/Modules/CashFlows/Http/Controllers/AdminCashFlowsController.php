@@ -129,5 +129,4 @@ class AdminCashFlowsController extends BackController
 
         return Response::make($csvWriter->getContent(), 200, $headers);
     }
-
 }

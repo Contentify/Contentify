@@ -74,7 +74,6 @@ abstract class ConfigController extends BackController
         DB::transaction(function() use ($input, $namespace)
         {
             foreach ($input as $name => $value) {
-
                 $result = DB::table('config')->whereName($namespace.$name)
                     ->update(['value' => $value, 'updated_at' => DB::raw('NOW()')]);
 
@@ -82,8 +81,7 @@ abstract class ConfigController extends BackController
                     DB::table('config')->insert([
                         'name'          => $namespace.$name,
                         'value'         => $value, 
-                        'updated_at'    => DB::raw('NOW()')]
-                    );
+                        'updated_at'    => DB::raw('NOW()')]);
                 }
 
                 Config::clearCache($namespace.$name);
@@ -93,5 +91,4 @@ abstract class ConfigController extends BackController
         $this->alertFlash(trans('app.updated', [$this->controllerName]));
         return Redirect::to(Request::url())->withInput();
     }
-
 }

@@ -22,5 +22,4 @@ class CompilerEngine extends OriginalCompilerEngine
     {
         parent::handleViewException($e, $obLevel);
     }
-
 }

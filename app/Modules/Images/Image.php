@@ -74,5 +74,4 @@ class Image extends BaseModel
             return null;
         }
     }
-
 }

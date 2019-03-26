@@ -124,5 +124,4 @@ class FriendsController extends FrontController
         $this->alertFlash(trans('app.deleted', ['Friendship'])); // Friendship terminated. Take this, diction!
         return Redirect::to('friends/'.user()->id);
     }
-    
 }

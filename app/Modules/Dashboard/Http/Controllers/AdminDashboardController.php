@@ -31,7 +31,8 @@ class AdminDashboardController extends BackController
         if (Config::get('app.env') == 'production' and Config::get('app.debug') and $_SERVER['HTTP_HOST'] != 'localhost') {
             $this->alertWarning(trans('app.debug_warning').' '.HTML::link(
                 'https://github.com/Contentify/Contentify/wiki/FAQ#how-can-i-disable-the-debug-mode',
-                trans('app.read_more')));
+                trans('app.read_more')
+            ));
         }
 
         if (function_exists('disk_free_space') and disk_free_space('.') < self::MIN_FREE_DISK_SPACE) {
@@ -75,5 +76,4 @@ class AdminDashboardController extends BackController
 
         return $view;
     }
-
 }

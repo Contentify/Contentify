@@ -50,5 +50,4 @@ class AdvertWidget extends Widget
 
         return '';
     }
-
 }

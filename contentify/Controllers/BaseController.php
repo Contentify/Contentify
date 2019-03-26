@@ -117,8 +117,7 @@ abstract class BaseController extends Controller
         // If no response is returned from the controller action and a layout is being
         // used we will assume we want to just return the layout view as any nested
         // views were probably bound on this view during this controller actions.
-        if (is_null($response) && ! is_null($this->layout))
-        {
+        if (is_null($response) && ! is_null($this->layout)) {
             $response = $this->layout;
         }
 
@@ -196,8 +195,7 @@ abstract class BaseController extends Controller
             $this->layout = $layoutName;
         }
 
-        if (! is_null($this->layout))
-        {
+        if (! is_null($this->layout)) {
             $this->layout                   = View::make($this->layout);
             $this->layout->page             = null;
             $this->layout->metaTags         = [];
@@ -565,5 +563,4 @@ abstract class BaseController extends Controller
     {
         return $this->evilFileExtensions;
     }
-
 }

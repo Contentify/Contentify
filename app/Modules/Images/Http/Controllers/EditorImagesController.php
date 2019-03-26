@@ -46,5 +46,4 @@ class EditorImagesController extends BaseController
         $pure = true;
         return View::make('images::editor_images', compact('images', 'pure'));
     }
-
 }

@@ -54,7 +54,9 @@ class BackendNavGenerator
 
         $navItems = [];
         foreach ($modules as $module) {
-            if (! $module['enabled']) continue;
+            if (! $module['enabled']) {
+                continue;
+            }
 
             if (isset($module['admin-nav'])) {
                 $moduleNavItems = $module['admin-nav'];
@@ -156,5 +158,4 @@ class BackendNavGenerator
 
         return Cache::get(self::CACHE_KEY.'_'.$this->locale);
     }
-
 }

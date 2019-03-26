@@ -223,5 +223,4 @@ class PostsController extends FrontController
 
         $this->pageView('forums::show_user_posts', compact('forumPosts'));
     }
-
 }

@@ -32,5 +32,4 @@ class Language extends BaseModel
     public function delete() {
         throw new Exception('Model deletion forbidden');
     }
-
 }

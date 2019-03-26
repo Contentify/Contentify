@@ -31,5 +31,4 @@ class LengthAwarePaginator extends OriginalPaginator
          */
         $this->path = Request::url();
     }
-
 }

@@ -23,5 +23,4 @@ class PollsWidget extends Widget
 
         return View::make('polls::widget', compact('poll', 'userVoted'))->render();
     }
-
 }

@@ -54,5 +54,4 @@ class OutboxController extends FrontController
             'pageTitle'     => false,
         ], 'front');
     }
-
 }

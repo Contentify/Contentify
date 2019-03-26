@@ -4,7 +4,7 @@ namespace App\Modules\Streams\Api;
 
 use Log;
 
-class StreamApi 
+class StreamApi
 {
 
     /**
@@ -47,5 +47,4 @@ class StreamApi
     {
         return json_decode($response);
     }
-
 }

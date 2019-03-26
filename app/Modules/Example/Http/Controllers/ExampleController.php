@@ -11,5 +11,4 @@ class ExampleController extends FrontController
     {
         $this->pageView('example::show');
     }
-
 }

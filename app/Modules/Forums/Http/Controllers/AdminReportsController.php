@@ -77,5 +77,4 @@ class AdminReportsController extends BackController
         $this->alertFlash(trans('app.deleted', [trans_object('forum_report')]));
         return Redirect::route('admin.'.strtolower($this->getControllerName()).'.index');
     }
-
 }

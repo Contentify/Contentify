@@ -22,19 +22,13 @@ trait DateAccessorTrait
     {
         $format = $this->getDateFormat(); // This is an Eloquent method
 
-        if ($value instanceof DateTime)
-        {
+        if ($value instanceof DateTime) {
             // Do nothing
-        }
-        elseif (is_numeric($value))
-        {
+        } elseif (is_numeric($value)) {
             $value = Carbon::createFromTimestamp($value);
-        }
-        elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value))
-        {
+        } elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value)) {
             $value = Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
-        }
-        else {
+        } else {
             /*
              * Try to create the DateTime with the local date format.
              * If this isn't working, try the format used by the database connection.
@@ -51,16 +45,11 @@ trait DateAccessorTrait
 
     protected function asDateTime($value) : \DateTimeInterface
     {
-        if (is_numeric($value))
-        {
+        if (is_numeric($value)) {
             return Carbon::createFromTimestamp($value);
-        }
-        elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value))
-        {
+        } elseif (preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value)) {
             return Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
-        }
-        elseif (! $value instanceof DateTime)
-        {
+        } elseif (! $value instanceof DateTime) {
             $format = $this->getDateFormat();
 
             return Carbon::createFromFormat($format, $value);
@@ -68,5 +57,4 @@ trait DateAccessorTrait
 
         return Carbon::instance($value);
     }
-
 }

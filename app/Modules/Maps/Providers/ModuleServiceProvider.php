@@ -18,5 +18,4 @@ class ModuleServiceProvider extends ServiceProvider
 
         View::addNamespace('maps', realpath(__DIR__.'/../Resources/Views'));
     }
-
 }

@@ -22,5 +22,4 @@ class EventsWidget extends Widget
 
         return View::make('events::widget', compact('events'))->render();
     }
-
 }

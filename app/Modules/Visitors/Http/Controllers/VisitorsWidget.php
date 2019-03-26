@@ -7,7 +7,7 @@ use DB;
 use View;
 use Widget;
 
-class VisitorsWidget extends Widget 
+class VisitorsWidget extends Widget
 {
 
     public function render(array $parameters = []) : string
@@ -45,5 +45,4 @@ class VisitorsWidget extends Widget
 
         return View::make('visitors::widget', compact('today', 'yesterday', 'month', 'total'))->render();
     }
-
 }

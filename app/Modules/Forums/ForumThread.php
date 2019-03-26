@@ -107,5 +107,4 @@ class ForumThread extends BaseModel
     {
         return ceil($this->posts_count / ForumPost::PER_PAGE);
     }
-
 }

@@ -8,7 +8,7 @@ use Hover;
 use HTML;
 use ModelHandlerTrait;
 
-class AdminTeamsController extends BackController 
+class AdminTeamsController extends BackController
 {
 
     use ModelHandlerTrait;
@@ -67,5 +67,4 @@ class AdminTeamsController extends BackController
 
         return $lineup;
     }
-
 }

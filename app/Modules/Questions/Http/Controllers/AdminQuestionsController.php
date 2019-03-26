@@ -45,5 +45,4 @@ class AdminQuestionsController extends BackController
             }
         ]);
     }
-
 }

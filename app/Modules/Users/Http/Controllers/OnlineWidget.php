@@ -6,7 +6,7 @@ use User;
 use View;
 use Widget;
 
-class OnlineWidget extends Widget 
+class OnlineWidget extends Widget
 {
 
     public function render(array $parameters = []) : string
@@ -17,5 +17,4 @@ class OnlineWidget extends Widget
 
         return View::make('users::widget_online', compact('users'))->render();
     }
-
 }

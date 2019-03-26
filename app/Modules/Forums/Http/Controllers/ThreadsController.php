@@ -168,7 +168,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumPost->forceSave();
         $forumThread->forceSave();
 
-        $this->alertFlash(trans('app.updated',  [trans('app.object_thread')]));
+        $this->alertFlash(trans('app.updated', [trans('app.object_thread')]));
         return Redirect::to('forums/threads/'.$forumThread->id.'/'.$forumThread->slug);
     }
 
@@ -329,5 +329,4 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }

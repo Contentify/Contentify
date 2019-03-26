@@ -66,7 +66,6 @@ class Download extends BaseModel
                 try {
                     $imgData = getimagesize($filename); // Try to gather info about the image
                 } catch (Exception $e) {
-
                 }
 
                 if (isset($imgData[2]) and $imgData[2]) {
@@ -105,5 +104,4 @@ class Download extends BaseModel
     {
         return $query->wherePublished(true);
     }
-
 }

@@ -25,5 +25,4 @@ class ModuleRouteServiceProvider extends ServiceProvider
          * too late the binding. Instead we have to register the alias in the config file.
          */
     }
-    
 }

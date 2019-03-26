@@ -31,5 +31,4 @@ class PartnerCat extends BaseModel
         'partners'  => [self::HAS_MANY, 'App\Modules\Partners\Partner', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

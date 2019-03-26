@@ -48,5 +48,4 @@ class Opponent extends BaseModel
         'country'   => [self::BELONGS_TO, 'App\Modules\Countries\Country'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

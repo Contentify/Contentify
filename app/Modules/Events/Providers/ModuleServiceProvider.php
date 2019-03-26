@@ -28,5 +28,4 @@ class ModuleServiceProvider extends ServiceProvider
             $event->save();
         });
     }
-
 }

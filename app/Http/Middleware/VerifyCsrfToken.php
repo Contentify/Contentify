@@ -24,8 +24,7 @@ class VerifyCsrfToken extends Middleware
             return $next($request);
         }
 
-        if (! hash_equals($request->session()->token(), $request->input('_token')))
-        {
+        if (! hash_equals($request->session()->token(), $request->input('_token'))) {
             throw new TokenMismatchException;
         }
 
@@ -34,8 +33,7 @@ class VerifyCsrfToken extends Middleware
          * are protected against mass submitting.
          * WARNING: Not sending the field will not trigger the verification!
          */
-        if ($time = $request->input('_created_at'))
-        {
+        if ($time = $request->input('_created_at')) {
             $time = Crypt::decrypt($time);
 
             if (is_numeric($time)) {
@@ -51,5 +49,4 @@ class VerifyCsrfToken extends Middleware
 
         return $next($request);
     }
-
 }

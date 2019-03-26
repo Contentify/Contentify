@@ -43,5 +43,4 @@ class EditorTemplatesController extends BackController
 
         return $template->text;
     }
-
 }

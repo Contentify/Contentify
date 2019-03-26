@@ -48,5 +48,4 @@ class AdminServersController extends BackController
             }
         ]);
     }
-
 }

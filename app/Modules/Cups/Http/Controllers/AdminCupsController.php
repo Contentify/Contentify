@@ -167,5 +167,4 @@ class AdminCupsController extends BackController
         $this->alertFlash(trans('app.created', [trans('app.object_matches')]));
         return Redirect::to('admin/cups');
     }
-
 }

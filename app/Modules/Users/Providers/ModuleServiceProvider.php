@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Lang;
 use View;
 
-class ModuleServiceProvider extends ServiceProvider 
+class ModuleServiceProvider extends ServiceProvider
 {
 
     public function register()
@@ -18,5 +18,4 @@ class ModuleServiceProvider extends ServiceProvider
 
         View::addNamespace('users', realpath(__DIR__.'/../Resources/Views'));
     }
-
 }

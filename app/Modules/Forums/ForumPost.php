@@ -177,5 +177,4 @@ class ForumPost extends BaseModel
 
         return $url;
     }
-
 }

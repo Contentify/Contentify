@@ -32,5 +32,4 @@ class NewsCat extends BaseModel
         'news'      => [self::HAS_MANY, 'App\Modules\News\News', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-    
 }

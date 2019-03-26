@@ -75,5 +75,4 @@ class Page extends AbstractStiModel
         'pageCat' => [self::BELONGS_TO, 'App\Modules\Pages\PageCat'],
         'creator' => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

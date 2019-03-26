@@ -8,7 +8,7 @@ use Hover;
 use HTML;
 use ModelHandlerTrait;
 
-class AdminVideosController extends BackController 
+class AdminVideosController extends BackController
 {
 
     use ModelHandlerTrait;
@@ -42,5 +42,4 @@ class AdminVideosController extends BackController
             }
         ]);
     }
-
 }

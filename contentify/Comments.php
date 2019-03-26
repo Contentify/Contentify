@@ -162,5 +162,4 @@ class Comments
 
         return Response::make('1', 200);
     }
-    
 }

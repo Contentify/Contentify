@@ -28,5 +28,4 @@ class HoverServiceProvider extends ServiceProvider
             $loader->alias('Hover', 'Contentify\Facades\Hover');
         });
     }
-    
 }

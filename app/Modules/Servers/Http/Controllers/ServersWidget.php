@@ -26,5 +26,4 @@ class ServersWidget extends Widget
         
         return View::make('servers::widget', compact('servers'))->render();
     }
-
 }

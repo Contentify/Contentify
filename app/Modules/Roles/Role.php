@@ -43,9 +43,9 @@ class Role extends BaseModel
 
         self::saving(function(self $role)
         {
-           if (! $role->slug) {
-               $role->createSlug(true, 'name');
-           }
+            if (! $role->slug) {
+                $role->createSlug(true, 'name');
+            }
         });
     }
 
@@ -63,7 +63,7 @@ class Role extends BaseModel
      * @param  int $roleId The ID of a role
      * @return Permission[]
      */
-    static public function permissions($roleId = null)
+    public static function permissions($roleId = null)
     {
         /*
          * Retrieve permission of the super admins role.
@@ -127,5 +127,4 @@ class Role extends BaseModel
             4 => trans('app.permission_delete'),
         ];
     }
-
 }

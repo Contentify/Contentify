@@ -12,7 +12,7 @@ use User as BaseUser;
  * @property \App\Modules\Roles\Role[] $roles
  * @property \App\Modules\Teams\Team[] $teams
  */
-class User extends BaseUser 
+class User extends BaseUser
 {
 
     protected $fillable = ['banned', 'relation_roles', 'relation_teams'];
@@ -45,5 +45,4 @@ class User extends BaseUser
     {
         return true;
     }
-
 }

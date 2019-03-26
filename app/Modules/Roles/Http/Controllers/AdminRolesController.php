@@ -38,5 +38,4 @@ class AdminRolesController extends BackController
             'searchFor' => 'name'
         ]);
     }
-
 }

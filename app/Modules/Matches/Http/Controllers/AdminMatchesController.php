@@ -61,5 +61,4 @@ class AdminMatchesController extends BackController
 
         $this->layout->page->with('maps', $maps);
     }
-
 }

@@ -287,5 +287,4 @@ class CsvWriter
 
         return $content.$this->newline;
     }
-
 }

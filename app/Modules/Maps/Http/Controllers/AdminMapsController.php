@@ -53,5 +53,4 @@ class AdminMapsController extends BackController
             }
         ]);
     }
-
 }

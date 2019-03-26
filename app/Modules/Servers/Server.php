@@ -53,5 +53,4 @@ class Server extends BaseModel
     {
         return $query->wherePublished(true);
     }
-    
 }

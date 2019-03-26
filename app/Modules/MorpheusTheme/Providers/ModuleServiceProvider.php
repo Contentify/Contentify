@@ -21,5 +21,4 @@ class ModuleServiceProvider extends ServiceProvider
             __DIR__.'/../Resources/Assets/css' => public_path('css'),
         ], $this->namespace);
     }
-
 }

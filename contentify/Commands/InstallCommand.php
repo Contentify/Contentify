@@ -90,5 +90,4 @@ class InstallCommand extends Command
             ['email', InputArgument::OPTIONAL, 'The email of the super admin account.']
         ];
     }
-
 }

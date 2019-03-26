@@ -96,5 +96,4 @@ class AdminContactController extends BackController
         $this->alertSuccess(trans('app.successful'));
         $this->show($id);
     }
-
 }

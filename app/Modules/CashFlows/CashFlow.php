@@ -97,5 +97,4 @@ class CashFlow extends BaseModel
 
         return ($revenues - $expenses);
     }
-
 }

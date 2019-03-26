@@ -35,5 +35,4 @@ class ForumsController extends FrontController
 
         $this->pageView('forums::show_forum', compact('forum'));
     }
-
 }

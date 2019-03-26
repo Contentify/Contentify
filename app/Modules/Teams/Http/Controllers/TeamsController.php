@@ -5,7 +5,7 @@ namespace App\Modules\Teams\Http\Controllers;
 use App\Modules\Teams\Team;
 use FrontController;
 
-class TeamsController extends FrontController 
+class TeamsController extends FrontController
 {
 
     public function __construct()
@@ -40,5 +40,4 @@ class TeamsController extends FrontController
 
         $this->pageView('teams::show', compact('team'));
     }
-
 }

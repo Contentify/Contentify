@@ -751,5 +751,4 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
         return $iconNames;
     }
-
 }

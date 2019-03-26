@@ -351,5 +351,4 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }

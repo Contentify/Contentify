@@ -23,5 +23,4 @@ class UpcomingMatchesWidget extends Widget
 
         return '';
     }
-
 }

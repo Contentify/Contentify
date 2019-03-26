@@ -97,7 +97,7 @@ class RegistrationController extends FrontController
             event(AuthManager::EVENT_NAME_USER_LOGGED_IN, [$user]);
 
             $this->alertSuccess(trans('auth::registered'));
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return Redirect::to('auth/registration/create')->withInput()->withErrors(['message' => $e->getMessage()]);
         }
     }
@@ -117,5 +117,4 @@ class RegistrationController extends FrontController
         }
         return Response::make('0');
     }
-
 }

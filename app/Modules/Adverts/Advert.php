@@ -61,5 +61,4 @@ class Advert extends BaseModel
     {
         return $query->wherePublished(true);
     }
-
 }

@@ -120,5 +120,4 @@ class Message extends BaseModel
 
         return $text;
     }
-
 }

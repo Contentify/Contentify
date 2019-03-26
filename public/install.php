@@ -1,6 +1,7 @@
 <?php
 
-class Tester {
+class Tester
+{
 
     /**
      * Run the tester
@@ -210,7 +211,6 @@ class Tester {
     {
         return (php_sapi_name() === 'cli');
     }
-
 }
 
 /*

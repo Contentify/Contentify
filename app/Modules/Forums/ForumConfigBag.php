@@ -19,5 +19,4 @@ class ForumConfigBag extends ConfigBag
     protected $rules = [
         'reports'  => 'boolean',
     ];
-
 }

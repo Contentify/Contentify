@@ -66,5 +66,4 @@ class Event extends BaseModel
             ->whereYear('starts_at', '=', $year)
             ->orderBy('starts_at', 'DESC');
     }
-
 }

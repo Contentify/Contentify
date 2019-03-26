@@ -189,5 +189,4 @@ class Hover
 
         return $output;
     }
-
 }

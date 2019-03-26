@@ -65,5 +65,4 @@ class MakeFormCommand extends Command
             ['module', InputArgument::OPTIONAL, 'The name of the source module.']
         ];
     }
-
 }

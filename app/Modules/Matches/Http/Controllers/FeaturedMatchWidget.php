@@ -19,5 +19,4 @@ class FeaturedMatchWidget extends Widget
 
         return '';
     }
-
 }

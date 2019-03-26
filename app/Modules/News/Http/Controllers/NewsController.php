@@ -191,5 +191,4 @@ class NewsController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }
