@@ -12,7 +12,11 @@ use Str;
  */
 class Captcha
 {
-
+    /**
+     * Name of the event that is fired when the simple CAPTCHA image has been generated
+     */
+    const EVENT_NAME_SIMPLE_CAPTCHA_GENERATED = 'contentify.captcha.simpleCaptchaGenerated';
+    
     /**
      * Google ReCAPTCHA API URL
      */
@@ -40,6 +44,7 @@ class Captcha
         imagettftext($img, $fontHeight, $angle, $x, $y, $color, $font, $captchaCode); // Add text to image
         
         imagejpeg($img); // Display image
+        event(self::EVENT_NAME_SIMPLE_CAPTCHA_GENERATED, [$img]);
         
         imagedestroy($img); // Delete image from memory
     }
