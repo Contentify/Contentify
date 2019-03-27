@@ -15,4 +15,6 @@
 - Some events have been added
 - There is a new `install` console command to install Contentify without using the web interface (which is still possible though)
 - A lot of refactoring has been done
+- Docker update
+- PSR-2 code formatting; done programmatically
 - TBA...
