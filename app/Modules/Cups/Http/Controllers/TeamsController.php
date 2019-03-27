@@ -129,7 +129,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         }
 
         try {
-            $team->addUser(user());
+            $team->tryAddMember(user());
         } catch (MsgException $exception) {
             $this->alertError($exception->getMessage());
             return null;
