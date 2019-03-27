@@ -28,7 +28,7 @@ class Team extends BaseModel
     /**
      * Name of the event that is fired when a user joins a team
      */
-    const EVENT_NAME_USER_JOINS = 'contentify.cups.userJoinsTeam';
+    const EVENT_NAME_MEMBER_ADDED = 'contentify.cups.memberAdded';
 
     public $table = 'cups_teams';
 
@@ -157,10 +157,12 @@ class Team extends BaseModel
             'user_id'   => $user->id, 
             'organizer' => $organizer,
         ]);
+        
+        event(self::EVENT_NAME_MEMBER_ADDED, [$this, $user]);
     }
     
     /**
-     * Adds a user to the team (lets a user join a team).
+     * Tries to add a user to the team (lets a user join a team).
      * ATTENTION: Does not do a password check!
      *
      * @param User $user
