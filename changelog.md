@@ -14,6 +14,7 @@
 - Laravel has been updated from v5.4 to 5.5
 - Events have been added - if you think an event is missing, please let us know!
 - There is a new `install` console command to install Contentify without using the web interface (which is still possible though)
+- When uploaded, files will now have a random name so they cannot be detected by a bot
 - A lot of refactoring has been done
 - Docker update
 - PSR-2 code formatting; done programmatically
