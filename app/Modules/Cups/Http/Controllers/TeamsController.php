@@ -298,7 +298,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
     }
 
     /**
-     * Deletes a team.
+     * "Deletes" a team. Actually it won't be deleted but just maked as deleted.
      *
      * @param  int $id The ID of the team
      * @return RedirectResponse|null
