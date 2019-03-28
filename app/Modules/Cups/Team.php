@@ -174,7 +174,7 @@ class Team extends BaseModel
         if ($this->isLocked()) {
             throw new MsgException(trans('cups::team_locked'));
         }
-        if ($this->isMember($user) {
+        if ($this->isMember($user)) {
             throw new MsgException(trans('app.not_possible'));
         }
         
