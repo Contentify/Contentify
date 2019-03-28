@@ -10,11 +10,11 @@
 
 Contentify is an esports CMS based on the PHP framework Laravel 5.5. Build your gaming website with a modern CMS.
 
-*Website*: [contentify.org](http://contentify.org/)
+**Website**: [contentify.org](http://contentify.org/)
 
 ### Get the production version
 
-*Download it here*: [3.0](https://github.com/Contentify/Contentify/releases/tag/v3.0)
+**Download it here**: [3.0](https://github.com/Contentify/Contentify/releases/tag/v3.0)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
@@ -35,7 +35,7 @@ To update from v2.6 to 3.0:
 * If you made changes to the config files in the `config` folder, you have to re-apply them
 * Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
 
-*Changes*: [Changelog.md](changelog.md)
+**Changes**: [Changelog.md](changelog.md)
 
 ### Demo
 
