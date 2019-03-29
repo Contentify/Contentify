@@ -45,6 +45,16 @@ class Cup extends BaseModel
     const EVENT_NAME_CUP_SEEDED = 'contentify.cups.cupSeeded';
     
     /**
+     * Name of the event that is fired when a participant has been added to the cup
+     */
+    const EVENT_NAME_PARTICIPANT_ADDED = 'contentify.cups.participantAdded';
+    
+    /**
+     * Name of the event that is fired when a participant has been removed from the cup
+     */
+    const EVENT_NAME_PARTICIPANT_ADDED = 'contentify.cups.participantRemoved';    
+    
+    /**
      * Array with all possible values of: How many players have to be in a team at least?
      * @var int[]
      */
@@ -462,4 +472,30 @@ class Cup extends BaseModel
         
         event(self::EVENT_NAME_CUP_SEEDED, [$cup]);
     }
+    
+    /**
+     * Adds a participant to the current cup.
+     * ATTENTION: Does not perform any checks!
+     */
+    public function addParticipantById(int $participantId)
+    {
+        DB::table('cups_participants')->insert([
+            'cup_id' => $this->id,
+            'participant_id' => $participantId,
+        ]);
+        
+        event(self::EVENT_NAME_PARTICIPANT_ADDED, [$cup, $participantId]);
+    }
+    
+    /**
+     * Removes a participant from the given cup.
+     * ATTENTION: Does not perform any checks!
+     */
+    public function removeParticipantByid(int $participantId)
+    {
+        DB::table('cups_participants')->whereCupId($cup->id)->whereParticipantId($participantId)->delete();
+        
+        event(self::EVENT_NAME_PARTICIPANT_REMOVED, [$cup, $participantId]);
+    }
+        
 }
