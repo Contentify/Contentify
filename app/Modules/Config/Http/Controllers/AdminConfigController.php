@@ -23,6 +23,16 @@ class AdminConfigController extends BackController
      * change where Monolog creates the file.
      */
     const LOG_FILE = '/logs/laravel.log';
+    
+    /**
+     * Name of the event that is fired after the website settings have been updated
+     */
+    const EVENT_NAME_UPDATED = 'contentify.config.updated';
+    
+    /**
+     * Name of the event that is fired after the database has been exported
+     */
+    const EVENT_NAME_DB_EXPORTED = 'contentify.config.dbExported';     
 
     protected $icon = 'cog';
 
@@ -131,6 +141,8 @@ class AdminConfigController extends BackController
 
             Config::clearCache($settingRealName);
         }
+        
+        event(self::EVENT_NAME_UPDATED, [$this->records]);
 
         $this->alertFlash(trans('app.updated', [$this->controllerName]));
         return Redirect::to('admin/config');
@@ -219,16 +231,18 @@ class AdminConfigController extends BackController
             case 'mysql':
                 $dump = new MySqlDump();
 
-                $con        = Config::get('database.connections.mysql');
+                $connection = Config::get('database.connections.mysql');
                 $dateTime   = date('M-d-Y_H-i');
                 $filename   = storage_path().'/database/'.$dateTime.'.sql';
 
-                $dump->host     = $con['host'];
-                $dump->user     = $con['username'];
-                $dump->pass     = $con['password'];
-                $dump->db       = $con['database'];
+                $dump->host     = $connection['host'];
+                $dump->user     = $connection['username'];
+                $dump->pass     = $connection['password'];
+                $dump->db       = $connection['database'];
                 $dump->filename = $filename;
                 $dump->start();
+        
+                event(self::EVENT_NAME_DB_EXPORTED, [$connection]);
 
                 $this->alertSuccess(
                     trans('config::db_export'), 
@@ -370,7 +384,7 @@ class AdminConfigController extends BackController
 
         if (File::exists($filename)) {
             File::delete($filename);
-        }
+        }        
 
         $this->alertSuccess(trans('app.deleted', [$filename]));
     }
