@@ -142,7 +142,7 @@ class AdminConfigController extends BackController
             Config::clearCache($settingRealName);
         }
         
-        event(self::EVENT_NAME_UPDATED, [$this->records]);
+        event(self::EVENT_NAME_UPDATED, [$settingsBag]);
 
         $this->alertFlash(trans('app.updated', [$this->controllerName]));
         return Redirect::to('admin/config');
