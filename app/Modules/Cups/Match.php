@@ -278,12 +278,14 @@ class Match extends BaseModel
     }
     
      /**
-     * Tries to change the winner of a match (not of a wildcard-match!)
+     * Tries to update the winner of a match (not of a wildcard-match!)
+     * Does not check if the current user has the right to do this 
+     * - this has to be checked before calling this method.
      * 
      * @return void
      * @throws MsgException
      */
-    public function winner()
+    public function updateWinner()
     {
         $nextMatch = $match->nextMatch();
         
