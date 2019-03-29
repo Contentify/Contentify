@@ -6,6 +6,7 @@ use BaseModel;
 use Carbon;
 use Config;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use MsgException;
 use User;
 
 /**
@@ -274,5 +275,39 @@ class Match extends BaseModel
         event(self::EVENT_NAME_MATCH_GENERATED, [$newMatch]);
 
         return $newMatch;
+    }
+    
+     /**
+     * Tries to change the winner of a match (not of a wildcard-match!)
+     * 
+     * @return void
+     * @throws MsgException
+     */
+    public function winner()
+    {
+        $nextMatch = $match->nextMatch();
+        
+        if (! $match->right_participant_id or ! $match->winner_id or ! $nextMatch or $nextMatch->winner_id) {
+            throw new MsgException(trans('app.not_possible'));
+        }
+        
+        if ($match->left_participant_id == $match->winner_id) {
+            $match->winner_id = $match->right_participant_id;
+            $match->left_score = 0;
+            $match->right_score = 1;
+        } else {
+            $match->winner_id = $match->left_participant_id;
+            $match->left_score = 1;
+            $match->right_score = 0;
+        }
+        
+        if ($match->row == 2 * $nextMatch->row) {
+            $nextMatch->right_participant_id = $match->winner_id;
+        } else {
+            $nextMatch->left_participant_id = $match->winner_id;
+        }
+        
+        $match->forceSave();
+        $nextMatch->forceSave();
     }
 }
