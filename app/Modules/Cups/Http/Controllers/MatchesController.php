@@ -144,7 +144,7 @@ class MatchesController extends FrontController
     }
 
     /**
-     * Tries to change the winner of a match (not of a wildcard-match!)
+     * Tries to update the winner of a match (not of a wildcard-match!)
      * 
      * @return RedirectResponse|null
      */
@@ -158,32 +158,13 @@ class MatchesController extends FrontController
             return null;
         }
 
-        $nextMatch = $match->nextMatch();
-
-        if (! $match->right_participant_id or ! $match->winner_id or ! $nextMatch or $nextMatch->winner_id) {
-            $this->alertError(trans('app.not_possible'));
+        try {
+            $match->updateWinner();
+        } catch (msgException $exception) {
+            $this->alertError($exception->getMessage());
             return null;
         }
-
-        if ($match->left_participant_id == $match->winner_id) {
-            $match->winner_id = $match->right_participant_id;
-            $match->left_score = 0;
-            $match->right_score = 1;
-        } else {
-            $match->winner_id = $match->left_participant_id;
-            $match->left_score = 1;
-            $match->right_score = 0;
-        }
-
-        if ($match->row == 2 * $nextMatch->row) {
-            $nextMatch->right_participant_id = $match->winner_id;
-        } else {
-            $nextMatch->left_participant_id = $match->winner_id;
-        }
-
-        $match->forceSave();
-        $nextMatch->forceSave();
-
+        
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('cups/matches/'.$match->id);
     }
