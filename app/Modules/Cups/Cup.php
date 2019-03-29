@@ -52,7 +52,7 @@ class Cup extends BaseModel
     /**
      * Name of the event that is fired when a participant has been removed from the cup
      */
-    const EVENT_NAME_PARTICIPANT_ADDED = 'contentify.cups.participantRemoved';    
+    const EVENT_NAME_PARTICIPANT_REMOVED = 'contentify.cups.participantRemoved';    
     
     /**
      * Array with all possible values of: How many players have to be in a team at least?
