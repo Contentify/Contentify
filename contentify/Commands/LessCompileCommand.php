@@ -10,7 +10,11 @@ use Less_Parser;
 
 class LessCompileCommand extends Command
 {
-
+    /**
+     * Name of the event that is fired after the website settings have been updated
+     */
+    const EVENT_NAME_LESS_COMPILED = 'contentify.lessCompileCommand.lessCompiled';
+    
     /**
      * The console command name.
      *
@@ -51,6 +55,8 @@ class LessCompileCommand extends Command
         foreach ($lessFiles as $sourceFilename) {
             $this->compileLessFile($sourceFilename);
         }
+        
+        event(self::EVENT_NAME_LESS_COMPILED, [$lessFiles]);
 
         HTML::refreshAssetPaths();
     }
