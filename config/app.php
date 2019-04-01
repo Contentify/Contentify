@@ -66,6 +66,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | HTTPS Reverse Proxy Support
+    |--------------------------------------------------------------------------
+    |
+    | This is used in special deployment scenarios in which the application
+    | is behind a https reverse proxy (typicaly in a docker/swarm environment)
+    | in order to present all links as https to the client as https
+    |
+    */
+
+    'https_reverse_proxy' => env('APP_HTTPS_REVERSE_PROXY', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Pagination Settings
     |--------------------------------------------------------------------------
     |
