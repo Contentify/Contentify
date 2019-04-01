@@ -87,7 +87,7 @@ class Tester
      */
     public function checkPhp()
     {
-        return (version_compare(PHP_VERSION, '5.6.4') >= 0);
+        return (version_compare(PHP_VERSION, '7.0.0') >= 0);
     }
 
     /**
