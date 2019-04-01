@@ -17,6 +17,20 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+	/*
+        |--------------------------------------------------------------------------
+        | HTTPS Reverse Proxy Support
+        |--------------------------------------------------------------------------
+        |
+	| This is used to force https traffic when the application is behind
+        | a https reverse proxy
+        |
+        */
+        if(Config::get('app.https_reverse_proxy'))
+        {
+            \URL::forceScheme('https');
+        }
+
         /*
         |--------------------------------------------------------------------------
         | Custom Validation Rules
