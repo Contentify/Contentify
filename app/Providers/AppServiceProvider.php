@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         | HTTPS Reverse Proxy Support
         |--------------------------------------------------------------------------
         |
-	| This is used to force https traffic when the application is behind
+        | This is used to force https traffic when the application is behind
         | a https reverse proxy
         |
         */
