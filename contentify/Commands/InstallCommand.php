@@ -5,6 +5,7 @@ namespace Contentify\Commands;
 use Config;
 use Contentify\Installer;
 use Illuminate\Console\Command;
+use Str;
 use Symfony\Component\Console\Input\InputArgument;
 
 class InstallCommand extends Command
@@ -46,9 +47,9 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $useremail = $this->argument('useremail') ?? time().'@contentify.org';
-        $username = $this->argument('username') ?? 'superadmin';
-        $userpassword = $this->argument('userpassword') ?? Str::random(10); // TODO Use better way to generate password
+        $userEmail = $this->argument('useremail') ?? time().'@contentify.org';
+        $userName = $this->argument('username') ?? 'superadmin';
+        $userPassword = $this->argument('userpassword') ?? Str::random(10);
 
         // Check preconditions
         require public_path('install.php');
@@ -70,11 +71,16 @@ class InstallCommand extends Command
         
         // Create super admin account
         $this->info('Creating super admin user...');
-        $this->installer->createAdminuser($username, $email, $userpassword, $userpassword);
-        $userpassword = $this->argument('userpassword') ? str_repeat('*', mb_strlen($userpassword)) : $userpassword;
-        $this->line("Username: $username");
-        $this->line("Email: $email");
-        $this->line("Password: $userpassword");
+        $this->installer->createAdminUser($userName, $userEmail, $userPassword, $userPassword);
+        $userPassword = $this->argument('userpassword') ? str_repeat('*', mb_strlen($userPassword)) : $userPassword;
+
+        $headers = ['Property', 'Value'];
+        $values = [
+            ['Username', $userName],
+            ['Email', $userEmail],
+            ['Password', $userPassword],
+        ];
+        $this->table($headers, $values);
         
         // Say goodbye
         $this->info('Installation complete!');

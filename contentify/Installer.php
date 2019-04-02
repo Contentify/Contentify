@@ -122,7 +122,9 @@ class Installer
          * Unfortunately it's not the simple Artisan::call('migrate') that it should be.
          * Note that Sentinel tables do not establish any foreign constraints.
          */
-        define('STDIN', fopen('php://stdin', 'r'));
+        if (! app()->runningInConsole()) {
+            define('STDIN', fopen('php://stdin', 'r'));
+        }
         $table = Config::get('database.migrations', null, false);
         $result = DB::select('SHOW TABLES LIKE "'.$table.'"');
         if (sizeof($result) > 0) { // Check if migrations table exists

@@ -64,7 +64,8 @@ class Tester
         $this->line();
 
         $apacheSig = 'Apache/';
-        if (substr($_SERVER['SERVER_SOFTWARE'], 0, strlen($apacheSig)) === $apacheSig) {
+        if (isset($_SERVER['SERVER_SOFTWARE']) and
+            substr($_SERVER['SERVER_SOFTWARE'], 0, strlen($apacheSig)) === $apacheSig) {
             $this->line('Webserver: '.$this->green('Apache'));
 
             if (function_exists('apache_get_modules')) {
@@ -224,8 +225,11 @@ $tester = new Tester;
 if ($tester->isCli()) {
     $tester->run();
 
-    echo "The installer cannot be launched from a console.\n\r";
-    echo 'Please navigate to the website with a browser to install Contentify.';
+    // Check if script is directly executed (not included).
+    // ATTENTION: Works only as long as this script does not include other scripts!
+    if (in_array(__FILE__, get_included_files()) and sizeof(get_included_files()) == 1) {
+        echo "Run the 'php artisan install' command to launch the actual installer.\n\r";
+    }
 } else {
     $filename = 'storage/app/.installed';
     if (file_exists(__DIR__.'/../'.$filename)) {
