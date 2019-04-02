@@ -40,17 +40,17 @@ use User;
 class Cup extends BaseModel
 {
     /**
-     * Name of the event that is fired when the fields have been built
+     * Name of the event that is fired when a cup has been seeded
      */
     const EVENT_NAME_CUP_SEEDED = 'contentify.cups.cupSeeded';
     
     /**
-     * Name of the event that is fired when a participant has been added to the cup
+     * Name of the event that is fired when a participant has been added to a cup
      */
     const EVENT_NAME_PARTICIPANT_ADDED = 'contentify.cups.participantAdded';
     
     /**
-     * Name of the event that is fired when a participant has been removed from the cup
+     * Name of the event that is fired when a participant has been removed from a cup
      */
     const EVENT_NAME_PARTICIPANT_REMOVED = 'contentify.cups.participantRemoved';    
     
