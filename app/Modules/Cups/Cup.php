@@ -496,6 +496,5 @@ class Cup extends BaseModel
         DB::table('cups_participants')->whereCupId($cup->id)->whereParticipantId($participantId)->delete();
         
         event(self::EVENT_NAME_PARTICIPANT_REMOVED, [$cup, $participantId]);
-    }
-        
+    }        
 }

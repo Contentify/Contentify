@@ -167,12 +167,12 @@ class AdminConfigController extends BackController
         phpinfo(INFO_GENERAL | INFO_CONFIGURATION | INFO_MODULES | INFO_ENVIRONMENT | INFO_VARIABLES); 
         
         preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
-        
+        //phpcs:disable Generic.WhiteSpace.ScopeIndent,PSR2.Methods.FunctionCallSignature -- phpcs really hates how the output is parsed
         $this->pageOutput('<div class="phpinfodisplay"><style type="text/css">'."\n".
              implode(
                  "\n",
-                 array_map(
-                     function($item) { // phpcs:ignore -- phpcs will complain that it is not indented 24 spaces when it is 21, and complain that it is not 21 spaces when it is 24
+                     array_map(
+                     function($item) { 
                         return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
                      },
                      preg_split('/\n/', $matches[1]) // $matches[1] = style information
@@ -187,6 +187,7 @@ class AdminConfigController extends BackController
              .phpinfodisplay table { width: 100%; box-shadow: none; }</style>\n". // Override the classes
              $matches[2]. // $matches[2] = body information
              "\n</div>\n");
+        //phpcs:enable Generic.WhiteSpace.ScopeIndent,PSR2.Methods.FunctionCallSignature --turning back on
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable PSR1.Classes.ClassDeclaration --pre-app install usage
 // Includes the class + Composer autoloader + Laravel helper functions
 // Note that this means that we have access to Laravel and Symfony components.
 require __DIR__.'/../AppBridge.php';
