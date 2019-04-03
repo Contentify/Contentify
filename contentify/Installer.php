@@ -192,8 +192,9 @@ class Installer
             $table->string('icon')->nullable();
         }, [], ['slug']);
 
-        $this->create('page_cats', function(Blueprint $table) { }, [], ['slug']); //phpcs:ignore --nothing in the function
-
+        $this->create('page_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
+        
         $this->create('pages', function(Blueprint $table)
         {
             $table->text('text')->nullable();
@@ -239,8 +240,9 @@ class Installer
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);
 
-        $this->create('team_cats', function(Blueprint $table) { }, [], ['slug']); //phpcs:ignore --nothing in the function
-
+        $this->create('team_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
+        
         $this->create('teams', function(Blueprint $table)
         { 
             $table->text('text')->nullable();
@@ -249,8 +251,9 @@ class Installer
             $table->boolean('published')->default(false);
         }, ['team_cat_id', 'country_id']);
 
-        $this->create('advert_cats', function(Blueprint $table) { }, [], ['slug']); //phpcs:ignore --nothing in the function
-
+        $this->create('advert_cats', function(Blueprint $table) {
+        }, [], ['slug']); 
+        
         $this->create('adverts', function(Blueprint $table)
         {
             $table->text('code')->nullable();
@@ -259,7 +262,8 @@ class Installer
             $table->string('image')->nullable();
         }, ['advert_cat_id'], ['slug']);
 
-        $this->create('partner_cats', function(Blueprint $table) { }, [], ['slug']); //phpcs:ignore --nothing in the function
+        $this->create('partner_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('partners', function(Blueprint $table)
         {
@@ -295,7 +299,8 @@ class Installer
             $table->boolean('published')->default(false);
         }, ['download_cat_id']);
         
-        $this->create('slide_cats', function(Blueprint $table) { }, [], ['slug']); //phpcs:ignore --nothing in the function
+        $this->create('slide_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('slides', function(Blueprint $table)
         {
@@ -542,7 +547,8 @@ class Installer
             $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
 
-        $this->create('question_cats', function(Blueprint $table) { }, [], ['slug']); //phpcs:ignore --nothing in the function
+        $this->create('question_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('questions', function(Blueprint $table)
         {
