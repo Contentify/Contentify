@@ -57,59 +57,11 @@ class MatchesController extends FrontController
         /** @var Match $match */
         $match = Match::findOrFail($id);
 
-        $leftScore = (int) Input::get('left_score');
-        $rightScore = (int) Input::get('right_score');
-
-        if ($leftScore == $rightScore) {
-            $this->alertFlash(trans('app.not_possible'));
+        try {
+            $newMatch = $match->confirm(Input::get('left_score'), Input::get('right_score'));
+        } catch (MsgException $exception) {
+            $this->alertFlash($exception->getMessage());
             return Redirect::to('cups/matches/'.$match->id);
-        }
-
-        if ($left) {
-            if (! $match->canConfirmLeft(user())) {
-                $this->alertFlash(trans('app.access_denied'));
-                return Redirect::to('cups/matches/'.$match->id);
-            }
-
-            // If the result has been changed by the left participant, the right has to confirm it again
-            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
-                $match->right_confirmed = false;
-            }
-
-            $match->left_confirmed = true; 
-        } else {
-            if (! $match->canConfirmRight(user())) {
-                $this->alertFlash(trans('app.access_denied'));
-                return Redirect::to('cups/matches/'.$match->id);
-            }
- 
-            // If the result has been changed by the right participant, the left has to confirm it again
-            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
-                $match->left_confirmed = false;
-            }
-
-            $match->right_confirmed = true; 
-        }
-        
-        $match->left_score = $leftScore;
-        $match->right_score = $rightScore;
-        $match->save();
-
-        $newMatch = $match->generateNext();
-
-        // Create next matches for wildcard-matches
-        if ($match->round == 1) {
-            // Remember: Wildcard-matches can only appear in the first row (so we do not need to check this)
-            $wildcards = Match::whereCupId($match->cup_id)->whereRightParticipantId(0)->whereNextMatchId(0)
-                ->orderBy('row')->get();
-
-            /** @var Match $wildcard */
-            foreach ($wildcards as $wildcard) {
-                // It's enough to create  the next match of one of the pair matches
-                if ($wildcard->row % 2 == 1) { 
-                    $wildcard->generateNext();
-                }
-            }
         }
 
         if ($newMatch) {
@@ -160,7 +112,7 @@ class MatchesController extends FrontController
 
         try {
             $match->updateWinner();
-        } catch (msgException $exception) {
+        } catch (MsgException $exception) {
             $this->alertError($exception->getMessage());
             return null;
         }
