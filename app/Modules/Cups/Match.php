@@ -83,7 +83,7 @@ class Match extends BaseModel
      * 
      * @return BelongsTo
      */
-    public function left_participant()
+    public function left_participant() //phpcs:ignore PSR1.Methods.CamelCapsMethodName -- @TODO: will need refactoring in the future
     {
         if ($this->with_teams) {
             return $this->belongsTo('App\Modules\Cups\Team', 'left_participant_id');
@@ -98,7 +98,7 @@ class Match extends BaseModel
      * 
      * @return BelongsTo
      */
-    public function right_participant()
+    public function right_participant() //phpcs:ignore PSR1.Methods.CamelCapsMethodName -- @TODO: will need refactoring in the future
     {
         if ($this->with_teams) {
             return $this->belongsTo('App\Modules\Cups\Team', 'right_participant_id');

@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable PSR1.Classes.ClassDeclaration --pre-app install usage
 class Tester
 {
 

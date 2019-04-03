@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable PSR1.Classes.ClassDeclaration --pre-app install usage
 // Require Composer autoloader. 
 // Note that this means that we have access to Laravel and Symfony components!
 $autoloaderFile = __DIR__ . '/vendor/autoload.php';
