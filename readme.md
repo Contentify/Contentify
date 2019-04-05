@@ -12,7 +12,7 @@
 
 - [x] Technological leader in the gaming CMS field
 - [x] High quality code and documentation
-- [x] Bases upon the most popular PHP framework
+- [x] Based upon the most popular PHP framework
 - [x] Ready for mobile devices
 - [x] Easy to use but yet powerful
 - [x] Free and open source
