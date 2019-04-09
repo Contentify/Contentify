@@ -10,7 +10,7 @@
 
 [Contentify](http://contentify.org/) is an esports CMS based on the PHP framework Laravel 5.5. Build your gaming website with a modern CMS.
 
-- [x] Technological advanced gaming CMS
+- [x] Technologically advanced gaming CMS
 - [x] High quality code and documentation
 - [x] Based upon the most popular PHP framework
 - [x] Ready for mobile devices
