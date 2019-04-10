@@ -87,7 +87,7 @@ class ModelHandler
             'tableRow'      => [],                              // Array of items for the table body part
             'actions'       => ['edit', 'delete', 'restore'],   // Array of named actions or Closures
             'brightenFirst' => true,                            // True / false
-            'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
+            'sortby'        => 'id',                            // Model attribute name. You cannot use MySQL functions
             'order'         => 'desc',                          // Asc / desc
             'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
             'permaFilter'   => null,                            // Null / Closure: Add a permanent filter to the query?
