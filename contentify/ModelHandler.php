@@ -147,6 +147,10 @@ class ModelHandler
         if (! is_array($data['dataSource'])) {
             if (Input::get('sortby')) {
                 $sortBy = strtolower(Input::get('sortby'));
+                
+                // ATTENTION: Only allow ordering by this column if it's white listed!
+                // Never use user input for column ordering!
+                // @see https://murze.be/an-important-security-release-for-laravel-query-builder
                 if (in_array($sortBy, $data['tableHead'])) {
                     $data['sortby'] = $sortBy;
                 }
