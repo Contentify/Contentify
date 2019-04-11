@@ -5,6 +5,11 @@ namespace App\Modules\Streams\Api;
 use AbstractJob;
 use App\Modules\Streams\Stream;
 
+/**
+ * This jobs tries to update the meta information (current number of viewervs, etc.)
+ * of all streams by retrieving them from the APIs of the stream providers.
+ * This task can be slow so we have outsourced it to a job that can run in the background.
+ */
 class UpdateStreamsJob extends AbstractJob
 {
     /**
