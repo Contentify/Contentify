@@ -10,7 +10,7 @@ use Log;
 /**
  * @see https://dev.twitch.tv/docs/api
  */
-class TwitchApi extends StreamApi
+class TwitchApi extends AbstractStreamApi
 {
 
     /**
