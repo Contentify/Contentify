@@ -57,10 +57,7 @@ class SmashcastApi extends AbstractStreamApi
     }
 
     /**
-     * Updates the passed streams
-     *
-     * @param Stream[] $streams Array with objects of type Stream
-     * @return void
+     * {@inheritDoc}
      */
     public function updateStreams(array $streams)
     {
