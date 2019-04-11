@@ -18,7 +18,7 @@ class UpdateStreamsJob extends AbstractJob
      */
     const EVENT_NAME_UPDATE_EXTRA_STREAMS = 'contentify.streams.updateStream';
 
-    protected $interval = 5; // Minutes
+    protected $interval = 5; // Run this job every five minutes
 
     public function run($executedAt)
     {
