@@ -6,6 +6,7 @@ use App\Modules\Streams\Stream;
 use DateTime;
 
 /**
+ * Class that makes calls to the Smashcast API.
  * Note: Hitbox was acquired in 2017 and then became Smashcast.
  * This SmashcastApi class replaces the old HitboxApi class.
  *
