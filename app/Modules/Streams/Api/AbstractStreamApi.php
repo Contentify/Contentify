@@ -4,7 +4,7 @@ namespace App\Modules\Streams\Api;
 
 use Log;
 
-class StreamApi
+abstract class AbstractStreamApi
 {
 
     /**
