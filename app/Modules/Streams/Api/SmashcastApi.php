@@ -11,7 +11,7 @@ use DateTime;
  *
  * @see https://developers.smashcast.tv/
  */
-class SmashcastApi extends StreamApi
+class SmashcastApi extends AbstractStreamApi
 {
 
     /**
