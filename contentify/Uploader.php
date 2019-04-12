@@ -185,7 +185,7 @@ class Uploader
         do {
             $date = DateTime::createFromFormat('U.u', microtime(true));
             $filename = md5($date->format('Y-m-d H:i:s.u')); 
-        } while (file_exists($filename))
+        } while (file_exists($filename));
             
         return $filename;
     }
