@@ -54,7 +54,7 @@ class UpdateStreamsJob extends AbstractJob
                     $smashcastApi->updateStreams($streams);
 
                     break;
-                default;
+                default:
                     event(self::EVENT_NAME_UPDATE_EXTRA_STREAMS, [$streams]);
             }
         }
