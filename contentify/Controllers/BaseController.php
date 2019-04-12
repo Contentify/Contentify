@@ -62,13 +62,6 @@ abstract class BaseController extends Controller
      */
     protected $formTemplate = '';
 
-    /**
-     * Array with "evil" file extensions
-     *
-     * @var string[]
-     */
-    protected $evilFileExtensions = ['php'];
-
     public function __construct()
     {
         /*
