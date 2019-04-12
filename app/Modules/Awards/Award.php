@@ -85,5 +85,4 @@ class Award extends BaseModel
 
         return $icon;
     }
-
 }

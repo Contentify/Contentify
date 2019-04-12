@@ -12,6 +12,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        \Contentify\Commands\InstallCommand::class,
         \Contentify\Commands\MakeFormCommand::class,
         \Contentify\Commands\LessCompileCommand::class,
         \ChrisKonnertz\Jobs\Integration\JobsCommand::class,
@@ -40,5 +41,4 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
-
 }

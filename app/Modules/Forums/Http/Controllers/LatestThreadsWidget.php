@@ -17,5 +17,4 @@ class LatestThreadsWidget extends Widget
 
         return View::make('forums::widget_latest_threads', compact('forumThreads'))->render();
     }
-
 }

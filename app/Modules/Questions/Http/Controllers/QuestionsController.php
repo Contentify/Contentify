@@ -40,5 +40,4 @@ class QuestionsController extends FrontController implements GlobalSearchInterfa
 
         return $results;
     }
-
 }

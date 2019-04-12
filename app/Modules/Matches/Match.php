@@ -240,5 +240,4 @@ class Match extends BaseModel
     {
         return $this->left_team->title.' '.trans('matches::vs').' '.$this->right_team->title;
     }
-
 }

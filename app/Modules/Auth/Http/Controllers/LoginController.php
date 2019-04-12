@@ -194,5 +194,4 @@ class LoginController extends FrontController
             return Redirect::to('/');
         }
     }
-
 }

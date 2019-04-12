@@ -15,26 +15,28 @@ use SoftDeletingTrait;
  * @property string  $url
  * @property string  $permanent_id
  * @property string  $provider
+ * @property bool    $enable_comments
  * @property int     $access_counter
  * @property int     $creator_id
  * @property int     $updater_id
  * @property \User  $creator
  */
-class Video extends BaseModel 
+class Video extends BaseModel
 {
 
     use SoftDeletingTrait;
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'url', 'permanent_id', 'provider'];
+    protected $fillable = ['title', 'url', 'permanent_id', 'provider', 'enable_comments'];
 
     protected $slugable = true;
 
     protected $rules = [
-        'title'         => 'required|min:3',
-        'url'           => 'required|url',
-        'provider'      => 'required',
+        'title'             => 'required|min:3',
+        'url'               => 'required|url',
+        'provider'          => 'required',
+        'enable_comments'   => 'boolean',
     ];
 
     public static $relationsData = [
@@ -76,5 +78,4 @@ class Video extends BaseModel
 
         return $og;
     }
-
 }

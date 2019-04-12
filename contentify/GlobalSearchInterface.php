@@ -5,7 +5,8 @@ namespace Contentify;
 /**
  * Interface for controllers that provide results for the global search in the frontend.
  */
-interface GlobalSearchInterface {
+interface GlobalSearchInterface
+{
 
     /**
      * This method is called by the global search (SearchController->postCreate()).
@@ -16,5 +17,4 @@ interface GlobalSearchInterface {
      * @return string[]
      */
     public function globalSearch(string $subject) : array;
-
 }

@@ -133,6 +133,7 @@ return [
      * Comments
      */
     'comments'              => 'Kommentare',
+    'comments_disabled'     => 'Die Kommentarfunktion wurde für diesen Inhalt deaktiviert.',
     'comment_create_fail'   => 'Kann Kommentar nicht erstellen. :0',
     'comment_update_fail'   => 'Kann Kommentar nicht editieren. :0',
     'enable_comments'       => 'Kommentare aktivieren',
@@ -204,7 +205,7 @@ return [
     'back'              => 'Zurück',
     'general'           => 'Allgemein',
     'services'          => 'Services',
-    'metainfo'			=> 'Metainfos',
+    'metainfo'          => 'Metainfos',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Weihnachtsmodus (Schnee)',
     'theme_snow_color'  => 'Flockenfarbe',

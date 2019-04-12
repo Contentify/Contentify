@@ -45,5 +45,4 @@ class AdminAdvertsController extends BackController
             }
         ]);
     }
-
 }

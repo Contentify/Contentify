@@ -71,7 +71,7 @@ abstract class ModuleInstaller
      * 
      * @return void
      */
-    public final function after()
+    final public function after()
     {
         // Update backend navigation
         (new BackendNavGenerator())->update();
@@ -103,7 +103,7 @@ abstract class ModuleInstaller
      * @param  int|null $step The step (null = auto)
      * @return string
      */
-    protected final function nextStep(int $step = null) : string
+    final protected function nextStep(int $step = null) : string
     {
         if ($step === null) {
             $step = $this->step;
@@ -112,5 +112,4 @@ abstract class ModuleInstaller
 
         return route('modules.install', ['name' => $this->module, 'step' => $step]);
     }
-
 }

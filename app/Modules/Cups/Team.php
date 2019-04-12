@@ -6,6 +6,7 @@ use BaseModel;
 use DB;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use MsgException;
 use User;
 
 /**
@@ -24,6 +25,10 @@ use User;
  */
 class Team extends BaseModel
 {
+    /**
+     * Name of the event that is fired when a user joins a team
+     */
+    const EVENT_NAME_MEMBER_ADDED = 'contentify.cups.memberAdded';
 
     public $table = 'cups_teams';
 
@@ -139,7 +144,7 @@ class Team extends BaseModel
     }
 
     /**
-     * Adds a member to a team. Does not validate anything!
+     * Adds a member to the team. Does not validate anything!
      * 
      * @param User    $user      The user object
      * @param boolean $organizer Is the user an organizer?
@@ -152,6 +157,28 @@ class Team extends BaseModel
             'user_id'   => $user->id, 
             'organizer' => $organizer,
         ]);
+        
+        event(self::EVENT_NAME_MEMBER_ADDED, [$this, $user]);
+    }
+    
+    /**
+     * Tries to add a user to the team (lets a user join a team).
+     * ATTENTION: Does not do a password check!
+     *
+     * @param User $user
+     * @return void
+     * @throws MsgException
+     */
+    public function tryAddMember(User $user)
+    {
+        if ($this->isLocked()) {
+            throw new MsgException(trans('cups::team_locked'));
+        }
+        if ($this->isMember($user)) {
+            throw new MsgException(trans('app.not_possible'));
+        }
+        
+        $this->addMember($user);        
     }
 
     /**
@@ -181,5 +208,4 @@ class Team extends BaseModel
         // Remove members from the team
         DB::table('cups_team_members')->whereTeamId($this->id)->whereIn('user_id', $memberIds)->delete();
     }
-
 }

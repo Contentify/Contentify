@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddRolesUpdater extends Migration {
+class AddRolesUpdater extends Migration
+{
 
     /**
      * Run the migrations.
@@ -27,5 +28,4 @@ class AddRolesUpdater extends Migration {
     {
         //
     }
-
 }

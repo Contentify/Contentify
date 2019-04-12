@@ -235,7 +235,6 @@ class ModuleRoute
          * Ignore closures:
          */
         if (is_string($target) or is_array($target)) {
-            
             /* 
              * Always create an array:
              */
@@ -271,5 +270,4 @@ class ModuleRoute
     {
         return self::ADMIN_NAME_PREFIX;
     }
-
 }

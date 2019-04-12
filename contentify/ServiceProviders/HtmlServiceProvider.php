@@ -36,5 +36,4 @@ class HtmlServiceProvider extends OriginalHtmlServiceProvider
             return $form->setSessionStore($app['session.store']);
         });
     }
-
 }

@@ -12,4 +12,3 @@ with these exceptions:
 
 * All PHP files MUST NOT end with a single blank line.
 * The last case segment of a `switch` structure CAN have a `break` keyword. (But usually, we omit it.)
-* Closures MUST NOT be declared with a space after the `function` keyword.

@@ -27,7 +27,7 @@ class AdminGamesController extends BackController
         $this->indexPage([
             'tableHead' => [
                 trans('app.id')     => 'id', 
-                trans('app.icon')   => NULL,
+                trans('app.icon')   => null,
                 trans('app.title')  => 'title'
             ],
             'tableRow' => function(Game $game)
@@ -36,11 +36,10 @@ class AdminGamesController extends BackController
                     $game->id,
                     raw($game->icon 
                         ? HTML::image($game->uploadPath().$game->icon, $game->title, ['width' => 16, 'height' => 16]) 
-                        : NULL),
+                        : null),
                     raw(Hover::modelAttributes($game, ['creator', 'updated_at'])->pull(), $game->title),
                 ];
             }
         ]);
     }
-
 }

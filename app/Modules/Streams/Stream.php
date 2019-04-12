@@ -19,26 +19,28 @@ use SoftDeletingTrait;
  * @property string  $thumbnail
  * @property bool    $online
  * @property int     $viewers
+ * @property bool    $enable_comments
  * @property int     $access_counter
  * @property int     $creator_id
  * @property int     $updater_id
  * @property \User   $creator
  */
-class Stream extends BaseModel 
+class Stream extends BaseModel
 {
 
     use SoftDeletingTrait;
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['title', 'url', 'permanent_id', 'provider', 'thumbnail'];
+    protected $fillable = ['title', 'url', 'permanent_id', 'provider', 'thumbnail', 'enable_comments'];
 
     protected $slugable = true;
 
     protected $rules = [
-        'title'         => 'required|min:3',
-        'url'           => 'required|url',
-        'provider'      => 'required',
+        'title'             => 'required|min:3',
+        'url'               => 'required|url',
+        'provider'          => 'required|min:3',
+        'enable_comments'   => 'boolean',
     ];
 
     public static $relationsData = [
@@ -49,6 +51,7 @@ class Stream extends BaseModel
      * Array with the names and titles of available video providers (platforms).
      * Be aware that if you add a provider you should also take a look at the template files
      * and add JS/HTML handling for the provider.
+     * The name of the providers must have a length of >= 3 characters.
      *
      * @var string[]
      */
@@ -66,5 +69,4 @@ class Stream extends BaseModel
     {
         return Comment::count('streams', $this->id);
     }
-
 }

@@ -19,5 +19,4 @@ class FeaturedCupWidget extends Widget
 
         return '';
     }
-
 }

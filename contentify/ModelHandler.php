@@ -93,7 +93,7 @@ class ModelHandler
             'tableRow'      => [],                              // Array of items for the table body part
             'actions'       => ['edit', 'delete', 'restore'],   // Array of named actions or Closures
             'brightenFirst' => true,                            // True / false
-            'sortby'        => 'id',                            // Model attribute name. You can not use MySQL functions
+            'sortby'        => 'id',                            // Model attribute name. You cannot use MySQL functions
             'order'         => 'desc',                          // Asc / desc
             'filter'        => false,                           // Bool: Apply filters? (Calls model::scopeFilter())
             'permaFilter'   => null,                            // Null / Closure: Add a permanent filter to the query?
@@ -153,6 +153,10 @@ class ModelHandler
         if (! is_array($data['dataSource'])) {
             if (Input::get('sortby')) {
                 $sortBy = strtolower(Input::get('sortby'));
+                
+                // ATTENTION: Only allow ordering by this column if it's white listed!
+                // Never use user input for column ordering before Laravel 5.8!
+                // @see https://murze.be/an-important-security-release-for-laravel-query-builder
                 if (in_array($sortBy, $data['tableHead'])) {
                     $data['sortby'] = $sortBy;
                 }
@@ -272,7 +276,8 @@ class ModelHandler
                         switch ($action) {
                             case 'edit':
                                 if ($model->modifiable()) {
-                                    $actionsCode .= icon_link('edit', 
+                                    $actionsCode .= icon_link(
+                                        'edit', 
                                         trans('app.edit'), 
                                         route($surface.'.'.$controllerRouteName.'.edit', [$model->id]),
                                         false,
@@ -283,7 +288,8 @@ class ModelHandler
                             case 'delete':
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
                                 if ($model->modifiable()) {
-                                    $actionsCode .= icon_link('trash', 
+                                    $actionsCode .= icon_link(
+                                        'trash', 
                                         trans('app.delete'), 
                                         route($surface.'.'.$controllerRouteName.'.destroy', [$model->id])
                                             .$urlParams,
@@ -294,10 +300,11 @@ class ModelHandler
                                 break;
                             case 'restore':
                                 if ($model->isSoftDeleting() and $model->trashed()) {
-                                    $actionsCode .= icon_link('undo', 
+                                    $actionsCode .= icon_link(
+                                        'undo', 
                                         trans('app.restore'),
                                         route($surface.'.'.$controllerRouteName.'.restore', [$model->id]),
-                                    false,
+                                        false,
                                         ['data-color' => 'yellow']
                                     );
                                 }
@@ -717,5 +724,4 @@ class ModelHandler
 
         return $this->controller;
     }
-    
 }

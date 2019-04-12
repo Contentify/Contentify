@@ -16,5 +16,4 @@ class LoginWidget extends Widget
             return View::make('auth::widget_login');
         }
     }
-
 }

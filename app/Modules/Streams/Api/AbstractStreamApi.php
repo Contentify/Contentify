@@ -4,8 +4,17 @@ namespace App\Modules\Streams\Api;
 
 use Log;
 
-class StreamApi 
+abstract class AbstractStreamApi
 {
+    
+    /**
+     * Updates the meta information of the passed streams in the database.
+     * This method to be implemented in the concrete class.
+     * 
+     * @param Stream[] $streams Array with objects of type Stream
+     * @return void
+     */
+    abstract public function updateStreams(array $streams);
 
     /**
      * Makes the API call
@@ -47,5 +56,4 @@ class StreamApi
     {
         return json_decode($response);
     }
-
 }

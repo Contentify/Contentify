@@ -43,5 +43,4 @@ class AdminGalleriesController extends BackController
             }
         ]);
     }
-
 }

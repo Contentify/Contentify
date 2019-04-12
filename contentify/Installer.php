@@ -3,9 +3,12 @@
 namespace Contentify;
 
 use Artisan;
+use Closure;
 use Config;
 use DB;
 use File;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\MessageBag;
 use Schema;
 use Sentinel;
 use Str;
@@ -55,7 +58,7 @@ class Installer
      * @param $database
      * @param string $username
      * @param string $password
-     * @return array
+     * @return MessageBag
      */
     public function createDatabaseIni(string $host, string $database, string $username, string $password)
     {
@@ -80,7 +83,8 @@ class Installer
             return $validator->messages();
         }
 
-        File::put(storage_path(self::DB_INI_FILE), 
+        File::put(
+            storage_path(self::DB_INI_FILE), 
             '; Auto-generated file with database connection settings.'.PHP_EOL.
             '; See config/database.php for more settings.'.PHP_EOL.PHP_EOL.
             "host = "."\"$host\"".PHP_EOL.
@@ -89,7 +93,7 @@ class Installer
             "password = "."\"$password\""
         );
         
-        return [];
+        return new MessageBag();
     }
     
     /**
@@ -118,13 +122,16 @@ class Installer
          * Unfortunately it's not the simple Artisan::call('migrate') that it should be.
          * Note that Sentinel tables do not establish any foreign constraints.
          */
-        define('STDIN', fopen('php://stdin', 'r'));
+        if (! app()->runningInConsole()) {
+            define('STDIN', fopen('php://stdin', 'r'));
+        }
         $table = Config::get('database.migrations', null, false);
         $result = DB::select('SHOW TABLES LIKE "'.$table.'"');
         if (sizeof($result) > 0) { // Check if migrations table exists
             Artisan::call('migrate:reset', ['--quiet' => true, '--force' => true]); // Delete old tables
         }
-        Artisan::call('migrate', 
+        Artisan::call(
+            'migrate', 
             ['--path' => 'vendor/cartalyst/sentinel/src/migrations', '--quiet' => true, '--force' => true]
         );
 
@@ -185,8 +192,9 @@ class Installer
             $table->string('icon')->nullable();
         }, [], ['slug']);
 
-        $this->create('page_cats', function(Blueprint $table) { }, [], ['slug']);
-
+        $this->create('page_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
+        
         $this->create('pages', function(Blueprint $table)
         {
             $table->text('text')->nullable();
@@ -209,7 +217,7 @@ class Installer
             $table->boolean('published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->boolean('internal')->default(false);
-            $table->boolean('enable_comments')->default(false);
+            $table->boolean('enable_comments')->default(true);
         }, ['news_cat_id']);
 
         $this->create('galleries', function(Blueprint $table)
@@ -232,8 +240,9 @@ class Installer
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);
 
-        $this->create('team_cats', function(Blueprint $table) { }, [], ['slug']);
-
+        $this->create('team_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
+        
         $this->create('teams', function(Blueprint $table)
         { 
             $table->text('text')->nullable();
@@ -242,8 +251,9 @@ class Installer
             $table->boolean('published')->default(false);
         }, ['team_cat_id', 'country_id']);
 
-        $this->create('advert_cats', function(Blueprint $table) { }, [], ['slug']);
-
+        $this->create('advert_cats', function(Blueprint $table) {
+        }, [], ['slug']); 
+        
         $this->create('adverts', function(Blueprint $table)
         {
             $table->text('code')->nullable();
@@ -252,7 +262,8 @@ class Installer
             $table->string('image')->nullable();
         }, ['advert_cat_id'], ['slug']);
 
-        $this->create('partner_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('partner_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('partners', function(Blueprint $table)
         {
@@ -272,8 +283,10 @@ class Installer
             $table->string('url')->nullable();
             $table->string('permanent_id')->nullable();
             $table->string('provider');
+            $table->boolean('enable_comments')->default(true);
         });
-
+        
+	//phpcs:ignore --nothing in the function
         $this->create('download_cats', function(Blueprint $table) { }); // Supports slugs
 
         $this->create('downloads', function(Blueprint $table)
@@ -286,7 +299,8 @@ class Installer
             $table->boolean('published')->default(false);
         }, ['download_cat_id']);
         
-        $this->create('slide_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('slide_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('slides', function(Blueprint $table)
         {
@@ -302,7 +316,7 @@ class Installer
             $table->string('short', 6)->nullable();
             $table->string('url')->nullable();
             $table->string('icon')->nullable();
-        },  [], ['slug']);
+        }, [], ['slug']);
         
         $this->create('awards', function(Blueprint $table)
         {
@@ -356,6 +370,7 @@ class Installer
             $table->boolean('online')->default(false);
             $table->integer('viewers')->default(0);
             $table->timestamp('renewed_at')->nullable();
+            $table->boolean('enable_comments')->default(true);
         });
 
         $this->create('servers', function(Blueprint $table)
@@ -479,7 +494,7 @@ class Installer
             $table->boolean('featured')->default(false);
             $table->boolean('published')->default(false);
             $table->boolean('closed')->default(false);
-        },  ['game_id']);
+        }, ['game_id']);
 
         Schema::dropIfExists('cups_participants');
         Schema::create('cups_participants', function(Blueprint $table)
@@ -532,7 +547,8 @@ class Installer
             $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
 
-        $this->create('question_cats', function(Blueprint $table) { }, [], ['slug']);
+        $this->create('question_cats', function(Blueprint $table) { 
+        }, [], ['slug']);
 
         $this->create('questions', function(Blueprint $table)
         {
@@ -545,6 +561,7 @@ class Installer
         {
             $table->boolean('open')->default(true);
             $table->boolean('internal')->default(false);
+            $table->boolean('enable_comments')->default(true);
             $table->integer('max_votes');
             $table->string('option1')->nullable();
             $table->string('option2')->nullable();
@@ -622,7 +639,7 @@ class Installer
             ['id' => '2', 'title' => 'Custom Page', 'creator_id' => 1, 'updater_id' => 1],
             ['id' => '3', 'title' => 'Custom Content', 'creator_id' => 1, 'updater_id' => 1],
         ]);
-
+	//phpcs:disable Generic.WhiteSpace.ScopeIndent --multiline text block for db insert 
         DB::table('pages')->insert([
             'title'         => 'Impressum', 
             'slug'          => 'impressum',
@@ -649,7 +666,7 @@ information about your stored data, and possibly entitlement to correction, bloc
             'created_at'    => DB::raw('NOW()'),
             'updated_at'    => DB::raw('NOW()'),
         ]);
-
+        //phpcs:enable Generic.WhiteSpace.ScopeIndent --multiline text block for db insert done
         DB::table('languages')->insert([
             ['id' => '1', 'title' => 'English', 'code' => 'en'],
             ['id' => '2', 'title' => 'Deutsch', 'code' => 'de'],
@@ -1196,7 +1213,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * @param string $email
      * @param string $password
      * @param string $passwordConfirmation
-     * @return array
+     * @return MessageBag
      */
     public function createAdminUser(string $username, string $email, string $password, string $passwordConfirmation)
     {
@@ -1236,7 +1253,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         $adminRole = Sentinel::findRoleBySlug('super-admins'); 
         $adminRole->users()->attach($user);
         
-        return [];
+        return new MessageBag();
     }
     
     /**
@@ -1263,11 +1280,11 @@ information about your stored data, and possibly entitlement to correction, bloc
         $filename = storage_path(self::INSTALL_FILE);
         
         if (File::isWritable(File::dirname($filename))) {
-          if (! File::exists($filename)) {
-            File::put($filename, time());
-          }
+            if (! File::exists($filename)) {
+                File::put($filename, time());
+            }
         } else {
-          throw new \Exception('Error: Cannot create '.$filename.'! Please create it manually.');
+            throw new \Exception('Error: Cannot create '.$filename.'! Please create it manually.');
         }
     }
 
@@ -1292,5 +1309,4 @@ information about your stored data, and possibly entitlement to correction, bloc
             file_get_contents($url);
         }
     }
-    
 }

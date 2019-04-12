@@ -11,7 +11,7 @@ use URL;
 use UserActivities;
 use UserActivity;
 
-class AdminActivitiesController extends BackController 
+class AdminActivitiesController extends BackController
 {
 
     use ModelHandlerTrait {
@@ -77,5 +77,4 @@ class AdminActivitiesController extends BackController
 
         return Redirect::to('admin/activities');
     }
-
 }

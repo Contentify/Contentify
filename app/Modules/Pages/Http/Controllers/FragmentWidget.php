@@ -22,5 +22,4 @@ class FragmentWidget extends Widget
 
         return $fragment->text;
     }
-
 }

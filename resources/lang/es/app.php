@@ -133,6 +133,7 @@ return [
      * Comments
      */
     'comments'              => 'Comentarios',
+    'comments_disabled'     => 'La función de comentarios ha sido desactivada para este contenido.',
     'comment_create_fail'   => 'No se ha podido crear el comentario. :0',
     'comment_update_fail'   => 'No se ha podido actualizar el comentario. :0',
     'enable_comments'       => 'Habilitar comentarios',
@@ -203,7 +204,7 @@ return [
     'nothing_here'      => 'Lo siento, aún no hay contenido aquí. Por favor, inténtelo de nuevo más tarde.',
     'back'              => 'Atrás',
     'general'           => 'General',
-    'metainfo'			=> 'Meta info',
+    'metainfo'          => 'Meta info',
     'services'          => 'Servicios',
     'theme'             => 'Tema',
     'theme_christmas'   => 'Modo navidad (Nieve)',

@@ -59,5 +59,4 @@ class ContactMessage extends BaseModel
             $message->subject(trans('app.new').': '.trans('app.object_contact_message'));
         });
     }
-
 }

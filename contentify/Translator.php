@@ -52,8 +52,7 @@ class Translator extends OriginalTranslator
     {
         $replace = $this->sortReplacements($replace);
 
-        foreach ($replace as $key => $value)
-        {
+        foreach ($replace as $key => $value) {
             $line = str_replace(':'.$key, $value, $line);
         }
 
@@ -73,7 +72,7 @@ class Translator extends OriginalTranslator
 
         if ($languageCodes === null) {
             // Use the names of the language directories to identify the supported languages
-            $languageCodes = File::directories( base_path().'/resources/lang');
+            $languageCodes = File::directories(base_path().'/resources/lang');
 
             // Only keep the name of the directory instead of the whole path
             array_walk($languageCodes, function(&$value, $key)
@@ -81,10 +80,9 @@ class Translator extends OriginalTranslator
                 $value = basename($value);
             });
 
-            Cache::put('app.locales', $languageCodes,10);
+            Cache::put('app.locales', $languageCodes, 10);
         }
 
         return $languageCodes;
     }
-
 }

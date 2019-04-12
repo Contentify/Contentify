@@ -5,7 +5,7 @@ namespace App\Modules\Visitors\Http\Controllers;
 use App\Modules\Visitors\Chart;
 use BackController;
 
-class AdminVisitorsController extends BackController 
+class AdminVisitorsController extends BackController
 {
 
     protected $icon = 'chart-pie';
@@ -16,5 +16,4 @@ class AdminVisitorsController extends BackController
 
         $this->pageView('visitors::admin_show', compact('chart'));
     }
-
 }

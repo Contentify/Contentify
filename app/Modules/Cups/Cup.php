@@ -3,6 +3,7 @@
 namespace App\Modules\Cups;
 
 use BaseModel;
+use Carbon;
 use DB;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -38,7 +39,21 @@ use User;
  */
 class Cup extends BaseModel
 {
-
+    /**
+     * Name of the event that is fired when a cup has been seeded
+     */
+    const EVENT_NAME_CUP_SEEDED = 'contentify.cups.cupSeeded';
+    
+    /**
+     * Name of the event that is fired when a participant has been added to a cup
+     */
+    const EVENT_NAME_PARTICIPANT_ADDED = 'contentify.cups.participantAdded';
+    
+    /**
+     * Name of the event that is fired when a participant has been removed from a cup
+     */
+    const EVENT_NAME_PARTICIPANT_REMOVED = 'contentify.cups.participantRemoved';    
+    
     /**
      * Array with all possible values of: How many players have to be in a team at least?
      * @var int[]
@@ -181,8 +196,8 @@ class Cup extends BaseModel
         }
 
         foreach ($matches as $match) {
-            $match->left_participant = $leftParticipants->where('id',  $match->left_participant_id)->pop();
-            $match->right_participant = $rightParticipants->where('id',  $match->right_participant_id)->pop();
+            $match->left_participant = $leftParticipants->where('id', $match->left_participant_id)->pop();
+            $match->right_participant = $rightParticipants->where('id', $match->right_participant_id)->pop();
         }
 
         $this->matchesStored = $matches;
@@ -384,5 +399,102 @@ class Cup extends BaseModel
 
         return (int) ceil(log($participants) / log(2) + 1);
     }
+    
+    /**
+     * Generates the matches for the first round of the current cup
+     *
+     * @return void
+     * @throws MsgException
+     */
+    public function seed()
+    {
+        // Get all participants that are checked-in and randomize their order
+        $participants = $this->participants()->where(DB::raw('`cups_participants`.`checked_in`'), true)
+            ->get()->shuffle();
 
+        if ($participants->isEmpty()) {
+            throw new MsgException(trans('app.not_possible'));
+        }
+
+        // Set the amount of slots to the lowest possible value
+        // (not less than the number of participants, of course)
+        $slotValues = self::$slotValues;
+        arsort($slotValues); // Sort from high to low
+        foreach ($slotValues as $slots) {
+            if ($slots < sizeof($participants)) {
+                $this->save();
+                break;
+            }
+            $this->slots = $slots;
+        }
+
+        $matches = Match::whereCupId($this->id)->where('winner_id', '>', 0)->where('right_participant_id', '!=', 0)->get();
+
+        // (Re-)Seeding is not possible once matches have been played
+        if (sizeof($matches) > 0) {
+            throw new MsgException(trans('app.not_possible'));
+        }
+
+        // Delete the existing matches
+        Match::whereCupId($this->id)->delete();
+
+        // The number of matches that we will generate is ALWAYS 0.5 * number of slots -
+        // it does NOT (directly) depend on the number of wildcard-matches! This fact is very important!
+        // This algorithm ensures that wildcard-matches can only appear in the first round of the cup.
+        // There will never be wildcard-matches in other rounds than the first one!
+        $matches = [];
+        for ($matchIndex = 0; $matchIndex < $this->slots / 2; $matchIndex++) {
+            // Note: We know that we have at least 0.5 * slots participants.
+            // This is because we have reduced the number of slots to the lowest possible value.
+            // (The difference between two slot limits is always 50% of the bigger limit.)
+            $leftParticipantId = $participants[$matchIndex]->id;
+
+            // Note: Wildcard-matches will always have set right_participant_id to 0.
+            $index = $this->slots / 2 + $matchIndex;
+            $rightParticipantId = isset($participants[$index]) ? $participants[$index]->id : 0;
+
+            $now = new Carbon;
+            
+            $matches[] = [
+                'round'                 => 1,
+                'row'                   => $matchIndex + 1,
+                'with_teams'            => $this->forTeams(),
+                'left_participant_id'   => $leftParticipantId,
+                'right_participant_id'  => $rightParticipantId,
+                'winner_id'             => $rightParticipantId > 0 ? 0 : $leftParticipantId,
+                'cup_id'                => $this->id,
+                'creator_id'            => user() ? user()->id : User::DAEMON_USER_ID,
+                'created_at'            => $now,
+            ];
+        }
+
+        Match::insert($matches);
+        
+        event(self::EVENT_NAME_CUP_SEEDED, [$cup]);
+    }
+    
+    /**
+     * Adds a participant to the current cup.
+     * ATTENTION: Does not perform any checks!
+     */
+    public function addParticipantById(int $participantId)
+    {
+        DB::table('cups_participants')->insert([
+            'cup_id' => $this->id,
+            'participant_id' => $participantId,
+        ]);
+        
+        event(self::EVENT_NAME_PARTICIPANT_ADDED, [$cup, $participantId]);
+    }
+    
+    /**
+     * Removes a participant from the given cup.
+     * ATTENTION: Does not perform any checks!
+     */
+    public function removeParticipantByid(int $participantId)
+    {
+        DB::table('cups_participants')->whereCupId($cup->id)->whereParticipantId($participantId)->delete();
+        
+        event(self::EVENT_NAME_PARTICIPANT_REMOVED, [$cup, $participantId]);
+    }        
 }

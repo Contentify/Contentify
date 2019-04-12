@@ -23,6 +23,16 @@ class AdminConfigController extends BackController
      * change where Monolog creates the file.
      */
     const LOG_FILE = '/logs/laravel.log';
+    
+    /**
+     * Name of the event that is fired after the website settings have been updated
+     */
+    const EVENT_NAME_UPDATED = 'contentify.config.updated';
+    
+    /**
+     * Name of the event that is fired after the database has been exported
+     */
+    const EVENT_NAME_DB_EXPORTED = 'contentify.config.dbExported';     
 
     protected $icon = 'cog';
 
@@ -126,12 +136,13 @@ class AdminConfigController extends BackController
                 DB::table('config')->insert([
                     'name'       => $settingRealName,
                     'value'      => $settingsBag->$settingName,
-                    'updated_at' => DB::raw('NOW()')]
-                );
+                    'updated_at' => DB::raw('NOW()')]);
             }
 
             Config::clearCache($settingRealName);
         }
+        
+        event(self::EVENT_NAME_UPDATED, [$settingsBag]);
 
         $this->alertFlash(trans('app.updated', [$this->controllerName]));
         return Redirect::to('admin/config');
@@ -156,16 +167,17 @@ class AdminConfigController extends BackController
         phpinfo(INFO_GENERAL | INFO_CONFIGURATION | INFO_MODULES | INFO_ENVIRONMENT | INFO_VARIABLES); 
         
         preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
-        
+        //phpcs:disable Generic.WhiteSpace.ScopeIndent,PSR2.Methods.FunctionCallSignature -- phpcs really hates how the output is parsed
         $this->pageOutput('<div class="phpinfodisplay"><style type="text/css">'."\n".
-             implode("\n",
-                 array_map(
-                     function($item) {
-                         return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
+             implode(
+                 "\n",
+                     array_map(
+                     function($item) { 
+                        return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
                      },
                      preg_split('/\n/', $matches[1]) // $matches[1] = style information
-                     )
-                 ).
+                 )
+             ).
              "{}\n
              .phpinfodisplay { overflow-x: scroll }\n
              .phpinfodisplay td,.phpinfodisplay  th { border: 1px solid silver; overflow-wrap: break-word; }\n
@@ -175,6 +187,7 @@ class AdminConfigController extends BackController
              .phpinfodisplay table { width: 100%; box-shadow: none; }</style>\n". // Override the classes
              $matches[2]. // $matches[2] = body information
              "\n</div>\n");
+        //phpcs:enable Generic.WhiteSpace.ScopeIndent,PSR2.Methods.FunctionCallSignature --turning back on
     }
 
     /**
@@ -219,20 +232,23 @@ class AdminConfigController extends BackController
             case 'mysql':
                 $dump = new MySqlDump();
 
-                $con        = Config::get('database.connections.mysql');
+                $connection = Config::get('database.connections.mysql');
                 $dateTime   = date('M-d-Y_H-i');
                 $filename   = storage_path().'/database/'.$dateTime.'.sql';
 
-                $dump->host     = $con['host'];
-                $dump->user     = $con['username'];
-                $dump->pass     = $con['password'];
-                $dump->db       = $con['database'];
+                $dump->host     = $connection['host'];
+                $dump->user     = $connection['username'];
+                $dump->pass     = $connection['password'];
+                $dump->db       = $connection['database'];
                 $dump->filename = $filename;
                 $dump->start();
+        
+                event(self::EVENT_NAME_DB_EXPORTED, [$connection]);
 
                 $this->alertSuccess(
                     trans('config::db_export'), 
-                    trans('config::db_file', [$filename]));
+                    trans('config::db_file', [$filename])
+                );
                 break;
             default:
                 $this->alertError(trans('config::not_supported', [Config::get('database.default')]));
@@ -369,9 +385,8 @@ class AdminConfigController extends BackController
 
         if (File::exists($filename)) {
             File::delete($filename);
-        }
+        }        
 
         $this->alertSuccess(trans('app.deleted', [$filename]));
     }
-
 }

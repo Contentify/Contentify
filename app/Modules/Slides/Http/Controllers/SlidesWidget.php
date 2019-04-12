@@ -27,5 +27,4 @@ class SlidesWidget extends Widget
 
         return View::make('slides::widget', compact('slides', 'categoryId'))->render();
     }
-
 }

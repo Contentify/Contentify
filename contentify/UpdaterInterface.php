@@ -18,5 +18,4 @@ interface UpdaterInterface
      * @return string
      */
     public function getVersion() : string;
-
 }

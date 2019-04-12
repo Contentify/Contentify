@@ -80,5 +80,4 @@ class Friendship extends BaseModel
             $query->whereSenderId($userId)->orWhere('receiver_id', $userId);
         });
     }
-
 }

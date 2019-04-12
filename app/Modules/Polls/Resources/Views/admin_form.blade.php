@@ -11,6 +11,8 @@
 
 {!! Form::smartCheckbox('internal', trans('app.internal')) !!}
 
+{!! Form::smartCheckbox('enable_comments', trans('app.enable_comments'), true) !!}
+
 <?php
     // Create range including 0, so the array keys start with 0 and the key of the option with value 1 is 1 instead of 0
     $options = range(0, \App\Modules\Polls\Poll::MAX_OPTIONS);

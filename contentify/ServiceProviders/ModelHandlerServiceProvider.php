@@ -28,5 +28,4 @@ class ModelHandlerServiceProvider extends ServiceProvider
             $loader->alias('ModelHandler', 'Contentify\Facades\ModelHandler');
         });
     }
-    
 }

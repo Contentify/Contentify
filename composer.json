@@ -1,6 +1,6 @@
 {
     "name": "Contentify/Contentify",
-    "description": "Contentify is an esports CMS based on the popular Laravel 5 framework.",
+    "description": "Contentify is an esports CMS based on the Laravel 5 framework.",
     "keywords": ["cms", "contentify", "gaming", "esports", "website"],
     "homepage": "http://www.contentify.org",
     "license": "MIT",
@@ -31,7 +31,8 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
-        "filp/whoops": "~2.0"
+        "filp/whoops": "~2.0",
+        "squizlabs/php_codesniffer": "*"
     },
     "config": {
         "optimize-autoloader": true,

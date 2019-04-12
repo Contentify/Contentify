@@ -6,7 +6,7 @@ use App\Modules\Visitors\Chart;
 use View;
 use Widget;
 
-class ChartWidget extends Widget 
+class ChartWidget extends Widget
 {
 
     public function render(array $parameters = []) : string
@@ -15,5 +15,4 @@ class ChartWidget extends Widget
 
         return View::make('visitors::chart', compact('chart'))->render();
     }
-
 }

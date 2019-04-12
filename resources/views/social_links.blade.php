@@ -15,7 +15,7 @@
         @if (isset($wrapperTag))
             {!! '<'.$wrapperTag.'>' !!}
         @endif
-        <a class="social-link" href="{{ $url }}{{ Config::get('app.'.$name) }}" target="_blank" title="{{ $title }}">{!! HTML::fontIcon($name) !!}</a>
+        <a class="social-link social-link-{{ strtolower($title) }}" href="{{ $url }}{{ Config::get('app.'.$name) }}" target="_blank" title="{{ $title }}">{!! HTML::fontIcon($name) !!}</a>
         @if (isset($wrapperTag))
             {!! '</'.$wrapperTag.'>' !!}
         @endif

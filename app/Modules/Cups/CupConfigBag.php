@@ -19,5 +19,4 @@ class CupConfigBag extends ConfigBag
     protected $rules = [
         'cup_points'  => 'integer|min:1',
     ];
-
 }

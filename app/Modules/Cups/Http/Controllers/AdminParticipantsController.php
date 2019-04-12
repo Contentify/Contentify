@@ -50,10 +50,7 @@ class AdminParticipantsController extends BackController
 
         $participantId = (int) Input::get('participant_id');
 
-        DB::table('cups_participants')->insert([
-            'cup_id' => $cup->id,
-            'participant_id' => $participantId,
-        ]);
+        $cup->addParticipantById($participantId);
 
         $this->alertFlash(trans('app.updated', [trans('app.object_cups')]));
         return Redirect::to('admin/cups/participants/'.$cupId);
@@ -71,7 +68,7 @@ class AdminParticipantsController extends BackController
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
-        DB::table('cups_participants')->whereCupId($cup->id)->whereParticipantId($participantId)->delete();
+        $cup->removeParticipantByid($participantId);
 
         $this->alertFlash(trans('app.deleted', [trans('app.object_participant')]));
         return Redirect::to('admin/cups/participants/'.$cupId);
@@ -87,5 +84,4 @@ class AdminParticipantsController extends BackController
     {
         return Redirect::to('admin/cups');
     }
-
 }

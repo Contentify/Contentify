@@ -10,6 +10,7 @@ use DB;
 use FrontController;
 use Illuminate\Http\RedirectResponse;
 use Input;
+use MsgException;
 use Redirect;
 use Response;
 use URL;
@@ -98,7 +99,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
     }
 
     /**
-     * User wants to join a team.
+     * The current user wants to join a team.
      *
      * @param  int $teamId The team ID
      * @return RedirectResponse|null
@@ -109,13 +110,8 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         /** @var Team $team */
         $team = Team::findOrFail($teamId);
 
-        if (! user() or $team->isMember(user())) {
+        if (! user()) {
             $this->alertError(trans('app.not_possible'));
-            return null;
-        }
-
-        if ($team->isLocked()) {
-            $this->alertError(trans('cups::team_locked'));
             return null;
         }
 
@@ -132,7 +128,12 @@ class TeamsController extends FrontController implements GlobalSearchInterface
             }
         }
 
-        DB::table('cups_team_members')->insert(['team_id' => $team->id, 'user_id' => user()->id]);
+        try {
+            $team->tryAddMember(user());
+        } catch (MsgException $exception) {
+            $this->alertError($exception->getMessage());
+            return null;
+        }
 
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('cups/teams/'.$team->id.'/'.$team->slug);
@@ -297,7 +298,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
     }
 
     /**
-     * Deletes a team.
+     * "Deletes" a team. Actually it won't be deleted but just marked as deleted.
      *
      * @param  int $id The ID of the team
      * @return RedirectResponse|null
@@ -351,5 +352,4 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
         return $results;
     }
-
 }

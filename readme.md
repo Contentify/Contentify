@@ -1,26 +1,32 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v3.0-alpha
+## Contentify CMS - v3.0-beta
 
+[![Laravel](https://img.shields.io/travis/Contentify/Contentify.svg?style=flat-square)](https://travis-ci.org/Contentify/Contentify)
 [![Laravel](https://img.shields.io/badge/Laravel-5.5-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 [![Gitter](https://img.shields.io/gitter/room/badges/shields.svg?style=flat-square)](https://gitter.im/Contentify)
 
-Contentify is an esports CMS based on the PHP framework Laravel 5.5. Build your gaming website with a modern CMS.
+[Contentify](http://contentify.org/) is an esports CMS based on the PHP framework Laravel 5.5. Build your gaming website with a modern CMS.
 
-Website: [contentify.org](http://contentify.org/)
+- [x] Technologically advanced gaming CMS
+- [x] High quality code and documentation
+- [x] Based upon the most popular PHP framework
+- [x] Ready for mobile devices
+- [x] Easy to use but yet powerful
+- [x] Free and open source
+- [x] Tons of features
 
 ### Get the production version
 
-Download it here: [3.0](https://github.com/Contentify/Contentify/releases/tag/v3.0)
+**Download it here**: [3.0](https://github.com/Contentify/Contentify/releases/tag/v3.0)
 
 To install Contentify please follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Get the developer version
 
-Clone this repository (`3.0-dev` branch) via git. Via console, switch to the Contentify directory and run `php composer.phar install`. 
-Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+Clone this repository via git and switch to the `3.0-dev` branch. Via console, go to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Update
 
@@ -34,7 +40,7 @@ To update from v2.6 to 3.0:
 * If you made changes to the config files in the `config` folder, you have to re-apply them
 * Now run the updater script via console with `php <contentify>/public/update.php` or via browser with `http://localhost/public/update.php`.
 
-Changes: [Changelog.md](changelog.md)
+**Changes**: [Changelog.md](changelog.md)
 
 ### Demo
 

@@ -6,12 +6,13 @@ use App\Modules\Streams\Stream;
 use DateTime;
 
 /**
+ * Class that makes calls to the Smashcast API.
  * Note: Hitbox was acquired in 2017 and then became Smashcast.
  * This SmashcastApi class replaces the old HitboxApi class.
  *
  * @see https://developers.smashcast.tv/
  */
-class SmashcastApi extends StreamApi
+class SmashcastApi extends AbstractStreamApi
 {
 
     /**
@@ -57,10 +58,7 @@ class SmashcastApi extends StreamApi
     }
 
     /**
-     * Updates the passed streams
-     *
-     * @param Stream[] $streams Array with objects of type Stream
-     * @return void
+     * {@inheritDoc}
      */
     public function updateStreams(array $streams)
     {
@@ -83,5 +81,4 @@ class SmashcastApi extends StreamApi
             $stream->forceSave();
         }
     }
-
 }

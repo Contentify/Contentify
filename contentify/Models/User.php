@@ -166,9 +166,9 @@ class User extends SentinelUser implements UserInterface
 
         self::saving(function(User $user)
         {
-           if ($user->slug === null) {
-               $user->createSlug(true, 'username');
-           }
+            if ($user->slug === null) {
+                $user->createSlug(true, 'username');
+            }
         });
         
         self::updated(function(User $user)
@@ -506,7 +506,6 @@ class User extends SentinelUser implements UserInterface
         $key = self::CACHE_KEY_MESSAGES.$this->id;
 
         if (Cache::has($key)) {
-
             return Cache::get($key);
         }
 
@@ -588,5 +587,4 @@ class User extends SentinelUser implements UserInterface
             return $rendered;
         }
     }
-
 }

@@ -141,5 +141,4 @@ class MessagesController extends FrontController
         $this->alertFlash(trans('app.deleted', ['Message']));
         return Redirect::to('messages/inbox');
     }
-    
 }

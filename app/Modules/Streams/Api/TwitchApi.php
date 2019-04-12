@@ -8,9 +8,10 @@ use DateTime;
 use Log;
 
 /**
+ * Class that makes calls to the Twich API
  * @see https://dev.twitch.tv/docs/api
  */
-class TwitchApi extends StreamApi
+class TwitchApi extends AbstractStreamApi
 {
 
     /**
@@ -57,10 +58,7 @@ class TwitchApi extends StreamApi
     }
 
     /**
-     * Updates the passed streams
-     * 
-     * @param Stream[] $streams Array with objects of type Stream
-     * @return void
+     * {@inheritDoc}
      */
     public function updateStreams(array $streams)
     {
@@ -88,5 +86,4 @@ class TwitchApi extends StreamApi
             $stream->forceSave();
         }
     }
-
 }

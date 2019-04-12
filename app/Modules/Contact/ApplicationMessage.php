@@ -25,5 +25,4 @@ class ApplicationMessage extends BaseModel
         'role'      => 'required|min:3',
         'text'      => 'required|min:3',
     ];
-
 }

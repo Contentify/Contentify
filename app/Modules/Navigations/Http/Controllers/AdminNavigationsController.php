@@ -37,5 +37,4 @@ class AdminNavigationsController extends BackController
             }
         ]);
     }
-
 }

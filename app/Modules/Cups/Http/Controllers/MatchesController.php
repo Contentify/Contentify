@@ -57,59 +57,11 @@ class MatchesController extends FrontController
         /** @var Match $match */
         $match = Match::findOrFail($id);
 
-        $leftScore = (int) Input::get('left_score');
-        $rightScore = (int) Input::get('right_score');
-
-        if ($leftScore == $rightScore) {
-            $this->alertFlash(trans('app.not_possible'));
+        try {
+            $newMatch = $match->confirm(Input::get('left_score'), Input::get('right_score'));
+        } catch (MsgException $exception) {
+            $this->alertFlash($exception->getMessage());
             return Redirect::to('cups/matches/'.$match->id);
-        }
-
-        if ($left) {
-            if (! $match->canConfirmLeft(user())) {
-                $this->alertFlash(trans('app.access_denied'));
-                return Redirect::to('cups/matches/'.$match->id);
-            }
-
-            // If the result has been changed by the left participant, the right has to confirm it again
-            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
-                $match->right_confirmed = false;
-            }
-
-            $match->left_confirmed = true; 
-        } else {
-            if (! $match->canConfirmRight(user())) {
-                $this->alertFlash(trans('app.access_denied'));
-                return Redirect::to('cups/matches/'.$match->id);
-            }
- 
-            // If the result has been changed by the right participant, the left has to confirm it again
-            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
-                $match->left_confirmed = false;
-            }
-
-            $match->right_confirmed = true; 
-        }
-        
-        $match->left_score = $leftScore;
-        $match->right_score = $rightScore;
-        $match->save();
-
-        $newMatch = $match->generateNext();
-
-        // Create next matches for wildcard-matches
-        if ($match->round == 1) {
-            // Remember: Wildcard-matches can only appear in the first row (so we do not need to check this)
-            $wildcards = Match::whereCupId($match->cup_id)->whereRightParticipantId(0)->whereNextMatchId(0)
-                ->orderBy('row')->get();
-
-            /** @var Match $wildcard */
-            foreach ($wildcards as $wildcard) {
-                // It's enough to create  the next match of one of the pair matches
-                if ($wildcard->row % 2 == 1) { 
-                    $wildcard->generateNext();
-                }
-            }
         }
 
         if ($newMatch) {
@@ -144,7 +96,7 @@ class MatchesController extends FrontController
     }
 
     /**
-     * Tries to change the winner of a match (not of a wildcard-match!)
+     * Tries to update the winner of a match (not of a wildcard-match!)
      * 
      * @return RedirectResponse|null
      */
@@ -158,34 +110,14 @@ class MatchesController extends FrontController
             return null;
         }
 
-        $nextMatch = $match->nextMatch();
-
-        if (! $match->right_participant_id or ! $match->winner_id or ! $nextMatch or $nextMatch->winner_id) {
-            $this->alertError(trans('app.not_possible'));
+        try {
+            $match->updateWinner();
+        } catch (MsgException $exception) {
+            $this->alertError($exception->getMessage());
             return null;
         }
-
-        if ($match->left_participant_id == $match->winner_id) {
-            $match->winner_id = $match->right_participant_id;
-            $match->left_score = 0;
-            $match->right_score = 1;
-        } else {
-            $match->winner_id = $match->left_participant_id;
-            $match->left_score = 1;
-            $match->right_score = 0;
-        }
-
-        if ($match->row == 2 * $nextMatch->row) {
-            $nextMatch->right_participant_id = $match->winner_id;
-        } else {
-            $nextMatch->left_participant_id = $match->winner_id;
-        }
-
-        $match->forceSave();
-        $nextMatch->forceSave();
-
+        
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('cups/matches/'.$match->id);
     }
-
 }

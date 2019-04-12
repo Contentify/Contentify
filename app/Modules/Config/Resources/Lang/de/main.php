@@ -39,12 +39,12 @@ return [
     /*
      * Meta information
      */
-	'meta_author'	            => 'Autor',
-	'meta_author_info'	        => 'Wem gehört die Website?',
-    'meta_keywords'	            => 'Schlagworte',
+    'meta_author'               => 'Autor',
+    'meta_author_info'          => 'Wem gehört die Website?',
+    'meta_keywords'             => 'Schlagworte',
     'meta_keywords_info'        => 'Optimierung der Website für Suchmaschinen (Schlagworte)',
-    'meta_description'	        => 'Beschreibung',
-	'meta_description_info'     => 'Optimierung der Website für Suchmaschinen (Beschreibung)',
+    'meta_description'          => 'Beschreibung',
+    'meta_description_info'     => 'Optimierung der Website für Suchmaschinen (Beschreibung)',
 
     /*
      * Code

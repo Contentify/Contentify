@@ -112,5 +112,4 @@ class AdminForumsController extends BackController
 
         return $response;
     }
-
 }

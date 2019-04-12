@@ -12,7 +12,7 @@ use Response;
 use User;
 use View;
 
-class AdminMembersController extends BackController 
+class AdminMembersController extends BackController
 {
 
     protected $icon = 'users';
@@ -172,5 +172,4 @@ class AdminMembersController extends BackController
     {
         return Redirect::to('admin/members')->withInput(Input::only('search'));
     }
-
 }

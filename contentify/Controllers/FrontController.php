@@ -44,8 +44,8 @@ abstract class FrontController extends BaseController
         View::composer($layoutName, function($view)
         {
             /** @var \Illuminate\View\View $view */
-            $view->with('moduleName',       $this->moduleName);
-            $view->with('controllerName',   $this->controllerName);
+            $view->with('moduleName', $this->moduleName);
+            $view->with('controllerName', $this->controllerName);
         });
     }
 
@@ -60,5 +60,4 @@ abstract class FrontController extends BaseController
 
         return Redirect::to($url)->withInput(Input::only('search'));
     }
-    
 }

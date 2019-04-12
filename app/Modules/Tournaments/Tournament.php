@@ -18,7 +18,7 @@ use SoftDeletingTrait;
  * @property \App\Modules\Matches\Match[] $matches
  * @property \User                        $creator
  */
-class Tournament extends BaseModel 
+class Tournament extends BaseModel
 {
 
     use SoftDeletingTrait;
@@ -40,5 +40,4 @@ class Tournament extends BaseModel
         'matches'   => [self::HAS_MANY, 'App\Modules\Matches\Match', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-
 }

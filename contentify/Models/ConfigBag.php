@@ -53,5 +53,4 @@ class ConfigBag
     {
         return $this->rules ?: [];
     }
-
 }

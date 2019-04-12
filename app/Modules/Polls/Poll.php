@@ -16,6 +16,7 @@ use User;
  * @property string  $slug
  * @property bool    $open
  * @property bool    $internal
+ * @property bool    $enable_comments
  * @property int     $max_votes
  * @property string  $option1
  * @property string  $option2
@@ -58,6 +59,7 @@ class Poll extends BaseModel
         'title',
         'open',
         'internal',
+        'enable_comments',
         'max_votes',
         'option1',
         'option2',
@@ -77,10 +79,11 @@ class Poll extends BaseModel
     ];
 
     protected $rules = [
-        'title'     => 'required|min:3',
-        'open'      => 'boolean',
-        'internal'  => 'boolean',
-        'max_votes' => 'required|integer|min:1|max:15'
+        'title'             => 'required|min:3',
+        'open'              => 'boolean',
+        'internal'          => 'boolean',
+        'enable_comments'   => 'boolean',
+        'max_votes'         => 'required|integer|min:1|max:15'
     ];
 
     public static $relationsData = [
@@ -160,5 +163,4 @@ class Poll extends BaseModel
     {
         return Comment::count('polls', $this->id);
     }
-
 }

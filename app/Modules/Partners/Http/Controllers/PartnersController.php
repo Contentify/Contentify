@@ -33,5 +33,4 @@ class PartnersController extends FrontController
 
         return Redirect::to($partner->url); // Go to partner website
     }
-
 }

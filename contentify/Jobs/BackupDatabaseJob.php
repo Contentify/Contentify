@@ -12,7 +12,7 @@ class BackupDatabaseJob extends AbstractJob
     /**
      * {@inheritdoc}
      */
-    protected $executedAt = 1440; // 60 minutes * 24 = 24h (once per day)
+    protected $interval = 1440; // 60 minutes * 24 = 24h (once per day)
 
     /**
      * {@inheritdoc}
@@ -36,5 +36,4 @@ class BackupDatabaseJob extends AbstractJob
         $dump->filename = $filename;
         $dump->start();
     }
-
 }

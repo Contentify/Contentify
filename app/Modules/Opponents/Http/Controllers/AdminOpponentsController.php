@@ -58,5 +58,4 @@ class AdminOpponentsController extends BackController
 
         return $opponent->lineup;
     }
-
 }

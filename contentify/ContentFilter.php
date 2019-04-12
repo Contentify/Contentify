@@ -17,9 +17,9 @@ class ContentFilter
      * True if a given content filter is set in the current request
      * 
      * @param string $name The name of the content filter
-     * @return boolean
+     * @return bool
      */
-    public function has(string $name) : true
+    public function has(string $name) : bool
     {
         if (! Input::has('filter')) {
             return false;
@@ -29,7 +29,9 @@ class ContentFilter
         $filters = explode(',', $filters);
 
         foreach ($filters as $filter) {
-            if (! $filter) continue;
+            if (! $filter) {
+                continue;
+            }
 
             $parts = explode('-', $filter);
 
@@ -61,7 +63,9 @@ class ContentFilter
         $filters = explode(',', $filters);
 
         foreach ($filters as $filter) {
-            if (! $filter) continue;
+            if (! $filter) {
+                continue;
+            }
 
             $parts = explode('-', $filter);
 
@@ -72,5 +76,4 @@ class ContentFilter
 
         return null;
     }
-
 }

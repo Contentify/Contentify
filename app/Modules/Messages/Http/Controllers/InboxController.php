@@ -54,5 +54,4 @@ class InboxController extends FrontController
             'pageTitle'     => false,
         ], 'front');
     }
-
 }

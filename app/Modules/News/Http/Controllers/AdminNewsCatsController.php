@@ -39,5 +39,4 @@ class AdminNewsCatsController extends BackController
             }
         ]);
     }
-
 }

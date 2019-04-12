@@ -175,5 +175,4 @@ class Config extends LaravelConfig
         Cache::forget(self::CACHE_VALUES_PREFIX.$key);
         Cache::forget(self::CACHE_IN_DB_PREFIX.$key);
     }
-
 }

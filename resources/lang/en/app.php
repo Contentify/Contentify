@@ -133,6 +133,7 @@ return [
      * Comments
      */
     'comments'              => 'Comments',
+    'comments_disabled'     => 'The comment function has been disabled for this content.',
     'comment_create_fail'   => 'Cannot create comment. :0',
     'comment_update_fail'   => 'Cannot update comment. :0',
     'enable_comments'       => 'Enable comments',
@@ -203,7 +204,7 @@ return [
     'nothing_here'      => 'Sorry, there is no content here yet. Please try again later.',
     'back'              => 'Back',
     'general'           => 'General',
-    'metainfo'			=> 'Meta Info',
+    'metainfo'          => 'Meta Info',
     'services'          => 'Services',
     'theme'             => 'Theme',
     'theme_christmas'   => 'Christmas Mode (Snow)',

@@ -30,5 +30,4 @@ class QuestionCat extends BaseModel
         'questions' => [self::HAS_MANY, 'App\Modules\Questions\Question', 'dependency' => true],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
-    
 }

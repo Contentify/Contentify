@@ -10,7 +10,11 @@ use Less_Parser;
 
 class LessCompileCommand extends Command
 {
-
+    /**
+     * Name of the event that is fired after the website settings have been updated
+     */
+    const EVENT_NAME_LESS_COMPILED = 'contentify.lessCompileCommand.lessCompiled';
+    
     /**
      * The console command name.
      *
@@ -51,6 +55,8 @@ class LessCompileCommand extends Command
         foreach ($lessFiles as $sourceFilename) {
             $this->compileLessFile($sourceFilename);
         }
+        
+        event(self::EVENT_NAME_LESS_COMPILED, [$lessFiles]);
 
         HTML::refreshAssetPaths();
     }
@@ -69,8 +75,7 @@ class LessCompileCommand extends Command
         $target = public_path('css/'.$sourceFileTitle.'.css');
 
         // Only compile the file if it has changed
-        if (! File::exists($target) or File::lastModified($sourceFilename) > File::lastModified($target))
-        {
+        if (! File::exists($target) or File::lastModified($sourceFilename) > File::lastModified($target)) {
             $debug = Config::get('app.debug');
 
             // Create a new instance for each file - or call the reset method
@@ -83,5 +88,4 @@ class LessCompileCommand extends Command
             $this->info('CSS files has been compiled: ' . $sourceFilename . ' -> ' . $target . "\n");
         }
     }
-
 }

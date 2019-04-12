@@ -45,5 +45,4 @@ class CalendarWidget extends Widget
             compact('events', 'year', 'month', 'day', 'firstOfMonth', 'lastOfMonth')
         )->render();
     }
-
 }

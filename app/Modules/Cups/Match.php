@@ -6,6 +6,7 @@ use BaseModel;
 use Carbon;
 use Config;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use MsgException;
 use User;
 
 /**
@@ -33,6 +34,10 @@ use User;
  */
 class Match extends BaseModel
 {
+    /**
+     * Name of the event that is fired when a new match has been generated
+     */
+    const EVENT_NAME_MATCH_GENERATED = 'contentify.cups.matchGenerated';
 
     public $table = 'cups_matches';
 
@@ -78,7 +83,7 @@ class Match extends BaseModel
      * 
      * @return BelongsTo
      */
-    public function left_participant()
+    public function left_participant() //phpcs:ignore PSR1.Methods.CamelCapsMethodName -- @TODO: will need refactoring in the future
     {
         if ($this->with_teams) {
             return $this->belongsTo('App\Modules\Cups\Team', 'left_participant_id');
@@ -93,7 +98,7 @@ class Match extends BaseModel
      * 
      * @return BelongsTo
      */
-    public function right_participant()
+    public function right_participant() //phpcs:ignore PSR1.Methods.CamelCapsMethodName -- @TODO: will need refactoring in the future
     {
         if ($this->with_teams) {
             return $this->belongsTo('App\Modules\Cups\Team', 'right_participant_id');
@@ -266,8 +271,107 @@ class Match extends BaseModel
 
         $partnerMatch->next_match_id = $newMatch->id;
         $this->save();
+        
+        event(self::EVENT_NAME_MATCH_GENERATED, [$newMatch]);
 
         return $newMatch;
     }
+    
+     /**
+     * Tries to update the winner of a match (not of a wildcard-match!)
+     * Does not check if the current user has the right to do this 
+     * - this has to be checked before calling this method.
+     * 
+     * @return void
+     * @throws MsgException
+     */
+    public function updateWinner()
+    {
+        $nextMatch = $match->nextMatch();
+        
+        if (! $match->right_participant_id or ! $match->winner_id or ! $nextMatch or $nextMatch->winner_id) {
+            throw new MsgException(trans('app.not_possible'));
+        }
+        
+        if ($match->left_participant_id == $match->winner_id) {
+            $match->winner_id = $match->right_participant_id;
+            $match->left_score = 0;
+            $match->right_score = 1;
+        } else {
+            $match->winner_id = $match->left_participant_id;
+            $match->left_score = 1;
+            $match->right_score = 0;
+        }
+        
+        if ($match->row == 2 * $nextMatch->row) {
+            $nextMatch->right_participant_id = $match->winner_id;
+        } else {
+            $nextMatch->left_participant_id = $match->winner_id;
+        }
+        
+        $match->forceSave();
+        $nextMatch->forceSave();
+    }
+    
+    /**
+     * Confirms the results of a match
+     *
+     * @param int $leftScore The score of the participant on the left side
+     * @param int $rightScore The score of the participant on the right side
+     * @return Match|null Returns the next match or null if there is no next match
+     * @throws MsgException
+     */
+    public function confirm(int $leftScore, int $rightScore)
+    {
+        if ($leftScore == $rightScore) {
+            throw new MsgException(trans('app.not_possible'));
+        }
 
+        if ($left) {
+            if (! $match->canConfirmLeft(user())) {
+                throw new MsgException(trans('app.not_possible'));
+            }
+
+            // If the result has been changed by the left participant, the right has to confirm it again
+            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
+                $match->right_confirmed = false;
+            }
+
+            $match->left_confirmed = true; 
+        } else {
+            if (! $match->canConfirmRight(user())) {
+                throw new MsgException(trans('app.not_possible'));
+            }
+ 
+            // If the result has been changed by the right participant, the left has to confirm it again
+            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
+                $match->left_confirmed = false;
+            }
+
+            $match->right_confirmed = true; 
+        }
+        
+        $match->left_score = $leftScore;
+        $match->right_score = $rightScore;
+        $match->save();
+
+        $newMatch = $match->generateNext();
+
+        // Create next matches for wildcard-matches
+        if ($match->round == 1) {
+            // Remember: Wildcard-matches can only appear in the first row (so we do not need to check this)
+            $wildcards = Match::whereCupId($match->cup_id)->whereRightParticipantId(0)->whereNextMatchId(0)
+                ->orderBy('row')->get();
+
+            /** @var Match $wildcard */
+            foreach ($wildcards as $wildcard) {
+                // It's enough to create  the next match of one of the pair matches
+                if ($wildcard->row % 2 == 1) { 
+                    $wildcard->generateNext();
+                }
+            }
+        }
+        
+        return $newMatch;
+    }
 }

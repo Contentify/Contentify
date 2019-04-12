@@ -21,5 +21,4 @@ class MatchesWidget extends Widget
 
         return '';
     }
-
 }

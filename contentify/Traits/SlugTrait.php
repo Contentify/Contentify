@@ -50,6 +50,7 @@ trait SlugTrait
             }
 
             $model = $model->first();
+            
             /*
              * If the slug is in use already:
              * Extract the counter value, increase it and create the new slug.
@@ -62,5 +63,4 @@ trait SlugTrait
 
         $this->slug = $slug;
     }
-
 }
