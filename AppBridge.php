@@ -110,8 +110,8 @@ class AppBridge
 
     /**
      * Returns the values of a config file.
-     * Uses caching so it does not read the file
-     * for each request.
+     * Uses in-memory caching so it does not 
+     * read the file for each request.
      * 
      * @param string $name The (file) name of the config; without path and extension
      * @return array[]
