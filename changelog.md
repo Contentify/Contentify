@@ -20,4 +20,4 @@
 - A lot of refactoring has been done
 - Docker update
 - PSR-2 code formatting; done programmatically
-- TBA...
+- A lot of changes have been made at places other than the code, for example the `REAMDE.md` got an update and the Tavis-CI file has been modified
