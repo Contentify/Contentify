@@ -140,7 +140,6 @@ class Uploader
         
         if ((! method_exists($modelClass, 'trashed') or ! $model->trashed()) 
             and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
-            
             $filePath = $model->uploadPath(true);
 
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
