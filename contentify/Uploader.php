@@ -9,7 +9,7 @@ use Input;
 use InterImage;
 
 /**
- * This class is the centralized place to handle file uploads
+ * This class is the centralized place to handle file uploads from the browser
  */
 class Uploader
 {
@@ -184,7 +184,7 @@ class Uploader
     {
         do {
             $date = DateTime::createFromFormat('U.u', microtime(true));
-            $filename = md5($date->format('Y-m-d H:i:s.u'))); 
+            $filename = md5($date->format('Y-m-d H:i:s.u')); 
         } while (file_exists($filename))
             
         return $filename;
