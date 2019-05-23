@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad4a76cba6e160d5d02240ef06bd62d8",
+    "content-hash": "15a4a8b5eaf18bbeca681852b40657fd",
     "packages": [
         {
             "name": "caffeinated/modules",
@@ -194,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/bbcode.git",
-                "reference": "0741b40cab5de5553cabfd49bda22d8d46a1aee4"
+                "reference": "d3acd447ee11265d4ef38b9058cef32adcafa245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/bbcode/zipball/0741b40cab5de5553cabfd49bda22d8d46a1aee4",
-                "reference": "0741b40cab5de5553cabfd49bda22d8d46a1aee4",
+                "url": "https://api.github.com/repos/chriskonnertz/bbcode/zipball/d3acd447ee11265d4ef38b9058cef32adcafa245",
+                "reference": "d3acd447ee11265d4ef38b9058cef32adcafa245",
                 "shasum": ""
             },
             "require": {
@@ -231,7 +231,7 @@
             "keywords": [
                 "bbcode"
             ],
-            "time": "2018-01-31T17:35:12+00:00"
+            "time": "2018-06-17T13:58:51+00:00"
         },
         {
             "name": "chriskonnertz/jobs",
@@ -278,19 +278,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/open-graph.git",
-                "reference": "b7e0340bc382b3965f30a64645e19c481e119b10"
+                "reference": "db0cebdcfdb7fd5e6d781184f9a6f600ba09f881"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/b7e0340bc382b3965f30a64645e19c481e119b10",
-                "reference": "b7e0340bc382b3965f30a64645e19c481e119b10",
+                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/db0cebdcfdb7fd5e6d781184f9a6f600ba09f881",
+                "reference": "db0cebdcfdb7fd5e6d781184f9a6f600ba09f881",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.7"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "nesbot/carbon": "~1.14"
+                "nesbot/carbon": "~1"
             },
             "type": "library",
             "extra": {
@@ -320,13 +320,12 @@
             "description": "Class that assists in building Open Graph meta tags",
             "keywords": [
                 "laravel",
-                "laravel4",
                 "laravel5",
                 "ogp",
                 "open graph",
                 "opengraph"
             ],
-            "time": "2018-03-11T10:24:12+00:00"
+            "time": "2019-04-18T13:41:22+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -476,16 +475,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.2",
+            "version": "6.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90"
+                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/68d0ea14d5a3f42a20e87632a5f84931e2709c90",
-                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/407b0cb880ace85c9b63c5f9551db498cb2d50ba",
+                "reference": "407b0cb880ace85c9b63c5f9551db498cb2d50ba",
                 "shasum": ""
             },
             "require": {
@@ -495,7 +494,7 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
                 "psr/log": "^1.0"
             },
             "suggest": {
@@ -537,7 +536,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-03-26T16:33:04+00:00"
+            "time": "2018-04-22T15:46:56+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -592,32 +591,33 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.4.2",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
+                "reference": "9f83dded91781a01c63574e387eaa769be769115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
-                "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/9f83dded91781a01c63574e387eaa769be769115",
+                "reference": "9f83dded91781a01c63574e387eaa769be769115",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0",
-                "psr/http-message": "~1.0"
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5"
             },
             "provide": {
                 "psr/http-message-implementation": "1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -647,13 +647,14 @@
             "keywords": [
                 "http",
                 "message",
+                "psr-7",
                 "request",
                 "response",
                 "stream",
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20T17:10:46+00:00"
+            "time": "2018-12-04T20:46:45+00:00"
         },
         {
             "name": "intervention/image",
@@ -727,16 +728,16 @@
         },
         {
             "name": "invisnik/laravel-steam-auth",
-            "version": "v3.3.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/invisnik/laravel-steam-auth.git",
-                "reference": "3aef5e4bfe5306209207c7d7c94fcac38c022772"
+                "reference": "3bf98ce48f957cce8f153b12c8a97d58193aa516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/invisnik/laravel-steam-auth/zipball/3aef5e4bfe5306209207c7d7c94fcac38c022772",
-                "reference": "3aef5e4bfe5306209207c7d7c94fcac38c022772",
+                "url": "https://api.github.com/repos/invisnik/laravel-steam-auth/zipball/3bf98ce48f957cce8f153b12c8a97d58193aa516",
+                "reference": "3bf98ce48f957cce8f153b12c8a97d58193aa516",
                 "shasum": ""
             },
             "require": {
@@ -778,7 +779,7 @@
                 "laravel",
                 "steam"
             ],
-            "time": "2018-04-13T12:02:41+00:00"
+            "time": "2019-03-28T16:14:10+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1701,6 +1702,46 @@
                 "shell"
             ],
             "time": "2018-04-02T05:41:44+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.0",
+                "satooshi/php-coveralls": ">=1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "time": "2016-02-11T07:05:27+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -3029,7 +3070,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
@@ -3703,6 +3744,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
@@ -4337,7 +4379,10 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.4"
+        "php": ">=5.6.4",
+        "ext-json": "*",
+        "ext-ctype": "*",
+        "ext-curl": "*"
     },
     "platform-dev": []
 }
