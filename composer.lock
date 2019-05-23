@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad4a76cba6e160d5d02240ef06bd62d8",
+    "content-hash": "15a4a8b5eaf18bbeca681852b40657fd",
     "packages": [
         {
             "name": "caffeinated/modules",
@@ -194,12 +194,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/bbcode.git",
-                "reference": "0741b40cab5de5553cabfd49bda22d8d46a1aee4"
+                "reference": "d3acd447ee11265d4ef38b9058cef32adcafa245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/bbcode/zipball/0741b40cab5de5553cabfd49bda22d8d46a1aee4",
-                "reference": "0741b40cab5de5553cabfd49bda22d8d46a1aee4",
+                "url": "https://api.github.com/repos/chriskonnertz/bbcode/zipball/d3acd447ee11265d4ef38b9058cef32adcafa245",
+                "reference": "d3acd447ee11265d4ef38b9058cef32adcafa245",
                 "shasum": ""
             },
             "require": {
@@ -231,26 +231,36 @@
             "keywords": [
                 "bbcode"
             ],
-            "time": "2018-01-31T17:35:12+00:00"
+            "time": "2018-06-17T13:58:51+00:00"
         },
         {
             "name": "chriskonnertz/jobs",
-            "version": "v3.0",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/Jobs.git",
-                "reference": "086034a8b6785d4a11759b93fcd306dbd1298ccc"
+                "reference": "1d949c637703018423abd9028dfbdc1d5c15e872"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/086034a8b6785d4a11759b93fcd306dbd1298ccc",
-                "reference": "086034a8b6785d4a11759b93fcd306dbd1298ccc",
+                "url": "https://api.github.com/repos/chriskonnertz/Jobs/zipball/1d949c637703018423abd9028dfbdc1d5c15e872",
+                "reference": "1d949c637703018423abd9028dfbdc1d5c15e872",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.7"
+                "php": ">=7.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ChrisKonnertz\\Jobs\\Integration\\JobsServiceProvider"
+                    ],
+                    "aliases": {
+                        "OpenGraph": "ChrisKonnertz\\Jobs\\Integration\\JobsFacade"
+                    }
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "ChrisKonnertz\\Jobs\\": "src/ChrisKonnertz/Jobs"
@@ -267,10 +277,12 @@
             ],
             "description": "Simple cron job manager",
             "keywords": [
+                "cron job",
                 "cron jobs",
+                "job",
                 "laravel"
             ],
-            "time": "2018-03-17T14:13:29+00:00"
+            "time": "2019-04-18T15:39:08+00:00"
         },
         {
             "name": "chriskonnertz/open-graph",
@@ -278,19 +290,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriskonnertz/open-graph.git",
-                "reference": "b7e0340bc382b3965f30a64645e19c481e119b10"
+                "reference": "db0cebdcfdb7fd5e6d781184f9a6f600ba09f881"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/b7e0340bc382b3965f30a64645e19c481e119b10",
-                "reference": "b7e0340bc382b3965f30a64645e19c481e119b10",
+                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/db0cebdcfdb7fd5e6d781184f9a6f600ba09f881",
+                "reference": "db0cebdcfdb7fd5e6d781184f9a6f600ba09f881",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.7"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "nesbot/carbon": "~1.14"
+                "nesbot/carbon": "~1"
             },
             "type": "library",
             "extra": {
@@ -320,13 +332,12 @@
             "description": "Class that assists in building Open Graph meta tags",
             "keywords": [
                 "laravel",
-                "laravel4",
                 "laravel5",
                 "ogp",
                 "open graph",
                 "opengraph"
             ],
-            "time": "2018-03-11T10:24:12+00:00"
+            "time": "2019-04-18T13:41:22+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3029,7 +3040,7 @@
             ],
             "authors": [
                 {
-                    "name": "Padraic Brady",
+                    "name": "Pádraic Brady",
                     "email": "padraic.brady@gmail.com",
                     "homepage": "http://blog.astrumfutura.com"
                 },
@@ -3703,6 +3714,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
@@ -4337,7 +4349,10 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.4"
+        "php": ">=5.6.4",
+        "ext-json": "*",
+        "ext-ctype": "*",
+        "ext-curl": "*"
     },
     "platform-dev": []
 }
