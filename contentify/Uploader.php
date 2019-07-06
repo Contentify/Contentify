@@ -34,7 +34,7 @@ class Uploader
      */
     public function uploadModelFiles($model, $modelIsNew = true) : array
     {
-        $modelClass = getclass($model);
+        $modelClass = get_class($model);
     
         if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
@@ -136,7 +136,7 @@ class Uploader
      */
     public function deleteModelFiles($model)
     {
-        $modelClass = getclass($model);
+        $modelClass = get_class($model);
         
         if ((! method_exists($modelClass, 'trashed') or ! $model->trashed()) 
             and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
