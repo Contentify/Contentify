@@ -126,6 +126,8 @@ class Uploader
                 return [];
             }
         }
+        
+        return [];
     }
     
     /**
