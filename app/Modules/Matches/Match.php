@@ -148,6 +148,8 @@ class Match extends BaseModel
             $id = (int) ContentFilter::get('team_id');
             return $query->whereLeftTeamId($id);
         }
+        
+        return $query;
     }
 
     /**
