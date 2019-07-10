@@ -565,7 +565,7 @@ class ModelHandler
         }
 
         // Delete related files even if it's only a soft deletion.
-        $this->uploader-deleteModelFiles($model);
+        $this->uploader->deleteModelFiles($model);
 
         if (! method_exists($modelClass, 'trashed') or ! $model->trashed()) {
             $modelClass::destroy($id); // Delete model. If soft deletion is enabled for this model it's a soft deletion
