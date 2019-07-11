@@ -393,7 +393,7 @@ class User extends SentinelUser implements UserInterface
      */
     public function isActivated() : bool
     {
-        return Activation::completed($this);
+        return Activation::completed($this) !== null;
     }
 
     /**
