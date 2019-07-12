@@ -7,6 +7,7 @@ use BaseController;
 use BaseModel;
 use Closure;
 use DB;
+use Eloquent;
 use Exception;
 use File;
 use HTML;
