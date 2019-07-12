@@ -622,12 +622,15 @@ class ModelHandler
     /**
      * Retrieve values from inputs (usually select elements) that deal with foreign models
      *
+     * TODO: Introducte interface with relations() method and require it as type
+     * of the $model parameter
+     *
      * @param  string    $modelClass Full name of the model class
-     * @param  BaseModel $model      Object with this model type
+     * @param  Eloquent  $model      Object with this model type
      * @return void
      * @throws Exception
      */
-    public function fillRelations(string $modelClass, BaseModel $model)
+    public function fillRelations(string $modelClass, Eloquent $model)
     {
         $relations = $modelClass::relations();
 
