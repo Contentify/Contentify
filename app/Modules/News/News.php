@@ -9,7 +9,7 @@ use ContentFilter;
 use DB;
 use Illuminate\Database\Eloquent\Builder;
 use Lang;
-use ChristophKonnertz\OpenGraph\OpenGraph;
+use ChrisKonnertz\OpenGraph\OpenGraph;
 use Rss;
 use SoftDeletingTrait;
 use URL;
