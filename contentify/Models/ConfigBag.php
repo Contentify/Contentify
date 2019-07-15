@@ -37,9 +37,9 @@ class ConfigBag
     /**
      * Get the fillable attributes for the model.
      *
-     * @return string
+     * @return string[]
      */
-    public function getFillable() : string
+    public function getFillable() : array
     {
         return $this->fillable;
     }
