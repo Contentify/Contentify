@@ -156,7 +156,7 @@ class ForumPost extends BaseModel
     }
 
     /**
-     * Returns a URL that links to the thread of the current post and focuses the current post
+     * Returns a URL that links to the thread of the current post and scrolls down to the current post
      * 
      * @return string
      */
