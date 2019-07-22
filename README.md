@@ -50,7 +50,7 @@ To update from v2.6 to 3.0:
 
 > The server resets (database, uploaded files and cache) twice per hour.
 
-> NOTE: The demo website is running with Contentify 3.0-alpha.
+> NOTE: The demo website is running with Contentify 3.0-beta.
 
 ### Support
 
