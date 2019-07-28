@@ -5,6 +5,7 @@ namespace App\Modules\Auth\Http\Controllers;
 use App;
 use App\Modules\Auth\AuthManager;
 use App\Modules\Languages\Language;
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Config;
 use Exception;
 use FrontController;
@@ -39,7 +40,13 @@ class LoginController extends FrontController
         ];
 
         $authManager = new AuthManager();
-        $user = $authManager->loginUserByEmail($credentials);
+
+        try {
+            $user = $authManager->loginUserByEmail($credentials);
+        } catch (ThrottlingException $exception) {
+            $this->alertFlash($exception->getMessage());
+            return Redirect::to('auth/login');
+        }
 
         if ($user) {
             return $this->afterLoginActions();
