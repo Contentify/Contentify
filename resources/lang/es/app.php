@@ -55,7 +55,7 @@ return [
     /*
      * Model index building
      */
-    'create'        => 'Create new',
+    'create'        => 'Crear nuevo',
     'categories'    => 'Categorías',
     'config'        => 'Configuración',
     'actions'       => 'Acciones',
