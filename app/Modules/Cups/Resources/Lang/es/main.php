@@ -20,7 +20,7 @@ return [
     'players_per_team'   => 'Jugadores por equipo',
     'bracket'            => 'Bracket',
     'cup_full'           => 'Número máximo de participantes alcanzado.',
-    'cannot_join'        => 'El registro al ltorneo todavía no se ha abierto - por favor, espere a que la fase de registro se abra.',
+    'cannot_join'        => 'El registro al torneo todavía no se ha abierto - por favor, espere a que la fase de registro se abra.',
     'joined'             => 'Ya estás participando. Por favor, espera a que la fase de registro se abra.',
     'join_hint'          => 'Haz click aquí para unirte al torneo:',
     'join'               => 'Unirse ahora',
