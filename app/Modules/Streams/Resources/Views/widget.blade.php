@@ -1,5 +1,6 @@
 <div class="widget widget-streams">
     <ul class="list-unstyled">
+    @section('streams-widget-index')
         @foreach ($streams as $stream)
             <li class="{!! $stream->online ? 'online' : 'offline' !!} clearfix">
                 <a href="{!! url('streams/'.$stream->id.'/'.$stream->slug) !!}" title="{{ $stream->title }}">
@@ -9,5 +10,6 @@
                 </a>
             </li>
         @endforeach
+    @how
     </ul>
 </div>

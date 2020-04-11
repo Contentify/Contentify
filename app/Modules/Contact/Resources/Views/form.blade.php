@@ -5,13 +5,15 @@
 {!! Form::open(['url' => 'contact/store']) !!}
     {!! Form::timestamp() !!}
 
-    {!! Form::smartText('username', trans('app.name'), user() ? user()->username : null) !!}
+    @section('contact-form-fields')
+        {!! Form::smartText('username', trans('app.name'), user() ? user()->username : null) !!}
 
-    {!! Form::smartEmail('email', trans('app.email'), user() ? user()->email : null) !!}
+        {!! Form::smartEmail('email', trans('app.email'), user() ? user()->email : null) !!}
 
-    {!! Form::smartText('title', trans('app.subject')) !!}
+        {!! Form::smartText('title', trans('app.subject')) !!}
 
-    {!! Form::smartTextarea('text', trans('app.message')) !!}
+        {!! Form::smartTextarea('text', trans('app.message')) !!}
+    @show
 
     {!! Form::actions(['submit' => trans('app.send')], false) !!}
 {!! Form::close() !!}

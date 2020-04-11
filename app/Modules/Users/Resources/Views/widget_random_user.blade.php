@@ -1,5 +1,6 @@
 <div class="widget widget-random-user">
     <a href="{{ 'users/'.$user->id.'/'.$user->slug }}">
+    @section('users-widget-random-details')
         <div class="image">
             @if ($user->image)
                 <img src="{!! $user->uploadPath().$user->image !!}" alt="{{ $user->username }}">
@@ -13,5 +14,6 @@
             @endif
             {{ $user->username }}
         </div>
+    @show
     </a>
 </div>

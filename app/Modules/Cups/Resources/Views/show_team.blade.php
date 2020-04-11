@@ -15,35 +15,37 @@
     <p>{!! trans('app.cup_points') !!}: {{ $team->cup_points }}</p>
 @endif
 
-@if (sizeof($team->members) > 0)
-    <h2>{{ trans('app.object_members') }}</h2>
-    <table class="table">
-        <tr>
-            <th>{{ trans('app.username') }}</th>
-            <th>{{ trans('cups::organizer') }}</th>
-            @if (user() and ($organizer or user()->isSuperAdmin()))
-                <th>{{ trans('app.actions') }}</th>
-            @endif
-        </tr>
-        @foreach ($team->members as $member)
+@section('cups-team-members')
+    @if (sizeof($team->members) > 0)
+        <h2>{{ trans('app.object_members') }}</h2>
+        <table class="table">
             <tr>
-                <td><a href="{{ url('users/'.$member->id.'/'.$member->slug) }}">{{ $member->username }}</a></td>
-                <td>
-                    @if (user() and ($organizer or user()->isSuperAdmin()))
-                        <input type="checkbox" data-user-id="{{ $member->id }}" {{ $member->pivot->organizer ? 'checked="1"' : null }}>
-                    @else
-                        {!! $member->pivot->organizer ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}
-                    @endif
-                </td>
+                <th>{{ trans('app.username') }}</th>
+                <th>{{ trans('cups::organizer') }}</th>
                 @if (user() and ($organizer or user()->isSuperAdmin()))
-                    <td>
-                        <a class="btn btn-default" href="{{ url('cups/teams/leave/'.$team->id.'/'.$member->id) }}">{{ trans('app.remove') }}</a>
-                    </td>
+                    <th>{{ trans('app.actions') }}</th>
                 @endif
             </tr>
-        @endforeach
-    </table>
-@endif
+            @foreach ($team->members as $member)
+                <tr>
+                    <td><a href="{{ url('users/'.$member->id.'/'.$member->slug) }}">{{ $member->username }}</a></td>
+                    <td>
+                        @if (user() and ($organizer or user()->isSuperAdmin()))
+                            <input type="checkbox" data-user-id="{{ $member->id }}" {{ $member->pivot->organizer ? 'checked="1"' : null }}>
+                        @else
+                            {!! $member->pivot->organizer ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}
+                        @endif
+                    </td>
+                    @if (user() and ($organizer or user()->isSuperAdmin()))
+                        <td>
+                            <a class="btn btn-default" href="{{ url('cups/teams/leave/'.$team->id.'/'.$member->id) }}">{{ trans('app.remove') }}</a>
+                        </td>
+                    @endif
+                </tr>
+            @endforeach
+        </table>
+    @endif
+@show
 
 @if (sizeof($team->cups) > 0)
      <h2>{{ trans('app.object_cups') }}</h2>

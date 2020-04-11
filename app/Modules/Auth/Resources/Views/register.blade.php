@@ -2,6 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
+@section('auth-register-form')
 {!! Form::open(['url' => 'auth/registration/create']) !!}
     {!! Form::smartText('username', trans('app.username')) !!}
 
@@ -21,6 +22,7 @@
 
     {!! Form::actions(['submit'], false) !!}
 {!! Form::close() !!}
+@show
 
 <script>
     $(document).ready(function()

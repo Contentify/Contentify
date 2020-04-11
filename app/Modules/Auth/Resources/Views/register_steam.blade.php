@@ -2,6 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
+@section('auth-steam-form')
 {!! Form::open(['url' => 'auth/steam']) !!}
     {!! Form::smartText('username', trans('app.username'), $username) !!}
 
@@ -13,6 +14,7 @@
 
     {!! Form::actions(['submit'], false) !!}
 {!! Form::close() !!}
+@show
 
 <script>
     $(document).ready(function()

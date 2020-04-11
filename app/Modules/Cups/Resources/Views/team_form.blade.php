@@ -9,11 +9,13 @@
 @else
     {!! Form::open(['url' => 'cups/teams', 'files' => true]) !!}
 @endif
+    @section('cups-team-form')
     {!! Form::smartText('title', trans('app.name')) !!}
 
     {!! Form::smartText('password', trans('app.password'), rand(1000,9999)) !!}
 
     {!! Form::smartImageFile('image', trans('app.image')) !!}
+    @show
 
     {!! Form::actions(['submit'], false) !!}
 {!! Form::close() !!}

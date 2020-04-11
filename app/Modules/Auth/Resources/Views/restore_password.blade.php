@@ -2,6 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
+@section('auth-restore-pw-form')
 {!! Form::open(['url' => 'auth/restore']) !!}
     {!! Form::smartEmail() !!}
     
@@ -9,3 +10,4 @@
 
     {!! Form::actions(['submit' => trans('app.send')], false) !!}
 {!! Form::close() !!}
+@show

@@ -2,6 +2,7 @@
 
 {!! Form::errors($errors) !!}
 
+@section('auth-login-form')
 {!! Form::open(['url' => url('auth/login')]) !!}
     {!! Form::smartEmail() !!}
     
@@ -14,5 +15,6 @@
         @endif
     </div>
 {!! Form::close() !!}
+@show
 
 {!! link_to('auth/restore', trans('auth::password_reset'), ['class' => 'btn btn-default btn-restore']) !!}

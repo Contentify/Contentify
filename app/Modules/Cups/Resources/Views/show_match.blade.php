@@ -15,54 +15,56 @@
     </div>
 </div>
 
-<div class="details">
-    <table class="table horizontal">
-        <tbody>
-            @if ($canConfirmLeft or $canConfirmRight)
+@section('cups-match-details')
+    <div class="details">
+        <table class="table horizontal">
+            <tbody>
+                @if ($canConfirmLeft or $canConfirmRight)
+                    <tr>
+                        <th>{!! trans('cups::confirm_score') !!}</th>
+                        <td>
+                            @if ($canConfirmLeft)
+                                {!! Form::open(['url' => 'cups/matches/confirm-left/'.$match->id, 'class' => 'form-inline']) !!}
+                                    <input type="text" class="form-control" name="left_score" value="{{ $match->left_score }}"> : <input type="text" class="form-control" name="right_score" value="{{ $match->right_score }}"> <button class="btn submit">{{ $match->with_teams ? $match->left_participant->title : $match->left_participant->username }}:  {!! trans('cups::confirm_score') !!}</button>
+                                {!! Form::close() !!}
+                            @endif
+                            @if ($canConfirmRight)
+                                {!! Form::open(['url' => 'cups/matches/confirm-right/'.$match->id, 'class' => 'form-inline']) !!}
+                                    <input type="text" class="form-control" name="left_score" value="{{ $match->left_score }}"> : <input type="text" class="form-control" name="right_score" value="{{ $match->right_score }}"> <button class="btn submit">{{ $match->with_teams ? $match->right_participant->title : $match->right_participant->username }}: {!! trans('cups::confirm_score') !!}</button>
+                                {!! Form::close() !!}
+                            @endif
+                        </td>
+                    </tr>
+                @endif
                 <tr>
-                    <th>{!! trans('cups::confirm_score') !!}</th>
+                    <th>{!! trans('app.object_cup') !!}</th>
                     <td>
-                        @if ($canConfirmLeft) 
-                            {!! Form::open(['url' => 'cups/matches/confirm-left/'.$match->id, 'class' => 'form-inline']) !!}
-                                <input type="text" class="form-control" name="left_score" value="{{ $match->left_score }}"> : <input type="text" class="form-control" name="right_score" value="{{ $match->right_score }}"> <button class="btn submit">{{ $match->with_teams ? $match->left_participant->title : $match->left_participant->username }}:  {!! trans('cups::confirm_score') !!}</button>
-                            {!! Form::close() !!}
-                        @endif
-                        @if ($canConfirmRight)
-                            {!! Form::open(['url' => 'cups/matches/confirm-right/'.$match->id, 'class' => 'form-inline']) !!}
-                                <input type="text" class="form-control" name="left_score" value="{{ $match->left_score }}"> : <input type="text" class="form-control" name="right_score" value="{{ $match->right_score }}"> <button class="btn submit">{{ $match->with_teams ? $match->right_participant->title : $match->right_participant->username }}: {!! trans('cups::confirm_score') !!}</button>
-                            {!! Form::close() !!}
-                        @endif
+                        <a href="{{ url('cups/'.$match->cup->id.'/'.$match->cup->slug) }}">{{ $match->cup->title }}</a>
                     </td>
                 </tr>
-            @endif
-            <tr>
-                <th>{!! trans('app.object_cup') !!}</th>
-                <td>
-                    <a href="{{ url('cups/'.$match->cup->id.'/'.$match->cup->slug) }}">{{ $match->cup->title }}</a>
-                </td>
-            </tr>
-            <tr>
-                <th>{!! trans('app.object_game') !!}</th>
-                <td>{{ $match->cup->game->title }}</td>
-            </tr>
-            <tr>
-                <th>{!! trans('app.date') !!}</th>
-                <td>{{ $match->created_at->dateTime() }}</td>
-            </tr>
-            <tr>
-                <th>{!! trans('app.closed') !!}</th>
-                <td>{!! $match->winner_id ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}</td>
-            </tr>
-            @if ($match->next_match_id)
                 <tr>
-                    <th>{!! trans('cups::next_match') !!}</th>
-                    <td>
-                        <a href="{{ url('cups/matches/'.$match->next_match_id) }}">{{ trans('app.link') }}</a>
-                    </td>
+                    <th>{!! trans('app.object_game') !!}</th>
+                    <td>{{ $match->cup->game->title }}</td>
                 </tr>
-            @endif
-        </tbody>
-    </table>
-</div>
+                <tr>
+                    <th>{!! trans('app.date') !!}</th>
+                    <td>{{ $match->created_at->dateTime() }}</td>
+                </tr>
+                <tr>
+                    <th>{!! trans('app.closed') !!}</th>
+                    <td>{!! $match->winner_id ? HTML::fontIcon('check') : HTML::fontIcon('times') !!}</td>
+                </tr>
+                @if ($match->next_match_id)
+                    <tr>
+                        <th>{!! trans('cups::next_match') !!}</th>
+                        <td>
+                            <a href="{{ url('cups/matches/'.$match->next_match_id) }}">{{ trans('app.link') }}</a>
+                        </td>
+                    </tr>
+                @endif
+            </tbody>
+        </table>
+    </div>
+@show
 
 {!! Comments::show('cups_matches', $match->id) !!}

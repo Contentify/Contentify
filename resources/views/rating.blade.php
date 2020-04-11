@@ -2,6 +2,7 @@
     <h2>Rating</h2>
 
     <div class="stars enabled clearfix">
+    @section('rating-stars')
         @for ($i = 0; $i < $maxRating; $i++)
             @if ( $i + 0.5 <= $rating) 
                 {!! HTML::fontIcon('star') !!}
@@ -9,6 +10,7 @@
                 {!! HTML::fontIcon('star', null, null, 'far') !!}
             @endif
         @endfor
+    @show
     </div>
 
     <div class="infotext">

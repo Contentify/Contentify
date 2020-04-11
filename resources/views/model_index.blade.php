@@ -4,6 +4,7 @@
 
 @if ($buttons or $showSearchBox)
     <div class="toolbar top">
+    @section('model-toolbar')
         {!! $buttons !!}
 
         @if ($showSearchBox)
@@ -14,6 +15,7 @@
                 {!! Form::close() !!}
             </div>
         @endif
+    @show
     </div>
 @endif
 

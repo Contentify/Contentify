@@ -1,6 +1,7 @@
 <div id="forum-post-id-{{ $forumPost->id }}" class="post" data-id="{{ $forumPost->id }}">
     <div class="meta">
         <a href="{!! url('users/'.$forumPost->creator->id.'/'.$forumPost->creator->slug) !!}">
+        @section('forums-post-meta')
             <span class="creator-name" title="{{ $forumPost->creator->username }}">{{ $forumPost->creator->username }}</span>
             @if ($forumPost->creator->avatar)
                 <img class="avatar" src="{{ $forumPost->creator->uploadPath().$forumPost->creator->avatar }}" alt="{{ $forumPost->creator->username }}">
@@ -9,11 +10,13 @@
                 <span class="label label-default">{{ trans('forums::moderator') }}</span>
             @endif
             <span class="counter">{{ $forumPost->creator->posts_count }} Posts</span>
+        @show
         </a>
     </div>
 
     <div class="content">
         <div class="top-bar">
+        @section('forums-post-top-bar')
             <span class="date-time">{!! $forumPost->created_at->dateTime() !!}</span>
             <div class="buttons hidden-lg">
                 @if (user())
@@ -38,9 +41,11 @@
                     @endif
                 </a>
             </div>
+        @show
         </div>
 
         <div class="text">
+        @section('forums-post-text')
             {!! $forumPost->renderText() !!}
 
             @if ($forumPost->creator->signature)
@@ -49,6 +54,7 @@
                     {!! $forumPost->creator->renderSignature() !!}
                 </div>
             @endif
+        @show
         </div>
         @if ($forumPost->updater_id and $forumPost->updated_at->diffInMinutes($forumPost->created_at) > 0)
             <div class="updated">

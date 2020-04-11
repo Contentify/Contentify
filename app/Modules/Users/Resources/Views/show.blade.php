@@ -4,6 +4,7 @@
     <div class="col-md-8">
         <table class="table horizontal">
             <tbody>
+            @section('users-profile-overview')
                 <tr>
                     <th class="title">{!! trans('app.name') !!}</th>
                     <td>
@@ -59,10 +60,12 @@
                         <td>{{ $user->cup_points }}</td>
                     </tr>
                 @endif
+            @show
             </tbody>
         </table>
     </div>
     <div class="details col-md-4">
+    @section('users-profile-image-and-actions')
         @if ($user->image)
             <img src="{!! $user->uploadPath().$user->image !!}" alt="{{ $user->username }}">
         @else
@@ -76,6 +79,7 @@
             @endif
             <a class="btn btn-default" href="{!! url('forums/posts/user/'.$user->id.'/'.$user->slug) !!}" title="{!! trans('forums::show_user_posts') !!}">{!! HTML::fontIcon('comment') !!}</a>
         </div>
+    @show
     </div>
 </div>
 
@@ -84,6 +88,7 @@
         <div class="profile-socials">
             <table class="table horizontal">
                 <tbody>
+                @section('users-profile-socials')
                     <tr>
                         <th class="title">{!! HTML::fontIcon('facebook') !!}&nbsp; Facebook:</th>
                         <td>
@@ -122,6 +127,7 @@
                             @endif
                         </td>
                     </tr>
+                @show
                 </tbody>
             </table>
         </div>
@@ -129,6 +135,7 @@
         <div class="profile-favs">
             <table class="table horizontal">
                 <tbody>
+                @section('users-profile-favs')
                     <tr>
                         <th class="title">{!! trans('app.object_game') !!}:</th>
                         <td>{{ $user->game }}</td>
@@ -149,6 +156,7 @@
                         <th class="title">{!! trans('users::film') !!}:</th>
                         <td>{{ $user->film }}</td>
                     </tr>
+                @show
                 </tbody>
             </table>
         </div>
@@ -157,6 +165,7 @@
         <div class="profile-pc">
             <table class="table horizontal">
                 <tbody>
+                @section('users-profile-pc')
                     <tr>
                         <th class="title">{!! trans('users::cpu') !!}:</th>
                         <td>{{ $user->cpu }}</td>
@@ -197,6 +206,7 @@
                         <th class="title">{!! trans('users::mouse_pad') !!}:</th>
                         <td>{{ $user->mouse_pad }}</td>
                     </tr>
+                @show
                 </tbody>
             </table>
         </div>

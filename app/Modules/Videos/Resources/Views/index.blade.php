@@ -1,6 +1,7 @@
 <h1 class="page-title">{{ trans_object('videos') }}</h1>
 
 <div class="videos clearfix">
+@section('videos-index')
     @forelse  ($videos as $video)
         <div class="video">
             <a href="{{ url('videos/'.$video->id.'/'.$video->slug) }}" data-id="{{ $video->id }}">
@@ -27,6 +28,7 @@
     @empty
         <p>{{ trans('app.nothing_here') }}</p>
     @endforelse
+@show
 </div>
 
 {!! $videos->render() !!}

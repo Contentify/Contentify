@@ -1,14 +1,16 @@
 <h1 id="anchor-images" class="page-title">{{ $gallery->title }}</h1>
 
 <div class="images">
-    <div class="image">
-        <a href="{!! $image->uploadPath().$image->image !!}" target="_blank" title="{{ $image->title }}">
-            <img src="{!! $image->uploadPath().$image->image !!}">
-        </a>
-        <p>
-            {{ $image->title }}
-        </p>
-    </div>
+    @section('galleries-show-image')
+        <div class="image">
+            <a href="{!! $image->uploadPath().$image->image !!}" target="_blank" title="{{ $image->title }}">
+                <img src="{!! $image->uploadPath().$image->image !!}">
+            </a>
+            <p>
+                {{ $image->title }}
+            </p>
+        </div>
+    @how
 
     <div class="previews-wrapper">
         <div class="previews">

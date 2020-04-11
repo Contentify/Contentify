@@ -17,7 +17,9 @@
 </div>
 
 <div class="message-text space-top space-bottom">
+@section('messages-message-text')
     {!! $message->renderText() !!}
+@show
 </div>
 
 <div class="actions">

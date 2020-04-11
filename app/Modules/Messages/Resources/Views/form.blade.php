@@ -3,11 +3,13 @@
 {!! Form::errors($errors) !!}
 
 {!! Form::open(['url' => 'messages']) !!}
-    {!! Form::smartText('receiver_name', trans('messages::receiver'), isset($username) ? $username : null) !!}
+    @section('messages-form-fields')
+        {!! Form::smartText('receiver_name', trans('messages::receiver'), isset($username) ? $username : null) !!}
 
-    {!! Form::smartText('title', trans('app.title'), isset($title) ? $title : null) !!}
+        {!! Form::smartText('title', trans('app.title'), isset($title) ? $title : null) !!}
 
-    {!! Form::smartTextarea('text', trans('app.text'), false, isset($text) ? $text : null) !!}
+        {!! Form::smartTextarea('text', trans('app.text'), false, isset($text) ? $text : null) !!}
+    @show
 
     {!! Form::actions(['submit' => trans('app.send')]) !!}
 {!! Form::close() !!}

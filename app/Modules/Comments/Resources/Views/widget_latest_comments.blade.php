@@ -7,12 +7,14 @@
             </tr>
         </thead>
         <tbody>
+        @section('comments-widget-comment')
             @foreach ($comments as $comment)
                 <tr>
                     <td title="{{ trans('app.object_user') }} {{ $comment->creator->username  }}: {{ e($comment->plainText()) }}">{!! $comment->plainText(100) !!}</td>
                     <td>{!! $comment->created_at !!}</td>
                 </tr>
             @endforeach
+        @show
         </tbody>
     </table>
 </div>

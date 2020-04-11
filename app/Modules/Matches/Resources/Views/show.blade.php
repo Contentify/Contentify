@@ -1,6 +1,7 @@
 <h1 class="page-title">{{ trans_object('match') }}</h1>
 
 <div class="overview clearfix">
+@section('matches-match-overview')
     <div class="left">
         <img src="{!! asset('img/logo_180.png') !!}" alt="{{ $match->left_team->title }}">
         <div class="team-name">
@@ -28,10 +29,12 @@
             @endif
         </div> 
     </div>
+@show
 </div>
 <div class="details">
     <table class="table horizontal">
         <tbody>
+        @section('matches-match-details')
             <tr>
                 <th>{!! trans('app.date') !!}</th>
                 <td>{{ $match->played_at->dateTime() }} - {{ $match::$states[$match->state] }}</td>
@@ -72,12 +75,14 @@
                     <td>{{ $match->right_lineup }}</td>
                 </tr>
             @endif
+        @show
         </tbody>
     </table>
 </div>
 
 @if ($match->match_scores)
     <div class="scores clearfix">
+    @section('matches-match-scores')
         @foreach ($match->match_scores as $matchScore)
             <div class="item">
                 @if ($matchScore->map->image)
@@ -86,6 +91,7 @@
                 <span>{{ $matchScore->map->title }}: {{ $matchScore->left_score }}:{{ $matchScore->right_score }}</span>
             </div>
         @endforeach
+    @show
     </div>
 @endif
 

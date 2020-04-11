@@ -17,6 +17,7 @@
 
     <div class="content">
         <ul class="list-unstyled lineup">
+        @section('teams-team-lineup')
             @foreach ($team->users as $user)
                 <li class="row">
                     <div class="col-md-4">
@@ -48,60 +49,65 @@
                     </div>
                 </li>
             @endforeach
+        @show
         </ul>
 
-        @if (sizeof($team->awards) > 0)
-            <div class="awards">
-                <h2>{{ trans('app.object_awards') }}</h2>
+        @section('teams-team-awards')
+            @if (sizeof($team->awards) > 0)
+                <div class="awards">
+                    <h2>{{ trans('app.object_awards') }}</h2>
 
-                <table class="table" data-not-respsonsive="1">
-                    <tbody>
-                        @foreach ($team->awards->slice(0, 5) as $award)
-                            <tr>
-                                <td>
-                                    {!! $award->positionIcon() !!}
-                                </td>
-                                <td>
-                                    @if ($award->url)
-                                        <a href="{{ $award->url }}" target="_blank" title="{{ $award->title }}">
+                    <table class="table" data-not-respsonsive="1">
+                        <tbody>
+                            @foreach ($team->awards->slice(0, 5) as $award)
+                                <tr>
+                                    <td>
+                                        {!! $award->positionIcon() !!}
+                                    </td>
+                                    <td>
+                                        @if ($award->url)
+                                            <a href="{{ $award->url }}" target="_blank" title="{{ $award->title }}">
+                                                {{ $award->title }}
+                                            </a>
+                                        @else
                                             {{ $award->title }}
-                                        </a>
-                                    @else
-                                        {{ $award->title }}
-                                    @endif
-                                </td>
-                                <td>
-                                    {{ $award->tournament ? $award->tournament->short : null }}
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endif
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{ $award->tournament ? $award->tournament->short : null }}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+        @show
 
-        @if (sizeof($team->matches) > 0)
-            <div class="matches">
-                <h2>{{ trans('app.object_matches') }}</h2>
+        @section('teams-team-matches')
+            @if (sizeof($team->matches) > 0)
+                <div class="matches">
+                    <h2>{{ trans('app.object_matches') }}</h2>
 
-                <table class="table" data-not-respsonsive="1">
-                    <tbody>
-                        @foreach ($team->matches->slice(0, 5) as $match)
-                            <tr>
-                                <td>
-                                    {!! HTML::image($match->game->uploadPath().$match->game->icon, $match->game->title, ['width' => 16, 'height' => 16]) !!}
-                                </td>
-                                <td>
-                                    <a href="{{ url('matches/'.$match->id) }}">{{ $match->right_team->title }}</a>
-                                </td>
-                                <td>
-                                    {!! $match->scoreCode() !!}
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endif
+                    <table class="table" data-not-respsonsive="1">
+                        <tbody>
+                            @foreach ($team->matches->slice(0, 5) as $match)
+                                <tr>
+                                    <td>
+                                        {!! HTML::image($match->game->uploadPath().$match->game->icon, $match->game->title, ['width' => 16, 'height' => 16]) !!}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url('matches/'.$match->id) }}">{{ $match->right_team->title }}</a>
+                                    </td>
+                                    <td>
+                                        {!! $match->scoreCode() !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+        @show
     </div>
 </article>

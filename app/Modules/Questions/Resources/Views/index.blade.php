@@ -1,6 +1,7 @@
 <h1 class="page-title">{{ trans('app.object_questions') }}</h1>
 
 <div class="questions clearfix">
+@section('questions-index')
     <?php $category = null ?>
     @forelse ($questions as $question)
         @if ($question->questionCat != $category)
@@ -15,6 +16,7 @@
     @empty
         <p>{{ trans('app.nothing_here') }}</p>
     @endforelse
+@show
 </div>
 
 {!! $questions->render() !!}

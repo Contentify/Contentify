@@ -16,6 +16,7 @@
         
         <table class="table horizontal">
             <tbody>
+            @section('events-event-detail')
                 <tr>
                     <th>{!! trans('app.starts_at') !!}</th>
                     <td>{{ $event->starts_at }}</td>
@@ -38,6 +39,7 @@
                         <td>{{ $event->text }}</td>
                     </tr>
                 @endif
+            @show
             </tbody>
         </table>
     </article>

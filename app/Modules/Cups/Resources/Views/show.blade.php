@@ -83,56 +83,58 @@
             </div>
 
             <table class="table">
-                <tr>
-                    <th>{{ trans('app.object_game') }}</th>
-                    <td>{{ $cup->game->title }}</td>
-                </tr>
-                <tr>
-                    <th>{{ trans('app.slots') }}</th>
-                    <td>{{ $cup->countParticipants() }} / {{ $cup->slots }}</td>
-                </tr>
-                <tr>
-                    <th>{{ trans('app.mode') }}</th>
-                    <td>{{ $cup->players_per_team.'on'.$cup->players_per_team }}</td>
-                </tr>
-                @if ($cup->prize)
+                @section('cups-cup-details')
                     <tr>
-                        <th>{{ trans('app.prize') }}</th>
-                        <td>{{ $cup->prize }}</td>
+                        <th>{{ trans('app.object_game') }}</th>
+                        <td>{{ $cup->game->title }}</td>
                     </tr>
-                @endif
-                <tr>
-                    <?php Carbon::setLocale(Config::get('app.locale')); ?>
-                    <th>{{ trans('cups::join_at') }}</th>
-                    <td>{{ $cup->join_at->format(trans('app.date_format').' H:i') }} ({{ $cup->join_at->diffForHumans() }})</td>
-                </tr>
-                <tr>
-                    <th>{{ trans('cups::check_in_at') }}</th>
-                    <td>{{ $cup->check_in_at->format(trans('app.date_format').' H:i') }} ({{ $cup->check_in_at->diffForHumans() }})</td>
-                </tr>
-                <tr>
-                    <th>{{ trans('cups::start_at') }}</th>
-                    <td>{{ $cup->start_at->format(trans('app.date_format').' H:i') }} ({{ $cup->start_at->diffForHumans() }})</td>
-                </tr>
-                @if ($cup->description)
                     <tr>
-                        <th>{{ trans('app.description') }}</th>
-                        <td>{!! $cup->description !!}</td>
+                        <th>{{ trans('app.slots') }}</th>
+                        <td>{{ $cup->countParticipants() }} / {{ $cup->slots }}</td>
                     </tr>
-                @endif
-                @if(!$cup->referees->isEmpty())
                     <tr>
-                        <th>{{ trans('cups::referees') }}</th>
-                        <td>
-                            @foreach ($cup->referees as $key => $referee)
-                                @if ($key > 0)
-                                    , 
-                                @endif
-                                <a href="{{ url('users/'.$referee->id.'/'.$referee->slug) }}">{{ $referee->username }}</a>
-                            @endforeach
-                        </td>
+                        <th>{{ trans('app.mode') }}</th>
+                        <td>{{ $cup->players_per_team.'on'.$cup->players_per_team }}</td>
                     </tr>
-                @endif
+                    @if ($cup->prize)
+                        <tr>
+                            <th>{{ trans('app.prize') }}</th>
+                            <td>{{ $cup->prize }}</td>
+                        </tr>
+                    @endif
+                    <tr>
+                        <?php Carbon::setLocale(Config::get('app.locale')); ?>
+                        <th>{{ trans('cups::join_at') }}</th>
+                        <td>{{ $cup->join_at->format(trans('app.date_format').' H:i') }} ({{ $cup->join_at->diffForHumans() }})</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('cups::check_in_at') }}</th>
+                        <td>{{ $cup->check_in_at->format(trans('app.date_format').' H:i') }} ({{ $cup->check_in_at->diffForHumans() }})</td>
+                    </tr>
+                    <tr>
+                        <th>{{ trans('cups::start_at') }}</th>
+                        <td>{{ $cup->start_at->format(trans('app.date_format').' H:i') }} ({{ $cup->start_at->diffForHumans() }})</td>
+                    </tr>
+                    @if ($cup->description)
+                        <tr>
+                            <th>{{ trans('app.description') }}</th>
+                            <td>{!! $cup->description !!}</td>
+                        </tr>
+                    @endif
+                    @if(!$cup->referees->isEmpty())
+                        <tr>
+                            <th>{{ trans('cups::referees') }}</th>
+                            <td>
+                                @foreach ($cup->referees as $key => $referee)
+                                    @if ($key > 0)
+                                        ,
+                                    @endif
+                                    <a href="{{ url('users/'.$referee->id.'/'.$referee->slug) }}">{{ $referee->username }}</a>
+                                @endforeach
+                            </td>
+                        </tr>
+                    @endif
+                @show
             </table>
 
             {!! Comments::show('cups', $cup->id) !!}

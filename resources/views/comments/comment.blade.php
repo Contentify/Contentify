@@ -3,7 +3,9 @@
         <h3>{!! trans('comments::written_by') !!} {!! link_to('users/'.$comment->creator->id, $comment->creator->username, ['class' => 'creator-name']) !!} {!! trans('comments::written_on') !!} {!! $comment->created_at !!}</h3>
     </header>
     <div class="text">
+    @section('comments-comment-text')
         {!! $comment->renderText() !!}
+    @show
     </div>
     @if (user())
         @if (user()->hasAccess('comments', PERM_UPDATE) or $comment->creator->id == user()->id)

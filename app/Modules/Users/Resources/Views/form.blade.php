@@ -7,6 +7,7 @@
 @else
     {!! Form::open(['url' => 'users']) !!}
 @endif
+    @section('users-user-form-fields')
     {!! Form::smartText('username', trans('app.username')) !!}
 
     {!! Form::smartEmail('email', trans('app.email')) !!}
@@ -90,6 +91,7 @@
     {!! Form::smartImageFile('image', trans('users::image')) !!}
     
     {!! Form::smartImageFile('avatar', trans('users::avatar')) !!}
+    @show
    
     {!! Form::actions(['submit' => trans('app.update')]) !!}
 {!! Form::close() !!}

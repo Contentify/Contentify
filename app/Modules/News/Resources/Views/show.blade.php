@@ -5,26 +5,34 @@
     </header>
     
     <div class="content">
-        @if ($news->image)
-            <div class="image">
-                <img src="{!! $news->uploadPath().$news->image !!}" alt="{{ $news->title }}">
-            </div>
-        @elseif ($news->newsCat->image)
-            <div class="image">
-                <img src="{!! $news->newsCat->uploadPath().$news->newsCat->image !!}" alt="{{ $news->newsCat->title }}">
-            </div>
-        @endif
+        @section('news-news-image')
+            @if ($news->image)
+                <div class="image">
+                    <img src="{!! $news->uploadPath().$news->image !!}" alt="{{ $news->title }}">
+                </div>
+            @elseif ($news->newsCat->image)
+                <div class="image">
+                    <img src="{!! $news->newsCat->uploadPath().$news->newsCat->image !!}" alt="{{ $news->newsCat->title }}">
+                </div>
+            @endif
+        @show
         <div class="summary">
+        @section('news-news-summary')
             {!! $news->summary !!}
+        @show
         </div>
         <div class="text">
+        @section('news-news-text')
             {!! $news->text !!}
+        @show
         </div>
     </div>
 
     @include('share', ['shareTitle' => $news->title])
 </article>
 
-@if ($news->enable_comments)
-    {!! Comments::show('news', $news->id) !!}
-@endif
+@section('news-news-comments')
+    @if ($news->enable_comments)
+        {!! Comments::show('news', $news->id) !!}
+    @endif
+@show
