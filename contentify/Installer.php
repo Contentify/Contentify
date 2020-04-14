@@ -54,13 +54,13 @@ class Installer
     /**
      * Creates the .ini file with the database credentials
      *
-     * @param $host
-     * @param $database
-     * @param string $username
-     * @param string $password
+     * @param string $host
+     * @param string $database
+     * @param string|null $username
+     * @param string|null $password
      * @return MessageBag
      */
-    public function createDatabaseIni(string $host, string $database, string $username, string $password)
+    public function createDatabaseIni(string $host, string $database, string $username = null, string $password = null)
     {
         /*
          * Validation
@@ -1209,10 +1209,10 @@ information about your stored data, and possibly entitlement to correction, bloc
     /**
      * Create the super admin user account
      *
-     * @param string $username
-     * @param string $email
-     * @param string $password
-     * @param string $passwordConfirmation
+     * @param string|null $username
+     * @param string|null $email
+     * @param string|null $password
+     * @param string|null $passwordConfirmation
      * @return MessageBag
      */
     public function createAdminUser(string $username, string $email, string $password, string $passwordConfirmation)
