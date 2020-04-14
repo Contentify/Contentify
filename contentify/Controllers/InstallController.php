@@ -71,7 +71,7 @@ class InstallController extends Controller
                     return $this->index($step - 1, $errors);
                 }
 
-                $title      = 'Installation complete';
+                $title      = 'Installation Complete';
                 $content    = '<p>Congratulations, Contentify is ready to rumble.</p>';
 
                 try {
@@ -84,7 +84,7 @@ class InstallController extends Controller
 
                 break;
             case 5:
-                $title      = 'Create super-admin user';
+                $title      = 'Create Super-Admin User';
                 $content    = '<p>Please fill in the details of your user account.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
                               Form::open(['url' => 'install?step='.($step + 1)]).
@@ -101,7 +101,7 @@ class InstallController extends Controller
                 $this->installer->createDaemonUser();
                 $this->installer->createSeed();
 
-                $title      = 'Database setup complete';
+                $title      = 'Database Setup Complete';
                 $content    = '<p>Database filled with initial seed.</p>';
 
                 break;
