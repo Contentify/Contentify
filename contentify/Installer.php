@@ -1209,10 +1209,10 @@ information about your stored data, and possibly entitlement to correction, bloc
     /**
      * Create the super admin user account
      *
-     * @param string|null $username
-     * @param string|null $email
-     * @param string|null $password
-     * @param string|null $passwordConfirmation
+     * @param string $username
+     * @param string $email
+     * @param string $password
+     * @param string $passwordConfirmation
      * @return MessageBag
      */
     public function createAdminUser(string $username, string $email, string $password, string $passwordConfirmation)
