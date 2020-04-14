@@ -137,7 +137,7 @@ class InstallController extends Controller
                     $settings = parse_ini_file($filename);
                 }
 
-                $title      = 'Database setup';
+                $title      = 'Database Setup';
                 $content    = '<p>Fill in the database connection settings.</p>'.
                               '<div class="warning">'.Form::errors($errors).'</div>'.
                               Form::open(['url' => 'install?step='.($step + 1)]).
