@@ -13,7 +13,9 @@
 
     {!! Form::smartNumeric('position', trans('app.position'), 0) !!}
 
-    {!! Form::smartImageFile() !!}
+    {!! Form::smartImageFile('image', trans('app.logo')) !!}
+
+    {!! Form::smartImageFile('banner', trans('app.banner')) !!}
 
     {!! Form::smartCheckbox('published', trans('app.published'), true) !!}
 

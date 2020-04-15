@@ -8,9 +8,9 @@
             @endif
         </h1>
 
-        @if ($team->image)
+        @if ($team->banner)
             <div class="image">
-                <img class="img-responsive" src="{!! $team->uploadPath().$team->image !!}" alt="{{ $team->title }}">
+                <img class="img-responsive" src="{!! $team->uploadPath().$team->banner !!}" alt="{{ $team->title }}">
             </div>
         @endif
     </header>

@@ -18,7 +18,8 @@ use SoftDeletingTrait;
  * @property bool                           $published
  * @property int                            $team_cat_id
  * @property int                            $country_id
- * @property string                         $image
+ * @property string                         $image          Logo Image (square)
+ * @property string                         $banner         Banner image (rectangle)
  * @property int                            $access_counter
  * @property int                            $creator_id
  * @property int                            $updater_id
@@ -41,7 +42,10 @@ class Team extends BaseModel
 
     protected $fillable = ['title', 'text', 'position', 'published', 'team_cat_id', 'country_id'];
 
-    public static $fileHandling = ['image' => ['type' => 'image']];
+    public static $fileHandling = [
+        'image' => ['type' => 'image'],
+        'banner' => ['type' => 'image'],
+    ];
 
     protected $rules = [
         'title'         => 'required|min:3',

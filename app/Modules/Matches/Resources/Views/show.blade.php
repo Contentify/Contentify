@@ -3,7 +3,11 @@
 <div class="overview clearfix">
 @section('matches-match-overview')
     <div class="left">
-        <img src="{!! asset('img/logo_180.png') !!}" alt="{{ $match->left_team->title }}">
+        @if ($match->left_team->image)
+            <img src="{!! $match->left_team->uploadPath().$match->left_team->image !!}" alt="{{ $match->left_team->title }}">
+        @else
+            <img src="{!! asset('img/logo_180.png') !!}" alt="{{ $match->left_team->title }}">
+        @endif
         <div class="team-name">
             <img src="{{ asset('uploads/countries/eu.png') }}"> 
             <a href="{{ url('/teams/'.$match->left_team->id.'/'.$match->left_team->slug) }}">{{ $match->left_team->title }}</a>

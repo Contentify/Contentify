@@ -247,6 +247,7 @@ class Installer
         { 
             $table->text('text')->nullable();
             $table->string('image')->nullable();
+            $table->string('banner')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
         }, ['team_cat_id', 'country_id']);

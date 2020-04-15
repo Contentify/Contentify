@@ -9,6 +9,7 @@
 - There is a number of small breaking changes that could concern you if you have written custom code. So please test such code!
 
 **Changes**
+- Teams are now allowed to have a logo (square) image and a banner (rectangle) image. ATTENTION: The logo image will be displayed on the match page, so you might want to upload a square logo for your teams if you are not using a square shaped image.
 - The global `sort_switcher` helper function has been removed. You may use the `HTML::sortSwitcher()` method instead.
 - News entries are now allowed to have an individual image. If no image has been set, the image of the news category will be displayed instead.
 - You have now more control over enabling/disabling comments

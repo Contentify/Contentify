@@ -87,6 +87,8 @@ EOD;
             "ALTER TABLE `{$prefix}videos` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
             "ALTER TABLE `{$prefix}streams` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
             "ALTER TABLE `{$prefix}polls` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
+            "ALTER TABLE `{$prefix}teams` ADD `banner` VARCHAR(255) DEFAULT NULL;",
+            "UPDATE `{$prefix}teams` SET `banner`=`image`",
          ];
 
         return $updateQueries;

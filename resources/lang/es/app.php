@@ -77,6 +77,8 @@ return [
     'description'   => 'Descripción',
     'image'         => 'Imagen',
     'icon'          => 'Icono',
+    'logo'          => 'Logotipo',
+    'banner'        => 'Bandera',
     'date'          => 'Fecha',
     'published'     => 'Publicado',
     'starts_at'     => 'Empieza el',
