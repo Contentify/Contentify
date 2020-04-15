@@ -10,6 +10,6 @@
                 </a>
             </li>
         @endforeach
-    @how
+    @show
     </ul>
 </div>

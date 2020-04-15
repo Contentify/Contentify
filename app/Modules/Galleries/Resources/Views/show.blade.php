@@ -10,7 +10,7 @@
                 {{ $image->title }}
             </p>
         </div>
-    @how
+    @show
 
     <div class="previews-wrapper">
         <div class="previews">
