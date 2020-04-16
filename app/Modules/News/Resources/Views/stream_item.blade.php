@@ -1,5 +1,5 @@
 @if ($item->itemType == 'news')
-    <div class="item news" data-timestamp="{{ $item->updated_at->timestamp }}" data-time-offset="{{ $item->updated_at->offsetHours }}" data-more={{ $more }}>
+    <div class="item news" data-timestamp="{{ $item->published_at->timestamp }}" data-time-offset="{{ $item->published_at->offsetHours }}" data-more={{ $more }}>
         <div class="meta above clearfix">
             <div class="category pull-left">
                 {!! HTML::fontIcon('newspaper') !!} {!! trans('app.object_news') !!}
@@ -22,13 +22,13 @@
         </h2>
 
         <div class="meta below">
-            <time>{{ $item->updated_at }}</time> - {!! link_to('users/'.$item->creator->id.'/'.$item->creator->slug, $item->creator->username) !!}
+            <time>{{ $item->published_at }}</time> - {!! link_to('users/'.$item->creator->id.'/'.$item->creator->slug, $item->creator->username) !!}
         </div>
     </div>
 @endif
 
 @if ($item->itemType == 'video')
-    <div class="item video" data-timestamp="{{ $item->updated_at->timestamp }}" data-time-offset="{{ $item->updated_at->offsetHours }}" data-more={{ $more }}>
+    <div class="item video" data-timestamp="{{ $item->published_at->timestamp }}" data-time-offset="{{ $item->published_at->offsetHours }}" data-more={{ $more }}>
         <div class="meta above clearfix">
             <div class="category">
                 {!! HTML::fontIcon('youtube') !!} {!! trans('app.object_video') !!}
@@ -45,7 +45,7 @@
         </h2>
 
         <div class="meta below">
-            <time>{{ $item->updated_at }}</time> - {!! link_to('users/'.$item->creator->id.'/'.$item->creator->slug, $item->creator->username) !!}
+            <time>{{ $item->published_at }}</time> - {!! link_to('users/'.$item->creator->id.'/'.$item->creator->slug, $item->creator->username) !!}
         </div>
     </div>
 @endif
