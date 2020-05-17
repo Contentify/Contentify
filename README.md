@@ -1,6 +1,6 @@
 ![Contentify Logo](http://www.contentify.org/img/hero_small.png)
 
-## Contentify CMS - v3.0-beta
+## Contentify CMS - v3.0
 
 [![Build Status](https://img.shields.io/travis/Contentify/Contentify.svg?style=flat-square)](https://travis-ci.org/Contentify/Contentify)
 [![Laravel](https://img.shields.io/badge/Laravel-5.5-orange.svg?style=flat-square)](http://laravel.com)
@@ -26,7 +26,7 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 ### Get the developer version
 
-Clone this repository via git and switch to the `3.0-dev` branch. Via console, go to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
+Clone this repository via git and switch to the `3.0` branch. Via console, go to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
 ### Update
 
@@ -50,7 +50,7 @@ To update from v2.6 to 3.0:
 
 > The server resets (database, uploaded files and cache) twice per hour.
 
-> NOTE: The demo website is running with Contentify 3.0-beta.
+> NOTE: The demo website is running with Contentify 3.0.
 
 ### Support
 
