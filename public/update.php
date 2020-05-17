@@ -89,6 +89,8 @@ EOD;
             "ALTER TABLE `{$prefix}polls` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
             "ALTER TABLE `{$prefix}teams` ADD `banner` VARCHAR(255) DEFAULT NULL;",
             "UPDATE `{$prefix}teams` SET `banner`=`image`",
+            "INSERT INTO `{$prefix}languages` (title, code) VALUES ('Italian', 'it');",
+            "INSERT INTO `{$prefix}languages` (title, code) VALUES ('Portuguese', 'pt');",
          ];
 
         return $updateQueries;
