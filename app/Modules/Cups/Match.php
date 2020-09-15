@@ -318,49 +318,50 @@ class Match extends BaseModel
      *
      * @param int $leftScore The score of the participant on the left side
      * @param int $rightScore The score of the participant on the right side
+     * @param bool $left If true, confirm the left result. If false, confirm the right.
      * @return Match|null Returns the next match or null if there is no next match
      * @throws MsgException
      */
-    public function confirm(int $leftScore, int $rightScore)
+    public function confirm(int $leftScore, int $rightScore, bool $left)
     {
         if ($leftScore == $rightScore) {
             throw new MsgException(trans('app.not_possible'));
         }
 
         if ($left) {
-            if (! $match->canConfirmLeft(user())) {
+            if (! $this->canConfirmLeft(user())) {
                 throw new MsgException(trans('app.not_possible'));
             }
 
             // If the result has been changed by the left participant, the right has to confirm it again
-            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
-                $match->right_confirmed = false;
+            if ($this->left_score != $leftScore or $this->right_score != $rightScore) {
+                $this->right_confirmed = false;
             }
 
-            $match->left_confirmed = true; 
+            $this->left_confirmed = true;
         } else {
-            if (! $match->canConfirmRight(user())) {
+            if (! $this->canConfirmRight(user())) {
                 throw new MsgException(trans('app.not_possible'));
             }
  
             // If the result has been changed by the right participant, the left has to confirm it again
-            if ($match->left_score != $leftScore or $match->right_score != $rightScore) {
-                $match->left_confirmed = false;
+            if ($this->left_score != $leftScore or $this->right_score != $rightScore) {
+                $this->left_confirmed = false;
             }
 
-            $match->right_confirmed = true; 
+            $this->right_confirmed = true;
         }
-        
-        $match->left_score = $leftScore;
-        $match->right_score = $rightScore;
-        $match->save();
 
-        $newMatch = $match->generateNext();
+        $this->left_score = $leftScore;
+        $this->right_score = $rightScore;
+        $this->save();
+
+        $newMatch = $this->generateNext();
 
         // Create next matches for wildcard-matches
-        if ($match->round == 1) {
+        if ($this->round == 1) {
             // Remember: Wildcard-matches can only appear in the first row (so we do not need to check this)
-            $wildcards = Match::whereCupId($match->cup_id)->whereRightParticipantId(0)->whereNextMatchId(0)
+            $wildcards = Match::whereCupId($this->cup_id)->whereRightParticipantId(0)->whereNextMatchId(0)
                 ->orderBy('row')->get();
 
             /** @var Match $wildcard */
