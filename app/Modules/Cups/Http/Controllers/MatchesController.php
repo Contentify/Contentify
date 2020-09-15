@@ -58,7 +58,7 @@ class MatchesController extends FrontController
         $match = Match::findOrFail($id);
 
         try {
-            $newMatch = $match->confirm(Input::get('left_score'), Input::get('right_score'));
+            $newMatch = $match->confirm(Input::get('left_score'), Input::get('right_score'), $left);
         } catch (MsgException $exception) {
             $this->alertFlash($exception->getMessage());
             return Redirect::to('cups/matches/'.$match->id);
