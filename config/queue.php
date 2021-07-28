@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Queue Driver
+    | Default Queue Connection Name
     |--------------------------------------------------------------------------
     |
     | Laravel's queue API supports an assortment of back-ends via a single
@@ -62,6 +62,7 @@ return [
             'connection' => 'default',
             'queue' => 'default',
             'retry_after' => 90,
+            'block_for' => null,
         ],
 
     ],
