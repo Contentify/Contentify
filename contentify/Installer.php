@@ -20,27 +20,27 @@ use Validator;
  */
 class Installer
 {
-        
+
     /**
      * Name of the event that is fired when the database tables have been created
      */
     const EVENT_NAME_DATABASE_CREATED = 'contentify.installer.databaseCreated';
-    
+
     /**
      * Name of the event that is fired when the database tables have been seeded
      */
     const EVENT_NAME_DATABASE_SEEDED = 'contentify.installer.databaseSeeded';
-    
+
     /**
      * (Relative) path to the file that indicates if the app is installed or not
      */
     const INSTALL_FILE = 'app/.installed';
-    
+
     /**
      * (Relative) path to the database ini file
      */
     const DB_INI_FILE = 'app/database.ini';
-    
+
     /**
      * URL of the Contentify.org API call after a successful installation.
      */
@@ -50,7 +50,7 @@ class Installer
      * The installer will try to increase the time limit to this value (in minutes) if possible
      */
     const MAX_TIME_LIMIT = 5 * 60;
-    
+
     /**
      * Creates the .ini file with the database credentials
      *
@@ -84,7 +84,7 @@ class Installer
         }
 
         File::put(
-            storage_path(self::DB_INI_FILE), 
+            storage_path(self::DB_INI_FILE),
             '; Auto-generated file with database connection settings.'.PHP_EOL.
             '; See config/database.php for more settings.'.PHP_EOL.PHP_EOL.
             "host = "."\"$host\"".PHP_EOL.
@@ -92,25 +92,25 @@ class Installer
             "username = "."\"$username\"".PHP_EOL.
             "password = "."\"$password\""
         );
-        
+
         return new MessageBag();
     }
-    
+
     /**
      * Creates the database tables
-     * 
+     *
      * @return void
      */
     public function createDatabase()
     {
         /*
-         * Notice: 
+         * Notice:
          * - The default length of strings is 255 chars.
          * - We recommend to use timestamp($name)->nullable() to create a datetime attribute.
          */
 
         /*
-         * If possible (safe mode not enabled and use of set_time_limit not forbidden), 
+         * If possible (safe mode not enabled and use of set_time_limit not forbidden),
          * set the execution time limit to more than just the default 30 seconds.
          */
         if (! ini_get('safe_mode') and function_exists('set_time_limit') and ini_get('max_execution_time') < self::MAX_TIME_LIMIT) {
@@ -131,7 +131,7 @@ class Installer
             Artisan::call('migrate:reset', ['--quiet' => true, '--force' => true]); // Delete old tables
         }
         Artisan::call(
-            'migrate', 
+            'migrate',
             ['--path' => 'vendor/cartalyst/sentinel/src/migrations', '--quiet' => true, '--force' => true]
         );
 
@@ -150,7 +150,7 @@ class Installer
             $table->text('value')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
-       
+
         $this->create('visits', function(Blueprint $table)
         {
             $table->string('ip');
@@ -159,17 +159,17 @@ class Installer
         }, [], false);
 
         $this->create('languages', function(Blueprint $table)
-        { 
+        {
             $table->string('title');
             $table->string('code', 2);
         }, [], false);
 
         $this->create('countries', function(Blueprint $table)
-        { 
+        {
             $table->string('code', 3);
             $table->string('icon')->nullable();
         }, [], ['slug']);
-       
+
         $this->create('comments', function(Blueprint $table)
         {
             $table->text('text')->nullable();
@@ -192,9 +192,9 @@ class Installer
             $table->string('icon')->nullable();
         }, [], ['slug']);
 
-        $this->create('page_cats', function(Blueprint $table) { 
+        $this->create('page_cats', function(Blueprint $table) {
         }, [], ['slug']);
-        
+
         $this->create('pages', function(Blueprint $table)
         {
             $table->text('text')->nullable();
@@ -224,7 +224,7 @@ class Installer
         {
             $table->boolean('published')->default(false);
         });
-        
+
         $this->create('images', function(Blueprint $table)
         {
             $table->string('tags')->nullable();
@@ -240,11 +240,11 @@ class Installer
             $table->integer('position')->default(0);
         }, ['user_id', 'team_id']);
 
-        $this->create('team_cats', function(Blueprint $table) { 
+        $this->create('team_cats', function(Blueprint $table) {
         }, [], ['slug']);
-        
+
         $this->create('teams', function(Blueprint $table)
-        { 
+        {
             $table->text('text')->nullable();
             $table->string('image')->nullable();
             $table->string('banner')->nullable();
@@ -253,8 +253,8 @@ class Installer
         }, ['team_cat_id', 'country_id']);
 
         $this->create('advert_cats', function(Blueprint $table) {
-        }, [], ['slug']); 
-        
+        }, [], ['slug']);
+
         $this->create('adverts', function(Blueprint $table)
         {
             $table->text('code')->nullable();
@@ -263,7 +263,7 @@ class Installer
             $table->string('image')->nullable();
         }, ['advert_cat_id'], ['slug']);
 
-        $this->create('partner_cats', function(Blueprint $table) { 
+        $this->create('partner_cats', function(Blueprint $table) {
         }, [], ['slug']);
 
         $this->create('partners', function(Blueprint $table)
@@ -286,12 +286,12 @@ class Installer
             $table->string('provider');
             $table->boolean('enable_comments')->default(true);
         });
-        
+
 	//phpcs:ignore --nothing in the function
         $this->create('download_cats', function(Blueprint $table) { }); // Supports slugs
 
         $this->create('downloads', function(Blueprint $table)
-        { 
+        {
             $table->text('description')->nullable();
             $table->string('file')->nullable();
             $table->integer('file_size')->default(0);
@@ -299,8 +299,8 @@ class Installer
             $table->boolean('internal')->default(false);
             $table->boolean('published')->default(false);
         }, ['download_cat_id']);
-        
-        $this->create('slide_cats', function(Blueprint $table) { 
+
+        $this->create('slide_cats', function(Blueprint $table) {
         }, [], ['slug']);
 
         $this->create('slides', function(Blueprint $table)
@@ -311,14 +311,14 @@ class Installer
             $table->integer('position')->default(0);
             $table->boolean('published')->default(false);
         }, ['slide_cat_id'], ['slug']);
-               
+
         $this->create('tournaments', function(Blueprint $table)
         {
             $table->string('short', 6)->nullable();
             $table->string('url')->nullable();
             $table->string('icon')->nullable();
         }, [], ['slug']);
-        
+
         $this->create('awards', function(Blueprint $table)
         {
             $table->string('url')->nullable();
@@ -333,7 +333,7 @@ class Installer
             $table->string('lineup')->nullable();
             $table->string('image')->nullable();
         }, ['country_id']);
-        
+
         $this->create('maps', function(Blueprint $table)
         {
             $table->string('image')->nullable();
@@ -345,7 +345,7 @@ class Installer
             $table->integer('right_score')->default(0);
             $table->nullableTimestamps();
         }, ['match_id', 'map_id'], false);
- 
+
         $this->create('matches', function(Blueprint $table)
         {
             $table->integer('state')->default(0);
@@ -358,8 +358,8 @@ class Installer
             $table->timestamp('played_at')->nullable();
             $table->integer('left_score')->default(0); // Total score
             $table->integer('right_score')->default(0);
-        }, 
-        ['left_team_id' => 'team_id', 'right_team_id' => 'opponent_id', 'game_id', 'tournament_id'], 
+        },
+        ['left_team_id' => 'team_id', 'right_team_id' => 'opponent_id', 'game_id', 'tournament_id'],
         ['title', 'slug']);
 
         $this->create('streams', function(Blueprint $table)
@@ -384,7 +384,7 @@ class Installer
         }, ['game_id'], ['slug']);
 
         $this->create('forums', function(Blueprint $table)
-        { 
+        {
             $table->text('description')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('internal')->default(false);
@@ -394,20 +394,20 @@ class Installer
         }, ['forum_id', 'latest_thread_id' => 'forum_thread_id', 'team_id']);
 
         $this->create('forum_threads', function(Blueprint $table)
-        { 
+        {
             $table->integer('posts_count')->default(1);
             $table->boolean('sticky')->default(false);
             $table->boolean('closed')->default(false);
         }, ['forum_id']);
 
         $this->create('forum_posts', function(Blueprint $table)
-        { 
+        {
             $table->text('text')->nullable();
             $table->boolean('root')->default(0);
         }, ['thread_id' => 'forum_threads_id'], ['slug', 'title']);
 
         $this->create('forum_reports', function(Blueprint $table)
-        { 
+        {
             $table->text('text')->nullable();
         }, ['post_id' => 'forum_posts_id'], ['title', 'slug']);
 
@@ -437,7 +437,7 @@ class Installer
         }, ['user_id'], false);
 
         $this->create('shouts', function(Blueprint $table)
-        { 
+        {
             $table->text('text')->nullable();
         }, [], ['title', 'slug', 'access_counter', 'updater_id']);
 
@@ -519,9 +519,9 @@ class Installer
             $table->integer('right_score')->default(0);
             $table->boolean('left_confirmed')->default(false);
             $table->boolean('right_confirmed')->default(false);
-        }, 
+        },
         ['cup_id'], ['title', 'slug']);
-        
+
         Schema::dropIfExists('cups_users');
         Schema::create('cups_users', function(Blueprint $table)
         {
@@ -548,7 +548,7 @@ class Installer
             $table->boolean('paid')->default(true);
         }, ['user_id'], ['slug']);
 
-        $this->create('question_cats', function(Blueprint $table) { 
+        $this->create('question_cats', function(Blueprint $table) {
         }, [], ['slug']);
 
         $this->create('questions', function(Blueprint $table)
@@ -599,16 +599,16 @@ class Installer
          * Run remaining (general) migrations trough Artisan.
          */
         Artisan::call('migrate', ['--quiet' => true, '--force' => true]);
-        
+
         event(self::EVENT_NAME_DATABASE_CREATED);
     }
 
     /**
      * Creates the initial database seed
-     * 
+     *
      * @return void
      */
-    public function createSeed() 
+    public function createSeed()
     {
         $this->createDefaultCategories(['news_cats', 'partner_cats', 'advert_cats', 'slide_cats', 'question_cats']);
         $this->createDefaultCategories(['download_cats'], true);
@@ -640,24 +640,24 @@ class Installer
             ['id' => '2', 'title' => 'Custom Page', 'creator_id' => 1, 'updater_id' => 1],
             ['id' => '3', 'title' => 'Custom Content', 'creator_id' => 1, 'updater_id' => 1],
         ]);
-	//phpcs:disable Generic.WhiteSpace.ScopeIndent --multiline text block for db insert 
+	//phpcs:disable Generic.WhiteSpace.ScopeIndent --multiline text block for db insert
         DB::table('pages')->insert([
-            'title'         => 'Impressum', 
+            'title'         => 'Impressum',
             'slug'          => 'impressum',
-            'text'          => 
-'<h2>Privacy Statement</h2><h3>General</h3>Your personal data (e.g. title, name, house address, e-mail address, phone 
-    number, bank details, credit card number) are processed by us only in accordance with the provisions of German data 
-privacy laws. The following provisions describe the type, scope and purpose of collecting, processing and utilizing 
-personal data. This data privacy policy applies only to our web pages. If links on our pages route you to other pages, 
-please inquire there about how your data are handled in such cases.<br><h3>Inventory data</h3>(1) Your personal data, 
-insofar as these are necessary for this contractual relationship (inventory data) in terms of its establishment, 
-organization of content and modifications, are used exclusively for fulfilling the contract. For goods to be delivered, 
-for instance, your name and address must be relayed to the supplier of the goods. <br>(2) Without your explicit 
-    consent or a legal basis, your personal data are not passed on to third parties outside the scope of fulfilling 
-this contract. After completion of the contract, your data are blocked against further use. After expiry of deadlines 
-as per tax-related and commercial regulations, these data are deleted unless you have expressly consented to their 
-further use.<br><h3>Disclosure</h3>According to the Federal Data Protection Act, you have a right to free-of-charge 
-information about your stored data, and possibly entitlement to correction, blocking or deletion of such data. 
+            'text'          =>
+'<h2>Privacy Statement</h2><h3>General</h3>Your personal data (e.g. title, name, house address, e-mail address, phone
+    number, bank details, credit card number) are processed by us only in accordance with the provisions of German data
+privacy laws. The following provisions describe the type, scope and purpose of collecting, processing and utilizing
+personal data. This data privacy policy applies only to our web pages. If links on our pages route you to other pages,
+please inquire there about how your data are handled in such cases.<br><h3>Inventory data</h3>(1) Your personal data,
+insofar as these are necessary for this contractual relationship (inventory data) in terms of its establishment,
+organization of content and modifications, are used exclusively for fulfilling the contract. For goods to be delivered,
+for instance, your name and address must be relayed to the supplier of the goods. <br>(2) Without your explicit
+    consent or a legal basis, your personal data are not passed on to third parties outside the scope of fulfilling
+this contract. After completion of the contract, your data are blocked against further use. After expiry of deadlines
+as per tax-related and commercial regulations, these data are deleted unless you have expressly consented to their
+further use.<br><h3>Disclosure</h3>According to the Federal Data Protection Act, you have a right to free-of-charge
+information about your stored data, and possibly entitlement to correction, blocking or deletion of such data.
 <br><br><i>From: </i><a href="https://www.twigg.de/" target="_blank">http://www.twigg.de/</a>',
             'published'     => true,
             'published_at'  => DB::raw('NOW()'),
@@ -826,7 +826,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         ("Swaziland", "sz", "sz.png", 1, 1),
         ("Sweden", "se", "se.png", 1, 1),
         ("Switzerland", "ch", "ch.png", 1, 1),
-        ("Syria", "sy", "sy.png", 1, 1),        
+        ("Syria", "sy", "sy.png", 1, 1),
         ("Taiwan", "tw", "tw.png", 1, 1),
         ("Thailand", "th", "th.png", 1, 1),
         ("Tajikistan", "tj", "tj.png", 1, 1),
@@ -904,15 +904,15 @@ information about your stored data, and possibly entitlement to correction, bloc
             'created_at'    => DB::raw('NOW()'),
             'updated_at'    => DB::raw('NOW()'),
         ]);
-                
+
         event(self::EVENT_NAME_DATABASE_SEEDED);
     }
-    
+
 
     /**
      * Create user permission roles.
      * The convention is that the name of permissions are in lowercase and only use the letter a-z.
-     * 
+     *
      * @return void
      */
     public function createUserRoles()
@@ -1039,11 +1039,11 @@ information about your stored data, and possibly entitlement to correction, bloc
             ]
         ]);
     }
-    
+
 
     /**
      * Helper function. Creates a database table.
-     * 
+     *
      * @param string        $tableName     The name of the table
      * @param Closure       $tableRows     A closure defining the table rows
      * @param string[]      $foreignKeys   An array with names of foreign keys
@@ -1097,7 +1097,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 }
 
                 $table->integer($localKey)->unsigned()->nullable();
-                $foreignTable = str_plural(substr($remoteKey, 0, -3));
+                $foreignTable = Str::plural(substr($remoteKey, 0, -3));
                 $table->foreign($localKey)->references('id')->on($foreignTable);
             }
 
@@ -1128,7 +1128,7 @@ information about your stored data, and possibly entitlement to correction, bloc
 
     /**
      * Helper functions. Creates a database pivot table.
-     * 
+     *
      * @param string   $tableName   The name of the table
      * @param Closure  $tableRows   A closure defining the table rows
      * @param string[] $primaryKeys An array with the names of both primary keys
@@ -1168,7 +1168,7 @@ information about your stored data, and possibly entitlement to correction, bloc
 
     /**
      * Creates one or more default categories
-     * 
+     *
      * @param string[] $tables   Array of table names
      * @param bool     $withSlug If true, also fill the slug attribute
      * @return void
@@ -1193,14 +1193,14 @@ information about your stored data, and possibly entitlement to correction, bloc
                 $values
             ]);
         }
-                
+
     }
-    
+
     /**
      * Create the daemon user account (with ID = 1)
      */
     public function createDaemonUser()
-    {        
+    {
 
             $user = Sentinel::register([
                 'email'     => 'daemon@contentify.org',
@@ -1209,7 +1209,7 @@ information about your stored data, and possibly entitlement to correction, bloc
                 'activated' => false,
             ]);
     }
-    
+
     /**
      * Create the super admin user account
      *
@@ -1254,12 +1254,12 @@ information about your stored data, and possibly entitlement to correction, bloc
         /*
          * Add user to role "Super-Admins"
          */
-        $adminRole = Sentinel::findRoleBySlug('super-admins'); 
+        $adminRole = Sentinel::findRoleBySlug('super-admins');
         $adminRole->users()->attach($user);
-        
+
         return new MessageBag();
     }
-    
+
     /**
      * Ensures that the CMS is not installed.
      * Terminates execution if it is installed.
@@ -1268,12 +1268,12 @@ information about your stored data, and possibly entitlement to correction, bloc
     {
         $filename = storage_path(self::INSTALL_FILE);
         $filename = str_replace(base_path(), '', $filename); // Make the path relative
-        
+
         if (file_exists($filename)) {
             die('Contentify has been installed already. Remove this file if you want to reinstall it: ...'.$filename);
         }
     }
-    
+
     /**
      * Create the file that indicates that the CMS is installed.
      *
@@ -1282,7 +1282,7 @@ information about your stored data, and possibly entitlement to correction, bloc
     public function markAsInstalled()
     {
         $filename = storage_path(self::INSTALL_FILE);
-        
+
         if (File::isWritable(File::dirname($filename))) {
             if (! File::exists($filename)) {
                 File::put($filename, time());
@@ -1297,7 +1297,7 @@ information about your stored data, and possibly entitlement to correction, bloc
      * the usage of the CMS. Of course no sensible information will be sent!
      * Info sent: Time and version of the CMS and of PHP. That's all.
      * Check the code if you do not trust this statement.
-     * 
+     *
      * @return void
      */
     public function sendStatistics()

@@ -30,7 +30,7 @@ class Config extends LaravelConfig
     const CACHE_VALUES_PREFIX = 'config::values.';
 
     /**
-     * Cache time in seconds
+     * Cache time in seconds ( 5 minutes )
      */
     const CACHE_TIME = 300;
 

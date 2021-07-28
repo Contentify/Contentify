@@ -1,7 +1,7 @@
 <?php
 
 namespace Contentify;
- 
+
 use App;
 use Carbon as AliasedCarbon; // If we just use Carbon we would use Contentify\Carbon and ignoring the alias!
 use Collective\Html\FormBuilder as OriginalFormBuilder;
@@ -13,6 +13,7 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 use InvalidArgumentException;
 use MsgException;
+use Str;
 use URL;
 
 /**
@@ -24,21 +25,21 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Form groups: Number of grid columns of the label column
-     * 
+     *
      * @var string
      */
     protected $labelGridCols = 3;
 
     /**
      * Form groups: Number of grid columns of the controls column
-     * 
+     *
      * @var string
      */
     protected $controlGridCols = 9;
 
     /**
      * Create HTML code for displaying errors
-     * 
+     *
      * @param  MessageBag|ViewErrorBag $errors The errors to display
      * @return string|null
      */
@@ -59,7 +60,7 @@ class FormBuilder extends OriginalFormBuilder
     }
 
     /**
-     * Open up a new HTML form. 
+     * Open up a new HTML form.
      * Sets "form-horizontal" as the default class for forms.
      *
      * @param  array  $options
@@ -85,7 +86,7 @@ class FormBuilder extends OriginalFormBuilder
      * Form::actions(['submit', 'apply']); // Create only two buttons
      * Form::actions(['submit' => trans('app.send')]); // Create a submit button with a particular title
      * Form::actions(['submit' =>['title' => 'Create', 'data-id' => 123]); // Create a button with an extra attribute
-     * 
+     *
      * @param  array $buttons    Array of button configurations
      * @param  bool  $showImages Show icons on the buttons?
      * @return string
@@ -125,7 +126,7 @@ class FormBuilder extends OriginalFormBuilder
 
                     $partial .= self::button($value, $options);
 
-                    break; 
+                    break;
                 case 'apply':
                     $options['type'] = 'submit';
                     $options['name'] = '_form_apply';
@@ -141,7 +142,7 @@ class FormBuilder extends OriginalFormBuilder
 
                     $partial .= self::button($value, $options);
 
-                    break; 
+                    break;
                 case 'reset':
                     $options['type'] = $type;
 
@@ -155,7 +156,7 @@ class FormBuilder extends OriginalFormBuilder
                     }
 
                     $partial .= self::button($value, $options);
-                
+
                     break;
                 case 'cancel':
                     if ($title == 'Cancel') {
@@ -207,7 +208,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a number input element.
-     * 
+     *
      * @param  string      $name    The name of the input element
      * @param  string|null $value   The default value
      * @param  array       $options Array with attributes
@@ -221,7 +222,7 @@ class FormBuilder extends OriginalFormBuilder
             $options['class'] = '';
         }
         $options['class'] .= 'numeric-input';
-        
+
         #$partial = self::input('text', $name, $value, $options);
         $partial = self::number($name, $value, $options);
 
@@ -230,7 +231,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a URL input element.
-     * 
+     *
      * @param  string      $name    The name of the input element
      * @param  string|null $value   The default value
      * @param  array       $options Array with attributes
@@ -248,7 +249,7 @@ class FormBuilder extends OriginalFormBuilder
         if (! isset($options['placeholder'])) {
             $options['placeholder'] = 'https://www.example.com';
         }
-        
+
         $partial = self::input('url', $name, $value, $options);
         return $partial;
     }
@@ -269,19 +270,19 @@ class FormBuilder extends OriginalFormBuilder
         if ($pos === false) {
             throw new InvalidArgumentException("Invalid foreign key: {$name}", 1);
         }
-        $modelName = str_plural(substr($name, 0, $pos));
+        $modelName = Str::plural(substr($name, 0, $pos));
         $attribute = substr($name, $pos + 1);
 
         /*
          * We have a problem here. We do not know the exact model. Therefore there is no way to
-         * check if it uses soft deletion or not. The dirty way is to assume it does and to blindly 
-         * try to query the models. If it does not have the deleted_at attribute we catch the DB 
+         * check if it uses soft deletion or not. The dirty way is to assume it does and to blindly
+         * try to query the models. If it does not have the deleted_at attribute we catch the DB
          * exception and give it another try - without the WHERE clause.
          */
         try {
-            $models = DB::table(str_plural($modelName))->whereDeletedAt(null)->get();
+            $models = DB::table(Str::plural($modelName))->whereDeletedAt(null)->get();
         } catch (Exception $e) {
-            $models = DB::table(str_plural($modelName))->get();
+            $models = DB::table(Str::plural($modelName))->get();
         }
 
         if (! $nullable and sizeof($models) == 0) {
@@ -330,7 +331,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for the closing part of a custom form group.
-     * 
+     *
      * @return string
      */
     public function smartGroupClose() : string
@@ -340,7 +341,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a checkbox element.
-     * 
+     *
      * @param  string    $name    The name of the checkbox element
      * @param  string    $title   The title of the checkbox element
      * @param  bool|null $default The default value (checked/not checked)
@@ -363,7 +364,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a text input element.
-     * 
+     *
      * @param  string      $name    The name of the input element
      * @param  string      $title   The title of the input element
      * @param  string|null $default The default value
@@ -380,7 +381,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a email input element.
-     * 
+     *
      * @param  string      $name    The name of the input element
      * @param  string|null $title   The title of the input element
      * @param  string|null $default The default value
@@ -401,7 +402,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a URL input element.
-     * 
+     *
      * @param  string      $name    The name of the input element
      * @param  string|null $title   The title of the input element
      * @param  string|null $default The default value
@@ -422,7 +423,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a password input element.
-     * 
+     *
      * @param  string      $name  The name of the input element
      * @param  string|null $title The title of the input element
      * @return string
@@ -441,7 +442,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a textarea input element.
-     * 
+     *
      * @param  string      $name    The name of the input element
      * @param  string|null $title   The title of the input element
      * @param  bool        $editor  Add WYSIWYG editor? The editor will create HTML code.
@@ -481,13 +482,13 @@ class FormBuilder extends OriginalFormBuilder
                 .self::textarea($name, $value)
                 .self::smartGroupClose();
         }
-        
+
         return $partial;
     }
 
     /**
      * Create HTML code for a numeric input element.
-     * 
+     *
      * @param  string      $name       The name of the input element
      * @param  string      $title      The title of the input element
      * @param  string|null $default    The default value
@@ -505,7 +506,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a select element.
-     * 
+     *
      * @param  string     $name       The name of the select element
      * @param  string     $title      The title of the select element
      * @param  array      $options    Array of options (pairs of titles and values)
@@ -571,7 +572,7 @@ class FormBuilder extends OriginalFormBuilder
     ) : string
     {
         $relations = $sourceModelClass::relations();
-        
+
         if (isset($relations[$relationName])) {
             $relation = $relations[$relationName];
         } else {
@@ -626,7 +627,7 @@ class FormBuilder extends OriginalFormBuilder
          * Handle the different types of relations
          */
         switch ($relation[0]) {
-            case 'belongsTo':    
+            case 'belongsTo':
                 $default = self::getDefaultValue(snake_case($relationName).'_'.$key, $default);
 
                 break;
@@ -657,7 +658,7 @@ class FormBuilder extends OriginalFormBuilder
             default:
                 throw new Exception("Error: Unknown relation type '{$relation[0]}' for model of type '{$modelName}'.");
         }
-        
+
         $name       = '_relation_'.$relationName;
         $partial    = self::smartGroupOpen($name, $title)
             .self::hidden($name, false) // Dummy so even if no option is selected some data is sent
@@ -668,7 +669,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a file upload input element.
-     * 
+     *
      * @param  string      $name  The name of the input element
      * @param  string|null $title The title of the input element
      * @return string
@@ -691,7 +692,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for an image upload input element.
-     * 
+     *
      * @param  string      $name  The name of the input element
      * @param  string|null $title The title of the input element
      * @return string
@@ -724,7 +725,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for an icon upload input element.
-     * 
+     *
      * @param  string $name  The name of the input element
      * @param  string $title The title of the input element
      * @return string
@@ -758,7 +759,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a date & time input element.
-     * 
+     *
      * @param  string      $name     The name of the input element
      * @param  string|null $title    The title of the input element
      * @param  string|null $default  The default value
@@ -806,7 +807,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Create HTML code for a date input element.
-     * 
+     *
      * @param  string      $name    The name of the input element
      * @param  string|null $title   The title of the input element
      * @param  string|null $default The default value
@@ -816,10 +817,10 @@ class FormBuilder extends OriginalFormBuilder
     {
         return self::smartDateTime($name, $title, $default, true);
     }
-    
+
     /**
      * Create HTML code for a tag element.
-     * 
+     *
      * @param  string      $name    The name of the tag element
      * @param  string      $title   The title of the tag element
      * @param  string|null $default The default value
@@ -855,7 +856,7 @@ class FormBuilder extends OriginalFormBuilder
 
     /**
      * Adds a Bootstrap help block.
-     * 
+     *
      * @param  string $text The text inside the block.
      * @return string
      */
@@ -874,7 +875,7 @@ class FormBuilder extends OriginalFormBuilder
      * Laravel prioritises model values lower than the value passed to form elements.
      * This method prioritises model values higher an therefore is an alternative
      * to getValueAttribute().
-     * 
+     *
      * @param string $name
      * @param mixed  $default
      * @return mixed

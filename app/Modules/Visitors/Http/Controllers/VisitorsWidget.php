@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Visitors\Http\Controllers;
 
@@ -13,7 +13,7 @@ class VisitorsWidget extends Widget
     public function render(array $parameters = []) : string
     {
         // Use SUM() so we will always get a result, even if there aren't any rows for today.
-        $today = Cache::remember('visitors.widget.today', 5, function()
+        $today = Cache::remember('visitors.widget.today', 5 * 60, function()
         {
             $today = DB::table('visits')->select(DB::raw('SUM(user_agents) AS user_agents'))
             ->whereVisitedAt(DB::raw('CURRENT_DATE'))->get()[0]->user_agents;
@@ -21,7 +21,7 @@ class VisitorsWidget extends Widget
             return $today ? $today : 0;
         });
 
-        $yesterday = Cache::remember('visitors.widget.yesterday', 5, function()
+        $yesterday = Cache::remember('visitors.widget.yesterday', 5 * 60, function()
         {
             $yesterday = DB::table('visits')->select(DB::raw('SUM(user_agents) AS user_agents'))
             ->whereVisitedAt(DB::raw('SUBDATE(CURRENT_DATE, 1)'))->get()[0]->user_agents;
@@ -29,7 +29,7 @@ class VisitorsWidget extends Widget
             return $yesterday ? $yesterday : 0;
         });
 
-        $month = Cache::remember('visitors.widget.month', 30, function()
+        $month = Cache::remember('visitors.widget.month', 30 * 60, function()
         {
             return DB::table('visits')->select(DB::raw('SUM(user_agents) AS user_agents'))
             ->where(DB::raw('MONTH(visited_at)'), '=', DB::raw('MONTH(CURRENT_DATE)')) // Note: whereMonth won't work!
@@ -37,7 +37,7 @@ class VisitorsWidget extends Widget
             ->get()[0]->user_agents;
         });
 
-        $total = Cache::remember('visitors.widget.total', 60, function()
+        $total = Cache::remember('visitors.widget.total', 60 * 60, function()
         {
             return DB::table('visits')->select(DB::raw('SUM(user_agents) AS user_agents'))
             ->get()[0]->user_agents;

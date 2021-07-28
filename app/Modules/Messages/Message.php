@@ -32,8 +32,8 @@ class Message extends BaseModel
     protected $slugable = true;
 
     protected $fillable = [
-        'title', 
-        'text', 
+        'title',
+        'text',
         'receiver_id',
     ];
 
@@ -72,7 +72,7 @@ class Message extends BaseModel
     /**
      * Caches this message - we don't want to parse BBCodes each time
      * we want to display a message.
-     * 
+     *
      * @return void
      */
     public function cache()
@@ -82,12 +82,12 @@ class Message extends BaseModel
         $bbcode = new BBCode();
         $rendered = $bbcode->render($this->text, $escape);
 
-        Cache::put(self::CACHE_KEY.$this->id, $rendered, 60);
+        Cache::put(self::CACHE_KEY.$this->id, $rendered, 60 * 60);
     }
 
     /**
      * Renders the message's text (with BBCode converted to HTML code)
-     * 
+     *
      * @return string
      */
     public function renderText() : string

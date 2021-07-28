@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Users\Http\Controllers;
 
@@ -28,7 +28,7 @@ class RandomUserWidget extends Widget
 
             $view = View::make('users::widget_random_user', compact('user'))->render();
 
-            Cache::put($key, $view, $minutes * 60);
+            Cache::put($key, $view, $minutes * 60 * 60); // 1 hour
 
             return $view;
         }

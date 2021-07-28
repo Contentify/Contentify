@@ -2,27 +2,25 @@
 
 namespace Contentify;
 
-use App\Http\Controllers\Controller;
 use BaseController;
 use BaseModel;
 use Closure;
 use DB;
 use Eloquent;
 use Exception;
-use File;
 use HTML;
 use Input;
-use InterImage;
 use Log;
 use Paginator;
 use Redirect;
 use Session;
+use Str;
 use URL;
 use UserActivities;
 
 /**
- * The model handler is a class that takes care of frequently occurring tasks related to models. 
- * It's a very important and powerful part of Contentify. It helps to avoid writing a lot of code 
+ * The model handler is a class that takes care of frequently occurring tasks related to models.
+ * It's a very important and powerful part of Contentify. It helps to avoid writing a lot of code
  * when dealing with models.
  *
  * @see https://github.com/Contentify/Contentify/wiki/Model-Handler
@@ -39,12 +37,12 @@ class ModelHandler
      * @var BaseController
      */
     protected $controller;
-    
+
     /**
      * @var Uploader
      */
     protected $uploader;
-    
+
     public function __construct()
     {
         $this->uploader = new Uploader();
@@ -54,7 +52,7 @@ class ModelHandler
      * Setter for $controller
      *
      * NOTE: For an unknown reason we have to specify the full path of the base controller here
-     * 
+     *
      * @param \Contentify\Controllers\BaseController $controller The controller object
      * @return void
      */
@@ -82,7 +80,7 @@ class ModelHandler
         if ($surface == 'admin' and ! $controller->checkAccessRead()) {
             return;
         }
-        
+
         /*
          * Set default values
          */
@@ -124,7 +122,7 @@ class ModelHandler
                         break;
                     case 'category':
                         $url = route(
-                            $surface.'.'.str_singular(strtolower($controller->getModuleName())).'-cats.index'
+                            $surface.'.'.Str::singular(strtolower($controller->getModuleName())).'-cats.index'
                         );
                         $buttons .= button(trans('app.categories'), $url, 'folder');
                         break;
@@ -154,7 +152,7 @@ class ModelHandler
         if (! is_array($data['dataSource'])) {
             if (Input::get('sortby')) {
                 $sortBy = strtolower(Input::get('sortby'));
-                
+
                 // ATTENTION: Only allow ordering by this column if it's white listed!
                 // Never use user input for column ordering before Laravel 5.8!
                 // @see https://murze.be/an-important-security-release-for-laravel-query-builder
@@ -242,8 +240,8 @@ class ModelHandler
         }
 
         $paginator = $models->appends([
-            'sortby'    => $data['sortby'], 
-            'order'     => $data['order'], 
+            'sortby'    => $data['sortby'],
+            'order'     => $data['order'],
             'search'    => $data['search']
         ])->render();
 
@@ -278,8 +276,8 @@ class ModelHandler
                             case 'edit':
                                 if ($model->modifiable()) {
                                     $actionsCode .= icon_link(
-                                        'edit', 
-                                        trans('app.edit'), 
+                                        'edit',
+                                        trans('app.edit'),
                                         route($surface.'.'.$controllerRouteName.'.edit', [$model->id]),
                                         false,
                                         ['data-color' => 'blue']
@@ -290,8 +288,8 @@ class ModelHandler
                                 $urlParams = '?method=DELETE&_token='.csrf_token();
                                 if ($model->modifiable()) {
                                     $actionsCode .= icon_link(
-                                        'trash', 
-                                        trans('app.delete'), 
+                                        'trash',
+                                        trans('app.delete'),
                                         route($surface.'.'.$controllerRouteName.'.destroy', [$model->id])
                                             .$urlParams,
                                         false,
@@ -302,7 +300,7 @@ class ModelHandler
                             case 'restore':
                                 if ($model->isSoftDeleting() and $model->trashed()) {
                                     $actionsCode .= icon_link(
-                                        'undo', 
+                                        'undo',
                                         trans('app.restore'),
                                         route($surface.'.'.$controllerRouteName.'.restore', [$model->id]),
                                         false,
@@ -335,7 +333,7 @@ class ModelHandler
             $tableRows,
             ['data-model-table' => 1, 'data-brighten-first' => (int) $data['brightenFirst']]
         );
-        
+
         /*
          * Generate the view
          */
@@ -415,7 +413,7 @@ class ModelHandler
         if (isset($model['title']) and $model->slugable()) {
             $model->createSlug();
         }
- 
+
         $okay = $model->save();
 
         if (! $okay) {
@@ -507,7 +505,7 @@ class ModelHandler
         }
 
         UserActivities::addUpdate(false, user()->id, $controller->getModelClass());
-        
+
         $errors = $this->uploader->uploadModelFiles($model);
         if (count($errors) > 0) {
             return Redirect::route(
@@ -515,7 +513,7 @@ class ModelHandler
                 ['id' => $model->id]
             )->withInput()->withErrors($errors);
         }
-        
+
         $controller->alertFlash(trans('app.updated', [trans_object(basename($controller->getModelName()))]));
         if (Input::get('_form_apply') !== null) {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$id]);
@@ -644,9 +642,9 @@ class ModelHandler
                      * Set $value to null instead of an empty string. This will prevent Eloquent from
                      * changing it to (int) 0.
                      */
-                    $value = null; 
+                    $value = null;
                 }
-                
+
                 if (isset($relations[$name])) {
                     $relation = $relations[$name];
 

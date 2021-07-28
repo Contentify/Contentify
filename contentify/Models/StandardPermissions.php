@@ -3,6 +3,7 @@
 namespace Contentify\Models;
 
 use Cartalyst\Sentinel\Permissions\StandardPermissions as OriginalStandardPermissions;
+use Str;
 
 class StandardPermissions extends OriginalStandardPermissions
 {
@@ -75,7 +76,7 @@ class StandardPermissions extends OriginalStandardPermissions
         }
 
         foreach ($prepared as $key => $value) {
-            if ((str_is($permission, $key) || str_is($key, $permission)) && $value >= $level) {
+            if ((Str::is($permission, $key) || Str::is($key, $permission)) && $value >= $level) {
                 return true;
             }
         }

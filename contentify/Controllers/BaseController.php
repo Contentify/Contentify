@@ -81,7 +81,7 @@ abstract class BaseController extends Controller
          * Set CRUD form template name
          */
         if (! $this->formTemplate) {
-            if ($this->moduleName === str_plural(class_basename($this->modelName))) {
+            if ($this->moduleName === Str::plural(class_basename($this->modelName))) {
                 $this->formTemplate = 'form';
             } else {
                 // If model name & module name differ, the form name should be e. g. "users_form":
@@ -119,7 +119,7 @@ abstract class BaseController extends Controller
 
     /**
      * Getter for $moduleName
-     * 
+     *
      * @return string
      */
     public function getModuleName() : string
@@ -129,7 +129,7 @@ abstract class BaseController extends Controller
 
     /**
      * Getter for $controllerName
-     * 
+     *
      * @return string
      */
     public function getControllerName() : string
@@ -139,7 +139,7 @@ abstract class BaseController extends Controller
 
     /**
      * Getter for $modelName
-     * 
+     *
      * @return string
      */
     public function getModelName() : string
@@ -149,7 +149,7 @@ abstract class BaseController extends Controller
 
     /**
      * Getter for $modelClass
-     * 
+     *
      * @return string
      */
     public function getModelClass() : string
@@ -159,7 +159,7 @@ abstract class BaseController extends Controller
 
     /**
      * Getter for $formTemplate
-     * 
+     *
      * @return string
      */
     public function getFormTemplate() : string
@@ -169,7 +169,7 @@ abstract class BaseController extends Controller
 
     /**
      * Setup the layout used by the controller.
-     * 
+     *
      * @param string $layoutName The name of the layout template file
      * @return void
      */
@@ -397,7 +397,7 @@ abstract class BaseController extends Controller
 
     /**
      * Generates an index page from a model and $data
-     * 
+     *
      * @param  array  $data    Array with information how to build the form. @see $defaults in ModelHandler::index()
      * @param  string $surface Frontend ("front") or backend ("admin")? Default: "admin"
      * @return void
@@ -411,7 +411,7 @@ abstract class BaseController extends Controller
 
     /**
      * Returns true if the current user has read access to the module.
-     * 
+     *
      * @return bool
      */
     public function hasAccessRead() : bool
@@ -421,7 +421,7 @@ abstract class BaseController extends Controller
 
     /**
      * Returns true if the current user has create access to the module.
-     * 
+     *
      * @return bool
      */
     public function hasAccessCreate() : bool
@@ -431,7 +431,7 @@ abstract class BaseController extends Controller
 
     /**
      * Returns true if the current user has update access to the module.
-     * 
+     *
      * @return bool
      */
     public function hasAccessUpdate() : bool
@@ -441,7 +441,7 @@ abstract class BaseController extends Controller
 
     /**
      * Returns true if the current user has delete access to the module.
-     * 
+     *
      * @return bool
      */
     public function hasAccessDelete() : bool
@@ -524,7 +524,7 @@ abstract class BaseController extends Controller
             if (! Request::ajax()) {
                 $this->alertError(trans('app.access_denied'));
             }
-            
+
             return false;
         }
     }

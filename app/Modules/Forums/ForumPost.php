@@ -72,7 +72,7 @@ class ForumPost extends BaseModel
     /**
      * Caches this forum post - we don't want to parse BBCodes each time
      * we want to display a forum post.
-     * 
+     *
      * @return void
      */
     public function cache()
@@ -82,12 +82,12 @@ class ForumPost extends BaseModel
         $rendered = $bbcode->render($this->text);
         $rendered = emojis($rendered);
 
-        Cache::put(self::CACHE_KEY.$this->id, $rendered, 60);
+        Cache::put(self::CACHE_KEY.$this->id, $rendered, 60 * 60);
     }
 
     /**
      * Renders the forum post's text (with BBCode converted to HTML code)
-     * 
+     *
      * @return string
      */
     public function renderText() : string
@@ -157,7 +157,7 @@ class ForumPost extends BaseModel
 
     /**
      * Returns a URL that links to the thread of the current post and scrolls down to the current post
-     * 
+     *
      * @return string
      */
     public function paginatedPostUrl() : string

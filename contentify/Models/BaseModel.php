@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Input;
 use InterImage;
 use InvalidArgumentException;
+use Str;
 use ValidatingTrait;
 
 /**
@@ -47,7 +48,7 @@ abstract class BaseModel extends Eloquent
     /**
      * Override this method to apply filters to a query of a model.
      * The Filter class provides methods to get values of filters.
-     * 
+     *
      * @param  Builder $query Apply filters to this query
      * @return Builder|null
      */
@@ -68,14 +69,14 @@ abstract class BaseModel extends Eloquent
 
         $dir = $this->uploadDir;
         if (! $dir) {
-            $dir = strtolower(str_plural($class));
+            $dir = strtolower(Str::plural($class));
         }
 
         if ($fileSystem) {
             $base = public_path();
         } else {
             $base = asset('');
-            
+
             if (ends_with($base, '/')) {
                 $base = substr($base, 0, -1);
             }
@@ -88,7 +89,7 @@ abstract class BaseModel extends Eloquent
      * Tries to upload a file. It tries to delete the existing (old) file,
      * if instead of a file the string "." was sent.
      * Returns null or an error message (if an image file is invalid).
-     * 
+     *
      * @param  string $fieldName  The name of the form field
      * @param  bool   $isImage    If true ensure the file is an image
      * @param  array  $thumbnails For images only: Array with closures or sizes of thumbnails
@@ -101,7 +102,7 @@ abstract class BaseModel extends Eloquent
         if ($file == null and Input::get($fieldName) != '.') {
             return null;
         }
-        
+
         if ($file) {
             $extension  = $file->getClientOriginalExtension();
 
@@ -149,7 +150,7 @@ abstract class BaseModel extends Eloquent
                     }
 
                     if ($file) {
-                        InterImage::make($filePath.'/'.$filename)->resize($thumbnail, $thumbnail, function ($constraint) 
+                        InterImage::make($filePath.'/'.$filename)->resize($thumbnail, $thumbnail, function ($constraint)
                         {
                             /** @var \Intervention\Image\Constraint $constraint */
                             $constraint->aspectRatio(); // Keep the aspect ratio
@@ -166,7 +167,7 @@ abstract class BaseModel extends Eloquent
      * Decides if a model is modifiable.
      * This includes updating and deleting.
      * Affects only parts of the CMS (not of Laravel).
-     * 
+     *
      * @return bool
      */
     public function modifiable() : bool
@@ -177,7 +178,7 @@ abstract class BaseModel extends Eloquent
 
     /**
      * True if model is slugable
-     * 
+     *
      * @return bool
      */
     public function slugable() : bool
@@ -187,7 +188,7 @@ abstract class BaseModel extends Eloquent
 
     /**
      * With Laravel 4.2 Eloquent's isSoftDeleting() method has been removed.
-     * This method is an alternative. The new SoftDeletingTrait adds an attribute 
+     * This method is an alternative. The new SoftDeletingTrait adds an attribute
      * named forceDeleting to the model, so if it exists we know the model
      * uses soft deleting.
      *
@@ -273,7 +274,7 @@ abstract class BaseModel extends Eloquent
 
     /**
      * Getter for $relationsData
-     * 
+     *
      * @return array
      */
     public static function relations() : array
@@ -420,9 +421,9 @@ abstract class BaseModel extends Eloquent
         // for the related models and returns the relationship instance which will
         // actually be responsible for retrieving and hydrating every relations.
         $instance = new $related;
-        
+
         $otherKey = $otherKey ?: $instance->getKeyName();
-        
+
         $query = $instance->newQuery();
 
         return new BelongsTo($query, $this, $foreignKey, $otherKey, $relation);

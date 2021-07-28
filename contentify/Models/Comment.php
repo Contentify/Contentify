@@ -48,7 +48,7 @@ class Comment extends BaseModel
     /**
      * Caches this comment - we don't want to parse BBCodes each time
      * we want to display a comment.
-     * 
+     *
      * @return void
      */
     public function cache()
@@ -56,13 +56,13 @@ class Comment extends BaseModel
         $bbcode = new BBCode();
         $rendered = $bbcode->render($this->text);
         $rendered = emojis($rendered);
-        Cache::put(self::CACHE_KEY.$this->id, $rendered, 60);
+        Cache::put(self::CACHE_KEY.$this->id, $rendered, 60 * 60);
     }
 
     /**
      * Counts the comments that are related to a certain foreign type (model).
      * NOTE: The result of the database query is cached!
-     * 
+     *
      * @param  string $foreignType The name of the foreign type (model)
      * @param  int    $foreignId   ID of the foreign type or null
      * @return int
@@ -71,7 +71,7 @@ class Comment extends BaseModel
     {
         $key = 'comments.countByModel.'.$foreignType.'.'.$foreignId;
 
-        return Cache::remember($key, 5, function() use ($foreignType, $foreignId)
+        return Cache::remember($key, 5 * 60, function() use ($foreignType, $foreignId)
         {
             $query = self::whereForeignType($foreignType);
             if ($foreignId) {
@@ -84,7 +84,7 @@ class Comment extends BaseModel
 
     /**
      * Renders the comment's text (with BBCode converted to HTML code)
-     * 
+     *
      * @return string
      */
     public function renderText() : string

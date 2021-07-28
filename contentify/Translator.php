@@ -41,7 +41,7 @@ class Translator extends OriginalTranslator
 
     /**
      * Make the place-holder replacements on a line.
-     * NOTE: The original method will sometimes capitalize values - 
+     * NOTE: The original method will sometimes capitalize values -
      * we do not like that.
      *
      * @param string $line
@@ -80,7 +80,7 @@ class Translator extends OriginalTranslator
                 $value = basename($value);
             });
 
-            Cache::put('app.locales', $languageCodes, 10);
+            Cache::put('app.locales', $languageCodes, 10 * 60);
         }
 
         return $languageCodes;

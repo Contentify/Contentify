@@ -14,7 +14,7 @@ class AdminDiagController extends BackController
 {
 
     protected $icon = 'heartbeat';
-    
+
     public function getIndex()
     {
         if (! $this->checkAccessRead()) {
@@ -67,7 +67,7 @@ class AdminDiagController extends BackController
             ],
             [
                 'App.version'     => Config::get('app.version'),
-                'App.environment' => App::environment(),
+                'App.environment' => App::environment([]),
                 'App.url'         => Config::get('app.url'),
                 'App.debug'       => (int) Config::get('app.debug'),
                 'App.key'         => $placeholder ? '<b>' . $alertIcon . trans('app.placeholder') . '</b>' : trans('app.valid'),
@@ -93,13 +93,13 @@ class AdminDiagController extends BackController
                 'MySQL.max_user_connections' => $this->getSqlVar($sqlVars, 'max_user_connections'),
             ];
         }
-    
+
         $this->pageView('diag::admin_index', compact('settings'));
     }
 
     /**
      * Helper function. Returns the value of a variable from a MySQl variables array retrieved from the database.
-     * 
+     *
      * @param  \StdClass[] $sqlVars Array of objects with variables
      * @param  string      $varName Name of a variable
      * @return mixed
