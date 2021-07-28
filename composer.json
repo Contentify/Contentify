@@ -28,6 +28,7 @@
         "ext-gd": "*"
     },
     "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^7.0",
@@ -73,5 +74,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
         ]
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
