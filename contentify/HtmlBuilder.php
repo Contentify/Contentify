@@ -1,13 +1,13 @@
 <?php
 
 namespace Contentify;
- 
+
 use Cache;
 use Collective\Html\HtmlBuilder as OriginalHtmlBuilder;
 use Contentify\Controllers\Widget;
 use Exception;
-use Input;
 use OpenGraph;
+use Request;
 use Session;
 use URL;
 
@@ -32,7 +32,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @throws Exception
      */
     public function widget(string $widgetName, array $parameters = null) : string
-    { 
+    {
         if (! is_array($parameters)) {
             $parameters = (array) $parameters;
         }
@@ -60,7 +60,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @return string
      */
     public function gravatar(string $email, int $size = 32, string $default = 'mm') : string
-    { 
+    {
         return '<img src="https://www.gravatar.com/avatar/'.md5(strtolower(trim($email))).
             '?s='.$size.'&d='.$default.'" alt="Avatar">';
     }
@@ -72,7 +72,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @return string
      */
     public function metaTags(array $metaTags = []) : string
-    { 
+    {
         $output = '';
         foreach ($metaTags as $name => $content) {
             $output .= '<meta name="'.$name.'" content="'.$content.'">';
@@ -88,7 +88,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @return string
      */
     public function title(string $title = null) : string
-    { 
+    {
         if ($title) {
             $title .= ' - '.Config::get('app.name');
         } else {
@@ -105,7 +105,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * @return string
      */
     public function openGraphTags(OpenGraph $openGraph) : string
-    { 
+    {
         $output = $openGraph->renderTags();
 
         return $output;
@@ -114,7 +114,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Returns HTML code for a table. Auto escapes the content of the td cells,
      * except the content is wrapped in a Contentify\Raw class.
-     * 
+     *
      * @param string[]   $header     Array with the table header items
      * @param string[][] $rows       Array with all the table rows items (array containing string arrays)
      * @param array      $attributes Apply these HTML attributes to the table element
@@ -160,7 +160,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * Returns HTML code of a "image link" - a link with an image (and maybe a text).
      * If $image has no extension, the extension will be ".png".
      * If $image has does not start with "http://" an asset link will be created.
-     * 
+     *
      * @param  string  $image      The name of the link image
      * @param  string  $title      The link title
      * @param  string  $url        The link URL
@@ -185,10 +185,10 @@ class HtmlBuilder extends OriginalHtmlBuilder
             $titleText = '';
         }
 
-        /* 
+        /*
          * We have to create our link without self::link(), because
          * that method will not allow to use HTML code.
-         */ 
+         */
         $attrs = self::attributes($attributes);
         $link = '<a class="image-link" href="'.$url.'" title="'.$title.'" '.$attrs.'>'.$image.$titleText.'</a>';
 
@@ -198,7 +198,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Returns HTML code of an "icon link" - a link with an icon (and maybe a text).
      * An icon font will be used to render the icon.
-     * 
+     *
      * @param  string  $icon       The name of the icon
      * @param  string  $url        The link URL
      * @param  string  $title      The link title
@@ -221,10 +221,10 @@ class HtmlBuilder extends OriginalHtmlBuilder
             $titleText = ' '.$title;
         }
 
-        /* 
+        /*
          * We have to create our Link without self::link(), because
          * that method will not allow to use HTML code.
-         */ 
+         */
         $attributes = self::attributes($attributes);
         $link = '<a class="icon-link" href="'.$url.'" title="'.$title.'" '.$attributes.'>'.$icon.$titleText.'</a>';
 
@@ -236,7 +236,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
      * It may include an icon element and a title text.
      *
      * @see Form::button()
-     * 
+     *
      * @param  string $title      The button title text
      * @param  string $url        The URL the button is targeting at
      * @param  string $icon       The name of the icon. It's rendered by an icon font.
@@ -256,7 +256,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
         }
 
         $attributes = self::attributes($attributes);
-        
+
         $button = '<button type="button" '.$action.' '.$attributes.'>'.$icon.$title.'</button>';
 
         return $button;
@@ -290,7 +290,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
             $class  = 'sorting-desc';
         }
 
-        if ($active === false or (Input::get('sortby') !== $sortBy)) {
+        if ($active === false or (Request::get('sortby') !== $sortBy)) {
             $class = '';
         }
 
@@ -305,7 +305,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Returns HTML code for a button enabling/disabling recycle bin mode
      * (to restore soft deleted entities).
-     * 
+     *
      * @return string
      */
     public function recycleBinButton() : string
@@ -326,7 +326,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
     /**
      * Helper method. Just passes through the HTML code BackendNavGenerator::get() returns.
-     * 
+     *
      * @return string
      */
     public function renderBackendNavigation() : string
@@ -338,9 +338,9 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
     /**
      * Returns JS code that creates a variable that contains a (JSON) object
-     * with the translations of the app namespace. This allows us to access 
+     * with the translations of the app namespace. This allows us to access
      * translations in the frontend (via JS).
-     * 
+     *
      * @return string
      */
     public function jsTranslations() : string
@@ -354,9 +354,9 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Pass the relative file name of an asset to this function, for example "css/style.css".
      * It will return something like "css/style.css?v=123456789".
-     * If the cache key self::ASSET_PATH_CACHE_KEY is cleared it will create 
+     * If the cache key self::ASSET_PATH_CACHE_KEY is cleared it will create
      * a new version number and thus browsers are forced to reload the asset.
-     * 
+     *
      * @param  string $assetPath Pure asset path without version information
      * @return string
      */
@@ -382,7 +382,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Removes the cache entry for asset path versioning,
      * thus forcing a refresh for the cached paths.
-     * 
+     *
      * @return void
      */
     public function refreshAssetPaths()

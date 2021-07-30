@@ -9,10 +9,10 @@ use DB;
 use Eloquent;
 use Exception;
 use HTML;
-use Input;
 use Log;
 use Paginator;
 use Redirect;
+use Request;
 use Session;
 use Str;
 use URL;
@@ -139,19 +139,19 @@ class ModelHandler
         /*
          * Get search string.
          */
-        if (Input::old('search')) {
-            $data['search'] = Input::old('search');
+        if (Request::old('search')) {
+            $data['search'] = Request::old('search');
         }
-        if (Input::get('search')) {
-            $data['search'] = Input::get('search');
+        if (Request::get('search')) {
+            $data['search'] = Request::get('search');
         }
 
         /*
          * Get sort attributes.
          */
         if (! is_array($data['dataSource'])) {
-            if (Input::get('sortby')) {
-                $sortBy = strtolower(Input::get('sortby'));
+            if (Request::get('sortby')) {
+                $sortBy = strtolower(Request::get('sortby'));
 
                 // ATTENTION: Only allow ordering by this column if it's white listed!
                 // Never use user input for column ordering before Laravel 5.8!
@@ -160,7 +160,7 @@ class ModelHandler
                     $data['sortby'] = $sortBy;
                 }
 
-                $order = strtolower(Input::get('order'));
+                $order = strtolower(Request::get('order'));
                 if ($order === 'desc' or $order === 'asc') {
                     $data['order'] = $order;
                 }
@@ -171,7 +171,7 @@ class ModelHandler
          * Switch recycle bin mode: Show soft deleted models if recycle bin mode is enabled.
          */
         if ($surface == 'admin' and (new $modelClass)->isSoftDeleting()) { // isSoftDeleting() is instance-tied
-            $recycleBinMode = Input::get('binmode');
+            $recycleBinMode = Request::get('binmode');
             if ($recycleBinMode !== null) {
                 Session::put('recycleBinMode', (bool) $recycleBinMode);
             }
@@ -407,7 +407,7 @@ class ModelHandler
         $model = new $modelClass();
         $model->creator_id = user()->id;
         $model->updater_id = user()->id;
-        $model->fill(Input::all());
+        $model->fill(Request::all());
         $this->fillRelations($modelClass, $model);
 
         if (isset($model['title']) and $model->slugable()) {
@@ -430,7 +430,7 @@ class ModelHandler
         }
 
         $controller->alertFlash(trans('app.created', [trans_object(basename($controller->getModelName()))]));
-        if (Input::get('_form_apply') !== null) {
+        if (Request::get('_form_apply') !== null) {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$model->id]);
         } else {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
@@ -490,7 +490,7 @@ class ModelHandler
         }
 
         $model->updater_id = user()->id;
-        $model->fill(Input::all());
+        $model->fill(Request::all());
         $this->fillRelations($modelClass, $model);
 
         if (isset($model['title']) and $model->slugable()) {
@@ -515,7 +515,7 @@ class ModelHandler
         }
 
         $controller->alertFlash(trans('app.updated', [trans_object(basename($controller->getModelName()))]));
-        if (Input::get('_form_apply') !== null) {
+        if (Request::get('_form_apply') !== null) {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$id]);
         } else {
             return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
@@ -615,7 +615,7 @@ class ModelHandler
         $controller = $this->getControllerOrFail();
 
         return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index')
-            ->withInput(Input::only('search'));
+            ->withInput(Request::only('search'));
     }
 
     /**
@@ -633,7 +633,7 @@ class ModelHandler
     {
         $relations = $modelClass::relations();
 
-        foreach (Input::all() as $name => $value) {
+        foreach (Request::all() as $name => $value) {
             if (starts_with($name, self::RELATION_FIELD_PREFIX)) {
                 $name = substr($name, strlen(self::RELATION_FIELD_PREFIX)); // Remove the prefix to get the relation name
 

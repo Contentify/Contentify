@@ -5,8 +5,8 @@ namespace App\Modules\Messages\Http\Controllers;
 use App\Modules\Messages\Message;
 use Cache;
 use FrontController;
-use Input;
 use Redirect;
+use Request;
 use User;
 
 class MessagesController extends FrontController
@@ -62,12 +62,12 @@ class MessagesController extends FrontController
      */
     public function store()
     {
-        $message = new Message(Input::all());
+        $message = new Message(Request::all());
 
         $message->creator_id = user()->id;
         $message->updater_id = user()->id;
         $message->createSlug();
-        $message->setReceiverByName(Input::get('receiver_name'));
+        $message->setReceiverByName(Request::get('receiver_name'));
 
         $okay = $message->save();
 
@@ -100,8 +100,8 @@ class MessagesController extends FrontController
         }
 
         $data = [
-            'username'  => $message->creator->username, 
-            'title'     => trans('messages::re').$message->title, 
+            'username'  => $message->creator->username,
+            'title'     => trans('messages::re').$message->title,
             'text'      => '[quote='.$message->creator->username.']'.$message->text.'[/quote]'
         ];
 

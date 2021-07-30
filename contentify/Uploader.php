@@ -5,8 +5,8 @@ namespace Contentify;
 use DateTime;
 use Exception;
 use File;
-use Input;
 use InterImage;
+use Request;
 
 /**
  * This class is the centralized place to handle file uploads from the browser
@@ -17,12 +17,12 @@ class Uploader
      * Array that contains all allowed file extensions for image file uploads
      */
     const ALLOWED_IMG_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
-    
+
     /**
      * Array with "evil" file extensions - files with this extensions are not allowed to be uploaded
      */
     const FORBIDDEN_FILE_EXTENSIONS = ['php'];
-    
+
     /**
      * Upload files (and images) for a given model.
      * The model must support this.
@@ -35,7 +35,7 @@ class Uploader
     public function uploadModelFiles($model, $modelIsNew = true) : array
     {
         $modelClass = get_class($model);
-    
+
         if (isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
             foreach ($modelClass::$fileHandling as $fieldName => $fieldInfo) {
                 if (! is_array($fieldInfo)) {
@@ -43,8 +43,8 @@ class Uploader
                     $fieldInfo = ['type' => 'file'];
                 }
 
-                if (Input::hasFile($fieldName)) {
-                    $file       = Input::file($fieldName);
+                if (Request::hasFile($fieldName)) {
+                    $file       = Request::file($fieldName);
                     $extension  = $file->getClientOriginalExtension();
                     $error      = false;
 
@@ -73,14 +73,14 @@ class Uploader
                         $model->delete(); // Delete the invalid model
                         return [$error];
                     }
-                    
+
                     if (! $modelIsNew) {
                         $oldFile = $model->uploadPath(true).$model->$fieldName;
                         if (File::isFile($oldFile)) {
                             File::delete($oldFile); // Delete the old file so we never have "123.jpg" AND "123.png"
                         }
                     }
-                    
+
                     $filePath           = $model->uploadPath(true);
                     $filename           = $this->generateFilename($filePath, $extension);
                     $uploadedFile       = $file->move($filePath, $filename);
@@ -92,7 +92,7 @@ class Uploader
                      */
                     if (isset($fieldInfo['thumbnails'])) {
                         $thumbnails = $fieldInfo['thumbnails'];
-                        
+
                         // Ensure $thumbnails is an array:
                         if (! is_array($thumbnails)) {
                             $thumbnails = compact('thumbnails'); // Ensure $thumbnails is an array
@@ -103,7 +103,7 @@ class Uploader
                                 ->resize($thumbnail, $thumbnail, function ($constraint) {
                                     /** @var \Intervention\Image\Constraint $constraint */
                                     $constraint->aspectRatio();
-                                })->save($filePath.$thumbnail.'/'.$filename); 
+                                })->save($filePath.$thumbnail.'/'.$filename);
                         }
                     }
                 } else {
@@ -112,7 +112,7 @@ class Uploader
                     } else {
                          // We use the filename '.' to signalize we want to delete the file.
                         // (A file cannot be named "." in Linux.)
-                        if (Input::get($fieldName) == '.') {
+                        if (Request::get($fieldName) == '.') {
                             $oldFile = $model->uploadPath(true).$model->$fieldName;
                             if (File::isFile($oldFile)) {
                                 File::delete($oldFile);
@@ -122,14 +122,14 @@ class Uploader
                         }
                     }
                 }
-                
+
                 return [];
             }
         }
-        
+
         return [];
     }
-    
+
     /**
      * Deletes all files releted to a given model
      *
@@ -139,8 +139,8 @@ class Uploader
     public function deleteModelFiles($model)
     {
         $modelClass = get_class($model);
-        
-        if ((! method_exists($modelClass, 'trashed') or ! $model->trashed()) 
+
+        if ((! method_exists($modelClass, 'trashed') or ! $model->trashed())
             and isset($modelClass::$fileHandling) and sizeof($modelClass::$fileHandling) > 0) {
             $filePath = $model->uploadPath(true);
 
@@ -171,7 +171,7 @@ class Uploader
             }
         }
     }
-    
+
     /**
      * Generates a filename for the new uploaded file.
      * The filename will be randomized (via hashing) and unique.
@@ -185,9 +185,9 @@ class Uploader
     {
         do {
             $date = DateTime::createFromFormat('U.u', microtime(true));
-            $filename = md5($date->format('Y-m-d H:i:s.u')); 
+            $filename = md5($date->format('Y-m-d H:i:s.u'));
         } while (file_exists($filename));
-            
+
         return $filename;
     }
 }

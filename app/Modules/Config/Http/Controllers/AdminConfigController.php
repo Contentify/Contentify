@@ -10,8 +10,8 @@ use Contentify\Vendor\MySqlDump;
 use DB;
 use File;
 use HTML;
-use Input;
 use Redirect;
+use Request;
 use Str;
 
 class AdminConfigController extends BackController
@@ -23,16 +23,16 @@ class AdminConfigController extends BackController
      * change where Monolog creates the file.
      */
     const LOG_FILE = '/logs/laravel.log';
-    
+
     /**
      * Name of the event that is fired after the website settings have been updated
      */
     const EVENT_NAME_UPDATED = 'contentify.config.updated';
-    
+
     /**
      * Name of the event that is fired after the database has been exported
      */
-    const EVENT_NAME_DB_EXPORTED = 'contentify.config.dbExported';     
+    const EVENT_NAME_DB_EXPORTED = 'contentify.config.dbExported';
 
     protected $icon = 'cog';
 
@@ -96,7 +96,7 @@ class AdminConfigController extends BackController
         }
 
         $settingsBag = new SettingsBag;
-        $settingsBag->fill(Input::all());
+        $settingsBag->fill(Request::all());
 
         if (! $settingsBag->isValid()) {
             return Redirect::to('admin/config')
@@ -122,7 +122,7 @@ class AdminConfigController extends BackController
         // Save the settings one by one:
         foreach ($settingsBag->getFillable() as $settingName) {
             $settingRealName = str_replace('app::', 'app.', $settingName);
-            
+
             $result = DB::table('config')->whereName($settingRealName)
                 ->update(['value' => $settingsBag->$settingName, 'updated_at' => DB::raw('NOW()')]);
 
@@ -141,7 +141,7 @@ class AdminConfigController extends BackController
 
             Config::clearCache($settingRealName);
         }
-        
+
         event(self::EVENT_NAME_UPDATED, [$settingsBag]);
 
         $this->alertFlash(trans('app.updated', [$this->controllerName]));
@@ -164,15 +164,15 @@ class AdminConfigController extends BackController
         ob_start();
 
         // We tell phpinfo() what info to show, so we avoid to show the PHP credits:
-        phpinfo(INFO_GENERAL | INFO_CONFIGURATION | INFO_MODULES | INFO_ENVIRONMENT | INFO_VARIABLES); 
-        
+        phpinfo(INFO_GENERAL | INFO_CONFIGURATION | INFO_MODULES | INFO_ENVIRONMENT | INFO_VARIABLES);
+
         preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
         //phpcs:disable Generic.WhiteSpace.ScopeIndent,PSR2.Methods.FunctionCallSignature -- phpcs really hates how the output is parsed
         $this->pageOutput('<div class="phpinfodisplay"><style type="text/css">'."\n".
              implode(
                  "\n",
                      array_map(
-                     function($item) { 
+                     function($item) {
                         return ".phpinfodisplay " . preg_replace("/,/", ",.phpinfodisplay ", $item);
                      },
                      preg_split('/\n/', $matches[1]) // $matches[1] = style information
@@ -192,7 +192,7 @@ class AdminConfigController extends BackController
 
     /**
      * Optimize Database
-     * 
+     *
      * @return void
      */
     public function getOptimize()
@@ -242,11 +242,11 @@ class AdminConfigController extends BackController
                 $dump->db       = $connection['database'];
                 $dump->filename = $filename;
                 $dump->start();
-        
+
                 event(self::EVENT_NAME_DB_EXPORTED, [$connection]);
 
                 $this->alertSuccess(
-                    trans('config::db_export'), 
+                    trans('config::db_export'),
                     trans('config::db_file', [$filename])
                 );
                 break;
@@ -372,7 +372,7 @@ class AdminConfigController extends BackController
 
     /**
      * Delete the log file
-     * 
+     *
      * @return void
      */
     public function clearLog()
@@ -385,7 +385,7 @@ class AdminConfigController extends BackController
 
         if (File::exists($filename)) {
             File::delete($filename);
-        }        
+        }
 
         $this->alertSuccess(trans('app.deleted', [$filename]));
     }

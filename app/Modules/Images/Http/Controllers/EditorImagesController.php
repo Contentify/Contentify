@@ -4,7 +4,7 @@ namespace App\Modules\Images\Http\Controllers;
 
 use App\Modules\Images\Image;
 use BaseController;
-use Input;
+use Request;
 use Response;
 use View;
 
@@ -13,7 +13,7 @@ class EditorImagesController extends BaseController
 
     /**
      * Returns the latest images
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
@@ -30,7 +30,7 @@ class EditorImagesController extends BaseController
 
     /**
      * Returns images by tags
-     * 
+     *
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function search()
@@ -38,8 +38,8 @@ class EditorImagesController extends BaseController
         if (! $this->checkAccessUpdate()) {
             return Response::make(null, 403);
         }
-        
-        $tag = Input::get('tag');
+
+        $tag = Request::get('tag');
 
         $images = Image::where('tags', 'LIKE', '%'.$tag.'%')->orderBy('created_at', 'desc')->get();
 

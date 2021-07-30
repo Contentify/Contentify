@@ -1,13 +1,12 @@
-<?php 
+<?php
 
 namespace App\Modules\Search\Http\Controllers;
 
-use BadMethodCallException;
 use Contentify\GlobalSearchInterface;
 use Exception;
 use FrontController;
-use Input;
 use Redirect;
+use Request;
 use Validator;
 
 class SearchController extends FrontController
@@ -29,14 +28,14 @@ class SearchController extends FrontController
      */
     public function postCreate()
     {
-        $subject = Input::get('subject');
+        $subject = Request::get('subject');
 
         $validator = Validator::make(['subject' => $subject], ['subject' => 'required|min:3']);
-        
+
         if ($validator->passes()) {
             $resultBags = $this->performSearch($subject);
 
-            Input::flash(); // We keep the subject and display it in the form
+            Request::flash(); // We keep the subject and display it in the form
             $this->pageView('search::form', compact('resultBags'));
         } else {
             return Redirect::to('search')->withInput()->withErrors($validator->messages());

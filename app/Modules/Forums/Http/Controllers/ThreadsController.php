@@ -8,8 +8,8 @@ use App\Modules\Forums\ForumThread;
 use Contentify\GlobalSearchInterface;
 use DB;
 use FrontController;
-use Input;
 use Redirect;
+use Request;
 use URL;
 
 class ThreadsController extends FrontController implements GlobalSearchInterface
@@ -70,12 +70,12 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         /** @var Forum $forum */
         $forum = Forum::isAccessible()->findOrFail($forumId);
 
-        $forumPost = new ForumPost(Input::all());
+        $forumPost = new ForumPost(Request::all());
         $forumPost->root = true;
         $forumPost->creator_id = user()->id;
         $forumPost->updater_id = null;
 
-        $forumThread = new ForumThread(Input::all());
+        $forumThread = new ForumThread(Request::all());
         $forumThread->forum_id = $forumId;
         $forumThread->creator_id = user()->id;
         $forumThread->updater_id = null;
@@ -94,7 +94,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $forumThread->forceSave();
         $forumPost->thread_id = $forumThread->id;
         $forumPost->forceSave();
-        
+
         $forum->latest_thread_id = $forumThread->id;
         $forum->threads_count++;
         $forum->posts_count++;
@@ -149,9 +149,9 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
             return null;
         }
 
-        $forumPost->fill(Input::all());
+        $forumPost->fill(Request::all());
         $forumPost->updater_id = user()->id;
-        $forumThread->fill(Input::all());
+        $forumThread->fill(Request::all());
         $forumThread->updater_id = user()->id;
         $forumThread->createSlug();
 
@@ -275,7 +275,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $model = ForumThread::isAccessible()->findOrFail($id);
         $modelClass = get_class($model);
 
-        $forums = Forum::isRoot(false)->get(); 
+        $forums = Forum::isRoot(false)->get();
 
         $this->pageView('forums::move_thread', compact('model', 'modelClass', 'forums'));
     }
@@ -298,7 +298,7 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
 
         $oldForum = $forumThread->forum;
 
-        $forumThread->fill(Input::all());
+        $forumThread->fill(Request::all());
         $forumThread->save(); // save() not forceSave() so it checks if the parent forum is valid
 
         /** @var Forum $newForum */
@@ -309,11 +309,11 @@ class ThreadsController extends FrontController implements GlobalSearchInterface
         $this->alertFlash(trans('app.updated', ['Thread']));
         return Redirect::to('forums/'.$forumThread->forum_id);
     }
-    
+
     /**
      * This method is called by the global search (SearchController->postCreate()).
      * Its purpose is to return an array with result for a specific search query.
-     * 
+     *
      * @param  string $subject The search term
      * @return string[]
      */

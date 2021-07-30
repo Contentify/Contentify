@@ -8,8 +8,8 @@ use App\Modules\Languages\Language;
 use Captcha;
 use Exception;
 use FrontController;
-use Input;
 use Redirect;
+use Request;
 use Response;
 use Sentinel;
 use User;
@@ -53,17 +53,17 @@ class RegistrationController extends FrontController
              * Validation
              */
             $rules = [
-                'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password|unique:users,username', 
+                'username'  => 'alpha_numeric_spaces|required|min:3|not_in:edit,password|unique:users,username',
                 'email'     => 'email|unique:users,email|email_domain_allowed',
                 'password'  => 'required|min:6|confirmed'
             ];
 
-            $validator = Validator::make(Input::all(), $rules);
+            $validator = Validator::make(Request::all(), $rules);
             if ($validator->fails()) {
                 return Redirect::to('auth/registration/create')->withInput()->withErrors($validator);
             }
 
-            if (! Captcha::check(Input::get('captcha'))) {
+            if (! Captcha::check(Request::get('captcha'))) {
                 return Redirect::to('auth/registration/create')
                     ->withInput()->withErrors(['message' => trans('app.captcha_invalid')]);
             }
@@ -74,9 +74,9 @@ class RegistrationController extends FrontController
              * Register user
              */
             $user = Sentinel::register([
-                'username'      => Input::get('username'),
-                'email'         => Input::get('email'),
-                'password'      => Input::get('password'),
+                'username'      => Request::get('username'),
+                'email'         => Request::get('email'),
+                'password'      => Request::get('password'),
                 'language_id'   => $language->id,
             ], self::AUTO_ACTIVATE);
 

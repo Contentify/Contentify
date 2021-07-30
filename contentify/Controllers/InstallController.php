@@ -2,21 +2,14 @@
 
 namespace Contentify\Controllers;
 
-use Artisan;
-use Closure;
 use Config;
 use Contentify\Installer;
 use Controller;
-use DB;
 use File;
 use Form;
 use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Database\Schema\Blueprint;
-use Input;
-use Schema;
-use Sentinel;
-use Str;
-use Validator;
+use Request;
 use View;
 
 class InstallController extends Controller
@@ -26,12 +19,12 @@ class InstallController extends Controller
      * (Relative) path to the database ini file
      */
     const DB_INI_FILE = 'app/database.ini';
-    
+
     /**
      * @var Installer
      */
     protected $installer;
-    
+
     public function __construct()
     {
         $this->installer = new Installer();
@@ -39,7 +32,7 @@ class InstallController extends Controller
 
     /**
      * Index action method
-     * 
+     *
      * @param  int             $step   Step number
      * @param  null|MessageBag $errors Validation errors
      * @return \Illuminate\Contracts\View\View
@@ -53,20 +46,20 @@ class InstallController extends Controller
         $this->installer->ensureNotInstalled();
 
         if ($step < 0) {
-            $step = (int) Input::get('step', 0);
+            $step = (int) Request::get('step', 0);
         }
         $title      = '';
         $content    = '';
 
         switch ($step) {
             case 6:
-                $username               = Input::get('username');
-                $email                  = Input::get('email');
-                $password               = Input::get('password');
-                $passwordConfirmation  = Input::get('password_confirmation');
-                
+                $username               = Request::get('username');
+                $email                  = Request::get('email');
+                $password               = Request::get('password');
+                $passwordConfirmation   = Request::get('password_confirmation');
+
                 $errors = $this->installer->createAdminuser($username, $email, $password, $passwordConfirmation);
-                
+
                 if (count($errors) > 0) {
                     return $this->index($step - 1, $errors);
                 }
@@ -106,10 +99,10 @@ class InstallController extends Controller
 
                 break;
             case 3:
-                $host       = Input::get('host');
-                $database   = Input::get('database');
-                $username   = Input::get('username');
-                $password   = Input::get('password');
+                $host       = Request::get('host');
+                $database   = Request::get('database');
+                $username   = Request::get('username');
+                $password   = Request::get('password');
 
                 // If all credential values are null we assume the "previous" button has been pressed.
                 // In this case we redirect (internally) to the step with the credential form.
@@ -148,7 +141,7 @@ class InstallController extends Controller
                               Form::smartText('password', 'Password', $settings['password']).
                               Form::close().
                               '<p>For more settings, take a look at <code>config/database.php</code>.</p>';
-               
+
                 break;
             case 1:
                 if (version_compare(PHP_VERSION, '5.6.4') >= 0) {
@@ -208,12 +201,12 @@ class InstallController extends Controller
                               <li>Tokenizer Extension $tokenizer</li>
                               <li>XML Extension $xml</li>
                               </ul>
-                              <p>The application needs write access (CHMOD 777) to these directories 
+                              <p>The application needs write access (CHMOD 777) to these directories
                               and their sub directories:</p>
                               $dirUl
-                              <p class=\"warning\">Please do not continue 
+                              <p class=\"warning\">Please do not continue
                               if your server does not meet these requirements!</p>";
-                              
+
                 break;
             default:
                 $step       = 0; // Better safe than sorry! (E.g. if step was -1)
@@ -222,7 +215,7 @@ class InstallController extends Controller
                               <p><a href="https://github.com/Contentify/Contentify/wiki/Installation" target="_blank">
                               Take a look at our documentation if you need help.</a></p>';
         }
-        
+
         return View::make('installer', compact('title', 'content', 'step'));
     }
 }

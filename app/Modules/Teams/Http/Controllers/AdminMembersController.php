@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Teams\Http\Controllers;
 
@@ -6,7 +6,7 @@ use App\Modules\Teams\Team;
 use BackController;
 use DB;
 use HTML;
-use Input;
+use Request;
 use Redirect;
 use Response;
 use User;
@@ -29,7 +29,7 @@ class AdminMembersController extends BackController
         $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                trans('app.id')             => 'id', 
+                trans('app.id')             => 'id',
                 trans('app.username')       => 'username',
                 trans('app.object_teams')   => null,
             ],
@@ -49,13 +49,13 @@ class AdminMembersController extends BackController
             'searchFor' => 'username',
             'actions'   => null
         ]);
-        
+
         $this->pageOutput(HTML::script('vendor/contentify/members.js'));
     }
 
     /**
      * Delete a team membership
-     * 
+     *
      * @param int $userId The ID of the user
      * @param int $teamId The ID of the team
      * @return string
@@ -76,7 +76,7 @@ class AdminMembersController extends BackController
 
     /**
      * Return form for joining a team or an empty string if no team is available
-     * 
+     *
      * @param int $userId The ID of the user
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
@@ -89,7 +89,7 @@ class AdminMembersController extends BackController
         } else {
             $teams = Team::all();
         }
-            
+
         if (sizeof($teams) > 0) {
             return View::make('teams::admin_members_team', compact('teams', 'user'));
         } else {
@@ -123,7 +123,7 @@ class AdminMembersController extends BackController
 
     /**
      * Return form for team membership details
-     * 
+     *
      * @param int $userId The ID of the user
      * @param int $teamId The ID of the team
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
@@ -137,22 +137,22 @@ class AdminMembersController extends BackController
                 return View::make('teams::admin_members_edit', compact('team'));
             }
         }
-        
+
         return Response::make(400);
     }
 
     /**
      * Update team membership details
-     * 
+     *
      * @param int $userId The ID of the user
      * @param int $teamId The ID of the team
      * @return \Illuminate\Http\Response
      */
     public function postUpdate(int $userId, int $teamId)
     {
-        $task           = Input::get('task');
-        $description    = Input::get('description');
-        $position       = (int) Input::get('position');
+        $task           = Request::get('task');
+        $description    = Request::get('description');
+        $position       = (int) Request::get('position');
 
         DB::table('team_user')->whereUserId($userId)->whereTeamId($teamId)->update([
             'task'          => $task,
@@ -170,6 +170,6 @@ class AdminMembersController extends BackController
      */
     public function postSearch()
     {
-        return Redirect::to('admin/members')->withInput(Input::only('search'));
+        return Redirect::to('admin/members')->withInput(Request::only('search'));
     }
 }

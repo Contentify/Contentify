@@ -5,8 +5,8 @@ namespace App\Modules\Cups\Http\Controllers;
 use App\Modules\Cups\Match;
 use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Input;
 use Redirect;
+use Request;
 
 class MatchesController extends FrontController
 {
@@ -37,7 +37,7 @@ class MatchesController extends FrontController
             $leftName = $match->left_participant ? $match->left_participant->username : 'Wildcard';
             $rightName = $match->right_participant ? $match->right_participant->username : 'Wildcard';
         }
-        $this->title($leftName.' '.trans('matches::vs').' '.$rightName); 
+        $this->title($leftName.' '.trans('matches::vs').' '.$rightName);
 
         $canConfirmLeft = $match->canConfirmLeft(user());
         $canConfirmRight = $match->canConfirmRight(user());
@@ -47,7 +47,7 @@ class MatchesController extends FrontController
 
     /**
      * Confirms the result (score) of a participant.
-     * 
+     *
      * @param  int  $id   The ID of the match
      * @param  bool $left If true, confirm the left result. If false, confirm the right.
      * @return RedirectResponse
@@ -58,7 +58,7 @@ class MatchesController extends FrontController
         $match = Match::findOrFail($id);
 
         try {
-            $newMatch = $match->confirm(Input::get('left_score'), Input::get('right_score'), $left);
+            $newMatch = $match->confirm(Request::get('left_score'), Request::get('right_score'), $left);
         } catch (MsgException $exception) {
             $this->alertFlash($exception->getMessage());
             return Redirect::to('cups/matches/'.$match->id);
@@ -75,7 +75,7 @@ class MatchesController extends FrontController
 
     /**
      * Confirms the result (score) of the left participant.
-     * 
+     *
      * @param  int  $id The ID of the match
      * @return RedirectResponse
      */
@@ -86,7 +86,7 @@ class MatchesController extends FrontController
 
     /**
      * Confirms the result (score) of the right participant.
-     * 
+     *
      * @param  int  $id The ID of the match
      * @return RedirectResponse
      */
@@ -97,13 +97,13 @@ class MatchesController extends FrontController
 
     /**
      * Tries to update the winner of a match (not of a wildcard-match!)
-     * 
+     *
      * @return RedirectResponse|null
      */
     public function winner()
     {
         /** @var Match $match */
-        $match = Match::findOrFail(Input::get('match_id'));
+        $match = Match::findOrFail(Request::get('match_id'));
 
         if (! user() or ! user()->isSuperAdmin()) {
             $this->alertError(trans('app.access_denied'));
@@ -116,7 +116,7 @@ class MatchesController extends FrontController
             $this->alertError($exception->getMessage());
             return null;
         }
-        
+
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('cups/matches/'.$match->id);
     }

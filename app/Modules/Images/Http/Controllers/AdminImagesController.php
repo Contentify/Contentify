@@ -4,8 +4,8 @@ namespace App\Modules\Images\Http\Controllers;
 
 use App\Modules\Images\Image;
 use BackController;
-use Input;
 use ModelHandlerTrait;
+use Request;
 
 class AdminImagesController extends BackController
 {
@@ -29,8 +29,8 @@ class AdminImagesController extends BackController
     public function index()
     {
 
-        if (Input::old('search')) {
-            $searchString = Input::old('search');
+        if (Request::old('search')) {
+            $searchString = Request::old('search');
             $images = Image::where('tags', 'LIKE', '%'.$searchString.'%')
                 ->orderBy('created_at', 'desc')->paginate(self::ITEMS_PER_PAGE);
         } else {

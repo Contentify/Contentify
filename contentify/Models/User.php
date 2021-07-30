@@ -18,9 +18,9 @@ use File;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\MessageBag;
-use Input;
 use InterImage;
 use Redirect;
+use Request;
 use Sentinel;
 use Session;
 use Validator;
@@ -113,11 +113,11 @@ class User extends SentinelUser implements UserInterface
     protected $slugable = true;
 
     protected $fillable = [
-        'username', 
-        'email', 
+        'username',
+        'email',
         'password',
 
-        'first_name', 
+        'first_name',
         'last_name',
         'gender',
         'country_id',
@@ -170,7 +170,7 @@ class User extends SentinelUser implements UserInterface
                 $user->createSlug(true, 'username');
             }
         });
-        
+
         self::updated(function(User $user)
         {
             if (user() and user()->id == $user->id) {
@@ -202,14 +202,14 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Validate the user with Laravel's validator class. Return true if valid.
-     * 
+     *
      * @return bool
      */
     public function validate() : bool
     {
         /*
          * Welcome to the dark side of Laravel.
-         * We cannot let the User class inherit from BaseModel so we have to use 
+         * We cannot let the User class inherit from BaseModel so we have to use
          * the Laravel validator class here. Ewwww.
          */
         $validator = Validator::make(
@@ -296,7 +296,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Checks if the user is friend with another user or not.
-     * 
+     *
      * @param  int $friendId The user ID of the friend (=other user)
      * @return bool
      */
@@ -364,7 +364,7 @@ class User extends SentinelUser implements UserInterface
     {
         $this->sendMessage($title, $text, $creatorId, true);
     }
-    
+
     /**
      * Returns the formatted real name of the current user
      *
@@ -377,7 +377,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Returns true if the current user is a super admin
-     * 
+     *
      * @return boolean
      */
     public function isSuperAdmin() : bool
@@ -398,7 +398,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * This is a copy of a BaseModel method (for compatibility).
-     * 
+     *
      * @return boolean
      */
     public function isSoftDeleting() : bool
@@ -408,7 +408,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * This is a copy of a BaseModel method (for compatibility).
-     * 
+     *
      * @param  bool $local If true, return a local path (e. g. "C:\Contentify\public/uploads/games/")
      * @return string
      */
@@ -424,13 +424,13 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Tries to upload an image
-     * 
+     *
      * @param  string $fieldName The name of the form field
      * @return null|\Illuminate\Http\RedirectResponse
      */
     public function uploadImage(string $fieldName)
     {
-        $file       = Input::file($fieldName);
+        $file       = Request::file($fieldName);
         $extension  = $file->getClientOriginalExtension();
 
         try {
@@ -475,7 +475,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Deletes a user image.
-     * 
+     *
      * @param  string $fieldName The name of the form field
      * @return void
      */
@@ -498,7 +498,7 @@ class User extends SentinelUser implements UserInterface
     /**
      * Counts the new messages of this user.
      * Uses caching.
-     * 
+     *
      * @return int
      */
     public function countMessages() : int
@@ -519,7 +519,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Decides either this user is online or offline
-     * 
+     *
      * @return boolean
      */
     public function isOnline() : bool
@@ -546,7 +546,7 @@ class User extends SentinelUser implements UserInterface
 
     /**
      * Returns all users with access to the passed right(s)
-     * 
+     *
      * @param  string|array $permissions The permission(s)
      * @param  int          $level       The level of the permission(s)
      * @return Collection
@@ -573,7 +573,7 @@ class User extends SentinelUser implements UserInterface
     public function renderSignature() : string
     {
         $cacheKey = self::CACHE_KEY_SIGNATURE.$this->id;
-        
+
         if (Cache::has($cacheKey)) {
             return Cache::get($cacheKey);
         } else {

@@ -10,8 +10,8 @@ use FrontController;
 use HTML;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
-use Input;
 use Redirect;
+use Request;
 use URL;
 use User;
 
@@ -33,7 +33,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
         $this->indexPage([
             'buttons'       => null,
             'tableHead'     => [
-                trans('app.title')          => 'title', 
+                trans('app.title')          => 'title',
                 trans('app.slots')          => 'slots',
                 trans('app.object_game')    => 'game_id',
                 trans('app.date')           => 'starts_at'
@@ -42,7 +42,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
             {
                 return [
                     raw(HTML::link(
-                        url('cups/'.$cup->id.'/'.$cup->slug), 
+                        url('cups/'.$cup->id.'/'.$cup->slug),
                         $cup->title
                     )),
                     $cup->slots,
@@ -98,7 +98,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Let a participant join the cup.
-     * 
+     *
      * @param  int $cupId
      * @param  int $participantId
      * @return RedirectResponse|null
@@ -113,7 +113,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
             return Redirect::to('cups/'.$cup->id.'/'.$cup->slug);
         }
 
-        if (! user() or $cup->isUserInCup(user()) 
+        if (! user() or $cup->isUserInCup(user())
             or $cup->join_at->timestamp > time() or $cup->check_in_at->timestamp < time()) {
             $this->alertFlash(trans('app.not_possible'));
             return Redirect::to('cups/'.$cup->id.'/'.$cup->slug);
@@ -173,7 +173,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Tries to check-in the user or the team of the user to the current cup.
-     * 
+     *
      * @param int   $cupId      The ID of the cup
      * @param bool  $checkOut   If true, check-out instead of check-in
      * @return RedirectResponse|null
@@ -200,7 +200,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
             $this->alertError(trans('app.not_possible'));
             return null;
         }
-        
+
         $state = $checkOut ? false : true;
         DB::table('cups_participants')->whereCupId($cupId)->whereParticipantId($participant->id)
             ->update(['checked_in' => $state]);
@@ -211,7 +211,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Tries to check-out the user or the team of the user to the current cup.
-     * 
+     *
      * @param int $cupId The cup ID
      * @return RedirectResponse
      */
@@ -222,7 +222,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Tries to swap (the position of) two participants during the seeding phase.
-     * 
+     *
      * @param  int $cupId The cup ID
      * @return \Illuminate\Http\RedirectResponse|null
      */
@@ -236,8 +236,8 @@ class CupsController extends FrontController implements GlobalSearchInterface
             return null;
         }
 
-        $firstId = Input::get('first_id');
-        $secondId = Input::get('second_id');
+        $firstId = Request::get('first_id');
+        $secondId = Request::get('second_id');
 
         if ($firstId == $secondId) {
             $this->alertError(trans('app.not_possible'));
@@ -248,11 +248,11 @@ class CupsController extends FrontController implements GlobalSearchInterface
         $secondMatch = null;
         $matches = $cup->matches; // They are ordered by round and round-row
         foreach ($matches as $match) {
-            if ($match->left_participant_id == $firstId 
+            if ($match->left_participant_id == $firstId
                 or $match->right_participant_id == $firstId) {
                 $firstMatch = $match;
             }
-            if ($match->left_participant_id == $secondId 
+            if ($match->left_participant_id == $secondId
                 or $match->right_participant_id == $secondId) {
                 $secondMatch = $match;
             }
@@ -313,7 +313,7 @@ class CupsController extends FrontController implements GlobalSearchInterface
     /**
      * This method is called by the global search (SearchController->postCreate()).
      * Its purpose is to return an array with results for a specific search query.
-     * 
+     *
      * @param  string $subject The search term
      * @return string[]
      */

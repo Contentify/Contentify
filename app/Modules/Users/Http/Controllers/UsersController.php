@@ -1,12 +1,12 @@
-<?php 
+<?php
 
 namespace App\Modules\Users\Http\Controllers;
 
 use Contentify\GlobalSearchInterface;
 use FrontController;
 use Illuminate\Database\Eloquent\Builder;
-use Input;
 use Redirect;
+use Request;
 use Sentinel;
 use User;
 use Validator;
@@ -26,7 +26,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
         $this->indexPage([
             'buttons'   => null,
             'tableHead' => [
-                trans('app.id')                     => 'id',  
+                trans('app.id')                     => 'id',
                 trans('app.username')               => 'username',
                 trans('app.name')                   => 'first_name',
                 trans('app.object_registration')    => 'created_at',
@@ -112,28 +112,28 @@ class UsersController extends FrontController implements GlobalSearchInterface
         /** @var User $user */
         $user = User::findOrFail($id);
 
-        $user->fill(Input::all());
+        $user->fill(Request::all());
 
         if (! $user->validate()) {
             return Redirect::route('users.edit', [$id])
                 ->withInput()->withErrors($user->validatorMessages());
         }
 
-        if (Input::hasFile('image')) {
+        if (Request::hasFile('image')) {
             $result = $user->uploadImage('image');
             if ($result) {
                 return $result;
             }
-        } elseif (Input::get('image') == '.') {
+        } elseif (Request::get('image') == '.') {
             $user->deleteImage('image');
         }
 
-        if (Input::hasFile('avatar')) {
+        if (Request::hasFile('avatar')) {
             $result = $user->uploadImage('avatar');
             if ($result) {
                 return $result;
             }
-        } elseif (Input::get('avatar') == '.') {
+        } elseif (Request::get('avatar') == '.') {
             $user->deleteImage('avatar');
         }
 
@@ -179,7 +179,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
          */
         $rules = ['password' => 'required|min:6|confirmed'];
 
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Request::all(), $rules);
         if ($validator->fails()) {
             return Redirect::to("users/{$id}/password")->withErrors($validator);
         }
@@ -189,7 +189,7 @@ class UsersController extends FrontController implements GlobalSearchInterface
 
         $credentials = [
             'email'    => $user->email,
-            'password' => Input::get('password_current'),
+            'password' => Request::get('password_current'),
         ];
 
         /*
@@ -207,17 +207,17 @@ class UsersController extends FrontController implements GlobalSearchInterface
          * Save the new password. Please note that we do not need to
          * crypt the password. Sentinel will do the work.
          */
-        Sentinel::update($user, ['password' => Input::get('password')]);
+        Sentinel::update($user, ['password' => Request::get('password')]);
 
         $this->alertFlash(trans('app.updated', ['Password']));
         return Redirect::to("users/{$id}/edit");
 
     }
-    
+
     /**
      * This method is called by the global search (SearchController->postCreate()).
      * Its purpose is to return an array with results for a specific search query.
-     * 
+     *
      * @param  string $subject The search term
      * @return string[]
      */

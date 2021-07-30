@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace App\Modules\Shouts\Http\Controllers;
 
 use App\Modules\Shouts\Shout;
 use DB;
 use FrontController;
-use Input;
+use Request;
 use Response;
 
 class ShoutsController extends FrontController
@@ -13,7 +13,7 @@ class ShoutsController extends FrontController
 
     /**
      * Stores a shout
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function store()
@@ -24,7 +24,7 @@ class ShoutsController extends FrontController
 
         $this->deleteOld();
 
-        $shout = new Shout(['text' => htmlspecialchars(Input::get('text'))]);
+        $shout = new Shout(['text' => htmlspecialchars(Request::get('text'))]);
         $shout->creator_id = user()->id;
 
         $okay = $shout->save();

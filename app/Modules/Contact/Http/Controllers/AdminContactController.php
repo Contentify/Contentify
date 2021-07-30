@@ -5,7 +5,7 @@ namespace App\Modules\Contact\Http\Controllers;
 use App\Modules\Contact\ContactMessage;
 use BackController;
 use HTML;
-use Input;
+use Request;
 use Mail;
 use ModelHandlerTrait;
 
@@ -32,10 +32,10 @@ class AdminContactController extends BackController
         $this->indexPage([
             'buttons' => null,
             'tableHead' => [
-                trans('app.id')         => 'id', 
-                trans('app.new')        => 'new', 
-                trans('app.title')      => 'title', 
-                trans('app.creator')    => 'username', 
+                trans('app.id')         => 'id',
+                trans('app.new')        => 'new',
+                trans('app.title')      => 'title',
+                trans('app.creator')    => 'username',
                 trans('app.created_at') => 'created_at'
             ],
             'tableRow' => function(ContactMessage $message)
@@ -43,7 +43,7 @@ class AdminContactController extends BackController
                 return [
                     $message->id,
                     raw($message->new ?
-                        HTML::fontIcon('envelope') : 
+                        HTML::fontIcon('envelope') :
                         null),
                     raw(link_to_route('admin.contact.show', $message->title, [$message->id])),
                     $message->username,
@@ -86,7 +86,7 @@ class AdminContactController extends BackController
         /** @var ContactMessage $incomingMessage */
         $incomingMessage = ContactMessage::findOrFail($id);
 
-        $replyText = Input::get('reply');
+        $replyText = Request::get('reply');
 
         Mail::raw($replyText, function(\Illuminate\Mail\Message $message) use ($incomingMessage)
         {

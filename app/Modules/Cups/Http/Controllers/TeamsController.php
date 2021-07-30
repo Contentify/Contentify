@@ -9,9 +9,9 @@ use Contentify\GlobalSearchInterface;
 use DB;
 use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Input;
 use MsgException;
 use Redirect;
+use Request;
 use Response;
 use URL;
 use User;
@@ -68,7 +68,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Changes the organizer right of a team member
-     * 
+     *
      * @param  int $teamId
      * @param  int $userId
      * @return \Illuminate\Http\Response|null
@@ -78,7 +78,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         /** @var Team $team */
         $team = Team::findOrFail($teamId);
         $user = User::findOrFail($userId); // We do not use the $user var but we use findOrFail() for a check
-        $isOrganizer = (bool) Input::get('organizer');
+        $isOrganizer = (bool) Request::get('organizer');
 
         if (! user()) {
             return Response::make(trans('app.no_auth'), 403); // 403: Not allowed
@@ -116,7 +116,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         }
 
         if ($team->password) {
-            $password = Input::get('password');
+            $password = Request::get('password');
 
             if ($password === null) {
                 $this->pageView('cups::password_form', compact('team'));
@@ -141,7 +141,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
     /**
      * Makes a user leave a cup team
-     * 
+     *
      * @param  int  $teamId The ID of the team
      * @param  int  $userId The ID of the user
      * @return RedirectResponse|null
@@ -215,17 +215,17 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
         $team = new Team;
 
-        $team->title = trim(Input::get('title'));
+        $team->title = trim(Request::get('title'));
         $team->createSlug();
-        $team->password = Input::get('password');
+        $team->password = Request::get('password');
         $team->creator_id = user()->id;
-        
+
         $okay = $team->save();
         if (! $okay) {
             return Redirect::to('cups/teams/create')->withInput()->withErrors($team->getErrors());
         }
         $tmp = $team->id; // We need to do that to force Eloquent to refresh the id attribute.
-        
+
         $team->addMember(user(), true);
 
         $result = $team->uploadFile('image', true);
@@ -248,7 +248,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
     {
         /** @var Team $team */
         $team = Team::findOrFail($id);
-        
+
         if (! user()) {
             $this->alertError(trans('app.no_auth'));
             return;
@@ -278,9 +278,9 @@ class TeamsController extends FrontController implements GlobalSearchInterface
 
         /** @var Team $team */
         $team = Team::findOrFail($id);
-        $team->title = trim(Input::get('title'));
+        $team->title = trim(Request::get('title'));
         $team->createSlug();
-        $team->password = Input::get('password');
+        $team->password = Request::get('password');
         $team->updater_id = user()->id;
 
         $okay = $team->save();
@@ -315,7 +315,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
         $team = Team::findOrFail($id);
 
         if ($team->isLocked()) {
-            $this->alertError(trans('app.team_locked')); 
+            $this->alertError(trans('app.team_locked'));
             return null;
         }
 
@@ -337,7 +337,7 @@ class TeamsController extends FrontController implements GlobalSearchInterface
     /**
      * This method is called by the global search (SearchController->postCreate()).
      * Its purpose is to return an array with results for a specific search query.
-     * 
+     *
      * @param  string $subject The search term
      * @return string[]
      */

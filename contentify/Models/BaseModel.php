@@ -10,9 +10,9 @@ use Exception;
 use File;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Input;
 use InterImage;
 use InvalidArgumentException;
+use Request;
 use Str;
 use ValidatingTrait;
 
@@ -97,9 +97,9 @@ abstract class BaseModel extends Eloquent
      */
     public function uploadFile(string $fieldName, bool $isImage = false, array $thumbnails = [])
     {
-        $file = Input::file($fieldName);
+        $file = Request::file($fieldName);
 
-        if ($file == null and Input::get($fieldName) != '.') {
+        if ($file == null and Request::get($fieldName) != '.') {
             return null;
         }
 

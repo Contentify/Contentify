@@ -4,8 +4,8 @@ namespace App\Modules\Contact\Http\Controllers;
 
 use App\Modules\Contact\ContactMessage;
 use FrontController;
-use Input;
 use Redirect;
+use Request;
 
 class ContactController extends FrontController
 {
@@ -17,11 +17,11 @@ class ContactController extends FrontController
 
     public function store()
     {
-        $msg = new ContactMessage(Input::all());
+        $msg = new ContactMessage(Request::all());
         $msg->ip = getenv('REMOTE_ADDR');
 
         $okay = $msg->save();
-        
+
         if ($okay) {
             $msg->notify();
             $this->alertSuccess(trans('contact::message_sent'));

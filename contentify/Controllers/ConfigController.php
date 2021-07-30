@@ -4,7 +4,6 @@ namespace Contentify\Controllers;
 
 use Config;
 use DB;
-use Input;
 use Redirect;
 use Request;
 use Validator;
@@ -59,12 +58,12 @@ abstract class ConfigController extends BackController
         if (! $this->checkAccessRead()) {
             return null;
         }
-        
+
         $model = new $this->modelClass();
         $fillable = $model->getFillable();
         $namespace = $model->getNamespace();
 
-        $input = Input::only($fillable);
+        $input = Request::only($fillable);
         $validator = Validator::make($input, $model->getRules());
 
         if ($validator->fails()) {
@@ -80,7 +79,7 @@ abstract class ConfigController extends BackController
                 if ($result == 0) {
                     DB::table('config')->insert([
                         'name'          => $namespace.$name,
-                        'value'         => $value, 
+                        'value'         => $value,
                         'updated_at'    => DB::raw('NOW()')]);
                 }
 

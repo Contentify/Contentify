@@ -2,13 +2,12 @@
 
 namespace App\Modules\Auth\Http\Controllers;
 
-use App\Modules\Auth\AuthManager;
 use Captcha;
 use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Input;
 use Mail;
 use Redirect;
+use Request;
 use Reminder;
 use Sentinel;
 use Str;
@@ -36,12 +35,12 @@ class RestorePasswordController extends FrontController
      */
     public function postIndex()
     {
-        if (! Captcha::check(Input::get('captcha'))) {
+        if (! Captcha::check(Request::get('captcha'))) {
             return Redirect::to('auth/restore')
                 ->withInput()->withErrors(['message' => trans('app.captcha_invalid')]);
         }
 
-        $email = Input::get('email');
+        $email = Request::get('email');
 
         $user = Sentinel::findByCredentials(['login' => $email]);
 

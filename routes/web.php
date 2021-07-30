@@ -13,7 +13,7 @@
 
 /*
  * Frontend dashboard.
- */ 
+ */
 if (! installed()) {
     Route::get('/', ['as' => 'home', 'uses' => function() {
         return Redirect::to('/install.php');
@@ -27,10 +27,10 @@ if (! installed()) {
  * We prefer to use a route here instead of inside the modules' own routing file.
  * So there can't exist multiple modules that try to declare themselves as dashboard.
  * (Well, of course they may try to... since routing is global. But they should not.)
- */ 
+ */
 Route::get('admin', [
-    'as' => 'admin.dashboard', 
-    'before' => 'admin', 
+    'as' => 'admin.dashboard',
+    'before' => 'admin',
     'uses' => 'App\Modules\Dashboard\Http\Controllers\AdminDashboardController@getindex'
 ]);
 
@@ -44,8 +44,8 @@ Route::get('comments/paginate/{foreignType}/{foreignId}', function($foreignType,
 
 Route::post('comments/store', ['as' => 'comments.store', 'uses' => function()
 {
-    $foreignType = Input::get('foreigntype');
-    $foreignId = Input::get('foreignid');
+    $foreignType = Request::get('foreigntype');
+    $foreignId = Request::get('foreignid');
 
     return Comments::store($foreignType, $foreignId);
 }]);
@@ -75,8 +75,8 @@ Route::delete('comments/{id}/delete', ['as' => 'comments.delete', 'uses' => func
  */
 Route::post('ratings/store', ['as' => 'ratings.store', 'uses' => function()
 {
-    $foreignType = Input::get('foreigntype');
-    $foreignId = Input::get('foreignid');
+    $foreignType = Request::get('foreigntype');
+    $foreignId = Request::get('foreignid');
 
     return Ratings::store($foreignType, $foreignId);
 }]);

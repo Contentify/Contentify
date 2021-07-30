@@ -3,7 +3,7 @@
 namespace Contentify;
 
 use DB;
-use Input;
+use Request;
 use Response;
 use View;
 
@@ -26,7 +26,7 @@ class Ratings
 
     /**
      * Directly outputs the rating HTML code.
-     * 
+     *
      * @param  string $foreignType Identifier for the content the rating is related to (usually a model class)
      * @param  int    $foreignId   ID, if the rating is related to a certain model instance
      * @return string
@@ -57,7 +57,7 @@ class Ratings
 
     /**
      * Stores a rating
-     * 
+     *
      * @param  string   $foreignType The foreign type identifier
      * @param  int      $foreignId   The foreign id (can be 0)
      * @return \Illuminate\Http\Response
@@ -68,7 +68,7 @@ class Ratings
             return Response::make(trans('app.access_denied'), 403);
         }
 
-        $rating = (int) Input::get('rating');
+        $rating = (int) Request::get('rating');
 
         if ($rating < self::MIN_RATING) {
             $rating = self::MIN_RATING;
@@ -85,7 +85,7 @@ class Ratings
 
         DB::table('ratings')->insert([
             'rating'        => $rating,
-            'foreign_type'  => $foreignType, 
+            'foreign_type'  => $foreignType,
             'foreign_id'    => $foreignId,
             'user_id'       => user()->id,
         ]);

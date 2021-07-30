@@ -6,8 +6,8 @@ use App\Modules\Forums\ForumPost;
 use App\Modules\Forums\ForumReport;
 use App\Modules\Forums\ForumThread;
 use FrontController;
-use Input;
 use Redirect;
+use Request;
 use Response;
 use User;
 
@@ -29,7 +29,7 @@ class PostsController extends FrontController
 
     /**
      * Returns a forum post as JSON (as response to an AJAX call)
-     * 
+     *
      * @param  int $id The ID of the post
      * @return \Illuminate\Http\JsonResponse
      */
@@ -48,7 +48,7 @@ class PostsController extends FrontController
      */
     public function store(int $id)
     {
-        $forumPost = new ForumPost(Input::all());
+        $forumPost = new ForumPost(Request::all());
         $forumPost->creator_id = user()->id;
         $forumPost->thread_id = $id;
 
@@ -130,10 +130,10 @@ class PostsController extends FrontController
             return Redirect::action('forums/thread/update/'.$forumPost->thread_id);
         }
 
-        $forumPost->fill(Input::all());
+        $forumPost->fill(Request::all());
         $forumPost->updater_id = user()->id;
         $valid = $forumPost->save();
-        
+
         if (! $valid) {
             return Redirect::to('forums/posts/edit/'.$forumPost->id)
                 ->withInput()->withErrors($forumPost->getErrors());
@@ -190,7 +190,7 @@ class PostsController extends FrontController
     public function report(int $id)
     {
         /** @var ForumPost $forumPost */
-        $forumPost = ForumPost::isAccessible()->findOrFail($id); 
+        $forumPost = ForumPost::isAccessible()->findOrFail($id);
 
         $forumReport = ForumReport::whereCreatorId(user()->id)->wherePostId($id)->first();
 
@@ -219,7 +219,7 @@ class PostsController extends FrontController
         $user = User::findOrFail($userId);
 
         $forumPosts = ForumPost::where('forum_posts.creator_id', '=', $userId)->isAccessible($user)
-            ->orderBy('updated_at', 'DESC')->paginate(10); 
+            ->orderBy('updated_at', 'DESC')->paginate(10);
 
         $this->pageView('forums::show_user_posts', compact('forumPosts'));
     }

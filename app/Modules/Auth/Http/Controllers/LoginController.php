@@ -10,9 +10,9 @@ use Config;
 use Exception;
 use FrontController;
 use Illuminate\Http\RedirectResponse;
-use Input;
 use Invisnik\LaravelSteamAuth\SteamAuth;
 use Redirect;
+use Request;
 use Sentinel;
 use Session;
 use Str;
@@ -21,7 +21,7 @@ use Validator;
 
 class LoginController extends FrontController
 {
-    
+
     public function getLogin()
     {
         $this->pageView('auth::login');
@@ -35,8 +35,8 @@ class LoginController extends FrontController
     public function postLogin()
     {
         $credentials = [
-            'email'     => Input::get('email'),
-            'password'  => Input::get('password')
+            'email'     => Request::get('email'),
+            'password'  => Request::get('password')
         ];
 
         $authManager = new AuthManager();
@@ -73,7 +73,7 @@ class LoginController extends FrontController
             throw new Exception('Error: No API key set in the steam-auth config file. Please set it!');
         }
 
-        if ($steam->validate()) { 
+        if ($steam->validate()) {
             $info = $steam->getUserInfo();
 
             if ($info !== null) {
@@ -104,7 +104,7 @@ class LoginController extends FrontController
                     // Store the ID in the (server side) session so it cannot be manipulated by the client
                     Session::put('steamId', $info->steamID64);
 
-                    $this->pageView('auth::register_steam', compact('username', 'steamId'));
+                    $this->pageView('auth::register_steam', compact('username'));
                     return null;
                 }
             }
@@ -116,10 +116,10 @@ class LoginController extends FrontController
     /**
      * Actually create the user account with a STEAM ID
      *
-     * @return RedirectResponse
+     * @return RedirectResponse|null
      * @throws Exception
      */
-    public function postSteam() : RedirectResponse
+    public function postSteam() : ?RedirectResponse
     {
         $steamId = Session::get('steamId');
 
@@ -131,9 +131,9 @@ class LoginController extends FrontController
             'email'     => 'email|unique:users,email'
         ];
 
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Request::all(), $rules);
         if ($validator->fails()) {
-            $username = Input::get('username');
+            $username = Request::get('username');
             $errors = $validator->errors();
 
             $this->pageView('auth::register_steam', compact('username', 'steamId', 'errors'));
@@ -153,8 +153,8 @@ class LoginController extends FrontController
          */
         /** @var User $user */
         $user = Sentinel::register([
-            'username'      => Input::get('username'),
-            'email'         => Input::get('email'),
+            'username'      => Request::get('username'),
+            'email'         => Request::get('email'),
             'password'      => Str::random(), // So no one can login without Steam auth
             'language_id'   => $language->id,
         ], true); // Auto activate the user

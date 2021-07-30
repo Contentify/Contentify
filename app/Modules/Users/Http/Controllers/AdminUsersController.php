@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Users\Http\Controllers;
 
@@ -7,7 +7,7 @@ use BackController;
 use Exception;
 use Hover;
 use HTML;
-use Input;
+use Request;
 use ModelHandlerTrait;
 use Redirect;
 use Response;
@@ -98,12 +98,12 @@ class AdminUsersController extends BackController
     public function update(int $id)
     {
         $user = User::findOrFail($id);
-        
+
         /*
          * Ensure that admins are not able to promote themselves to superadmins
          */
-        if (! user()->isSuperAdmin()) { 
-            $roleIds = Input::get('_relation_roles');
+        if (! user()->isSuperAdmin()) {
+            $roleIds = Request::get('_relation_roles');
 
             foreach ($roleIds as $roleId) {
                 // $roleId may be an empty string

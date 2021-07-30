@@ -4,7 +4,7 @@ namespace App\Modules\Matches\Http\Controllers;
 
 use App\Modules\Matches\MatchScore;
 use BackController;
-use Input;
+use Request;
 use Response;
 use View;
 
@@ -19,9 +19,9 @@ class AdminMatchScoresController extends BackController
         if (! $this->checkAccessCreate()) {
             return Response::make(null, 403);
         }
-        
-        $matchScore = new MatchScore(Input::all());
-        
+
+        $matchScore = new MatchScore(Request::all());
+
         $okay = $matchScore->save();
 
         if (! $okay) {
@@ -42,7 +42,7 @@ class AdminMatchScoresController extends BackController
         }
 
         $matchScore = MatchScore::findOrFail($id);
-        $matchScore->fill(Input::all());
+        $matchScore->fill(Request::all());
 
         $okay = $matchScore->save();
 

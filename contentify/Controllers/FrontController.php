@@ -4,8 +4,8 @@ namespace Contentify\Controllers;
 
 use Config;
 use Exception;
-use Input;
 use Redirect;
+use Request;
 use URL;
 use View;
 
@@ -58,6 +58,6 @@ abstract class FrontController extends BaseController
     {
         $url = URL::previous();
 
-        return Redirect::to($url)->withInput(Input::only('search'));
+        return Redirect::to($url)->withInput(Request::only('search'));
     }
 }

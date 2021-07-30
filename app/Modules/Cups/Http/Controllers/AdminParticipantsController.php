@@ -5,10 +5,8 @@ namespace App\Modules\Cups\Http\Controllers;
 use App\Modules\Cups\Cup;
 use App\Modules\Cups\Team;
 use BackController;
-use DB;
 use Illuminate\Http\RedirectResponse;
-use Input;
-use ModelHandlerTrait;
+use Request;
 use Redirect;
 use User;
 
@@ -48,7 +46,7 @@ class AdminParticipantsController extends BackController
         /** @var Cup $cup */
         $cup = Cup::findOrFail($cupId);
 
-        $participantId = (int) Input::get('participant_id');
+        $participantId = (int) Request::get('participant_id');
 
         $cup->addParticipantById($participantId);
 
@@ -77,7 +75,7 @@ class AdminParticipantsController extends BackController
     /**
      * The admin page creates an invalid URL ('/admin/participants')
      * so we catch it and redirect to the cups overview page.
-     * 
+     *
      * @return RedirectResponse
      */
     public function redirect() : RedirectResponse

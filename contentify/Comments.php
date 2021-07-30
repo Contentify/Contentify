@@ -4,13 +4,12 @@ namespace Contentify;
 
 use Comment;
 use Illuminate\Http\JsonResponse;
-use Input;
 use Request;
 use Response;
 use View;
 
 /**
- * Comments manager class, the place for methods that deal with comments, 
+ * Comments manager class, the place for methods that deal with comments,
  * especially the CRUD methods.
  */
 class Comments
@@ -18,7 +17,7 @@ class Comments
 
     /**
      * Directly outputs comments and the comment form.
-     * 
+     *
      * @param string $foreignType Identifier for the content the comments are related to (usually a model class)
      * @param int    $foreignId   ID, if the comments are related to a certain model instance
      * @return void
@@ -39,7 +38,7 @@ class Comments
 
     /**
      * Returns comments and respects pagination
-     * 
+     *
      * @param string $foreignType Identifier for the content the comments are related to (usually a model class)
      * @param int    $foreignId   ID, if the comments are related to a certain model instance
      * @return string
@@ -67,7 +66,7 @@ class Comments
             return Response::make(trans('app.access_denied'), 403);
         }
 
-        $comment = new Comment(Input::all());
+        $comment = new Comment(Request::all());
         $comment->foreign_type  = $foreignType;
         $comment->foreign_id    = $foreignId;
         $comment->creator_id    = user()->id;
@@ -84,7 +83,7 @@ class Comments
 
     /**
      * Returns a comment as JSON (as response to an AJAX call)
-     * 
+     *
      * @param int $id The ID of the comment
      * @return JsonResponse
      */
@@ -117,7 +116,7 @@ class Comments
 
     /**
      * Updates a comment
-     * 
+     *
      * @param int $id The ID of the comment
      * @return \Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
@@ -130,7 +129,7 @@ class Comments
             return Response::make(trans('app.access_denied'), 403);
         }
 
-        $comment->fill(Input::all());
+        $comment->fill(Request::all());
         $comment->updater_id = user()->id;
 
         $okay = $comment->save();

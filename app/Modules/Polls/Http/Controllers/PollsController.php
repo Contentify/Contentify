@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Polls\Http\Controllers;
 
@@ -8,8 +8,8 @@ use DB;
 use FrontController;
 use HTML;
 use Illuminate\Database\Eloquent\Builder;
-use Input;
 use Redirect;
+use Request;
 use URL;
 
 class PollsController extends FrontController implements GlobalSearchInterface
@@ -108,10 +108,10 @@ class PollsController extends FrontController implements GlobalSearchInterface
 
         $votes = [];
         if ($poll->max_votes == 1) {
-            $votes[] = Input::get('option');
+            $votes[] = Request::get('option');
         } else {
             for ($counter = 1; $counter <= Poll::MAX_OPTIONS; $counter++) {
-                $value = Input::get('option'.$counter);
+                $value = Request::get('option'.$counter);
 
                 // Note: If someone manipulates the sent form data and adds votes for
                 // options that are not enabled, we simply ignore these votes.
@@ -132,11 +132,11 @@ class PollsController extends FrontController implements GlobalSearchInterface
         $this->alertFlash(trans('app.successful'));
         return Redirect::to('polls/'.$poll->id.'/'.$poll->slug);
     }
-    
+
     /**
      * This method is called by the global search (SearchController->postCreate()).
      * Its purpose is to return an array with results for a specific search query.
-     * 
+     *
      * @param  string $subject The search term
      * @return string[]
      */

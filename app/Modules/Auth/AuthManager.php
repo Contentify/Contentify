@@ -30,8 +30,8 @@ class AuthManager
      * $credentials example:
      *
      * $credentials = [
-     *     'email'     => Input::get('email'),
-     *     'password'  => Input::get('password')
+     *     'email'     => Request::get('email'),
+     *     'password'  => Request::get('password')
      * ];
      *
      * @param array $credentials
