@@ -3,12 +3,12 @@
 ## Contentify CMS - v3.1
 
 [![Build Status](https://img.shields.io/travis/Contentify/Contentify.svg?style=flat-square)](https://travis-ci.org/Contentify/Contentify)
-[![Laravel](https://img.shields.io/badge/Laravel-5.8-orange.svg?style=flat-square)](http://laravel.com)
+[![Laravel](https://img.shields.io/badge/Laravel-6-orange.svg?style=flat-square)](http://laravel.com)
 [![Source](http://img.shields.io/badge/source-Contentify/Contentify-blue.svg?style=flat-square)](https://github.com/Contentify/Contentify)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 [![Gitter](https://img.shields.io/gitter/room/badges/shields.svg?style=flat-square)](https://gitter.im/Contentify)
 
-[Contentify](http://contentify.org/) is an esports CMS based on the PHP framework Laravel 5.8. Build your gaming website with a modern CMS.
+[Contentify](http://contentify.org/) is an esports CMS based on the PHP framework Laravel 6. Build your gaming website with a modern CMS.
 
 - [x] Technologically advanced gaming CMS
 - [x] High quality code and documentation
