@@ -235,6 +235,7 @@ return [
         /*
          * Vendor service providers...
          */
+        Contentify\Vendor\Rss\RssServiceProvider::class,
         ChrisKonnertz\Jobs\Integration\JobsServiceProvider::class,
         Caffeinated\Modules\ModulesServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
@@ -317,25 +318,25 @@ return [
         'ConfigController'      => Contentify\Controllers\ConfigController::class,
         'Widget'                => Contentify\Controllers\Widget::class,
 
-        'BaseModel'        => Contentify\Models\BaseModel::class,
-        'Comment'          => Contentify\Models\Comment::class,
-        'AbstractStiModel' => Contentify\Models\AbstractStiModel::class,
-        'User'             => Contentify\Models\User::class,
-        'UserActivity'     => Contentify\Models\UserActivity::class,
-        'ConfigBag'        => Contentify\Models\ConfigBag::class,
-        'Raw'              => Contentify\Raw::class,
+        'BaseModel'             => Contentify\Models\BaseModel::class,
+        'Comment'               => Contentify\Models\Comment::class,
+        'AbstractStiModel'      => Contentify\Models\AbstractStiModel::class,
+        'User'                  => Contentify\Models\User::class,
+        'UserActivity'          => Contentify\Models\UserActivity::class,
+        'ConfigBag'             => Contentify\Models\ConfigBag::class,
+        'Raw'                   => Contentify\Raw::class,
 
         /*
          * Vendor classes:
          */
-        'OpenGraph'        => ChrisKonnertz\OpenGraph\OpenGraph::class,
-        'BBCode'           => ChrisKonnertz\BBCode\BBCode::class,
-        'Jobs'             => ChrisKonnertz\Jobs\Integration\JobsFacade::class,
+        'Rss'                   => Contentify\Vendor\Rss\RssFacade::class,
+        'OpenGraph'             => ChrisKonnertz\OpenGraph\OpenGraph::class,
+        'BBCode'                => ChrisKonnertz\BBCode\BBCode::class,
+        'Jobs'                  => ChrisKonnertz\Jobs\Integration\JobsFacade::class,
         'AbstractJob'           => ChrisKonnertz\Jobs\AbstractJob::class,
         'Sentinel'              => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
         'Activation'            => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
         'Reminder'              => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
-        'Rss'                   => Thujohn\Rss\RssFacade::class,
         'InterImage'            => Intervention\Image\Facades\Image::class,
         'ValidatingTrait'       => Watson\Validating\ValidatingTrait::class,
         'Module'                => Caffeinated\Modules\Facades\Module::class,

@@ -28,6 +28,9 @@ To install Contentify please follow the instructions in the [wiki](https://githu
 
 Clone this repository via git and switch to the `3.1` branch. Via console, go to the Contentify directory and run `php composer.phar install`. Then follow the instructions in the [wiki](https://github.com/Contentify/Contentify/wiki/Installation).
 
+**ATTENTION**: PHP 8 is supported but requires to run `composer install --ignore-platform-reqs`, because
+some dependencies do not officially support PHP 8.
+
 ### Update
 
 To update from v3.0 to 3.1:
