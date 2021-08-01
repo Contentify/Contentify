@@ -6,7 +6,7 @@
 - Laravel's string helper functions are no longer supported, use the `Str` class method instead
 
 **Changes**
-- Laravel has been updated from v5.5 to 5.7
+- Laravel has been updated from v5.5 to 6.0
 - Therefore a couple of small changes have been made to Contentify's code. 
   Please check the diff between version 3.0 and 3.1 to review these changes.  
 - Several dependencies (vendor packages) have been updated to newer versions

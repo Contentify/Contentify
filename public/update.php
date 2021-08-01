@@ -10,7 +10,7 @@ class Updater
     /**
      * The number of the version this updater can update
      */
-    const SUPPORTED_VERSIONS = ['2.6'];
+    const SUPPORTED_VERSIONS = ['3.0'];
 
     /**
      * Error code that will be returned if there was no error
@@ -25,7 +25,7 @@ class Updater
     /**
      * Welcome text, HTML code. Will be displayed without HTML tags
      * when on console.
-     * 
+     *
      * @var string
      */
     protected $welcomeText = <<<EOD
@@ -44,7 +44,7 @@ EOD;
     /**
      * Goodbye text, HTML code. Will be displayed without HTML tags
      * when on console.
-     * 
+     *
      * @var string
      */
     protected $goodbyeText = <<<EOD
@@ -60,14 +60,14 @@ EOD;
 
     /**
      * The app bridge object (we just call it "app" as a shortcut)
-     * 
+     *
      * @var AppBridge
      */
     protected $app = null;
 
     public function __construct()
     {
-        $this->app = new AppBridge(); 
+        $this->app = new AppBridge();
     }
 
     /**
@@ -82,16 +82,9 @@ EOD;
         // and then copy the relevant statements from the .sql file to this place.
         // ATTENTION: Afterwards add {$prefix} before all table names!!
         $updateQueries = [
-            "ALTER TABLE `{$prefix}servers` CHANGE `hoster` `host` VARCHAR(255);",
-            "ALTER TABLE `{$prefix}news` ADD `image` VARCHAR(255) DEFAULT NULL;",
-            "ALTER TABLE `{$prefix}videos` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
-            "ALTER TABLE `{$prefix}streams` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
-            "ALTER TABLE `{$prefix}polls` ADD `enable_comments` TINYINT(1) DEFAULT 1;",
-            "ALTER TABLE `{$prefix}teams` ADD `banner` VARCHAR(255) DEFAULT NULL;",
-            "UPDATE `{$prefix}teams` SET `banner`=`image`",
-            "INSERT INTO `{$prefix}languages` (title, code) VALUES ('Italian', 'it');",
-            "INSERT INTO `{$prefix}languages` (title, code) VALUES ('Portuguese', 'pt');",
-         ];
+            //"ALTER TABLE `{$prefix}servers` CHANGE `hoster` `host` VARCHAR(255);",
+            //"UPDATE `{$prefix}teams` SET `banner`=`image`",
+        ];
 
         return $updateQueries;
     }
@@ -147,7 +140,7 @@ EOD;
         if ($errorCode != self::CODE_OKAY) {
             $this->printText($this->createErrorText('Error: Code '.$errorCode));
         }
-            
+
         $this->printPageEnd();
 
         return self::CODE_OKAY;
@@ -155,7 +148,7 @@ EOD;
 
     /**
      * Show a page with info and ask the user to confirm the update
-     * 
+     *
      * @return int Error code
      */
     public function welcome()
@@ -172,7 +165,7 @@ EOD;
 
     /**
      * Actually performs the update
-     * 
+     *
      * @return int Error code
      */
     public function perform()
@@ -283,7 +276,7 @@ EOD;
 
     /**
      * Show the success message
-     * 
+     *
      * @return int Error code
      */
     public function goodbye()
@@ -304,7 +297,7 @@ EOD;
      * Creates a text snippet that will be styled as a error
      * when displayed on a HTML document. (You can also
      * display it on console without styling problems.)
-     * 
+     *
      * @param string $text The text of the error
      * @return string
      */
@@ -315,7 +308,7 @@ EOD;
 
     /**
      * Prints text to a HTML document or the console
-     * 
+     *
      * @param string $text HTML code or plain text
      * @return void
      */
@@ -323,7 +316,7 @@ EOD;
     {
         if ($this->app->isCli()) {
             $text = strip_tags($text);
-        } 
+        }
 
         echo $text;
     }
@@ -333,7 +326,7 @@ EOD;
      * directly asks for confirmation when on console
      * Note: Call the updater with the -quiet option
      * from the console to suppress questions.
-     * 
+     *
      * @param string $title The title; will be escaped
      * @param string $step The name of the next step / method
      * @return int Error code
@@ -371,7 +364,7 @@ EOD;
     /**
      * Prints the start of a "page".
      * ATTENTION: Do not forget to also call printPageEnd()!
-     * 
+     *
      * @param string $title Title of the page (only relevant for HTML documents)
      * @return void
      */
@@ -392,7 +385,7 @@ EOD;
 
     /**
      * Prints the end of a "page".
-     * 
+     *
      * @return void
      */
     protected function printPageEnd()
