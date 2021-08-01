@@ -32,7 +32,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class, // Deactivated er Laravel's default
+            // \Illuminate\Session\Middleware\AuthenticateSession::class, // Deactivated Laravel's default
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -53,7 +53,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        //'auth'          => \App\Http\Middleware\Authenticate::class, // Deactivate... we have our own implementation
+        'auth'          => \App\Http\Middleware\Authenticate::class, // Deactivate... we have our own implementation
         'bindings'      => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,

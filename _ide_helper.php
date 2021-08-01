@@ -10245,12 +10245,13 @@ namespace Collective\Html {
          * @param string $name The name of the input element
          * @param string $title The title of the input element
          * @param string $default The default value
+         * @param  array $options Additional options such as class or placeholder
          * @return string
          * @static
          */
-        public static function smartText($name, $title, $default = null)
+        public static function smartText($name, $title, $default = null, $options = [])
         {
-            return \Contentify\FormBuilder::smartText($name, $title, $default);
+            return \Contentify\FormBuilder::smartText($name, $title, $default, $options = []);
         }
 
         /**

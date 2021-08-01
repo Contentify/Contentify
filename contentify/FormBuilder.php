@@ -368,13 +368,14 @@ class FormBuilder extends OriginalFormBuilder
      * @param  string      $name    The name of the input element
      * @param  string      $title   The title of the input element
      * @param  string|null $default The default value
+     * @param  array       $options Additional options such as class or placeholder
      * @return string
      */
-    public function smartText(string $name, string $title, string $default = null) : string
+    public function smartText(string $name, string $title, string $default = null, $options = []) : string
     {
         $value = self::getDefaultValue($name, $default);
         $partial = self::smartGroupOpen($name, $title)
-            .self::text($name, $value)
+            .self::text($name, $value, $options)
             .self::smartGroupClose();
         return $partial;
     }

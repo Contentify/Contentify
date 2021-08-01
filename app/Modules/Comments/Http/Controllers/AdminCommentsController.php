@@ -40,7 +40,7 @@ class AdminCommentsController extends BackController
                 return [
                     $comment->id,
                     $comment->plainText(),
-                    $comment->foreign_type.'&nbsp;#'.$comment->foreign_id,
+                    raw( $comment->foreign_type.'&nbsp;#'.$comment->foreign_id),
                     raw(HTML::link(URL::route('users.show', [$comment->creator->id]), $comment->creator->username)),
                     $comment->created_at->dateTime(),
                 ];

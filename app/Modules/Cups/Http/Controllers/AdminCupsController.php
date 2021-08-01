@@ -21,7 +21,7 @@ class AdminCupsController extends BackController
     /**
      * URL to the README.md file on GitHub
      */
-    const README_URL = 'https://github.com/Contentify/Contentify/blob/v3.0/app/Modules/Cups/Readme.md';
+    const README_URL = 'https://github.com/Contentify/Contentify/blob/v3.1-beta/app/Modules/Cups/README.md';
 
     protected $icon = 'share-alt';
 
@@ -43,9 +43,9 @@ class AdminCupsController extends BackController
                 button(trans('app.description'), self::README_URL, 'list')
             ],
             'tableHead' => [
-                trans('app.id')            => 'id', 
-                trans('app.published')     => 'published', 
-                trans('app.closed')        => 'closed', 
+                trans('app.id')            => 'id',
+                trans('app.published')     => 'published',
+                trans('app.closed')        => 'closed',
                 trans('app.title')         => 'title',
                 trans('app.object_game')   => 'game_id',
                 trans('cups::start_at')    => 'start_at'
@@ -66,22 +66,22 @@ class AdminCupsController extends BackController
             'actions'   => [
                 function(Cup $cup) {
                     return icon_link(
-                        'edit', 
-                        trans('app.edit'), 
+                        'edit',
+                        trans('app.edit'),
                         url('admin/cups/edit/'.$cup->id)
                     );
                 },
                 function(Cup $cup) {
                     return icon_link(
                         'users',
-                        trans('app.object_participants'), 
+                        trans('app.object_participants'),
                         url('admin/cups/participants/'.$cup->id)
                     );
                 },
                 function(Cup $cup) {
                     return icon_link(
-                        'share-alt', 
-                        trans('cups::seeding'), 
+                        'share-alt',
+                        trans('cups::seeding'),
                         url('admin/cups/seed/'.$cup->id)
                     );
                 },
@@ -92,7 +92,7 @@ class AdminCupsController extends BackController
 
     /**
      * Generates the matches for the first round of the cup
-     * 
+     *
      * @param  int $cupId The ID of the cup
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -107,7 +107,7 @@ class AdminCupsController extends BackController
         } catch (MsgException $exception) {
             $this->alertFlash($exception->getMessage());
         }
-        
+
         return Redirect::to('admin/cups');
     }
 }

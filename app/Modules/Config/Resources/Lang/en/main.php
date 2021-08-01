@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return [
 
@@ -10,7 +10,7 @@ return [
     | This file keeps the language lines of the related module.
     |
     */
-   
+
     'permissions'               => 'Permissions',
 
     'button_info'               => 'PHP-Info',
@@ -27,7 +27,7 @@ return [
     'log_empty'                 => 'The log file is empty.',
 
     /*
-     * Config 
+     * Config
      */
     'website_name'              => 'Name of the website',
     'analytics'                 => 'Analytics Code',
@@ -42,8 +42,16 @@ return [
     'meta_author'               => 'Author',
     'meta_author_info'          => 'Whose website is this?',
     'meta_keywords'             => 'Keywords',
-    'meta_keywords_info'        => 'Optimization of the website for search engine. (Keywords)',
+    'meta_keywords_info'        => 'Set keywords for search engines such as Google.',
     'meta_description'          => 'Description',
-    'meta_description_info'     => 'Optimization of the website for search engine. (Description)',
+    'meta_description_info'     => 'Add a brief description of the website for search engines such as Google.',
+
+    /*
+     * Code
+     */
+    'frontend_less_code'         => 'Frontend LESS Code',
+    'frontend_js_code'          => 'Frontend JavaScript Code',
+    'backend_less_code'          => 'Backend LESS Code',
+    'backend_js_code'           => 'Backend JavaScript Code',
 
 ];

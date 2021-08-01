@@ -13,7 +13,7 @@
 
     {!! Form::smartUrl() !!}
 
-    {!! Form::smartText('lineup', trans('app.lineup')) !!}
+    {!! Form::smartText('lineup', trans('app.lineup'), null, ['placeholder' => 'Comma seperated names']) !!}
 
     {!! Form::smartImageFile() !!}
 

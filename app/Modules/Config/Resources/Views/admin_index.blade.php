@@ -86,6 +86,8 @@
 
             {!! Form::smartGroupClose() !!}
 
+            <hr>
+
             {!! Form::smartCheckbox('app::theme_christmas', trans('app.theme_christmas')) !!}
 
             {!! Form::smartText('app::theme_snow_color', trans('app.theme_snow_color')) !!}

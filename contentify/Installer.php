@@ -872,7 +872,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         ("PUBG", "PUBG", "default/pubg.png", 1, 1),
         ("Overwatch", "OW", "default/ow.png", 1, 1),
         ("Minecraft", "MC", "default/mc.png", 1, 1),
-        ("Valorant ", "VAL", "default/valorant.png", 1, 1)');
+        ("Valorant ", "VAL", "default/val.png", 1, 1)');
 
         DB::insert('INSERT INTO maps(title, image, game_id, creator_id, updater_id) VALUES
         ("Unknown", "unknown.jpg", NULL, 1, 1),
