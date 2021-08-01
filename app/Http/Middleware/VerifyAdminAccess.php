@@ -3,6 +3,7 @@
 use Closure;
 use Sentinel;
 use Session;
+use Str;
 
 class VerifyAdminAccess
 {
@@ -18,7 +19,7 @@ class VerifyAdminAccess
     {
         $path = $request->path();
 
-        if ($path === 'admin' or starts_with($path, 'admin/')) {
+        if ($path === 'admin' or Str::startsWith($path, 'admin/')) {
             if (! Sentinel::check()) {
                 if ($request->ajax()) {
                     return response('Unauthorized', 401);

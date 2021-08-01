@@ -4,10 +4,11 @@ namespace Contentify;
 
 use Cache;
 use RuntimeException;
+use Str;
 use View;
 
 /**
- * Backend navigation generator class - generates the navigation of the backend 
+ * Backend navigation generator class - generates the navigation of the backend
  * automatically based upon the settings of the available modules. Caches the result
  * to increase the performance.
  */
@@ -43,7 +44,7 @@ class BackendNavGenerator
 
     /**
      * Returns the navigation items
-     * 
+     *
      * @return mixed[][] Array with arrays of navigation items
      */
     public function getItems() : array
@@ -89,7 +90,7 @@ class BackendNavGenerator
                     }
 
                     if (! isset($moduleNavItem['translate']) or $moduleNavItem['translate'] === false) {
-                        $key = 'app.object_'.snake_case($moduleNavItem['title']);
+                        $key = 'app.object_'.Str::snake($moduleNavItem['title']);
                         if ($translator->has($key)) {
                             $moduleNavItem['title'] = $translator->get($key);
                         }
@@ -104,9 +105,9 @@ class BackendNavGenerator
                 }
             }
         }
-        
+
         event(self::EVENT_NAME_GET_ITEMS, [$navItems]);
-        
+
         return $navItems;
     }
 
@@ -122,7 +123,7 @@ class BackendNavGenerator
             $navItems = $this->getItems();
             $navCategories = [];
 
-            for ($i = 1; $i <= self::MAX_NAVCATS; $i++) { 
+            for ($i = 1; $i <= self::MAX_NAVCATS; $i++) {
                 foreach ($navItems as $navItem) {
                     if ($navItem['category'] == $i) {
                         $navCategories[$i][$navItem['position']] = $navItem;
@@ -139,7 +140,7 @@ class BackendNavGenerator
 
     /**
      * Enforce (cache) update
-     * 
+     *
      * @return void
      */
     public function update()
@@ -149,7 +150,7 @@ class BackendNavGenerator
 
     /**
      * Returns the HTML code of the backend navigation
-     * 
+     *
      * @return string The code
      */
     public function get() : string

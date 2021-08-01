@@ -20,9 +20,8 @@ class RssServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app['rss'] = $this->app->share(function($app)
-        {
-            return new Rss;
+        $this->app->singleton(Rss::class, function ($app) {
+            return new Rss();
         });
     }
 

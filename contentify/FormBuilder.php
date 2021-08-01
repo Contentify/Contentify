@@ -628,7 +628,7 @@ class FormBuilder extends OriginalFormBuilder
          */
         switch ($relation[0]) {
             case 'belongsTo':
-                $default = self::getDefaultValue(snake_case($relationName).'_'.$key, $default);
+                $default = self::getDefaultValue(Str::snake($relationName).'_'.$key, $default);
 
                 break;
             case 'belongsToMany':

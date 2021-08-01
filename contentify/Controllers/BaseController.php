@@ -85,9 +85,9 @@ abstract class BaseController extends Controller
                 $this->formTemplate = 'form';
             } else {
                 // If model name & module name differ, the form name should be e. g. "users_form":
-                $this->formTemplate = snake_case($this->controllerName).'_form';
+                $this->formTemplate = Str::snake($this->controllerName).'_form';
             }
-            if (starts_with(strtolower($className), 'admin')) {
+            if (Str::startsWith(strtolower($className), 'admin')) {
                 $this->formTemplate = 'admin_'.$this->formTemplate;
             }
         }

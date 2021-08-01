@@ -86,7 +86,7 @@
                                     <li>{!! link_to('auth/logout', trans('app.logout')) !!}</li>
                                 </ul>
                             </div>
-                                
+
                         @else
                             <a class="btn btn-default" href="{{ url('auth/login') }}" title="{{ trans('auth::login') }}">{!! HTML::fontIcon('unlock-alt') !!}</a>
 
@@ -120,7 +120,7 @@
                 {{-- Render JavaScript alerts here --}}
                 <div class="alert-area"></div>
 
-                <section class="page page-{!! kebab_case($controllerName) !!} {!! $templateClass !!}">
+                <section class="page page-{!! \Str::kebab($controllerName) !!} {!! $templateClass !!}">
                     @if (isset($page))
                         {!! $page !!}
                     @endif
@@ -128,7 +128,7 @@
             </div>
 
             <aside id="sidebar" class="col-md-4">
-                <div class="border"> 
+                <div class="border">
                     <h3>
                         {{ trans('app.latest') }} {{ trans('app.object_matches') }}
                         <a href="{{ url('matches') }}" title="{{ trans('app.read_more') }}">{!! HTML::fontIcon('plus-square') !!}</a>
@@ -205,7 +205,7 @@
             <a href="#" class="btn btn-default" data-dismiss="alert" aria-label="close">{{ trans('app.confirm') }}</a>
         </div>
     @endif
-    
+
     {!! Config::get('app.analytics') !!}
 </body>
 </html>

@@ -86,7 +86,7 @@
                 {{-- Render JavaScript alerts here --}}
                 <div class="alert-area"></div>
 
-                <section class="page page-{!! kebab_case($controllerName) !!} {!! $templateClass !!}">
+                <section class="page page-{!! \Str::kebab($controllerName) !!} {!! $templateClass !!}">
                     @if (isset($page))
                         {!! $page !!}
                     @endif
@@ -144,7 +144,7 @@
                     <ul class="list-inline">
                         <li class="icon">{!! HTML::fontIcon('bars') !!}</li>
                         <li>{!! link_to('/', trans('app.home'), ['class' => 'active']) !!}</li>
-                        
+
                         <li>{!! link_to('search', trans('app.object_search')) !!}</li>
                         <li>{!! link_to('servers', trans('app.object_servers')) !!}</li>
                         <li>{!! link_to('galleries', trans('app.object_galleries')) !!}</li>

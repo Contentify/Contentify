@@ -26,7 +26,7 @@
     {!! HTML::style('css/backend.css') !!}
     {!! HTML::style('vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css') !!}
     {!! HTML::style('vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') !!}
-    
+
     {!! HTML::jsTranslations() !!}
     {!! HTML::script('vendor/jquery/jquery-2.2.4.min.js') !!}
     {!! HTML::script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') !!}
@@ -77,7 +77,7 @@
                     </div>
                 </a>
             </div>
-            
+
             {!! HTML::renderBackendNavigation() !!}
         </aside>
 
@@ -90,7 +90,7 @@
             <div class="alert-area"></div>
 
             @if (isset($page))
-                <a class="page-head" href="{!! url('admin/'.kebab_case($controllerName)) !!}">
+                <a class="page-head" href="{!! url('admin/'.\Str::kebab($controllerName)) !!}">
                     {!! HTML::fontIcon($controllerIcon) !!}
                     {!! trans_object($moduleName, $moduleName) !!}
                     @if ($controllerName != $moduleName)
@@ -98,7 +98,7 @@
                     @endif
                 </a>
 
-                <div class="page page-{!! kebab_case($controllerName) !!} {!! $templateClass !!}">
+                <div class="page page-{!! \Str::kebab($controllerName) !!} {!! $templateClass !!}">
                     {!! $page !!}
                 </div>
             @endif

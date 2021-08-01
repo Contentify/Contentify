@@ -414,7 +414,7 @@ abstract class BaseModel extends Eloquent
         }
 
         if (is_null($foreignKey)) {
-            $foreignKey = snake_case($relation).'_id';
+            $foreignKey = Str::snake($relation).'_id';
         }
 
         // Once we have the foreign key names, we'll just create a new Eloquent query
@@ -427,37 +427,6 @@ abstract class BaseModel extends Eloquent
         $query = $instance->newQuery();
 
         return new BelongsTo($query, $this, $foreignKey, $otherKey, $relation);
-    }
-
-    /**
-     * Define an polymorphic, inverse one-to-one or many relationship.
-     * Overridden from {@link Eloquent\Model} to allow the usage of the intermediary methods to handle the {@link
-     * $relationsData} array.
-     * This is derived from @link https://github.com/laravelbook/ardent
-     *
-     * @param  string  $name
-     * @param  string  $type
-     * @param  string  $id
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function morphTo($name = null, $type = null, $id = null) {
-        // If no name is provided, we will use the backtrace to get the function name
-        // since that is most likely the name of the polymorphic interface. We can
-        // use that to get both the class and foreign key that will be utilized.
-        if (is_null($name)) {
-            $backtrace = debug_backtrace(false);
-            $caller = ($backtrace[1]['function'] == 'handleRelationalArray')? $backtrace[3] : $backtrace[1];
-            $name = snake_case($caller['function']);
-        }
-
-        // Next we will guess the type and ID if necessary. The type and IDs may also
-        // be passed into the function so that the developers may manually specify
-        // them on the relations. Otherwise, we will just make a great estimate.
-        list($type, $id) = $this->getMorphs($name, $type, $id);
-
-        $class = $this->$type;
-
-        return $this->belongsTo($class, $id);
     }
 
     /**

@@ -1,7 +1,9 @@
 ## Changelog - v3.1
 
-**Important Notes**: 
+**Breaking Changes**: 
 - PHP >= 7.2.5 is required!
+- `morphto` has been removed from the `Contentify\Models\BaseModel` class
+- Laravel's string helper functions are no longer supported, use the `Str` class method instead
 
 **Changes**
 - Laravel has been updated from v5.5 to 5.7

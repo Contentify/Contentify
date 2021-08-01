@@ -106,7 +106,7 @@ class ModelHandler
 
         $modelClass = $controller->getModelClass();
 
-        $controllerRouteName = kebab_case($controller->getControllerName());
+        $controllerRouteName = Str::kebab($controller->getControllerName());
 
         /*
          * Generate Buttons
@@ -383,7 +383,7 @@ class ModelHandler
         }
 
         $controller->pageView(
-            snake_case($controller->getModuleName()).'::'.$controller->getFormTemplate(),
+            Str::snake($controller->getModuleName()).'::'.$controller->getFormTemplate(),
             ['modelClass' => $controller->getModelClass()]
         );
     }
@@ -417,7 +417,7 @@ class ModelHandler
         $okay = $model->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.create')
+            return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.create')
                 ->withInput()->withErrors($model->getErrors());
         }
 
@@ -425,15 +425,15 @@ class ModelHandler
 
         $errors = $this->uploader->uploadModelFiles($model);
         if (count($errors) > 0) {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.create')
+            return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.create')
                ->withInput()->withErrors($errors);
         }
 
         $controller->alertFlash(trans('app.created', [trans_object(basename($controller->getModelName()))]));
         if (Request::get('_form_apply') !== null) {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$model->id]);
+            return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.edit', [$model->id]);
         } else {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
+            return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.index');
         }
     }
 
@@ -500,7 +500,7 @@ class ModelHandler
         $okay = $model->save();
 
         if (! $okay) {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', ['id' => $model->id])
+            return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.edit', ['id' => $model->id])
                 ->withInput()->withErrors($model->getErrors());
         }
 
@@ -509,16 +509,16 @@ class ModelHandler
         $errors = $this->uploader->uploadModelFiles($model);
         if (count($errors) > 0) {
             return Redirect::route(
-                'admin.'.kebab_case($controller->getControllerName()).'.edit',
+                'admin.'.Str::kebab($controller->getControllerName()).'.edit',
                 ['id' => $model->id]
             )->withInput()->withErrors($errors);
         }
 
         $controller->alertFlash(trans('app.updated', [trans_object(basename($controller->getModelName()))]));
         if (Request::get('_form_apply') !== null) {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.edit', [$id]);
+            return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.edit', [$id]);
         } else {
-            return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
+            return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.index');
         }
     }
 
@@ -557,7 +557,7 @@ class ModelHandler
                     $dependencies = $model->$name;
                     if (sizeof($dependencies) > 0) {
                         $controller->alertFlash(trans('app.delete_error', [sizeof($dependencies), $name]));
-                        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
+                        return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.index');
                     }
                 }
             }
@@ -575,7 +575,7 @@ class ModelHandler
         UserActivities::addDelete(false, user()->id, $controller->getModelClass());
 
         $controller->alertFlash(trans('app.deleted', [trans_object(basename($controller->getModelName()))]));
-        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
+        return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.index');
     }
 
     /**
@@ -601,7 +601,7 @@ class ModelHandler
         $model->restore();
 
         $controller->alertFlash(trans('app.restored', [trans_object(basename($controller->getModelName()))]));
-        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index');
+        return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.index');
     }
 
     /**
@@ -614,7 +614,7 @@ class ModelHandler
     {
         $controller = $this->getControllerOrFail();
 
-        return Redirect::route('admin.'.kebab_case($controller->getControllerName()).'.index')
+        return Redirect::route('admin.'.Str::kebab($controller->getControllerName()).'.index')
             ->withInput(Request::only('search'));
     }
 
@@ -634,7 +634,7 @@ class ModelHandler
         $relations = $modelClass::relations();
 
         foreach (Request::all() as $name => $value) {
-            if (starts_with($name, self::RELATION_FIELD_PREFIX)) {
+            if (Str::startsWith($name, self::RELATION_FIELD_PREFIX)) {
                 $name = substr($name, strlen(self::RELATION_FIELD_PREFIX)); // Remove the prefix to get the relation name
 
                 if ($value === '') {
@@ -660,7 +660,7 @@ class ModelHandler
                      */
                     switch ($relation[0]) {
                         case 'belongsTo':
-                            $attribute = snake_case($name).'_'.$key;
+                            $attribute = Str::snake($name).'_'.$key;
 
                             if ($model->isFillable($attribute)) {
                                 $model->$attribute = $value;

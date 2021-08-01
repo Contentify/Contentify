@@ -4,6 +4,7 @@ namespace Contentify;
 
 use DB;
 use Lang;
+use Str;
 use View;
 
 /**
@@ -36,7 +37,7 @@ class FormGenerator
     /**
      * Generates a simple but CMS compliant form template (Blade syntax).
      * Do not blindly trust the result - most likely refactoring is necessary.
-     * 
+     *
      * @param  string      $tableName  The table (representing a model) to generate a form for
      * @param  string|null $moduleName The module name - leave it empty if it's the table name
      * @return string
@@ -60,7 +61,7 @@ class FormGenerator
                 $fields[] = $field;
             }
         }
-        
+
         event(self::EVENT_NAME_FIELDS_BUILT, [$fields]);
 
         if ($this->fileHandling) {
@@ -68,7 +69,7 @@ class FormGenerator
         } else {
             $fileHandling = '';
         }
-        
+
         $formView = View::make('formgenerator.template', compact('fields', 'moduleName', 'fileHandling'));
 
         return $formView->render();
@@ -84,7 +85,7 @@ class FormGenerator
     protected function buildField(\stdClass $column)
     {
         $ignoredFields = [
-            'id', 
+            'id',
             'access_counter',
             'creator_id',
             'updater_id',
@@ -114,7 +115,7 @@ class FormGenerator
             $type   = substr($type, 0, $pos);
         }
 
-        if (starts_with($meta, '(')) {
+        if (Str::startsWith($meta, '(')) {
             $size   = (int) substr($meta, 1);
             $pos    = strpos($meta, ')');
             $meta   = trim(substr($meta, $pos + 1));
@@ -182,14 +183,14 @@ class FormGenerator
                     break;
                 case 'foreign':
                     $title = $this->transformName(substr($name, 0, -3));
-                    $name = camel_case(substr($name, 0, -3)); // Eloquent can't handle snake_cased relation names
+                    $name = Str::camel(substr($name, 0, -3)); // Eloquent can't handle snake_cased relation names
                     $html = "{!! Form::smartSelectForeign('{$name}', {$title}) !!}";
                     break;
                 default:
                     $html = "<!-- Unknown type: {$type} -->";
                     break;
             }
-            
+
             $html .= "\n";
         }
 
@@ -200,7 +201,7 @@ class FormGenerator
      * If the attribute name $name is the name of a key in a translation file,
      * return code that calls the trans() function.
      * If not, make him readable at least.
-     * 
+     *
      * @param  string $name The attribute name
      * @return string
      */
@@ -217,7 +218,7 @@ class FormGenerator
 
     /**
      * Convert a snake_case string to a title (single words, ucfirst)
-     * 
+     *
      * @param  string $snakeCase The snake cased string
      * @return string
      */
