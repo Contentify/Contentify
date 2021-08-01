@@ -3,10 +3,10 @@
 namespace Contentify\Controllers;
 
 use Contentify\Traits\ModelHandlerTrait;
+use ChrisKonnertz\OpenGraph\OpenGraph;
 use Controller;
 use Exception;
 use ModelHandler;
-use OpenGraph;
 use Request;
 use Sentinel;
 use Session;

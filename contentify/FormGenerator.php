@@ -135,7 +135,7 @@ class FormGenerator
             if ($name == 'url') {
                 $type = 'url';
             }
-            if (ends_with($name, '_id')) {
+            if (Str::endsWith($name, '_id')) {
                 $type = 'foreign';
             }
 

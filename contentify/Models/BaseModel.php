@@ -77,7 +77,7 @@ abstract class BaseModel extends Eloquent
         } else {
             $base = asset('');
 
-            if (ends_with($base, '/')) {
+            if (Str::endsWith($base, '/')) {
                 $base = substr($base, 0, -1);
             }
         }
