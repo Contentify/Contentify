@@ -461,7 +461,7 @@ class ModelHandler
         }
 
         $controller->pageView(
-            snake_case($controller->getModuleName()).'::'.$controller->getFormTemplate(),
+            Str::snake($controller->getModuleName()).'::'.$controller->getFormTemplate(),
             ['model' => $model, 'modelClass' => $modelClass]
         );
     }
