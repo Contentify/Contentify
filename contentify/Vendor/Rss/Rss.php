@@ -2,7 +2,8 @@
 
 namespace Contentify\Vendor\Rss;
 
-class Rss {
+class Rss
+{
     /** @var string */
     protected $version = '';
 

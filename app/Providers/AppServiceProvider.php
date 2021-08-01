@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('widget', function($expression) {
             return '<?php echo HTML::widget('.$expression.'); ?>';
         });
-       
+
         /*
         |--------------------------------------------------------------------------
         | Jobs
@@ -98,12 +98,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /*
-         * The RSS package does not have a service provider for Laravel 5 (only for Laravel 4).
-         * Therefore we have to register the RSS service so the facade can use it.
-         */
-        $this->app->singleton('rss', function () {
-            return new Rss;
-        });
+        //$this->app->singleton('nameOfTheProvider', function () {
+        //    return new ClassOfTheService;
+        //});
     }
 }

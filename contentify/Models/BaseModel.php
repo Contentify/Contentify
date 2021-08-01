@@ -441,7 +441,7 @@ abstract class BaseModel extends Eloquent
         $attr = parent::getAttribute($key);
 
         if ($attr === null) {
-            $camelKey = camel_case($key);
+            $camelKey = Str::camel($key);
             if (array_key_exists($camelKey, static::$relationsData)) {
                 $this->relations[$key] = $this->$camelKey()->getResults();
                 return $this->relations[$key];

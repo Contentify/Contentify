@@ -4,14 +4,8 @@ namespace Contentify\Vendor\Rss;
 
 use Illuminate\Support\ServiceProvider;
 
-class RssServiceProvider extends ServiceProvider {
-
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
+class RssServiceProvider extends ServiceProvider
+{
 
     /**
      * Register the service provider.
@@ -20,19 +14,9 @@ class RssServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton(Rss::class, function ($app) {
+        $this->app->singleton('rss', function ($app) {
             return new Rss();
         });
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return array('rss');
     }
 
 }

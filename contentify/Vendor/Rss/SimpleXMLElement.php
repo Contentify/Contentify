@@ -5,7 +5,8 @@ namespace Contentify\Vendor\Rss;
 /**
  * @TYPO3\Flow\Annotations\Proxy(false)
  */
-class SimpleXMLElement extends \SimpleXMLElement {
+class SimpleXMLElement extends \SimpleXMLElement
+{
 
     /**
      * Adds a new child node - and replaces "&" by "&amp;" on the way ...
