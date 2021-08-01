@@ -1,6 +1,6 @@
 <?php
 // phpcs:disable PSR1.Classes.ClassDeclaration --pre-app install usage
-// Require Composer autoloader. 
+// Require Composer autoloader.
 // Note that this means that we have access to Laravel and Symfony components!
 $autoloaderFile = __DIR__ . '/vendor/autoload.php';
 if (file_exists($autoloaderFile)) {
@@ -20,9 +20,9 @@ require __DIR__.'/vendor/laravel/framework/src/Illuminate/Support/helpers.php';
  * How can we use parts of Contentify *outside* of the actual Contentify
  * application, especially when it is not yet installed?
  * This script & class allows us to access some(!) parts of Contentify
- * from the outside. 
+ * from the outside.
  * ATTENTION: There is no "safe sandbox" - there is no protection against
- * use/calls of classses and functions that do not work outside Contentify.
+ * use/calls of classes and functions that do not work outside Contentify.
  * So if you use this class, better know what you are doing.
  */
 class AppBridge
@@ -30,29 +30,29 @@ class AppBridge
 
     /**
      * Path of the application directory
-     * 
+     *
      * @var string
      */
     protected $appDir = __DIR__.'/';
 
     /**
      * Path of the config directory
-     * 
+     *
      * @var string
      */
     protected $configDir = '';
 
     /**
      * Path of the storage directory
-     * 
+     *
      * @var string
      */
     protected $storageDir = '';
 
     /**
-     * Array that stores the configs so we do not have 
+     * Array that stores the configs so we do not have
      * to reload them for each config access
-     * 
+     *
      * @var array
      */
     protected $configs = [];
@@ -65,22 +65,22 @@ class AppBridge
 
     /**
      * Returns the path to the app directory
-     * 
+     *
      * @return string
      */
-    public function getAppDir() 
+    public function getAppDir() : string
     {
         return $this->appDir;
     }
 
     /**
      * Returns the path to the config directory
-     * 
+     *
      * @return string
      */
-    public function getConfigDir()
+    public function getConfigDir() : string
     {
-        return  $this->configDir;
+        return $this->configDir;
     }
 
     /**
@@ -88,20 +88,20 @@ class AppBridge
      *
      * @return string
      */
-    public function getStorageDir()
+    public function getStorageDir() : string
     {
-        return  $this->storageDir;
+        return $this->storageDir;
     }
 
     /**
-     * Loads and returns the values of a config file. 
+     * Loads and returns the values of a config file.
      * Does not check if the file is a valid config file!
      * Use getConfig() if you do not want to enforce reloading.
      *
      * @param string $name The (file) name of the config; without path and extension
      * @return array[]
      */
-    public function loadConfig($name)
+    public function loadConfig(string $name)
     {
         $config = include $this->getConfigDir().$name.'.php';
 
@@ -110,13 +110,13 @@ class AppBridge
 
     /**
      * Returns the values of a config file.
-     * Uses in-memory caching so it does not 
+     * Uses in-memory caching so it does not
      * read the file for each request.
-     * 
+     *
      * @param string $name The (file) name of the config; without path and extension
      * @return array[]
      */
-    public function getConfig($name)
+    public function getConfig(string $name) : array
     {
         if (array_key_exists($name, $this->configs)) {
             return $this->configs[$name];
@@ -130,13 +130,13 @@ class AppBridge
     }
 
     /**
-     * Returns the part of the database config that contains 
+     * Returns the part of the database config that contains
      * the connection details of a specific connection.
-     * 
+     *
      * @param string $connection Key/name of the connection. Empty = use default
      * @return array
      */
-    public function getDatabaseConnectionDetails($connection = '')
+    public function getDatabaseConnectionDetails(string $connection = '') : array
     {
         $config = $this->getConfig('database');
 
@@ -149,10 +149,10 @@ class AppBridge
 
     /**
      * Creates a new database connection object and returns it
-     * 
+     *
      * @return \PDO
      */
-    public function createDatabaseConnection()
+    public function createDatabaseConnection() : PDO
     {
         $configFile = $this->storageDir.'app/database.ini';
         $settings = parse_ini_file($configFile);
@@ -170,10 +170,10 @@ class AppBridge
 
     /**
      * Returns true if the application is installed
-     * 
+     *
      * @return bool
      */
-    public function isAppInstalled()
+    public function isAppInstalled() : bool
     {
         $filename = $this->storageDir.'app/.installed';
 
@@ -182,10 +182,10 @@ class AppBridge
 
     /**
      * Determine if PHP is being run from the CLI
-     * 
+     *
      * @return bool
      */
-    public function isCli()
+    public function isCli() : bool
     {
         return (php_sapi_name() === 'cli');
     }
