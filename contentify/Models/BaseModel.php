@@ -4,6 +4,7 @@ namespace Contentify\Models;
 
 use Contentify\ModelHandler;
 use Contentify\Traits\SlugTrait;
+use Contentify\Uploader;
 use DateAccessorTrait;
 use Eloquent;
 use Exception;
@@ -113,7 +114,7 @@ abstract class BaseModel extends Eloquent
                     // Do nothing.
                 }
 
-                if (! in_array(strtolower($extension), ModelHandler::ALLOWED_IMG_EXTENSIONS)) {
+                if (! in_array(strtolower($extension), Uploader::ALLOWED_IMG_EXTENSIONS)) {
                     return trans('app.invalid_image');
                 }
 

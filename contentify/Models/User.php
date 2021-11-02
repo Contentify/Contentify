@@ -12,6 +12,7 @@ use Cartalyst\Sentinel\Users\EloquentUser as SentinelUser;
 use Cartalyst\Sentinel\Users\UserInterface;
 use Contentify\ModelHandler;
 use Contentify\Traits\SlugTrait;
+use Contentify\Uploader;
 use DB;
 use Exception;
 use File;
@@ -439,7 +440,7 @@ class User extends SentinelUser implements UserInterface
             // Do nothing
         }
 
-        if (! in_array(strtolower($extension), ModelHandler::ALLOWED_IMG_EXTENSIONS)) {
+        if (! in_array(strtolower($extension), Uploader::ALLOWED_IMG_EXTENSIONS)) {
             return Redirect::route('users.edit', [$this->id])
             ->withInput()->withErrors([trans('app.invalid_image')]);
         }
