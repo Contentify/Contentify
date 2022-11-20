@@ -91,7 +91,7 @@ class AdminMembersController extends BackController
         }
 
         if (sizeof($teams) > 0) {
-            return View::make('teams::admin_members_team', compact('teams', 'user'));
+            return View::make('teams::admin_members_team', compact('teams'));
         } else {
             return Response::make('');
         }
