@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Partners\Http\Controllers;
 
@@ -27,4 +27,5 @@ class PartnersWidget extends Widget
 
         return View::make('partners::widget', compact('partners'))->render();
     }
+
 }

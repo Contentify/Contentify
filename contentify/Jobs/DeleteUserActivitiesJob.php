@@ -16,7 +16,7 @@ class DeleteUserActivitiesJob extends AbstractJob
     /**
      * {@inheritdoc}
      */
-    public function run($executedAt)
+    public function run(int $executedAt = null)
     {
         UserActivities::deleteOld();
     }

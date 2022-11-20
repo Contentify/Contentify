@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Teams;
 
@@ -67,8 +67,8 @@ class Team extends BaseModel
     ];
 
     /**
-     * The BaseModel's handleRelationalArray() method does not support 
-     * orderBy() for pivot attributes so we have to use old-school Eloquent instead.
+     * The BaseModel's handleRelationalArray() method does not support
+     * orderBy() for pivot attributes, so we have to use old-school Eloquent instead.
      *
      * @return BelongsToMany
      */

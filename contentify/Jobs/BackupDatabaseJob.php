@@ -17,7 +17,7 @@ class BackupDatabaseJob extends AbstractJob
     /**
      * {@inheritdoc}
      */
-    public function run($executedAt)
+    public function run(int $executedAt = null)
     {
         if (! Config::get('app.dbBackup')) {
             return;

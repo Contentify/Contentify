@@ -4,6 +4,7 @@ namespace Contentify\Vendor\Rss;
 
 class Rss
 {
+
     /** @var string */
     protected $version = '';
 
@@ -20,7 +21,7 @@ class Rss
     protected $limit = 0;
 
     /**
-     * Setup the feed
+     * Set up the feed
      *
      * @param string $version
      * @param string $encoding
@@ -64,7 +65,9 @@ class Rss
      */
     public function channel($parameters) : Rss
     {
-        if (!array_key_exists('title', $parameters) || !array_key_exists('description', $parameters) || !array_key_exists('link', $parameters))
+        if (!array_key_exists('title', $parameters)
+            || !array_key_exists('description', $parameters)
+            || !array_key_exists('link', $parameters))
         {
             throw new \Exception('Parameter required missing : title, description or link');
         }
@@ -127,7 +130,10 @@ class Rss
      */
     public function render(): SimpleXMLElement
     {
-        $xml = new SimpleXMLElement('<?xml version="1.0" encoding="'.$this->encoding.'"?><rss version="'.$this->version.'" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/"></rss>', LIBXML_NOERROR|LIBXML_ERR_NONE|LIBXML_ERR_FATAL);
+        $xml = new SimpleXMLElement(
+            '<?xml version="1.0" encoding="'.$this->encoding.'"?><rss version="'.$this->version.'" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/"></rss>',
+            LIBXML_NOERROR|LIBXML_ERR_NONE|LIBXML_ERR_FATAL
+        );
 
         $xml->addChild('channel');
 

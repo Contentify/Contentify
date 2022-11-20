@@ -7,7 +7,7 @@ use Exception;
 use Str;
 
 /**
- * Use this trait to "extend" Eloquent models so they can create "smart" slugs.
+ * Use this trait to "extend" Eloquent models, so they can create "smart" slugs.
  * Classes that include this trait should (must) inherit from the \Contentify\Models\BaseModel class.
  */
 trait SlugTrait
@@ -50,7 +50,7 @@ trait SlugTrait
             }
 
             $model = $model->first();
-            
+
             /*
              * If the slug is in use already:
              * Extract the counter value, increase it and create the new slug.

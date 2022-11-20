@@ -26,8 +26,8 @@ class HtmlBuilder extends OriginalHtmlBuilder
     /**
      * Renders a widget.
      *
-     * @param string $widgetName The class name of the widget. For module widgets it's <Module>::<Widget>
-     * @param array  $parameters Array with parameters (name-value-pairs)
+     * @param string    $widgetName  The class name of the widget. For module widgets it's <Module>::<Widget>
+     * @param array|null $parameters Array with parameters (name-value-pairs)
      * @return string
      * @throws Exception
      */
@@ -157,7 +157,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
     }
 
     /**
-     * Returns HTML code of a "image link" - a link with an image (and maybe a text).
+     * Returns HTML code of an "image link" - a link with an image (and maybe a text).
      * If $image has no extension, the extension will be ".png".
      * If $image has does not start with "http://" an asset link will be created.
      *
@@ -187,7 +187,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
         /*
          * We have to create our link without self::link(), because
-         * that method will not allow to use HTML code.
+         * that method will not allow using HTML code.
          */
         $attrs = self::attributes($attributes);
         $link = '<a class="image-link" href="'.$url.'" title="'.$title.'" '.$attrs.'>'.$image.$titleText.'</a>';
@@ -223,7 +223,7 @@ class HtmlBuilder extends OriginalHtmlBuilder
 
         /*
          * We have to create our Link without self::link(), because
-         * that method will not allow to use HTML code.
+         * that method will not allow using HTML code.
          */
         $attributes = self::attributes($attributes);
         $link = '<a class="icon-link" href="'.$url.'" title="'.$title.'" '.$attributes.'>'.$icon.$titleText.'</a>';

@@ -59,12 +59,12 @@ class Image extends BaseModel
 
     /**
      * Helper function that creates a URL-prepared slug if the image
-     * is displayed as a part of a gallery. Images do not always 
+     * is displayed as a part of a gallery. Images do not always
      * have a slug, because they do not always have a title.
      *
      * @return string|null
      */
-    public function gallerySlug()
+    public function gallerySlug(): ?string
     {
         $slug = Str::slug($this->title);
 

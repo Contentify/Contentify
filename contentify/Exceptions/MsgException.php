@@ -15,6 +15,7 @@ use RuntimeException;
  */
 class MsgException extends RuntimeException
 {
+
     /**
      * Report the exception.
      *
@@ -25,4 +26,5 @@ class MsgException extends RuntimeException
     {
         return Response::make(View::make('error_message', ['exception' => $this]), 500);
     }
+
 }

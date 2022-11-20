@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Config as LaravelConfig;
  * Classical Laravel config files in the "config" folder are awesome.
  * However, they miss one important feature: They are read-only.
  * This class removes this constraint by using the database to
- * persist config values. Therefore it introduces its store() method.
+ * persist config values. Therefore, it introduces its store() method.
  * It uses (file) caching to reduce database queries to a minimum.
  */
 class Config extends LaravelConfig
@@ -41,7 +41,7 @@ class Config extends LaravelConfig
      * @param bool   $dbLookup If false, do not access the database table
      * @return bool
      */
-    public static function has($key, bool $dbLookup = true)
+    public static function has($key, bool $dbLookup = true): bool
     {
         if (installed() and $dbLookup) {
             $dbChecked = Cache::has(self::CACHE_IN_DB_PREFIX.$key);
@@ -85,7 +85,7 @@ class Config extends LaravelConfig
      * @param bool   $dbLookup If false, do not access the database table
      * @return mixed
      */
-    public static function get($key, $default = null, bool $dbLookup = true)
+    public static function get(string $key, $default = null, bool $dbLookup = true)
     {
         if (installed() and $dbLookup) {
             $dbChecked = Cache::has(self::CACHE_IN_DB_PREFIX.$key);
@@ -130,7 +130,7 @@ class Config extends LaravelConfig
      * @param mixed  $value The value - will be stored as a string
      * @return void
      */
-    public static function store($key, $value)
+    public static function store(string $key, $value)
     {
         $result = DB::table('config')
             ->whereName($key)
@@ -156,7 +156,7 @@ class Config extends LaravelConfig
      * @param string $key The name of the key
      * @return void
      */
-    public static function delete($key)
+    public static function delete(string $key)
     {
         DB::table('config')->whereName($key)->delete();
 

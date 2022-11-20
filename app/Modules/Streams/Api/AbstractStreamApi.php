@@ -1,16 +1,17 @@
-<?php 
+<?php
 
 namespace App\Modules\Streams\Api;
 
+use App\Modules\Streams\Stream;
 use Log;
 
 abstract class AbstractStreamApi
 {
-    
+
     /**
      * Updates the meta information of the passed streams in the database.
      * This method to be implemented in the concrete class.
-     * 
+     *
      * @param Stream[] $streams Array with objects of type Stream
      * @return void
      */
@@ -18,7 +19,7 @@ abstract class AbstractStreamApi
 
     /**
      * Makes the API call
-     * 
+     *
      * @param string  $url   The API URL
      * @param boolean $parse Parse the result?
      * @return mixed
@@ -45,7 +46,7 @@ abstract class AbstractStreamApi
         }
         return $result;
     }
-    
+
     /**
      * Parses the response
      *

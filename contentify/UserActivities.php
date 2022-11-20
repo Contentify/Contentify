@@ -9,7 +9,7 @@ use InvalidArgumentException;
 
 /**
  * This class is the user activities manager. This is a logger for user activities, especially for administrators.
- * The class offers methods to create new log entries, retrive log entries and delete log entries.
+ * The class offers methods to create new log entries, retrieve log entries and delete log entries.
  */
 class UserActivities
 {
@@ -53,14 +53,14 @@ class UserActivities
         }
 
         $data = [
-            'activity_id'   => $activityId, 
-            'frontend'      => $frontend, 
-            'user_id'       => $userId, 
-            'model_class'   => $modelClass, 
+            'activity_id'   => $activityId,
+            'frontend'      => $frontend,
+            'user_id'       => $userId,
+            'model_class'   => $modelClass,
             'info'          => $info,
             'created_at'    => $createdAt,
         ];
-        
+
         $userActivity = new UserActivity($data);
         $okay = $userActivity->save();
 
@@ -70,7 +70,7 @@ class UserActivities
     }
 
     /**
-     * Add an user activity of type "create"
+     * Add a user activity of type "create"
      *
      * @param bool        $frontend
      * @param int         $userId
@@ -90,7 +90,7 @@ class UserActivities
     }
 
     /**
-     * Add an user activity of type "read"
+     * Add n user activity of type "read"
      *
      * @param bool        $frontend
      * @param int         $userId
@@ -110,7 +110,7 @@ class UserActivities
     }
 
     /**
-     * Add an user activity of type "update"
+     * Add a user activity of type "update"
      *
      * @param bool        $frontend
      * @param int         $userId
@@ -130,7 +130,7 @@ class UserActivities
     }
 
     /**
-     * Add an user activity of type "delete"
+     * Add a user activity of type "delete"
      *
      * @param bool        $frontend
      * @param int         $userId
@@ -151,7 +151,7 @@ class UserActivities
 
     /**
      * Receives all activities with a given activity ID
-     * 
+     *
      * @param int $activityId The ID of the activity - use one of the provided constants!
      * @return UserActivity[]|Collection
      */
@@ -162,7 +162,7 @@ class UserActivities
 
     /**
      * Receives all activities with a given interface (frontend / backend)
-     * 
+     *
      * @param bool $frontend True = frontend, false = backend
      * @return UserActivity[]|Collection
      */
@@ -173,7 +173,7 @@ class UserActivities
 
     /**
      * Receives all activities performed by a given user
-     * 
+     *
      * @param int $userId The ID of the related user
      * @return UserActivity[]|Collection
      */
@@ -184,10 +184,10 @@ class UserActivities
 
     /**
      * Receives all activities related to a given model class
-     * 
+     *
      * @param string $modelClass Name of the model class (with namespace!)
      * @return UserActivity[]|Collection
-     */    
+     */
     public function getByModelClass(string $modelClass) : Collection
     {
         return UserActivity::whereModelClass($modelClass)->get();

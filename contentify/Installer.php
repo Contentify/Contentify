@@ -1161,9 +1161,7 @@ information about your stored data, and possibly entitlement to correction, bloc
         /*
          * Add the table rows:
          */
-        if ($tableRows) {
-            Schema::table($tableName, $tableRows);
-        }
+        Schema::table($tableName, $tableRows);
     }
 
     /**

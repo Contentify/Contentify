@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Teams\Http\Controllers;
 
@@ -28,7 +28,7 @@ class AdminTeamsController extends BackController
             'buttons'   => ['new', HTML::button(trans('app.object_members'), url('admin/members'), 'users')],
             'tableHead' => [
                 trans('app.id')         => 'id',
-                trans('app.published')  => 'published', 
+                trans('app.published')  => 'published',
                 trans('app.title')      => 'title',
                 trans('app.category')   => 'team_cat_id'
             ],
@@ -48,11 +48,11 @@ class AdminTeamsController extends BackController
 
     /**
      * Returns the lineup of a team (for example an AJAX call)
-     * 
+     *
      * @param  int $id The ID of the team
      * @return string
      */
-    public function lineup($id)
+    public function lineup(int $id) : string
     {
         /** @var Team $team */
         $team = Team::findOrFail($id);

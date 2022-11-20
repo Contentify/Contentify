@@ -31,11 +31,11 @@ class Award extends BaseModel
     protected $dates = ['deleted_at', 'achieved_at'];
 
     protected $fillable = [
-        'title', 
-        'url', 
-        'position', 
-        'achieved_at', 
-        'game_id', 
+        'title',
+        'url',
+        'position',
+        'achieved_at',
+        'game_id',
         'tournament_id',
         'team_id',
     ];
@@ -58,7 +58,7 @@ class Award extends BaseModel
 
     /**
      * Returns HTML code of an icon representing the position (rank) achieved in the tournament.
-     * 
+     *
      * @return string HTML code of the icon
      */
     public function positionIcon() : string
@@ -81,8 +81,8 @@ class Award extends BaseModel
                 $color = null;
         }
 
-        $icon = HTML::fontIcon($icon, $color).'&nbsp;'.$pos.'.';
+        $iconCode = HTML::fontIcon($icon, $color).'&nbsp;'.$pos.'.';
 
-        return $icon;
+        return $iconCode;
     }
 }

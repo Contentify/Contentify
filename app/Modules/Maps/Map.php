@@ -36,4 +36,5 @@ class Map extends BaseModel
         'game'      => [self::BELONGS_TO, 'App\Modules\Games\Game'],
         'creator'   => [self::BELONGS_TO, 'User', 'title' => 'username'],
     ];
+
 }

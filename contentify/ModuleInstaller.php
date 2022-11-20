@@ -34,7 +34,7 @@ abstract class ModuleInstaller
 
     /**
      * Array consisting of pairs of permission names and levels.
-     * These permission are added to the super admin role.
+     * These permissions are added to the super admin role.
      * Example: ['permissionName' => 4]
      * Note that per default a basic module permission is added,
      * so you only need to use this array to provide extra perms.
@@ -45,7 +45,7 @@ abstract class ModuleInstaller
 
     /**
      * Constructor call
-     * 
+     *
      * @param string    $module The module name
      * @param int       $step   The number of the current step
      */
@@ -60,7 +60,7 @@ abstract class ModuleInstaller
      * $step starts counting at 0.
      * Throws an exception if an error occurred.
      * May return a string (or View) to pass visual output.
-     * 
+     *
      * @return string|null
      * @throws Exception
      */
@@ -68,7 +68,7 @@ abstract class ModuleInstaller
 
     /**
      * This method is always executed after a module has been successfully installed.
-     * 
+     *
      * @return void
      */
     final public function after()
@@ -99,7 +99,7 @@ abstract class ModuleInstaller
 
     /**
      * Helper function. Returns the URL of the installer for the next (or a given) step.
-     * 
+     *
      * @param  int|null $step The step (null = auto)
      * @return string
      */

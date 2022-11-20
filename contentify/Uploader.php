@@ -19,7 +19,7 @@ class Uploader
     const ALLOWED_IMG_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg'];
 
     /**
-     * Array with "evil" file extensions - files with this extensions are not allowed to be uploaded
+     * Array with "evil" file extensions - files with these extensions are not allowed to be uploaded
      */
     const FORBIDDEN_FILE_EXTENSIONS = ['php'];
 
@@ -131,7 +131,7 @@ class Uploader
     }
 
     /**
-     * Deletes all files releted to a given model
+     * Deletes all files related to a given model
      *
      * @param object $model
      * @return void

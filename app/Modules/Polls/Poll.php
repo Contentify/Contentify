@@ -104,7 +104,7 @@ class Poll extends BaseModel
     }
 
     /**
-     * Stores the votes of a user for the current poll in the database. The votes will not be validated 
+     * Stores the votes of a user for the current poll in the database. The votes will not be validated,
      * so you should validate them before calling this method.
      *
      * @param User  $user  The voting user

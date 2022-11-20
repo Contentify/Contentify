@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Modules\Streams\Api;
 
@@ -6,9 +6,9 @@ use AbstractJob;
 use App\Modules\Streams\Stream;
 
 /**
- * This jobs tries to update the meta information (current number of viewervs, etc.)
+ * This jobs tries to update the meta information (current number of viewers, etc.)
  * of all streams by retrieving them from the APIs of the stream providers.
- * This task can be slow so we have outsourced it to a job that can run in the background.
+ * This task can be slow, so we have outsourced it to a job that can run in the background.
  */
 class UpdateStreamsJob extends AbstractJob
 {
@@ -20,7 +20,7 @@ class UpdateStreamsJob extends AbstractJob
 
     protected $interval = 5; // Run this job every five minutes
 
-    public function run($executedAt)
+    public function run(int $executedAt = null)
     {
         $streams = Stream::all();
 
@@ -32,7 +32,7 @@ class UpdateStreamsJob extends AbstractJob
             if (isset($stream->provider)) {
                 $streamsByProvider[$stream->provider][$stream->permanent_id] = $stream;
             } else {
-                // FIXME: We are in the else-part of "isset($stream->provider)". 
+                // FIXME: We are in the else-part of "isset($stream->provider)".
                 // So if the provider is NOT set, whe use the provider (which will be null) as the key of the array?
                 // This seems to be wrong...
                 $streamsByProvider[$stream->provider] = [$stream->permanent_id => $stream];
@@ -40,7 +40,7 @@ class UpdateStreamsJob extends AbstractJob
         }
 
         /*
-         * Run trough the providers and handle their streams
+         * Run through the providers and handle their streams
          */
         foreach ($streamsByProvider as $provider => $streams) {
             switch ($provider) {
